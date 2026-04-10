@@ -9,8 +9,6 @@ export type ButtonAnimation =
   | "glow"
   | "tilt"
   | "bounce"
-  | "pulse"
-  | "spin";
 
 export type ButtonProps = HTMLMotionProps<"button"> &
   HTMLMotionProps<"a"> &
