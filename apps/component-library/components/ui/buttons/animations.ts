@@ -31,14 +31,4 @@ export const animationPresets: AnimationPresets = {
     whileTap: { y: 0, scale: 0.97 },
     transition: { type: "spring", bounce: 0.45, duration: 0.45 },
   },
-  pulse: {
-    whileHover: { scale: 1.05 },
-    whileTap: { scale: 0.95 },
-    transition: { type: "spring", stiffness: 400, damping: 28 },
-  },
-  spin: {
-    whileHover: { rotate: 360 },
-    whileTap: { rotate: 0 },
-    transition: { duration: 1, ease: "linear", repeat: Infinity },
-  },
 };
