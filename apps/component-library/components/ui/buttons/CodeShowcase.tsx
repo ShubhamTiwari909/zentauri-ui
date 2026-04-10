@@ -15,14 +15,17 @@ const CodeShowcase = ({
   const [isCopied, setIsCopied] = useState(false);
   const [showCode, setShowCode] = useState(false);
 
-  const handleCopy = () => {
-    setIsCopied(true);
-    navigator.clipboard.writeText(code);
-    setTimeout(() => {
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setIsCopied(true);
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } catch {
       setIsCopied(false);
-    }, 2000);
+    }
   };
-
   return (
     <div className="relative">
       <div className="flex gap-4 items-center mb-5">
