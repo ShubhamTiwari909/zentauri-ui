@@ -13,7 +13,7 @@ export const buttonVariants = cva(
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-50",
     "select-none",
-  ].join(" "),
+  ],
   {
     variants: {
       variant: {
