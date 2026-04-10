@@ -1,44 +1,6 @@
-import { Button } from "@/components/ui/button";
-
-const showcaseButtons = [
-  {
-    label: "Primary",
-    variant: "default",
-    animation: "lift",
-  },
-  {
-    label: "Secondary",
-    variant: "secondary",
-    animation: "bounce",
-  },
-  {
-    label: "Outline",
-    variant: "outline",
-    animation: "press",
-  },
-  {
-    label: "Ghost",
-    variant: "ghost",
-    animation: "none",
-  },
-  {
-    label: "Destructive",
-    variant: "destructive",
-    animation: "glow",
-  },
-  {
-    label: "Glass",
-    variant: "glass",
-    animation: "tilt",
-  },
-] as const;
-
-const sizeButtons = [
-  { label: "Small", size: "sm" },
-  { label: "Medium", size: "md" },
-  { label: "Large", size: "lg" },
-  { label: "Icon", size: "icon" },
-] as const;
+import { Button } from "@/components/ui/buttons/button";
+import { showcaseButtons, animationPresets, sizeButtons } from "./variants";
+import CodeShowcase from "@/components/ui/buttons/CodeShowcase";
 
 export default function ButtonsPreviewPage() {
   return (
@@ -54,26 +16,48 @@ export default function ButtonsPreviewPage() {
                 A customizable button built for React, Tailwind, and motion.
               </h1>
               <p className="max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-                This button supports native button props, `class-variance-authority`
-                variants, a `cn` helper for class composition, and motion presets
-                you can switch on with a single prop.
+                This button supports native button props,
+                `class-variance-authority` variants, a `cn` helper for class
+                composition, and motion presets you can switch on with a single
+                prop.
               </p>
             </div>
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
             <div className="grid gap-3 sm:grid-cols-2">
-              <Button animation="lift" className="w-full">
+              <Button appearance="outline" animation="lift" className="w-full">
                 Launch
               </Button>
-              <Button variant="outline" animation="press" className="w-full">
+              <Button appearance="outline" animation="press" className="w-full">
                 Outline
               </Button>
-              <Button variant="glass" animation="glow" className="w-full">
+              <Button appearance="glass" animation="glow" className="w-full">
                 Glass
               </Button>
-              <Button variant="destructive" animation="bounce" className="w-full">
+              <Button
+                appearance="destructive"
+                animation="bounce"
+                className="w-full"
+              >
                 Delete
+              </Button>
+              <Button
+                appearance="gradient-blue"
+                animation="none"
+                className="w-full"
+              >
+                Gradient
+              </Button>
+              <Button
+                appearance="sky"
+                animation="lift"
+                className="w-full"
+                as="link"
+                target="_blank"
+                href="https://www.google.com"
+              >
+                Link
               </Button>
             </div>
           </div>
@@ -97,7 +81,7 @@ export default function ButtonsPreviewPage() {
               {showcaseButtons.map((button) => (
                 <Button
                   key={button.label}
-                  variant={button.variant}
+                  appearance={button.appearance}
                   animation={button.animation}
                 >
                   {button.label}
@@ -114,24 +98,18 @@ export default function ButtonsPreviewPage() {
               Animation options through a prop
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-300">
-              Pick a preset like `lift`, `press`, `glow`, `tilt`, or `bounce`
-              to give each button a different feel without rewriting the
-              component.
+              Pick a preset like `lift`, `press`, `glow`, `tilt`, or `bounce` to
+              give each button a different feel without rewriting the component.
             </p>
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {[
-                ["Lift", "lift"],
-                ["Press", "press"],
-                ["Glow", "glow"],
-                ["Tilt", "tilt"],
-                ["Bounce", "bounce"],
-                ["None", "none"],
-              ].map(([label, animation]) => (
+              {animationPresets.map(([label, animation]) => (
                 <Button
                   key={label}
-                  animation={animation as (typeof showcaseButtons)[number]["animation"]}
-                  variant="secondary"
+                  animation={
+                    animation as (typeof showcaseButtons)[number]["animation"]
+                  }
+                  appearance="secondary"
                   className="w-full"
                 >
                   {label}
@@ -160,10 +138,65 @@ export default function ButtonsPreviewPage() {
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             {sizeButtons.map((button) => (
-              <Button key={button.label} size={button.size} variant="outline">
+              <Button
+                key={button.label}
+                size={button.size}
+                appearance="outline"
+              >
                 {button.label}
               </Button>
             ))}
+          </div>
+        </section>
+        <section className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+          <div>
+            <h2 className="mt-3 text-2xl font-semibold text-white">
+              Button Variants Examples
+            </h2>
+            <div className="mt-6 space-y-10 rounded-xl">
+              {showcaseButtons.map((button) => {
+                const code = `<Button appearance="${button.appearance}" className="w-full">${button.label}</Button>`;
+                return (
+                  <CodeShowcase
+                    key={button.label}
+                    code={code}
+                    appearance={button.appearance}
+                    animation={"none"}
+                    label={button.label}
+                  />
+                );
+              })}
+              {
+                animationPresets.map(([label, animation]) => {
+                  const code = `<Button appearance="secondary" animation="${animation}" className="w-full">${label} animation</Button>`;
+                  return (
+                    <CodeShowcase
+                      key={label}
+                      code={code}
+                      appearance={"glass"}
+                      animation={animation}
+                      label={`${label} animation`}
+                    />
+                  );
+                })
+              }
+              {
+                sizeButtons.map((button) => {
+                  const code = `<Button appearance="secondary" size="${button.size}" className="w-full ${button.size === "icon" ? "w-20" : ""}">${button.label} size</Button>`;
+                  return (
+                    <CodeShowcase
+                      key={button.label}
+                      code={code}
+                      appearance={"gradient-indigo"}
+                      animation={"none"}
+                      label={`${button.label} size`}
+                      size={button.size}
+                      buttonClassName={button.size === "icon" ? "w-20" : undefined}
+                    />
+                  );
+                })
+              }
+            </div>
           </div>
         </section>
       </main>
