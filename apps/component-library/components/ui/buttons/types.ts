@@ -8,19 +8,23 @@ export type ButtonAnimation =
   | "press"
   | "glow"
   | "tilt"
-  | "bounce"
+  | "bounce";
 
-export type ButtonProps = HTMLMotionProps<"button"> &
-  HTMLMotionProps<"a"> &
-  VariantProps<typeof buttonVariants> & {
-    animation?: ButtonAnimation;
-    as?: "button" | "link";
-  };
+type ButtonSharedProps = VariantProps<typeof buttonVariants> & {
+  animation?: ButtonAnimation;
+};
 
-export type AnimationPresets = Record<
-  ButtonAnimation,
-  HTMLMotionProps<"button"> & HTMLMotionProps<"a">
+/** Motion props applied by presets; valid on both `motion.button` and `motion.a`. */
+type ButtonPresetMotionProps = Pick<
+  HTMLMotionProps<"button">,
+  "style" | "transition" | "whileHover" | "whileTap"
 >;
+
+export type ButtonProps =
+  | (ButtonSharedProps & HTMLMotionProps<"button"> & { as?: "button" })
+  | (ButtonSharedProps & HTMLMotionProps<"a"> & { as: "link" });
+
+export type AnimationPresets = Record<ButtonAnimation, ButtonPresetMotionProps>;
 
 export type CodeShowcaseProps = {
   code: string;

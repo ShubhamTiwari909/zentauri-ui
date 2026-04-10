@@ -168,7 +168,7 @@ export default function ButtonsPreviewPage() {
               })}
               {
                 animationPresets.map(([label, animation]) => {
-                  const code = `<Button appearance="secondary" animation="${animation}" className="w-full">${label} animation</Button>`;
+                  const code = `<Button appearance="glass" animation="${animation}" className="w-full">${label} animation</Button>`;
                   return (
                     <CodeShowcase
                       key={label}
@@ -182,7 +182,7 @@ export default function ButtonsPreviewPage() {
               }
               {
                 sizeButtons.map((button) => {
-                  const code = `<Button appearance="secondary" size="${button.size}" className="w-full ${button.size === "icon" ? "w-20" : ""}">${button.label} size</Button>`;
+                  const code = `<Button appearance="gradient-indigo" size="${button.size}" className="w-full ${button.size === "icon" ? "w-20" : ""}">${button.label} size</Button>`;
                   return (
                     <CodeShowcase
                       key={button.label}
