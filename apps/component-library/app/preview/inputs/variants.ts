@@ -7,11 +7,7 @@ export const appearanceInputs = [
 ];
 
 export const appearanceInputsExtended = [
-  { label: "Default", appearance: "default" as const },
-  { label: "Warning", appearance: "warning" as const },
-  { label: "Info", appearance: "info" as const },
-  { label: "Error", appearance: "error" as const },
-  { label: "Success", appearance: "success" as const },
+  ...appearanceInputs,
   { label: "Violet", appearance: "violet" as const },
   { label: "Amber", appearance: "amber" as const },
   { label: "Pink", appearance: "pink" as const },

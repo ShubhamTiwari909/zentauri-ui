@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
@@ -8,6 +9,7 @@ import type { InputProps } from "./types";
 import { inputVariants } from "./variants";
 
 export const Input = (props: InputProps) => {
+  const generatedId = useId();
   const {
     className,
     appearance,
@@ -17,8 +19,12 @@ export const Input = (props: InputProps) => {
     ref,
     "aria-invalid": ariaInvalidProp,
     errorMessage,
+    id,
     ...rest
   } = props;
+
+  const inputId = id || generatedId;
+  const errorId = `${inputId}-error`;
   const motionProps = inputAnimationPresets[animation];
 
   const ariaInvalid =
@@ -29,17 +35,26 @@ export const Input = (props: InputProps) => {
         : undefined;
 
   return (
-    <div>
+    <div className="w-full">
       <motion.input
         ref={ref}
+        id={inputId}
         data-slot="input"
         className={cn(inputVariants({ appearance, size, ring }), className)}
         initial={false}
         aria-invalid={ariaInvalid}
+        aria-describedby={errorMessage && appearance === "error" ? errorId : undefined}
         {...motionProps}
         {...rest}
       />
-      {errorMessage && appearance === "error" && <p className="text-sm text-red-500 mt-2 pl-4 wrap-anywhere">{errorMessage}</p>}
+      {errorMessage && appearance === "error" && (
+        <p
+          id={errorId}
+          className="text-sm text-rose-500 mt-2 pl-4 wrap-break-word"
+        >
+          {errorMessage}
+        </p>
+      )}
     </div>
   );
 };
