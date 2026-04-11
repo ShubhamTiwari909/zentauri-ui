@@ -10,6 +10,62 @@ import { inputVariants } from "./variants";
 
 export const Input = (props: InputProps) => {
   const generatedId = useId();
+
+  if (props.as === "textarea") {
+    const {
+      className,
+      appearance,
+      size,
+      animation = "none",
+      ring = true,
+      ref,
+      "aria-invalid": ariaInvalidProp,
+      errorMessage,
+      id,
+      as,
+      ...rest
+    } = props;
+
+    const controlId = id ?? generatedId;
+    const errorId = `${controlId}-error`;
+    const motionProps = inputAnimationPresets[animation];
+    const ariaInvalid =
+      ariaInvalidProp !== undefined
+        ? ariaInvalidProp
+        : appearance === "error"
+          ? true
+          : undefined;
+
+    return (
+      <div className="w-full">
+        <motion.textarea
+          ref={ref}
+          id={controlId}
+          data-slot="input"
+          className={cn(
+            inputVariants({ appearance, size, ring, as }),
+            className,
+          )}
+          initial={false}
+          aria-invalid={ariaInvalid}
+          aria-describedby={
+            errorMessage && appearance === "error" ? errorId : undefined
+          }
+          {...motionProps}
+          {...rest}
+        />
+        {errorMessage && appearance === "error" && (
+          <p
+            id={errorId}
+            className="text-sm text-rose-500 mt-2 pl-4 wrap-break-word"
+          >
+            {errorMessage}
+          </p>
+        )}
+      </div>
+    );
+  }
+
   const {
     className,
     appearance,
@@ -20,13 +76,13 @@ export const Input = (props: InputProps) => {
     "aria-invalid": ariaInvalidProp,
     errorMessage,
     id,
+    as,
     ...rest
   } = props;
 
-  const inputId = id || generatedId;
-  const errorId = `${inputId}-error`;
+  const controlId = id ?? generatedId;
+  const errorId = `${controlId}-error`;
   const motionProps = inputAnimationPresets[animation];
-
   const ariaInvalid =
     ariaInvalidProp !== undefined
       ? ariaInvalidProp
@@ -38,12 +94,17 @@ export const Input = (props: InputProps) => {
     <div className="w-full">
       <motion.input
         ref={ref}
-        id={inputId}
+        id={controlId}
         data-slot="input"
-        className={cn(inputVariants({ appearance, size, ring }), className)}
+        className={cn(
+          inputVariants({ appearance, size, ring, as: as ?? "input" }),
+          className,
+        )}
         initial={false}
         aria-invalid={ariaInvalid}
-        aria-describedby={errorMessage && appearance === "error" ? errorId : undefined}
+        aria-describedby={
+          errorMessage && appearance === "error" ? errorId : undefined
+        }
         {...motionProps}
         {...rest}
       />

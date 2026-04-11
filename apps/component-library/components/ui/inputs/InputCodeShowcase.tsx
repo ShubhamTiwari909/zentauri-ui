@@ -15,6 +15,8 @@ const InputCodeShowcase = ({
   placeholder,
   appearance,
   size,
+  as,
+  rows,
   animation = "none",
   inputClassName,
   disabled,
@@ -67,7 +69,6 @@ const InputCodeShowcase = ({
         <div className="max-w-xl">{preview}</div>
       ) : (
         <Input
-          type={type}
           appearance={appearance}
           size={size}
           animation={animation}
@@ -79,6 +80,9 @@ const InputCodeShowcase = ({
           placeholder={placeholder ?? label}
           aria-label={label}
           errorMessage={errorMessage}
+          {...(as === "textarea"
+            ? { as: "textarea" as const, rows }
+            : { type, ...(as === "input" ? { as: "input" as const } : {}) })}
         />
       )}
     </div>
