@@ -11,6 +11,10 @@ export const inputVariants = cva(
   ],
   {
     variants: {
+      as: {
+        input: "",
+        textarea: "!h-auto resize-y py-2 align-top",
+      },
       appearance: {
         default: "border-white/10 focus-visible:border-white/20",
         warning: "border-yellow-500/80 text-yellow-50 placeholder:text-yellow-300/70 focus-visible:border-yellow-400 focus-visible:ring-yellow-400/80",
@@ -36,9 +40,27 @@ export const inputVariants = cva(
       },
     },
     defaultVariants: {
+      as: "input",
       appearance: "default",
       size: "md",
       ring: true,
     },
+    compoundVariants: [
+      {
+        as: "textarea",
+        size: "sm",
+        class: "min-h-[5rem]",
+      },
+      {
+        as: "textarea",
+        size: "md",
+        class: "min-h-[6rem]",
+      },
+      {
+        as: "textarea",
+        size: "lg",
+        class: "min-h-[7.5rem]",
+      },
+    ],
   },
 );

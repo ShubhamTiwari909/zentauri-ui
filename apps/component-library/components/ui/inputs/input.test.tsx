@@ -45,6 +45,26 @@ describe("Input (component library)", () => {
       );
     });
 
+    it("should render a native textarea when as='textarea'", () => {
+      render(
+        <Input
+          as="textarea"
+          rows={3}
+          placeholder="Notes"
+          aria-label="Notes field"
+        />,
+      );
+      const control = screen.getByRole("textbox", { name: "Notes field" });
+      expect(
+        control.tagName,
+        "as='textarea' must render a TEXTAREA element",
+      ).toBe("TEXTAREA");
+      expect(
+        (control as HTMLTextAreaElement).rows,
+        "rows must pass through to the textarea",
+      ).toBe(3);
+    });
+
     it("should use search role when type is search", () => {
       render(<Input type="search" aria-label="Search" />);
       expect(screen.getByRole("searchbox", { name: "Search" }).tagName).toBe(
@@ -274,6 +294,20 @@ describe("Input (component library)", () => {
         ref.current?.getAttribute("data-slot"),
         "ref node must be the rendered input instance",
       ).toBe("input");
+    });
+
+    it("should attach ref to the underlying textarea when as='textarea'", () => {
+      const ref = createRef<HTMLTextAreaElement>();
+      render(
+        <Input
+          ref={ref}
+          as="textarea"
+          placeholder="x"
+          aria-label="Textarea ref target"
+        />,
+      );
+      expect(ref.current).toBeInstanceOf(HTMLTextAreaElement);
+      expect(ref.current?.getAttribute("data-slot")).toBe("input");
     });
   });
 
