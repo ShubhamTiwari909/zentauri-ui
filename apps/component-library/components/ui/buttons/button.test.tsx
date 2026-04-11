@@ -10,12 +10,12 @@ import type { ButtonAnimation } from "./types";
 const BUTTON_SLOT_SELECTOR = '[data-slot="button"]';
 
 function getButtonSlot(container: HTMLElement = document.body) {
-  const el = container.querySelector(BUTTON_SLOT_SELECTOR);
+  const elements = container.querySelectorAll(BUTTON_SLOT_SELECTOR);
   expect(
-    el,
-    `Expected exactly one element matching ${BUTTON_SLOT_SELECTOR} in the document`,
-  ).not.toBeNull();
-  return el as HTMLElement;
+    elements.length,
+    `Expected exactly one element matching ${BUTTON_SLOT_SELECTOR} in the document, but found ${elements.length}`,
+  ).toBe(1);
+  return elements[0] as HTMLElement;
 }
 
 describe("Button (component library)", () => {
