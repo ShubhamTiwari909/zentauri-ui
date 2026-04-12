@@ -160,19 +160,19 @@ export const inputVariants = cva(
         as: "checkbox",
         size: "sm",
         class:
-          "h-4! w-4! min-h-0! rounded-[0.35rem]! px-0! py-0! checked:mask-size-[58%_58%]",
+          "h-4! w-4! min-h-0! rounded-[0.35rem]! px-0! py-0!",
       },
       {
         as: "checkbox",
         size: "md",
         class:
-          "h-5! w-5! min-h-0! rounded-md! px-0! py-0! checked:mask-size-[62%_62%]",
+          "h-5! w-5! min-h-0! rounded-md! px-0! py-0!",
       },
       {
         as: "checkbox",
         size: "lg",
         class:
-          "h-6! w-6! min-h-0! rounded-md! px-0! py-0! checked:mask-size-[66%_66%]",
+          "h-6! w-6! min-h-0! rounded-md! px-0! py-0!",
       },
       {
         as: "radio",
