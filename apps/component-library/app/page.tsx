@@ -32,6 +32,8 @@ const page = () => {
         aria-label="Controlled field"
         className="w-full"
         type="checkbox"
+        size="sm"
+        appearance="pink"
       />
       <Input
         placeholder="Type to update state"
