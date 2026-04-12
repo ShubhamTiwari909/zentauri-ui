@@ -27,7 +27,7 @@ type InputPresetMotionProps = Pick<
 export type InputProps =
   | (InputSharedProps &
       Omit<HTMLMotionProps<"input">, "size" | "as"> & {
-        as?: "input";
+        as?: "input" | "file" | "checkbox" | "radio";
       })
   | (InputSharedProps &
       Omit<HTMLMotionProps<"textarea">, "size" | "as"> & {

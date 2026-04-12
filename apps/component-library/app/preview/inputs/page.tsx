@@ -3,7 +3,12 @@
 import { useState } from "react";
 
 import { Input, InputCodeShowcase } from "@/components/ui/inputs";
-import { animationPresets, sizeInputs, appearanceInputs, appearanceInputsExtended } from "./variants";
+import {
+  animationPresets,
+  sizeInputs,
+  appearanceInputs,
+  appearanceInputsExtended,
+} from "./variants";
 
 export default function InputsPreviewPage() {
   const [controlled, setControlled] = useState("");
@@ -21,8 +26,8 @@ export default function InputsPreviewPage() {
                 Input with appearance, size, and motion presets.
               </h1>
               <p className="max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-                Built like the button: CVA variants, Framer Motion presets, full native
-                input props, and{" "}
+                Built like the button: CVA variants, Framer Motion presets, full
+                native input props, and{" "}
                 <code className="rounded bg-white/10 px-1.5 py-0.5 text-cyan-100/90">
                   {'data-slot="input"'}
                 </code>{" "}
@@ -36,7 +41,11 @@ export default function InputsPreviewPage() {
               <label className="text-xs font-medium uppercase tracking-wide text-slate-400">
                 Email
               </label>
-              <Input animation="lift" placeholder="you@example.com" aria-label="Email" />
+              <Input
+                animation="lift"
+                placeholder="you@example.com"
+                aria-label="Email"
+              />
               <label className="text-xs font-medium uppercase tracking-wide text-slate-400">
                 Password
               </label>
@@ -68,8 +77,8 @@ export default function InputsPreviewPage() {
               Default, error, and success appearances
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-400">
-              Use `appearance` for validation styling. Error sets `aria-invalid` unless you
-              override it.
+              Use `appearance` for validation styling. Error sets `aria-invalid`
+              unless you override it.
             </p>
             <div className="mt-6 grid gap-4">
               {appearanceInputs.map((row) => (
@@ -93,8 +102,8 @@ export default function InputsPreviewPage() {
               Optional focus and hover motion
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-300">
-              Same preset names as the button: `lift`, `press`, `glow`, `tilt`, `bounce`,
-              or `none`.
+              Same preset names as the button: `lift`, `press`, `glow`, `tilt`,
+              `bounce`, or `none`.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {animationPresets.map(([label, animation]) => (
@@ -118,7 +127,9 @@ export default function InputsPreviewPage() {
                 Multiline
               </p>
               <h2 className="mt-3 text-2xl font-semibold text-white">
-                <code className="text-cyan-200/90">as=&quot;textarea&quot;</code>
+                <code className="text-cyan-200/90">
+                  as=&quot;textarea&quot;
+                </code>
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-slate-400">
@@ -126,8 +137,8 @@ export default function InputsPreviewPage() {
               <code className="rounded bg-white/10 px-1.5 py-0.5 text-cyan-100/90">
                 data-slot=&quot;input&quot;
               </code>{" "}
-              as the single-line control; height uses min-height and vertical resize so
-              longer copy stays comfortable.
+              as the single-line control; height uses min-height and vertical
+              resize so longer copy stays comfortable.
             </p>
           </div>
           <div className="mt-6 grid max-w-2xl gap-2">
@@ -144,13 +155,220 @@ export default function InputsPreviewPage() {
           </div>
         </section>
 
+        {/* ── File upload ─────────────────────────────────────────────────── */}
+        <section className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-200">
+                File upload
+              </p>
+              <h2 className="mt-3 text-2xl font-semibold text-white">
+                <code className="text-cyan-200/90">as=&quot;file&quot;</code>
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-6 text-slate-400">
+              Wraps{" "}
+              <code className="rounded bg-white/10 px-1.5 py-0.5 text-cyan-100/90">
+                {'<input type="file">'}
+              </code>{" "}
+              with the same CVA recipe. The native file-selector button inherits
+              the active appearance colour, and all three sizes are supported.
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {(["sm", "md", "lg"] as const).map((size) => (
+              <div key={size} className="grid gap-2">
+                <span className="text-xs text-slate-400">{size}</span>
+                <Input
+                  as="file"
+                  size={size}
+                  type="file"
+                  appearance="violet"
+                  aria-label={`File upload ${size}`}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Checkbox ────────────────────────────────────────────────────── */}
+        <section className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-200">
+                Checkbox
+              </p>
+              <h2 className="mt-3 text-2xl font-semibold text-white">
+                <code className="text-cyan-200/90">as=&quot;checkbox&quot;</code>
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-6 text-slate-400">
+              Native{" "}
+              <code className="rounded bg-white/10 px-1.5 py-0.5 text-cyan-100/90">
+                type=&quot;checkbox&quot;
+              </code>{" "}
+              with the same <code className="text-cyan-100/90">appearance</code>{" "}
+              tokens as text fields; <code className="text-cyan-100/90">size</code>{" "}
+              maps to control dimensions.
+            </p>
+          </div>
+          <div className="mt-6">
+            <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+              Appearances
+            </p>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {appearanceInputsExtended.map((row) => (
+                <label
+                  key={`cb-${row.label}`}
+                  className="flex cursor-pointer items-center gap-3 rounded-xl border border-white/5 bg-white/2 px-3 py-2.5 text-sm text-slate-200 transition hover:border-white/10"
+                >
+                  <Input
+                    as="checkbox"
+                    type="checkbox"
+                    size="md"
+                    appearance={row.appearance}
+                    defaultChecked={row.appearance === "success"}
+                    animation="none"
+                    aria-label={`${row.label} checkbox`}
+                    className="w-auto shrink-0"
+                  />
+                  <span>{row.label}</span>
+                </label>
+              ))}
+            </div>
+            <p className="mt-8 text-xs font-medium uppercase tracking-wide text-slate-500">
+              Sizes
+            </p>
+            <div className="mt-3 flex flex-wrap items-center gap-6">
+              {(["sm", "md", "lg"] as const).map((size) => (
+                <label
+                  key={`cb-size-${size}`}
+                  className="flex cursor-pointer items-center gap-2 text-xs text-slate-400"
+                >
+                  <Input
+                    as="checkbox"
+                    type="checkbox"
+                    size={size}
+                    appearance="violet"
+                    animation="none"
+                    aria-label={`Checkbox size ${size}`}
+                    className="w-auto shrink-0"
+                  />
+                  <span className="uppercase tracking-wide">{size}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Radio ─────────────────────────────────────────────────────────── */}
+        <section className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-200">
+                Radio
+              </p>
+              <h2 className="mt-3 text-2xl font-semibold text-white">
+                <code className="text-cyan-200/90">as=&quot;radio&quot;</code>
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-6 text-slate-400">
+              Native{" "}
+              <code className="rounded bg-white/10 px-1.5 py-0.5 text-cyan-100/90">
+                type=&quot;radio&quot;
+              </code>{" "}
+              uses the same accent mapping when checked; use a shared{" "}
+              <code className="text-cyan-100/90">name</code> for mutually exclusive
+              options.
+            </p>
+          </div>
+          <div className="mt-6">
+            <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+              Appearances
+            </p>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {appearanceInputsExtended.map((row) => (
+                <label
+                  key={`rb-${row.label}`}
+                  className="flex cursor-pointer items-center gap-3 rounded-xl border border-white/5 bg-white/2 px-3 py-2.5 text-sm text-slate-200 transition hover:border-white/10"
+                >
+                  <Input
+                    as="radio"
+                    type="radio"
+                    name={`radio-appearance-${row.appearance}`}
+                    value={row.appearance}
+                    size="md"
+                    appearance={row.appearance}
+                    defaultChecked={row.appearance === "default"}
+                    animation="none"
+                    aria-label={`${row.label} radio`}
+                    className="w-auto shrink-0"
+                  />
+                  <span>{row.label}</span>
+                </label>
+              ))}
+            </div>
+            <p className="mt-8 text-xs font-medium uppercase tracking-wide text-slate-500">
+              Sizes
+            </p>
+            <div className="mt-3 flex flex-wrap items-center gap-6">
+              {(["sm", "md", "lg"] as const).map((size) => (
+                <label
+                  key={`rb-size-${size}`}
+                  className="flex cursor-pointer items-center gap-2 text-xs text-slate-400"
+                >
+                  <Input
+                    as="radio"
+                    type="radio"
+                    name={`radio-size-${size}`}
+                    value={size}
+                    size={size}
+                    appearance="info"
+                    animation="none"
+                    aria-label={`Radio size ${size}`}
+                    className="w-auto shrink-0"
+                  />
+                  <span className="uppercase tracking-wide">{size}</span>
+                </label>
+              ))}
+            </div>
+            <p className="mt-8 text-xs font-medium uppercase tracking-wide text-slate-500">
+              Group
+            </p>
+            <div className="mt-3 grid max-w-md gap-2 rounded-xl border border-white/10 bg-white/2 p-4">
+              {(["Starter", "Pro", "Enterprise"] as const).map((tier, index) => (
+                <label
+                  key={tier}
+                  className="flex cursor-pointer items-center gap-3 text-sm text-slate-200"
+                >
+                  <Input
+                    as="radio"
+                    type="radio"
+                    name="inputs-preview-plan-tier"
+                    value={tier.toLowerCase()}
+                    size="md"
+                    appearance="violet"
+                    defaultChecked={index === 1}
+                    animation="none"
+                    aria-label={`${tier} plan`}
+                    className="w-auto shrink-0"
+                  />
+                  <span>{tier}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-200">
                 Sizes
               </p>
-              <h2 className="mt-3 text-2xl font-semibold text-white">sm, md, lg</h2>
+              <h2 className="mt-3 text-2xl font-semibold text-white">
+                sm, md, lg
+              </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-slate-400">
               Heights align with the button scale. Pass `disabled`, `readOnly`,
@@ -161,7 +379,11 @@ export default function InputsPreviewPage() {
             {sizeInputs.map((row) => (
               <div key={row.label} className="grid gap-2">
                 <span className="text-xs text-slate-400">{row.label}</span>
-                <Input size={row.size} placeholder={row.label} aria-label={`${row.label} size`} />
+                <Input
+                  size={row.size}
+                  placeholder={row.label}
+                  aria-label={`${row.label} size`}
+                />
               </div>
             ))}
           </div>
@@ -171,15 +393,25 @@ export default function InputsPreviewPage() {
           <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-200">
             States
           </p>
-          <h2 className="mt-3 text-2xl font-semibold text-white">Disabled and read-only</h2>
+          <h2 className="mt-3 text-2xl font-semibold text-white">
+            Disabled and read-only
+          </h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <div className="grid gap-2">
               <span className="text-xs text-slate-400">Disabled</span>
-              <Input disabled defaultValue="Cannot edit" aria-label="Disabled example" />
+              <Input
+                disabled
+                defaultValue="Cannot edit"
+                aria-label="Disabled example"
+              />
             </div>
             <div className="grid gap-2">
               <span className="text-xs text-slate-400">Read only</span>
-              <Input readOnly defaultValue="account@corp.com" aria-label="Read only example" />
+              <Input
+                readOnly
+                defaultValue="account@corp.com"
+                aria-label="Read only example"
+              />
             </div>
           </div>
         </section>
@@ -188,7 +420,9 @@ export default function InputsPreviewPage() {
           <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-200">
             Controlled
           </p>
-          <h2 className="mt-3 text-2xl font-semibold text-white">Value driven by React state</h2>
+          <h2 className="mt-3 text-2xl font-semibold text-white">
+            Value driven by React state
+          </h2>
           <p className="mt-3 text-sm text-slate-400">
             Current value:{" "}
             <code className="rounded bg-slate-950/80 px-2 py-0.5 text-cyan-200">
@@ -213,10 +447,12 @@ export default function InputsPreviewPage() {
 
         <section className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
           <div>
-            <h2 className="mt-3 text-2xl font-semibold text-white">Input variants examples</h2>
+            <h2 className="mt-3 text-2xl font-semibold text-white">
+              Input variants examples
+            </h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-              Use Show output / Show code on each row to compare the live control with the JSX, same
-              pattern as the button preview.
+              Use Show output / Show code on each row to compare the live
+              control with the JSX, same pattern as the button preview.
             </p>
             <div className="mt-6 space-y-10 rounded-xl">
               {appearanceInputsExtended.map((row) => {
@@ -265,7 +501,7 @@ export default function InputsPreviewPage() {
               })}
               <InputCodeShowcase
                 key="textarea-showcase"
-                code={`<Input as="textarea" rows={4} placeholder="Describe the change" aria-label="Pull request description" animation="glow" className="w-full" />`}
+                code={`<Input as="textarea" rows={4} placeholder="Describe the change" aria-label="Multiline (textarea)" animation="glow" className="w-full" />`}
                 label="Multiline (textarea)"
                 as="textarea"
                 rows={4}
@@ -343,6 +579,104 @@ export default function InputsPreviewPage() {
                 inputClassName="w-full"
                 ring={false}
                 appearance="info"
+              />
+              <InputCodeShowcase
+                key="file-showcase"
+                code={`<Input as="file" type="file" appearance="violet" size="md" aria-label="Upload file" className="w-full" />`}
+                label="File upload"
+                as="file"
+                type="file"
+                appearance="violet"
+                size="md"
+                animation="none"
+                inputClassName="w-full"
+              />
+              <InputCodeShowcase
+                key="checkbox-showcase"
+                code={`<Input as="checkbox" type="checkbox" appearance="violet" size="md" aria-label="Accept terms" className="w-auto shrink-0" />`}
+                label="Checkbox"
+                as="checkbox"
+                type="checkbox"
+                appearance="violet"
+                size="md"
+                animation="none"
+                inputClassName="w-auto shrink-0"
+              />
+              <InputCodeShowcase
+                key="radio-showcase"
+                code={`<Input
+  as="radio"
+  type="radio"
+  name="plan"
+  value="pro"
+  appearance="info"
+  size="md"
+  defaultChecked
+  aria-label="Pro plan"
+  className="w-auto shrink-0"
+/>`}
+                label="Radio"
+                preview={
+                  <Input
+                    as="radio"
+                    type="radio"
+                    name="inputs-preview-showcase-plan"
+                    value="pro"
+                    appearance="info"
+                    size="md"
+                    defaultChecked
+                    animation="none"
+                    aria-label="Pro plan"
+                    className="w-auto shrink-0"
+                  />
+                }
+              />
+              <InputCodeShowcase
+                key="radio-group-showcase"
+                code={`<div className="flex flex-col gap-2">
+  <label className="flex items-center gap-2 text-sm">
+    <Input as="radio" type="radio" name="tier" value="starter" appearance="violet" size="md" aria-label="Starter" className="w-auto shrink-0" />
+    Starter
+  </label>
+  <label className="flex items-center gap-2 text-sm">
+    <Input as="radio" type="radio" name="tier" value="pro" appearance="violet" size="md" defaultChecked aria-label="Pro" className="w-auto shrink-0" />
+    Pro
+  </label>
+</div>`}
+                label="Radio group"
+                preview={
+                  <div className="flex max-w-md flex-col gap-2 rounded-xl border border-white/10 bg-white/2 p-4">
+                    <label className="flex cursor-pointer items-center gap-3 text-sm text-slate-200">
+                      <Input
+                        as="radio"
+                        type="radio"
+                        name="inputs-preview-showcase-tier"
+                        value="starter"
+                        appearance="violet"
+                        size="md"
+                        animation="none"
+                        aria-label="Starter tier"
+                        className="w-auto shrink-0"
+                      />
+                      Starter
+                    </label>
+                    <label className="flex cursor-pointer items-center gap-3 text-sm text-slate-200">
+                      <Input
+                        as="radio"
+                        type="radio"
+                        name="inputs-preview-showcase-tier"
+                        value="pro"
+                        appearance="violet"
+                        size="md"
+                        defaultChecked
+                        animation="none"
+                        aria-label="Pro tier"
+                        className="w-auto shrink-0"
+                      />
+                      Pro
+                    </label>
+                  </div>
+                }
               />
             </div>
           </div>

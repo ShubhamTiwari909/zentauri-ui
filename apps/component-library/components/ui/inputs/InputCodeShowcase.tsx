@@ -8,6 +8,30 @@ import CodeHighlight from "@/components/CodeHighlight";
 import { Input } from "./input";
 import type { InputCodeShowcaseProps } from "./types";
 
+type ShowcaseAs = NonNullable<InputCodeShowcaseProps["as"]>;
+type ShowcaseExtraCtx = Pick<InputCodeShowcaseProps, "rows" | "type">;
+
+const SHOWCASE_AS_TO_INPUT_PROPS: Record<
+  ShowcaseAs,
+  (ctx: ShowcaseExtraCtx) => Record<string, unknown>
+> = {
+  input: ({ type }) => ({ type, as: "input" as const }),
+  textarea: ({ rows }) => ({ as: "textarea" as const, rows }),
+  file: ({ type }) => ({ as: "file" as const, type: type ?? "file" }),
+  checkbox: ({ type }) => ({ as: "checkbox" as const, type: type ?? "checkbox" }),
+  radio: ({ type }) => ({ as: "radio" as const, type: type ?? "radio" }),
+};
+
+function resolveShowcaseInputSpread(
+  as: InputCodeShowcaseProps["as"],
+  ctx: ShowcaseExtraCtx,
+) {
+  if (as == null) {
+    return { type: ctx.type };
+  }
+  return SHOWCASE_AS_TO_INPUT_PROPS[as](ctx);
+}
+
 const InputCodeShowcase = ({
   code,
   errorMessage,
@@ -80,9 +104,7 @@ const InputCodeShowcase = ({
           placeholder={placeholder ?? label}
           aria-label={label}
           errorMessage={errorMessage}
-          {...(as === "textarea"
-            ? { as: "textarea" as const, rows }
-            : { type, ...(as === "input" ? { as: "input" as const } : {}) })}
+          {...resolveShowcaseInputSpread(as, { rows, type })}
         />
       )}
     </div>
