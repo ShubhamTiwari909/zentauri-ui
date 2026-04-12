@@ -1,7 +1,5 @@
-import { redirect } from "next/navigation";
+import IntroductionPage from "@/components/preview/introduction";
 
 export default function PreviewIndexPage() {
-  // Alternatively, we could render an introduction page.
-  // For now, redirecting to the first component.
-  redirect("/preview/buttons");
+  return <IntroductionPage />;
 }
