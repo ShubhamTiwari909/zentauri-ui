@@ -1,6 +1,6 @@
 import type { AnimationPresets } from "./types";
 
-export const animationPresets: AnimationPresets = {
+export const buttonAnimationPresets: AnimationPresets = {
   none: {},
   lift: {
     whileHover: { y: -2, scale: 1.02 },
