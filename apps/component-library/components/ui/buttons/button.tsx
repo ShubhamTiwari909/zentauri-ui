@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 import type { ButtonProps } from "./types";
-import { animationPresets } from "./animations";
+import { buttonAnimationPresets } from "./animations";
 import { buttonVariants } from "./variants";
 
 export const Button = (props: ButtonProps) => {
@@ -20,7 +20,7 @@ export const Button = (props: ButtonProps) => {
       animation = "none",
       ...rest
     } = props;
-    const motionProps = animationPresets[animation];
+    const motionProps = buttonAnimationPresets[animation];
 
     return (
       <motion.a
@@ -49,7 +49,7 @@ export const Button = (props: ButtonProps) => {
     animation = "none",
     ...rest
   } = props;
-  const motionProps = animationPresets[animation];
+  const motionProps = buttonAnimationPresets[animation];
 
   return (
     <motion.button
