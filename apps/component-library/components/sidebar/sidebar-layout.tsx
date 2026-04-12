@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { SidebarNav } from "./sidebar-nav";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export function SidebarLayout({ children }: { children: React.ReactNode }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,8 +33,10 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
         </Link>
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="rounded-md p-2 text-slate-400 hover:bg-white/5 hover:text-white focus:outline-none"
+          className="rounded-md p-2 text-slate-400 hover:bg-white/5 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
           aria-label="Toggle navigation menu"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="sidebar-nav"
         >
           {isMobileMenuOpen ? (
             <FiX className="h-6 w-6" />
@@ -45,9 +48,11 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
 
       {/* Sidebar (Desktop & Mobile Drawer) */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 w-72 transform border-r border-white/10 bg-slate-950 px-6 py-8 transition-transform duration-300 ease-in-out lg:sticky lg:top-0 lg:h-screen lg:translate-x-0 lg:overflow-y-auto ${
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        id="sidebar-nav"
+        className={cn(
+          "fixed inset-y-0 left-0 z-40 w-72 transform border-r border-white/10 bg-slate-950 px-6 py-8 transition-transform duration-300 ease-in-out lg:sticky lg:top-0 lg:h-screen lg:translate-x-0 lg:overflow-y-auto",
+          isMobileMenuOpen ? "translate-x-0 visible" : "-translate-x-full invisible lg:visible"
+        )}
       >
         <div className="flex h-full flex-col gap-8">
           <div className="hidden lg:block">
@@ -65,7 +70,7 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Main Content Area */}
-      <div className="flex-1 min-w-0 flex flex-col">
+      <main className="flex-1 min-w-0 flex flex-col">
         {/* Overlay for mobile when sidebar is open */}
         {isMobileMenuOpen && (
           <div
@@ -75,7 +80,7 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
         )}
 
         {children}
-      </div>
+      </main>
     </div>
   );
 }

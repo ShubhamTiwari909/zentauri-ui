@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { sidebarRouteData } from "@/lib/sidebar-data";
+import { sidebarRouteData } from "@/components/sidebar/sidebar-data";
 
 interface SidebarNavProps {
   onLinkClick?: () => void;
@@ -21,11 +21,11 @@ export function SidebarNav({ onLinkClick }: SidebarNavProps) {
           </h4>
           {group.items?.length ? (
             <div className="grid grid-flow-row auto-rows-max text-sm">
-              {group.items.map((item, index) => {
+              {group.items.map((item) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link
-                    key={index}
+                    key={item.href}
                     href={item.disabled ? "#" : item.href}
                     className={cn(
                       "group flex w-full items-center rounded-md border border-transparent px-2 py-1.5 hover:text-white",
@@ -34,9 +34,10 @@ export function SidebarNav({ onLinkClick }: SidebarNavProps) {
                         : "text-slate-400",
                       item.disabled && "cursor-not-allowed opacity-60"
                     )}
-                    target={item.external ? "_blank" : ""}
-                    rel={item.external ? "noreferrer" : ""}
-                    onClick={onLinkClick}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noreferrer" : undefined}
+                    onClick={item.disabled ? (e) => e.preventDefault() : onLinkClick}
+                    aria-disabled={item.disabled}
                   >
                     {item.title}
                   </Link>

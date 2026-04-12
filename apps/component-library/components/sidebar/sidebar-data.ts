@@ -27,6 +27,10 @@ export const sidebarRouteData: SidebarNavGroup[] = [
         title: "Buttons",
         href: "/preview/buttons",
       },
+      {
+        title: "Inputs",
+        href: "/preview/inputs",
+      },
     ],
   },
 ];
