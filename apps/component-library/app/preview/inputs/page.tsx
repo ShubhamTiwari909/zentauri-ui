@@ -613,7 +613,7 @@ export default function InputsPreviewPage() {
     className="w-auto shrink-0"
   />
 </label>`}
-                  label="Radio"
+                  label="Checkbox"
                   preview={
                     <label className="flex items-center gap-5 w-full text-xl">
                       Accept Terms
