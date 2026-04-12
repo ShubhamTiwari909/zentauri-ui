@@ -71,7 +71,7 @@ This document outlines the technologies, tools, and engineering practices used t
 
 ## 🧪 Testing
 
-- **Jest**
+**Vitest**
 - **React Testing Library**
 
 Coverage includes:
