@@ -4,10 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { sidebarRouteData } from "@/components/sidebar/sidebar-data";
-
-interface SidebarNavProps {
-  onLinkClick?: () => void;
-}
+import type { SidebarNavProps } from "./types";
 
 export function SidebarNav({ onLinkClick }: SidebarNavProps) {
   const pathname = usePathname();

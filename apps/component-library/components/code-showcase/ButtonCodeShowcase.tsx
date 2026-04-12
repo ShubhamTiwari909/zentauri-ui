@@ -1,17 +1,17 @@
 "use client";
 import { useState } from "react";
-import CodeHighlight from "../../CodeHighlight";
-import { Button } from "./button";
-import { CodeShowcaseProps } from "./types";
+import CodeHighlight from "@/components/CodeHighlight";
+import { Button } from "@/components/ui/buttons";
+import type { ButtonCodeShowcaseProps } from "./types";
 
-const CodeShowcase = ({
+const ButtonCodeShowcase = ({
   code,
   appearance,
   animation,
   label,
   buttonClassName,
   size
-}: CodeShowcaseProps) => {
+}: ButtonCodeShowcaseProps) => {
   const [isCopied, setIsCopied] = useState(false);
   const [showCode, setShowCode] = useState(false);
 
@@ -66,4 +66,4 @@ const CodeShowcase = ({
   );
 };
 
-export default CodeShowcase;
+export default ButtonCodeShowcase;
