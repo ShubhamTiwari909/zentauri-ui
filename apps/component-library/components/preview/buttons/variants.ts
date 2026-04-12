@@ -133,7 +133,7 @@ export const sizeButtons = [
   { label: "Icon", size: "icon" },
 ] as const;
 
-export const animationPresets = [
+export const buttonAnimationPresets = [
   ["Lift", "lift"],
   ["Press", "press"],
   ["Glow", "glow"],

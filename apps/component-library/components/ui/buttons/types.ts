@@ -26,11 +26,3 @@ export type ButtonProps =
 
 export type AnimationPresets = Record<ButtonAnimation, ButtonPresetMotionProps>;
 
-export type CodeShowcaseProps = {
-  code: string;
-  appearance: ButtonProps["appearance"];
-  animation: ButtonProps["animation"];
-  label: string;
-  buttonClassName?: string;
-  size?: ButtonProps["size"];
-};

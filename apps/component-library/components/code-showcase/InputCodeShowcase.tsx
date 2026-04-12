@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/buttons/button";
 import CodeHighlight from "@/components/CodeHighlight";
 
-import { Input } from "./input";
+import { Input } from "@/components/ui/inputs/input";
 import type { InputCodeShowcaseProps } from "./types";
 
 type ShowcaseAs = NonNullable<InputCodeShowcaseProps["as"]>;

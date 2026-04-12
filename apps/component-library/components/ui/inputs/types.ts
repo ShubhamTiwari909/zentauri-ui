@@ -1,6 +1,5 @@
 import type { VariantProps } from "class-variance-authority";
 import type { HTMLMotionProps } from "framer-motion";
-import type { HTMLInputTypeAttribute, ReactNode } from "react";
 
 import type { inputVariants } from "./variants";
 
@@ -39,22 +38,4 @@ export type InputAnimationPresets = Record<
   InputPresetMotionProps
 >;
 
-export type InputCodeShowcaseProps = {
-  code: string;
-  ring?: boolean;
-  label: string;
-  errorMessage?: string;
-  placeholder?: string;
-  appearance?: VariantProps<typeof inputVariants>["appearance"];
-  size?: VariantProps<typeof inputVariants>["size"];
-  as?: VariantProps<typeof inputVariants>["as"];
-  rows?: number;
-  animation?: InputAnimation;
-  inputClassName?: string;
-  disabled?: boolean;
-  readOnly?: boolean;
-  type?: HTMLInputTypeAttribute;
-  defaultValue?: string;
-  /** When set, shown in the “output” tab instead of a configured `Input` (e.g. controlled usage). */
-  preview?: ReactNode;
-};
+
