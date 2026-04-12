@@ -199,7 +199,9 @@ export default function InputsPreviewPage() {
                 Checkbox
               </p>
               <h2 className="mt-3 text-2xl font-semibold text-white">
-                <code className="text-cyan-200/90">as=&quot;checkbox&quot;</code>
+                <code className="text-cyan-200/90">
+                  as=&quot;checkbox&quot;
+                </code>
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-slate-400">
@@ -208,8 +210,9 @@ export default function InputsPreviewPage() {
                 type=&quot;checkbox&quot;
               </code>{" "}
               with the same <code className="text-cyan-100/90">appearance</code>{" "}
-              tokens as text fields; <code className="text-cyan-100/90">size</code>{" "}
-              maps to control dimensions.
+              tokens as text fields;{" "}
+              <code className="text-cyan-100/90">size</code> maps to control
+              dimensions.
             </p>
           </div>
           <div className="mt-6">
@@ -278,8 +281,8 @@ export default function InputsPreviewPage() {
                 type=&quot;radio&quot;
               </code>{" "}
               uses the same accent mapping when checked; use a shared{" "}
-              <code className="text-cyan-100/90">name</code> for mutually exclusive
-              options.
+              <code className="text-cyan-100/90">name</code> for mutually
+              exclusive options.
             </p>
           </div>
           <div className="mt-6">
@@ -336,26 +339,28 @@ export default function InputsPreviewPage() {
               Group
             </p>
             <div className="mt-3 grid max-w-md gap-2 rounded-xl border border-white/10 bg-white/2 p-4">
-              {(["Starter", "Pro", "Enterprise"] as const).map((tier, index) => (
-                <label
-                  key={tier}
-                  className="flex cursor-pointer items-center gap-3 text-sm text-slate-200"
-                >
-                  <Input
-                    as="radio"
-                    type="radio"
-                    name="inputs-preview-plan-tier"
-                    value={tier.toLowerCase()}
-                    size="md"
-                    appearance="violet"
-                    defaultChecked={index === 1}
-                    animation="none"
-                    aria-label={`${tier} plan`}
-                    className="w-auto shrink-0"
-                  />
-                  <span>{tier}</span>
-                </label>
-              ))}
+              {(["Starter", "Pro", "Enterprise"] as const).map(
+                (tier, index) => (
+                  <label
+                    key={tier}
+                    className="flex cursor-pointer items-center gap-3 text-sm text-slate-200"
+                  >
+                    <Input
+                      as="radio"
+                      type="radio"
+                      name="inputs-preview-plan-tier"
+                      value={tier.toLowerCase()}
+                      size="md"
+                      appearance="violet"
+                      defaultChecked={index === 1}
+                      animation="none"
+                      aria-label={`${tier} plan`}
+                      className="w-auto shrink-0"
+                    />
+                    <span>{tier}</span>
+                  </label>
+                ),
+              )}
             </div>
           </div>
         </section>
@@ -591,17 +596,42 @@ export default function InputsPreviewPage() {
                 animation="none"
                 inputClassName="w-full"
               />
-              <InputCodeShowcase
-                key="checkbox-showcase"
-                code={`<Input as="checkbox" type="checkbox" appearance="violet" size="md" aria-label="Accept terms" className="w-auto shrink-0" />`}
-                label="Checkbox"
-                as="checkbox"
-                type="checkbox"
-                appearance="violet"
-                size="md"
-                animation="none"
-                inputClassName="w-auto shrink-0"
-              />
+              <div>
+                <InputCodeShowcase
+                  key="checkbox-showcase"
+                  code={`<label>
+  Accept Terms
+  <Input
+    as="checkbox"
+    type="checkbox"
+    name="plan"
+    value="pro"
+    appearance="info"
+    size="lg"
+    defaultChecked
+    aria-label="Pro plan"
+    className="w-auto shrink-0"
+  />
+</label>`}
+                  label="Radio"
+                  preview={
+                    <label className="flex items-center gap-5 w-full text-xl">
+                      Accept Terms
+                      <Input
+                        as="checkbox"
+                        type="checkbox"
+                        name="plan"
+                        value="pro"
+                        appearance="info"
+                        size="lg"
+                        defaultChecked
+                        aria-label="Pro plan"
+                        className="shrink-0"
+                      />
+                    </label>
+                  }
+                />
+              </div>
               <InputCodeShowcase
                 key="radio-showcase"
                 code={`<Input
@@ -645,7 +675,7 @@ export default function InputsPreviewPage() {
 </div>`}
                 label="Radio group"
                 preview={
-                  <div className="flex max-w-md flex-col gap-2 rounded-xl border border-white/10 bg-white/2 p-4">
+                  <div className="flex max-w-md flex-col gap-5 rounded-xl border border-white/10 bg-white/2 p-4">
                     <label className="flex cursor-pointer items-center gap-3 text-sm text-slate-200">
                       <Input
                         as="radio"
@@ -677,6 +707,17 @@ export default function InputsPreviewPage() {
                     </label>
                   </div>
                 }
+              />
+              <InputCodeShowcase
+                key="date-showcase"
+                code={`<Input as="input" type="date" appearance="violet" size="md" aria-label="Pick a date" className="w-auto shrink-0" />`}
+                label="Date picker"
+                as="input"
+                type="date"
+                appearance="violet"
+                size="md"
+                animation="none"
+                inputClassName="w-auto shrink-0"
               />
             </div>
           </div>

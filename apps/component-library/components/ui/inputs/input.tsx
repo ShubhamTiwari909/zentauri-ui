@@ -37,7 +37,7 @@ export const Input = (props: InputProps) => {
           : undefined;
 
     return (
-      <div className="w-full">
+      <>
         <motion.textarea
           ref={ref}
           id={controlId}
@@ -62,7 +62,7 @@ export const Input = (props: InputProps) => {
             {errorMessage}
           </p>
         )}
-      </div>
+      </>
     );
   }
 
@@ -91,7 +91,7 @@ export const Input = (props: InputProps) => {
         : undefined;
 
   return (
-    <div className="w-full">
+    <>
       <motion.input
         ref={ref}
         id={controlId}
@@ -116,7 +116,7 @@ export const Input = (props: InputProps) => {
           {errorMessage}
         </p>
       )}
-    </div>
+    </>
   );
 };
 

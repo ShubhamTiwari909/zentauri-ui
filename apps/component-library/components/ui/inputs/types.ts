@@ -26,13 +26,13 @@ type InputPresetMotionProps = Pick<
 /** Omit native `size` (character width) so the design-system `size` variant can use the same name. */
 export type InputProps =
   | (InputSharedProps &
-      Omit<HTMLMotionProps<"input">, "size" | "as"> & {
-        as?: "input" | "file" | "checkbox" | "radio";
-      })
+    Omit<HTMLMotionProps<"input">, "size" | "as"> & {
+      as?: "input" | "file" | "checkbox" | "radio";
+    })
   | (InputSharedProps &
-      Omit<HTMLMotionProps<"textarea">, "size" | "as"> & {
-        as: "textarea";
-      });
+    Omit<HTMLMotionProps<"textarea">, "size" | "as"> & {
+      as: "textarea";
+    });
 
 export type InputAnimationPresets = Record<
   InputAnimation,
