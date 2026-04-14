@@ -1,54 +1,38 @@
-import type { VariantProps } from "class-variance-authority";
-import type { HTMLAttributes, ReactNode, Ref } from "react";
+import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
-import type { DropdownAnimation } from "./animations";
-import type { dropdownContentVariants } from "./variants";
-
-export type { DropdownAnimation };
-
-type DropdownContentVariantProps = VariantProps<typeof dropdownContentVariants>;
+export type DropdownContextType = {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+  toggle: () => void;
+  selectedValues: string[];
+  toggleSelect: (value: string) => void;
+  multiSelect: boolean;
+};
 
 export type DropdownProps = {
-  open?: boolean;
+  children: ReactNode;
   defaultOpen?: boolean;
+  open?: boolean;
   onOpenChange?: (open: boolean) => void;
-  children?: ReactNode;
+  multiSelect?: boolean;
 };
 
-export type DropdownTriggerProps = HTMLAttributes<HTMLButtonElement> & {
-  ref?: Ref<HTMLButtonElement>;
+export type DropdownTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  children: ReactNode;
+  variant?: "default" | "outline" | "ghost" | "sky" | "rose" | "purple" | "pink" | "orange" | "yellow" | "teal" | "indigo" | "emerald";
+  size?: "sm" | "md" | "lg";
 };
 
-export type DropdownContentProps = DropdownContentVariantProps & {
-  animation?: DropdownAnimation;
-  className?: string;
-  children?: ReactNode;
-  ref?: Ref<HTMLDivElement>;
+export type DropdownContentProps = HTMLAttributes<HTMLDivElement> & {
+  children: ReactNode;
+  placement?: "top" | "bottom" | "left" | "right";
 };
 
-export type DropdownItemProps = HTMLAttributes<HTMLButtonElement> & {
-  disabled?: boolean;
-  ref?: Ref<HTMLButtonElement>;
-};
-
-export type DropdownSeparatorProps = HTMLAttributes<HTMLDivElement>;
-export type DropdownLabelProps = HTMLAttributes<HTMLDivElement>;
-export type DropdownGroupProps = HTMLAttributes<HTMLDivElement>;
-
-export type DropdownCheckboxItemProps = HTMLAttributes<HTMLButtonElement> & {
-  checked?: boolean;
-  onCheckedChange?: (checked: boolean) => void;
-};
-
-export type DropdownRadioGroupProps = HTMLAttributes<HTMLDivElement> & {
-  value?: string;
-  onValueChange?: (value: string) => void;
-};
-
-export type DropdownRadioItemProps = HTMLAttributes<HTMLButtonElement> & {
+export type DropdownItemProps = HTMLAttributes<HTMLDivElement> & {
+  children: ReactNode;
   value: string;
+  onSelect?: () => void;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
+  variant?: "default" | "destructive" | "outline";
 };
-
-export type DropdownSubMenuProps = { children?: ReactNode };
-export type DropdownSubTriggerProps = HTMLAttributes<HTMLButtonElement>;
-export type DropdownSubContentProps = HTMLAttributes<HTMLDivElement>;

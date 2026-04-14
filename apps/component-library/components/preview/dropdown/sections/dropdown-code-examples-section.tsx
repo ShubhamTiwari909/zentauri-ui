@@ -7,53 +7,126 @@ import {
   DropdownContent,
   DropdownItem,
   DropdownTrigger,
-  type DropdownContentProps,
 } from "@/components/ui/dropdown";
 
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
-const TRIGGER_CLASS =
-  "rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200";
+const MENU_SURFACE_CLASS =
+  "border border-white/10 bg-slate-900 text-slate-100 shadow-lg";
 
-const DROPDOWN_APPEARANCES = ["default", "glass"] as const satisfies readonly NonNullable<
-  DropdownContentProps["appearance"]
->[];
+const TRIGGER_VARIANTS = ["default", "outline", "ghost", "sky", "rose", "purple", "pink", "orange", "yellow", "teal", "indigo", "emerald"] as const;
+const TRIGGER_SIZES = ["sm", "md", "lg"] as const;
 
-const DROPDOWN_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<
-  DropdownContentProps["size"]
->[];
+const CONTENT_PLACEMENTS = ["top", "bottom", "left", "right"] as const;
 
-function dropdownSnippet(opts: {
-  appearance: NonNullable<DropdownContentProps["appearance"]>;
-  size: NonNullable<DropdownContentProps["size"]>;
-}) {
-  const { appearance, size } = opts;
-  const appearanceAttr =
-    appearance === "default" ? "" : ` appearance="${appearance}"`;
+const ITEM_VARIANTS = ["default", "destructive", "outline"] as const;
+
+type TriggerVariant = (typeof TRIGGER_VARIANTS)[number];
+type TriggerSize = (typeof TRIGGER_SIZES)[number];
+type ContentPlacement = (typeof CONTENT_PLACEMENTS)[number];
+type ItemVariant = (typeof ITEM_VARIANTS)[number];
+
+function triggerSnippet(variant: TriggerVariant, size: TriggerSize) {
+  const variantAttr = variant === "default" ? "" : ` variant="${variant}"`;
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
-  return `${variantLeadComment(`DropdownContent · appearance · ${appearance}, size · ${size}`)}<Dropdown>
-  <DropdownTrigger className="${TRIGGER_CLASS}">
+  return `${variantLeadComment(
+    `DropdownTrigger · variant · ${variant}, size · ${size}`,
+  )}<Dropdown>
+  <DropdownTrigger${variantAttr}${sizeAttr}>
     Menu
   </DropdownTrigger>
-  <DropdownContent${appearanceAttr}${sizeAttr} animation="fade">
-    <DropdownItem>Edit</DropdownItem>
-    <DropdownItem>Duplicate</DropdownItem>
+  <DropdownContent className="${MENU_SURFACE_CLASS}">
+    <DropdownItem value="one">One</DropdownItem>
+    <DropdownItem value="two">Two</DropdownItem>
   </DropdownContent>
 </Dropdown>`;
 }
 
-function DropdownDemo(opts: {
-  appearance: NonNullable<DropdownContentProps["appearance"]>;
-  size: NonNullable<DropdownContentProps["size"]>;
+function TriggerDemo({
+  variant,
+  size,
+}: {
+  variant: TriggerVariant;
+  size: TriggerSize;
 }) {
-  const { appearance, size } = opts;
   return (
     <Dropdown>
-      <DropdownTrigger className={TRIGGER_CLASS}>Menu</DropdownTrigger>
-      <DropdownContent appearance={appearance} size={size} animation="fade">
-        <DropdownItem>Edit</DropdownItem>
-        <DropdownItem>Duplicate</DropdownItem>
+      <DropdownTrigger variant={variant} size={size}>
+        Menu {variant} {size}
+      </DropdownTrigger>
+      <DropdownContent className={MENU_SURFACE_CLASS}>
+        <DropdownItem value="one">One</DropdownItem>
+        <DropdownItem value="two">Two</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+  );
+}
+
+function placementSnippet(placement: ContentPlacement) {
+  const placementAttr =
+    placement === "bottom" ? "" : ` placement="${placement}"`;
+  return `${variantLeadComment(`DropdownContent · placement · ${placement}`)}<Dropdown>
+  <DropdownTrigger variant="outline" size="sm">
+    Menu
+  </DropdownTrigger>
+  <DropdownContent${placementAttr} className="${MENU_SURFACE_CLASS}">
+    <DropdownItem value="a">Alpha</DropdownItem>
+    <DropdownItem value="b">Beta</DropdownItem>
+  </DropdownContent>
+</Dropdown>`;
+}
+
+function PlacementDemo({ placement }: { placement: ContentPlacement }) {
+  return (
+    <div className="flex min-h-40 w-full max-w-xl items-center">
+      <Dropdown>
+        <DropdownTrigger variant="outline" size="sm">
+          Menu {placement}
+        </DropdownTrigger>
+        <DropdownContent placement={placement} className={MENU_SURFACE_CLASS}>
+          <DropdownItem value="a">Alpha</DropdownItem>
+          <DropdownItem value="b">Beta</DropdownItem>
+        </DropdownContent>
+      </Dropdown>
+    </div>
+  );
+}
+
+function itemSnippet(itemVariant: ItemVariant) {
+  const variantAttr =
+    itemVariant === "default" ? "" : ` variant="${itemVariant}"`;
+  return `${variantLeadComment(`DropdownItem · variant · ${itemVariant}`)}<Dropdown>
+  <DropdownTrigger variant="outline" size="sm">
+    Actions
+  </DropdownTrigger>
+  <DropdownContent className="${MENU_SURFACE_CLASS}">
+    <DropdownItem value="safe">Keep</DropdownItem>
+    <DropdownItem value="risky"${variantAttr}>
+      ${itemVariant === "destructive" ? "Delete" : itemVariant === "outline" ? "Archive" : "Default row"}
+    </DropdownItem>
+  </DropdownContent>
+</Dropdown>`;
+}
+
+function ItemVariantDemo({ itemVariant }: { itemVariant: ItemVariant }) {
+  const label =
+    itemVariant === "destructive"
+      ? "Delete"
+      : itemVariant === "outline"
+        ? "Archive"
+        : "Default row";
+
+  return (
+    <Dropdown>
+      <DropdownTrigger variant="outline" size="sm">
+        Actions {itemVariant}
+      </DropdownTrigger>
+      <DropdownContent className={MENU_SURFACE_CLASS}>
+        <DropdownItem value="safe">Keep</DropdownItem>
+        <DropdownItem value="risky" variant={itemVariant}>
+          {label}
+        </DropdownItem>
       </DropdownContent>
     </Dropdown>
   );
@@ -62,25 +135,70 @@ function DropdownDemo(opts: {
 export function DropdownCodeExamplesSection() {
   return (
     <section className={SECTION}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">Dropdown variants examples</h2>
+      <h2 className="mt-3 text-2xl font-semibold text-white">
+        Variant code examples
+      </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Menu surface appearance and density on the same trigger markup. Code blocks open with Variant: for the row.
+        Each block matches one combination. Open “Show code” to copy the JSX;
+        the leading comment names the variant row.
+      </p>
+
+      <h3 className="mt-10 text-lg font-semibold text-white">
+        DropdownTrigger — variant × size
+      </h3>
+      <p className="mt-1 max-w-2xl text-sm text-slate-400">
+        Three trigger variants with small, medium, and large sizes.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
-        {DROPDOWN_APPEARANCES.map((appearance) => (
+        {TRIGGER_VARIANTS.flatMap((variant) => (
           <PreviewCodeShowcase
-            key={`app-${appearance}`}
-            code={dropdownSnippet({ appearance, size: "md" })}
+            key={`trigger-${variant}`}
+            code={triggerSnippet(variant, "md")}
           >
-            <DropdownDemo appearance={appearance} size="md" />
+            <TriggerDemo variant={variant} size="md" />
           </PreviewCodeShowcase>
         ))}
-        {DROPDOWN_SIZES.map((size) => (
+        {TRIGGER_SIZES.map((size) => (
           <PreviewCodeShowcase
-            key={`size-${size}`}
-            code={dropdownSnippet({ appearance: "glass", size })}
+            key={`trigger-${size}`}
+            code={triggerSnippet("default", size)}
           >
-            <DropdownDemo appearance="glass" size={size} />
+            <TriggerDemo variant="default" size={size} />
+          </PreviewCodeShowcase>
+        ))}
+      </div>
+
+      <h3 className="mt-14 text-lg font-semibold text-white">
+        DropdownContent — placement
+      </h3>
+      <p className="mt-1 max-w-2xl text-sm text-slate-400">
+        Surfaces position relative to the trigger on top, bottom, left, or
+        right.
+      </p>
+      <div className="mt-6 space-y-10 rounded-xl">
+        {CONTENT_PLACEMENTS.map((placement) => (
+          <PreviewCodeShowcase
+            key={`placement-${placement}`}
+            code={placementSnippet(placement)}
+          >
+            <PlacementDemo placement={placement} />
+          </PreviewCodeShowcase>
+        ))}
+      </div>
+
+      <h3 className="mt-14 text-lg font-semibold text-white">
+        DropdownItem — variant
+      </h3>
+      <p className="mt-1 max-w-2xl text-sm text-slate-400">
+        Item emphasis: default, destructive, and outline.
+      </p>
+      <div className="mt-6 space-y-10 rounded-xl">
+        {ITEM_VARIANTS.map((itemVariant) => (
+          <PreviewCodeShowcase
+            key={`item-${itemVariant}`}
+            code={itemSnippet(itemVariant)}
+          >
+            <ItemVariantDemo itemVariant={itemVariant} />
           </PreviewCodeShowcase>
         ))}
       </div>

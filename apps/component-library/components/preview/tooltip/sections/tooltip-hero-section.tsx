@@ -2,10 +2,12 @@
 
 import {
   Tooltip,
-  TooltipArrow,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+
+const TRIGGER_CLASS =
+  "rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white outline-none transition hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-cyan-400/50";
 
 export function TooltipHeroSection() {
   return (
@@ -19,19 +21,19 @@ export function TooltipHeroSection() {
             Tooltips for hints on hover or focus.
           </h1>
           <p className="max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-            Delayed reveal, keyboard-friendly triggers, and compact surfaces with
-            optional arrows.
+            Delayed open on hover, immediate open on focus, and content styled
+            with variant, size, intent, and animation presets. Placement is set on
+            the root <code className="text-cyan-200/90">Tooltip</code>.
           </p>
         </div>
       </div>
 
       <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
-        <Tooltip delayMs={150}>
-          <TooltipTrigger className="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white outline-none transition hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-cyan-400/50">
+        <Tooltip position="top" delay={150}>
+          <TooltipTrigger className={TRIGGER_CLASS}>
             Hover or focus me
           </TooltipTrigger>
-          <TooltipContent placement="top" appearance="glass">
-            <TooltipArrow />
+          <TooltipContent variant="ghost" size="md">
             Shortcuts: ⌘S to save, ⌘K to search.
           </TooltipContent>
         </Tooltip>

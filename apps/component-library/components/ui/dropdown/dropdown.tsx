@@ -1,434 +1,184 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import {
   createContext,
-  useCallback,
   useContext,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
   useState,
+  useRef,
+  useEffect,
 } from "react";
-import { createPortal } from "react-dom";
-
+import { FiCheck } from "react-icons/fi";
 import { cn } from "@/lib/utils";
+import type { DropdownContextType, DropdownProps, DropdownTriggerProps, DropdownContentProps, DropdownItemProps } from "./types";
+import { triggerVariants, contentVariants, itemVariants } from "./variants";
 
-import { dropdownAnimationPresets } from "./animations";
-import type {
-  DropdownCheckboxItemProps,
-  DropdownContentProps,
-  DropdownGroupProps,
-  DropdownItemProps,
-  DropdownLabelProps,
-  DropdownProps,
-  DropdownRadioGroupProps,
-  DropdownRadioItemProps,
-  DropdownSeparatorProps,
-  DropdownSubContentProps,
-  DropdownSubMenuProps,
-  DropdownSubTriggerProps,
-  DropdownTriggerProps,
-} from "./types";
-import {
-  dropdownContentVariants,
-  dropdownItemVariants,
-  dropdownLabelVariants,
-  dropdownSeparatorVariants,
-} from "./variants";
+/* =========================
+   Context
+========================= */
+const DropdownContext = createContext<DropdownContextType | null>(null);
 
-type DropdownCtx = {
-  open: boolean;
-  setOpen: (next: boolean) => void;
-  triggerRef: React.RefObject<HTMLButtonElement | null>;
-  registerItem: (node: HTMLButtonElement | null) => void;
-  itemsRef: React.MutableRefObject<HTMLButtonElement[]>;
+const useDropdown = () => {
+  const ctx = useContext(DropdownContext);
+  if (!ctx) throw new Error("Use inside Dropdown");
+  return ctx;
 };
 
-const DropdownContext = createContext<DropdownCtx | null>(null);
-
-function useDropdownContext(component: string): DropdownCtx {
-  const ctx = useContext(DropdownContext);
-  if (!ctx) {
-    throw new Error(`${component} must be used within <Dropdown>`);
-  }
-  return ctx;
-}
-
-const RadioGroupContext = createContext<{
-  value?: string;
-  onValueChange?: (value: string) => void;
-} | null>(null);
-
-const SubMenuContext = createContext<{
-  open: boolean;
-  setOpen: (next: boolean) => void;
-} | null>(null);
-
-export function Dropdown({ open, defaultOpen = false, onOpenChange, children }: DropdownProps) {
-  const isControlled = open !== undefined;
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
-  const resolvedOpen = isControlled ? Boolean(open) : uncontrolledOpen;
-  const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const itemsRef = useRef<HTMLButtonElement[]>([]);
-
-  const setOpen = useCallback(
-    (next: boolean) => {
-      if (!isControlled) {
-        setUncontrolledOpen(next);
-      }
-      onOpenChange?.(next);
-    },
-    [isControlled, onOpenChange],
-  );
-
-  const registerItem = useCallback((node: HTMLButtonElement | null) => {
-    if (!node) {
-      return;
-    }
-    if (!itemsRef.current.includes(node)) {
-      itemsRef.current.push(node);
-    }
-  }, []);
-
-  const ctx = useMemo(
-    () => ({
-      open: resolvedOpen,
-      setOpen,
-      triggerRef,
-      registerItem,
-      itemsRef,
-    }),
-    [registerItem, resolvedOpen, setOpen],
-  );
-
-  return <DropdownContext.Provider value={ctx}>{children}</DropdownContext.Provider>;
-}
-
-Dropdown.displayName = "Dropdown";
-
-export function DropdownTrigger({ className, children, onClick, ref, ...rest }: DropdownTriggerProps) {
-  const { open, setOpen, triggerRef } = useDropdownContext("DropdownTrigger");
-
-  return (
-    <button
-      ref={(node) => {
-        triggerRef.current = node;
-        if (typeof ref === "function") {
-          ref(node);
-        } else if (ref) {
-          (ref as React.MutableRefObject<HTMLButtonElement | null>).current = node;
-        }
-      }}
-      type="button"
-      data-slot="dropdown-trigger"
-      aria-haspopup="menu"
-      aria-expanded={open}
-      className={cn(className)}
-      onClick={(event) => {
-        onClick?.(event);
-        if (!event.defaultPrevented) {
-          setOpen(!open);
-        }
-      }}
-      {...rest}
-    >
-      {children}
-    </button>
-  );
-}
-
-DropdownTrigger.displayName = "DropdownTrigger";
-
-export function DropdownContent({
-  className,
-  size,
-  appearance,
-  animation = "scale",
+/* =========================
+   Root
+========================= */
+export const Dropdown = ({
   children,
-  ref,
-}: DropdownContentProps) {
-  const { open, setOpen, triggerRef, itemsRef } = useDropdownContext("DropdownContent");
-  const contentRef = useRef<HTMLDivElement | null>(null);
-  const [coords, setCoords] = useState({ top: 0, left: 0 });
-  const motionProps = dropdownAnimationPresets[animation];
+  defaultOpen = false,
+  open: controlledOpen,
+  onOpenChange,
+  multiSelect = false,
+}: DropdownProps) => {
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
+  const [selectedValues, setSelectedValues] = useState<string[]>([]);
 
-  useLayoutEffect(() => {
-    if (!open) {
-      return;
-    }
-    itemsRef.current = [];
-    let rafId = 0;
-    let rafId2 = 0;
-    const sync = () => {
-      const trigger = triggerRef.current?.getBoundingClientRect();
-      if (!trigger) {
-        return;
-      }
-      setCoords({
-        top: trigger.bottom + 8 + window.scrollY,
-        left: trigger.left + window.scrollX,
-      });
-    };
-    sync();
-    rafId = requestAnimationFrame(() => {
-      rafId2 = requestAnimationFrame(sync);
-    });
-    return () => {
-      cancelAnimationFrame(rafId);
-      cancelAnimationFrame(rafId2);
-    };
-  }, [open, itemsRef, triggerRef]);
+  const open = controlledOpen ?? uncontrolledOpen;
 
-  useEffect(() => {
-    if (!open) {
-      itemsRef.current = [];
-      return;
+  const setOpen = (val: boolean) => {
+    if (controlledOpen !== undefined) {
+      onOpenChange?.(val);
+    } else {
+      setUncontrolledOpen(val);
     }
-    const handlePointerDown = (event: MouseEvent) => {
-      const target = event.target as Node;
-      if (contentRef.current?.contains(target) || triggerRef.current?.contains(target)) {
-        return;
-      }
+  };
+
+  const toggle = () => setOpen(!open);
+
+  const toggleSelect = (value: string) => {
+    if (!multiSelect) {
+      setSelectedValues([value]);
       setOpen(false);
-    };
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-        return;
-      }
-      const items = itemsRef.current.filter(Boolean);
-      if (items.length === 0) {
-        return;
-      }
-      const active = document.activeElement as HTMLElement | null;
-      const index = items.indexOf(active as HTMLButtonElement);
-      if (event.key === "ArrowDown") {
-        event.preventDefault();
-        const next = items[Math.min(items.length - 1, Math.max(0, index + 1))] ?? items[0];
-        next?.focus();
-      }
-      if (event.key === "ArrowUp") {
-        event.preventDefault();
-        const next =
-          items[Math.max(0, index === -1 ? items.length - 1 : index - 1)] ?? items[items.length - 1];
-        next?.focus();
-      }
-      if (event.key === "Home") {
-        event.preventDefault();
-        items[0]?.focus();
-      }
-      if (event.key === "End") {
-        event.preventDefault();
-        items[items.length - 1]?.focus();
-      }
-    };
-    document.addEventListener("mousedown", handlePointerDown);
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [itemsRef, open, setOpen, triggerRef]);
+      return;
+    }
 
-  const portalTarget = typeof document !== "undefined" ? document.body : null;
-  if (!portalTarget) {
-    return null;
-  }
-
-  return createPortal(
-    <AnimatePresence>
-      {open ? (
-        <motion.div
-          ref={(node) => {
-            contentRef.current = node;
-            if (typeof ref === "function") {
-              ref(node);
-            } else if (ref) {
-              (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
-            }
-          }}
-          role="menu"
-          data-slot="dropdown-content"
-          className={cn("fixed", dropdownContentVariants({ size, appearance }), className)}
-          style={{ top: coords.top, left: coords.left }}
-          initial={animation === "none" ? false : motionProps.initial}
-          animate={animation === "none" ? undefined : motionProps.animate}
-          exit={animation === "none" ? undefined : motionProps.exit}
-          transition={motionProps.transition}
-        >
-          {children}
-        </motion.div>
-      ) : null}
-    </AnimatePresence>,
-    portalTarget,
-  );
-}
-
-DropdownContent.displayName = "DropdownContent";
-
-export function DropdownItem({ className, children, onClick, ref, ...rest }: DropdownItemProps) {
-  const { setOpen, registerItem } = useDropdownContext("DropdownItem");
+    setSelectedValues((prev) =>
+      prev.includes(value)
+        ? prev.filter((v) => v !== value)
+        : [...prev, value]
+    );
+  };
 
   return (
-    <button
-      ref={(node) => {
-        registerItem(node);
-        if (typeof ref === "function") {
-          ref(node);
-        } else if (ref) {
-          (ref as React.MutableRefObject<HTMLButtonElement | null>).current = node;
-        }
+    <DropdownContext.Provider
+      value={{
+        open,
+        setOpen,
+        toggle,
+        selectedValues,
+        toggleSelect,
+        multiSelect,
       }}
-      type="button"
-      role="menuitem"
-      data-slot="dropdown-item"
-      className={cn(dropdownItemVariants(), className)}
-      onClick={(event) => {
-        onClick?.(event);
-        if (!event.defaultPrevented) {
-          setOpen(false);
-        }
-      }}
-      {...rest}
     >
-      {children}
-    </button>
+      <div className="relative inline-block">{children}</div>
+    </DropdownContext.Provider>
   );
-}
+};
 
-DropdownItem.displayName = "DropdownItem";
-
-export function DropdownSeparator({ className, ...rest }: DropdownSeparatorProps) {
-  return <div role="separator" data-slot="dropdown-separator" className={cn(dropdownSeparatorVariants(), className)} {...rest} />;
-}
-
-DropdownSeparator.displayName = "DropdownSeparator";
-
-export function DropdownLabel({ className, ...rest }: DropdownLabelProps) {
-  return <div data-slot="dropdown-label" className={cn(dropdownLabelVariants(), className)} {...rest} />;
-}
-
-DropdownLabel.displayName = "DropdownLabel";
-
-export function DropdownGroup({ className, ...rest }: DropdownGroupProps) {
-  return <div role="group" data-slot="dropdown-group" className={cn(className)} {...rest} />;
-}
-
-DropdownGroup.displayName = "DropdownGroup";
-
-export function DropdownCheckboxItem({
+/* =========================
+   Trigger
+========================= */
+export const DropdownTrigger = ({
+  children,
   className,
-  checked,
-  onCheckedChange,
-  onClick,
-  ...rest
-}: DropdownCheckboxItemProps) {
-  const { setOpen, registerItem } = useDropdownContext("DropdownCheckboxItem");
-  return (
-    <button
-      type="button"
-      role="menuitemcheckbox"
-      aria-checked={Boolean(checked)}
-      data-slot="dropdown-checkbox-item"
-      ref={(node) => registerItem(node)}
-      className={cn(dropdownItemVariants(), className)}
-      onClick={(event) => {
-        onClick?.(event);
-        if (!event.defaultPrevented) {
-          onCheckedChange?.(!checked);
-        }
-      }}
-      {...rest}
-    />
-  );
-}
-
-DropdownCheckboxItem.displayName = "DropdownCheckboxItem";
-
-export function DropdownRadioGroup({ value, onValueChange, className, children, ...rest }: DropdownRadioGroupProps) {
-  const ctx = useMemo(() => ({ value, onValueChange }), [onValueChange, value]);
-  return (
-    <RadioGroupContext.Provider value={ctx}>
-      <div role="group" data-slot="dropdown-radio-group" className={cn(className)} {...rest}>
-        {children}
-      </div>
-    </RadioGroupContext.Provider>
-  );
-}
-
-DropdownRadioGroup.displayName = "DropdownRadioGroup";
-
-export function DropdownRadioItem({ className, value, onClick, ...rest }: DropdownRadioItemProps) {
-  const group = useContext(RadioGroupContext);
-  const { setOpen, registerItem } = useDropdownContext("DropdownRadioItem");
-  const selected = group?.value === value;
+  variant,
+  size,
+  ...props
+}: DropdownTriggerProps) => {
+  const { toggle } = useDropdown();
 
   return (
     <button
-      type="button"
-      role="menuitemradio"
-      aria-checked={selected}
-      data-slot="dropdown-radio-item"
-      ref={(node) => registerItem(node)}
-      className={cn(dropdownItemVariants(), className)}
-      onClick={(event) => {
-        onClick?.(event);
-        if (!event.defaultPrevented) {
-          group?.onValueChange?.(value);
-          setOpen(false);
-        }
-      }}
-      {...rest}
-    />
-  );
-}
-
-DropdownRadioItem.displayName = "DropdownRadioItem";
-
-export function DropdownSubMenu({ children }: DropdownSubMenuProps) {
-  const [open, setOpen] = useState(false);
-  const ctx = useMemo(() => ({ open, setOpen }), [open]);
-  return <SubMenuContext.Provider value={ctx}>{children}</SubMenuContext.Provider>;
-}
-
-DropdownSubMenu.displayName = "DropdownSubMenu";
-
-export function DropdownSubTrigger({ className, children, ...rest }: DropdownSubTriggerProps) {
-  const sub = useContext(SubMenuContext);
-  if (!sub) {
-    throw new Error("DropdownSubTrigger must be used within <DropdownSubMenu>");
-  }
-  return (
-    <button
-      type="button"
-      data-slot="dropdown-sub-trigger"
-      className={cn(dropdownItemVariants(), className)}
-      aria-expanded={sub.open}
-      onClick={() => sub.setOpen(!sub.open)}
-      {...rest}
+      onClick={toggle}
+      className={cn(triggerVariants({ variant, size }), className)}
+      {...props}
     >
       {children}
     </button>
   );
-}
+};
 
-DropdownSubTrigger.displayName = "DropdownSubTrigger";
+/* =========================
+   Content
+========================= */
+export const DropdownContent = ({
+  children,
+  className,
+  placement = "bottom",
+  ...props
+}: DropdownContentProps) => {
+  const { open, setOpen } = useDropdown();
+  const ref = useRef<HTMLDivElement>(null);
 
-export function DropdownSubContent({ className, children, ...rest }: DropdownSubContentProps) {
-  const sub = useContext(SubMenuContext);
-  if (!sub) {
-    throw new Error("DropdownSubContent must be used within <DropdownSubMenu>");
-  }
-  if (!sub.open) {
-    return null;
-  }
+  // click outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
+  }, [setOpen]);
+
+  if (!open) return null;
+
   return (
-    <div data-slot="dropdown-sub-content" className={cn("mt-1 rounded-md border border-white/10 bg-slate-900 p-1", className)} {...rest}>
+    <div
+      ref={ref}
+      className={cn(contentVariants({ placement }), className)}
+      {...props}
+    >
       {children}
     </div>
   );
-}
+};
 
-DropdownSubContent.displayName = "DropdownSubContent";
+/* =========================
+   Item
+========================= */
+export const DropdownItem = ({
+  children,
+  value,
+  className,
+  variant,
+  onSelect,
+  leftIcon,
+  rightIcon,
+  ...props
+}: DropdownItemProps) => {
+  const { toggleSelect, selectedValues } = useDropdown();
+  const isSelected = selectedValues.includes(value);
+
+  const handleClick = () => {
+    toggleSelect(value);
+    onSelect?.();
+  };
+
+  return (
+    <div
+      tabIndex={0}
+      onClick={handleClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") handleClick();
+      }}
+      className={cn(itemVariants({ variant }), className)}
+      {...props}
+    >
+      <div className="flex items-center gap-2">
+        {leftIcon}
+        {children}
+      </div>
+
+      <div className="flex items-center gap-2">
+        {isSelected && <FiCheck />}
+        {rightIcon}
+      </div>
+    </div>
+  );
+};

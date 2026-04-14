@@ -173,7 +173,7 @@ export function SkeletonCard(props: SkeletonCardProps) {
         className="flex flex-col gap-4 p-4"
       >
         <div className="flex items-center gap-3">
-          <SkeletonAvatar appearance={appearance} size={size} animation={animation} />
+          <SkeletonAvatar appearance={appearance} size={size} animation={animation} rounded={rounded} />
           <div className="flex flex-1 flex-col gap-2">
             <SkeletonText
               lines={2}

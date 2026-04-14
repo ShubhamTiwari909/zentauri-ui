@@ -19,15 +19,29 @@ const ACCORDION_APPEARANCES = [
   "ghost",
   "card",
   "separated",
+  "sky",
+  "rose",
+  "purple",
+  "pink",
+  "orange",
+  "yellow",
+  "teal",
+  "indigo",
+  "emerald",
 ] as const satisfies readonly NonNullable<AccordionProps["appearance"]>[];
 
-const ACCORDION_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<
-  AccordionProps["size"]
->[];
+const ACCORDION_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly NonNullable<AccordionProps["size"]>[];
 
-const ACCORDION_TRANSITIONS = ["none", "default", "smooth", "slow"] as const satisfies readonly NonNullable<
-  AccordionProps["transition"]
->[];
+const ACCORDION_TRANSITIONS = [
+  "none",
+  "default",
+  "smooth",
+  "slow",
+] as const satisfies readonly NonNullable<AccordionProps["transition"]>[];
 
 function accordionSnippet(
   appearance: NonNullable<AccordionProps["appearance"]>,
@@ -35,7 +49,10 @@ function accordionSnippet(
   type: "single" | "multiple",
   transition: NonNullable<AccordionProps["transition"]>,
 ) {
-  const typeLine = type === "single" ? 'type="single" defaultValue="a"' : 'type="multiple" defaultValues={["a"]}';
+  const typeLine =
+    type === "single"
+      ? 'type="single" defaultValue="a"'
+      : 'type="multiple" defaultValues={["a"]}';
   return `${variantLeadComment(`type · ${type}, appearance · ${appearance}, size · ${size}, transition · ${transition}`)}<Accordion ${typeLine} appearance="${appearance}" size="${size}" transition="${transition}">
   <AccordionItem value="a">
     <AccordionTrigger>First panel</AccordionTrigger>
@@ -65,6 +82,10 @@ function AccordionDemo({
 }) {
   const body = (
     <>
+      <p className="mb-5 text-xs font-semibold text-white">
+        Appearance: <span className="font-bold">{appearance.toUpperCase()}</span>, Size: <span className="font-bold">{size.toUpperCase()}</span>, Type: <span className="font-bold">{type.toUpperCase()}</span>, Transition: <span className="font-bold">{transition.toUpperCase()}</span>
+        {transition.toUpperCase()}
+      </p>
       <AccordionItem value="a">
         <AccordionTrigger>First panel</AccordionTrigger>
         <AccordionContent>
@@ -108,9 +129,12 @@ function AccordionDemo({
 export function AccordionCodeExamplesSection() {
   return (
     <section className={SECTION}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">Accordion variants examples</h2>
+      <h2 className="mt-3 text-2xl font-semibold text-white">
+        Accordion variants examples
+      </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Use Show output / Show code on each row. Snippets start with a Variant line naming the axis and token.
+        Use Show output / Show code on each row. Snippets start with a Variant
+        line naming the axis and token.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {ACCORDION_APPEARANCES.map((appearance) => (
@@ -118,7 +142,12 @@ export function AccordionCodeExamplesSection() {
             key={`app-${appearance}`}
             code={accordionSnippet(appearance, "md", "single", "default")}
           >
-            <AccordionDemo appearance={appearance} size="md" type="single" transition="default" />
+            <AccordionDemo
+              appearance={appearance}
+              size="md"
+              type="single"
+              transition="default"
+            />
           </PreviewCodeShowcase>
         ))}
         {ACCORDION_SIZES.map((size) => (
@@ -126,27 +155,47 @@ export function AccordionCodeExamplesSection() {
             key={`size-${size}`}
             code={accordionSnippet("default", size, "single", "default")}
           >
-            <AccordionDemo appearance="default" size={size} type="single" transition="default" />
+            <AccordionDemo
+              appearance="default"
+              size={size}
+              type="single"
+              transition="default"
+            />
           </PreviewCodeShowcase>
         ))}
         <PreviewCodeShowcase
           key="type-single"
           code={accordionSnippet("outline", "md", "single", "default")}
         >
-          <AccordionDemo appearance="outline" size="md" type="single" transition="default" />
+          <AccordionDemo
+            appearance="outline"
+            size="md"
+            type="single"
+            transition="default"
+          />
         </PreviewCodeShowcase>
         <PreviewCodeShowcase
           key="type-multiple"
           code={accordionSnippet("outline", "md", "multiple", "default")}
         >
-          <AccordionDemo appearance="outline" size="md" type="multiple" transition="default" />
+          <AccordionDemo
+            appearance="outline"
+            size="md"
+            type="multiple"
+            transition="default"
+          />
         </PreviewCodeShowcase>
         {ACCORDION_TRANSITIONS.map((transition) => (
           <PreviewCodeShowcase
             key={`trans-${transition}`}
             code={accordionSnippet("ghost", "md", "single", transition)}
           >
-            <AccordionDemo appearance="ghost" size="md" type="single" transition={transition} />
+            <AccordionDemo
+              appearance="ghost"
+              size="md"
+              type="single"
+              transition={transition}
+            />
           </PreviewCodeShowcase>
         ))}
       </div>

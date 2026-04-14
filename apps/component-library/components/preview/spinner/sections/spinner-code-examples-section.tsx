@@ -11,9 +11,7 @@ const SPINNER_APPEARANCES = [
   "default",
   "secondary",
   "destructive",
-  "outline",
   "ghost",
-  "glass",
   "emerald",
   "indigo",
   "purple",
@@ -82,9 +80,9 @@ export function SpinnerCodeExamplesSection() {
         {SPINNER_VARIANTS.map((variant) => (
           <PreviewCodeShowcase
             key={`var-${variant}`}
-            code={spinnerSnippet({ appearance: "glass", variant, size: "md" })}
+            code={spinnerSnippet({ appearance: "indigo", variant, size: "md" })}
           >
-            <SpinnerDemo appearance="glass" variant={variant} size="md" />
+            <SpinnerDemo appearance="indigo" variant={variant} size="md" />
           </PreviewCodeShowcase>
         ))}
         {SPINNER_SIZES.map((size) => (

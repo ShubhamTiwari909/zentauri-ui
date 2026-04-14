@@ -7,7 +7,7 @@ import { Toggle, type ToggleProps } from "@/components/ui/toggle";
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
-const TOGGLE_APPEARANCES = ["default", "success", "destructive", "neutral"] as const satisfies readonly NonNullable<
+const TOGGLE_APPEARANCES = ["default", "success", "destructive", "neutral", "indigo", "purple", "pink", "orange", "yellow", "green", "teal", "cyan", "lime", "emerald", "rose", "slate", "zinc", "gray", "stone"] as const satisfies readonly NonNullable<
   ToggleProps["appearance"]
 >[];
 

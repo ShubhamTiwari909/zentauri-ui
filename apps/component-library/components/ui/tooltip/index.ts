@@ -1,11 +1,9 @@
-export { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from "./tooltip";
+export { Tooltip, TooltipTrigger, TooltipContent, useTooltip } from "./tooltip";
 export type {
-  TooltipAnimation,
-  TooltipArrowProps,
-  TooltipContentProps,
-  TooltipPlacement,
   TooltipProps,
   TooltipTriggerProps,
+  TooltipContentProps,
+  TooltipContextType,
+  TooltipPosition,
 } from "./types";
-export { tooltipAnimationPresets } from "./animations";
-export { tooltipArrowVariants, tooltipContentVariants } from "./variants";
+export { tooltipVariants } from "./variants";
