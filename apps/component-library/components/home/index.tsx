@@ -31,15 +31,15 @@ export default function HomePage() {
             </p>
           </div>
           <div className="pt-8">
-            <Link href={content.ctaHref} passHref>
-              <Button
-                appearance="glass"
-                animation="lift"
-                className="px-8 py-3 text-lg font-medium cursor-pointer"
-              >
+            <Button
+              appearance="glass"
+              animation="lift"
+              className="px-8 py-3 text-lg font-medium cursor-pointer"
+            >
+              <Link href={content.ctaHref} passHref>
                 {content.ctaText}
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </section>
       </LightLines>
