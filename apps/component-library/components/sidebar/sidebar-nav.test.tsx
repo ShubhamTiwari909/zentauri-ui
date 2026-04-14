@@ -10,7 +10,7 @@ vi.mock("next/navigation", () => ({
 }));
 
 // Mock sidebar-data to inject specific scenarios for testing (disabled links, external links)
-vi.mock("@/lib/sidebar-data", () => ({
+vi.mock("@/components/sidebar/sidebar-data", () => ({
   sidebarRouteData: [
     {
       title: "Test Group",
