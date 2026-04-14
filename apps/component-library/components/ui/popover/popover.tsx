@@ -167,17 +167,61 @@ export function PopoverContent({
   const [coords, setCoords] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
   const motionProps = popoverAnimationPresets[animation];
 
+  const updatePosition = useCallback(() => {
+    const trigger = triggerRef.current?.getBoundingClientRect();
+    const content = contentRef.current?.getBoundingClientRect();
+    if (!trigger || !content || content.width < 1 || content.height < 1) {
+      return;
+    }
+    setCoords(computePosition(trigger, content.width, content.height, placement));
+  }, [placement, triggerRef]);
+
   useLayoutEffect(() => {
     if (!open) {
       return;
     }
-    const trigger = triggerRef.current?.getBoundingClientRect();
-    const content = contentRef.current?.getBoundingClientRect();
-    if (!trigger || !content) {
+    let rafId = 0;
+    let rafId2 = 0;
+    rafId = requestAnimationFrame(() => {
+      rafId2 = requestAnimationFrame(() => {
+        updatePosition();
+      });
+    });
+    return () => {
+      cancelAnimationFrame(rafId);
+      cancelAnimationFrame(rafId2);
+    };
+  }, [open, updatePosition]);
+
+  useEffect(() => {
+    if (!open) {
       return;
     }
-    setCoords(computePosition(trigger, content.width, content.height, placement));
-  }, [open, placement, triggerRef]);
+    let cancelled = false;
+    let observer: ResizeObserver | null = null;
+    let innerRaf = 0;
+    const outerRaf = requestAnimationFrame(() => {
+      innerRaf = requestAnimationFrame(() => {
+        if (cancelled) {
+          return;
+        }
+        const node = contentRef.current;
+        if (!node) {
+          return;
+        }
+        observer = new ResizeObserver(() => {
+          updatePosition();
+        });
+        observer.observe(node);
+      });
+    });
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(outerRaf);
+      cancelAnimationFrame(innerRaf);
+      observer?.disconnect();
+    };
+  }, [open, updatePosition]);
 
   useEffect(() => {
     if (!open) {

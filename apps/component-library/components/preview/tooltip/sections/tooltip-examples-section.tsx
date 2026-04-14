@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Tooltip,
@@ -16,9 +17,12 @@ export function TooltipExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Tooltip>
-  <TooltipTrigger>Deploy</TooltipTrigger>
-  <TooltipContent appearance="primary" size="lg">
+          code={`${variantLeadComment(`TooltipContent · appearance · primary, size · lg, placement · bottom, animation · fade`)}
+<Tooltip>
+  <TooltipTrigger className="rounded-lg border border-cyan-500/30 bg-cyan-950/40 px-3 py-1.5 text-sm text-cyan-100 outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50">
+    Deploy
+  </TooltipTrigger>
+  <TooltipContent appearance="primary" size="lg" placement="bottom" animation="fade">
     Runs checks before shipping to production.
   </TooltipContent>
 </Tooltip>`}
@@ -27,7 +31,7 @@ export function TooltipExamplesSection() {
             <TooltipTrigger className="rounded-lg border border-cyan-500/30 bg-cyan-950/40 px-3 py-1.5 text-sm text-cyan-100 outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50">
               Deploy
             </TooltipTrigger>
-            <TooltipContent appearance="primary" size="lg" placement="bottom">
+            <TooltipContent appearance="primary" size="lg" placement="bottom" animation="fade">
               Runs checks before shipping to production.
             </TooltipContent>
           </Tooltip>

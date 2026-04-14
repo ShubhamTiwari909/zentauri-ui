@@ -159,16 +159,27 @@ export function DropdownContent({
       return;
     }
     itemsRef.current = [];
-    const trigger = triggerRef.current?.getBoundingClientRect();
-    const content = contentRef.current?.getBoundingClientRect();
-    if (!trigger || !content) {
-      return;
-    }
-    setCoords({
-      top: trigger.bottom + 8 + window.scrollY,
-      left: trigger.left + window.scrollX,
+    let rafId = 0;
+    let rafId2 = 0;
+    const sync = () => {
+      const trigger = triggerRef.current?.getBoundingClientRect();
+      if (!trigger) {
+        return;
+      }
+      setCoords({
+        top: trigger.bottom + 8 + window.scrollY,
+        left: trigger.left + window.scrollX,
+      });
+    };
+    sync();
+    rafId = requestAnimationFrame(() => {
+      rafId2 = requestAnimationFrame(sync);
     });
-  }, [open, triggerRef]);
+    return () => {
+      cancelAnimationFrame(rafId);
+      cancelAnimationFrame(rafId2);
+    };
+  }, [open, itemsRef, triggerRef]);
 
   useEffect(() => {
     if (!open) {

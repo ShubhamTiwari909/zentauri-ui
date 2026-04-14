@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Divider } from "@/components/ui/divider";
 
@@ -12,7 +13,8 @@ export function DividerExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<div className="flex h-24 items-stretch gap-4">
+          code={`${variantLeadComment(`Divider · orientation · vertical, appearance · default`)}
+<div className="flex h-24 items-stretch gap-4">
   <span className="text-sm text-slate-300">Left</span>
   <Divider orientation="vertical" appearance="default" />
   <span className="text-sm text-slate-300">Right</span>

@@ -1,4 +1,5 @@
 import ButtonCodeShowcase from "@/components/code-showcase/ButtonCodeShowcase";
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import {
   showcaseButtons,
   buttonAnimationPresets,
@@ -12,9 +13,12 @@ export function ButtonCodeExamplesSection() {
         <h2 className="mt-3 text-2xl font-semibold text-white">
           Button Variants Examples
         </h2>
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+          Each &quot;Show code&quot; block starts with a Variant line naming the token row.
+        </p>
         <div className="mt-6 space-y-10 rounded-xl">
           {showcaseButtons.map((button) => {
-            const code = `<Button appearance="${button.appearance}" className="w-full">${button.label}</Button>`;
+            const code = `${variantLeadComment(`appearance · ${button.appearance}`)}<Button appearance="${button.appearance}" className="w-full">${button.label}</Button>`;
             return (
               <ButtonCodeShowcase
                 key={button.label}
@@ -26,7 +30,7 @@ export function ButtonCodeExamplesSection() {
             );
           })}
           {buttonAnimationPresets.map(([label, animation]) => {
-            const code = `<Button appearance="glass" animation="${animation}" className="w-full">${label} animation</Button>`;
+            const code = `${variantLeadComment(`animation · ${animation}`)}<Button appearance="glass" animation="${animation}" className="w-full">${label} animation</Button>`;
             return (
               <ButtonCodeShowcase
                 key={label}
@@ -38,7 +42,7 @@ export function ButtonCodeExamplesSection() {
             );
           })}
           {sizeButtons.map((button) => {
-            const code = `<Button appearance="gradient-indigo" size="${button.size}" className="w-full ${button.size === "icon" ? "w-20" : ""}">${button.label} size</Button>`;
+            const code = `${variantLeadComment(`size · ${button.size}`)}<Button appearance="gradient-indigo" size="${button.size}" className="w-full ${button.size === "icon" ? "w-20" : ""}">${button.label} size</Button>`;
             return (
               <ButtonCodeShowcase
                 key={button.label}

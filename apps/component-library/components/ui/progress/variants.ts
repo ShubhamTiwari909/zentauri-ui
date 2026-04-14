@@ -92,7 +92,7 @@ export const progressBarVariants = cva(
     variants: {
       striped: {
         true: "bg-[repeating-linear-gradient(135deg,rgba(255,255,255,0.18)_0,rgba(255,255,255,0.18)_10px,transparent_10px,transparent_20px)]",
-        false: "bg-[var(--progress-fill)]",
+        false: "[background:var(--progress-fill)]",
       },
     },
     defaultVariants: { striped: false },

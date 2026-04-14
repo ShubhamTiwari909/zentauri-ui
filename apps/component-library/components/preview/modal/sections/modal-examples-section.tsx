@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Button } from "@/components/ui/buttons";
 import {
@@ -23,7 +24,8 @@ export function ModalExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Modal>
+          code={`${variantLeadComment(`ModalContent · animation · slide-up, position · top, size · md`)}
+<Modal>
   <ModalTrigger>Open</ModalTrigger>
   <ModalContent animation="slide-up" position="top" size="md">
     <ModalClose />

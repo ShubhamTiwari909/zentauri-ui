@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Toggle } from "@/components/ui/toggle";
 
@@ -12,9 +13,9 @@ export function ToggleExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Toggle appearance="neutral" animation="spring" aria-label="Dark mode" />`}
+          code={`${variantLeadComment(`appearance · neutral, animation · spring`)}<Toggle appearance="neutral" animation="spring" aria-label="Dark mode" />`}
         >
-          <Toggle appearance="neutral" animation="spring" aria-label="Dark mode preview" />
+          <Toggle appearance="neutral" animation="spring" aria-label="Dark mode" />
         </PreviewCodeShowcase>
       </div>
     </section>

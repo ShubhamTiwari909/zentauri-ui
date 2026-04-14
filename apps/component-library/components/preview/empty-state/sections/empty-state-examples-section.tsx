@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { HiCloudArrowUp } from "react-icons/hi2";
 import {
@@ -18,10 +19,13 @@ export function EmptyStateExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<EmptyState appearance="ghost" animation="fade" align="start">
-  <EmptyStateIcon>...</EmptyStateIcon>
+          code={`${variantLeadComment(`appearance · ghost, size · sm, animation · fade, align · start`)}
+<EmptyState appearance="ghost" size="sm" animation="fade" align="start">
+  <EmptyStateIcon>
+    <HiCloudArrowUp className="size-8 text-slate-400" aria-hidden />
+  </EmptyStateIcon>
   <EmptyStateTitle>No uploads</EmptyStateTitle>
-  <EmptyStateDescription>Drag files here.</EmptyStateDescription>
+  <EmptyStateDescription>Drag files here to add them.</EmptyStateDescription>
 </EmptyState>`}
         >
           <EmptyState appearance="ghost" animation="fade" align="start" size="sm">

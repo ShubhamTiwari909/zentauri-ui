@@ -66,26 +66,6 @@ function useSelectContext(component: string): SelectCtx {
   return ctx;
 }
 
-function useBodyStyleVar(
-  triggerRef: React.RefObject<HTMLButtonElement | null>,
-  open: boolean,
-) {
-  useLayoutEffect(() => {
-    if (!open) {
-      return;
-    }
-    const node = triggerRef.current;
-    if (!node) {
-      return;
-    }
-    const width = `${node.getBoundingClientRect().width}px`;
-    document.documentElement.style.setProperty("--select-trigger-width", width);
-    return () => {
-      document.documentElement.style.removeProperty("--select-trigger-width");
-    };
-  }, [open, triggerRef]);
-}
-
 export function Select({
   mode = "single",
   value,
@@ -229,24 +209,18 @@ export function SelectTrigger({ className, size, appearance, children, ref, ...r
 SelectTrigger.displayName = "SelectTrigger";
 
 export function SelectValue({ placeholder = "Select…", className }: SelectValueProps) {
-  const { mode, value, multiValues, labelMap, labelVersion } = useSelectContext("SelectValue");
+  const { mode, value, multiValues, labelMap } = useSelectContext("SelectValue");
 
-  const text = useMemo(() => {
-    if (mode === "single") {
-      if (!value) {
-        return null;
-      }
-      return labelMap.current.get(value) ?? value;
-    }
-    if (multiValues.length === 0) {
-      return null;
-    }
-    if (multiValues.length === 1) {
-      const only = multiValues[0];
-      return labelMap.current.get(only) ?? only;
-    }
-    return `${multiValues.length} selected`;
-  }, [labelMap, labelVersion, mode, multiValues, value]);
+  const text =
+    mode === "single"
+      ? !value
+        ? null
+        : (labelMap.current.get(value) ?? value)
+      : multiValues.length === 0
+        ? null
+        : multiValues.length === 1
+          ? (labelMap.current.get(multiValues[0]) ?? multiValues[0])
+          : `${multiValues.length} selected`;
 
   return (
     <span data-slot="select-value" className={cn("truncate", !text && "text-slate-500", className)}>
@@ -267,23 +241,34 @@ export function SelectContent({
 }: SelectContentProps) {
   const { open, setOpen, triggerRef, listboxId, mode } = useSelectContext("SelectContent");
   const contentRef = useRef<HTMLDivElement | null>(null);
-  const [coords, setCoords] = useState({ top: 0, left: 0 });
+  const [panelLayout, setPanelLayout] = useState({ top: 0, left: 0, width: 0 });
   const motionProps = selectContentAnimationPresets[animation];
-
-  useBodyStyleVar(triggerRef, open);
 
   useLayoutEffect(() => {
     if (!open) {
       return;
     }
-    const trigger = triggerRef.current?.getBoundingClientRect();
-    if (!trigger) {
-      return;
-    }
-    setCoords({
-      top: trigger.bottom + 6 + window.scrollY,
-      left: trigger.left + window.scrollX,
+    let rafId = 0;
+    let rafId2 = 0;
+    const sync = () => {
+      const trigger = triggerRef.current?.getBoundingClientRect();
+      if (!trigger) {
+        return;
+      }
+      setPanelLayout({
+        top: trigger.bottom + 6 + window.scrollY,
+        left: trigger.left + window.scrollX,
+        width: trigger.width,
+      });
+    };
+    sync();
+    rafId = requestAnimationFrame(() => {
+      rafId2 = requestAnimationFrame(sync);
     });
+    return () => {
+      cancelAnimationFrame(rafId);
+      cancelAnimationFrame(rafId2);
+    };
   }, [open, triggerRef]);
 
   useEffect(() => {
@@ -332,7 +317,12 @@ export function SelectContent({
           aria-multiselectable={mode === "multiple"}
           data-slot="select-content"
           className={cn("fixed", selectContentVariants({ size, appearance }), className)}
-          style={{ top: coords.top, left: coords.left }}
+          style={{
+            top: panelLayout.top,
+            left: panelLayout.left,
+            width: panelLayout.width > 0 ? panelLayout.width : undefined,
+            minWidth: panelLayout.width > 0 ? undefined : "12rem",
+          }}
           initial={animation === "none" ? false : motionProps.initial}
           animate={animation === "none" ? undefined : motionProps.animate}
           exit={animation === "none" ? undefined : motionProps.exit}

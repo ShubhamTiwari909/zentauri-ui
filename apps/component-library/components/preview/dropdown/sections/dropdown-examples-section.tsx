@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Dropdown,
@@ -17,9 +18,12 @@ export function DropdownExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Dropdown>
-  <DropdownTrigger>Actions</DropdownTrigger>
-  <DropdownContent appearance="default" animation="fade">
+          code={`${variantLeadComment(`DropdownContent · appearance · default, size · sm, animation · fade`)}
+<Dropdown>
+  <DropdownTrigger className="rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200">
+    Actions
+  </DropdownTrigger>
+  <DropdownContent appearance="default" size="sm" animation="fade">
     <DropdownItem>Edit</DropdownItem>
     <DropdownItem>Duplicate</DropdownItem>
   </DropdownContent>

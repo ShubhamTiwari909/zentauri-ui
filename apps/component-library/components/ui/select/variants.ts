@@ -23,7 +23,7 @@ export const selectTriggerVariants = cva(
 );
 
 export const selectContentVariants = cva(
-  "z-50 max-h-[min(320px,60vh)] w-[var(--select-trigger-width,12rem)] overflow-y-auto rounded-xl border border-white/10 bg-slate-950 p-1 text-sm text-slate-50 shadow-[0_18px_48px_rgba(15,23,42,0.45)]",
+  "z-50 max-h-[min(320px,60vh)] min-w-[10rem] overflow-y-auto rounded-xl border border-white/10 bg-slate-950 p-1 text-sm text-slate-50 shadow-[0_18px_48px_rgba(15,23,42,0.45)]",
   {
     variants: {
       size: {

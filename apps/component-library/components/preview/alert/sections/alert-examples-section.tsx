@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Alert,
@@ -18,7 +19,8 @@ export function AlertExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Alert appearance="warning" animation="pop">
+          code={`${variantLeadComment(`appearance · warning, animation · pop`)}
+<Alert appearance="warning" animation="pop">
   <AlertIcon><AlertDefaultIcon appearance="warning" /></AlertIcon>
   <div>
     <AlertTitle>Quota</AlertTitle>

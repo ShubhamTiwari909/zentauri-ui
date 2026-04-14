@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Spinner } from "@/components/ui/spinner";
 
@@ -12,7 +13,7 @@ export function SpinnerExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Spinner variant="pulse" appearance="gradient-indigo" size="xl" />`}
+          code={`${variantLeadComment(`variant · pulse, appearance · gradient-indigo, size · xl`)}<Spinner variant="pulse" appearance="gradient-indigo" size="xl" />`}
         >
           <Spinner variant="pulse" appearance="gradient-indigo" size="xl" />
         </PreviewCodeShowcase>

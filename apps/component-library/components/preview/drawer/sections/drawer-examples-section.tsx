@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Drawer,
@@ -20,7 +21,8 @@ export function DrawerExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Drawer>
+          code={`${variantLeadComment(`DrawerContent · side · bottom, animation · slide, size · md (preview)`)}
+<Drawer>
   <DrawerTrigger>Open</DrawerTrigger>
   <DrawerContent side="bottom" animation="slide">
     ...

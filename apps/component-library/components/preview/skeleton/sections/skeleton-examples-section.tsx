@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { SkeletonButton } from "@/components/ui/skeleton";
 
@@ -12,7 +13,8 @@ export function SkeletonExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<SkeletonButton buttonSize="md" className="w-32" animation="shimmer" />`}
+          code={`${variantLeadComment(`SkeletonButton · buttonSize · md, animation · shimmer`)}
+<SkeletonButton buttonSize="md" className="w-32" animation="shimmer" />`}
         >
           <SkeletonButton buttonSize="md" className="w-32" animation="shimmer" />
         </PreviewCodeShowcase>

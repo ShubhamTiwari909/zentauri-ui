@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Button } from "@/components/ui/buttons";
 import { useToast } from "@/components/ui/toast";
@@ -35,7 +36,8 @@ export function ToastExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`const { toast } = useToast();
+          code={`${variantLeadComment(`toast() · appearance · info, size · sm`)}
+const { toast } = useToast();
 toast({
   title: "Copied",
   description: "Snippet is on your clipboard.",

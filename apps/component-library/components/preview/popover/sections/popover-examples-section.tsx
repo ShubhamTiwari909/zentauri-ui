@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Popover,
@@ -16,10 +17,13 @@ export function PopoverExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Popover>
-  <PopoverTrigger>Info</PopoverTrigger>
-  <PopoverContent placement="bottom-start" animation="fade">
-    Short help text.
+          code={`${variantLeadComment(`PopoverContent · placement · bottom-start, animation · fade, size · sm`)}
+<Popover>
+  <PopoverTrigger className="rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200">
+    Info
+  </PopoverTrigger>
+  <PopoverContent placement="bottom-start" animation="fade" size="sm">
+    <p className="text-xs text-slate-300">Short contextual help text.</p>
   </PopoverContent>
 </Popover>`}
         >
