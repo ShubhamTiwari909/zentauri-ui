@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   createContext,
   useCallback,
@@ -12,7 +12,7 @@ import {
 
 import { cn } from "@/lib/utils";
 
-import { accordionContentMotionPresets } from "./animations";
+import { accordionContentTransitionPresets } from "./animations";
 import type {
   AccordionContentProps,
   AccordionItemProps,
@@ -56,7 +56,7 @@ export function Accordion({
   defaultValues,
   onValueChange,
   onValuesChange,
-  animation = "spring",
+  transition = "default",
   appearance = "default",
   size = "md",
   className,
@@ -113,13 +113,13 @@ export function Accordion({
   const ctx = useMemo(
     () => ({
       type,
-      animation: animation ?? "spring",
+      transition: transition ?? "default",
       appearance: appearance ?? "default",
       size: size ?? "md",
       isOpen,
       toggle,
     }),
-    [animation, appearance, isOpen, size, toggle, type],
+    [appearance, isOpen, size, toggle, transition, type],
   );
 
   return (
@@ -182,30 +182,29 @@ AccordionTrigger.displayName = "AccordionTrigger";
 
 export function AccordionContent({ className, children, ref }: AccordionContentProps) {
   const itemValue = useAccordionItemValue("AccordionContent");
-  const { isOpen, animation, size } = useAccordionContext("AccordionContent");
+  const { isOpen, transition: transitionVariant, size } = useAccordionContext("AccordionContent");
   const open = isOpen(itemValue);
   const panelId = `${itemValue}-panel`;
-  const motionProps = accordionContentMotionPresets[animation];
+  const transitionConfig = accordionContentTransitionPresets[transitionVariant];
+  const motionless = transitionVariant === "none";
 
   return (
-    <AnimatePresence initial={false}>
-      {open ? (
-        <motion.div
-          key={itemValue}
-          ref={ref}
-          id={panelId}
-          role="region"
-          data-slot="accordion-content"
-          className={cn(accordionContentVariants({ size }), className)}
-          initial={animation === "none" ? false : motionProps.initial}
-          animate={animation === "none" ? undefined : motionProps.animate}
-          exit={animation === "none" ? undefined : motionProps.exit}
-          transition={motionProps.transition}
-        >
-          {children}
-        </motion.div>
-      ) : null}
-    </AnimatePresence>
+    open ? (
+      <motion.div
+        key={itemValue}
+        ref={ref}
+        id={panelId}
+        role="region"
+        data-slot="accordion-content"
+        className={cn(accordionContentVariants({ size }), className)}
+        initial={motionless ? false : { opacity: 0 }}
+        animate={motionless ? undefined : { opacity: 1 }}
+        exit={motionless ? undefined : { opacity: 0 }}
+        transition={transitionConfig}
+      >
+        {children}
+      </motion.div>
+    ) : null
   );
 }
 

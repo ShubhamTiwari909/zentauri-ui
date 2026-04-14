@@ -1,13 +1,13 @@
 export { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./accordion";
 export type {
-  AccordionAnimation,
   AccordionContentProps,
   AccordionItemProps,
   AccordionProps,
+  AccordionTransition,
   AccordionTriggerProps,
   AccordionType,
 } from "./types";
-export { accordionContentMotionPresets } from "./animations";
+export { accordionContentTransitionPresets } from "./animations";
 export {
   accordionVariants,
   accordionItemVariants,
