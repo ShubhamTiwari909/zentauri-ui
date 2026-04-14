@@ -10,9 +10,9 @@ export const accordionVariants = cva("w-full", {
       separated: "space-y-3",
     },
     size: {
-      sm: "text-sm",
-      md: "text-sm",
-      lg: "text-base",
+      sm: "px-3 py-2 text-sm",
+      md: "px-4 py-3 text-sm",
+      lg: "px-5 py-4 text-base",
     },
   },
   defaultVariants: {

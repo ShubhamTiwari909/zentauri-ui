@@ -29,7 +29,7 @@ export function AccordionHeroSection() {
             <AccordionTrigger>Shipping</AccordionTrigger>
             <AccordionContent>
               <p className="text-sm text-slate-300">
-                Standard delivery in 3–5 business days. Express options at
+                Standard delivery in 3-5 business days. Express options at
                 checkout.
               </p>
             </AccordionContent>
