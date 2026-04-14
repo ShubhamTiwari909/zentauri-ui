@@ -4,6 +4,11 @@ import type { VariantProps } from "class-variance-authority";
 import type { InputAnimation } from "@/components/ui/inputs/types";
 import type { HTMLInputTypeAttribute, ReactNode } from "react";
 
+export type PreviewCodeShowcaseProps = {
+  code: string;
+  children: ReactNode;
+};
+
 export type ButtonCodeShowcaseProps = {
   code: string;
   appearance: ButtonProps["appearance"];
