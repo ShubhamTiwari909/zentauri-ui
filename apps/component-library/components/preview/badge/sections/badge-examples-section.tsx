@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Badge } from "@/components/ui/badge";
 
@@ -12,7 +13,7 @@ export function BadgeExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Badge appearance="gradient-indigo" shape="pill" size="lg">
+          code={`${variantLeadComment(`appearance · gradient-indigo, shape · pill, size · lg`)}<Badge appearance="gradient-indigo" shape="pill" size="lg">
   Featured
 </Badge>`}
         >

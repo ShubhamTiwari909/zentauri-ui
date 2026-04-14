@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Select,
@@ -18,11 +19,12 @@ export function SelectExamplesSection() {
       </p>
       <div className="mt-6 max-w-md space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Select defaultValue="a">
-  <SelectTrigger appearance="ghost">
+          code={`${variantLeadComment(`SelectTrigger · ghost sm, SelectContent · glass, animation · fade`)}
+<Select defaultValue="a">
+  <SelectTrigger appearance="ghost" size="sm">
     <SelectValue placeholder="Choose" />
   </SelectTrigger>
-  <SelectContent appearance="glass">
+  <SelectContent appearance="glass" animation="fade">
     <SelectItem value="a">Option A</SelectItem>
     <SelectItem value="b">Option B</SelectItem>
   </SelectContent>

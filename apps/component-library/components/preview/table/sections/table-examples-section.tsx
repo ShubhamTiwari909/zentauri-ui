@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Table,
@@ -19,7 +20,8 @@ export function TableExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Table appearance="bordered" stickyHeader>
+          code={`${variantLeadComment(`appearance · bordered, stickyHeader · true, size · sm (preview)`)}
+<Table appearance="bordered" stickyHeader>
   <TableHeader>...</TableHeader>
   <TableBody>...</TableBody>
 </Table>`}

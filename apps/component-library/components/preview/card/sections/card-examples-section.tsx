@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Card,
@@ -18,7 +19,8 @@ export function CardExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Card appearance="outline" animation="tilt" rounded="md">
+          code={`${variantLeadComment(`appearance · outline, animation · tilt, rounded · md`)}
+<Card appearance="outline" animation="tilt" rounded="md">
   <CardHeader>
     <CardTitle>Note</CardTitle>
     <CardDescription>Autosaved</CardDescription>

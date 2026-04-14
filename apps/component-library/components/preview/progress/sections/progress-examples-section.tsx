@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Progress } from "@/components/ui/progress";
 
@@ -12,7 +13,7 @@ export function ProgressExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Progress value={65} appearance="emerald" striped animated />`}
+          code={`${variantLeadComment(`appearance · emerald, striped · true, animated · true, value · 65`)}<Progress value={65} appearance="emerald" striped animated />`}
         >
           <Progress value={65} appearance="emerald" striped animated />
         </PreviewCodeShowcase>

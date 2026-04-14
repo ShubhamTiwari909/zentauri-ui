@@ -37,20 +37,16 @@ export function Divider(props: DividerProps) {
         aria-orientation={orientation === "vertical" ? "vertical" : "horizontal"}
         className={cn(
           dividerToneVariants({ appearance }),
-          orientation === "horizontal" ? "w-full" : "h-full min-h-8",
+          orientation === "horizontal"
+            ? "flex w-full min-h-px flex-row items-stretch"
+            : "flex h-full min-h-8 w-auto min-w-0 flex-col items-stretch self-stretch",
           className,
         )}
         initial={animation === "none" ? false : undefined}
         {...motionProps}
         {...rest}
       >
-        <span
-          className={cn(
-            "block w-full rounded-full bg-current opacity-80",
-            dividerLineVariants({ orientation, size }),
-          )}
-          aria-hidden
-        />
+        <span className={cn(dividerLineVariants({ orientation, size }))} aria-hidden />
       </motion.div>
     );
   }

@@ -1,4 +1,5 @@
 "use client";
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import { Input } from "@/components/ui/inputs";
 import InputCodeShowcase from "@/components/code-showcase/InputCodeShowcase";
 import {
@@ -18,14 +19,14 @@ export function InputsCodeExamplesSection() {
         </h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
           Use Show output / Show code on each row to compare the live control with
-          the JSX, same pattern as the button preview.
+          the JSX. Each snippet opens with a Variant line naming the axis and token.
         </p>
         <div className="mt-6 space-y-10 rounded-xl">
           {appearanceInputsExtended.map((row) => {
             const code =
               row.appearance === "default"
-                ? `<Input placeholder="${row.label} field" aria-label="${row.label}" className="w-full" />`
-                : `<Input appearance="${row.appearance}" placeholder="${row.label} field" aria-label="${row.label}" className="w-full" />`;
+                ? `${variantLeadComment(`appearance · default (implicit)`)}<Input placeholder="${row.label} field" aria-label="${row.label}" className="w-full" />`
+                : `${variantLeadComment(`appearance · ${row.appearance}`)}<Input appearance="${row.appearance}" placeholder="${row.label} field" aria-label="${row.label}" className="w-full" />`;
             return (
               <InputCodeShowcase
                 key={row.label}
@@ -39,7 +40,7 @@ export function InputsCodeExamplesSection() {
             );
           })}
           {animationPresets.map(([label, animation]) => {
-            const code = `<Input animation="${animation}" placeholder="${label} motion" aria-label="${label} motion" className="w-full" />`;
+            const code = `${variantLeadComment(`animation · ${animation}`)}<Input animation="${animation}" placeholder="${label} motion" aria-label="${label} motion" className="w-full" />`;
             return (
               <InputCodeShowcase
                 key={`anim-${label}`}
@@ -52,7 +53,7 @@ export function InputsCodeExamplesSection() {
             );
           })}
           {sizeInputs.map((row) => {
-            const code = `<Input size="${row.size}" placeholder="${row.label}" aria-label="${row.label} size" className="w-full" />`;
+            const code = `${variantLeadComment(`size · ${row.size}`)}<Input size="${row.size}" placeholder="${row.label}" aria-label="${row.label} size" className="w-full" />`;
             return (
               <InputCodeShowcase
                 key={`size-${row.label}`}
@@ -67,7 +68,7 @@ export function InputsCodeExamplesSection() {
           })}
           <InputCodeShowcase
             key="textarea-showcase"
-            code={`<Input as="textarea" rows={4} placeholder="Describe the change" aria-label="Multiline (textarea)" animation="glow" className="w-full" />`}
+            code={`${variantLeadComment(`as · textarea, animation · glow`)}<Input as="textarea" rows={4} placeholder="Describe the change" aria-label="Multiline (textarea)" animation="glow" className="w-full" />`}
             label="Multiline (textarea)"
             as="textarea"
             rows={4}
@@ -77,7 +78,7 @@ export function InputsCodeExamplesSection() {
           />
           <InputCodeShowcase
             key="password-type"
-            code={`<Input type="password" animation="glow" placeholder="••••••••" aria-label="Password" className="w-full" />`}
+            code={`${variantLeadComment(`type · password, animation · glow`)}<Input type="password" animation="glow" placeholder="••••••••" aria-label="Password" className="w-full" />`}
             label="Password"
             type="password"
             animation="glow"
@@ -86,7 +87,7 @@ export function InputsCodeExamplesSection() {
           />
           <InputCodeShowcase
             key="disabled-showcase"
-            code={`<Input disabled defaultValue="Cannot edit" aria-label="Disabled" className="w-full" />`}
+            code={`${variantLeadComment(`state · disabled`)}<Input disabled defaultValue="Cannot edit" aria-label="Disabled" className="w-full" />`}
             label="Disabled"
             disabled
             defaultValue="Cannot edit"
@@ -95,7 +96,7 @@ export function InputsCodeExamplesSection() {
           />
           <InputCodeShowcase
             key="readonly-showcase"
-            code={`<Input readOnly defaultValue="Read only" aria-label="Read only" className="w-full" />`}
+            code={`${variantLeadComment(`state · readOnly`)}<Input readOnly defaultValue="Read only" aria-label="Read only" className="w-full" />`}
             label="Read only"
             readOnly
             defaultValue="Read only"
@@ -104,7 +105,8 @@ export function InputsCodeExamplesSection() {
           />
           <InputCodeShowcase
             key="controlled-showcase"
-            code={`const [value, setValue] = useState("");
+            code={`${variantLeadComment(`pattern · controlled value`)}
+const [value, setValue] = useState("");
 
 <Input
   value={value}
@@ -128,7 +130,7 @@ export function InputsCodeExamplesSection() {
           />
           <InputCodeShowcase
             key="error-message-showcase"
-            code={`<Input errorMessage="This is an error message" placeholder="Error message" aria-label="Error message" className="w-full" />`}
+            code={`${variantLeadComment(`appearance · error, errorMessage slot`)}<Input errorMessage="This is an error message" placeholder="Error message" aria-label="Error message" className="w-full" />`}
             label="Error message"
             appearance="error"
             errorMessage="This is an error message"
@@ -138,7 +140,7 @@ export function InputsCodeExamplesSection() {
           />
           <InputCodeShowcase
             key="no-ring-showcase"
-            code={`<Input ring={false} placeholder="No outline ring" aria-label="No outline ring" className="w-full" />`}
+            code={`${variantLeadComment(`ring · false`)}<Input ring={false} placeholder="No outline ring" aria-label="No outline ring" className="w-full" />`}
             label="No outline ring"
             placeholder="No outline ring"
             animation="none"
@@ -148,7 +150,7 @@ export function InputsCodeExamplesSection() {
           />
           <InputCodeShowcase
             key="file-showcase"
-            code={`<Input as="file" type="file" appearance="violet" size="md" aria-label="Upload file" className="w-full" />`}
+            code={`${variantLeadComment(`as · file, appearance · violet`)}<Input as="file" type="file" appearance="violet" size="md" aria-label="Upload file" className="w-full" />`}
             label="File upload"
             as="file"
             type="file"
@@ -160,7 +162,8 @@ export function InputsCodeExamplesSection() {
           <div>
             <InputCodeShowcase
               key="checkbox-showcase"
-              code={`<label>
+              code={`${variantLeadComment(`as · checkbox, appearance · info, size · lg`)}
+<label>
   Accept Terms
   <Input
     as="checkbox"
@@ -195,7 +198,8 @@ export function InputsCodeExamplesSection() {
           </div>
           <InputCodeShowcase
             key="radio-showcase"
-            code={`<Input
+            code={`${variantLeadComment(`as · radio, appearance · info`)}
+<Input
   as="radio"
   type="radio"
   name="plan"
@@ -224,7 +228,8 @@ export function InputsCodeExamplesSection() {
           />
           <InputCodeShowcase
             key="radio-group-showcase"
-            code={`<div className="flex flex-col gap-2">
+            code={`${variantLeadComment(`pattern · radio group, appearance · violet`)}
+<div className="flex flex-col gap-2">
   <label className="flex items-center gap-2 text-sm">
     <Input as="radio" type="radio" name="tier" value="starter" appearance="violet" size="md" aria-label="Starter" className="w-auto shrink-0" />
     Starter
@@ -271,7 +276,8 @@ export function InputsCodeExamplesSection() {
           />
           <InputCodeShowcase
             key="date-showcase"
-            code={`<Input as="input" type="date" appearance="violet" size="md" aria-label="Pick a date" className="w-auto shrink-0" />`}
+            code={`${variantLeadComment(`type · date, appearance · violet`)}
+<Input as="input" type="date" appearance="violet" size="md" aria-label="Pick a date" className="w-auto shrink-0" />`}
             label="Date picker"
             as="input"
             type="date"

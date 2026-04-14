@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Tabs,
@@ -17,7 +18,8 @@ export function TabsExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Tabs defaultValue="general" appearance="underline">
+          code={`${variantLeadComment(`Tabs · appearance · underline, animation · fade, size · sm (preview)`)}
+<Tabs defaultValue="general" appearance="underline">
   <TabsList>
     <TabsTrigger value="general">General</TabsTrigger>
     <TabsTrigger value="billing">Billing</TabsTrigger>

@@ -1,5 +1,6 @@
 "use client";
 
+import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -12,7 +13,8 @@ export function AvatarExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`<Avatar size="xl" shape="squircle" status="busy">
+          code={`${variantLeadComment(`size · xl, shape · squircle, status · busy`)}
+<Avatar size="xl" shape="squircle" status="busy">
   <AvatarImage src="/photo.jpg" alt="Alex" />
   <AvatarFallback>AL</AvatarFallback>
 </Avatar>`}
