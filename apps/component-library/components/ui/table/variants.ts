@@ -54,6 +54,11 @@ export const tableCellVariants = cva("p-3 align-middle", {
       md: "p-3",
       lg: "p-4",
     },
+    textAlign: {
+      left: "text-left",
+      center: "text-center",
+      right: "text-right",
+    },
   },
   defaultVariants: { size: "md" },
 });

@@ -9,33 +9,68 @@ import {
   DropdownTrigger,
 } from "@/components/ui/dropdown";
 
+const MENU_SURFACE_CLASS =
+  "border border-white/10 bg-slate-900 text-slate-100 shadow-lg";
+
 export function DropdownExamplesSection() {
   return (
     <section className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
       <h2 className="mt-3 text-2xl font-semibold text-white">Examples</h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Outline appearance with fade animation.
+        Single-select closes the menu after a choice. Multi-select keeps the
+        menu open and toggles checkmarks per item value.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`${variantLeadComment(`DropdownContent · appearance · default, size · sm, animation · fade`)}
+          code={`${variantLeadComment("Single-select · outline trigger · default items")}
 <Dropdown>
-  <DropdownTrigger className="rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200">
+  <DropdownTrigger variant="outline" size="md">
     Actions
   </DropdownTrigger>
-  <DropdownContent appearance="default" size="sm" animation="fade">
-    <DropdownItem>Edit</DropdownItem>
-    <DropdownItem>Duplicate</DropdownItem>
+  <DropdownContent className="${MENU_SURFACE_CLASS}">
+    <DropdownItem value="edit">Edit</DropdownItem>
+    <DropdownItem value="duplicate">Duplicate</DropdownItem>
+    <DropdownItem value="archive" variant="outline">
+      Archive
+    </DropdownItem>
   </DropdownContent>
 </Dropdown>`}
         >
           <Dropdown>
-            <DropdownTrigger className="rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200">
+            <DropdownTrigger variant="outline" size="md">
               Actions
             </DropdownTrigger>
-            <DropdownContent appearance="default" animation="fade" size="sm">
-              <DropdownItem>Edit</DropdownItem>
-              <DropdownItem>Duplicate</DropdownItem>
+            <DropdownContent className={MENU_SURFACE_CLASS}>
+              <DropdownItem value="edit">Edit</DropdownItem>
+              <DropdownItem value="duplicate">Duplicate</DropdownItem>
+              <DropdownItem value="archive" variant="outline">
+                Archive
+              </DropdownItem>
+            </DropdownContent>
+          </Dropdown>
+        </PreviewCodeShowcase>
+
+        <PreviewCodeShowcase
+          code={`${variantLeadComment("Multi-select · ghost trigger")}
+<Dropdown multiSelect>
+  <DropdownTrigger variant="ghost" size="sm">
+    Labels
+  </DropdownTrigger>
+  <DropdownContent className="${MENU_SURFACE_CLASS}">
+    <DropdownItem value="bug">Bug</DropdownItem>
+    <DropdownItem value="feature">Feature</DropdownItem>
+    <DropdownItem value="docs">Docs</DropdownItem>
+  </DropdownContent>
+</Dropdown>`}
+        >
+          <Dropdown multiSelect>
+            <DropdownTrigger variant="ghost" size="sm">
+              Labels
+            </DropdownTrigger>
+            <DropdownContent className={MENU_SURFACE_CLASS}>
+              <DropdownItem value="bug">Bug</DropdownItem>
+              <DropdownItem value="feature">Feature</DropdownItem>
+              <DropdownItem value="docs">Docs</DropdownItem>
             </DropdownContent>
           </Dropdown>
         </PreviewCodeShowcase>

@@ -18,6 +18,8 @@ export type TableProps = TableVariantProps &
     children?: ReactNode;
     rowAnimation?: TableAnimation;
     ref?: Ref<HTMLTableElement>;
+    overflow?: "auto" | "hidden";
+    textAlign?: "left" | "center" | "right";
   };
 
 export type TableSectionProps = {
@@ -32,4 +34,5 @@ export type TableHeadCellProps = ThHTMLAttributes<HTMLTableCellElement> & {
 
 export type TableCellProps = TdHTMLAttributes<HTMLTableCellElement> & {
   ref?: Ref<HTMLTableCellElement>;
+  textAlign?: "left" | "center" | "right";
 };

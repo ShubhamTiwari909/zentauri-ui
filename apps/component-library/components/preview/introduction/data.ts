@@ -34,14 +34,6 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Feedback",
   },
   {
-    id: "avatar",
-    name: "Avatar",
-    description:
-      "User imagery with fallbacks, status indicators, and grouped stacks for team surfaces.",
-    href: "/preview/avatar",
-    badge: "Media",
-  },
-  {
     id: "badge",
     name: "Badge",
     description:
@@ -95,14 +87,6 @@ export const componentsData: ComponentHighlight[] = [
     description:
       "Dialog overlays with configurable size, position, and entrance motion.",
     href: "/preview/modal",
-    badge: "Overlay",
-  },
-  {
-    id: "popover",
-    name: "Popover",
-    description:
-      "Anchored floating content with placements, arrows, and lightweight motion.",
-    href: "/preview/popover",
     badge: "Overlay",
   },
   {

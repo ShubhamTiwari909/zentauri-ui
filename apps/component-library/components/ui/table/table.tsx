@@ -19,6 +19,7 @@ type TableCtx = {
   size: NonNullable<TableProps["size"]>;
   stickyHeader: boolean;
   rowAnimation: NonNullable<TableProps["rowAnimation"]>;
+  textAlign: NonNullable<TableCellProps["textAlign"]>;
 };
 
 const TableContext = createContext<TableCtx | null>(null);
@@ -36,10 +37,12 @@ export function Table(props: TableProps) {
     className,
     appearance = "default",
     size = "md",
+    textAlign = "left",
     stickyHeader = false,
     rowAnimation = "none",
     children,
     ref,
+    overflow = "auto",
     ...rest
   } = props;
   const ctx = useMemo(
@@ -48,18 +51,26 @@ export function Table(props: TableProps) {
       size: size ?? "md",
       stickyHeader: Boolean(stickyHeader),
       rowAnimation,
+      textAlign,
     }),
-    [appearance, rowAnimation, size, stickyHeader],
+    [appearance, rowAnimation, size, stickyHeader, textAlign],
   );
+  const overflowClass =
+    overflow === "auto"
+      ? cn(
+          "min-w-0 max-lg:overflow-x-auto max-lg:overscroll-x-contain lg:overflow-x-visible",
+          "max-lg:[&_[data-slot=table]]:w-full max-lg:[&_[data-slot=table]]:min-w-max",
+        )
+      : "overflow-hidden";
 
   return (
     <TableContext.Provider value={ctx}>
-      <div data-slot="table-scroll" className="relative w-full overflow-auto">
+      <div data-slot="table-scroll" className={cn("relative w-full")}>
         <table
           ref={ref}
           data-slot="table"
           role="table"
-          className={cn(tableVariants({ appearance, size, stickyHeader }), className)}
+          className={cn(tableVariants({ appearance, size, stickyHeader }), overflowClass, className)}
           {...rest}
         >
           {children}
@@ -125,14 +136,14 @@ export function TableRow({ className, children, ref, ...rest }: TableSectionProp
 TableRow.displayName = "TableRow";
 
 export function TableHead({ className, children, scope = "col", sortDirection, ref, ...rest }: TableHeadCellProps) {
-  const { size } = useTableContext("TableHead");
+  const { size, textAlign } = useTableContext("TableHead");
   return (
     <th
       ref={ref}
       data-slot="table-head"
       scope={scope}
       aria-sort={sortDirection}
-      className={cn(tableCellVariants({ size }), className)}
+      className={cn(tableCellVariants({ size, textAlign }), className)}
       {...rest}
     >
       {children}
@@ -143,12 +154,12 @@ export function TableHead({ className, children, scope = "col", sortDirection, r
 TableHead.displayName = "TableHead";
 
 export function TableCell({ className, children, ref, ...rest }: TableCellProps) {
-  const { size } = useTableContext("TableCell");
+  const { size, textAlign } = useTableContext("TableCell");
   return (
     <td
       ref={ref}
       data-slot="table-cell"
-      className={cn(tableCellVariants({ size }), className)}
+      className={cn(tableCellVariants({ size, textAlign }), className)}
       {...rest}
     >
       {children}

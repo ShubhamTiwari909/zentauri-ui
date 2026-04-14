@@ -1,29 +1,47 @@
-import { cva } from "class-variance-authority";
+import { cva } from "class-variance-authority"
 
-export const tooltipContentVariants = cva(
-  "z-50 max-w-xs rounded-lg border border-white/10 px-2 py-1 text-xs shadow-lg",
+export const tooltipVariants = cva(
+  "absolute z-50 rounded-md shadow-md transition-all duration-200 pointer-events-none",
   {
     variants: {
-      size: {
-        sm: "px-2 py-1 text-[0.65rem]",
-        md: "px-2.5 py-1.5 text-xs",
-        lg: "px-3 py-2 text-sm",
+      variant: {
+        default: "bg-black text-white",
+        outline: "border bg-white text-black",
+        ghost: "bg-gray-800 text-white/90",
       },
-      appearance: {
-        default: "bg-slate-900 text-slate-50",
-        dark: "bg-slate-950 text-slate-50",
-        glass: "border-white/15 bg-slate-950/70 text-slate-50 backdrop-blur-xl",
-        primary: "border-cyan-500/30 bg-cyan-950/80 text-cyan-50",
-        destructive: "border-rose-500/30 bg-rose-950/80 text-rose-50",
+      size: {
+        sm: "text-xs px-2 py-1",
+        md: "text-sm px-3 py-1.5",
+        lg: "text-base px-4 py-2",
+      },
+      width:{
+        fit: "w-full min-w-fit",
+        xs: "w-full min-w-xs",
+        sm: "w-full min-w-sm",
+        md: "w-full min-w-md",
+        lg: "w-full min-w-lg",
+        xl: "w-full min-w-xl",
+        "2xl": "w-full min-w-2xl",
+      },
+      intent: {
+        default: "",
+        success: "bg-green-600 text-white",
+        warning: "bg-yellow-500 text-black",
+        danger: "bg-red-600 text-white",
+      },
+      animation: {
+        fade: "opacity-0 data-[open=true]:opacity-100",
+        scale:
+          "scale-95 opacity-0 data-[open=true]:scale-100 data-[open=true]:opacity-100",
+        none: "",
       },
     },
     defaultVariants: {
+      variant: "default",
       size: "md",
-      appearance: "default",
+      intent: "default",
+      animation: "fade",
+      width: "xs",
     },
-  },
-);
-
-export const tooltipArrowVariants = cva(
-  "absolute size-2 rotate-45 border border-white/10 bg-inherit",
-);
+  }
+)

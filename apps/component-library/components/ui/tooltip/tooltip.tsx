@@ -1,307 +1,147 @@
-"use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+"use client"
 import {
-  createContext,
   useCallback,
-  useContext,
   useEffect,
-  useId,
-  useLayoutEffect,
-  useMemo,
   useRef,
   useState,
-} from "react";
-import { createPortal } from "react-dom";
+} from "react"
+import type { TooltipProps, TooltipContextType, TooltipTriggerProps, TooltipContentProps } from "./types"
 
-import { cn } from "@/lib/utils";
+import { createContext, useContext } from "react"
+import { cn } from "@/lib/utils"
+import { tooltipVariants } from "./variants"
 
-import { tooltipAnimationPresets } from "./animations";
-import type {
-  TooltipArrowProps,
-  TooltipContentProps,
-  TooltipProps,
-  TooltipTriggerProps,
-} from "./types";
-import type { TooltipPlacement } from "./types";
-import { tooltipArrowVariants, tooltipContentVariants } from "./variants";
+export const TooltipContext = createContext<TooltipContextType | null>(null)
 
-type TooltipCtx = {
-  open: boolean;
-  setOpen: (next: boolean) => void;
-  triggerRef: React.RefObject<HTMLSpanElement | null>;
-  triggerId: string;
-  contentId: string;
-  delayMs: number;
-};
-
-const TooltipContext = createContext<TooltipCtx | null>(null);
-
-function useTooltipContext(component: string): TooltipCtx {
-  const ctx = useContext(TooltipContext);
-  if (!ctx) {
-    throw new Error(`${component} must be used within <Tooltip>`);
+export const useTooltip = () => {
+  const context = useContext(TooltipContext)
+  if (!context) {
+    throw new Error("Tooltip components must be used within Tooltip")
   }
-  return ctx;
+  return context
 }
+export const Tooltip = ({
+  children,
+  defaultOpen = false,
+  open: controlledOpen,
+  onOpenChange,
+  position = "top",
+  delay = 100,
+}: TooltipProps) => {
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen)
 
-function computeTooltipPosition(
-  trigger: DOMRect,
-  contentWidth: number,
-  contentHeight: number,
-  placement: TooltipPlacement,
-) {
-  const gap = 8;
-  const centerX = trigger.left + trigger.width / 2 - contentWidth / 2;
-  const centerY = trigger.top + trigger.height / 2 - contentHeight / 2;
-
-  switch (placement) {
-    case "top":
-      return {
-        top: trigger.top - contentHeight - gap + window.scrollY,
-        left: centerX + window.scrollX,
-      };
-    case "left":
-      return {
-        top: centerY + window.scrollY,
-        left: trigger.left - contentWidth - gap + window.scrollX,
-      };
-    case "right":
-      return {
-        top: centerY + window.scrollY,
-        left: trigger.right + gap + window.scrollX,
-      };
-    case "bottom":
-    default:
-      return {
-        top: trigger.bottom + gap + window.scrollY,
-        left: centerX + window.scrollX,
-      };
-  }
-}
-
-export function Tooltip({ open, defaultOpen = false, onOpenChange, delayMs = 200, children }: TooltipProps) {
-  const isControlled = open !== undefined;
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
-  const resolvedOpen = isControlled ? Boolean(open) : uncontrolledOpen;
-  const triggerRef = useRef<HTMLSpanElement | null>(null);
-  const baseId = useId();
-  const triggerId = `${baseId}-trigger`;
-  const contentId = `${baseId}-content`;
+  const isControlled = controlledOpen !== undefined
+  const open = isControlled ? controlledOpen : uncontrolledOpen
 
   const setOpen = useCallback(
-    (next: boolean) => {
-      if (!isControlled) {
-        setUncontrolledOpen(next);
-      }
-      onOpenChange?.(next);
+    (value: boolean) => {
+      if (!isControlled) setUncontrolledOpen(value)
+      onOpenChange?.(value)
     },
-    [isControlled, onOpenChange],
-  );
+    [isControlled, onOpenChange]
+  )
 
-  const ctx = useMemo(
-    () => ({
-      open: resolvedOpen,
-      setOpen,
-      triggerRef,
-      triggerId,
-      contentId,
-      delayMs,
-    }),
-    [contentId, delayMs, resolvedOpen, setOpen, triggerId],
-  );
+  const showTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  return <TooltipContext.Provider value={ctx}>{children}</TooltipContext.Provider>;
-}
-
-Tooltip.displayName = "Tooltip";
-
-export function TooltipTrigger({ className, children, ref, ...rest }: TooltipTriggerProps) {
-  const { open, setOpen, triggerRef, triggerId, contentId, delayMs } = useTooltipContext("TooltipTrigger");
-  const showTimer = useRef<number | null>(null);
-  const hideTimer = useRef<number | null>(null);
-
-  const clearTimers = () => {
-    if (showTimer.current) {
-      window.clearTimeout(showTimer.current);
-      showTimer.current = null;
+  const cancelDelayedOpen = useCallback(() => {
+    if (showTimeoutRef.current !== null) {
+      clearTimeout(showTimeoutRef.current)
+      showTimeoutRef.current = null
     }
-    if (hideTimer.current) {
-      window.clearTimeout(hideTimer.current);
-      hideTimer.current = null;
-    }
-  };
+  }, [])
 
-  const scheduleShow = () => {
-    clearTimers();
-    showTimer.current = window.setTimeout(() => setOpen(true), delayMs);
-  };
+  const scheduleDelayedOpen = useCallback(() => {
+    cancelDelayedOpen()
+    showTimeoutRef.current = setTimeout(() => {
+      showTimeoutRef.current = null
+      setOpen(true)
+    }, delay)
+  }, [cancelDelayedOpen, delay, setOpen])
 
-  const scheduleHide = () => {
-    clearTimers();
-    hideTimer.current = window.setTimeout(() => setOpen(false), delayMs);
-  };
-
-  useEffect(() => () => clearTimers(), []);
+  useEffect(() => () => cancelDelayedOpen(), [cancelDelayedOpen])
 
   return (
-    <span
-      ref={(node) => {
-        triggerRef.current = node;
-        if (typeof ref === "function") {
-          ref(node);
-        } else if (ref) {
-          (ref as React.MutableRefObject<HTMLSpanElement | null>).current = node;
-        }
+    <TooltipContext.Provider
+      value={{
+        open,
+        setOpen,
+        position,
+        delay,
+        scheduleDelayedOpen,
+        cancelDelayedOpen,
       }}
-      id={triggerId}
-      data-slot="tooltip-trigger"
-      className={cn("inline-flex", className)}
-      aria-describedby={open ? contentId : undefined}
-      onMouseEnter={() => {
-        scheduleShow();
-      }}
-      onMouseLeave={() => {
-        scheduleHide();
-      }}
-      onFocus={() => {
-        scheduleShow();
-      }}
-      onBlur={() => {
-        scheduleHide();
-      }}
-      {...rest}
     >
-      {children}
-    </span>
-  );
+      <div className="relative inline-block">{children}</div>
+    </TooltipContext.Provider>
+  )
 }
 
-TooltipTrigger.displayName = "TooltipTrigger";
 
-export function TooltipContent({
-  className,
-  size,
-  appearance,
-  placement = "top",
-  animation = "fade",
+export const TooltipTrigger = ({
   children,
-  ref,
-  style,
-}: TooltipContentProps) {
-  const { open, setOpen, triggerRef, contentId } = useTooltipContext("TooltipContent");
-  const contentRef = useRef<HTMLDivElement | null>(null);
-  const [coords, setCoords] = useState({ top: 0, left: 0 });
-  const motionProps = tooltipAnimationPresets[animation];
+  className,
+}: TooltipTriggerProps) => {
+  const { setOpen, scheduleDelayedOpen, cancelDelayedOpen } = useTooltip()
 
-  const updatePosition = useCallback(() => {
-    const trigger = triggerRef.current?.getBoundingClientRect();
-    const content = contentRef.current?.getBoundingClientRect();
-    if (!trigger || !content || content.width < 1 || content.height < 1) {
-      return;
-    }
-    setCoords(computeTooltipPosition(trigger, content.width, content.height, placement));
-  }, [placement, triggerRef]);
-
-  useLayoutEffect(() => {
-    if (!open) {
-      return;
-    }
-    let rafId = 0;
-    let rafId2 = 0;
-    rafId = requestAnimationFrame(() => {
-      rafId2 = requestAnimationFrame(() => {
-        updatePosition();
-      });
-    });
-    return () => {
-      cancelAnimationFrame(rafId);
-      cancelAnimationFrame(rafId2);
-    };
-  }, [open, updatePosition]);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-    let cancelled = false;
-    let observer: ResizeObserver | null = null;
-    let innerRaf = 0;
-    const outerRaf = requestAnimationFrame(() => {
-      innerRaf = requestAnimationFrame(() => {
-        if (cancelled) {
-          return;
-        }
-        const node = contentRef.current;
-        if (!node) {
-          return;
-        }
-        observer = new ResizeObserver(() => {
-          updatePosition();
-        });
-        observer.observe(node);
-      });
-    });
-    return () => {
-      cancelled = true;
-      cancelAnimationFrame(outerRaf);
-      cancelAnimationFrame(innerRaf);
-      observer?.disconnect();
-    };
-  }, [open, updatePosition]);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpen(false);
+  const triggerProps = {
+    onMouseEnter: () => scheduleDelayedOpen(),
+    onMouseLeave: () => {
+      cancelDelayedOpen()
+      setOpen(false)
+    },
+    onFocus: () => {
+      cancelDelayedOpen()
+      setOpen(true)
+    },
+    onBlur: () => {
+      cancelDelayedOpen()
+      setOpen(false)
+    },
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key === "Escape") {
+        cancelDelayedOpen()
+        setOpen(false)
       }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [open, setOpen]);
-
-  const portalTarget = typeof document !== "undefined" ? document.body : null;
-  if (!portalTarget) {
-    return null;
+    },
+    className,
+    tabIndex: 0,
   }
 
-  return createPortal(
-    <AnimatePresence>
-      {open ? (
-        <motion.div
-          ref={(node) => {
-            contentRef.current = node;
-            if (typeof ref === "function") {
-              ref(node);
-            } else if (ref) {
-              (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
-            }
-          }}
-          id={contentId}
-          role="tooltip"
-          data-slot="tooltip-content"
-          className={cn("fixed", tooltipContentVariants({ size, appearance }), className)}
-          style={{ top: coords.top, left: coords.left, ...style }}
-          initial={animation === "none" ? false : motionProps.initial}
-          animate={animation === "none" ? undefined : motionProps.animate}
-          exit={animation === "none" ? undefined : motionProps.exit}
-          transition={motionProps.transition}
-        >
-          {children}
-        </motion.div>
-      ) : null}
-    </AnimatePresence>,
-    portalTarget,
-  );
+  return <span {...triggerProps}>{children}</span>
 }
 
-TooltipContent.displayName = "TooltipContent";
+export const TooltipContent = ({
+  children,
+  className,
+  variant,
+  size,
+  width,
+  intent,
+  animation,
+}: TooltipContentProps) => {
+  const { open, position } = useTooltip()
 
-export function TooltipArrow({ className }: TooltipArrowProps) {
-  return <span data-slot="tooltip-arrow" className={cn(tooltipArrowVariants(), className)} />;
+  if (!open) return null
+
+  const positionStyles = {
+    top: "bottom-full left-1/2 -translate-x-1/2 mb-2",
+    bottom: "top-full left-1/2 -translate-x-1/2 mt-2",
+    left: "right-full top-1/2 -translate-y-1/2 mr-2",
+    right: "left-full top-1/2 -translate-y-1/2 ml-2",
+  }
+
+  return (
+    <div
+      data-open={open}
+      role="tooltip"
+      className={cn(
+        tooltipVariants({ variant, size, width, intent, animation }),
+        positionStyles[position],
+        className
+      )}
+    >
+      {children}
+    </div>
+  )
 }
-
-TooltipArrow.displayName = "TooltipArrow";

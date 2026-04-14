@@ -4,10 +4,11 @@ import {
   Dropdown,
   DropdownContent,
   DropdownItem,
-  DropdownLabel,
-  DropdownSeparator,
   DropdownTrigger,
 } from "@/components/ui/dropdown";
+
+const MENU_SURFACE_CLASS =
+  "border border-white/10 bg-slate-900 text-slate-100 shadow-lg";
 
 export function DropdownHeroSection() {
   return (
@@ -18,26 +19,27 @@ export function DropdownHeroSection() {
         </span>
         <div className="space-y-4">
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Dropdown menus with keyboard support.
+            Dropdown menus with selection state.
           </h1>
           <p className="max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-            Portal-positioned menus, typeahead-friendly items, and motion presets
-            that mirror other floating surfaces.
+            Compound parts for trigger, surface, and items. Supports single or
+            multi-select, placement options, and CVA-driven trigger and item
+            styles.
           </p>
         </div>
       </div>
 
       <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
         <Dropdown>
-          <DropdownTrigger className="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/15">
+          <DropdownTrigger variant="outline" size="md">
             Open menu
           </DropdownTrigger>
-          <DropdownContent appearance="glass" animation="scale" size="md">
-            <DropdownLabel>Account</DropdownLabel>
-            <DropdownItem>Profile</DropdownItem>
-            <DropdownItem>Settings</DropdownItem>
-            <DropdownSeparator />
-            <DropdownItem>Sign out</DropdownItem>
+          <DropdownContent className={MENU_SURFACE_CLASS}>
+            <DropdownItem value="profile">Profile</DropdownItem>
+            <DropdownItem value="settings">Settings</DropdownItem>
+            <DropdownItem value="sign-out" variant="destructive">
+              Sign out
+            </DropdownItem>
           </DropdownContent>
         </Dropdown>
       </div>

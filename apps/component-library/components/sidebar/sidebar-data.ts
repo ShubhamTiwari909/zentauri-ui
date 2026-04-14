@@ -30,10 +30,6 @@ export const sidebarRouteData: SidebarNavGroup[] = [
         href: "/preview/alert",
       },
       {
-        title: "Avatar",
-        href: "/preview/avatar",
-      },
-      {
         title: "Badge",
         href: "/preview/badge",
       },
@@ -60,10 +56,6 @@ export const sidebarRouteData: SidebarNavGroup[] = [
       {
         title: "Modal",
         href: "/preview/modal",
-      },
-      {
-        title: "Popover",
-        href: "/preview/popover",
       },
       {
         title: "Progress",

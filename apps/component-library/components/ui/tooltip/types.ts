@@ -1,36 +1,36 @@
-import type { VariantProps } from "class-variance-authority";
-import type { CSSProperties, HTMLAttributes, ReactNode, Ref } from "react";
+import { ReactNode } from "react"
 
-import type { TooltipAnimation } from "./animations";
-import type { tooltipContentVariants } from "./variants";
+export type TooltipPosition = "top" | "bottom" | "left" | "right"
 
-export type { TooltipAnimation };
-
-export type TooltipPlacement = "top" | "bottom" | "left" | "right";
-
-type TooltipContentVariantProps = VariantProps<typeof tooltipContentVariants>;
+export type TooltipContextType = {
+  open: boolean
+  setOpen: (value: boolean) => void
+  position: TooltipPosition
+  delay: number
+  scheduleDelayedOpen: () => void
+  cancelDelayedOpen: () => void
+}
 
 export type TooltipProps = {
-  open?: boolean;
-  defaultOpen?: boolean;
-  onOpenChange?: (open: boolean) => void;
-  delayMs?: number;
-  children?: ReactNode;
-};
+  children: ReactNode
+  defaultOpen?: boolean
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
+  position?: TooltipPosition
+  delay?: number
+}
 
-export type TooltipTriggerProps = HTMLAttributes<HTMLSpanElement> & {
-  ref?: Ref<HTMLSpanElement>;
-};
+export type TooltipTriggerProps = {
+  children: ReactNode
+  className?: string
+}
 
-export type TooltipContentProps = TooltipContentVariantProps & {
-  placement?: TooltipPlacement;
-  animation?: TooltipAnimation;
-  className?: string;
-  children?: ReactNode;
-  ref?: Ref<HTMLDivElement>;
-  style?: CSSProperties;
-};
-
-export type TooltipArrowProps = {
-  className?: string;
-};
+export type TooltipContentProps = {
+  children: ReactNode
+  className?: string
+  variant?: "default" | "outline" | "ghost"
+  size?: "sm" | "md" | "lg"
+  width?: "fit" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl"
+  intent?: "default" | "success" | "warning" | "danger"
+  animation?: "fade" | "scale" | "none"
+}
