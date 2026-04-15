@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SiteFooter } from "@/components/common/site-footer";
 
 export const metadata: Metadata = {
   title: "Zentauri UI",
@@ -13,8 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-slate-950 text-slate-50">
-        {children}
+      <body className="flex min-h-dvh flex-col bg-slate-950 text-slate-50">
+        <div className="flex min-h-0 flex-1 flex-col">{children}</div>
+        <SiteFooter />
       </body>
     </html>
   );
