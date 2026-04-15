@@ -2,7 +2,7 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Divider } from "@/components/ui/divider";
+import { Divider } from "@repo/components/ui";
 
 export function DividerExamplesSection() {
   return (

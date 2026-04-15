@@ -8,7 +8,7 @@ import {
   EmptyStateDescription,
   EmptyStateIcon,
   EmptyStateTitle,
-} from "@/components/ui/empty-state";
+} from "@repo/components/ui";
 
 export function EmptyStateExamplesSection() {
   return (

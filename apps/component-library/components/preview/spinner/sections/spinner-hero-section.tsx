@@ -1,4 +1,4 @@
-import { Spinner } from "@/components/ui/spinner";
+import { Spinner } from "@repo/components/ui";
 
 export function SpinnerHeroSection() {
   return (

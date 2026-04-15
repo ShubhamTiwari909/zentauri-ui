@@ -2,8 +2,8 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Button } from "@/components/ui/buttons";
-import { useToast } from "@/components/ui/toast";
+import { Button } from "@repo/components/ui";
+import { useToast } from "@repo/components/ui";
 
 function ToastSnippetDemo() {
   const { toast } = useToast();

@@ -1,4 +1,4 @@
-import { Divider } from "@/components/ui/divider";
+import { Divider } from "@repo/components/ui";
 
 export function DividerHeroSection() {
   return (

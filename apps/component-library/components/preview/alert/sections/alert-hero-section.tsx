@@ -4,7 +4,7 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-} from "@/components/ui/alert";
+} from "@repo/components/ui";
 
 export function AlertHeroSection() {
   return (

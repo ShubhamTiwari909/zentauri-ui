@@ -10,7 +10,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@repo/components/ui";
 
 export function SelectExamplesSection() {
   const [controlledValues, setControlledValues] = useState<string[]>(["react"]);

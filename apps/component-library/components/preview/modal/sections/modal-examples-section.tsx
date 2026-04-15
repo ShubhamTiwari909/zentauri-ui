@@ -2,7 +2,7 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Button } from "@/components/ui/buttons";
+import { Button } from "@repo/components/ui";
 import {
   Modal,
   ModalBody,
@@ -13,7 +13,7 @@ import {
   ModalHeader,
   ModalTitle,
   ModalTrigger,
-} from "@/components/ui/modal";
+} from "@repo/components/ui";
 
 export function ModalExamplesSection() {
   return (

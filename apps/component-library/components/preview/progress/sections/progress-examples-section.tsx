@@ -2,7 +2,7 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Progress } from "@/components/ui/progress";
+import { Progress } from "@repo/components/ui";
 
 export function ProgressExamplesSection() {
   return (

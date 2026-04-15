@@ -1,4 +1,4 @@
-import { Pagination } from "@/components/ui/pagination";
+import { Pagination } from "@repo/components/ui";
 
 export function PaginationHeroSection() {
   return (

@@ -5,8 +5,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/buttons";
+} from "@repo/components/ui";
+import { Button } from "@repo/components/ui";
 
 export function CardHeroSection() {
   return (
