@@ -16,33 +16,66 @@ const SECTION =
 const TRIGGER_CLASS =
   "rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200 outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50";
 
-const CONTENT_VARIANTS = ["default", "outline", "ghost"] as const satisfies readonly NonNullable<
-  TooltipContentProps["variant"]
->[];
+const CONTENT_VARIANTS = [
+  "default",
+  "outline",
+  "ghost",
+  "glass",
+  "emerald",
+  "indigo",
+  "purple",
+  "pink",
+  "rose",
+  "sky",
+  "teal",
+  "yellow",
+  "orange",
+  "green",
+  "gradient-blue",
+  "gradient-green",
+  "gradient-red",
+  "gradient-yellow",
+  "gradient-purple",
+  "gradient-teal",
+  "gradient-indigo",
+  "gradient-pink",
+  "gradient-orange",
+] as const satisfies readonly NonNullable<TooltipContentProps["variant"]>[];
 
-const CONTENT_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<
-  TooltipContentProps["size"]
->[];
+const CONTENT_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly NonNullable<TooltipContentProps["size"]>[];
 
-const CONTENT_WIDTHS = ["fit", "xs", "sm", "md", "lg", "xl", "2xl"] as const satisfies readonly NonNullable<
-  TooltipContentProps["width"]
->[];
+const CONTENT_WIDTHS = [
+  "fit",
+  "xs",
+  "sm",
+  "md",
+  "lg",
+  "xl",
+  "2xl",
+] as const satisfies readonly NonNullable<TooltipContentProps["width"]>[];
 
-const TOOLTIP_POSITIONS = ["top", "bottom", "left", "right"] as const satisfies readonly TooltipPosition[];
+const TOOLTIP_POSITIONS = [
+  "top",
+  "bottom",
+  "left",
+  "right",
+] as const satisfies readonly TooltipPosition[];
 
-const CONTENT_INTENTS = ["default", "success", "warning", "danger"] as const satisfies readonly NonNullable<
-  TooltipContentProps["intent"]
->[];
 
-const CONTENT_ANIMATIONS = ["fade", "scale", "none"] as const satisfies readonly NonNullable<
-  TooltipContentProps["animation"]
->[];
+const CONTENT_ANIMATIONS = [
+  "fade",
+  "scale",
+  "none",
+] as const satisfies readonly NonNullable<TooltipContentProps["animation"]>[];
 
 type ContentVariant = (typeof CONTENT_VARIANTS)[number];
 type ContentSize = (typeof CONTENT_SIZES)[number];
 type ContentWidth = (typeof CONTENT_WIDTHS)[number];
 type TooltipPlacement = (typeof TOOLTIP_POSITIONS)[number];
-type ContentIntent = (typeof CONTENT_INTENTS)[number];
 type ContentAnimation = (typeof CONTENT_ANIMATIONS)[number];
 
 function contentVariantSizeSnippet(variant: ContentVariant, size: ContentSize) {
@@ -106,30 +139,6 @@ function PositionDemo({ position }: { position: TooltipPlacement }) {
   );
 }
 
-function intentSnippet(intent: ContentIntent) {
-  const intentAttr = intent === "default" ? "" : ` intent="${intent}"`;
-  return `${variantLeadComment(`TooltipContent · intent · ${intent}`)}<Tooltip>
-  <TooltipTrigger className="${TRIGGER_CLASS}">
-    Hover · intent · ${intent}
-  </TooltipTrigger>
-  <TooltipContent${intentAttr}>
-    Status tone: ${intent}.
-  </TooltipContent>
-</Tooltip>`;
-}
-
-function IntentDemo({ intent }: { intent: ContentIntent }) {
-  return (
-    <Tooltip>
-      <TooltipTrigger className={TRIGGER_CLASS}>
-        Hover · intent · {intent}
-      </TooltipTrigger>
-      <TooltipContent intent={intent}>
-        Status tone: {intent}.
-      </TooltipContent>
-    </Tooltip>
-  );
-}
 
 function animationSnippet(animation: ContentAnimation) {
   const animationAttr = animation === "fade" ? "" : ` animation="${animation}"`;
@@ -143,7 +152,10 @@ function animationSnippet(animation: ContentAnimation) {
 </Tooltip>`;
 }
 
-function contentVariantWidthSnippet(variant: ContentVariant, width: ContentWidth) {
+function contentVariantWidthSnippet(
+  variant: ContentVariant,
+  width: ContentWidth,
+) {
   const variantAttr = variant === "default" ? "" : ` variant="${variant}"`;
   const widthAttr = width === "fit" ? "" : ` width="${width}"`;
   return `${variantLeadComment(
@@ -158,7 +170,13 @@ function contentVariantWidthSnippet(variant: ContentVariant, width: ContentWidth
 </Tooltip>`;
 }
 
-function ContentVariantWidthDemo({ variant, width }: { variant: ContentVariant, width: ContentWidth }) {
+function ContentVariantWidthDemo({
+  variant,
+  width,
+}: {
+  variant: ContentVariant;
+  width: ContentWidth;
+}) {
   return (
     <Tooltip>
       <TooltipTrigger className={TRIGGER_CLASS}>
@@ -196,47 +214,68 @@ export function TooltipCodeExamplesSection() {
       </p>
 
       <h3 className="mt-10 text-lg font-semibold text-white">
-        TooltipContent — variant × size
+        TooltipContent — variant
       </h3>
       <p className="mt-1 max-w-2xl text-sm text-slate-400">
-        Surface style and padding scale. Root <code className="text-cyan-200/90">Tooltip</code>{" "}
-        uses default{" "}
+        Surface style and padding scale. Root{" "}
+        <code className="text-cyan-200/90">Tooltip</code> uses default{" "}
         <code className="text-cyan-200/90">{`position="top"`}</code> and{" "}
         <code className="text-cyan-200/90">delay</code> here.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
-        {CONTENT_VARIANTS.flatMap((variant) =>
-          CONTENT_SIZES.map((size) => (
-            <PreviewCodeShowcase
-              key={`content-${variant}-${size}`}
-              code={contentVariantSizeSnippet(variant, size)}
-            >
-              <ContentVariantSizeDemo variant={variant} size={size} />
-            </PreviewCodeShowcase>
-          )),
-        )}
+        {CONTENT_VARIANTS.map((variant) => (
+          <PreviewCodeShowcase
+            key={`content-${variant}-md`}
+            code={contentVariantSizeSnippet(variant, "md")}
+          >
+            <ContentVariantSizeDemo variant={variant} size="md" />
+          </PreviewCodeShowcase>
+        ))}
       </div>
-      <h3 className="mt-14 text-lg font-semibold text-white">TooltipContent — width</h3>
+      <h3 className="mt-10 text-lg font-semibold text-white">
+        TooltipContent — size
+      </h3>
       <p className="mt-1 max-w-2xl text-sm text-slate-400">
-        Width is controlled on the content; default is <code className="text-cyan-200/90">fit</code>.
+        Surface style and padding scale. Root{" "}
+        <code className="text-cyan-200/90">Tooltip</code> uses default{" "}
+        <code className="text-cyan-200/90">{`position="top"`}</code> and{" "}
+        <code className="text-cyan-200/90">delay</code> here.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
-        {CONTENT_VARIANTS.flatMap((variant) =>
-          CONTENT_WIDTHS.map((width) => (
-            <PreviewCodeShowcase
-              key={`content-${variant}-${width}`}
-              code={contentVariantWidthSnippet(variant, width)}
-            >
-              <ContentVariantWidthDemo variant={variant} width={width} />
-            </PreviewCodeShowcase>
-          )),
-        )}
+        {CONTENT_SIZES.map((size) => (
+          <PreviewCodeShowcase
+            key={`content-default-${size}`}
+            code={contentVariantSizeSnippet("default", size)}
+          >
+            <ContentVariantSizeDemo variant="default" size={size} />
+          </PreviewCodeShowcase>
+        ))}
+      </div>
+      <h3 className="mt-14 text-lg font-semibold text-white">
+        TooltipContent — width
+      </h3>
+      <p className="mt-1 max-w-2xl text-sm text-slate-400">
+        Width is controlled on the content; default is{" "}
+        <code className="text-cyan-200/90">fit</code>.
+      </p>
+      <div className="mt-6 space-y-10 rounded-xl">
+        {CONTENT_WIDTHS.map((width) => (
+          <PreviewCodeShowcase
+            key={`content-default-${width}`}
+            code={contentVariantWidthSnippet("default", width)}
+          >
+            <ContentVariantWidthDemo variant="default" width={width} />
+          </PreviewCodeShowcase>
+        ))}
       </div>
 
-      <h3 className="mt-14 text-lg font-semibold text-white">Tooltip — position</h3>
+      <h3 className="mt-14 text-lg font-semibold text-white">
+        Tooltip — position
+      </h3>
       <p className="mt-1 max-w-2xl text-sm text-slate-400">
         Placement is controlled on the root; content still picks up{" "}
-        <code className="text-cyan-200/90">data-open</code> for animation classes.
+        <code className="text-cyan-200/90">data-open</code> for animation
+        classes.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {TOOLTIP_POSITIONS.map((position) => (
@@ -249,22 +288,6 @@ export function TooltipCodeExamplesSection() {
         ))}
       </div>
 
-      <h3 className="mt-14 text-lg font-semibold text-white">
-        TooltipContent — intent
-      </h3>
-      <p className="mt-1 max-w-2xl text-sm text-slate-400">
-        Semantic background tones (default intent omits the prop in snippets).
-      </p>
-      <div className="mt-6 space-y-10 rounded-xl">
-        {CONTENT_INTENTS.map((intent) => (
-          <PreviewCodeShowcase
-            key={`intent-${intent}`}
-            code={intentSnippet(intent)}
-          >
-            <IntentDemo intent={intent} />
-          </PreviewCodeShowcase>
-        ))}
-      </div>
 
       <h3 className="mt-14 text-lg font-semibold text-white">
         TooltipContent — animation

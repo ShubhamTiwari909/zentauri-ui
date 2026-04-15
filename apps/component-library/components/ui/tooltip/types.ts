@@ -28,9 +28,10 @@ export type TooltipTriggerProps = {
 export type TooltipContentProps = {
   children: ReactNode
   className?: string
-  variant?: "default" | "outline" | "ghost"
+  variant?: "default" | "outline" | "ghost" | "glass" | "emerald" | "indigo" | "purple" | "pink" | "rose" | "sky" | "teal" | "yellow" | "orange" | "green" | "gradient-blue" | "gradient-green" | "gradient-red" | "gradient-yellow" | "gradient-purple" | "gradient-teal" | "gradient-indigo" | "gradient-pink" | "gradient-orange"
   size?: "sm" | "md" | "lg"
   width?: "fit" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl"
-  intent?: "default" | "success" | "warning" | "danger"
   animation?: "fade" | "scale" | "none"
 }
+
+export type TooltipAnimation = "none" | "fade" | "scale";
