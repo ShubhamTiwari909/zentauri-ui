@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
   type TableProps,
-} from "@repo/components/ui";
+} from "@zentauri-ui/zentauri-components/ui";
 
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";

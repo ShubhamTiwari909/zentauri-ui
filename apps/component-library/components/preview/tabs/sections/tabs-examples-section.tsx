@@ -9,7 +9,7 @@ import {
   TabsTrigger,
   tabsListVariants,
   tabsTriggerVariants,
-} from "@repo/components/ui";
+} from "@zentauri-ui/zentauri-components/ui";
 
 const listUnderlineSm = tabsListVariants({
   variant: "underline",

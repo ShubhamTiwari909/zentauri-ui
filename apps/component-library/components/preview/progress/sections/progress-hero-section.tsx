@@ -1,4 +1,4 @@
-import { Progress } from "@repo/components/ui";
+import { Progress } from "@zentauri-ui/zentauri-components/ui";
 
 export function ProgressHeroSection() {
   return (

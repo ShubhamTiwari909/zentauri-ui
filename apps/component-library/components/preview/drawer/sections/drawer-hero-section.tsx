@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@repo/components/ui";
+import { Button } from "@zentauri-ui/zentauri-components/ui";
 import {
   Drawer,
   DrawerBody,
@@ -10,7 +10,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@repo/components/ui";
+} from "@zentauri-ui/zentauri-components/ui";
 
 export function DrawerHeroSection() {
   return (

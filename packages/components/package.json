@@ -1,26 +1,37 @@
 {
-  "name": "@repo/components",
+  "name": "@zentauri-ui/zentauri-components",
   "type": "module",
+  "version": "0.0.1",
+  "description": "A UI component library built with React and Tailwind CSS",
+  "license": "MIT",
+  "files": ["dist"],
+  "main": "./dist/ui/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./ui": {
+      "types": "./dist/ui/index.d.ts",
+      "import": "./dist/ui/index.js",
+      "require": "./dist/ui/index.cjs"
+    }
+  },
   "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc",
+    "dev": "tsup --watch",
+    "build": "tsup",
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "exports": {
-    "./ui": "./src/ui/index.ts"
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "^4.2.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",
-    "postcss": "^8.5.9",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
     "react-icons": "^5.6.0",
-    "tailwind-merge": "^3.5.0",
-    "tailwindcss": "^4.2.2"
+    "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
@@ -32,6 +43,7 @@
     "@types/react-dom": "^19",
     "jsdom": "^26.1.0",
     "typescript": "^5",
-    "vitest": "^4.1.4"
+    "vitest": "^4.1.4",
+    "tsup": "^8.5.1"
   }
 }
