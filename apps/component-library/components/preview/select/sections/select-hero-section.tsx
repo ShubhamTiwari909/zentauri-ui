@@ -17,24 +17,25 @@ export function SelectHeroSection() {
         </span>
         <div className="space-y-4">
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Select controls with listbox semantics.
+            Select with compound parts and variants.
           </h1>
           <p className="max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-            Single or multi-value modes, width matched to the trigger, and motion
-            presets for the floating list surface.
+            Multi-select by default, optional single mode, CVA-driven trigger styles, and list surface
+            tokens on <span className="text-slate-200">SelectContent</span>. Values are always string
+            arrays for a consistent controlled API.
           </p>
         </div>
       </div>
 
       <div className="max-w-md rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
-        <Select defaultValue="next">
-          <SelectTrigger appearance="default" size="md">
+        <Select defaultValue={["next"]} multiple={false}>
+          <SelectTrigger variant="emerald" size="md">
             <SelectValue placeholder="Pick a framework" />
           </SelectTrigger>
-          <SelectContent animation="scale" appearance="glass">
-            <SelectItem value="next">Next.js</SelectItem>
-            <SelectItem value="vite">Vite</SelectItem>
-            <SelectItem value="remix">Remix</SelectItem>
+          <SelectContent appearance="emerald" size="md" spacing="sm">
+            <SelectItem value="next" appearance="emerald">Next.js</SelectItem>
+            <SelectItem value="vite" appearance="emerald">Vite</SelectItem>
+            <SelectItem value="remix" appearance="emerald">Remix</SelectItem>
           </SelectContent>
         </Select>
       </div>
