@@ -1,6 +1,6 @@
 "use client";
 
-import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
+import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Table,
@@ -47,6 +47,7 @@ function tableOpenTag(opts: {
   stickyHeader: boolean;
   overflow?: "auto" | "hidden";
   textAlign?: "left" | "center" | "right";
+  className?: string;
 }) {
   const { appearance, size, stickyHeader, overflow, textAlign } = opts;
   const appearanceAttr =
@@ -72,11 +73,11 @@ ${TABLE_BODY_SNIPPET}
 }
 
 function TableDemo(opts: Parameters<typeof tableOpenTag>[0]) {
-  const { appearance, size, stickyHeader, overflow, textAlign } = opts;
+  const { appearance, size, stickyHeader, overflow, textAlign, className } = opts;
   return (
     <div className="max-h-48 overflow-y-auto rounded-lg border border-white/10">
       <p className="mb-5">Appearance: <span className="font-bold">{appearance}</span> | Size: <span className="font-bold">{size}</span> | Sticky Header: <span className="font-bold">{stickyHeader ? "true" : "false"}</span> | Overflow: <span className="font-bold">{overflow ? "auto" : "hidden"}</span></p>
-      <Table appearance={appearance} size={size} stickyHeader={stickyHeader} rowAnimation="none" overflow={overflow} textAlign={textAlign}>
+      <Table appearance={appearance} size={size} stickyHeader={stickyHeader} rowAnimation="none" overflow={overflow} textAlign={textAlign} className={className}>
         <TableHeader>
           <TableRow>
             <TableHead>Name</TableHead>
@@ -155,7 +156,8 @@ export function TableCodeExamplesSection() {
           key="overflow-auto"
           code={tableSnippet({ ...base, appearance: "bordered", overflow: "auto" })}
         >
-          <TableDemo {...base} appearance="bordered" overflow="auto" />
+          <p>Overflow auto on mobile and tablet</p>
+          <TableDemo {...base} appearance="bordered" overflow="auto" className="min-w-150" />
         </PreviewCodeShowcase>
       </div>
     </section>

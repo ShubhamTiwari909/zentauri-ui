@@ -1,4 +1,4 @@
-import { PreviewPageShell } from "@/components/preview/common/preview-page-shell";
+import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { AlertCodeExamplesSection } from "./sections/alert-code-examples-section";
 import { AlertExamplesSection } from "./sections/alert-examples-section";
 import { AlertHeroSection } from "./sections/alert-hero-section";

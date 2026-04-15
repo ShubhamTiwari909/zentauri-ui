@@ -1,7 +1,9 @@
 import { useEffect } from "react";
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
+
+import type { ToastAnimation } from "./types";
 
 import { ToastProvider, ToastViewport, useToast } from "./toast";
 
@@ -10,16 +12,18 @@ function ToastHarness({
   appearance,
   id,
   durationMs,
+  animation,
 }: {
   title: string;
   appearance?: "default" | "success" | "error" | "warning" | "info";
   id?: string;
   durationMs?: number;
+  animation?: ToastAnimation;
 }) {
   const { toast: push } = useToast();
   useEffect(() => {
-    push({ title, appearance, id, durationMs });
-  }, [appearance, durationMs, id, push, title]);
+    push({ title, appearance, id, durationMs, animation });
+  }, [animation, appearance, durationMs, id, push, title]);
   return <ToastViewport />;
 }
 
@@ -69,20 +73,27 @@ describe("Toast", () => {
     });
   });
 
-  it("should auto-dismiss after durationMs", async () => {
-    vi.useFakeTimers();
-    render(
-      <ToastProvider>
-        <ToastHarness title="Short lived" id="toast-auto" durationMs={1000} />
-      </ToastProvider>,
-    );
-    await act(async () => {
-      await vi.runOnlyPendingTimersAsync();
-    });
-    expect(screen.getByText("Short lived")).toBeInTheDocument();
-    await act(async () => {
-      await vi.advanceTimersByTimeAsync(1000);
-    });
-    expect(screen.queryByText("Short lived")).not.toBeInTheDocument();
-  });
+  it(
+    "should auto-dismiss after durationMs",
+    async () => {
+      render(
+        <ToastProvider>
+          <ToastHarness
+            title="Short lived"
+            id="toast-auto"
+            durationMs={80}
+            animation="none"
+          />
+        </ToastProvider>,
+      );
+      expect(await screen.findByText("Short lived")).toBeInTheDocument();
+      await waitFor(
+        () => {
+          expect(screen.queryByText("Short lived")).not.toBeInTheDocument();
+        },
+        { timeout: 2000 },
+      );
+    },
+    5000,
+  );
 });

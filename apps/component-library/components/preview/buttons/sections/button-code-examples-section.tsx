@@ -1,5 +1,5 @@
 import ButtonCodeShowcase from "@/components/code-showcase/ButtonCodeShowcase";
-import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
+import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import {
   showcaseButtons,
   buttonAnimationPresets,

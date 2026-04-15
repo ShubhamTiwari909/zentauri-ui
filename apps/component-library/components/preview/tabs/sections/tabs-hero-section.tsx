@@ -3,6 +3,8 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
+  tabsListVariants,
+  tabsTriggerVariants,
 } from "@/components/ui/tabs";
 
 export function TabsHeroSection() {
@@ -17,22 +19,53 @@ export function TabsHeroSection() {
             Tabs for switching related views.
           </h1>
           <p className="max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-            Controlled or uncontrolled selection, list and trigger styling
-            variants, and animated panel transitions.
+            Controlled or uncontrolled selection, list and trigger styling via
+            variants, and panel motion on{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">
+              TabsContent
+            </code>{" "}
+            (<code className="text-sm text-cyan-200">fade</code>,{" "}
+            <code className="text-sm text-cyan-200">slide</code>, or{" "}
+            <code className="text-sm text-cyan-200">none</code>) with
+            orientation-aware slide and reduced-motion support.
           </p>
         </div>
       </div>
 
       <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
-        <Tabs defaultValue="overview" appearance="pill" animation="fade" size="md">
-          <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="activity">Activity</TabsTrigger>
+        <Tabs defaultValue="overview">
+          <TabsList
+            className={tabsListVariants({
+              variant: "pills",
+              size: "md",
+              orientation: "horizontal",
+            })}
+          >
+            <TabsTrigger
+              value="overview"
+              className={tabsTriggerVariants({ variant: "pills", size: "md", appearance:"rose" })}
+            >
+              Overview
+            </TabsTrigger>
+            <TabsTrigger
+              value="activity"
+              className={tabsTriggerVariants({ variant: "pills", size: "md", appearance:"sky" })}
+            >
+              Activity
+            </TabsTrigger>
           </TabsList>
-          <TabsContent value="overview" className="mt-4 text-sm text-slate-300">
+          <TabsContent
+            value="overview"
+            animation="fade"
+            className="mt-4 text-sm text-slate-300"
+          >
             High-level metrics and health for this service.
           </TabsContent>
-          <TabsContent value="activity" className="mt-4 text-sm text-slate-300">
+          <TabsContent
+            value="activity"
+            animation="fade"
+            className="mt-4 text-sm text-slate-300"
+          >
             Recent events and audit entries appear here.
           </TabsContent>
         </Tabs>

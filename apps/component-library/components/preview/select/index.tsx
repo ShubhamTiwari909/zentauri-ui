@@ -1,4 +1,4 @@
-import { PreviewPageShell } from "@/components/preview/common/preview-page-shell";
+import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { SelectCodeExamplesSection } from "./sections/select-code-examples-section";
 import { SelectExamplesSection } from "./sections/select-examples-section";
 import { SelectHeroSection } from "./sections/select-hero-section";

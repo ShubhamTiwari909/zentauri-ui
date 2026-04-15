@@ -1,4 +1,4 @@
-import { PreviewPageShell } from "@/components/preview/common/preview-page-shell";
+import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { InputsAppearanceMotionSection } from "./sections/inputs-appearance-motion-section";
 import { InputsCheckboxSection } from "./sections/inputs-checkbox-section";
 import { InputsCodeExamplesSection } from "./sections/inputs-code-examples-section";

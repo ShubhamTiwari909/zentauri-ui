@@ -108,6 +108,8 @@ export const DropdownContent = ({
   children,
   className,
   placement = "bottom",
+  spacing = "default",
+  divider,
   ...props
 }: DropdownContentProps) => {
   const { open, setOpen } = useDropdown();
@@ -131,7 +133,7 @@ export const DropdownContent = ({
   return (
     <div
       ref={ref}
-      className={cn(contentVariants({ placement }), className)}
+      className={cn(contentVariants({ placement, spacing }), className, divider && "divide-y divide-current")}
       {...props}
     >
       {children}

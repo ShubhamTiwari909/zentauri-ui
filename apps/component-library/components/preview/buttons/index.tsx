@@ -1,4 +1,4 @@
-import { PreviewPageShell } from "@/components/preview/common/preview-page-shell";
+import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { ButtonCodeExamplesSection } from "./sections/button-code-examples-section";
 import { ButtonHeroSection } from "./sections/button-hero-section";
 import { ButtonSizesSection } from "./sections/button-sizes-section";

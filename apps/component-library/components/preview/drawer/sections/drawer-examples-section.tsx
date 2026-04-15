@@ -1,6 +1,6 @@
 "use client";
 
-import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
+import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Drawer,

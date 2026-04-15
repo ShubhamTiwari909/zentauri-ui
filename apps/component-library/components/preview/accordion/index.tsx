@@ -1,4 +1,4 @@
-import { PreviewPageShell } from "@/components/preview/common/preview-page-shell";
+import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { AccordionCodeExamplesSection } from "./sections/accordion-code-examples-section";
 import { AccordionExamplesSection } from "./sections/accordion-examples-section";
 import { AccordionHeroSection } from "./sections/accordion-hero-section";

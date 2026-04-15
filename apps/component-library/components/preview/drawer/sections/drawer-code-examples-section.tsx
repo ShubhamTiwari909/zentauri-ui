@@ -1,6 +1,6 @@
 "use client";
 
-import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
+import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Drawer,
@@ -27,7 +27,7 @@ const DRAWER_SIZES = ["sm", "md", "lg", "xl", "full"] as const satisfies readonl
   DrawerContentProps["size"]
 >[];
 
-const DRAWER_APPEARANCES = ["default", "glass"] as const satisfies readonly NonNullable<
+const DRAWER_APPEARANCES = ["default", "glass", "sky", "rose", "purple", "pink", "orange", "yellow", "teal", "indigo", "emerald", "gray", "amber", "violet", "gradient-blue", "gradient-green", "gradient-red", "gradient-yellow", "gradient-purple", "gradient-teal", "gradient-indigo", "gradient-pink", "gradient-orange"] as const satisfies readonly NonNullable<
   DrawerContentProps["appearance"]
 >[];
 

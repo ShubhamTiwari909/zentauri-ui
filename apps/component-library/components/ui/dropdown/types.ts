@@ -9,6 +9,34 @@ export type DropdownContextType = {
   multiSelect: boolean;
 };
 
+type Variant =
+  | "default"
+  | "outline"
+  | "ghost"
+  | "white"
+  | "black"
+  | "sky"
+  | "rose"
+  | "purple"
+  | "pink"
+  | "orange"
+  | "yellow"
+  | "teal"
+  | "indigo"
+  | "emerald"
+  | "gray"
+  | "amber"
+  | "violet"
+  | "gradient-blue"
+  | "gradient-green"
+  | "gradient-red"
+  | "gradient-yellow"
+  | "gradient-purple"
+  | "gradient-teal"
+  | "gradient-indigo"
+  | "gradient-pink"
+  | "gradient-orange";
+
 export type DropdownProps = {
   children: ReactNode;
   defaultOpen?: boolean;
@@ -19,13 +47,15 @@ export type DropdownProps = {
 
 export type DropdownTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
-  variant?: "default" | "outline" | "ghost" | "sky" | "rose" | "purple" | "pink" | "orange" | "yellow" | "teal" | "indigo" | "emerald";
+  variant?: Variant;
   size?: "sm" | "md" | "lg";
 };
 
 export type DropdownContentProps = HTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
   placement?: "top" | "bottom" | "left" | "right";
+  spacing?: "none" | "default" | "sm" | "md" | "lg" | "xl";
+  divider?: boolean;
 };
 
 export type DropdownItemProps = HTMLAttributes<HTMLDivElement> & {
@@ -34,5 +64,5 @@ export type DropdownItemProps = HTMLAttributes<HTMLDivElement> & {
   onSelect?: () => void;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
-  variant?: "default" | "destructive" | "outline";
+  variant?: Variant;
 };

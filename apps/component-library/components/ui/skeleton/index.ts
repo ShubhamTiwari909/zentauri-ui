@@ -14,4 +14,9 @@ export type {
   SkeletonTextProps,
 } from "./types";
 export { skeletonAnimationPresets } from "./animations";
-export { skeletonVariants, skeletonTextLineVariants } from "./variants";
+export {
+  skeletonShimmerGradientClasses,
+  skeletonTextLineVariants,
+  skeletonVariants,
+} from "./variants";
+export type { SkeletonShimmerTone } from "./variants";

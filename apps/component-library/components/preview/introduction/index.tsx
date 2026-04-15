@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PreviewPageShell } from "@/components/preview/common/preview-page-shell";
+import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { useIntroduction } from "./use-introduction";
 
 export default function IntroductionPage() {

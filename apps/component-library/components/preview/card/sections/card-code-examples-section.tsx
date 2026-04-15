@@ -1,6 +1,6 @@
 "use client";
 
-import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
+import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Card, CardDescription, CardHeader, CardTitle, type CardProps } from "@/components/ui/card";
 
@@ -13,6 +13,27 @@ const CARD_APPEARANCES = [
   "outline",
   "ghost",
   "elevated",
+  "sky",
+  "rose",
+  "purple",
+  "pink",
+  "orange",
+  "yellow",
+  "teal",
+  "indigo",
+  "emerald",
+  "gray",
+  "amber",
+  "violet",
+  "gradient-blue",
+  "gradient-green",
+  "gradient-red",
+  "gradient-yellow",
+  "gradient-purple",
+  "gradient-teal",
+  "gradient-indigo",
+  "gradient-pink",
+  "gradient-orange",
 ] as const satisfies readonly NonNullable<CardProps["appearance"]>[];
 
 const CARD_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<CardProps["size"]>[];

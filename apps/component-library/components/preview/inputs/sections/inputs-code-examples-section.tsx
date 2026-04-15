@@ -1,5 +1,5 @@
 "use client";
-import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
+import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import { Input } from "@/components/ui/inputs";
 import InputCodeShowcase from "@/components/code-showcase/InputCodeShowcase";
 import {
