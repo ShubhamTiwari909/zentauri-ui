@@ -1,4 +1,4 @@
-import { Input } from "@/components/ui/inputs";
+import { Input } from "@repo/components/ui";
 import { animationPresets, appearanceInputs } from "../variants";
 
 export function InputsAppearanceMotionSection() {

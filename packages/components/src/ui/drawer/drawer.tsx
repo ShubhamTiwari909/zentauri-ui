@@ -1,0 +1,298 @@
+"use client";
+
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { createPortal } from "react-dom";
+
+import { cn } from "../../lib/utils";
+
+import { drawerPanelPresets } from "./animations";
+import type {
+  DrawerContentProps,
+  DrawerProps,
+  DrawerSectionProps,
+  DrawerTriggerProps,
+} from "./types";
+import { drawerContentVariants, drawerOverlayVariants } from "./variants";
+
+type DrawerCtx = {
+  open: boolean;
+  setOpen: (next: boolean) => void;
+  titleId: string;
+  descriptionId: string;
+  contentRef: React.RefObject<HTMLDivElement | null>;
+};
+
+const DrawerContext = createContext<DrawerCtx | null>(null);
+
+function useDrawerContext(component: string): DrawerCtx {
+  const ctx = useContext(DrawerContext);
+  if (!ctx) {
+    throw new Error(`${component} must be used within <Drawer>`);
+  }
+  return ctx;
+}
+
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+
+function useBodyScrollLock(locked: boolean) {
+  useEffect(() => {
+    if (!locked) {
+      return;
+    }
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [locked]);
+}
+
+export function Drawer({ open, defaultOpen = false, onOpenChange, children }: DrawerProps) {
+  const isControlled = open !== undefined;
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
+  const resolvedOpen = isControlled ? Boolean(open) : uncontrolledOpen;
+
+  const setOpen = useCallback(
+    (next: boolean) => {
+      if (!isControlled) {
+        setUncontrolledOpen(next);
+      }
+      onOpenChange?.(next);
+    },
+    [isControlled, onOpenChange],
+  );
+
+  const baseId = useId();
+  const titleId = `${baseId}-title`;
+  const descriptionId = `${baseId}-description`;
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  const ctx = useMemo(
+    () => ({
+      open: resolvedOpen,
+      setOpen,
+      titleId,
+      descriptionId,
+      contentRef,
+    }),
+    [descriptionId, resolvedOpen, setOpen, titleId],
+  );
+
+  return <DrawerContext.Provider value={ctx}>{children}</DrawerContext.Provider>;
+}
+
+Drawer.displayName = "Drawer";
+
+export function DrawerTrigger({ className, children, onClick, ref, ...rest }: DrawerTriggerProps) {
+  const { setOpen } = useDrawerContext("DrawerTrigger");
+  return (
+    <button
+      ref={ref}
+      type="button"
+      data-slot="drawer-trigger"
+      className={cn(className)}
+      onClick={(event) => {
+        onClick?.(event);
+        if (!event.defaultPrevented) {
+          setOpen(true);
+        }
+      }}
+      {...rest}
+    >
+      {children}
+    </button>
+  );
+}
+
+DrawerTrigger.displayName = "DrawerTrigger";
+
+export function DrawerContent({
+  className,
+  side = "right",
+  size,
+  appearance,
+  animation = "slide",
+  children,
+  ref,
+  id,
+  style,
+}: DrawerContentProps) {
+  const { open, setOpen, titleId, descriptionId, contentRef } = useDrawerContext("DrawerContent");
+  const resolvedSide = side ?? "right";
+  const reduceMotion = useReducedMotion();
+  const overlayMotion = drawerPanelPresets(resolvedSide)[reduceMotion ? "fade" : animation];
+  const panelMotion = drawerPanelPresets(resolvedSide)[reduceMotion ? "fade" : animation];
+
+  useBodyScrollLock(open);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [open, setOpen]);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    const node = contentRef.current;
+    if (!node) {
+      return;
+    }
+    const focusables = Array.from(
+      node.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
+    ).filter((element) => element.offsetParent !== null || element === node);
+    const target = focusables[0] ?? node;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    target.focus();
+
+    const handleFocusIn = (event: FocusEvent) => {
+      if (!node.contains(event.target as Node)) {
+        event.stopPropagation();
+        target.focus();
+      }
+    };
+    document.addEventListener("focusin", handleFocusIn);
+    return () => {
+      document.removeEventListener("focusin", handleFocusIn);
+      previouslyFocused?.focus?.();
+    };
+  }, [contentRef, open]);
+
+  const portalTarget = typeof document !== "undefined" ? document.body : null;
+  if (!portalTarget) {
+    return null;
+  }
+
+  return createPortal(
+    <AnimatePresence>
+      {open ? (
+        <div className="fixed inset-0 z-50" data-slot="drawer-portal">
+          <motion.button
+            type="button"
+            aria-hidden
+            tabIndex={-1}
+            data-slot="drawer-overlay"
+            className={drawerOverlayVariants()}
+            onClick={() => setOpen(false)}
+            initial={animation === "none" ? false : overlayMotion.initial}
+            animate={animation === "none" ? undefined : overlayMotion.animate}
+            exit={animation === "none" ? undefined : overlayMotion.exit}
+            transition={overlayMotion.transition}
+          />
+          <motion.div
+            ref={(node) => {
+              contentRef.current = node;
+              if (typeof ref === "function") {
+                ref(node);
+              } else if (ref) {
+                (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+              }
+            }}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={titleId}
+            aria-describedby={descriptionId}
+            data-slot="drawer-content"
+            tabIndex={-1}
+            className={cn(
+              drawerContentVariants({ side: resolvedSide, size, appearance }),
+              className,
+            )}
+            initial={animation === "none" ? false : panelMotion.initial}
+            animate={animation === "none" ? undefined : panelMotion.animate}
+            exit={animation === "none" ? undefined : panelMotion.exit}
+            transition={panelMotion.transition}
+            id={id}
+            style={style}
+          >
+            {children}
+          </motion.div>
+        </div>
+      ) : null}
+    </AnimatePresence>,
+    portalTarget,
+  );
+}
+
+DrawerContent.displayName = "DrawerContent";
+
+export function DrawerHeader({ className, children }: DrawerSectionProps) {
+  return (
+    <header data-slot="drawer-header" className={cn("mb-4 flex flex-col gap-2", className)}>
+      {children}
+    </header>
+  );
+}
+
+DrawerHeader.displayName = "DrawerHeader";
+
+export function DrawerBody({ className, children }: DrawerSectionProps) {
+  return (
+    <div data-slot="drawer-body" className={cn("flex-1 text-sm text-slate-300", className)}>
+      {children}
+    </div>
+  );
+}
+
+DrawerBody.displayName = "DrawerBody";
+
+export function DrawerFooter({ className, children }: DrawerSectionProps) {
+  return (
+    <footer data-slot="drawer-footer" className={cn("mt-6 flex justify-end gap-2", className)}>
+      {children}
+    </footer>
+  );
+}
+
+DrawerFooter.displayName = "DrawerFooter";
+
+export function DrawerTitle({ className, children }: DrawerSectionProps) {
+  const { titleId } = useDrawerContext("DrawerTitle");
+  return (
+    <h2 id={titleId} data-slot="drawer-title" className={cn("text-lg font-semibold", className)}>
+      {children}
+    </h2>
+  );
+}
+
+DrawerTitle.displayName = "DrawerTitle";
+
+export function DrawerClose({ className, children, ...rest }: DrawerSectionProps) {
+  const { setOpen } = useDrawerContext("DrawerClose");
+  return (
+    <button
+      type="button"
+      data-slot="drawer-close"
+      className={cn(
+        "absolute right-4 top-4 inline-flex size-9 items-center justify-center rounded-md text-slate-200 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30",
+        className,
+      )}
+      aria-label="Close drawer"
+      onClick={() => setOpen(false)}
+      {...rest}
+    >
+      {children ?? "×"}
+    </button>
+  );
+}
+
+DrawerClose.displayName = "DrawerClose";

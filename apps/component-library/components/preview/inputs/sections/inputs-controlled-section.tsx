@@ -1,5 +1,5 @@
 "use client";
-import { Input } from "@/components/ui/inputs";
+import { Input } from "@repo/components/ui";
 import { useState } from "react";
 
 
