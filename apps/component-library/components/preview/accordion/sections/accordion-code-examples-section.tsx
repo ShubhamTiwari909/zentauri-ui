@@ -53,7 +53,7 @@ function accordionSnippet(
     type === "single"
       ? 'type="single" defaultValue="a"'
       : 'type="multiple" defaultValues={["a"]}';
-  return `${variantLeadComment(`type · ${type}, appearance · ${appearance}, size · ${size}, transition · ${transition}`)}<Accordion ${typeLine} appearance="${appearance}" size="${size}" transition="${transition}">
+  return `${variantLeadComment(`type · ${type}, appearance · ${appearance}, size · ${size}, transition · ${transition}`)}<Accordion ${typeLine} appearance="${appearance}" size="${size}" transition="${transition}" className="space-y-4">
   <AccordionItem value="a">
     <AccordionTrigger>First panel</AccordionTrigger>
     <AccordionContent>
@@ -82,10 +82,6 @@ function AccordionDemo({
 }) {
   const body = (
     <>
-      <p className="mb-5 text-xs font-semibold text-white">
-        Appearance: <span className="font-bold">{appearance.toUpperCase()}</span>, Size: <span className="font-bold">{size.toUpperCase()}</span>, Type: <span className="font-bold">{type.toUpperCase()}</span>, Transition: <span className="font-bold">{transition.toUpperCase()}</span>
-        {transition.toUpperCase()}
-      </p>
       <AccordionItem value="a">
         <AccordionTrigger>First panel</AccordionTrigger>
         <AccordionContent>
@@ -108,6 +104,7 @@ function AccordionDemo({
         appearance={appearance}
         size={size}
         transition={transition}
+        className="space-y-4"
       >
         {body}
       </Accordion>
@@ -120,6 +117,7 @@ function AccordionDemo({
       appearance={appearance}
       size={size}
       transition={transition}
+      className="space-y-4"
     >
       {body}
     </Accordion>
@@ -142,6 +140,10 @@ export function AccordionCodeExamplesSection() {
             key={`app-${appearance}`}
             code={accordionSnippet(appearance, "md", "single", "default")}
           >
+            <p className="mb-5 text-xs font-semibold text-white">
+              Appearance:{" "}
+              <span className="font-bold">{appearance.toUpperCase()}</span>
+            </p>
             <AccordionDemo
               appearance={appearance}
               size="md"
@@ -155,6 +157,9 @@ export function AccordionCodeExamplesSection() {
             key={`size-${size}`}
             code={accordionSnippet("default", size, "single", "default")}
           >
+            <p className="mb-5 text-xs font-semibold text-white">
+              Size: <span className="font-bold">{size.toUpperCase()}</span>
+            </p>
             <AccordionDemo
               appearance="default"
               size={size}
@@ -167,6 +172,9 @@ export function AccordionCodeExamplesSection() {
           key="type-single"
           code={accordionSnippet("outline", "md", "single", "default")}
         >
+          <p className="mb-5 text-xs font-semibold text-white">
+            Type: <span className="font-bold">Single</span>
+          </p>
           <AccordionDemo
             appearance="outline"
             size="md"
@@ -178,6 +186,9 @@ export function AccordionCodeExamplesSection() {
           key="type-multiple"
           code={accordionSnippet("outline", "md", "multiple", "default")}
         >
+          <p className="mb-5 text-xs font-semibold text-white">
+            Type: <span className="font-bold">Multiple</span>
+          </p>
           <AccordionDemo
             appearance="outline"
             size="md"
@@ -190,6 +201,9 @@ export function AccordionCodeExamplesSection() {
             key={`trans-${transition}`}
             code={accordionSnippet("ghost", "md", "single", transition)}
           >
+            <p className="mb-5 text-xs font-semibold text-white">
+              Transition: <span className="font-bold">{transition.toUpperCase()}</span>
+            </p>
             <AccordionDemo
               appearance="ghost"
               size="md"
