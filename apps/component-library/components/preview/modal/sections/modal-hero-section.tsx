@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@repo/components/ui";
+import { Button } from "@zentauri-ui/zentauri-components/ui";
 import {
   Modal,
   ModalBody,
@@ -11,7 +11,7 @@ import {
   ModalHeader,
   ModalTitle,
   ModalTrigger,
-} from "@repo/components/ui";
+} from "@zentauri-ui/zentauri-components/ui";
 
 export function ModalHeroSection() {
   return (

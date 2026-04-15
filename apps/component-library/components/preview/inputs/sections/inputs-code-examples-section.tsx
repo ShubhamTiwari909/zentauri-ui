@@ -2,7 +2,7 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Input } from "@repo/components/ui";
+import { Input } from "@zentauri-ui/zentauri-components/ui";
 import {
   animationPresets,
   sizeInputs,

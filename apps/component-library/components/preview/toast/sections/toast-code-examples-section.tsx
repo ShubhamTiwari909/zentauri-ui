@@ -2,8 +2,8 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Button } from "@repo/components/ui";
-import { useToast, type ToastInput } from "@repo/components/ui";
+import { Button } from "@zentauri-ui/zentauri-components/ui";
+import { useToast, type ToastInput } from "@zentauri-ui/zentauri-components/ui";
 
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";

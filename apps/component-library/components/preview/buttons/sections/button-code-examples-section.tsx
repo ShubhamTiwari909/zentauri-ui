@@ -2,7 +2,7 @@
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
-import { Button } from "@repo/components/ui";
+import { Button } from "@zentauri-ui/zentauri-components/ui";
 import {
   showcaseButtons,
   buttonAnimationPresets,

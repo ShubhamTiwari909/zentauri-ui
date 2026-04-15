@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Tabs,
   TabsContent,
@@ -5,7 +7,7 @@ import {
   TabsTrigger,
   tabsListVariants,
   tabsTriggerVariants,
-} from "@repo/components/ui";
+} from "@zentauri-ui/zentauri-components/ui";
 
 export function TabsHeroSection() {
   return (

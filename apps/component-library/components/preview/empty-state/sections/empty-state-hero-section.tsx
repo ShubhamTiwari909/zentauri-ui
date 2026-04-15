@@ -5,8 +5,8 @@ import {
   EmptyStateDescription,
   EmptyStateIcon,
   EmptyStateTitle,
-} from "@repo/components/ui";
-import { Button } from "@repo/components/ui";
+} from "@zentauri-ui/zentauri-components/ui";
+import { Button } from "@zentauri-ui/zentauri-components/ui";
 
 export function EmptyStateHeroSection() {
   return (

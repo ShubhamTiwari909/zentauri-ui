@@ -10,7 +10,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@repo/components/ui";
+} from "@zentauri-ui/zentauri-components/ui";
 
 export function DrawerExamplesSection() {
   return (

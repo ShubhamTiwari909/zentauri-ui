@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@repo/components/ui";
+} from "@zentauri-ui/zentauri-components/ui";
 
 export function AccordionHeroSection() {
   return (
