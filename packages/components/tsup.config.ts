@@ -13,6 +13,6 @@ export default defineConfig({
   // restore it so apps loading the package get styles without a separate import.
   banner: ({ format }) => ({
     // CJS consumers rarely load CSS via require(); ESM + bundlers use the import.
-    js: format === "esm" ? '"use client";\n\nimport "./index.css";\n' : "",
+    js: format === "esm" ? '"use client";\n' : "",
   }),
 });
