@@ -12,7 +12,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@repo/components/ui";
+} from "@zentauri-ui/zentauri-components/ui";
 import type { SiteChromeNavItem } from "@/components/common/site-chrome-nav";
 import { siteChromeNavItems } from "@/components/common/site-chrome-nav";
 import { cn } from "@/lib/utils";

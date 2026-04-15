@@ -2,7 +2,7 @@ import {
   Skeleton,
   SkeletonAvatar,
   SkeletonText,
-} from "@repo/components/ui";
+} from "@zentauri-ui/zentauri-components/ui";
 
 export function SkeletonHeroSection() {
   return (

@@ -2,8 +2,8 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Button } from "@repo/components/ui";
-import { useToast } from "@repo/components/ui";
+import { Button } from "@zentauri-ui/zentauri-components/ui";
+import { useToast } from "@zentauri-ui/zentauri-components/ui";
 
 function ToastSnippetDemo() {
   const { toast } = useToast();

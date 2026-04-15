@@ -5,7 +5,7 @@ import {
   DropdownContent,
   DropdownItem,
   DropdownTrigger,
-} from "@repo/components/ui";
+} from "@zentauri-ui/zentauri-components/ui";
 
 const MENU_SURFACE_CLASS =
   "border border-white/10 bg-slate-900 text-slate-100 shadow-lg";
