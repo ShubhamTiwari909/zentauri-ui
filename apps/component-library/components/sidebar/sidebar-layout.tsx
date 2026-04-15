@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
 import { SidebarNav } from "./sidebar-nav";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { SiteHeader } from "@/components/common/site-header";
 
 export function SidebarLayout({ children }: { children: React.ReactNode }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,26 +25,15 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col lg:flex-row text-slate-50">
-      {/* Mobile Header */}
-      <header className="sticky top-0 z-50 flex h-14 items-center justify-between border-b border-white/10 bg-slate-950/80 px-4 backdrop-blur-md lg:hidden">
-        <Link href="/" className="font-semibold text-white tracking-wide">
-          Zentauri UI
-        </Link>
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="rounded-md p-2 text-slate-400 hover:bg-white/5 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-          aria-label="Toggle navigation menu"
-          aria-expanded={isMobileMenuOpen}
-          aria-controls="sidebar-nav"
-        >
-          {isMobileMenuOpen ? (
-            <FiX className="h-6 w-6" />
-          ) : (
-            <FiMenu className="h-6 w-6" />
-          )}
-        </button>
-      </header>
+    <div className="flex min-h-0 flex-1 flex-col text-slate-50 lg:flex-row">
+      <div className="lg:hidden">
+        <SiteHeader
+          showMenuToggle
+          isMenuOpen={isMobileMenuOpen}
+          onMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          menuControlsId="sidebar-nav"
+        />
+      </div>
 
       {/* Sidebar (Desktop & Mobile Drawer) */}
       <aside
