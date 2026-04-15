@@ -37,7 +37,7 @@ export function DropdownHeroSection() {
           <DropdownContent className={MENU_SURFACE_CLASS}>
             <DropdownItem value="profile">Profile</DropdownItem>
             <DropdownItem value="settings">Settings</DropdownItem>
-            <DropdownItem value="sign-out" variant="destructive">
+            <DropdownItem value="sign-out" variant="rose">
               Sign out
             </DropdownItem>
           </DropdownContent>

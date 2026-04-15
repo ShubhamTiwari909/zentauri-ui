@@ -57,7 +57,6 @@ export function TooltipExamplesSection() {
             <TooltipContent
               variant="default"
               size="lg"
-              intent="danger"
               animation="scale"
             >
               This removes the row for everyone. You cannot undo this action.
