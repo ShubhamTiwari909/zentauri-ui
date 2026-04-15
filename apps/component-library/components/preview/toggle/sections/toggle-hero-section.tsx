@@ -1,4 +1,4 @@
-import { Toggle } from "@/components/ui/toggle";
+import { Toggle } from "@repo/components/ui";
 
 export function ToggleHeroSection() {
   return (

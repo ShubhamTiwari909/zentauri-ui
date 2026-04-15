@@ -1,4 +1,4 @@
-import { Input } from "@/components/ui/inputs";
+import { Input } from "@repo/components/ui";
 import { appearanceInputsExtended } from "../variants";
 
 const radioSizes = ["sm", "md", "lg"] as const;

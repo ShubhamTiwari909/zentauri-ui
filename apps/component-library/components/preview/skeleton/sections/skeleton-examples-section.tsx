@@ -2,7 +2,7 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { SkeletonButton } from "@/components/ui/skeleton";
+import { SkeletonButton } from "@repo/components/ui";
 
 export function SkeletonExamplesSection() {
   return (

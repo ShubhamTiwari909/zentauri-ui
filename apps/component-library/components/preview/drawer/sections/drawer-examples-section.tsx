@@ -10,7 +10,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@repo/components/ui";
 
 export function DrawerExamplesSection() {
   return (

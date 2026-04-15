@@ -1,4 +1,4 @@
-import { Progress } from "@/components/ui/progress";
+import { Progress } from "@repo/components/ui";
 
 export function ProgressHeroSection() {
   return (

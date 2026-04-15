@@ -2,7 +2,7 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Progress, type ProgressProps } from "@/components/ui/progress";
+import { Progress, type ProgressProps } from "@repo/components/ui";
 
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";

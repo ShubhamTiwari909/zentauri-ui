@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Pagination, usePagination } from "@/components/ui/pagination";
+import { Pagination, usePagination } from "@repo/components/ui";
 
 export function PaginationExamplesSection() {
   const [page, setPage] = useState(7);

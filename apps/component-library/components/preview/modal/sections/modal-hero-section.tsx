@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/buttons";
+import { Button } from "@repo/components/ui";
 import {
   Modal,
   ModalBody,
@@ -11,7 +11,7 @@ import {
   ModalHeader,
   ModalTitle,
   ModalTrigger,
-} from "@/components/ui/modal";
+} from "@repo/components/ui";
 
 export function ModalHeroSection() {
   return (

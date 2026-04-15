@@ -2,7 +2,7 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Spinner } from "@/components/ui/spinner";
+import { Spinner } from "@repo/components/ui";
 
 export function SpinnerExamplesSection() {
   return (

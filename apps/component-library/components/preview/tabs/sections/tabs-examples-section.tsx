@@ -9,7 +9,7 @@ import {
   TabsTrigger,
   tabsListVariants,
   tabsTriggerVariants,
-} from "@/components/ui/tabs";
+} from "@repo/components/ui";
 
 const listUnderlineSm = tabsListVariants({
   variant: "underline",

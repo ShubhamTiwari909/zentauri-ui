@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { SiteHeader } from "@/components/common/site-header";
-import { Button } from "@/components/ui/buttons/button";
+import { Button } from "@repo/components/ui";
 import { useHome } from "./use-home";
 import { LightLines } from "@/components/light-lines/LightLines";
 

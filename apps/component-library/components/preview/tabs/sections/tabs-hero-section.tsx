@@ -5,7 +5,7 @@ import {
   TabsTrigger,
   tabsListVariants,
   tabsTriggerVariants,
-} from "@/components/ui/tabs";
+} from "@repo/components/ui";
 
 export function TabsHeroSection() {
   return (

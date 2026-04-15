@@ -6,7 +6,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@repo/components/ui";
 
 export function SelectHeroSection() {
   return (

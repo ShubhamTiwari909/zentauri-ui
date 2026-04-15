@@ -5,8 +5,8 @@ import {
   EmptyStateDescription,
   EmptyStateIcon,
   EmptyStateTitle,
-} from "@/components/ui/empty-state";
-import { Button } from "@/components/ui/buttons";
+} from "@repo/components/ui";
+import { Button } from "@repo/components/ui";
 
 export function EmptyStateHeroSection() {
   return (

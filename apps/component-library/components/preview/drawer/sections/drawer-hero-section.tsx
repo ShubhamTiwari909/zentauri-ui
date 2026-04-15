@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/buttons";
+import { Button } from "@repo/components/ui";
 import {
   Drawer,
   DrawerBody,
@@ -10,7 +10,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@repo/components/ui";
 
 export function DrawerHeroSection() {
   return (

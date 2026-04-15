@@ -2,7 +2,7 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Toggle } from "@/components/ui/toggle";
+import { Toggle } from "@repo/components/ui";
 
 export function ToggleExamplesSection() {
   return (

@@ -2,7 +2,7 @@ import {
   Skeleton,
   SkeletonAvatar,
   SkeletonText,
-} from "@/components/ui/skeleton";
+} from "@repo/components/ui";
 
 export function SkeletonHeroSection() {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/buttons";
-import { useToast } from "@/components/ui/toast";
+import { Button } from "@repo/components/ui";
+import { useToast } from "@repo/components/ui";
 
 export function ToastHeroSection() {
   const { toast } = useToast();

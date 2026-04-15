@@ -8,7 +8,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@repo/components/ui";
 
 export function CardExamplesSection() {
   return (
