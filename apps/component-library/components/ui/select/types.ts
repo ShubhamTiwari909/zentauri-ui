@@ -1,51 +1,55 @@
 import type { VariantProps } from "class-variance-authority";
-import type { HTMLAttributes, ReactNode, Ref } from "react";
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
-import type { SelectAnimation } from "./animations";
-import type { selectContentVariants, selectTriggerVariants } from "./variants";
+import type { selectTriggerVariants } from "./variants";
 
-export type { SelectAnimation };
+export type SelectOption = {
+  label: ReactNode;
+  value: string;
+  disabled?: boolean;
+};
 
-export type SelectMode = "single" | "multiple";
-
-type SelectTriggerVariantProps = VariantProps<typeof selectTriggerVariants>;
-type SelectContentVariantProps = VariantProps<typeof selectContentVariants>;
+export type SelectContextType = {
+  open: boolean;
+  setOpen: (v: boolean) => void;
+  selected: string[];
+  toggleValue: (value: string) => void;
+  isSelected: (value: string) => boolean;
+  registerOption: (option: SelectOption) => void;
+  options: SelectOption[];
+  multiple: boolean;
+};
 
 export type SelectProps = {
-  mode?: SelectMode;
-  value?: string;
-  values?: string[];
-  defaultValue?: string;
-  defaultValues?: string[];
-  onValueChange?: (value: string | undefined) => void;
-  onValuesChange?: (values: string[]) => void;
-  disabled?: boolean;
-  children?: ReactNode;
+  value?: string[];
+  defaultValue?: string[];
+  onChange?: (value: string[]) => void;
+  multiple?: boolean;
+  children: ReactNode;
+  className?: string;
 };
+
+type SelectTriggerVariantProps = VariantProps<typeof selectTriggerVariants>;
 
 export type SelectTriggerProps = SelectTriggerVariantProps &
-  HTMLAttributes<HTMLButtonElement> & {
-    ref?: Ref<HTMLButtonElement>;
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, "size"> & {
+    className?: string;
   };
 
-export type SelectValueProps = {
-  placeholder?: ReactNode;
+export type SelectContentProps = HTMLAttributes<HTMLDivElement> & {
   className?: string;
-};
-
-export type SelectContentProps = SelectContentVariantProps & {
-  animation?: SelectAnimation;
-  className?: string;
-  children?: ReactNode;
-  ref?: Ref<HTMLDivElement>;
+  appearance?: "default" | "glass" | "ghost" | "outline" | "sky" | "rose" | "purple" | "pink" | "orange" | "yellow" | "teal" | "indigo" | "emerald";
+  size?: "sm" | "md" | "lg";
+  spacing?: "none" | "default" | "sm" | "md" | "lg" | "xl";
 };
 
 export type SelectItemProps = HTMLAttributes<HTMLDivElement> & {
-    value: string;
-    disabled?: boolean;
-    ref?: Ref<HTMLDivElement>;
-  };
+  value: string;
+  children: ReactNode;
+  disabled?: boolean;
+  appearance?: "default" | "glass" | "ghost" | "outline" | "sky" | "rose" | "purple" | "pink" | "orange" | "yellow" | "teal" | "indigo" | "emerald";
+};
 
-export type SelectGroupProps = HTMLAttributes<HTMLDivElement>;
-export type SelectLabelProps = HTMLAttributes<HTMLDivElement>;
-export type SelectSeparatorProps = HTMLAttributes<HTMLDivElement>;
+export type SelectValueProps = HTMLAttributes<HTMLSpanElement> & {
+  placeholder?: ReactNode;
+};

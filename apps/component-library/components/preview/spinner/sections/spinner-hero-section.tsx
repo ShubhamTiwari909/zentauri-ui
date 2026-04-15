@@ -20,7 +20,7 @@ export function SpinnerHeroSection() {
 
       <div className="flex flex-wrap items-center gap-6 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
         <Spinner appearance="sky" size="lg" variant="ring" />
-        <Spinner appearance="outline" size="md" variant="dots" />
+        <Spinner appearance="secondary" size="md" variant="dots" />
         <Spinner appearance="emerald" size="md" variant="bars" />
       </div>
     </section>

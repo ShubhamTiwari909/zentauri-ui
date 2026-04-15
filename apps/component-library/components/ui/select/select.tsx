@@ -1,444 +1,221 @@
 "use client";
-
-import { AnimatePresence, motion } from "framer-motion";
+import { useState, useEffect, useCallback, useRef } from "react";
 import {
-  Children,
-  createContext,
-  isValidElement,
-  useCallback,
-  useContext,
-  useEffect,
-  useId,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import { createPortal } from "react-dom";
-
-import { cn } from "@/lib/utils";
-
-import { selectContentAnimationPresets } from "./animations";
-import type {
-  SelectContentProps,
-  SelectGroupProps,
-  SelectItemProps,
-  SelectLabelProps,
   SelectProps,
-  SelectSeparatorProps,
+  SelectOption,
   SelectTriggerProps,
+  SelectContentProps,
+  SelectItemProps,
   SelectValueProps,
 } from "./types";
+import { createContext, useContext } from "react";
+import { SelectContextType } from "./types";
+import { cn } from "@/lib/utils";
 import {
   selectContentVariants,
   selectItemVariants,
-  selectLabelVariants,
-  selectSeparatorVariants,
   selectTriggerVariants,
 } from "./variants";
 
-type SelectCtx = {
-  mode: NonNullable<SelectProps["mode"]>;
-  open: boolean;
-  setOpen: (next: boolean) => void;
-  disabled: boolean;
-  value?: string;
-  /** Selected values in `multiple` mode (empty in `single` mode). */
-  multiValues: string[];
-  labelVersion: number;
-  setSingleValue: (next: string | undefined) => void;
-  toggleMultiValue: (itemValue: string) => void;
-  isSelected: (itemValue: string) => boolean;
-  triggerRef: React.RefObject<HTMLButtonElement | null>;
-  listboxId: string;
-  labelMap: React.MutableRefObject<Map<string, string>>;
-  registerLabel: (itemValue: string, label: string) => void;
-  unregisterLabel: (itemValue: string) => void;
+export const SelectContext = createContext<SelectContextType | null>(null);
+
+export const useSelect = () => {
+  const ctx = useContext(SelectContext);
+  if (!ctx) throw new Error("Select components must be used inside Select");
+  return ctx;
 };
 
-const SelectContext = createContext<SelectCtx | null>(null);
-
-function useSelectContext(component: string): SelectCtx {
-  const ctx = useContext(SelectContext);
-  if (!ctx) {
-    throw new Error(`${component} must be used within <Select>`);
-  }
-  return ctx;
-}
-
-export function Select({
-  mode = "single",
+export const Select = ({
+  children,
   value,
-  values,
-  defaultValue,
-  defaultValues,
-  onValueChange,
-  onValuesChange,
-  disabled = false,
-  children,
-}: SelectProps) {
-  const isSingleControlled = value !== undefined;
-  const isMultiControlled = values !== undefined;
-  const [singleUncontrolled, setSingleUncontrolled] = useState<string | undefined>(defaultValue);
-  const [multiUncontrolled, setMultiUncontrolled] = useState<string[]>(defaultValues ?? []);
+  defaultValue = [],
+  onChange,
+  multiple = true,
+}: SelectProps) => {
+  const [internal, setInternal] = useState<string[]>(defaultValue);
   const [open, setOpen] = useState(false);
-  const [labelVersion, setLabelVersion] = useState(0);
-  const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const labelMap = useRef(new Map<string, string>());
-  const listboxId = useId();
+  const [options, setOptions] = useState<SelectOption[]>([]);
+  const rootRef = useRef<HTMLDivElement>(null);
 
-  const singleValue = isSingleControlled ? value : singleUncontrolled;
-  const multiValues = isMultiControlled ? values ?? [] : multiUncontrolled;
-
-  const setSingleValue = useCallback(
-    (next: string | undefined) => {
-      if (!isSingleControlled) {
-        setSingleUncontrolled(next);
-      }
-      onValueChange?.(next);
-    },
-    [isSingleControlled, onValueChange],
-  );
-
-  const toggleMultiValue = useCallback(
-    (itemValue: string) => {
-      const base = isMultiControlled ? values ?? [] : multiUncontrolled;
-      const exists = base.includes(itemValue);
-      const next = exists ? base.filter((v) => v !== itemValue) : [...base, itemValue];
-      if (!isMultiControlled) {
-        setMultiUncontrolled(next);
-      }
-      onValuesChange?.(next);
-    },
-    [isMultiControlled, multiUncontrolled, onValuesChange, values],
-  );
-
-  const isSelected = useCallback(
-    (itemValue: string) => {
-      if (mode === "single") {
-        return singleValue === itemValue;
-      }
-      return multiValues.includes(itemValue);
-    },
-    [mode, multiValues, singleValue],
-  );
-
-  const registerLabel = useCallback((itemValue: string, label: string) => {
-    labelMap.current.set(itemValue, label);
-    setLabelVersion((version) => version + 1);
-  }, []);
-
-  const unregisterLabel = useCallback((itemValue: string) => {
-    labelMap.current.delete(itemValue);
-    setLabelVersion((version) => version + 1);
-  }, []);
-
-  const ctx = useMemo(
-    () => ({
-      mode,
-      open,
-      setOpen,
-      disabled,
-      value: singleValue,
-      multiValues,
-      labelVersion,
-      setSingleValue,
-      toggleMultiValue,
-      isSelected,
-      triggerRef,
-      listboxId,
-      labelMap,
-      registerLabel,
-      unregisterLabel,
-    }),
-    [
-      disabled,
-      isSelected,
-      labelVersion,
-      listboxId,
-      mode,
-      multiValues,
-      open,
-      registerLabel,
-      setSingleValue,
-      singleValue,
-      toggleMultiValue,
-      unregisterLabel,
-    ],
-  );
-
-  return <SelectContext.Provider value={ctx}>{children}</SelectContext.Provider>;
-}
-
-Select.displayName = "Select";
-
-export function SelectTrigger({ className, size, appearance, children, ref, ...rest }: SelectTriggerProps) {
-  const { open, setOpen, disabled, triggerRef, listboxId } = useSelectContext("SelectTrigger");
-
-  return (
-    <button
-      ref={(node) => {
-        triggerRef.current = node;
-        if (typeof ref === "function") {
-          ref(node);
-        } else if (ref) {
-          (ref as React.MutableRefObject<HTMLButtonElement | null>).current = node;
-        }
-      }}
-      type="button"
-      role="combobox"
-      data-slot="select-trigger"
-      aria-expanded={open}
-      aria-controls={listboxId}
-      aria-haspopup="listbox"
-      aria-disabled={disabled}
-      disabled={disabled}
-      className={cn(selectTriggerVariants({ size, appearance }), className)}
-      onClick={() => {
-        if (!disabled) {
-          setOpen(!open);
-        }
-      }}
-      {...rest}
-    >
-      {children}
-    </button>
-  );
-}
-
-SelectTrigger.displayName = "SelectTrigger";
-
-export function SelectValue({ placeholder = "Select…", className }: SelectValueProps) {
-  const { mode, value, multiValues, labelMap } = useSelectContext("SelectValue");
-
-  const text =
-    mode === "single"
-      ? !value
-        ? null
-        : (labelMap.current.get(value) ?? value)
-      : multiValues.length === 0
-        ? null
-        : multiValues.length === 1
-          ? (labelMap.current.get(multiValues[0]) ?? multiValues[0])
-          : `${multiValues.length} selected`;
-
-  return (
-    <span data-slot="select-value" className={cn("truncate", !text && "text-slate-500", className)}>
-      {text ?? placeholder}
-    </span>
-  );
-}
-
-SelectValue.displayName = "SelectValue";
-
-export function SelectContent({
-  className,
-  size,
-  appearance,
-  animation = "scale",
-  children,
-  ref,
-}: SelectContentProps) {
-  const { open, setOpen, triggerRef, listboxId, mode } = useSelectContext("SelectContent");
-  const contentRef = useRef<HTMLDivElement | null>(null);
-  const [panelLayout, setPanelLayout] = useState({ top: 0, left: 0, width: 0 });
-  const motionProps = selectContentAnimationPresets[animation];
-
-  useLayoutEffect(() => {
-    if (!open) {
-      return;
-    }
-    let rafId = 0;
-    let rafId2 = 0;
-    const sync = () => {
-      const trigger = triggerRef.current?.getBoundingClientRect();
-      if (!trigger) {
-        return;
-      }
-      setPanelLayout({
-        top: trigger.bottom + 6 + window.scrollY,
-        left: trigger.left + window.scrollX,
-        width: trigger.width,
-      });
-    };
-    sync();
-    rafId = requestAnimationFrame(() => {
-      rafId2 = requestAnimationFrame(sync);
-    });
-    return () => {
-      cancelAnimationFrame(rafId);
-      cancelAnimationFrame(rafId2);
-    };
-  }, [open, triggerRef]);
+  const selected = value ?? internal;
 
   useEffect(() => {
-    if (!open) {
-      return;
-    }
-    const handlePointerDown = (event: MouseEvent) => {
-      const target = event.target as Node;
-      if (contentRef.current?.contains(target) || triggerRef.current?.contains(target)) {
-        return;
-      }
-      setOpen(false);
-    };
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+    if (!open) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const root = rootRef.current;
+      if (!root) return;
+      const target = event.target;
+      if (target instanceof Node && !root.contains(target)) {
         setOpen(false);
       }
     };
-    document.addEventListener("mousedown", handlePointerDown);
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [open, setOpen, triggerRef]);
 
-  const portalTarget = typeof document !== "undefined" ? document.body : null;
-  if (!portalTarget) {
-    return null;
-  }
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [open]);
 
-  return createPortal(
-    <AnimatePresence>
-      {open ? (
-        <motion.div
-          ref={(node) => {
-            contentRef.current = node;
-            if (typeof ref === "function") {
-              ref(node);
-            } else if (ref) {
-              (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
-            }
-          }}
-          id={listboxId}
-          role="listbox"
-          aria-multiselectable={mode === "multiple"}
-          data-slot="select-content"
-          className={cn("fixed", selectContentVariants({ size, appearance }), className)}
-          style={{
-            top: panelLayout.top,
-            left: panelLayout.left,
-            width: panelLayout.width > 0 ? panelLayout.width : undefined,
-            minWidth: panelLayout.width > 0 ? undefined : "12rem",
-          }}
-          initial={animation === "none" ? false : motionProps.initial}
-          animate={animation === "none" ? undefined : motionProps.animate}
-          exit={animation === "none" ? undefined : motionProps.exit}
-          transition={motionProps.transition}
-        >
-          {children}
-        </motion.div>
-      ) : null}
-    </AnimatePresence>,
-    portalTarget,
-  );
-}
-
-SelectContent.displayName = "SelectContent";
-
-function getItemLabel(children: SelectItemProps["children"]): string {
-  if (typeof children === "string" || typeof children === "number") {
-    return String(children);
-  }
-  const texts: string[] = [];
-  Children.forEach(children, (child) => {
-    if (typeof child === "string" || typeof child === "number") {
-      texts.push(String(child));
-    } else if (isValidElement(child)) {
-      const props = child.props as { children?: unknown };
-      if (typeof props.children === "string") {
-        texts.push(props.children);
-      }
+  const setSelected = (vals: string[]) => {
+    if (value !== undefined) {
+      onChange?.(vals);
+    } else {
+      setInternal(vals);
+      onChange?.(vals);
     }
-  });
-  return texts.join(" ").trim() || "";
-}
+  };
 
-export function SelectItem({
+  const toggleValue = (val: string) => {
+    if (multiple) {
+      if (selected.includes(val)) {
+        setSelected(selected.filter((v) => v !== val));
+      } else {
+        setSelected([...selected, val]);
+      }
+    } else {
+      setSelected([val]);
+      setOpen(false);
+    }
+  };
+
+  const isSelected = (val: string) => selected.includes(val);
+
+  const registerOption = useCallback((opt: SelectOption) => {
+    setOptions((prev) => {
+      if (prev.find((o) => o.value === opt.value)) return prev;
+      return [...prev, opt];
+    });
+  }, []);
+
+  return (
+    <SelectContext.Provider
+      value={{
+        open,
+        setOpen,
+        selected,
+        toggleValue,
+        isSelected,
+        registerOption,
+        options,
+        multiple,
+      }}
+    >
+      <div ref={rootRef} className="relative w-full">
+        {children}
+      </div>
+    </SelectContext.Provider>
+  );
+};
+
+export const SelectTrigger = ({
   className,
-  value: itemValue,
-  disabled: itemDisabled,
+  variant,
+  size,
+  ...props
+}: SelectTriggerProps) => {
+  const { open, setOpen } = useSelect();
+
+  return (
+    <button
+      type="button"
+      onClick={() => setOpen(!open)}
+      className={cn(selectTriggerVariants({ variant, size }), className)}
+      {...props}
+    />
+  );
+};
+
+export const SelectValue = ({
+  placeholder = "Select...",
+  className,
+  ...props
+}: SelectValueProps) => {
+  const { selected, options } = useSelect();
+
+  const selectedOptions = options.filter((o) => selected.includes(o.value));
+
+  if (selectedOptions.length === 0) {
+    return (
+      <span className={cn(className)} {...props}>
+        {placeholder}
+      </span>
+    );
+  }
+
+  return (
+    <span className={cn(className)} {...props}>
+      {selectedOptions.map((option, index) => (
+        <span key={option.value}>
+          {index > 0 ? ", " : null}
+          {option.label}
+        </span>
+      ))}
+    </span>
+  );
+};
+
+export const SelectContent = ({
   children,
-  ref,
-  ...rest
-}: SelectItemProps) {
-  const {
-    setOpen,
-    disabled: rootDisabled,
-    mode,
-    setSingleValue,
-    toggleMultiValue,
-    isSelected,
-    registerLabel,
-    unregisterLabel,
-  } = useSelectContext("SelectItem");
+  className,
+  appearance = "default",
+  size = "md",
+  spacing = "default",
+  ...props
+}: SelectContentProps) => {
+  const { open } = useSelect();
 
-  const label = useMemo(() => getItemLabel(children), [children]);
-
-  useEffect(() => {
-    registerLabel(itemValue, label || itemValue);
-    return () => unregisterLabel(itemValue);
-  }, [itemValue, label, registerLabel, unregisterLabel]);
-
-  const selected = isSelected(itemValue);
-  const isDisabled = rootDisabled || itemDisabled;
+  if (!open) return null;
 
   return (
     <div
-      ref={ref}
-      role="option"
-      aria-selected={selected}
-      data-slot="select-item"
-      data-disabled={isDisabled ? "" : undefined}
-      data-highlighted={undefined}
-      className={cn(selectItemVariants(), className)}
-      onClick={() => {
-        if (isDisabled) {
-          return;
-        }
-        if (mode === "single") {
-          setSingleValue(itemValue);
-          setOpen(false);
-          return;
-        }
-        toggleMultiValue(itemValue);
-      }}
-      {...rest}
+      className={cn(
+        selectContentVariants({ appearance, size, spacing }),
+        className,
+      )}
+      {...props}
     >
-      <span className="flex-1 truncate">{children}</span>
-      {mode === "multiple" ? (
-        <span
-          aria-hidden
-          className={cn(
-            "flex size-4 items-center justify-center rounded border border-white/20 text-[0.65rem]",
-            selected && "border-cyan-400 bg-cyan-500/20 text-cyan-200",
-          )}
-        >
-          {selected ? "✓" : ""}
-        </span>
-      ) : null}
+      {children}
     </div>
   );
-}
+};
 
-SelectItem.displayName = "SelectItem";
+export const SelectItem = ({
+  value,
+  children,
+  disabled,
+  appearance = "default",
+  className,
+  ...props
+}: SelectItemProps) => {
+  const { toggleValue, isSelected, registerOption } = useSelect();
 
-export function SelectGroup({ className, ...rest }: SelectGroupProps) {
-  return <div role="group" data-slot="select-group" className={cn(className)} {...rest} />;
-}
+  useEffect(() => {
+    registerOption({ label: children, value, disabled });
+  }, [children, disabled, registerOption, value]);
 
-SelectGroup.displayName = "SelectGroup";
+  const isActive = isSelected(value);
 
-export function SelectLabel({ className, ...rest }: SelectLabelProps) {
-  return <div data-slot="select-label" className={cn(selectLabelVariants(), className)} {...rest} />;
-}
-
-SelectLabel.displayName = "SelectLabel";
-
-export function SelectSeparator({ className, ...rest }: SelectSeparatorProps) {
-  return <div role="separator" data-slot="select-separator" className={cn(selectSeparatorVariants(), className)} {...rest} />;
-}
-
-SelectSeparator.displayName = "SelectSeparator";
+  return (
+    <div
+      role="option"
+      aria-selected={isActive}
+      tabIndex={0}
+      onClick={() => !disabled && toggleValue(value)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") toggleValue(value);
+      }}
+      data-selected={isActive ? "true" : "false"}
+      className={cn(
+        selectItemVariants({
+          disabled,
+          appearance,
+        }),
+        "flex justify-between",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+      {isActive && <span>✓</span>}
+    </div>
+  );
+};

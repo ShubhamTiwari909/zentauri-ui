@@ -1,4 +1,3 @@
-import { createRef } from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
@@ -12,9 +11,9 @@ import {
 } from "./select";
 
 describe("Select", () => {
-  it("should stamp data-slot on trigger", () => {
+  it("should render the trigger as a type button control", () => {
     render(
-      <Select defaultValue="a">
+      <Select defaultValue={["a"]}>
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
@@ -23,42 +22,28 @@ describe("Select", () => {
         </SelectContent>
       </Select>,
     );
-    expect(document.querySelector('[data-slot="select-trigger"]')).toBeTruthy();
+    const trigger = screen.getByRole("button");
+    expect(trigger).toHaveAttribute("type", "button");
   });
 
-  it("should forward ref on SelectTrigger", () => {
-    const ref = createRef<HTMLButtonElement>();
+  it("should show placeholder when nothing is selected", () => {
     render(
-      <Select>
-        <SelectTrigger ref={ref}>
-          <SelectValue placeholder="Pick" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="x">X</SelectItem>
-        </SelectContent>
-      </Select>,
-    );
-    expect(ref.current?.getAttribute("data-slot")).toBe("select-trigger");
-  });
-
-  it("should set combobox role on trigger", () => {
-    render(
-      <Select>
+      <Select defaultValue={[]}>
         <SelectTrigger>
-          <SelectValue />
+          <SelectValue placeholder="Pick one" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="a">A</SelectItem>
+          <SelectItem value="a">Alpha</SelectItem>
         </SelectContent>
       </Select>,
     );
-    expect(screen.getByRole("combobox")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /pick one/i })).toBeInTheDocument();
   });
 
-  it("should support multi-select values", async () => {
+  it("should open the panel and list options when the trigger is clicked", async () => {
     const user = userEvent.setup();
     render(
-      <Select mode="multiple" defaultValues={["a"]}>
+      <Select defaultValue={[]}>
         <SelectTrigger>
           <SelectValue placeholder="Pick" />
         </SelectTrigger>
@@ -68,9 +53,72 @@ describe("Select", () => {
         </SelectContent>
       </Select>,
     );
-    await user.click(screen.getByRole("combobox"));
-    expect(await screen.findByRole("listbox")).toBeInTheDocument();
-    await user.click(screen.getByRole("option", { name: "Beta" }));
-    expect(screen.getByText("2 selected")).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: /pick/i }));
+    expect(screen.getByRole("option", { name: /alpha/i })).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: /beta/i })).toBeInTheDocument();
+  });
+
+  it("should support multi-select and show comma-separated labels", async () => {
+    const user = userEvent.setup();
+    render(
+      <Select multiple defaultValue={["a"]}>
+        <SelectTrigger>
+          <SelectValue placeholder="Pick" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="a">Alpha</SelectItem>
+          <SelectItem value="b">Beta</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+    await user.click(screen.getByRole("button", { name: /pick/i }));
+    await screen.findByRole("button", { name: /alpha/i });
+    await user.click(screen.getByRole("option", { name: /beta/i }));
+    const trigger = screen.getByRole("button");
+    expect(trigger).toHaveTextContent("Alpha");
+    expect(trigger).toHaveTextContent("Beta");
+  });
+
+  it("should close the panel after picking one value when multiple is false", async () => {
+    const user = userEvent.setup();
+    render(
+      <Select multiple={false} defaultValue={["a"]}>
+        <SelectTrigger>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="a">Alpha</SelectItem>
+          <SelectItem value="b">Beta</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+    await user.click(screen.getByRole("button"));
+    await screen.findByRole("button", { name: /alpha/i });
+    expect(screen.getByRole("option", { name: /beta/i })).toBeInTheDocument();
+    await user.click(screen.getByRole("option", { name: /beta/i }));
+    expect(screen.queryByRole("option", { name: /beta/i })).not.toBeInTheDocument();
+    expect(
+      await screen.findByRole("button", { name: /^beta$/i }),
+    ).toBeInTheDocument();
+  });
+
+  it("should mark selected options with aria-selected true", async () => {
+    const user = userEvent.setup();
+    render(
+      <Select defaultValue={["a"]}>
+        <SelectTrigger>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="a">Alpha</SelectItem>
+          <SelectItem value="b">Beta</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+    await user.click(screen.getByRole("button"));
+    const alpha = await screen.findByRole("option", { name: /alpha/i });
+    const beta = screen.getByRole("option", { name: /beta/i });
+    expect(alpha).toHaveAttribute("aria-selected", "true");
+    expect(beta).toHaveAttribute("aria-selected", "false");
   });
 });

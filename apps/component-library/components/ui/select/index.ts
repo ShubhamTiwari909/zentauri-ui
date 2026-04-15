@@ -1,30 +1,19 @@
 export {
   Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectSeparator,
+  SelectContext,
+  useSelect,
   SelectTrigger,
   SelectValue,
+  SelectContent,
+  SelectItem,
 } from "./select";
 export type {
-  SelectAnimation,
-  SelectContentProps,
-  SelectGroupProps,
-  SelectItemProps,
-  SelectLabelProps,
-  SelectMode,
   SelectProps,
-  SelectSeparatorProps,
   SelectTriggerProps,
+  SelectContentProps,
+  SelectItemProps,
   SelectValueProps,
+  SelectOption,
+  SelectContextType,
 } from "./types";
-export { selectContentAnimationPresets } from "./animations";
-export {
-  selectContentVariants,
-  selectItemVariants,
-  selectLabelVariants,
-  selectSeparatorVariants,
-  selectTriggerVariants,
-} from "./variants";
+export { selectTriggerVariants, selectItemVariants, selectContentVariants } from "./variants";
