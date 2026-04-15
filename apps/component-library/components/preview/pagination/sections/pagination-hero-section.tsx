@@ -1,4 +1,4 @@
-import { Pagination } from "@repo/components/ui";
+import { Pagination } from "@zentauri-ui/zentauri-components/ui";
 
 export function PaginationHeroSection() {
   return (

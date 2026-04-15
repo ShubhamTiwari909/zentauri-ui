@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@repo/components/ui";
+} from "@zentauri-ui/zentauri-components/ui";
 
 export function TableExamplesSection() {
   return (

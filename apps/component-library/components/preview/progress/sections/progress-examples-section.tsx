@@ -2,7 +2,7 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Progress } from "@repo/components/ui";
+import { Progress } from "@zentauri-ui/zentauri-components/ui";
 
 export function ProgressExamplesSection() {
   return (

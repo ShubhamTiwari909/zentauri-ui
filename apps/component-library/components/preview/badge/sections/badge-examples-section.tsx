@@ -2,7 +2,7 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Badge } from "@repo/components/ui";
+import { Badge } from "@zentauri-ui/zentauri-components/ui";
 
 export function BadgeExamplesSection() {
   return (

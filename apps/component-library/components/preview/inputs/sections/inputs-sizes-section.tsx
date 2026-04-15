@@ -1,4 +1,4 @@
-import { Input } from "@repo/components/ui";
+import { Input } from "@zentauri-ui/zentauri-components/ui";
 import { sizeInputs } from "../variants";
 
 export function InputsSizesSection() {

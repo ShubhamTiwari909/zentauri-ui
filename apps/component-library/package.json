@@ -22,7 +22,7 @@
     "react-syntax-highlighter": "^16.1.1",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.2",
-    "@repo/components": "workspace:*"
+    "@zentauri-ui/zentauri-components": "workspace:*"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",

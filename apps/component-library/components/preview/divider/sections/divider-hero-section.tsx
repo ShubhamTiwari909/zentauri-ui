@@ -1,4 +1,4 @@
-import { Divider } from "@repo/components/ui";
+import { Divider } from "@zentauri-ui/zentauri-components/ui";
 
 export function DividerHeroSection() {
   return (

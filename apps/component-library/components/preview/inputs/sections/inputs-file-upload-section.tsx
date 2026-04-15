@@ -1,4 +1,4 @@
-import { Input } from "@repo/components/ui";
+import { Input } from "@zentauri-ui/zentauri-components/ui";
 
 const fileUploadSizes = ["sm", "md", "lg"] as const;
 

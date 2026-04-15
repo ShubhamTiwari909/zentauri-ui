@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@repo/components/ui";
-import { useToast } from "@repo/components/ui";
+import { Button } from "@zentauri-ui/zentauri-components/ui";
+import { useToast } from "@zentauri-ui/zentauri-components/ui";
 
 export function ToastHeroSection() {
   const { toast } = useToast();

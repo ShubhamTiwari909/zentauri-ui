@@ -1,4 +1,4 @@
-import { Toggle } from "@repo/components/ui";
+import { Toggle } from "@zentauri-ui/zentauri-components/ui";
 
 export function ToggleHeroSection() {
   return (

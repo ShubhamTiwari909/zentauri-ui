@@ -1,4 +1,4 @@
-import { Button } from "@repo/components/ui";
+import { Button } from "@zentauri-ui/zentauri-components/ui";
 
 export function ButtonHeroSection() {
   return (
