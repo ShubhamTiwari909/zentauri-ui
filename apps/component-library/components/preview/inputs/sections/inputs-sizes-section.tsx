@@ -1,4 +1,4 @@
-import { Input } from "@/components/ui/inputs";
+import { Input } from "@repo/components/ui";
 import { sizeInputs } from "../variants";
 
 export function InputsSizesSection() {

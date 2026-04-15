@@ -1,4 +1,4 @@
-import IntroductionPage from "@/components/preview/introduction";
+import IntroductionPage from "@/components/introduction";
 
 export default function PreviewIndexPage() {
   return <IntroductionPage />;
