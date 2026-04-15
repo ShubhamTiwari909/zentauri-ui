@@ -1,5 +1,4 @@
-"use client";
-
+import "../globals.css";
 export * from "./accordion";
 export * from "./alert";
 export * from "./badge";

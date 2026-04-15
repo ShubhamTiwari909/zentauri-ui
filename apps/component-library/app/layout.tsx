@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "@zentauri-ui/zentauri-components/styles.css";
 import "./globals.css";
 import { SiteFooter } from "@/components/common/site-footer";
 
