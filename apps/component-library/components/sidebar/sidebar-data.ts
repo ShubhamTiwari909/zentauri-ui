@@ -58,6 +58,10 @@ export const sidebarRouteData: SidebarNavGroup[] = [
         href: "/preview/modal",
       },
       {
+        title: "Pagination",
+        href: "/preview/pagination",
+      },
+      {
         title: "Progress",
         href: "/preview/progress",
       },
