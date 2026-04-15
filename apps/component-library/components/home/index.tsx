@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PreviewPageShell } from "@/components/preview/common/preview-page-shell";
+import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { Button } from "@/components/ui/buttons/button";
 import { useHome } from "./use-home";
 import { LightLines } from "@/components/light-lines/LightLines";

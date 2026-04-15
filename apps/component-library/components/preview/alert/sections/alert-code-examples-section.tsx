@@ -1,6 +1,6 @@
 "use client";
 
-import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
+import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Alert, AlertDescription, AlertTitle, type AlertProps } from "@/components/ui/alert";
 
@@ -14,6 +14,23 @@ const ALERT_APPEARANCES = [
   "error",
   "info",
   "ghost",
+  "purple",
+  "pink",
+  "orange",
+  "yellow",
+  "teal",
+  "indigo",
+  "gray",
+  "violet",
+  "gradient-blue",
+  "gradient-green",
+  "gradient-red",
+  "gradient-yellow",
+  "gradient-purple",
+  "gradient-teal",
+  "gradient-indigo",
+  "gradient-pink",
+  "gradient-orange",
 ] as const satisfies readonly NonNullable<AlertProps["appearance"]>[];
 
 const ALERT_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<AlertProps["size"]>[];

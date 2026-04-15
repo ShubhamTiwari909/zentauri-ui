@@ -1,4 +1,4 @@
-import { PreviewPageShell } from "@/components/preview/common/preview-page-shell";
+import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { TooltipCodeExamplesSection } from "./sections/tooltip-code-examples-section";
 import { TooltipExamplesSection } from "./sections/tooltip-examples-section";
 import { TooltipHeroSection } from "./sections/tooltip-hero-section";

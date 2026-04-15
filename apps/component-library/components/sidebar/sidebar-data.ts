@@ -14,14 +14,6 @@ export const sidebarRouteData: SidebarNavGroup[] = [
     title: "Components",
     items: [
       {
-        title: "Buttons",
-        href: "/preview/buttons",
-      },
-      {
-        title: "Inputs",
-        href: "/preview/inputs",
-      },
-      {
         title: "Accordion",
         href: "/preview/accordion",
       },
@@ -32,6 +24,10 @@ export const sidebarRouteData: SidebarNavGroup[] = [
       {
         title: "Badge",
         href: "/preview/badge",
+      },
+      {
+        title: "Buttons",
+        href: "/preview/buttons",
       },
       {
         title: "Card",
@@ -52,6 +48,10 @@ export const sidebarRouteData: SidebarNavGroup[] = [
       {
         title: "Empty state",
         href: "/preview/empty-state",
+      },
+      {
+        title: "Inputs",
+        href: "/preview/inputs",
       },
       {
         title: "Modal",

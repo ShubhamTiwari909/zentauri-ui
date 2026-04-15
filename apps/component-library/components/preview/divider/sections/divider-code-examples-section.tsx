@@ -1,6 +1,6 @@
 "use client";
 
-import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
+import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Divider, type DividerProps } from "@/components/ui/divider";
 
@@ -13,6 +13,27 @@ const DIVIDER_APPEARANCES = [
   "primary",
   "destructive",
   "ghost",
+  "sky",
+  "rose",
+  "purple",
+  "pink",
+  "orange",
+  "yellow",
+  "teal",
+  "indigo",
+  "emerald",
+  "gray",
+  "amber",
+  "violet",
+  "gradient-blue",
+  "gradient-green",
+  "gradient-red",
+  "gradient-yellow",
+  "gradient-purple",
+  "gradient-teal",
+  "gradient-indigo",
+  "gradient-pink",
+  "gradient-orange",
 ] as const satisfies readonly NonNullable<DividerProps["appearance"]>[];
 
 const DIVIDER_ORIENTATIONS = ["horizontal", "vertical"] as const satisfies readonly NonNullable<

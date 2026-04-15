@@ -1,6 +1,6 @@
 "use client";
 
-import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
+import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Skeleton, type SkeletonProps } from "@/components/ui/skeleton";
 
@@ -11,6 +11,25 @@ const SKELETON_APPEARANCES = [
   "default",
   "subtle",
   "muted",
+  "sky",
+  "rose",
+  "purple",
+  "pink",
+  "orange",
+  "yellow",
+  "teal",
+  "indigo",
+  "emerald",
+  "gray",
+  "gradient-blue",
+  "gradient-green",
+  "gradient-red",
+  "gradient-yellow",
+  "gradient-purple",
+  "gradient-teal",
+  "gradient-indigo",
+  "gradient-pink",
+  "gradient-orange",
 ] as const satisfies readonly NonNullable<SkeletonProps["appearance"]>[];
 
 const SKELETON_SIZES = [
@@ -27,34 +46,42 @@ const SKELETON_ROUNDED = [
   "full",
 ] as const satisfies readonly NonNullable<SkeletonProps["rounded"]>[];
 
+
 function skeletonSnippet(opts: {
   appearance: NonNullable<SkeletonProps["appearance"]>;
   size: NonNullable<SkeletonProps["size"]>;
   rounded: NonNullable<SkeletonProps["rounded"]>;
+  animation: NonNullable<SkeletonProps["animation"]>;
+  shimmerTone: NonNullable<SkeletonProps["shimmerTone"]>;
 }) {
-  const { appearance, size, rounded } = opts;
+  const { appearance, size, rounded, animation, shimmerTone } = opts;
   const appearanceAttr =
     appearance === "default" ? "" : ` appearance="${appearance}"`;
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
   const roundedAttr = rounded === "md" ? "" : ` rounded="${rounded}"`;
-  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}, rounded · ${rounded}`)}<Skeleton className="max-w-md"${appearanceAttr}${sizeAttr}${roundedAttr} animation="none" />`;
+  const animationAttr = animation === "none" ? "" : ` animation="${animation}"`;
+  const shimmerToneAttr = shimmerTone === "default" ? "" : ` shimmerTone="${shimmerTone}"`;
+  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}, rounded · ${rounded}, animation · ${animation}, shimmerTone · ${shimmerTone}`)}<Skeleton className="max-w-md"${appearanceAttr}${sizeAttr}${roundedAttr}${animationAttr}${shimmerToneAttr} />`;
 }
 
 function SkeletonDemo(opts: {
   appearance: NonNullable<SkeletonProps["appearance"]>;
   size: NonNullable<SkeletonProps["size"]>;
   rounded: NonNullable<SkeletonProps["rounded"]>;
+  shimmerTone: NonNullable<SkeletonProps["shimmerTone"]>;
+  animation: NonNullable<SkeletonProps["animation"]>;
 }) {
-  const { appearance, size, rounded } = opts;
+  const { appearance, size, rounded, shimmerTone, animation } = opts;
   return (
     <div>
-      <p className="mb-5">Appearance: <span className="font-bold">{appearance}</span> | Size: <span className="font-bold">{size}</span> | Rounded: <span className="font-bold">{rounded}</span></p>
+      <p className="mb-5">Appearance: <span className="font-bold">{appearance}</span> | Size: <span className="font-bold">{size}</span> | Rounded: <span className="font-bold">{rounded}</span> | Animation: <span className="font-bold">{animation}</span> | Shimmer Tone: <span className="font-bold">{shimmerTone}</span></p>
       <Skeleton
-        className="max-w-md"
+        className="max-w-md min-h-10"
         appearance={appearance}
         size={size}
         rounded={rounded}
-        animation="none"
+        animation={animation}
+        shimmerTone={shimmerTone}
       />
     </div>
   );
@@ -74,9 +101,9 @@ export function SkeletonCodeExamplesSection() {
         {SKELETON_APPEARANCES.map((appearance) => (
           <PreviewCodeShowcase
             key={`app-${appearance}`}
-            code={skeletonSnippet({ appearance, size: "md", rounded: "md" })}
+            code={skeletonSnippet({ appearance, size: "md", rounded: "md", animation: "shimmer", shimmerTone: appearance })}
           >
-            <SkeletonDemo appearance={appearance} size="md" rounded="md" />
+            <SkeletonDemo appearance={appearance} size="md" rounded="md" animation="shimmer" shimmerTone={appearance}  />
           </PreviewCodeShowcase>
         ))}
         {SKELETON_SIZES.map((size) => (
@@ -86,9 +113,11 @@ export function SkeletonCodeExamplesSection() {
               appearance: "default",
               size,
               rounded: "md",
+              animation: "none",
+              shimmerTone: "default",
             })}
           >
-            <SkeletonDemo appearance="default" size={size} rounded="md" />
+            <SkeletonDemo appearance="default" size={size} rounded="md" shimmerTone="default" animation="none" />
           </PreviewCodeShowcase>
         ))}
         {SKELETON_ROUNDED.map((rounded) => (
@@ -98,9 +127,11 @@ export function SkeletonCodeExamplesSection() {
               appearance: "subtle",
               size: "md",
               rounded,
+              animation: "none",
+              shimmerTone: "default",
             })}
           >
-            <SkeletonDemo appearance="subtle" size="md" rounded={rounded} />
+            <SkeletonDemo appearance="subtle" size="md" rounded={rounded} shimmerTone="default" animation="none" />
           </PreviewCodeShowcase>
         ))}
       </div>

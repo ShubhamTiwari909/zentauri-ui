@@ -1,4 +1,4 @@
-import { PreviewPageShell } from "@/components/preview/common/preview-page-shell";
+import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { ModalCodeExamplesSection } from "./sections/modal-code-examples-section";
 import { ModalExamplesSection } from "./sections/modal-examples-section";
 import { ModalHeroSection } from "./sections/modal-hero-section";

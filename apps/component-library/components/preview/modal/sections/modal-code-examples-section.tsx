@@ -1,6 +1,6 @@
 "use client";
 
-import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
+import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Modal,
@@ -28,8 +28,12 @@ const MODAL_POSITIONS = ["center", "top", "bottom"] as const satisfies readonly 
   ModalContentProps["position"]
 >[];
 
-const MODAL_APPEARANCES = ["default", "glass"] as const satisfies readonly NonNullable<
+const MODAL_APPEARANCES = ["default", "glass", "sky", "rose", "purple", "pink", "orange", "yellow", "teal", "indigo", "emerald", "gray", "amber", "violet", "gradient-blue", "gradient-green", "gradient-red", "gradient-yellow", "gradient-purple", "gradient-teal", "gradient-indigo", "gradient-pink", "gradient-orange"] as const satisfies readonly NonNullable<
   ModalContentProps["appearance"]
+>[];
+
+const MODAL_ANIMATIONS = ["none", "fade", "scale", "slide-up", "slide-down"] as const satisfies readonly NonNullable<
+  ModalContentProps["animation"]
 >[];
 
 function modalSnippet(opts: {
@@ -64,13 +68,14 @@ function ModalDemo(opts: {
   size: NonNullable<ModalContentProps["size"]>;
   position: NonNullable<ModalContentProps["position"]>;
   appearance: NonNullable<ModalContentProps["appearance"]>;
+  animation?: NonNullable<ModalContentProps["animation"]>;
   label: string;
 }) {
-  const { size, position, appearance, label } = opts;
+  const { size, position, appearance, animation, label } = opts;
   return (
     <Modal>
       <ModalTrigger className={TRIGGER_CLASS}>{label}</ModalTrigger>
-      <ModalContent size={size} position={position} appearance={appearance} animation="scale">
+      <ModalContent className="rounded-lg" size={size} position={position} appearance={appearance} animation={animation}>
         <ModalClose />
         <ModalHeader>
           <ModalTitle>Dialog</ModalTitle>
@@ -129,6 +134,19 @@ export function ModalCodeExamplesSection() {
             })}
           >
             <ModalDemo size="md" position="center" appearance={appearance} label={`Open (${appearance})`} />
+          </PreviewCodeShowcase>
+        ))}
+        {MODAL_ANIMATIONS.map((animation) => (
+          <PreviewCodeShowcase
+            key={`anim-${animation}`}
+            code={modalSnippet({
+              size: "md",
+              position: "center",
+              appearance: "default",
+              label: `Open (${animation})`,
+            })}
+          >
+            <ModalDemo size="md" position="center" appearance="default" label={`Open (${animation})`} animation={animation} />
           </PreviewCodeShowcase>
         ))}
       </div>

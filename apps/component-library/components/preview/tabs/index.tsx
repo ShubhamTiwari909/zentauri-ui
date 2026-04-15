@@ -1,4 +1,4 @@
-import { PreviewPageShell } from "@/components/preview/common/preview-page-shell";
+import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { TabsCodeExamplesSection } from "./sections/tabs-code-examples-section";
 import { TabsExamplesSection } from "./sections/tabs-examples-section";
 import { TabsHeroSection } from "./sections/tabs-hero-section";

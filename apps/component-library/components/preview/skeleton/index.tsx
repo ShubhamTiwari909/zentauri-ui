@@ -1,4 +1,4 @@
-import { PreviewPageShell } from "@/components/preview/common/preview-page-shell";
+import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { SkeletonCodeExamplesSection } from "./sections/skeleton-code-examples-section";
 import { SkeletonExamplesSection } from "./sections/skeleton-examples-section";
 import { SkeletonHeroSection } from "./sections/skeleton-hero-section";

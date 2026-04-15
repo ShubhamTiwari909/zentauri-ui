@@ -31,6 +31,7 @@ export function Skeleton(props: SkeletonProps) {
     size,
     rounded,
     animation = "shimmer",
+    shimmerTone,
     busy,
     children,
     ref,
@@ -46,7 +47,16 @@ export function Skeleton(props: SkeletonProps) {
         data-slot="skeleton"
         aria-hidden
         aria-busy={busy ? true : undefined}
-        className={cn(skeletonVariants({ appearance, size, rounded }), className)}
+        className={cn(
+          skeletonVariants({
+            appearance,
+            size,
+            rounded,
+            animation,
+            shimmerTone,
+          }),
+          className,
+        )}
         initial={false}
         {...motionProps}
         {...rest}
@@ -67,6 +77,7 @@ export function SkeletonText(props: SkeletonTextProps) {
     size,
     rounded,
     animation = "shimmer",
+    shimmerTone,
     busy,
     ref,
   } = props;
@@ -85,7 +96,13 @@ export function SkeletonText(props: SkeletonTextProps) {
           key={index}
           ref={index === 0 ? ref : undefined}
           className={cn(
-            skeletonVariants({ appearance, size, rounded }),
+            skeletonVariants({
+              appearance,
+              size,
+              rounded,
+              animation: effectiveAnimation,
+              shimmerTone,
+            }),
             skeletonTextLineVariants({ size }),
             index === lines - 1 ? "w-3/5" : "w-full",
           )}
@@ -119,6 +136,7 @@ export function SkeletonAvatar(props: SkeletonAvatarProps) {
     size,
     rounded = "full",
     animation,
+    shimmerTone,
     busy,
     ref,
     ...rest
@@ -133,7 +151,13 @@ export function SkeletonAvatar(props: SkeletonAvatarProps) {
       aria-hidden
       aria-busy={busy ? true : undefined}
       className={cn(
-        skeletonVariants({ appearance, size, rounded }),
+        skeletonVariants({
+          appearance,
+          size,
+          rounded,
+          animation: effectiveAnimation,
+          shimmerTone,
+        }),
         avatarSizeClass[avatarSize],
         className,
       )}
@@ -151,6 +175,7 @@ export function SkeletonCard(props: SkeletonCardProps) {
     className,
     busy,
     animation = "shimmer",
+    shimmerTone,
     appearance,
     size,
     rounded,
@@ -167,19 +192,27 @@ export function SkeletonCard(props: SkeletonCardProps) {
       <Skeleton
         rounded="lg"
         animation={animation}
+        shimmerTone={shimmerTone}
         appearance={appearance}
         size={size}
         busy={busy}
         className="flex flex-col gap-4 p-4"
       >
         <div className="flex items-center gap-3">
-          <SkeletonAvatar appearance={appearance} size={size} animation={animation} rounded={rounded} />
+          <SkeletonAvatar
+            appearance={appearance}
+            size={size}
+            animation={animation}
+            shimmerTone={shimmerTone}
+            rounded={rounded}
+          />
           <div className="flex flex-1 flex-col gap-2">
             <SkeletonText
               lines={2}
               appearance={appearance}
               size={size}
               animation={animation}
+              shimmerTone={shimmerTone}
             />
           </div>
         </div>
@@ -188,6 +221,7 @@ export function SkeletonCard(props: SkeletonCardProps) {
           appearance={appearance}
           size={size}
           animation={animation}
+          shimmerTone={shimmerTone}
         />
       </Skeleton>
     </div>
@@ -210,6 +244,7 @@ export function SkeletonButton(props: SkeletonButtonProps) {
     size,
     rounded = "md",
     animation,
+    shimmerTone,
     busy,
     ref,
     ...rest
@@ -224,7 +259,13 @@ export function SkeletonButton(props: SkeletonButtonProps) {
       aria-hidden
       aria-busy={busy ? true : undefined}
       className={cn(
-        skeletonVariants({ appearance, size, rounded }),
+        skeletonVariants({
+          appearance,
+          size,
+          rounded,
+          animation: effectiveAnimation,
+          shimmerTone,
+        }),
         buttonHeight[buttonSize],
         className,
       )}

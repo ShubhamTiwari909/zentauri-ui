@@ -1,6 +1,6 @@
 "use client";
 
-import { variantLeadComment } from "@/components/preview/common/variant-code-prefix";
+import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
   Dropdown,
@@ -13,19 +13,46 @@ const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
 const MENU_SURFACE_CLASS =
-  "border border-white/10 bg-slate-900 text-slate-100 shadow-lg";
+  "border border-white/10 bg-slate-900 text-slate-100 shadow-lg rounded-lg";
 
-const TRIGGER_VARIANTS = ["default", "outline", "ghost", "sky", "rose", "purple", "pink", "orange", "yellow", "teal", "indigo", "emerald"] as const;
+const TRIGGER_VARIANTS = [
+  "default",
+  "outline",
+  "ghost",
+  "white",
+  "black",
+  "sky",
+  "rose",
+  "purple",
+  "pink",
+  "orange",
+  "yellow",
+  "teal",
+  "indigo",
+  "emerald",
+  "gray",
+  "amber",
+  "violet",
+  "gradient-blue",
+  "gradient-green",
+  "gradient-red",
+  "gradient-yellow",
+  "gradient-purple",
+  "gradient-teal",
+  "gradient-indigo",
+  "gradient-pink",
+  "gradient-orange",
+] as const;
 const TRIGGER_SIZES = ["sm", "md", "lg"] as const;
 
 const CONTENT_PLACEMENTS = ["top", "bottom", "left", "right"] as const;
 
-const ITEM_VARIANTS = ["default", "destructive", "outline"] as const;
+const CONTENT_SPACINGS = ["none", "default", "sm", "md", "lg", "xl"] as const;
 
 type TriggerVariant = (typeof TRIGGER_VARIANTS)[number];
 type TriggerSize = (typeof TRIGGER_SIZES)[number];
 type ContentPlacement = (typeof CONTENT_PLACEMENTS)[number];
-type ItemVariant = (typeof ITEM_VARIANTS)[number];
+type ContentSpacing = (typeof CONTENT_SPACINGS)[number];
 
 function triggerSnippet(variant: TriggerVariant, size: TriggerSize) {
   const variantAttr = variant === "default" ? "" : ` variant="${variant}"`;
@@ -56,8 +83,12 @@ function TriggerDemo({
         Menu {variant} {size}
       </DropdownTrigger>
       <DropdownContent className={MENU_SURFACE_CLASS}>
-        <DropdownItem value="one">One</DropdownItem>
-        <DropdownItem value="two">Two</DropdownItem>
+        <DropdownItem value="one" variant={variant}>
+          One
+        </DropdownItem>
+        <DropdownItem value="two" variant={variant}>
+          Two
+        </DropdownItem>
       </DropdownContent>
     </Dropdown>
   );
@@ -93,45 +124,62 @@ function PlacementDemo({ placement }: { placement: ContentPlacement }) {
   );
 }
 
-function itemSnippet(itemVariant: ItemVariant) {
-  const variantAttr =
-    itemVariant === "default" ? "" : ` variant="${itemVariant}"`;
-  return `${variantLeadComment(`DropdownItem · variant · ${itemVariant}`)}<Dropdown>
+function spacingSnippet(spacing: ContentSpacing) {
+  const spacingAttr = spacing === "default" ? "" : ` spacing="${spacing}"`;
+  return `${variantLeadComment(`DropdownContent · spacing · ${spacing}`)}<Dropdown>
   <DropdownTrigger variant="outline" size="sm">
-    Actions
+    Menu
   </DropdownTrigger>
-  <DropdownContent className="${MENU_SURFACE_CLASS}">
-    <DropdownItem value="safe">Keep</DropdownItem>
-    <DropdownItem value="risky"${variantAttr}>
-      ${itemVariant === "destructive" ? "Delete" : itemVariant === "outline" ? "Archive" : "Default row"}
-    </DropdownItem>
+  <DropdownContent${spacingAttr} className="${MENU_SURFACE_CLASS}">
+    <DropdownItem value="a">Alpha</DropdownItem>
+    <DropdownItem value="b">Beta</DropdownItem>
   </DropdownContent>
 </Dropdown>`;
 }
 
-function ItemVariantDemo({ itemVariant }: { itemVariant: ItemVariant }) {
-  const label =
-    itemVariant === "destructive"
-      ? "Delete"
-      : itemVariant === "outline"
-        ? "Archive"
-        : "Default row";
+function SpacingDemo({ spacing }: { spacing: ContentSpacing }) {
+  return (
+    <div className="flex min-h-40 w-full max-w-xl items-center">
+      <Dropdown>
+        <DropdownTrigger variant="outline" size="sm">
+          Menu {spacing}
+        </DropdownTrigger>
+        <DropdownContent spacing={spacing} className={MENU_SURFACE_CLASS}>
+          <DropdownItem value="a">Alpha</DropdownItem>
+          <DropdownItem value="b">Beta</DropdownItem>
+        </DropdownContent>
+      </Dropdown>
+    </div>
+  );
+}
 
+function dividerSnippet() {
+  return `${variantLeadComment(`DropdownContent · divider`)}<Dropdown>
+  <DropdownTrigger variant="outline" size="sm">
+    Menu
+  </DropdownTrigger>
+  <DropdownContent divider className="${MENU_SURFACE_CLASS}">
+    <DropdownItem value="a">Alpha</DropdownItem>
+    <DropdownItem value="b">Beta</DropdownItem>
+  </DropdownContent>
+</Dropdown>`;
+}
+
+function DividerDemo() {
   return (
     <Dropdown>
       <DropdownTrigger variant="outline" size="sm">
-        Actions {itemVariant}
+        Menu divider
       </DropdownTrigger>
-      <DropdownContent className={MENU_SURFACE_CLASS}>
-        <DropdownItem value="safe">Keep</DropdownItem>
-        <DropdownItem value="risky" variant={itemVariant}>
-          {label}
-        </DropdownItem>
+      <DropdownContent divider className={MENU_SURFACE_CLASS}>
+        <DropdownItem value="a">Alpha</DropdownItem>
+        <DropdownItem value="b">Beta</DropdownItem>
+        <DropdownItem value="c">Charlie</DropdownItem>
+        <DropdownItem value="d">Delta</DropdownItem>
       </DropdownContent>
     </Dropdown>
   );
 }
-
 export function DropdownCodeExamplesSection() {
   return (
     <section className={SECTION}>
@@ -185,23 +233,25 @@ export function DropdownCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-
       <h3 className="mt-14 text-lg font-semibold text-white">
-        DropdownItem — variant
+        DropdownContent — spacing
       </h3>
       <p className="mt-1 max-w-2xl text-sm text-slate-400">
-        Item emphasis: default, destructive, and outline.
+        The spacing between the items in the dropdown content.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
-        {ITEM_VARIANTS.map((itemVariant) => (
+        {CONTENT_SPACINGS.map((spacing) => (
           <PreviewCodeShowcase
-            key={`item-${itemVariant}`}
-            code={itemSnippet(itemVariant)}
+            key={`spacing-${spacing}`}
+            code={spacingSnippet(spacing)}
           >
-            <ItemVariantDemo itemVariant={itemVariant} />
+            <SpacingDemo spacing={spacing} />
           </PreviewCodeShowcase>
         ))}
       </div>
+      <PreviewCodeShowcase key={`divider`} code={dividerSnippet()}>
+        <DividerDemo />
+      </PreviewCodeShowcase>
     </section>
   );
 }
