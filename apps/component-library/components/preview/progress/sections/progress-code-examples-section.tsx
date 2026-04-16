@@ -2,7 +2,10 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Progress, type ProgressProps } from "@zentauri-ui/zentauri-components/ui";
+import {
+  Progress,
+  type ProgressProps,
+} from "@zentauri-ui/zentauri-components/ui";
 
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
@@ -33,13 +36,19 @@ const PROGRESS_APPEARANCES = [
   "gradient-pink",
 ] as const satisfies readonly NonNullable<ProgressProps["appearance"]>[];
 
-const PROGRESS_SIZES = ["xs", "sm", "md", "lg", "xl"] as const satisfies readonly NonNullable<
-  ProgressProps["size"]
->[];
+const PROGRESS_SIZES = [
+  "xs",
+  "sm",
+  "md",
+  "lg",
+  "xl",
+] as const satisfies readonly NonNullable<ProgressProps["size"]>[];
 
-const PROGRESS_SHAPES = ["flat", "rounded", "pill"] as const satisfies readonly NonNullable<
-  ProgressProps["shape"]
->[];
+const PROGRESS_SHAPES = [
+  "flat",
+  "rounded",
+  "pill",
+] as const satisfies readonly NonNullable<ProgressProps["shape"]>[];
 
 function progressAttrs(opts: {
   appearance: NonNullable<ProgressProps["appearance"]>;
@@ -65,7 +74,7 @@ function progressAttrs(opts: {
   if (animated) {
     parts.push("animated");
   }
-  parts.push('value={42}');
+  parts.push("value={42}");
   parts.push('animation="none"');
   const attr = parts.length ? ` ${parts.join(" ")}` : "";
   return attr;
@@ -86,15 +95,20 @@ function progressSnippet(opts: Parameters<typeof progressAttrs>[0]) {
 function ProgressDemo(opts: Parameters<typeof progressAttrs>[0]) {
   const { appearance, size, shape, striped, animated } = opts;
   return (
-    <Progress
-      appearance={appearance}
-      size={size}
-      shape={shape}
-      striped={striped}
-      animated={animated}
-      value={42}
-      animation="none"
-    />
+    <div>
+      <p className="mb-5 text-xs md:text-sm">
+        Appearance: <span className="font-bold">{appearance.toUpperCase()}</span>, Size: <span className="font-bold">{size.toUpperCase()}</span>, Shape: <span className="font-bold">{shape.toUpperCase()}</span>, Striped: <span className="font-bold">{striped ? "true" : "false"}</span>, Animated: <span className="font-bold">{animated ? "true" : "false"}</span>
+      </p>
+      <Progress
+        appearance={appearance}
+        size={size}
+        shape={shape}
+        striped={striped}
+        animated={animated}
+        value={42}
+        animation="none"
+      />
+    </div>
   );
 }
 
@@ -108,9 +122,12 @@ export function ProgressCodeExamplesSection() {
   };
   return (
     <section className={SECTION}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">Progress variants examples</h2>
+      <h2 className="mt-3 text-2xl font-semibold text-white">
+        Progress variants examples
+      </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Fill tokens, track scale, shape, and motion flags at a fixed value. Each snippet starts with Variant: listing the row tokens.
+        Fill tokens, track scale, shape, and motion flags at a fixed value. Each
+        snippet starts with Variant: listing the row tokens.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {PROGRESS_APPEARANCES.map((appearance) => (
@@ -139,13 +156,21 @@ export function ProgressCodeExamplesSection() {
         ))}
         <PreviewCodeShowcase
           key="striped"
-          code={progressSnippet({ ...defaults, appearance: "default", striped: true })}
+          code={progressSnippet({
+            ...defaults,
+            appearance: "default",
+            striped: true,
+          })}
         >
           <ProgressDemo {...defaults} appearance="default" striped />
         </PreviewCodeShowcase>
         <PreviewCodeShowcase
           key="animated"
-          code={progressSnippet({ ...defaults, appearance: "sky", animated: true })}
+          code={progressSnippet({
+            ...defaults,
+            appearance: "sky",
+            animated: true,
+          })}
         >
           <ProgressDemo {...defaults} appearance="sky" animated />
         </PreviewCodeShowcase>

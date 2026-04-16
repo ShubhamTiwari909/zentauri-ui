@@ -106,6 +106,12 @@ export function SkeletonCodeExamplesSection() {
             <SkeletonDemo appearance={appearance} size="md" rounded="md" animation="shimmer" shimmerTone={appearance}  />
           </PreviewCodeShowcase>
         ))}
+        <PreviewCodeShowcase
+            key={`pulse`}
+            code={skeletonSnippet({ appearance: "default", size: "md", rounded: "md", animation: "pulse", shimmerTone: "default" })}
+          >
+            <SkeletonDemo appearance="default" size="md" rounded="md" animation="pulse" shimmerTone="default"  />
+          </PreviewCodeShowcase>
         {SKELETON_SIZES.map((size) => (
           <PreviewCodeShowcase
             key={`size-${size}`}

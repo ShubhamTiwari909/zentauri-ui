@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 const shimmerLayer =
-  "[background-size:220%_100%] [background-repeat:no-repeat]";
+  "[background-size:220%_100%] [background-repeat:no-repeat] [background-position:100%_0%]";
 
 export const skeletonShimmerGradientClasses = {
   default: `${shimmerLayer} [background-image:linear-gradient(90deg,rgba(255,255,255,0.04),rgba(255,255,255,0.22),rgba(255,255,255,0.04))]`,
@@ -77,6 +77,7 @@ export const skeletonVariants = cva(
       animation: {
         none: "",
         shimmer: "",
+        pulse: "",
       },
       shimmerTone: {
         default: "",
@@ -225,6 +226,10 @@ export const skeletonVariants = cva(
         animation: "shimmer",
         shimmerTone: "gradient-orange",
         class: skeletonShimmerGradientClasses["gradient-orange"],
+      },
+      {
+        animation: "pulse",
+        class: "",
       },
     ],
     defaultVariants: {

@@ -22,10 +22,10 @@ export const toastRootVariants = cva(
     variants: {
       appearance: {
         default: "bg-slate-950",
-        success: "border-emerald-500/40 bg-emerald-950/60",
-        warning: "border-amber-500/40 bg-amber-950/60",
-        error: "border-rose-500/50 bg-rose-950/60",
-        info: "border-sky-500/40 bg-sky-950/60",
+        success: "border-emerald-500/40 bg-emerald-950",
+        warning: "border-amber-500/40 bg-amber-950",
+        error: "border-rose-500/50 bg-rose-950",
+        info: "border-sky-500/40 bg-sky-950",
       },
       size: {
         sm: "p-3 text-xs",

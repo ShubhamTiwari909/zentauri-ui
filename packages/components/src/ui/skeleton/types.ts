@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 import type { skeletonVariants } from "./variants";
 
-export type SkeletonAnimation = "none" | "shimmer";
+export type SkeletonAnimation = "none" | "shimmer" | "pulse";
 
 type SkeletonVariantProps = VariantProps<typeof skeletonVariants>;
 
