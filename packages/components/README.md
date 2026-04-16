@@ -126,6 +126,9 @@ From this package directory in the monorepo:
 - `pnpm dev` — `tsup` watch mode
 - `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests
 
+## NOTE: 
+This package is in initial phase of development and you might see some minor or major breaking changes in the future. If you want to contribute to this project, email me at @shubhmtiwri00@gmail.com or ping me on linkeded https://www.linkedin.com/in/shubham-tiwari-b7544b193/
+
 ## License
 
 MIT
