@@ -29,6 +29,7 @@ const SPINNER_APPEARANCES = [
   "gradient-teal",
   "gradient-indigo",
   "gradient-pink",
+  "gradient-orange",
 ] as const satisfies readonly NonNullable<SpinnerProps["appearance"]>[];
 
 const SPINNER_VARIANTS = ["ring", "dots", "pulse", "bars"] as const satisfies readonly NonNullable<

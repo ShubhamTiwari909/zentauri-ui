@@ -34,6 +34,7 @@ const PROGRESS_APPEARANCES = [
   "gradient-teal",
   "gradient-indigo",
   "gradient-pink",
+  "gradient-orange",
 ] as const satisfies readonly NonNullable<ProgressProps["appearance"]>[];
 
 const PROGRESS_SIZES = [

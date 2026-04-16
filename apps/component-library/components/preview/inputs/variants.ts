@@ -12,6 +12,7 @@ export const appearanceInputsExtended = [
   { label: "Amber", appearance: "amber" as const },
   { label: "Pink", appearance: "pink" as const },
   { label: "Indigo", appearance: "indigo" as const },
+  { label: "Orange", appearance: "orange" as const },
 ];
 
 export const sizeInputs = [

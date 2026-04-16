@@ -30,6 +30,9 @@ export const buttonVariants = cva(
         teal: "bg-teal-600 text-white hover:bg-teal-600",
         yellow: "bg-yellow-600 text-white hover:bg-yellow-600",
         orange: "bg-orange-600 text-white hover:bg-orange-600",
+        gray: "bg-gray-600 text-white hover:bg-gray-600",
+        amber: "bg-amber-600 text-white hover:bg-amber-600",
+        violet: "bg-violet-600 text-white hover:bg-violet-600",
         "gradient-blue": "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-600 hover:to-purple-600",
         "gradient-green": "bg-gradient-to-r from-green-600 to-lime-600 text-white hover:from-green-600 hover:to-lime-600",
         "gradient-red": "bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-600 hover:to-pink-600",
@@ -38,6 +41,7 @@ export const buttonVariants = cva(
         "gradient-teal": "bg-gradient-to-r from-teal-600 to-cyan-600 text-white hover:from-teal-600 hover:to-cyan-600",
         "gradient-indigo": "bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-600 hover:to-purple-600",
         "gradient-pink": "bg-gradient-to-r from-pink-600 to-rose-600 text-white hover:from-pink-600 hover:to-rose-600",
+        "gradient-orange": "bg-gradient-to-r from-orange-600 to-red-600 text-white hover:from-orange-600 hover:to-red-600",
       },
       size: {
         sm: "h-7 md:h-9 px-3 text-xs",
