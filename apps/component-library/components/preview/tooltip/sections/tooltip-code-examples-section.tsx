@@ -9,6 +9,7 @@ import {
   type TooltipContentProps,
   type TooltipPosition,
 } from "@zentauri-ui/zentauri-components/ui";
+import { cn } from "@/lib/utils";
 
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
@@ -64,7 +65,6 @@ const TOOLTIP_POSITIONS = [
   "left",
   "right",
 ] as const satisfies readonly TooltipPosition[];
-
 
 const CONTENT_ANIMATIONS = [
   "fade",
@@ -125,20 +125,30 @@ function positionSnippet(position: TooltipPlacement) {
 }
 
 function PositionDemo({ position }: { position: TooltipPlacement }) {
+  const positionClass = {
+    top: "justify-center",
+    bottom: "justify-center",
+    left: "justify-end",
+    right: "justify-start",
+  };
   return (
-    <div className="flex min-h-44 w-full max-w-xl items-center justify-center p-10">
-      <Tooltip position={position}>
-        <TooltipTrigger className={TRIGGER_CLASS}>
-          Hover · position · {position}
-        </TooltipTrigger>
-        <TooltipContent>
-          Tooltip body (root position: {position}).
-        </TooltipContent>
-      </Tooltip>
-    </div>
+    <>
+      <p className="mb-5 text-xs md:text-sm">Position: {position}</p>
+      <div
+        className={cn(
+          "flex min-h-44 w-full max-w-xl items-center p-4",
+          positionClass[position],
+        )}
+      >
+        <p className="mb-5 text-xs md:text-sm"></p>
+        <Tooltip position={position}>
+          <TooltipTrigger className={TRIGGER_CLASS}>Hover</TooltipTrigger>
+          <TooltipContent>Tooltip body.</TooltipContent>
+        </Tooltip>
+      </div>
+    </>
   );
 }
-
 
 function animationSnippet(animation: ContentAnimation) {
   const animationAttr = animation === "fade" ? "" : ` animation="${animation}"`;
@@ -287,7 +297,6 @@ export function TooltipCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-
 
       <h3 className="mt-14 text-lg font-semibold text-white">
         TooltipContent — animation

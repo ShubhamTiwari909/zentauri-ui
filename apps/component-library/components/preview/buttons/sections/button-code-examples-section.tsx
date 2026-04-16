@@ -27,7 +27,7 @@ export function ButtonCodeExamplesSection() {
           const code = `${variantLeadComment(`appearance · ${button.appearance}`)}<Button appearance="${button.appearance}" className="w-full">${button.label}</Button>`;
           return (
             <PreviewCodeShowcase key={button.label} code={code}>
-              <p className="mb-5 text-xs font-semibold text-white">
+              <p className="mb-5 text-xs md:text-sm font-semibold text-white">
                 Appearance:{" "}
                 <span className="font-bold">{button.appearance.toUpperCase()}</span>
               </p>
@@ -41,7 +41,7 @@ export function ButtonCodeExamplesSection() {
           const code = `${variantLeadComment(`animation · ${animation}`)}<Button appearance="glass" animation="${animation}" className="w-full">${label} animation</Button>`;
           return (
             <PreviewCodeShowcase key={label} code={code}>
-              <p className="mb-5 text-xs font-semibold text-white">
+              <p className="mb-5 text-xs md:text-sm font-semibold text-white">
                 Animation: <span className="font-bold">{animation.toUpperCase()}</span>
               </p>
               <Button appearance="glass" animation={animation} className="w-40">
@@ -54,7 +54,7 @@ export function ButtonCodeExamplesSection() {
           const code = `${variantLeadComment(`size · ${button.size}`)}<Button appearance="gradient-indigo" size="${button.size}" className="w-full ${button.size === "icon" ? "w-20" : ""}">${button.label} size</Button>`;
           return (
             <PreviewCodeShowcase key={button.label} code={code}>
-              <p className="mb-5 text-xs font-semibold text-white">
+              <p className="mb-5 text-xs md:text-sm font-semibold text-white">
                 Size: <span className="font-bold">{button.size.toUpperCase()}</span>
               </p>
               <Button

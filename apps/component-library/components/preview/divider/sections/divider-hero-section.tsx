@@ -20,7 +20,7 @@ export function DividerHeroSection() {
 
       <div className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
         <Divider appearance="primary" animation="expand" label="Primary" />
-        <Divider appearance="muted" size="sm" />
+        <Divider appearance="muted" animation="expand" label="Primary" />
       </div>
     </section>
   );

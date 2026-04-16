@@ -3,6 +3,7 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
+  Button,
   Modal,
   ModalBody,
   ModalClose,
@@ -13,28 +14,60 @@ import {
   ModalTrigger,
   type ModalContentProps,
 } from "@zentauri-ui/zentauri-components/ui";
+import { useState } from "react";
 
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
-const TRIGGER_CLASS =
-  "rounded-lg px-3 py-1.5 text-sm";
+const TRIGGER_CLASS = "rounded-lg px-3 py-1.5 text-sm";
 
-const MODAL_SIZES = ["sm", "md", "lg", "xl", "full"] as const satisfies readonly NonNullable<
-  ModalContentProps["size"]
->[];
+const MODAL_SIZES = [
+  "sm",
+  "md",
+  "lg",
+  "xl",
+  "full",
+] as const satisfies readonly NonNullable<ModalContentProps["size"]>[];
 
-const MODAL_POSITIONS = ["center", "top", "bottom"] as const satisfies readonly NonNullable<
-  ModalContentProps["position"]
->[];
+const MODAL_POSITIONS = [
+  "center",
+  "top",
+  "bottom",
+] as const satisfies readonly NonNullable<ModalContentProps["position"]>[];
 
-const MODAL_APPEARANCES = ["default", "glass", "sky", "rose", "purple", "pink", "orange", "yellow", "teal", "indigo", "emerald", "gray", "amber", "violet", "gradient-blue", "gradient-green", "gradient-red", "gradient-yellow", "gradient-purple", "gradient-teal", "gradient-indigo", "gradient-pink", "gradient-orange"] as const satisfies readonly NonNullable<
-  ModalContentProps["appearance"]
->[];
+const MODAL_APPEARANCES = [
+  "default",
+  "glass",
+  "sky",
+  "rose",
+  "purple",
+  "pink",
+  "orange",
+  "yellow",
+  "teal",
+  "indigo",
+  "emerald",
+  "gray",
+  "amber",
+  "violet",
+  "gradient-blue",
+  "gradient-green",
+  "gradient-red",
+  "gradient-yellow",
+  "gradient-purple",
+  "gradient-teal",
+  "gradient-indigo",
+  "gradient-pink",
+  "gradient-orange",
+] as const satisfies readonly NonNullable<ModalContentProps["appearance"]>[];
 
-const MODAL_ANIMATIONS = ["none", "fade", "scale", "slide-up", "slide-down"] as const satisfies readonly NonNullable<
-  ModalContentProps["animation"]
->[];
+const MODAL_ANIMATIONS = [
+  "none",
+  "fade",
+  "scale",
+  "slide-up",
+  "slide-down",
+] as const satisfies readonly NonNullable<ModalContentProps["animation"]>[];
 
 function modalSnippet(opts: {
   size: NonNullable<ModalContentProps["size"]>;
@@ -74,8 +107,16 @@ function ModalDemo(opts: {
   const { size, position, appearance, animation, label } = opts;
   return (
     <Modal>
-      <ModalTrigger appearance={appearance} className={TRIGGER_CLASS}>{label}</ModalTrigger>
-      <ModalContent className="rounded-lg" size={size} position={position} appearance={appearance} animation={animation}>
+      <ModalTrigger appearance={appearance} className={TRIGGER_CLASS}>
+        {label}
+      </ModalTrigger>
+      <ModalContent
+        className="rounded-lg"
+        size={size}
+        position={position}
+        appearance={appearance}
+        animation={animation}
+      >
         <ModalClose />
         <ModalHeader>
           <ModalTitle>Dialog</ModalTitle>
@@ -89,12 +130,66 @@ function ModalDemo(opts: {
   );
 }
 
+function modalControlledSnippet() {
+  return `<Modal open={open} onOpenChange={setOpen}>
+  <ModalTrigger appearance="default" className={TRIGGER_CLASS}>
+    Modal controlled with useState
+  </ModalTrigger>
+  <ModalContent
+    className="rounded-lg"
+    size="md"
+    position="center"
+    appearance="default"
+    animation="scale"
+  >
+    <ModalClose />
+    <ModalHeader>
+      <ModalTitle>Dialog</ModalTitle>
+      <ModalDescription className="mb-5">Supporting description.</ModalDescription>
+      <Button appearance="rose" size="sm" animation="none" onClick={() => setOpen(false)}>
+        Close
+      </Button>
+    </ModalHeader>
+  </ModalContent>
+</Modal>`;
+}
+
+const ModalControlled = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <Modal open={open} onOpenChange={setOpen}>
+      <ModalTrigger appearance="default" className={TRIGGER_CLASS}>
+        Modal controlled with useState
+      </ModalTrigger>
+      <ModalContent
+        className="rounded-lg"
+        size="md"
+        position="center"
+        appearance="default"
+        animation="scale"
+      >
+        <ModalClose />
+        <ModalHeader>
+          <ModalTitle>Dialog</ModalTitle>
+          <ModalDescription className="mb-5">Supporting description.</ModalDescription>
+          <Button appearance="rose" size="sm" animation="none" onClick={() => setOpen(false)}>
+            Close
+          </Button>
+        </ModalHeader>
+      </ModalContent>
+    </Modal>
+  );
+};
+
 export function ModalCodeExamplesSection() {
   return (
     <section className={SECTION}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">Modal variants examples</h2>
+      <h2 className="mt-3 text-2xl font-semibold text-white">
+        Modal variants examples
+      </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Max width, vertical anchor, and surface style with a shared dialog layout. Code uses a Variant: lead-in per row.
+        Max width, vertical anchor, and surface style with a shared dialog
+        layout. Code uses a Variant: lead-in per row.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {MODAL_SIZES.map((size) => (
@@ -107,7 +202,12 @@ export function ModalCodeExamplesSection() {
               label: `Open (${size})`,
             })}
           >
-            <ModalDemo size={size} position="center" appearance="default" label={`Open (${size})`} />
+            <ModalDemo
+              size={size}
+              position="center"
+              appearance="default"
+              label={`Open (${size})`}
+            />
           </PreviewCodeShowcase>
         ))}
         {MODAL_POSITIONS.map((position) => (
@@ -120,7 +220,12 @@ export function ModalCodeExamplesSection() {
               label: `Open (${position})`,
             })}
           >
-            <ModalDemo size="md" position={position} appearance="default" label={`Open (${position})`} />
+            <ModalDemo
+              size="md"
+              position={position}
+              appearance="default"
+              label={`Open (${position})`}
+            />
           </PreviewCodeShowcase>
         ))}
         {MODAL_APPEARANCES.map((appearance) => (
@@ -133,7 +238,12 @@ export function ModalCodeExamplesSection() {
               label: `Open (${appearance})`,
             })}
           >
-            <ModalDemo size="md" position="center" appearance={appearance} label={`Open (${appearance})`} />
+            <ModalDemo
+              size="md"
+              position="center"
+              appearance={appearance}
+              label={`Open (${appearance})`}
+            />
           </PreviewCodeShowcase>
         ))}
         {MODAL_ANIMATIONS.map((animation) => (
@@ -146,9 +256,18 @@ export function ModalCodeExamplesSection() {
               label: `Open (${animation})`,
             })}
           >
-            <ModalDemo size="md" position="center" appearance="default" label={`Open (${animation})`} animation={animation} />
+            <ModalDemo
+              size="md"
+              position="center"
+              appearance="default"
+              label={`Open (${animation})`}
+              animation={animation}
+            />
           </PreviewCodeShowcase>
         ))}
+        <PreviewCodeShowcase code={modalControlledSnippet()}>
+          <ModalControlled />
+        </PreviewCodeShowcase>
       </div>
     </section>
   );

@@ -140,7 +140,7 @@ export function AccordionCodeExamplesSection() {
             key={`app-${appearance}`}
             code={accordionSnippet(appearance, "md", "single", "default")}
           >
-            <p className="mb-5 text-xs font-semibold text-white">
+            <p className="mb-5 text-xs md:text-sm font-semibold text-white">
               Appearance:{" "}
               <span className="font-bold">{appearance.toUpperCase()}</span>
             </p>
@@ -157,7 +157,7 @@ export function AccordionCodeExamplesSection() {
             key={`size-${size}`}
             code={accordionSnippet("default", size, "single", "default")}
           >
-            <p className="mb-5 text-xs font-semibold text-white">
+            <p className="mb-5 text-xs md:text-sm font-semibold text-white">
               Size: <span className="font-bold">{size.toUpperCase()}</span>
             </p>
             <AccordionDemo
@@ -172,7 +172,7 @@ export function AccordionCodeExamplesSection() {
           key="type-single"
           code={accordionSnippet("outline", "md", "single", "default")}
         >
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs md:text-sm font-semibold text-white">
             Type: <span className="font-bold">Single</span>
           </p>
           <AccordionDemo
@@ -186,7 +186,7 @@ export function AccordionCodeExamplesSection() {
           key="type-multiple"
           code={accordionSnippet("outline", "md", "multiple", "default")}
         >
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs md:text-sm font-semibold text-white">
             Type: <span className="font-bold">Multiple</span>
           </p>
           <AccordionDemo
@@ -201,7 +201,7 @@ export function AccordionCodeExamplesSection() {
             key={`trans-${transition}`}
             code={accordionSnippet("ghost", "md", "single", transition)}
           >
-            <p className="mb-5 text-xs font-semibold text-white">
+            <p className="mb-5 text-xs md:text-sm font-semibold text-white">
               Transition: <span className="font-bold">{transition.toUpperCase()}</span>
             </p>
             <AccordionDemo
