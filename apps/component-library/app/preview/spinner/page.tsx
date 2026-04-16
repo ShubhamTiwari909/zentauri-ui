@@ -1,9 +1,11 @@
-import SpinnerPreviewPage from '@/components/preview/spinner'
+import SpinnerPreviewPage from "@/components/preview/spinner";
+import { previewSeoDocumentToMetadata } from "@/lib/preview-seo";
+import { getPreviewSeo } from "@/lib/preview-seo-registry";
 
-const page = () => {
-  return (
-    <SpinnerPreviewPage />
-  )
+const seo = getPreviewSeo("spinner");
+
+export const metadata = previewSeoDocumentToMetadata(seo);
+
+export default function SpinnerPreviewRoutePage() {
+  return <SpinnerPreviewPage seo={seo} />;
 }
-
-export default page

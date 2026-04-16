@@ -1,9 +1,11 @@
-import InputsPreviewPage from '@/components/preview/inputs'
+import InputsPreviewPage from "@/components/preview/inputs";
+import { previewSeoDocumentToMetadata } from "@/lib/preview-seo";
+import { getPreviewSeo } from "@/lib/preview-seo-registry";
 
-const page = () => {
-  return (
-    <InputsPreviewPage />
-  )
+const seo = getPreviewSeo("inputs");
+
+export const metadata = previewSeoDocumentToMetadata(seo);
+
+export default function InputsPreviewRoutePage() {
+  return <InputsPreviewPage seo={seo} />;
 }
-
-export default page

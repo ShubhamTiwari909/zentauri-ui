@@ -1,0 +1,79 @@
+{
+  "category": "Actions",
+  "title": "Button component variants for React apps",
+  "description": "Primary Button component for React and Next.js with variants, loading states, icons, and motion tuned for forms and dashboards.",
+  "keywords": [
+    "button component",
+    "React",
+    "Next.js",
+    "loading state",
+    "CVA",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Button · Zentauri UI",
+    "description": "Primary Button component for React and Next.js with variants, loading states, icons, and motion tuned for forms and dashboards.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Button · Zentauri UI",
+    "description": "Primary Button component for React and Next.js with variants, loading states, icons, and motion tuned for forms and dashboards.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/buttons",
+  "headings": {
+    "h1": "Buttons for primary actions",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Action buttons with variants, sizes, and motion presets for React interfaces. Drop them into Next.js forms and toolbars while keeping focus rings consistent with your Tailwind theme.",
+  "useCases": [
+    "Submit Next.js forms with optimistic loading feedback.",
+    "Drive modal and drawer footers with primary/secondary pairing.",
+    "Add icon-leading actions to dense data tables.",
+    "Gate destructive flows behind emphasized danger styles."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Button component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
+    },
+    {
+      "question": "Can I customize button with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
+    },
+    {
+      "question": "Is this Button implementation accessible by default?",
+      "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Buttons wrap native elements so native disabled and focus behavior stay intact.\n\nLoading states preserve width to avoid layout shift in toolbars."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nPair every icon-only control with aria-label text supplied by your app."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keyboard order, focus rings, and ARIA attributes should match production usage. Test with your supported browsers and assistive technologies when semantics are non-trivial.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive overlays into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

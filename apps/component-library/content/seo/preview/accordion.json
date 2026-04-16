@@ -1,0 +1,80 @@
+{
+  "category": "Disclosure",
+  "title": "Accordion UI for React & Next.js apps",
+  "description": "Use the Accordion component in React and Next.js for collapsible FAQs, settings panels, and progressive disclosure without losing keyboard support.",
+  "keywords": [
+    "accordion component",
+    "React",
+    "Next.js",
+    "collapsible UI",
+    "keyboard navigation",
+    "Tailwind CSS",
+    "design system"
+  ],
+  "og": {
+    "title": "Accordion · Zentauri UI",
+    "description": "Use the Accordion component in React and Next.js for collapsible FAQs, settings panels, and progressive disclosure without losing keyboard support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Accordion · Zentauri UI",
+    "description": "Use the Accordion component in React and Next.js for collapsible FAQs, settings panels, and progressive disclosure without losing keyboard support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/accordion",
+  "headings": {
+    "h1": "Accordion for stacked disclosures",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "The Accordion component composes triggers and panels so you can ship stacked disclosures in React apps. Pair it with Tailwind spacing tokens in Next.js layouts for predictable rhythm.",
+  "useCases": [
+    "FAQ pages that keep SEO-friendly headings while hiding verbose answers.",
+    "Settings screens that group advanced options per section.",
+    "Docs sites that reveal code samples on demand.",
+    "Mobile-first navigation stacks with limited vertical space."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Accordion component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
+    },
+    {
+      "question": "Can I customize accordion with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
+    },
+    {
+      "question": "Is this Accordion implementation accessible by default?",
+      "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Each item manages its own open state while sharing motion presets for expand and collapse.\n\nUse semantic buttons for triggers so screen readers expose the expanded/collapsed state clearly."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nForward refs where you attach measurements or analytics. Avoid nesting interactive controls inside triggers."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keyboard order, focus rings, and ARIA attributes should match production usage. Test with your supported browsers and assistive technologies when semantics are non-trivial.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive overlays into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

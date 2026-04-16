@@ -1,0 +1,79 @@
+{
+  "category": "Forms",
+  "title": "Toggle switch component for React forms",
+  "description": "Toggle component for React and Next.js—binary on/off controls with clear labels for settings, feature flags, and compact filters.",
+  "keywords": [
+    "toggle switch",
+    "React",
+    "Next.js",
+    "boolean input",
+    "forms",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Toggle · Zentauri UI",
+    "description": "Toggle component for React and Next.js—binary on/off controls with clear labels for settings, feature flags, and compact filters.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Toggle · Zentauri UI",
+    "description": "Toggle component for React and Next.js—binary on/off controls with clear labels for settings, feature flags, and compact filters.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/toggle",
+  "headings": {
+    "h1": "Toggles for binary settings",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Toggles represent boolean settings with immediate visual state. Use them in React settings panels and Next.js account pages where checkboxes feel too form-heavy.",
+  "useCases": [
+    "Feature flags for beta capabilities.",
+    "Notification preferences with instant feedback.",
+    "Compact filters on mobile toolbars.",
+    "Dark mode switches paired with system sync copy."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Toggle component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
+    },
+    {
+      "question": "Can I customize toggle with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
+    },
+    {
+      "question": "Is this Toggle implementation accessible by default?",
+      "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Expose role=switch semantics and synchronize aria-checked with visual state.\n\nAvoid using toggles for non-binary choices."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nProvide visible labels; do not rely on color alone for on/off meaning."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keyboard order, focus rings, and ARIA attributes should match production usage. Test with your supported browsers and assistive technologies when semantics are non-trivial.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive overlays into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

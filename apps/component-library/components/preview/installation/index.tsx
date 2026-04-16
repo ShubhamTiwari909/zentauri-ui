@@ -1,12 +1,11 @@
 import CodeHighlight from "@/components/CodeHighlight";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import TabsListComponent from "@/components/preview/installation/tabs-list";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@zentauri-ui/zentauri-components/ui/accordion";
+
+import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
+import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import type { PreviewSeoDocument } from "@/lib/preview-seo";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@zentauri-ui/zentauri-components/ui/accordion";
 import { Tabs, TabsContent } from "@zentauri-ui/zentauri-components/ui/tabs";
 
 const SECTION =
@@ -57,23 +56,13 @@ const USAGE_SNIPPET = `<div className="rounded-3xl border border-white/10 bg-whi
   </Accordion>
 </div>`;
 
-export default function InstallationPreviewPage() {
+
+
+export default function InstallationPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
   return (
     <PreviewPageShell>
       <section className="space-y-6">
-        <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-cyan-200">
-          Getting started
-        </span>
-        <div className="space-y-4">
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Installation
-          </h1>
-          <p className="max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-            Add the package, install peer dependencies so primitives resolve
-            correctly, point Tailwind at the library sources, then import
-            components from the UI entry.
-          </p>
-        </div>
+        <PreviewHeroSeoBlock seo={seo} />
       </section>
 
       <div className="space-y-10">
@@ -280,6 +269,7 @@ export default function InstallationPreviewPage() {
           </div>
         </section>
       </div>
+      <PreviewSeoDoc doc={seo} />
     </PreviewPageShell>
   );
 }

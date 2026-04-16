@@ -1,9 +1,11 @@
-import SelectPreviewPage from '@/components/preview/select'
+import SelectPreviewPage from "@/components/preview/select";
+import { previewSeoDocumentToMetadata } from "@/lib/preview-seo";
+import { getPreviewSeo } from "@/lib/preview-seo-registry";
 
-const page = () => {
-  return (
-    <SelectPreviewPage />
-  )
+const seo = getPreviewSeo("select");
+
+export const metadata = previewSeoDocumentToMetadata(seo);
+
+export default function SelectPreviewRoutePage() {
+  return <SelectPreviewPage seo={seo} />;
 }
-
-export default page
