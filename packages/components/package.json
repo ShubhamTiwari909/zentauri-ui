@@ -11,8 +11,8 @@
   "exports": {
     "./ui/*": {
       "types": "./dist/ui/*.d.ts",
-      "import": "./dist/ui/*.js",
-      "require": "./dist/ui/*.cjs"
+      "import": "./dist/ui/*.mjs",
+      "require": "./dist/ui/*.js"
     }
   },
   "scripts": {

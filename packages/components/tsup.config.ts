@@ -35,8 +35,9 @@ export default defineConfig({
   // Rollup's treeshake pass re-bundles esbuild output and strips or ignores
   // `"use client"` on non-root chunks (see Rollup "Module level directives" warnings).
   treeshake: false,
-  banner: ({ format }) => ({
-    // CJS consumers rarely load CSS via require(); ESM + bundlers use the import.
-    js: format === "esm" ? '"use client";\n' : "",
+  banner: () => ({
+    // Next.js must see `"use client"` on every entry (ESM and CJS) so client-only
+    // modules are not bundled for React Server Components with react-server `react`.
+    js: '"use client";\n',
   }),
 });
