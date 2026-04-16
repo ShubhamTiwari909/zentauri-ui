@@ -1,5 +1,6 @@
 "use client";
-import { Modal, ModalContent, ModalTrigger, ModalClose, ModalHeader, ModalTitle, ModalDescription, Button } from "@zentauri-ui/zentauri-components/ui";
+import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { Modal, ModalContent, ModalTrigger, ModalClose, ModalHeader, ModalTitle, ModalDescription } from "@zentauri-ui/zentauri-components/ui/modal";
 import { useState } from "react";
 import { MODAL_TRIGGER_CLASS } from "./modal-code-examples.data";
 

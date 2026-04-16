@@ -1,9 +1,4 @@
-import {
-  Dropdown,
-  DropdownContent,
-  DropdownItem,
-  DropdownTrigger,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from "@zentauri-ui/zentauri-components/ui/dropdown";
 
 const MENU_SURFACE_CLASS =
   "border border-white/10 bg-slate-900 text-slate-100 shadow-lg";

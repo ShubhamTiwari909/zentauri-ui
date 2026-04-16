@@ -1,4 +1,4 @@
-import type { DrawerContentProps } from "@zentauri-ui/zentauri-components/ui";
+import type { DrawerContentProps } from "@zentauri-ui/zentauri-components/ui/drawer";
 
 export type DrawerDemoSide = NonNullable<DrawerContentProps["side"]>;
 export type DrawerDemoSize = NonNullable<DrawerContentProps["size"]>;

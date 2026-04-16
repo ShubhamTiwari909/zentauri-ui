@@ -1,4 +1,4 @@
-import { Divider } from "@zentauri-ui/zentauri-components/ui";
+import { Divider } from "@zentauri-ui/zentauri-components/ui/divider";
 
 import type { DividerDemoProps } from "./divider-code-examples.types";
 

@@ -1,4 +1,4 @@
-import type { ProgressProps } from "@zentauri-ui/zentauri-components/ui";
+import type { ProgressProps } from "@zentauri-ui/zentauri-components/ui/progress";
 
 export type ProgressAppearance = NonNullable<ProgressProps["appearance"]>;
 export type ProgressSize = NonNullable<ProgressProps["size"]>;

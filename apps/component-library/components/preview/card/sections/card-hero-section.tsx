@@ -1,12 +1,5 @@
-import {
-  Card,
-  CardBody,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@zentauri-ui/zentauri-components/ui";
-import { Button } from "@zentauri-ui/zentauri-components/ui";
+import { Card, CardBody, CardDescription, CardFooter, CardHeader, CardTitle } from "@zentauri-ui/zentauri-components/ui/card";
+import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 
 export function CardHeroSection() {
   return (

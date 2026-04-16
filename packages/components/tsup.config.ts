@@ -1,8 +1,37 @@
 import { defineConfig } from "tsup";
 
+const uiComponentNames = [
+  "accordion",
+  "alert",
+  "badge",
+  "buttons",
+  "card",
+  "divider",
+  "drawer",
+  "dropdown",
+  "empty-state",
+  "inputs",
+  "modal",
+  "pagination",
+  "progress",
+  "select",
+  "skeleton",
+  "spinner",
+  "table",
+  "tabs",
+  "toast",
+  "toggle",
+  "tooltip",
+] as const;
+
+const uiEntries = Object.fromEntries(
+  uiComponentNames.map((name) => [`ui/${name}`, `src/ui/${name}/index.ts`]),
+);
+
 export default defineConfig({
   entry: {
-    "ui/index": "src/ui/index.ts", // maps to dist/ui/index.mjs + .js
+    "ui/index": "src/ui/index.ts",
+    ...uiEntries,
   },
   format: ["esm", "cjs"],
   dts: true,          // generates .d.ts files
@@ -15,4 +44,8 @@ export default defineConfig({
     // CJS consumers rarely load CSS via require(); ESM + bundlers use the import.
     js: format === "esm" ? '"use client";\n' : "",
   }),
+  splitting: false,
+  // Rollup's extra treeshake pass strips esbuild's `banner` from chunks, which
+  // breaks Next.js "use client" boundaries for split chunk files.
+  treeshake: false,
 });

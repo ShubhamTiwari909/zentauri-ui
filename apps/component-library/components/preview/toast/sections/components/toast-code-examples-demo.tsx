@@ -1,10 +1,7 @@
 "use client";
 
-import {
-  Button,
-  type ButtonProps,
-  useToast,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Button, type ButtonProps } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { useToast } from "@zentauri-ui/zentauri-components/ui/toast";
 
 import type { ToastVariantDemoProps } from "./toast-code-examples.types";
 

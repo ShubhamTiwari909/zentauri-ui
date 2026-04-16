@@ -1,6 +1,6 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { SkeletonButton } from "@zentauri-ui/zentauri-components/ui";
+import { SkeletonButton } from "@zentauri-ui/zentauri-components/ui/skeleton";
 
 export function SkeletonExamplesSection() {
   return (

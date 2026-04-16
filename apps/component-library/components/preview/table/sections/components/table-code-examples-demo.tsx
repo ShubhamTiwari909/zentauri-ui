@@ -1,11 +1,4 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@zentauri-ui/zentauri-components/ui/table";
 import { cn } from "@/lib/utils";
 
 import type { TableDemoProps } from "./table-code-examples.types";

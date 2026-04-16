@@ -1,9 +1,4 @@
-import {
-  Dropdown,
-  DropdownContent,
-  DropdownItem,
-  DropdownTrigger,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from "@zentauri-ui/zentauri-components/ui/dropdown";
 
 import { DROPDOWN_MENU_SURFACE_CLASS } from "./dropdown-code-examples.data";
 import type {

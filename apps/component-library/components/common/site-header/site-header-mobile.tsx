@@ -1,15 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import {
-    Drawer,
-    DrawerBody,
-    DrawerClose,
-    DrawerContent,
-    DrawerHeader,
-    DrawerTitle,
-    DrawerTrigger,
-  } from "@zentauri-ui/zentauri-components/ui";
+import { Drawer, DrawerBody, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@zentauri-ui/zentauri-components/ui/drawer";
 import { FiList, FiX } from "react-icons/fi";
 import { siteChromeNavItems } from "@/components/common/site-chrome-nav";
 import SiteNavLink from "./site-link";
