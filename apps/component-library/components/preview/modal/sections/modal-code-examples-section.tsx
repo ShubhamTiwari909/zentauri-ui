@@ -1,195 +1,23 @@
-"use client";
-
-import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
+
+import { ModalDemo } from "./components/modal-code-examples-demo";
+import { ModalControlledDemo } from "./components/moda-code-examples-controlled";
 import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalClose,
-  ModalContent,
-  ModalDescription,
-  ModalHeader,
-  ModalTitle,
-  ModalTrigger,
-  type ModalContentProps,
-} from "@zentauri-ui/zentauri-components/ui";
-import { useState } from "react";
-
-const SECTION =
-  "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
-
-const TRIGGER_CLASS = "rounded-lg px-3 py-1.5 text-sm";
-
-const MODAL_SIZES = [
-  "sm",
-  "md",
-  "lg",
-  "xl",
-  "full",
-] as const satisfies readonly NonNullable<ModalContentProps["size"]>[];
-
-const MODAL_POSITIONS = [
-  "center",
-  "top",
-  "bottom",
-] as const satisfies readonly NonNullable<ModalContentProps["position"]>[];
-
-const MODAL_APPEARANCES = [
-  "default",
-  "glass",
-  "sky",
-  "rose",
-  "purple",
-  "pink",
-  "orange",
-  "yellow",
-  "teal",
-  "indigo",
-  "emerald",
-  "gray",
-  "amber",
-  "violet",
-  "gradient-blue",
-  "gradient-green",
-  "gradient-red",
-  "gradient-yellow",
-  "gradient-purple",
-  "gradient-teal",
-  "gradient-indigo",
-  "gradient-pink",
-  "gradient-orange",
-] as const satisfies readonly NonNullable<ModalContentProps["appearance"]>[];
-
-const MODAL_ANIMATIONS = [
-  "none",
-  "fade",
-  "scale",
-  "slide-up",
-  "slide-down",
-] as const satisfies readonly NonNullable<ModalContentProps["animation"]>[];
-
-function modalSnippet(opts: {
-  size: NonNullable<ModalContentProps["size"]>;
-  position: NonNullable<ModalContentProps["position"]>;
-  appearance: NonNullable<ModalContentProps["appearance"]>;
-  label: string;
-}) {
-  const { size, position, appearance, label } = opts;
-  const sizeAttr = size === "md" ? "" : ` size="${size}"`;
-  const positionAttr = position === "center" ? "" : ` position="${position}"`;
-  const appearanceAttr =
-    appearance === "default" ? "" : ` appearance="${appearance}"`;
-  return `${variantLeadComment(`ModalContent · size · ${size}, position · ${position}, appearance · ${appearance}`)}<Modal>
-  <ModalTrigger appearance="${appearance}" className="${TRIGGER_CLASS}">
-    ${label}
-  </ModalTrigger>
-  <ModalContent${sizeAttr}${positionAttr}${appearanceAttr} animation="scale">
-    <ModalClose />
-    <ModalHeader>
-      <ModalTitle>Dialog</ModalTitle>
-      <ModalDescription>Supporting description.</ModalDescription>
-    </ModalHeader>
-    <ModalBody>
-      <p className="text-sm text-slate-300">Modal body copy.</p>
-    </ModalBody>
-  </ModalContent>
-</Modal>`;
-}
-
-function ModalDemo(opts: {
-  size: NonNullable<ModalContentProps["size"]>;
-  position: NonNullable<ModalContentProps["position"]>;
-  appearance: NonNullable<ModalContentProps["appearance"]>;
-  animation?: NonNullable<ModalContentProps["animation"]>;
-  label: string;
-}) {
-  const { size, position, appearance, animation, label } = opts;
-  return (
-    <Modal>
-      <ModalTrigger appearance={appearance} className={TRIGGER_CLASS}>
-        {label}
-      </ModalTrigger>
-      <ModalContent
-        className="rounded-lg"
-        size={size}
-        position={position}
-        appearance={appearance}
-        animation={animation}
-      >
-        <ModalClose />
-        <ModalHeader>
-          <ModalTitle>Dialog</ModalTitle>
-          <ModalDescription>Supporting description.</ModalDescription>
-        </ModalHeader>
-        <ModalBody>
-          <p className="text-sm text-slate-300">Modal body copy.</p>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  );
-}
-
-function modalControlledSnippet() {
-  return `<Modal open={open} onOpenChange={setOpen}>
-  <ModalTrigger appearance="default" className={TRIGGER_CLASS}>
-    Modal controlled with useState
-  </ModalTrigger>
-  <ModalContent
-    className="rounded-lg"
-    size="md"
-    position="center"
-    appearance="default"
-    animation="scale"
-  >
-    <ModalClose />
-    <ModalHeader>
-      <ModalTitle>Dialog</ModalTitle>
-      <ModalDescription className="mb-5">Supporting description.</ModalDescription>
-      <Button appearance="rose" size="sm" animation="none" onClick={() => setOpen(false)}>
-        Close
-      </Button>
-    </ModalHeader>
-  </ModalContent>
-</Modal>`;
-}
-
-const ModalControlled = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <Modal open={open} onOpenChange={setOpen}>
-      <ModalTrigger appearance="default" className={TRIGGER_CLASS}>
-        Modal controlled with useState
-      </ModalTrigger>
-      <ModalContent
-        className="rounded-lg"
-        size="md"
-        position="center"
-        appearance="default"
-        animation="scale"
-      >
-        <ModalClose />
-        <ModalHeader>
-          <ModalTitle>Dialog</ModalTitle>
-          <ModalDescription className="mb-5">Supporting description.</ModalDescription>
-          <Button appearance="rose" size="sm" animation="none" onClick={() => setOpen(false)}>
-            Close
-          </Button>
-        </ModalHeader>
-      </ModalContent>
-    </Modal>
-  );
-};
+  MODAL_ANIMATIONS,
+  MODAL_APPEARANCES,
+  MODAL_CODE_EXAMPLES_SECTION_CLASS,
+  MODAL_POSITIONS,
+  MODAL_SIZES,
+} from "./components/modal-code-examples.data";
+import { modalControlledSnippet, modalSnippet } from "./components/modal-code-examples.snippets";
 
 export function ModalCodeExamplesSection() {
   return (
-    <section className={SECTION}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
-        Modal variants examples
-      </h2>
+    <section className={MODAL_CODE_EXAMPLES_SECTION_CLASS}>
+      <h2 className="mt-3 text-2xl font-semibold text-white">Modal variants examples</h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Max width, vertical anchor, and surface style with a shared dialog
-        layout. Code uses a Variant: lead-in per row.
+        Max width, vertical anchor, and surface style with a shared dialog layout. Code uses
+        a Variant: lead-in per row.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {MODAL_SIZES.map((size) => (
@@ -266,7 +94,7 @@ export function ModalCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
         <PreviewCodeShowcase code={modalControlledSnippet()}>
-          <ModalControlled />
+          <ModalControlledDemo />
         </PreviewCodeShowcase>
       </div>
     </section>

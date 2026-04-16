@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@zentauri-ui/zentauri-components/ui";
 import { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";

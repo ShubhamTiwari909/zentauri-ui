@@ -1,10 +1,6 @@
-"use client";
-
-import { Button } from "@zentauri-ui/zentauri-components/ui";
-import { useToast } from "@zentauri-ui/zentauri-components/ui";
+import ToastButtons from "./toast-buttons";
 
 export function ToastHeroSection() {
-  const { toast } = useToast();
 
   return (
     <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
@@ -24,36 +20,7 @@ export function ToastHeroSection() {
       </div>
 
       <div className="flex flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl sm:flex-row sm:flex-wrap">
-        <Button
-          appearance="sky"
-          size="sm"
-          animation="lift"
-          type="button"
-          onClick={() =>
-            toast({
-              title: "Saved",
-              description: "Your layout changes are stored.",
-              appearance: "success",
-            })
-          }
-        >
-          Success toast
-        </Button>
-        <Button
-          appearance="outline"
-          size="sm"
-          animation="none"
-          type="button"
-          onClick={() =>
-            toast({
-              title: "Heads up",
-              description: "Maintenance starts at 22:00 UTC.",
-              appearance: "warning",
-            })
-          }
-        >
-          Warning toast
-        </Button>
+        <ToastButtons />
       </div>
     </section>
   );
