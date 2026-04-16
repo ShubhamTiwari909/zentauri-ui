@@ -14,7 +14,7 @@ type PreviewPageShellProps = {
 export function PreviewPageShell({ children, className }: PreviewPageShellProps) {
   return (
     <div className={previewPageShellClassName}>
-      <main className={className || previewMainClassName}>{children}</main>
+      <div className={className || previewMainClassName}>{children}</div>
     </div>
   );
 }
