@@ -1,26 +1,17 @@
 import Link from "next/link";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
+import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
+import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { useIntroduction } from "./use-introduction";
 
-export default function IntroductionPage() {
+export default function IntroductionPage({ seo }: { seo: PreviewSeoDocument }) {
   const { components } = useIntroduction();
 
   return (
     <PreviewPageShell>
       <section className="max-w-3xl space-y-6">
-        <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-cyan-200">
-          Component Library
-        </span>
-        <div className="space-y-4">
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Available Components
-          </h1>
-          <p className="max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-            Explore the UI components currently available in Zentauri UI.
-            Designed with Tailwind CSS, and a focus on beautiful, subtle
-            interactions.
-          </p>
-        </div>
+        <PreviewHeroSeoBlock seo={seo} />
       </section>
 
       <section className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -55,6 +46,7 @@ export default function IntroductionPage() {
           </Link>
         ))}
       </section>
+      <PreviewSeoDoc doc={seo} />
     </PreviewPageShell>
   );
 }

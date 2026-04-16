@@ -1,0 +1,79 @@
+{
+  "category": "Navigation",
+  "title": "Tabs component for React views",
+  "description": "Tabs component for React and Next.js—keyboard-friendly tablists, animated panels, and URL-sync friendly patterns for related views.",
+  "keywords": [
+    "tabs component",
+    "React",
+    "Next.js",
+    "tablist",
+    "keyboard navigation",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Tabs · Zentauri UI",
+    "description": "Tabs component for React and Next.js—keyboard-friendly tablists, animated panels, and URL-sync friendly patterns for related views.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Tabs · Zentauri UI",
+    "description": "Tabs component for React and Next.js—keyboard-friendly tablists, animated panels, and URL-sync friendly patterns for related views.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/tabs",
+  "headings": {
+    "h1": "Tabs for related views",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Tabs switch between related panels without full route changes—settings categories, chart ranges, or docs sections. Works in React layouts and shallow Next.js client navigations when needed.",
+  "useCases": [
+    "Organize dense settings without deep routes.",
+    "Compare datasets across time windows.",
+    "Split API reference examples by language.",
+    "Host onboarding steps with lightweight state."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Tabs component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
+    },
+    {
+      "question": "Can I customize tabs with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
+    },
+    {
+      "question": "Is this Tabs implementation accessible by default?",
+      "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Roving tabindex keeps arrow keys predictable.\n\nLazy-mount heavy panels until first activation when performance matters."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nAvoid hiding critical errors inside inactive tabs without a summary indicator."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keyboard order, focus rings, and ARIA attributes should match production usage. Test with your supported browsers and assistive technologies when semantics are non-trivial.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive overlays into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

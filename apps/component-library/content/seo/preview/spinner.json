@@ -1,0 +1,79 @@
+{
+  "category": "Loading",
+  "title": "Spinner component for React loading states",
+  "description": "Spinner component for React and Next.js—indeterminate loading for buttons, panels, and inline regions with Tailwind-friendly sizing.",
+  "keywords": [
+    "spinner component",
+    "React",
+    "Next.js",
+    "loading indicator",
+    "button UI",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Spinner · Zentauri UI",
+    "description": "Spinner component for React and Next.js—indeterminate loading for buttons, panels, and inline regions with Tailwind-friendly sizing.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Spinner · Zentauri UI",
+    "description": "Spinner component for React and Next.js—indeterminate loading for buttons, panels, and inline regions with Tailwind-friendly sizing.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/spinner",
+  "headings": {
+    "h1": "Spinners for indeterminate waits",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Spinners communicate indeterminate progress—refreshing lists, awaiting mutations, or blocking interaction briefly. Use them inside React buttons and Next.js route transitions.",
+  "useCases": [
+    "Button loading slots during form submits.",
+    "Panel refresh indicators beside titles.",
+    "Inline fetches inside cards.",
+    "Blocking overlays for short mutations."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Spinner component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
+    },
+    {
+      "question": "Can I customize spinner with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
+    },
+    {
+      "question": "Is this Spinner implementation accessible by default?",
+      "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Pair spinners with text when the wait may exceed a few hundred milliseconds.\n\nRespect prefers-reduced-motion when animating strokes."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nAvoid nested spinners that compete for attention."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keyboard order, focus rings, and ARIA attributes should match production usage. Test with your supported browsers and assistive technologies when semantics are non-trivial.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive overlays into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

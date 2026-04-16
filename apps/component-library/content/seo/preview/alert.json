@@ -1,0 +1,79 @@
+{
+  "category": "Feedback",
+  "title": "Alert component for React status messages",
+  "description": "Inline Alert component for React and Next.js: semantic tones, optional icons, and dismiss patterns for form validation, deploy notices, and system status.",
+  "keywords": [
+    "alert component",
+    "React",
+    "Next.js",
+    "inline feedback",
+    "form validation UI",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Alert · Zentauri UI",
+    "description": "Inline Alert component for React and Next.js: semantic tones, optional icons, and dismiss patterns for form validation, deploy notices, and system status.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Alert · Zentauri UI",
+    "description": "Inline Alert component for React and Next.js: semantic tones, optional icons, and dismiss patterns for form validation, deploy notices, and system status.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/alert",
+  "headings": {
+    "h1": "Alerts for status and system messages",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Show inline status, validation summaries, and operational notices with a composable Alert component. Works in React 19 projects and Next.js route segments that need lightweight feedback without modal chrome.",
+  "useCases": [
+    "Summarize form errors above a Next.js server action form.",
+    "Surface deployment or maintenance banners on dashboard shells.",
+    "Highlight irreversible actions with a persistent warning tone.",
+    "Provide neutral guidance next to dense configuration tables."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Alert component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
+    },
+    {
+      "question": "Can I customize alert with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
+    },
+    {
+      "question": "Is this Alert implementation accessible by default?",
+      "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Alerts are inline by design: combine title and description slots for scanning.\n\nMotion presets help draw attention without hijacking focus from inputs."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nKeep roles truthful—do not mark purely decorative banners as assertive live regions unless they truly interrupt workflow."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keyboard order, focus rings, and ARIA attributes should match production usage. Test with your supported browsers and assistive technologies when semantics are non-trivial.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive overlays into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
