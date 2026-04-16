@@ -2,22 +2,6 @@ import { ComponentHighlight } from "./types";
 
 export const componentsData: ComponentHighlight[] = [
   {
-    id: "buttons",
-    name: "Buttons",
-    description:
-      "A comprehensive set of interactive buttons with robust motion presets and style variants.",
-    href: "/preview/buttons",
-    badge: "Interactive",
-  },
-  {
-    id: "inputs",
-    name: "Inputs",
-    description:
-      "Accessible input fields including text, file, date, checkbox, and radio inputs with unified styling.",
-    href: "/preview/inputs",
-    badge: "Form",
-  },
-  {
     id: "accordion",
     name: "Accordion",
     description:
@@ -40,6 +24,14 @@ export const componentsData: ComponentHighlight[] = [
       "Compact labels and counts that share the library palette with optional close actions.",
     href: "/preview/badge",
     badge: "Display",
+  },
+  {
+    id: "buttons",
+    name: "Buttons",
+    description:
+      "A comprehensive set of interactive buttons with robust motion presets and style variants.",
+    href: "/preview/buttons",
+    badge: "Interactive",
   },
   {
     id: "card",
@@ -80,6 +72,14 @@ export const componentsData: ComponentHighlight[] = [
       "Zero-data layouts with icon, title, description, and primary action slots.",
     href: "/preview/empty-state",
     badge: "Layout",
+  },
+  {
+    id: "inputs",
+    name: "Inputs",
+    description:
+      "Accessible input fields including text, file, date, checkbox, and radio inputs with unified styling.",
+    href: "/preview/inputs",
+    badge: "Form",
   },
   {
     id: "modal",

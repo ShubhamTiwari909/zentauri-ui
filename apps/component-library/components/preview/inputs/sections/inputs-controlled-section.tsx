@@ -2,7 +2,6 @@
 import { Input } from "@zentauri-ui/zentauri-components/ui";
 import { useState } from "react";
 
-
 export function InputsControlledSection() {
   const [value, setValue] = useState("");
 

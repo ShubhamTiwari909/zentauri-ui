@@ -1,5 +1,3 @@
-"use client";
-
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { HiCloudArrowUp } from "react-icons/hi2";

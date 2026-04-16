@@ -1,158 +1,23 @@
-"use client";
-
-import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
+
+import { TableDemo } from "./components/table-code-examples-demo";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableCellProps,
-  TableHead,
-  TableHeader,
-  TableRow,
-  type TableProps,
-} from "@zentauri-ui/zentauri-components/ui";
-import { cn } from "@/lib/utils";
-
-const SECTION =
-  "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
-
-const TABLE_BODY_SNIPPET = `  <TableHeader>
-    <TableRow>
-      <TableHead>Name</TableHead>
-      <TableHead>Role</TableHead>
-      <TableHead>Email</TableHead>
-      <TableHead>Age</TableHead>
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    <TableRow>
-      <TableCell>User 1</TableCell>
-      <TableCell>Admin</TableCell>
-      <TableCell>user1a@example.com</TableCell>
-      <TableCell>20</TableCell>
-      <TableCell>Admin</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>User 2</TableCell>
-      <TableCell>Editor</TableCell>
-      <TableCell>user2a@example.com</TableCell>
-      <TableCell>25</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>User 3</TableCell>
-      <TableCell>User</TableCell>
-      <TableCell>user3a@example.com</TableCell>
-      <TableCell>30</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>User 4</TableCell>
-      <TableCell>User</TableCell>
-      <TableCell>user4a@example.com</TableCell>
-      <TableCell>30</TableCell>
-    </TableRow>
-  </TableBody>`;
-
-const TABLE_APPEARANCES = ["default", "striped", "bordered", "ghost", "sky", "rose", "purple", "pink", "orange", "yellow", "teal", "indigo", "emerald", "gray", "amber", "violet"] as const satisfies readonly NonNullable<
-  TableProps["appearance"]
->[];
-
-const TABLE_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<TableProps["size"]>[];
-
-const TABLE_TEXT_ALIGNS = ["left", "center", "right"] as const satisfies readonly NonNullable<TableCellProps["textAlign"]>[];
-
-function tableOpenTag(opts: {
-  appearance: NonNullable<TableProps["appearance"]>;
-  size: NonNullable<TableProps["size"]>;
-  stickyHeader: boolean;
-  textAlign?: "left" | "center" | "right";
-  className?: string;
-}) {
-  const { appearance, size, stickyHeader, textAlign } = opts;
-  const appearanceAttr =
-    appearance === "default" ? "" : ` appearance="${appearance}"`;
-  const sizeAttr = size === "md" ? "" : ` size="${size}"`;
-  const stickyAttr = stickyHeader ? " stickyHeader" : "";
-  const textAlignAttr = textAlign === "left" ? "" : ` textAlign="${textAlign}"`;
-  return `<Table${appearanceAttr}${sizeAttr}${stickyAttr} rowAnimation="none"${textAlignAttr}>
-  <div data-slot="table-scroll" className="relative w-full overflow-auto">
-    <table data-slot="table" role="table" class="min-w-0 w-full max-lg:overflow-x-auto max-lg:overscroll-x-contain lg:overflow-x-visible max-lg:**:data-[slot=table]:w-full max-lg:**:data-[slot=table]:min-w-max">
-      ${TABLE_BODY_SNIPPET}
-    </table>
-  </div>
-</Table>`;
-}
-
-function tableSnippet(opts: Parameters<typeof tableOpenTag>[0]) {
-  const { appearance, size, stickyHeader } = opts;
-  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}, stickyHeader · ${stickyHeader}`)}${tableOpenTag(opts)}
-${TABLE_BODY_SNIPPET}
-</Table>`;
-}
-
-function TableDemo(opts: Parameters<typeof tableOpenTag>[0]) {
-  const { appearance, size, stickyHeader, textAlign, className } = opts;
-  return (
-    <div>
-      <p className="mb-5 text-xs md:text-sm">Appearance: <span className="font-bold">{appearance}</span> | Size: <span className="font-bold">{size}</span> | Sticky Header: <span className="font-bold">{stickyHeader ? "true" : "false"}</span></p>
-      <div
-        className={cn(
-          stickyHeader &&
-            "*:data-[slot=table-scroll]:max-h-35 *:data-[slot=table-scroll]:overflow-y-auto",
-        )}
-      >
-        <Table appearance={appearance} size={size} stickyHeader={stickyHeader} rowAnimation="none" textAlign={textAlign} className={className}>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Role</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Age</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow>
-              <TableCell>User 1</TableCell>
-              <TableCell>Admin</TableCell>
-              <TableCell>user1a@example.com</TableCell>
-              <TableCell>20</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>User 2</TableCell>
-              <TableCell>User</TableCell>
-              <TableCell>user2a@example.com</TableCell>
-              <TableCell>25</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>User 3</TableCell>
-              <TableCell>User</TableCell>
-              <TableCell>user3a@example.com</TableCell>
-              <TableCell>30</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>User 4</TableCell>
-              <TableCell>User</TableCell>
-              <TableCell>user4a@example.com</TableCell>
-              <TableCell>30</TableCell>
-            </TableRow>
-            </TableBody>
-        </Table>
-      </div>
-    </div>
-  );
-}
+  TABLE_APPEARANCES,
+  TABLE_CODE_EXAMPLES_SECTION_CLASS,
+  TABLE_SNIPPET_BASE,
+  TABLE_SIZES,
+  TABLE_TEXT_ALIGNS,
+} from "./components/table-code-examples.data";
+import { tableSnippet } from "./components/table-code-examples.snippets";
 
 export function TableCodeExamplesSection() {
-  const base = {
-    appearance: "default" as const,
-    size: "md" as const,
-    stickyHeader: false,
-  };
+  const base = TABLE_SNIPPET_BASE;
   return (
-    <section className={SECTION}>
+    <section className={TABLE_CODE_EXAMPLES_SECTION_CLASS}>
       <h2 className="mt-3 text-2xl font-semibold text-white">Table variants examples</h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Density, row style, and sticky header with scrollable preview. Each code view starts with Variant: naming the row.
+        Density, row style, and sticky header with scrollable preview. Each code view starts
+        with Variant: naming the row.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {TABLE_APPEARANCES.map((appearance) => (

@@ -1,89 +1,16 @@
-"use client";
-
-import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
+
+import { AlertDemo } from "./components/alert-code-examples-demo";
 import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  type AlertProps,
-} from "@zentauri-ui/zentauri-components/ui";
-
-const SECTION =
-  "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
-
-const ALERT_APPEARANCES = [
-  "default",
-  "success",
-  "warning",
-  "error",
-  "info",
-  "ghost",
-  "purple",
-  "pink",
-  "orange",
-  "yellow",
-  "teal",
-  "indigo",
-  "gray",
-  "violet",
-  "gradient-blue",
-  "gradient-green",
-  "gradient-red",
-  "gradient-yellow",
-  "gradient-purple",
-  "gradient-teal",
-  "gradient-indigo",
-  "gradient-pink",
-  "gradient-orange",
-] as const satisfies readonly NonNullable<AlertProps["appearance"]>[];
-
-const ALERT_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<
-  AlertProps["size"]
->[];
-
-function alertSnippet(
-  appearance: NonNullable<AlertProps["appearance"]>,
-  size: NonNullable<AlertProps["size"]>,
-) {
-  const appearanceAttr =
-    appearance === "default" ? "" : ` appearance="${appearance}"`;
-  const sizeAttr = size === "md" ? "" : ` size="${size}"`;
-  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}`)}<Alert${appearanceAttr}${sizeAttr} animation="none" className="text-xs md:text-sm">
- <div className="space-y-1">
-  <AlertTitle>Heads up</AlertTitle>
-  <AlertDescription>Short supporting copy for this alert.</AlertDescription>
- </div>
-</Alert>`;
-}
-
-function AlertDemo({
-  appearance,
-  size,
-}: {
-  appearance: NonNullable<AlertProps["appearance"]>;
-  size: NonNullable<AlertProps["size"]>;
-}) {
-  return (
-    <Alert
-      appearance={appearance}
-      size={size}
-      animation="none"
-      className="text-xs md:text-sm"
-    >
-      <div className="space-y-1">
-        <AlertTitle>Heads up</AlertTitle>
-        <AlertDescription>
-          Short supporting copy for this alert.
-        </AlertDescription>
-      </div>
-    </Alert>
-  );
-}
+  ALERT_APPEARANCES,
+  ALERT_CODE_EXAMPLES_SECTION_CLASS,
+  ALERT_SIZES,
+} from "./components/alert-code-examples.data";
+import { alertSnippet } from "./components/alert-code-examples.snippets";
 
 export function AlertCodeExamplesSection() {
   return (
-    <section className={SECTION}>
+    <section className={ALERT_CODE_EXAMPLES_SECTION_CLASS}>
       <h2 className="mt-3 text-2xl font-semibold text-white">
         Alert variants examples
       </h2>

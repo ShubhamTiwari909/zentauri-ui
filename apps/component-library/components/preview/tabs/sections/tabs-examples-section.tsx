@@ -1,5 +1,4 @@
 "use client";
-
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import {
