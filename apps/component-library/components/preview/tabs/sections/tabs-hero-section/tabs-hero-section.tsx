@@ -1,13 +1,8 @@
-"use client";
-
 import {
   Tabs,
   TabsContent,
-  TabsList,
-  TabsTrigger,
-  tabsListVariants,
-  tabsTriggerVariants,
 } from "@zentauri-ui/zentauri-components/ui";
+import TabsListComponent from "./tabs-list";
 
 export function TabsHeroSection() {
   return (
@@ -36,26 +31,7 @@ export function TabsHeroSection() {
 
       <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
         <Tabs defaultValue="overview">
-          <TabsList
-            className={tabsListVariants({
-              variant: "pills",
-              size: "md",
-              orientation: "horizontal",
-            })}
-          >
-            <TabsTrigger
-              value="overview"
-              className={tabsTriggerVariants({ variant: "pills", size: "md", appearance:"rose" })}
-            >
-              Overview
-            </TabsTrigger>
-            <TabsTrigger
-              value="activity"
-              className={tabsTriggerVariants({ variant: "pills", size: "md", appearance:"sky" })}
-            >
-              Activity
-            </TabsTrigger>
-          </TabsList>
+          <TabsListComponent />
           <TabsContent
             value="overview"
             animation="fade"

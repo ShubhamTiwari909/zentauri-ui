@@ -1,106 +1,27 @@
-"use client";
-
-import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
+
+import { PaginationDemo } from "./components/pagination-code-examples-demo";
 import {
-  Pagination,
-  type PaginationProps,
-} from "@zentauri-ui/zentauri-components/ui";
-
-const SECTION =
-  "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
-
-const PAGINATION_APPEARANCES = [
-  "default",
-  "secondary",
-  "destructive",
-  "outline",
-  "ghost",
-  "link",
-  "glass",
-  "emerald",
-  "indigo",
-  "purple",
-  "pink",
-  "rose",
-  "sky",
-  "teal",
-  "yellow",
-  "orange",
-  "gray",
-  "amber",
-  "violet",
-  "gradient-blue",
-  "gradient-green",
-  "gradient-red",
-  "gradient-yellow",
-  "gradient-purple",
-  "gradient-teal",
-  "gradient-indigo",
-  "gradient-pink",
-  "gradient-orange",
-] as const satisfies readonly NonNullable<PaginationProps["appearance"]>[];
-
-const PAGINATION_SIZES = [
-  "sm",
-  "md",
-  "lg",
-  "xl",
-  "icon",
-] as const satisfies readonly NonNullable<PaginationProps["size"]>[];
-
-function paginationSnippet(opts: {
-  appearance: NonNullable<PaginationProps["appearance"]>;
-  size: NonNullable<PaginationProps["size"]>;
-}) {
-  const { appearance, size } = opts;
-  const appearanceAttr =
-    appearance === "default" ? "" : ` appearance="${appearance}"`;
-  const sizeAttr = size === "md" ? "" : ` size="${size}"`;
-  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}`)}<Pagination
-  pageCount={15}
-  defaultPage={6}
-  siblingCount={1}
-  boundaryCount={1}${appearanceAttr}${sizeAttr}
-/>`;
-}
-
-function PaginationDemo(opts: {
-  appearance: NonNullable<PaginationProps["appearance"]>;
-  size: NonNullable<PaginationProps["size"]>;
-}) {
-  const { appearance, size } = opts;
-  return (
-    <div>
-      <p className="mb-5 text-xs md:text-sm">
-        Appearance: <span className="font-bold">{appearance.toUpperCase()}</span>, Size: <span className="font-bold">{size.toUpperCase()}</span>
-      </p>
-      <Pagination
-        appearance={appearance}
-        size={size}
-        pageCount={15}
-        defaultPage={6}
-        siblingCount={1}
-        boundaryCount={1}
-      />
-    </div>
-  );
-}
+  PAGINATION_APPEARANCES,
+  PAGINATION_CODE_EXAMPLES_SECTION_CLASS,
+  PAGINATION_SIZES,
+} from "./components/pagination-code-examples.data";
+import { paginationSnippet } from "./components/pagination-code-examples.snippets";
 
 export function PaginationCodeExamplesSection() {
   return (
-    <section className={SECTION}>
+    <section className={PAGINATION_CODE_EXAMPLES_SECTION_CLASS}>
       <h2 className="mt-3 text-2xl font-semibold text-white">
         Pagination variants examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Each row pairs live output with matching JSX. The Variant line states
-        which appearance/size tokens apply;
+        Each row pairs live output with matching JSX. The Variant line states which
+        appearance/size tokens apply;
         <code className="mx-1 text-slate-200"> pageCount</code>,{" "}
         <code className="mx-1 text-slate-200">defaultPage</code>,{" "}
         <code className="mx-1 text-slate-200">siblingCount</code>, and{" "}
-        <code className="mx-1 text-slate-200">boundaryCount</code> stay fixed so
-        ellipsis behavior stays visible.
+        <code className="mx-1 text-slate-200">boundaryCount</code> stay fixed so ellipsis
+        behavior stays visible.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {PAGINATION_APPEARANCES.map((appearance) => (

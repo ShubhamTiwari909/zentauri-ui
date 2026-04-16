@@ -1,5 +1,3 @@
-"use client";
-
 import CodeHighlight from "@/components/CodeHighlight";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import {
@@ -9,10 +7,7 @@ import {
   AccordionTrigger,
   Tabs,
   TabsContent,
-  TabsList,
-  TabsTrigger,
-  tabsListVariants,
-  tabsTriggerVariants,
+
 } from "@zentauri-ui/zentauri-components/ui";
 
 const SECTION =
@@ -56,17 +51,7 @@ const USAGE_SNIPPET = `<div className="rounded-3xl border border-white/10 bg-whi
   </Accordion>
 </div>`;
 
-const listPillsMd = tabsListVariants({
-  variant: "pills",
-  size: "md",
-  orientation: "horizontal",
-});
 
-const triggerPillsMd = tabsTriggerVariants({
-  variant: "pills",
-  size: "md",
-  appearance: "sky",
-});
 
 export default function InstallationPreviewPage() {
   return (
@@ -95,17 +80,7 @@ export default function InstallationPreviewPage() {
           </p>
           <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
             <Tabs defaultValue="npm">
-              <TabsList className={`${listPillsMd} border-b border-white/10 bg-slate-950/80 p-3`}>
-                <TabsTrigger value="npm" className={triggerPillsMd}>
-                  npm
-                </TabsTrigger>
-                <TabsTrigger value="pnpm" className={triggerPillsMd}>
-                  pnpm
-                </TabsTrigger>
-                <TabsTrigger value="yarn" className={triggerPillsMd}>
-                  yarn
-                </TabsTrigger>
-              </TabsList>
+             
               <TabsContent value="npm" animation="fade" className="m-0">
                 <CodeHighlight codeString={INSTALL_COMMANDS.npm} language="bash" />
               </TabsContent>
