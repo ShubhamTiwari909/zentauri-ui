@@ -109,8 +109,16 @@ function placementSnippet(placement: ContentPlacement) {
 }
 
 function PlacementDemo({ placement }: { placement: ContentPlacement }) {
+  const placementClass = {
+    top: "justify-start",
+    bottom: "justify-start",
+    left: "justify-end",
+    right: "justify-start",
+  };
   return (
-    <div className="flex min-h-40 w-full max-w-xl items-center">
+    <div
+      className={`flex ${placementClass[placement]} min-h-40 w-full max-w-xl items-center`}
+    >
       <Dropdown>
         <DropdownTrigger variant="outline" size="sm">
           Menu {placement}

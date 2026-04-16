@@ -29,6 +29,15 @@ const SELECT_TRIGGER_VARIANTS = [
   "indigo",
   "emerald",
   "glass",
+  "gradient-blue",
+  "gradient-green",
+  "gradient-red",
+  "gradient-yellow",
+  "gradient-purple",
+  "gradient-teal",
+  "gradient-indigo",
+  "gradient-pink",
+  "gradient-orange",
 ] as const satisfies readonly NonNullable<SelectTriggerProps["variant"]>[];
 
 const SELECT_TRIGGER_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<

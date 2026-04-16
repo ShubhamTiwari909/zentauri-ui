@@ -78,7 +78,7 @@ export function TabsExamplesSection() {
 
         <PreviewCodeShowcase
           code={`${variantLeadComment(`Tabs · orientation · vertical, TabsContent · animation · slide`)}
-<Tabs defaultValue="profile" orientation="vertical" className="flex gap-6">
+<Tabs defaultValue="profile" orientation="vertical" className="flex items-center gap-4 sm:flex-row sm:items-start">
   <TabsList className={tabsListVariants({ variant: "default", size: "sm", orientation: "vertical" })}>
     <TabsTrigger className={tabsTriggerVariants({ variant: "default", size: "sm" })} value="profile">Profile</TabsTrigger>
     ...
@@ -89,7 +89,7 @@ export function TabsExamplesSection() {
           <Tabs
             defaultValue="profile"
             orientation="vertical"
-            className="flex flex-col gap-4 sm:flex-row sm:items-start"
+            className="flex items-center gap-4 sm:flex-row sm:items-start"
           >
             <TabsList className={listVerticalDefault}>
               <TabsTrigger className={triggerVerticalDefault} value="profile">

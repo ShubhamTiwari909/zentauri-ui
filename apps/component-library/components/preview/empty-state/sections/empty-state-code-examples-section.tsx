@@ -18,15 +18,21 @@ const ICON_SNIPPET = `<EmptyStateIcon>
   <HiCloudArrowUp className="size-8 text-slate-400" aria-hidden />
 </EmptyStateIcon>`;
 
-const EMPTY_APPEARANCES = ["default", "ghost", "card"] as const satisfies readonly NonNullable<
-  EmptyStateProps["appearance"]
+const EMPTY_APPEARANCES = [
+  "default",
+  "ghost",
+  "card",
+] as const satisfies readonly NonNullable<EmptyStateProps["appearance"]>[];
+
+const EMPTY_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<
+  EmptyStateProps["size"]
 >[];
 
-const EMPTY_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<EmptyStateProps["size"]>[];
-
-const EMPTY_ALIGNS = ["start", "center", "end"] as const satisfies readonly NonNullable<
-  EmptyStateProps["align"]
->[];
+const EMPTY_ALIGNS = [
+  "start",
+  "center",
+  "end",
+] as const satisfies readonly NonNullable<EmptyStateProps["align"]>[];
 
 function emptySnippet(opts: {
   appearance: NonNullable<EmptyStateProps["appearance"]>;
@@ -52,13 +58,25 @@ function EmptyDemo(opts: {
 }) {
   const { appearance, size, align } = opts;
   return (
-    <EmptyState appearance={appearance} size={size} align={align} animation="none">
-      <EmptyStateIcon>
-        <HiCloudArrowUp className="size-8 text-slate-400" aria-hidden />
-      </EmptyStateIcon>
-      <EmptyStateTitle>No uploads</EmptyStateTitle>
-      <EmptyStateDescription>Drag files here to add them.</EmptyStateDescription>
-    </EmptyState>
+    <div>
+      <p className="mb-5 text-xs md:text-sm">
+        Appearance: <span className="font-bold">{appearance.toUpperCase()}</span>, Size: <span className="font-bold">{size.toUpperCase()}</span>, Align: <span className="font-bold">{align.toUpperCase()}</span>
+      </p>
+      <EmptyState
+        appearance={appearance}
+        size={size}
+        align={align}
+        animation="none"
+      >
+        <EmptyStateIcon>
+          <HiCloudArrowUp className="size-8 text-slate-400" aria-hidden />
+        </EmptyStateIcon>
+        <EmptyStateTitle>No uploads</EmptyStateTitle>
+        <EmptyStateDescription>
+          Drag files here to add them.
+        </EmptyStateDescription>
+      </EmptyState>
+    </div>
   );
 }
 
@@ -70,9 +88,12 @@ export function EmptyStateCodeExamplesSection() {
   };
   return (
     <section className={SECTION}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">Empty state variants examples</h2>
+      <h2 className="mt-3 text-2xl font-semibold text-white">
+        Empty state variants examples
+      </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Layout density, surface treatment, and alignment of the stack. Snippets include a leading Variant: line.
+        Layout density, surface treatment, and alignment of the stack. Snippets
+        include a leading Variant: line.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {EMPTY_APPEARANCES.map((appearance) => (

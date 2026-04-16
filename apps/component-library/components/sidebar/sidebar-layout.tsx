@@ -26,20 +26,19 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-0 flex-1 flex-col text-slate-50 lg:flex-row">
-      <div className="lg:hidden">
-        <SiteHeader
+       <SiteHeader
           showMenuToggle
           isMenuOpen={isMobileMenuOpen}
           onMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           menuControlsId="sidebar-nav"
+          className="lg:hidden"
         />
-      </div>
 
       {/* Sidebar (Desktop & Mobile Drawer) */}
       <aside
         id="sidebar-nav"
         className={cn(
-          "w-72 shrink-0 border-r border-white/10 bg-slate-950 px-6 py-8",
+          "w-72 shrink-0 border-r border-white/10 bg-slate-950 px-6 py-8 pt-25 lg:pt-8",
           "max-lg:fixed max-lg:inset-y-0 max-lg:left-0 max-lg:z-40 max-lg:transform max-lg:transition-transform max-lg:duration-300 max-lg:ease-in-out",
           "lg:sticky lg:top-0 lg:self-start lg:h-screen lg:translate-x-0 lg:overflow-y-auto",
           isMobileMenuOpen

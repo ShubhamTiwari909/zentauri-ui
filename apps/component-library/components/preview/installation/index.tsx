@@ -86,7 +86,7 @@ export default function InstallationPreviewPage() {
         </div>
       </section>
 
-      <div className="mt-10 space-y-10">
+      <div className="space-y-10">
         <section className={SECTION}>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">Step 1</p>
           <h2 className="mt-2 text-xl font-semibold text-white">Install the package</h2>
@@ -153,8 +153,8 @@ export default function InstallationPreviewPage() {
             <CodeHighlight codeString={USAGE_SNIPPET} language="tsx" />
           </div>
           <h3 className="mt-6 text-sm font-medium text-slate-200">Preview</h3>
-          <div className="mt-3 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
-            <Accordion type="single" defaultValue="item-1" appearance="separated" size="md">
+          <div className="mt-3 rounded-3xl border border-white/10 bg-white/5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+            <Accordion type="single" defaultValue="item-1" appearance="emerald" size="md" className="space-y-5 p-2 md:p-5">
               <AccordionItem value="item-1">
                 <AccordionTrigger>Shipping</AccordionTrigger>
                 <AccordionContent>

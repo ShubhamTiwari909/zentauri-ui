@@ -76,7 +76,7 @@ function TabsDemo(opts: { variant: ListVariant; size: ListSize; appearance: List
   const triggerClass = tabsTriggerVariants({ variant, size, appearance });
   return (
     <div>
-      <p className="mb-5">
+      <p className="mb-5 text-xs md:text-sm">
         List variant: <span className="font-bold">{variant}</span> | Size:{" "}
         <span className="font-bold">{size}</span> | Appearance:{" "}
         <span className="font-bold">{appearance}</span>
