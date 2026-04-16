@@ -1,7 +1,7 @@
 {
   "name": "@zentauri-ui/zentauri-components",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A UI component library built with React and Tailwind CSS",
   "license": "MIT",
   "files": ["dist"],

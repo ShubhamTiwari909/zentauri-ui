@@ -7,7 +7,7 @@ import { Toggle, type ToggleProps } from "@zentauri-ui/zentauri-components/ui";
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
-const TOGGLE_APPEARANCES = ["default", "success", "destructive", "neutral", "indigo", "purple", "pink", "orange", "yellow", "green", "teal", "cyan", "lime", "emerald", "rose", "slate", "zinc", "gray", "stone"] as const satisfies readonly NonNullable<
+const TOGGLE_APPEARANCES = ["default", "success", "destructive", "neutral", "indigo", "purple", "pink", "orange", "yellow", "green", "teal", "cyan", "lime", "emerald", "rose", "slate", "zinc", "gray", "stone", "gradient-blue", "gradient-green", "gradient-red", "gradient-yellow", "gradient-purple", "gradient-teal", "gradient-indigo", "gradient-pink", "gradient-orange"] as const satisfies readonly NonNullable<
   ToggleProps["appearance"]
 >[];
 
