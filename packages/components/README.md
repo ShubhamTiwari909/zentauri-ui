@@ -115,6 +115,9 @@ import {
 </div>
 ```
 
+## Checkout the components:
+https://zentauri-ui.vercel.app/
+
 ## Development
 
 From this package directory in the monorepo:
