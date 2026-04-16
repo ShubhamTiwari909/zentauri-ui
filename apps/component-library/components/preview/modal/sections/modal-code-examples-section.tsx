@@ -18,7 +18,7 @@ const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
 const TRIGGER_CLASS =
-  "rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200";
+  "rounded-lg px-3 py-1.5 text-sm";
 
 const MODAL_SIZES = ["sm", "md", "lg", "xl", "full"] as const satisfies readonly NonNullable<
   ModalContentProps["size"]
@@ -48,7 +48,7 @@ function modalSnippet(opts: {
   const appearanceAttr =
     appearance === "default" ? "" : ` appearance="${appearance}"`;
   return `${variantLeadComment(`ModalContent · size · ${size}, position · ${position}, appearance · ${appearance}`)}<Modal>
-  <ModalTrigger className="${TRIGGER_CLASS}">
+  <ModalTrigger appearance="${appearance}" className="${TRIGGER_CLASS}">
     ${label}
   </ModalTrigger>
   <ModalContent${sizeAttr}${positionAttr}${appearanceAttr} animation="scale">
@@ -74,7 +74,7 @@ function ModalDemo(opts: {
   const { size, position, appearance, animation, label } = opts;
   return (
     <Modal>
-      <ModalTrigger className={TRIGGER_CLASS}>{label}</ModalTrigger>
+      <ModalTrigger appearance={appearance} className={TRIGGER_CLASS}>{label}</ModalTrigger>
       <ModalContent className="rounded-lg" size={size} position={position} appearance={appearance} animation={animation}>
         <ModalClose />
         <ModalHeader>

@@ -2,7 +2,7 @@
 
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Button } from "@zentauri-ui/zentauri-components/ui";
+import { Button, ButtonProps } from "@zentauri-ui/zentauri-components/ui";
 import { useToast, type ToastInput } from "@zentauri-ui/zentauri-components/ui";
 
 const SECTION =
@@ -39,9 +39,16 @@ function ToastVariantDemo(opts: {
 }) {
   const { toast } = useToast();
   const { appearance, size } = opts;
+  const buttonsAppearance = {
+    default: "default",
+    success: "emerald",
+    warning: "amber",
+    error: "rose",
+    info: "sky",
+  } as const;
   return (
     <Button
-      appearance="emerald"
+      appearance={buttonsAppearance[appearance] as NonNullable<ButtonProps["appearance"]>}
       size="sm"
       animation="none"
       type="button"
