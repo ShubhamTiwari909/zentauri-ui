@@ -22,15 +22,15 @@ export const triggerVariants = cva(
         gray: "border border-gray-600 text-gray-600",
         amber: "border border-amber-600 text-amber-600",
         violet: "border border-violet-600 text-violet-600",
-        "gradient-blue": "border border-gradient-to-r from-blue-600 to-purple-600 text-gradient-to-r from-blue-600 to-purple-600",
-        "gradient-green": "border border-gradient-to-r from-green-600 to-lime-600 text-gradient-to-r from-green-600 to-lime-600",
-        "gradient-red": "border border-gradient-to-r from-red-600 to-pink-600 text-gradient-to-r from-red-600 to-pink-600",
-        "gradient-yellow": "border border-gradient-to-r from-yellow-600 to-orange-600 text-gradient-to-r from-yellow-600 to-orange-600",
-        "gradient-purple": "border border-gradient-to-r from-purple-600 to-pink-600 text-gradient-to-r from-purple-600 to-pink-600",
-        "gradient-teal": "border border-gradient-to-r from-teal-600 to-cyan-600 text-gradient-to-r from-teal-600 to-cyan-600",
-        "gradient-indigo": "border border-gradient-to-r from-indigo-600 to-purple-600 text-gradient-to-r from-indigo-600 to-purple-600",
-        "gradient-pink": "border border-gradient-to-r from-pink-600 to-rose-600 text-gradient-to-r from-pink-600 to-rose-600",
-        "gradient-orange": "border border-gradient-to-r from-orange-600 to-red-600 text-gradient-to-r from-orange-600 to-red-600",
+        "gradient-blue": "bg-gradient-to-r from-blue-600 to-purple-600 text-gradient-to-r from-blue-600 to-purple-600",
+        "gradient-green": "bg-gradient-to-r from-green-600 to-lime-600 text-gradient-to-r from-green-600 to-lime-600",
+        "gradient-red": "bg-gradient-to-r from-red-600 to-pink-600 text-gradient-to-r from-red-600 to-pink-600",
+        "gradient-yellow": "bg-gradient-to-r from-yellow-600 to-orange-600 text-gradient-to-r from-yellow-600 to-orange-600",
+        "gradient-purple": "bg-gradient-to-r from-purple-600 to-pink-600 text-gradient-to-r from-purple-600 to-pink-600",
+        "gradient-teal": "bg-gradient-to-r from-teal-600 to-cyan-600 text-gradient-to-r from-teal-600 to-cyan-600",
+        "gradient-indigo": "bg-gradient-to-r from-indigo-600 to-purple-600 text-gradient-to-r from-indigo-600 to-purple-600",
+        "gradient-pink": "bg-gradient-to-r from-pink-600 to-rose-600 text-gradient-to-r from-pink-600 to-rose-600",
+        "gradient-orange": "bg-gradient-to-r from-orange-600 to-red-600 text-gradient-to-r from-orange-600 to-red-600",
       },
       size: {
         sm: "px-2 py-1 text-sm",
@@ -46,7 +46,7 @@ export const triggerVariants = cva(
 );
 
 export const contentVariants = cva(
-  "absolute min-w-[200px] rounded-md shadow-md z-50 border",
+  "absolute min-w-[200px] rounded-md p-2 shadow-md z-50 border",
   {
     variants: {
       placement: {
@@ -72,13 +72,13 @@ export const contentVariants = cva(
 );
 
 export const itemVariants = cva(
-  "flex items-center justify-between px-3 py-2 text-sm cursor-pointer transition-colors",
+  "flex items-center justify-between px-3 py-2 text-sm cursor-pointer rounded-md transition-colors",
   {
     variants: {
       variant: {
         default: "hover:bg-gray-100 hover:text-gray-900 text-gray-100",
-        outline: "hover:bg-gray-100 hover:text-gray-900 bg-white text-gray-900",
-        ghost: "hover:bg-gray-100 hover:text-gray-900 bg-transparent text-gray-900",
+        outline: "hover:bg-gray-100 hover:text-gray-900 border border-white text-gray-100",
+        ghost: "hover:bg-gray-100 hover:text-gray-900 bg-transparent text-gray-100",
         white: "hover:bg-gray-100 hover:text-gray-900 bg-white text-gray-900",
         black: "hover:bg-gray-100 hover:text-gray-900 bg-black text-white",
         sky: "hover:bg-sky-100 hover:text-sky-600 bg-sky-200 text-sky-800",

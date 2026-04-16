@@ -1,7 +1,7 @@
 import type { VariantProps } from "class-variance-authority";
 import type { CSSProperties, HTMLAttributes, ReactNode, Ref } from "react";
 
-import type { modalContentVariants } from "./variants";
+import type { modalContentVariants, modalTriggerVariants } from "./variants";
 
 export type ModalAnimation = "none" | "fade" | "scale" | "slide-up" | "slide-down";
 
@@ -16,6 +16,7 @@ export type ModalProps = {
 
 export type ModalTriggerProps = HTMLAttributes<HTMLButtonElement> & {
   ref?: Ref<HTMLButtonElement>;
+  appearance?: VariantProps<typeof modalTriggerVariants>["appearance"];
 };
 
 export type ModalContentProps = ModalContentVariantProps & {
