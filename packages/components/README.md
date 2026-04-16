@@ -20,7 +20,7 @@ The `<name>` segment matches the folder under `src/ui/` (for example `accordion`
 ## Requirements
 
 - **React** and **React DOM** `>= 18` (peer dependencies)
-- A Tailwind pipeline that can **scan** this package (see Step 2 below)
+- A Tailwind pipeline that can **scan** this package (see Step 3 below)
 
 ## Components
 
@@ -52,7 +52,7 @@ Each area is available from the barrel and from its own subpath (`…/ui/<subpat
 
 ## Installation
 
-**Getting started** — Add the package, point Tailwind at the library sources, then import from the UI barrel or from a specific `ui/<name>` subpath.
+**Getting started** — Add the package, install peer dependencies so primitives resolve correctly, point Tailwind at the library sources, then import from the UI barrel or from a specific `ui/<name>` subpath.
 
 ### Step 1 — Install the package
 
@@ -70,7 +70,39 @@ pnpm install @zentauri-ui/zentauri-components
 yarn add @zentauri-ui/zentauri-components
 ```
 
-### Step 2 — Include library paths in globals.css
+### Step 2 — Install peer dependencies
+
+The library expects `react`, `react-dom`, `class-variance-authority`, `clsx`, and `tailwind-merge` in your app. Install them alongside the components package.
+
+```bash
+npm install react react-dom class-variance-authority clsx tailwind-merge
+```
+
+```bash
+pnpm add react react-dom class-variance-authority clsx tailwind-merge
+```
+
+```bash
+yarn add react react-dom class-variance-authority clsx tailwind-merge
+```
+
+#### Optional: animations and icons
+
+Add `framer-motion` when using motion-based UI, and `react-icons` when using icon sets from that package.
+
+```bash
+npm install framer-motion react-icons
+```
+
+```bash
+pnpm add framer-motion react-icons
+```
+
+```bash
+yarn add framer-motion react-icons
+```
+
+### Step 3 — Include library paths in globals.css
 
 Add an `@source` entry so Tailwind scans class names inside `@zentauri-ui/zentauri-components`. The path is relative to this CSS file—adjust `../` if your file lives elsewhere.
 
@@ -79,7 +111,7 @@ Add an `@source` entry so Tailwind scans class names inside `@zentauri-ui/zentau
 @source "../node_modules/@zentauri-ui/zentauri-components";
 ```
 
-### Step 3 — Import and use components
+### Step 4 — Import and use components
 
 Prefer a **subpath** when you only need one area (smaller resolved graph than the full barrel). The barrel remains valid when you use many primitives from different areas.
 
