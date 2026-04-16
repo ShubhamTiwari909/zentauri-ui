@@ -116,10 +116,10 @@ function positionSnippet(position: TooltipPlacement) {
   const positionAttr = position === "top" ? "" : ` position="${position}"`;
   return `${variantLeadComment(`Tooltip · position · ${position}`)}<Tooltip${positionAttr}>
   <TooltipTrigger className="${TRIGGER_CLASS}">
-    Hover · position · ${position}
+    Hover
   </TooltipTrigger>
-  <TooltipContent>
-    Tooltip body (root position: ${position}).
+  <TooltipContent className="min-w-50">
+    Tooltip body
   </TooltipContent>
 </Tooltip>`;
 }
@@ -143,7 +143,7 @@ function PositionDemo({ position }: { position: TooltipPlacement }) {
         <p className="mb-5 text-xs md:text-sm"></p>
         <Tooltip position={position}>
           <TooltipTrigger className={TRIGGER_CLASS}>Hover</TooltipTrigger>
-          <TooltipContent>Tooltip body.</TooltipContent>
+          <TooltipContent className="min-w-50" variant="outline">Tooltip body.</TooltipContent>
         </Tooltip>
       </div>
     </>
