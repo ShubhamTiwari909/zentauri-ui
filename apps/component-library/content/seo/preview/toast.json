@@ -1,0 +1,79 @@
+{
+  "category": "Feedback",
+  "title": "Toast notifications for React apps",
+  "description": "Toast notifications for React and Next.js—stacked regions, timed dismiss, and imperative APIs for post-mutation feedback without blocking layout.",
+  "keywords": [
+    "toast component",
+    "React",
+    "Next.js",
+    "notifications",
+    "useToast",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Toast · Zentauri UI",
+    "description": "Toast notifications for React and Next.js—stacked regions, timed dismiss, and imperative APIs for post-mutation feedback without blocking layout.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Toast · Zentauri UI",
+    "description": "Toast notifications for React and Next.js—stacked regions, timed dismiss, and imperative APIs for post-mutation feedback without blocking layout.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/toast",
+  "headings": {
+    "h1": "Toasts for transient notifications",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Toasts acknowledge background work—saved settings, queued jobs, or soft failures—without modal interruption. Integrate them in React apps and Next.js client islands that own global providers.",
+  "useCases": [
+    "Confirm CRUD actions after server mutations.",
+    "Surface copy-to-clipboard success.",
+    "Notify when async exports finish.",
+    "Warn about connectivity retries."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Toast component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
+    },
+    {
+      "question": "Can I customize toast with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
+    },
+    {
+      "question": "Is this Toast implementation accessible by default?",
+      "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Limit concurrent toasts and preserve reading order for screen readers.\n\nProvide action buttons sparingly to reduce accidental clicks."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nNever rely solely on toasts for critical legal consent."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keyboard order, focus rings, and ARIA attributes should match production usage. Test with your supported browsers and assistive technologies when semantics are non-trivial.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive overlays into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

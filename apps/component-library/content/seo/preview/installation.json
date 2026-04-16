@@ -1,0 +1,81 @@
+{
+  "category": "Getting started",
+  "title": "Install Zentauri UI for React & Next.js",
+  "description": "Install @zentauri-ui/zentauri-components, wire Tailwind CSS v4, and import UI primitives into React or Next.js projects with predictable build settings.",
+  "keywords": [
+    "install Zentauri UI",
+    "npm package",
+    "React",
+    "Next.js",
+    "Tailwind CSS v4",
+    "component library setup",
+    "monorepo"
+  ],
+  "og": {
+    "title": "Install Zentauri UI components",
+    "description": "Step-by-step installation for Zentauri UI: package install, Tailwind v4, and Next.js-friendly imports.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Install Zentauri UI components",
+    "description": "Step-by-step installation for Zentauri UI: package install, Tailwind v4, and Next.js-friendly imports.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/installation",
+  "headings": {
+    "h1": "Install Zentauri UI",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Wire the published package into a React or Next.js workspace, enable Tailwind CSS v4 tokens, and start importing UI primitives with stable paths.",
+  "useCases": [
+    "Bootstrap a new Next.js design system workspace with shared Tailwind presets.",
+    "Add Zentauri UI to an existing React SPA bundler (Vite, webpack, or Rspack).",
+    "Align monorepo packages so apps consume a single version of the UI kit.",
+    "Document internal onboarding with reproducible install commands.",
+    "Prepare CI caches for faster installs of workspace-linked packages."
+  ],
+  "faqs": [
+    {
+      "question": "Which package name should I install?",
+      "answer": "Use @zentauri-ui/zentauri-components from npm or link the workspace package during local development."
+    },
+    {
+      "question": "Is Tailwind CSS v4 required?",
+      "answer": "The library targets Tailwind v4 class patterns; follow the snippets in this guide to align postcss and content globs."
+    },
+    {
+      "question": "Does this work with React Server Components?",
+      "answer": "Yes for static markup; interactive demos opt into client components—mirror that split in your app."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What this guide covers",
+      "body": "You will link the workspace package or install from npm, configure Tailwind v4 includes, and verify imports in a minimal React tree.\n\nThe goal is a repeatable setup developers can paste into internal docs."
+    },
+    {
+      "heading": "Package layout and imports",
+      "body": "Exports are organized under predictable entry points so tree-shaking stays effective.\n\nPrefer path imports that match your bundler’s module resolution and avoid deep imports that bypass public API guarantees."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility and styling notes",
+      "body": "Tailwind tokens should inherit from your app’s theme extension so contrast stays on-brand.\n\nKeep global resets minimal to avoid fighting component-level focus styles."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Use environment variables for site metadata and keep server components free of client-only animation drivers unless isolated.\n\nDocument any SSR constraints for portals or layered overlays."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

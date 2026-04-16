@@ -1,4 +1,6 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
+import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { InputsAppearanceMotionSection } from "./sections/inputs-appearance-motion-section";
 import { InputsCheckboxSection } from "./sections/inputs-checkbox-section";
 import { InputsCodeExamplesSection } from "./sections/inputs-code-examples-section";
@@ -10,10 +12,10 @@ import { InputsSizesSection } from "./sections/inputs-sizes-section";
 import { InputsStatesSection } from "./sections/inputs-states-section";
 import { InputsTextareaSection } from "./sections/inputs-textarea-section";
 
-export default function InputsPreviewPage() {
+export default function InputsPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
   return (
     <PreviewPageShell>
-      <InputsHeroSection />
+      <InputsHeroSection seo={seo} />
       <InputsAppearanceMotionSection />
       <InputsTextareaSection />
       <InputsFileUploadSection />
@@ -22,8 +24,8 @@ export default function InputsPreviewPage() {
       <InputsSizesSection />
       <InputsStatesSection />
       <InputsControlledSection />
-      <InputsCodeExamplesSection
-      />
+      <InputsCodeExamplesSection />
+      <PreviewSeoDoc doc={seo} />
     </PreviewPageShell>
   );
 }

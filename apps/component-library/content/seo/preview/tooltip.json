@@ -1,0 +1,79 @@
+{
+  "category": "Overlay",
+  "title": "Tooltip component for React interfaces",
+  "description": "Tooltip component for React and Next.js—hover and focus hints for dense dashboards without cluttering the default layout.",
+  "keywords": [
+    "tooltip component",
+    "React",
+    "Next.js",
+    "hover card",
+    "keyboard focus",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Tooltip · Zentauri UI",
+    "description": "Tooltip component for React and Next.js—hover and focus hints for dense dashboards without cluttering the default layout.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Tooltip · Zentauri UI",
+    "description": "Tooltip component for React and Next.js—hover and focus hints for dense dashboards without cluttering the default layout.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/tooltip",
+  "headings": {
+    "h1": "Tooltips for contextual hints",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Tooltips surface short explanations on hover or focus—icon buttons, truncated labels, and chart markers. Use them in React dashboards and Next.js admin tools with disciplined copy length.",
+  "useCases": [
+    "Disambiguate icon-only toolbar controls.",
+    "Clarify truncated column headers.",
+    "Explain formula fields in spreadsheets.",
+    "Offer units on compact KPIs."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Tooltip component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
+    },
+    {
+      "question": "Can I customize tooltip with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
+    },
+    {
+      "question": "Is this Tooltip implementation accessible by default?",
+      "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Delay appearance slightly to avoid tooltip storms while moving the pointer.\n\nEnsure triggers remain focusable for keyboard users."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nDo not place essential instructions only inside tooltips."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keyboard order, focus rings, and ARIA attributes should match production usage. Test with your supported browsers and assistive technologies when semantics are non-trivial.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive overlays into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

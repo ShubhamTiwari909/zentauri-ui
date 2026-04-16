@@ -1,0 +1,79 @@
+{
+  "category": "Forms",
+  "title": "Text input components for React forms",
+  "description": "Input and field primitives for React and Next.js forms—labels, descriptions, validation states, and Tailwind-ready spacing for accessible data entry.",
+  "keywords": [
+    "input component",
+    "React",
+    "Next.js",
+    "forms",
+    "validation UI",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Input · Zentauri UI",
+    "description": "Input and field primitives for React and Next.js forms—labels, descriptions, validation states, and Tailwind-ready spacing for accessible data entry.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Input · Zentauri UI",
+    "description": "Input and field primitives for React and Next.js forms—labels, descriptions, validation states, and Tailwind-ready spacing for accessible data entry.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/inputs",
+  "headings": {
+    "h1": "Inputs for accessible data entry",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Text inputs with supporting labels, hints, and error text for React forms. Use them in Next.js server actions or client forms while keeping focus management predictable.",
+  "useCases": [
+    "Collect account settings with inline validation.",
+    "Pair with selects and toggles for configuration wizards.",
+    "Capture search terms in filter drawers.",
+    "Power admin tables with inline editing fields."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Input component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
+    },
+    {
+      "question": "Can I customize input with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
+    },
+    {
+      "question": "Is this Input implementation accessible by default?",
+      "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Inputs expose slots for icons and affixes without breaking baseline alignment.\n\nWire aria-invalid when validation fails and keep error text programmatically associated."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nAvoid duplicating labels when placeholders are decorative only."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keyboard order, focus rings, and ARIA attributes should match production usage. Test with your supported browsers and assistive technologies when semantics are non-trivial.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive overlays into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
