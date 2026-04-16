@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SiteFooter } from "@/components/common/site-footer";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Zentauri UI",
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body className="flex min-h-dvh flex-col bg-slate-950 text-slate-50">
         <div className="flex min-h-0 flex-1 flex-col">{children}</div>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );
