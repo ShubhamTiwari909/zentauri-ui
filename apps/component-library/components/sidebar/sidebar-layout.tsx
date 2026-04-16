@@ -40,7 +40,7 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
         id="sidebar-nav"
         className={cn(
           "w-72 shrink-0 border-r border-white/10 bg-slate-950 px-6 py-8",
-          "max-lg max-lg:inset-y-0 max-lg:left-0 max-lg:z-40 max-lg:transform max-lg:transition-transform max-lg:duration-300 max-lg:ease-in-out",
+          "max-lg:fixed max-lg:inset-y-0 max-lg:left-0 max-lg:z-40 max-lg:transform max-lg:transition-transform max-lg:duration-300 max-lg:ease-in-out",
           "lg:sticky lg:top-0 lg:self-start lg:h-screen lg:translate-x-0 lg:overflow-y-auto",
           isMobileMenuOpen
             ? "max-lg:translate-x-0 max-lg:visible"
@@ -63,7 +63,7 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Main Content Area */}
-      <main>
+      <main className="w-full">
         {/* Overlay for mobile when sidebar is open */}
         {isMobileMenuOpen && (
           <div
