@@ -37,6 +37,8 @@ export const buttonLikeSolidAppearances = {
     "bg-gradient-to-r from-indigo-600 to-purple-600 text-white",
   "gradient-pink":
     "bg-gradient-to-r from-pink-600 to-rose-600 text-white",
+  "gradient-orange":
+    "bg-gradient-to-r from-orange-600 to-red-600 text-white",
 } as const;
 
 export type ButtonLikeSolidAppearance = keyof typeof buttonLikeSolidAppearances;
