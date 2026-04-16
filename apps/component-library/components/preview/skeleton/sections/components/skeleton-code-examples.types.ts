@@ -1,4 +1,4 @@
-import type { SkeletonProps } from "@zentauri-ui/zentauri-components/ui";
+import type { SkeletonProps } from "@zentauri-ui/zentauri-components/ui/skeleton";
 
 export type SkeletonAppearance = NonNullable<SkeletonProps["appearance"]>;
 export type SkeletonSize = NonNullable<SkeletonProps["size"]>;

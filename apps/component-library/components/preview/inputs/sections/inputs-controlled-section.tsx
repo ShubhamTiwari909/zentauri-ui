@@ -1,5 +1,5 @@
 "use client";
-import { Input } from "@zentauri-ui/zentauri-components/ui";
+import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
 import { useState } from "react";
 
 export function InputsControlledSection() {

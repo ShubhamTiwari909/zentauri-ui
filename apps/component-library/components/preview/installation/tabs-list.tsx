@@ -1,11 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import {
-  TabsList,
-  TabsTrigger,
-  tabsListVariants,
-  tabsTriggerVariants,
-} from "@zentauri-ui/zentauri-components/ui";
+import { TabsList, TabsTrigger, tabsListVariants, tabsTriggerVariants } from "@zentauri-ui/zentauri-components/ui/tabs";
 
 const listPillsMd = tabsListVariants({
   variant: "pills",

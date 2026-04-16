@@ -1,13 +1,6 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@zentauri-ui/zentauri-components/ui/table";
 
 export function TableExamplesSection() {
   return (

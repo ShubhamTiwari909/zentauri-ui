@@ -1,4 +1,4 @@
-import { Skeleton } from "@zentauri-ui/zentauri-components/ui";
+import { Skeleton } from "@zentauri-ui/zentauri-components/ui/skeleton";
 
 import type { SkeletonDemoProps } from "./skeleton-code-examples.types";
 

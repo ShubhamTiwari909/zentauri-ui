@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import CodeHighlight from "@/components/CodeHighlight";
-import { Button } from "@zentauri-ui/zentauri-components/ui";
+import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 import type { PreviewCodeShowcaseProps } from "./types";
 
 export default function PreviewCodeShowcase({

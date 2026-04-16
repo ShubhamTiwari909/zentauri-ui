@@ -1,4 +1,4 @@
-import { Spinner } from "@zentauri-ui/zentauri-components/ui";
+import { Spinner } from "@zentauri-ui/zentauri-components/ui/spinner";
 
 export function SpinnerHeroSection() {
   return (

@@ -1,14 +1,7 @@
 import CodeHighlight from "@/components/CodeHighlight";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-  Tabs,
-  TabsContent,
-
-} from "@zentauri-ui/zentauri-components/ui";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@zentauri-ui/zentauri-components/ui/accordion";
+import { Tabs, TabsContent } from "@zentauri-ui/zentauri-components/ui/tabs";
 
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
@@ -22,12 +15,7 @@ const INSTALL_COMMANDS = {
 const GLOBALS_CSS_SNIPPET = `@import "tailwindcss";
 @source "../node_modules/@zentauri-ui/zentauri-components";`;
 
-const IMPORT_SNIPPET = `import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@zentauri-ui/zentauri-components/ui";`;
+const IMPORT_SNIPPET = `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@zentauri-ui/zentauri-components/ui/accordion";`;
 
 const USAGE_SNIPPET = `<div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
   <Accordion type="single" defaultValue="item-1" appearance="separated" size="md">

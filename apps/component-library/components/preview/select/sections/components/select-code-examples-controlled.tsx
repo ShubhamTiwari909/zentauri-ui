@@ -1,7 +1,7 @@
 "use client";
 import PreviewCodeShowcase from '@/components/code-showcase/PreviewCodeShowcase';
 import { variantLeadComment } from '@/components/common/variant-code-prefix';
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@zentauri-ui/zentauri-components/ui';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@zentauri-ui/zentauri-components/ui/select';
 import React, { useState } from 'react'
 
 const SelectCodeExamplesControlled = () => {

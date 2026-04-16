@@ -1,4 +1,4 @@
-import type { ToggleProps } from "@zentauri-ui/zentauri-components/ui";
+import type { ToggleProps } from "@zentauri-ui/zentauri-components/ui/toggle";
 
 export type ToggleAppearance = NonNullable<ToggleProps["appearance"]>;
 export type ToggleSize = NonNullable<ToggleProps["size"]>;

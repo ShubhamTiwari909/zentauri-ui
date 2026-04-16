@@ -1,10 +1,4 @@
-import {
-  Alert,
-  AlertDefaultIcon,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Alert, AlertDefaultIcon, AlertDescription, AlertIcon, AlertTitle } from "@zentauri-ui/zentauri-components/ui/alert";
 
 export function AlertHeroSection() {
   return (

@@ -1,4 +1,4 @@
-import { Progress } from "@zentauri-ui/zentauri-components/ui";
+import { Progress } from "@zentauri-ui/zentauri-components/ui/progress";
 
 import type { ProgressDemoProps } from "./progress-code-examples.types";
 

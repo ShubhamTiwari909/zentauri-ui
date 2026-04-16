@@ -1,9 +1,4 @@
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Card, CardDescription, CardHeader, CardTitle } from "@zentauri-ui/zentauri-components/ui/card";
 
 import type { CardDemoProps } from "./card-code-examples.types";
 

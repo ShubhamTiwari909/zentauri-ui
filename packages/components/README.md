@@ -6,13 +6,16 @@ A React UI kit for building product interfaces with Tailwind CSS. Components are
 
 The library targets **React 18+** apps that use **Tailwind CSS v4** (or an equivalent setup where Tailwind can scan this package via `@source`). Styling uses utility classes; **class-variance-authority** powers variant APIs (size, appearance, and similar props), with **clsx** and **tailwind-merge** for predictable `className` composition. **Framer Motion** backs motion where components animate, and **react-icons** is used for iconography where applicable.
 
-Published artifacts live under `dist/`; consumers import the UI barrel at `@zentauri-ui/zentauri-components/ui`. A compiled stylesheet is also exposed at `@zentauri-ui/zentauri-components/styles.css` for setups that import CSS explicitly (many apps rely on Tailwind scanning alone—see installation).
+Published artifacts live under `dist/`. You can import either the **UI barrel** (`@zentauri-ui/zentauri-components/ui`) or a **per-area subpath** (`@zentauri-ui/zentauri-components/ui/<name>`) so bundlers only pull in the entry you use. Most apps rely on Tailwind scanning the package sources (see installation); a separate CSS import is not required for that setup.
 
 ## Package exports
 
 | Subpath | Description |
 | --- | --- |
-| `@zentauri-ui/zentauri-components/ui` | Components, hooks, and types (ESM `.js`, CJS `.cjs`, `.d.ts`) |
+| `@zentauri-ui/zentauri-components/ui` | Full UI barrel: all components, hooks, and types (ESM `.js`, CJS `.cjs`, `.d.ts`) |
+| `@zentauri-ui/zentauri-components/ui/<name>` | Single area entry (same artifacts per file). Use this when you import from one module only to keep the dependency graph smaller. |
+
+The `<name>` segment matches the folder under `src/ui/` (for example `accordion`, `select`, `empty-state`, `buttons` for `Button`, `inputs` for `Input`).
 
 ## Requirements
 
@@ -21,33 +24,35 @@ Published artifacts live under `dist/`; consumers import the UI barrel at `@zent
 
 ## Components
 
-Modules re-exported from the UI entry include:
+Each area is available from the barrel and from its own subpath (`…/ui/<subpath>`):
 
-- Accordion
-- Alert
-- Badge
-- Button
-- Card
-- Divider
-- Drawer
-- Dropdown
-- Empty state
-- Input
-- Modal
-- Pagination
-- Progress
-- Select
-- Skeleton
-- Spinner
-- Table
-- Tabs
-- Toast
-- Toggle
-- Tooltip
+| Area | Subpath `…/ui/…` |
+| --- | --- |
+| Accordion | `accordion` |
+| Alert | `alert` |
+| Badge | `badge` |
+| Button | `buttons` |
+| Card | `card` |
+| Divider | `divider` |
+| Drawer | `drawer` |
+| Dropdown | `dropdown` |
+| Empty state | `empty-state` |
+| Input | `inputs` |
+| Modal | `modal` |
+| Pagination | `pagination` |
+| Progress | `progress` |
+| Select | `select` |
+| Skeleton | `skeleton` |
+| Spinner | `spinner` |
+| Table | `table` |
+| Tabs | `tabs` |
+| Toast | `toast` |
+| Toggle | `toggle` |
+| Tooltip | `tooltip` |
 
 ## Installation
 
-**Getting started** — Add the package, point Tailwind at the library sources, then import components from the UI entry.
+**Getting started** — Add the package, point Tailwind at the library sources, then import from the UI barrel or from a specific `ui/<name>` subpath.
 
 ### Step 1 — Install the package
 
@@ -76,9 +81,9 @@ Add an `@source` entry so Tailwind scans class names inside `@zentauri-ui/zentau
 
 ### Step 3 — Import and use components
 
-Import from the UI barrel, then compose primitives in your JSX.
+Prefer a **subpath** when you only need one area (smaller resolved graph than the full barrel). The barrel remains valid when you use many primitives from different areas.
 
-#### Imports
+#### Imports (subpath — recommended for a single area)
 
 ```tsx
 import {
@@ -86,7 +91,20 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@zentauri-ui/zentauri-components/ui";
+} from "@zentauri-ui/zentauri-components/ui/accordion";
+```
+
+#### Imports (multiple areas — one subpath import per area)
+
+```tsx
+import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@zentauri-ui/zentauri-components/ui/select";
+```
+
+#### Imports (barrel — one entry for symbols from several areas)
+
+```tsx
+import { Button, Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@zentauri-ui/zentauri-components/ui";
 ```
 
 #### Usage

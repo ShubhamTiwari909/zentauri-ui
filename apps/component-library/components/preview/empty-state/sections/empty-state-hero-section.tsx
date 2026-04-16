@@ -1,12 +1,6 @@
 import { HiInbox } from "react-icons/hi2";
-import {
-  EmptyState,
-  EmptyStateAction,
-  EmptyStateDescription,
-  EmptyStateIcon,
-  EmptyStateTitle,
-} from "@zentauri-ui/zentauri-components/ui";
-import { Button } from "@zentauri-ui/zentauri-components/ui";
+import { EmptyState, EmptyStateAction, EmptyStateDescription, EmptyStateIcon, EmptyStateTitle } from "@zentauri-ui/zentauri-components/ui/empty-state";
+import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 
 export function EmptyStateHeroSection() {
   return (

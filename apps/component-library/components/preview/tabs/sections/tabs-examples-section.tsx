@@ -1,14 +1,7 @@
 "use client";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-  tabsListVariants,
-  tabsTriggerVariants,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Tabs, TabsContent, TabsList, TabsTrigger, tabsListVariants, tabsTriggerVariants } from "@zentauri-ui/zentauri-components/ui/tabs";
 
 const listUnderlineSm = tabsListVariants({
   variant: "underline",

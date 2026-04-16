@@ -1,12 +1,6 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@zentauri-ui/zentauri-components/ui/select";
 import SelectCodeExamplesControlled from "./components/select-code-examples-controlled";
 
 export function SelectExamplesSection() {
