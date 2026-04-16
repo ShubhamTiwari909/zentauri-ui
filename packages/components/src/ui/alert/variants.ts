@@ -45,9 +45,9 @@ export const alertVariants = cva(
 export const alertTitleVariants = cva("font-semibold leading-tight", {
   variants: {
     size: {
-      sm: "text-sm",
-      md: "text-sm",
-      lg: "text-base",
+      sm: "text-xs md:text-sm",
+      md: "text-xs md:text-sm",
+      lg: "text-xs md:text-sm",
     },
   },
   defaultVariants: { size: "md" },
@@ -56,9 +56,9 @@ export const alertTitleVariants = cva("font-semibold leading-tight", {
 export const alertDescriptionVariants = cva("text-slate-300", {
   variants: {
     size: {
-      sm: "text-xs",
-      md: "text-sm",
-      lg: "text-base",
+      sm: "text-xs md:text-sm",
+      md: "text-xs md:text-sm",
+      lg: "text-xs md:text-sm",
     },
   },
   defaultVariants: { size: "md" },

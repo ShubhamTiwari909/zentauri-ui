@@ -69,7 +69,7 @@ function CardDemo(opts: {
   return (
     <Card appearance={appearance} size={size} rounded={rounded} animation="none">
       <CardHeader>
-        <CardTitle>Appearance: <span className="font-bold">{appearance.toUpperCase()}</span>, Size: <span className="font-bold">{size.toUpperCase()}</span>, Rounded: <span className="font-bold">{rounded.toUpperCase()}</span></CardTitle>
+        <CardTitle className="text-sm">Appearance: <span className="font-bold">{appearance.toUpperCase()}</span>, Size: <span className="font-bold">{size.toUpperCase()}</span>, Rounded: <span className="font-bold">{rounded.toUpperCase()}</span></CardTitle>
         <CardDescription>Brief supporting description.</CardDescription>
       </CardHeader>
     </Card>

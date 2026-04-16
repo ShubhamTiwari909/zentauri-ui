@@ -8,7 +8,7 @@ export type SelectOption = {
   value: string;
   disabled?: boolean;
 };
-
+export type SelectAppearance = "default" | "glass" | "ghost" | "outline" | "sky" | "rose" | "purple" | "pink" | "orange" | "yellow" | "teal" | "indigo" | "emerald" | "gradient-blue" | "gradient-green" | "gradient-red" | "gradient-yellow" | "gradient-purple" | "gradient-teal" | "gradient-indigo" | "gradient-pink" | "gradient-orange";
 export type SelectContextType = {
   open: boolean;
   setOpen: (v: boolean) => void;
@@ -38,7 +38,7 @@ export type SelectTriggerProps = SelectTriggerVariantProps &
 
 export type SelectContentProps = HTMLAttributes<HTMLDivElement> & {
   className?: string;
-  appearance?: "default" | "glass" | "ghost" | "outline" | "sky" | "rose" | "purple" | "pink" | "orange" | "yellow" | "teal" | "indigo" | "emerald";
+  appearance?: SelectAppearance;
   size?: "sm" | "md" | "lg";
   spacing?: "none" | "default" | "sm" | "md" | "lg" | "xl";
 };
@@ -47,7 +47,7 @@ export type SelectItemProps = HTMLAttributes<HTMLDivElement> & {
   value: string;
   children: ReactNode;
   disabled?: boolean;
-  appearance?: "default" | "glass" | "ghost" | "outline" | "sky" | "rose" | "purple" | "pink" | "orange" | "yellow" | "teal" | "indigo" | "emerald";
+  appearance?: SelectAppearance;
 };
 
 export type SelectValueProps = HTMLAttributes<HTMLSpanElement> & {
