@@ -1,27 +1,10 @@
 import { defineConfig } from "tsup";
 
 const uiComponentNames = [
-  "accordion",
-  "alert",
-  "badge",
-  "buttons",
-  "card",
-  "divider",
-  "drawer",
-  "dropdown",
-  "empty-state",
-  "inputs",
-  "modal",
-  "pagination",
-  "progress",
-  "select",
-  "skeleton",
-  "spinner",
-  "table",
-  "tabs",
-  "toast",
-  "toggle",
-  "tooltip",
+  "accordion", "alert", "badge", "buttons", "card", "divider",
+  "drawer", "dropdown", "empty-state", "inputs", "modal",
+  "pagination", "progress", "select", "skeleton", "spinner",
+  "table", "tabs", "toast", "toggle", "tooltip",
 ] as const;
 
 const uiEntries = Object.fromEntries(
@@ -30,22 +13,30 @@ const uiEntries = Object.fromEntries(
 
 export default defineConfig({
   entry: {
-    "ui/index": "src/ui/index.ts",
     ...uiEntries,
   },
   format: ["esm", "cjs"],
-  dts: true,          // generates .d.ts files
-  clean: true,        // clears dist/ before each build
-  external: ["react", "react-dom"], // don't bundle peer deps
+  dts: true,
+  clean: true,
+  // ✅ Externalize ALL non-React peer deps so they aren't bundled in
+  external: [
+    "react",
+    "react-dom",
+    // Utility libs
+    "clsx",
+    "class-variance-authority",
+    "tailwind-merge",
+    "react-icons",
+    "framer-motion",
+  ],
   sourcemap: true,
-  // esbuild extracts CSS to dist/ui/index.css but drops the import from JS;
-  // restore it so apps loading the package get styles without a separate import.
+  // ✅ Enable splitting — shared chunks prevent code duplication
+  splitting: true,
+  // Rollup's treeshake pass re-bundles esbuild output and strips or ignores
+  // `"use client"` on non-root chunks (see Rollup "Module level directives" warnings).
+  treeshake: false,
   banner: ({ format }) => ({
     // CJS consumers rarely load CSS via require(); ESM + bundlers use the import.
     js: format === "esm" ? '"use client";\n' : "",
   }),
-  splitting: false,
-  // Rollup's extra treeshake pass strips esbuild's `banner` from chunks, which
-  // breaks Next.js "use client" boundaries for split chunk files.
-  treeshake: false,
 });
