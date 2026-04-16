@@ -28,6 +28,15 @@ const ACCORDION_APPEARANCES = [
   "teal",
   "indigo",
   "emerald",
+  "gradient-blue",
+  "gradient-green",
+  "gradient-red",
+  "gradient-yellow",
+  "gradient-purple",
+  "gradient-teal",
+  "gradient-indigo",
+  "gradient-pink",
+  "gradient-orange",
 ] as const satisfies readonly NonNullable<AccordionProps["appearance"]>[];
 
 const ACCORDION_SIZES = [
@@ -57,13 +66,13 @@ function accordionSnippet(
   <AccordionItem value="a">
     <AccordionTrigger>First panel</AccordionTrigger>
     <AccordionContent>
-      <p className="text-sm text-slate-300">Content for the first item.</p>
+      <p className="text-sm">Content for the first item.</p>
     </AccordionContent>
   </AccordionItem>
   <AccordionItem value="b">
     <AccordionTrigger>Second panel</AccordionTrigger>
     <AccordionContent>
-      <p className="text-sm text-slate-300">Content for the second item.</p>
+      <p className="text-sm">Content for the second item.</p>
     </AccordionContent>
   </AccordionItem>
 </Accordion>`;
@@ -85,13 +94,13 @@ function AccordionDemo({
       <AccordionItem value="a">
         <AccordionTrigger>First panel</AccordionTrigger>
         <AccordionContent>
-          <p className="text-sm text-slate-300">Content for the first item.</p>
+          <p className="text-sm">Content for the first item.</p>
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="b">
         <AccordionTrigger>Second panel</AccordionTrigger>
         <AccordionContent>
-          <p className="text-sm text-slate-300">Content for the second item.</p>
+          <p className="text-sm">Content for the second item.</p>
         </AccordionContent>
       </AccordionItem>
     </>

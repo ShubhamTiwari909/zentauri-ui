@@ -31,6 +31,7 @@ const BADGE_APPEARANCES = [
   "gradient-teal",
   "gradient-indigo",
   "gradient-pink",
+  "gradient-orange",
 ] as const satisfies readonly NonNullable<BadgeProps["appearance"]>[];
 
 const BADGE_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<BadgeProps["size"]>[];

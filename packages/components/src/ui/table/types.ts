@@ -18,7 +18,6 @@ export type TableProps = TableVariantProps &
     children?: ReactNode;
     rowAnimation?: TableAnimation;
     ref?: Ref<HTMLTableElement>;
-    overflow?: "auto" | "hidden";
     textAlign?: "left" | "center" | "right";
   };
 

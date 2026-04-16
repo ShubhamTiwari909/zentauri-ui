@@ -58,6 +58,7 @@ export const inputVariants = cva(
         amber: "border-amber-500/80 text-amber-50 placeholder:text-amber-300/70 focus-visible:border-amber-400 focus-visible:ring-amber-400/80",
         pink: "border-pink-500/80 text-pink-50 placeholder:text-pink-300/70 focus-visible:border-pink-400 focus-visible:ring-pink-400/80",
         indigo: "border-indigo-500/80 text-indigo-50 placeholder:text-indigo-300/70 focus-visible:border-indigo-400 focus-visible:ring-indigo-400/80",
+        orange: "border-orange-500/80 text-orange-50 placeholder:text-orange-300/70 focus-visible:border-orange-400 focus-visible:ring-orange-400/80",
 
       },
       size: {

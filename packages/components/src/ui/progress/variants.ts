@@ -34,6 +34,8 @@ export const progressVariants = cva("w-full text-slate-50", {
         "[--progress-fill:linear-gradient(90deg,theme(colors.indigo.500),theme(colors.purple.500))]",
       "gradient-pink":
         "[--progress-fill:linear-gradient(90deg,theme(colors.pink.500),theme(colors.rose.500))]",
+      "gradient-orange":
+        "[--progress-fill:linear-gradient(90deg,theme(colors.orange.500),theme(colors.red.500))]",
     },
     size: {
       xs: "text-[0.65rem]",
