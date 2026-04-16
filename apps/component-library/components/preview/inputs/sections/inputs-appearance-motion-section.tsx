@@ -1,4 +1,4 @@
-import { Input } from "@zentauri-ui/zentauri-components/ui";
+import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
 import { animationPresets, appearanceInputs } from "../variants";
 
 export function InputsAppearanceMotionSection() {

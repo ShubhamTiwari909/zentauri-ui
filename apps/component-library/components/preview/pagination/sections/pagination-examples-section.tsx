@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Pagination, usePagination } from "@zentauri-ui/zentauri-components/ui";
+import { Pagination, usePagination } from "@zentauri-ui/zentauri-components/ui/pagination";
 
 export function PaginationExamplesSection() {
   const [page, setPage] = useState(7);

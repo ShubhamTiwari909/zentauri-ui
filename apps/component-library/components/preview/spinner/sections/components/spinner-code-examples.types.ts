@@ -1,4 +1,4 @@
-import type { SpinnerProps } from "@zentauri-ui/zentauri-components/ui";
+import type { SpinnerProps } from "@zentauri-ui/zentauri-components/ui/spinner";
 
 export type SpinnerAppearance = NonNullable<SpinnerProps["appearance"]>;
 export type SpinnerVariant = NonNullable<SpinnerProps["variant"]>;

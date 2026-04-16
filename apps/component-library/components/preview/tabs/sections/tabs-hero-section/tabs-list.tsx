@@ -1,10 +1,5 @@
 "use client"
-import {
-    TabsList,
-    TabsTrigger,
-    tabsListVariants,
-    tabsTriggerVariants,
-  } from "@zentauri-ui/zentauri-components/ui";
+import { TabsList, TabsTrigger, tabsListVariants, tabsTriggerVariants } from "@zentauri-ui/zentauri-components/ui/tabs";
 
 const TabsListComponent = () => {
   return (

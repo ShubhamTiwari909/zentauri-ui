@@ -1,4 +1,4 @@
-import type { EmptyStateProps } from "@zentauri-ui/zentauri-components/ui";
+import type { EmptyStateProps } from "@zentauri-ui/zentauri-components/ui/empty-state";
 
 export type EmptyStateAppearance = NonNullable<EmptyStateProps["appearance"]>;
 export type EmptyStateSize = NonNullable<EmptyStateProps["size"]>;

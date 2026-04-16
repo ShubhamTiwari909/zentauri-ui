@@ -1,14 +1,5 @@
-import { Button } from "@zentauri-ui/zentauri-components/ui";
-import {
-  Drawer,
-  DrawerBody,
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { Drawer, DrawerBody, DrawerClose, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@zentauri-ui/zentauri-components/ui/drawer";
 
 export function DrawerHeroSection() {
   return (

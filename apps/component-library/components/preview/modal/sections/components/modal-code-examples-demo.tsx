@@ -1,13 +1,4 @@
-import {
-  Modal,
-  ModalBody,
-  ModalClose,
-  ModalContent,
-  ModalDescription,
-  ModalHeader,
-  ModalTitle,
-  ModalTrigger,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Modal, ModalBody, ModalClose, ModalContent, ModalDescription, ModalHeader, ModalTitle, ModalTrigger } from "@zentauri-ui/zentauri-components/ui/modal";
 
 import { MODAL_TRIGGER_CLASS } from "./modal-code-examples.data";
 import type { ModalDemoProps } from "./modal-code-examples.types";

@@ -1,7 +1,4 @@
-import {
-  Tabs,
-  TabsContent,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Tabs, TabsContent } from "@zentauri-ui/zentauri-components/ui/tabs";
 import TabsListComponent from "./tabs-list";
 
 export function TabsHeroSection() {

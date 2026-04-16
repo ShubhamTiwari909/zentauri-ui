@@ -1,4 +1,4 @@
-import { Badge } from "@zentauri-ui/zentauri-components/ui";
+import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
 
 import type { BadgeDemoProps } from "./badge-code-examples.types";
 

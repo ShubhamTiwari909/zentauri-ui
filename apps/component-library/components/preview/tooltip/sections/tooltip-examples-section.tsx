@@ -1,10 +1,6 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@zentauri-ui/zentauri-components/ui/tooltip";
 
 const TRIGGER_SOFT =
   "rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200 outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50";

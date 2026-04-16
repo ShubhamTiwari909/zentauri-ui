@@ -1,6 +1,6 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Divider } from "@zentauri-ui/zentauri-components/ui";
+import { Divider } from "@zentauri-ui/zentauri-components/ui/divider";
 
 export function DividerExamplesSection() {
   return (

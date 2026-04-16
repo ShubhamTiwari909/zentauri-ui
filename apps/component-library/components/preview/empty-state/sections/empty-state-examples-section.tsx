@@ -1,12 +1,7 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { HiCloudArrowUp } from "react-icons/hi2";
-import {
-  EmptyState,
-  EmptyStateDescription,
-  EmptyStateIcon,
-  EmptyStateTitle,
-} from "@zentauri-ui/zentauri-components/ui";
+import { EmptyState, EmptyStateDescription, EmptyStateIcon, EmptyStateTitle } from "@zentauri-ui/zentauri-components/ui/empty-state";
 
 export function EmptyStateExamplesSection() {
   return (

@@ -1,12 +1,4 @@
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@zentauri-ui/zentauri-components/ui/table";
 
 export function TableHeroSection() {
   return (

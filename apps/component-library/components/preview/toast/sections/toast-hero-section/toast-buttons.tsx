@@ -1,5 +1,6 @@
 "use client";
-import { Button, useToast } from "@zentauri-ui/zentauri-components/ui";
+import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { useToast } from "@zentauri-ui/zentauri-components/ui/toast";
 
 const ToastButtons = () => {
   const { toast } = useToast();

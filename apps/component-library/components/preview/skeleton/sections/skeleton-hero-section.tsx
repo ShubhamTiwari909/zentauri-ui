@@ -1,8 +1,4 @@
-import {
-  Skeleton,
-  SkeletonAvatar,
-  SkeletonText,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Skeleton, SkeletonAvatar, SkeletonText } from "@zentauri-ui/zentauri-components/ui/skeleton";
 
 export function SkeletonHeroSection() {
   return (

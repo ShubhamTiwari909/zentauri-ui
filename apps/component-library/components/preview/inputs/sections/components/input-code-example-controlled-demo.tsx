@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import { Input } from "@zentauri-ui/zentauri-components/ui";
+import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
 
 export function InputsControlledDemo() {
   const [value, setValue] = useState("");
