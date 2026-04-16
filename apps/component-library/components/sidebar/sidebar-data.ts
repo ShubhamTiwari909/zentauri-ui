@@ -8,6 +8,10 @@ export const sidebarRouteData: SidebarNavGroup[] = [
         title: "Introduction",
         href: "/preview",
       },
+      {
+        title: "Installation",
+        href: "/preview/installation",
+      },
     ],
   },
   {

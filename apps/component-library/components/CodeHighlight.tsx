@@ -1,11 +1,47 @@
+import { Button } from "@zentauri-ui/zentauri-components/ui";
+import { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-const CodeHighlight = ({ codeString }: { codeString: string }) => {
+type CodeHighlightProps = {
+  codeString: string;
+  language?: string;
+};
+
+const CodeHighlight = ({
+  codeString,
+  language = "typescript",
+}: CodeHighlightProps) => {
+  const [copySuccess, setCopySuccess] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(codeString);
+    setCopySuccess(true);
+    setTimeout(() => {
+      setCopySuccess(false);
+    }, 2000);
+  };
+
   return (
-    <SyntaxHighlighter customStyle={{ padding: "1.5rem 4.25rem 1.5rem 1rem" }} language="typescript" style={nightOwl} wrapLongLines={true}>
-      {codeString}
-    </SyntaxHighlighter>
+    <div className="relative">
+      <SyntaxHighlighter
+        customStyle={{ padding: "1.5rem 4.25rem 1.5rem 1rem" }}
+        language={language}
+        style={nightOwl}
+        wrapLongLines={true}
+      >
+        {codeString}
+      </SyntaxHighlighter>
+      <Button
+        appearance="emerald"
+        size="sm"
+        type="button"
+        className="absolute bottom-2 right-2 md:top-2"
+        onClick={handleCopy}
+      >
+        {copySuccess ? "Copied" : "Copy"}
+      </Button>
+    </div>
   );
 };
 
