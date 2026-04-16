@@ -26,7 +26,7 @@ import type {
   ModalSectionProps,
   ModalTriggerProps,
 } from "./types";
-import { modalContentVariants, modalOverlayVariants } from "./variants";
+import { modalContentVariants, modalOverlayVariants, modalTriggerVariants } from "./variants";
 
 type ModalCtx = {
   open: boolean;
@@ -98,15 +98,14 @@ export function Modal({ open, defaultOpen = false, onOpenChange, children }: Mod
 
 Modal.displayName = "Modal";
 
-export function ModalTrigger({ className, children, onClick, ref, ...rest }: ModalTriggerProps) {
+export function ModalTrigger({ className, children, appearance, onClick, ref, ...rest }: ModalTriggerProps) {
   const { setOpen } = useModalContext("ModalTrigger");
-
   return (
     <button
       ref={ref}
       type="button"
       data-slot="modal-trigger"
-      className={cn(className)}
+      className={cn(modalTriggerVariants({ appearance }), className)}
       onClick={(event) => {
         onClick?.(event);
         if (!event.defaultPrevented) {
@@ -209,7 +208,7 @@ export function ModalContent({
               if (typeof ref === "function") {
                 ref(node);
               } else if (ref) {
-                (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+                (ref as React.RefObject<HTMLDivElement | null>).current = node;
               }
             }}
             role="dialog"

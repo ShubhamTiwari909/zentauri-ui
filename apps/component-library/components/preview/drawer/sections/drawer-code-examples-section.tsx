@@ -17,7 +17,7 @@ const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
 const TRIGGER_CLASS =
-  "rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200";
+  "rounded-lg px-3 py-1.5 text-sm";
 
 const DRAWER_SIDES = ["left", "right", "top", "bottom"] as const satisfies readonly NonNullable<
   DrawerContentProps["side"]
@@ -43,7 +43,7 @@ function drawerSnippet(opts: {
   const appearanceAttr =
     appearance === "default" ? "" : ` appearance="${appearance}"`;
   return `${variantLeadComment(`DrawerContent · side · ${side}, size · ${size}, appearance · ${appearance}`)}<Drawer>
-  <DrawerTrigger className="${TRIGGER_CLASS}">
+  <DrawerTrigger appearance="${appearance}" className="${TRIGGER_CLASS}">
     ${label}
   </DrawerTrigger>
   <DrawerContent${sideAttr}${sizeAttr}${appearanceAttr} animation="fade">
@@ -67,7 +67,7 @@ function DrawerDemo(opts: {
   const { side, size, appearance, label } = opts;
   return (
     <Drawer>
-      <DrawerTrigger className={TRIGGER_CLASS}>{label}</DrawerTrigger>
+      <DrawerTrigger appearance={appearance} className={TRIGGER_CLASS}>{label}</DrawerTrigger>
       <DrawerContent side={side} size={size} appearance={appearance} animation="fade">
         <DrawerClose />
         <DrawerHeader>

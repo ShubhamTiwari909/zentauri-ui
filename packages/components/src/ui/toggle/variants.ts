@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const toggleTrackVariants = cva(
-  "relative inline-flex shrink-0 cursor-pointer rounded-full border border-white/10 bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 data-[state=checked]:border-cyan-500/40 data-[state=checked]:bg-cyan-600/80 disabled:cursor-not-allowed disabled:opacity-50",
+  "relative inline-flex shrink-0 cursor-pointer rounded-full border border-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 data-[state=checked]:border-cyan-500/40 disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
       size: {
@@ -29,6 +29,15 @@ export const toggleTrackVariants = cva(
         zinc: "data-[state=checked]:border-zinc-400/40 data-[state=checked]:bg-zinc-600/90",
         gray: "data-[state=checked]:border-gray-400/40 data-[state=checked]:bg-gray-600/90",
         stone: "data-[state=checked]:border-stone-400/40 data-[state=checked]:bg-stone-600/90",
+        "gradient-blue": "data-[state=checked]:bg-linear-to-r from-blue-600 to-purple-600",
+        "gradient-green": "data-[state=checked]:bg-linear-to-r from-green-600 to-lime-600",
+        "gradient-red": "data-[state=checked]:bg-linear-to-r from-red-600 to-pink-600",
+        "gradient-yellow": "data-[state=checked]:bg-linear-to-r from-yellow-600 to-orange-600",
+        "gradient-purple": "data-[state=checked]:bg-linear-to-r from-purple-600 to-pink-600",
+        "gradient-teal": "data-[state=checked]:bg-linear-to-r from-teal-600 to-cyan-600",
+        "gradient-indigo": "data-[state=checked]:bg-linear-to-r from-indigo-600 to-purple-600",
+        "gradient-pink": "data-[state=checked]:bg-linear-to-r from-pink-600 to-rose-600",
+        "gradient-orange": "data-[state=checked]:bg-linear-to-r from-orange-600 to-red-600",
       },
     },
     defaultVariants: {

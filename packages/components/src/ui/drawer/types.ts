@@ -2,7 +2,7 @@ import type { VariantProps } from "class-variance-authority";
 import type { CSSProperties, HTMLAttributes, ReactNode, Ref } from "react";
 
 import type { DrawerAnimation } from "./animations";
-import type { drawerContentVariants } from "./variants";
+import type { drawerContentVariants, drawerTriggerVariants } from "./variants";
 
 type DrawerContentVariantProps = VariantProps<typeof drawerContentVariants>;
 
@@ -17,6 +17,7 @@ export type DrawerProps = {
 
 export type DrawerTriggerProps = HTMLAttributes<HTMLButtonElement> & {
   ref?: Ref<HTMLButtonElement>;
+  appearance?: VariantProps<typeof drawerTriggerVariants>["appearance"];
 };
 
 export type DrawerContentProps = DrawerContentVariantProps & {

@@ -22,7 +22,7 @@ import type {
   DrawerSectionProps,
   DrawerTriggerProps,
 } from "./types";
-import { drawerContentVariants, drawerOverlayVariants } from "./variants";
+import { drawerContentVariants, drawerOverlayVariants, drawerTriggerVariants } from "./variants";
 
 type DrawerCtx = {
   open: boolean;
@@ -94,14 +94,14 @@ export function Drawer({ open, defaultOpen = false, onOpenChange, children }: Dr
 
 Drawer.displayName = "Drawer";
 
-export function DrawerTrigger({ className, children, onClick, ref, ...rest }: DrawerTriggerProps) {
+export function DrawerTrigger({ className, children, appearance, onClick, ref, ...rest }: DrawerTriggerProps) {
   const { setOpen } = useDrawerContext("DrawerTrigger");
   return (
     <button
       ref={ref}
       type="button"
       data-slot="drawer-trigger"
-      className={cn(className)}
+      className={cn(drawerTriggerVariants({ appearance }), className)}
       onClick={(event) => {
         onClick?.(event);
         if (!event.defaultPrevented) {
