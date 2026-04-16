@@ -1,4 +1,4 @@
-import { Badge } from "@zentauri-ui/zentauri-components/ui";
+import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
 
 export function BadgeHeroSection() {
   return (

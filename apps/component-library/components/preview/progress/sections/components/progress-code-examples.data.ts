@@ -1,4 +1,4 @@
-import type { ProgressProps } from "@zentauri-ui/zentauri-components/ui";
+import type { ProgressProps } from "@zentauri-ui/zentauri-components/ui/progress";
 
 export const PROGRESS_CODE_EXAMPLES_SECTION_CLASS =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";

@@ -1,4 +1,4 @@
-import { Toggle } from "@zentauri-ui/zentauri-components/ui";
+import { Toggle } from "@zentauri-ui/zentauri-components/ui/toggle";
 
 import type { ToggleDemoProps } from "./toggle-code-examples.types";
 

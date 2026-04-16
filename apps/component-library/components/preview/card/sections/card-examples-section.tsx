@@ -1,12 +1,6 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import {
-  Card,
-  CardBody,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Card, CardBody, CardDescription, CardHeader, CardTitle } from "@zentauri-ui/zentauri-components/ui/card";
 
 export function CardExamplesSection() {
   return (

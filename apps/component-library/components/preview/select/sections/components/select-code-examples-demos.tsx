@@ -1,10 +1,4 @@
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@zentauri-ui/zentauri-components/ui/select";
 
 import type { SelectContentDemoProps, SelectTriggerDemoProps } from "./select-code-examples.types";
 

@@ -1,12 +1,6 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import {
-  Alert,
-  AlertDefaultIcon,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-} from "@zentauri-ui/zentauri-components/ui";
+import { Alert, AlertDefaultIcon, AlertDescription, AlertIcon, AlertTitle } from "@zentauri-ui/zentauri-components/ui/alert";
 
 export function AlertExamplesSection() {
   return (

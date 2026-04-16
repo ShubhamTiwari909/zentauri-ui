@@ -1,11 +1,12 @@
 {
   "name": "@zentauri-ui/zentauri-components",
   "type": "module",
-  "version": "0.0.84",
+  "version": "0.0.91",
   "description": "A UI component library built with React and Tailwind CSS",
   "license": "MIT",
   "files": ["dist"],
   "main": "./dist/ui/index.js",
+  "sideEffects": false,
   "publishConfig": {
     "access": "public"
   },
@@ -14,6 +15,11 @@
       "types": "./dist/ui/index.d.ts",
       "import": "./dist/ui/index.js",
       "require": "./dist/ui/index.cjs"
+    },
+    "./ui/*": {
+      "types": "./dist/ui/*.d.ts",
+      "import": "./dist/ui/*.js",
+      "require": "./dist/ui/*.cjs"
     }
   },
   "scripts": {

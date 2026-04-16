@@ -1,4 +1,4 @@
-import { Pagination } from "@zentauri-ui/zentauri-components/ui";
+import { Pagination } from "@zentauri-ui/zentauri-components/ui/pagination";
 
 import type { PaginationDemoProps } from "./pagination-code-examples.types";
 

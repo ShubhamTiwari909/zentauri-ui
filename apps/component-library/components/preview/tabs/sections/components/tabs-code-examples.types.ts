@@ -1,6 +1,6 @@
 import type { VariantProps } from "class-variance-authority";
 
-import { tabsListVariants, tabsTriggerVariants } from "@zentauri-ui/zentauri-components/ui";
+import { tabsListVariants, tabsTriggerVariants } from "@zentauri-ui/zentauri-components/ui/tabs";
 
 export type TabsListVariant = NonNullable<VariantProps<typeof tabsListVariants>["variant"]>;
 export type TabsListSize = NonNullable<VariantProps<typeof tabsListVariants>["size"]>;

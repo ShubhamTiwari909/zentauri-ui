@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Toggle } from "@zentauri-ui/zentauri-components/ui";
+import { Toggle } from "@zentauri-ui/zentauri-components/ui/toggle";
 
 export function ToggleControlledDemo() {
   const [checked, setChecked] = useState(false);

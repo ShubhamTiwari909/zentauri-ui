@@ -1,4 +1,4 @@
-import type { SelectContentProps, SelectTriggerProps } from "@zentauri-ui/zentauri-components/ui";
+import type { SelectContentProps, SelectTriggerProps } from "@zentauri-ui/zentauri-components/ui/select";
 
 export type SelectTriggerDemoProps = {
   triggerVariant: NonNullable<SelectTriggerProps["variant"]>;

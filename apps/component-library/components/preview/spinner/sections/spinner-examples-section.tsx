@@ -1,6 +1,6 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Spinner } from "@zentauri-ui/zentauri-components/ui";
+import { Spinner } from "@zentauri-ui/zentauri-components/ui/spinner";
 
 export function SpinnerExamplesSection() {
   return (

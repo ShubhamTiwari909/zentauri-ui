@@ -1,6 +1,6 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Badge } from "@zentauri-ui/zentauri-components/ui";
+import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
 
 export function BadgeExamplesSection() {
   return (
