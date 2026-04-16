@@ -12,6 +12,7 @@ import {
   TableRow,
   type TableProps,
 } from "@zentauri-ui/zentauri-components/ui";
+import { cn } from "@/lib/utils";
 
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
@@ -20,20 +21,39 @@ const TABLE_BODY_SNIPPET = `  <TableHeader>
     <TableRow>
       <TableHead>Name</TableHead>
       <TableHead>Role</TableHead>
+      <TableHead>Email</TableHead>
+      <TableHead>Age</TableHead>
     </TableRow>
   </TableHeader>
   <TableBody>
     <TableRow>
-      <TableCell>Ana</TableCell>
+      <TableCell>User 1</TableCell>
+      <TableCell>Admin</TableCell>
+      <TableCell>user1a@example.com</TableCell>
+      <TableCell>20</TableCell>
       <TableCell>Admin</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell>Bo</TableCell>
+      <TableCell>User 2</TableCell>
       <TableCell>Editor</TableCell>
+      <TableCell>user2a@example.com</TableCell>
+      <TableCell>25</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>User 3</TableCell>
+      <TableCell>User</TableCell>
+      <TableCell>user3a@example.com</TableCell>
+      <TableCell>30</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>User 4</TableCell>
+      <TableCell>User</TableCell>
+      <TableCell>user4a@example.com</TableCell>
+      <TableCell>30</TableCell>
     </TableRow>
   </TableBody>`;
 
-const TABLE_APPEARANCES = ["default", "striped", "bordered", "ghost"] as const satisfies readonly NonNullable<
+const TABLE_APPEARANCES = ["default", "striped", "bordered", "ghost", "sky", "rose", "purple", "pink", "orange", "yellow", "teal", "indigo", "emerald", "gray", "amber", "violet"] as const satisfies readonly NonNullable<
   TableProps["appearance"]
 >[];
 
@@ -45,18 +65,16 @@ function tableOpenTag(opts: {
   appearance: NonNullable<TableProps["appearance"]>;
   size: NonNullable<TableProps["size"]>;
   stickyHeader: boolean;
-  overflow?: "auto" | "hidden";
   textAlign?: "left" | "center" | "right";
   className?: string;
 }) {
-  const { appearance, size, stickyHeader, overflow, textAlign } = opts;
+  const { appearance, size, stickyHeader, textAlign } = opts;
   const appearanceAttr =
     appearance === "default" ? "" : ` appearance="${appearance}"`;
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
   const stickyAttr = stickyHeader ? " stickyHeader" : "";
-  const overflowAttr = overflow === "auto" ? " overflow=\"auto\"" : "";
   const textAlignAttr = textAlign === "left" ? "" : ` textAlign="${textAlign}"`;
-  return `<Table${appearanceAttr}${sizeAttr}${stickyAttr} rowAnimation="none"${overflowAttr}${textAlignAttr}>
+  return `<Table${appearanceAttr}${sizeAttr}${stickyAttr} rowAnimation="none"${textAlignAttr}>
   <div data-slot="table-scroll" className="relative w-full overflow-auto">
     <table data-slot="table" role="table" class="min-w-0 w-full max-lg:overflow-x-auto max-lg:overscroll-x-contain lg:overflow-x-visible max-lg:**:data-[slot=table]:w-full max-lg:**:data-[slot=table]:min-w-max">
       ${TABLE_BODY_SNIPPET}
@@ -66,39 +84,60 @@ function tableOpenTag(opts: {
 }
 
 function tableSnippet(opts: Parameters<typeof tableOpenTag>[0]) {
-  const { appearance, size, stickyHeader, overflow } = opts;
-  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}, stickyHeader · ${stickyHeader}, overflow · ${overflow}`)}${tableOpenTag(opts)}
+  const { appearance, size, stickyHeader } = opts;
+  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}, stickyHeader · ${stickyHeader}`)}${tableOpenTag(opts)}
 ${TABLE_BODY_SNIPPET}
 </Table>`;
 }
 
 function TableDemo(opts: Parameters<typeof tableOpenTag>[0]) {
-  const { appearance, size, stickyHeader, overflow, textAlign, className } = opts;
+  const { appearance, size, stickyHeader, textAlign, className } = opts;
   return (
-    <div className="max-h-48 overflow-y-auto rounded-lg border border-white/10">
-      <p className="mb-5">Appearance: <span className="font-bold">{appearance}</span> | Size: <span className="font-bold">{size}</span> | Sticky Header: <span className="font-bold">{stickyHeader ? "true" : "false"}</span> | Overflow: <span className="font-bold">{overflow ? "auto" : "hidden"}</span></p>
-      <Table appearance={appearance} size={size} stickyHeader={stickyHeader} rowAnimation="none" overflow={overflow} textAlign={textAlign} className={className}>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Role</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell>Ana</TableCell>
-            <TableCell>Admin</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Bo</TableCell>
-            <TableCell>Editor</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Cy</TableCell>
-            <TableCell>Viewer</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+    <div>
+      <p className="mb-5 text-xs md:text-sm">Appearance: <span className="font-bold">{appearance}</span> | Size: <span className="font-bold">{size}</span> | Sticky Header: <span className="font-bold">{stickyHeader ? "true" : "false"}</span></p>
+      <div
+        className={cn(
+          stickyHeader &&
+            "*:data-[slot=table-scroll]:max-h-35 *:data-[slot=table-scroll]:overflow-y-auto",
+        )}
+      >
+        <Table appearance={appearance} size={size} stickyHeader={stickyHeader} rowAnimation="none" textAlign={textAlign} className={className}>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Name</TableHead>
+              <TableHead>Role</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Age</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>User 1</TableCell>
+              <TableCell>Admin</TableCell>
+              <TableCell>user1a@example.com</TableCell>
+              <TableCell>20</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>User 2</TableCell>
+              <TableCell>User</TableCell>
+              <TableCell>user2a@example.com</TableCell>
+              <TableCell>25</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>User 3</TableCell>
+              <TableCell>User</TableCell>
+              <TableCell>user3a@example.com</TableCell>
+              <TableCell>30</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>User 4</TableCell>
+              <TableCell>User</TableCell>
+              <TableCell>user4a@example.com</TableCell>
+              <TableCell>30</TableCell>
+            </TableRow>
+            </TableBody>
+        </Table>
+      </div>
     </div>
   );
 }
@@ -151,13 +190,6 @@ export function TableCodeExamplesSection() {
           code={tableSnippet({ ...base, appearance: "bordered", stickyHeader: false })}
         >
           <TableDemo {...base} appearance="bordered" stickyHeader={false} />
-        </PreviewCodeShowcase>
-        <PreviewCodeShowcase
-          key="overflow-auto"
-          code={tableSnippet({ ...base, appearance: "bordered", overflow: "auto" })}
-        >
-          <p>Overflow auto on mobile and tablet</p>
-          <TableDemo {...base} appearance="bordered" overflow="auto" className="min-w-150" />
         </PreviewCodeShowcase>
       </div>
     </section>

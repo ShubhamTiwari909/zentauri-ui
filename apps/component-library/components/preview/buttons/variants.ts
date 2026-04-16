@@ -75,6 +75,21 @@ export const showcaseButtons = [
     animation: "bounce",
   },
   {
+    label: "Gray",
+    appearance: "gray",
+    animation: "bounce",
+  },
+  {
+    label: "Amber",
+    appearance: "amber",
+    animation: "bounce",
+  },
+  {
+    label: "Violet",
+    appearance: "violet",
+    animation: "bounce",
+  },
+  {
     label: "Gradient Blue",
     appearance: "gradient-blue",
     animation: "bounce",
@@ -112,6 +127,11 @@ export const showcaseButtons = [
   {
     label: "Gradient Pink",
     appearance: "gradient-pink",
+    animation: "bounce",
+  },
+  {
+    label: "Gradient Orange",
+    appearance: "gradient-orange",
     animation: "bounce",
   },
 ] as const;

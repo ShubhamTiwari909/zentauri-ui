@@ -22,6 +22,7 @@ const spinnerAppearances = {
   "gradient-teal": "text-teal-400",
   "gradient-indigo": "text-indigo-400",
   "gradient-pink": "text-pink-400",
+  "gradient-orange": "text-orange-400",
 } as const;
 
 export const spinnerVariants = cva("inline-flex items-center justify-center", {

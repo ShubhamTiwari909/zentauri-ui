@@ -27,6 +27,9 @@ const PAGINATION_APPEARANCES = [
   "teal",
   "yellow",
   "orange",
+  "gray",
+  "amber",
+  "violet",
   "gradient-blue",
   "gradient-green",
   "gradient-red",
@@ -35,6 +38,7 @@ const PAGINATION_APPEARANCES = [
   "gradient-teal",
   "gradient-indigo",
   "gradient-pink",
+  "gradient-orange",
 ] as const satisfies readonly NonNullable<PaginationProps["appearance"]>[];
 
 const PAGINATION_SIZES = [
