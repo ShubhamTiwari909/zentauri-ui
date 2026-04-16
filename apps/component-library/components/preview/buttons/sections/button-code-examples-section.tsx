@@ -1,20 +1,25 @@
-"use client";
-
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { variantLeadComment } from "@/components/common/variant-code-prefix";
-import { Button } from "@zentauri-ui/zentauri-components/ui";
-import {
-  showcaseButtons,
-  buttonAnimationPresets,
-  sizeButtons,
-} from "../variants";
 
-const SECTION =
-  "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
+import {
+  ButtonAnimationDemo,
+  ButtonAppearanceDemo,
+  ButtonSizeDemo,
+} from "./components/button-code-examples-demo";
+import {
+  BUTTON_CODE_EXAMPLES_SECTION_CLASS,
+  buttonAnimationPresets,
+  showcaseButtons,
+  sizeButtons,
+} from "./components/button-code-examples.data";
+import {
+  buttonAnimationSnippet,
+  buttonAppearanceSnippet,
+  buttonSizeSnippet,
+} from "./components/button-code-examples.snippets";
 
 export function ButtonCodeExamplesSection() {
   return (
-    <section className={SECTION}>
+    <section className={BUTTON_CODE_EXAMPLES_SECTION_CLASS}>
       <h2 className="mt-3 text-2xl font-semibold text-white">
         Button variants examples
       </h2>
@@ -23,51 +28,38 @@ export function ButtonCodeExamplesSection() {
         naming the token row.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
-        {showcaseButtons.map((button) => {
-          const code = `${variantLeadComment(`appearance · ${button.appearance}`)}<Button appearance="${button.appearance}" className="w-full">${button.label}</Button>`;
+        {showcaseButtons.map((button) => (
+          <PreviewCodeShowcase
+            key={button.label}
+            code={buttonAppearanceSnippet(button)}
+          >
+            <p className="mb-5 text-xs md:text-sm font-semibold text-white">
+              Appearance:{" "}
+              <span className="font-bold">{button.appearance.toUpperCase()}</span>
+            </p>
+            <ButtonAppearanceDemo {...button} />
+          </PreviewCodeShowcase>
+        ))}
+        {buttonAnimationPresets.map((preset) => {
+          const [label] = preset;
           return (
-            <PreviewCodeShowcase key={button.label} code={code}>
+            <PreviewCodeShowcase key={label} code={buttonAnimationSnippet(preset)}>
               <p className="mb-5 text-xs md:text-sm font-semibold text-white">
-                Appearance:{" "}
-                <span className="font-bold">{button.appearance.toUpperCase()}</span>
+                Animation:{" "}
+                <span className="font-bold">{preset[1].toUpperCase()}</span>
               </p>
-              <Button appearance={button.appearance} animation="none" className="w-40">
-                {button.label}
-              </Button>
+              <ButtonAnimationDemo preset={preset} />
             </PreviewCodeShowcase>
           );
         })}
-        {buttonAnimationPresets.map(([label, animation]) => {
-          const code = `${variantLeadComment(`animation · ${animation}`)}<Button appearance="glass" animation="${animation}" className="w-full">${label} animation</Button>`;
-          return (
-            <PreviewCodeShowcase key={label} code={code}>
-              <p className="mb-5 text-xs md:text-sm font-semibold text-white">
-                Animation: <span className="font-bold">{animation.toUpperCase()}</span>
-              </p>
-              <Button appearance="glass" animation={animation} className="w-40">
-                {`${label} animation`}
-              </Button>
-            </PreviewCodeShowcase>
-          );
-        })}
-        {sizeButtons.map((button) => {
-          const code = `${variantLeadComment(`size · ${button.size}`)}<Button appearance="gradient-indigo" size="${button.size}" className="w-full ${button.size === "icon" ? "w-20" : ""}">${button.label} size</Button>`;
-          return (
-            <PreviewCodeShowcase key={button.label} code={code}>
-              <p className="mb-5 text-xs md:text-sm font-semibold text-white">
-                Size: <span className="font-bold">{button.size.toUpperCase()}</span>
-              </p>
-              <Button
-                appearance="gradient-indigo"
-                animation="none"
-                size={button.size}
-                className={"w-40"}
-              >
-                {`${button.label} size`}
-              </Button>
-            </PreviewCodeShowcase>
-          );
-        })}
+        {sizeButtons.map((button) => (
+          <PreviewCodeShowcase key={button.label} code={buttonSizeSnippet(button)}>
+            <p className="mb-5 text-xs md:text-sm font-semibold text-white">
+              Size: <span className="font-bold">{button.size.toUpperCase()}</span>
+            </p>
+            <ButtonSizeDemo {...button} />
+          </PreviewCodeShowcase>
+        ))}
       </div>
     </section>
   );

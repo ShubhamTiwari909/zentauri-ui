@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@zentauri-ui/zentauri-components/ui";
 import {
   Modal,

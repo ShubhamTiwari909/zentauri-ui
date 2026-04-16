@@ -1,5 +1,3 @@
-"use client";
-
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Toggle } from "@zentauri-ui/zentauri-components/ui";

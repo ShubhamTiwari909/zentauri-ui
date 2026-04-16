@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
@@ -11,9 +7,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@zentauri-ui/zentauri-components/ui";
+import SelectCodeExamplesControlled from "./components/select-code-examples-controlled";
 
 export function SelectExamplesSection() {
-  const [controlledValues, setControlledValues] = useState<string[]>(["react"]);
 
   return (
     <section className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
@@ -70,32 +66,7 @@ export function SelectExamplesSection() {
           </Select>
         </PreviewCodeShowcase>
 
-        <PreviewCodeShowcase
-          code={`${variantLeadComment("Controlled · value + onChange, emerald trigger")}
-const [value, setValue] = useState<string[]>(["react"]);
-
-<Select multiple value={value} onChange={setValue}>
-  <SelectTrigger variant="emerald" size="lg">
-    <SelectValue placeholder="Libraries" />
-  </SelectTrigger>
-  <SelectContent appearance="default" size="sm">
-    <SelectItem value="react">React</SelectItem>
-    <SelectItem value="vue">Vue</SelectItem>
-    <SelectItem value="svelte">Svelte</SelectItem>
-  </SelectContent>
-</Select>`}
-        >
-          <Select multiple value={controlledValues} onChange={setControlledValues}>
-            <SelectTrigger variant="emerald" size="lg">
-              <SelectValue placeholder="Libraries" />
-            </SelectTrigger>
-            <SelectContent appearance="default" size="sm">
-              <SelectItem value="react">React</SelectItem>
-              <SelectItem value="vue">Vue</SelectItem>
-              <SelectItem value="svelte">Svelte</SelectItem>
-            </SelectContent>
-          </Select>
-        </PreviewCodeShowcase>
+        <SelectCodeExamplesControlled />
       </div>
     </section>
   );
