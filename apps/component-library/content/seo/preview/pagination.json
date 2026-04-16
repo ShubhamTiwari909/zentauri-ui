@@ -1,0 +1,79 @@
+{
+  "category": "Navigation",
+  "title": "Pagination controls for React tables",
+  "description": "Pagination component for React and Next.js data tables—page windows, URL-friendly links, and compact controls for large datasets.",
+  "keywords": [
+    "pagination component",
+    "React",
+    "Next.js",
+    "data table",
+    "URL state",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Pagination · Zentauri UI",
+    "description": "Pagination component for React and Next.js data tables—page windows, URL-friendly links, and compact controls for large datasets.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Pagination · Zentauri UI",
+    "description": "Pagination component for React and Next.js data tables—page windows, URL-friendly links, and compact controls for large datasets.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/pagination",
+  "headings": {
+    "h1": "Pagination for large datasets",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Pagination splits long datasets into navigable windows with clear current-page cues. Use it in React tables and Next.js routes that sync page index to the URL for shareable views.",
+  "useCases": [
+    "Server-rendered tables with querystring page params.",
+    "Admin audit logs with thousands of rows.",
+    "API-backed galleries with stable page sizes.",
+    "Embedded widgets inside dashboards."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Pagination component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
+    },
+    {
+      "question": "Can I customize pagination with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
+    },
+    {
+      "question": "Is this Pagination implementation accessible by default?",
+      "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Expose aria-current on the active page where applicable.\n\nKeep page size controls near the pager when users frequently tune density."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nEnsure keyboard users can move across controls without excessive tab stops."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keyboard order, focus rings, and ARIA attributes should match production usage. Test with your supported browsers and assistive technologies when semantics are non-trivial.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive overlays into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

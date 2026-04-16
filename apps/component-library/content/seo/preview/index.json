@@ -1,0 +1,82 @@
+{
+  "category": "Component library",
+  "title": "Zentauri UI component previews",
+  "description": "Browse interactive React component previews for Zentauri UI. Built with Tailwind CSS, designed for Next.js apps, and structured for design-system workflows.",
+  "keywords": [
+    "Zentauri UI",
+    "React components",
+    "Next.js",
+    "component library",
+    "Tailwind CSS",
+    "design system",
+    "UI kit",
+    "preview"
+  ],
+  "og": {
+    "title": "Zentauri UI · Component previews",
+    "description": "Interactive previews for Zentauri UI—React components with Tailwind CSS for Next.js projects.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Zentauri UI · Component previews",
+    "description": "Interactive previews for Zentauri UI—React components with Tailwind CSS for Next.js projects.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview",
+  "headings": {
+    "h1": "Available components",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Explore the UI components currently available in Zentauri UI. Each preview shows live examples you can adapt in React and Next.js applications.",
+  "useCases": [
+    "Kickstart a dashboard layout with cards, tables, and navigation primitives.",
+    "Prototype forms with inputs, selects, toggles, and validation-friendly patterns.",
+    "Add feedback with alerts, toasts, progress, and loading skeletons.",
+    "Ship overlays such as modals, drawers, and tooltips with consistent motion.",
+    "Document internal design systems with copy-ready code examples."
+  ],
+  "faqs": [
+    {
+      "question": "Can I use these components outside Next.js?",
+      "answer": "Yes. They are React components; Next.js examples here illustrate common App Router patterns but are not mandatory."
+    },
+    {
+      "question": "Where do I install the package?",
+      "answer": "Follow the Installation preview for workspace and npm setup, then import published paths from @zentauri-ui/zentauri-components."
+    },
+    {
+      "question": "How do I report issues or request variants?",
+      "answer": "Use your team’s issue tracker or design-system backlog; previews document what ships today so you can diff against future releases."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What this library covers",
+      "body": "Zentauri UI focuses on practical React components with Tailwind-first styling. Previews map one-to-one to export paths so you can copy imports into a Next.js repo quickly.\n\nUse these pages when you need to compare variants, motion presets, and density before committing tokens in production."
+    },
+    {
+      "heading": "How previews are organized",
+      "body": "Each route under /preview highlights a single component family. Examples favor composition over configuration so you can mirror patterns in your own codebase.\n\nServer-friendly layouts coexist with interactive demos that opt into client rendering only where necessary."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility expectations",
+      "body": "Previews demonstrate default semantics, but your integration must supply labels, descriptions, and focus management appropriate to each flow.\n\nValidate keyboard paths any time you change stacking context or portal targets."
+    },
+    {
+      "heading": "Next.js and deployment tips",
+      "body": "Set NEXT_PUBLIC_SITE_URL for accurate canonical and Open Graph URLs. Keep heavy syntax highlighting and demos out of critical LCP paths when possible.\n\nColocate design tokens with Tailwind config extensions from your app, not from the preview shell alone."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

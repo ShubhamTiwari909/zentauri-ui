@@ -1,16 +1,19 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
+import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { ToastProvider, ToastViewport } from "@zentauri-ui/zentauri-components/ui/toast";
 import { ToastCodeExamplesSection } from "./sections/toast-code-examples-section";
 import { ToastExamplesSection } from "./sections/toast-examples-section";
 import { ToastHeroSection } from "./sections/toast-hero-section/toast-hero-section";
 
-export function ToastPreviewRoot() {
+export function ToastPreviewRoot({ seo }: { seo: PreviewSeoDocument }) {
   return (
     <ToastProvider>
       <PreviewPageShell>
-        <ToastHeroSection />
+        <ToastHeroSection seo={seo} />
         <ToastExamplesSection />
         <ToastCodeExamplesSection />
+        <PreviewSeoDoc doc={seo} />
       </PreviewPageShell>
       <ToastViewport position="bottom-right" />
     </ToastProvider>

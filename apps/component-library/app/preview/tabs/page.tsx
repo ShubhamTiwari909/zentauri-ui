@@ -1,9 +1,11 @@
-import TabsPreviewPage from '@/components/preview/tabs'
+import TabsPreviewPage from "@/components/preview/tabs";
+import { previewSeoDocumentToMetadata } from "@/lib/preview-seo";
+import { getPreviewSeo } from "@/lib/preview-seo-registry";
 
-const page = () => {
-  return (
-    <TabsPreviewPage />
-  )
+const seo = getPreviewSeo("tabs");
+
+export const metadata = previewSeoDocumentToMetadata(seo);
+
+export default function TabsPreviewRoutePage() {
+  return <TabsPreviewPage seo={seo} />;
 }
-
-export default page
