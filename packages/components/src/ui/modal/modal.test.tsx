@@ -53,7 +53,9 @@ describe("Modal", () => {
         </ModalContent>
       </Modal>,
     );
-    expect(screen.getByRole("button", { name: "Go" }).getAttribute("data-slot")).toBe("modal-trigger");
+    expect(
+      screen.getByRole("button", { name: "Go" }).getAttribute("data-slot"),
+    ).toBe("modal-trigger");
     await user.click(screen.getByRole("button", { name: "Go" }));
     await waitFor(() => {
       expect(document.querySelector('[data-slot="modal-portal"]')).toBeTruthy();
@@ -70,7 +72,9 @@ describe("Modal", () => {
       </Modal>,
     );
     await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
-    const overlay = document.querySelector('[data-slot="modal-overlay"]') as HTMLElement;
+    const overlay = document.querySelector(
+      '[data-slot="modal-overlay"]',
+    ) as HTMLElement;
     await user.click(overlay);
     await waitFor(() => {
       expect(screen.queryByRole("dialog")).not.toBeInTheDocument();

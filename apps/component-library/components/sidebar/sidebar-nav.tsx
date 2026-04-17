@@ -24,14 +24,14 @@ export function SidebarNav({ onLinkClick }: SidebarNavProps) {
                     href={item.disabled ? "#" : item.href}
                     className={cn(
                       "group flex w-full items-center rounded-md border border-transparent px-2 py-1.5 hover:text-white",
-                      isActive
-                        ? "font-medium text-cyan-400"
-                        : "text-slate-400",
-                      item.disabled && "cursor-not-allowed opacity-60"
+                      isActive ? "font-medium text-cyan-400" : "text-slate-400",
+                      item.disabled && "cursor-not-allowed opacity-60",
                     )}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noreferrer" : undefined}
-                    onClick={item.disabled ? (e) => e.preventDefault() : onLinkClick}
+                    onClick={
+                      item.disabled ? (e) => e.preventDefault() : onLinkClick
+                    }
                     aria-disabled={item.disabled}
                   >
                     {item.title}

@@ -29,15 +29,24 @@ export const cardVariants = cva(
         gray: "border border-gray-600 bg-gray-950/70 backdrop-blur-xl",
         amber: "border border-amber-600 bg-amber-950/70 backdrop-blur-xl",
         violet: "border border-violet-600 bg-violet-950/70 backdrop-blur-xl",
-        "gradient-blue": "border border-gradient-to-r from-blue-600 to-purple-600 bg-gradient-to-r from-blue-950/70 to-purple-950/70 backdrop-blur-xl",
-        "gradient-green": "border border-gradient-to-r from-green-600 to-lime-600 bg-gradient-to-r from-green-950/70 to-lime-950/70 backdrop-blur-xl",
-        "gradient-red": "border border-gradient-to-r from-red-600 to-pink-600 bg-gradient-to-r from-red-950/70 to-pink-950/70 backdrop-blur-xl",
-        "gradient-yellow": "border border-gradient-to-r from-yellow-600 to-orange-600 bg-gradient-to-r from-yellow-950/70 to-orange-950/70 backdrop-blur-xl",
-        "gradient-purple": "border border-gradient-to-r from-purple-600 to-pink-600 bg-gradient-to-r from-purple-950/70 to-pink-950/70 backdrop-blur-xl",
-        "gradient-teal": "border border-gradient-to-r from-teal-600 to-cyan-600 bg-gradient-to-r from-teal-950/70 to-cyan-950/70 backdrop-blur-xl",
-        "gradient-indigo": "border border-gradient-to-r from-indigo-600 to-purple-600 bg-gradient-to-r from-indigo-950/70 to-purple-950/70 backdrop-blur-xl",
-        "gradient-pink": "border border-gradient-to-r from-pink-600 to-rose-600 bg-gradient-to-r from-pink-950/70 to-rose-950/70 backdrop-blur-xl",
-        "gradient-orange": "border border-gradient-to-r from-orange-600 to-red-600 bg-gradient-to-r from-orange-950/70 to-red-950/70 backdrop-blur-xl",
+        "gradient-blue":
+          "border border-gradient-to-r from-blue-600 to-purple-600 bg-gradient-to-r from-blue-950/70 to-purple-950/70 backdrop-blur-xl",
+        "gradient-green":
+          "border border-gradient-to-r from-green-600 to-lime-600 bg-gradient-to-r from-green-950/70 to-lime-950/70 backdrop-blur-xl",
+        "gradient-red":
+          "border border-gradient-to-r from-red-600 to-pink-600 bg-gradient-to-r from-red-950/70 to-pink-950/70 backdrop-blur-xl",
+        "gradient-yellow":
+          "border border-gradient-to-r from-yellow-600 to-orange-600 bg-gradient-to-r from-yellow-950/70 to-orange-950/70 backdrop-blur-xl",
+        "gradient-purple":
+          "border border-gradient-to-r from-purple-600 to-pink-600 bg-gradient-to-r from-purple-950/70 to-pink-950/70 backdrop-blur-xl",
+        "gradient-teal":
+          "border border-gradient-to-r from-teal-600 to-cyan-600 bg-gradient-to-r from-teal-950/70 to-cyan-950/70 backdrop-blur-xl",
+        "gradient-indigo":
+          "border border-gradient-to-r from-indigo-600 to-purple-600 bg-gradient-to-r from-indigo-950/70 to-purple-950/70 backdrop-blur-xl",
+        "gradient-pink":
+          "border border-gradient-to-r from-pink-600 to-rose-600 bg-gradient-to-r from-pink-950/70 to-rose-950/70 backdrop-blur-xl",
+        "gradient-orange":
+          "border border-gradient-to-r from-orange-600 to-red-600 bg-gradient-to-r from-orange-950/70 to-red-950/70 backdrop-blur-xl",
       },
       size: {
         sm: "gap-2 p-3 text-sm",
@@ -87,16 +96,19 @@ export const cardFooterVariants = cva(
   },
 );
 
-export const cardTitleVariants = cva("font-semibold tracking-tight text-slate-50", {
-  variants: {
-    size: {
-      sm: "text-sm",
-      md: "text-base",
-      lg: "text-lg",
+export const cardTitleVariants = cva(
+  "font-semibold tracking-tight text-slate-50",
+  {
+    variants: {
+      size: {
+        sm: "text-sm",
+        md: "text-base",
+        lg: "text-lg",
+      },
     },
+    defaultVariants: { size: "md" },
   },
-  defaultVariants: { size: "md" },
-});
+);
 
 export const cardDescriptionVariants = cva("text-slate-400", {
   variants: {

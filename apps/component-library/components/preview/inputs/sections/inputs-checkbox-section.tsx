@@ -20,9 +20,9 @@ export function InputsCheckboxSection() {
           <code className="rounded bg-white/10 px-1.5 py-0.5 text-cyan-100/90">
             type=&quot;checkbox&quot;
           </code>{" "}
-          with the same <code className="text-cyan-100/90">appearance</code> tokens
-          as text fields; <code className="text-cyan-100/90">size</code> maps to
-          control dimensions.
+          with the same <code className="text-cyan-100/90">appearance</code>{" "}
+          tokens as text fields; <code className="text-cyan-100/90">size</code>{" "}
+          maps to control dimensions.
         </p>
       </div>
       <div className="mt-6">

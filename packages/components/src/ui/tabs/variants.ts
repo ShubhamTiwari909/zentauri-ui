@@ -1,30 +1,27 @@
-import { cva } from "class-variance-authority"
+import { cva } from "class-variance-authority";
 
-export const tabsListVariants = cva(
-  "flex items-center gap-1",
-  {
-    variants: {
-      variant: {
-        default: "bg-transparent",
-        underline: "border-b-2 border-transparent",
-        pills: "rounded-md",
-      },
-      size: {
-        sm: "text-sm p-1",
-        md: "text-base p-1.5",
-        lg: "text-lg p-2",
-      },
-      orientation: {
-        horizontal: "flex-row",
-        vertical: "flex-col",
-      },
+export const tabsListVariants = cva("flex items-center gap-1", {
+  variants: {
+    variant: {
+      default: "bg-transparent",
+      underline: "border-b-2 border-transparent",
+      pills: "rounded-md",
     },
-    defaultVariants: {
-      size: "md",
-      orientation: "horizontal",
+    size: {
+      sm: "text-sm p-1",
+      md: "text-base p-1.5",
+      lg: "text-lg p-2",
     },
-  }
-)
+    orientation: {
+      horizontal: "flex-row",
+      vertical: "flex-col",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+    orientation: "horizontal",
+  },
+});
 
 export const tabsTriggerVariants = cva(
   "px-3 py-1.5 rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-ring",
@@ -56,8 +53,7 @@ export const tabsTriggerVariants = cva(
         default: "data-[state=active]:bg-background",
         underline:
           "border-b-2 border-transparent data-[state=active]:border-primary rounded-none",
-        pills:
-          "data-[state=active]:bg-primary data-[state=active]:text-white",
+        pills: "data-[state=active]:bg-primary data-[state=active]:text-white",
       },
       size: {
         sm: "px-2 py-1",
@@ -70,5 +66,5 @@ export const tabsTriggerVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
-)
+  },
+);

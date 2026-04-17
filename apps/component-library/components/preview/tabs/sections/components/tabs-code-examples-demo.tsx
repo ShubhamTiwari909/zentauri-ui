@@ -1,5 +1,12 @@
 "use client";
-import { Tabs, TabsContent, TabsList, TabsTrigger, tabsListVariants, tabsTriggerVariants } from "@zentauri-ui/zentauri-components/ui/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  tabsListVariants,
+  tabsTriggerVariants,
+} from "@zentauri-ui/zentauri-components/ui/tabs";
 
 import type { TabsDemoProps } from "./tabs-code-examples.types";
 

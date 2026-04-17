@@ -1,4 +1,8 @@
-import type { TabsListAppearance, TabsListSize, TabsListVariant } from "./tabs-code-examples.types";
+import type {
+  TabsListAppearance,
+  TabsListSize,
+  TabsListVariant,
+} from "./tabs-code-examples.types";
 
 export const TABS_CODE_EXAMPLES_SECTION_CLASS =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
@@ -9,7 +13,11 @@ export const TABS_LIST_VARIANTS = [
   "underline",
 ] as const satisfies readonly TabsListVariant[];
 
-export const TABS_LIST_SIZES = ["sm", "md", "lg"] as const satisfies readonly TabsListSize[];
+export const TABS_LIST_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly TabsListSize[];
 
 export const TABS_LIST_APPEARANCES = [
   "default",

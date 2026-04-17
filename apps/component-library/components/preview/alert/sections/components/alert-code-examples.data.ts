@@ -29,6 +29,8 @@ export const ALERT_APPEARANCES = [
   "gradient-orange",
 ] as const satisfies readonly NonNullable<AlertProps["appearance"]>[];
 
-export const ALERT_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<
-  AlertProps["size"]
->[];
+export const ALERT_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly NonNullable<AlertProps["size"]>[];

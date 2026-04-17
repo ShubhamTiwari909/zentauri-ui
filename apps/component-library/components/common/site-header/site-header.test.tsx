@@ -32,8 +32,14 @@ describe("SiteHeader", () => {
     render(<SiteHeader />);
     const nav = screen.getByRole("navigation", { name: "Main" });
     expect(nav).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
-    expect(screen.getByRole("link", { name: "Components" })).toHaveAttribute("href", "/preview");
+    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute(
+      "href",
+      "/",
+    );
+    expect(screen.getByRole("link", { name: "Components" })).toHaveAttribute(
+      "href",
+      "/preview",
+    );
   });
 
   it("should wire menu toggle with aria-expanded and aria-controls when enabled", async () => {
@@ -49,7 +55,9 @@ describe("SiteHeader", () => {
       />,
     );
 
-    const toggle = screen.getByRole("button", { name: "Toggle navigation menu" });
+    const toggle = screen.getByRole("button", {
+      name: "Toggle navigation menu",
+    });
     expect(toggle).toHaveAttribute("aria-expanded", "false");
     expect(toggle).toHaveAttribute("aria-controls", "sidebar-nav");
 
@@ -66,25 +74,34 @@ describe("SiteHeader", () => {
         menuControlsId="sidebar-nav"
       />,
     );
-    expect(screen.getByRole("button", { name: "Toggle navigation menu" })).toHaveAttribute(
-      "aria-expanded",
-      "true",
-    );
+    expect(
+      screen.getByRole("button", { name: "Toggle navigation menu" }),
+    ).toHaveAttribute("aria-expanded", "true");
   });
 
   it("should open glass drawer with mobile nav when site navigation trigger is used", async () => {
     const user = userEvent.setup();
     render(<SiteHeader />);
 
-    const openSiteNav = screen.getByRole("button", { name: "Open site navigation", hidden: true });
+    const openSiteNav = screen.getByRole("button", {
+      name: "Open site navigation",
+      hidden: true,
+    });
     await user.click(openSiteNav);
 
     const dialog = await screen.findByRole("dialog");
     expect(dialog).toBeInTheDocument();
     expect(dialog.getAttribute("data-slot")).toBe("drawer-content");
     expect(dialog.className).toMatch(/backdrop-blur/);
-    expect(screen.getByRole("heading", { name: "Navigate" })).toBeInTheDocument();
-    expect(screen.getByRole("navigation", { name: "Mobile main" })).toBeInTheDocument();
-    expect(within(dialog).getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
+    expect(
+      screen.getByRole("heading", { name: "Navigate" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("navigation", { name: "Mobile main" }),
+    ).toBeInTheDocument();
+    expect(within(dialog).getByRole("link", { name: "Home" })).toHaveAttribute(
+      "href",
+      "/",
+    );
   });
 });

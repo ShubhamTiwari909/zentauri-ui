@@ -1,6 +1,11 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@zentauri-ui/zentauri-components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@zentauri-ui/zentauri-components/ui/accordion";
 
 export function AccordionExamplesSection() {
   return (
@@ -28,17 +33,26 @@ export function AccordionExamplesSection() {
   </AccordionItem>
 </Accordion>`}
         >
-          <Accordion type="single" defaultValue="a" appearance="outline" size="sm">
+          <Accordion
+            type="single"
+            defaultValue="a"
+            appearance="outline"
+            size="sm"
+          >
             <AccordionItem value="a">
               <AccordionTrigger>First panel</AccordionTrigger>
               <AccordionContent>
-                <p className="text-sm text-slate-300">Content for the first item.</p>
+                <p className="text-sm text-slate-300">
+                  Content for the first item.
+                </p>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="b">
               <AccordionTrigger>Second panel</AccordionTrigger>
               <AccordionContent>
-                <p className="text-sm text-slate-300">Content for the second item.</p>
+                <p className="text-sm text-slate-300">
+                  Content for the second item.
+                </p>
               </AccordionContent>
             </AccordionItem>
           </Accordion>

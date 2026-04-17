@@ -6,7 +6,10 @@ type TooltipPresetMotionProps = Pick<
   "initial" | "animate" | "style" | "transition"
 >;
 
-export type TooltipAnimationPresets = Record<TooltipAnimation, TooltipPresetMotionProps>;
+export type TooltipAnimationPresets = Record<
+  TooltipAnimation,
+  TooltipPresetMotionProps
+>;
 
 /** Runs when TooltipContent mounts after open (e.g. trigger hover + delay), not viewport scroll. */
 export const tooltipAnimationPresets: TooltipAnimationPresets = {

@@ -41,7 +41,10 @@ export function EmptyState(props: EmptyStateProps) {
         ref={ref}
         data-slot="empty-state"
         aria-live="polite"
-        className={cn(emptyStateVariants({ size, appearance, align }), className)}
+        className={cn(
+          emptyStateVariants({ size, appearance, align }),
+          className,
+        )}
         initial={animation === "none" ? false : undefined}
         {...motionProps}
         {...rest}
@@ -54,9 +57,15 @@ export function EmptyState(props: EmptyStateProps) {
 
 EmptyState.displayName = "EmptyState";
 
-export function EmptyStateIcon({ className, children }: EmptyStateSectionProps) {
+export function EmptyStateIcon({
+  className,
+  children,
+}: EmptyStateSectionProps) {
   return (
-    <div data-slot="empty-state-icon" className={cn("text-slate-300", className)}>
+    <div
+      data-slot="empty-state-icon"
+      className={cn("text-slate-300", className)}
+    >
       {children}
     </div>
   );
@@ -64,10 +73,16 @@ export function EmptyStateIcon({ className, children }: EmptyStateSectionProps) 
 
 EmptyStateIcon.displayName = "EmptyStateIcon";
 
-export function EmptyStateTitle({ className, children }: EmptyStateSectionProps) {
+export function EmptyStateTitle({
+  className,
+  children,
+}: EmptyStateSectionProps) {
   const size = useEmptyStateSize();
   return (
-    <h2 data-slot="empty-state-title" className={cn(emptyStateTitleVariants({ size }), className)}>
+    <h2
+      data-slot="empty-state-title"
+      className={cn(emptyStateTitleVariants({ size }), className)}
+    >
       {children}
     </h2>
   );
@@ -92,7 +107,10 @@ export function EmptyStateDescription({
 
 EmptyStateDescription.displayName = "EmptyStateDescription";
 
-export function EmptyStateAction({ className, children }: EmptyStateSectionProps) {
+export function EmptyStateAction({
+  className,
+  children,
+}: EmptyStateSectionProps) {
   return (
     <div data-slot="empty-state-action" className={cn("mt-2", className)}>
       {children}

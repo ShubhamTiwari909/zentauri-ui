@@ -25,17 +25,19 @@ Supporting pieces include:
 
 ## Tech stack
 
-| Area | Choice |
-| --- | --- |
-| Framework | [Next.js](https://nextjs.org/) 16 (App Router) |
-| UI | [React](https://react.dev/) 19 |
-| Styling | [Tailwind CSS](https://tailwindcss.com/) v4 with `@tailwindcss/postcss` |
-| Motion | [Framer Motion](https://www.framer.com/motion/) |
-| Icons | `react-icons` |
-| Class names | `class-variance-authority`, `clsx`, `tailwind-merge` |
-| Components source | `@zentauri-ui/zentauri-components` (`workspace:*` in this monorepo) |
-| Tests | [Vitest](https://vitest.dev/) with [Testing Library](https://testing-library.com/docs/react-testing-library/intro/) and `jsdom` |
-| Analytics | `@vercel/analytics` |
+| Area              | Choice                                                                                                                          |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Framework         | [Next.js](https://nextjs.org/) 16 (App Router)                                                                                  |
+| UI                | [React](https://react.dev/) 19                                                                                                  |
+| Styling           | [Tailwind CSS](https://tailwindcss.com/) v4 with `@tailwindcss/postcss`                                                         |
+| Motion            | [Framer Motion](https://www.framer.com/motion/)                                                                                 |
+| Icons             | `react-icons`                                                                                                                   |
+| Class names       | `class-variance-authority`, `clsx`, `tailwind-merge`                                                                            |
+| Components source | `@zentauri-ui/zentauri-components` (`workspace:*` in this monorepo)                                                             |
+| Tests             | [Vitest](https://vitest.dev/) with [Testing Library](https://testing-library.com/docs/react-testing-library/intro/) and `jsdom` |
+| Analytics         | `@vercel/analytics`                                                                                                             |
+| Type checking     | TypeScript — `pnpm check-types` runs `tsc --noEmit` in this app                                                                 |
+| Formatting        | [Prettier](https://prettier.io/) — `pnpm format` in this app; root [`package.json`](../../package.json) formats the whole repo  |
 
 `next.config.ts` sets `transpilePackages: ["@zentauri-ui/zentauri-components"]` so the workspace package is compiled as part of this app’s build.
 
@@ -58,31 +60,37 @@ The monorepo root uses [Turborepo](https://turbo.build/repo) and [pnpm](https://
 
 From **`apps/component-library`** (after install from repo root):
 
-| Command | Purpose |
-| --- | --- |
-| `pnpm dev` | Next.js dev server |
-| `pnpm build` | Production build (`next build`) |
-| `pnpm start` | Run the production server locally |
-| `pnpm lint` | ESLint (Next.js config) |
-| `pnpm test` | Vitest single run |
-| `pnpm test:watch` | Vitest watch mode |
+| Command            | Purpose                                                                |
+| ------------------ | ---------------------------------------------------------------------- |
+| `pnpm dev`         | Next.js dev server                                                     |
+| `pnpm build`       | Production build (`next build`)                                        |
+| `pnpm start`       | Run the production server locally                                      |
+| `pnpm lint`        | ESLint (Next.js config)                                                |
+| `pnpm format`      | Prettier write for `**/*.{ts,tsx,md}` under this app only              |
+| `pnpm check-types` | TypeScript `tsc --noEmit` (no `.next` emit; validates `tsconfig.json`) |
 
 From the **repository root**:
 
-| Command | Purpose |
-| --- | --- |
-| `pnpm install` | Install all workspace packages |
-| `pnpm dev` | `turbo run dev` for every package that defines `dev` |
-| `pnpm turbo run dev --filter=component-library` | Start only this app’s dev task |
-| `pnpm build` | `turbo run build` (depends on upstream package builds per `turbo.json`) |
-| `pnpm test:component-library` | `turbo run test --filter=component-library` |
+| Command                                                 | Purpose                                                                        |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `pnpm install`                                          | Install all workspace packages                                                 |
+| `pnpm dev`                                              | `turbo run dev` for every package that defines `dev`                           |
+| `pnpm build`                                            | `turbo run build` (depends on upstream package builds per `turbo.json`)        |
+| `pnpm lint`                                             | `turbo run lint`                                                               |
+| `pnpm format`                                           | Prettier write across the repo (`**/*.{ts,tsx,md}`)                            |
+| `pnpm check-types`                                      | `turbo run check-types` (runs `check-types` in each workspace that defines it) |
+| `pnpm turbo run dev --filter=component-library`         | Start only this app’s dev task                                                 |
+| `pnpm turbo run format --filter=component-library`      | Run this app’s `format` script                                                 |
+| `pnpm turbo run check-types --filter=component-library` | Run this app’s `check-types` script                                            |
+
+Root `pnpm format` runs Prettier once from the monorepo root (it is not wired through Turbo). [`turbo.json`](../../turbo.json) defines a `format` task so `pnpm turbo run format` can run each package’s `format` script in parallel where present.
 
 ## Environment variables
 
-| Variable | Required | Description |
-| --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | No | Public site origin (including scheme), used as `metadataBase` and for canonical / Open Graph URLs in `lib/preview-seo.ts`. Example: `https://zentauri-ui.vercel.app` |
-| `VERCEL_URL` | Automatic on Vercel | Hostname provided by Vercel; used as a fallback when `NEXT_PUBLIC_SITE_URL` is unset |
+| Variable               | Required            | Description                                                                                                                                                          |
+| ---------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | No                  | Public site origin (including scheme), used as `metadataBase` and for canonical / Open Graph URLs in `lib/preview-seo.ts`. Example: `https://zentauri-ui.vercel.app` |
+| `VERCEL_URL`           | Automatic on Vercel | Hostname provided by Vercel; used as a fallback when `NEXT_PUBLIC_SITE_URL` is unset                                                                                 |
 
 If neither is set locally, preview metadata falls back to `http://localhost:3000`.
 

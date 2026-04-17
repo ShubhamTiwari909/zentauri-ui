@@ -1,6 +1,10 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@zentauri-ui/zentauri-components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@zentauri-ui/zentauri-components/ui/tooltip";
 
 const TRIGGER_CLASS =
   "rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white outline-none transition hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-cyan-400/50";

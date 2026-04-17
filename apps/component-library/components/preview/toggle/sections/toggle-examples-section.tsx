@@ -13,7 +13,11 @@ export function ToggleExamplesSection() {
         <PreviewCodeShowcase
           code={`${variantLeadComment(`appearance · neutral, animation · spring`)}<Toggle appearance="neutral" animation="spring" aria-label="Dark mode" />`}
         >
-          <Toggle appearance="neutral" animation="spring" aria-label="Dark mode" />
+          <Toggle
+            appearance="neutral"
+            animation="spring"
+            aria-label="Dark mode"
+          />
         </PreviewCodeShowcase>
       </div>
     </section>

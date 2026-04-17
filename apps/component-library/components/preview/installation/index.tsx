@@ -5,7 +5,12 @@ import TabsListComponent from "@/components/preview/installation/tabs-list";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@zentauri-ui/zentauri-components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@zentauri-ui/zentauri-components/ui/accordion";
 import { Tabs, TabsContent } from "@zentauri-ui/zentauri-components/ui/tabs";
 
 const SECTION =
@@ -56,9 +61,11 @@ const USAGE_SNIPPET = `<div className="rounded-3xl border border-white/10 bg-whi
   </Accordion>
 </div>`;
 
-
-
-export default function InstallationPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function InstallationPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <section className="space-y-6">

@@ -1,6 +1,9 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 
-import type { SelectContentDemoProps, SelectTriggerDemoProps } from "./select-code-examples.types";
+import type {
+  SelectContentDemoProps,
+  SelectTriggerDemoProps,
+} from "./select-code-examples.types";
 
 export function selectTriggerSnippet(opts: SelectTriggerDemoProps): string {
   const { triggerVariant, triggerSize } = opts;

@@ -1,6 +1,14 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@zentauri-ui/zentauri-components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@zentauri-ui/zentauri-components/ui/table";
 
 export function TableHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (

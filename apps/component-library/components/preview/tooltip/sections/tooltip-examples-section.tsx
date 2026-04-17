@@ -1,6 +1,10 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@zentauri-ui/zentauri-components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@zentauri-ui/zentauri-components/ui/tooltip";
 
 const TRIGGER_SOFT =
   "rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200 outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50";
@@ -47,12 +51,10 @@ export function TooltipExamplesSection() {
 </Tooltip>`}
         >
           <Tooltip position="top">
-            <TooltipTrigger className={TRIGGER_EMPHASIS}>Delete row</TooltipTrigger>
-            <TooltipContent
-              variant="default"
-              size="lg"
-              animation="scale"
-            >
+            <TooltipTrigger className={TRIGGER_EMPHASIS}>
+              Delete row
+            </TooltipTrigger>
+            <TooltipContent variant="default" size="lg" animation="scale">
               This removes the row for everyone. You cannot undo this action.
             </TooltipContent>
           </Tooltip>

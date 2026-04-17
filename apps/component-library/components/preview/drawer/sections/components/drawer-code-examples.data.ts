@@ -5,13 +5,20 @@ export const DRAWER_CODE_EXAMPLES_SECTION_CLASS =
 
 export const DRAWER_TRIGGER_CLASS = "rounded-lg px-3 py-1.5 text-sm";
 
-export const DRAWER_SIDES = ["left", "right", "top", "bottom"] as const satisfies readonly NonNullable<
-  DrawerContentProps["side"]
->[];
+export const DRAWER_SIDES = [
+  "left",
+  "right",
+  "top",
+  "bottom",
+] as const satisfies readonly NonNullable<DrawerContentProps["side"]>[];
 
-export const DRAWER_SIZES = ["sm", "md", "lg", "xl", "full"] as const satisfies readonly NonNullable<
-  DrawerContentProps["size"]
->[];
+export const DRAWER_SIZES = [
+  "sm",
+  "md",
+  "lg",
+  "xl",
+  "full",
+] as const satisfies readonly NonNullable<DrawerContentProps["size"]>[];
 
 export const DRAWER_APPEARANCES = [
   "default",

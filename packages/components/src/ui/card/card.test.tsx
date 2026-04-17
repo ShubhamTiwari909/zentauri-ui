@@ -76,6 +76,8 @@ describe("Card", () => {
         <CardTitle as="h2">Primary</CardTitle>
       </Card>,
     );
-    expect(screen.getByRole("heading", { level: 2, name: "Primary" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Primary" }),
+    ).toBeInTheDocument();
   });
 });

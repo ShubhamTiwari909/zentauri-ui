@@ -34,7 +34,9 @@ export function Divider(props: DividerProps) {
         ref={ref}
         data-slot="divider"
         role="separator"
-        aria-orientation={orientation === "vertical" ? "vertical" : "horizontal"}
+        aria-orientation={
+          orientation === "vertical" ? "vertical" : "horizontal"
+        }
         className={cn(
           dividerToneVariants({ appearance }),
           orientation === "horizontal"
@@ -46,7 +48,10 @@ export function Divider(props: DividerProps) {
         {...motionProps}
         {...rest}
       >
-        <span className={cn(dividerLineVariants({ orientation, size }))} aria-hidden />
+        <span
+          className={cn(dividerLineVariants({ orientation, size }))}
+          aria-hidden
+        />
       </motion.div>
     );
   }
@@ -57,7 +62,10 @@ export function Divider(props: DividerProps) {
       data-slot="divider"
       role="separator"
       aria-orientation={orientation === "vertical" ? "vertical" : "horizontal"}
-      className={cn(dividerVariants({ appearance, orientation, size }), className)}
+      className={cn(
+        dividerVariants({ appearance, orientation, size }),
+        className,
+      )}
       initial={animation === "none" ? false : undefined}
       {...motionProps}
       {...rest}

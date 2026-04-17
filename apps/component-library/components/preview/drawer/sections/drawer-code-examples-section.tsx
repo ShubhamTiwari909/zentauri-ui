@@ -16,8 +16,8 @@ export function DrawerCodeExamplesSection() {
         Drawer variants examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Edge, width tier, and surface style on the same panel structure. Each snippet
-        begins with Variant: naming the row.
+        Edge, width tier, and surface style on the same panel structure. Each
+        snippet begins with Variant: naming the row.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {DRAWER_SIDES.map((side) => (

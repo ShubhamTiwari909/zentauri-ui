@@ -2,7 +2,11 @@
 
 import { createContext, useContext, useMemo } from "react";
 import { motion } from "framer-motion";
-import { HiExclamationTriangle, HiInformationCircle, HiXMark } from "react-icons/hi2";
+import {
+  HiExclamationTriangle,
+  HiInformationCircle,
+  HiXMark,
+} from "react-icons/hi2";
 
 import { cn } from "../../lib/utils";
 
@@ -83,7 +87,10 @@ Alert.displayName = "Alert";
 
 export function AlertIcon({ className, children }: AlertSectionProps) {
   return (
-    <span data-slot="alert-icon" className={cn("mt-0.5 shrink-0 text-current", className)}>
+    <span
+      data-slot="alert-icon"
+      className={cn("mt-0.5 shrink-0 text-current", className)}
+    >
       {children}
     </span>
   );
@@ -94,7 +101,10 @@ AlertIcon.displayName = "AlertIcon";
 export function AlertTitle({ className, children }: AlertSectionProps) {
   const size = useAlertSize();
   return (
-    <div data-slot="alert-title" className={cn(alertTitleVariants({ size }), className)}>
+    <div
+      data-slot="alert-title"
+      className={cn(alertTitleVariants({ size }), className)}
+    >
       {children}
     </div>
   );
@@ -140,7 +150,11 @@ export function AlertClose({
 
 AlertClose.displayName = "AlertClose";
 
-export function AlertDefaultIcon({ appearance }: { appearance?: AlertProps["appearance"] }) {
+export function AlertDefaultIcon({
+  appearance,
+}: {
+  appearance?: AlertProps["appearance"];
+}) {
   if (appearance === "error") {
     return <HiExclamationTriangle className="size-5" aria-hidden />;
   }

@@ -51,7 +51,9 @@ describe("Alert", () => {
           <AlertTitle>Error</AlertTitle>
         </Alert>,
       );
-      expect(screen.getByRole("alert").getAttribute("aria-live")).toBe("assertive");
+      expect(screen.getByRole("alert").getAttribute("aria-live")).toBe(
+        "assertive",
+      );
     });
   });
 
@@ -62,10 +64,9 @@ describe("Alert", () => {
           <AlertTitle>Warning</AlertTitle>
         </Alert>,
       );
-      expect(screen.getByRole("button", { name: "Remove warning" })).toHaveAttribute(
-        "data-slot",
-        "alert-close",
-      );
+      expect(
+        screen.getByRole("button", { name: "Remove warning" }),
+      ).toHaveAttribute("data-slot", "alert-close");
     });
 
     it("should invoke onClose when the built-in dismiss button is activated", async () => {
@@ -108,10 +109,12 @@ describe("Alert", () => {
         </Alert>,
       );
       expect(screen.getByTestId("custom-icon")).toBeInTheDocument();
-      expect(document.querySelector('[data-slot="alert-title"]')).toHaveTextContent("Title");
-      expect(document.querySelector('[data-slot="alert-description"]')).toHaveTextContent(
-        "Description body",
-      );
+      expect(
+        document.querySelector('[data-slot="alert-title"]'),
+      ).toHaveTextContent("Title");
+      expect(
+        document.querySelector('[data-slot="alert-description"]'),
+      ).toHaveTextContent("Description body");
     });
 
     it("should apply appearance classes from the variant recipe", () => {

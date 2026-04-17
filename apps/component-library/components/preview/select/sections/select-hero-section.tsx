@@ -1,6 +1,12 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@zentauri-ui/zentauri-components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@zentauri-ui/zentauri-components/ui/select";
 
 export function SelectHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -13,9 +19,15 @@ export function SelectHeroSection({ seo }: { seo: PreviewSeoDocument }) {
             <SelectValue placeholder="Pick a framework" />
           </SelectTrigger>
           <SelectContent appearance="emerald" size="md" spacing="sm">
-            <SelectItem value="next" appearance="emerald">Next.js</SelectItem>
-            <SelectItem value="vite" appearance="emerald">Vite</SelectItem>
-            <SelectItem value="remix" appearance="emerald">Remix</SelectItem>
+            <SelectItem value="next" appearance="emerald">
+              Next.js
+            </SelectItem>
+            <SelectItem value="vite" appearance="emerald">
+              Vite
+            </SelectItem>
+            <SelectItem value="remix" appearance="emerald">
+              Remix
+            </SelectItem>
           </SelectContent>
         </Select>
       </div>

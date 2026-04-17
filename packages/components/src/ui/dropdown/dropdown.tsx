@@ -1,15 +1,15 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useState,
-  useRef,
-  useEffect,
-} from "react";
+import { createContext, useContext, useState, useRef, useEffect } from "react";
 import { FiCheck } from "react-icons/fi";
 import { cn } from "../../lib/utils";
-import type { DropdownContextType, DropdownProps, DropdownTriggerProps, DropdownContentProps, DropdownItemProps } from "./types";
+import type {
+  DropdownContextType,
+  DropdownProps,
+  DropdownTriggerProps,
+  DropdownContentProps,
+  DropdownItemProps,
+} from "./types";
 import { triggerVariants, contentVariants, itemVariants } from "./variants";
 
 /* =========================
@@ -56,9 +56,7 @@ export const Dropdown = ({
     }
 
     setSelectedValues((prev) =>
-      prev.includes(value)
-        ? prev.filter((v) => v !== value)
-        : [...prev, value]
+      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
     );
   };
 
@@ -124,8 +122,7 @@ export const DropdownContent = ({
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () =>
-      document.removeEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [setOpen]);
 
   if (!open) return null;
@@ -133,7 +130,11 @@ export const DropdownContent = ({
   return (
     <div
       ref={ref}
-      className={cn(contentVariants({ placement, spacing }), className, divider && "divide-y divide-current")}
+      className={cn(
+        contentVariants({ placement, spacing }),
+        className,
+        divider && "divide-y divide-current",
+      )}
       {...props}
     >
       {children}

@@ -1,4 +1,8 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@zentauri-ui/zentauri-components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@zentauri-ui/zentauri-components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 import { TOOLTIP_TRIGGER_CLASS } from "./tooltip-code-examples.data";
@@ -48,7 +52,9 @@ export function PositionDemo({ position }: { position: TooltipPlacement }) {
       >
         <p className="mb-5 text-xs md:text-sm"></p>
         <Tooltip position={position}>
-          <TooltipTrigger className={TOOLTIP_TRIGGER_CLASS}>Hover</TooltipTrigger>
+          <TooltipTrigger className={TOOLTIP_TRIGGER_CLASS}>
+            Hover
+          </TooltipTrigger>
           <TooltipContent className="min-w-50" variant="outline">
             Tooltip body.
           </TooltipContent>

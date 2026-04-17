@@ -1,4 +1,7 @@
-import type { TooltipContentProps, TooltipPosition } from "@zentauri-ui/zentauri-components/ui/tooltip";
+import type {
+  TooltipContentProps,
+  TooltipPosition,
+} from "@zentauri-ui/zentauri-components/ui/tooltip";
 
 export const TOOLTIP_CODE_EXAMPLES_SECTION_CLASS =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";

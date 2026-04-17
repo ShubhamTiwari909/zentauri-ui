@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { motion, useReducedMotion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion";
 import {
   createContext,
   KeyboardEvent,
   useContext,
   useId,
   useState,
-} from "react"
+} from "react";
 
-import { cn } from "../../lib/utils"
+import { cn } from "../../lib/utils";
 
-import { getTabsContentMotionProps } from "./animations"
+import { getTabsContentMotionProps } from "./animations";
 import {
   TabsContentProps,
   TabsListProps,
@@ -19,17 +19,16 @@ import {
   TabsTriggerProps,
   TabsValue,
   TabsContextType,
-} from "./types"
-import { tabsListVariants, tabsTriggerVariants } from "./variants"
+} from "./types";
+import { tabsListVariants, tabsTriggerVariants } from "./variants";
 
-
-export const TabsContext = createContext<TabsContextType | null>(null)
+export const TabsContext = createContext<TabsContextType | null>(null);
 
 export const useTabs = () => {
-  const ctx = useContext(TabsContext)
-  if (!ctx) throw new Error("Tabs components must be used within Tabs")
-  return ctx
-}
+  const ctx = useContext(TabsContext);
+  if (!ctx) throw new Error("Tabs components must be used within Tabs");
+  return ctx;
+};
 
 export function Tabs({
   value,
@@ -39,21 +38,21 @@ export function Tabs({
   children,
   className,
 }: TabsProps) {
-  const [internalValue, setInternalValue] = useState(defaultValue)
-  const idPrefix = useId()
+  const [internalValue, setInternalValue] = useState(defaultValue);
+  const idPrefix = useId();
 
-  const isControlled = value !== undefined
-  const currentValue = isControlled ? value : internalValue
+  const isControlled = value !== undefined;
+  const currentValue = isControlled ? value : internalValue;
 
   const setValue = (val: string) => {
-    if (!isControlled) setInternalValue(val)
-    onValueChange?.(val)
-  }
+    if (!isControlled) setInternalValue(val);
+    onValueChange?.(val);
+  };
 
   const tabTriggerId = (tabValue: TabsValue) =>
-    `${idPrefix}zentauri-tab-${tabValue}`
+    `${idPrefix}zentauri-tab-${tabValue}`;
   const tabPanelId = (tabValue: TabsValue) =>
-    `${idPrefix}zentauri-panel-${tabValue}`
+    `${idPrefix}zentauri-panel-${tabValue}`;
 
   return (
     <TabsContext.Provider
@@ -69,15 +68,11 @@ export function Tabs({
         {children}
       </div>
     </TabsContext.Provider>
-  )
+  );
 }
 
-export function TabsList({
-  children,
-  className,
-  ...props
-}: TabsListProps) {
-  const { orientation, size } = useTabs()
+export function TabsList({ children, className, ...props }: TabsListProps) {
+  const { orientation, size } = useTabs();
 
   return (
     <div
@@ -88,7 +83,7 @@ export function TabsList({
     >
       {children}
     </div>
-  )
+  );
 }
 
 export function TabsTrigger({
@@ -98,37 +93,45 @@ export function TabsTrigger({
   className,
   ...props
 }: TabsTriggerProps) {
-  const { value: activeValue, setValue, tabTriggerId, tabPanelId, size, appearance, variant } = useTabs()
+  const {
+    value: activeValue,
+    setValue,
+    tabTriggerId,
+    tabPanelId,
+    size,
+    appearance,
+    variant,
+  } = useTabs();
 
-  const isActive = activeValue === value
+  const isActive = activeValue === value;
 
   const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
     const triggers = Array.from(
       document.querySelectorAll('[role="tab"]'),
-    ) as HTMLElement[]
+    ) as HTMLElement[];
 
-    const index = triggers.findIndex((el) => el === e.currentTarget)
+    const index = triggers.findIndex((el) => el === e.currentTarget);
 
     if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-      e.preventDefault()
-      triggers[index + 1]?.focus()
+      e.preventDefault();
+      triggers[index + 1]?.focus();
     }
 
     if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-      e.preventDefault()
-      triggers[index - 1]?.focus()
+      e.preventDefault();
+      triggers[index - 1]?.focus();
     }
 
     if (e.key === "Home") {
-      e.preventDefault()
-      triggers[0]?.focus()
+      e.preventDefault();
+      triggers[0]?.focus();
     }
 
     if (e.key === "End") {
-      e.preventDefault()
-      triggers[triggers.length - 1]?.focus()
+      e.preventDefault();
+      triggers[triggers.length - 1]?.focus();
     }
-  }
+  };
 
   return (
     <button
@@ -141,12 +144,16 @@ export function TabsTrigger({
       disabled={disabled}
       onClick={() => setValue(value)}
       onKeyDown={handleKeyDown}
-      className={cn(tabsTriggerVariants({ size, appearance, variant }), className, "cursor-pointer")}
+      className={cn(
+        tabsTriggerVariants({ size, appearance, variant }),
+        className,
+        "cursor-pointer",
+      )}
       {...props}
     >
       {children}
     </button>
-  )
+  );
 }
 
 export function TabsContent({
@@ -156,17 +163,21 @@ export function TabsContent({
   animation = "fade",
   ...props
 }: TabsContentProps) {
-  const { value: activeValue, orientation, tabTriggerId, tabPanelId } =
-    useTabs()
-  const prefersReducedMotion = useReducedMotion()
+  const {
+    value: activeValue,
+    orientation,
+    tabTriggerId,
+    tabPanelId,
+  } = useTabs();
+  const prefersReducedMotion = useReducedMotion();
 
-  if (activeValue !== value) return null
+  if (activeValue !== value) return null;
 
   const motionProps = getTabsContentMotionProps(
     animation,
     orientation,
     Boolean(prefersReducedMotion),
-  )
+  );
 
   return (
     <motion.div
@@ -179,5 +190,5 @@ export function TabsContent({
     >
       {children}
     </motion.div>
-  )
+  );
 }
