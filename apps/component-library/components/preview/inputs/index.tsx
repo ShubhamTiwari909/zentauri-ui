@@ -12,7 +12,11 @@ import { InputsSizesSection } from "./sections/inputs-sizes-section";
 import { InputsStatesSection } from "./sections/inputs-states-section";
 import { InputsTextareaSection } from "./sections/inputs-textarea-section";
 
-export default function InputsPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function InputsPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <InputsHeroSection seo={seo} />

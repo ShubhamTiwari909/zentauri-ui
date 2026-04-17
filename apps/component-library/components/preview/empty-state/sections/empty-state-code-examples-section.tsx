@@ -18,8 +18,8 @@ export function EmptyStateCodeExamplesSection() {
         Empty state variants examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Layout density, surface treatment, and alignment of the stack. Snippets include
-        a leading Variant: line.
+        Layout density, surface treatment, and alignment of the stack. Snippets
+        include a leading Variant: line.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {EMPTY_APPEARANCES.map((appearance) => (

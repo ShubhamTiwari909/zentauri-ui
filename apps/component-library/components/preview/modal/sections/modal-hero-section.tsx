@@ -1,7 +1,17 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
-import { Modal, ModalBody, ModalClose, ModalContent, ModalDescription, ModalFooter, ModalHeader, ModalTitle, ModalTrigger } from "@zentauri-ui/zentauri-components/ui/modal";
+import {
+  Modal,
+  ModalBody,
+  ModalClose,
+  ModalContent,
+  ModalDescription,
+  ModalFooter,
+  ModalHeader,
+  ModalTitle,
+  ModalTrigger,
+} from "@zentauri-ui/zentauri-components/ui/modal";
 
 export function ModalHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (

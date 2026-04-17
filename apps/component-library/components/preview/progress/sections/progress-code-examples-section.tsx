@@ -18,8 +18,8 @@ export function ProgressCodeExamplesSection() {
         Progress variants examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Fill tokens, track scale, shape, and motion flags at a fixed value. Each snippet
-        starts with Variant: listing the row tokens.
+        Fill tokens, track scale, shape, and motion flags at a fixed value. Each
+        snippet starts with Variant: listing the row tokens.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {PROGRESS_APPEARANCES.map((appearance) => (

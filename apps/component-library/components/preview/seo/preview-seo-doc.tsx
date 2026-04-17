@@ -14,8 +14,7 @@ function bodyParagraphs(body: string) {
 
 export function PreviewSeoDoc({ doc }: PreviewSeoDocProps) {
   const faqHeading = doc.headings.h2[doc.headings.h2.length - 1] ?? "FAQ";
-  const useCasesHeading =
-    doc.useCasesSectionHeading ?? "Common use cases";
+  const useCasesHeading = doc.useCasesSectionHeading ?? "Common use cases";
 
   const jsonLd = getPreviewFaqJsonLd(doc);
 
@@ -29,8 +28,7 @@ export function PreviewSeoDoc({ doc }: PreviewSeoDocProps) {
       <article className="max-w-3xl space-y-12 border-t border-white/10 pt-12">
         {doc.sections.map((section, index) => {
           const renderUseCasesList =
-            section.body.trim() === "" &&
-            section.heading === useCasesHeading;
+            section.body.trim() === "" && section.heading === useCasesHeading;
 
           return (
             <section key={`${section.heading}-${index}`} className="space-y-4">

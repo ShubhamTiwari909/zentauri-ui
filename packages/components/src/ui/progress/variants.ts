@@ -67,26 +67,29 @@ export const progressVariants = cva("w-full text-slate-50", {
   },
 });
 
-export const progressTrackVariants = cva("relative w-full overflow-hidden bg-white/10", {
-  variants: {
-    size: {
-      xs: "h-1",
-      sm: "h-1.5",
-      md: "h-2",
-      lg: "h-3",
-      xl: "h-4",
+export const progressTrackVariants = cva(
+  "relative w-full overflow-hidden bg-white/10",
+  {
+    variants: {
+      size: {
+        xs: "h-1",
+        sm: "h-1.5",
+        md: "h-2",
+        lg: "h-3",
+        xl: "h-4",
+      },
+      shape: {
+        flat: "rounded-none",
+        rounded: "rounded-md",
+        pill: "rounded-full",
+      },
     },
-    shape: {
-      flat: "rounded-none",
-      rounded: "rounded-md",
-      pill: "rounded-full",
+    defaultVariants: {
+      size: "md",
+      shape: "rounded",
     },
   },
-  defaultVariants: {
-    size: "md",
-    shape: "rounded",
-  },
-});
+);
 
 export const progressBarVariants = cva(
   "h-full w-full origin-left rounded-[inherit]",

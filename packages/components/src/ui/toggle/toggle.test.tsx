@@ -17,13 +17,21 @@ describe("Toggle", () => {
 
   it("should use role switch", () => {
     render(<Toggle aria-label="Notifications" />);
-    expect(screen.getByRole("switch", { name: "Notifications" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("switch", { name: "Notifications" }),
+    ).toBeInTheDocument();
   });
 
   it("should call onCheckedChange when toggled", async () => {
     const user = userEvent.setup();
     const onCheckedChange = vi.fn();
-    render(<Toggle defaultChecked={false} onCheckedChange={onCheckedChange} aria-label="Airplane mode" />);
+    render(
+      <Toggle
+        defaultChecked={false}
+        onCheckedChange={onCheckedChange}
+        aria-label="Airplane mode"
+      />,
+    );
     await user.click(screen.getByRole("switch"));
     expect(onCheckedChange).toHaveBeenLastCalledWith(true);
   });

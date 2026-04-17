@@ -35,8 +35,7 @@ export function buildPaginationItems({
   const safeSibling = Math.max(0, siblingCount);
   const current = clampPage(currentPage, pageCount);
 
-  const totalNumbers =
-    safeBoundary * 2 + safeSibling * 2 + 1;
+  const totalNumbers = safeBoundary * 2 + safeSibling * 2 + 1;
   if (pageCount <= totalNumbers) {
     return range(1, pageCount).map((value) => ({ type: "page", value }));
   }

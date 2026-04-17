@@ -6,7 +6,8 @@ export function PaginationDemo({ appearance, size }: PaginationDemoProps) {
   return (
     <div>
       <p className="mb-5 text-xs md:text-sm">
-        Appearance: <span className="font-bold">{appearance.toUpperCase()}</span>, Size:{" "}
+        Appearance:{" "}
+        <span className="font-bold">{appearance.toUpperCase()}</span>, Size:{" "}
         <span className="font-bold">{size.toUpperCase()}</span>
       </p>
       <Pagination

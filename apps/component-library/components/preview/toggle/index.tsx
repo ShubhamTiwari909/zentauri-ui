@@ -5,7 +5,11 @@ import { ToggleCodeExamplesSection } from "./sections/toggle-code-examples-secti
 import { ToggleExamplesSection } from "./sections/toggle-examples-section";
 import { ToggleHeroSection } from "./sections/toggle-hero-section";
 
-export default function TogglePreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function TogglePreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <ToggleHeroSection seo={seo} />

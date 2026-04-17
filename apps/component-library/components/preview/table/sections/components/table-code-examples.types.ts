@@ -1,4 +1,7 @@
-import type { TableCellProps, TableProps } from "@zentauri-ui/zentauri-components/ui/table";
+import type {
+  TableCellProps,
+  TableProps,
+} from "@zentauri-ui/zentauri-components/ui/table";
 
 export type TableDemoProps = {
   appearance: NonNullable<TableProps["appearance"]>;

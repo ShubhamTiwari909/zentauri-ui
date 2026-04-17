@@ -1,4 +1,8 @@
-import { Alert, AlertDescription, AlertTitle } from "@zentauri-ui/zentauri-components/ui/alert";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@zentauri-ui/zentauri-components/ui/alert";
 
 import type { AlertDemoProps } from "./alert-code-examples.types";
 

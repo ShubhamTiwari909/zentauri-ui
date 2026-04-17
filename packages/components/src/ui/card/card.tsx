@@ -76,7 +76,10 @@ CardHeader.displayName = "CardHeader";
 
 export function CardBody({ className, children }: CardSectionProps) {
   return (
-    <div data-slot="card-body" className={cn("flex flex-1 flex-col gap-2", className)}>
+    <div
+      data-slot="card-body"
+      className={cn("flex flex-1 flex-col gap-2", className)}
+    >
       {children}
     </div>
   );

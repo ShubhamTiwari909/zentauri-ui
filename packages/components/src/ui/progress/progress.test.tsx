@@ -2,7 +2,12 @@ import { createRef } from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { Progress, ProgressBar, ProgressLabel, ProgressValue } from "./progress";
+import {
+  Progress,
+  ProgressBar,
+  ProgressLabel,
+  ProgressValue,
+} from "./progress";
 
 describe("Progress", () => {
   it("should expose displayName on compound parts", () => {
@@ -29,7 +34,9 @@ describe("Progress", () => {
 
   it("should clamp below the minimum", () => {
     render(<Progress value={-5} min={0} max={100} />);
-    expect(screen.getByRole("progressbar").getAttribute("aria-valuenow")).toBe("0");
+    expect(screen.getByRole("progressbar").getAttribute("aria-valuenow")).toBe(
+      "0",
+    );
   });
 
   it("should render ProgressLabel and ProgressValue slots", () => {
@@ -40,8 +47,12 @@ describe("Progress", () => {
         <ProgressValue />
       </Progress>,
     );
-    expect(document.querySelector('[data-slot="progress-label"]')).toHaveTextContent("Status");
-    expect(document.querySelector('[data-slot="progress-value"]')).toHaveTextContent("25%");
+    expect(
+      document.querySelector('[data-slot="progress-label"]'),
+    ).toHaveTextContent("Status");
+    expect(
+      document.querySelector('[data-slot="progress-value"]'),
+    ).toHaveTextContent("25%");
   });
 
   it("should allow ProgressValue children to override the default percentage text", () => {
@@ -51,12 +62,16 @@ describe("Progress", () => {
         <ProgressValue>Almost empty</ProgressValue>
       </Progress>,
     );
-    expect(document.querySelector('[data-slot="progress-value"]')).toHaveTextContent("Almost empty");
+    expect(
+      document.querySelector('[data-slot="progress-value"]'),
+    ).toHaveTextContent("Almost empty");
   });
 
   it("should apply appearance classes from the variant recipe", () => {
     render(<Progress value={50} appearance="emerald" />);
-    const root = document.querySelector('[data-slot="progress"]') as HTMLElement;
+    const root = document.querySelector(
+      '[data-slot="progress"]',
+    ) as HTMLElement;
     expect(root.className).toMatch(/--progress-fill/);
   });
 

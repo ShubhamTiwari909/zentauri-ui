@@ -16,8 +16,8 @@ export function CardCodeExamplesSection() {
         Card variants examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Appearance, size, and rounded radius tokens with a minimal header layout.
-        Code blocks start with Variant: for the row.
+        Appearance, size, and rounded radius tokens with a minimal header
+        layout. Code blocks start with Variant: for the row.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {CARD_APPEARANCES.map((appearance) => (

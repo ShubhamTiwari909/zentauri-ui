@@ -70,7 +70,9 @@ describe("buildPaginationItems", () => {
       boundaryCount: 1,
     });
     const pageValues = items
-      .filter((item): item is { type: "page"; value: number } => item.type === "page")
+      .filter(
+        (item): item is { type: "page"; value: number } => item.type === "page",
+      )
       .map((item) => item.value);
     expect(pageValues).toContain(1);
     expect(pageValues).toContain(30);
@@ -106,25 +108,34 @@ describe("Pagination (component library)", () => {
 
   it("should render navigation with an accessible name", () => {
     render(<Pagination pageCount={3} defaultPage={1} />);
-    expect(screen.getByRole("navigation", { name: "Pagination" })).toBeVisible();
+    expect(
+      screen.getByRole("navigation", { name: "Pagination" }),
+    ).toBeVisible();
   });
 
   it("should mark the active page with aria-current", () => {
     render(<Pagination pageCount={5} page={3} />);
-    expect(screen.getByRole("button", { name: "Page 3" })).toHaveAttribute("aria-current", "page");
+    expect(screen.getByRole("button", { name: "Page 3" })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
   });
 
   it("should call onPageChange when a different page is activated", async () => {
     const user = userEvent.setup();
     const handleChange = vi.fn();
-    render(<Pagination pageCount={5} defaultPage={1} onPageChange={handleChange} />);
+    render(
+      <Pagination pageCount={5} defaultPage={1} onPageChange={handleChange} />,
+    );
     await user.click(screen.getByRole("button", { name: "Page 4" }));
     expect(handleChange).toHaveBeenCalledWith(4);
   });
 
   it("should disable the previous control on the first page", () => {
     render(<Pagination pageCount={4} page={1} />);
-    expect(screen.getByRole("button", { name: "Previous page" })).toBeDisabled();
+    expect(
+      screen.getByRole("button", { name: "Previous page" }),
+    ).toBeDisabled();
   });
 
   it("should disable the next control on the last page", () => {

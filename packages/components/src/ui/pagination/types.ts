@@ -8,7 +8,9 @@ export type PaginationAppearance = NonNullable<
   VariantProps<typeof buttonVariants>["appearance"]
 >;
 
-export type PaginationSize = NonNullable<VariantProps<typeof buttonVariants>["size"]>;
+export type PaginationSize = NonNullable<
+  VariantProps<typeof buttonVariants>["size"]
+>;
 
 export type PaginationPageItem = PaginationPageItemModel;
 
@@ -33,7 +35,10 @@ export type UsePaginationResult = {
   canGoNext: boolean;
 };
 
-export type PaginationProps = Omit<ComponentPropsWithoutRef<"nav">, "onChange"> &
+export type PaginationProps = Omit<
+  ComponentPropsWithoutRef<"nav">,
+  "onChange"
+> &
   VariantProps<typeof buttonVariants> & {
     pageCount: number;
     page?: number;

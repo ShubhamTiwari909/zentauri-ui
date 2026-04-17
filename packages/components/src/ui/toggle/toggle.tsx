@@ -61,7 +61,10 @@ export function Toggle(props: ToggleProps) {
     >
       <span className="sr-only">{children}</span>
       <motion.span
-        className={cn(toggleThumbVariants({ size }), "absolute left-1 top-1/2 -translate-y-1/2")}
+        className={cn(
+          toggleThumbVariants({ size }),
+          "absolute left-1 top-1/2 -translate-y-1/2",
+        )}
         animate={{ x: resolved ? thumbShiftPx : 0 }}
         transition={thumbMotion.transition}
       />
@@ -70,4 +73,3 @@ export function Toggle(props: ToggleProps) {
 }
 
 Toggle.displayName = "Toggle";
-

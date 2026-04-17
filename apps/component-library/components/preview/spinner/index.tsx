@@ -5,7 +5,11 @@ import { SpinnerCodeExamplesSection } from "./sections/spinner-code-examples-sec
 import { SpinnerExamplesSection } from "./sections/spinner-examples-section";
 import { SpinnerHeroSection } from "./sections/spinner-hero-section";
 
-export default function SpinnerPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function SpinnerPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <SpinnerHeroSection seo={seo} />

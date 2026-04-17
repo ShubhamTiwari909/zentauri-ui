@@ -5,7 +5,11 @@ import { PaginationCodeExamplesSection } from "./sections/pagination-code-exampl
 import { PaginationHeroSection } from "./sections/pagination-hero-section";
 import { PaginationExamplesSection } from "./sections/pagination-examples-section";
 
-export default function PaginationPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function PaginationPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <PaginationHeroSection seo={seo} />

@@ -1,4 +1,7 @@
-import type { TableCellProps, TableProps } from "@zentauri-ui/zentauri-components/ui/table";
+import type {
+  TableCellProps,
+  TableProps,
+} from "@zentauri-ui/zentauri-components/ui/table";
 
 export const TABLE_CODE_EXAMPLES_SECTION_CLASS =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
@@ -58,11 +61,17 @@ export const TABLE_APPEARANCES = [
   "violet",
 ] as const satisfies readonly NonNullable<TableProps["appearance"]>[];
 
-export const TABLE_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<TableProps["size"]>[];
+export const TABLE_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly NonNullable<TableProps["size"]>[];
 
-export const TABLE_TEXT_ALIGNS = ["left", "center", "right"] as const satisfies readonly NonNullable<
-  TableCellProps["textAlign"]
->[];
+export const TABLE_TEXT_ALIGNS = [
+  "left",
+  "center",
+  "right",
+] as const satisfies readonly NonNullable<TableCellProps["textAlign"]>[];
 
 export const TABLE_SNIPPET_BASE = {
   appearance: "default" as const,

@@ -7,7 +7,10 @@ type ModalPresetMotionProps = Pick<
   "initial" | "animate" | "exit" | "transition"
 >;
 
-export type ModalAnimationPresets = Record<ModalAnimation, ModalPresetMotionProps>;
+export type ModalAnimationPresets = Record<
+  ModalAnimation,
+  ModalPresetMotionProps
+>;
 
 export const modalOverlayAnimationPresets: ModalAnimationPresets = {
   none: {},

@@ -2,9 +2,15 @@ import type { HTMLMotionProps } from "framer-motion";
 
 import type { TableAnimation } from "./types";
 
-type TablePresetMotionProps = Pick<HTMLMotionProps<"tr">, "whileHover" | "transition">;
+type TablePresetMotionProps = Pick<
+  HTMLMotionProps<"tr">,
+  "whileHover" | "transition"
+>;
 
-export type TableAnimationPresets = Record<TableAnimation, TablePresetMotionProps>;
+export type TableAnimationPresets = Record<
+  TableAnimation,
+  TablePresetMotionProps
+>;
 
 export const tableAnimationPresets: TableAnimationPresets = {
   none: {},

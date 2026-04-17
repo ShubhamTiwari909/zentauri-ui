@@ -11,7 +11,10 @@ type PreviewPageShellProps = {
   className?: string;
 };
 
-export function PreviewPageShell({ children, className }: PreviewPageShellProps) {
+export function PreviewPageShell({
+  children,
+  className,
+}: PreviewPageShellProps) {
   return (
     <div className={previewPageShellClassName}>
       <div className={className || previewMainClassName}>{children}</div>

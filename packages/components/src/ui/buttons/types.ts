@@ -22,7 +22,6 @@ type ButtonPresetMotionProps = Pick<
 
 export type ButtonProps =
   | (ButtonSharedProps & HTMLMotionProps<"button"> & { as?: "button" })
-  | (ButtonSharedProps & HTMLMotionProps<"a"> & { as: "link" })
+  | (ButtonSharedProps & HTMLMotionProps<"a"> & { as: "link" });
 
 export type AnimationPresets = Record<ButtonAnimation, ButtonPresetMotionProps>;
-

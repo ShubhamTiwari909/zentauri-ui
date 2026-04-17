@@ -1,6 +1,10 @@
 import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
 
-import type { AnimationPreset, AppearanceInputRow, SizeInputRow } from "./inputs-code-examples.types";
+import type {
+  AnimationPreset,
+  AppearanceInputRow,
+  SizeInputRow,
+} from "./inputs-code-examples.types";
 
 export function InputsAppearanceDemo({ row }: { row: AppearanceInputRow }) {
   return (

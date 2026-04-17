@@ -3,7 +3,12 @@ import type { CSSProperties, HTMLAttributes, ReactNode, Ref } from "react";
 
 import type { modalContentVariants, modalTriggerVariants } from "./variants";
 
-export type ModalAnimation = "none" | "fade" | "scale" | "slide-up" | "slide-down";
+export type ModalAnimation =
+  | "none"
+  | "fade"
+  | "scale"
+  | "slide-up"
+  | "slide-down";
 
 type ModalContentVariantProps = VariantProps<typeof modalContentVariants>;
 

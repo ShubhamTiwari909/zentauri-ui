@@ -12,4 +12,4 @@ export type SidebarNavGroup = {
 
 export type SidebarNavProps = {
   onLinkClick?: () => void;
-}
+};

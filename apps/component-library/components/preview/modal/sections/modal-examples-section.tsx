@@ -1,7 +1,17 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
-import { Modal, ModalBody, ModalClose, ModalContent, ModalDescription, ModalFooter, ModalHeader, ModalTitle, ModalTrigger } from "@zentauri-ui/zentauri-components/ui/modal";
+import {
+  Modal,
+  ModalBody,
+  ModalClose,
+  ModalContent,
+  ModalDescription,
+  ModalFooter,
+  ModalHeader,
+  ModalTitle,
+  ModalTrigger,
+} from "@zentauri-ui/zentauri-components/ui/modal";
 
 export function ModalExamplesSection() {
   return (

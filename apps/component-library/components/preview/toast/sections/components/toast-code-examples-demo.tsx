@@ -1,6 +1,9 @@
 "use client";
 
-import { Button, type ButtonProps } from "@zentauri-ui/zentauri-components/ui/buttons";
+import {
+  Button,
+  type ButtonProps,
+} from "@zentauri-ui/zentauri-components/ui/buttons";
 import { useToast } from "@zentauri-ui/zentauri-components/ui/toast";
 
 import type { ToastVariantDemoProps } from "./toast-code-examples.types";
@@ -37,7 +40,9 @@ export function ToastVariantDemo({ appearance, size }: ToastVariantDemoProps) {
   const { toast } = useToast();
   return (
     <Button
-      appearance={buttonsAppearance[appearance] as NonNullable<ButtonProps["appearance"]>}
+      appearance={
+        buttonsAppearance[appearance] as NonNullable<ButtonProps["appearance"]>
+      }
       size="sm"
       animation="none"
       type="button"

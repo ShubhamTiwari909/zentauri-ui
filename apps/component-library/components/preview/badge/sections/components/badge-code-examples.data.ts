@@ -30,10 +30,14 @@ export const BADGE_APPEARANCES = [
   "gradient-orange",
 ] as const satisfies readonly NonNullable<BadgeProps["appearance"]>[];
 
-export const BADGE_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<
-  BadgeProps["size"]
->[];
+export const BADGE_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly NonNullable<BadgeProps["size"]>[];
 
-export const BADGE_SHAPES = ["pill", "square", "dot"] as const satisfies readonly NonNullable<
-  BadgeProps["shape"]
->[];
+export const BADGE_SHAPES = [
+  "pill",
+  "square",
+  "dot",
+] as const satisfies readonly NonNullable<BadgeProps["shape"]>[];

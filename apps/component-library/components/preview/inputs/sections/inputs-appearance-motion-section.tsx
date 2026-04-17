@@ -12,8 +12,8 @@ export function InputsAppearanceMotionSection() {
           Default, error, and success appearances
         </h2>
         <p className="mt-3 text-sm leading-6 text-slate-400">
-          Use `appearance` for validation styling. Error sets `aria-invalid` unless
-          you override it.
+          Use `appearance` for validation styling. Error sets `aria-invalid`
+          unless you override it.
         </p>
         <div className="mt-6 grid gap-4">
           {appearanceInputs.map((row) => (

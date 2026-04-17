@@ -1,8 +1,20 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@zentauri-ui/zentauri-components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@zentauri-ui/zentauri-components/ui/select";
 
-import type { SelectContentDemoProps, SelectTriggerDemoProps } from "./select-code-examples.types";
+import type {
+  SelectContentDemoProps,
+  SelectTriggerDemoProps,
+} from "./select-code-examples.types";
 
-export function SelectTriggerDemo({ triggerVariant, triggerSize }: SelectTriggerDemoProps) {
+export function SelectTriggerDemo({
+  triggerVariant,
+  triggerSize,
+}: SelectTriggerDemoProps) {
   return (
     <div className="max-w-md">
       <Select defaultValue={["opt-a"]} multiple={false}>

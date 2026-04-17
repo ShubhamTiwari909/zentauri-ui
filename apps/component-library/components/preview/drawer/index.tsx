@@ -5,7 +5,11 @@ import { DrawerCodeExamplesSection } from "./sections/drawer-code-examples-secti
 import { DrawerExamplesSection } from "./sections/drawer-examples-section";
 import { DrawerHeroSection } from "./sections/drawer-hero-section";
 
-export default function DrawerPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function DrawerPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <DrawerHeroSection seo={seo} />

@@ -34,6 +34,8 @@ export const TOGGLE_APPEARANCES = [
   "gradient-orange",
 ] as const satisfies readonly NonNullable<ToggleProps["appearance"]>[];
 
-export const TOGGLE_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<
-  ToggleProps["size"]
->[];
+export const TOGGLE_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly NonNullable<ToggleProps["size"]>[];

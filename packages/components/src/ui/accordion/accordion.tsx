@@ -26,7 +26,6 @@ import {
   accordionVariants,
 } from "./variants";
 
-
 const AccordionContext = createContext<AccordionCtx | null>(null);
 
 const AccordionItemValueContext = createContext<string | null>(null);
@@ -63,11 +62,18 @@ export function Accordion({
 }: AccordionProps) {
   const isSingleControlled = value !== undefined;
   const isMultipleControlled = values !== undefined;
-  const [singleUncontrolled, setSingleUncontrolled] = useState<string | undefined>(defaultValue);
-  const [multipleUncontrolled, setMultipleUncontrolled] = useState<string[]>(defaultValues ?? []);
+  const [singleUncontrolled, setSingleUncontrolled] = useState<
+    string | undefined
+  >(defaultValue);
+  const [multipleUncontrolled, setMultipleUncontrolled] = useState<string[]>(
+    defaultValues ?? [],
+  );
 
   const singleValue = isSingleControlled ? value : singleUncontrolled;
-  const multipleValues = useMemo(() => isMultipleControlled ? values ?? [] : multipleUncontrolled, [isMultipleControlled, values, multipleUncontrolled]);
+  const multipleValues = useMemo(
+    () => (isMultipleControlled ? (values ?? []) : multipleUncontrolled),
+    [isMultipleControlled, values, multipleUncontrolled],
+  );
 
   const isOpen = useCallback(
     (itemValue: string) => {
@@ -123,7 +129,10 @@ export function Accordion({
 
   return (
     <AccordionContext.Provider value={ctx}>
-      <div data-slot="accordion" className={cn(accordionVariants({ appearance, size }), className)}>
+      <div
+        data-slot="accordion"
+        className={cn(accordionVariants({ appearance, size }), className)}
+      >
         {children}
       </div>
     </AccordionContext.Provider>
@@ -132,7 +141,13 @@ export function Accordion({
 
 Accordion.displayName = "Accordion";
 
-export function AccordionItem({ className, value, children, ref, ...rest }: AccordionItemProps) {
+export function AccordionItem({
+  className,
+  value,
+  children,
+  ref,
+  ...rest
+}: AccordionItemProps) {
   const { appearance } = useAccordionContext("AccordionItem");
   return (
     <AccordionItemValueContext.Provider value={value}>
@@ -151,7 +166,12 @@ export function AccordionItem({ className, value, children, ref, ...rest }: Acco
 
 AccordionItem.displayName = "AccordionItem";
 
-export function AccordionTrigger({ className, children, ref, ...rest }: AccordionTriggerProps) {
+export function AccordionTrigger({
+  className,
+  children,
+  ref,
+  ...rest
+}: AccordionTriggerProps) {
   const itemValue = useAccordionItemValue("AccordionTrigger");
   const { isOpen, toggle, size } = useAccordionContext("AccordionTrigger");
   const open = isOpen(itemValue);
@@ -179,32 +199,38 @@ export function AccordionTrigger({ className, children, ref, ...rest }: Accordio
 
 AccordionTrigger.displayName = "AccordionTrigger";
 
-export function AccordionContent({ className, children, ref }: AccordionContentProps) {
+export function AccordionContent({
+  className,
+  children,
+  ref,
+}: AccordionContentProps) {
   const itemValue = useAccordionItemValue("AccordionContent");
-  const { isOpen, transition: transitionVariant, size } = useAccordionContext("AccordionContent");
+  const {
+    isOpen,
+    transition: transitionVariant,
+    size,
+  } = useAccordionContext("AccordionContent");
   const open = isOpen(itemValue);
   const panelId = `${itemValue}-panel`;
   const transitionConfig = accordionContentTransitionPresets[transitionVariant];
   const motionless = transitionVariant === "none";
 
-  return (
-    open ? (
-      <motion.div
-        key={itemValue}
-        ref={ref}
-        id={panelId}
-        role="region"
-        data-slot="accordion-content"
-        className={cn(accordionContentVariants({ size }), className)}
-        initial={motionless ? false : { opacity: 0 }}
-        animate={motionless ? undefined : { opacity: 1 }}
-        exit={motionless ? undefined : { opacity: 0 }}
-        transition={transitionConfig}
-      >
-        {children}
-      </motion.div>
-    ) : null
-  );
+  return open ? (
+    <motion.div
+      key={itemValue}
+      ref={ref}
+      id={panelId}
+      role="region"
+      data-slot="accordion-content"
+      className={cn(accordionContentVariants({ size }), className)}
+      initial={motionless ? false : { opacity: 0 }}
+      animate={motionless ? undefined : { opacity: 1 }}
+      exit={motionless ? undefined : { opacity: 0 }}
+      transition={transitionConfig}
+    >
+      {children}
+    </motion.div>
+  ) : null;
 }
 
 AccordionContent.displayName = "AccordionContent";

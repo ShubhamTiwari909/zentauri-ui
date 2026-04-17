@@ -16,16 +16,26 @@ export const accordionVariants = cva("w-full", {
       yellow: "divide-y divide-yellow-600 rounded-xl border border-yellow-600",
       teal: "divide-y divide-teal-600 rounded-xl border border-teal-600",
       indigo: "divide-y divide-indigo-600 rounded-xl border border-indigo-600",
-      emerald: "divide-y divide-emerald-600 rounded-xl border border-emerald-600",
-      "gradient-blue": "divide-y divide-gradient-to-r from-blue-600 to-purple-600 rounded-xl border border-gradient-to-r from-blue-600 to-purple-600",
-      "gradient-green": "divide-y divide-gradient-to-r from-green-600 to-lime-600 rounded-xl border border-gradient-to-r from-green-600 to-lime-600",
-      "gradient-red": "divide-y divide-gradient-to-r from-red-600 to-pink-600 rounded-xl border border-gradient-to-r from-red-600 to-pink-600",
-      "gradient-yellow": "divide-y divide-gradient-to-r from-yellow-600 to-orange-600 rounded-xl border border-gradient-to-r from-yellow-600 to-orange-600",
-      "gradient-purple": "divide-y divide-gradient-to-r from-purple-600 to-pink-600 rounded-xl border border-gradient-to-r from-purple-600 to-pink-600",
-      "gradient-teal": "divide-y divide-gradient-to-r from-teal-600 to-cyan-600 rounded-xl border border-gradient-to-r from-teal-600 to-cyan-600",
-      "gradient-indigo": "divide-y divide-gradient-to-r from-indigo-600 to-purple-600 rounded-xl border border-gradient-to-r from-indigo-600 to-purple-600",
-      "gradient-pink": "divide-y divide-gradient-to-r from-pink-600 to-rose-600 rounded-xl border border-gradient-to-r from-pink-600 to-rose-600",
-      "gradient-orange": "divide-y divide-gradient-to-r from-orange-600 to-red-600 rounded-xl border border-gradient-to-r from-orange-600 to-red-600",
+      emerald:
+        "divide-y divide-emerald-600 rounded-xl border border-emerald-600",
+      "gradient-blue":
+        "divide-y divide-gradient-to-r from-blue-600 to-purple-600 rounded-xl border border-gradient-to-r from-blue-600 to-purple-600",
+      "gradient-green":
+        "divide-y divide-gradient-to-r from-green-600 to-lime-600 rounded-xl border border-gradient-to-r from-green-600 to-lime-600",
+      "gradient-red":
+        "divide-y divide-gradient-to-r from-red-600 to-pink-600 rounded-xl border border-gradient-to-r from-red-600 to-pink-600",
+      "gradient-yellow":
+        "divide-y divide-gradient-to-r from-yellow-600 to-orange-600 rounded-xl border border-gradient-to-r from-yellow-600 to-orange-600",
+      "gradient-purple":
+        "divide-y divide-gradient-to-r from-purple-600 to-pink-600 rounded-xl border border-gradient-to-r from-purple-600 to-pink-600",
+      "gradient-teal":
+        "divide-y divide-gradient-to-r from-teal-600 to-cyan-600 rounded-xl border border-gradient-to-r from-teal-600 to-cyan-600",
+      "gradient-indigo":
+        "divide-y divide-gradient-to-r from-indigo-600 to-purple-600 rounded-xl border border-gradient-to-r from-indigo-600 to-purple-600",
+      "gradient-pink":
+        "divide-y divide-gradient-to-r from-pink-600 to-rose-600 rounded-xl border border-gradient-to-r from-pink-600 to-rose-600",
+      "gradient-orange":
+        "divide-y divide-gradient-to-r from-orange-600 to-red-600 rounded-xl border border-gradient-to-r from-orange-600 to-red-600",
     },
     size: {
       sm: "px-3 py-2 text-sm",
@@ -56,15 +66,24 @@ export const accordionItemVariants = cva("", {
       teal: "rounded-xl border border-teal-600 bg-teal-600/[0.03] p-2",
       indigo: "rounded-xl border border-indigo-600 bg-indigo-600/[0.03] p-2",
       emerald: "rounded-xl border border-emerald-600 bg-emerald-600/[0.03] p-2",
-      "gradient-blue": "rounded-xl bg-linear-to-r from-blue-600 to-purple-600/[0.03] p-2 text-white",
-      "gradient-green": "rounded-xl bg-linear-to-r from-green-600 to-lime-600/[0.03] p-2 text-white",
-      "gradient-red": "rounded-xl bg-linear-to-r from-red-600 to-pink-600/[0.03] p-2 text-white",
-      "gradient-yellow": "rounded-xl bg-linear-to-r from-yellow-600 to-orange-600/[0.03] p-2 text-white",
-      "gradient-purple": "rounded-xl bg-linear-to-r from-purple-600 to-pink-600/[0.03] p-2 text-white",
-      "gradient-teal": "rounded-xl bg-linear-to-r from-teal-600 to-cyan-600/[0.03] p-2 text-white",
-      "gradient-indigo": "rounded-xl bg-linear-to-r from-indigo-600 to-purple-600/[0.03] p-2 text-white",
-      "gradient-pink": "rounded-xl bg-linear-to-r from-pink-600 to-rose-600/[0.03] p-2 text-white",
-      "gradient-orange": "rounded-xl bg-linear-to-r from-orange-600 to-red-600/[0.03] p-2 text-white",
+      "gradient-blue":
+        "rounded-xl bg-linear-to-r from-blue-600 to-purple-600/[0.03] p-2 text-white",
+      "gradient-green":
+        "rounded-xl bg-linear-to-r from-green-600 to-lime-600/[0.03] p-2 text-white",
+      "gradient-red":
+        "rounded-xl bg-linear-to-r from-red-600 to-pink-600/[0.03] p-2 text-white",
+      "gradient-yellow":
+        "rounded-xl bg-linear-to-r from-yellow-600 to-orange-600/[0.03] p-2 text-white",
+      "gradient-purple":
+        "rounded-xl bg-linear-to-r from-purple-600 to-pink-600/[0.03] p-2 text-white",
+      "gradient-teal":
+        "rounded-xl bg-linear-to-r from-teal-600 to-cyan-600/[0.03] p-2 text-white",
+      "gradient-indigo":
+        "rounded-xl bg-linear-to-r from-indigo-600 to-purple-600/[0.03] p-2 text-white",
+      "gradient-pink":
+        "rounded-xl bg-linear-to-r from-pink-600 to-rose-600/[0.03] p-2 text-white",
+      "gradient-orange":
+        "rounded-xl bg-linear-to-r from-orange-600 to-red-600/[0.03] p-2 text-white",
     },
   },
   defaultVariants: { appearance: "default" },
