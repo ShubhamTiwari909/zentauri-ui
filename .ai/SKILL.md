@@ -1,97 +1,140 @@
 ---
 name: zentauri-component-planner
-description: Plan, scaffold, and review new Zentauri UI components (React + Tailwind + Framer Motion) in the zentauri-ui repo, including CVA variant recipes, animation presets, accessibility + tests, and wiring into the component preview app (routes + sidebar). Use when adding a new component under apps/component-library/components/ui and/or a matching preview page under apps/component-library/app/preview.
+description: Plan and implement new Zentauri UI components in packages/components (React, Tailwind, CVA, Framer Motion), wire them into @zentauri-ui/zentauri-components builds (tsup), and add preview routes, SEO JSON, sidebar nav, and preview sections in apps/component-library. Use when adding a component end-to-end.
 ---
 
-# Zentauri UI Component Planner
+# Zentauri UI — new component skill
 
 ## Overview
 
-Create a consistent, project-aligned plan (and optionally a scaffold checklist) for new UI primitives and their preview pages in this repo.
+Ship a component in the **published package** (`packages/components`) and surface it in the **Next.js catalog** (`apps/component-library`): metadata, sidebar, and composed preview sections.
 
-Keep outputs aligned with existing patterns in:
+Authoritative patterns:
 
-- `apps/component-library/components/ui/*`
-- `apps/component-library/components/preview/*`
-- `apps/component-library/app/preview/*`
-- `apps/component-library/components/sidebar/sidebar-data.ts`
+- Library: `packages/components/src/ui/<segment>/` (copy shape from `accordion`, `buttons`, or `inputs`)
+- Catalog: `apps/component-library/app/preview/<segment>/` + `apps/component-library/components/preview/<segment>/`
+- Conventions: `.ai/zentauri-ui-conventions.md` (supplementary; this file is the checklist of **paths to touch**)
 
-For detailed conventions, load `references/zentauri-ui-conventions.md`.
+---
 
-## Workflow (planning-first)
+## 0) Choose a stable `<segment>`
 
-### 0) Confirm scope and naming
+Pick one URL-safe folder name used **everywhere** (examples: `buttons`, `inputs`, `empty-state`):
 
-Decide:
+| Concern | Rule |
+|--------|------|
+| Route + imports | `apps/component-library/app/preview/<segment>/page.tsx` → `/preview/<segment>` |
+| Preview UI folder | `apps/component-library/components/preview/<segment>/` |
+| Package folder | `packages/components/src/ui/<segment>/` |
+| tsup entry name | Same string as `<segment>` in `uiComponentNames` → `@zentauri-ui/zentauri-components/ui/<segment>` |
+| SEO slug | Registry key in `getPreviewSeo("<segment>")` must match `previewSeoRegistry` (e.g. `"empty-state"`) |
+| SEO JSON file | `apps/component-library/content/seo/preview/<segment>.json` (filename = segment) |
 
-- Component display name (PascalCase), e.g. `Button`, `Input`, `Tabs`
-- Route/group segment (lowercase, usually plural), e.g. `buttons`, `inputs`, `tabs`
-- Primitive vs composite (does it wrap native elements? does it compose other primitives?)
+Display title in the sidebar (e.g. “Empty state”) is separate and lives only in `sidebar-data.ts`.
 
-If this component needs a preview page, ensure the route segment is stable because it becomes:
+---
 
-- `apps/component-library/app/preview/<segment>/page.tsx`
-- `apps/component-library/components/preview/<segment>/...`
-- an entry in `apps/component-library/components/sidebar/sidebar-data.ts`
+## 1) Implementation checklist (do in order)
 
-### 1) Read the current conventions (fast)
+### A. Library (`packages/components`)
 
-Before proposing API/structure, inspect at least:
+1. **`packages/components/src/ui/<segment>/`**
+   - `index.ts` — `"use client"` at top; re-export public components, types, variants/animations as needed (see `src/ui/accordion/index.ts`).
+   - Main implementation file(s), `types.ts`, `variants.ts`, optional `animations.ts`.
+   - **Contract test** `*.test.tsx` next to sources (`vitest` picks up `src/**/*.{test,spec}.{ts,tsx}`).
 
-- `apps/component-library/components/ui/buttons/*` (variants + motion + test style)
-- `apps/component-library/components/ui/inputs/*` (polymorphic `as`, error handling, a11y)
-- `apps/component-library/components/preview/buttons/*` (preview structure + sections)
-- `apps/component-library/components/sidebar/sidebar-data.ts` (navigation wiring)
+2. **`packages/components/tsup.config.ts`**
+   - Append `<segment>` to `uiComponentNames` (same spelling as the folder under `src/ui/`).
 
-If you are going to edit any Next.js app code, heed `apps/component-library/AGENTS.md` (this repo’s Next.js may differ from your prior assumptions).
+3. **Build / client boundary**
+   - Entry `index.ts` files include `"use client"`; `tsup` `onSuccess` runs `scripts/prepend-use-client.mjs` on built UI entries — no extra step for a new segment once it is in `uiComponentNames`.
 
-### 2) Produce the “Component Plan” output
+4. **`@zentauri-ui/zentauri-components` exports**
+   - `package.json` uses `"./ui/*"` — **no** `exports` edit for a new subpath.
 
-Output a single Markdown plan with these sections (keep it short but concrete):
+### B. SEO + metadata (`apps/component-library`)
 
-1. **Goal & non-goals**
-2. **Public API contract**
-   - props (types + defaults), events, controlled/uncontrolled decisions
-   - polymorphism (`as`) if needed, and which HTML elements are supported
-3. **Slots & stable selectors**
-   - define `data-slot="<component>"` on the root (or documented slot strategy)
-4. **Variants (CVA)**
-   - list variant dimensions (`appearance`, `size`, `state`, etc.)
-   - note any compoundVariants and why
-5. **Motion (Framer Motion)**
-   - list animation preset names and behavioral intent
-   - define which motion props presets are allowed to touch
-6. **Accessibility**
-   - roles/aria, focus states, error messaging linkage, keyboard behavior
-7. **Files & exports**
-   - where the component lives and what files get created
-8. **Preview page wiring**
-   - route, sidebar entry, preview sections, code examples
-9. **Tests**
-   - contract tests (data-slot, displayName, defaults, variant classes, a11y hooks)
-10. **Validation commands**
+5. **`apps/component-library/content/seo/preview/<segment>.json`**
+   - Structured doc for title, description, keywords, `og` / `twitter`, `canonicalPath` (`/preview/<segment>`), `headings`, `intro`, `useCases`, `faqs`, `sections`, optional `useCasesSectionHeading`.
+   - Invariants are documented in `apps/component-library/lib/preview-seo.ts` on `PreviewSeoDocument` (e.g. `headings.h2` length, last h2 = FAQ, `sections.length` vs h2).
 
-- `pnpm -C apps/component-library test`
-- `pnpm -C apps/component-library lint` (if applicable)
+6. **`apps/component-library/lib/preview-seo-registry.ts`**
+   - `import` the new JSON.
+   - Add a key to `previewSeoRegistry` (must match `PreviewSeoSlug` / `getPreviewSeo` argument).
 
-Use the existing `Button` and `Input` tests as the contract bar: validate the stable selectors and explicit defaults.
+### C. App route (`apps/component-library`)
 
-### 3) (Optional) Generate a plan skeleton with the bundled script
+7. **`apps/component-library/app/preview/<segment>/page.tsx`**
+   - Import the preview page default from `@/components/preview/<segment>`.
+   - `const seo = getPreviewSeo("<segment>");`
+   - `export const metadata = previewSeoDocumentToMetadata(seo);`
+   - Render `<YourPreviewPage seo={seo} />` (same pattern as `app/preview/accordion/page.tsx`).
 
-Run:
+### D. Preview UI (`apps/component-library`)
 
-- `python3 codex-skills/zentauri-component-planner/scripts/generate_component_plan.py --name "Tabs" --segment "tabs"`
+8. **`apps/component-library/components/preview/<segment>/index.tsx`**
+   - Wrap in `PreviewPageShell`.
+   - Typical stack: **hero** (receives `seo`, uses `PreviewHeroSeoBlock`), **examples** section(s), **code examples** section, then `<PreviewSeoDoc doc={seo} />` (see `components/preview/accordion/index.tsx`).
 
-Then edit the generated plan to match actual component needs.
+9. **`components/preview/<segment>/sections/`**
+   - Hero: `PreviewHeroSeoBlock` + live demo; import primitives from `@zentauri-ui/zentauri-components/ui/<segment>`.
+   - Optional `variants.ts` for demo lists.
+   - Code examples: mirror `accordion` / `select` (`*-code-examples-section.tsx`, `components/*-code-examples-demo.tsx`, `.data.ts`, `.types.ts`, `.snippets.ts`).
 
-### 4) (Optional) Proceed from plan → implementation
+### E. Navigation
 
-If the user asks to implement (not just plan), follow the plan and keep the implementation consistent with existing patterns:
+10. **`apps/component-library/components/sidebar/sidebar-data.ts`**
+    - Add `{ title: "…", href: "/preview/<segment>" }` under **Components**, alphabetically with peers.
 
-- `components/ui/<segment>/` should include `types.ts`, `variants.ts`, `animations.ts` (if animated), `index.ts`, and a contract test.
-- Preview wiring should include route + sidebar data update + `components/preview/<segment>/`.
+### F. Verify
+
+11. **Commands**
+    - `pnpm --filter @zentauri-ui/zentauri-components build` (or `dev` / watch) so `dist/ui/<segment>.*` exists.
+    - `pnpm --filter @zentauri-ui/zentauri-components test`
+    - `pnpm -C apps/component-library check-types` and `pnpm -C apps/component-library lint` as needed.
+    - `pnpm -C apps/component-library build` before release.
+
+---
+
+## 2) Things you do **not** need (unless you change tooling)
+
+- **No** extra `package.json` export line per component (wildcard `./ui/*`).
+- **No** change to `prepend-use-client.mjs` for each component.
+- **No** Vitest `include` change in `packages/components` for normal colocated tests.
+- **No** dedicated sitemap file in-repo today; SEO is driven by per-route `metadata` + JSON-LD from the SEO doc.
+
+---
+
+## 3) Optional gaps to consider (not always required)
+
+- **Peers / tsup `external`**: only if the component imports a new runtime dependency — align with `packages/components/tsup.config.ts` `external` and `package.json` `peerDependencies`.
+- **Tailwind in consumer apps**: installation docs mention `@source` for scanning the package; new classes in `packages/components` are covered when consumers point at the package (see `packages/components/README.md`).
+- **Root / turbo**: no per-component turbo entry; workspace filters use package names.
+
+---
+
+## 4) Planning output (when the user wants a plan first)
+
+Short Markdown plan sections:
+
+1. Goal and non-goals  
+2. Public API (props, defaults, controlled/uncontrolled, `as` if any)  
+3. `data-slot` and any sub-slots  
+4. CVA variants (`variants.ts`)  
+5. Motion presets (`animations.ts`) if applicable  
+6. Accessibility (roles, keyboard, labels)  
+7. Files to create under `packages/components/src/ui/<segment>/`  
+8. Preview + SEO + sidebar + tsup touch list (this checklist)  
+9. Contract tests to write  
+10. Validation commands (section 1F)
+
+Mirror **Accordion** (simple) or **Select** (rich code examples) for preview depth.
+
+---
 
 ## Resource pointers
 
-- Conventions and “what good looks like”: `references/zentauri-ui-conventions.md`
-- Plan generator script: `scripts/generate_component_plan.py`
+- Checklist and workflow: this file (`.ai/SKILL.md`)
+- Style and patterns: `.ai/zentauri-ui-conventions.md`
+- SEO shape and metadata helpers: `apps/component-library/lib/preview-seo.ts`
+- Next.js constraints: `apps/component-library/AGENTS.md`
