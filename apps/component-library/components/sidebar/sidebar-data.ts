@@ -26,8 +26,16 @@ export const sidebarRouteData: SidebarNavGroup[] = [
         href: "/preview/alert",
       },
       {
+        title: "Avatar",
+        href: "/preview/avatar",
+      },
+      {
         title: "Badge",
         href: "/preview/badge",
+      },
+      {
+        title: "Breadcrumb",
+        href: "/preview/breadcrumb",
       },
       {
         title: "Buttons",
@@ -54,6 +62,10 @@ export const sidebarRouteData: SidebarNavGroup[] = [
         href: "/preview/empty-state",
       },
       {
+        title: "File upload",
+        href: "/preview/file-upload",
+      },
+      {
         title: "Inputs",
         href: "/preview/inputs",
       },
@@ -78,8 +90,16 @@ export const sidebarRouteData: SidebarNavGroup[] = [
         href: "/preview/skeleton",
       },
       {
+        title: "Slider",
+        href: "/preview/slider",
+      },
+      {
         title: "Spinner",
         href: "/preview/spinner",
+      },
+      {
+        title: "Stepper",
+        href: "/preview/stepper",
       },
       {
         title: "Table",

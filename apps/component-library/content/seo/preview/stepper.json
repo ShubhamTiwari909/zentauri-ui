@@ -1,0 +1,56 @@
+{
+  "category": "Navigation",
+  "title": "Stepper component for multi-step flows",
+  "description": "Horizontal and vertical Stepper with indicators, titles, and descriptions for checkout, onboarding, and wizards in React and Next.js.",
+  "keywords": [
+    "stepper",
+    "wizard",
+    "React",
+    "Next.js",
+    "multi-step",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Stepper · Zentauri UI",
+    "description": "Stepper list pattern with active step styling and semantic list roles.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Stepper · Zentauri UI",
+    "description": "Stepper list pattern with active step styling and semantic list roles.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/stepper",
+  "headings": {
+    "h1": "Steppers for guided flows",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "Steppers show progress across ordered stages. Each StepperItem can surface an indicator, title, and supporting description while the root tracks the active index.",
+  "useCases": [
+    "Checkout and payment flows.",
+    "Account onboarding and KYC.",
+    "Publishing pipelines with approvals.",
+    "Support ticket escalation stages."
+  ],
+  "faqs": [
+    {
+      "question": "How is the active step determined?",
+      "answer": "Pass activeStep as a zero-based index. Steps before the index render as complete, the matching index renders as current, and later steps render as upcoming."
+    },
+    {
+      "question": "Does the stepper use a real list element?",
+      "answer": "The root uses role=\"list\" with listitem roles on items so separators and layout can stay flexible without breaking list semantics."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Orientation switches between horizontal stacks for top-of-page flows and vertical stacks for side rails. Indicators default to numeric labels but accept custom content."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

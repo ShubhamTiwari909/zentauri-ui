@@ -9,6 +9,7 @@ import {
   PROGRESS_SNIPPET_DEFAULTS,
 } from "./components/progress-code-examples.data";
 import { progressSnippet } from "./components/progress-code-examples.snippets";
+import { ProgressControlledDemo } from "./components/progress-code-examples-controlled";
 
 export function ProgressCodeExamplesSection() {
   const defaults = PROGRESS_SNIPPET_DEFAULTS;
@@ -65,6 +66,9 @@ export function ProgressCodeExamplesSection() {
           })}
         >
           <ProgressDemo {...defaults} appearance="sky" animated />
+        </PreviewCodeShowcase>
+        <PreviewCodeShowcase code={progressSnippet({ ...defaults, appearance: "default", animated: true })}>
+          <ProgressControlledDemo {...defaults} appearance="sky" />
         </PreviewCodeShowcase>
       </div>
     </section>

@@ -1,0 +1,56 @@
+{
+  "category": "Forms",
+  "title": "Slider and range slider for React",
+  "description": "Accessible Slider with track, range, and thumb plus a RangeSlider for dual values—keyboard support, steps, and Tailwind-driven styling.",
+  "keywords": [
+    "slider",
+    "range slider",
+    "React",
+    "Next.js",
+    "Tailwind CSS",
+    "accessibility"
+  ],
+  "og": {
+    "title": "Slider · Zentauri UI",
+    "description": "Single-value Slider compound components and a RangeSlider for filters and settings.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Slider · Zentauri UI",
+    "description": "Single-value Slider compound components and a RangeSlider for filters and settings.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/slider",
+  "headings": {
+    "h1": "Sliders for precise input",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "Sliders pick numeric values along a continuum. The single Slider composes a track, optional filled range, and a keyboard-focusable thumb. RangeSlider covers min–max selections.",
+  "useCases": [
+    "Volume and media scrubbing.",
+    "Filters for price, rating, or age bands.",
+    "Settings panels with bounded numeric controls.",
+    "Scheduling windows with dual handles."
+  ],
+  "faqs": [
+    {
+      "question": "Is the thumb keyboard accessible?",
+      "answer": "Yes. The thumb uses role=\"slider\" with Arrow, Home, End, and Page keys adjusting values according to min, max, and step."
+    },
+    {
+      "question": "Can I control values from React state?",
+      "answer": "Pass value and onValueChange for controlled usage, or defaultValue for an uncontrolled slider. RangeSlider accepts tuples for paired values."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Pointer dragging uses the track geometry so thumbs stay aligned to the pointer path. Provide aria-label or aria-labelledby on the group for context."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

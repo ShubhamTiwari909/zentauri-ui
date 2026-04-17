@@ -1,0 +1,56 @@
+{
+  "category": "Navigation",
+  "title": "Breadcrumb navigation for React apps",
+  "description": "Composable Breadcrumb primitives for Next.js and React—lists, links, current page markers, and separators with accessible landmarks.",
+  "keywords": [
+    "breadcrumb",
+    "React",
+    "Next.js",
+    "navigation",
+    "Tailwind CSS",
+    "accessibility"
+  ],
+  "og": {
+    "title": "Breadcrumb · Zentauri UI",
+    "description": "Composable Breadcrumb primitives for Next.js and React with separators and current-page semantics.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Breadcrumb · Zentauri UI",
+    "description": "Composable Breadcrumb primitives for Next.js and React with separators and current-page semantics.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/breadcrumb",
+  "headings": {
+    "h1": "Breadcrumb navigation",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "Breadcrumbs communicate hierarchy and help users orient themselves in multi-level navigation. Compose list items, links, separators, and the current page marker to match your IA.",
+  "useCases": [
+    "E-commerce category → product trails.",
+    "Admin consoles with nested settings routes.",
+    "Docs sites with section and page context.",
+    "Marketing sites linking back to primary hubs."
+  ],
+  "faqs": [
+    {
+      "question": "Does the breadcrumb work with the Next.js App Router?",
+      "answer": "Yes. Use standard anchor hrefs or Next.js Link by composing your own link component inside BreadcrumbLink when you need client navigation."
+    },
+    {
+      "question": "How should I label the nav element?",
+      "answer": "The root nav defaults to aria-label=\"Breadcrumb\". Override it when you localize strings or need a more specific name for assistive technologies."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "The API follows a small compound pattern: list, item, link, page, and separator. Keep markup shallow and prefer tokens for spacing between items."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
