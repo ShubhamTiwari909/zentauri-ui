@@ -102,6 +102,25 @@ pnpm add framer-motion react-icons
 yarn add framer-motion react-icons
 ```
 
+Published `dist/` files **import** these packages; they are **not** vendored inside `@zentauri-ui/zentauri-components`. Your app installs them via `dependencies` (or optional peers above), and your bundler resolves them from `node_modules`.
+
+### Next.js: smaller route chunks
+
+In **Next.js 13+**, enable [optimizePackageImports](https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports) so `framer-motion` and `react-icons` are resolved in a more tree-shakeable way:
+
+```ts
+// next.config.ts (example — API may be stable in your Next version)
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  experimental: {
+    optimizePackageImports: ["framer-motion", "react-icons"],
+  },
+};
+
+export default nextConfig;
+```
+
 ### Step 3 — Include library paths in globals.css
 
 Add an `@source` entry so Tailwind scans class names inside `@zentauri-ui/zentauri-components`. The path is relative to this CSS file—adjust `../` if your file lives elsewhere.
@@ -172,8 +191,8 @@ https://zentauri-ui.vercel.app/
 
 From this package directory in the monorepo:
 
-- `pnpm build` (or `npm run build`) — production bundle via `tsup`
-- `pnpm dev` — `tsup` watch mode
+- `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each `dist/ui/*.mjs` / `*.js` entry starts with `"use client"`)
+- `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
 - `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests
 
 ## NOTE: 
