@@ -26,29 +26,34 @@ The `<name>` segment matches the folder under `src/ui/` (for example `accordion`
 
 Each area is available from the barrel and from its own subpath (`…/ui/<subpath>`):
 
-| Area        | Subpath `…/ui/…` |
-| ----------- | ---------------- |
-| Accordion   | `accordion`      |
-| Alert       | `alert`          |
-| Badge       | `badge`          |
-| Button      | `buttons`        |
-| Card        | `card`           |
-| Divider     | `divider`        |
-| Drawer      | `drawer`         |
-| Dropdown    | `dropdown`       |
-| Empty state | `empty-state`    |
-| Input       | `inputs`         |
-| Modal       | `modal`          |
-| Pagination  | `pagination`     |
-| Progress    | `progress`       |
-| Select      | `select`         |
-| Skeleton    | `skeleton`       |
-| Spinner     | `spinner`        |
-| Table       | `table`          |
-| Tabs        | `tabs`           |
-| Toast       | `toast`          |
-| Toggle      | `toggle`         |
-| Tooltip     | `tooltip`        |
+| Area           | Subpath `…/ui/…` |
+| -------------- | ---------------- |
+| Accordion      | `accordion`      |
+| Alert          | `alert`          |
+| Avatar         | `avatar`         |
+| Badge          | `badge`          |
+| Breadcrumb     | `breadcrumb`     |
+| Button         | `buttons`        |
+| Card           | `card`           |
+| Divider        | `divider`        |
+| Drawer         | `drawer`         |
+| Dropdown       | `dropdown`       |
+| Empty state    | `empty-state`    |
+| File upload    | `file-upload`    |
+| Input          | `inputs`         |
+| Modal          | `modal`          |
+| Pagination     | `pagination`     |
+| Progress       | `progress`       |
+| Select         | `select`         |
+| Skeleton       | `skeleton`       |
+| Slider         | `slider`         |
+| Spinner        | `spinner`        |
+| Stepper        | `stepper`        |
+| Table          | `table`          |
+| Tabs           | `tabs`           |
+| Toast          | `toast`          |
+| Toggle         | `toggle`         |
+| Tooltip        | `tooltip`        |
 
 ## Installation
 
