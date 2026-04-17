@@ -18,12 +18,28 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Feedback",
   },
   {
+    id: "avatar",
+    name: "Avatar",
+    description:
+      "Circular images with fallback initials and optional status indicators.",
+    href: "/preview/avatar",
+    badge: "Display",
+  },
+  {
     id: "badge",
     name: "Badge",
     description:
       "Compact labels and counts that share the library palette with optional close actions.",
     href: "/preview/badge",
     badge: "Display",
+  },
+  {
+    id: "breadcrumb",
+    name: "Breadcrumb",
+    description:
+      "Navigation paths with interactive links and separators for deep-link navigation.",
+    href: "/preview/breadcrumb",
+    badge: "Navigation",
   },
   {
     id: "buttons",
@@ -74,6 +90,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Layout",
   },
   {
+    id: "file-upload",
+    name: "File upload",
+    description:
+      "Drag-and-drop file inputs with progress indicators and custom validation.",
+    href: "/preview/file-upload",
+    badge: "Form",
+  },
+  {
     id: "inputs",
     name: "Inputs",
     description:
@@ -114,12 +138,28 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Loading",
   },
   {
+    id: "slider",
+    name: "Slider",
+    description:
+      "Interactive sliders with range selection and value display for numeric inputs.",
+    href: "/preview/slider",
+    badge: "Form",
+  },
+  {
     id: "spinner",
     name: "Spinner",
     description:
       "Busy indicators with ring, dots, pulse, and bars variants across standard sizes.",
     href: "/preview/spinner",
     badge: "Loading",
+  },
+  {
+    id: "stepper",
+    name: "Stepper",
+    description:
+      "Sequential progress indicators with clickable steps and optional labels.",
+    href: "/preview/stepper",
+    badge: "Navigation",
   },
   {
     id: "table",
