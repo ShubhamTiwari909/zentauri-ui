@@ -1,3 +1,6 @@
+import { execFileSync } from "node:child_process";
+import { join } from "node:path";
+
 import { defineConfig } from "tsup";
 
 const uiComponentNames = [
@@ -18,26 +21,27 @@ export default defineConfig({
   format: ["esm", "cjs"],
   dts: true,
   clean: true,
-  // ✅ Externalize ALL non-React peer deps so they aren't bundled in
+  // Externalize peer deps and subpaths (e.g. react-icons/hi2) so they are never inlined.
   external: [
     "react",
     "react-dom",
-    // Utility libs
     "clsx",
     "class-variance-authority",
     "tailwind-merge",
     "react-icons",
     "framer-motion",
+    /^react-icons\//,
+    /^framer-motion/,
   ],
   sourcemap: true,
-  // ✅ Enable splitting — shared chunks prevent code duplication
   splitting: true,
-  // Rollup's treeshake pass re-bundles esbuild output and strips or ignores
-  // `"use client"` on non-root chunks (see Rollup "Module level directives" warnings).
-  treeshake: false,
-  banner: () => ({
-    // Next.js must see `"use client"` on every entry (ESM and CJS) so client-only
-    // modules are not bundled for React Server Components with react-server `react`.
-    js: '"use client";\n',
-  }),
+  // Rollup treeshake can reorder output so tsup's `banner` no longer leads with
+  // `"use client"`. Entry `index.ts` files include the directive for source clarity;
+  // `scripts/prepend-use-client.mjs` runs after the build to enforce it on each UI entry.
+  treeshake: true,
+  async onSuccess() {
+    execFileSync("node", [join(process.cwd(), "scripts/prepend-use-client.mjs")], {
+      stdio: "inherit",
+    });
+  },
 });
