@@ -1,159 +1,224 @@
-# Turborepo starter
+# Zentauri UI
 
-This Turborepo starter is maintained by the Turborepo core team.
+Zentauri UI is a **pnpm + Turborepo** monorepo for a **React component library** and its **Next.js documentation / preview site**. The publishable UI kit lives in `packages/components` as **`@zentauri-ui/zentauri-components`**. The interactive catalog (demos, props guidance, code snippets) lives in **`apps/component-library`**.
 
-## Using this example
+Public site: [zentauri-ui.vercel.app](https://zentauri-ui.vercel.app/)
 
-Run the following command:
+---
+
+## What is in this repository?
+
+| Location | Package name | Role |
+| -------- | ------------ | ---- |
+| `apps/component-library` | `component-library` | Next.js 16 app (App Router): marketing home, `/preview` docs, SEO helpers, Vercel Analytics |
+| `packages/components` | `@zentauri-ui/zentauri-components` | Source of UI primitives; built with **tsup** into `dist/` (ESM/CJS + types) |
+| `packages/eslint-config` | `@repo/eslint-config` | Shared ESLint presets (`base`, `next-js`, `react-internal`) |
+| `packages/typescript-config` | `@repo/typescript-config` | Shared `tsconfig` fragments for apps and packages |
+
+Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the app that runs `lint`). The component package uses **Vitest** and Testing Library for unit tests.
+
+---
+
+## Prerequisites
+
+1. **Node.js** — **v18 or newer** (see root `package.json` → `engines.node`). A current LTS (20+) is a sensible default.
+2. **pnpm** — The repo pins **`pnpm@9.0.0`** via the root `packageManager` field. Use that version so installs and lockfile behavior match CI and other contributors.
+
+### Installing pnpm 9 with Corepack (recommended)
+
+[Corepack](https://nodejs.org/api/corepack.html) ships with Node and can install the pinned pnpm version:
 
 ```sh
-npx create-turbo@latest
+corepack enable
+corepack prepare pnpm@9.0.0 --activate
+pnpm -v   # should report 9.0.0
 ```
 
-## What's inside?
+If you already use another pnpm major, switch only for this repo (for example with [Volta](https://volta.sh/) or `fnm`/`nvm`) or rely on Corepack as above.
 
-This Turborepo includes the following packages/apps:
+---
 
-### Apps and Packages
+## First-time setup (new developer)
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+Follow these steps **from the repository root** (`zentauri-ui/`).
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+### 1. Clone the repository
 
 ```sh
-cd my-turborepo
-turbo build
+git clone <repository-url>
+cd zentauri-ui
 ```
 
-Without global `turbo`, use your package manager:
+Use the URL your team uses (for example the [GitHub source](https://github.com/ShubhamTiwari909/zentauri-ui)).
+
+### 2. Use the correct Node and pnpm versions
+
+- Ensure Node **≥ 18**.
+- Enable Corepack and activate **pnpm 9.0.0** (see [Prerequisites](#prerequisites)).
+
+### 3. Install dependencies
+
+Workspaces are declared in `pnpm-workspace.yaml` (`apps/*`, `packages/*`). Installing once at the root links every package:
 
 ```sh
-cd my-turborepo
-npx turbo build
-pnpm dlx turbo build
-pnpm exec turbo build
+pnpm install
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+This links `component-library` to `@zentauri-ui/zentauri-components` via `workspace:*` and installs all transitive dependencies.
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+### 4. (Optional) Environment variables for the Next.js app
+
+The docs app does **not** require a `.env` file for local work. For accurate canonical URLs and Open Graph metadata in production-like setups, you can set:
+
+| Variable | Required locally? | Purpose |
+| -------- | ----------------- | ------- |
+| `NEXT_PUBLIC_SITE_URL` | No | Public origin with scheme (e.g. `https://zentauri-ui.vercel.app`). Used as `metadataBase` and for canonical / OG URLs in `apps/component-library/lib/preview-seo.ts`. |
+| `VERCEL_URL` | Automatic on Vercel | Fallback hostname when `NEXT_PUBLIC_SITE_URL` is unset. |
+
+If neither is set, metadata falls back to **`http://localhost:3000`**.
+
+Create `apps/component-library/.env.local` only if you want to override defaults:
 
 ```sh
-turbo build --filter=docs
+# apps/component-library/.env.local (example)
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-Without global `turbo`:
+### 5. Verify the workspace
+
+**Typecheck** (runs in workspaces that define `check-types`; currently the component-library app):
 
 ```sh
-npx turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+pnpm check-types
 ```
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+**Production build** (builds dependencies first per `turbo.json` → `dependsOn: ["^build"]`):
 
 ```sh
-cd my-turborepo
-turbo dev
+pnpm build
 ```
 
-Without global `turbo`, use your package manager:
+**Lint** (runs where a `lint` script exists):
 
 ```sh
-cd my-turborepo
-npx turbo dev
-pnpm exec turbo dev
-pnpm exec turbo dev
+pnpm lint
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+If these succeed, your environment matches what the repo expects.
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+---
+
+## Daily development
+
+All commands below assume the **repository root** unless noted.
+
+### Run everything that defines `dev`
 
 ```sh
-turbo dev --filter=web
+pnpm dev
 ```
 
-Without global `turbo`:
+This runs **`turbo run dev`**, which starts:
+
+- **`@zentauri-ui/zentauri-components`** — `tsup --watch` (rebuilds `dist/` when sources change).
+- **`component-library`** — `next dev` (default [http://localhost:3000](http://localhost:3000)).
+
+Use this when you change **both** library sources and the preview app.
+
+### Run only the documentation site
+
+Faster when you are not editing `packages/components`:
 
 ```sh
-npx turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+pnpm exec turbo run dev --filter=component-library
 ```
 
-### Remote Caching
+### Run only the component package in watch mode
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+When iterating on primitives without the Next.js server:
 
 ```sh
-cd my-turborepo
-turbo login
+pnpm exec turbo run dev --filter=@zentauri-ui/zentauri-components
 ```
 
-Without global `turbo`, use your package manager:
+### Global `turbo` (optional)
+
+You can install [turbo](https://turborepo.dev/docs/getting-started/installation) globally and run `turbo dev` / `turbo build --filter=...` instead of `pnpm exec turbo …`.
+
+---
+
+## Root scripts (cheat sheet)
+
+| Command | What it does |
+| ------- | -------------- |
+| `pnpm install` | Install and link all workspaces |
+| `pnpm dev` | `turbo run dev` — persistent dev tasks (Next + tsup watch) |
+| `pnpm build` | `turbo run build` — builds packages and apps; caches via Turbo |
+| `pnpm lint` | `turbo run lint` — ESLint where defined |
+| `pnpm check-types` | `turbo run check-types` — `tsc --noEmit` where defined |
+| `pnpm format` | Prettier write on `**/*.{ts,tsx,md}` from the root (not routed through Turbo) |
+
+### Scoped commands with pnpm filters
+
+Run a script in one workspace without `turbo`:
 
 ```sh
-cd my-turborepo
-npx turbo login
+pnpm --filter component-library dev
+pnpm --filter @zentauri-ui/zentauri-components build
+```
+
+### Component package tests
+
+The **`test`** script is defined on `@zentauri-ui/zentauri-components`, not in the root `turbo.json`. Run:
+
+```sh
+pnpm --filter @zentauri-ui/zentauri-components test
+pnpm --filter @zentauri-ui/zentauri-components test:watch
+```
+
+---
+
+## Where to change what
+
+- **New or updated UI primitives** (Button, Select, etc.): `packages/components/src/` then ensure `pnpm build` or watch dev passes. Consumption and Tailwind `@source` notes: [`packages/components/README.md`](packages/components/README.md).
+- **Docs, previews, routes, marketing copy, SEO JSON**: `apps/component-library/` — see [`apps/component-library/README.md`](apps/component-library/README.md) for route map, `content/seo/preview/`, and script tables.
+- **Lint / TypeScript presets**: `packages/eslint-config`, `packages/typescript-config`.
+
+The Next app sets `transpilePackages: ["@zentauri-ui/zentauri-components"]` so the workspace library is compiled as part of the app build.
+
+---
+
+## Monorepo mechanics (short)
+
+- **pnpm** resolves `workspace:*` to local packages; always install from the **root** so links stay consistent.
+- **Turborepo** (`turbo.json`) orchestrates `build`, `dev`, `lint`, and `check-types`. Builds depend on **`^build`** (dependencies build first). Outputs include `.next/**` and `dist/**` for caching.
+
+### Optional: Remote cache (team / CI)
+
+Turborepo can use [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) (e.g. Vercel). This is optional for local work:
+
+```sh
 pnpm exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-pnpm exec turbo link
 pnpm exec turbo link
 ```
 
-## Useful Links
+---
 
-Learn more about the power of Turborepo:
+## Troubleshooting
 
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+| Symptom | Things to try |
+| ------- | --------------- |
+| Wrong pnpm / lockfile errors | `corepack prepare pnpm@9.0.0 --activate`; delete `node_modules` and run `pnpm install` from root. |
+| App shows stale components | Run `pnpm build` for the library or use `pnpm dev` so `tsup --watch` updates `dist/`. |
+| Types or imports fail after a pull | `pnpm install` then `pnpm check-types` and `pnpm build`. |
+| Port 3000 in use | `pnpm --filter component-library dev -- -p 3001` (forwards `-p` to `next dev`). |
+
+---
+
+## Further reading
+
+- [Turborepo — Running tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
+- [Turborepo — Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
+- [pnpm — Workspace](https://pnpm.io/workspaces)
+- Component library consumer guide: [`packages/components/README.md`](packages/components/README.md)
+- Component library app (routes, env, scripts): [`apps/component-library/README.md`](apps/component-library/README.md)
