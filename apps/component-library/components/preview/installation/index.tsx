@@ -61,6 +61,42 @@ const USAGE_SNIPPET = `<div className="rounded-3xl border border-white/10 bg-whi
   </Accordion>
 </div>`;
 
+const OVERRIDE_THEME_COLORS_SNIPPET = `@theme {
+  --color-slate-50: oklch(0.984 0.003 247.858);
+  --color-slate-100: oklch(0.968 0.007 247.896);
+  --color-slate-200: oklch(0.929 0.013 255.508);
+  --color-slate-300: oklch(0.869 0.022 252.894);
+  --color-slate-400: oklch(0.704 0.04 256.788);
+  --color-slate-500: oklch(0.554 0.046 257.417);
+  --color-slate-600: oklch(0.446 0.043 257.281);
+  --color-slate-700: oklch(0.372 0.044 257.287);
+  --color-slate-800: oklch(0.279 0.041 260.031);
+  --color-slate-900: oklch(0.208 0.042 265.755);
+  --color-slate-950: oklch(0.129 0.042 264.695);
+}`;
+
+const ADD_NEW_THEMES_COLORS_SNIPPET = `export const customAppearancefuchsia = {
+  50: "bg-fuchsia-50 text-fuchsia-950",
+  100: "bg-fuchsia-100 text-fuchsia-950",
+  200: "bg-fuchsia-200 text-fuchsia-950",
+  300: "bg-fuchsia-300 text-fuchsia-950",
+  400: "bg-fuchsia-400 text-fuchsia-950",
+  500: "bg-fuchsia-500 text-fuchsia-950",
+  600: "bg-fuchsia-600 text-fuchsia-950",
+  700: "bg-fuchsia-700 text-fuchsia-950",
+  800: "bg-fuchsia-800 text-fuchsia-950",
+  900: "bg-fuchsia-900 text-fuchsia-950",
+  950: "bg-fuchsia-950 text-fuchsia-950",
+} as const;
+
+export function ButtonOverrideThemeColors({ label }: ButtonProps) {
+  return (
+    <Button animation="none" className={cn("w-40", customAppearancefuchsia[500])}>
+      {label}
+    </Button>
+  );
+}`
+
 export default function InstallationPreviewPage({
   seo,
 }: {
@@ -273,6 +309,34 @@ export default function InstallationPreviewPage({
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
+          </div>
+        </section>
+        <section className={SECTION}>
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+            Overriding theme colors
+          </p>
+          <h2 className="mt-2 text-xl font-semibold text-white">
+            Override theme colors
+          </h2>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            You can override the theme colors by using the theme.colors object but be careful as it will override all the colors in your project if you are already using tailwind default colors like slate, red, yellow, amber, green, etc. Consider using a custom color palette for your brand theme.
+          </p>
+          <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
+            <CodeHighlight codeString={OVERRIDE_THEME_COLORS_SNIPPET} language="css" />
+          </div>
+        </section>
+        <section className={SECTION}>
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+            Adding new themes
+          </p>
+          <h2 className="mt-2 text-xl font-semibold text-white">
+            Adding new themes colors
+          </h2>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            You can add new themes colors by adding a new theme mapper, passing the required variants like 100, 200, 500, 900 and removing the appearance prop from the component.
+          </p>
+          <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
+            <CodeHighlight codeString={ADD_NEW_THEMES_COLORS_SNIPPET} language="tsx" />
           </div>
         </section>
       </div>
