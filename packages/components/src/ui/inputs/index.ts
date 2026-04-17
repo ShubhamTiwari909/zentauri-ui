@@ -1,3 +1,5 @@
+"use client";
+
 export { inputAnimationPresets } from "./animations";
 export { Input } from "./input";
 export type {
