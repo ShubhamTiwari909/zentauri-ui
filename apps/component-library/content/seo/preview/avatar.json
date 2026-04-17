@@ -1,0 +1,55 @@
+{
+  "category": "Display",
+  "title": "Avatar and AvatarGroup for React profiles",
+  "description": "Avatar, AvatarImage, AvatarFallback, and AvatarGroup for user profiles, comments, and tables—sizes, motion presets, and overflow counts.",
+  "keywords": [
+    "avatar",
+    "React",
+    "Next.js",
+    "profile image",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Avatar · Zentauri UI",
+    "description": "Avatar primitives with image, fallback, optional motion, and stacked AvatarGroup overflow labels.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Avatar · Zentauri UI",
+    "description": "Avatar primitives with image, fallback, optional motion, and stacked AvatarGroup overflow labels.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/avatar",
+  "headings": {
+    "h1": "Avatars for people and teams",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "Avatars show who is behind an action. Pair AvatarImage with AvatarFallback for resilient loading, and AvatarGroup when several people share a surface.",
+  "useCases": [
+    "Headers and account menus.",
+    "Comment threads and activity feeds.",
+    "Table rows for assignees.",
+    "Stacked collaborators on documents."
+  ],
+  "faqs": [
+    {
+      "question": "What happens when an image fails to load?",
+      "answer": "AvatarFallback renders when the image errors or while the image is still loading, with an optional delay to reduce flicker for fast caches."
+    },
+    {
+      "question": "How does AvatarGroup max work?",
+      "answer": "Pass max to cap visible avatars; additional participants surface as a +N overflow chip with an aria-label describing how many remain."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Sizes map to common touch targets. Motion presets are intentionally subtle so they stay appropriate inside dense UI."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

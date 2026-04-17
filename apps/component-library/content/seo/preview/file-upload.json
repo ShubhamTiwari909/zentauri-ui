@@ -1,0 +1,55 @@
+{
+  "category": "Forms",
+  "title": "File upload dropzone for React",
+  "description": "FileUpload dropzone with drag-and-drop states, hidden input wiring, and onFiles callbacks for Next.js admin and settings screens.",
+  "keywords": [
+    "file upload",
+    "dropzone",
+    "React",
+    "Next.js",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "File upload · Zentauri UI",
+    "description": "Accessible file dropzone with drag-over feedback and click-to-browse via a labeled control.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "File upload · Zentauri UI",
+    "description": "Accessible file dropzone with drag-over feedback and click-to-browse via a labeled control.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/file-upload",
+  "headings": {
+    "h1": "Drag-and-drop file uploads",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "FileUpload wraps a visually hidden file input with a large hit target. Drag files over the surface to highlight the active state, or activate the native picker with keyboard and pointer.",
+  "useCases": [
+    "CSV and media imports in admin tools.",
+    "Profile and cover photo pickers.",
+    "Attachment surfaces on support forms.",
+    "Bulk asset ingestion during migrations."
+  ],
+  "faqs": [
+    {
+      "question": "How do I handle selected files?",
+      "answer": "Use the onFiles callback to receive a File array. You can also listen to onChange for the underlying input event when integrating with form libraries."
+    },
+    {
+      "question": "Can I customize the inner content?",
+      "answer": "Yes. Pass children to replace the default helper copy while keeping the same focusable label wiring to the hidden input."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "The component clears the native input value after each selection so selecting the same file twice still emits callbacks. Use accept and multiple to mirror platform constraints."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
