@@ -2,6 +2,7 @@ import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase"
 
 import {
   SliderRangeDemo,
+  SliderRangeDemoControlled,
   SliderSingleDemo,
 } from "./components/slider-code-examples-demo";
 import {
@@ -48,6 +49,14 @@ export function SliderCodeExamplesSection() {
             <SliderRangeDemo appearance={appearance} />
           </PreviewCodeShowcase>
         ))}
+        <PreviewCodeShowcase
+          code={sliderRangeSnippet("indigo")}
+        >
+          <p className="mb-5 text-xs font-semibold text-white md:text-sm">
+            Range controlled
+          </p>
+          <SliderRangeDemoControlled appearance="indigo" />
+        </PreviewCodeShowcase>
       </div>
     </section>
   );

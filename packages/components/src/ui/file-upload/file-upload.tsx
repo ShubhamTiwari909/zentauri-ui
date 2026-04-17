@@ -54,8 +54,6 @@ export function FileUpload({
     [disabled, emitFiles],
   );
 
-  const state = disabled ? "disabled" : dragOver ? "active" : "idle";
-
   return (
     <div
       ref={ref}
@@ -106,6 +104,13 @@ export function FileUpload({
             </span>
           </>
         )}
+        {
+          dragOver && (
+            <span className="text-xs text-slate-400">
+              Drop files here
+            </span>
+          )
+        }
       </label>
     </div>
   );
