@@ -13,4 +13,3 @@ export function ToggleDemo({ appearance, size }: ToggleDemoProps) {
     />
   );
 }
-

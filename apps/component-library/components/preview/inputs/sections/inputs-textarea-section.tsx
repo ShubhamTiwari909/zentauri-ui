@@ -17,8 +17,8 @@ export function InputsTextareaSection() {
           <code className="rounded bg-white/10 px-1.5 py-0.5 text-cyan-100/90">
             data-slot=&quot;input&quot;
           </code>{" "}
-          as the single-line control; height uses min-height and vertical resize so
-          longer copy stays comfortable.
+          as the single-line control; height uses min-height and vertical resize
+          so longer copy stays comfortable.
         </p>
       </div>
       <div className="mt-6 grid max-w-2xl gap-2">

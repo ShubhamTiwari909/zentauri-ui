@@ -18,8 +18,6 @@ export function SiteHeader({
   onMenuToggle,
   menuControlsId,
 }: SiteHeaderProps) {
-  
-
   return (
     <header
       data-slot="site-header"
@@ -63,7 +61,11 @@ export function SiteHeader({
           className="hidden flex-wrap items-center gap-x-10 gap-y-2 sm:flex"
         >
           {siteChromeNavItems.map((item) => (
-            <SiteNavLink key={item.href} item={item} className={navLinkClassName} />
+            <SiteNavLink
+              key={item.href}
+              item={item}
+              className={navLinkClassName}
+            />
           ))}
         </nav>
       </div>

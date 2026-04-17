@@ -5,7 +5,11 @@ import { SelectCodeExamplesSection } from "./sections/select-code-examples-secti
 import { SelectExamplesSection } from "./sections/select-examples-section";
 import { SelectHeroSection } from "./sections/select-hero-section";
 
-export default function SelectPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function SelectPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <SelectHeroSection seo={seo} />

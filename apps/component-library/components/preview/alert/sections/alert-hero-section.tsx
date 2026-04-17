@@ -1,6 +1,12 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { Alert, AlertDefaultIcon, AlertDescription, AlertIcon, AlertTitle } from "@zentauri-ui/zentauri-components/ui/alert";
+import {
+  Alert,
+  AlertDefaultIcon,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@zentauri-ui/zentauri-components/ui/alert";
 
 export function AlertHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -25,7 +31,9 @@ export function AlertHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           </AlertIcon>
           <div>
             <AlertTitle>Deployed</AlertTitle>
-            <AlertDescription>Build 482 is live in production.</AlertDescription>
+            <AlertDescription>
+              Build 482 is live in production.
+            </AlertDescription>
           </div>
         </Alert>
       </div>

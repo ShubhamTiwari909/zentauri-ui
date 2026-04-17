@@ -5,7 +5,11 @@ import { TooltipCodeExamplesSection } from "./sections/tooltip-code-examples-sec
 import { TooltipExamplesSection } from "./sections/tooltip-examples-section";
 import { TooltipHeroSection } from "./sections/tooltip-hero-section";
 
-export default function TooltipPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function TooltipPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <TooltipHeroSection seo={seo} />

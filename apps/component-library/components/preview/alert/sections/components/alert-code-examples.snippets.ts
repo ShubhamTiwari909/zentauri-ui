@@ -2,7 +2,10 @@ import { variantLeadComment } from "@/components/common/variant-code-prefix";
 
 import type { AlertAppearance, AlertSize } from "./alert-code-examples.types";
 
-export function alertSnippet(appearance: AlertAppearance, size: AlertSize): string {
+export function alertSnippet(
+  appearance: AlertAppearance,
+  size: AlertSize,
+): string {
   const appearanceAttr =
     appearance === "default" ? "" : ` appearance="${appearance}"`;
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;

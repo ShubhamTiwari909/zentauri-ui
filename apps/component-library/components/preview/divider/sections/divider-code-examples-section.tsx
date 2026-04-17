@@ -16,8 +16,8 @@ export function DividerCodeExamplesSection() {
         Divider variants examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Tone, orientation, thickness, and optional label slot. Each snippet opens
-        with Variant: naming the row.
+        Tone, orientation, thickness, and optional label slot. Each snippet
+        opens with Variant: naming the row.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {DIVIDER_APPEARANCES.map((appearance) => (

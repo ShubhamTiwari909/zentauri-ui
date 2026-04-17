@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  AnimatePresence,
-  motion,
-  useReducedMotion,
-} from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   createContext,
   useCallback,
@@ -26,7 +22,11 @@ import type {
   ModalSectionProps,
   ModalTriggerProps,
 } from "./types";
-import { modalContentVariants, modalOverlayVariants, modalTriggerVariants } from "./variants";
+import {
+  modalContentVariants,
+  modalOverlayVariants,
+  modalTriggerVariants,
+} from "./variants";
 
 type ModalCtx = {
   open: boolean;
@@ -62,7 +62,12 @@ function useBodyScrollLock(locked: boolean) {
   }, [locked]);
 }
 
-export function Modal({ open, defaultOpen = false, onOpenChange, children }: ModalProps) {
+export function Modal({
+  open,
+  defaultOpen = false,
+  onOpenChange,
+  children,
+}: ModalProps) {
   const isControlled = open !== undefined;
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
   const resolvedOpen = isControlled ? Boolean(open) : uncontrolledOpen;
@@ -98,7 +103,14 @@ export function Modal({ open, defaultOpen = false, onOpenChange, children }: Mod
 
 Modal.displayName = "Modal";
 
-export function ModalTrigger({ className, children, appearance, onClick, ref, ...rest }: ModalTriggerProps) {
+export function ModalTrigger({
+  className,
+  children,
+  appearance,
+  onClick,
+  ref,
+  ...rest
+}: ModalTriggerProps) {
   const { setOpen } = useModalContext("ModalTrigger");
   return (
     <button
@@ -132,10 +144,13 @@ export function ModalContent({
   id,
   style,
 }: ModalContentProps) {
-  const { open, setOpen, titleId, descriptionId, contentRef } = useModalContext("ModalContent");
+  const { open, setOpen, titleId, descriptionId, contentRef } =
+    useModalContext("ModalContent");
   const reduceMotion = useReducedMotion();
-  const overlayMotion = modalOverlayAnimationPresets[reduceMotion ? "fade" : animation];
-  const panelMotion = modalOverlayAnimationPresets[reduceMotion ? "fade" : animation];
+  const overlayMotion =
+    modalOverlayAnimationPresets[reduceMotion ? "fade" : animation];
+  const panelMotion =
+    modalOverlayAnimationPresets[reduceMotion ? "fade" : animation];
 
   useBodyScrollLock(open);
 
@@ -217,7 +232,10 @@ export function ModalContent({
             aria-describedby={descriptionId}
             data-slot="modal-content"
             tabIndex={-1}
-            className={cn(modalContentVariants({ size, position, appearance }), className)}
+            className={cn(
+              modalContentVariants({ size, position, appearance }),
+              className,
+            )}
             initial={animation === "none" ? false : panelMotion.initial}
             animate={animation === "none" ? undefined : panelMotion.animate}
             exit={animation === "none" ? undefined : panelMotion.exit}
@@ -238,7 +256,10 @@ ModalContent.displayName = "ModalContent";
 
 export function ModalHeader({ className, children }: ModalSectionProps) {
   return (
-    <header data-slot="modal-header" className={cn("mb-4 flex flex-col gap-2", className)}>
+    <header
+      data-slot="modal-header"
+      className={cn("mb-4 flex flex-col gap-2", className)}
+    >
       {children}
     </header>
   );
@@ -248,7 +269,10 @@ ModalHeader.displayName = "ModalHeader";
 
 export function ModalBody({ className, children }: ModalSectionProps) {
   return (
-    <div data-slot="modal-body" className={cn("text-sm text-slate-300", className)}>
+    <div
+      data-slot="modal-body"
+      className={cn("text-sm text-slate-300", className)}
+    >
       {children}
     </div>
   );
@@ -258,7 +282,10 @@ ModalBody.displayName = "ModalBody";
 
 export function ModalFooter({ className, children }: ModalSectionProps) {
   return (
-    <footer data-slot="modal-footer" className={cn("mt-6 flex justify-end gap-2", className)}>
+    <footer
+      data-slot="modal-footer"
+      className={cn("mt-6 flex justify-end gap-2", className)}
+    >
       {children}
     </footer>
   );
@@ -269,7 +296,11 @@ ModalFooter.displayName = "ModalFooter";
 export function ModalTitle({ className, children }: ModalSectionProps) {
   const { titleId } = useModalContext("ModalTitle");
   return (
-    <h2 id={titleId} data-slot="modal-title" className={cn("text-lg font-semibold", className)}>
+    <h2
+      id={titleId}
+      data-slot="modal-title"
+      className={cn("text-lg font-semibold", className)}
+    >
       {children}
     </h2>
   );
@@ -280,7 +311,11 @@ ModalTitle.displayName = "ModalTitle";
 export function ModalDescription({ className, children }: ModalSectionProps) {
   const { descriptionId } = useModalContext("ModalDescription");
   return (
-    <p id={descriptionId} data-slot="modal-description" className={cn("text-sm text-slate-400", className)}>
+    <p
+      id={descriptionId}
+      data-slot="modal-description"
+      className={cn("text-sm text-slate-400", className)}
+    >
       {children}
     </p>
   );
@@ -288,7 +323,11 @@ export function ModalDescription({ className, children }: ModalSectionProps) {
 
 ModalDescription.displayName = "ModalDescription";
 
-export function ModalClose({ className, children, ...rest }: ModalSectionProps) {
+export function ModalClose({
+  className,
+  children,
+  ...rest
+}: ModalSectionProps) {
   const { setOpen } = useModalContext("ModalClose");
   return (
     <button

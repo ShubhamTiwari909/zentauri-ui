@@ -28,7 +28,9 @@ describe("Tabs", () => {
         <TabsContent value="b">Panel B</TabsContent>
       </Tabs>,
     );
-    expect(screen.getByRole("tabpanel", { name: "B" })).toHaveTextContent("Panel B");
+    expect(screen.getByRole("tabpanel", { name: "B" })).toHaveTextContent(
+      "Panel B",
+    );
   });
 
   it("should switch tab on trigger click", async () => {

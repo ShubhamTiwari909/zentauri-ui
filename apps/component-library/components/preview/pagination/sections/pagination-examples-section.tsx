@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 
-import { Pagination, usePagination } from "@zentauri-ui/zentauri-components/ui/pagination";
+import {
+  Pagination,
+  usePagination,
+} from "@zentauri-ui/zentauri-components/ui/pagination";
 
 export function PaginationExamplesSection() {
   const [page, setPage] = useState(7);
@@ -17,11 +20,14 @@ export function PaginationExamplesSection() {
   return (
     <section className="space-y-10">
       <div className="space-y-3">
-        <h2 className="text-2xl font-semibold text-white">Controlled + compact</h2>
+        <h2 className="text-2xl font-semibold text-white">
+          Controlled + compact
+        </h2>
         <p className="max-w-2xl text-sm text-slate-400">
-          Middle window uses <code className="text-slate-200">siblingCount</code>; ends use{" "}
-          <code className="text-slate-200">boundaryCount</code>. Prev and Next stay keyboard-friendly on the nav
-          region.
+          Middle window uses{" "}
+          <code className="text-slate-200">siblingCount</code>; ends use{" "}
+          <code className="text-slate-200">boundaryCount</code>. Prev and Next
+          stay keyboard-friendly on the nav region.
         </p>
         <Pagination
           appearance="outline"
@@ -38,8 +44,10 @@ export function PaginationExamplesSection() {
         <h2 className="text-2xl font-semibold text-white">Headless API</h2>
         <p className="max-w-2xl text-sm text-slate-400">
           Current page {headless.currentPage} of {headless.pageCount}.{" "}
-          <code className="text-slate-200">canGoPrev</code>={String(headless.canGoPrev)},{" "}
-          <code className="text-slate-200">canGoNext</code>={String(headless.canGoNext)}.
+          <code className="text-slate-200">canGoPrev</code>=
+          {String(headless.canGoPrev)},{" "}
+          <code className="text-slate-200">canGoNext</code>=
+          {String(headless.canGoNext)}.
         </p>
         <div className="flex flex-wrap gap-2">
           <button

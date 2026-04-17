@@ -1,6 +1,11 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { TabsList, TabsTrigger, tabsListVariants, tabsTriggerVariants } from "@zentauri-ui/zentauri-components/ui/tabs";
+import {
+  TabsList,
+  TabsTrigger,
+  tabsListVariants,
+  tabsTriggerVariants,
+} from "@zentauri-ui/zentauri-components/ui/tabs";
 
 const listPillsMd = tabsListVariants({
   variant: "pills",
@@ -16,7 +21,10 @@ const triggerPillsMd = tabsTriggerVariants({
 const TabsListComponent = () => {
   return (
     <TabsList
-      className={cn("border-b border-white/10 bg-slate-950/80 p-3", listPillsMd)}
+      className={cn(
+        "border-b border-white/10 bg-slate-950/80 p-3",
+        listPillsMd,
+      )}
     >
       <TabsTrigger value="npm" className={triggerPillsMd}>
         npm

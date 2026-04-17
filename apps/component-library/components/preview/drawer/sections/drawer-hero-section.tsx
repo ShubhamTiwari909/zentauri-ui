@@ -1,7 +1,16 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
-import { Drawer, DrawerBody, DrawerClose, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@zentauri-ui/zentauri-components/ui/drawer";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerClose,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@zentauri-ui/zentauri-components/ui/drawer";
 
 export function DrawerHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -13,7 +22,12 @@ export function DrawerHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           <DrawerTrigger className="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/15">
             Open drawer
           </DrawerTrigger>
-          <DrawerContent side="right" animation="slide" appearance="glass" size="md">
+          <DrawerContent
+            side="right"
+            animation="slide"
+            appearance="glass"
+            size="md"
+          >
             <DrawerClose />
             <DrawerHeader>
               <DrawerTitle>Filters</DrawerTitle>

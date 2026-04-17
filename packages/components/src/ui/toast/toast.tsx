@@ -103,12 +103,19 @@ export function ToastProvider({ children }: ToastProviderProps) {
     };
   }, [push]);
 
-  return <ToastStoreContext.Provider value={ctx}>{children}</ToastStoreContext.Provider>;
+  return (
+    <ToastStoreContext.Provider value={ctx}>
+      {children}
+    </ToastStoreContext.Provider>
+  );
 }
 
 ToastProvider.displayName = "ToastProvider";
 
-export function ToastViewport({ position = "bottom-right", className }: ToastViewportProps) {
+export function ToastViewport({
+  position = "bottom-right",
+  className,
+}: ToastViewportProps) {
   const ctx = useContext(ToastStoreContext);
   if (!ctx) {
     throw new Error("ToastViewport must be used within <ToastProvider>");
@@ -120,7 +127,10 @@ export function ToastViewport({ position = "bottom-right", className }: ToastVie
   }
 
   return createPortal(
-    <div className={cn(toastViewportVariants({ position }), className)} data-slot="toast-viewport">
+    <div
+      className={cn(toastViewportVariants({ position }), className)}
+      data-slot="toast-viewport"
+    >
       <AnimatePresence>
         {ctx.toasts.map((item) => (
           <Toast
@@ -131,7 +141,9 @@ export function ToastViewport({ position = "bottom-right", className }: ToastVie
             animation={item.animation}
           >
             <ToastTitle>{item.title}</ToastTitle>
-            {item.description ? <ToastDescription>{item.description}</ToastDescription> : null}
+            {item.description ? (
+              <ToastDescription>{item.description}</ToastDescription>
+            ) : null}
             <ToastClose onClick={() => ctx.dismiss(item.id)} />
           </Toast>
         ))}
@@ -143,7 +155,14 @@ export function ToastViewport({ position = "bottom-right", className }: ToastVie
 
 ToastViewport.displayName = "ToastViewport";
 
-export function Toast({ toastId: _toastId, appearance, size, animation = "slide", className, children }: ToastProps) {
+export function Toast({
+  toastId: _toastId,
+  appearance,
+  size,
+  animation = "slide",
+  className,
+  children,
+}: ToastProps) {
   const motionProps = toastAnimationPresets[animation];
   const live = appearance === "error" ? "assertive" : "polite";
 
@@ -154,7 +173,11 @@ export function Toast({ toastId: _toastId, appearance, size, animation = "slide"
       role={appearance === "error" ? "alert" : "status"}
       aria-live={live}
       aria-atomic="true"
-      className={cn("relative", toastRootVariants({ appearance, size }), className)}
+      className={cn(
+        "relative",
+        toastRootVariants({ appearance, size }),
+        className,
+      )}
       initial={animation === "none" ? false : motionProps.initial}
       animate={animation === "none" ? undefined : motionProps.animate}
       exit={animation === "none" ? undefined : motionProps.exit}
@@ -168,14 +191,21 @@ export function Toast({ toastId: _toastId, appearance, size, animation = "slide"
 Toast.displayName = "Toast";
 
 export function ToastTitle({ className, children }: ToastSectionProps) {
-  return <div data-slot="toast-title" className={cn("font-semibold", className)}>{children}</div>;
+  return (
+    <div data-slot="toast-title" className={cn("font-semibold", className)}>
+      {children}
+    </div>
+  );
 }
 
 ToastTitle.displayName = "ToastTitle";
 
 export function ToastDescription({ className, children }: ToastSectionProps) {
   return (
-    <div data-slot="toast-description" className={cn("text-sm text-slate-300", className)}>
+    <div
+      data-slot="toast-description"
+      className={cn("text-sm text-slate-300", className)}
+    >
       {children}
     </div>
   );
@@ -184,12 +214,21 @@ export function ToastDescription({ className, children }: ToastSectionProps) {
 ToastDescription.displayName = "ToastDescription";
 
 export function ToastAction({ className, children }: ToastSectionProps) {
-  return <div data-slot="toast-action" className={cn("mt-3", className)}>{children}</div>;
+  return (
+    <div data-slot="toast-action" className={cn("mt-3", className)}>
+      {children}
+    </div>
+  );
 }
 
 ToastAction.displayName = "ToastAction";
 
-export function ToastClose({ className, children, onClick, ...rest }: ToastSectionProps & { onClick?: () => void }) {
+export function ToastClose({
+  className,
+  children,
+  onClick,
+  ...rest
+}: ToastSectionProps & { onClick?: () => void }) {
   return (
     <button
       type="button"

@@ -108,7 +108,10 @@ export function ProgressBar({
   style,
   ref,
   ...rest
-}: ProgressSectionProps & { style?: React.CSSProperties; ref?: React.Ref<HTMLDivElement> }) {
+}: ProgressSectionProps & {
+  style?: React.CSSProperties;
+  ref?: React.Ref<HTMLDivElement>;
+}) {
   const { size, shape, striped, animated } = useProgressContext("ProgressBar");
 
   return (
@@ -125,9 +128,7 @@ export function ProgressBar({
           ...style,
         }}
         animate={
-          animated
-            ? { x: ["-30%", "0%"], opacity: [0.85, 1] }
-            : undefined
+          animated ? { x: ["-30%", "0%"], opacity: [0.85, 1] } : undefined
         }
         transition={
           animated
@@ -144,7 +145,10 @@ ProgressBar.displayName = "ProgressBar";
 
 export function ProgressLabel({ className, children }: ProgressSectionProps) {
   return (
-    <div data-slot="progress-label" className={cn("mb-2 font-medium text-slate-200", className)}>
+    <div
+      data-slot="progress-label"
+      className={cn("mb-2 font-medium text-slate-200", className)}
+    >
       {children}
     </div>
   );
@@ -158,7 +162,10 @@ export function ProgressValue({ className, children }: ProgressSectionProps) {
   const pct = range === 0 ? 0 : Math.round(((value - min) / range) * 100);
   const content = children ?? `${pct}%`;
   return (
-    <div data-slot="progress-value" className={cn("mt-2 text-right text-slate-400", className)}>
+    <div
+      data-slot="progress-value"
+      className={cn("mt-2 text-right text-slate-400", className)}
+    >
       {content}
     </div>
   );

@@ -5,7 +5,11 @@ import { ButtonCodeExamplesSection } from "./sections/button-code-examples-secti
 import { ButtonHeroSection } from "./sections/button-hero-section";
 import { ButtonVariantsMotionSection } from "./sections/button-variants-motion-section";
 
-export default function ButtonsPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function ButtonsPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <ButtonHeroSection seo={seo} />

@@ -10,9 +10,9 @@ Published artifacts live under `dist/`. You can import either the **UI barrel** 
 
 ## Package exports
 
-| Subpath | Description |
-| --- | --- |
-| `@zentauri-ui/zentauri-components/ui` | Full UI barrel: all components, hooks, and types (ESM `.js`, CJS `.cjs`, `.d.ts`) |
+| Subpath                                      | Description                                                                                                                      |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `@zentauri-ui/zentauri-components/ui`        | Full UI barrel: all components, hooks, and types (ESM `.js`, CJS `.cjs`, `.d.ts`)                                                |
 | `@zentauri-ui/zentauri-components/ui/<name>` | Single area entry (same artifacts per file). Use this when you import from one module only to keep the dependency graph smaller. |
 
 The `<name>` segment matches the folder under `src/ui/` (for example `accordion`, `select`, `empty-state`, `buttons` for `Button`, `inputs` for `Input`).
@@ -26,29 +26,29 @@ The `<name>` segment matches the folder under `src/ui/` (for example `accordion`
 
 Each area is available from the barrel and from its own subpath (`…/ui/<subpath>`):
 
-| Area | Subpath `…/ui/…` |
-| --- | --- |
-| Accordion | `accordion` |
-| Alert | `alert` |
-| Badge | `badge` |
-| Button | `buttons` |
-| Card | `card` |
-| Divider | `divider` |
-| Drawer | `drawer` |
-| Dropdown | `dropdown` |
-| Empty state | `empty-state` |
-| Input | `inputs` |
-| Modal | `modal` |
-| Pagination | `pagination` |
-| Progress | `progress` |
-| Select | `select` |
-| Skeleton | `skeleton` |
-| Spinner | `spinner` |
-| Table | `table` |
-| Tabs | `tabs` |
-| Toast | `toast` |
-| Toggle | `toggle` |
-| Tooltip | `tooltip` |
+| Area        | Subpath `…/ui/…` |
+| ----------- | ---------------- |
+| Accordion   | `accordion`      |
+| Alert       | `alert`          |
+| Badge       | `badge`          |
+| Button      | `buttons`        |
+| Card        | `card`           |
+| Divider     | `divider`        |
+| Drawer      | `drawer`         |
+| Dropdown    | `dropdown`       |
+| Empty state | `empty-state`    |
+| Input       | `inputs`         |
+| Modal       | `modal`          |
+| Pagination  | `pagination`     |
+| Progress    | `progress`       |
+| Select      | `select`         |
+| Skeleton    | `skeleton`       |
+| Spinner     | `spinner`        |
+| Table       | `table`          |
+| Tabs        | `tabs`           |
+| Toast       | `toast`          |
+| Toggle      | `toggle`         |
+| Tooltip     | `tooltip`        |
 
 ## Installation
 
@@ -149,26 +149,43 @@ import {
 
 ```tsx
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@zentauri-ui/zentauri-components/ui/select";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@zentauri-ui/zentauri-components/ui/select";
 ```
 
 #### Imports (barrel — one entry for symbols from several areas)
 
 ```tsx
-import { Button, Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@zentauri-ui/zentauri-components/ui";
+import {
+  Button,
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@zentauri-ui/zentauri-components/ui";
 ```
 
 #### Usage
 
 ```tsx
 <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
-  <Accordion type="single" defaultValue="item-1" appearance="separated" size="md">
+  <Accordion
+    type="single"
+    defaultValue="item-1"
+    appearance="separated"
+    size="md"
+  >
     <AccordionItem value="item-1">
       <AccordionTrigger>Shipping</AccordionTrigger>
       <AccordionContent>
         <p className="text-sm text-slate-300">
-          Standard delivery in 3-5 business days. Express options at
-          checkout.
+          Standard delivery in 3-5 business days. Express options at checkout.
         </p>
       </AccordionContent>
     </AccordionItem>
@@ -185,6 +202,7 @@ import { Button, Select, SelectTrigger, SelectValue, SelectContent, SelectItem }
 ```
 
 ## Checkout the components:
+
 https://zentauri-ui.vercel.app/
 
 ## Development
@@ -195,7 +213,8 @@ From this package directory in the monorepo:
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
 - `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests
 
-## NOTE: 
+## NOTE:
+
 This package is in initial phase of development and you might see some minor or major breaking changes in the future. If you want to contribute to this project, email me at @shubhmtiwri00@gmail.com or ping me on linkeded https://www.linkedin.com/in/shubham-tiwari-b7544b193/
 
 ## License

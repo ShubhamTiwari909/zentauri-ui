@@ -18,4 +18,8 @@ export type {
   SelectOption,
   SelectContextType,
 } from "./types";
-export { selectTriggerVariants, selectItemVariants, selectContentVariants } from "./variants";
+export {
+  selectTriggerVariants,
+  selectItemVariants,
+  selectContentVariants,
+} from "./variants";

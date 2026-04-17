@@ -18,10 +18,7 @@ export function usePagination({
   );
 
   const isControlled = page !== undefined;
-  const currentPage = clampPage(
-    isControlled ? page : internalPage,
-    pageCount,
-  );
+  const currentPage = clampPage(isControlled ? page : internalPage, pageCount);
 
   const setPage = useCallback(
     (next: number) => {

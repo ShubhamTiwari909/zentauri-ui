@@ -10,6 +10,7 @@ description: Plan, scaffold, and review new Zentauri UI components (React + Tail
 Create a consistent, project-aligned plan (and optionally a scaffold checklist) for new UI primitives and their preview pages in this repo.
 
 Keep outputs aligned with existing patterns in:
+
 - `apps/component-library/components/ui/*`
 - `apps/component-library/components/preview/*`
 - `apps/component-library/app/preview/*`
@@ -22,11 +23,13 @@ For detailed conventions, load `references/zentauri-ui-conventions.md`.
 ### 0) Confirm scope and naming
 
 Decide:
+
 - Component display name (PascalCase), e.g. `Button`, `Input`, `Tabs`
 - Route/group segment (lowercase, usually plural), e.g. `buttons`, `inputs`, `tabs`
 - Primitive vs composite (does it wrap native elements? does it compose other primitives?)
 
 If this component needs a preview page, ensure the route segment is stable because it becomes:
+
 - `apps/component-library/app/preview/<segment>/page.tsx`
 - `apps/component-library/components/preview/<segment>/...`
 - an entry in `apps/component-library/components/sidebar/sidebar-data.ts`
@@ -34,6 +37,7 @@ If this component needs a preview page, ensure the route segment is stable becau
 ### 1) Read the current conventions (fast)
 
 Before proposing API/structure, inspect at least:
+
 - `apps/component-library/components/ui/buttons/*` (variants + motion + test style)
 - `apps/component-library/components/ui/inputs/*` (polymorphic `as`, error handling, a11y)
 - `apps/component-library/components/preview/buttons/*` (preview structure + sections)
@@ -66,14 +70,16 @@ Output a single Markdown plan with these sections (keep it short but concrete):
 9. **Tests**
    - contract tests (data-slot, displayName, defaults, variant classes, a11y hooks)
 10. **Validation commands**
-   - `pnpm -C apps/component-library test`
-   - `pnpm -C apps/component-library lint` (if applicable)
+
+- `pnpm -C apps/component-library test`
+- `pnpm -C apps/component-library lint` (if applicable)
 
 Use the existing `Button` and `Input` tests as the contract bar: validate the stable selectors and explicit defaults.
 
 ### 3) (Optional) Generate a plan skeleton with the bundled script
 
 Run:
+
 - `python3 codex-skills/zentauri-component-planner/scripts/generate_component_plan.py --name "Tabs" --segment "tabs"`
 
 Then edit the generated plan to match actual component needs.
@@ -81,6 +87,7 @@ Then edit the generated plan to match actual component needs.
 ### 4) (Optional) Proceed from plan → implementation
 
 If the user asks to implement (not just plan), follow the plan and keep the implementation consistent with existing patterns:
+
 - `components/ui/<segment>/` should include `types.ts`, `variants.ts`, `animations.ts` (if animated), `index.ts`, and a contract test.
 - Preview wiring should include route + sidebar data update + `components/preview/<segment>/`.
 

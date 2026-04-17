@@ -1,4 +1,9 @@
-import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from "@zentauri-ui/zentauri-components/ui/dropdown";
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownTrigger,
+} from "@zentauri-ui/zentauri-components/ui/dropdown";
 
 import { DROPDOWN_MENU_SURFACE_CLASS } from "./dropdown-code-examples.data";
 import type {
@@ -52,7 +57,10 @@ export function DropdownPlacementDemo({
         <DropdownTrigger variant="outline" size="sm">
           Menu {placement}
         </DropdownTrigger>
-        <DropdownContent placement={placement} className={DROPDOWN_MENU_SURFACE_CLASS}>
+        <DropdownContent
+          placement={placement}
+          className={DROPDOWN_MENU_SURFACE_CLASS}
+        >
           <DropdownItem value="a">Alpha</DropdownItem>
           <DropdownItem value="b">Beta</DropdownItem>
         </DropdownContent>
@@ -72,7 +80,10 @@ export function DropdownSpacingDemo({
         <DropdownTrigger variant="outline" size="sm">
           Menu {spacing}
         </DropdownTrigger>
-        <DropdownContent spacing={spacing} className={DROPDOWN_MENU_SURFACE_CLASS}>
+        <DropdownContent
+          spacing={spacing}
+          className={DROPDOWN_MENU_SURFACE_CLASS}
+        >
           <DropdownItem value="a">Alpha</DropdownItem>
           <DropdownItem value="b">Beta</DropdownItem>
         </DropdownContent>

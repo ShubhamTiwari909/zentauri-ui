@@ -13,9 +13,11 @@ export const EMPTY_APPEARANCES = [
   "card",
 ] as const satisfies readonly NonNullable<EmptyStateProps["appearance"]>[];
 
-export const EMPTY_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<
-  EmptyStateProps["size"]
->[];
+export const EMPTY_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly NonNullable<EmptyStateProps["size"]>[];
 
 export const EMPTY_ALIGNS = [
   "start",

@@ -1,8 +1,5 @@
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
-import {
-  showcaseButtons,
-  buttonAnimationPresets,
-} from "../variants";
+import { showcaseButtons, buttonAnimationPresets } from "../variants";
 
 export function ButtonVariantsMotionSection() {
   return (
@@ -15,9 +12,9 @@ export function ButtonVariantsMotionSection() {
           One component, multiple visual styles
         </h2>
         <p className="mt-3 text-sm leading-6 text-slate-400">
-          You can use the `variant` and `size` props to switch the button between
-          polished defaults, outlines, ghost actions, destructive actions, and
-          glass surfaces.
+          You can use the `variant` and `size` props to switch the button
+          between polished defaults, outlines, ghost actions, destructive
+          actions, and glass surfaces.
         </p>
 
         <div className="mt-6 flex flex-wrap gap-3">
@@ -41,8 +38,8 @@ export function ButtonVariantsMotionSection() {
           Animation options through a prop
         </h2>
         <p className="mt-3 text-sm leading-6 text-slate-300">
-          Pick a preset like `lift`, `press`, `glow`, `tilt`, or `bounce` to give
-          each button a different feel without rewriting the component.
+          Pick a preset like `lift`, `press`, `glow`, `tilt`, or `bounce` to
+          give each button a different feel without rewriting the component.
         </p>
 
         <div className="mt-6 grid gap-3 sm:grid-cols-2">

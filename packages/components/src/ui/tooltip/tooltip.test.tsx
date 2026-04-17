@@ -16,7 +16,9 @@ describe("Tooltip", () => {
       </Tooltip>,
     );
     await user.hover(screen.getByRole("button", { name: "Target" }));
-    expect(await screen.findByRole("tooltip")).toHaveTextContent("Helpful hint");
+    expect(await screen.findByRole("tooltip")).toHaveTextContent(
+      "Helpful hint",
+    );
   });
 
   it("should hide tooltip content when pointer leaves the trigger", async () => {
@@ -50,7 +52,9 @@ describe("Tooltip", () => {
     );
     const trigger = screen.getByRole("button", { name: "Focus me" });
     await user.click(trigger);
-    expect(await screen.findByRole("tooltip")).toHaveTextContent("Keyboard tip");
+    expect(await screen.findByRole("tooltip")).toHaveTextContent(
+      "Keyboard tip",
+    );
     await user.tab();
     await waitFor(() => {
       expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();

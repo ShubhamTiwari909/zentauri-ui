@@ -51,7 +51,12 @@ describe("Toast", () => {
   it("should use role alert for error toasts", async () => {
     render(
       <ToastProvider>
-        <ToastHarness title="Failed" appearance="error" id="toast-err" durationMs={60_000} />
+        <ToastHarness
+          title="Failed"
+          appearance="error"
+          id="toast-err"
+          durationMs={60_000}
+        />
       </ToastProvider>,
     );
     const root = await screen.findByRole("alert");
@@ -67,33 +72,31 @@ describe("Toast", () => {
       </ToastProvider>,
     );
     expect(await screen.findByText("Closable")).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: /dismiss notification/i }));
+    await user.click(
+      screen.getByRole("button", { name: /dismiss notification/i }),
+    );
     await waitFor(() => {
       expect(screen.queryByText("Closable")).not.toBeInTheDocument();
     });
   });
 
-  it(
-    "should auto-dismiss after durationMs",
-    async () => {
-      render(
-        <ToastProvider>
-          <ToastHarness
-            title="Short lived"
-            id="toast-auto"
-            durationMs={80}
-            animation="none"
-          />
-        </ToastProvider>,
-      );
-      expect(await screen.findByText("Short lived")).toBeInTheDocument();
-      await waitFor(
-        () => {
-          expect(screen.queryByText("Short lived")).not.toBeInTheDocument();
-        },
-        { timeout: 2000 },
-      );
-    },
-    5000,
-  );
+  it("should auto-dismiss after durationMs", async () => {
+    render(
+      <ToastProvider>
+        <ToastHarness
+          title="Short lived"
+          id="toast-auto"
+          durationMs={80}
+          animation="none"
+        />
+      </ToastProvider>,
+    );
+    expect(await screen.findByText("Short lived")).toBeInTheDocument();
+    await waitFor(
+      () => {
+        expect(screen.queryByText("Short lived")).not.toBeInTheDocument();
+      },
+      { timeout: 2000 },
+    );
+  }, 5000);
 });

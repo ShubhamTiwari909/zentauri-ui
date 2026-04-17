@@ -27,7 +27,9 @@ export function dropdownTriggerSnippet(
 </Dropdown>`;
 }
 
-export function dropdownPlacementSnippet(placement: DropdownContentPlacement): string {
+export function dropdownPlacementSnippet(
+  placement: DropdownContentPlacement,
+): string {
   const placementAttr =
     placement === "bottom" ? "" : ` placement="${placement}"`;
   return `${variantLeadComment(`DropdownContent · placement · ${placement}`)}<Dropdown>
@@ -41,7 +43,9 @@ export function dropdownPlacementSnippet(placement: DropdownContentPlacement): s
 </Dropdown>`;
 }
 
-export function dropdownSpacingSnippet(spacing: DropdownContentSpacing): string {
+export function dropdownSpacingSnippet(
+  spacing: DropdownContentSpacing,
+): string {
   const spacingAttr = spacing === "default" ? "" : ` spacing="${spacing}"`;
   return `${variantLeadComment(`DropdownContent · spacing · ${spacing}`)}<Dropdown>
   <DropdownTrigger variant="outline" size="sm">

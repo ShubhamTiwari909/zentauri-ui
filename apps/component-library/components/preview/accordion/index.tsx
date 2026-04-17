@@ -5,7 +5,11 @@ import { AccordionCodeExamplesSection } from "./sections/accordion-code-examples
 import { AccordionExamplesSection } from "./sections/accordion-examples-section";
 import { AccordionHeroSection } from "./sections/accordion-hero-section";
 
-export default function AccordionPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function AccordionPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <AccordionHeroSection seo={seo} />

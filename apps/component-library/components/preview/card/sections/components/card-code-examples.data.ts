@@ -32,10 +32,15 @@ export const CARD_APPEARANCES = [
   "gradient-orange",
 ] as const satisfies readonly NonNullable<CardProps["appearance"]>[];
 
-export const CARD_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<
-  CardProps["size"]
->[];
+export const CARD_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly NonNullable<CardProps["size"]>[];
 
-export const CARD_ROUNDED = ["sm", "md", "lg", "full"] as const satisfies readonly NonNullable<
-  CardProps["rounded"]
->[];
+export const CARD_ROUNDED = [
+  "sm",
+  "md",
+  "lg",
+  "full",
+] as const satisfies readonly NonNullable<CardProps["rounded"]>[];

@@ -22,7 +22,11 @@ import type {
   DrawerSectionProps,
   DrawerTriggerProps,
 } from "./types";
-import { drawerContentVariants, drawerOverlayVariants, drawerTriggerVariants } from "./variants";
+import {
+  drawerContentVariants,
+  drawerOverlayVariants,
+  drawerTriggerVariants,
+} from "./variants";
 
 type DrawerCtx = {
   open: boolean;
@@ -58,7 +62,12 @@ function useBodyScrollLock(locked: boolean) {
   }, [locked]);
 }
 
-export function Drawer({ open, defaultOpen = false, onOpenChange, children }: DrawerProps) {
+export function Drawer({
+  open,
+  defaultOpen = false,
+  onOpenChange,
+  children,
+}: DrawerProps) {
   const isControlled = open !== undefined;
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
   const resolvedOpen = isControlled ? Boolean(open) : uncontrolledOpen;
@@ -89,12 +98,21 @@ export function Drawer({ open, defaultOpen = false, onOpenChange, children }: Dr
     [descriptionId, resolvedOpen, setOpen, titleId],
   );
 
-  return <DrawerContext.Provider value={ctx}>{children}</DrawerContext.Provider>;
+  return (
+    <DrawerContext.Provider value={ctx}>{children}</DrawerContext.Provider>
+  );
 }
 
 Drawer.displayName = "Drawer";
 
-export function DrawerTrigger({ className, children, appearance, onClick, ref, ...rest }: DrawerTriggerProps) {
+export function DrawerTrigger({
+  className,
+  children,
+  appearance,
+  onClick,
+  ref,
+  ...rest
+}: DrawerTriggerProps) {
   const { setOpen } = useDrawerContext("DrawerTrigger");
   return (
     <button
@@ -128,11 +146,14 @@ export function DrawerContent({
   id,
   style,
 }: DrawerContentProps) {
-  const { open, setOpen, titleId, descriptionId, contentRef } = useDrawerContext("DrawerContent");
+  const { open, setOpen, titleId, descriptionId, contentRef } =
+    useDrawerContext("DrawerContent");
   const resolvedSide = side ?? "right";
   const reduceMotion = useReducedMotion();
-  const overlayMotion = drawerPanelPresets(resolvedSide)[reduceMotion ? "fade" : animation];
-  const panelMotion = drawerPanelPresets(resolvedSide)[reduceMotion ? "fade" : animation];
+  const overlayMotion =
+    drawerPanelPresets(resolvedSide)[reduceMotion ? "fade" : animation];
+  const panelMotion =
+    drawerPanelPresets(resolvedSide)[reduceMotion ? "fade" : animation];
 
   useBodyScrollLock(open);
 
@@ -204,7 +225,8 @@ export function DrawerContent({
               if (typeof ref === "function") {
                 ref(node);
               } else if (ref) {
-                (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+                (ref as React.MutableRefObject<HTMLDivElement | null>).current =
+                  node;
               }
             }}
             role="dialog"
@@ -237,7 +259,10 @@ DrawerContent.displayName = "DrawerContent";
 
 export function DrawerHeader({ className, children }: DrawerSectionProps) {
   return (
-    <header data-slot="drawer-header" className={cn("mb-4 flex flex-col gap-2", className)}>
+    <header
+      data-slot="drawer-header"
+      className={cn("mb-4 flex flex-col gap-2", className)}
+    >
       {children}
     </header>
   );
@@ -247,7 +272,10 @@ DrawerHeader.displayName = "DrawerHeader";
 
 export function DrawerBody({ className, children }: DrawerSectionProps) {
   return (
-    <div data-slot="drawer-body" className={cn("flex-1 text-sm text-slate-300", className)}>
+    <div
+      data-slot="drawer-body"
+      className={cn("flex-1 text-sm text-slate-300", className)}
+    >
       {children}
     </div>
   );
@@ -257,7 +285,10 @@ DrawerBody.displayName = "DrawerBody";
 
 export function DrawerFooter({ className, children }: DrawerSectionProps) {
   return (
-    <footer data-slot="drawer-footer" className={cn("mt-6 flex justify-end gap-2", className)}>
+    <footer
+      data-slot="drawer-footer"
+      className={cn("mt-6 flex justify-end gap-2", className)}
+    >
       {children}
     </footer>
   );
@@ -268,7 +299,11 @@ DrawerFooter.displayName = "DrawerFooter";
 export function DrawerTitle({ className, children }: DrawerSectionProps) {
   const { titleId } = useDrawerContext("DrawerTitle");
   return (
-    <h2 id={titleId} data-slot="drawer-title" className={cn("text-lg font-semibold", className)}>
+    <h2
+      id={titleId}
+      data-slot="drawer-title"
+      className={cn("text-lg font-semibold", className)}
+    >
       {children}
     </h2>
   );
@@ -276,7 +311,11 @@ export function DrawerTitle({ className, children }: DrawerSectionProps) {
 
 DrawerTitle.displayName = "DrawerTitle";
 
-export function DrawerClose({ className, children, ...rest }: DrawerSectionProps) {
+export function DrawerClose({
+  className,
+  children,
+  ...rest
+}: DrawerSectionProps) {
   const { setOpen } = useDrawerContext("DrawerClose");
   return (
     <button

@@ -1,6 +1,10 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 
-import type { AnimationPreset, AppearanceInputRow, SizeInputRow } from "./inputs-code-examples.types";
+import type {
+  AnimationPreset,
+  AppearanceInputRow,
+  SizeInputRow,
+} from "./inputs-code-examples.types";
 
 export function inputAppearanceSnippet(row: AppearanceInputRow): string {
   return row.appearance === "default"

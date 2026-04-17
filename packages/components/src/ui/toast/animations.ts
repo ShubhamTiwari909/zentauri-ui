@@ -7,7 +7,10 @@ type ToastPresetMotionProps = Pick<
   "initial" | "animate" | "exit" | "transition"
 >;
 
-export type ToastAnimationPresets = Record<ToastAnimation, ToastPresetMotionProps>;
+export type ToastAnimationPresets = Record<
+  ToastAnimation,
+  ToastPresetMotionProps
+>;
 
 export const toastAnimationPresets: ToastAnimationPresets = {
   none: {},

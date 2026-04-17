@@ -27,8 +27,8 @@ export function DropdownCodeExamplesSection() {
         Variant code examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Each block matches one combination. Open “Show code” to copy the JSX; the
-        leading comment names the variant row.
+        Each block matches one combination. Open “Show code” to copy the JSX;
+        the leading comment names the variant row.
       </p>
 
       <h3 className="mt-10 text-lg font-semibold text-white">
@@ -60,7 +60,8 @@ export function DropdownCodeExamplesSection() {
         DropdownContent — placement
       </h3>
       <p className="mt-1 max-w-2xl text-sm text-slate-400">
-        Surfaces position relative to the trigger on top, bottom, left, or right.
+        Surfaces position relative to the trigger on top, bottom, left, or
+        right.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {DROPDOWN_CONTENT_PLACEMENTS.map((placement) => (

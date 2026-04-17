@@ -50,10 +50,14 @@ describe("Drawer", () => {
         </DrawerContent>
       </Drawer>,
     );
-    expect(screen.getByRole("button", { name: "Go" }).getAttribute("data-slot")).toBe("drawer-trigger");
+    expect(
+      screen.getByRole("button", { name: "Go" }).getAttribute("data-slot"),
+    ).toBe("drawer-trigger");
     await user.click(screen.getByRole("button", { name: "Go" }));
     await waitFor(() => {
-      expect(document.querySelector('[data-slot="drawer-portal"]')).toBeTruthy();
+      expect(
+        document.querySelector('[data-slot="drawer-portal"]'),
+      ).toBeTruthy();
     });
   });
 
@@ -67,7 +71,9 @@ describe("Drawer", () => {
       </Drawer>,
     );
     await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
-    const overlay = document.querySelector('[data-slot="drawer-overlay"]') as HTMLElement;
+    const overlay = document.querySelector(
+      '[data-slot="drawer-overlay"]',
+    ) as HTMLElement;
     await user.click(overlay);
     await waitFor(() => {
       expect(screen.queryByRole("dialog")).not.toBeInTheDocument();

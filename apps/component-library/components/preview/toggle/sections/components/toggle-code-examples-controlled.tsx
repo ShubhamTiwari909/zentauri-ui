@@ -9,7 +9,8 @@ export function ToggleControlledDemo() {
   return (
     <>
       <p className="mb-5 text-xs md:text-sm">
-        Controlled: <span className="font-bold">{checked ? "Checked" : "Unchecked"}</span>
+        Controlled:{" "}
+        <span className="font-bold">{checked ? "Checked" : "Unchecked"}</span>
       </p>
       <Toggle
         checked={checked}
