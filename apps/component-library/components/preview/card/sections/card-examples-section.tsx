@@ -1,6 +1,12 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Card, CardBody, CardDescription, CardHeader, CardTitle } from "@zentauri-ui/zentauri-components/ui/card";
+import {
+  Card,
+  CardBody,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@zentauri-ui/zentauri-components/ui/card";
 
 export function CardExamplesSection() {
   return (
@@ -20,13 +26,20 @@ export function CardExamplesSection() {
   <CardBody>Draft content…</CardBody>
 </Card>`}
         >
-          <Card appearance="outline" animation="tilt" rounded="md" className="max-w-md">
+          <Card
+            appearance="outline"
+            animation="tilt"
+            rounded="md"
+            className="max-w-md"
+          >
             <CardHeader>
               <CardTitle>Note</CardTitle>
               <CardDescription>Autosaved</CardDescription>
             </CardHeader>
             <CardBody>
-              <p className="text-sm text-slate-300">Draft content for this preview.</p>
+              <p className="text-sm text-slate-300">
+                Draft content for this preview.
+              </p>
             </CardBody>
           </Card>
         </PreviewCodeShowcase>

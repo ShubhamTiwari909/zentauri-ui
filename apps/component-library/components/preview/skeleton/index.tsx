@@ -5,7 +5,11 @@ import { SkeletonCodeExamplesSection } from "./sections/skeleton-code-examples-s
 import { SkeletonExamplesSection } from "./sections/skeleton-examples-section";
 import { SkeletonHeroSection } from "./sections/skeleton-hero-section";
 
-export default function SkeletonPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function SkeletonPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <SkeletonHeroSection seo={seo} />

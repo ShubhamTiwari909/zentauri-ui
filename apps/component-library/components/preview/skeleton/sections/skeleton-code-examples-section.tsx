@@ -16,8 +16,8 @@ export function SkeletonCodeExamplesSection() {
         Skeleton variants examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Surface tone, block height, and corner radius. Each code view starts with Variant:
-        for clarity.
+        Surface tone, block height, and corner radius. Each code view starts
+        with Variant: for clarity.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {SKELETON_APPEARANCES.map((appearance) => (

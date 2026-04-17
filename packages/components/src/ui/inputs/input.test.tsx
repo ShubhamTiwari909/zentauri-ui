@@ -102,13 +102,7 @@ describe("Input (component library)", () => {
     });
 
     const additionalAppearances: {
-      appearance:
-        | "warning"
-        | "info"
-        | "violet"
-        | "amber"
-        | "pink"
-        | "indigo";
+      appearance: "warning" | "info" | "violet" | "amber" | "pink" | "indigo";
       borderPattern: RegExp;
     }[] = [
       {

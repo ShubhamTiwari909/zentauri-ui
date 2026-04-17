@@ -29,5 +29,7 @@ function createMatchMediaList(query: string, matches: boolean): MediaQueryList {
 Object.defineProperty(window, "matchMedia", {
   writable: true,
   configurable: true,
-  value: vi.fn().mockImplementation((query: string) => createMatchMediaList(query, true)),
+  value: vi
+    .fn()
+    .mockImplementation((query: string) => createMatchMediaList(query, true)),
 });

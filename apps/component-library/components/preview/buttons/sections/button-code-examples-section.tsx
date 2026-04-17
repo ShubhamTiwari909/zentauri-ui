@@ -24,8 +24,8 @@ export function ButtonCodeExamplesSection() {
         Button variants examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Use Show output / Show code on each row. Snippets start with a Variant line
-        naming the token row.
+        Use Show output / Show code on each row. Snippets start with a Variant
+        line naming the token row.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {showcaseButtons.map((button) => (
@@ -35,7 +35,9 @@ export function ButtonCodeExamplesSection() {
           >
             <p className="mb-5 text-xs md:text-sm font-semibold text-white">
               Appearance:{" "}
-              <span className="font-bold">{button.appearance.toUpperCase()}</span>
+              <span className="font-bold">
+                {button.appearance.toUpperCase()}
+              </span>
             </p>
             <ButtonAppearanceDemo {...button} />
           </PreviewCodeShowcase>
@@ -43,7 +45,10 @@ export function ButtonCodeExamplesSection() {
         {buttonAnimationPresets.map((preset) => {
           const [label] = preset;
           return (
-            <PreviewCodeShowcase key={label} code={buttonAnimationSnippet(preset)}>
+            <PreviewCodeShowcase
+              key={label}
+              code={buttonAnimationSnippet(preset)}
+            >
               <p className="mb-5 text-xs md:text-sm font-semibold text-white">
                 Animation:{" "}
                 <span className="font-bold">{preset[1].toUpperCase()}</span>
@@ -53,9 +58,13 @@ export function ButtonCodeExamplesSection() {
           );
         })}
         {sizeButtons.map((button) => (
-          <PreviewCodeShowcase key={button.label} code={buttonSizeSnippet(button)}>
+          <PreviewCodeShowcase
+            key={button.label}
+            code={buttonSizeSnippet(button)}
+          >
             <p className="mb-5 text-xs md:text-sm font-semibold text-white">
-              Size: <span className="font-bold">{button.size.toUpperCase()}</span>
+              Size:{" "}
+              <span className="font-bold">{button.size.toUpperCase()}</span>
             </p>
             <ButtonSizeDemo {...button} />
           </PreviewCodeShowcase>

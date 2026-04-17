@@ -9,7 +9,11 @@ export function ToggleHeroSection({ seo }: { seo: PreviewSeoDocument }) {
 
       <div className="flex flex-wrap items-center gap-6 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
         <Toggle defaultChecked aria-label="Enable notifications" />
-        <Toggle appearance="success" defaultChecked aria-label="Auto-save drafts" />
+        <Toggle
+          appearance="success"
+          defaultChecked
+          aria-label="Auto-save drafts"
+        />
         <Toggle appearance="destructive" size="lg" aria-label="Danger mode" />
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority"
+import { cva } from "class-variance-authority";
 
 export const tooltipVariants = cva(
   "absolute z-50 rounded-md shadow-md transition-all duration-200 pointer-events-none",
@@ -19,22 +19,30 @@ export const tooltipVariants = cva(
         yellow: "bg-yellow-600 text-white",
         orange: "bg-orange-600 text-white",
         green: "bg-green-600 text-white",
-        "gradient-blue": "bg-gradient-to-r from-blue-600 to-purple-600 text-white",
-        "gradient-green": "bg-gradient-to-r from-green-600 to-lime-600 text-white",
+        "gradient-blue":
+          "bg-gradient-to-r from-blue-600 to-purple-600 text-white",
+        "gradient-green":
+          "bg-gradient-to-r from-green-600 to-lime-600 text-white",
         "gradient-red": "bg-gradient-to-r from-red-600 to-pink-600 text-white",
-        "gradient-yellow": "bg-gradient-to-r from-yellow-600 to-orange-600 text-white",
-        "gradient-purple": "bg-gradient-to-r from-purple-600 to-pink-600 text-white",
-        "gradient-teal": "bg-gradient-to-r from-teal-600 to-cyan-600 text-white",
-        "gradient-indigo": "bg-gradient-to-r from-indigo-600 to-purple-600 text-white",
-        "gradient-pink": "bg-gradient-to-r from-pink-600 to-rose-600 text-white",
-        "gradient-orange": "bg-gradient-to-r from-orange-600 to-red-600 text-white",
+        "gradient-yellow":
+          "bg-gradient-to-r from-yellow-600 to-orange-600 text-white",
+        "gradient-purple":
+          "bg-gradient-to-r from-purple-600 to-pink-600 text-white",
+        "gradient-teal":
+          "bg-gradient-to-r from-teal-600 to-cyan-600 text-white",
+        "gradient-indigo":
+          "bg-gradient-to-r from-indigo-600 to-purple-600 text-white",
+        "gradient-pink":
+          "bg-gradient-to-r from-pink-600 to-rose-600 text-white",
+        "gradient-orange":
+          "bg-gradient-to-r from-orange-600 to-red-600 text-white",
       },
       size: {
         sm: "text-xs px-2 py-1",
         md: "text-sm px-3 py-1.5",
         lg: "text-base px-4 py-2",
       },
-      width:{
+      width: {
         fit: "min-w-75 md:min-w-fit",
         xs: "min-w-75 md:min-w-xs",
         sm: "min-w-75 md:min-w-sm",
@@ -49,5 +57,5 @@ export const tooltipVariants = cva(
       size: "md",
       width: "xs",
     },
-  }
-)
+  },
+);

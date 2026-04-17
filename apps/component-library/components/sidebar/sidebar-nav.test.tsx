@@ -18,13 +18,17 @@ vi.mock("@/components/sidebar/sidebar-data", () => ({
         { title: "Active Link", href: "/active" },
         { title: "Inactive Link", href: "/inactive" },
         { title: "Disabled Link", href: "/disabled", disabled: true },
-        { title: "External Link", href: "https://external.com", external: true },
+        {
+          title: "External Link",
+          href: "https://external.com",
+          external: true,
+        },
       ],
     },
     {
       title: "Empty Group",
       items: [],
-    }
+    },
   ],
 }));
 
@@ -35,11 +39,11 @@ describe("SidebarNav", () => {
 
   it("renders groups and links correctly", () => {
     render(<SidebarNav />);
-    
+
     // Group headers
     expect(screen.getByText("Test Group")).toBeInTheDocument();
     expect(screen.getByText("Empty Group")).toBeInTheDocument();
-    
+
     // Links
     expect(screen.getByText("Active Link")).toBeInTheDocument();
     expect(screen.getByText("Inactive Link")).toBeInTheDocument();
@@ -49,7 +53,7 @@ describe("SidebarNav", () => {
 
   it("highlights the active link correctly", () => {
     render(<SidebarNav />);
-    
+
     const activeLink = screen.getByText("Active Link");
     expect(activeLink).toHaveClass("text-cyan-400"); // Based on styling for active state
     expect(activeLink).toHaveClass("font-medium");
@@ -61,7 +65,7 @@ describe("SidebarNav", () => {
 
   it("applies disabled attributes safely", () => {
     render(<SidebarNav />);
-    
+
     const disabledLink = screen.getByText("Disabled Link");
     expect(disabledLink).toHaveAttribute("href", "#");
     expect(disabledLink).toHaveClass("cursor-not-allowed");
@@ -70,7 +74,7 @@ describe("SidebarNav", () => {
 
   it("applies external target to external links safely", () => {
     render(<SidebarNav />);
-    
+
     const externalLink = screen.getByText("External Link");
     expect(externalLink).toHaveAttribute("target", "_blank");
     expect(externalLink).toHaveAttribute("rel", "noreferrer");
@@ -80,10 +84,10 @@ describe("SidebarNav", () => {
   it("triggers onLinkClick when a link is clicked", () => {
     const onLinkClickMock = vi.fn();
     render(<SidebarNav onLinkClick={onLinkClickMock} />);
-    
+
     const inactiveLink = screen.getByText("Inactive Link");
     fireEvent.click(inactiveLink);
-    
+
     expect(onLinkClickMock).toHaveBeenCalledTimes(1);
   });
 });

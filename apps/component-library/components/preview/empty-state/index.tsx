@@ -5,7 +5,11 @@ import { EmptyStateCodeExamplesSection } from "./sections/empty-state-code-examp
 import { EmptyStateExamplesSection } from "./sections/empty-state-examples-section";
 import { EmptyStateHeroSection } from "./sections/empty-state-hero-section";
 
-export default function EmptyStatePreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function EmptyStatePreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <EmptyStateHeroSection seo={seo} />

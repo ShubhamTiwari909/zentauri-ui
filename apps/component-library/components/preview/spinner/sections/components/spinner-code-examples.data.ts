@@ -28,10 +28,17 @@ export const SPINNER_APPEARANCES = [
   "gradient-orange",
 ] as const satisfies readonly NonNullable<SpinnerProps["appearance"]>[];
 
-export const SPINNER_VARIANTS = ["ring", "dots", "pulse", "bars"] as const satisfies readonly NonNullable<
-  SpinnerProps["variant"]
->[];
+export const SPINNER_VARIANTS = [
+  "ring",
+  "dots",
+  "pulse",
+  "bars",
+] as const satisfies readonly NonNullable<SpinnerProps["variant"]>[];
 
-export const SPINNER_SIZES = ["xs", "sm", "md", "lg", "xl"] as const satisfies readonly NonNullable<
-  SpinnerProps["size"]
->[];
+export const SPINNER_SIZES = [
+  "xs",
+  "sm",
+  "md",
+  "lg",
+  "xl",
+] as const satisfies readonly NonNullable<SpinnerProps["size"]>[];

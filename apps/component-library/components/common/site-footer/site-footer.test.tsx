@@ -25,16 +25,26 @@ describe("SiteFooter", () => {
   it("should expose footer landmark and navigation region", () => {
     render(<SiteFooter />);
     expect(screen.getByRole("contentinfo")).toBeInTheDocument();
-    expect(screen.getByRole("navigation", { name: "Footer" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("navigation", { name: "Footer" }),
+    ).toBeInTheDocument();
   });
 
   it("should render primary nav links", () => {
     render(<SiteFooter />);
     const nav = screen.getByRole("navigation", { name: "Footer" });
-    expect(within(nav).getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
-    expect(within(nav).getByRole("link", { name: "Components" })).toHaveAttribute("href", "/preview");
+    expect(within(nav).getByRole("link", { name: "Home" })).toHaveAttribute(
+      "href",
+      "/",
+    );
+    expect(
+      within(nav).getByRole("link", { name: "Components" }),
+    ).toHaveAttribute("href", "/preview");
     const github = within(nav).getByRole("link", { name: "GitHub" });
-    expect(github).toHaveAttribute("href", "https://github.com/ShubhamTiwari909/zentauri-ui");
+    expect(github).toHaveAttribute(
+      "href",
+      "https://github.com/ShubhamTiwari909/zentauri-ui",
+    );
     expect(github).toHaveAttribute("target", "_blank");
     expect(github).toHaveAttribute("rel", "noopener noreferrer");
   });

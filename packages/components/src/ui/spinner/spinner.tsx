@@ -17,7 +17,10 @@ export function Spinner(props: SpinnerProps) {
     "aria-label": ariaLabel = "Loading",
     ...rest
   } = props;
-  const rootClass = cn(spinnerVariants({ appearance, size, variant }), className);
+  const rootClass = cn(
+    spinnerVariants({ appearance, size, variant }),
+    className,
+  );
 
   if (variant === "ring") {
     return (

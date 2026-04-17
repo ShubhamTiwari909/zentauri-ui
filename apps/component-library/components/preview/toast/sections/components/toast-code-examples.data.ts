@@ -31,6 +31,8 @@ export const TOAST_APPEARANCES = [
   "gradient-orange",
 ] as const satisfies readonly NonNullable<ToastInput["appearance"]>[];
 
-export const TOAST_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<
-  ToastInput["size"]
->[];
+export const TOAST_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly NonNullable<ToastInput["size"]>[];

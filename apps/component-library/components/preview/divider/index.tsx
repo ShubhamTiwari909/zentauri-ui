@@ -5,7 +5,11 @@ import { DividerCodeExamplesSection } from "./sections/divider-code-examples-sec
 import { DividerExamplesSection } from "./sections/divider-examples-section";
 import { DividerHeroSection } from "./sections/divider-hero-section";
 
-export default function DividerPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function DividerPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <DividerHeroSection seo={seo} />

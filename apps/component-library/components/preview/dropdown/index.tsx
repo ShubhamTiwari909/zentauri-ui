@@ -5,7 +5,11 @@ import { DropdownCodeExamplesSection } from "./sections/dropdown-code-examples-s
 import { DropdownExamplesSection } from "./sections/dropdown-examples-section";
 import { DropdownHeroSection } from "./sections/dropdown-hero-section";
 
-export default function DropdownPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function DropdownPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <DropdownHeroSection seo={seo} />

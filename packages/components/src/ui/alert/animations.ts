@@ -7,7 +7,10 @@ type AlertPresetMotionProps = Pick<
   "initial" | "animate" | "transition"
 >;
 
-export type AlertAnimationPresets = Record<AlertAnimation, AlertPresetMotionProps>;
+export type AlertAnimationPresets = Record<
+  AlertAnimation,
+  AlertPresetMotionProps
+>;
 
 export const alertAnimationPresets: AlertAnimationPresets = {
   none: {},

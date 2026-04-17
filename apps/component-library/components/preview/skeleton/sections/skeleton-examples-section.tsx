@@ -14,7 +14,11 @@ export function SkeletonExamplesSection() {
           code={`${variantLeadComment(`SkeletonButton · buttonSize · md, animation · shimmer`)}
 <SkeletonButton buttonSize="md" className="w-32" animation="shimmer" />`}
         >
-          <SkeletonButton buttonSize="md" className="w-32" animation="shimmer" />
+          <SkeletonButton
+            buttonSize="md"
+            className="w-32"
+            animation="shimmer"
+          />
         </PreviewCodeShowcase>
       </div>
     </section>

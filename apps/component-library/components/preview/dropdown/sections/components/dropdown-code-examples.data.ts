@@ -35,7 +35,12 @@ export const DROPDOWN_TRIGGER_VARIANTS = [
 
 export const DROPDOWN_TRIGGER_SIZES = ["sm", "md", "lg"] as const;
 
-export const DROPDOWN_CONTENT_PLACEMENTS = ["top", "bottom", "left", "right"] as const;
+export const DROPDOWN_CONTENT_PLACEMENTS = [
+  "top",
+  "bottom",
+  "left",
+  "right",
+] as const;
 
 export const DROPDOWN_CONTENT_SPACINGS = [
   "none",

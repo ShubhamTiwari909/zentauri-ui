@@ -21,14 +21,16 @@ import {
 export function SelectCodeExamplesSection() {
   return (
     <section className={SELECT_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">Select variants examples</h2>
+      <h2 className="mt-3 text-2xl font-semibold text-white">
+        Select variants examples
+      </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
         Trigger uses CVA <code className="text-slate-300">variant</code> and{" "}
         <code className="text-slate-300">size</code>; the list panel uses{" "}
         <code className="text-slate-300">appearance</code> and{" "}
         <code className="text-slate-300">size</code> on{" "}
-        <code className="text-slate-300">SelectContent</code>. Each snippet starts with a Variant:
-        lead-in.
+        <code className="text-slate-300">SelectContent</code>. Each snippet
+        starts with a Variant: lead-in.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase code={selectMultiSnippet()}>
@@ -39,15 +41,24 @@ export function SelectCodeExamplesSection() {
             key={`tr-var-${triggerVariant}`}
             code={selectTriggerSnippet({ triggerVariant, triggerSize: "md" })}
           >
-            <SelectTriggerDemo triggerVariant={triggerVariant} triggerSize="md" />
+            <SelectTriggerDemo
+              triggerVariant={triggerVariant}
+              triggerSize="md"
+            />
           </PreviewCodeShowcase>
         ))}
         {SELECT_TRIGGER_SIZES.map((triggerSize) => (
           <PreviewCodeShowcase
             key={`tr-size-${triggerSize}`}
-            code={selectTriggerSnippet({ triggerVariant: "default", triggerSize })}
+            code={selectTriggerSnippet({
+              triggerVariant: "default",
+              triggerSize,
+            })}
           >
-            <SelectTriggerDemo triggerVariant="default" triggerSize={triggerSize} />
+            <SelectTriggerDemo
+              triggerVariant="default"
+              triggerSize={triggerSize}
+            />
           </PreviewCodeShowcase>
         ))}
         {SELECT_CONTENT_SIZES.map((contentSize) => (

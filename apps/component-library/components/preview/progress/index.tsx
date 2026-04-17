@@ -5,7 +5,11 @@ import { ProgressCodeExamplesSection } from "./sections/progress-code-examples-s
 import { ProgressExamplesSection } from "./sections/progress-examples-section";
 import { ProgressHeroSection } from "./sections/progress-hero-section";
 
-export default function ProgressPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function ProgressPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <ProgressHeroSection seo={seo} />

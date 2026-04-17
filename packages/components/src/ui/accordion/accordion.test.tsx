@@ -45,7 +45,10 @@ describe("Accordion", () => {
         </Accordion>,
       );
       expect(screen.getByRole("region")).toHaveTextContent("Content A");
-      expect(screen.getByRole("button", { name: "Item A" })).toHaveAttribute("aria-expanded", "true");
+      expect(screen.getByRole("button", { name: "Item A" })).toHaveAttribute(
+        "aria-expanded",
+        "true",
+      );
     });
 
     it("should toggle aria-expanded and panel visibility when the trigger is clicked", async () => {
@@ -59,7 +62,10 @@ describe("Accordion", () => {
         </Accordion>,
       );
       await user.click(screen.getByRole("button", { name: "Item A" }));
-      expect(screen.getByRole("button", { name: "Item A" })).toHaveAttribute("aria-expanded", "false");
+      expect(screen.getByRole("button", { name: "Item A" })).toHaveAttribute(
+        "aria-expanded",
+        "false",
+      );
       expect(screen.queryByRole("region")).not.toBeInTheDocument();
     });
 
@@ -75,7 +81,9 @@ describe("Accordion", () => {
       const trigger = screen.getByRole("button", { name: "Open" });
       const controls = trigger.getAttribute("aria-controls");
       expect(controls).toBe("x-panel");
-      expect(document.getElementById("x-panel")).toBe(screen.getByRole("region"));
+      expect(document.getElementById("x-panel")).toBe(
+        screen.getByRole("region"),
+      );
     });
   });
 
@@ -95,8 +103,14 @@ describe("Accordion", () => {
         </Accordion>,
       );
       await user.click(screen.getByRole("button", { name: "B" }));
-      expect(screen.getByRole("button", { name: "A" })).toHaveAttribute("aria-expanded", "true");
-      expect(screen.getByRole("button", { name: "B" })).toHaveAttribute("aria-expanded", "true");
+      expect(screen.getByRole("button", { name: "A" })).toHaveAttribute(
+        "aria-expanded",
+        "true",
+      );
+      expect(screen.getByRole("button", { name: "B" })).toHaveAttribute(
+        "aria-expanded",
+        "true",
+      );
       expect(screen.getByText("Panel A")).toBeInTheDocument();
       expect(screen.getByText("Panel B")).toBeInTheDocument();
     });
@@ -122,7 +136,10 @@ describe("Accordion", () => {
       }
       render(<Controlled />);
       await user.click(screen.getByRole("button", { name: "B" }));
-      expect(screen.getByRole("button", { name: "B" })).toHaveAttribute("aria-expanded", "true");
+      expect(screen.getByRole("button", { name: "B" })).toHaveAttribute(
+        "aria-expanded",
+        "true",
+      );
       expect(screen.getByText("Panel B")).toBeInTheDocument();
     });
   });

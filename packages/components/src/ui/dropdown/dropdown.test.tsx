@@ -2,7 +2,12 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from "./dropdown";
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownTrigger,
+} from "./dropdown";
 
 describe("Dropdown", () => {
   it("should show menu content when the trigger is clicked", async () => {
@@ -99,7 +104,9 @@ describe("Dropdown", () => {
         </DropdownContent>
       </Dropdown>,
     );
-    const item = screen.getByText("Alpha").closest("div[tabindex=\"0\"]") as HTMLElement;
+    const item = screen
+      .getByText("Alpha")
+      .closest('div[tabindex="0"]') as HTMLElement;
     item.focus();
     fireEvent.keyDown(item, { key: "Enter" });
     expect(handleSelect).toHaveBeenCalledTimes(1);

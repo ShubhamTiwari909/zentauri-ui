@@ -7,7 +7,10 @@ type DrawerPresetMotionProps = Pick<
   "initial" | "animate" | "exit" | "transition"
 >;
 
-export type DrawerAnimationPresets = Record<DrawerAnimation, DrawerPresetMotionProps>;
+export type DrawerAnimationPresets = Record<
+  DrawerAnimation,
+  DrawerPresetMotionProps
+>;
 
 export const drawerPanelPresets = (
   side: "left" | "right" | "top" | "bottom",

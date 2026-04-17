@@ -15,13 +15,13 @@ export function PaginationCodeExamplesSection() {
         Pagination variants examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Each row pairs live output with matching JSX. The Variant line states which
-        appearance/size tokens apply;
+        Each row pairs live output with matching JSX. The Variant line states
+        which appearance/size tokens apply;
         <code className="mx-1 text-slate-200"> pageCount</code>,{" "}
         <code className="mx-1 text-slate-200">defaultPage</code>,{" "}
         <code className="mx-1 text-slate-200">siblingCount</code>, and{" "}
-        <code className="mx-1 text-slate-200">boundaryCount</code> stay fixed so ellipsis
-        behavior stays visible.
+        <code className="mx-1 text-slate-200">boundaryCount</code> stay fixed so
+        ellipsis behavior stays visible.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {PAGINATION_APPEARANCES.map((appearance) => (

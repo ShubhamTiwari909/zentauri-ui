@@ -37,7 +37,9 @@ describe("Select", () => {
         </SelectContent>
       </Select>,
     );
-    expect(screen.getByRole("button", { name: /pick one/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /pick one/i }),
+    ).toBeInTheDocument();
   });
 
   it("should open the panel and list options when the trigger is clicked", async () => {
@@ -96,7 +98,9 @@ describe("Select", () => {
     await screen.findByRole("button", { name: /alpha/i });
     expect(screen.getByRole("option", { name: /beta/i })).toBeInTheDocument();
     await user.click(screen.getByRole("option", { name: /beta/i }));
-    expect(screen.queryByRole("option", { name: /beta/i })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("option", { name: /beta/i }),
+    ).not.toBeInTheDocument();
     expect(
       await screen.findByRole("button", { name: /^beta$/i }),
     ).toBeInTheDocument();

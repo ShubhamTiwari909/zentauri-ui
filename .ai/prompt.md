@@ -1,6 +1,7 @@
 You are an expert frontend engineer and design system architect.
 
 I am building a production-grade React component library using:
+
 - Next.js (App Router)
 - TypeScript
 - Tailwind CSS
@@ -26,6 +27,7 @@ I have already built a fully functional Button component with:
 - A preview/demo page showing all variations and usage
 
 This Button component acts as the reference standard for:
+
 - Code structure
 - File organization
 - API design
@@ -47,19 +49,21 @@ Using the same patterns and architecture as the Button component:
 ## REQUIREMENTS
 
 ### 1. Architecture & Code Quality
+
 - Use TypeScript with strict types
 - Follow clean folder structure:
   /components/[component]
-    - index.ts
-    - [component].tsx
-    - [component].types.ts
-    - [component].test.tsx
+  - index.ts
+  - [component].tsx
+  - [component].types.ts
+  - [component].test.tsx
 - Make it reusable and composable
 - Avoid hardcoded styles
 
 ---
 
 ### 2. Variants System
+
 - Implement variants using CVA (or similar)
 - Include meaningful variants (e.g. for Input: error, success, default)
 - Include sizes if applicable
@@ -68,6 +72,7 @@ Using the same patterns and architecture as the Button component:
 ---
 
 ### 3. Animations
+
 - Use Framer Motion where relevant
 - Keep animations optional and configurable
 - Follow the same pattern used in Button
@@ -75,6 +80,7 @@ Using the same patterns and architecture as the Button component:
 ---
 
 ### 4. Accessibility (VERY IMPORTANT)
+
 - Add proper ARIA attributes
 - Keyboard navigation support (if applicable)
 - Focus states
@@ -83,6 +89,7 @@ Using the same patterns and architecture as the Button component:
 ---
 
 ### 5. API Design
+
 - Clean and intuitive props
 - Support controlled + uncontrolled usage (if applicable)
 - Forward refs where necessary
@@ -90,6 +97,7 @@ Using the same patterns and architecture as the Button component:
 ---
 
 ### 6. Styling
+
 - Use Tailwind CSS
 - Keep styles consistent with Button design language
 - Use design tokens if possible
@@ -97,6 +105,7 @@ Using the same patterns and architecture as the Button component:
 ---
 
 ### 7. Testing
+
 - Write unit tests using React Testing Library
 - Cover:
   - Rendering
@@ -107,6 +116,7 @@ Using the same patterns and architecture as the Button component:
 ---
 
 ### 8. Preview / Demo Page
+
 - Create a preview/demo page
 - Show:
   - All variants
@@ -117,6 +127,7 @@ Using the same patterns and architecture as the Button component:
 ---
 
 ### 9. Documentation
+
 - Add inline comments
 - Add usage examples
 
@@ -144,6 +155,7 @@ Provide:
 ---
 
 ## Reference Pull Requests
+
 https://github.com/ShubhamTiwari909/zentauri-ui/pull/2
 https://github.com/ShubhamTiwari909/zentauri-ui/pull/3
 

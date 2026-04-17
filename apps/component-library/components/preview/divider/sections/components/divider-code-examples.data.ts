@@ -32,10 +32,13 @@ export const DIVIDER_APPEARANCES = [
   "gradient-orange",
 ] as const satisfies readonly NonNullable<DividerProps["appearance"]>[];
 
-export const DIVIDER_ORIENTATIONS = ["horizontal", "vertical"] as const satisfies readonly NonNullable<
-  DividerProps["orientation"]
->[];
+export const DIVIDER_ORIENTATIONS = [
+  "horizontal",
+  "vertical",
+] as const satisfies readonly NonNullable<DividerProps["orientation"]>[];
 
-export const DIVIDER_SIZES = ["sm", "md", "lg"] as const satisfies readonly NonNullable<
-  DividerProps["size"]
->[];
+export const DIVIDER_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly NonNullable<DividerProps["size"]>[];

@@ -230,7 +230,10 @@ export function SkeletonCard(props: SkeletonCardProps) {
 
 SkeletonCard.displayName = "SkeletonCard";
 
-const buttonHeight: Record<NonNullable<SkeletonButtonProps["buttonSize"]>, string> = {
+const buttonHeight: Record<
+  NonNullable<SkeletonButtonProps["buttonSize"]>,
+  string
+> = {
   sm: "h-8 w-24",
   md: "h-10 w-32",
   lg: "h-12 w-40",

@@ -4,10 +4,27 @@ import { join } from "node:path";
 import { defineConfig } from "tsup";
 
 const uiComponentNames = [
-  "accordion", "alert", "badge", "buttons", "card", "divider",
-  "drawer", "dropdown", "empty-state", "inputs", "modal",
-  "pagination", "progress", "select", "skeleton", "spinner",
-  "table", "tabs", "toast", "toggle", "tooltip",
+  "accordion",
+  "alert",
+  "badge",
+  "buttons",
+  "card",
+  "divider",
+  "drawer",
+  "dropdown",
+  "empty-state",
+  "inputs",
+  "modal",
+  "pagination",
+  "progress",
+  "select",
+  "skeleton",
+  "spinner",
+  "table",
+  "tabs",
+  "toast",
+  "toggle",
+  "tooltip",
 ] as const;
 
 const uiEntries = Object.fromEntries(
@@ -40,8 +57,12 @@ export default defineConfig({
   // `scripts/prepend-use-client.mjs` runs after the build to enforce it on each UI entry.
   treeshake: true,
   async onSuccess() {
-    execFileSync("node", [join(process.cwd(), "scripts/prepend-use-client.mjs")], {
-      stdio: "inherit",
-    });
+    execFileSync(
+      "node",
+      [join(process.cwd(), "scripts/prepend-use-client.mjs")],
+      {
+        stdio: "inherit",
+      },
+    );
   },
 });

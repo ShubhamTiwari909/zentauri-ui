@@ -3,7 +3,10 @@ import type { Transition } from "framer-motion";
 /** Easing and duration presets for accordion panel open/close (opacity only). */
 export type AccordionTransition = "none" | "default" | "smooth" | "slow";
 
-export type AccordionTransitionPresets = Record<AccordionTransition, Transition>;
+export type AccordionTransitionPresets = Record<
+  AccordionTransition,
+  Transition
+>;
 
 export const accordionContentTransitionPresets: AccordionTransitionPresets = {
   none: { duration: 0 },

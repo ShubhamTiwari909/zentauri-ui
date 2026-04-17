@@ -14,10 +14,12 @@ export function TableCodeExamplesSection() {
   const base = TABLE_SNIPPET_BASE;
   return (
     <section className={TABLE_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">Table variants examples</h2>
+      <h2 className="mt-3 text-2xl font-semibold text-white">
+        Table variants examples
+      </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Density, row style, and sticky header with scrollable preview. Each code view starts
-        with Variant: naming the row.
+        Density, row style, and sticky header with scrollable preview. Each code
+        view starts with Variant: naming the row.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         {TABLE_APPEARANCES.map((appearance) => (
@@ -46,13 +48,21 @@ export function TableCodeExamplesSection() {
         ))}
         <PreviewCodeShowcase
           key="sticky-on"
-          code={tableSnippet({ ...base, appearance: "bordered", stickyHeader: true })}
+          code={tableSnippet({
+            ...base,
+            appearance: "bordered",
+            stickyHeader: true,
+          })}
         >
           <TableDemo {...base} appearance="bordered" stickyHeader />
         </PreviewCodeShowcase>
         <PreviewCodeShowcase
           key="sticky-off"
-          code={tableSnippet({ ...base, appearance: "bordered", stickyHeader: false })}
+          code={tableSnippet({
+            ...base,
+            appearance: "bordered",
+            stickyHeader: false,
+          })}
         >
           <TableDemo {...base} appearance="bordered" stickyHeader={false} />
         </PreviewCodeShowcase>

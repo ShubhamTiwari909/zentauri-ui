@@ -57,6 +57,7 @@ Use this as a quick reference when planning or implementing new components in `z
 ### Polymorphism (`as`)
 
 If the primitive supports multiple HTML elements:
+
 - model `as` in `types.ts` and reflect it in `variants.ts` if styling differs per element type
 - omit native prop name collisions (example: omit native `size` for design-system `size`)
 
@@ -70,11 +71,13 @@ For a new component group `<segment>` (typically plural, like `buttons`):
 4. Add sidebar item: `apps/component-library/components/sidebar/sidebar-data.ts`
 
 Keep preview pages composed of “sections” under:
+
 - `apps/component-library/components/preview/<segment>/sections/*`
 
 ## Testing conventions (contract-first)
 
 Tests live alongside primitives and focus on public contracts:
+
 - `data-slot` presence and uniqueness
 - `displayName` set and stable
 - default props (e.g. `type="button"` for buttons)
@@ -82,12 +85,13 @@ Tests live alongside primitives and focus on public contracts:
 - basic accessibility expectations (role, name, aria wiring for errors)
 
 Test runner:
+
 - `apps/component-library/vitest.config.ts` (jsdom, Testing Library, `@` alias)
 
 ## Next.js note (important)
 
 Before editing `apps/component-library/app/**` files, read:
+
 - `apps/component-library/AGENTS.md`
 
 It states this Next.js build may include breaking changes; consult `node_modules/next/dist/docs/` when unsure.
-

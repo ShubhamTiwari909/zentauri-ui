@@ -8,7 +8,29 @@ export type SelectOption = {
   value: string;
   disabled?: boolean;
 };
-export type SelectAppearance = "default" | "glass" | "ghost" | "outline" | "sky" | "rose" | "purple" | "pink" | "orange" | "yellow" | "teal" | "indigo" | "emerald" | "gradient-blue" | "gradient-green" | "gradient-red" | "gradient-yellow" | "gradient-purple" | "gradient-teal" | "gradient-indigo" | "gradient-pink" | "gradient-orange";
+export type SelectAppearance =
+  | "default"
+  | "glass"
+  | "ghost"
+  | "outline"
+  | "sky"
+  | "rose"
+  | "purple"
+  | "pink"
+  | "orange"
+  | "yellow"
+  | "teal"
+  | "indigo"
+  | "emerald"
+  | "gradient-blue"
+  | "gradient-green"
+  | "gradient-red"
+  | "gradient-yellow"
+  | "gradient-purple"
+  | "gradient-teal"
+  | "gradient-indigo"
+  | "gradient-pink"
+  | "gradient-orange";
 export type SelectContextType = {
   open: boolean;
   setOpen: (v: boolean) => void;
