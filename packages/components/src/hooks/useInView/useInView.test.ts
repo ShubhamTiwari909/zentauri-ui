@@ -34,7 +34,7 @@ describe("useInView", () => {
     expect(result.current[1]).toBe(false);
     act(() => {
       lastCallback?.(
-        [{ isIntersecting: true, target: el } as IntersectionObserverEntry],
+        [{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry],
         {} as IntersectionObserver,
       );
     });

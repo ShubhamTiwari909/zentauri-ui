@@ -17,7 +17,8 @@ describe("useLocalStorage", () => {
     const { result } = renderHook(() =>
       useLocalStorage(key, { count: 0 }),
     );
-    expect(result.current[0]).toEqual({ count: 2 });
+    const value = result.current[0];
+    expect(value).toEqual({ count: 2 });
   });
 
   it("should fall back to initialValue when key missing", () => {
@@ -25,7 +26,8 @@ describe("useLocalStorage", () => {
     const { result } = renderHook(() =>
       useLocalStorage(key, { count: 0 }),
     );
-    expect(result.current[0]).toEqual({ count: 0 });
+    const value = result.current[0];
+    expect(value).toEqual({ count: 0 });
   });
 
   it("should persist setValue and support functional updates", () => {
@@ -50,8 +52,9 @@ describe("useLocalStorage", () => {
     const { result } = renderHook(() =>
       useLocalStorage(key, { ok: false }),
     );
+    const remove = result.current[2];
     act(() => {
-      result.current[2]();
+      remove();
     });
     expect(localStorage.getItem(key)).toBeNull();
     expect(result.current[0]).toEqual({ ok: false });
@@ -71,7 +74,8 @@ describe("useLocalStorage", () => {
         }),
       );
     });
-    expect(result.current[0]).toEqual({ v: 99 });
+    const value= result.current[0];
+    expect(value).toEqual({ v: 99 });
   });
 
   it("should reset to initial when storage event clears key", () => {
@@ -89,6 +93,7 @@ describe("useLocalStorage", () => {
         }),
       );
     });
-    expect(result.current[0]).toEqual({ v: 0 });
+    const value= result.current[0];
+    expect(value).toEqual({ v: 0 });
   });
 });

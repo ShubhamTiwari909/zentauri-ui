@@ -34,10 +34,16 @@ describe("useIntersectionObserver", () => {
       result.current[0](node);
     });
     expect(observeSpy).toHaveBeenCalledWith(node);
-    const fakeEntry = {
+    const rect = node.getBoundingClientRect();
+    const fakeEntry: IntersectionObserverEntry = {
+      boundingClientRect: rect,
+      intersectionRect: rect,
+      intersectionRatio: 1,
       isIntersecting: true,
+      rootBounds: null,
       target: node,
-    } as IntersectionObserverEntry;
+      time: 0,
+    };
     act(() => {
       lastCallback?.([fakeEntry], {} as IntersectionObserver);
     });
