@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { buildPaginationItems } from "../../lib/usePagination";
+import { buildPaginationItems } from "../../hooks/usePagination";
 import { clampPage } from "../../lib/utils";
 import { Pagination } from "./pagination";
 

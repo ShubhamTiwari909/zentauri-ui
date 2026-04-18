@@ -13,6 +13,11 @@
       "types": "./dist/ui/*.d.ts",
       "import": "./dist/ui/*.mjs",
       "require": "./dist/ui/*.js"
+    },
+    "./hooks/*": {
+      "types": "./dist/hooks/*.d.ts",
+      "import": "./dist/hooks/*.mjs",
+      "require": "./dist/hooks/*.js"
     }
   },
   "scripts": {

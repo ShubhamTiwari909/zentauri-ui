@@ -1,4 +1,12 @@
+import { HOOK_PREVIEW_REGISTRY } from "@/lib/constants";
 import { SidebarNavGroup } from "./types";
+
+const hookSidebarItems = [...HOOK_PREVIEW_REGISTRY]
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((hook) => ({
+    title: hook.name,
+    href: `/preview/hooks/${hook.slug}`,
+  }));
 
 export const sidebarRouteData: SidebarNavGroup[] = [
   {
@@ -121,6 +129,16 @@ export const sidebarRouteData: SidebarNavGroup[] = [
         title: "Tooltip",
         href: "/preview/tooltip",
       },
+    ],
+  },
+  {
+    title: "Hooks",
+    items: [
+      {
+        title: "Hooks overview",
+        href: "/preview/hooks",
+      },
+      ...hookSidebarItems,
     ],
   },
 ];

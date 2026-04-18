@@ -32,13 +32,49 @@ const uiComponentNames = [
   "tooltip",
 ] as const;
 
+const hooksEntryNames = [
+  "useBodyScrollLock",
+  "useClickOutside",
+  "useClipboard",
+  "useControllableState",
+  "useDebouncedValue",
+  "useDisclosure",
+  "useDocumentTitle",
+  "useFocusManagement",
+  "useHover",
+  "useInView",
+  "useIntersectionObserver",
+  "useIsomorphicLayoutEffect",
+  "useIsMounted",
+  "useLocalStorage",
+  "useMediaQuery",
+  "useNetworkStatus",
+  "usePageVisibility",
+  "usePagination",
+  "usePrefersColorScheme",
+  "usePrefersReducedMotion",
+  "useResizeObserver",
+  "useSessionStorage",
+  "useThrottledCallback",
+  "useToggle",
+  "useWindowSize",
+] as const;
+
 const uiEntries = Object.fromEntries(
   uiComponentNames.map((name) => [`ui/${name}`, `src/ui/${name}/index.ts`]),
 );
 
+const hooksEntries = {
+  "hooks/utils": "src/lib/utils.ts",
+  ...Object.fromEntries(
+    hooksEntryNames.map((name) => [`hooks/${name}`, `src/hooks/${name}.ts`]),
+  ),
+};
+
 export default defineConfig({
   entry: {
     ...uiEntries,
+    ...hooksEntries,
   },
   format: ["esm", "cjs"],
   dts: true,

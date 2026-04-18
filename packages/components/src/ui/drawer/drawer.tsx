@@ -27,7 +27,7 @@ import {
   drawerOverlayVariants,
   drawerTriggerVariants,
 } from "./variants";
-import { useFocusManagement } from "../../lib/useFocusManagement";
+import { useFocusManagement } from "../../hooks/useFocusManagement";
 
 type DrawerCtx = {
   open: boolean;

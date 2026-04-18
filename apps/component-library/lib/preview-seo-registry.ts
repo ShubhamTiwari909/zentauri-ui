@@ -10,6 +10,7 @@ import divider from "@/content/seo/preview/divider.json";
 import drawer from "@/content/seo/preview/drawer.json";
 import dropdown from "@/content/seo/preview/dropdown.json";
 import emptyState from "@/content/seo/preview/empty-state.json";
+import hooks from "@/content/seo/preview/hooks.json";
 import fileUpload from "@/content/seo/preview/file-upload.json";
 import index from "@/content/seo/preview/index.json";
 import inputs from "@/content/seo/preview/inputs.json";
@@ -42,6 +43,7 @@ const previewSeoRegistry = {
   drawer: drawer as PreviewSeoDocument,
   dropdown: dropdown as PreviewSeoDocument,
   "empty-state": emptyState as PreviewSeoDocument,
+  hooks: hooks as PreviewSeoDocument,
   "file-upload": fileUpload as PreviewSeoDocument,
   inputs: inputs as PreviewSeoDocument,
   modal: modal as PreviewSeoDocument,

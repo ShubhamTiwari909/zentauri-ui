@@ -6,7 +6,7 @@ import { cn, clampPage } from "../../lib/utils";
 import { buttonVariants } from "../buttons/variants";
 
 import type { PaginationProps } from "./types";
-import { usePagination } from "../../lib/usePagination";
+import { usePagination } from "../../hooks/usePagination";
 import { paginationEllipsisVariants, paginationListVariants } from "./variants";
 
 const defaultPrevLabel = "Previous page";

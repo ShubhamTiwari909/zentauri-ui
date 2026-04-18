@@ -11,7 +11,7 @@ import type {
   DropdownItemProps,
 } from "./types";
 import { triggerVariants, contentVariants, itemVariants } from "./variants";
-import { useClickOutside } from "@/src/lib/useClickOutside";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
 /* =========================
    Context

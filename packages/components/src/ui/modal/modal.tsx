@@ -27,7 +27,7 @@ import {
   modalOverlayVariants,
   modalTriggerVariants,
 } from "./variants";
-import { useFocusManagement } from "@/src/lib/useFocusManagement";
+import { useFocusManagement } from "../../hooks/useFocusManagement";
 
 type ModalCtx = {
   open: boolean;

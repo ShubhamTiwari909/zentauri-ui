@@ -1,7 +1,7 @@
 "use client";
 
 export { Pagination } from "./pagination";
-export { usePagination } from "../../lib/usePagination";
+export { usePagination } from "../../hooks/usePagination";
 export type {
   PaginationProps,
   PaginationAppearance,
