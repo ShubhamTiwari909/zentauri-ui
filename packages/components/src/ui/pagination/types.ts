@@ -2,7 +2,6 @@ import type { VariantProps } from "class-variance-authority";
 import type { ComponentPropsWithoutRef } from "react";
 
 import type { buttonVariants } from "../buttons/variants";
-import type { PaginationPageItem as PaginationPageItemModel } from "./pagination-logic";
 
 export type PaginationAppearance = NonNullable<
   VariantProps<typeof buttonVariants>["appearance"]
@@ -12,7 +11,9 @@ export type PaginationSize = NonNullable<
   VariantProps<typeof buttonVariants>["size"]
 >;
 
-export type PaginationPageItem = PaginationPageItemModel;
+export type PaginationPageItem =
+  | { type: "page"; value: number }
+  | { type: "ellipsis"; key: string };
 
 export type UsePaginationParams = {
   pageCount: number;

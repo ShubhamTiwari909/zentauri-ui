@@ -1,6 +1,6 @@
 {
   "name": "@zentauri-ui/zentauri-components",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A UI component library built with React and Tailwind CSS",
   "license": "MIT",
   "files": ["dist"],
@@ -13,11 +13,16 @@
       "types": "./dist/ui/*.d.ts",
       "import": "./dist/ui/*.mjs",
       "require": "./dist/ui/*.js"
+    },
+    "./hooks/*": {
+      "types": "./dist/hooks/*.d.ts",
+      "import": "./dist/hooks/*.mjs",
+      "require": "./dist/hooks/*.js"
     }
   },
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
+    "build": "NODE_OPTIONS=--max-old-space-size=8192 tsup",
     "test": "vitest run",
     "test:watch": "vitest"
   },

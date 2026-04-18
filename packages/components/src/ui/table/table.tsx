@@ -7,20 +7,13 @@ import { cn } from "../../lib/utils";
 
 import { tableAnimationPresets } from "./animations";
 import type {
+  TableCtx,
   TableCellProps,
   TableHeadCellProps,
   TableProps,
   TableSectionProps,
 } from "./types";
 import { tableCellVariants, tableRowVariants, tableVariants } from "./variants";
-
-type TableCtx = {
-  appearance: NonNullable<TableProps["appearance"]>;
-  size: NonNullable<TableProps["size"]>;
-  stickyHeader: boolean;
-  rowAnimation: NonNullable<TableProps["rowAnimation"]>;
-  textAlign: NonNullable<TableCellProps["textAlign"]>;
-};
 
 const TableContext = createContext<TableCtx | null>(null);
 

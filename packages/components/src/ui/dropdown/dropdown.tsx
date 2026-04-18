@@ -11,6 +11,7 @@ import type {
   DropdownItemProps,
 } from "./types";
 import { triggerVariants, contentVariants, itemVariants } from "./variants";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
 /* =========================
    Context
@@ -114,16 +115,7 @@ export const DropdownContent = ({
   const ref = useRef<HTMLDivElement>(null);
 
   // click outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [setOpen]);
+  useClickOutside({ ref, setOpen });
 
   if (!open) return null;
 

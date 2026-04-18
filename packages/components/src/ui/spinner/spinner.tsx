@@ -44,16 +44,14 @@ export function Spinner(props: SpinnerProps) {
   }
 
   if (variant === "dots") {
-    const dotSize =
-      size === "xs"
-        ? "size-1"
-        : size === "sm"
-          ? "size-1.5"
-          : size === "md"
-            ? "size-2"
-            : size === "lg"
-              ? "size-2.5"
-              : "size-3";
+    const dotSizes = {
+      xs: "size-1",
+      sm: "size-1.5",
+      md: "size-2",
+      lg: "size-2.5",
+      xl: "size-3",
+    };
+    const dotSize = dotSizes[size as keyof typeof dotSizes];
     return (
       <motion.span
         ref={ref}
@@ -103,16 +101,17 @@ export function Spinner(props: SpinnerProps) {
     );
   }
 
+  const barWidths = {
+    xs: "w-0.5",
+    sm: "w-0.5",
+    md: "w-1",
+    lg: "w-1.5",
+    xl: "w-2",
+  };
+
   const barWidth =
-    size === "xs"
-      ? "w-0.5"
-      : size === "sm"
-        ? "w-0.5"
-        : size === "md"
-          ? "w-1"
-          : size === "lg"
-            ? "w-1.5"
-            : "w-2";
+    barWidths[size as keyof typeof barWidths];
+    
   return (
     <motion.span
       ref={ref}

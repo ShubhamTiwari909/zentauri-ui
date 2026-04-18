@@ -1,8 +1,7 @@
 "use client";
 
 export { Pagination } from "./pagination";
-export { usePagination } from "./use-pagination";
-export { buildPaginationItems, clampPage } from "./pagination-logic";
+export { usePagination } from "../../hooks/usePagination";
 export type {
   PaginationProps,
   PaginationAppearance,

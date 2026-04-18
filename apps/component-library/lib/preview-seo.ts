@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getPreviewSiteUrl } from "./utils";
 
 export type PreviewSeoOg = {
   title: string;
@@ -55,16 +56,6 @@ export type PreviewSeoDocument = {
   /** When set, a `sections` row with this same `heading` and empty `body` renders `useCases`. */
   useCasesSectionHeading?: string;
 };
-
-export function getPreviewSiteUrl(): string {
-  if (process.env.NEXT_PUBLIC_SITE_URL) {
-    return process.env.NEXT_PUBLIC_SITE_URL;
-  }
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`;
-  }
-  return "http://localhost:3000";
-}
 
 export const previewSeoMetadataBase = new URL(getPreviewSiteUrl());
 

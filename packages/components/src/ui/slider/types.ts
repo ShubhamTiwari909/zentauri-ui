@@ -1,5 +1,5 @@
 import type { VariantProps } from "class-variance-authority";
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode, RefObject } from "react";
 
 import type {
   sliderRangeVariants,
@@ -48,3 +48,19 @@ export type RangeSliderProps = SliderRootVariantProps & {
   "aria-label"?: string;
   "aria-labelledby"?: string;
 } & Omit<ComponentPropsWithoutRef<"div">, "children" | "defaultValue">;
+
+export type SliderAppearance = NonNullable<
+  Parameters<typeof sliderRangeVariants>[0]
+>["appearance"];
+
+export type SliderCtx = {
+  min: number;
+  max: number;
+  step: number;
+  value: number;
+  setValue: (next: number) => void;
+  disabled: boolean;
+  size: NonNullable<SliderProps["size"]>;
+  appearance: SliderAppearance;
+  trackRef: RefObject<HTMLDivElement | null>;
+};

@@ -3,26 +3,16 @@
 import { createContext, useContext, useMemo } from "react";
 import { motion } from "framer-motion";
 
-import { cn } from "../../lib/utils";
+import { cn, clamp } from "../../lib/utils";
 
 import { progressAnimationPresets } from "./animations";
-import type { ProgressProps, ProgressSectionProps } from "./types";
+import type { ProgressProps, ProgressSectionProps, ProgressCtx } from "./types";
 import {
   progressBarVariants,
   progressTrackVariants,
   progressVariants,
 } from "./variants";
 
-type ProgressCtx = {
-  value: number;
-  min: number;
-  max: number;
-  size: NonNullable<ProgressProps["size"]>;
-  shape: NonNullable<ProgressProps["shape"]>;
-  striped: boolean;
-  animated: boolean;
-  appearance: NonNullable<ProgressProps["appearance"]>;
-};
 
 const ProgressContext = createContext<ProgressCtx | null>(null);
 
@@ -34,9 +24,6 @@ function useProgressContext(component: string): ProgressCtx {
   return ctx;
 }
 
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value));
-}
 
 export function Progress(props: ProgressProps) {
   const {

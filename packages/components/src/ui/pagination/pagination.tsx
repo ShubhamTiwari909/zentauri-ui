@@ -2,12 +2,11 @@
 
 import { forwardRef, useCallback, useId, type KeyboardEvent } from "react";
 
-import { cn } from "../../lib/utils";
+import { cn, clampPage } from "../../lib/utils";
 import { buttonVariants } from "../buttons/variants";
 
-import { clampPage } from "./pagination-logic";
 import type { PaginationProps } from "./types";
-import { usePagination } from "./use-pagination";
+import { usePagination } from "../../hooks/usePagination";
 import { paginationEllipsisVariants, paginationListVariants } from "./variants";
 
 const defaultPrevLabel = "Previous page";

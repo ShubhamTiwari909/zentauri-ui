@@ -19,6 +19,8 @@ import type {
   AvatarGroupProps,
   AvatarImageProps,
   AvatarProps,
+  AvatarCtx,
+  ImageStatus,
 } from "./types";
 import {
   avatarFallbackVariants,
@@ -27,12 +29,6 @@ import {
   avatarVariants,
 } from "./variants";
 
-type ImageStatus = "idle" | "loaded" | "error";
-
-type AvatarCtx = {
-  imageStatus: ImageStatus;
-  setImageStatus: (v: ImageStatus) => void;
-};
 
 const AvatarContext = createContext<AvatarCtx | null>(null);
 

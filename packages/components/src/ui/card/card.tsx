@@ -10,6 +10,7 @@ import type {
   CardDescriptionProps,
   CardProps,
   CardSectionProps,
+  CardSize,
   CardTitleProps,
 } from "./types";
 import {
@@ -19,8 +20,6 @@ import {
   cardTitleVariants,
   cardVariants,
 } from "./variants";
-
-type CardSize = NonNullable<CardProps["size"]>;
 
 const CardSizeContext = createContext<CardSize>("md");
 

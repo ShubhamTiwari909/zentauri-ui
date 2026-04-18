@@ -32,7 +32,7 @@ describe("Progress", () => {
     expect(bar.getAttribute("aria-valuenow")).toBe("100");
   });
 
-  it("should clamp below the minimum", () => {
+  it("should clampPage below the minimum", () => {
     render(<Progress value={-5} min={0} max={100} />);
     expect(screen.getByRole("progressbar").getAttribute("aria-valuenow")).toBe(
       "0",

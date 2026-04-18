@@ -1,0 +1,81 @@
+{
+  "category": "Hooks",
+  "title": "Zentauri UI React hooks",
+  "description": "Interactive previews for headless React hooks from Zentauri UI—local storage, pagination, observers, media queries, and overlay helpers for Next.js apps.",
+  "keywords": [
+    "React hooks",
+    "Zentauri UI",
+    "Next.js",
+    "usePagination",
+    "useLocalStorage",
+    "headless hooks",
+    "TypeScript"
+  ],
+  "og": {
+    "title": "Hooks · Zentauri UI",
+    "description": "Browse interactive previews for Zentauri UI hooks—pagination, storage, observers, media queries, and more.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Hooks · Zentauri UI",
+    "description": "Browse interactive previews for Zentauri UI hooks—pagination, storage, observers, media queries, and more.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/hooks",
+  "headings": {
+    "h1": "Hooks gallery",
+    "h2": [
+      "What it does",
+      "How previews work",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Each hook ships from @zentauri-ui/zentauri-components/lib/* with TypeScript types. Open a card to see live behavior, then copy the import path into your own client components.",
+  "useCases": [
+    "Persist UI state with useLocalStorage or useSessionStorage.",
+    "Drive tables and lists with usePagination or buildPaginationItems.",
+    "Respond to viewport and motion preferences with useMediaQuery and usePrefersReducedMotion.",
+    "Manage overlays with useBodyScrollLock, useClickOutside, and useFocusManagement.",
+    "Observe layout and visibility with useResizeObserver, useInView, and useIntersectionObserver."
+  ],
+  "faqs": [
+    {
+      "question": "Are these hooks safe to use in Next.js App Router?",
+      "answer": "Yes when imported from client components or client modules. Do not call them from server components because they rely on browser APIs or client-only React lifecycle."
+    },
+    {
+      "question": "How do imports map to npm?",
+      "answer": "Use subpaths such as @zentauri-ui/zentauri-components/lib/useToggle. The preview app resolves the same exports via the workspace package."
+    },
+    {
+      "question": "Do hooks replace accessible markup?",
+      "answer": "No. Hooks implement behavior; you still supply semantic HTML, labels, and keyboard support appropriate to your product."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "This gallery documents the hooks exported from packages/components/src/lib. Each route demonstrates one hook with minimal UI so you can verify behavior before wiring it into production screens."
+    },
+    {
+      "heading": "How previews work",
+      "body": "Demos run entirely in the browser inside client components. Source hooks are imported from published-style paths so copy-pasted imports match what your app should use after install."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Previews favor clear focus rings and native controls, but your integration must still meet WCAG expectations for real user journeys.\n\nTest with keyboard-only navigation whenever hooks change focus or trap it."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Set NEXT_PUBLIC_SITE_URL for accurate canonical and Open Graph URLs. Keep heavy interactive demos out of the critical path for LCP on marketing pages."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
