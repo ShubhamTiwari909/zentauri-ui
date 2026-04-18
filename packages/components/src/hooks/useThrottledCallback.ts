@@ -14,7 +14,7 @@ import { useCallback, useEffect, useRef } from "react";
  * @returns Throttled function with the same call signature as `callback`.
  */
 export function useThrottledCallback<
-  T extends (...args: never[]) => void,
+  T extends (...args: any[]) => void,
 >(callback: T, intervalMs: number): T {
   const callbackRef = useRef(callback);
   const lastRunRef = useRef(0);

@@ -29,18 +29,19 @@ export type UseSessionStorageResult<T> = [
  * Same persistence semantics as {@link useLocalStorage} but scoped to the session: data clears when the tab closes.
  * Unlike `useLocalStorage`, this hook does **not** subscribe to `storage` events (session storage is not shared across tabs).
  *
+ * State is initialized from `initialValue` only so the first client render can match SSR output; the stored value is
+ * applied after mount in an effect to avoid hydration mismatches.
+ *
  * @typeParam T - Stored value type; must round-trip through `JSON.stringify` / `parse`.
  * @param key - `sessionStorage` key.
- * @param initialValue - Fallback when missing, invalid JSON, or during SSR.
+ * @param initialValue - Fallback when missing, invalid JSON, or during SSR; also used for the first render before hydrate.
  * @returns `[stored, setValue, remove]` tuple.
  */
 export function useSessionStorage<T>(
   key: string,
   initialValue: T,
 ): UseSessionStorageResult<T> {
-  const [stored, setStored] = useState<T>(() =>
-    readValue(key, initialValue),
-  );
+  const [stored, setStored] = useState<T>(initialValue);
 
   const setValue = useCallback(
     (value: T | ((previous: T) => T)) => {

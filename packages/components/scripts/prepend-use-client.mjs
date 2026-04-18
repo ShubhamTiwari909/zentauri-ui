@@ -9,8 +9,16 @@ async function prependDirectiveToDistDir(distDir) {
   let files;
   try {
     files = await readdir(distDir);
-  } catch {
-    return;
+  } catch (error) {
+    if (
+      error &&
+      typeof error === "object" &&
+      "code" in error &&
+      error.code === "ENOENT"
+    ) {
+      return;
+    }
+    throw error;
   }
   for (const name of files) {
     if (name.startsWith("chunk-")) continue;

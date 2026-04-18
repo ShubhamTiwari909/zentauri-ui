@@ -3,7 +3,7 @@
 import { createContext, useContext, useMemo } from "react";
 import { motion } from "framer-motion";
 
-import { cn } from "../../lib/utils";
+import { cn, clamp } from "../../lib/utils";
 
 import { progressAnimationPresets } from "./animations";
 import type { ProgressProps, ProgressSectionProps, ProgressCtx } from "./types";
@@ -24,9 +24,6 @@ function useProgressContext(component: string): ProgressCtx {
   return ctx;
 }
 
-function clampPage(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value));
-}
 
 export function Progress(props: ProgressProps) {
   const {
@@ -46,7 +43,7 @@ export function Progress(props: ProgressProps) {
     ...rest
   } = props;
   const motionProps = progressAnimationPresets[animation];
-  const clamped = clampPage(value, min, max);
+  const clamped = clamp(value, min, max);
   const percent = max === min ? 0 : ((clamped - min) / (max - min)) * 100;
 
   const ctx = useMemo(

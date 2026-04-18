@@ -21,12 +21,12 @@ export function useWindowSize(): WindowSize {
     if (typeof window === "undefined") {
       return defaultSize;
     }
-    return { width: window.innerWidth, height: window.innerHeight };
+    return { width: window.innerWidth || 0, height: window.innerHeight || 0 };
   });
 
   useEffect(() => {
     const onResize = () => {
-      setSize({ width: window.innerWidth, height: window.innerHeight });
+      setSize({ width: window.innerWidth || 0, height: window.innerHeight || 0 });
     };
     onResize();
     window.addEventListener("resize", onResize);

@@ -443,18 +443,31 @@ function IsomorphicLayoutEffectDemo() {
 function IsMountedDemo() {
   const isMounted = useIsMounted();
   const [label, setLabel] = useState("");
+  const timeoutRef = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    return () => {
+      window.clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   const run = () => {
-    setTimeout(() => {
-      setLabel(isMounted() ? "mounted" : "unmounted (after timeout)");
+    window.clearTimeout(timeoutRef.current);
+    timeoutRef.current = window.setTimeout(() => {
+      timeoutRef.current = undefined;
+      if (!isMounted()) {
+        return;
+      }
+      setLabel("mounted (still on this page after 50ms)");
     }, 50);
   };
 
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
-        Schedules a timeout then reads the mounted ref — navigate away quickly after
-        clicking to see unmounted if you shorten delay in your own tests.
+        Schedules a timeout, then updates state only if this demo is still mounted. Leave
+        this page before 50ms and the callback does nothing (and the timer is cleared on
+        unmount).
       </p>
       <Button type="button" onClick={run}>
         Check mounted in 50ms

@@ -16,14 +16,7 @@ export function useMediaQuery(
   query: string,
   defaultValue = false,
 ): boolean {
-  const getMatches = () => {
-    if (typeof window === "undefined" || !window.matchMedia) {
-      return defaultValue;
-    }
-    return window.matchMedia(query).matches;
-  };
-
-  const [matches, setMatches] = useState(getMatches);
+  const [matches, setMatches] = useState(defaultValue);
 
   useEffect(() => {
     if (typeof window === "undefined" || !window.matchMedia) {

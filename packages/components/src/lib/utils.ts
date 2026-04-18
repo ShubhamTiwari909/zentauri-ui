@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function clampPage(page: number, pageCount: number): number {
+export const clampPage = (page: number, pageCount: number): number => {
   if (pageCount <= 0) {
     return 1;
   }
@@ -18,4 +18,8 @@ export const range = (from: number, to: number): number[] => {
     out.push(i);
   }
   return out;
+}
+
+export const clamp = (value: number, min: number, max: number) => {
+  return Math.min(max, Math.max(min, value));
 }

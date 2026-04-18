@@ -12,16 +12,20 @@ export type UseDocumentTitleParams = {
  * Keeps `document.title` in sync with `title` for the lifetime of the component.
  *
  * On first mount in the browser, the current title is captured. When `title` changes, the document title updates.
- * If `restoreOnUnmount` is true, the captured title is restored on unmount so nested routes or modals do not leak titles.
+ * If `restoreOnUnmount` is true when the component unmounts, the captured title is restored so nested routes or
+ * modals do not leak titles. Changing `restoreOnUnmount` while mounted does not run restore; only unmount does.
  *
  * @param params.title - Desired `document.title` string.
- * @param params.restoreOnUnmount - Whether to restore the pre-mount title on cleanup (default `true`).
+ * @param params.restoreOnUnmount - Whether to restore the pre-mount title on unmount (default `true`). The value
+ *   read at unmount time determines behavior, not mid-mount prop changes.
  */
 export function useDocumentTitle({
   title,
   restoreOnUnmount = true,
 }: UseDocumentTitleParams): void {
   const originalTitle = useRef<string | undefined>(undefined);
+  const restoreOnUnmountRef = useRef(restoreOnUnmount);
+  restoreOnUnmountRef.current = restoreOnUnmount;
 
   useEffect(() => {
     if (typeof document === "undefined") {
@@ -42,7 +46,7 @@ export function useDocumentTitle({
   useEffect(() => {
     return () => {
       if (
-        !restoreOnUnmount ||
+        !restoreOnUnmountRef.current ||
         typeof document === "undefined" ||
         originalTitle.current === undefined
       ) {
@@ -50,5 +54,5 @@ export function useDocumentTitle({
       }
       document.title = originalTitle.current;
     };
-  }, [restoreOnUnmount]);
+  }, []);
 }
