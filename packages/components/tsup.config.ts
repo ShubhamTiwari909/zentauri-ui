@@ -67,7 +67,7 @@ const uiEntries = Object.fromEntries(
 const hooksEntries = {
   "hooks/utils": "src/lib/utils.ts",
   ...Object.fromEntries(
-    hooksEntryNames.map((name) => [`hooks/${name}`, `src/hooks/${name}.ts`]),
+    hooksEntryNames.map((name) => [`hooks/${name}`, `src/hooks/${name}/index.ts`]),
   ),
 };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMediaQuery } from "./useMediaQuery";
+import { useMediaQuery } from "../useMediaQuery";
 
 /**
  * Returns whether the user prefers reduced motion (`prefers-reduced-motion: reduce`).

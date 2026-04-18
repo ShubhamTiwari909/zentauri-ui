@@ -73,8 +73,12 @@ export function useSessionStorage<T>(
   }, [initialValue, key]);
 
   useEffect(() => {
-    setStored(readValue(key, initialValue));
-  }, [initialValue, key]);
+    const next = readValue(key, initialValue);
+  
+    setStored((prev) => {
+      return JSON.stringify(prev) === JSON.stringify(next) ? prev : next;
+    });
+  }, [key]);
 
   return [stored, setValue, remove];
 }

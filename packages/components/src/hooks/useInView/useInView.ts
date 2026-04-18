@@ -2,7 +2,7 @@
 
 import type { RefCallback } from "react";
 
-import { useIntersectionObserver } from "./useIntersectionObserver";
+import { useIntersectionObserver } from "../useIntersectionObserver";
 
 export type UseInViewParams = IntersectionObserverInit & {
   /** When `false`, no observer is attached (useful to pause work when off-screen lists are virtualized). */

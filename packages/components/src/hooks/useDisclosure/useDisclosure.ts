@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 
-import { useControllableState } from "./useControllableState";
+import { useControllableState } from "../useControllableState";
 
 export type UseDisclosureParams = {
   /** Controlled open flag; omit for uncontrolled usage with `defaultOpen`. */

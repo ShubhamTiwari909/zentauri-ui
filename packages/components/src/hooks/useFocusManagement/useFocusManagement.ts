@@ -2,7 +2,7 @@
 
 import type { RefObject } from "react";
 import { useEffect } from "react";
-import { useBodyScrollLock } from "./useBodyScrollLock";
+import { useBodyScrollLock } from "../useBodyScrollLock";
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';

@@ -22,7 +22,7 @@
   },
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
+    "build": "NODE_OPTIONS=--max-old-space-size=8192 tsup",
     "test": "vitest run",
     "test:watch": "vitest"
   },

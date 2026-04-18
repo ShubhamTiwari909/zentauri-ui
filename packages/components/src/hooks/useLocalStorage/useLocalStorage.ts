@@ -75,15 +75,18 @@ export function useLocalStorage<T>(
   }, [initialValue, key]);
 
   useEffect(() => {
-    setStored(readValue(key, initialValue));
-  }, [initialValue, key]);
+    setStored((prev) => {
+      const next = readValue(key, initialValue);
+      return JSON.stringify(prev) === JSON.stringify(next) ? prev : next;
+    });
+  }, [key]);
 
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
     const onStorage = (event: StorageEvent) => {
-      if (event.key !== key || event.storageArea !== window.localStorage) {
+      if (event.key !== key) {
         return;
       }
       if (event.newValue == null) {

@@ -6,10 +6,10 @@ import type {
   PaginationPageItem,
   UsePaginationParams,
   UsePaginationResult,
-} from "../ui/pagination/types";
-import { clampPage, range } from "../lib/utils";
+} from "../../ui/pagination/types";
+import { clampPage, range } from "../../lib/utils";
 
-export type { PaginationPageItem } from "../ui/pagination/types";
+export type { PaginationPageItem } from "../../ui/pagination/types";
 
 export type BuildPaginationItemsParams = {
   pageCount: number;
