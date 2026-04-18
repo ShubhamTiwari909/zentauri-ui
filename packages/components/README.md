@@ -6,16 +6,16 @@ A React UI kit for building product interfaces with Tailwind CSS. Components are
 
 The library targets **React 18+** apps that use **Tailwind CSS v4** (or an equivalent setup where Tailwind can scan this package via `@source`). Styling uses utility classes; **class-variance-authority** powers variant APIs (size, appearance, and similar props), with **clsx** and **tailwind-merge** for predictable `className` composition. **Framer Motion** backs motion where components animate, and **react-icons** is used for iconography where applicable.
 
-Published artifacts live under `dist/`. You can import either the **UI barrel** (`@zentauri-ui/zentauri-components/ui`) or a **per-area subpath** (`@zentauri-ui/zentauri-components/ui/<name>`) so bundlers only pull in the entry you use. Most apps rely on Tailwind scanning the package sources (see installation); a separate CSS import is not required for that setup.
+Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@zentauri-ui/zentauri-components/ui/<area>` for components and `@zentauri-ui/zentauri-components/hooks/<entry>` for React hooks (and shared helpers under `hooks/utils`). Each entry resolves to its own ESM (`.mjs`), CJS (`.js`), and types (`.d.ts`) so bundlers pull only what you import. Most apps rely on Tailwind scanning the package sources (see installation); a separate CSS import is not required for that setup.
 
 ## Package exports
 
-| Subpath                                      | Description                                                                                                                      |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `@zentauri-ui/zentauri-components/ui`        | Full UI barrel: all components, hooks, and types (ESM `.js`, CJS `.cjs`, `.d.ts`)                                                |
-| `@zentauri-ui/zentauri-components/ui/<name>` | Single area entry (same artifacts per file). Use this when you import from one module only to keep the dependency graph smaller. |
+| Subpath                                         | Description                                                                                                                                 |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@zentauri-ui/zentauri-components/ui/<name>`   | Single UI area: components (and any re-exports from that area’s `index`, e.g. `usePagination` from `ui/pagination`).                         |
+| `@zentauri-ui/zentauri-components/hooks/<entry>` | One hook module or `utils` (`cn`, `clampPage`, `range` from `src/lib/utils.ts`). Entries match files under `src/hooks/` (see **React hooks**). |
 
-The `<name>` segment matches the folder under `src/ui/` (for example `accordion`, `select`, `empty-state`, `buttons` for `Button`, `inputs` for `Input`).
+The UI `<name>` segment matches the folder under `src/ui/` (for example `accordion`, `select`, `empty-state`, `buttons` for `Button`, `inputs` for `Input`). The hooks `<entry>` is the file stem (for example `useMediaQuery`, `usePagination`) or `utils`.
 
 ## Requirements
 
@@ -24,7 +24,7 @@ The `<name>` segment matches the folder under `src/ui/` (for example `accordion`
 
 ## Components
 
-Each area is available from the barrel and from its own subpath (`…/ui/<subpath>`):
+Each area is available from its own subpath (`…/ui/<subpath>`):
 
 | Area           | Subpath `…/ui/…` |
 | -------------- | ---------------- |
@@ -55,9 +55,56 @@ Each area is available from the barrel and from its own subpath (`…/ui/<subpat
 | Toggle         | `toggle`         |
 | Tooltip        | `tooltip`        |
 
+## React hooks
+
+Hooks live in `src/hooks/`. Each hook is a separate published entry under `@zentauri-ui/zentauri-components/hooks/<name>` (same pattern as UI areas). Types are exported where the implementation defines them (for example `UseDisclosureResult`, `PaginationPageItem`). For class-name merging and pagination helpers used alongside hooks, import from `@zentauri-ui/zentauri-components/hooks/utils`.
+
+| Hook / module              | Subpath `…/hooks/…`           | Notes (selected exports) |
+| -------------------------- | ----------------------------- | -------------------------- |
+| `useBodyScrollLock`        | `useBodyScrollLock`           | Locks document scroll while open |
+| `useClickOutside`          | `useClickOutside`             | `ClickOutsideEventType`, `UseClickOutsideParams` |
+| `useClipboard`             | `useClipboard`                | `UseClipboardResult` |
+| `useControllableState`     | `useControllableState`        | `UseControllableStateParams` |
+| `useDebouncedValue`        | `useDebouncedValue`           | Debounced state from a value |
+| `useDisclosure`            | `useDisclosure`               | `UseDisclosureParams`, `UseDisclosureResult` |
+| `useDocumentTitle`         | `useDocumentTitle`            | `UseDocumentTitleParams` |
+| `useFocusManagement`       | `useFocusManagement`          | Focus trap / focus moves for overlays |
+| `useHover`                 | `useHover`                    | Pointer hover state |
+| `useInView`                | `useInView`                   | `UseInViewParams` |
+| `useIntersectionObserver`  | `useIntersectionObserver`     | `UseIntersectionObserverParams` |
+| `useIsomorphicLayoutEffect`| `useIsomorphicLayoutEffect`   | `useLayoutEffect` safe for SSR |
+| `useIsMounted`             | `useIsMounted`                | Ref / flag after mount |
+| `useLocalStorage`          | `useLocalStorage`             | `UseLocalStorageResult` |
+| `useMediaQuery`            | `useMediaQuery`               | Match CSS media queries |
+| `useNetworkStatus`         | `useNetworkStatus`            | Online / offline |
+| `usePageVisibility`        | `usePageVisibility`           | Document visibility API |
+| `usePagination`            | `usePagination`               | `buildPaginationItems`, `BuildPaginationItemsParams`, `PaginationPageItem` |
+| `usePrefersColorScheme`    | `usePrefersColorScheme`       | `ColorSchemePreference` |
+| `usePrefersReducedMotion`  | `usePrefersReducedMotion`     | `prefers-reduced-motion` |
+| `useResizeObserver`        | `useResizeObserver`           | `ElementSize` |
+| `useSessionStorage`        | `useSessionStorage`           | `UseSessionStorageResult` |
+| `useThrottledCallback`     | `useThrottledCallback`        | Throttled callback ref |
+| `useToggle`                | `useToggle`                   | Boolean toggle state |
+| `useWindowSize`            | `useWindowSize`               | `WindowSize` |
+| `cn`, `clampPage`, `range` | `utils`                       | Shared helpers from `src/lib/utils.ts` |
+
+#### Hook import example
+
+```tsx
+import { useDisclosure } from "@zentauri-ui/zentauri-components/hooks/useDisclosure";
+import { useMediaQuery } from "@zentauri-ui/zentauri-components/hooks/useMediaQuery";
+import {
+  buildPaginationItems,
+  usePagination,
+} from "@zentauri-ui/zentauri-components/hooks/usePagination";
+import { cn } from "@zentauri-ui/zentauri-components/hooks/utils";
+```
+
+Some UI packages re-export the hook that belongs to that component (for example `usePagination` from `@zentauri-ui/zentauri-components/ui/pagination`). Prefer `hooks/<name>` when you only need the hook without the UI primitives.
+
 ## Installation
 
-**Getting started** — Add the package, install peer dependencies so primitives resolve correctly, point Tailwind at the library sources, then import from the UI barrel or from a specific `ui/<name>` subpath.
+**Getting started** — Add the package, install peer dependencies so primitives resolve correctly, point Tailwind at the library sources, then import from `ui/<name>` and/or `hooks/<entry>` subpaths.
 
 ### Step 1 — Install the package
 
@@ -135,11 +182,11 @@ Add an `@source` entry so Tailwind scans class names inside `@zentauri-ui/zentau
 @source "../node_modules/@zentauri-ui/zentauri-components";
 ```
 
-### Step 4 — Import and use components
+### Step 4 — Import and use components and hooks
 
-Prefer a **subpath** when you only need one area (smaller resolved graph than the full barrel). The barrel remains valid when you use many primitives from different areas.
+Use **one subpath per UI area** and **one subpath per hook module** so the bundler resolves only the entries you use.
 
-#### Imports (subpath — recommended for a single area)
+#### Imports (single UI area)
 
 ```tsx
 import {
@@ -150,7 +197,7 @@ import {
 } from "@zentauri-ui/zentauri-components/ui/accordion";
 ```
 
-#### Imports (multiple areas — one subpath import per area)
+#### Imports (multiple UI areas)
 
 ```tsx
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
@@ -163,17 +210,11 @@ import {
 } from "@zentauri-ui/zentauri-components/ui/select";
 ```
 
-#### Imports (barrel — one entry for symbols from several areas)
+#### Imports (hooks alongside UI)
 
 ```tsx
-import {
-  Button,
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@zentauri-ui/zentauri-components/ui";
+import { useDisclosure } from "@zentauri-ui/zentauri-components/hooks/useDisclosure";
+import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 ```
 
 #### Usage

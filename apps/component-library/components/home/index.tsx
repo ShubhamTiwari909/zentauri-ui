@@ -22,7 +22,7 @@ export default function HomePage() {
           speedMultiplier={1.5}
           className="flex items-center justify-center min-h-screen"
         >
-          <div className="py-20 mx-auto h-full flex max-w-3xl flex-col items-center justify-center space-y-8 text-center">
+          <div className="py-20 mx-auto h-full flex max-w-3xl flex-col items-center justify-center space-y-8 text-center px-5">
             <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium uppercase tracking-[0.24em] text-cyan-200">
               {content.badge}
             </span>
