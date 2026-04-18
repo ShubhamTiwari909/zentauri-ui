@@ -8,7 +8,6 @@ import {
   useRef,
   useState,
   type KeyboardEvent as ReactKeyboardEvent,
-  type MutableRefObject,
   type PointerEvent as ReactPointerEvent,
   type Ref,
   type RefObject,
@@ -18,6 +17,7 @@ import { cn } from "../../lib/utils";
 
 import type {
   RangeSliderProps,
+  SliderCtx,
   SliderProps,
   SliderRangeProps,
   SliderThumbProps,
@@ -37,23 +37,7 @@ function clamp(value: number, min: number, max: number) {
 function snapToStep(value: number, min: number, step: number) {
   const steps = Math.round((value - min) / step);
   return min + steps * step;
-}
-
-type SliderAppearance = NonNullable<
-  Parameters<typeof sliderRangeVariants>[0]
->["appearance"];
-
-type SliderCtx = {
-  min: number;
-  max: number;
-  step: number;
-  value: number;
-  setValue: (next: number) => void;
-  disabled: boolean;
-  size: NonNullable<SliderProps["size"]>;
-  appearance: SliderAppearance;
-  trackRef: RefObject<HTMLDivElement | null>;
-};
+} 
 
 const SliderContext = createContext<SliderCtx | null>(null);
 
@@ -161,7 +145,7 @@ export function SliderTrack({
         if (typeof refProp === "function") {
           refProp(node);
         } else if (refProp) {
-          (refProp as MutableRefObject<HTMLDivElement | null>).current = node;
+          (refProp as RefObject<HTMLDivElement | null>).current = node;
         }
       }}
       data-slot="slider-track"
@@ -264,7 +248,7 @@ export function SliderThumb({
         if (typeof refProp === "function") {
           refProp(node);
         } else if (refProp) {
-          (refProp as MutableRefObject<HTMLDivElement | null>).current = node;
+          (refProp as RefObject<HTMLDivElement | null>).current = node;
         }
       }}
       role="slider"

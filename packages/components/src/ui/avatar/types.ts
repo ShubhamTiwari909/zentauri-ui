@@ -24,3 +24,10 @@ export type AvatarGroupProps = ComponentPropsWithoutRef<"div"> & {
   /** Max avatars before +N overflow label */
   max?: number;
 };
+
+export type ImageStatus = "idle" | "loaded" | "error";
+
+export type AvatarCtx = {
+  imageStatus: ImageStatus;
+  setImageStatus: (v: ImageStatus) => void;
+};

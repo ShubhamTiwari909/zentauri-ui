@@ -18,3 +18,5 @@ export type EmptyStateSectionProps = {
   className?: string;
   children?: ReactNode;
 };
+
+export type EmptyStateSize = NonNullable<EmptyStateProps["size"]>;

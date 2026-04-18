@@ -6,14 +6,12 @@ import { motion } from "framer-motion";
 import { cn } from "../../lib/utils";
 
 import { emptyStateAnimationPresets } from "./animations";
-import type { EmptyStateProps, EmptyStateSectionProps } from "./types";
+import type { EmptyStateProps, EmptyStateSectionProps, EmptyStateSize } from "./types";
 import {
   emptyStateDescriptionVariants,
   emptyStateTitleVariants,
   emptyStateVariants,
 } from "./variants";
-
-type EmptyStateSize = NonNullable<EmptyStateProps["size"]>;
 
 const EmptyStateSizeContext = createContext<EmptyStateSize>("md");
 

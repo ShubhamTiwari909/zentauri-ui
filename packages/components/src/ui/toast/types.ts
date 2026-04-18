@@ -44,3 +44,15 @@ export type ToastSectionProps = {
   children?: ReactNode;
   onClick?: () => void;
 };
+
+export type InternalToast = Required<Pick<ToastInput, "id">> &
+  Omit<ToastInput, "id"> & {
+    durationMs: number;
+    animation: NonNullable<ToastInput["animation"]>;
+  };
+
+export type ToastStoreContextValue = {
+  toasts: InternalToast[];
+  push: (input: ToastInput) => string;
+  dismiss: (id: string) => void;
+};

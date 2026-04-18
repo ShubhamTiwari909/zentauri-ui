@@ -27,6 +27,7 @@ import {
   drawerOverlayVariants,
   drawerTriggerVariants,
 } from "./variants";
+import { useFocusManagement } from "../../lib/useFocusManagement";
 
 type DrawerCtx = {
   open: boolean;
@@ -44,22 +45,6 @@ function useDrawerContext(component: string): DrawerCtx {
     throw new Error(`${component} must be used within <Drawer>`);
   }
   return ctx;
-}
-
-const FOCUSABLE_SELECTOR =
-  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
-
-function useBodyScrollLock(locked: boolean) {
-  useEffect(() => {
-    if (!locked) {
-      return;
-    }
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [locked]);
 }
 
 export function Drawer({
@@ -155,48 +140,11 @@ export function DrawerContent({
   const panelMotion =
     drawerPanelPresets(resolvedSide)[reduceMotion ? "fade" : animation];
 
-  useBodyScrollLock(open);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [open, setOpen]);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-    const node = contentRef.current;
-    if (!node) {
-      return;
-    }
-    const focusables = Array.from(
-      node.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
-    ).filter((element) => element.offsetParent !== null || element === node);
-    const target = focusables[0] ?? node;
-    const previouslyFocused = document.activeElement as HTMLElement | null;
-    target.focus();
-
-    const handleFocusIn = (event: FocusEvent) => {
-      if (!node.contains(event.target as Node)) {
-        event.stopPropagation();
-        target.focus();
-      }
-    };
-    document.addEventListener("focusin", handleFocusIn);
-    return () => {
-      document.removeEventListener("focusin", handleFocusIn);
-      previouslyFocused?.focus?.();
-    };
-  }, [contentRef, open]);
+  useFocusManagement({
+    open,
+    setOpen,
+    contentRef,
+  });
 
   const portalTarget = typeof document !== "undefined" ? document.body : null;
   if (!portalTarget) {

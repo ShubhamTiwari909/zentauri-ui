@@ -2,8 +2,9 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
+import { buildPaginationItems } from "../../lib/usePagination";
+import { clampPage } from "../../lib/utils";
 import { Pagination } from "./pagination";
-import { buildPaginationItems, clampPage } from "./pagination-logic";
 
 const PAGINATION_SLOT = '[data-slot="pagination"]';
 
@@ -85,7 +86,7 @@ describe("buildPaginationItems", () => {
 });
 
 describe("clampPage", () => {
-  it("should clamp values into the inclusive page range", () => {
+  it("should clampPage values into the inclusive page range", () => {
     expect(clampPage(0, 5)).toBe(1);
     expect(clampPage(100, 5)).toBe(5);
     expect(clampPage(3, 5)).toBe(3);

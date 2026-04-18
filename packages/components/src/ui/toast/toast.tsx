@@ -17,6 +17,8 @@ import { cn } from "../../lib/utils";
 import { toastAnimationPresets } from "./animations";
 import type {
   ToastContextValue,
+  ToastStoreContextValue,
+  InternalToast,
   ToastInput,
   ToastProps,
   ToastProviderProps,
@@ -24,18 +26,6 @@ import type {
   ToastViewportProps,
 } from "./types";
 import { toastRootVariants, toastViewportVariants } from "./variants";
-
-type InternalToast = Required<Pick<ToastInput, "id">> &
-  Omit<ToastInput, "id"> & {
-    durationMs: number;
-    animation: NonNullable<ToastInput["animation"]>;
-  };
-
-type ToastStoreContextValue = {
-  toasts: InternalToast[];
-  push: (input: ToastInput) => string;
-  dismiss: (id: string) => void;
-};
 
 const ToastStoreContext = createContext<ToastStoreContextValue | null>(null);
 

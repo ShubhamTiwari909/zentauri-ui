@@ -35,3 +35,11 @@ export type TableCellProps = TdHTMLAttributes<HTMLTableCellElement> & {
   ref?: Ref<HTMLTableCellElement>;
   textAlign?: "left" | "center" | "right";
 };
+
+export type TableCtx = {
+  appearance: NonNullable<TableProps["appearance"]>;
+  size: NonNullable<TableProps["size"]>;
+  stickyHeader: boolean;
+  rowAnimation: NonNullable<TableProps["rowAnimation"]>;
+  textAlign: NonNullable<TableCellProps["textAlign"]>;
+};

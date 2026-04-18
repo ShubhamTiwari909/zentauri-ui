@@ -32,3 +32,5 @@ export type CardDescriptionProps = {
   children?: ReactNode;
   ref?: Ref<HTMLElement>;
 } & Omit<HTMLAttributes<HTMLElement>, "className" | "children">;
+
+export type CardSize = NonNullable<CardProps["size"]>;
