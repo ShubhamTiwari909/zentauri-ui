@@ -2,12 +2,12 @@ import {
   Modal,
   ModalBody,
   ModalClose,
-  ModalContent,
   ModalDescription,
   ModalHeader,
   ModalTitle,
   ModalTrigger,
 } from "@zentauri-ui/zentauri-components/ui/modal";
+import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/animated";
 
 import { MODAL_TRIGGER_CLASS } from "./modal-code-examples.data";
 import type { ModalDemoProps } from "./modal-code-examples.types";
@@ -24,7 +24,7 @@ export function ModalDemo({
       <ModalTrigger appearance={appearance} className={MODAL_TRIGGER_CLASS}>
         {label}
       </ModalTrigger>
-      <ModalContent
+      <ModalContentAnimated
         className="rounded-lg"
         size={size}
         position={position}
@@ -39,7 +39,7 @@ export function ModalDemo({
         <ModalBody>
           <p className="text-sm text-slate-300">Modal body copy.</p>
         </ModalBody>
-      </ModalContent>
+      </ModalContentAnimated>
     </Modal>
   );
 }

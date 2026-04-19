@@ -1,18 +1,8 @@
 "use client";
 
-export {
-  EmptyState,
-  EmptyStateAction,
-  EmptyStateDescription,
-  EmptyStateIcon,
-  EmptyStateTitle,
-} from "./empty-state";
-export type {
-  EmptyStateAnimation,
-  EmptyStateProps,
-  EmptyStateSectionProps,
-} from "./types";
-export { emptyStateAnimationPresets } from "./animations";
+export { EmptyState } from "./empty-state";
+export { EmptyStateAction, EmptyStateBase, EmptyStateDescription, EmptyStateIcon, EmptyStateTitle } from "./empty-state-base";
+export type { EmptyStateProps, EmptyStateSectionProps } from "./types";
 export {
   emptyStateVariants,
   emptyStateTitleVariants,

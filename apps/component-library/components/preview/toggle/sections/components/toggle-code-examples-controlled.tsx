@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Toggle } from "@zentauri-ui/zentauri-components/ui/toggle";
+import { ToggleAnimated } from "@zentauri-ui/zentauri-components/ui/toggle/animated";
 
 export function ToggleControlledDemo() {
   const [checked, setChecked] = useState(false);
@@ -12,7 +12,7 @@ export function ToggleControlledDemo() {
         Controlled:{" "}
         <span className="font-bold">{checked ? "Checked" : "Unchecked"}</span>
       </p>
-      <Toggle
+      <ToggleAnimated
         checked={checked}
         onCheckedChange={setChecked}
         animation="spring"

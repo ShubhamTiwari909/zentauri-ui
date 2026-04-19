@@ -1,6 +1,6 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Toggle } from "@zentauri-ui/zentauri-components/ui/toggle";
+import { ToggleAnimated } from "@zentauri-ui/zentauri-components/ui/toggle/animated";
 
 export function ToggleExamplesSection() {
   return (
@@ -11,9 +11,9 @@ export function ToggleExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`${variantLeadComment(`appearance · neutral, animation · spring`)}<Toggle appearance="neutral" animation="spring" aria-label="Dark mode" />`}
+          code={`${variantLeadComment(`appearance · neutral, animation · spring`)}<ToggleAnimated appearance="neutral" animation="spring" aria-label="Dark mode" />`}
         >
-          <Toggle
+          <ToggleAnimated
             appearance="neutral"
             animation="spring"
             aria-label="Dark mode"

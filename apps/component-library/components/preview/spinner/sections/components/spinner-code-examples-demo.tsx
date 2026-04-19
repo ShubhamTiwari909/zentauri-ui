@@ -1,4 +1,4 @@
-import { Spinner } from "@zentauri-ui/zentauri-components/ui/spinner";
+import { Spinner } from "@zentauri-ui/zentauri-components/ui/spinner/animated";
 
 import type { SpinnerDemoProps } from "./spinner-code-examples.types";
 

@@ -1,10 +1,7 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@zentauri-ui/zentauri-components/ui/tooltip";
+import { Tooltip, TooltipTrigger } from "@zentauri-ui/zentauri-components/ui/tooltip";
+import { TooltipContentAnimated } from "@zentauri-ui/zentauri-components/ui/tooltip/animated";
 
 const TRIGGER_SOFT =
   "rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200 outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50";
@@ -26,37 +23,37 @@ export function TooltipExamplesSection() {
   <TooltipTrigger className="${TRIGGER_SOFT}">
     Slow hover
   </TooltipTrigger>
-  <TooltipContent variant="outline" size="sm" animation="fade">
+  <TooltipContentAnimated variant="outline" size="sm" animation="fade">
     Opens after 400ms on hover; focus still opens immediately.
-  </TooltipContent>
+  </TooltipContentAnimated>
 </Tooltip>`}
         >
           <Tooltip position="bottom" delay={400}>
             <TooltipTrigger className={TRIGGER_SOFT}>Slow hover</TooltipTrigger>
-            <TooltipContent variant="outline" size="sm" animation="fade">
+            <TooltipContentAnimated variant="outline" size="sm" animation="fade">
               Opens after 400ms on hover; focus still opens immediately.
-            </TooltipContent>
+            </TooltipContentAnimated>
           </Tooltip>
         </PreviewCodeShowcase>
 
         <PreviewCodeShowcase
-          code={`${variantLeadComment("TooltipContent · intent · danger, animation · scale")}
+          code={`${variantLeadComment("TooltipContentAnimated · animation · scale")}
 <Tooltip position="top">
   <TooltipTrigger className="${TRIGGER_EMPHASIS}">
     Delete row
   </TooltipTrigger>
-  <TooltipContent variant="default" size="lg" intent="danger" animation="scale">
+  <TooltipContentAnimated variant="default" size="lg" animation="scale">
     This removes the row for everyone. You cannot undo this action.
-  </TooltipContent>
+  </TooltipContentAnimated>
 </Tooltip>`}
         >
           <Tooltip position="top">
             <TooltipTrigger className={TRIGGER_EMPHASIS}>
               Delete row
             </TooltipTrigger>
-            <TooltipContent variant="default" size="lg" animation="scale">
+            <TooltipContentAnimated variant="default" size="lg" animation="scale">
               This removes the row for everyone. You cannot undo this action.
-            </TooltipContent>
+            </TooltipContentAnimated>
           </Tooltip>
         </PreviewCodeShowcase>
       </div>

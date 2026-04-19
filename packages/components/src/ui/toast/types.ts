@@ -1,13 +1,12 @@
 import type { VariantProps } from "class-variance-authority";
-import type { ReactNode } from "react";
+import type { ElementType, ReactNode } from "react";
 
-import type { ToastAnimation } from "./animations";
 import type { toastRootVariants, toastViewportVariants } from "./variants";
 
-export type { ToastAnimation };
+export type ToastAnimation = "none" | "slide" | "fade";
 
-type ToastViewportVariantProps = VariantProps<typeof toastViewportVariants>;
-type ToastRootVariantProps = VariantProps<typeof toastRootVariants>;
+export type ToastViewportVariantProps = VariantProps<typeof toastViewportVariants>;
+export type ToastRootVariantProps = VariantProps<typeof toastRootVariants>;
 
 export type ToastPosition = NonNullable<ToastViewportVariantProps["position"]>;
 

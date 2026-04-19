@@ -1,6 +1,7 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
+import { InputAnimated } from "@zentauri-ui/zentauri-components/ui/inputs/animated";
 
 export function InputsHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -12,7 +13,7 @@ export function InputsHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           <label className="text-xs font-medium uppercase tracking-wide text-slate-400">
             Email
           </label>
-          <Input
+          <InputAnimated
             animation="lift"
             placeholder="you@example.com"
             aria-label="Email"
@@ -20,7 +21,7 @@ export function InputsHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           <label className="text-xs font-medium uppercase tracking-wide text-slate-400">
             Password
           </label>
-          <Input
+          <InputAnimated
             type="password"
             animation="glow"
             placeholder="••••••••"
@@ -32,7 +33,6 @@ export function InputsHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           <Input
             appearance="error"
             defaultValue="invalid@"
-            animation="none"
             aria-label="Invalid email example"
           />
         </div>

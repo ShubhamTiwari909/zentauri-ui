@@ -1,4 +1,5 @@
 import type { ModalContentProps } from "@zentauri-ui/zentauri-components/ui/modal";
+import type { ModalAnimation } from "@zentauri-ui/zentauri-components/ui/modal/animated";
 
 export const MODAL_CODE_EXAMPLES_SECTION_CLASS =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
@@ -51,4 +52,4 @@ export const MODAL_ANIMATIONS = [
   "scale",
   "slide-up",
   "slide-down",
-] as const satisfies readonly NonNullable<ModalContentProps["animation"]>[];
+] as const satisfies readonly ModalAnimation[];

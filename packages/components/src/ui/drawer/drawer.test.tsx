@@ -26,7 +26,7 @@ describe("Drawer", () => {
     render(
       <Drawer>
         <DrawerTrigger>Open</DrawerTrigger>
-        <DrawerContent animation="none">
+        <DrawerContent>
           <DrawerTitle>Settings</DrawerTitle>
           <DrawerBody>Drawer content</DrawerBody>
         </DrawerContent>
@@ -45,7 +45,7 @@ describe("Drawer", () => {
     render(
       <Drawer>
         <DrawerTrigger>Go</DrawerTrigger>
-        <DrawerContent animation="none">
+        <DrawerContent>
           <DrawerTitle>T</DrawerTitle>
         </DrawerContent>
       </Drawer>,
@@ -65,7 +65,7 @@ describe("Drawer", () => {
     const user = userEvent.setup();
     render(
       <Drawer defaultOpen>
-        <DrawerContent animation="none">
+        <DrawerContent>
           <DrawerTitle>Panel</DrawerTitle>
         </DrawerContent>
       </Drawer>,
@@ -84,7 +84,7 @@ describe("Drawer", () => {
     const user = userEvent.setup();
     render(
       <Drawer defaultOpen>
-        <DrawerContent animation="none">
+        <DrawerContent>
           <DrawerTitle>Panel</DrawerTitle>
         </DrawerContent>
       </Drawer>,
@@ -100,7 +100,7 @@ describe("Drawer", () => {
     const user = userEvent.setup();
     render(
       <Drawer defaultOpen>
-        <DrawerContent animation="none">
+        <DrawerContent>
           <DrawerTitle>Panel</DrawerTitle>
           <DrawerClose />
         </DrawerContent>
@@ -119,7 +119,7 @@ describe("Drawer", () => {
     render(
       <Drawer onOpenChange={handleChange}>
         <DrawerTrigger>Open</DrawerTrigger>
-        <DrawerContent animation="none">
+        <DrawerContent>
           <DrawerTitle>T</DrawerTitle>
         </DrawerContent>
       </Drawer>,

@@ -1,4 +1,5 @@
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
 import { showcaseButtons, buttonAnimationPresets } from "../variants";
 
 export function ButtonVariantsMotionSection() {
@@ -18,15 +19,21 @@ export function ButtonVariantsMotionSection() {
         </p>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          {showcaseButtons.map((button) => (
-            <Button
-              key={button.label}
-              appearance={button.appearance}
-              animation={button.animation}
-            >
-              {button.label}
-            </Button>
-          ))}
+          {showcaseButtons.map((button) =>
+            button.animation === "none" ? (
+              <Button key={button.label} appearance={button.appearance}>
+                {button.label}
+              </Button>
+            ) : (
+              <ButtonAnimated
+                key={button.label}
+                appearance={button.appearance}
+                animation={button.animation}
+              >
+                {button.label}
+              </ButtonAnimated>
+            ),
+          )}
         </div>
       </article>
 
@@ -43,18 +50,24 @@ export function ButtonVariantsMotionSection() {
         </p>
 
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
-          {buttonAnimationPresets.map(([label, animation]) => (
-            <Button
-              key={label}
-              animation={
-                animation as (typeof showcaseButtons)[number]["animation"]
-              }
-              appearance="secondary"
-              className="w-full"
-            >
-              {label}
-            </Button>
-          ))}
+          {buttonAnimationPresets.map(([label, animation]) =>
+            animation === "none" ? (
+              <Button key={label} appearance="secondary" className="w-full">
+                {label}
+              </Button>
+            ) : (
+              <ButtonAnimated
+                key={label}
+                animation={
+                  animation as (typeof showcaseButtons)[number]["animation"]
+                }
+                appearance="secondary"
+                className="w-full"
+              >
+                {label}
+              </ButtonAnimated>
+            ),
+          )}
         </div>
       </article>
     </section>

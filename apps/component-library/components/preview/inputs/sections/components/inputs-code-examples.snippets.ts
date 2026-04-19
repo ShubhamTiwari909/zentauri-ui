@@ -14,7 +14,7 @@ export function inputAppearanceSnippet(row: AppearanceInputRow): string {
 
 export function inputAnimationSnippet(preset: AnimationPreset): string {
   const [label, animation] = preset;
-  return `${variantLeadComment(`animation · ${animation}`)}<Input animation="${animation}" placeholder="${label} motion" aria-label="${label} motion" className="w-full" />`;
+  return `${variantLeadComment(`animation · ${animation}`)}<InputAnimated animation="${animation}" placeholder="${label} motion" aria-label="${label} motion" className="w-full" />`;
 }
 
 export function inputSizeSnippet(row: SizeInputRow): string {
@@ -22,11 +22,11 @@ export function inputSizeSnippet(row: SizeInputRow): string {
 }
 
 export function inputTextareaSnippet(): string {
-  return `${variantLeadComment(`as · textarea, animation · glow`)}<Input as="textarea" rows={4} placeholder="Describe the change" aria-label="Multiline (textarea)" animation="glow" className="w-full" />`;
+  return `${variantLeadComment(`as · textarea, animation · glow`)}<InputAnimated as="textarea" rows={4} placeholder="Describe the change" aria-label="Multiline (textarea)" animation="glow" className="w-full" />`;
 }
 
 export function inputPasswordSnippet(): string {
-  return `${variantLeadComment(`type · password, animation · glow`)}<Input type="password" animation="glow" placeholder="••••••••" aria-label="Password" className="w-full" />`;
+  return `${variantLeadComment(`type · password, animation · glow`)}<InputAnimated type="password" animation="glow" placeholder="••••••••" aria-label="Password" className="w-full" />`;
 }
 
 export function inputDisabledSnippet(): string {
@@ -41,7 +41,7 @@ export function inputControlledSnippet(): string {
   return `${variantLeadComment(`pattern · controlled value`)}
 const [value, setValue] = useState("");
 
-<Input
+<InputAnimated
   value={value}
   onChange={(e) => setValue(e.target.value)}
   placeholder="Type to update state"

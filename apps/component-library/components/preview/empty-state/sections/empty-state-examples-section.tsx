@@ -1,12 +1,12 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { HiCloudArrowUp } from "react-icons/hi2";
 import {
-  EmptyState,
   EmptyStateDescription,
   EmptyStateIcon,
   EmptyStateTitle,
 } from "@zentauri-ui/zentauri-components/ui/empty-state";
+import { HiCloudArrowUp } from "react-icons/hi2";
+import { EmptyStateAnimated } from "@zentauri-ui/zentauri-components/ui/empty-state/animated";
 
 export function EmptyStateExamplesSection() {
   return (
@@ -18,15 +18,15 @@ export function EmptyStateExamplesSection() {
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
           code={`${variantLeadComment(`appearance · ghost, size · sm, animation · fade, align · start`)}
-<EmptyState appearance="ghost" size="sm" animation="fade" align="start">
+<EmptyStateAnimated appearance="ghost" size="sm" animation="fade" align="start">
   <EmptyStateIcon>
     <HiCloudArrowUp className="size-8 text-slate-400" aria-hidden />
   </EmptyStateIcon>
   <EmptyStateTitle>No uploads</EmptyStateTitle>
   <EmptyStateDescription>Drag files here to add them.</EmptyStateDescription>
-</EmptyState>`}
+</EmptyStateAnimated>`}
         >
-          <EmptyState
+          <EmptyStateAnimated
             appearance="ghost"
             animation="fade"
             align="start"
@@ -39,7 +39,7 @@ export function EmptyStateExamplesSection() {
             <EmptyStateDescription>
               Drag files here to add them.
             </EmptyStateDescription>
-          </EmptyState>
+          </EmptyStateAnimated>
         </PreviewCodeShowcase>
       </div>
     </section>

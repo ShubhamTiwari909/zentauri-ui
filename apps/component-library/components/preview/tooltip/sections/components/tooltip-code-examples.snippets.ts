@@ -41,13 +41,13 @@ export function positionSnippet(position: TooltipPlacement): string {
 
 export function animationSnippet(animation: ContentAnimation): string {
   const animationAttr = animation === "fade" ? "" : ` animation="${animation}"`;
-  return `${variantLeadComment(`TooltipContent · animation · ${animation}`)}<Tooltip>
+  return `${variantLeadComment(`TooltipContentAnimated · animation · ${animation}`)}<Tooltip>
   <TooltipTrigger className="${TOOLTIP_TRIGGER_CLASS}">
     Hover · animation · ${animation}
   </TooltipTrigger>
-  <TooltipContent variant="outline"${animationAttr}>
+  <TooltipContentAnimated variant="outline"${animationAttr}>
     Motion preset: ${animation}.
-  </TooltipContent>
+  </TooltipContentAnimated>
 </Tooltip>`;
 }
 

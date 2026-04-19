@@ -1,4 +1,5 @@
 import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
+import { InputAnimated } from "@zentauri-ui/zentauri-components/ui/inputs/animated";
 
 import type {
   AnimationPreset,
@@ -12,7 +13,6 @@ export function InputsAppearanceDemo({ row }: { row: AppearanceInputRow }) {
       appearance={row.appearance === "default" ? undefined : row.appearance}
       placeholder={`${row.label} field`}
       aria-label={row.label}
-      animation="none"
       className="w-full"
     />
   );
@@ -21,7 +21,7 @@ export function InputsAppearanceDemo({ row }: { row: AppearanceInputRow }) {
 export function InputsAnimationDemo({ preset }: { preset: AnimationPreset }) {
   const [label, animation] = preset;
   return (
-    <Input
+    <InputAnimated
       animation={animation}
       placeholder={`${label} motion`}
       aria-label={`${label} motion`}
@@ -36,7 +36,6 @@ export function InputsSizeDemo({ row }: { row: SizeInputRow }) {
       size={row.size}
       placeholder={row.label}
       aria-label={`${row.label} size`}
-      animation="none"
       className="w-full"
     />
   );
@@ -44,7 +43,7 @@ export function InputsSizeDemo({ row }: { row: SizeInputRow }) {
 
 export function InputsTextareaDemo() {
   return (
-    <Input
+    <InputAnimated
       as="textarea"
       rows={4}
       animation="glow"
@@ -57,7 +56,7 @@ export function InputsTextareaDemo() {
 
 export function InputsPasswordDemo() {
   return (
-    <Input
+    <InputAnimated
       type="password"
       animation="glow"
       placeholder="••••••••"
@@ -73,7 +72,6 @@ export function InputsDisabledDemo() {
       disabled
       defaultValue="Cannot edit"
       aria-label="Disabled"
-      animation="none"
       className="w-full"
     />
   );
@@ -85,7 +83,6 @@ export function InputsReadOnlyDemo() {
       readOnly
       defaultValue="Read only"
       aria-label="Read only"
-      animation="none"
       className="w-full"
     />
   );
@@ -97,7 +94,6 @@ export function InputsErrorMessageDemo() {
       errorMessage="This is an error message"
       placeholder="Error message"
       aria-label="Error message"
-      animation="none"
       className="w-full"
     />
   );
@@ -110,7 +106,6 @@ export function InputsNoRingDemo() {
       appearance="info"
       placeholder="No outline ring"
       aria-label="No outline ring"
-      animation="none"
       className="w-full"
     />
   );
@@ -124,7 +119,6 @@ export function InputsFileDemo() {
       appearance="violet"
       size="md"
       aria-label="Upload file"
-      animation="none"
       className="w-full"
     />
   );
@@ -159,7 +153,6 @@ export function InputsRadioDemo() {
       appearance="info"
       size="md"
       defaultChecked
-      animation="none"
       aria-label="Pro plan"
       className="w-auto shrink-0"
     />
@@ -177,7 +170,6 @@ export function InputsRadioGroupDemo() {
           value="starter"
           appearance="violet"
           size="md"
-          animation="none"
           aria-label="Starter tier"
           className="w-auto shrink-0"
         />
@@ -192,7 +184,6 @@ export function InputsRadioGroupDemo() {
           appearance="violet"
           size="md"
           defaultChecked
-          animation="none"
           aria-label="Pro tier"
           className="w-auto shrink-0"
         />
@@ -209,7 +200,6 @@ export function InputsDateDemo() {
       type="date"
       appearance="violet"
       size="md"
-      animation="none"
       aria-label="Pick a date"
       className="w-auto shrink-0"
     />

@@ -1,6 +1,5 @@
 "use client";
 
 export { Badge } from "./badge";
-export type { BadgeAnimation, BadgeProps } from "./types";
-export { badgeAnimationPresets } from "./animations";
+export type { BadgeBaseProps, BadgeProps, BadgeVariantProps } from "./types";
 export { badgeVariants, badgeCloseButtonVariants } from "./variants";

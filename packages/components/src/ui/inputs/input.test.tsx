@@ -3,8 +3,9 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
+import { InputAnimated } from "./animated/input-animated";
+import type { InputAnimation } from "./animated/types";
 import { Input } from "./input";
-import type { InputAnimation } from "./types";
 
 const INPUT_SLOT_SELECTOR = '[data-slot="input"]';
 
@@ -380,7 +381,7 @@ describe("Input (component library)", () => {
       "should render without throwing when animation=%s",
       (animation) => {
         const { unmount } = render(
-          <Input animation={animation} placeholder="x" aria-label="Anim" />,
+          <InputAnimated animation={animation} placeholder="x" aria-label="Anim" />,
         );
         expect(
           getInputSlot(),

@@ -9,12 +9,7 @@ import type { CardDemoProps } from "./card-code-examples.types";
 
 export function CardDemo({ appearance, size, rounded }: CardDemoProps) {
   return (
-    <Card
-      appearance={appearance}
-      size={size}
-      rounded={rounded}
-      animation="none"
-    >
+    <Card appearance={appearance} size={size} rounded={rounded}>
       <CardHeader>
         <CardTitle className="text-sm">
           Appearance:{" "}

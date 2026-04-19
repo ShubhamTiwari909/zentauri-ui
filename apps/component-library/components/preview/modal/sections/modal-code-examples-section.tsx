@@ -87,6 +87,7 @@ export function ModalCodeExamplesSection() {
               position: "center",
               appearance: "default",
               label: `Open (${animation})`,
+              animation,
             })}
           >
             <ModalDemo

@@ -1,4 +1,5 @@
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
 
 import type {
   ButtonAnimationPreset,
@@ -8,7 +9,7 @@ import type {
 
 export function ButtonAppearanceDemo({ appearance, label }: ShowcaseButtonRow) {
   return (
-    <Button appearance={appearance} animation="none" className="w-40">
+    <Button appearance={appearance} className="w-40">
       {label}
     </Button>
   );
@@ -21,20 +22,15 @@ export function ButtonAnimationDemo({
 }) {
   const [label, animation] = preset;
   return (
-    <Button appearance="glass" animation={animation} className="w-40">
+    <ButtonAnimated appearance="glass" animation={animation} className="w-40">
       {`${label} animation`}
-    </Button>
+    </ButtonAnimated>
   );
 }
 
 export function ButtonSizeDemo({ label, size }: SizeButtonRow) {
   return (
-    <Button
-      appearance="gradient-indigo"
-      animation="none"
-      size={size}
-      className="w-40"
-    >
+    <Button appearance="gradient-indigo" size={size} className="w-40">
       {`${label} size`}
     </Button>
   );

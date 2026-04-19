@@ -1,3 +1,4 @@
+import type { TooltipAnimation } from "@zentauri-ui/zentauri-components/ui/tooltip/animated";
 import type {
   TooltipContentProps,
   TooltipPosition,
@@ -62,7 +63,7 @@ export const CONTENT_ANIMATIONS = [
   "fade",
   "scale",
   "none",
-] as const satisfies readonly NonNullable<TooltipContentProps["animation"]>[];
+] as const satisfies readonly TooltipAnimation[];
 
 export type ContentVariant = (typeof CONTENT_VARIANTS)[number];
 export type ContentSize = (typeof CONTENT_SIZES)[number];

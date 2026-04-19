@@ -11,7 +11,6 @@ export function AlertDemo({ appearance, size }: AlertDemoProps) {
     <Alert
       appearance={appearance}
       size={size}
-      animation="none"
       className="text-xs md:text-sm"
     >
       <div className="space-y-1">

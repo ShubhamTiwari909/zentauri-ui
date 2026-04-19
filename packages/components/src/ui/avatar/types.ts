@@ -1,18 +1,21 @@
 import type { VariantProps } from "class-variance-authority";
-import type { HTMLMotionProps } from "framer-motion";
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type {
+  ComponentPropsWithRef,
+  ComponentPropsWithoutRef,
+  ElementType,
+} from "react";
 
-import type { AvatarAnimation } from "./animations";
 import type { avatarVariants } from "./variants";
 
 type AvatarVariantProps = VariantProps<typeof avatarVariants>;
 
-export type AvatarProps = AvatarVariantProps &
-  Omit<HTMLMotionProps<"span">, "children"> & {
-    animation?: AvatarAnimation;
-    appearance?: AvatarVariantProps["appearance"];
-    children?: ReactNode;
-  };
+export interface AvatarBaseProps extends ComponentPropsWithRef<"span"> {
+  size?: AvatarVariantProps["size"];
+  appearance?: AvatarVariantProps["appearance"];
+  as?: ElementType;
+}
+
+export type AvatarProps = Omit<AvatarBaseProps, "as">;
 
 export type AvatarImageProps = ComponentPropsWithoutRef<"img">;
 

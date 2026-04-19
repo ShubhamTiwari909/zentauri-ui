@@ -1,10 +1,5 @@
 "use client";
 
-export { inputAnimationPresets } from "./animations";
 export { Input } from "./input";
-export type {
-  InputAnimation,
-  InputAnimationPresets,
-  InputProps,
-} from "./types";
+export type { InputProps, InputSharedProps } from "./types";
 export { inputVariants } from "./variants";

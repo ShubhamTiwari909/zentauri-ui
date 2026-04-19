@@ -4,13 +4,13 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
 import {
-  Alert,
   AlertClose,
   AlertDefaultIcon,
   AlertDescription,
   AlertIcon,
   AlertTitle,
-} from "./alert";
+} from "./alert-base";
+import { Alert } from "./alert";
 
 describe("Alert", () => {
   describe("public contract and metadata", () => {

@@ -1,10 +1,10 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import {
-  Skeleton,
-  SkeletonAvatar,
-  SkeletonText,
-} from "@zentauri-ui/zentauri-components/ui/skeleton";
+  SkeletonAnimated,
+  SkeletonAvatarAnimated,
+  SkeletonTextAnimated,
+} from "@zentauri-ui/zentauri-components/ui/skeleton/animated";
 
 export function SkeletonHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -13,14 +13,14 @@ export function SkeletonHeroSection({ seo }: { seo: PreviewSeoDocument }) {
 
       <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
         <div className="flex gap-4">
-          <SkeletonAvatar avatarSize="lg" animation="shimmer" />
+          <SkeletonAvatarAnimated avatarSize="lg" animation="shimmer" />
           <div className="flex flex-1 flex-col gap-2">
-            <Skeleton
+            <SkeletonAnimated
               className="h-4 w-[60%]"
               rounded="md"
               animation="shimmer"
             />
-            <SkeletonText lines={2} animation="shimmer" />
+            <SkeletonTextAnimated lines={2} animation="shimmer" />
           </div>
         </div>
       </div>

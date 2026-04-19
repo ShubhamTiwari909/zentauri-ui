@@ -9,6 +9,8 @@ export {
   TableHead,
   TableHeader,
   TableRow,
+  TableContext,
+  useTableContext,
 } from "./table";
 export type {
   TableAnimation,
@@ -17,5 +19,4 @@ export type {
   TableProps,
   TableSectionProps,
 } from "./types";
-export { tableAnimationPresets } from "./animations";
 export { tableVariants, tableRowVariants, tableCellVariants } from "./variants";

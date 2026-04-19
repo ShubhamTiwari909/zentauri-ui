@@ -44,7 +44,6 @@ export function ToastVariantDemo({ appearance, size }: ToastVariantDemoProps) {
         buttonsAppearance[appearance] as NonNullable<ButtonProps["appearance"]>
       }
       size="sm"
-      animation="none"
       type="button"
       onClick={() =>
         toast({

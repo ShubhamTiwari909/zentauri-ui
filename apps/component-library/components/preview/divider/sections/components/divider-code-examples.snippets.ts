@@ -9,7 +9,7 @@ export function dividerSnippet(opts: DividerDemoProps): string {
   const orientationAttr =
     orientation === "horizontal" ? "" : ` orientation="${orientation}"`;
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
-  const base = `<Divider${appearanceAttr}${orientationAttr}${sizeAttr} animation="none"`;
+  const base = `<Divider${appearanceAttr}${orientationAttr}${sizeAttr}`;
   const lead = variantLeadComment(
     `appearance · ${appearance}, orientation · ${orientation}, size · ${size}, label · ${withLabel ? "Section" : "none"}`,
   );

@@ -21,7 +21,6 @@ export function DrawerDemo({ side, size, appearance, label }: DrawerDemoProps) {
         side={side}
         size={size}
         appearance={appearance}
-        animation="fade"
       >
         <DrawerClose />
         <DrawerHeader>

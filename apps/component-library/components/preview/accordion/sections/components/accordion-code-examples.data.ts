@@ -1,4 +1,7 @@
-import type { AccordionProps } from "@zentauri-ui/zentauri-components/ui/accordion";
+import type {
+  AccordionProps,
+  AccordionTransition,
+} from "@zentauri-ui/zentauri-components/ui/accordion";
 
 export const ACCORDION_CODE_EXAMPLES_SECTION_CLASS =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
@@ -40,4 +43,4 @@ export const ACCORDION_TRANSITIONS = [
   "default",
   "smooth",
   "slow",
-] as const satisfies readonly NonNullable<AccordionProps["transition"]>[];
+] as const satisfies readonly AccordionTransition[];

@@ -1,6 +1,7 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
 
 export function ButtonHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -9,30 +10,26 @@ export function ButtonHeroSection({ seo }: { seo: PreviewSeoDocument }) {
 
       <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
         <div className="grid gap-3 sm:grid-cols-2">
-          <Button appearance="outline" animation="lift" className="w-full">
+          <ButtonAnimated appearance="outline" animation="lift" className="w-full">
             Launch
-          </Button>
-          <Button appearance="outline" animation="press" className="w-full">
+          </ButtonAnimated>
+          <ButtonAnimated appearance="outline" animation="press" className="w-full">
             Outline
-          </Button>
-          <Button appearance="glass" animation="glow" className="w-full">
+          </ButtonAnimated>
+          <ButtonAnimated appearance="glass" animation="glow" className="w-full">
             Glass
-          </Button>
-          <Button
+          </ButtonAnimated>
+          <ButtonAnimated
             appearance="destructive"
             animation="bounce"
             className="w-full"
           >
             Delete
-          </Button>
-          <Button
-            appearance="gradient-blue"
-            animation="none"
-            className="w-full"
-          >
+          </ButtonAnimated>
+          <Button appearance="gradient-blue" className="w-full">
             Gradient
           </Button>
-          <Button
+          <ButtonAnimated
             appearance="sky"
             animation="lift"
             className="w-full"
@@ -41,7 +38,7 @@ export function ButtonHeroSection({ seo }: { seo: PreviewSeoDocument }) {
             href="https://www.google.com"
           >
             Link
-          </Button>
+          </ButtonAnimated>
         </div>
       </div>
     </section>

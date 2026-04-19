@@ -12,7 +12,7 @@ export function tabsSnippet(opts: TabsDemoProps): string {
     <TabsTrigger className={${triggerClass}} value="one">One</TabsTrigger>
     <TabsTrigger className={${triggerClass}} value="two">Two</TabsTrigger>
   </TabsList>
-  <TabsContent value="one" animation="fade">First panel content.</TabsContent>
-  <TabsContent value="two" animation="fade">Second panel content.</TabsContent>
+  <TabsContentAnimated value="one" animation="fade">First panel content.</TabsContentAnimated>
+  <TabsContentAnimated value="two" animation="fade">Second panel content.</TabsContentAnimated>
 </Tabs>`;
 }

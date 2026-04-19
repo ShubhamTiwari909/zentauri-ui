@@ -1,6 +1,7 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { Tabs, TabsContent } from "@zentauri-ui/zentauri-components/ui/tabs";
+import { Tabs } from "@zentauri-ui/zentauri-components/ui/tabs";
+import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/animated";
 import TabsListComponent from "./tabs-list";
 
 export function TabsHeroSection({ seo }: { seo: PreviewSeoDocument }) {
@@ -11,20 +12,20 @@ export function TabsHeroSection({ seo }: { seo: PreviewSeoDocument }) {
       <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
         <Tabs defaultValue="overview">
           <TabsListComponent />
-          <TabsContent
+          <TabsContentAnimated
             value="overview"
             animation="fade"
             className="mt-4 text-sm text-slate-300"
           >
             High-level metrics and health for this service.
-          </TabsContent>
-          <TabsContent
+          </TabsContentAnimated>
+          <TabsContentAnimated
             value="activity"
             animation="fade"
             className="mt-4 text-sm text-slate-300"
           >
             Recent events and audit entries appear here.
-          </TabsContent>
+          </TabsContentAnimated>
         </Tabs>
       </div>
     </section>

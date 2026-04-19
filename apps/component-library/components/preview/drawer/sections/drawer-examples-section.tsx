@@ -4,11 +4,11 @@ import {
   Drawer,
   DrawerBody,
   DrawerClose,
-  DrawerContent,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@zentauri-ui/zentauri-components/ui/drawer";
+import { DrawerContentAnimated } from "@zentauri-ui/zentauri-components/ui/drawer/animated";
 
 export function DrawerExamplesSection() {
   return (
@@ -19,19 +19,30 @@ export function DrawerExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`${variantLeadComment(`DrawerContent · side · bottom, animation · slide, size · md (preview)`)}
+          code={`import { Drawer, DrawerTrigger, DrawerContent, DrawerClose, DrawerHeader, DrawerTitle, DrawerBody } from "@zentauri-ui/zentauri-components/ui/drawer";
+import { DrawerContentAnimated } from "@zentauri-ui/zentauri-components/ui/drawer/animated";
+
+${variantLeadComment(`DrawerContent · side · bottom, animation · slide, size · md (preview)`)}
 <Drawer>
-  <DrawerTrigger>Open</DrawerTrigger>
-  <DrawerContent side="bottom" animation="slide">
-    ...
-  </DrawerContent>
+  <DrawerTrigger>Open - Animated</DrawerTrigger>
+  <DrawerContentAnimated side="bottom" animation="slide" size="md">
+    <DrawerClose />
+    <DrawerHeader>
+      <DrawerTitle>Shortcuts</DrawerTitle>
+    </DrawerHeader>
+    <DrawerBody>
+      <p className="text-sm text-slate-300">
+        Swipe down or press Escape to dismiss.
+      </p>
+    </DrawerBody>
+  </DrawerContentAnimated>
 </Drawer>`}
         >
           <Drawer>
             <DrawerTrigger className="rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200">
-              Open bottom drawer
+              Open bottom drawer - Animated
             </DrawerTrigger>
-            <DrawerContent side="bottom" animation="slide" size="md">
+            <DrawerContentAnimated side="bottom" animation="slide" size="md">
               <DrawerClose />
               <DrawerHeader>
                 <DrawerTitle>Shortcuts</DrawerTitle>
@@ -41,7 +52,7 @@ export function DrawerExamplesSection() {
                   Swipe down or press Escape to dismiss.
                 </p>
               </DrawerBody>
-            </DrawerContent>
+            </DrawerContentAnimated>
           </Drawer>
         </PreviewCodeShowcase>
       </div>

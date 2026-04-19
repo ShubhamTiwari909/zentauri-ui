@@ -1,22 +1,21 @@
 "use client";
 
+export { Modal } from "./modal";
 export {
-  Modal,
-  ModalBody,
-  ModalClose,
-  ModalContent,
-  ModalDescription,
-  ModalFooter,
-  ModalHeader,
-  ModalTitle,
   ModalTrigger,
-} from "./modal";
+  ModalContent,
+  ModalTitle,
+  ModalBody,
+  ModalHeader,
+  ModalDescription,
+  ModalClose,
+  ModalFooter
+} from "./modal-base";
 export type {
-  ModalAnimation,
   ModalContentProps,
   ModalProps,
   ModalSectionProps,
   ModalTriggerProps,
+  ModalContentVariantProps,
 } from "./types";
-export { modalOverlayAnimationPresets } from "./animations";
 export { modalContentVariants, modalOverlayVariants } from "./variants";

@@ -3,12 +3,12 @@ import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase"
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import {
   Tabs,
-  TabsContent,
   TabsList,
   TabsTrigger,
   tabsListVariants,
   tabsTriggerVariants,
 } from "@zentauri-ui/zentauri-components/ui/tabs";
+import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/animated";
 
 const listUnderlineSm = tabsListVariants({
   variant: "underline",
@@ -46,7 +46,7 @@ export function TabsExamplesSection() {
     <TabsTrigger className={tabsTriggerVariants({ variant: "underline", size: "sm" })} value="general">General</TabsTrigger>
     ...
   </TabsList>
-  <TabsContent value="general" animation="fade">...</TabsContent>
+  <TabsContentAnimated value="general" animation="fade">...</TabsContentAnimated>
 </Tabs>`}
         >
           <Tabs defaultValue="general">
@@ -58,20 +58,20 @@ export function TabsExamplesSection() {
                 Billing
               </TabsTrigger>
             </TabsList>
-            <TabsContent
+            <TabsContentAnimated
               value="general"
               animation="fade"
               className="mt-3 text-xs text-slate-300"
             >
               Workspace name, timezone, and defaults.
-            </TabsContent>
-            <TabsContent
+            </TabsContentAnimated>
+            <TabsContentAnimated
               value="billing"
               animation="fade"
               className="mt-3 text-xs text-slate-300"
             >
               Invoices and payment methods.
-            </TabsContent>
+            </TabsContentAnimated>
           </Tabs>
         </PreviewCodeShowcase>
 
@@ -82,7 +82,7 @@ export function TabsExamplesSection() {
     <TabsTrigger className={tabsTriggerVariants({ variant: "default", size: "sm" })} value="profile">Profile</TabsTrigger>
     ...
   </TabsList>
-  <TabsContent value="profile" animation="slide">...</TabsContent>
+  <TabsContentAnimated value="profile" animation="slide">...</TabsContentAnimated>
 </Tabs>`}
         >
           <Tabs
@@ -99,20 +99,20 @@ export function TabsExamplesSection() {
               </TabsTrigger>
             </TabsList>
             <div className="min-w-0 flex-1">
-              <TabsContent
+              <TabsContentAnimated
                 value="profile"
                 animation="slide"
                 className="mt-0 text-xs text-slate-300 sm:mt-2"
               >
                 Avatar, display name, and locale.
-              </TabsContent>
-              <TabsContent
+              </TabsContentAnimated>
+              <TabsContentAnimated
                 value="security"
                 animation="slide"
                 className="mt-0 text-xs text-slate-300 sm:mt-2"
               >
                 Sessions, 2FA, and API keys.
-              </TabsContent>
+              </TabsContentAnimated>
             </div>
           </Tabs>
         </PreviewCodeShowcase>

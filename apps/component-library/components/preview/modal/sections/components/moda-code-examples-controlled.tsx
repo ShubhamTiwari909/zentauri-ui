@@ -2,13 +2,13 @@
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 import {
   Modal,
-  ModalContent,
   ModalTrigger,
   ModalClose,
   ModalHeader,
   ModalTitle,
   ModalDescription,
 } from "@zentauri-ui/zentauri-components/ui/modal";
+import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/animated";
 import { useState } from "react";
 import { MODAL_TRIGGER_CLASS } from "./modal-code-examples.data";
 
@@ -19,7 +19,7 @@ export function ModalControlledDemo() {
       <ModalTrigger appearance="default" className={MODAL_TRIGGER_CLASS}>
         Modal controlled with useState
       </ModalTrigger>
-      <ModalContent
+      <ModalContentAnimated
         className="rounded-lg"
         size="md"
         position="center"
@@ -32,16 +32,11 @@ export function ModalControlledDemo() {
           <ModalDescription className="mb-5">
             Supporting description.
           </ModalDescription>
-          <Button
-            appearance="rose"
-            size="sm"
-            animation="none"
-            onClick={() => setOpen(false)}
-          >
+          <Button appearance="rose" size="sm" onClick={() => setOpen(false)}>
             Close
           </Button>
         </ModalHeader>
-      </ModalContent>
+      </ModalContentAnimated>
     </Modal>
   );
 }

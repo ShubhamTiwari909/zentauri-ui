@@ -9,13 +9,12 @@ export function BadgeDemo({ appearance, size, shape }: BadgeDemoProps) {
         appearance={appearance}
         size={size}
         shape={shape}
-        animation="none"
         aria-label="Status active"
       />
     );
   }
   return (
-    <Badge appearance={appearance} size={size} shape={shape} animation="none">
+    <Badge appearance={appearance} size={size} shape={shape}>
       Featured
     </Badge>
   );

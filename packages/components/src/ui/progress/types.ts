@@ -1,26 +1,24 @@
 import type { VariantProps } from "class-variance-authority";
-import type { HTMLMotionProps } from "framer-motion";
-import type { ReactNode } from "react";
+import type { ComponentPropsWithRef, ElementType, ReactNode } from "react";
 
 import type { progressVariants } from "./variants";
 
-export type ProgressAnimation = "none" | "shimmer";
-
-type ProgressVariantProps = VariantProps<typeof progressVariants>;
+export type ProgressVariantProps = VariantProps<typeof progressVariants>;
 
 export type ProgressProps = ProgressVariantProps &
-  Omit<HTMLMotionProps<"div">, "children"> & {
+  (Omit<ComponentPropsWithRef<"div">, "children"> & {
     value?: number;
     min?: number;
     max?: number;
-    animation?: ProgressAnimation;
     label?: string;
     children?: ReactNode;
-  };
+    as?: ElementType;
+  });
 
 export type ProgressSectionProps = {
   className?: string;
   children?: ReactNode;
+  as?: ElementType;
 };
 
 export type ProgressCtx = {

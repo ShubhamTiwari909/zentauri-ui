@@ -7,7 +7,10 @@ import {
   TOGGLE_CODE_EXAMPLES_SECTION_CLASS,
   TOGGLE_SIZES,
 } from "./components/toggle-code-examples.data";
-import { toggleSnippet } from "./components/toggle-code-examples.snippets";
+import {
+  toggleControlledSnippet,
+  toggleSnippet,
+} from "./components/toggle-code-examples.snippets";
 
 export function ToggleCodeExamplesSection() {
   return (
@@ -38,7 +41,7 @@ export function ToggleCodeExamplesSection() {
         ))}
         <PreviewCodeShowcase
           key="controlled"
-          code={toggleSnippet({ appearance: "default", size: "md" })}
+          code={toggleControlledSnippet()}
         >
           <ToggleControlledDemo />
         </PreviewCodeShowcase>

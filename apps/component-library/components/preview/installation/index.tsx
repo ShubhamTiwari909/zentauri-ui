@@ -11,7 +11,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@zentauri-ui/zentauri-components/ui/accordion";
-import { Tabs, TabsContent } from "@zentauri-ui/zentauri-components/ui/tabs";
+import { Tabs } from "@zentauri-ui/zentauri-components/ui/tabs";
+import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/animated";
 
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
@@ -91,7 +92,7 @@ const ADD_NEW_THEMES_COLORS_SNIPPET = `export const customAppearancefuchsia = {
 
 export function ButtonOverrideThemeColors({ label }: ButtonProps) {
   return (
-    <Button animation="none" className={cn("w-40", customAppearancefuchsia[500])}>
+    <Button className={cn("w-40", customAppearancefuchsia[500])}>
       {label}
     </Button>
   );
@@ -122,24 +123,24 @@ export default function InstallationPreviewPage({
           <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
             <Tabs defaultValue="npm">
               <TabsListComponent />
-              <TabsContent value="npm" animation="fade" className="m-0">
+              <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={INSTALL_COMMANDS.npm}
                   language="bash"
                 />
-              </TabsContent>
-              <TabsContent value="pnpm" animation="fade" className="m-0">
+              </TabsContentAnimated>
+              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={INSTALL_COMMANDS.pnpm}
                   language="bash"
                 />
-              </TabsContent>
-              <TabsContent value="yarn" animation="fade" className="m-0">
+              </TabsContentAnimated>
+              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={INSTALL_COMMANDS.yarn}
                   language="bash"
                 />
-              </TabsContent>
+              </TabsContentAnimated>
             </Tabs>
           </div>
         </section>
@@ -177,24 +178,24 @@ export default function InstallationPreviewPage({
           <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
             <Tabs defaultValue="npm">
               <TabsListComponent />
-              <TabsContent value="npm" animation="fade" className="m-0">
+              <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={PEER_INSTALL_COMMANDS.npm}
                   language="bash"
                 />
-              </TabsContent>
-              <TabsContent value="pnpm" animation="fade" className="m-0">
+              </TabsContentAnimated>
+              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={PEER_INSTALL_COMMANDS.pnpm}
                   language="bash"
                 />
-              </TabsContent>
-              <TabsContent value="yarn" animation="fade" className="m-0">
+              </TabsContentAnimated>
+              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={PEER_INSTALL_COMMANDS.yarn}
                   language="bash"
                 />
-              </TabsContent>
+              </TabsContentAnimated>
             </Tabs>
           </div>
           <h3 className="mt-6 text-sm font-medium text-slate-200">
@@ -214,24 +215,24 @@ export default function InstallationPreviewPage({
           <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
             <Tabs defaultValue="npm">
               <TabsListComponent />
-              <TabsContent value="npm" animation="fade" className="m-0">
+              <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={OPTIONAL_PEER_INSTALL_COMMANDS.npm}
                   language="bash"
                 />
-              </TabsContent>
-              <TabsContent value="pnpm" animation="fade" className="m-0">
+              </TabsContentAnimated>
+              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={OPTIONAL_PEER_INSTALL_COMMANDS.pnpm}
                   language="bash"
                 />
-              </TabsContent>
-              <TabsContent value="yarn" animation="fade" className="m-0">
+              </TabsContentAnimated>
+              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={OPTIONAL_PEER_INSTALL_COMMANDS.yarn}
                   language="bash"
                 />
-              </TabsContent>
+              </TabsContentAnimated>
             </Tabs>
           </div>
         </section>

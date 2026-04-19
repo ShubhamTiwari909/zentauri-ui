@@ -5,13 +5,13 @@ import {
   Modal,
   ModalBody,
   ModalClose,
-  ModalContent,
   ModalDescription,
   ModalFooter,
   ModalHeader,
   ModalTitle,
   ModalTrigger,
 } from "@zentauri-ui/zentauri-components/ui/modal";
+import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/animated";
 
 export function ModalExamplesSection() {
   return (
@@ -22,20 +22,20 @@ export function ModalExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`${variantLeadComment(`ModalContent · animation · slide-up, position · top, size · md`)}
+          code={`${variantLeadComment(`ModalContentAnimated · animation · slide-up, position · top, size · md`)}
 <Modal>
   <ModalTrigger>Open</ModalTrigger>
-  <ModalContent animation="slide-up" position="top" size="md">
+  <ModalContentAnimated animation="slide-up" position="top" size="md">
     <ModalClose />
     <ModalHeader>...</ModalHeader>
-  </ModalContent>
+  </ModalContentAnimated>
 </Modal>`}
         >
           <Modal>
             <ModalTrigger className="rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200">
               Open top sheet
             </ModalTrigger>
-            <ModalContent animation="slide-up" position="top" size="md">
+            <ModalContentAnimated animation="slide-up" position="top" size="md">
               <ModalClose />
               <ModalHeader>
                 <ModalTitle>Release notes</ModalTitle>
@@ -48,11 +48,11 @@ export function ModalExamplesSection() {
                 </ul>
               </ModalBody>
               <ModalFooter>
-                <Button appearance="outline" size="sm" animation="none">
+                <Button appearance="outline" size="sm">
                   Close
                 </Button>
               </ModalFooter>
-            </ModalContent>
+            </ModalContentAnimated>
           </Modal>
         </PreviewCodeShowcase>
       </div>

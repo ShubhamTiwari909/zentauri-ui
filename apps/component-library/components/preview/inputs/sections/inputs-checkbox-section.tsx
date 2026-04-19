@@ -41,7 +41,6 @@ export function InputsCheckboxSection() {
                 size="md"
                 appearance={row.appearance}
                 defaultChecked={row.appearance === "success"}
-                animation="none"
                 aria-label={`${row.label} checkbox`}
                 className="w-auto shrink-0"
               />
@@ -63,7 +62,6 @@ export function InputsCheckboxSection() {
                 type="checkbox"
                 size={size}
                 appearance="violet"
-                animation="none"
                 aria-label={`Checkbox size ${size}`}
                 className="w-auto shrink-0"
               />

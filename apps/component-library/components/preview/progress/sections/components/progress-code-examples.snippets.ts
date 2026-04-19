@@ -21,7 +21,6 @@ function progressAttrs(opts: ProgressDemoProps): string {
     parts.push("animated");
   }
   parts.push("value={42}");
-  parts.push('animation="none"');
   const attr = parts.length ? ` ${parts.join(" ")}` : "";
   return attr;
 }

@@ -3,6 +3,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@zentauri-ui/zentauri-components/ui/tooltip";
+import { TooltipContentAnimated } from "@zentauri-ui/zentauri-components/ui/tooltip/animated";
 import { cn } from "@/lib/utils";
 
 import { TOOLTIP_TRIGGER_CLASS } from "./tooltip-code-examples.data";
@@ -89,9 +90,9 @@ export function AnimationDemo({ animation }: { animation: ContentAnimation }) {
       <TooltipTrigger className={TOOLTIP_TRIGGER_CLASS}>
         Hover · animation · {animation}
       </TooltipTrigger>
-      <TooltipContent variant="outline" animation={animation}>
+      <TooltipContentAnimated variant="outline" animation={animation}>
         Motion preset: {animation}.
-      </TooltipContent>
+      </TooltipContentAnimated>
     </Tooltip>
   );
 }

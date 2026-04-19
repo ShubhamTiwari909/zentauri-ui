@@ -27,7 +27,6 @@ export function ProgressDemo({
         striped={striped}
         animated={animated}
         value={42}
-        animation="none"
       />
     </div>
   );

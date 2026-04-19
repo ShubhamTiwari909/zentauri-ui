@@ -1,5 +1,5 @@
 "use client";
-import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
+import { InputAnimated } from "@zentauri-ui/zentauri-components/ui/inputs/animated";
 import { useState } from "react";
 
 export function InputsControlledSection() {
@@ -25,7 +25,7 @@ export function InputsControlledSection() {
         }
       </p>
       <div className="mt-4 max-w-md">
-        <Input
+        <InputAnimated
           value={value}
           onChange={(event) => setValue(event.target.value)}
           placeholder="Type to update state"

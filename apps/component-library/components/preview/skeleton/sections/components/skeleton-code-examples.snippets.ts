@@ -11,5 +11,5 @@ export function skeletonSnippet(opts: SkeletonDemoProps): string {
   const animationAttr = animation === "none" ? "" : ` animation="${animation}"`;
   const shimmerToneAttr =
     shimmerTone === "default" ? "" : ` shimmerTone="${shimmerTone}"`;
-  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}, rounded · ${rounded}, animation · ${animation}, shimmerTone · ${shimmerTone}`)}<Skeleton className="max-w-md"${appearanceAttr}${sizeAttr}${roundedAttr}${animationAttr}${shimmerToneAttr} />`;
+  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}, rounded · ${rounded}, animation · ${animation}, shimmerTone · ${shimmerTone}`)}<SkeletonAnimated className="max-w-md"${appearanceAttr}${sizeAttr}${roundedAttr}${animationAttr}${shimmerToneAttr} />`;
 }

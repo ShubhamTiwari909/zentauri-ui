@@ -4,12 +4,8 @@ import { describe, expect, it } from "vitest";
 
 import {
   Card,
-  CardBody,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
 } from "./card";
+import { CardBody, CardDescription, CardFooter, CardHeader, CardTitle } from "./card-base";
 
 const CARD_SLOT = '[data-slot="card"]';
 

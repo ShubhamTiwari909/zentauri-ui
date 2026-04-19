@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { SiteHeader } from "@/components/common/site-header";
-import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
 import { useHome } from "./use-home";
 import { LightLines } from "@/components/light-lines/LightLines";
 
@@ -35,7 +35,7 @@ export default function HomePage() {
               </p>
             </div>
             <div className="pt-8">
-              <Button
+              <ButtonAnimated
                 appearance="glass"
                 animation="lift"
                 className="px-8 py-3 text-lg font-medium cursor-pointer"
@@ -43,7 +43,7 @@ export default function HomePage() {
                 <Link href={content.ctaHref} passHref>
                   {content.ctaText}
                 </Link>
-              </Button>
+              </ButtonAnimated>
             </div>
           </div>
         </LightLines>

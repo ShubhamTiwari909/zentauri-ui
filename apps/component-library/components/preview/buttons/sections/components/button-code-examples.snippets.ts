@@ -12,7 +12,7 @@ export function buttonAppearanceSnippet(button: ShowcaseButtonRow): string {
 
 export function buttonAnimationSnippet(preset: ButtonAnimationPreset): string {
   const [label, animation] = preset;
-  return `${variantLeadComment(`animation · ${animation}`)}<Button appearance="glass" animation="${animation}" className="w-full">${label} animation</Button>`;
+  return `${variantLeadComment(`animation · ${animation}`)}<ButtonAnimated appearance="glass" animation="${animation}" className="w-full">${label} animation</ButtonAnimated>`;
 }
 
 export function buttonSizeSnippet(button: SizeButtonRow): string {
