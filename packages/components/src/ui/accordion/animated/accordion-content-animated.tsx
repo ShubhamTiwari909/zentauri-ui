@@ -9,12 +9,13 @@ import { useAccordionContext, useAccordionItemValue } from "../accordion-base";
 import { accordionContentVariants } from "../variants";
 import { AccordionContentAnimatedProps } from "./types";
 
-export function AccordionContentAnimated({
-  className,
-  children,
-  transitionVariant = "default",
-  ref,
-}: AccordionContentAnimatedProps) {
+export function AccordionContentAnimated(props: AccordionContentAnimatedProps) {
+  const {
+    className,
+    children,
+    transitionVariant = "default",
+    ref,
+  } = props;
   const itemValue = useAccordionItemValue("AccordionContent");
   const {
     isOpen,

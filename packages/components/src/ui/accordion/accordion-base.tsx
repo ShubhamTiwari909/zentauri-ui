@@ -45,19 +45,20 @@ export function useAccordionItemValue(component: string): string {
   return value;
 }
 
-export function AccordionBase({
-  type = "single",
-  value,
-  values,
-  defaultValue,
-  defaultValues,
-  onValueChange,
-  onValuesChange,
-  appearance = "default",
-  size = "md",
-  className,
-  children,
-}: AccordionBaseProps) {
+export function AccordionBase(props: AccordionBaseProps) {
+  const {
+    type = "single",
+    value,
+    values,
+    defaultValue,
+    defaultValues,
+    onValueChange,
+    onValuesChange,
+    appearance = "default",
+    size = "md",
+    className,
+    children,
+  } = props;
   const isSingleControlled = value !== undefined;
   const isMultipleControlled = values !== undefined;
   const [singleUncontrolled, setSingleUncontrolled] = useState<
@@ -138,13 +139,8 @@ export function AccordionBase({
 
 AccordionBase.displayName = "Accordion";
 
-export function AccordionItem({
-  className,
-  value,
-  children,
-  ref,
-  ...rest
-}: AccordionItemProps) {
+export function AccordionItem(props: AccordionItemProps) {
+  const { className, value, children, ref, ...rest } = props;
   const { appearance } = useAccordionContext("AccordionItem");
   return (
     <AccordionItemValueContext.Provider value={value}>
@@ -163,12 +159,8 @@ export function AccordionItem({
 
 AccordionItem.displayName = "AccordionItem";
 
-export function AccordionTrigger({
-  className,
-  children,
-  ref,
-  ...rest
-}: AccordionTriggerProps) {
+export function AccordionTrigger(props: AccordionTriggerProps) {
+  const { className, children, ref, ...rest } = props;
   const itemValue = useAccordionItemValue("AccordionTrigger");
   const { isOpen, toggle, size } = useAccordionContext("AccordionTrigger");
   const open = isOpen(itemValue);
@@ -196,11 +188,8 @@ export function AccordionTrigger({
 
 AccordionTrigger.displayName = "AccordionTrigger";
 
-export function AccordionContent({
-  className,
-  children,
-  ref,
-}: AccordionContentProps) {
+export function AccordionContent(props: AccordionContentProps) {
+  const { className, children, ref } = props;
   const itemValue = useAccordionItemValue("AccordionContent");
   const { isOpen, size } = useAccordionContext("AccordionContent");
   const open = isOpen(itemValue);

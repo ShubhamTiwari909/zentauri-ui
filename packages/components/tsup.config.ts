@@ -106,9 +106,8 @@ export default defineConfig({
     ...hooksEntries,
   },
   format: ["esm", "cjs"],
-  dts: true,
+  dts: true, // ← disabled, tsc handles this separately
   clean: true,
-  // Externalize peer deps and subpaths (e.g. react-icons/hi2) so they are never inlined.
   external: [
     "react",
     "react-dom",
@@ -122,17 +121,12 @@ export default defineConfig({
   ],
   sourcemap: true,
   splitting: true,
-  // Rollup treeshake can reorder output so tsup's `banner` no longer leads with
-  // `"use client"`. Entry `index.ts` files include the directive for source clarity;
-  // `scripts/prepend-use-client.mjs` runs after the build to enforce it on each UI entry.
   treeshake: true,
   async onSuccess() {
     execFileSync(
       "node",
       [join(process.cwd(), "scripts/prepend-use-client.mjs")],
-      {
-        stdio: "inherit",
-      },
+      { stdio: "inherit" },
     );
   },
 });

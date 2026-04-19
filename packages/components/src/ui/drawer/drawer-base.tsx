@@ -38,12 +38,8 @@ export function useDrawerContext(component: string): DrawerCtx {
   return ctx;
 }
 
-export function Drawer({
-  open,
-  defaultOpen = false,
-  onOpenChange,
-  children,
-}: DrawerProps) {
+export function Drawer(props: DrawerProps) {
+  const { open, defaultOpen = false, onOpenChange, children } = props;
   const isControlled = open !== undefined;
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
   const resolvedOpen = isControlled ? Boolean(open) : uncontrolledOpen;
@@ -81,14 +77,8 @@ export function Drawer({
 
 Drawer.displayName = "Drawer";
 
-export function DrawerTrigger({
-  className,
-  children,
-  appearance,
-  onClick,
-  ref,
-  ...rest
-}: DrawerTriggerProps) {
+export function DrawerTrigger(props: DrawerTriggerProps) {
+  const { className, children, appearance, onClick, ref, ...rest } = props;
   const { setOpen } = useDrawerContext("DrawerTrigger");
   return (
     <button
@@ -111,16 +101,17 @@ export function DrawerTrigger({
 
 DrawerTrigger.displayName = "DrawerTrigger";
 
-export function DrawerContent({
-  className,
-  side = "right",
-  size,
-  appearance,
-  children,
-  ref,
-  id,
-  style,
-}: DrawerContentProps) {
+export function DrawerContent(props: DrawerContentProps) {
+  const {
+    className,
+    side = "right",
+    size,
+    appearance,
+    children,
+    ref,
+    id,
+    style,
+  } = props;
   const { open, setOpen, titleId, descriptionId, contentRef } =
     useDrawerContext("DrawerContent");
   const resolvedSide = side ?? "right";
@@ -179,7 +170,8 @@ export function DrawerContent({
 
 DrawerContent.displayName = "DrawerContent";
 
-export function DrawerHeader({ className, children }: DrawerSectionProps) {
+export function DrawerHeader(props: DrawerSectionProps) {
+  const { className, children } = props;
   return (
     <header
       data-slot="drawer-header"
@@ -192,7 +184,8 @@ export function DrawerHeader({ className, children }: DrawerSectionProps) {
 
 DrawerHeader.displayName = "DrawerHeader";
 
-export function DrawerBody({ className, children }: DrawerSectionProps) {
+export function DrawerBody(props: DrawerSectionProps) {
+  const { className, children } = props;
   return (
     <div
       data-slot="drawer-body"
@@ -205,7 +198,8 @@ export function DrawerBody({ className, children }: DrawerSectionProps) {
 
 DrawerBody.displayName = "DrawerBody";
 
-export function DrawerFooter({ className, children }: DrawerSectionProps) {
+export function DrawerFooter(props: DrawerSectionProps) {
+  const { className, children } = props;
   return (
     <footer
       data-slot="drawer-footer"
@@ -218,7 +212,8 @@ export function DrawerFooter({ className, children }: DrawerSectionProps) {
 
 DrawerFooter.displayName = "DrawerFooter";
 
-export function DrawerTitle({ className, children }: DrawerSectionProps) {
+export function DrawerTitle(props: DrawerSectionProps) {
+  const { className, children } = props;
   const { titleId } = useDrawerContext("DrawerTitle");
   return (
     <h2
@@ -233,11 +228,8 @@ export function DrawerTitle({ className, children }: DrawerSectionProps) {
 
 DrawerTitle.displayName = "DrawerTitle";
 
-export function DrawerClose({
-  className,
-  children,
-  ...rest
-}: DrawerSectionProps) {
+export function DrawerClose(props: DrawerSectionProps) {
+  const { className, children, ...rest } = props;
   const { setOpen } = useDrawerContext("DrawerClose");
   return (
     <button
