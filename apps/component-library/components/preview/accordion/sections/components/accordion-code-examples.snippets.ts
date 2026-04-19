@@ -1,10 +1,11 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 
+import type { AccordionTransition } from "@zentauri-ui/zentauri-components/ui/accordion";
+
 import type {
   AccordionAppearance,
   AccordionDemoType,
   AccordionSize,
-  AccordionTransition,
 } from "./accordion-code-examples.types";
 
 export function accordionSnippet(
@@ -17,18 +18,21 @@ export function accordionSnippet(
     type === "single"
       ? 'type="single" defaultValue="a"'
       : 'type="multiple" defaultValues={["a"]}';
-  return `${variantLeadComment(`type · ${type}, appearance · ${appearance}, size · ${size}, transition · ${transition}`)}<Accordion ${typeLine} appearance="${appearance}" size="${size}" transition="${transition}" className="space-y-4">
+  return `import { Accordion, AccordionItem, AccordionTrigger } from "@zentauri-ui/zentauri-components/ui/accordion";
+import { AccordionContentAnimated } from "@zentauri-ui/zentauri-components/ui/accordion/animated";
+
+${variantLeadComment(`type · ${type}, appearance · ${appearance}, size · ${size}, transition · ${transition}`)}<Accordion ${typeLine} appearance="${appearance}" size="${size}" className="space-y-4">
   <AccordionItem value="a">
     <AccordionTrigger>First panel</AccordionTrigger>
-    <AccordionContent>
+    <AccordionContentAnimated transitionVariant="${transition}">
       <p className="text-sm">Content for the first item.</p>
-    </AccordionContent>
+    </AccordionContentAnimated>
   </AccordionItem>
   <AccordionItem value="b">
     <AccordionTrigger>Second panel</AccordionTrigger>
-    <AccordionContent>
+    <AccordionContentAnimated transitionVariant="${transition}">
       <p className="text-sm">Content for the second item.</p>
-    </AccordionContent>
+    </AccordionContentAnimated>
   </AccordionItem>
 </Accordion>`;
 }

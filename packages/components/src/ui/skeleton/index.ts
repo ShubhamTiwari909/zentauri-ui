@@ -14,8 +14,8 @@ export type {
   SkeletonCardProps,
   SkeletonProps,
   SkeletonTextProps,
+  SkeletonVariantProps,
 } from "./types";
-export { skeletonAnimationPresets } from "./animations";
 export {
   skeletonShimmerGradientClasses,
   skeletonTextLineVariants,

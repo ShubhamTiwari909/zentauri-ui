@@ -11,7 +11,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@zentauri-ui/zentauri-components/ui/accordion";
-import { Tabs, TabsContent } from "@zentauri-ui/zentauri-components/ui/tabs";
+import { Tabs } from "@zentauri-ui/zentauri-components/ui/tabs";
+import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/animated";
 
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
@@ -28,16 +29,34 @@ const PEER_INSTALL_COMMANDS = {
   yarn: "yarn add react react-dom class-variance-authority clsx tailwind-merge",
 } as const;
 
-const OPTIONAL_PEER_INSTALL_COMMANDS = {
-  npm: "npm install framer-motion react-icons",
-  pnpm: "pnpm add framer-motion react-icons",
-  yarn: "yarn add framer-motion react-icons",
+const FRAMER_MOTION_INSTALL_COMMANDS = {
+  npm: "npm install framer-motion",
+  pnpm: "pnpm add framer-motion",
+  yarn: "yarn add framer-motion",
+} as const;
+
+const REACT_ICONS_INSTALL_COMMANDS = {
+  npm: "npm install react-icons",
+  pnpm: "pnpm add react-icons",
+  yarn: "yarn add react-icons",
 } as const;
 
 const GLOBALS_CSS_SNIPPET = `@import "tailwindcss";
 @source "../node_modules/@zentauri-ui/zentauri-components";`;
 
-const IMPORT_SNIPPET = `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@zentauri-ui/zentauri-components/ui/accordion";`;
+const STATIC_IMPORT_SNIPPET = `import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@zentauri-ui/zentauri-components/ui/accordion";`;
+
+const ANIMATED_IMPORT_SNIPPET = `import {
+  Accordion,
+  AccordionContentAnimated,
+  AccordionItem,
+  AccordionTrigger,
+} from "@zentauri-ui/zentauri-components/ui/accordion/animated";`;
 
 const USAGE_SNIPPET = `<div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
   <Accordion type="single" defaultValue="item-1" appearance="separated" size="md">
@@ -91,7 +110,7 @@ const ADD_NEW_THEMES_COLORS_SNIPPET = `export const customAppearancefuchsia = {
 
 export function ButtonOverrideThemeColors({ label }: ButtonProps) {
   return (
-    <Button animation="none" className={cn("w-40", customAppearancefuchsia[500])}>
+    <Button className={cn("w-40", customAppearancefuchsia[500])}>
       {label}
     </Button>
   );
@@ -122,24 +141,24 @@ export default function InstallationPreviewPage({
           <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
             <Tabs defaultValue="npm">
               <TabsListComponent />
-              <TabsContent value="npm" animation="fade" className="m-0">
+              <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={INSTALL_COMMANDS.npm}
                   language="bash"
                 />
-              </TabsContent>
-              <TabsContent value="pnpm" animation="fade" className="m-0">
+              </TabsContentAnimated>
+              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={INSTALL_COMMANDS.pnpm}
                   language="bash"
                 />
-              </TabsContent>
-              <TabsContent value="yarn" animation="fade" className="m-0">
+              </TabsContentAnimated>
+              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={INSTALL_COMMANDS.yarn}
                   language="bash"
                 />
-              </TabsContent>
+              </TabsContentAnimated>
             </Tabs>
           </div>
         </section>
@@ -177,61 +196,115 @@ export default function InstallationPreviewPage({
           <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
             <Tabs defaultValue="npm">
               <TabsListComponent />
-              <TabsContent value="npm" animation="fade" className="m-0">
+              <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={PEER_INSTALL_COMMANDS.npm}
                   language="bash"
                 />
-              </TabsContent>
-              <TabsContent value="pnpm" animation="fade" className="m-0">
+              </TabsContentAnimated>
+              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={PEER_INSTALL_COMMANDS.pnpm}
                   language="bash"
                 />
-              </TabsContent>
-              <TabsContent value="yarn" animation="fade" className="m-0">
+              </TabsContentAnimated>
+              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={PEER_INSTALL_COMMANDS.yarn}
                   language="bash"
                 />
-              </TabsContent>
+              </TabsContentAnimated>
             </Tabs>
           </div>
           <h3 className="mt-6 text-sm font-medium text-slate-200">
-            Optional: animations and icons
+            Animated components: install framer-motion
           </h3>
           <p className="mt-2 text-sm leading-6 text-slate-400">
-            Add{" "}
+            Anything imported from an{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              /animated
+            </code>{" "}
+            subpath (for example{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              ui/alert/animated
+            </code>
+            ,{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              ui/accordion/animated
+            </code>
+            , or{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              ui/tabs/animated
+            </code>
+            ) depends on{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              framer-motion
+            </code>
+            . Install it in apps that use those entry points. If you only use
+            static imports from the main UI path (no{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              /animated
+            </code>
+            ),{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
               framer-motion
             </code>{" "}
-            when using motion-based UI, and{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
-              react-icons
-            </code>{" "}
-            when using icon sets from that package.
+            is optional.
           </p>
           <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
             <Tabs defaultValue="npm">
               <TabsListComponent />
-              <TabsContent value="npm" animation="fade" className="m-0">
+              <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
-                  codeString={OPTIONAL_PEER_INSTALL_COMMANDS.npm}
+                  codeString={FRAMER_MOTION_INSTALL_COMMANDS.npm}
                   language="bash"
                 />
-              </TabsContent>
-              <TabsContent value="pnpm" animation="fade" className="m-0">
+              </TabsContentAnimated>
+              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
                 <CodeHighlight
-                  codeString={OPTIONAL_PEER_INSTALL_COMMANDS.pnpm}
+                  codeString={FRAMER_MOTION_INSTALL_COMMANDS.pnpm}
                   language="bash"
                 />
-              </TabsContent>
-              <TabsContent value="yarn" animation="fade" className="m-0">
+              </TabsContentAnimated>
+              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
                 <CodeHighlight
-                  codeString={OPTIONAL_PEER_INSTALL_COMMANDS.yarn}
+                  codeString={FRAMER_MOTION_INSTALL_COMMANDS.yarn}
                   language="bash"
                 />
-              </TabsContent>
+              </TabsContentAnimated>
+            </Tabs>
+          </div>
+          <h3 className="mt-6 text-sm font-medium text-slate-200">
+            Optional: react-icons
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            Install{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              react-icons
+            </code>{" "}
+            when you use icon sets from that package.
+          </p>
+          <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
+            <Tabs defaultValue="npm">
+              <TabsListComponent />
+              <TabsContentAnimated value="npm" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={REACT_ICONS_INSTALL_COMMANDS.npm}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={REACT_ICONS_INSTALL_COMMANDS.pnpm}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={REACT_ICONS_INSTALL_COMMANDS.yarn}
+                  language="bash"
+                />
+              </TabsContentAnimated>
             </Tabs>
           </div>
         </section>
@@ -271,11 +344,50 @@ export default function InstallationPreviewPage({
             Import and use components
           </h2>
           <p className="mt-2 text-sm leading-6 text-slate-400">
-            Import from the UI barrel, then compose primitives in your JSX.
+            Static building blocks live under the component path (for example{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              ui/alert
+            </code>
+            ,{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              ui/accordion
+            </code>
+            ). Motion-enabled variants live under a matching{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              /animated
+            </code>{" "}
+            entry (for example{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              ui/alert/animated
+            </code>
+            ) and require{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              framer-motion
+            </code>{" "}
+            as described in Step 2.
           </p>
-          <h3 className="mt-6 text-sm font-medium text-slate-200">Imports</h3>
+          <h3 className="mt-6 text-sm font-medium text-slate-200">
+            Static imports
+          </h3>
           <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
-            <CodeHighlight codeString={IMPORT_SNIPPET} language="tsx" />
+            <CodeHighlight codeString={STATIC_IMPORT_SNIPPET} language="tsx" />
+          </div>
+          <h3 className="mt-6 text-sm font-medium text-slate-200">
+            Animated imports
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            Use a separate import from the{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              /animated
+            </code>{" "}
+            module when you need animated primitives (pattern matches other
+            components such as alert).
+          </p>
+          <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
+            <CodeHighlight
+              codeString={ANIMATED_IMPORT_SNIPPET}
+              language="tsx"
+            />
           </div>
           <h3 className="mt-6 text-sm font-medium text-slate-200">Usage</h3>
           <div className="mt-2 overflow-hidden rounded-xl border border-white/10">

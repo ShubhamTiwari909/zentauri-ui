@@ -9,7 +9,9 @@ export function drawerSnippet(opts: DrawerDemoProps): string {
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
   const appearanceAttr =
     appearance === "default" ? "" : ` appearance="${appearance}"`;
-  return `${variantLeadComment(`DrawerContent · side · ${side}, size · ${size}, appearance · ${appearance}`)}<Drawer>
+  return `import { Drawer, DrawerBody, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@zentauri-ui/zentauri-components/ui/drawer/animated";
+
+${variantLeadComment(`DrawerContent · side · ${side}, size · ${size}, appearance · ${appearance}`)}<Drawer>
   <DrawerTrigger appearance="${appearance}" className="${DRAWER_TRIGGER_CLASS}">
     ${label}
   </DrawerTrigger>

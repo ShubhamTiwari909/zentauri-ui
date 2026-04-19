@@ -1,6 +1,4 @@
-import { ReactNode } from "react";
-
-import type { TabsAnimation } from "./animations";
+import type { ElementType, HTMLAttributes, ReactNode } from "react";
 
 export type TabsValue = string;
 
@@ -49,11 +47,14 @@ export type TabsTriggerProps = {
 };
 
 export type TabsContentProps = {
+  as?: ElementType;
   value: TabsValue;
   children: ReactNode;
   className?: string;
-  animation?: TabsAnimation;
-};
+} & Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "children" | "className" | "role" | "id" | "aria-labelledby"
+>;
 
 export type TabsContextType = {
   value: TabsValue | undefined;

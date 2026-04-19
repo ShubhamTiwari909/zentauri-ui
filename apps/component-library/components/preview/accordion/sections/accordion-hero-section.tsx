@@ -2,10 +2,10 @@ import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-b
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import {
   Accordion,
-  AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@zentauri-ui/zentauri-components/ui/accordion";
+import { AccordionContentAnimated } from "@zentauri-ui/zentauri-components/ui/accordion/animated";
 
 export function AccordionHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -21,20 +21,20 @@ export function AccordionHeroSection({ seo }: { seo: PreviewSeoDocument }) {
         >
           <AccordionItem value="item-1">
             <AccordionTrigger>Shipping</AccordionTrigger>
-            <AccordionContent>
+            <AccordionContentAnimated transitionVariant="smooth">
               <p className="text-sm text-slate-300">
                 Standard delivery in 3-5 business days. Express options at
                 checkout.
               </p>
-            </AccordionContent>
+            </AccordionContentAnimated>
           </AccordionItem>
           <AccordionItem value="item-2">
             <AccordionTrigger>Returns</AccordionTrigger>
-            <AccordionContent>
+            <AccordionContentAnimated transitionVariant="smooth">
               <p className="text-sm text-slate-300">
                 Free returns within 30 days of delivery in original condition.
               </p>
-            </AccordionContent>
+            </AccordionContentAnimated>
           </AccordionItem>
         </Accordion>
       </div>

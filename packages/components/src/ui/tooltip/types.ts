@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export type TooltipPosition = "top" | "bottom" | "left" | "right";
 
@@ -54,7 +54,4 @@ export type TooltipContentProps = {
     | "gradient-orange";
   size?: "sm" | "md" | "lg";
   width?: "fit" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
-  animation?: "fade" | "scale" | "none";
 };
-
-export type TooltipAnimation = "none" | "fade" | "scale";

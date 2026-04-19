@@ -3,7 +3,7 @@ import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import type { AvatarDemoAnimation, AvatarDemoAppearance, AvatarDemoSize } from "./avatar-code-examples.types";
 
 export function avatarSnippetForSize(size: AvatarDemoSize): string {
-  return `${variantLeadComment(`size · ${size}, animation · none`)}<Avatar size="${size}" animation="none">
+  return `${variantLeadComment(`size · ${size}, animation · none`)}<Avatar size="${size}">
   <AvatarFallback>ZU</AvatarFallback>
 </Avatar>`;
 }
@@ -11,9 +11,9 @@ export function avatarSnippetForSize(size: AvatarDemoSize): string {
 export function avatarSnippetForAnimation(
   animation: AvatarDemoAnimation,
 ): string {
-  return `${variantLeadComment(`size · md, animation · ${animation}`)}<Avatar size="md" animation="${animation}">
+  return `${variantLeadComment(`size · md, animation · ${animation}`)}<AvatarAnimated size="md" animation="${animation}">
   <AvatarFallback>ZU</AvatarFallback>
-</Avatar>`;
+</AvatarAnimated>`;
 }
 
 export function avatarSnippetForAppearance(

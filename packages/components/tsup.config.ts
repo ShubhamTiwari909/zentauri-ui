@@ -23,8 +23,29 @@ const uiComponentNames = [
   "select",
   "skeleton",
   "slider",
-  "spinner",
   "stepper",
+  "table",
+  "tabs",
+  "toast",
+  "toggle",
+  "tooltip",
+] as const;
+
+const uiAnimatedComponentNames = [
+  "accordion",
+  "alert",
+  "avatar",
+  "badge",
+  "buttons",
+  "card",
+  "divider",
+  "drawer",
+  "empty-state",
+  "inputs",
+  "modal",
+  "progress",
+  "skeleton",
+  "spinner",
   "table",
   "tabs",
   "toast",
@@ -64,6 +85,13 @@ const uiEntries = Object.fromEntries(
   uiComponentNames.map((name) => [`ui/${name}`, `src/ui/${name}/index.ts`]),
 );
 
+const uiAnimatedEntries = Object.fromEntries(
+  uiAnimatedComponentNames.map((name) => [
+    `ui/${name}/animated`,
+    `src/ui/${name}/animated/index.ts`,
+  ]),
+);
+
 const hooksEntries = {
   "hooks/utils": "src/lib/utils.ts",
   ...Object.fromEntries(
@@ -74,6 +102,7 @@ const hooksEntries = {
 export default defineConfig({
   entry: {
     ...uiEntries,
+    ...uiAnimatedEntries,
     ...hooksEntries,
   },
   format: ["esm", "cjs"],

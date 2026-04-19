@@ -1,6 +1,12 @@
 "use client";
 
-export { Tooltip, TooltipTrigger, TooltipContent, useTooltip } from "./tooltip";
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipContext,
+  useTooltip,
+} from "./tooltip";
 export type {
   TooltipProps,
   TooltipTriggerProps,

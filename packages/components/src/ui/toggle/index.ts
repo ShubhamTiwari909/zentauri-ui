@@ -1,6 +1,5 @@
 "use client";
 
 export { Toggle } from "./toggle";
-export type { ToggleAnimation, ToggleProps } from "./types";
-export { toggleThumbAnimationPresets } from "./animations";
+export type { ToggleProps, ToggleTrackVariantProps, ToggleThumbVariantProps } from "./types";
 export { toggleThumbVariants, toggleTrackVariants } from "./variants";

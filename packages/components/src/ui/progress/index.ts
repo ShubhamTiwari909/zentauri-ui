@@ -1,17 +1,8 @@
 "use client";
 
-export {
-  Progress,
-  ProgressBar,
-  ProgressLabel,
-  ProgressValue,
-} from "./progress";
-export type {
-  ProgressAnimation,
-  ProgressProps,
-  ProgressSectionProps,
-} from "./types";
-export { progressAnimationPresets } from "./animations";
+export { Progress } from "./progress";
+export { ProgressBar, ProgressLabel, ProgressValue, ProgressBase } from "./progress-base";
+export type { ProgressProps, ProgressSectionProps, ProgressCtx, ProgressVariantProps } from "./types";
 export {
   progressVariants,
   progressTrackVariants,

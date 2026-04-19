@@ -7,5 +7,14 @@ export function toggleSnippet(opts: ToggleDemoProps): string {
   const appearanceAttr =
     appearance === "default" ? "" : ` appearance="${appearance}"`;
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
-  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}`)}<Toggle${appearanceAttr}${sizeAttr} defaultChecked animation="spring" aria-label="Demo toggle" />`;
+  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}`)}<ToggleAnimated${appearanceAttr}${sizeAttr} defaultChecked animation="spring" aria-label="Demo toggle" />`;
+}
+
+export function toggleControlledSnippet(): string {
+  return `${variantLeadComment(`controlled state, animation · spring`)}<ToggleAnimated
+  checked={checked}
+  onCheckedChange={setChecked}
+  animation="spring"
+  aria-label="Demo toggle"
+/>`;
 }

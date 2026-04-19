@@ -1,4 +1,5 @@
 import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
+import { InputAnimated } from "@zentauri-ui/zentauri-components/ui/inputs/animated";
 import { animationPresets, appearanceInputs } from "../variants";
 
 export function InputsAppearanceMotionSection() {
@@ -44,7 +45,7 @@ export function InputsAppearanceMotionSection() {
           {animationPresets.map(([label, animation]) => (
             <div key={label} className="grid gap-2">
               <span className="text-xs text-slate-400">{label}</span>
-              <Input
+              <InputAnimated
                 animation={animation}
                 placeholder="Focus me"
                 aria-label={`${label} motion demo`}

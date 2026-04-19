@@ -1,12 +1,12 @@
 "use client";
 import {
   Tabs,
-  TabsContent,
   TabsList,
   TabsTrigger,
   tabsListVariants,
   tabsTriggerVariants,
 } from "@zentauri-ui/zentauri-components/ui/tabs";
+import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/animated";
 
 import type { TabsDemoProps } from "./tabs-code-examples.types";
 
@@ -33,12 +33,12 @@ export function TabsDemo({ variant, size, appearance }: TabsDemoProps) {
             Two
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="one" animation="fade">
+        <TabsContentAnimated value="one" animation="fade">
           First panel content.
-        </TabsContent>
-        <TabsContent value="two" animation="fade">
+        </TabsContentAnimated>
+        <TabsContentAnimated value="two" animation="fade">
           Second panel content.
-        </TabsContent>
+        </TabsContentAnimated>
       </Tabs>
     </div>
   );

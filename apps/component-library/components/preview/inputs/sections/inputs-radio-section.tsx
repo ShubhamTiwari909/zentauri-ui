@@ -44,7 +44,6 @@ export function InputsRadioSection() {
                 size="md"
                 appearance={row.appearance}
                 defaultChecked={row.appearance === "default"}
-                animation="none"
                 aria-label={`${row.label} radio`}
                 className="w-auto shrink-0"
               />
@@ -68,7 +67,6 @@ export function InputsRadioSection() {
                 value={size}
                 size={size}
                 appearance="info"
-                animation="none"
                 aria-label={`Radio size ${size}`}
                 className="w-auto shrink-0"
               />
@@ -93,7 +91,6 @@ export function InputsRadioSection() {
                 size="md"
                 appearance="violet"
                 defaultChecked={index === 1}
-                animation="none"
                 aria-label={`${tier} plan`}
                 className="w-auto shrink-0"
               />

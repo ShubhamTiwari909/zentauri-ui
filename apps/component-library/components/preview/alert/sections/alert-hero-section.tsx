@@ -1,12 +1,12 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import {
-  Alert,
   AlertDefaultIcon,
   AlertDescription,
   AlertIcon,
   AlertTitle,
 } from "@zentauri-ui/zentauri-components/ui/alert";
+import { AlertAnimated } from "@zentauri-ui/zentauri-components/ui/alert/animated";
 
 export function AlertHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -14,7 +14,7 @@ export function AlertHeroSection({ seo }: { seo: PreviewSeoDocument }) {
       <PreviewHeroSeoBlock seo={seo} />
 
       <div className="space-y-3 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
-        <Alert appearance="info" animation="fade">
+        <AlertAnimated appearance="info" animation="fade">
           <AlertIcon>
             <AlertDefaultIcon appearance="info" />
           </AlertIcon>
@@ -24,8 +24,8 @@ export function AlertHeroSection({ seo }: { seo: PreviewSeoDocument }) {
               Your workspace will refresh after you save changes.
             </AlertDescription>
           </div>
-        </Alert>
-        <Alert appearance="success" animation="slide-down" size="sm">
+        </AlertAnimated>
+        <AlertAnimated appearance="success" animation="slide-down" size="sm">
           <AlertIcon>
             <AlertDefaultIcon appearance="success" />
           </AlertIcon>
@@ -35,7 +35,7 @@ export function AlertHeroSection({ seo }: { seo: PreviewSeoDocument }) {
               Build 482 is live in production.
             </AlertDescription>
           </div>
-        </Alert>
+        </AlertAnimated>
       </div>
     </section>
   );

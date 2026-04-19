@@ -1,6 +1,6 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { SkeletonButton } from "@zentauri-ui/zentauri-components/ui/skeleton";
+import { SkeletonButtonAnimated } from "@zentauri-ui/zentauri-components/ui/skeleton/animated";
 
 export function SkeletonExamplesSection() {
   return (
@@ -11,10 +11,10 @@ export function SkeletonExamplesSection() {
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
-          code={`${variantLeadComment(`SkeletonButton · buttonSize · md, animation · shimmer`)}
-<SkeletonButton buttonSize="md" className="w-32" animation="shimmer" />`}
+          code={`${variantLeadComment(`SkeletonButtonAnimated · buttonSize · md, animation · shimmer`)}
+<SkeletonButtonAnimated buttonSize="md" className="w-32" animation="shimmer" />`}
         >
-          <SkeletonButton
+          <SkeletonButtonAnimated
             buttonSize="md"
             className="w-32"
             animation="shimmer"

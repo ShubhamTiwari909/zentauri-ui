@@ -10,7 +10,7 @@ function tableOpenTag(opts: TableDemoProps): string {
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
   const stickyAttr = stickyHeader ? " stickyHeader" : "";
   const textAlignAttr = textAlign === "left" ? "" : ` textAlign="${textAlign}"`;
-  return `<Table${appearanceAttr}${sizeAttr}${stickyAttr} rowAnimation="none"${textAlignAttr}>
+  return `<Table${appearanceAttr}${sizeAttr}${stickyAttr}${textAlignAttr}>
   <div data-slot="table-scroll" className="relative w-full overflow-auto">
     <table data-slot="table" role="table" class="min-w-0 w-full max-lg:overflow-x-auto max-lg:overscroll-x-contain lg:overflow-x-visible max-lg:**:data-[slot=table]:w-full max-lg:**:data-[slot=table]:min-w-max">
       ${TABLE_BODY_SNIPPET}

@@ -21,12 +21,7 @@ export function EmptyStateDemo({
         <span className="font-bold">{size.toUpperCase()}</span>, Align:{" "}
         <span className="font-bold">{align.toUpperCase()}</span>
       </p>
-      <EmptyState
-        appearance={appearance}
-        size={size}
-        align={align}
-        animation="none"
-      >
+      <EmptyState appearance={appearance} size={size} align={align}>
         <EmptyStateIcon>
           <HiCloudArrowUp className="size-8 text-slate-400" aria-hidden />
         </EmptyStateIcon>

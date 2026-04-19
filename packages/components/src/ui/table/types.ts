@@ -1,5 +1,6 @@
 import type { VariantProps } from "class-variance-authority";
 import type {
+  ElementType,
   HTMLAttributes,
   ReactNode,
   Ref,
@@ -16,14 +17,15 @@ type TableVariantProps = VariantProps<typeof tableVariants>;
 export type TableProps = TableVariantProps &
   Omit<HTMLAttributes<HTMLTableElement>, "children"> & {
     children?: ReactNode;
-    rowAnimation?: TableAnimation;
     ref?: Ref<HTMLTableElement>;
     textAlign?: "left" | "center" | "right";
   };
 
 export type TableSectionProps = {
+  as?: ElementType;
   className?: string;
   children?: ReactNode;
+  rowAnimation?: TableAnimation;
 };
 
 export type TableHeadCellProps = ThHTMLAttributes<HTMLTableCellElement> & {
@@ -40,6 +42,6 @@ export type TableCtx = {
   appearance: NonNullable<TableProps["appearance"]>;
   size: NonNullable<TableProps["size"]>;
   stickyHeader: boolean;
-  rowAnimation: NonNullable<TableProps["rowAnimation"]>;
+  rowAnimation: TableAnimation;
   textAlign: NonNullable<TableCellProps["textAlign"]>;
 };

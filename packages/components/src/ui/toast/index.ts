@@ -20,6 +20,7 @@ export type {
   ToastProviderProps,
   ToastSectionProps,
   ToastViewportProps,
+  ToastRootVariantProps,
+  ToastViewportVariantProps,
 } from "./types";
-export { toastAnimationPresets } from "./animations";
 export { toastRootVariants, toastViewportVariants } from "./variants";

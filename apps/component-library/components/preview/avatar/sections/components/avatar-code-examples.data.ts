@@ -1,3 +1,4 @@
+import type { AvatarAnimation } from "@zentauri-ui/zentauri-components/ui/avatar/animated";
 import type { AvatarProps } from "@zentauri-ui/zentauri-components/ui/avatar";
 
 import type { AvatarDemoAnimation, AvatarDemoSize } from "./avatar-code-examples.types";
@@ -41,7 +42,7 @@ export const AVATAR_APPEARANCES = [
 export const AVATAR_ANIMATIONS = [
   "none",
   "subtle",
-] as const satisfies readonly NonNullable<AvatarProps["animation"]>[];
+] as const satisfies readonly AvatarAnimation[];
 
 export const AVATAR_DEMO_ANIMATION_FOR_SIZE: AvatarDemoAnimation = "none";
 export const AVATAR_DEMO_SIZE_FOR_ANIMATION: AvatarDemoSize = "md";

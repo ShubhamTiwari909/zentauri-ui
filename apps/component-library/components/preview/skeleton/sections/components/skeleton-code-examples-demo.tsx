@@ -1,4 +1,4 @@
-import { Skeleton } from "@zentauri-ui/zentauri-components/ui/skeleton";
+import { SkeletonAnimated } from "@zentauri-ui/zentauri-components/ui/skeleton/animated";
 
 import type { SkeletonDemoProps } from "./skeleton-code-examples.types";
 
@@ -18,7 +18,7 @@ export function SkeletonDemo({
         <span className="font-bold">{animation}</span> | Shimmer Tone:{" "}
         <span className="font-bold">{shimmerTone}</span>
       </p>
-      <Skeleton
+      <SkeletonAnimated
         className="max-w-md min-h-10"
         appearance={appearance}
         size={size}

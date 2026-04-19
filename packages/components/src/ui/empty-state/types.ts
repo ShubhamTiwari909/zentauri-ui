@@ -1,18 +1,15 @@
 import type { VariantProps } from "class-variance-authority";
-import type { HTMLMotionProps } from "framer-motion";
-import type { ReactNode } from "react";
+import type { ComponentPropsWithRef, ElementType, ReactNode } from "react";
 
 import type { emptyStateVariants } from "./variants";
-
-export type EmptyStateAnimation = "none" | "float" | "fade" | "slide-up";
 
 type EmptyStateVariantProps = VariantProps<typeof emptyStateVariants>;
 
 export type EmptyStateProps = EmptyStateVariantProps &
-  Omit<HTMLMotionProps<"div">, "children"> & {
-    animation?: EmptyStateAnimation;
+  (Omit<ComponentPropsWithRef<"section">, "children"> & {
     children?: ReactNode;
-  };
+    as?: ElementType;
+  });
 
 export type EmptyStateSectionProps = {
   className?: string;

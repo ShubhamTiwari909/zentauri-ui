@@ -1,8 +1,11 @@
 "use client";
 
 export { Divider } from "./divider";
-export type { DividerAnimation, DividerProps } from "./types";
-export { dividerAnimationPresets } from "./animations";
+export type {
+  DividerBaseProps,
+  DividerProps,
+  DividerVariantProps,
+} from "./types";
 export {
   dividerVariants,
   dividerToneVariants,

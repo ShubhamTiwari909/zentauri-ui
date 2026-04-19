@@ -6,6 +6,7 @@ export {
   AccordionItem,
   AccordionTrigger,
 } from "./accordion";
+export type { AccordionBaseProps } from "./types";
 export type {
   AccordionContentProps,
   AccordionItemProps,
@@ -14,7 +15,6 @@ export type {
   AccordionTriggerProps,
   AccordionType,
 } from "./types";
-export { accordionContentTransitionPresets } from "./animations";
 export {
   accordionVariants,
   accordionItemVariants,

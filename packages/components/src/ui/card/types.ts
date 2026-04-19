@@ -1,18 +1,24 @@
 import type { VariantProps } from "class-variance-authority";
-import type { HTMLMotionProps } from "framer-motion";
-import type { HTMLAttributes, ReactNode, Ref } from "react";
+import type {
+  ComponentPropsWithRef,
+  ElementType,
+  HTMLAttributes,
+  ReactNode,
+  Ref,
+} from "react";
 
 import type { cardVariants } from "./variants";
 
-export type CardAnimation = "none" | "lift" | "glow" | "tilt";
+export type CardVariantProps = VariantProps<typeof cardVariants>;
 
-type CardVariantProps = VariantProps<typeof cardVariants>;
+export interface CardBaseProps extends ComponentPropsWithRef<"article"> {
+  appearance?: CardVariantProps["appearance"];
+  size?: CardVariantProps["size"];
+  rounded?: CardVariantProps["rounded"];
+  as?: ElementType;
+}
 
-export type CardProps = CardVariantProps &
-  Omit<HTMLMotionProps<"article">, "children"> & {
-    animation?: CardAnimation;
-    children?: ReactNode;
-  };
+export type CardProps = Omit<CardBaseProps, "as">;
 
 export type CardSectionProps = {
   className?: string;

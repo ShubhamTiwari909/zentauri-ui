@@ -11,7 +11,7 @@ Public site: [zentauri-ui.vercel.app](https://zentauri-ui.vercel.app/)
 | Location | Package name | Role |
 | -------- | ------------ | ---- |
 | `apps/component-library` | `component-library` | Next.js 16 app (App Router): marketing home, `/preview` docs, SEO helpers, Vercel Analytics |
-| `packages/components` | `@zentauri-ui/zentauri-components` | Source of UI primitives; built with **tsup** into `dist/` (ESM/CJS + types) |
+| `packages/components` | `@zentauri-ui/zentauri-components` | Source of UI primitives and hooks; built with **tsup** into `dist/` (ESM/CJS + types) |
 | `packages/eslint-config` | `@repo/eslint-config` | Shared ESLint presets (`base`, `next-js`, `react-internal`) |
 | `packages/typescript-config` | `@repo/typescript-config` | Shared `tsconfig` fragments for apps and packages |
 

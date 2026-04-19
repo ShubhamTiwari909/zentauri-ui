@@ -1,21 +1,23 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { HiInbox } from "react-icons/hi2";
+import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
 import {
-  EmptyState,
   EmptyStateAction,
   EmptyStateDescription,
   EmptyStateIcon,
   EmptyStateTitle,
 } from "@zentauri-ui/zentauri-components/ui/empty-state";
-import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import {
+  EmptyStateAnimated,
+} from "@zentauri-ui/zentauri-components/ui/empty-state/animated";
 
 export function EmptyStateHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
     <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
       <PreviewHeroSeoBlock seo={seo} />
 
-      <EmptyState
+      <EmptyStateAnimated
         appearance="card"
         animation="float"
         size="md"
@@ -29,11 +31,11 @@ export function EmptyStateHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           When conversations arrive, they will show up here.
         </EmptyStateDescription>
         <EmptyStateAction>
-          <Button appearance="sky" size="sm" animation="lift">
+          <ButtonAnimated appearance="sky" size="sm" animation="lift">
             Compose
-          </Button>
+          </ButtonAnimated>
         </EmptyStateAction>
-      </EmptyState>
+      </EmptyStateAnimated>
     </section>
   );
 }

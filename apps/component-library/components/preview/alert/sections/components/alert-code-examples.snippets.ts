@@ -9,7 +9,7 @@ export function alertSnippet(
   const appearanceAttr =
     appearance === "default" ? "" : ` appearance="${appearance}"`;
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
-  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}`)}<Alert${appearanceAttr}${sizeAttr} animation="none" className="text-xs md:text-sm">
+  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}`)}<Alert${appearanceAttr}${sizeAttr} className="text-xs md:text-sm">
  <div className="space-y-1">
   <AlertTitle>Heads up</AlertTitle>
   <AlertDescription>Short supporting copy for this alert.</AlertDescription>

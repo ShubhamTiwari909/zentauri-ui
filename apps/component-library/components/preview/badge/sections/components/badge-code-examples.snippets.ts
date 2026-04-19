@@ -11,7 +11,7 @@ export function badgeSnippet(opts: BadgeDemoProps): string {
   const lead = variantLeadComment(
     `appearance · ${appearance}, size · ${size}, shape · ${shape}`,
   );
-  const base = `<Badge${appearanceAttr}${sizeAttr}${shapeAttr} animation="none"`;
+  const base = `<Badge${appearanceAttr}${sizeAttr}${shapeAttr}`;
   if (shape === "dot") {
     return `${lead}${base} aria-label="Status active" />`;
   }

@@ -1,16 +1,16 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
 import {
   Drawer,
   DrawerBody,
   DrawerClose,
-  DrawerContent,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@zentauri-ui/zentauri-components/ui/drawer";
+import { DrawerContentAnimated } from "@zentauri-ui/zentauri-components/ui/drawer/animated";
 
 export function DrawerHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -22,7 +22,7 @@ export function DrawerHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           <DrawerTrigger className="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/15">
             Open drawer
           </DrawerTrigger>
-          <DrawerContent
+          <DrawerContentAnimated
             side="right"
             animation="slide"
             appearance="glass"
@@ -38,11 +38,11 @@ export function DrawerHeroSection({ seo }: { seo: PreviewSeoDocument }) {
               </p>
             </DrawerBody>
             <DrawerFooter>
-              <Button appearance="sky" size="sm" animation="lift">
+              <ButtonAnimated appearance="sky" size="sm" animation="lift">
                 Apply
-              </Button>
+              </ButtonAnimated>
             </DrawerFooter>
-          </DrawerContent>
+          </DrawerContentAnimated>
         </Drawer>
       </div>
     </section>

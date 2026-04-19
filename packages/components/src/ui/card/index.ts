@@ -2,20 +2,16 @@
 
 export {
   Card,
-  CardBody,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
 } from "./card";
+export { CardBody, CardDescription, CardFooter, CardHeader, CardTitle } from "./card-base";
 export type {
-  CardAnimation,
+  CardBaseProps,
+  CardVariantProps,
   CardDescriptionProps,
   CardProps,
   CardSectionProps,
   CardTitleProps,
 } from "./types";
-export { cardAnimationPresets } from "./animations";
 export {
   cardVariants,
   cardHeaderVariants,

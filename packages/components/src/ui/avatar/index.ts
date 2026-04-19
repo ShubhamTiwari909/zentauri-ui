@@ -1,8 +1,7 @@
 "use client";
 
-export { avatarAnimationPresets } from "./animations";
 export { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from "./avatar";
-export type { AvatarAnimation, AvatarAnimationPresets } from "./animations";
+export type { AvatarBaseProps } from "./types";
 export type {
   AvatarFallbackProps,
   AvatarGroupProps,

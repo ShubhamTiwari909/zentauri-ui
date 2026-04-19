@@ -18,7 +18,6 @@ export function DividerDemo({
         appearance={appearance}
         orientation={orientation}
         size={size}
-        animation="none"
         label={withLabel ? "Section" : undefined}
       />
     </div>

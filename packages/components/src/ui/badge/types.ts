@@ -1,20 +1,25 @@
 import type { VariantProps } from "class-variance-authority";
-import type { HTMLMotionProps } from "framer-motion";
-import type { MouseEventHandler, ReactNode } from "react";
+import type {
+  ComponentPropsWithRef,
+  ElementType,
+  MouseEventHandler,
+  ReactNode,
+} from "react";
 
 import type { badgeVariants } from "./variants";
 
-export type BadgeAnimation = "none" | "pop" | "bounce" | "fade";
+export type BadgeVariantProps = VariantProps<typeof badgeVariants>;
 
-type BadgeVariantProps = VariantProps<typeof badgeVariants>;
+export interface BadgeBaseProps extends ComponentPropsWithRef<"span"> {
+  appearance?: BadgeVariantProps["appearance"];
+  size?: BadgeVariantProps["size"];
+  shape?: BadgeVariantProps["shape"];
+  closable?: boolean;
+  onClose?: MouseEventHandler<HTMLButtonElement>;
+  closeLabel?: string;
+  children?: ReactNode;
+  "aria-label"?: string;
+  as?: ElementType;
+}
 
-export type BadgeProps = BadgeVariantProps &
-  Omit<HTMLMotionProps<"span">, "children"> & {
-    animation?: BadgeAnimation;
-    closable?: boolean;
-    onClose?: MouseEventHandler<HTMLButtonElement>;
-    closeLabel?: string;
-    children?: ReactNode;
-    /** Dot shape hides text; set for accessibility. */
-    "aria-label"?: string;
-  };
+export type BadgeProps = Omit<BadgeBaseProps, "as">;

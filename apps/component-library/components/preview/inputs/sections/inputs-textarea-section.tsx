@@ -1,4 +1,4 @@
-import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
+import { InputAnimated } from "@zentauri-ui/zentauri-components/ui/inputs/animated";
 
 export function InputsTextareaSection() {
   return (
@@ -25,7 +25,7 @@ export function InputsTextareaSection() {
         <label className="text-xs font-medium uppercase tracking-wide text-slate-400">
           Description
         </label>
-        <Input
+        <InputAnimated
           as="textarea"
           rows={4}
           animation="lift"

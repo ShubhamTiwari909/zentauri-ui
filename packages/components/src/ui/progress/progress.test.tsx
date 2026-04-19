@@ -4,10 +4,8 @@ import { describe, expect, it } from "vitest";
 
 import {
   Progress,
-  ProgressBar,
-  ProgressLabel,
-  ProgressValue,
 } from "./progress";
+import { ProgressBar, ProgressLabel, ProgressValue } from "./progress-base";
 
 describe("Progress", () => {
   it("should expose displayName on compound parts", () => {

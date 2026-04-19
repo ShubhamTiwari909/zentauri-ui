@@ -1,11 +1,30 @@
 import {
   Accordion,
-  AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@zentauri-ui/zentauri-components/ui/accordion";
+import { AccordionContentAnimated } from "@zentauri-ui/zentauri-components/ui/accordion/animated";
 
 import type { AccordionDemoProps } from "./accordion-code-examples.types";
+
+function accordionDemoItems(transition: AccordionDemoProps["transition"]) {
+  return (
+    <>
+      <AccordionItem value="a">
+        <AccordionTrigger>First panel</AccordionTrigger>
+        <AccordionContentAnimated transitionVariant={transition}>
+          <p className="text-sm">Content for the first item.</p>
+        </AccordionContentAnimated>
+      </AccordionItem>
+      <AccordionItem value="b">
+        <AccordionTrigger>Second panel</AccordionTrigger>
+        <AccordionContentAnimated transitionVariant={transition}>
+          <p className="text-sm">Content for the second item.</p>
+        </AccordionContentAnimated>
+      </AccordionItem>
+    </>
+  );
+}
 
 export function AccordionDemo({
   appearance,
@@ -13,22 +32,6 @@ export function AccordionDemo({
   type,
   transition,
 }: AccordionDemoProps) {
-  const body = (
-    <>
-      <AccordionItem value="a">
-        <AccordionTrigger>First panel</AccordionTrigger>
-        <AccordionContent>
-          <p className="text-sm">Content for the first item.</p>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="b">
-        <AccordionTrigger>Second panel</AccordionTrigger>
-        <AccordionContent>
-          <p className="text-sm">Content for the second item.</p>
-        </AccordionContent>
-      </AccordionItem>
-    </>
-  );
   if (type === "single") {
     return (
       <Accordion
@@ -36,10 +39,9 @@ export function AccordionDemo({
         defaultValue="a"
         appearance={appearance}
         size={size}
-        transition={transition}
         className="space-y-4"
       >
-        {body}
+        {accordionDemoItems(transition)}
       </Accordion>
     );
   }
@@ -49,10 +51,9 @@ export function AccordionDemo({
       defaultValues={["a"]}
       appearance={appearance}
       size={size}
-      transition={transition}
       className="space-y-4"
     >
-      {body}
+      {accordionDemoItems(transition)}
     </Accordion>
   );
 }

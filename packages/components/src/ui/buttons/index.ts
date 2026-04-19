@@ -1,6 +1,5 @@
 "use client";
 
 export { Button } from "./button";
-export type { ButtonProps, ButtonAnimation } from "./types";
-export { buttonAnimationPresets } from "./animations";
+export type { ButtonProps, ButtonSharedStatic } from "./types";
 export { buttonVariants } from "./variants";

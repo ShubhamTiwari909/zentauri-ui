@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
 import { useToast } from "@zentauri-ui/zentauri-components/ui/toast";
 
 const ToastButtons = () => {
@@ -7,7 +8,7 @@ const ToastButtons = () => {
 
   return (
     <>
-      <Button
+      <ButtonAnimated
         appearance="sky"
         size="sm"
         animation="lift"
@@ -21,11 +22,10 @@ const ToastButtons = () => {
         }
       >
         Success toast
-      </Button>
+      </ButtonAnimated>
       <Button
         appearance="outline"
         size="sm"
-        animation="none"
         type="button"
         onClick={() =>
           toast({

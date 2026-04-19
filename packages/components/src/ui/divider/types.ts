@@ -1,17 +1,18 @@
 import type { VariantProps } from "class-variance-authority";
-import type { HTMLMotionProps } from "framer-motion";
-import type { ReactNode } from "react";
+import type { ComponentPropsWithRef, ElementType, ReactNode } from "react";
 
 import type { dividerVariants } from "./variants";
 
-export type DividerAnimation = "none" | "expand" | "fade";
+export type DividerVariantProps = VariantProps<typeof dividerVariants>;
 
-type DividerVariantProps = VariantProps<typeof dividerVariants>;
+export interface DividerBaseProps extends ComponentPropsWithRef<"div"> {
+  appearance?: DividerVariantProps["appearance"];
+  orientation?: DividerVariantProps["orientation"];
+  size?: DividerVariantProps["size"];
+  /** Optional label between divider lines. */
+  label?: ReactNode;
+  children?: ReactNode;
+  as?: ElementType;
+}
 
-export type DividerProps = DividerVariantProps &
-  Omit<HTMLMotionProps<"div">, "children"> & {
-    animation?: DividerAnimation;
-    /** Optional label between divider lines. */
-    label?: ReactNode;
-    children?: ReactNode;
-  };
+export type DividerProps = Omit<DividerBaseProps, "as">;

@@ -5,10 +5,21 @@ import { fileURLToPath } from "node:url";
 const packageRoot = join(fileURLToPath(new URL(".", import.meta.url)), "..");
 const directive = '"use client";\n';
 
+async function maybePrependDirective(filePath, baseName) {
+  if (baseName.startsWith("chunk-")) return;
+  if (!baseName.endsWith(".mjs") && !baseName.endsWith(".js")) return;
+  if (baseName.endsWith(".map")) return;
+  if (baseName === "utils.mjs" || baseName === "utils.js") return;
+
+  const source = await readFile(filePath, "utf8");
+  if (source.startsWith('"use client"') || source.startsWith("'use client'")) return;
+  await writeFile(filePath, directive + source, "utf8");
+}
+
 async function prependDirectiveToDistDir(distDir) {
-  let files;
+  let entries;
   try {
-    files = await readdir(distDir);
+    entries = await readdir(distDir, { withFileTypes: true });
   } catch (error) {
     if (
       error &&
@@ -20,17 +31,15 @@ async function prependDirectiveToDistDir(distDir) {
     }
     throw error;
   }
-  for (const name of files) {
-    if (name.startsWith("chunk-")) continue;
-    if (!name.endsWith(".mjs") && !name.endsWith(".js")) continue;
-    if (name.endsWith(".map")) continue;
-    if (name === "utils.mjs" || name === "utils.js") continue;
-
-    const filePath = join(distDir, name);
-    const source = await readFile(filePath, "utf8");
-    if (source.startsWith('"use client"') || source.startsWith("'use client'"))
+  for (const entry of entries) {
+    const childPath = join(distDir, entry.name);
+    if (entry.isDirectory()) {
+      await prependDirectiveToDistDir(childPath);
       continue;
-    await writeFile(filePath, directive + source, "utf8");
+    }
+    if (entry.isFile()) {
+      await maybePrependDirective(childPath, entry.name);
+    }
   }
 }
 

@@ -34,7 +34,6 @@ export function TableDemo({
           appearance={appearance}
           size={size}
           stickyHeader={stickyHeader}
-          rowAnimation="none"
           textAlign={textAlign}
           className={className}
         >

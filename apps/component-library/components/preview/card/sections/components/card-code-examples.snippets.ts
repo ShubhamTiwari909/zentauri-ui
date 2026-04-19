@@ -8,7 +8,7 @@ export function cardSnippet(opts: CardDemoProps): string {
     appearance === "default" ? "" : ` appearance="${appearance}"`;
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
   const roundedAttr = rounded === "md" ? "" : ` rounded="${rounded}"`;
-  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}, rounded · ${rounded}`)}<Card${appearanceAttr}${sizeAttr}${roundedAttr} animation="none">
+  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}, rounded · ${rounded}`)}<Card${appearanceAttr}${sizeAttr}${roundedAttr}>
   <CardHeader>
     <CardTitle>Card title</CardTitle>
     <CardDescription>Brief supporting description.</CardDescription>

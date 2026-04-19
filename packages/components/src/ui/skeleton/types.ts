@@ -1,20 +1,19 @@
 import type { VariantProps } from "class-variance-authority";
-import type { HTMLMotionProps } from "framer-motion";
-import type { ReactNode } from "react";
+import type { ComponentPropsWithRef, ElementType, ReactNode } from "react";
 
 import type { skeletonVariants } from "./variants";
 
 export type SkeletonAnimation = "none" | "shimmer" | "pulse";
 
-type SkeletonVariantProps = VariantProps<typeof skeletonVariants>;
+export type SkeletonVariantProps = VariantProps<typeof skeletonVariants>;
 
 export type SkeletonProps = SkeletonVariantProps &
-  Omit<HTMLMotionProps<"div">, "children"> & {
+  (Omit<ComponentPropsWithRef<ElementType>, "children"> & {
     animation?: SkeletonAnimation;
     children?: ReactNode;
     /** When true, parent regions can expose busy state to assistive tech. */
     busy?: boolean;
-  };
+  });
 
 export type SkeletonTextProps = SkeletonProps & {
   lines?: number;

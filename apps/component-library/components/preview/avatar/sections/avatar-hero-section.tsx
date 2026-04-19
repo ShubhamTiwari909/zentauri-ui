@@ -6,6 +6,7 @@ import {
   AvatarGroup,
   AvatarImage,
 } from "@zentauri-ui/zentauri-components/ui/avatar";
+import { AvatarAnimated } from "@zentauri-ui/zentauri-components/ui/avatar/animated";
 
 export function AvatarHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -14,13 +15,13 @@ export function AvatarHeroSection({ seo }: { seo: PreviewSeoDocument }) {
 
       <div className="flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
         <div className="flex items-center gap-4">
-          <Avatar size="lg" animation="subtle">
+          <AvatarAnimated size="lg" animation="subtle">
             <AvatarImage
               alt="Sample user"
               src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=128&h=128&fit=crop"
             />
             <AvatarFallback>ZU</AvatarFallback>
-          </Avatar>
+          </AvatarAnimated>
           <div>
             <p className="text-sm font-semibold text-white">Zentauri member</p>
             <p className="text-xs text-slate-400">Image + fallback pairing</p>

@@ -1,12 +1,9 @@
 import type { VariantProps } from "class-variance-authority";
-import type { CSSProperties, HTMLAttributes, ReactNode, Ref } from "react";
+import type { CSSProperties, HTMLAttributes, ReactNode, Ref, RefObject } from "react";
 
-import type { DrawerAnimation } from "./animations";
 import type { drawerContentVariants, drawerTriggerVariants } from "./variants";
 
-type DrawerContentVariantProps = VariantProps<typeof drawerContentVariants>;
-
-export type { DrawerAnimation };
+export type DrawerContentVariantProps = VariantProps<typeof drawerContentVariants>;
 
 export type DrawerProps = {
   open?: boolean;
@@ -21,7 +18,6 @@ export type DrawerTriggerProps = HTMLAttributes<HTMLButtonElement> & {
 };
 
 export type DrawerContentProps = DrawerContentVariantProps & {
-  animation?: DrawerAnimation;
   className?: string;
   children?: ReactNode;
   ref?: Ref<HTMLDivElement>;
@@ -32,4 +28,12 @@ export type DrawerContentProps = DrawerContentVariantProps & {
 export type DrawerSectionProps = {
   className?: string;
   children?: ReactNode;
+};
+
+export type DrawerCtx = {
+  open: boolean;
+  setOpen: (next: boolean) => void;
+  titleId: string;
+  descriptionId: string;
+  contentRef: RefObject<HTMLDivElement | null>;
 };

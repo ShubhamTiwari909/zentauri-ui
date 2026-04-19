@@ -4,13 +4,9 @@ import { describe, expect, it, vi } from "vitest";
 
 import {
   Modal,
-  ModalBody,
-  ModalClose,
-  ModalContent,
-  ModalDescription,
-  ModalTitle,
-  ModalTrigger,
 } from "./modal";
+import { ModalTrigger, ModalContent, ModalTitle, ModalBody, ModalDescription, ModalClose } from "./modal-base";
+
 
 describe("Modal", () => {
   it("should expose displayName on exported parts", () => {
@@ -28,7 +24,7 @@ describe("Modal", () => {
     render(
       <Modal>
         <ModalTrigger>Open</ModalTrigger>
-        <ModalContent animation="none">
+        <ModalContent>
           <ModalTitle>Confirm</ModalTitle>
           <ModalDescription>Please review</ModalDescription>
           <ModalBody>Details</ModalBody>
@@ -48,7 +44,7 @@ describe("Modal", () => {
     render(
       <Modal>
         <ModalTrigger>Go</ModalTrigger>
-        <ModalContent animation="none">
+        <ModalContent>
           <ModalTitle>T</ModalTitle>
         </ModalContent>
       </Modal>,
@@ -66,7 +62,7 @@ describe("Modal", () => {
     const user = userEvent.setup();
     render(
       <Modal defaultOpen>
-        <ModalContent animation="none">
+        <ModalContent>
           <ModalTitle>Panel</ModalTitle>
         </ModalContent>
       </Modal>,
@@ -85,7 +81,7 @@ describe("Modal", () => {
     const user = userEvent.setup();
     render(
       <Modal defaultOpen>
-        <ModalContent animation="none">
+        <ModalContent>
           <ModalTitle>Panel</ModalTitle>
         </ModalContent>
       </Modal>,
@@ -101,7 +97,7 @@ describe("Modal", () => {
     const user = userEvent.setup();
     render(
       <Modal defaultOpen>
-        <ModalContent animation="none">
+        <ModalContent>
           <ModalTitle>Panel</ModalTitle>
           <ModalClose />
         </ModalContent>
@@ -120,7 +116,7 @@ describe("Modal", () => {
     render(
       <Modal onOpenChange={handleChange}>
         <ModalTrigger>Open</ModalTrigger>
-        <ModalContent animation="none">
+        <ModalContent>
           <ModalTitle>T</ModalTitle>
         </ModalContent>
       </Modal>,

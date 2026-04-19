@@ -3,8 +3,9 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
+import { ButtonAnimated } from "./animated";
 import { Button } from "./button";
-import type { ButtonAnimation } from "./types";
+import type { ButtonAnimation } from "./animated/types";
 
 /** Stable selector contract for consumers of the design-system Button. */
 const BUTTON_SLOT_SELECTOR = '[data-slot="button"]';
@@ -444,9 +445,9 @@ describe("Button (component library)", () => {
       "should render without throwing when animation=%s",
       (animation) => {
         const { unmount } = render(
-          <Button animation={animation} appearance="secondary">
+          <ButtonAnimated animation={animation} appearance="secondary">
             {animation}
-          </Button>,
+          </ButtonAnimated>,
         );
         expect(
           getButtonSlot(),

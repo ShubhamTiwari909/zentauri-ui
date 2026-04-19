@@ -1,10 +1,10 @@
-import { Toggle } from "@zentauri-ui/zentauri-components/ui/toggle";
+import { ToggleAnimated } from "@zentauri-ui/zentauri-components/ui/toggle/animated";
 
 import type { ToggleDemoProps } from "./toggle-code-examples.types";
 
 export function ToggleDemo({ appearance, size }: ToggleDemoProps) {
   return (
-    <Toggle
+    <ToggleAnimated
       appearance={appearance}
       size={size}
       defaultChecked

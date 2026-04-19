@@ -1,12 +1,12 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
-  Alert,
   AlertDefaultIcon,
   AlertDescription,
   AlertIcon,
   AlertTitle,
 } from "@zentauri-ui/zentauri-components/ui/alert";
+import { AlertAnimated } from "@zentauri-ui/zentauri-components/ui/alert/animated";
 
 export function AlertExamplesSection() {
   return (
@@ -18,15 +18,15 @@ export function AlertExamplesSection() {
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
           code={`${variantLeadComment(`appearance · warning, animation · pop`)}
-<Alert appearance="warning" animation="pop">
+<AlertAnimated  appearance="warning" animation="pop">
   <AlertIcon><AlertDefaultIcon appearance="warning" /></AlertIcon>
   <div>
     <AlertTitle>Quota</AlertTitle>
     <AlertDescription>You are at 90% of this month&apos;s limit.</AlertDescription>
   </div>
-</Alert>`}
+</AlertAnimated>`}
         >
-          <Alert appearance="warning" animation="pop">
+          <AlertAnimated appearance="warning" animation="pop">
             <AlertIcon>
               <AlertDefaultIcon appearance="warning" />
             </AlertIcon>
@@ -36,7 +36,7 @@ export function AlertExamplesSection() {
                 You are at 90% of this month&apos;s limit.
               </AlertDescription>
             </div>
-          </Alert>
+          </AlertAnimated>
         </PreviewCodeShowcase>
       </div>
     </section>

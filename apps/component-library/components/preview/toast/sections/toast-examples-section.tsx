@@ -11,7 +11,6 @@ function ToastSnippetDemo() {
     <Button
       appearance="emerald"
       size="sm"
-      animation="none"
       type="button"
       onClick={() =>
         toast({

@@ -1,6 +1,7 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
+import { BadgeAnimated } from "@zentauri-ui/zentauri-components/ui/badge/animated";
 
 export function BadgeHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -11,12 +12,12 @@ export function BadgeHeroSection({ seo }: { seo: PreviewSeoDocument }) {
         <div className="flex flex-wrap gap-2">
           <Badge appearance="sky">Beta</Badge>
           <Badge appearance="outline">Outline</Badge>
-          <Badge appearance="emerald" animation="bounce">
+          <BadgeAnimated appearance="emerald" animation="bounce">
             Live
-          </Badge>
-          <Badge appearance="rose" closable closeLabel="Remove tag">
+          </BadgeAnimated>
+          <BadgeAnimated appearance="rose" animation="pop" closable closeLabel="Remove tag">
             Blocking
-          </Badge>
+          </BadgeAnimated>
         </div>
       </div>
     </section>

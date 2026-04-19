@@ -1,17 +1,18 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
 import {
   Modal,
   ModalBody,
   ModalClose,
-  ModalContent,
   ModalDescription,
   ModalFooter,
   ModalHeader,
   ModalTitle,
   ModalTrigger,
 } from "@zentauri-ui/zentauri-components/ui/modal";
+import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/animated";
 
 export function ModalHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -23,7 +24,7 @@ export function ModalHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           <ModalTrigger className="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/15">
             Open modal
           </ModalTrigger>
-          <ModalContent animation="scale" appearance="glass" size="sm">
+          <ModalContentAnimated animation="scale" appearance="glass" size="sm">
             <ModalClose />
             <ModalHeader>
               <ModalTitle>Confirm action</ModalTitle>
@@ -37,14 +38,14 @@ export function ModalHeroSection({ seo }: { seo: PreviewSeoDocument }) {
               </p>
             </ModalBody>
             <ModalFooter className="gap-2">
-              <Button appearance="outline" size="sm" animation="none">
+              <Button appearance="outline" size="sm">
                 Cancel
               </Button>
-              <Button appearance="sky" size="sm" animation="lift">
+              <ButtonAnimated appearance="sky" size="sm" animation="lift">
                 Continue
-              </Button>
+              </ButtonAnimated>
             </ModalFooter>
-          </ModalContent>
+          </ModalContentAnimated>
         </Modal>
       </div>
     </section>
