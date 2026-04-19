@@ -3,7 +3,9 @@
   "version": "1.3.0",
   "description": "A UI component library built with React and Tailwind CSS",
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
@@ -27,7 +29,8 @@
   },
   "scripts": {
     "dev": "NODE_OPTIONS=--max-old-space-size=8192 tsup --watch",
-    "build": "NODE_OPTIONS=--max-old-space-size=8192 tsup",
+    "build": "NODE_OPTIONS=--max-old-space-size=8192 tsup --no-dts",
+    "build:types": "NODE_OPTIONS=--max-old-space-size=8192 tsup",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -41,8 +44,12 @@
     "react-icons": "*"
   },
   "peerDependenciesMeta": {
-    "framer-motion": { "optional": true },
-    "react-icons": { "optional": true }
+    "framer-motion": {
+      "optional": true
+    },
+    "react-icons": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
