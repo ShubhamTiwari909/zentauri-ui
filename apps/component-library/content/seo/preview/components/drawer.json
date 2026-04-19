@@ -1,28 +1,28 @@
 {
-  "category": "Layout",
-  "title": "Empty state component for React lists",
-  "description": "Empty state component for React and Next.js tables and lists—clear copy slots, illustration hooks, and actions when data is missing or filtered out.",
+  "category": "Overlay",
+  "title": "Drawer overlay for React & Next.js",
+  "description": "Drawer component for React and Next.js slide-over panels: focus management, portal-friendly stacking, and Tailwind surfaces for filters and navigation.",
   "keywords": [
-    "empty state",
+    "drawer component",
     "React",
     "Next.js",
-    "table UI",
-    "no data",
+    "slide-over",
+    "overlay",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Empty state · Zentauri UI",
-    "description": "Empty state component for React and Next.js tables and lists—clear copy slots, illustration hooks, and actions when data is missing or filtered out.",
+    "title": "Drawer · Zentauri UI",
+    "description": "Drawer component for React and Next.js slide-over panels: focus management, portal-friendly stacking, and Tailwind surfaces for filters and navigation.",
     "type": "website"
   },
   "twitter": {
-    "title": "Empty state · Zentauri UI",
-    "description": "Empty state component for React and Next.js tables and lists—clear copy slots, illustration hooks, and actions when data is missing or filtered out.",
+    "title": "Drawer · Zentauri UI",
+    "description": "Drawer component for React and Next.js slide-over panels: focus management, portal-friendly stacking, and Tailwind surfaces for filters and navigation.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/empty-state",
+  "canonicalPath": "/preview/components/drawer",
   "headings": {
-    "h1": "Empty states for zero-data views",
+    "h1": "Drawer for slide-over workflows",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Empty states explain why a list is blank and what to do next—search again, reset filters, or create a record. Drop them into React tables and Next.js dashboards to avoid dead-end screens.",
+  "intro": "Slide-over drawers keep users in context while exposing secondary tasks—filters, record details, or multi-step forms. Built for React apps and Next.js layouts that already use portals for modals.",
   "useCases": [
-    "First-run experiences before any records exist.",
-    "Zero-result searches with suggested next steps.",
-    "Permission-restricted views with upgrade CTAs.",
-    "Filtered tables after aggressive query narrowing."
+    "Host mobile navigation without leaving the current route.",
+    "Show record inspectors beside data tables.",
+    "Collect multi-step inputs with a sticky footer.",
+    "Present non-blocking filters on commerce listings."
   ],
   "faqs": [
     {
-      "question": "Does the Empty state component work with Next.js App Router?",
+      "question": "Does the Drawer component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize empty state with Tailwind CSS?",
+      "question": "Can I customize drawer with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Empty state implementation accessible by default?",
+      "question": "Is this Drawer implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Keep messaging specific: differentiate “no data yet” from “no matches.”\n\nOffer a single primary action to reduce decision fatigue."
+      "body": "Drawers should trap focus while open and restore it on dismiss.\n\nKeep width responsive so keyboards remain usable on small screens."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nProvide heading text that summarizes the state for screen reader users quickly."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nAvoid stacking multiple drawers without an explicit stacking policy."
     },
     {
       "heading": "Common use cases",

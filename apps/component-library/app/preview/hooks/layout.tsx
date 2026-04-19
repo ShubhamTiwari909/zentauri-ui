@@ -1,4 +1,5 @@
 import { SidebarLayout } from "@/components/sidebar/sidebar-layout";
+import { sidebarHooksData } from "@/components/sidebar/sidebar-data";
 import { previewSeoMetadataBase } from "@/lib/preview-seo";
 import type { Metadata } from "next";
 
@@ -30,5 +31,5 @@ export default function PreviewLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <SidebarLayout>{children}</SidebarLayout>;
+  return <SidebarLayout sideBarContent={sidebarHooksData}>{children}</SidebarLayout>;
 }

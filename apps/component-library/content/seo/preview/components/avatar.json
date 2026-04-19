@@ -19,7 +19,7 @@
     "description": "Avatar primitives with image, fallback, optional motion, and stacked AvatarGroup overflow labels.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/avatar",
+  "canonicalPath": "/preview/components/avatar",
   "headings": {
     "h1": "Avatars for people and teams",
     "h2": ["Overview", "Common use cases", "FAQ"]

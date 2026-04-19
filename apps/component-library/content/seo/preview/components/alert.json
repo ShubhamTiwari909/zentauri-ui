@@ -20,7 +20,7 @@
     "description": "Inline Alert component for React and Next.js: semantic tones, optional icons, and dismiss patterns for form validation, deploy notices, and system status.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/alert",
+  "canonicalPath": "/preview/components/alert",
   "headings": {
     "h1": "Alerts for status and system messages",
     "h2": [

@@ -1,28 +1,28 @@
 {
-  "category": "Actions",
-  "title": "Button component variants for React apps",
-  "description": "Primary Button component for React and Next.js with variants, loading states, icons, and motion tuned for forms and dashboards.",
+  "category": "Navigation",
+  "title": "Pagination controls for React tables",
+  "description": "Pagination component for React and Next.js data tables—page windows, URL-friendly links, and compact controls for large datasets.",
   "keywords": [
-    "button component",
+    "pagination component",
     "React",
     "Next.js",
-    "loading state",
-    "CVA",
+    "data table",
+    "URL state",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Button · Zentauri UI",
-    "description": "Primary Button component for React and Next.js with variants, loading states, icons, and motion tuned for forms and dashboards.",
+    "title": "Pagination · Zentauri UI",
+    "description": "Pagination component for React and Next.js data tables—page windows, URL-friendly links, and compact controls for large datasets.",
     "type": "website"
   },
   "twitter": {
-    "title": "Button · Zentauri UI",
-    "description": "Primary Button component for React and Next.js with variants, loading states, icons, and motion tuned for forms and dashboards.",
+    "title": "Pagination · Zentauri UI",
+    "description": "Pagination component for React and Next.js data tables—page windows, URL-friendly links, and compact controls for large datasets.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/buttons",
+  "canonicalPath": "/preview/components/pagination",
   "headings": {
-    "h1": "Buttons for primary actions",
+    "h1": "Pagination for large datasets",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Action buttons with variants, sizes, and motion presets for React interfaces. Drop them into Next.js forms and toolbars while keeping focus rings consistent with your Tailwind theme.",
+  "intro": "Pagination splits long datasets into navigable windows with clear current-page cues. Use it in React tables and Next.js routes that sync page index to the URL for shareable views.",
   "useCases": [
-    "Submit Next.js forms with optimistic loading feedback.",
-    "Drive modal and drawer footers with primary/secondary pairing.",
-    "Add icon-leading actions to dense data tables.",
-    "Gate destructive flows behind emphasized danger styles."
+    "Server-rendered tables with querystring page params.",
+    "Admin audit logs with thousands of rows.",
+    "API-backed galleries with stable page sizes.",
+    "Embedded widgets inside dashboards."
   ],
   "faqs": [
     {
-      "question": "Does the Button component work with Next.js App Router?",
+      "question": "Does the Pagination component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize button with Tailwind CSS?",
+      "question": "Can I customize pagination with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Button implementation accessible by default?",
+      "question": "Is this Pagination implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Buttons wrap native elements so native disabled and focus behavior stay intact.\n\nLoading states preserve width to avoid layout shift in toolbars."
+      "body": "Expose aria-current on the active page where applicable.\n\nKeep page size controls near the pager when users frequently tune density."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nPair every icon-only control with aria-label text supplied by your app."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nEnsure keyboard users can move across controls without excessive tab stops."
     },
     {
       "heading": "Common use cases",

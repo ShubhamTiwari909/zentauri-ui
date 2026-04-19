@@ -21,7 +21,7 @@
     "description": "Browse interactive previews for Zentauri UI hooks—pagination, storage, observers, media queries, and more.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/hooks",
+  "canonicalPath": "/preview/hooks/hooks",
   "headings": {
     "h1": "Hooks gallery",
     "h2": [

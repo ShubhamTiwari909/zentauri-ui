@@ -1,28 +1,28 @@
 {
-  "category": "Layout",
-  "title": "Card layout component for React dashboards",
-  "description": "Card component for React and Next.js dashboards: structured headers, media slots, and Tailwind-friendly spacing for summaries and listings.",
+  "category": "Navigation",
+  "title": "Dropdown menu component for React",
+  "description": "Dropdown menu component for React and Next.js: keyboard-friendly lists, sections, and destructive actions anchored to buttons or icon controls.",
   "keywords": [
-    "card component",
+    "dropdown menu",
     "React",
     "Next.js",
-    "dashboard UI",
-    "layout",
+    "context menu",
+    "keyboard UI",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Card · Zentauri UI",
-    "description": "Card component for React and Next.js dashboards: structured headers, media slots, and Tailwind-friendly spacing for summaries and listings.",
+    "title": "Dropdown · Zentauri UI",
+    "description": "Dropdown menu component for React and Next.js: keyboard-friendly lists, sections, and destructive actions anchored to buttons or icon controls.",
     "type": "website"
   },
   "twitter": {
-    "title": "Card · Zentauri UI",
-    "description": "Card component for React and Next.js dashboards: structured headers, media slots, and Tailwind-friendly spacing for summaries and listings.",
+    "title": "Dropdown · Zentauri UI",
+    "description": "Dropdown menu component for React and Next.js: keyboard-friendly lists, sections, and destructive actions anchored to buttons or icon controls.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/card",
+  "canonicalPath": "/preview/components/dropdown",
   "headings": {
-    "h1": "Cards for grouped dashboard content",
+    "h1": "Dropdown menus for actions and links",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Cards bundle headers, body content, and actions into a predictable surface for dashboards and marketing layouts. Use them in React apps and Next.js pages that need modular content blocks.",
+  "intro": "Dropdowns expose grouped actions, navigation shortcuts, and icon rows from compact triggers. Use them in React toolbars and Next.js headers where space is limited but discoverability still matters.",
   "useCases": [
-    "Surface KPI summaries on analytics landing pages.",
-    "Group related settings with a clear title and footer actions.",
-    "Present catalog items with media, price, and CTA rows.",
-    "Stack quick links in responsive grids."
+    "Overflow menus on table rows.",
+    "Account menus in application headers.",
+    "Compact filters for chart dashboards.",
+    "Secondary actions beside primary buttons."
   ],
   "faqs": [
     {
-      "question": "Does the Card component work with Next.js App Router?",
+      "question": "Does the Dropdown component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize card with Tailwind CSS?",
+      "question": "Can I customize dropdown with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Card implementation accessible by default?",
+      "question": "Is this Dropdown implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Cards are intentionally dumb containers: push business logic up a layer.\n\nUse consistent padding tokens so grids align across breakpoints."
+      "body": "Typeahead and roving tabindex patterns keep long lists manageable.\n\nAnchor positioning adapts to viewport edges automatically when configured."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nKeep heading levels coordinated with surrounding page structure for SEO and accessibility."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nEnsure each item has readable labels and disabled items are skipped appropriately."
     },
     {
       "heading": "Common use cases",

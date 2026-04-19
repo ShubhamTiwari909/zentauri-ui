@@ -1,28 +1,28 @@
 {
-  "category": "Overlay",
-  "title": "Drawer overlay for React & Next.js",
-  "description": "Drawer component for React and Next.js slide-over panels: focus management, portal-friendly stacking, and Tailwind surfaces for filters and navigation.",
+  "category": "Loading",
+  "title": "Skeleton loaders for React & Next.js",
+  "description": "Skeleton loading placeholders for React and Next.js—mirror final layout, reduce perceived latency, and avoid layout shift while data streams.",
   "keywords": [
-    "drawer component",
+    "skeleton UI",
     "React",
     "Next.js",
-    "slide-over",
-    "overlay",
+    "loading state",
+    "layout shift",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Drawer · Zentauri UI",
-    "description": "Drawer component for React and Next.js slide-over panels: focus management, portal-friendly stacking, and Tailwind surfaces for filters and navigation.",
+    "title": "Skeleton · Zentauri UI",
+    "description": "Skeleton loading placeholders for React and Next.js—mirror final layout, reduce perceived latency, and avoid layout shift while data streams.",
     "type": "website"
   },
   "twitter": {
-    "title": "Drawer · Zentauri UI",
-    "description": "Drawer component for React and Next.js slide-over panels: focus management, portal-friendly stacking, and Tailwind surfaces for filters and navigation.",
+    "title": "Skeleton · Zentauri UI",
+    "description": "Skeleton loading placeholders for React and Next.js—mirror final layout, reduce perceived latency, and avoid layout shift while data streams.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/drawer",
+  "canonicalPath": "/preview/components/skeleton",
   "headings": {
-    "h1": "Drawer for slide-over workflows",
+    "h1": "Skeletons for perceived performance",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Slide-over drawers keep users in context while exposing secondary tasks—filters, record details, or multi-step forms. Built for React apps and Next.js layouts that already use portals for modals.",
+  "intro": "Skeletons mirror the eventual layout so users perceive progress while data resolves. Ideal for React suspense boundaries and Next.js streaming routes that fetch in parallel.",
   "useCases": [
-    "Host mobile navigation without leaving the current route.",
-    "Show record inspectors beside data tables.",
-    "Collect multi-step inputs with a sticky footer.",
-    "Present non-blocking filters on commerce listings."
+    "Dashboard cards awaiting metrics.",
+    "Table rows while server components resolve.",
+    "Profile headers before avatars load.",
+    "Feed items during pagination fetches."
   ],
   "faqs": [
     {
-      "question": "Does the Drawer component work with Next.js App Router?",
+      "question": "Does the Skeleton component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize drawer with Tailwind CSS?",
+      "question": "Can I customize skeleton with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Drawer implementation accessible by default?",
+      "question": "Is this Skeleton implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Drawers should trap focus while open and restore it on dismiss.\n\nKeep width responsive so keyboards remain usable on small screens."
+      "body": "Match skeleton geometry to real content to minimize CLS.\n\nFade to content rather than hard swapping when possible."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nAvoid stacking multiple drawers without an explicit stacking policy."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nDo not use skeletons indefinitely—surface errors after timeouts."
     },
     {
       "heading": "Common use cases",

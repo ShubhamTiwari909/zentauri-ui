@@ -21,7 +21,7 @@
     "description": "Step-by-step installation for Zentauri UI: package install, Tailwind v4, and Next.js-friendly imports.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/installation",
+  "canonicalPath": "/preview/components/installation",
   "headings": {
     "h1": "Install Zentauri UI",
     "h2": [

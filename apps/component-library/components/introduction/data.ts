@@ -6,7 +6,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Accordion",
     description:
       "Single or multiple disclosure panels with keyboard-friendly triggers and animated content regions.",
-    href: "/preview/accordion",
+    href: "/preview/components/accordion",
     badge: "Navigation",
   },
   {
@@ -14,7 +14,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Alert",
     description:
       "Inline status messages with semantic tones, optional dismiss controls, and motion presets.",
-    href: "/preview/alert",
+    href: "/preview/components/alert",
     badge: "Feedback",
   },
   {
@@ -22,7 +22,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Avatar",
     description:
       "Circular images with fallback initials and optional status indicators.",
-    href: "/preview/avatar",
+    href: "/preview/components/avatar",
     badge: "Display",
   },
   {
@@ -30,7 +30,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Badge",
     description:
       "Compact labels and counts that share the library palette with optional close actions.",
-    href: "/preview/badge",
+    href: "/preview/components/badge",
     badge: "Display",
   },
   {
@@ -38,7 +38,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Breadcrumb",
     description:
       "Navigation paths with interactive links and separators for deep-link navigation.",
-    href: "/preview/breadcrumb",
+    href: "/preview/components/breadcrumb",
     badge: "Navigation",
   },
   {
@@ -46,7 +46,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Buttons",
     description:
       "A comprehensive set of interactive buttons with robust motion presets and style variants.",
-    href: "/preview/buttons",
+    href: "/preview/components/buttons",
     badge: "Interactive",
   },
   {
@@ -54,7 +54,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Card",
     description:
       "Composable surfaces for summaries and actions with glass, outline, and motion options.",
-    href: "/preview/card",
+    href: "/preview/components/card",
     badge: "Layout",
   },
   {
@@ -62,7 +62,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Divider",
     description:
       "Horizontal or vertical separators with optional labels and subtle motion.",
-    href: "/preview/divider",
+    href: "/preview/components/divider",
     badge: "Layout",
   },
   {
@@ -70,7 +70,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Drawer",
     description:
       "Edge-attached panels with focus management, scroll locking, and slide animations.",
-    href: "/preview/drawer",
+    href: "/preview/components/drawer",
     badge: "Overlay",
   },
   {
@@ -78,7 +78,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Dropdown",
     description:
       "Menu surfaces with portal positioning, keyboard navigation, and grouped items.",
-    href: "/preview/dropdown",
+    href: "/preview/components/dropdown",
     badge: "Navigation",
   },
   {
@@ -86,7 +86,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Empty state",
     description:
       "Zero-data layouts with icon, title, description, and primary action slots.",
-    href: "/preview/empty-state",
+    href: "/preview/components/empty-state",
     badge: "Layout",
   },
   {
@@ -94,7 +94,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "File upload",
     description:
       "Drag-and-drop file inputs with progress indicators and custom validation.",
-    href: "/preview/file-upload",
+    href: "/preview/components/file-upload",
     badge: "Form",
   },
   {
@@ -102,7 +102,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Inputs",
     description:
       "Accessible input fields including text, file, date, checkbox, and radio inputs with unified styling.",
-    href: "/preview/inputs",
+    href: "/preview/components/inputs",
     badge: "Form",
   },
   {
@@ -110,7 +110,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Modal",
     description:
       "Dialog overlays with configurable size, position, and entrance motion.",
-    href: "/preview/modal",
+    href: "/preview/components/modal",
     badge: "Overlay",
   },
   {
@@ -118,7 +118,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Progress",
     description:
       "Determinate progress bars with shimmer animation and a wide appearance scale.",
-    href: "/preview/progress",
+    href: "/preview/components/progress",
     badge: "Feedback",
   },
   {
@@ -126,7 +126,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Select",
     description:
       "Custom listbox selects with single or multi-value modes and matched trigger width.",
-    href: "/preview/select",
+    href: "/preview/components/select",
     badge: "Form",
   },
   {
@@ -134,7 +134,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Skeleton",
     description:
       "Placeholder blocks, text lines, avatars, and buttons while content streams in.",
-    href: "/preview/skeleton",
+    href: "/preview/components/skeleton",
     badge: "Loading",
   },
   {
@@ -142,7 +142,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Slider",
     description:
       "Interactive sliders with range selection and value display for numeric inputs.",
-    href: "/preview/slider",
+    href: "/preview/components/slider",
     badge: "Form",
   },
   {
@@ -150,7 +150,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Spinner",
     description:
       "Busy indicators with ring, dots, pulse, and bars variants across standard sizes.",
-    href: "/preview/spinner",
+    href: "/preview/components/spinner",
     badge: "Loading",
   },
   {
@@ -158,7 +158,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Stepper",
     description:
       "Sequential progress indicators with clickable steps and optional labels.",
-    href: "/preview/stepper",
+    href: "/preview/components/stepper",
     badge: "Navigation",
   },
   {
@@ -166,7 +166,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Table",
     description:
       "Structured data tables with striped, bordered, and sticky header treatments.",
-    href: "/preview/table",
+    href: "/preview/components/table",
     badge: "Data",
   },
   {
@@ -174,7 +174,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Tabs",
     description:
       "Tab lists and animated panels for switching related content without navigation.",
-    href: "/preview/tabs",
+    href: "/preview/components/tabs",
     badge: "Navigation",
   },
   {
@@ -182,7 +182,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Toast",
     description:
       "Transient notifications via a provider hook with stacked viewports and timers.",
-    href: "/preview/toast",
+    href: "/preview/components/toast",
     badge: "Feedback",
   },
   {
@@ -190,7 +190,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Toggle",
     description:
       "Switch controls with semantic appearances and spring thumb motion.",
-    href: "/preview/toggle",
+    href: "/preview/components/toggle",
     badge: "Form",
   },
   {
@@ -198,7 +198,7 @@ export const componentsData: ComponentHighlight[] = [
     name: "Tooltip",
     description:
       "Hover and focus hints with delays, placements, and compact styled surfaces.",
-    href: "/preview/tooltip",
+    href: "/preview/components/tooltip",
     badge: "Overlay",
   },
 ];

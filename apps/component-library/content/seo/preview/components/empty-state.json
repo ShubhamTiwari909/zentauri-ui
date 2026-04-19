@@ -1,28 +1,28 @@
 {
-  "category": "Forms",
-  "title": "Select component for React forms",
-  "description": "Select component for React and Next.js forms—single and multi-value picking, listbox semantics, and Tailwind surfaces for dense option lists.",
+  "category": "Layout",
+  "title": "Empty state component for React lists",
+  "description": "Empty state component for React and Next.js tables and lists—clear copy slots, illustration hooks, and actions when data is missing or filtered out.",
   "keywords": [
-    "select component",
+    "empty state",
     "React",
     "Next.js",
-    "combobox",
-    "forms",
+    "table UI",
+    "no data",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Select · Zentauri UI",
-    "description": "Select component for React and Next.js forms—single and multi-value picking, listbox semantics, and Tailwind surfaces for dense option lists.",
+    "title": "Empty state · Zentauri UI",
+    "description": "Empty state component for React and Next.js tables and lists—clear copy slots, illustration hooks, and actions when data is missing or filtered out.",
     "type": "website"
   },
   "twitter": {
-    "title": "Select · Zentauri UI",
-    "description": "Select component for React and Next.js forms—single and multi-value picking, listbox semantics, and Tailwind surfaces for dense option lists.",
+    "title": "Empty state · Zentauri UI",
+    "description": "Empty state component for React and Next.js tables and lists—clear copy slots, illustration hooks, and actions when data is missing or filtered out.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/select",
+  "canonicalPath": "/preview/components/empty-state",
   "headings": {
-    "h1": "Select for option lists",
+    "h1": "Empty states for zero-data views",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Select surfaces help users pick one or many values from structured lists. Use them in React forms and Next.js settings pages where native selects fall short on styling or behavior.",
+  "intro": "Empty states explain why a list is blank and what to do next—search again, reset filters, or create a record. Drop them into React tables and Next.js dashboards to avoid dead-end screens.",
   "useCases": [
-    "Choose tenants or projects in admin shells.",
-    "Pick assignees on issue forms.",
-    "Filter charts by dimension values.",
-    "Configure feature flags with grouped options."
+    "First-run experiences before any records exist.",
+    "Zero-result searches with suggested next steps.",
+    "Permission-restricted views with upgrade CTAs.",
+    "Filtered tables after aggressive query narrowing."
   ],
   "faqs": [
     {
-      "question": "Does the Select component work with Next.js App Router?",
+      "question": "Does the Empty state component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize select with Tailwind CSS?",
+      "question": "Can I customize empty state with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Select implementation accessible by default?",
+      "question": "Is this Empty state implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Compound parts separate triggers, portals, and listboxes.\n\nKeep option text concise to preserve scan speed."
+      "body": "Keep messaging specific: differentiate “no data yet” from “no matches.”\n\nOffer a single primary action to reduce decision fatigue."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nAnnounce selection changes when they drive expensive remote fetches."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nProvide heading text that summarizes the state for screen reader users quickly."
     },
     {
       "heading": "Common use cases",
