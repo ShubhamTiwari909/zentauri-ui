@@ -1,6 +1,5 @@
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
-
 import { defineConfig } from "tsup";
 
 const uiComponentNames = [
@@ -106,7 +105,7 @@ export default defineConfig({
     ...hooksEntries,
   },
   format: ["esm", "cjs"],
-  dts: true,
+  dts: false,
   clean: true,
   // Externalize peer deps and subpaths (e.g. react-icons/hi2) so they are never inlined.
   external: [

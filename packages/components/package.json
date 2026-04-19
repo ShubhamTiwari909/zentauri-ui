@@ -10,24 +10,31 @@
   },
   "exports": {
     "./ui/*": {
-      "types": "./dist/ui/*.d.ts",
+      "types": "./dist/ui/*/index.d.ts",
       "import": "./dist/ui/*.mjs",
       "require": "./dist/ui/*.js"
     },
     "./ui/*/animated": {
-      "types": "./dist/ui/*/animated.d.ts",
+      "types": "./dist/ui/*/animated/index.d.ts",
       "import": "./dist/ui/*/animated.mjs",
       "require": "./dist/ui/*/animated.js"
     },
+    "./hooks/utils": {
+      "types": "./dist/lib/utils.d.ts",
+      "import": "./dist/hooks/utils.mjs",
+      "require": "./dist/hooks/utils.js"
+    },
     "./hooks/*": {
-      "types": "./dist/hooks/*.d.ts",
+      "types": "./dist/hooks/*/index.d.ts",
       "import": "./dist/hooks/*.mjs",
       "require": "./dist/hooks/*.js"
     }
   },
   "scripts": {
     "dev": "NODE_OPTIONS=--max-old-space-size=8192 tsup --watch",
-    "build": "NODE_OPTIONS=--max-old-space-size=8192 tsup",
+    "build:js": "NODE_OPTIONS=--max-old-space-size=8192 tsup",
+    "build:types": "tsc -p tsconfig.emit-types.json",
+    "build": "pnpm run build:js && pnpm run build:types",
     "test": "vitest run",
     "test:watch": "vitest"
   },
