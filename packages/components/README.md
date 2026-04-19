@@ -4,18 +4,32 @@ A React UI kit for building product interfaces with Tailwind CSS. Components are
 
 ## Overview
 
-The library targets **React 18+** apps that use **Tailwind CSS v4** (or an equivalent setup where Tailwind can scan this package via `@source`). Styling uses utility classes; **class-variance-authority** powers variant APIs (size, appearance, and similar props), with **clsx** and **tailwind-merge** for predictable `className` composition. **Framer Motion** backs motion where components animate, and **react-icons** is used for iconography where applicable.
+The library targets **React 18+** apps that use **Tailwind CSS v4** (or an equivalent setup where Tailwind can scan this package via `@source`). Styling uses utility classes; **class-variance-authority** powers variant APIs (size, appearance, and similar props), with **clsx** and **tailwind-merge** for predictable `className` composition. **Framer Motion** backs motion where a feature ships animated variants, and **react-icons** is used for iconography where applicable.
 
-Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@zentauri-ui/zentauri-components/ui/<area>` for components and `@zentauri-ui/zentauri-components/hooks/<entry>` for React hooks (and shared helpers under `hooks/utils`). Each entry resolves to its own ESM (`.mjs`), CJS (`.js`), and types (`.d.ts`) so bundlers pull only what you import. Most apps rely on Tailwind scanning the package sources (see installation); a separate CSS import is not required for that setup.
+Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@zentauri-ui/zentauri-components/ui/<area>` for static UI, `@zentauri-ui/zentauri-components/ui/<area>/animated` where a motion bundle exists, and `@zentauri-ui/zentauri-components/hooks/<entry>` for React hooks (and shared helpers under `hooks/utils`). Base UI entries do **not** re-export animated components; motion lives on its own entry so optional `framer-motion` usage stays tree-shakeable and chunk-friendly. Each entry resolves to its own ESM (`.mjs`), CJS (`.js`), and types (`.d.ts`) so bundlers pull only what you import. Most apps rely on Tailwind scanning the package sources (see installation); a separate CSS import is not required for that setup.
 
 ## Package exports
 
 | Subpath                                         | Description                                                                                                                                 |
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@zentauri-ui/zentauri-components/ui/<name>`   | Single UI area: components (and any re-exports from that area’s `index`, e.g. `usePagination` from `ui/pagination`).                         |
+| `@zentauri-ui/zentauri-components/ui/<name>`   | Single UI area: static primitives, compound parts, variants, and types. Does **not** include Framer Motion–based animated exports.           |
+| `@zentauri-ui/zentauri-components/ui/<name>/animated` | Motion entry for that area when published: animated components, motion presets, and related types (depends on **framer-motion**).     |
 | `@zentauri-ui/zentauri-components/hooks/<entry>` | One hook module or `utils` (`cn`, `clampPage`, `range` from `src/lib/utils.ts`). Entries match files under `src/hooks/` (see **React hooks**). |
 
 The UI `<name>` segment matches the folder under `src/ui/` (for example `accordion`, `select`, `empty-state`, `buttons` for `Button`, `inputs` for `Input`). The hooks `<entry>` is the file stem (for example `useMediaQuery`, `usePagination`) or `utils`.
+
+Only a subset of UI areas publish a `/animated` entry (see **Components**). Some motion entries also re-export non-motion pieces from the same feature so you can import one motion subpath for a whole flow; others pair a base `ui/<name>` import with a small set of `*Animated` exports from `ui/<name>/animated`—use the `animated/index.ts` for that area as the source of truth.
+
+## Animated components (`ui/<name>/animated`)
+
+- **Why a separate subpath:** animated modules import **framer-motion**. Keeping them on `…/ui/<name>/animated` avoids pulling motion into pages that only use the static `…/ui/<name>` entry and keeps server/client boundaries predictable in app routers.
+- **When to install `framer-motion`:** add it when your app imports any `@zentauri-ui/zentauri-components/ui/*/animated` path (see **Optional: animations and icons** under installation).
+
+Published motion entries (same `<name>` as the base UI folder):
+
+`accordion`, `alert`, `avatar`, `badge`, `buttons`, `card`, `divider`, `drawer`, `empty-state`, `inputs`, `modal`, `progress`, `skeleton`, `spinner`, `table`, `tabs`, `toast`, `toggle`, `tooltip`
+
+**Spinner:** only the motion entry is built—import from `@zentauri-ui/zentauri-components/ui/spinner/animated` (there is no separate `ui/spinner` static bundle).
 
 ## Requirements
 
@@ -24,36 +38,36 @@ The UI `<name>` segment matches the folder under `src/ui/` (for example `accordi
 
 ## Components
 
-Each area is available from its own subpath (`…/ui/<subpath>`):
+Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` when the **Base** column lists a path. When the **Animated** column lists a path, motion components and preset helpers come from `@zentauri-ui/zentauri-components/ui/<subpath>/animated` (they are not exported from the base entry). **Spinner** has no static bundle—use only the animated subpath.
 
-| Area           | Subpath `…/ui/…` |
-| -------------- | ---------------- |
-| Accordion      | `accordion`      |
-| Alert          | `alert`          |
-| Avatar         | `avatar`         |
-| Badge          | `badge`          |
-| Breadcrumb     | `breadcrumb`     |
-| Button         | `buttons`        |
-| Card           | `card`           |
-| Divider        | `divider`        |
-| Drawer         | `drawer`         |
-| Dropdown       | `dropdown`       |
-| Empty state    | `empty-state`    |
-| File upload    | `file-upload`    |
-| Input          | `inputs`         |
-| Modal          | `modal`          |
-| Pagination     | `pagination`     |
-| Progress       | `progress`       |
-| Select         | `select`         |
-| Skeleton       | `skeleton`       |
-| Slider         | `slider`         |
-| Spinner        | `spinner`        |
-| Stepper        | `stepper`        |
-| Table          | `table`          |
-| Tabs           | `tabs`           |
-| Toast          | `toast`          |
-| Toggle         | `toggle`         |
-| Tooltip        | `tooltip`        |
+| Area           | Base subpath `…/ui/…` | Animated subpath `…/ui/…/animated` |
+| -------------- | --------------------- | ------------------------------------ |
+| Accordion      | `accordion`           | `accordion/animated`                 |
+| Alert          | `alert`               | `alert/animated`                     |
+| Avatar         | `avatar`              | `avatar/animated`                    |
+| Badge          | `badge`               | `badge/animated`                     |
+| Breadcrumb     | `breadcrumb`          | —                                    |
+| Button         | `buttons`             | `buttons/animated`                   |
+| Card           | `card`                | `card/animated`                      |
+| Divider        | `divider`             | `divider/animated`                   |
+| Drawer         | `drawer`              | `drawer/animated`                    |
+| Dropdown       | `dropdown`            | —                                    |
+| Empty state    | `empty-state`         | `empty-state/animated`               |
+| File upload    | `file-upload`         | —                                    |
+| Input          | `inputs`              | `inputs/animated`                    |
+| Modal          | `modal`               | `modal/animated`                     |
+| Pagination     | `pagination`          | —                                    |
+| Progress       | `progress`            | `progress/animated`                  |
+| Select         | `select`              | —                                    |
+| Skeleton       | `skeleton`            | `skeleton/animated`                  |
+| Slider         | `slider`              | —                                    |
+| Spinner        | —                     | `spinner/animated`                   |
+| Stepper        | `stepper`             | —                                    |
+| Table          | `table`               | `table/animated`                     |
+| Tabs           | `tabs`                | `tabs/animated`                      |
+| Toast          | `toast`               | `toast/animated`                     |
+| Toggle         | `toggle`              | `toggle/animated`                    |
+| Tooltip        | `tooltip`             | `tooltip/animated`                   |
 
 ## React hooks
 
@@ -104,7 +118,7 @@ Some UI packages re-export the hook that belongs to that component (for example 
 
 ## Installation
 
-**Getting started** — Add the package, install peer dependencies so primitives resolve correctly, point Tailwind at the library sources, then import from `ui/<name>` and/or `hooks/<entry>` subpaths.
+**Getting started** — Add the package, install peer dependencies so primitives resolve correctly, point Tailwind at the library sources, then import from `ui/<name>` (static), `ui/<name>/animated` (motion, when published), and/or `hooks/<entry>` subpaths.
 
 ### Step 1 — Install the package
 
@@ -140,7 +154,7 @@ yarn add react react-dom class-variance-authority clsx tailwind-merge
 
 #### Optional: animations and icons
 
-Add `framer-motion` when using motion-based UI, and `react-icons` when using icon sets from that package.
+Add **`framer-motion`** when you import any `@zentauri-ui/zentauri-components/ui/<name>/animated` entry (including **Spinner**, which is only published under `ui/spinner/animated`). Add **`react-icons`** when using icon sets from that package.
 
 ```bash
 npm install framer-motion react-icons
@@ -154,7 +168,7 @@ pnpm add framer-motion react-icons
 yarn add framer-motion react-icons
 ```
 
-Published `dist/` files **import** these packages; they are **not** vendored inside `@zentauri-ui/zentauri-components`. Your app installs them via `dependencies` (or optional peers above), and your bundler resolves them from `node_modules`.
+Published `dist/` files **import** these packages; they are **not** vendored inside `@zentauri-ui/zentauri-components`. Static `ui/<name>` bundles do not depend on `framer-motion`; only `ui/<name>/animated` entries do. Your app installs peers via `dependencies` where needed, and your bundler resolves them from `node_modules`.
 
 ### Next.js: smaller route chunks
 
@@ -184,7 +198,7 @@ Add an `@source` entry so Tailwind scans class names inside `@zentauri-ui/zentau
 
 ### Step 4 — Import and use components and hooks
 
-Use **one subpath per UI area** and **one subpath per hook module** so the bundler resolves only the entries you use.
+Use **one subpath per UI area** (static and animated are separate entries: `ui/<name>` vs `ui/<name>/animated`) and **one subpath per hook module** so the bundler resolves only the entries you use.
 
 #### Imports (single UI area)
 
@@ -215,6 +229,17 @@ import {
 ```tsx
 import { useDisclosure } from "@zentauri-ui/zentauri-components/hooks/useDisclosure";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+```
+
+#### Imports (animated / Framer Motion)
+
+Use the `/animated` subpath for motion components and preset helpers. You can import static and motion entries from the same feature in one file when you compose them (names and re-exports differ per area).
+
+```tsx
+import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
+
+import { Spinner } from "@zentauri-ui/zentauri-components/ui/spinner/animated";
 ```
 
 #### Usage
@@ -255,7 +280,7 @@ https://zentauri-ui.vercel.app/
 
 From this package directory in the monorepo:
 
-- `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each `dist/ui/*.mjs` / `*.js` entry starts with `"use client"`)
+- `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, including `dist/ui/<name>/animated.*`, starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
 - `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests
 
