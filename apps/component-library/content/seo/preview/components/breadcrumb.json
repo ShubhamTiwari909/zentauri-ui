@@ -20,7 +20,7 @@
     "description": "Composable Breadcrumb primitives for Next.js and React with separators and current-page semantics.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/breadcrumb",
+  "canonicalPath": "/preview/components/breadcrumb",
   "headings": {
     "h1": "Breadcrumb navigation",
     "h2": ["Overview", "Common use cases", "FAQ"]

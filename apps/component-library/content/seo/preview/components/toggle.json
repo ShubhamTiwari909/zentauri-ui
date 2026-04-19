@@ -1,28 +1,28 @@
 {
-  "category": "Layout",
-  "title": "Divider component for React layouts",
-  "description": "Horizontal and vertical Divider component for React and Next.js layouts—separate dense lists, forms, and split panes with subtle Tailwind strokes.",
+  "category": "Forms",
+  "title": "Toggle switch component for React forms",
+  "description": "Toggle component for React and Next.js—binary on/off controls with clear labels for settings, feature flags, and compact filters.",
   "keywords": [
-    "divider component",
+    "toggle switch",
     "React",
     "Next.js",
-    "layout",
-    "separator",
+    "boolean input",
+    "forms",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Divider · Zentauri UI",
-    "description": "Horizontal and vertical Divider component for React and Next.js layouts—separate dense lists, forms, and split panes with subtle Tailwind strokes.",
+    "title": "Toggle · Zentauri UI",
+    "description": "Toggle component for React and Next.js—binary on/off controls with clear labels for settings, feature flags, and compact filters.",
     "type": "website"
   },
   "twitter": {
-    "title": "Divider · Zentauri UI",
-    "description": "Horizontal and vertical Divider component for React and Next.js layouts—separate dense lists, forms, and split panes with subtle Tailwind strokes.",
+    "title": "Toggle · Zentauri UI",
+    "description": "Toggle component for React and Next.js—binary on/off controls with clear labels for settings, feature flags, and compact filters.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/divider",
+  "canonicalPath": "/preview/components/toggle",
   "headings": {
-    "h1": "Dividers for layout separation",
+    "h1": "Toggles for binary settings",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Dividers add low-noise separation between stacked sections, split panes, and list rows. Ideal for React settings pages and Next.js admin shells that need structure without heavy chrome.",
+  "intro": "Toggles represent boolean settings with immediate visual state. Use them in React settings panels and Next.js account pages where checkboxes feel too form-heavy.",
   "useCases": [
-    "Split form sections without adding new headings.",
-    "Separate comments from primary content in feeds.",
-    "Add subtle breaks between toolbar clusters.",
-    "Balance dense tables with horizontal rules."
+    "Feature flags for beta capabilities.",
+    "Notification preferences with instant feedback.",
+    "Compact filters on mobile toolbars.",
+    "Dark mode switches paired with system sync copy."
   ],
   "faqs": [
     {
-      "question": "Does the Divider component work with Next.js App Router?",
+      "question": "Does the Toggle component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize divider with Tailwind CSS?",
+      "question": "Can I customize toggle with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Divider implementation accessible by default?",
+      "question": "Is this Toggle implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Orientation props cover row vs column stacks.\n\nCombine with spacing utilities rather than hard-coded margins inside the primitive."
+      "body": "Expose role=switch semantics and synchronize aria-checked with visual state.\n\nAvoid using toggles for non-binary choices."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nDo not use dividers as the only way to convey grouping—pair with headings or labels."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nProvide visible labels; do not rely on color alone for on/off meaning."
     },
     {
       "heading": "Common use cases",

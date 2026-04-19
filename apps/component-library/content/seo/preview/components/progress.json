@@ -1,28 +1,28 @@
 {
-  "category": "Navigation",
-  "title": "Dropdown menu component for React",
-  "description": "Dropdown menu component for React and Next.js: keyboard-friendly lists, sections, and destructive actions anchored to buttons or icon controls.",
+  "category": "Feedback",
+  "title": "Progress bar component for React UIs",
+  "description": "Determinate Progress component for React and Next.js—show upload completion, wizard steps, and background jobs with accessible values.",
   "keywords": [
-    "dropdown menu",
+    "progress bar",
     "React",
     "Next.js",
-    "context menu",
-    "keyboard UI",
+    "determinate loading",
+    "a11y",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Dropdown · Zentauri UI",
-    "description": "Dropdown menu component for React and Next.js: keyboard-friendly lists, sections, and destructive actions anchored to buttons or icon controls.",
+    "title": "Progress · Zentauri UI",
+    "description": "Determinate Progress component for React and Next.js—show upload completion, wizard steps, and background jobs with accessible values.",
     "type": "website"
   },
   "twitter": {
-    "title": "Dropdown · Zentauri UI",
-    "description": "Dropdown menu component for React and Next.js: keyboard-friendly lists, sections, and destructive actions anchored to buttons or icon controls.",
+    "title": "Progress · Zentauri UI",
+    "description": "Determinate Progress component for React and Next.js—show upload completion, wizard steps, and background jobs with accessible values.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/dropdown",
+  "canonicalPath": "/preview/components/progress",
   "headings": {
-    "h1": "Dropdown menus for actions and links",
+    "h1": "Progress bars for completion feedback",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Dropdowns expose grouped actions, navigation shortcuts, and icon rows from compact triggers. Use them in React toolbars and Next.js headers where space is limited but discoverability still matters.",
+  "intro": "Progress bars communicate how far a task has advanced—uploads, installs, or wizard steps. Integrate them into React dashboards and Next.js status pages with clear textual values.",
   "useCases": [
-    "Overflow menus on table rows.",
-    "Account menus in application headers.",
-    "Compact filters for chart dashboards.",
-    "Secondary actions beside primary buttons."
+    "File uploads with byte counts and ETA copy.",
+    "Checkout steps with weighted segments.",
+    "Background sync jobs in admin consoles.",
+    "Onboarding checklists tied to measurable tasks."
   ],
   "faqs": [
     {
-      "question": "Does the Dropdown component work with Next.js App Router?",
+      "question": "Does the Progress component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize dropdown with Tailwind CSS?",
+      "question": "Can I customize progress with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Dropdown implementation accessible by default?",
+      "question": "Is this Progress implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Typeahead and roving tabindex patterns keep long lists manageable.\n\nAnchor positioning adapts to viewport edges automatically when configured."
+      "body": "Pair visuals with aria-valuenow updates for assistive technologies.\n\nAvoid fake progress that stalls—users lose trust quickly."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nEnsure each item has readable labels and disabled items are skipped appropriately."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nReset to indeterminate spinners when duration is unknown."
     },
     {
       "heading": "Common use cases",

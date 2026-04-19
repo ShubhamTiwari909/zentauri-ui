@@ -5,8 +5,9 @@ import { SidebarNav } from "./sidebar-nav";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/common/site-header";
+import { SidebarNavGroup } from "./types";
 
-export function SidebarLayout({ children }: { children: React.ReactNode }) {
+export function SidebarLayout({ children, sideBarContent }: { children: React.ReactNode, sideBarContent: SidebarNavGroup[] }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Detect viewport on page load and resize
@@ -56,7 +57,7 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
             </Link>
           </div>
           <div className="flex-1 overflow-y-auto pr-2">
-            <SidebarNav onLinkClick={() => setIsMobileMenuOpen(false)} />
+            <SidebarNav onLinkClick={() => setIsMobileMenuOpen(false)} sidebarRouteData={sideBarContent} />
           </div>
         </div>
       </aside>

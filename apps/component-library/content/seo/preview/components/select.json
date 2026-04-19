@@ -1,28 +1,28 @@
 {
-  "category": "Overlay",
-  "title": "Modal dialog component for React apps",
-  "description": "Modal component for React and Next.js with focus traps, portal layering, and sizes for confirmations, forms, and multi-step flows.",
+  "category": "Forms",
+  "title": "Select component for React forms",
+  "description": "Select component for React and Next.js forms—single and multi-value picking, listbox semantics, and Tailwind surfaces for dense option lists.",
   "keywords": [
-    "modal dialog",
+    "select component",
     "React",
     "Next.js",
-    "focus trap",
-    "overlay",
+    "combobox",
+    "forms",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Modal · Zentauri UI",
-    "description": "Modal component for React and Next.js with focus traps, portal layering, and sizes for confirmations, forms, and multi-step flows.",
+    "title": "Select · Zentauri UI",
+    "description": "Select component for React and Next.js forms—single and multi-value picking, listbox semantics, and Tailwind surfaces for dense option lists.",
     "type": "website"
   },
   "twitter": {
-    "title": "Modal · Zentauri UI",
-    "description": "Modal component for React and Next.js with focus traps, portal layering, and sizes for confirmations, forms, and multi-step flows.",
+    "title": "Select · Zentauri UI",
+    "description": "Select component for React and Next.js forms—single and multi-value picking, listbox semantics, and Tailwind surfaces for dense option lists.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/modal",
+  "canonicalPath": "/preview/components/select",
   "headings": {
-    "h1": "Modals for focused tasks",
+    "h1": "Select for option lists",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Modals isolate critical tasks—confirmations, short forms, and destructive actions—while preserving page context underneath. Suitable for React SPAs and Next.js layouts using portals.",
+  "intro": "Select surfaces help users pick one or many values from structured lists. Use them in React forms and Next.js settings pages where native selects fall short on styling or behavior.",
   "useCases": [
-    "Confirm destructive deletes with explicit copy.",
-    "Collect short forms without navigating away.",
-    "Show legal acknowledgements before continuing.",
-    "Present multi-step onboarding checkpoints."
+    "Choose tenants or projects in admin shells.",
+    "Pick assignees on issue forms.",
+    "Filter charts by dimension values.",
+    "Configure feature flags with grouped options."
   ],
   "faqs": [
     {
-      "question": "Does the Modal component work with Next.js App Router?",
+      "question": "Does the Select component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize modal with Tailwind CSS?",
+      "question": "Can I customize select with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Modal implementation accessible by default?",
+      "question": "Is this Select implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Focus must move inside the dialog on open and restore on close.\n\nProvide labelled titles even when visually minimal."
+      "body": "Compound parts separate triggers, portals, and listboxes.\n\nKeep option text concise to preserve scan speed."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nAvoid stacking unrelated modals; queue user tasks instead."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nAnnounce selection changes when they drive expensive remote fetches."
     },
     {
       "heading": "Common use cases",

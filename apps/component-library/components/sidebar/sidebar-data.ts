@@ -8,137 +8,145 @@ const hookSidebarItems = [...HOOK_PREVIEW_REGISTRY]
     href: `/preview/hooks/${hook.slug}`,
   }));
 
-export const sidebarRouteData: SidebarNavGroup[] = [
+export const sidebareRouteDataShared = [
   {
     title: "Getting Started",
     items: [
       {
-        title: "Introduction",
-        href: "/preview",
-      },
-      {
         title: "Installation",
         href: "/preview/installation",
       },
+      {
+        title: "Components",
+        href: "/preview/components",
+      },
+      {
+        title: "Hooks",
+        href: "/preview/hooks",
+      },
     ],
   },
+];
+
+export const sidebarHooksData: SidebarNavGroup[] = [
+  ...sidebareRouteDataShared,
+  {
+    title: "Hooks",
+    items: [
+      ...hookSidebarItems,
+    ],
+  },
+];
+
+export const sidebarComponentsData: SidebarNavGroup[] = [
+  ...sidebareRouteDataShared,
   {
     title: "Components",
     items: [
       {
         title: "Accordion",
-        href: "/preview/accordion",
+        href: "/preview/components/accordion",
       },
       {
         title: "Alert",
-        href: "/preview/alert",
+        href: "/preview/components/alert",
       },
       {
         title: "Avatar",
-        href: "/preview/avatar",
+        href: "/preview/components/avatar",
       },
       {
         title: "Badge",
-        href: "/preview/badge",
+        href: "/preview/components/badge",
       },
       {
         title: "Breadcrumb",
-        href: "/preview/breadcrumb",
+        href: "/preview/components/breadcrumb",
       },
       {
         title: "Buttons",
-        href: "/preview/buttons",
+        href: "/preview/components/buttons",
       },
       {
         title: "Card",
-        href: "/preview/card",
+        href: "/preview/components/card",
       },
       {
         title: "Divider",
-        href: "/preview/divider",
+        href: "/preview/components/divider",
       },
       {
         title: "Drawer",
-        href: "/preview/drawer",
+        href: "/preview/components/drawer",
       },
       {
         title: "Dropdown",
-        href: "/preview/dropdown",
+        href: "/preview/components/dropdown",
       },
       {
         title: "Empty state",
-        href: "/preview/empty-state",
+        href: "/preview/components/empty-state",
       },
       {
         title: "File upload",
-        href: "/preview/file-upload",
+        href: "/preview/components/file-upload",
       },
       {
         title: "Inputs",
-        href: "/preview/inputs",
+        href: "/preview/components/inputs",
       },
       {
         title: "Modal",
-        href: "/preview/modal",
+        href: "/preview/components/modal",
       },
       {
         title: "Pagination",
-        href: "/preview/pagination",
+        href: "/preview/components/pagination",
       },
       {
         title: "Progress",
-        href: "/preview/progress",
+        href: "/preview/components/progress",
       },
       {
         title: "Select",
-        href: "/preview/select",
+        href: "/preview/components/select",
       },
       {
         title: "Skeleton",
-        href: "/preview/skeleton",
+        href: "/preview/components/skeleton",
       },
       {
         title: "Slider",
-        href: "/preview/slider",
+        href: "/preview/components/slider",
       },
       {
         title: "Spinner",
-        href: "/preview/spinner",
+        href: "/preview/components/spinner",
       },
       {
         title: "Stepper",
-        href: "/preview/stepper",
+        href: "/preview/components/stepper",
       },
       {
         title: "Table",
-        href: "/preview/table",
+        href: "/preview/components/table",
       },
       {
         title: "Tabs",
-        href: "/preview/tabs",
+        href: "/preview/components/tabs",
       },
       {
         title: "Toast",
-        href: "/preview/toast",
+        href: "/preview/components/toast",
       },
       {
         title: "Toggle",
-        href: "/preview/toggle",
+        href: "/preview/components/toggle",
       },
       {
         title: "Tooltip",
-        href: "/preview/tooltip",
+        href: "/preview/components/tooltip",
       },
-    ],
-  },
-  {
-    title: "Hooks",
-    items: [
-      {
-        title: "Hooks overview",
-        href: "/preview/hooks",
-      },
-      ...hookSidebarItems,
     ],
   },
 ];

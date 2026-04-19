@@ -21,7 +21,7 @@
     "description": "Use the Accordion component in React and Next.js for collapsible FAQs, settings panels, and progressive disclosure without losing keyboard support.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/accordion",
+  "canonicalPath": "/preview/components/accordion",
   "headings": {
     "h1": "Accordion for stacked disclosures",
     "h2": [

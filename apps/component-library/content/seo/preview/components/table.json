@@ -1,28 +1,28 @@
 {
-  "category": "Overlay",
-  "title": "Tooltip component for React interfaces",
-  "description": "Tooltip component for React and Next.js—hover and focus hints for dense dashboards without cluttering the default layout.",
+  "category": "Data",
+  "title": "Table component for React data views",
+  "description": "Table primitives for React and Next.js data pages—responsive rows, selection affordances, and Tailwind spacing for dense admin views.",
   "keywords": [
-    "tooltip component",
+    "table component",
     "React",
     "Next.js",
-    "hover card",
-    "keyboard focus",
+    "data grid",
+    "admin UI",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Tooltip · Zentauri UI",
-    "description": "Tooltip component for React and Next.js—hover and focus hints for dense dashboards without cluttering the default layout.",
+    "title": "Table · Zentauri UI",
+    "description": "Table primitives for React and Next.js data pages—responsive rows, selection affordances, and Tailwind spacing for dense admin views.",
     "type": "website"
   },
   "twitter": {
-    "title": "Tooltip · Zentauri UI",
-    "description": "Tooltip component for React and Next.js—hover and focus hints for dense dashboards without cluttering the default layout.",
+    "title": "Table · Zentauri UI",
+    "description": "Table primitives for React and Next.js data pages—responsive rows, selection affordances, and Tailwind spacing for dense admin views.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/tooltip",
+  "canonicalPath": "/preview/components/table",
   "headings": {
-    "h1": "Tooltips for contextual hints",
+    "h1": "Tables for dense data views",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Tooltips surface short explanations on hover or focus—icon buttons, truncated labels, and chart markers. Use them in React dashboards and Next.js admin tools with disciplined copy length.",
+  "intro": "Tables align columns for scannable datasets—admin consoles, billing histories, and analytics exports. Compose them in React pages and Next.js server-rendered listings with stable column widths.",
   "useCases": [
-    "Disambiguate icon-only toolbar controls.",
-    "Clarify truncated column headers.",
-    "Explain formula fields in spreadsheets.",
-    "Offer units on compact KPIs."
+    "Operational dashboards with sortable columns.",
+    "Audit logs with monospace numerics.",
+    "Pricing matrices with tier comparisons.",
+    "Inventory views with row-level actions."
   ],
   "faqs": [
     {
-      "question": "Does the Tooltip component work with Next.js App Router?",
+      "question": "Does the Table component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize tooltip with Tailwind CSS?",
+      "question": "Can I customize table with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Tooltip implementation accessible by default?",
+      "question": "Is this Table implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Delay appearance slightly to avoid tooltip storms while moving the pointer.\n\nEnsure triggers remain focusable for keyboard users."
+      "body": "Use semantic table elements for accessibility by default.\n\nSticky headers help long scroll regions remain navigable."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nDo not place essential instructions only inside tooltips."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nProvide captions or aria-labels when the table’s purpose is not obvious from surrounding headings."
     },
     {
       "heading": "Common use cases",

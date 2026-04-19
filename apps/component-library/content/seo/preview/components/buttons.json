@@ -1,28 +1,28 @@
 {
-  "category": "Feedback",
-  "title": "Toast notifications for React apps",
-  "description": "Toast notifications for React and Next.js—stacked regions, timed dismiss, and imperative APIs for post-mutation feedback without blocking layout.",
+  "category": "Actions",
+  "title": "Button component variants for React apps",
+  "description": "Primary Button component for React and Next.js with variants, loading states, icons, and motion tuned for forms and dashboards.",
   "keywords": [
-    "toast component",
+    "button component",
     "React",
     "Next.js",
-    "notifications",
-    "useToast",
+    "loading state",
+    "CVA",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Toast · Zentauri UI",
-    "description": "Toast notifications for React and Next.js—stacked regions, timed dismiss, and imperative APIs for post-mutation feedback without blocking layout.",
+    "title": "Button · Zentauri UI",
+    "description": "Primary Button component for React and Next.js with variants, loading states, icons, and motion tuned for forms and dashboards.",
     "type": "website"
   },
   "twitter": {
-    "title": "Toast · Zentauri UI",
-    "description": "Toast notifications for React and Next.js—stacked regions, timed dismiss, and imperative APIs for post-mutation feedback without blocking layout.",
+    "title": "Button · Zentauri UI",
+    "description": "Primary Button component for React and Next.js with variants, loading states, icons, and motion tuned for forms and dashboards.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/toast",
+  "canonicalPath": "/preview/components/buttons",
   "headings": {
-    "h1": "Toasts for transient notifications",
+    "h1": "Buttons for primary actions",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Toasts acknowledge background work—saved settings, queued jobs, or soft failures—without modal interruption. Integrate them in React apps and Next.js client islands that own global providers.",
+  "intro": "Action buttons with variants, sizes, and motion presets for React interfaces. Drop them into Next.js forms and toolbars while keeping focus rings consistent with your Tailwind theme.",
   "useCases": [
-    "Confirm CRUD actions after server mutations.",
-    "Surface copy-to-clipboard success.",
-    "Notify when async exports finish.",
-    "Warn about connectivity retries."
+    "Submit Next.js forms with optimistic loading feedback.",
+    "Drive modal and drawer footers with primary/secondary pairing.",
+    "Add icon-leading actions to dense data tables.",
+    "Gate destructive flows behind emphasized danger styles."
   ],
   "faqs": [
     {
-      "question": "Does the Toast component work with Next.js App Router?",
+      "question": "Does the Button component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize toast with Tailwind CSS?",
+      "question": "Can I customize button with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Toast implementation accessible by default?",
+      "question": "Is this Button implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Limit concurrent toasts and preserve reading order for screen readers.\n\nProvide action buttons sparingly to reduce accidental clicks."
+      "body": "Buttons wrap native elements so native disabled and focus behavior stay intact.\n\nLoading states preserve width to avoid layout shift in toolbars."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nNever rely solely on toasts for critical legal consent."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nPair every icon-only control with aria-label text supplied by your app."
     },
     {
       "heading": "Common use cases",

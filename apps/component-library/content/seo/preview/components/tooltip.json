@@ -1,28 +1,28 @@
 {
-  "category": "Feedback",
-  "title": "Progress bar component for React UIs",
-  "description": "Determinate Progress component for React and Next.js—show upload completion, wizard steps, and background jobs with accessible values.",
+  "category": "Overlay",
+  "title": "Tooltip component for React interfaces",
+  "description": "Tooltip component for React and Next.js—hover and focus hints for dense dashboards without cluttering the default layout.",
   "keywords": [
-    "progress bar",
+    "tooltip component",
     "React",
     "Next.js",
-    "determinate loading",
-    "a11y",
+    "hover card",
+    "keyboard focus",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Progress · Zentauri UI",
-    "description": "Determinate Progress component for React and Next.js—show upload completion, wizard steps, and background jobs with accessible values.",
+    "title": "Tooltip · Zentauri UI",
+    "description": "Tooltip component for React and Next.js—hover and focus hints for dense dashboards without cluttering the default layout.",
     "type": "website"
   },
   "twitter": {
-    "title": "Progress · Zentauri UI",
-    "description": "Determinate Progress component for React and Next.js—show upload completion, wizard steps, and background jobs with accessible values.",
+    "title": "Tooltip · Zentauri UI",
+    "description": "Tooltip component for React and Next.js—hover and focus hints for dense dashboards without cluttering the default layout.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/progress",
+  "canonicalPath": "/preview/components/tooltip",
   "headings": {
-    "h1": "Progress bars for completion feedback",
+    "h1": "Tooltips for contextual hints",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Progress bars communicate how far a task has advanced—uploads, installs, or wizard steps. Integrate them into React dashboards and Next.js status pages with clear textual values.",
+  "intro": "Tooltips surface short explanations on hover or focus—icon buttons, truncated labels, and chart markers. Use them in React dashboards and Next.js admin tools with disciplined copy length.",
   "useCases": [
-    "File uploads with byte counts and ETA copy.",
-    "Checkout steps with weighted segments.",
-    "Background sync jobs in admin consoles.",
-    "Onboarding checklists tied to measurable tasks."
+    "Disambiguate icon-only toolbar controls.",
+    "Clarify truncated column headers.",
+    "Explain formula fields in spreadsheets.",
+    "Offer units on compact KPIs."
   ],
   "faqs": [
     {
-      "question": "Does the Progress component work with Next.js App Router?",
+      "question": "Does the Tooltip component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize progress with Tailwind CSS?",
+      "question": "Can I customize tooltip with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Progress implementation accessible by default?",
+      "question": "Is this Tooltip implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Pair visuals with aria-valuenow updates for assistive technologies.\n\nAvoid fake progress that stalls—users lose trust quickly."
+      "body": "Delay appearance slightly to avoid tooltip storms while moving the pointer.\n\nEnsure triggers remain focusable for keyboard users."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nReset to indeterminate spinners when duration is unknown."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nDo not place essential instructions only inside tooltips."
     },
     {
       "heading": "Common use cases",

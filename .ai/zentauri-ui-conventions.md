@@ -7,8 +7,15 @@ Use this as a quick reference when planning or implementing new components in `z
 - Preview app entrypoints
   - `apps/component-library/app/layout.tsx` (global shell + metadata)
   - `apps/component-library/app/globals.css` (Tailwind v4 import + base theme)
-  - `apps/component-library/app/preview/layout.tsx` (preview shell)
-  - `apps/component-library/app/preview/<segment>/page.tsx` (one route per component group)
+  - `apps/component-library/app/preview/components/layout.tsx` (preview shell under `/preview/components`)
+  - `apps/component-library/app/preview/components/page.tsx` (preview hub / introduction; SEO from `index.json`)
+  - `apps/component-library/app/preview/components/<segment>/page.tsx` (one route per component group)
+  - `apps/component-library/app/preview/components/hooks/page.tsx` and `hooks/[slug]/page.tsx` (hooks hub and per-hook previews)
+- Preview SEO documents (JSON → `metadata` + on-page sections)
+  - `apps/component-library/content/seo/preview/components/<slug>.json` (components, installation, and preview index)
+  - `apps/component-library/content/seo/preview/hooks/hooks.json` (hooks gallery hub)
+  - `apps/component-library/lib/preview-seo-registry.ts` (imports the JSON files above into a slug → document map)
+  - `apps/component-library/lib/hook-preview-seo.ts` (builds `PreviewSeoDocument` for each hook preview slug; not a per-hook JSON file)
 - Navigation wiring
   - `apps/component-library/components/sidebar/sidebar-data.ts` (sidebar route list)
 - UI primitives (the library)
@@ -65,10 +72,13 @@ If the primitive supports multiple HTML elements:
 
 For a new component group `<segment>` (typically plural, like `buttons`):
 
-1. Add route: `apps/component-library/app/preview/<segment>/page.tsx`
+1. Add route: `apps/component-library/app/preview/components/<segment>/page.tsx`
 2. Add preview page component: `apps/component-library/components/preview/<segment>/index.tsx`
 3. Add any demo data: `apps/component-library/components/preview/<segment>/variants.ts`
-4. Add sidebar item: `apps/component-library/components/sidebar/sidebar-data.ts`
+4. Add SEO document: `apps/component-library/content/seo/preview/components/<segment>.json`, then register it in `apps/component-library/lib/preview-seo-registry.ts`
+5. Add sidebar item: `apps/component-library/components/sidebar/sidebar-data.ts`
+
+For a new hook preview, append an entry to `HOOK_PREVIEW_REGISTRY` in `apps/component-library/lib/constants.ts` (consumed by `hook-preview-registry.ts` and the `app/preview/components/hooks/[slug]/page.tsx` dynamic route). Per-hook metadata is built in `apps/component-library/lib/hook-preview-seo.ts`; the hooks hub copy stays in `content/seo/preview/hooks/hooks.json`.
 
 Keep preview pages composed of “sections” under:
 

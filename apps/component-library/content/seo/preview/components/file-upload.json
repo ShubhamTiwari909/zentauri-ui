@@ -19,7 +19,7 @@
     "description": "Accessible file dropzone with drag-over feedback and click-to-browse via a labeled control.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/file-upload",
+  "canonicalPath": "/preview/components/file-upload",
   "headings": {
     "h1": "Drag-and-drop file uploads",
     "h2": ["Overview", "Common use cases", "FAQ"]

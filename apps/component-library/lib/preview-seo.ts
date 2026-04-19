@@ -43,7 +43,7 @@ export type PreviewSeoDocument = {
   keywords: string[];
   og: PreviewSeoOg;
   twitter: PreviewSeoTwitter;
-  /** Path only, e.g. `/preview/alert` (joined with `metadataBase`). */
+  /** Path only, e.g. `/preview/components/alert` (joined with `metadataBase`). */
   canonicalPath: string;
   headings: {
     h1: string;

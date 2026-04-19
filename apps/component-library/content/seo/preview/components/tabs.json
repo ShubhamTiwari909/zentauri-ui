@@ -1,28 +1,28 @@
 {
   "category": "Navigation",
-  "title": "Pagination controls for React tables",
-  "description": "Pagination component for React and Next.js data tables—page windows, URL-friendly links, and compact controls for large datasets.",
+  "title": "Tabs component for React views",
+  "description": "Tabs component for React and Next.js—keyboard-friendly tablists, animated panels, and URL-sync friendly patterns for related views.",
   "keywords": [
-    "pagination component",
+    "tabs component",
     "React",
     "Next.js",
-    "data table",
-    "URL state",
+    "tablist",
+    "keyboard navigation",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Pagination · Zentauri UI",
-    "description": "Pagination component for React and Next.js data tables—page windows, URL-friendly links, and compact controls for large datasets.",
+    "title": "Tabs · Zentauri UI",
+    "description": "Tabs component for React and Next.js—keyboard-friendly tablists, animated panels, and URL-sync friendly patterns for related views.",
     "type": "website"
   },
   "twitter": {
-    "title": "Pagination · Zentauri UI",
-    "description": "Pagination component for React and Next.js data tables—page windows, URL-friendly links, and compact controls for large datasets.",
+    "title": "Tabs · Zentauri UI",
+    "description": "Tabs component for React and Next.js—keyboard-friendly tablists, animated panels, and URL-sync friendly patterns for related views.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/pagination",
+  "canonicalPath": "/preview/components/tabs",
   "headings": {
-    "h1": "Pagination for large datasets",
+    "h1": "Tabs for related views",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Pagination splits long datasets into navigable windows with clear current-page cues. Use it in React tables and Next.js routes that sync page index to the URL for shareable views.",
+  "intro": "Tabs switch between related panels without full route changes—settings categories, chart ranges, or docs sections. Works in React layouts and shallow Next.js client navigations when needed.",
   "useCases": [
-    "Server-rendered tables with querystring page params.",
-    "Admin audit logs with thousands of rows.",
-    "API-backed galleries with stable page sizes.",
-    "Embedded widgets inside dashboards."
+    "Organize dense settings without deep routes.",
+    "Compare datasets across time windows.",
+    "Split API reference examples by language.",
+    "Host onboarding steps with lightweight state."
   ],
   "faqs": [
     {
-      "question": "Does the Pagination component work with Next.js App Router?",
+      "question": "Does the Tabs component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize pagination with Tailwind CSS?",
+      "question": "Can I customize tabs with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Pagination implementation accessible by default?",
+      "question": "Is this Tabs implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Expose aria-current on the active page where applicable.\n\nKeep page size controls near the pager when users frequently tune density."
+      "body": "Roving tabindex keeps arrow keys predictable.\n\nLazy-mount heavy panels until first activation when performance matters."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nEnsure keyboard users can move across controls without excessive tab stops."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nAvoid hiding critical errors inside inactive tabs without a summary indicator."
     },
     {
       "heading": "Common use cases",

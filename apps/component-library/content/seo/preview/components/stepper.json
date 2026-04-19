@@ -20,7 +20,7 @@
     "description": "Stepper list pattern with active step styling and semantic list roles.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/stepper",
+  "canonicalPath": "/preview/components/stepper",
   "headings": {
     "h1": "Steppers for guided flows",
     "h2": ["Overview", "Common use cases", "FAQ"]

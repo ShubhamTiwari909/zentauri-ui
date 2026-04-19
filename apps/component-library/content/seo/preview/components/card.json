@@ -1,28 +1,28 @@
 {
-  "category": "Loading",
-  "title": "Skeleton loaders for React & Next.js",
-  "description": "Skeleton loading placeholders for React and Next.js—mirror final layout, reduce perceived latency, and avoid layout shift while data streams.",
+  "category": "Layout",
+  "title": "Card layout component for React dashboards",
+  "description": "Card component for React and Next.js dashboards: structured headers, media slots, and Tailwind-friendly spacing for summaries and listings.",
   "keywords": [
-    "skeleton UI",
+    "card component",
     "React",
     "Next.js",
-    "loading state",
-    "layout shift",
+    "dashboard UI",
+    "layout",
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Skeleton · Zentauri UI",
-    "description": "Skeleton loading placeholders for React and Next.js—mirror final layout, reduce perceived latency, and avoid layout shift while data streams.",
+    "title": "Card · Zentauri UI",
+    "description": "Card component for React and Next.js dashboards: structured headers, media slots, and Tailwind-friendly spacing for summaries and listings.",
     "type": "website"
   },
   "twitter": {
-    "title": "Skeleton · Zentauri UI",
-    "description": "Skeleton loading placeholders for React and Next.js—mirror final layout, reduce perceived latency, and avoid layout shift while data streams.",
+    "title": "Card · Zentauri UI",
+    "description": "Card component for React and Next.js dashboards: structured headers, media slots, and Tailwind-friendly spacing for summaries and listings.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/skeleton",
+  "canonicalPath": "/preview/components/card",
   "headings": {
-    "h1": "Skeletons for perceived performance",
+    "h1": "Cards for grouped dashboard content",
     "h2": [
       "What it does",
       "Composition and API",
@@ -32,35 +32,35 @@
       "FAQ"
     ]
   },
-  "intro": "Skeletons mirror the eventual layout so users perceive progress while data resolves. Ideal for React suspense boundaries and Next.js streaming routes that fetch in parallel.",
+  "intro": "Cards bundle headers, body content, and actions into a predictable surface for dashboards and marketing layouts. Use them in React apps and Next.js pages that need modular content blocks.",
   "useCases": [
-    "Dashboard cards awaiting metrics.",
-    "Table rows while server components resolve.",
-    "Profile headers before avatars load.",
-    "Feed items during pagination fetches."
+    "Surface KPI summaries on analytics landing pages.",
+    "Group related settings with a clear title and footer actions.",
+    "Present catalog items with media, price, and CTA rows.",
+    "Stack quick links in responsive grids."
   ],
   "faqs": [
     {
-      "question": "Does the Skeleton component work with Next.js App Router?",
+      "question": "Does the Card component work with Next.js App Router?",
       "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
     },
     {
-      "question": "Can I customize skeleton with Tailwind CSS?",
+      "question": "Can I customize card with Tailwind CSS?",
       "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
     },
     {
-      "question": "Is this Skeleton implementation accessible by default?",
+      "question": "Is this Card implementation accessible by default?",
       "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
     }
   ],
   "sections": [
     {
       "heading": "What it does",
-      "body": "Match skeleton geometry to real content to minimize CLS.\n\nFade to content rather than hard swapping when possible."
+      "body": "Cards are intentionally dumb containers: push business logic up a layer.\n\nUse consistent padding tokens so grids align across breakpoints."
     },
     {
       "heading": "Composition and API",
-      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nDo not use skeletons indefinitely—surface errors after timeouts."
+      "body": "Prefer compound subcomponents instead of one oversized prop bag. Export a small, documented API for your design system.\n\nKeep heading levels coordinated with surrounding page structure for SEO and accessibility."
     },
     {
       "heading": "Common use cases",

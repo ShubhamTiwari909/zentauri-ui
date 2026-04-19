@@ -13,9 +13,10 @@ For local development, the app serves at [http://localhost:3000](http://localhos
 ## What this app does
 
 - **Home** (`/`) — Entry landing for Zentauri UI.
-- **Preview hub** (`/preview`) — Sidebar-driven navigation to each component area, live demos, and code examples.
-- **Installation** (`/preview/installation`) — On-site getting-started context that complements the package README.
-- **Per-component routes** (`/preview/<name>`) — Each route loads a preview module under `components/preview/` with sections (hero, examples, code panels) and optional SEO JSON under `content/seo/preview/`.
+- **Preview hub** (`/preview/components`) — Sidebar-driven navigation, live demos, and code examples (`app/preview/components/page.tsx`; SEO from `content/seo/preview/components/index.json`).
+- **Installation** (`/preview/components/installation`) — On-site getting-started context that complements the package README.
+- **Component previews** (`/preview/components/<name>`) — Each route loads a preview module under `components/preview/<name>/` with sections (hero, examples, code panels). Matching SEO lives in `content/seo/preview/components/<name>.json` and is registered in `lib/preview-seo-registry.ts`.
+- **Hooks previews** (`/preview/components/hooks`, `/preview/components/hooks/<slug>`) — Hook gallery and individual hook pages under `app/preview/components/hooks/`; hub SEO JSON is `content/seo/preview/hooks/hooks.json`, and per-hook titles and descriptions are assembled in `lib/hook-preview-seo.ts` from the hook registry.
 
 Supporting pieces include:
 
@@ -43,9 +44,10 @@ Supporting pieces include:
 
 ## Repository layout (this app)
 
-- **`app/`** — Routes, root and preview `layout.tsx`, and `globals.css`.
+- **`app/`** — Routes, root `layout.tsx`, preview shell under `preview/components/layout.tsx`, and `globals.css`.
 - **`components/`** — Home experience, preview sections per component, shared chrome (`site-header`, `site-footer`, sidebar layout), and small utilities used by previews.
-- **`content/seo/preview/`** — JSON documents consumed for preview-page SEO and long-form on-page sections (headings, intro, FAQs, and so on).
+- **`content/seo/preview/components/`** — One JSON document per component (or hub) preview slug (for example `alert.json`, `buttons.json`, `index.json`, `installation.json`). Consumed via `lib/preview-seo-registry.ts` for `metadata` and long-form sections (headings, intro, FAQs).
+- **`content/seo/preview/hooks/`** — Hooks gallery SEO (`hooks.json`) registered alongside component docs in `preview-seo-registry.ts`.
 - **`lib/`** — Shared logic such as `preview-seo.ts` (metadata base URL, document-to-metadata mapping, FAQ schema).
 - **`vitest.config.ts`** / **`vitest.setup.ts`** — Unit test runner and DOM test setup.
 

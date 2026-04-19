@@ -20,7 +20,7 @@
     "description": "Single-value Slider compound components and a RangeSlider for filters and settings.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/slider",
+  "canonicalPath": "/preview/components/slider",
   "headings": {
     "h1": "Sliders for precise input",
     "h2": ["Overview", "Common use cases", "FAQ"]

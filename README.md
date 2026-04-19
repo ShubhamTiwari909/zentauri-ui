@@ -181,7 +181,7 @@ pnpm --filter @zentauri-ui/zentauri-components test:watch
 ## Where to change what
 
 - **New or updated UI primitives** (Button, Select, etc.): `packages/components/src/` then ensure `pnpm build` or watch dev passes. Consumption and Tailwind `@source` notes: [`packages/components/README.md`](packages/components/README.md).
-- **Docs, previews, routes, marketing copy, SEO JSON**: `apps/component-library/` — see [`apps/component-library/README.md`](apps/component-library/README.md) for route map, `content/seo/preview/`, and script tables.
+- **Docs, previews, routes, marketing copy, SEO JSON**: `apps/component-library/` — see [`apps/component-library/README.md`](apps/component-library/README.md) for route map, `content/seo/preview/components`, and script tables.
 - **Lint / TypeScript presets**: `packages/eslint-config`, `packages/typescript-config`.
 
 The Next app sets `transpilePackages: ["@zentauri-ui/zentauri-components"]` so the workspace library is compiled as part of the app build.
