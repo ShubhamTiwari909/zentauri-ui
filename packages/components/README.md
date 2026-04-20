@@ -272,6 +272,95 @@ import { Spinner } from "@zentauri-ui/zentauri-components/ui/spinner/animated";
 </div>
 ```
 
+## CLI — copy component source into your app
+
+The package ships a small **Node CLI** (`zentauri-components` and `zentauri-ui` point to the same `cli/index.mjs`) that copies **selected** folders from this package’s `src/ui` and `src/hooks` into your repository—similar to shadcn/ui. You keep the files, control paths via `components.json`, and imports are rewritten to your path aliases (`@/components/ui`, `@/hooks`, `@/lib/utils`, and so on).
+
+Which UI folders are valid for `add` is driven by **`cli/registry.json`**: a generated manifest listing every addable directory name (matching `src/ui/<name>`) plus optional **`nameAliases`** so the CLI accepts friendly tokens (for example `button` → `buttons`).
+
+### Commands
+
+Call the published binary by name after the package (recommended so `npx` does not treat the first word as a shell command):
+
+```bash
+npx @zentauri-ui/zentauri-components zentauri-components init
+npx @zentauri-ui/zentauri-components zentauri-components add buttons inputs
+npx @zentauri-ui/zentauri-components zentauri-components -h
+```
+
+**Hooks only** (copy `src/hooks/<name>` into your app, plus sibling hook dependencies such as `useMediaQuery` when needed):
+
+```bash
+npx @zentauri-ui/zentauri-components zentauri-components add hook useWindowSize
+npx @zentauri-ui/zentauri-components zentauri-components add hook useToggle useDebouncedValue
+```
+
+The **`zentauri-ui`** binary is the same entry as **`zentauri-components`**. If `npx` still mis-resolves, pin the package:
+
+```bash
+npx --yes --package=@zentauri-ui/zentauri-components zentauri-components init
+npx --yes --package=@zentauri-ui/zentauri-components zentauri-components add button
+```
+
+From a monorepo checkout you can run the script by path instead of `npx`:
+
+```bash
+node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs init
+node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs add accordion
+node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs add hook useWindowSize
+```
+
+| Command | What it does |
+| ------- | -------------- |
+| `init` | Writes **`components.json`** in the current working directory (or `--cwd`) with default `aliases` and `resolvedPaths`. Refuses to overwrite an existing file. |
+| `add <names...>` | Walks up from `--cwd` (default `.`) to find `components.json`, then copies each resolved **UI** folder under `src/ui`, pulls in hooks those files depend on (including transitive hook imports), and creates **`lib/utils`** at `resolvedPaths.utils` from the package template if it is missing. |
+| `add hook <names...>` | Same config lookup; copies only **hook** folders listed under `registry.hooks` (from `hooksEntryNames` in `tsup.config.ts`), including transitive sibling-hook imports. Does not copy UI unless a hook’s imports require you to add a component separately (for example `usePagination` imports types from `ui/pagination`). |
+
+Global flags: `-h` / `--help`, `-v` / `--version`, `--cwd <dir>` (relative to `process.cwd()`).
+
+### `components.json` (created by `init`)
+
+Defaults look like this; edit `resolvedPaths` and `aliases` so they match your app’s `tsconfig` / bundler paths.
+
+```json
+{
+  "aliases": {
+    "ui": "@/components/ui",
+    "utils": "@/lib/utils",
+    "hooks": "@/hooks"
+  },
+  "resolvedPaths": {
+    "ui": "src/components/ui",
+    "utils": "src/lib/utils.ts",
+    "hooks": "src/hooks"
+  }
+}
+```
+
+### Registry (`cli/registry.json`)
+
+- **`components`**: sorted list of folder names under **`src/ui/`** that `add` may copy. The file is **generated**; the canonical build list lives in **`tsup.config.ts`** as `uiComponentNames`, and the generator always ensures **`spinner`** is included so the CLI stays aligned with the animated-only spinner bundle.
+- **`hooks`**: sorted list of folder names under **`src/hooks/`** that `add hook` may copy; generated from **`hooksEntryNames`** in **`tsup.config.ts`** (same entries as published `…/hooks/<name>` subpaths).
+- **`nameAliases`**: optional map from a CLI token to a real folder name. Today: `button` → `buttons`, `input` → `inputs` (matching common singular names while folders stay plural).
+
+Example: these are equivalent when `nameAliases` is configured:
+
+```bash
+zentauri-components add button
+zentauri-components add buttons
+```
+
+After `add`, imports inside copied `.ts`/`.tsx` files are rewritten using your `aliases`; test files (`*.test.*`, `*.spec.*`) from the package are not copied.
+
+### When to use the CLI vs npm imports
+
+| Approach | Best when |
+| -------- | ----------- |
+| **`npm` + package `exports`** (earlier sections) | You want versioned dependencies, smallest app-owned surface, and tree-shaken `dist/` entries. |
+| **`init` / `add`** | You want vendored source under your repo (customize primitives, match shadcn-style workflows, or lock file-level behavior). |
+
+Tailwind still needs to see the classes your **copied** files use—point `@source` at those paths (for example your `src/components/ui`) rather than only at `node_modules/@zentauri-ui/zentauri-components` if you no longer rely on scanning the published package.
+
 ## Checkout the components:
 
 https://zentauri-ui.vercel.app/
@@ -283,6 +372,8 @@ From this package directory in the monorepo:
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, including `dist/ui/<name>/animated.*`, starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
 - `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests
+- **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`** and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`** (`components` + `hooks`). Run this after adding or renaming UI areas or hook entries so the CLI stays in sync (the script prints counts).
+- **`prepack`** — invokes `generate:registry` automatically before `npm pack` / publish so the published tarball always ships an up-to-date registry alongside `cli/index.mjs`.
 
 ## Github Release log
 https://github.com/ShubhamTiwari909/zentauri-ui/releases

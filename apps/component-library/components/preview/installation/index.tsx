@@ -94,6 +94,45 @@ const OVERRIDE_THEME_COLORS_SNIPPET = `@theme {
   --color-slate-950: oklch(0.129 0.042 264.695);
 }`;
 
+const CLI_INIT_COMMANDS = {
+  npm: "npx @zentauri-ui/zentauri-components zentauri-components init",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components zentauri-components init",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components zentauri-components init",
+} as const;
+
+const CLI_ADD_COMMANDS = {
+  npm: "npx @zentauri-ui/zentauri-components zentauri-components add accordion buttons",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components zentauri-components add accordion buttons",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components zentauri-components add accordion buttons",
+} as const;
+
+const CLI_ADD_HOOK_COMMANDS = {
+  npm: "npx @zentauri-ui/zentauri-components zentauri-components add hook useWindowSize",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components zentauri-components add hook useWindowSize",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components zentauri-components add hook useWindowSize",
+} as const;
+
+const CLI_NPX_PIN_SNIPPET = `npx --yes --package=@zentauri-ui/zentauri-components zentauri-components init
+npx --yes --package=@zentauri-ui/zentauri-components zentauri-components add button`;
+
+const COMPONENTS_JSON_SNIPPET = `{
+  "aliases": {
+    "ui": "@/components/ui",
+    "utils": "@/lib/utils",
+    "hooks": "@/hooks"
+  },
+  "resolvedPaths": {
+    "ui": "src/components/ui",
+    "utils": "src/lib/utils.ts",
+    "hooks": "src/hooks"
+  }
+}`;
+
+const VENDORED_GLOBALS_CSS_SNIPPET = `@import "tailwindcss";
+/* After add, scan copied sources (paths relative to this CSS file) */
+@source "../src/components/ui";
+@source "../src/hooks";`;
+
 const ADD_NEW_THEMES_COLORS_SNIPPET = `export const customAppearancefuchsia = {
   50: "bg-fuchsia-50 text-fuchsia-950",
   100: "bg-fuchsia-100 text-fuchsia-950",
@@ -423,6 +462,282 @@ export default function InstallationPreviewPage({
             </Accordion>
           </div>
         </section>
+
+        <section className={SECTION}>
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+            Alternative
+          </p>
+          <h2 className="mt-2 text-xl font-semibold text-white">
+            CLI — copy source into your app
+          </h2>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            Instead of importing only from{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              node_modules
+            </code>
+            , you can vendor UI (and related hooks) with the same binary as the
+            published package:{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              zentauri-components
+            </code>{" "}
+            or{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              zentauri-ui
+            </code>
+            . After the package name, pass that binary name (for example{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              zentauri-components init
+            </code>
+            ) so{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              npx
+            </code>{" "}
+            runs the CLI instead of a missing shell command. UI tokens for{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              add
+            </code>{" "}
+            come from{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              cli/registry.json
+            </code>{" "}
+            (
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              components
+            </code>
+            , plus{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              nameAliases
+            </code>{" "}
+            such as{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              button
+            </code>{" "}
+            →{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              buttons
+            </code>
+            ). For hook source only, use{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              add hook …
+            </code>{" "}
+            with names from the{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              hooks
+            </code>{" "}
+            array (generated from{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              tsup.config.ts
+            </code>
+            ). Run{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              init
+            </code>{" "}
+            once, then{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              add
+            </code>{" "}
+            for each UI area; the CLI copies that folder from the package
+            tree{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              src/ui
+            </code>{" "}
+            under the path from{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              resolvedPaths.ui
+            </code>{" "}
+            (one subfolder per component), rewrites imports to your aliases,
+            pulls hook dependencies, and
+            creates{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              lib/utils
+            </code>{" "}
+            if missing.
+          </p>
+
+          <h3 className="mt-6 text-sm font-medium text-slate-200">
+            Initialize components.json
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            Creates{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              components.json
+            </code>{" "}
+            with default path aliases. The CLI walks up from the working
+            directory to find this file for{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              add
+            </code>
+            .
+          </p>
+          <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
+            <Tabs defaultValue="npm">
+              <TabsListComponent />
+              <TabsContentAnimated value="npm" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={CLI_INIT_COMMANDS.npm}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={CLI_INIT_COMMANDS.pnpm}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={CLI_INIT_COMMANDS.yarn}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+            </Tabs>
+          </div>
+
+          <h3 className="mt-6 text-sm font-medium text-slate-200">
+            Add components (registry-driven)
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            Pass one or more names from the registry (folder names under{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              src/ui
+            </code>
+            , or a configured alias). Test files from the package are not
+            copied.
+          </p>
+          <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
+            <Tabs defaultValue="npm">
+              <TabsListComponent />
+              <TabsContentAnimated value="npm" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={CLI_ADD_COMMANDS.npm}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={CLI_ADD_COMMANDS.pnpm}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={CLI_ADD_COMMANDS.yarn}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+            </Tabs>
+          </div>
+
+          <h3 className="mt-6 text-sm font-medium text-slate-200">
+            Add hooks only (optional)
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            To vendor hook source without adding a UI folder, use{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              add hook
+            </code>{" "}
+            plus hook names from the registry (for example{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              useWindowSize
+            </code>
+            ). The CLI also copies transitive sibling-hook dependencies (for
+            example{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              useMediaQuery
+            </code>{" "}
+            when you add{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              usePrefersReducedMotion
+            </code>
+            ). Hooks that import UI types still expect you to add the matching
+            component or adjust imports.
+          </p>
+          <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
+            <Tabs defaultValue="npm">
+              <TabsListComponent />
+              <TabsContentAnimated value="npm" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={CLI_ADD_HOOK_COMMANDS.npm}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={CLI_ADD_HOOK_COMMANDS.pnpm}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={CLI_ADD_HOOK_COMMANDS.yarn}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+            </Tabs>
+          </div>
+
+          <h3 className="mt-6 text-sm font-medium text-slate-200">
+            If npx does not resolve the binary
+          </h3>
+          <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
+            <CodeHighlight codeString={CLI_NPX_PIN_SNIPPET} language="bash" />
+          </div>
+
+          <h3 className="mt-6 text-sm font-medium text-slate-200">
+            Default components.json shape
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            Edit{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              aliases
+            </code>{" "}
+            and{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              resolvedPaths
+            </code>{" "}
+            so they match your app&apos;s{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              tsconfig
+            </code>{" "}
+            paths and folder layout.
+          </p>
+          <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
+            <CodeHighlight
+              codeString={COMPONENTS_JSON_SNIPPET}
+              language="json"
+            />
+          </div>
+
+          <h3 className="mt-6 text-sm font-medium text-slate-200">
+            Tailwind after vendoring
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            When you rely on copied files instead of the package under{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              node_modules
+            </code>
+            , point{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-cyan-200">
+              @source
+            </code>{" "}
+            at those paths (adjust relative segments to match where your{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              globals.css
+            </code>{" "}
+            lives). You can keep both package and local{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              @source
+            </code>{" "}
+            lines during a migration.
+          </p>
+          <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
+            <CodeHighlight
+              codeString={VENDORED_GLOBALS_CSS_SNIPPET}
+              language="css"
+            />
+          </div>
+        </section>
+
         <section className={SECTION}>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
             Overriding theme colors
