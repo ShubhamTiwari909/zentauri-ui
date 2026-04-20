@@ -285,6 +285,7 @@ Call the published binary by name after the package (recommended so `npx` does n
 ```bash
 npx @zentauri-ui/zentauri-components zentauri-components init
 npx @zentauri-ui/zentauri-components zentauri-components add buttons inputs
+npx @zentauri-ui/zentauri-components zentauri-components -h
 ```
 
 **Hooks only** (copy `src/hooks/<name>` into your app, plus sibling hook dependencies such as `useMediaQuery` when needed):

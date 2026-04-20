@@ -131,18 +131,22 @@ function loadRegistry() {
  * // Terminal shows multi-line Usage / Options / examples (see string below).
  */
 function printHelp() {
+  const reg = loadRegistry();
+  const componentsList = (reg.components ?? []).join("\n");
+  const hooksList = (reg.hooks ?? []).join("\n");
+
   console.log(`Zentauri UI — copy component source into your app (shadcn-style)
 
 Usage:
   zentauri-components init [options]              Create components.json with defaults
   zentauri-components add <component> [...]       Copy UI components (and their hooks)
-  zentauri-components add hook <hook> [...]     Copy hook source only (plus transitive hook deps)
+  zentauri-components add hook <hook> [...]       Copy hook source only (plus transitive hook deps)
 
 List of components:
-${registry.components.join("\n")}
+${componentsList}
 
 List of hooks:
-${registry.hooks.join("\n")}
+${hooksList}
 
   (The zentauri-ui binary name works the same if your PATH exposes it.)
 
@@ -161,8 +165,8 @@ Use hooks from the package without copying (after npm install):
   import { useWindowSize } from "@zentauri-ui/zentauri-components/hooks/useWindowSize";
 
 Published package:
-  npx @zentauri-ui/zentauri-components init
-  npx @zentauri-ui/zentauri-components add accordion buttons inputs
+  npx @zentauri-ui/zentauri-components zentauri-components init
+  npx @zentauri-ui/zentauri-components zentauri-components add accordion buttons inputs
 
 If npx does not pick the right binary:
   npx --yes --package=@zentauri-ui/zentauri-components zentauri-components init
