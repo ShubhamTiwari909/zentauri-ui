@@ -1,6 +1,6 @@
 {
   "name": "@zentauri-ui/zentauri-components",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "React + Tailwind UI kit with ESM/CJS builds, per-entry exports, and a zentauri-components / zentauri-ui CLI to vendor UI or hook source into your app",
   "license": "MIT",
   "files": ["dist", "src/ui", "src/lib", "src/hooks", "cli"],
@@ -38,9 +38,9 @@
     "dev": "NODE_OPTIONS=--max-old-space-size=8192 tsup --watch",
     "build:js": "NODE_OPTIONS=--max-old-space-size=8192 tsup",
     "build:types": "tsc -p tsconfig.emit-types.json",
-    "build": "pnpm run build:js && pnpm run build:types",
+    "build": "npm run build:js && npm run build:types",
     "generate:registry": "node scripts/generate-registry.mjs",
-    "prepack": "node scripts/generate-registry.mjs",
+    "prepack": "npm run build && node scripts/generate-registry.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },
