@@ -134,8 +134,15 @@ function printHelp() {
   console.log(`Zentauri UI — copy component source into your app (shadcn-style)
 
 Usage:
-  zentauri-components init [options]   Create components.json with defaults
-  zentauri-components add <names...>   Copy one or more components (and deps)
+  zentauri-components init [options]              Create components.json with defaults
+  zentauri-components add <component> [...]       Copy UI components (and their hooks)
+  zentauri-components add hook <hook> [...]     Copy hook source only (plus transitive hook deps)
+
+List of components:
+${registry.components.join("\n")}
+
+List of hooks:
+${registry.hooks.join("\n")}
 
   (The zentauri-ui binary name works the same if your PATH exposes it.)
 
@@ -147,7 +154,11 @@ Options:
 Local (no npm publish): cd to your app root, then run Node with a path to this CLI (yours may differ):
   node ../../packages/components/cli/index.mjs init
   node ../../packages/components/cli/index.mjs add button
-  Only copies that component’s folder (here: ui/buttons) and creates lib/utils.ts if missing—not the whole monorepo.
+  node ../../packages/components/cli/index.mjs add hook useWindowSize
+  Only copies the requested trees; not the whole monorepo.
+
+Use hooks from the package without copying (after npm install):
+  import { useWindowSize } from "@zentauri-ui/zentauri-components/hooks/useWindowSize";
 
 Published package:
   npx @zentauri-ui/zentauri-components init
@@ -338,6 +349,25 @@ function resolveComponentName(input, registry) {
   }
   throw new Error(
     `Unknown component "${input}". Valid names include: ${registry.components.join(", ")}`,
+  );
+}
+
+/**
+ * @param {string} input — argv token, e.g. `useWindowSize`
+ * @param {object} registry — must include `hooks` string array
+ * @returns {string} — canonical hook folder name under `src/hooks`
+ */
+function resolveHookName(input, registry) {
+  const list = registry.hooks ?? [];
+  if (list.includes(input)) {
+    return input;
+  }
+  const found = list.find((h) => h.toLowerCase() === input.toLowerCase());
+  if (found) {
+    return found;
+  }
+  throw new Error(
+    `Unknown hook "${input}". Valid hooks include: ${list.join(", ")}`,
   );
 }
 
@@ -560,9 +590,33 @@ async function cmdAdd(names, cwd) {
   validateConfig(config);
 
   const registry = loadRegistry();
-  const resolvedNames = names.map((n) => resolveComponentName(n, registry));
+  const hookMode =
+    names.length > 0 && names[0].toLowerCase() === "hook";
+  const payload = hookMode ? names.slice(1) : names;
 
-  await ensureUtilsFile(config, configDir, packageRoot);
+  if (hookMode && payload.length === 0) {
+    console.error(
+      "Usage: zentauri-components add hook <hookName> [more...]  (e.g. add hook useWindowSize)",
+    );
+    process.exitCode = 1;
+    return;
+  }  
+
+  if (hookMode) {
+    const resolvedHooks = payload.map((n) => resolveHookName(n, registry));
+    const finalHooks = await collectHookTransitiveClosure(
+      packageRoot,
+      resolvedHooks,
+    );
+    for (const h of finalHooks) {
+      console.log(`Adding hook ${h}…`);
+      await copyHookFolder(h, config, configDir, packageRoot);
+    }
+    console.log("Done.");
+    return;
+  }
+
+  const resolvedNames = payload.map((n) => resolveComponentName(n, registry));
 
   const allHooks = new Set();
   for (const name of resolvedNames) {
@@ -644,7 +698,7 @@ async function main() {
   if (cmd === "add") {
     if (rest.length === 0) {
       console.error(
-        "Usage: zentauri-components add <component> [more...]  (or: zentauri-ui add …)",
+        "Usage: zentauri-components add <component> [more...]  |  add hook <hookName> [more...]",
       );
       process.exitCode = 1;
       return;

@@ -95,19 +95,25 @@ const OVERRIDE_THEME_COLORS_SNIPPET = `@theme {
 }`;
 
 const CLI_INIT_COMMANDS = {
-  npm: "npx @zentauri-ui/zentauri-components init",
-  pnpm: "pnpm dlx @zentauri-ui/zentauri-components init",
-  yarn: "yarn dlx @zentauri-ui/zentauri-components init",
+  npm: "npx @zentauri-ui/zentauri-components zentauri-components init",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components zentauri-components init",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components zentauri-components init",
 } as const;
 
 const CLI_ADD_COMMANDS = {
-  npm: "npx @zentauri-ui/zentauri-components add accordion buttons",
-  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add accordion buttons",
-  yarn: "yarn dlx @zentauri-ui/zentauri-components add accordion buttons",
+  npm: "npx @zentauri-ui/zentauri-components zentauri-components add accordion buttons",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components zentauri-components add accordion buttons",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components zentauri-components add accordion buttons",
+} as const;
+
+const CLI_ADD_HOOK_COMMANDS = {
+  npm: "npx @zentauri-ui/zentauri-components zentauri-components add hook useWindowSize",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components zentauri-components add hook useWindowSize",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components zentauri-components add hook useWindowSize",
 } as const;
 
 const CLI_NPX_PIN_SNIPPET = `npx --yes --package=@zentauri-ui/zentauri-components zentauri-components init
-npx --yes --package=@zentauri-ui/zentauri-components zentauri-ui add button`;
+npx --yes --package=@zentauri-ui/zentauri-components zentauri-components add button`;
 
 const COMPONENTS_JSON_SNIPPET = `{
   "aliases": {
@@ -478,33 +484,49 @@ export default function InstallationPreviewPage({
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
               zentauri-ui
             </code>
-            . Valid{" "}
+            . After the package name, pass that binary name (for example{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              zentauri-components init
+            </code>
+            ) so{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              npx
+            </code>{" "}
+            runs the CLI instead of a missing shell command. UI tokens for{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
               add
             </code>{" "}
-            names come from{" "}
+            come from{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
               cli/registry.json
             </code>{" "}
-            in the package (generated from{" "}
+            (
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
-              tsup.config.ts
+              components
             </code>
-            , with fixed aliases such as{" "}
+            , plus{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              nameAliases
+            </code>{" "}
+            such as{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
               button
             </code>{" "}
             →{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
               buttons
-            </code>{" "}
-            and{" "}
+            </code>
+            ). For hook source only, use{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
-              input
+              add hook …
             </code>{" "}
-            →{" "}
+            with names from the{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
-              inputs
+              hooks
+            </code>{" "}
+            array (generated from{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              tsup.config.ts
             </code>
             ). Run{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
@@ -600,6 +622,54 @@ export default function InstallationPreviewPage({
               <TabsContentAnimated value="yarn" animation="fade" className="m-0">
                 <CodeHighlight
                   codeString={CLI_ADD_COMMANDS.yarn}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+            </Tabs>
+          </div>
+
+          <h3 className="mt-6 text-sm font-medium text-slate-200">
+            Add hooks only (optional)
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            To vendor hook source without adding a UI folder, use{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              add hook
+            </code>{" "}
+            plus hook names from the registry (for example{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              useWindowSize
+            </code>
+            ). The CLI also copies transitive sibling-hook dependencies (for
+            example{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              useMediaQuery
+            </code>{" "}
+            when you add{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              usePrefersReducedMotion
+            </code>
+            ). Hooks that import UI types still expect you to add the matching
+            component or adjust imports.
+          </p>
+          <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
+            <Tabs defaultValue="npm">
+              <TabsListComponent />
+              <TabsContentAnimated value="npm" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={CLI_ADD_HOOK_COMMANDS.npm}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={CLI_ADD_HOOK_COMMANDS.pnpm}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={CLI_ADD_HOOK_COMMANDS.yarn}
                   language="bash"
                 />
               </TabsContentAnimated>

@@ -280,16 +280,25 @@ Which UI folders are valid for `add` is driven by **`cli/registry.json`**: a gen
 
 ### Commands
 
+Call the published binary by name after the package (recommended so `npx` does not treat the first word as a shell command):
+
 ```bash
-npx @zentauri-ui/zentauri-components init
-npx @zentauri-ui/zentauri-components add buttons inputs
+npx @zentauri-ui/zentauri-components zentauri-components init
+npx @zentauri-ui/zentauri-components zentauri-components add buttons inputs
 ```
 
-The **`zentauri-ui`** command is the same script as **`zentauri-components`** (`package.json` → `bin`). If `npx` does not resolve the binary you expect, pin the package explicitly:
+**Hooks only** (copy `src/hooks/<name>` into your app, plus sibling hook dependencies such as `useMediaQuery` when needed):
+
+```bash
+npx @zentauri-ui/zentauri-components zentauri-components add hook useWindowSize
+npx @zentauri-ui/zentauri-components zentauri-components add hook useToggle useDebouncedValue
+```
+
+The **`zentauri-ui`** binary is the same entry as **`zentauri-components`**. If `npx` still mis-resolves, pin the package:
 
 ```bash
 npx --yes --package=@zentauri-ui/zentauri-components zentauri-components init
-npx --yes --package=@zentauri-ui/zentauri-components zentauri-ui add button
+npx --yes --package=@zentauri-ui/zentauri-components zentauri-components add button
 ```
 
 From a monorepo checkout you can run the script by path instead of `npx`:
@@ -297,12 +306,14 @@ From a monorepo checkout you can run the script by path instead of `npx`:
 ```bash
 node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs init
 node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs add accordion
+node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs add hook useWindowSize
 ```
 
 | Command | What it does |
 | ------- | -------------- |
 | `init` | Writes **`components.json`** in the current working directory (or `--cwd`) with default `aliases` and `resolvedPaths`. Refuses to overwrite an existing file. |
-| `add <names...>` | Walks up from `--cwd` (default `.`) to find `components.json`, then copies each resolved UI folder, pulls in hooks those files depend on (including transitive hook imports), and creates **`src/lib/utils.ts`** from the package template if it is missing. |
+| `add <names...>` | Walks up from `--cwd` (default `.`) to find `components.json`, then copies each resolved **UI** folder under `src/ui`, pulls in hooks those files depend on (including transitive hook imports), and creates **`lib/utils`** at `resolvedPaths.utils` from the package template if it is missing. |
+| `add hook <names...>` | Same config lookup; copies only **hook** folders listed under `registry.hooks` (from `hooksEntryNames` in `tsup.config.ts`), including transitive sibling-hook imports. Does not copy UI unless a hook’s imports require you to add a component separately (for example `usePagination` imports types from `ui/pagination`). |
 
 Global flags: `-h` / `--help`, `-v` / `--version`, `--cwd <dir>` (relative to `process.cwd()`).
 
@@ -328,6 +339,7 @@ Defaults look like this; edit `resolvedPaths` and `aliases` so they match your a
 ### Registry (`cli/registry.json`)
 
 - **`components`**: sorted list of folder names under **`src/ui/`** that `add` may copy. The file is **generated**; the canonical build list lives in **`tsup.config.ts`** as `uiComponentNames`, and the generator always ensures **`spinner`** is included so the CLI stays aligned with the animated-only spinner bundle.
+- **`hooks`**: sorted list of folder names under **`src/hooks/`** that `add hook` may copy; generated from **`hooksEntryNames`** in **`tsup.config.ts`** (same entries as published `…/hooks/<name>` subpaths).
 - **`nameAliases`**: optional map from a CLI token to a real folder name. Today: `button` → `buttons`, `input` → `inputs` (matching common singular names while folders stay plural).
 
 Example: these are equivalent when `nameAliases` is configured:
@@ -359,7 +371,7 @@ From this package directory in the monorepo:
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, including `dist/ui/<name>/animated.*`, starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
 - `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests
-- **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`**. Run this after adding or renaming UI areas so the CLI’s addable list stays in sync (the script prints how many components were written).
+- **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`** and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`** (`components` + `hooks`). Run this after adding or renaming UI areas or hook entries so the CLI stays in sync (the script prints counts).
 - **`prepack`** — invokes `generate:registry` automatically before `npm pack` / publish so the published tarball always ships an up-to-date registry alongside `cli/index.mjs`.
 
 ## Github Release log

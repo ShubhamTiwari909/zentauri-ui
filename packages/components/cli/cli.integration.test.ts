@@ -48,4 +48,32 @@ describe("zentauri-ui CLI", () => {
       rmSync(dir, { recursive: true, force: true });
     }
   });
+
+  it("should add hook-only mode for useWindowSize", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-hook-"));
+    try {
+      runCli(dir, ["init"]);
+      runCli(dir, ["add", "hook", "useWindowSize"]);
+      const hookFile = join(dir, "src/hooks/useWindowSize/useWindowSize.ts");
+      expect(existsSync(hookFile)).toBe(true);
+      const src = readFileSync(hookFile, "utf8");
+      expect(src).toContain("useWindowSize");
+      expect(src).toContain('"use client"');
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("should pull transitive hook deps for usePrefersReducedMotion", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-hook-trans-"));
+    try {
+      runCli(dir, ["init"]);
+      runCli(dir, ["add", "hook", "usePrefersReducedMotion"]);
+      expect(
+        existsSync(join(dir, "src/hooks/useMediaQuery/useMediaQuery.ts")),
+      ).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
 });
