@@ -5,12 +5,8 @@ import TabsListComponent from "@/components/preview/installation/tabs-list";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@zentauri-ui/zentauri-components/ui/accordion";
+import { Modal, ModalTrigger, ModalClose, ModalHeader, ModalTitle, ModalDescription, ModalBody } from "@zentauri-ui/zentauri-components/ui/modal";
+import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/animated";
 import { Tabs } from "@zentauri-ui/zentauri-components/ui/tabs";
 import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/animated";
 
@@ -44,40 +40,26 @@ const REACT_ICONS_INSTALL_COMMANDS = {
 const GLOBALS_CSS_SNIPPET = `@import "tailwindcss";
 @source "../node_modules/@zentauri-ui/zentauri-components";`;
 
-const STATIC_IMPORT_SNIPPET = `import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@zentauri-ui/zentauri-components/ui/accordion";`;
+const STATIC_IMPORT_SNIPPET = `import { Modal, ModalTrigger, ModalClose, ModalHeader, ModalTitle, ModalDescription, ModalBody } from "@zentauri-ui/zentauri-components/ui/modal";`;
 
-const ANIMATED_IMPORT_SNIPPET = `import {
-  Accordion,
-  AccordionContentAnimated,
-  AccordionItem,
-  AccordionTrigger,
-} from "@zentauri-ui/zentauri-components/ui/accordion/animated";`;
+const ANIMATED_IMPORT_SNIPPET = `import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/animated";`;
 
 const USAGE_SNIPPET = `<div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
-  <Accordion type="single" defaultValue="item-1" appearance="separated" size="md">
-    <AccordionItem value="item-1">
-      <AccordionTrigger>Shipping</AccordionTrigger>
-      <AccordionContent>
-        <p className="text-sm text-slate-300">
-          Standard delivery in 3-5 business days. Express options at
-          checkout.
-        </p>
-      </AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-2">
-      <AccordionTrigger>Returns</AccordionTrigger>
-      <AccordionContent>
-        <p className="text-sm text-slate-300">
-          Free returns within 30 days of delivery in original condition.
-        </p>
-      </AccordionContent>
-    </AccordionItem>
-  </Accordion>
+  <Modal>
+    <ModalTrigger appearance="default" className="rounded-lg px-3 py-1.5 text-sm">
+      Open (sm)
+    </ModalTrigger>
+    <ModalContentAnimated size="sm" animation="scale">
+      <ModalClose />
+      <ModalHeader>
+        <ModalTitle>Dialog</ModalTitle>
+        <ModalDescription>Supporting description.</ModalDescription>
+      </ModalHeader>
+      <ModalBody>
+        <p className="text-sm text-slate-300">Modal body copy.</p>
+      </ModalBody>
+    </ModalContentAnimated>
+  </Modal>
 </div>`;
 
 const OVERRIDE_THEME_COLORS_SNIPPET = `@theme {
@@ -153,7 +135,7 @@ export function ButtonOverrideThemeColors({ label }: ButtonProps) {
       {label}
     </Button>
   );
-}`
+}`;
 
 export default function InstallationPreviewPage({
   seo,
@@ -186,13 +168,21 @@ export default function InstallationPreviewPage({
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="pnpm"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={INSTALL_COMMANDS.pnpm}
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="yarn"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={INSTALL_COMMANDS.yarn}
                   language="bash"
@@ -241,13 +231,21 @@ export default function InstallationPreviewPage({
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="pnpm"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={PEER_INSTALL_COMMANDS.pnpm}
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="yarn"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={PEER_INSTALL_COMMANDS.yarn}
                   language="bash"
@@ -299,13 +297,21 @@ export default function InstallationPreviewPage({
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="pnpm"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={FRAMER_MOTION_INSTALL_COMMANDS.pnpm}
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="yarn"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={FRAMER_MOTION_INSTALL_COMMANDS.yarn}
                   language="bash"
@@ -332,13 +338,21 @@ export default function InstallationPreviewPage({
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="pnpm"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={REACT_ICONS_INSTALL_COMMANDS.pnpm}
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="yarn"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={REACT_ICONS_INSTALL_COMMANDS.yarn}
                   language="bash"
@@ -434,32 +448,24 @@ export default function InstallationPreviewPage({
           </div>
           <h3 className="mt-6 text-sm font-medium text-slate-200">Preview</h3>
           <div className="mt-3 rounded-3xl border border-white/10 bg-white/5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
-            <Accordion
-              type="single"
-              defaultValue="item-1"
-              appearance="emerald"
-              size="md"
-              className="space-y-5 p-2 md:p-5"
-            >
-              <AccordionItem value="item-1">
-                <AccordionTrigger>Shipping</AccordionTrigger>
-                <AccordionContent>
-                  <p className="text-sm text-slate-300">
-                    Standard delivery in 3-5 business days. Express options at
-                    checkout.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>Returns</AccordionTrigger>
-                <AccordionContent>
-                  <p className="text-sm text-slate-300">
-                    Free returns within 30 days of delivery in original
-                    condition.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+            <Modal>
+              <ModalTrigger
+                appearance="default"
+                className="rounded-lg px-3 py-1.5 text-sm"
+              >
+                Open (sm)
+              </ModalTrigger>
+              <ModalContentAnimated size="sm" animation="scale">
+                <ModalClose />
+                <ModalHeader>
+                  <ModalTitle>Dialog</ModalTitle>
+                  <ModalDescription>Supporting description.</ModalDescription>
+                </ModalHeader>
+                <ModalBody>
+                  <p className="text-sm text-slate-300">Modal body copy.</p>
+                </ModalBody>
+              </ModalContentAnimated>
+            </Modal>
           </div>
         </section>
 
@@ -536,8 +542,7 @@ export default function InstallationPreviewPage({
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
               add
             </code>{" "}
-            for each UI area; the CLI copies that folder from the package
-            tree{" "}
+            for each UI area; the CLI copies that folder from the package tree{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
               src/ui
             </code>{" "}
@@ -546,8 +551,7 @@ export default function InstallationPreviewPage({
               resolvedPaths.ui
             </code>{" "}
             (one subfolder per component), rewrites imports to your aliases,
-            pulls hook dependencies, and
-            creates{" "}
+            pulls hook dependencies, and creates{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
               lib/utils
             </code>{" "}
@@ -578,13 +582,21 @@ export default function InstallationPreviewPage({
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="pnpm"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={CLI_INIT_COMMANDS.pnpm}
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="yarn"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={CLI_INIT_COMMANDS.yarn}
                   language="bash"
@@ -613,13 +625,21 @@ export default function InstallationPreviewPage({
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="pnpm"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={CLI_ADD_COMMANDS.pnpm}
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="yarn"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={CLI_ADD_COMMANDS.yarn}
                   language="bash"
@@ -661,13 +681,21 @@ export default function InstallationPreviewPage({
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="pnpm"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={CLI_ADD_HOOK_COMMANDS.pnpm}
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="yarn"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={CLI_ADD_HOOK_COMMANDS.yarn}
                   language="bash"
@@ -746,10 +774,17 @@ export default function InstallationPreviewPage({
             Override theme colors
           </h2>
           <p className="mt-2 text-sm leading-6 text-slate-400">
-            You can override the theme colors by using the theme.colors object but be careful as it will override all the colors in your project if you are already using tailwind default colors like slate, red, yellow, amber, green, etc. Consider using a custom color palette for your brand theme.
+            You can override the theme colors by using the theme.colors object
+            but be careful as it will override all the colors in your project if
+            you are already using tailwind default colors like slate, red,
+            yellow, amber, green, etc. Consider using a custom color palette for
+            your brand theme.
           </p>
           <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
-            <CodeHighlight codeString={OVERRIDE_THEME_COLORS_SNIPPET} language="css" />
+            <CodeHighlight
+              codeString={OVERRIDE_THEME_COLORS_SNIPPET}
+              language="css"
+            />
           </div>
         </section>
         <section className={SECTION}>
@@ -760,10 +795,15 @@ export default function InstallationPreviewPage({
             Adding new themes colors
           </h2>
           <p className="mt-2 text-sm leading-6 text-slate-400">
-            You can add new themes colors by adding a new theme mapper, passing the required variants like 100, 200, 500, 900 and removing the appearance prop from the component.
+            You can add new themes colors by adding a new theme mapper, passing
+            the required variants like 100, 200, 500, 900 and removing the
+            appearance prop from the component.
           </p>
           <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
-            <CodeHighlight codeString={ADD_NEW_THEMES_COLORS_SNIPPET} language="tsx" />
+            <CodeHighlight
+              codeString={ADD_NEW_THEMES_COLORS_SNIPPET}
+              language="tsx"
+            />
           </div>
         </section>
       </div>
