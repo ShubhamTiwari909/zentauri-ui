@@ -95,21 +95,21 @@ const OVERRIDE_THEME_COLORS_SNIPPET = `@theme {
 }`;
 
 const CLI_INIT_COMMANDS = {
-  npm: "npx @zentauri-ui/zentauri-components zentauri-components init",
-  pnpm: "pnpm dlx @zentauri-ui/zentauri-components zentauri-components init",
-  yarn: "yarn dlx @zentauri-ui/zentauri-components zentauri-components init",
+  npm: "npx @zentauri-ui/zentauri-components init",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components init",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components init",
 } as const;
 
 const CLI_ADD_COMMANDS = {
-  npm: "npx @zentauri-ui/zentauri-components zentauri-components add accordion buttons",
-  pnpm: "pnpm dlx @zentauri-ui/zentauri-components zentauri-components add accordion buttons",
-  yarn: "yarn dlx @zentauri-ui/zentauri-components zentauri-components add accordion buttons",
+  npm: "npx @zentauri-ui/zentauri-components add accordion buttons",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add accordion buttons",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components add accordion buttons",
 } as const;
 
 const CLI_ADD_HOOK_COMMANDS = {
-  npm: "npx @zentauri-ui/zentauri-components zentauri-components add hook useWindowSize",
-  pnpm: "pnpm dlx @zentauri-ui/zentauri-components zentauri-components add hook useWindowSize",
-  yarn: "yarn dlx @zentauri-ui/zentauri-components zentauri-components add hook useWindowSize",
+  npm: "npx @zentauri-ui/zentauri-components add hook useWindowSize",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add hook useWindowSize",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components add hook useWindowSize",
 } as const;
 
 const CLI_NPX_PIN_SNIPPET = `npx --yes --package=@zentauri-ui/zentauri-components zentauri-components init

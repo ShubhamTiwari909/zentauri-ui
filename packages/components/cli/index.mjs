@@ -165,8 +165,8 @@ Use hooks from the package without copying (after npm install):
   import { useWindowSize } from "@zentauri-ui/zentauri-components/hooks/useWindowSize";
 
 Published package:
-  npx @zentauri-ui/zentauri-components zentauri-components init
-  npx @zentauri-ui/zentauri-components zentauri-components add accordion buttons inputs
+  npx @zentauri-ui/zentauri-components init
+  npx @zentauri-ui/zentauri-components add accordion buttons inputs
 
 If npx does not pick the right binary:
   npx --yes --package=@zentauri-ui/zentauri-components zentauri-components init

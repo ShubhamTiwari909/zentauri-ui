@@ -283,16 +283,16 @@ Which UI folders are valid for `add` is driven by **`cli/registry.json`**: a gen
 Call the published binary by name after the package (recommended so `npx` does not treat the first word as a shell command):
 
 ```bash
-npx @zentauri-ui/zentauri-components zentauri-components init
-npx @zentauri-ui/zentauri-components zentauri-components add buttons inputs
-npx @zentauri-ui/zentauri-components zentauri-components -h
+npx @zentauri-ui/zentauri-components init
+npx @zentauri-ui/zentauri-components add buttons inputs
+npx @zentauri-ui/zentauri-components -h
 ```
 
 **Hooks only** (copy `src/hooks/<name>` into your app, plus sibling hook dependencies such as `useMediaQuery` when needed):
 
 ```bash
-npx @zentauri-ui/zentauri-components zentauri-components add hook useWindowSize
-npx @zentauri-ui/zentauri-components zentauri-components add hook useToggle useDebouncedValue
+npx @zentauri-ui/zentauri-components add hook useWindowSize
+npx @zentauri-ui/zentauri-components add hook useToggle useDebouncedValue
 ```
 
 The **`zentauri-ui`** binary is the same entry as **`zentauri-components`**. If `npx` still mis-resolves, pin the package:
