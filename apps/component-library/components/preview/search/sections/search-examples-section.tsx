@@ -1,12 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useId, useMemo, useState, type KeyboardEvent } from "react";
 import { FiSearch } from "react-icons/fi";
 
 import {
   SearchBar,
   SearchSuggestionList,
   filterSearchSuggestions,
+  searchSuggestionOptionDomId,
 } from "@zentauri-ui/zentauri-components/ui/search";
 
 const demoItems = [
@@ -34,7 +35,9 @@ const demoItems = [
 ] as const;
 
 export function SearchExamplesSection() {
+  const listboxId = useId();
   const [query, setQuery] = useState("");
+  const [userActiveId, setUserActiveId] = useState<string | undefined>();
   const [lastSelected, setLastSelected] = useState<string | null>(null);
 
   const matches = useMemo(
@@ -67,13 +70,67 @@ export function SearchExamplesSection() {
     [matches],
   );
 
+  const highlightedId = useMemo(() => {
+    if (listItems.length === 0) {
+      return undefined;
+    }
+    if (userActiveId && listItems.some((item) => item.id === userActiveId)) {
+      return userActiveId;
+    }
+    return listItems[0].id;
+  }, [listItems, userActiveId]);
+
+  const activeDescendantId = useMemo(() => {
+    if (!highlightedId) {
+      return undefined;
+    }
+    return searchSuggestionOptionDomId(listboxId, highlightedId);
+  }, [highlightedId, listboxId]);
+
+  const selectById = useCallback((id: string) => {
+    setLastSelected(id);
+  }, []);
+
+  const handleSearchKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLInputElement>) => {
+      if (listItems.length === 0) {
+        return;
+      }
+      const currentId = highlightedId ?? listItems[0].id;
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        const idx = listItems.findIndex((item) => item.id === currentId);
+        const nextIndex = Math.min(listItems.length - 1, Math.max(0, idx + 1));
+        setUserActiveId(listItems[nextIndex].id);
+        return;
+      }
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+        const idx = listItems.findIndex((item) => item.id === currentId);
+        const nextIndex = Math.max(0, idx - 1);
+        setUserActiveId(listItems[nextIndex].id);
+        return;
+      }
+      if (event.key === "Enter") {
+        const pick = highlightedId ?? listItems[0]?.id;
+        if (pick) {
+          event.preventDefault();
+          selectById(pick);
+        }
+      }
+    },
+    [highlightedId, listItems, selectById],
+  );
+
+  const hasSuggestions = listItems.length > 0;
+
   return (
     <section className="mt-16 space-y-8">
       <div>
         <h2 className="text-2xl font-semibold text-white">Inline search and list</h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-          Filter the sample entries below. Selection updates local state only (no navigation on this
-          demo page).
+          Filter the sample entries below. Use arrow keys and Enter from the field; selection
+          updates local state only (no navigation on this demo page).
         </p>
       </div>
 
@@ -85,11 +142,18 @@ export function SearchExamplesSection() {
           leadingSlot={<FiSearch aria-hidden />}
           aria-label="Filter demo suggestions"
           className="max-w-xl"
+          comboboxListboxId={listboxId}
+          comboboxActiveOptionId={activeDescendantId}
+          comboboxExpanded={hasSuggestions}
+          onKeyDown={handleSearchKeyDown}
         />
         <div className="mt-4 border-t border-white/10 pt-4">
           <SearchSuggestionList
+            listboxId={listboxId}
             items={listItems}
-            onSelect={(id: string) => setLastSelected(id)}
+            activeId={highlightedId}
+            onActiveIdChange={setUserActiveId}
+            onSelect={(id: string) => selectById(id)}
             emptyLabel={
               query.trim().length === 0
                 ? "Type to filter the sample routes."

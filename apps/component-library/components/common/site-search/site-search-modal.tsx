@@ -1,6 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  type KeyboardEvent,
+} from "react";
 import { useRouter } from "next/navigation";
 import { FiSearch } from "react-icons/fi";
 
@@ -16,6 +24,7 @@ import {
   SearchBar,
   SearchSuggestionList,
   filterSearchSuggestions,
+  searchSuggestionOptionDomId,
 } from "@zentauri-ui/zentauri-components/ui/search";
 
 import { getSiteSearchEntries } from "@/lib/site-search-entries";
@@ -42,22 +51,30 @@ export type SiteSearchModalProps = {
 
 export function SiteSearchModal({ open, onOpenChange }: SiteSearchModalProps) {
   const router = useRouter();
+  const listboxId = useId();
   const [query, setQuery] = useState("");
+  const [userActiveId, setUserActiveId] = useState<string | undefined>();
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     if (!open) {
       return;
     }
-    const id = requestAnimationFrame(() => {
+    const frame = requestAnimationFrame(() => {
       setQuery("");
+      setUserActiveId(undefined);
       inputRef.current?.focus();
     });
-    return () => cancelAnimationFrame(id);
+    return () => cancelAnimationFrame(frame);
   }, [open]);
 
   const filtered = useMemo(
-    () => filterSearchSuggestions({query, items: SITE_SEARCH_ENTRIES, options: { maxResults: 20 } }),
+    () =>
+      filterSearchSuggestions({
+        query,
+        items: SITE_SEARCH_ENTRIES,
+        options: { maxResults: 20 },
+      }),
     [query],
   );
 
@@ -73,6 +90,31 @@ export function SiteSearchModal({ open, onOpenChange }: SiteSearchModalProps) {
       ),
     [filtered],
   );
+
+  const highlightedId = useMemo(() => {
+    if (suggestionItems.length === 0) {
+      return undefined;
+    }
+    if (userActiveId && suggestionItems.some((item) => item.id === userActiveId)) {
+      return userActiveId;
+    }
+    return suggestionItems[0].id;
+  }, [suggestionItems, userActiveId]);
+
+  const activeDescendantId = useMemo(() => {
+    if (!highlightedId) {
+      return undefined;
+    }
+    return searchSuggestionOptionDomId(listboxId, highlightedId);
+  }, [highlightedId, listboxId]);
+
+  useEffect(() => {
+    if (!open || !activeDescendantId) {
+      return;
+    }
+    const node = document.getElementById(activeDescendantId);
+    node?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }, [activeDescendantId, open]);
 
   const entryById = useMemo(() => {
     const map = new Map(SITE_SEARCH_ENTRIES.map((e) => [e.id, e]));
@@ -92,13 +134,48 @@ export function SiteSearchModal({ open, onOpenChange }: SiteSearchModalProps) {
       }
       onOpenChange(false);
       setQuery("");
+      setUserActiveId(undefined);
     },
     [entryById, onOpenChange, router],
   );
 
+  const handleSearchKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLInputElement>) => {
+      if (suggestionItems.length === 0) {
+        return;
+      }
+      const currentId = highlightedId ?? suggestionItems[0].id;
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        const idx = suggestionItems.findIndex((item) => item.id === currentId);
+        const nextIndex = Math.min(suggestionItems.length - 1, Math.max(0, idx + 1));
+        setUserActiveId(suggestionItems[nextIndex].id);
+        return;
+      }
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+        const idx = suggestionItems.findIndex((item) => item.id === currentId);
+        const nextIndex = Math.max(0, idx - 1);
+        setUserActiveId(suggestionItems[nextIndex].id);
+        return;
+      }
+      if (event.key === "Enter") {
+        const pick = highlightedId ?? suggestionItems[0]?.id;
+        if (pick) {
+          event.preventDefault();
+          navigateTo(pick);
+        }
+      }
+    },
+    [highlightedId, navigateTo, suggestionItems],
+  );
+
+  const hasSuggestions = suggestionItems.length > 0;
+
   return (
     <Modal open={open} onOpenChange={onOpenChange}>
       <ModalContent size="lg" position="top" appearance="glass" className="top-24 max-h-[min(90vh,640px)]">
+        <ModalClose />
         <ModalHeader className="sr-only">
           <ModalTitle>Search documentation</ModalTitle>
         </ModalHeader>
@@ -110,9 +187,16 @@ export function SiteSearchModal({ open, onOpenChange }: SiteSearchModalProps) {
             placeholder="Search pages, components, hooks…"
             leadingSlot={<FiSearch aria-hidden />}
             aria-label="Search documentation"
+            comboboxListboxId={listboxId}
+            comboboxActiveOptionId={activeDescendantId}
+            comboboxExpanded={hasSuggestions}
+            onKeyDown={handleSearchKeyDown}
           />
           <SearchSuggestionList
+            listboxId={listboxId}
             items={suggestionItems}
+            activeId={highlightedId}
+            onActiveIdChange={setUserActiveId}
             onSelect={navigateTo}
             emptyLabel={
               query.trim().length === 0

@@ -3,6 +3,7 @@
 import { Fragment } from "react";
 
 import { cn } from "../../lib/utils";
+import { searchSuggestionOptionDomId } from "./search-suggestion-utils";
 
 import type { SearchSuggestionListProps } from "./types";
 
@@ -14,6 +15,7 @@ export function SearchSuggestionList({
   onSelect,
   activeId,
   onActiveIdChange,
+  listboxId,
   className,
   listClassName,
   emptyLabel,
@@ -30,6 +32,7 @@ export function SearchSuggestionList({
   }
 
   let lastGroup: string | undefined;
+  const useListbox = Boolean(listboxId);
 
   return (
     <nav
@@ -37,22 +40,38 @@ export function SearchSuggestionList({
       aria-label="Search results"
       className={cn("flex max-h-[min(50vh,360px)] flex-col gap-1 overflow-y-auto pr-1", className)}
     >
-      <div className={cn("flex flex-col gap-0.5", listClassName)}>
+      <div
+        {...(useListbox
+          ? {
+              id: listboxId,
+              role: "listbox" as const,
+            }
+          : {})}
+        className={cn("flex flex-col gap-0.5", listClassName)}
+      >
         {items.map((item) => {
           const showGroup = item.group && item.group !== lastGroup;
           if (item.group) {
             lastGroup = item.group;
           }
           const isActive = activeId === item.id;
+          const optionDomId =
+            useListbox && listboxId ? searchSuggestionOptionDomId(listboxId, item.id) : undefined;
           return (
             <Fragment key={item.id}>
               {showGroup ? (
-                <div className="sticky top-0 z-1 bg-slate-950/95 px-2 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-slate-500 backdrop-blur-sm">
+                <div
+                  role="presentation"
+                  className="sticky top-0 z-1 bg-slate-950/95 px-2 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-slate-500 backdrop-blur-sm"
+                >
                   {item.group}
                 </div>
               ) : null}
               <button
                 type="button"
+                id={optionDomId}
+                role={useListbox ? "option" : undefined}
+                aria-selected={useListbox ? isActive : undefined}
                 data-active={isActive ? "" : undefined}
                 className={cn(rowClassName, isActive ? "bg-white/5" : null)}
                 onMouseEnter={() => onActiveIdChange?.(item.id)}
@@ -73,3 +92,4 @@ export function SearchSuggestionList({
 }
 
 SearchSuggestionList.displayName = "SearchSuggestionList";
+

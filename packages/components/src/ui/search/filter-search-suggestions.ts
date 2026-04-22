@@ -26,14 +26,13 @@ export function filterSearchSuggestions<T extends SearchFilterable>({
 
   const matches: T[] = [];
   for (const item of items) {
-    const parts = [
-      item.label,
-      item.description ?? "",
-      item.href ?? "",
-      ...(item.keywords ?? []),
-    ];
-    const haystack = parts.join(" ").toLowerCase();
-    if (haystack.includes(normalized)) {
+    const isMatch =
+      item.label.toLowerCase().includes(normalized) ||
+      (item.description?.toLowerCase().includes(normalized)) ||
+      (item.href?.toLowerCase().includes(normalized)) ||
+      (item.keywords?.some((k) => k.toLowerCase().includes(normalized)));
+
+    if (isMatch) {
       matches.push(item);
       if (matches.length >= maxResults) {
         break;

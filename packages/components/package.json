@@ -45,8 +45,8 @@
     "test:watch": "vitest"
   },
   "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18",
+    "react": ">18",
+    "react-dom": ">18",
     "class-variance-authority": "*",
     "clsx": "*",
     "tailwind-merge": "*",

@@ -1,5 +1,6 @@
 export { SearchBar } from "./search-bar";
 export { SearchSuggestionList } from "./search-suggestion-list";
+export { searchSuggestionOptionDomId } from "./search-suggestion-utils";
 export { filterSearchSuggestions } from "./filter-search-suggestions";
 export type {
   SearchBarProps,

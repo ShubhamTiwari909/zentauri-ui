@@ -21,12 +21,16 @@ export const SearchBar = function SearchBar(
     onChange,
     disabled,
     type,
+    comboboxListboxId,
+    comboboxActiveOptionId,
+    comboboxExpanded,
     ref,
     ...rest
   }: SearchBarProps,
 ) {
   const generatedId = useId();
   const controlId = id ?? generatedId;
+  const combobox = Boolean(comboboxListboxId);
 
   return (
     <div
@@ -59,6 +63,17 @@ export const SearchBar = function SearchBar(
           onChange?.(event);
           onValueChange?.(event.target.value);
         }}
+        {...(combobox
+          ? {
+              role: "combobox" as const,
+              "aria-autocomplete": "list" as const,
+              "aria-controls": comboboxListboxId,
+              "aria-expanded": comboboxExpanded ?? false,
+              ...(comboboxActiveOptionId
+                ? { "aria-activedescendant": comboboxActiveOptionId }
+                : {}),
+            }
+          : {})}
         {...rest}
       />
     </div>
