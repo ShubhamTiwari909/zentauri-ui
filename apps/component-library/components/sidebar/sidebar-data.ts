@@ -108,6 +108,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/progress",
       },
       {
+        title: "Search",
+        href: "/preview/components/search",
+      },
+      {
         title: "Select",
         href: "/preview/components/select",
       },

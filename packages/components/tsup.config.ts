@@ -19,6 +19,7 @@ const uiComponentNames = [
   "modal",
   "pagination",
   "progress",
+  "search",
   "select",
   "skeleton",
   "slider",

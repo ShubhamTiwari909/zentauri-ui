@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 
 import { siteChromeNavItems } from "@/components/common/site-chrome-nav";
+import { SiteSearchOpenButton } from "@/components/common/site-search/site-search-open-button";
 import { cn } from "@/lib/utils";
 import SiteNavLink from "./site-link";
 
@@ -35,6 +36,7 @@ export function SiteHeader({
             Zentauri UI
           </Link>
           <div className="flex items-center gap-2">
+            <SiteSearchOpenButton />
             <div className="sm:hidden">
               <SiteHeaderMobile />
             </div>

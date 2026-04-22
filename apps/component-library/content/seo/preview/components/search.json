@@ -1,0 +1,79 @@
+{
+  "category": "Inputs",
+  "title": "SearchBar component for React filters and command palettes",
+  "description": "SearchBar and SearchSuggestionList primitives for React and Next.js—styled text field with an optional leading icon slot and a simple suggestion list for site or in-app search.",
+  "keywords": [
+    "search bar",
+    "React",
+    "Next.js",
+    "command palette",
+    "Tailwind CSS",
+    "autocomplete"
+  ],
+  "og": {
+    "title": "Search · Zentauri UI",
+    "description": "SearchBar and SearchSuggestionList primitives for React and Next.js—styled text field with an optional leading icon slot and a simple suggestion list.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Search · Zentauri UI",
+    "description": "SearchBar and SearchSuggestionList primitives for React and Next.js—styled text field with an optional leading icon slot and a simple suggestion list.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/search",
+  "headings": {
+    "h1": "Search field and suggestions",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use SearchBar for controlled query strings with the same input styling as the rest of the kit. Pair it with SearchSuggestionList when you want a lightweight list of matches—without wiring a full modal or command palette.",
+  "useCases": [
+    "Documentation or marketing site search over static routes.",
+    "Filter narrow lists in settings or admin tables.",
+    "Prototype command palettes before adding keyboard shortcuts.",
+    "Search-as-you-type with your own ranking or API."
+  ],
+  "faqs": [
+    {
+      "question": "Does SearchBar work with the Next.js App Router?",
+      "answer": "Yes. Use it inside a client component when you need useState for the value; keep surrounding layout in server components if you prefer."
+    },
+    {
+      "question": "Is a modal required?",
+      "answer": "No. SearchBar and SearchSuggestionList are presentational. You can render them inline on a page or wrap them in your own dialog when you need one."
+    },
+    {
+      "question": "How do I connect SearchSuggestionList to data?",
+      "answer": "Filter your items in the parent, map them to { id, label, description?, group? }, and pass them to SearchSuggestionList with an onSelect handler."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "SearchBar wraps a native input with optional leadingSlot (for example a search icon). SearchSuggestionList renders grouped rows as buttons for pointer and keyboard focus.\n\nNeither component fetches data or owns navigation—you control value, filtering, and routing."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Keep filtering logic in the parent or a small hook. Cap result counts for performance on large indexes.\n\nUse consistent ids for list items so selection handlers stay stable."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Provide a visible label or aria-label on SearchBar. For inline suggestion lists, ensure focus order matches user expectations when combining with dialogs.\n\nThis preview exposes a single h1 in the hero."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from @zentauri-ui/zentauri-components/ui/search. Rebuild the components package after API changes so types and bundles stay in sync.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

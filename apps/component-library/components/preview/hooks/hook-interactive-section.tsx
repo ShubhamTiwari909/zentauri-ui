@@ -13,7 +13,7 @@ export function HookInteractiveSection({ slug }: HookInteractiveSectionProps) {
   const exampleCode = getHookDemoFullSource(slug);
 
   return (
-    <section className="mt-10 max-w-3xl space-y-8">
+    <section className="mt-10 space-y-8">
       <div className="space-y-3">
         <h2 className="text-sm font-medium uppercase tracking-wider text-slate-400">
           Demo source

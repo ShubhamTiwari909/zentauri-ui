@@ -19,6 +19,7 @@ import modal from "@/content/seo/preview/components/modal.json";
 import pagination from "@/content/seo/preview/components/pagination.json";
 import progress from "@/content/seo/preview/components/progress.json";
 import select from "@/content/seo/preview/components/select.json";
+import search from "@/content/seo/preview/components/search.json";
 import skeleton from "@/content/seo/preview/components/skeleton.json";
 import slider from "@/content/seo/preview/components/slider.json";
 import spinner from "@/content/seo/preview/components/spinner.json";
@@ -50,6 +51,7 @@ const previewSeoRegistry = {
   pagination: pagination as PreviewSeoDocument,
   progress: progress as PreviewSeoDocument,
   select: select as PreviewSeoDocument,
+  search: search as PreviewSeoDocument,
   skeleton: skeleton as PreviewSeoDocument,
   slider: slider as PreviewSeoDocument,
   spinner: spinner as PreviewSeoDocument,
