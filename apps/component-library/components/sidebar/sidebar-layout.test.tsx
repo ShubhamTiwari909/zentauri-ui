@@ -1,11 +1,23 @@
+import type { ReactElement } from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { SiteSearchProvider } from "@/components/common/site-search/site-search-provider";
 import { SidebarLayout } from "./sidebar-layout";
+import { sidebarComponentsData } from "./sidebar-data";
 
-// Mock next/navigation for SidebarNav which is rendered inside SidebarLayout
 vi.mock("next/navigation", () => ({
   usePathname: () => "/preview",
+  useRouter: () => ({
+    push: vi.fn(),
+    prefetch: vi.fn(),
+    replace: vi.fn(),
+    back: vi.fn(),
+  }),
 }));
+
+function renderWithSearch(ui: ReactElement) {
+  return render(<SiteSearchProvider>{ui}</SiteSearchProvider>);
+}
 
 describe("SidebarLayout", () => {
   const OriginalInnerWidth = window.innerWidth;
@@ -23,8 +35,8 @@ describe("SidebarLayout", () => {
   });
 
   it("renders children successfully", () => {
-    render(
-      <SidebarLayout>
+    renderWithSearch(
+      <SidebarLayout sideBarContent={sidebarComponentsData}>
         <div data-testid="test-child">Child Content</div>
       </SidebarLayout>,
     );
@@ -33,39 +45,38 @@ describe("SidebarLayout", () => {
   });
 
   it("has mobile menu closed by default", () => {
-    render(<SidebarLayout>Test</SidebarLayout>);
+    renderWithSearch(<SidebarLayout sideBarContent={sidebarComponentsData}>Test</SidebarLayout>);
 
-    // The aside should have the class "-translate-x-full" which hides it
-    const aside = screen.getByRole("complementary"); // aside element
-    expect(aside).toHaveClass("-translate-x-full");
+    const aside = screen.getByRole("complementary");
+    expect(aside).toHaveClass("max-lg:-translate-x-full");
   });
 
   it("opens mobile menu when hamburger is clicked", () => {
-    render(<SidebarLayout>Test</SidebarLayout>);
+    renderWithSearch(<SidebarLayout sideBarContent={sidebarComponentsData}>Test</SidebarLayout>);
 
     const toggleButton = screen.getByLabelText("Toggle navigation menu");
     fireEvent.click(toggleButton);
 
     const aside = screen.getByRole("complementary");
-    expect(aside).toHaveClass("translate-x-0");
+    expect(aside).toHaveClass("max-lg:translate-x-0");
   });
 
   it("closes mobile menu when close button is clicked", () => {
-    render(<SidebarLayout>Test</SidebarLayout>);
+    renderWithSearch(<SidebarLayout sideBarContent={sidebarComponentsData}>Test</SidebarLayout>);
 
     const toggleButton = screen.getByLabelText("Toggle navigation menu");
 
     // Open it
     fireEvent.click(toggleButton);
-    expect(screen.getByRole("complementary")).toHaveClass("translate-x-0");
+    expect(screen.getByRole("complementary")).toHaveClass("max-lg:translate-x-0");
 
     // Close it
     fireEvent.click(toggleButton);
-    expect(screen.getByRole("complementary")).toHaveClass("-translate-x-full");
+    expect(screen.getByRole("complementary")).toHaveClass("max-lg:-translate-x-full");
   });
 
   it("closes mobile menu when overlay is clicked", () => {
-    render(<SidebarLayout>Test</SidebarLayout>);
+    renderWithSearch(<SidebarLayout sideBarContent={sidebarComponentsData}>Test</SidebarLayout>);
 
     const toggleButton = screen.getByLabelText("Toggle navigation menu");
 
@@ -82,6 +93,6 @@ describe("SidebarLayout", () => {
       fireEvent.click(overlay);
     }
 
-    expect(screen.getByRole("complementary")).toHaveClass("-translate-x-full");
+    expect(screen.getByRole("complementary")).toHaveClass("max-lg:-translate-x-full");
   });
 });

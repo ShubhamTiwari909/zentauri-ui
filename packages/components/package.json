@@ -1,6 +1,6 @@
 {
   "name": "@zentauri-ui/zentauri-components",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "React + Tailwind UI kit with ESM/CJS builds, per-entry exports, and a zentauri-components / zentauri-ui CLI to vendor UI or hook source into your app",
   "license": "MIT",
   "files": ["dist", "src/ui", "src/lib", "src/hooks", "cli"],
@@ -45,8 +45,8 @@
     "test:watch": "vitest"
   },
   "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18",
+    "react": ">18",
+    "react-dom": ">18",
     "class-variance-authority": "*",
     "clsx": "*",
     "tailwind-merge": "*",

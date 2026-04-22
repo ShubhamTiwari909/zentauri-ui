@@ -25,7 +25,7 @@ export function PreviewSeoDoc({ doc }: PreviewSeoDocProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="max-w-3xl space-y-12 border-t border-white/10 pt-12">
+      <article className="space-y-12 border-t border-white/10 pt-12">
         {doc.sections.map((section, index) => {
           const renderUseCasesList =
             section.body.trim() === "" && section.heading === useCasesHeading;

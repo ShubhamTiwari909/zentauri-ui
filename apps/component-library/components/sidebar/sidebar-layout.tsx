@@ -5,6 +5,7 @@ import { SidebarNav } from "./sidebar-nav";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/common/site-header";
+import { SiteSearchOpenButton } from "@/components/common/site-search/site-search-open-button";
 import { SidebarNavGroup } from "./types";
 
 export function SidebarLayout({ children, sideBarContent }: { children: React.ReactNode, sideBarContent: SidebarNavGroup[] }) {
@@ -48,13 +49,14 @@ export function SidebarLayout({ children, sideBarContent }: { children: React.Re
         )}
       >
         <div className="flex h-full flex-col gap-8">
-          <div className="hidden lg:block">
+          <div className="hidden items-center justify-between gap-2 lg:flex">
             <Link
               href="/"
               className="text-xl font-semibold tracking-wide text-white"
             >
               Zentauri UI
             </Link>
+            <SiteSearchOpenButton />
           </div>
           <div className="flex-1 overflow-y-auto pr-2">
             <SidebarNav onLinkClick={() => setIsMobileMenuOpen(false)} sidebarRouteData={sideBarContent} />

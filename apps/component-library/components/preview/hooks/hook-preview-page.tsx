@@ -14,7 +14,7 @@ type HookPreviewPageProps = {
 export default function HookPreviewPage({ seo, slug }: HookPreviewPageProps) {
   return (
     <PreviewPageShell>
-      <section className="max-w-3xl space-y-6">
+      <section className="space-y-6">
         <PreviewHeroSeoBlock seo={seo} />
       </section>
       <HookImportSnippet slug={slug} />

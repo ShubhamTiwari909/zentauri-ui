@@ -14,7 +14,7 @@ export function HookImportSnippet({ slug }: HookImportSnippetProps) {
   const line = `import { ${entry.name} } from "${path}";`;
 
   return (
-    <div className="max-w-3xl">
+    <div>
       <p className="mb-2 text-xs font-medium uppercase tracking-wider text-slate-500">
         Import
       </p>

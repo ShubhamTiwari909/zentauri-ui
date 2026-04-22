@@ -58,6 +58,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Modal          | `modal`               | `modal/animated`                     |
 | Pagination     | `pagination`          | —                                    |
 | Progress       | `progress`            | `progress/animated`                  |
+| Search         | `search`              | -                                    |
 | Select         | `select`              | —                                    |
 | Skeleton       | `skeleton`            | `skeleton/animated`                  |
 | Slider         | `slider`              | —                                    |
