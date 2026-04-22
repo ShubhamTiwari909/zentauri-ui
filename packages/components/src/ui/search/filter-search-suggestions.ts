@@ -34,7 +34,7 @@ export function filterSearchSuggestions<T extends SearchFilterable>({
 
     if (isMatch) {
       matches.push(item);
-      if (matches.length >= maxResults) {
+      if (matches.length >= maxResults || maxResults <= 0) {
         break;
       }
     }
