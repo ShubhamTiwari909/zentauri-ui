@@ -31,8 +31,20 @@ export function SearchSuggestionList({
     );
   }
 
-  let lastGroup: string | undefined;
   const useListbox = Boolean(listboxId);
+
+  const rows: Array<{
+    item: (typeof items)[number];
+    showGroup: boolean;
+  }> = [];
+  let lastGroupSeen: string | undefined;
+  for (const item of items) {
+    const showGroup = Boolean(item.group && item.group !== lastGroupSeen);
+    if (item.group) {
+      lastGroupSeen = item.group;
+    }
+    rows.push({ item, showGroup });
+  }
 
   return (
     <nav
@@ -49,11 +61,7 @@ export function SearchSuggestionList({
           : {})}
         className={cn("flex flex-col gap-0.5", listClassName)}
       >
-        {items.map((item) => {
-          const showGroup = item.group && item.group !== lastGroup;
-          if (item.group) {
-            lastGroup = item.group;
-          }
+        {rows.map(({ item, showGroup }) => {
           const isActive = activeId === item.id;
           const optionDomId =
             useListbox && listboxId ? searchSuggestionOptionDomId(listboxId, item.id) : undefined;
