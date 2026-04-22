@@ -178,9 +178,6 @@ export function SiteSearchModal({ open, onOpenChange }: SiteSearchModalProps) {
         position="top"
         appearance="glass"
         className="top-24 max-h-[min(90vh,640px)]"
-        ref={undefined}
-        id={undefined}
-        style={undefined}
       >
         <ModalHeader className="sr-only">
           <ModalTitle className="">Search documentation</ModalTitle>
@@ -195,8 +192,6 @@ export function SiteSearchModal({ open, onOpenChange }: SiteSearchModalProps) {
             type="search"
             value={query}
             onValueChange={setQuery}
-            onChange={() => {}}
-            disabled={false}
             placeholder="Search pages, components, hooks…"
             leadingSlot={<FiSearch aria-hidden />}
             aria-label="Search documentation"

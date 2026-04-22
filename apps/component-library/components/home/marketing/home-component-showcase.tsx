@@ -51,7 +51,7 @@ const CODE_MODAL = `<Modal>
     appearance="glass"
     className=""
   >
-    <ModalClose className="" />
+   <ModalClose className="">×</ModalClose>
     <ModalHeader className="">
       <ModalTitle className="">Edit field</ModalTitle>
       <ModalDescription className="">
@@ -254,8 +254,6 @@ export function HomeComponentShowcase() {
                 <ModalTrigger
                   appearance="default"
                   className="px-5 py-3"
-                  onClick={() => {}}
-                  
                 >
                    Open dialog
                 </ModalTrigger>
@@ -265,9 +263,6 @@ export function HomeComponentShowcase() {
                   animation="scale"
                   position="center"
                   appearance="glass"
-                  
-                  id={undefined}
-                  style={undefined}
                 >
                   <ModalClose className="">×</ModalClose>
                   <ModalHeader className="">

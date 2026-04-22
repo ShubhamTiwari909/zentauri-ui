@@ -41,7 +41,6 @@ const SiteHeaderMobile = () => {
         className="rounded-md p-2 text-slate-400 hover:bg-white/5 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
         aria-label="Open site navigation"
         onClick={() => {}}
-        ref={undefined}
       >
         <FiList className="h-6 w-6" aria-hidden />
       </DrawerTrigger>
@@ -50,9 +49,6 @@ const SiteHeaderMobile = () => {
         side="right"
         appearance="glass"
         size="md"
-        ref={undefined}
-        id={undefined}
-        style={undefined}
       >
         <DrawerHeader className="pr-12">
           <DrawerTitle className="text-slate-50">Navigate</DrawerTitle>
