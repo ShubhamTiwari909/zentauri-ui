@@ -1,0 +1,82 @@
+{
+  "category": "Zentauri UI",
+  "title": "Zentauri UI — React component + hooks library with Tailwind CSS & motion",
+  "description": "Zentauri UI is a React component + hooks library with Tailwind CSS v4, Framer Motion, and accessible primitives. Browse docs, interactive previews, and hooks to ship dashboards and marketing sites faster.",
+  "keywords": [
+    "Zentauri UI",
+    "React component + hooks library",
+    "Tailwind CSS v4",
+    "Framer Motion",
+    "Next.js components",
+    "design system",
+    "accessible UI",
+    "React hooks"
+  ],
+  "og": {
+    "title": "Zentauri UI — React components + hooks for modern apps",
+    "description": "Minimalist React UI with Tailwind-first styling, motion presets, and copy-ready previews for Next.js and Vite.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Zentauri UI — React components + hooks for modern apps",
+    "description": "Minimalist React UI with Tailwind-first styling, motion presets, and copy-ready previews for Next.js and Vite.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/",
+  "headings": {
+    "h1": "Beautiful, minimalist React components",
+    "h2": [
+      "Why teams pick Zentauri UI",
+      "What ships today",
+      "Common use cases",
+      "Stack and compatibility",
+      "How to explore the library",
+      "FAQ"
+    ]
+  },
+  "intro": "A highly customizable component + hooks library built with Tailwind CSS and Framer Motion, focused on subtle interactions and a cohesive dark aesthetic. Use interactive previews and typed hooks to assemble production layouts without reinventing primitives.",
+  "useCases": [
+    "Bootstrap dashboards with tables, navigation, overlays, and feedback components.",
+    "Prototype marketing flows with buttons, cards, accordions, and form controls.",
+    "Add motion-rich modals, drawers, tabs, and toasts with consistent animation tokens.",
+    "Document an internal design system with import paths that match published npm exports.",
+    "Extend Tailwind v4 themes while keeping class APIs predictable for contributors."
+  ],
+  "faqs": [
+    {
+      "question": "Is Zentauri UI only for Next.js?",
+      "answer": "No. Components are React-first; the docs emphasize Next.js App Router patterns because they are common, but you can use the package with Vite, Remix, or other React 18+ setups that support Tailwind CSS v4."
+    },
+    {
+      "question": "Where do I install the package?",
+      "answer": "Install @zentauri-ui/zentauri-components from npm, follow the Installation guide for Tailwind v4 scanning and peer dependencies, then import from the documented ui paths."
+    },
+    {
+      "question": "Are previews the same as production exports?",
+      "answer": "Yes. Preview routes demonstrate the same exports you import in your app so you can copy snippets and align versions with your lockfile."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Why teams pick Zentauri UI",
+      "body": "Zentauri UI pairs a tight visual language with practical defaults: glass and solid appearances, motion variants where they matter, and documentation that mirrors real import paths.\n\nInstead of abstract galleries, you get per-component previews with code you can paste into a React or Next.js repo."
+    },
+    {
+      "heading": "What ships today",
+      "body": "The library covers layout, forms, overlays, data display, and feedback primitives—from buttons and inputs through modals, tables, and toasts—plus a growing set of hooks for window size, media queries, and other browser concerns.\n\nEach family has its own preview route so you can compare density, animation, and accessibility notes before adopting a pattern org-wide."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Stack and compatibility",
+      "body": "Components assume React 18+ and Tailwind CSS v4 with the published preset. Framer Motion backs animated variants; react-icons supplies consistent iconography in examples.\n\nKeep peer installs aligned with the Installation page to avoid duplicate motion or merge conflicts in class composition."
+    },
+    {
+      "heading": "How to explore the library",
+      "body": "Start with Installation to wire Tailwind scanning and package aliases. Browse Components for UI families, Hooks for utilities, and use site search when you know a primitive name but not its route.\n\nSet NEXT_PUBLIC_SITE_URL in deployment so canonical and Open Graph URLs resolve correctly for sharing."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

@@ -4,6 +4,15 @@ import TabsListComponent from "@/components/preview/installation/tabs-list";
 
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import {
+  CLI_ADD_COMMANDS,
+  CLI_ADD_HOOK_COMMANDS,
+  CLI_INIT_COMMANDS,
+  FRAMER_MOTION_INSTALL_COMMANDS,
+  INSTALL_COMMANDS,
+  PEER_INSTALL_COMMANDS,
+  REACT_ICONS_INSTALL_COMMANDS,
+} from "@/lib/home-install-commands";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { Modal, ModalTrigger, ModalClose, ModalHeader, ModalTitle, ModalDescription, ModalBody } from "@zentauri-ui/zentauri-components/ui/modal";
 import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/animated";
@@ -12,30 +21,6 @@ import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/an
 
 const SECTION =
   "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
-
-const INSTALL_COMMANDS = {
-  npm: "npm install @zentauri-ui/zentauri-components",
-  pnpm: "pnpm install @zentauri-ui/zentauri-components",
-  yarn: "yarn add @zentauri-ui/zentauri-components",
-} as const;
-
-const PEER_INSTALL_COMMANDS = {
-  npm: "npm install react react-dom class-variance-authority clsx tailwind-merge",
-  pnpm: "pnpm add react react-dom class-variance-authority clsx tailwind-merge",
-  yarn: "yarn add react react-dom class-variance-authority clsx tailwind-merge",
-} as const;
-
-const FRAMER_MOTION_INSTALL_COMMANDS = {
-  npm: "npm install framer-motion",
-  pnpm: "pnpm add framer-motion",
-  yarn: "yarn add framer-motion",
-} as const;
-
-const REACT_ICONS_INSTALL_COMMANDS = {
-  npm: "npm install react-icons",
-  pnpm: "pnpm add react-icons",
-  yarn: "yarn add react-icons",
-} as const;
 
 const GLOBALS_CSS_SNIPPET = `@import "tailwindcss";
 @source "../node_modules/@zentauri-ui/zentauri-components";`;
@@ -75,24 +60,6 @@ const OVERRIDE_THEME_COLORS_SNIPPET = `@theme {
   --color-slate-900: oklch(0.208 0.042 265.755);
   --color-slate-950: oklch(0.129 0.042 264.695);
 }`;
-
-const CLI_INIT_COMMANDS = {
-  npm: "npx @zentauri-ui/zentauri-components init",
-  pnpm: "pnpm dlx @zentauri-ui/zentauri-components init",
-  yarn: "yarn dlx @zentauri-ui/zentauri-components init",
-} as const;
-
-const CLI_ADD_COMMANDS = {
-  npm: "npx @zentauri-ui/zentauri-components add accordion buttons",
-  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add accordion buttons",
-  yarn: "yarn dlx @zentauri-ui/zentauri-components add accordion buttons",
-} as const;
-
-const CLI_ADD_HOOK_COMMANDS = {
-  npm: "npx @zentauri-ui/zentauri-components add hook useWindowSize",
-  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add hook useWindowSize",
-  yarn: "yarn dlx @zentauri-ui/zentauri-components add hook useWindowSize",
-} as const;
 
 const CLI_NPX_PIN_SNIPPET = `npx --yes --package=@zentauri-ui/zentauri-components zentauri-components init
 npx --yes --package=@zentauri-ui/zentauri-components zentauri-components add button`;
