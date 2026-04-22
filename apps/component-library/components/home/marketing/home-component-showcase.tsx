@@ -151,9 +151,9 @@ function SliderDemoPreview() {
         aria-label="Demo slider"
         aria-labelledby="home-slider-demo-label"
       >
-        <SliderTrack className="" ref={undefined}>
-          <SliderRange className="" ref={undefined} />
-          <SliderThumb className="" ref={undefined} />
+        <SliderTrack className="" >
+          <SliderRange className=""  />
+          <SliderThumb className=""  />
         </SliderTrack>
       </Slider>
       <p className="text-xs text-slate-400">Value: {value}</p>
@@ -255,7 +255,7 @@ export function HomeComponentShowcase() {
                   appearance="default"
                   className="px-5 py-3"
                   onClick={() => {}}
-                  ref={undefined}
+                  
                 >
                    Open dialog
                 </ModalTrigger>
@@ -265,7 +265,7 @@ export function HomeComponentShowcase() {
                   animation="scale"
                   position="center"
                   appearance="glass"
-                  ref={undefined}
+                  
                   id={undefined}
                   style={undefined}
                 >
@@ -294,23 +294,22 @@ export function HomeComponentShowcase() {
                 defaultValue="a"
                 appearance="outline"
                 size="sm"
-                ref={undefined}
               >
-                <AccordionItem className="" value="a" ref={undefined}>
-                  <AccordionTrigger className="" ref={undefined}>
+                <AccordionItem className="" value="a" >
+                  <AccordionTrigger className="" >
                     API keys
                   </AccordionTrigger>
-                  <AccordionContent className="" ref={undefined}>
+                  <AccordionContent className="" >
                     <p className="text-sm text-slate-300">
                       Rotate keys from the security tab.
                     </p>
                   </AccordionContent>
                 </AccordionItem>
-                <AccordionItem className="" value="b" ref={undefined}>
-                  <AccordionTrigger className="" ref={undefined}>
+                <AccordionItem className="" value="b" >
+                  <AccordionTrigger className="" >
                     Webhooks
                   </AccordionTrigger>
-                  <AccordionContent className="" ref={undefined}>
+                  <AccordionContent className="" >
                     <p className="text-sm text-slate-300">
                       Retry policy and signing secrets.
                     </p>
