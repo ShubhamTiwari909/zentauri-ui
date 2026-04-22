@@ -15,7 +15,6 @@ import { FiSearch } from "react-icons/fi";
 import {
   Modal,
   ModalBody,
-  ModalClose,
   ModalContent,
   ModalHeader,
   ModalTitle,
@@ -174,16 +173,30 @@ export function SiteSearchModal({ open, onOpenChange }: SiteSearchModalProps) {
 
   return (
     <Modal open={open} onOpenChange={onOpenChange}>
-      <ModalContent size="lg" position="top" appearance="glass" className="top-24 max-h-[min(90vh,640px)]">
-        <ModalClose />
+      <ModalContent
+        size="lg"
+        position="top"
+        appearance="glass"
+        className="top-24 max-h-[min(90vh,640px)]"
+        ref={undefined}
+        id={undefined}
+        style={undefined}
+      >
         <ModalHeader className="sr-only">
-          <ModalTitle>Search documentation</ModalTitle>
+          <ModalTitle className="">Search documentation</ModalTitle>
         </ModalHeader>
         <ModalBody className="space-y-4">
           <SearchBar
             ref={inputRef}
+            className=""
+            inputClassName=""
+            id={`${listboxId}-input`}
+            name="site-search"
+            type="search"
             value={query}
             onValueChange={setQuery}
+            onChange={() => {}}
+            disabled={false}
             placeholder="Search pages, components, hooks…"
             leadingSlot={<FiSearch aria-hidden />}
             aria-label="Search documentation"
@@ -193,6 +206,8 @@ export function SiteSearchModal({ open, onOpenChange }: SiteSearchModalProps) {
             onKeyDown={handleSearchKeyDown}
           />
           <SearchSuggestionList
+            className=""
+            listClassName=""
             listboxId={listboxId}
             items={suggestionItems}
             activeId={highlightedId}
