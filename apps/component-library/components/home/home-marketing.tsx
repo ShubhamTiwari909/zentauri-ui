@@ -10,7 +10,6 @@ import { HomeFeatureHighlights } from "./marketing/home-feature-highlights";
 import { HomeHooksShowcase } from "./marketing/home-hooks-showcase";
 import { HomeInstallSection } from "./marketing/home-install-section";
 import { HomePatternDemos } from "./marketing/home-pattern-demos";
-import { HomeThemingPlayground } from "./marketing/home-theming-playground";
 
 export function HomeMarketing() {
   return (
@@ -22,7 +21,6 @@ export function HomeMarketing() {
         <HomePatternDemos />
         <HomeDxSection />
         <HomeInstallSection />
-        <HomeThemingPlayground />
         <HomeComparisonTable />
       </div>
       <ToastViewportAnimated position="bottom-right" className="" />

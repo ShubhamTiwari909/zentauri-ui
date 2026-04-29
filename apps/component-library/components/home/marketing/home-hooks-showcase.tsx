@@ -7,6 +7,7 @@ import { HOOK_PREVIEW_REGISTRY } from "@/lib/constants";
 
 import { MotionReveal } from "./motion-reveal";
 import { SectionShell } from "./section-shell";
+import { Card } from "@zentauri-ui/zentauri-components/ui/card";
 
 const HOME_HOOK_SLUGS = [
   "use-local-storage",
@@ -29,9 +30,10 @@ export function HomeHooksShowcase() {
       >
         <div className="grid gap-4 md:grid-cols-2">
           {hooks.map((hook) => (
-            <article
+            <Card
               key={hook.slug}
-              className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-slate-950/50 p-5 max-w-full"
+              className="flex flex-col gap-3 p-5 max-w-full"
+              appearance="sky"
             >
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <h3 className="font-mono text-sm font-semibold text-cyan-100">
@@ -50,7 +52,7 @@ export function HomeHooksShowcase() {
                 <span className="font-medium text-slate-400">Use case: </span>
                 {hook.intro}
               </p>
-            </article>
+            </Card>
           ))}
         </div>
         <p className="text-center text-sm">

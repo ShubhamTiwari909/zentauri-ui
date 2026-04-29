@@ -9,7 +9,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@zentauri-ui/zentauri-components/ui/accordion";
-import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import {
+  Button,
+  type ButtonSharedStatic,
+} from "@zentauri-ui/zentauri-components/ui/buttons";
 import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
 import {
   Modal,
@@ -22,12 +25,16 @@ import {
 } from "@zentauri-ui/zentauri-components/ui/modal";
 import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/animated";
 import {
+  RangeSlider,
   Slider,
   SliderRange,
   SliderThumb,
   SliderTrack,
 } from "@zentauri-ui/zentauri-components/ui/slider";
-import { useToast } from "@zentauri-ui/zentauri-components/ui/toast";
+import {
+  useToast,
+  type ToastRootVariantProps,
+} from "@zentauri-ui/zentauri-components/ui/toast";
 import { FiExternalLink } from "react-icons/fi";
 
 import { MotionReveal } from "./motion-reveal";
@@ -35,36 +42,54 @@ import { PreviewCodeTabs } from "./preview-code-tabs";
 import { SectionShell } from "./section-shell";
 
 const CODE_BUTTON = `<ButtonAnimated className="" appearance="sky" animation="lift" size="sm">Button sky</ButtonAnimated>
+
 <ButtonAnimated className="" appearance="pink" animation="lift" size="sm">Button pink</ButtonAnimated>
+
 <ButtonAnimated className="" appearance="amber" animation="lift" size="sm">Button amber</ButtonAnimated>
-<ButtonAnimated className="" appearance="gradient-purple" animation="lift" size="sm">Button gradient-purple</ButtonAnimated>
+
+<ButtonAnimated className="" appearance="gradient-purple" animation="lift" size="sm">
+  Button gradient-purple
+</ButtonAnimated>
+
 <ButtonAnimated className="" appearance="gradient-red" animation="lift" size="sm">Button gradient-red</ButtonAnimated>`;
 
-const CODE_MODAL = `<Modal>
-  <ModalTrigger appearance="default" className="">
-    Open dialog
-  </ModalTrigger>
-  <ModalContentAnimated
-    size="sm"
-    animation="scale"
-    position="center"
-    appearance="glass"
-    className=""
-  >
-   <ModalClose className="">×</ModalClose>
-    <ModalHeader className="">
-      <ModalTitle className="">Edit field</ModalTitle>
-      <ModalDescription className="">
-        Save changes to this row.
-      </ModalDescription>
-    </ModalHeader>
-    <ModalBody className="">
-      <p className="text-sm text-slate-300">Modal content here.</p>
-    </ModalBody>
-  </ModalContentAnimated>
-</Modal>`;
+const CODE_MODAL = `<div className="flex flex-wrap gap-3">
+  {
+    ["sky",'rose', 'emerald', "gradient-teal", "gradient-indigo"].map(
+      (appearance) => {
+        return (
+          <Modal key={appearance}>
+            <ModalTrigger appearance={appearance} className="px-5 py-3">
+              Open dialog
+            </ModalTrigger>
+            <ModalContentAnimated
+              className=""
+              size="sm"
+              animation="scale"
+              position="center"
+              appearance={appearance}
+            >
+              <ModalClose className="">×</ModalClose>
+              <ModalHeader className="">
+                <ModalTitle className="">Edit field</ModalTitle>
+                <ModalDescription className="">
+                  Save changes to this row.
+                </ModalDescription>
+              </ModalHeader>
+              <ModalBody className="">
+                <p className="text-sm text-slate-300">
+                  Modal content here.
+                </p>
+              </ModalBody>
+            </ModalContentAnimated>
+          </Modal>
+        );
+      },
+    )
+  }
+</div>`;
 
-const CODE_ACCORDION = `<Accordion type="single" defaultValue="a" appearance="outline" size="sm">
+const CODE_ACCORDION = `<Accordion type="single" defaultValue="a" appearance="sky" size="sm">
   <AccordionItem value="a">
     <AccordionTrigger>API keys</AccordionTrigger>
     <AccordionContent>
@@ -83,7 +108,7 @@ const CODE_TOAST = `const { toast } = useToast();
 
 <Button
   size="sm"
-  appearance="sky"
+  appearance="emerald"
   type="button"
   onClick={() =>
     toast({
@@ -94,36 +119,100 @@ const CODE_TOAST = `const { toast } = useToast();
   }
 >
   Show toast
-</Button>`;
+</Button>
+<Button
+  size="sm"
+  appearance="sky"
+  type="button"
+  onClick={() =>
+    toast({
+      title: "Saved",
+      description: "Layout stored for this workspace.",
+      appearance: "info",
+    })
+  }
+>
+  Show toast
+</Button>
+<Button
+  size="sm"
+  appearance="amber"
+  type="button"
+  onClick={() =>
+    toast({
+      title: "Saved",
+      description: "Layout stored for this workspace.",
+      appearance: "warning",
+    })
+  }
+>
+  Show toast
+</Button>
+<Button
+  size="sm"
+  appearance="gradient-purple"
+  type="button"
+  onClick={() =>
+    toast({
+      title: "Saved",
+      description: "Layout stored for this workspace.",
+      appearance: "purple",
+    })
+  }
+>
+  Show toast
+</Button>
+`;
 
-const CODE_SLIDER = `const [value, setValue] = useState(42);
+const CODE_SLIDER = `const [value, setValue] = useState(42)
+const [rangeValue, setRangeValue] = useState<[number, number]>([25, 75]);
+const sliderRef = useRef<HTMLDivElement | null>(null);;
 
 <Slider
+  ref={sliderRef}
   className="w-full"
   value={value}
+  defaultValue={42}
   onValueChange={setValue}
   max={100}
-  aria-label="Volume"
+  aria-label="Demo slider"
+  aria-labelledby="home-slider-demo-label"
 >
-  <SliderTrack className="">
-    <SliderRange className="" />
-    <SliderThumb className="" />
+  <SliderTrack className="" >
+    <SliderRange className=""  />
+    <SliderThumb className=""  />
   </SliderTrack>
-</Slider>`;
+</Slider>
+<p className="text-xs text-slate-400">Value: {value}</p>
 
-function ToastDemoPreview() {
+<RangeSlider 
+  value={rangeValue} 
+  onValueChange={setRangeValue} 
+  defaultValue={[25, 75]} 
+  aria-label="Example range" 
+  appearance="gradient-pink" 
+/>
+<p className="text-xs text-slate-400">Range Value: {rangeValue[0]} - {rangeValue[1]}</p>`;
+
+function ToastDemoPreview({
+  btnAppearance,
+  toastAppearance,
+}: {
+  btnAppearance: ButtonSharedStatic["appearance"];
+  toastAppearance: ToastRootVariantProps["appearance"];
+}) {
   const { toast } = useToast();
   return (
     <Button
       className=""
       size="sm"
-      appearance="sky"
+      appearance={btnAppearance}
       type="button"
       onClick={() =>
         toast({
           title: "Saved",
           description: "Layout stored for this workspace.",
-          appearance: "success",
+          appearance: toastAppearance,
         })
       }
     >
@@ -134,6 +223,7 @@ function ToastDemoPreview() {
 
 function SliderDemoPreview() {
   const [value, setValue] = useState(42);
+  const [rangeValue, setRangeValue] = useState<[number, number]>([25, 75]);
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
   return (
@@ -151,12 +241,22 @@ function SliderDemoPreview() {
         aria-label="Demo slider"
         aria-labelledby="home-slider-demo-label"
       >
-        <SliderTrack className="" >
-          <SliderRange className=""  />
-          <SliderThumb className=""  />
+        <SliderTrack className="">
+          <SliderRange className="" />
+          <SliderThumb className="" />
         </SliderTrack>
       </Slider>
       <p className="text-xs text-slate-400">Value: {value}</p>
+      <RangeSlider
+        value={rangeValue}
+        onValueChange={setRangeValue}
+        defaultValue={[25, 75]}
+        aria-label="Example range"
+        appearance="gradient-pink"
+      />
+      <p className="text-xs text-slate-400">
+        Range Value: {rangeValue[0]} - {rangeValue[1]}
+      </p>
     </div>
   );
 }
@@ -249,34 +349,41 @@ export function HomeComponentShowcase() {
             title="Modal"
             href="/preview/components/modal"
             code={CODE_MODAL}
-            preview={
-              <Modal>
-                <ModalTrigger
-                  appearance="default"
-                  className="px-5 py-3"
-                >
-                   Open dialog
-                </ModalTrigger>
-                <ModalContentAnimated
-                  className=""
-                  size="sm"
-                  animation="scale"
-                  position="center"
-                  appearance="glass"
-                >
-                  <ModalClose className="">×</ModalClose>
-                  <ModalHeader className="">
-                    <ModalTitle className="">Edit field</ModalTitle>
-                    <ModalDescription className="">
-                      Save changes to this row.
-                    </ModalDescription>
-                  </ModalHeader>
-                  <ModalBody className="">
-                    <p className="text-sm text-slate-300">Modal content here.</p>
-                  </ModalBody>
-                </ModalContentAnimated>
-              </Modal>
-            }
+            preview={<div className="flex flex-wrap gap-3">
+              {
+                ["sky",'rose', 'emerald', "gradient-teal", "gradient-indigo"].map(
+                  (appearance) => {
+                    return (
+                      <Modal key={appearance}>
+                        <ModalTrigger appearance={appearance} className="px-5 py-3">
+                          Open dialog
+                        </ModalTrigger>
+                        <ModalContentAnimated
+                          className=""
+                          size="sm"
+                          animation="scale"
+                          position="center"
+                          appearance={appearance}
+                        >
+                          <ModalClose className="">×</ModalClose>
+                          <ModalHeader className="">
+                            <ModalTitle className="">Edit field</ModalTitle>
+                            <ModalDescription className="">
+                              Save changes to this row.
+                            </ModalDescription>
+                          </ModalHeader>
+                          <ModalBody className="">
+                            <p className="text-sm text-slate-300">
+                              Modal content here.
+                            </p>
+                          </ModalBody>
+                        </ModalContentAnimated>
+                      </Modal>
+                    );
+                  },
+                )
+              }
+            </div>}
           />
           <ShowcaseRow
             title="Accordion"
@@ -284,27 +391,23 @@ export function HomeComponentShowcase() {
             code={CODE_ACCORDION}
             preview={
               <Accordion
-                className=""
+                className="space-y-4"
                 type="single"
                 defaultValue="a"
-                appearance="outline"
+                appearance="sky"
                 size="sm"
               >
-                <AccordionItem className="" value="a" >
-                  <AccordionTrigger className="" >
-                    API keys
-                  </AccordionTrigger>
-                  <AccordionContent className="" >
+                <AccordionItem className="" value="a">
+                  <AccordionTrigger className="">API keys</AccordionTrigger>
+                  <AccordionContent className="">
                     <p className="text-sm text-slate-300">
                       Rotate keys from the security tab.
                     </p>
                   </AccordionContent>
                 </AccordionItem>
-                <AccordionItem className="" value="b" >
-                  <AccordionTrigger className="" >
-                    Webhooks
-                  </AccordionTrigger>
-                  <AccordionContent className="" >
+                <AccordionItem className="" value="b">
+                  <AccordionTrigger className="">Webhooks</AccordionTrigger>
+                  <AccordionContent className="">
                     <p className="text-sm text-slate-300">
                       Retry policy and signing secrets.
                     </p>
@@ -317,7 +420,23 @@ export function HomeComponentShowcase() {
             title="Toast"
             href="/preview/components/toast"
             code={CODE_TOAST}
-            preview={<ToastDemoPreview />}
+            preview={
+              <div className="flex flex-wrap gap-3">
+                <ToastDemoPreview
+                  btnAppearance="emerald"
+                  toastAppearance="success"
+                />
+                <ToastDemoPreview btnAppearance="sky" toastAppearance="info" />
+                <ToastDemoPreview
+                  btnAppearance="amber"
+                  toastAppearance="warning"
+                />
+                <ToastDemoPreview
+                  btnAppearance="gradient-purple"
+                  toastAppearance="purple"
+                />
+              </div>
+            }
           />
           <ShowcaseRow
             title="Slider"
