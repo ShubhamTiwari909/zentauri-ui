@@ -1,5 +1,6 @@
 "use client";
 
+import { Table, TableBody, TableHead, TableRow, TableHeader, TableCell } from "@zentauri-ui/zentauri-components/ui/table";
 import { MotionReveal } from "./motion-reveal";
 import { SectionShell } from "./section-shell";
 
@@ -42,38 +43,36 @@ export function HomeComparisonTable() {
         title="How Zentauri fits in"
         lead="Every stack makes tradeoffs—here is a compact, honest snapshot. Try the previews and judge for your team."
       >
-        <div className="overflow-x-auto rounded-2xl border border-white/10">
-          <table className="w-full min-w-[640px] border-collapse text-left text-sm">
-            <thead>
-              <tr className="border-b border-white/10 bg-white/5">
-                <th className="p-3 font-semibold text-slate-300">Aspect</th>
-                <th className="p-3 font-semibold text-cyan-100">Zentauri UI</th>
-                <th className="p-3 font-semibold text-slate-300">ShadCN</th>
-                <th className="p-3 font-semibold text-slate-300">Chakra UI</th>
-                <th className="p-3 font-semibold text-slate-300">Radix</th>
-              </tr>
-            </thead>
-            <tbody>
+          <Table appearance="emerald" className="min-w-3xl">
+            <TableHeader>
+              <TableRow>
+                <TableHead className="p-5">Aspect</TableHead>
+                <TableHead className="p-5">Zentauri UI</TableHead>
+                <TableHead className="p-5">ShadCN</TableHead>
+                <TableHead className="p-5">Chakra UI</TableHead>
+                <TableHead className="p-5">Radix</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {ROWS.map((row) => (
-                <tr
+                <TableRow
                   key={row.aspect}
                   className="border-b border-white/5 last:border-0 hover:bg-white/2"
                 >
-                  <th
+                  <TableCell
                     scope="row"
-                    className="whitespace-nowrap p-3 font-medium text-white"
+                    className="whitespace-nowrap p-5 font-medium text-white"
                   >
                     {row.aspect}
-                  </th>
-                  <td className="p-3 text-slate-300">{row.zentauri}</td>
-                  <td className="p-3 text-slate-400">{row.shadcn}</td>
-                  <td className="p-3 text-slate-400">{row.chakra}</td>
-                  <td className="p-3 text-slate-400">{row.radix}</td>
-                </tr>
+                  </TableCell>
+                  <TableCell className="p-3 text-slate-200">{row.zentauri}</TableCell>
+                  <TableCell className="p-3 text-slate-200">{row.shadcn}</TableCell>
+                  <TableCell className="p-3 text-slate-200">{row.chakra}</TableCell>
+                  <TableCell className="p-3 text-slate-200">{row.radix}</TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
-        </div>
+            </TableBody>
+          </Table>
       </SectionShell>
     </MotionReveal>
   );

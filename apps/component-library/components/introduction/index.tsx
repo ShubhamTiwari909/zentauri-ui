@@ -6,7 +6,7 @@ import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { useIntroduction } from "./use-introduction";
 
 export default function IntroductionPage({ seo }: { seo: PreviewSeoDocument }) {
-  const { components, hooks } = useIntroduction();
+  const { components } = useIntroduction();
 
   return (
     <PreviewPageShell>
@@ -46,46 +46,6 @@ export default function IntroductionPage({ seo }: { seo: PreviewSeoDocument }) {
                 <span className="ml-2 transition-transform group-hover:translate-x-1">
                   →
                 </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-14">
-        <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
-          <h2 className="text-2xl font-semibold tracking-tight text-white">Hooks</h2>
-          <Link
-            href="/preview/hooks"
-            className="text-sm font-medium text-cyan-400 hover:text-cyan-300"
-          >
-            Hooks overview →
-          </Link>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {hooks.map((hook) => (
-            <Link
-              key={hook.id}
-              href={hook.href}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-slate-950/40 backdrop-blur-xl transition-all hover:-translate-y-1 hover:border-white/20 hover:bg-white/10"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-medium text-white transition-colors group-hover:text-cyan-300">
-                    {hook.name}
-                  </h3>
-                  {hook.badge ? (
-                    <span className="inline-flex items-center rounded-full bg-white/5 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-slate-300">
-                      {hook.badge}
-                    </span>
-                  ) : null}
-                </div>
-                <p className="text-sm leading-relaxed text-slate-400">{hook.description}</p>
-              </div>
-
-              <div className="mt-8 flex items-center text-sm font-medium text-cyan-400">
-                Open preview
-                <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
               </div>
             </Link>
           ))}
