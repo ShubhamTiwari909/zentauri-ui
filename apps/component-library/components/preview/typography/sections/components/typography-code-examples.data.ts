@@ -10,6 +10,18 @@ export const TYPOGRAPHY_TONES = [
   "secondary",
   "accent",
   "destructive",
+  "info",
+  "success",
+  "warning",
+  "error",
+  "gradient-pink-violet",
+  "gradient-cyan-violet",
+  "gradient-cyan-blue",
+  "gradient-cyan-green",
+  "gradient-cyan-orange",
+  "gradient-cyan-red",
+  "gradient-cyan-purple",
+  "gradient-cyan-pink",
 ] as const;
 
 /** Aligns with `@zentauri-ui/zentauri-components` Heading `tone` prop. */
