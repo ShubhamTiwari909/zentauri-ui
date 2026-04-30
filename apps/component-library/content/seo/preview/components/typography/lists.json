@@ -1,0 +1,72 @@
+{
+  "category": "Typography",
+  "title": "List component — ordered and unordered",
+  "description": "Typography lists with bullets, circles, decimals, and nested composition for React docs and forms.",
+  "keywords": ["list", "typography", "React", "ul", "ol", "Tailwind CSS"],
+  "og": {
+    "title": "Typography · Lists · Zentauri UI",
+    "description": "Typography lists with bullets, circles, decimals, and nested composition for React docs and forms.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Typography · Lists · Zentauri UI",
+    "description": "Typography lists with bullets, circles, decimals, and nested composition for React docs and forms.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/typography/lists",
+  "headings": {
+    "h1": "Lists for steps and bullets",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Switch between ordered and unordered markers, nest lists inside items, and align tone with surrounding copy.",
+  "useCases": [
+    "Installation steps with decimals.",
+    "Feature bullets with discs.",
+    "Nested procedures inside cards.",
+    "Settings pages enumerating options."
+  ],
+  "faqs": [
+    {
+      "question": "How do I nest lists?",
+      "answer": "Place another List inside a List.Item child; keep nesting shallow for readability."
+    },
+    {
+      "question": "Can markers be removed?",
+      "answer": "Use marker=\"none\" on unordered lists when building custom layouts while keeping semantic ul structure."
+    },
+    {
+      "question": "Are ordered lists always decimal?",
+      "answer": "Ordered lists apply decimal styling by default; extend via className if you need alternate schemes."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Exposes ul and ol variants with shared tone styling.\n\nList.Item renders relaxed line-height items ready for nested lists."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Use ordered for sequences and unordered for collections.\n\nApply marker styles only when ordered is false."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Announce lists with proper ul/ol semantics.\n\nEnsure nested lists maintain coherent reading order."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Static lists render from server components.\n\nHydrate only when adding interactive reordering."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

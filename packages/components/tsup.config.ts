@@ -29,6 +29,7 @@ const uiComponentNames = [
   "toast",
   "toggle",
   "tooltip",
+  "typography",
 ] as const;
 
 const uiAnimatedComponentNames = [

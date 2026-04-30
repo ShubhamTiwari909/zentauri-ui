@@ -1,0 +1,72 @@
+{
+  "category": "Typography",
+  "title": "Text component — body copy with tones",
+  "description": "Paragraph and inline-oriented Text primitive with sizes, tones, and emphasis flags for React interfaces.",
+  "keywords": ["paragraph", "typography", "React", "body text", "Tailwind CSS"],
+  "og": {
+    "title": "Typography · Paragraph · Zentauri UI",
+    "description": "Paragraph and inline-oriented Text primitive with sizes, tones, and emphasis flags for React interfaces.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Typography · Paragraph · Zentauri UI",
+    "description": "Paragraph and inline-oriented Text primitive with sizes, tones, and emphasis flags for React interfaces.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/typography/paragraph",
+  "headings": {
+    "h1": "Paragraph text for interfaces",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Default to paragraph semantics with optional span, div, or label rendering when forms require it.",
+  "useCases": [
+    "Long-form docs and marketing blurbs.",
+    "Muted helper lines under controls.",
+    "Inline labels next to toggles.",
+    "Highlighted phrases without leaving the Text primitive."
+  ],
+  "faqs": [
+    {
+      "question": "How do sizes map?",
+      "answer": "sm, base, and lg align with Tailwind text-sm through text-lg with relaxed leading."
+    },
+    {
+      "question": "Can I nest interactive elements?",
+      "answer": "Children can include links or buttons; keep interactive targets large enough for pointer and keyboard users."
+    },
+    {
+      "question": "Does highlight use a fixed color?",
+      "answer": "Highlight applies an amber translucent wash suitable for dark shells; override with className if your theme differs."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Provides sized body copy with tone variants and emphasis switches.\n\nHighlight wraps phrases with a subtle background wash."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Use `as` to swap tags without losing typography recipes.\n\nPair muted tone with secondary layout chrome sparingly."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Prefer paragraphs for blocks of text.\n\nReserve label rendering for actual label semantics tied to controls."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Server components can render static Text content.\n\nMove interactive demos into client boundaries only when required."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

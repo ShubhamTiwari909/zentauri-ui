@@ -1,0 +1,79 @@
+{
+  "category": "Typography",
+  "title": "Typography primitives for React content",
+  "description": "Heading, Text, List, Blockquote, and code typography primitives for React and Next.js — semantic HTML, Tailwind-backed tones, and copy-ready previews.",
+  "keywords": [
+    "typography component",
+    "React",
+    "Next.js",
+    "design system",
+    "Tailwind CSS",
+    "headings"
+  ],
+  "og": {
+    "title": "Typography · Zentauri UI",
+    "description": "Heading, Text, List, Blockquote, and code typography primitives for React and Next.js — semantic HTML, Tailwind-backed tones, and copy-ready previews.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Typography · Zentauri UI",
+    "description": "Heading, Text, List, Blockquote, and code typography primitives for React and Next.js — semantic HTML, Tailwind-backed tones, and copy-ready previews.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/typography",
+  "headings": {
+    "h1": "Typography system overview",
+    "h2": [
+      "What it does",
+      "Sections",
+      "Composition and API",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Browse headings, body copy, lists, quotations, inline emphasis, and code blocks from one hub. Each section demonstrates variants, formatting combinations, and snippets you can paste into App Router pages.",
+  "useCases": [
+    "Marketing pages with consistent heading scale.",
+    "Documentation sites with lists and block quotes.",
+    "Dashboard copy with muted secondary lines.",
+    "Inline code and fenced samples without bespoke CSS."
+  ],
+  "faqs": [
+    {
+      "question": "Does Typography work with Next.js App Router?",
+      "answer": "Yes. Primitives are plain React components; use them in server components unless you wrap interactive playgrounds that rely on client hooks."
+    },
+    {
+      "question": "Can I override styles with Tailwind?",
+      "answer": "Pass className to merge utilities; tones map to semantic Tailwind text colors aligned with the rest of Zentauri UI."
+    },
+    {
+      "question": "How do I choose heading levels for accessibility?",
+      "answer": "Match Heading level to document outline: one h1 per page where appropriate, then descend without skipping ranks inside each region."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Provides Heading, Text, List, Blockquote, InlineCode, and CodeBlock with shared tone and emphasis props.\n\nUse semantic HTML by default and tune visuals with display overrides only when necessary."
+    },
+    {
+      "heading": "Sections",
+      "body": ""
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Prefer small primitives over prop-heavy wrappers.\n\nCompose bold, italic, underline, and strikethrough via booleans on Heading and Text."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Reserve headings for titles and sections.\n\nKeep contrast sufficient for muted tones against your background; validate blockquotes with readable citations."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from `@zentauri-ui/zentauri-components/ui/typography`.\n\nSet NEXT_PUBLIC_SITE_URL so canonical metadata resolves on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Sections"
+}

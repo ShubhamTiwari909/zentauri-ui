@@ -29,6 +29,7 @@ import tabs from "@/content/seo/preview/components/tabs.json";
 import toast from "@/content/seo/preview/components/toast.json";
 import toggle from "@/content/seo/preview/components/toggle.json";
 import tooltip from "@/content/seo/preview/components/tooltip.json";
+import typography from "@/content/seo/preview/components/typography.json";
 
 const previewSeoRegistry = {
   index: index as PreviewSeoDocument,
@@ -61,6 +62,7 @@ const previewSeoRegistry = {
   toast: toast as PreviewSeoDocument,
   toggle: toggle as PreviewSeoDocument,
   tooltip: tooltip as PreviewSeoDocument,
+  typography: typography as PreviewSeoDocument,
 } as const;
 
 export type PreviewSeoSlug = keyof typeof previewSeoRegistry;

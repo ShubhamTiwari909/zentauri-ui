@@ -350,9 +350,9 @@ export function HomeComponentShowcase() {
             href="/preview/components/modal"
             code={CODE_MODAL}
             preview={<div className="flex flex-wrap gap-3">
-              {
-                ["sky",'rose', 'emerald', "gradient-teal", "gradient-indigo"].map(
-                  (appearance) => {
+              {(
+                ["sky", "rose", "emerald", "gradient-teal", "gradient-indigo"] as const
+              ).map((appearance) => {
                     return (
                       <Modal key={appearance}>
                         <ModalTrigger appearance={appearance} className="px-5 py-3">
@@ -380,9 +380,7 @@ export function HomeComponentShowcase() {
                         </ModalContentAnimated>
                       </Modal>
                     );
-                  },
-                )
-              }
+                  })}
             </div>}
           />
           <ShowcaseRow

@@ -2,6 +2,7 @@ import { siteChromeNavItems } from "@/components/common/site-chrome-nav";
 import {
   sidebarComponentsData,
   sidebarHooksData,
+  sidebarTypographyData,
 } from "@/components/sidebar/sidebar-data";
 import { HOOK_PREVIEW_REGISTRY } from "@/lib/constants";
 
@@ -22,6 +23,7 @@ const navKeywords: Record<string, readonly string[]> = {
   "/preview/installation": ["install", "setup", "npm", "package", "getting started"],
   "/preview/components": ["components", "ui", "catalog"],
   "/preview/hooks": ["hooks", "react hooks", "catalog"],
+  "/preview/typography": ["typography", "text", "styles", "catalog"],
   "https://github.com/ShubhamTiwari909/zentauri-ui": [
     "github",
     "repository",
@@ -93,6 +95,22 @@ function buildSiteSearchEntries(): SiteSearchEntryRecord[] {
         external: item.external,
         description: hookMeta?.description,
         keywords: keywords.length > 0 ? keywords : undefined,
+      });
+    }
+  }
+
+  for (const group of sidebarTypographyData) {
+    for (const item of group.items) {
+      if (byHref.has(item.href)) {
+        continue;
+      }
+      byHref.set(item.href, {
+        id: item.href,
+        label: item.title,
+        href: item.href,
+        group: group.title,
+        external: item.external,
+        keywords: pathKeywordTokens(item.href),
       });
     }
   }

@@ -1,0 +1,72 @@
+{
+  "category": "Typography",
+  "title": "Blockquote component — quotations with attribution",
+  "description": "Blockquote typography primitive with optional attribution footer for citations in React content.",
+  "keywords": ["blockquote", "typography", "React", "quote", "Tailwind CSS"],
+  "og": {
+    "title": "Typography · Blockquote · Zentauri UI",
+    "description": "Blockquote typography primitive with optional attribution footer for citations in React content.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Typography · Blockquote · Zentauri UI",
+    "description": "Blockquote typography primitive with optional attribution footer for citations in React content.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/typography/blockquote",
+  "headings": {
+    "h1": "Quotations and citations",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Wrap testimonials and excerpts with a bordered emphasis rail and optional attribution rendered as cite inside a footer.",
+  "useCases": [
+    "Docs quoting specifications.",
+    "Marketing quotes with author lines.",
+    "Changelog callouts referencing sources.",
+    "Support macros referencing policies."
+  ],
+  "faqs": [
+    {
+      "question": "Does attribution support URLs?",
+      "answer": "Pass readable attribution text; link out via children if you need anchors alongside the quote."
+    },
+    {
+      "question": "Can I embed headings inside quotes?",
+      "answer": "Children accept arbitrary rich content; mind heading order relative to the surrounding page."
+    },
+    {
+      "question": "Is cite separate from HTML cite URLs?",
+      "answer": "Attribution renders a cite element with display text; native cite URL attributes remain available via props if needed."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Adds border-accent blockquote styling with muted footer attribution.\n\nChildren are grouped with relaxed spacing."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Tone adjusts text color consistently with other typography primitives.\n\nPrefer short excerpts over entire articles."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Blockquote communicates quotation semantics.\n\nPair attribution with readable contrast."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Quotes can render statically from MDX or CMS payloads.\n\nValidate escaping when piping HTML strings."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

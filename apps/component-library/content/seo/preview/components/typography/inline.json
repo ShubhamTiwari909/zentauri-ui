@@ -1,0 +1,72 @@
+{
+  "category": "Typography",
+  "title": "Inline text — emphasis and code spans",
+  "description": "Bold, italic, underline, strikethrough, highlight, and InlineCode spans inside React typography.",
+  "keywords": ["inline code", "emphasis", "React", "typography", "Tailwind CSS"],
+  "og": {
+    "title": "Typography · Inline · Zentauri UI",
+    "description": "Bold, italic, underline, strikethrough, highlight, and InlineCode spans inside React typography.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Typography · Inline · Zentauri UI",
+    "description": "Bold, italic, underline, strikethrough, highlight, and InlineCode spans inside React typography.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/typography/inline",
+  "headings": {
+    "h1": "Inline emphasis and tokens",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Compose InlineCode for monospace tokens and Text toggles for semantic emphasis patterns inside paragraphs.",
+  "useCases": [
+    "CLI snippets beside sentences.",
+    "API parameter names in prose.",
+    "Warnings with destructive tone.",
+    "Highlighted beta labels."
+  ],
+  "faqs": [
+    {
+      "question": "Should InlineCode wrap keyboard keys?",
+      "answer": "Yes for monospace clarity; pair with Text emphasis when describing shortcuts."
+    },
+    {
+      "question": "Can InlineCode sit inside buttons?",
+      "answer": "Technically yes, but prefer plain spans inside buttons unless monospace is required."
+    },
+    {
+      "question": "Does destructive tone imply errors?",
+      "answer": "It applies rose text styling—reserve for risky actions or validation messaging."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Demonstrates emphasis combinations on Text and monospace InlineCode surfaces.\n\nTones align with the broader typography palette."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Nest InlineCode inside Text or headings sparingly.\n\nAvoid deeply nested emphasis toggles."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Underline complements links elsewhere—avoid conflicting patterns.\n\nHighlight should not be the only cue."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Static docs can ship Inline-heavy paragraphs from MDX.\n\nEnsure code tokens escape user-provided strings."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

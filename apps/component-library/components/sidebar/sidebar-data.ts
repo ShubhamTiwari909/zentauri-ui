@@ -24,6 +24,47 @@ export const sidebareRouteDataShared = [
         title: "Hooks",
         href: "/preview/hooks",
       },
+      {
+        title: "Typography",
+        href: "/preview/typography",
+      },
+    ],
+  },
+];
+
+const typographySidebarItems = [
+  {
+    title: "Heading",
+    href: "/preview/typography/heading",
+  },
+  {
+    title: "Paragraph",
+    href: "/preview/typography/paragraph",
+  },
+  {
+    title: "Lists",
+    href: "/preview/typography/lists",
+  },
+  {
+    title: "Blockquote",
+    href: "/preview/typography/blockquote",
+  },
+  {
+    title: "Inline",
+    href: "/preview/typography/inline",
+  },
+  {
+    title: "Code Block",
+    href: "/preview/typography/code-block",
+  },
+];
+
+export const sidebarTypographyData: SidebarNavGroup[] = [
+  ...sidebareRouteDataShared,
+  {
+    title: "Typography",
+    items: [
+      ...typographySidebarItems,
     ],
   },
 ];

@@ -1,0 +1,72 @@
+{
+  "category": "Typography",
+  "title": "CodeBlock component — fenced samples",
+  "description": "Pre/code CodeBlock primitive for multi-line samples with monospace styling and optional language hints.",
+  "keywords": ["code block", "pre", "typography", "React", "syntax", "Tailwind CSS"],
+  "og": {
+    "title": "Typography · Code blocks · Zentauri UI",
+    "description": "Pre/code CodeBlock primitive for multi-line samples with monospace styling and optional language hints.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Typography · Code blocks · Zentauri UI",
+    "description": "Pre/code CodeBlock primitive for multi-line samples with monospace styling and optional language hints.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/typography/code-block",
+  "headings": {
+    "h1": "Multi-line code samples",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use CodeBlock for copy-ready snippets with horizontal scrolling on narrow viewports and aria-labels describing language hints.",
+  "useCases": [
+    "Installation commands.",
+    "JSON payloads in docs.",
+    "Diff excerpts for reviews.",
+    "Sample env blocks with warnings."
+  ],
+  "faqs": [
+    {
+      "question": "Does CodeBlock highlight syntax?",
+      "answer": "Not by default—pipe highlighted nodes as children or integrate a highlighter in your app shell."
+    },
+    {
+      "question": "How does language prop help?",
+      "answer": "It shapes aria-label text for assistive technologies and future highlighting integrations."
+    },
+    {
+      "question": "Can children include JSX?",
+      "answer": "Pass plain text children for simplest cases; advanced highlighting may inject spans inside code."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Wraps children in pre/code with padded, bordered surfaces.\n\nOverflow-x keeps wide snippets usable on mobile."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Tone adjusts text color consistently with other typography primitives.\n\nExtend via className when embedding inside cards."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Labels describe the snippet purpose.\n\nEnsure focus order still reaches surrounding explanatory text."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Avoid importing massive highlighters into server layouts unnecessarily.\n\nLazy-load heavy highlighting clientside when needed."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

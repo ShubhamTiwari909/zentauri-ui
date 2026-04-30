@@ -1,0 +1,72 @@
+{
+  "category": "Typography",
+  "title": "Heading component — semantic h1–h6 scale",
+  "description": "Heading primitive for React pages — levels map to h1–h6 with optional display scaling and tone variants.",
+  "keywords": ["heading", "typography", "React", "Next.js", "h1", "Tailwind CSS"],
+  "og": {
+    "title": "Typography · Headings · Zentauri UI",
+    "description": "Heading primitive for React pages — levels map to h1–h6 with optional display scaling and tone variants.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Typography · Headings · Zentauri UI",
+    "description": "Heading primitive for React pages — levels map to h1–h6 with optional display scaling and tone variants.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/typography/heading",
+  "headings": {
+    "h1": "Headings for page structure",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use Heading to mirror your outline with semantic tags while tuning visual scale via displayLevel when marketing layouts need different sizing.",
+  "useCases": [
+    "Hero titles and section titles in docs.",
+    "Admin shells with predictable heading scale.",
+    "Landing pages that keep one clear h1.",
+    "Cards where visual size differs from outline rank."
+  ],
+  "faqs": [
+    {
+      "question": "Can heading level differ from visual size?",
+      "answer": "Yes. Use displayLevel to adjust Tailwind scale classes while keeping the semantic tag from level."
+    },
+    {
+      "question": "Do headings include spacing presets?",
+      "answer": "Spacing is left to layout utilities; primitives stay predictable so page shells control rhythm."
+    },
+    {
+      "question": "Are tones accessible on dark backgrounds?",
+      "answer": "Defaults target slate surfaces used across Zentauri previews; verify contrast if you change surfaces."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Maps level 1–6 to native heading tags with shared tone and emphasis toggles.\n\nscroll-m-20 aids anchor navigation without extra wrappers."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Combine tone with bold, italic, underline, or strikethrough when specs call for emphasis.\n\nAvoid skipping heading ranks inside the same container."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Expose the correct level for screen reader outlines.\n\nDo not style plain divs as headings—use the semantic tag."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import Heading from `@zentauri-ui/zentauri-components/ui/typography`.\n\nKeep interactive playgrounds in client components only when needed."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
