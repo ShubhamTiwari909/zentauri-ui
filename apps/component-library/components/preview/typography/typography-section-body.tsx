@@ -93,7 +93,7 @@ function ToneGridCodeBlock() {
       {TYPOGRAPHY_TONES.map((tone) => (
         <div key={tone} className="space-y-2 rounded-xl border border-white/10 bg-white/3 p-4">
           <Text className="text-xs uppercase tracking-wide text-slate-500">{tone}</Text>
-          <CodeBlock tone={tone} language="ts">{`export const tone = "${tone}";`}</CodeBlock>
+          <CodeBlock tone={tone} className="wrap-anywhere" language="ts">{`export const tone = "${tone}";`}</CodeBlock>
         </div>
       ))}
     </div>
@@ -261,7 +261,7 @@ export function TypographySectionBody({
         <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
           Tone tokens align with dark shells across Zentauri previews—swap surfaces thoughtfully.
         </p>
-        <div className="mt-6">
+        <div className="mt-6 w-full overflow-auto">
           <VariantsForSection section={section} />
         </div>
       </section>

@@ -106,7 +106,9 @@ export function InlineEmphasisDemo() {
 
 export function CodeBlockToneDemo({ tone }: { tone: AppTypographyTone }) {
   return (
-    <CodeBlock tone={tone} language="ts">{`export const tone = "${tone}";`}</CodeBlock>
+    <div className="w-full md:w-fit overflow-x-auto">
+      <CodeBlock tone={tone} language="ts">{`export const tone = "${tone}";`}</CodeBlock>
+    </div>
   );
 }
 
