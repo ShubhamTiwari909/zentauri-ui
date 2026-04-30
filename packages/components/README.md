@@ -16,7 +16,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `@zentauri-ui/zentauri-components/ui/<name>/animated` | Motion entry for that area when published: animated components, motion presets, and related types (depends on **framer-motion**).     |
 | `@zentauri-ui/zentauri-components/hooks/<entry>` | One hook module or `utils` (`cn`, `clampPage`, `range` from `src/lib/utils.ts`). Entries match files under `src/hooks/` (see **React hooks**). |
 
-The UI `<name>` segment matches the folder under `src/ui/` (for example `accordion`, `select`, `empty-state`, `buttons` for `Button`, `inputs` for `Input`). The hooks `<entry>` is the file stem (for example `useMediaQuery`, `usePagination`) or `utils`.
+The UI `<name>` segment matches the folder under `src/ui/` (for example `accordion`, `select`, `empty-state`, `buttons` for `Button`, `inputs` for `Input`, `typography` for `Heading` / `Text` and related primitives). The hooks `<entry>` is the file stem (for example `useMediaQuery`, `usePagination`) or `utils`.
 
 Only a subset of UI areas publish a `/animated` entry (see **Components**). Some motion entries also re-export non-motion pieces from the same feature so you can import one motion subpath for a whole flow; others pair a base `ui/<name>` import with a small set of `*Animated` exports from `ui/<name>/animated`—use the `animated/index.ts` for that area as the source of truth.
 
@@ -69,6 +69,68 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Toast          | `toast`               | `toast/animated`                     |
 | Toggle         | `toggle`              | `toggle/animated`                    |
 | Tooltip        | `tooltip`             | `tooltip/animated`                   |
+| Typography     | `typography`          | —                                    |
+
+## Typography
+
+Import from `@zentauri-ui/zentauri-components/ui/typography`. This entry is **static only** (no `/animated` subpath).
+
+**Components:** `Heading`, `Text`, `List` (with `List.Item`, also exported as `ListItem`), `Blockquote`, `InlineCode`, `CodeBlock`.
+
+**Types:** `HeadingProps`, `TextProps`, `ListProps`, `ListItemProps`, `BlockquoteProps`, `InlineCodeProps`, `CodeBlockProps`, `HeadingLevel`, `TextElement`, `TypographyTone`, `UnorderedMarker`.
+
+**Tone (`tone` prop):** `default`, `muted`, `primary`, `secondary`, `accent`, `destructive`, `info`, `success`, `warning`, `error`, and gradient presets: `gradient-pink-violet`, `gradient-cyan-violet`, `gradient-cyan-blue`, `gradient-cyan-green`, `gradient-cyan-orange`, `gradient-cyan-red`, `gradient-cyan-purple`, `gradient-cyan-pink`. Tones align with kit accent colors (slate / cyan / violet baseline).
+
+**Heading:** `level` is required (`1`–`6`) and picks the semantic tag (`h1`–`h6`). Optional `displayLevel` overrides only the visual scale (still the same tag). Optional `bold`, `italic`, `underline`, `strikethrough`.
+
+**Text:** Optional `as` (`p`, `span`, `div`, `label`; default `p`). `size` is `sm`, `base`, or `lg` (default `base`). Optional `highlight` plus the same emphasis flags as headings where applicable.
+
+**List:** `ordered` renders an `<ol>` (decimal markers); omit or `false` for `<ul>`. Unordered lists accept `marker`: `disc`, `circle`, or `none`.
+
+**Blockquote:** Optional `attribution` renders a footer label (separate from the HTML `cite` attribute).
+
+**Code samples:** `InlineCode` styles inline `code`; `CodeBlock` renders a `pre` with an inner `code` (pass string or fragment children, not another `code` element) and optional `language` for `aria-label`.
+
+**CVA helpers (composition):** `headingLevelVariants`, `textSizeVariants`, `typographyToneVariants`, `unorderedListMarkerVariants`, `orderedListVariants`.
+
+```tsx
+import {
+  Blockquote,
+  CodeBlock,
+  Heading,
+  InlineCode,
+  List,
+  Text,
+} from "@zentauri-ui/zentauri-components/ui/typography";
+
+export function ArticleIntro() {
+  return (
+    <>
+      <Heading level={2} displayLevel={1} tone="gradient-cyan-violet">
+        Feature title
+      </Heading>
+      <Text as="p" size="sm" tone="muted">
+        Supporting copy with{" "}
+        <InlineCode tone="accent">inline code</InlineCode>.
+      </Text>
+      <List marker="disc" tone="default">
+        <List.Item>First item</List.Item>
+        <List.Item>Second item</List.Item>
+      </List>
+      <List ordered tone="muted">
+        <List.Item>Step one</List.Item>
+        <List.Item>Step two</List.Item>
+      </List>
+      <Blockquote tone="secondary" attribution="Docs">
+        Quoted guidance for the reader.
+      </Blockquote>
+      <CodeBlock language="tsx" tone="muted">
+        {`export const app = () => null;`}
+      </CodeBlock>
+    </>
+  );
+}
+```
 
 ## React hooks
 

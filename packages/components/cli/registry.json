@@ -28,7 +28,8 @@
     "tabs",
     "toast",
     "toggle",
-    "tooltip"
+    "tooltip",
+    "typography"
   ],
   "hooks": [
     "useBodyScrollLock",

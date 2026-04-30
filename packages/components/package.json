@@ -1,6 +1,6 @@
 {
   "name": "@zentauri-ui/zentauri-components",
-  "version": "1.4.51",
+  "version": "1.4.6",
   "description": "React + Tailwind UI kit with ESM/CJS builds, per-entry exports, and a zentauri-components / zentauri-ui CLI to vendor UI or hook source into your app",
   "license": "MIT",
   "files": ["dist", "src/ui", "src/lib", "src/hooks", "cli"],
