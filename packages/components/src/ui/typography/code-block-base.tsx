@@ -29,7 +29,7 @@ export const CodeBlockBase = (props: CodeBlockProps) => {
         )}
         {...rest}
       >
-        <code className="font-mono text-[0.95em]">{children}</code>
+        <code className="font-mono text-[0.95em] whitespace-pre-wrap wrap-break-word">{children}</code>
       </pre>
     );
 };

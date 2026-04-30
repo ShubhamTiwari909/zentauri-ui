@@ -146,10 +146,11 @@ export function codeBlockToneSnippet(tone: AppTypographyTone): string {
   const t = toneAttr(tone);
   return `${variantLeadComment(`code-block · tone · ${tone}`)}
 ${IMPORT_CODE_BLOCK}
-
-<CodeBlock language="ts"${t}>
-  export const tone = "${tone}";
-</CodeBlock>`;
+<div className="w-full md:w-fit overflow-x-auto">
+  <CodeBlock language="ts"${t}>
+    export const tone = "${tone}";
+  </CodeBlock>
+</div>`;
 }
 
 export function codeBlockLanguageBashSnippet(): string {
