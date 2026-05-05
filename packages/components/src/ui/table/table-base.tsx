@@ -30,6 +30,7 @@ export function TableBase(props: TableProps) {
     size = "md",
     textAlign = "left",
     stickyHeader = false,
+    scrollAreaAriaLabel,
     children,
     ref,
     ...rest
@@ -47,7 +48,16 @@ export function TableBase(props: TableProps) {
 
   return (
     <TableContext.Provider value={ctx}>
-      <div data-slot="table-scroll" className="relative w-full overflow-auto">
+      <div
+        data-slot="table-scroll"
+        tabIndex={0}
+        role="region"
+        aria-label={scrollAreaAriaLabel ?? "Scrollable table"}
+        className={cn(
+          "relative w-full overflow-auto",
+          "outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950",
+        )}
+      >
         <table
           ref={ref}
           data-slot="table"
@@ -162,17 +172,34 @@ export function TableCell({
   className,
   children,
   ref,
+  scope,
   ...rest
 }: TableCellProps) {
   const { appearance, size, textAlign } = useTableContext("TableCell");
+  const cellClassName = cn(
+    tableCellVariants({ appearance, size, textAlign }),
+    className,
+  );
+
+  if (scope !== undefined) {
+    return (
+      <th
+        ref={ref}
+        data-slot="table-cell"
+        scope={scope}
+        className={cellClassName}
+        {...rest}
+      >
+        {children}
+      </th>
+    );
+  }
+
   return (
     <td
       ref={ref}
       data-slot="table-cell"
-      className={cn(
-        tableCellVariants({ appearance, size, textAlign }),
-        className,
-      )}
+      className={cellClassName}
       {...rest}
     >
       {children}

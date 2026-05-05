@@ -41,7 +41,9 @@ describe("Slider", () => {
         </SliderTrack>
       </Slider>,
     );
-    expect(screen.getByRole("slider")).toHaveAttribute("aria-valuenow", "25");
+    const thumb = screen.getByRole("slider");
+    expect(thumb).toHaveAttribute("aria-valuenow", "25");
+    expect(thumb).toHaveAttribute("aria-label", "Level");
   });
 
   it("should adjust value with keyboard", async () => {
@@ -90,5 +92,27 @@ describe("RangeSlider", () => {
       <RangeSlider defaultValue={[10, 90]} aria-label="Range" />,
     );
     expect(screen.getAllByRole("slider")).toHaveLength(2);
+  });
+
+  it("should give each thumb an accessible name when aria-label is set", () => {
+    render(<RangeSlider defaultValue={[10, 90]} aria-label="Budget" />);
+    const thumbs = screen.getAllByRole("slider");
+    expect(thumbs[0]).toHaveAttribute("aria-label", "Budget, minimum");
+    expect(thumbs[1]).toHaveAttribute("aria-label", "Budget, maximum");
+  });
+
+  it("should mirror aria-labelledby onto thumbs when aria-label is omitted", () => {
+    render(
+      <>
+        <span id="range-lbl">Volume band</span>
+        <RangeSlider
+          defaultValue={[10, 90]}
+          aria-labelledby="range-lbl"
+        />
+      </>,
+    );
+    const thumbs = screen.getAllByRole("slider");
+    expect(thumbs[0]).toHaveAttribute("aria-labelledby", "range-lbl");
+    expect(thumbs[1]).toHaveAttribute("aria-labelledby", "range-lbl");
   });
 });

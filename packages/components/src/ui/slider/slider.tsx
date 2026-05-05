@@ -208,8 +208,21 @@ export function Slider({
       size: size ?? "md",
       appearance: appearance ?? "default",
       trackRef,
+      "aria-label": ariaLabel,
+      "aria-labelledby": ariaLabelledBy,
     }),
-    [appearance, disabled, max, min, setValue, size, step, value],
+    [
+      appearance,
+      ariaLabel,
+      ariaLabelledBy,
+      disabled,
+      max,
+      min,
+      setValue,
+      size,
+      step,
+      value,
+    ],
   );
 
   return (
@@ -303,8 +316,18 @@ export function SliderThumb({
   ref: refProp,
   ...rest
 }: SliderThumbProps & { ref?: Ref<HTMLDivElement> }) {
-  const { min, max, value, step, setValue, disabled, size, trackRef } =
-    useSliderContext("SliderThumb");
+  const {
+    min,
+    max,
+    value,
+    step,
+    setValue,
+    disabled,
+    size,
+    trackRef,
+    "aria-label": sliderAriaLabel,
+    "aria-labelledby": sliderAriaLabelledBy,
+  } = useSliderContext("SliderThumb");
   /** Horizontal thumb position; same mapping as `SliderRange` width uses. */
   const pct = max === min ? 0 : ((value - min) / (max - min)) * 100;
 
@@ -414,6 +437,8 @@ export function SliderThumb({
       role="slider"
       tabIndex={disabled ? -1 : 0}
       data-slot="slider-thumb"
+      aria-label={sliderAriaLabel}
+      aria-labelledby={sliderAriaLabelledBy}
       aria-valuemin={min}
       aria-valuemax={max}
       aria-valuenow={value}
@@ -561,6 +586,13 @@ export function RangeSlider({
 
   const resolvedSize = size ?? "md";
 
+  const lowThumbAriaLabel =
+    ariaLabel !== undefined ? `${ariaLabel}, minimum` : undefined;
+  const highThumbAriaLabel =
+    ariaLabel !== undefined ? `${ariaLabel}, maximum` : undefined;
+  const thumbAriaLabelledBy =
+    ariaLabel === undefined ? ariaLabelledBy : undefined;
+
   return (
     <div
       ref={ref}
@@ -568,7 +600,6 @@ export function RangeSlider({
       role="group"
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy}
-      aria-valuetext={`${lo} – ${hi}`}
       className={cn(sliderRootVariants({ size: resolvedSize }), className)}
       {...rest}
     >
@@ -596,6 +627,8 @@ export function RangeSlider({
           trackRef={trackRef}
           onMoveClientX={(x) => moveThumb(0, x)}
           onNudge={(delta) => setPair([lo + delta, hi])}
+          aria-label={lowThumbAriaLabel}
+          aria-labelledby={thumbAriaLabelledBy}
         />
         <RangeThumb
           disabled={disabled}
@@ -608,6 +641,8 @@ export function RangeSlider({
           trackRef={trackRef}
           onMoveClientX={(x) => moveThumb(1, x)}
           onNudge={(delta) => setPair([lo, hi + delta])}
+          aria-label={highThumbAriaLabel}
+          aria-labelledby={thumbAriaLabelledBy}
         />
       </div>
     </div>
@@ -629,6 +664,8 @@ type RangeThumbProps = {
   onMoveClientX: (clientX: number) => void;
   /** Relative keyboard adjustment in value units; parent merges into the pair. */
   onNudge: (delta: number) => void;
+  "aria-label"?: string;
+  "aria-labelledby"?: string;
 };
 
 /** Private thumb implementation shared by the low and high endpoints. */
@@ -643,6 +680,8 @@ function RangeThumb({
   trackRef,
   onMoveClientX,
   onNudge,
+  "aria-label": thumbAriaLabel,
+  "aria-labelledby": thumbAriaLabelledBy,
 }: RangeThumbProps) {
   const onPointerDown = useCallback(
     (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -712,6 +751,8 @@ function RangeThumb({
       role="slider"
       tabIndex={disabled ? -1 : 0}
       data-slot="range-slider-thumb"
+      aria-label={thumbAriaLabel}
+      aria-labelledby={thumbAriaLabelledBy}
       aria-valuemin={min}
       aria-valuemax={max}
       aria-valuenow={value}

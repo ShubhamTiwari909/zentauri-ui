@@ -20,9 +20,9 @@ export type SliderProps = SliderRootVariantProps & {
   onValueChange?: (value: number) => void;
   disabled?: boolean;
   appearance?: VariantProps<typeof sliderRangeVariants>["appearance"];
-  /** Label for the slider group (accessibility). */
+  /** Accessible name for the slider (applied to the focusable thumb). */
   "aria-label"?: string;
-  /** Optional visible label id */
+  /** Visible label element id (`aria-labelledby` on the focusable thumb). */
   "aria-labelledby"?: string;
   children?: ReactNode;
 } & Omit<ComponentPropsWithoutRef<"div">, "children" | "defaultValue">;
@@ -45,7 +45,9 @@ export type RangeSliderProps = SliderRootVariantProps & {
   onValueChange?: (value: [number, number]) => void;
   disabled?: boolean;
   appearance?: VariantProps<typeof sliderRangeVariants>["appearance"];
+  /** Accessible name for the range control (each thumb gets a distinct suffix). */
   "aria-label"?: string;
+  /** Visible label element id for each thumb when `aria-label` is not used. */
   "aria-labelledby"?: string;
 } & Omit<ComponentPropsWithoutRef<"div">, "children" | "defaultValue">;
 
@@ -63,4 +65,8 @@ export type SliderCtx = {
   size: NonNullable<SliderProps["size"]>;
   appearance: SliderAppearance;
   trackRef: RefObject<HTMLDivElement | null>;
+  /** Mirrored from `<Slider>` so the focusable thumb exposes an accessible name. */
+  "aria-label"?: string;
+  /** Mirrored from `<Slider>` so the focusable thumb exposes an accessible name. */
+  "aria-labelledby"?: string;
 };
