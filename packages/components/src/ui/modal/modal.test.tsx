@@ -141,4 +141,27 @@ describe("Modal", () => {
     await user.keyboard("{Escape}");
     await waitFor(() => expect(handleChange).toHaveBeenLastCalledWith(false));
   });
+
+  it("should restore focus to the trigger after the dialog closes", async () => {
+    const user = userEvent.setup();
+    render(
+      <Modal>
+        <ModalTrigger>Open</ModalTrigger>
+        <ModalContent>
+          <ModalTitle>T</ModalTitle>
+        </ModalContent>
+      </Modal>,
+    );
+    const trigger = screen.getByRole("button", { name: "Open" });
+    trigger.focus();
+    await user.click(trigger);
+    await waitFor(() =>
+      expect(screen.getByRole("dialog")).toBeInTheDocument(),
+    );
+    await user.keyboard("{Escape}");
+    await waitFor(() =>
+      expect(screen.queryByRole("dialog")).not.toBeInTheDocument(),
+    );
+    expect(trigger).toHaveFocus();
+  });
 });

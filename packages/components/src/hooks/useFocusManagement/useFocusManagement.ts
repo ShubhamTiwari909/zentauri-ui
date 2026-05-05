@@ -1,7 +1,7 @@
 "use client";
 
 import type { RefObject } from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { useBodyScrollLock } from "../useBodyScrollLock";
 
 const FOCUSABLE_SELECTOR =
@@ -42,11 +42,14 @@ export const useFocusManagement = ({
   open,
   setOpen,
   contentRef,
+  triggerRef,
   focusableSelector = FOCUSABLE_SELECTOR,
 }: {
   open: boolean;
   setOpen: (open: boolean) => void;
   contentRef: RefObject<HTMLElement | null>;
+  /** Last modal trigger control; used when focus cannot be inferred at open time. */
+  triggerRef?: RefObject<HTMLElement | null>;
   focusableSelector?: string;
 }) => {
   useBodyScrollLock(open);
@@ -66,28 +69,36 @@ export const useFocusManagement = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [open, setOpen]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!open) {
       return;
     }
-    const node = contentRef.current;
-    if (!node) {
-      return;
-    }
-    const active = document.activeElement;
-    previousFocusRef.current =
-      active instanceof HTMLElement && active !== document.body ? active : null;
 
-    const focusables = getFocusableElements(node, focusableSelector);
-    const target = focusables[0] ?? node;
-    target.focus({ preventScroll: true });
+    let cancelled = false;
+    let rafId = 0;
+    let trapInstalled = false;
 
-    const handleFocusIn = (event: FocusEvent) => {
-      const target = event.target;
-      if (!(target instanceof Node)) {
+    const detachTrap = () => {
+      if (!trapInstalled) {
         return;
       }
-      if (node.contains(target)) {
+      trapInstalled = false;
+      document.removeEventListener("focusin", handleFocusIn, true);
+      document.removeEventListener("keydown", handleTabKeyDown, true);
+    };
+
+    let trapRoot: HTMLElement | null = null;
+
+    const handleFocusIn = (event: FocusEvent) => {
+      const node = trapRoot;
+      if (!node) {
+        return;
+      }
+      const focused = event.target;
+      if (!(focused instanceof Node)) {
+        return;
+      }
+      if (node.contains(focused)) {
         return;
       }
       const list = getFocusableElements(node, focusableSelector);
@@ -96,6 +107,10 @@ export const useFocusManagement = ({
     };
 
     const handleTabKeyDown = (event: KeyboardEvent) => {
+      const node = trapRoot;
+      if (!node) {
+        return;
+      }
       if (event.key !== "Tab") {
         return;
       }
@@ -129,13 +144,56 @@ export const useFocusManagement = ({
       }
     };
 
-    document.addEventListener("focusin", handleFocusIn, true);
-    document.addEventListener("keydown", handleTabKeyDown, true);
+    const installTrap = () => {
+      if (cancelled) {
+        return;
+      }
+      const node = contentRef.current;
+      if (!node) {
+        rafId = requestAnimationFrame(installTrap);
+        return;
+      }
+
+      trapRoot = node;
+
+      const active = document.activeElement;
+      if (
+        active instanceof HTMLElement &&
+        active !== document.body &&
+        !node.contains(active)
+      ) {
+        previousFocusRef.current = active;
+      } else {
+        previousFocusRef.current = triggerRef?.current ?? null;
+      }
+
+      const focusables = getFocusableElements(node, focusableSelector);
+      const initialFocus = focusables[0] ?? node;
+      initialFocus.focus({ preventScroll: true });
+
+      document.addEventListener("focusin", handleFocusIn, true);
+      document.addEventListener("keydown", handleTabKeyDown, true);
+      trapInstalled = true;
+    };
+
+    installTrap();
+
     return () => {
-      document.removeEventListener("focusin", handleFocusIn, true);
-      document.removeEventListener("keydown", handleTabKeyDown, true);
-      const toRestore = previousFocusRef.current;
+      cancelled = true;
+      cancelAnimationFrame(rafId);
+      detachTrap();
+      trapRoot = null;
+
+      const fallbackTrigger =
+        triggerRef?.current &&
+        document.body.contains(triggerRef.current) &&
+        typeof triggerRef.current.focus === "function"
+          ? triggerRef.current
+          : null;
+
+      const toRestore = previousFocusRef.current ?? fallbackTrigger;
       previousFocusRef.current = null;
+
       if (
         toRestore &&
         typeof toRestore.focus === "function" &&
@@ -144,5 +202,5 @@ export const useFocusManagement = ({
         toRestore.focus({ preventScroll: true });
       }
     };
-  }, [open, contentRef, focusableSelector]);
+  }, [open, contentRef, triggerRef, focusableSelector]);
 };

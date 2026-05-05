@@ -62,6 +62,7 @@ export function Drawer({
   const titleId = `${baseId}-title`;
   const descriptionId = `${baseId}-description`;
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   const ctx = useMemo(
     () => ({
@@ -70,6 +71,7 @@ export function Drawer({
       titleId,
       descriptionId,
       contentRef,
+      triggerRef,
     }),
     [descriptionId, resolvedOpen, setOpen, titleId],
   );
@@ -86,13 +88,20 @@ export function DrawerTrigger({
   children,
   appearance,
   onClick,
-  ref,
+  ref: refProp,
   ...rest
 }: DrawerTriggerProps) {
-  const { setOpen } = useDrawerContext("DrawerTrigger");
+  const { setOpen, triggerRef } = useDrawerContext("DrawerTrigger");
   return (
     <button
-      ref={ref}
+      ref={(node) => {
+        triggerRef.current = node;
+        if (typeof refProp === "function") {
+          refProp(node);
+        } else if (refProp) {
+          (refProp as RefObject<HTMLButtonElement | null>).current = node;
+        }
+      }}
       type="button"
       data-slot="drawer-trigger"
       className={cn(drawerTriggerVariants({ appearance }), className)}
@@ -121,7 +130,7 @@ export function DrawerContent({
   id,
   style,
 }: DrawerContentProps) {
-  const { open, setOpen, titleId, descriptionId, contentRef } =
+  const { open, setOpen, titleId, descriptionId, contentRef, triggerRef } =
     useDrawerContext("DrawerContent");
   const resolvedSide = side ?? "right";
 
@@ -129,6 +138,7 @@ export function DrawerContent({
     open,
     setOpen,
     contentRef,
+    triggerRef,
   });
 
   const portalTarget = typeof document !== "undefined" ? document.body : null;

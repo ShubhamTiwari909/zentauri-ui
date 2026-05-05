@@ -26,7 +26,7 @@ export function DrawerContentAnimated({
   id,
   style,
 }: DrawerContentAnimatedProps) {
-  const { open, setOpen, titleId, descriptionId, contentRef } =
+  const { open, setOpen, titleId, descriptionId, contentRef, triggerRef } =
     useDrawerContext("DrawerContent");
   const resolvedSide = side ?? "right";
   const reduceMotion = useReducedMotion();
@@ -39,6 +39,7 @@ export function DrawerContentAnimated({
     open,
     setOpen,
     contentRef,
+    triggerRef,
   });
 
   const portalTarget = typeof document !== "undefined" ? document.body : null;

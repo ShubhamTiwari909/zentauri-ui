@@ -129,7 +129,7 @@ describe("Button (component library)", () => {
       expect(
         root.className,
         "Destructive appearance must surface danger styling",
-      ).toMatch(/bg-rose-600/);
+      ).toMatch(/bg-rose-700/);
     });
 
     it("should apply outline appearance when appearance='outline'", () => {

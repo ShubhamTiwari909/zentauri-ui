@@ -22,7 +22,7 @@ export function ModalContentAnimated({
   id,
   style,
 }: ModalContentAnimatedProps) {
-  const { open, setOpen, titleId, descriptionId, contentRef } =
+  const { open, setOpen, titleId, descriptionId, contentRef, triggerRef } =
     useModalContext("ModalContent");
   const reduceMotion = useReducedMotion();
   const overlayMotion =
@@ -34,6 +34,7 @@ export function ModalContentAnimated({
     open,
     setOpen,
     contentRef,
+    triggerRef,
   });
 
   const portalTarget = typeof document !== "undefined" ? document.body : null;

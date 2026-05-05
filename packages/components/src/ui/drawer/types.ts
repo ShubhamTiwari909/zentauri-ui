@@ -36,4 +36,5 @@ export type DrawerCtx = {
   titleId: string;
   descriptionId: string;
   contentRef: RefObject<HTMLDivElement | null>;
+  triggerRef: RefObject<HTMLElement | null>;
 };

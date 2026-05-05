@@ -8,6 +8,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type RefObject,
 } from "react";
 import { createPortal } from "react-dom";
 
@@ -31,7 +32,8 @@ type ModalCtx = {
   setOpen: (next: boolean) => void;
   titleId: string;
   descriptionId: string;
-  contentRef: React.RefObject<HTMLDivElement | null>;
+  contentRef: RefObject<HTMLDivElement | null>;
+  triggerRef: RefObject<HTMLElement | null>;
 };
 
 const ModalContext = createContext<ModalCtx | null>(null);
@@ -68,6 +70,7 @@ export function Modal({
   const titleId = `${baseId}-title`;
   const descriptionId = `${baseId}-description`;
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   const ctx = useMemo(
     () => ({
@@ -76,6 +79,7 @@ export function Modal({
       titleId,
       descriptionId,
       contentRef,
+      triggerRef,
     }),
     [descriptionId, resolvedOpen, setOpen, titleId],
   );
@@ -90,13 +94,20 @@ export function ModalTrigger({
   children,
   appearance,
   onClick,
-  ref,
+  ref: refProp,
   ...rest
 }: ModalTriggerProps) {
-  const { setOpen } = useModalContext("ModalTrigger");
+  const { setOpen, triggerRef } = useModalContext("ModalTrigger");
   return (
     <button
-      ref={ref}
+      ref={(node) => {
+        triggerRef.current = node;
+        if (typeof refProp === "function") {
+          refProp(node);
+        } else if (refProp) {
+          (refProp as RefObject<HTMLButtonElement | null>).current = node;
+        }
+      }}
       type="button"
       data-slot="modal-trigger"
       className={cn(modalTriggerVariants({ appearance }), className)}
@@ -126,13 +137,14 @@ export function ModalContent({
   id,
   style,
 }: ModalContentProps) {
-  const { open, setOpen, titleId, descriptionId, contentRef } =
+  const { open, setOpen, titleId, descriptionId, contentRef, triggerRef } =
     useModalContext("ModalContent");
 
   useFocusManagement({
     open,
     setOpen,
     contentRef,
+    triggerRef,
   });
 
   const portalTarget = typeof document !== "undefined" ? document.body : null;
