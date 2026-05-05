@@ -9,7 +9,7 @@ export const tooltipVariants = cva(
         outline: "border bg-white text-black",
         ghost: "bg-gray-800 text-white/90",
         glass: "border border-white/15 bg-white/10 text-white backdrop-blur-md",
-        emerald: "bg-emerald-700 text-white",
+        emerald: "bg-emerald-800 text-white",
         indigo: "bg-indigo-600 text-white",
         purple: "bg-purple-600 text-white",
         pink: "bg-pink-600 text-white",
