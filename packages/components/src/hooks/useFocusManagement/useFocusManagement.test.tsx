@@ -42,4 +42,12 @@ describe("useFocusManagement", () => {
     fireEvent.keyDown(window, { key: "Escape" });
     expect(screen.queryByTestId("dialog")).not.toBeInTheDocument();
   });
+
+  it("should return focus inside the overlay when focus moves outside without Tab", () => {
+    render(<Modal initialOpen />);
+    const outsideButton = screen.getByTestId("after");
+    outsideButton.focus();
+    expect(outsideButton).not.toHaveFocus();
+    expect(screen.getByRole("button", { name: "first" })).toHaveFocus();
+  });
 });

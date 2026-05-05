@@ -82,6 +82,19 @@ export const useFocusManagement = ({
     const target = focusables[0] ?? node;
     target.focus({ preventScroll: true });
 
+    const handleFocusIn = (event: FocusEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node)) {
+        return;
+      }
+      if (node.contains(target)) {
+        return;
+      }
+      const list = getFocusableElements(node, focusableSelector);
+      const redirectTarget = list[0] ?? node;
+      redirectTarget.focus({ preventScroll: true });
+    };
+
     const handleTabKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Tab") {
         return;
@@ -116,8 +129,10 @@ export const useFocusManagement = ({
       }
     };
 
+    document.addEventListener("focusin", handleFocusIn, true);
     document.addEventListener("keydown", handleTabKeyDown, true);
     return () => {
+      document.removeEventListener("focusin", handleFocusIn, true);
       document.removeEventListener("keydown", handleTabKeyDown, true);
       const toRestore = previousFocusRef.current;
       previousFocusRef.current = null;

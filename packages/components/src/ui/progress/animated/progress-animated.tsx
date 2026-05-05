@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useId, useState } from "react";
+import { useCallback, useId, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 import { cn, clamp } from "../../../lib/utils";
@@ -40,7 +40,20 @@ export function ProgressAnimated({
   const clamped = clamp(value, min, max);
   const percent = max === min ? 0 : ((clamped - min) / (max - min)) * 100;
   const labelSlotId = `${useId()}-progress-label`;
+  const labelSlotCountRef = useRef(0);
   const [labelSlotMounted, setLabelSlotMounted] = useState(false);
+  const registerProgressLabel = useCallback(() => {
+    labelSlotCountRef.current += 1;
+    if (labelSlotCountRef.current === 1) {
+      setLabelSlotMounted(true);
+    }
+    return () => {
+      labelSlotCountRef.current -= 1;
+      if (labelSlotCountRef.current === 0) {
+        setLabelSlotMounted(false);
+      }
+    };
+  }, []);
   const hasInlineLabelProp = Boolean(label?.trim().length);
 
   const labelingProps = useMemo(() => {
@@ -64,7 +77,7 @@ export function ProgressAnimated({
       animated: Boolean(animated),
       appearance: appearance ?? "default",
       labelSlotId,
-      setLabelSlotMounted,
+      registerProgressLabel,
     }),
     [
       animated,
@@ -73,6 +86,7 @@ export function ProgressAnimated({
       labelSlotId,
       max,
       min,
+      registerProgressLabel,
       shape,
       size,
       striped,

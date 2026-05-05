@@ -172,7 +172,7 @@ export const DropdownItem = ({
   return (
     <div
       role="menuitem"
-      tabIndex={-1}
+      tabIndex={0}
       onClick={handleClick}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {

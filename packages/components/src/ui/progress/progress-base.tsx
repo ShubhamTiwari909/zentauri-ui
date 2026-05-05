@@ -2,10 +2,12 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
   useId,
+  useRef,
   useState,
 } from "react";
 
@@ -48,7 +50,20 @@ export function ProgressBase(props: ProgressProps) {
   const clamped = clamp(value, min, max);
   const percent = max === min ? 0 : ((clamped - min) / (max - min)) * 100;
   const labelSlotId = `${useId()}-progress-label`;
+  const labelSlotCountRef = useRef(0);
   const [labelSlotMounted, setLabelSlotMounted] = useState(false);
+  const registerProgressLabel = useCallback(() => {
+    labelSlotCountRef.current += 1;
+    if (labelSlotCountRef.current === 1) {
+      setLabelSlotMounted(true);
+    }
+    return () => {
+      labelSlotCountRef.current -= 1;
+      if (labelSlotCountRef.current === 0) {
+        setLabelSlotMounted(false);
+      }
+    };
+  }, []);
   const hasInlineLabelProp = Boolean(label?.trim().length);
 
   const labelingProps = useMemo(() => {
@@ -72,7 +87,7 @@ export function ProgressBase(props: ProgressProps) {
       animated: Boolean(animated),
       appearance: appearance ?? "default",
       labelSlotId,
-      setLabelSlotMounted,
+      registerProgressLabel,
     }),
     [
       animated,
@@ -81,6 +96,7 @@ export function ProgressBase(props: ProgressProps) {
       labelSlotId,
       max,
       min,
+      registerProgressLabel,
       shape,
       size,
       striped,
@@ -153,13 +169,12 @@ export function ProgressBar({
 ProgressBar.displayName = "ProgressBar";
 
 export function ProgressLabel({ className, children }: ProgressSectionProps) {
-  const { labelSlotId, setLabelSlotMounted } =
+  const { labelSlotId, registerProgressLabel } =
     useProgressContext("ProgressLabel");
 
   useEffect(() => {
-    setLabelSlotMounted(true);
-    return () => setLabelSlotMounted(false);
-  }, [setLabelSlotMounted]);
+    return registerProgressLabel();
+  }, [registerProgressLabel]);
 
   return (
     <div

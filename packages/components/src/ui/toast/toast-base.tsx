@@ -174,9 +174,9 @@ Toast.displayName = "Toast";
 
 export function ToastTitle({ className, children }: ToastSectionProps) {
   return (
-    <p data-slot="toast-title" className={cn("font-semibold", className)}>
+    <div data-slot="toast-title" className={cn("font-semibold", className)}>
       {children}
-    </p>
+    </div>
   );
 }
 
@@ -184,9 +184,12 @@ ToastTitle.displayName = "ToastTitle";
 
 export function ToastDescription({ className, children }: ToastSectionProps) {
   return (
-    <p data-slot="toast-description" className={cn("text-sm text-slate-300", className)}>
+    <div
+      data-slot="toast-description"
+      className={cn("text-sm text-slate-300", className)}
+    >
       {children}
-    </p>
+    </div>
   );
 }
 

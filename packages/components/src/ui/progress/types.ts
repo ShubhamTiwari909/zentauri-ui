@@ -31,5 +31,6 @@ export type ProgressCtx = {
   animated: boolean;
   appearance: NonNullable<ProgressProps["appearance"]>;
   labelSlotId: string;
-  setLabelSlotMounted: (mounted: boolean) => void;
+  /** Increments the label mount count; returned cleanup decrements. Multiple labels are supported. */
+  registerProgressLabel: () => () => void;
 };

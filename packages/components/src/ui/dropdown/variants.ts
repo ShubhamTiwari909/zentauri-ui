@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const triggerVariants = cva(
-  "inline-flex items-center justify-between rounded-md font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 cursor-pointer",
+  "inline-flex items-center justify-between rounded-md font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500/60 cursor-pointer",
   {
     variants: {
       variant: {
@@ -81,7 +81,7 @@ export const contentVariants = cva(
 );
 
 export const itemVariants = cva(
-  "flex items-center justify-between px-3 py-2 text-sm cursor-pointer rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30",
+  "flex items-center justify-between px-3 py-2 text-sm cursor-pointer rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500/60",
   {
     variants: {
       variant: {

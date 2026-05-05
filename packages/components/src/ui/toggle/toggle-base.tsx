@@ -20,6 +20,9 @@ function hasToggleLabelChildren(node: ReactNode): boolean {
   if (typeof node === "number") {
     return true;
   }
+  if (Array.isArray(node)) {
+    return node.some(hasToggleLabelChildren);
+  }
   return true;
 }
 

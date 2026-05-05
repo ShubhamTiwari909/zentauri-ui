@@ -206,7 +206,7 @@ export function TabsTrigger({
       aria-selected={isActive}
       aria-controls={tabPanelId(value)}
       disabled={disabled}
-      tabIndex={isActive ? 0 : -1}
+      tabIndex={activeValue === undefined ? undefined : isActive ? 0 : -1}
       onClick={() => setValue(value)}
       onKeyDown={handleKeyDown}
       className={cn(
