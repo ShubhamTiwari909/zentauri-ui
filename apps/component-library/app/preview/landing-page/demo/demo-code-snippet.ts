@@ -1,3 +1,4 @@
+export const demoCodeSnippet = `
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -126,9 +127,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@zentauri-ui/zentauri-components/ui/tooltip";
-import { SiteHeader } from "@/components/common/site-header";
-import { demoCodeSnippet } from "./demo-code-snippet";
-import CodeHighlight from "@/components/CodeHighlight";
 
 const sectionReveal: Variants = {
   hidden: { opacity: 0, y: 26 },
@@ -378,7 +376,6 @@ export default function LandingPageDemo() {
   const [faqSearch, setFaqSearch] = useState("");
   const [contactStep, setContactStep] = useState(1);
   const [privacyOpen, setPrivacyOpen] = useState(false);
-  const [showCode, setShowCode] = useState(false);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setLoadingStats(false), 900);
@@ -388,29 +385,13 @@ export default function LandingPageDemo() {
   const filteredFaqs = useMemo(
     () =>
       faqs.filter(([q, a]) =>
-        `${q} ${a}`.toLowerCase().includes(faqSearch.toLowerCase()),
+        \`\${q} \${a}\`.toLowerCase().includes(faqSearch.toLowerCase()),
       ),
     [faqSearch],
   );
 
   return (
     <>
-      <SiteHeader />
-      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 md:translate-x-0 md:bottom-[unset] md:left-4 md:top-1/2 -translate-y-1/2 z-100">
-        <Button
-          appearance="indigo"
-          size="sm"
-          type="button"
-          onClick={() => setShowCode(!showCode)}
-        >
-          {showCode ? "Hide code" : "Show code"}
-        </Button>
-      </div>
-      {showCode ? (
-        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 w-full md:max-w-4xl -translate-y-1/2 h-140 overflow-y-auto p-2 rounded-xl bg-white/80 backdrop-blur-xl z-100">
-          <CodeHighlight codeString={demoCodeSnippet} />
-        </div>
-      ) : null}
       <main className="min-h-dvh overflow-hidden bg-[#020617] text-slate-100">
         <header className="sticky top-0 z-40 border-b border-white/10 bg-[#020617]/75 backdrop-blur-xl">
           <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -431,7 +412,7 @@ export default function LandingPageDemo() {
               {navItems.map((item) => (
                 <a
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={\`#\${item.toLowerCase()}\`}
                   className="hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
                 >
                   {item}
@@ -486,7 +467,7 @@ export default function LandingPageDemo() {
                   {[...navItems, "Products"].map((item) => (
                     <a
                       key={item}
-                      href={`#${item.toLowerCase()}`}
+                      href={\`#\${item.toLowerCase()}\`}
                       className="block rounded-lg px-3 py-2 text-base text-slate-200 hover:bg-white/10"
                     >
                       {item}
@@ -606,7 +587,7 @@ export default function LandingPageDemo() {
                   ]
                     .concat(["Aperture", "Northstar", "Orbit", "Helio"])
                     .map((logo, i) => (
-                      <span key={`${logo}-${i}`}>{logo}</span>
+                      <span key={\`\${logo}-\${i}\`}>{logo}</span>
                     ))}
                 </motion.div>
               </div>
@@ -856,7 +837,7 @@ export default function LandingPageDemo() {
                     )}
                   </div>
                   <p className="mt-3 text-4xl font-semibold text-white">
-                    ${annual ? yearly : monthly}
+                    \${annual ? yearly : monthly}
                     <span className="text-sm font-normal text-slate-400">
                       /seat
                     </span>
@@ -866,7 +847,7 @@ export default function LandingPageDemo() {
                 <CardBody>
                   <Table
                     size="sm"
-                    scrollAreaAriaLabel={`${tier} feature table`}
+                    scrollAreaAriaLabel={\`\${tier} feature table\`}
                   >
                     <TableHeader>
                       <TableRow>
@@ -1156,3 +1137,4 @@ export default function LandingPageDemo() {
     </>
   );
 }
+`;
