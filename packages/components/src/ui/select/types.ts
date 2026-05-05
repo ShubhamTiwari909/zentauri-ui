@@ -40,6 +40,7 @@ export type SelectContextType = {
   registerOption: (option: SelectOption) => void;
   options: SelectOption[];
   multiple: boolean;
+  listboxId: string;
 };
 
 export type SelectProps = {

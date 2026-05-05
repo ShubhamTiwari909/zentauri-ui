@@ -33,6 +33,7 @@ export function Spinner(props: SpinnerProps) {
         initial={false}
         {...rest}
       >
+        <span className="sr-only">{ariaLabel}</span>
         <motion.span
           className="block size-full rounded-full border-2 border-current border-t-transparent"
           animate={{ rotate: 360 }}
@@ -62,6 +63,7 @@ export function Spinner(props: SpinnerProps) {
         initial={false}
         {...rest}
       >
+        <span className="sr-only">{ariaLabel}</span>
         {[0, 1, 2].map((index) => (
           <motion.span
             key={index}
@@ -91,6 +93,7 @@ export function Spinner(props: SpinnerProps) {
         initial={false}
         {...rest}
       >
+        <span className="sr-only">{ariaLabel}</span>
         <motion.span
           className="block size-full rounded-full bg-current"
           animate={{ scale: [0.75, 1, 0.75], opacity: [0.45, 1, 0.45] }}
@@ -122,6 +125,7 @@ export function Spinner(props: SpinnerProps) {
       initial={false}
       {...rest}
     >
+      <span className="sr-only">{ariaLabel}</span>
       {[0, 1, 2, 3].map((index) => (
         <motion.span
           key={index}

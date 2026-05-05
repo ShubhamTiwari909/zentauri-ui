@@ -9,6 +9,7 @@ export type TooltipContextType = {
   delay: number;
   scheduleDelayedOpen: () => void;
   cancelDelayedOpen: () => void;
+  tooltipId: string;
 };
 
 export type TooltipProps = {

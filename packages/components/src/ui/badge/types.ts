@@ -15,6 +15,7 @@ export interface BadgeBaseProps extends ComponentPropsWithRef<"span"> {
   size?: BadgeVariantProps["size"];
   shape?: BadgeVariantProps["shape"];
   closable?: boolean;
+  liveRegion?: boolean;
   onClose?: MouseEventHandler<HTMLButtonElement>;
   closeLabel?: string;
   children?: ReactNode;

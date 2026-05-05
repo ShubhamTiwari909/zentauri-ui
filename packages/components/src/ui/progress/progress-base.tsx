@@ -1,6 +1,15 @@
 "use client";
 
-import { createContext, useContext, useMemo } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useId,
+  useRef,
+  useState,
+} from "react";
 
 import { cn, clamp } from "../../lib/utils";
 
@@ -40,6 +49,32 @@ export function ProgressBase(props: ProgressProps) {
   } = props;
   const clamped = clamp(value, min, max);
   const percent = max === min ? 0 : ((clamped - min) / (max - min)) * 100;
+  const labelSlotId = `${useId()}-progress-label`;
+  const labelSlotCountRef = useRef(0);
+  const [labelSlotMounted, setLabelSlotMounted] = useState(false);
+  const registerProgressLabel = useCallback(() => {
+    labelSlotCountRef.current += 1;
+    if (labelSlotCountRef.current === 1) {
+      setLabelSlotMounted(true);
+    }
+    return () => {
+      labelSlotCountRef.current -= 1;
+      if (labelSlotCountRef.current === 0) {
+        setLabelSlotMounted(false);
+      }
+    };
+  }, []);
+  const hasInlineLabelProp = Boolean(label?.trim().length);
+
+  const labelingProps = useMemo(() => {
+    if (hasInlineLabelProp) {
+      return { "aria-label": label?.trim() ?? "Progress" };
+    }
+    if (labelSlotMounted) {
+      return { "aria-labelledby": labelSlotId };
+    }
+    return { "aria-label": "Progress" };
+  }, [hasInlineLabelProp, label, labelSlotId, labelSlotMounted]);
 
   const ctx = useMemo(
     () => ({
@@ -51,8 +86,21 @@ export function ProgressBase(props: ProgressProps) {
       striped: Boolean(striped),
       animated: Boolean(animated),
       appearance: appearance ?? "default",
+      labelSlotId,
+      registerProgressLabel,
     }),
-    [animated, appearance, clamped, max, min, shape, size, striped],
+    [
+      animated,
+      appearance,
+      clamped,
+      labelSlotId,
+      max,
+      min,
+      registerProgressLabel,
+      shape,
+      size,
+      striped,
+    ],
   );
 
   return (
@@ -64,7 +112,7 @@ export function ProgressBase(props: ProgressProps) {
         aria-valuemin={min}
         aria-valuemax={max}
         aria-valuenow={clamped}
-        aria-label={label}
+        {...labelingProps}
         className={cn(
           progressVariants({ appearance, size, shape, striped, animated }),
           className,
@@ -121,8 +169,16 @@ export function ProgressBar({
 ProgressBar.displayName = "ProgressBar";
 
 export function ProgressLabel({ className, children }: ProgressSectionProps) {
+  const { labelSlotId, registerProgressLabel } =
+    useProgressContext("ProgressLabel");
+
+  useEffect(() => {
+    return registerProgressLabel();
+  }, [registerProgressLabel]);
+
   return (
     <div
+      id={labelSlotId}
       data-slot="progress-label"
       className={cn("mb-2 font-medium text-slate-200", className)}
     >

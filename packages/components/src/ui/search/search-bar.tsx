@@ -24,6 +24,7 @@ export const SearchBar = function SearchBar(
     comboboxListboxId,
     comboboxActiveOptionId,
     comboboxExpanded,
+    "aria-label": ariaLabel,
     ref,
     ...rest
   }: SearchBarProps,
@@ -53,6 +54,10 @@ export const SearchBar = function SearchBar(
         spellCheck={false}
         disabled={disabled}
         value={value}
+        aria-label={
+          ariaLabel ??
+          (combobox ? undefined : "Search")
+        }
         data-slot="search-bar-input"
         className={cn(
           inputVariants({ appearance, size: inputSize, ring, as: "input" }),

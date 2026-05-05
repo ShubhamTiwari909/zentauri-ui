@@ -1,4 +1,4 @@
-import type { ElementType, HTMLAttributes, ReactNode } from "react";
+import type { ElementType, HTMLAttributes, ReactNode, RefObject } from "react";
 
 export type TabsValue = string;
 
@@ -59,6 +59,7 @@ export type TabsContentProps = {
 export type TabsContextType = {
   value: TabsValue | undefined;
   setValue: (value: TabsValue) => void;
+  listRef: RefObject<HTMLDivElement | null>;
   orientation: "horizontal" | "vertical";
   size?: "sm" | "md" | "lg";
   variant?: "default" | "underline" | "pills";

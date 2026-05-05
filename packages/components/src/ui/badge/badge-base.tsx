@@ -13,6 +13,7 @@ export function BadgeBase({
   size,
   shape,
   closable = false,
+  liveRegion = false,
   onClose,
   closeLabel = "Remove",
   children,
@@ -24,11 +25,13 @@ export function BadgeBase({
   const isDot = shape === "dot";
   const resolvedAriaLabel =
     ariaLabel ?? (isDot ? "Status indicator" : undefined);
+  const landmarkRole =
+    liveRegion === true || isDot ? ("status" as const) : undefined;
 
   return (
     <Wrapper
       ref={ref}
-      role="status"
+      role={landmarkRole}
       data-slot="badge"
       aria-label={resolvedAriaLabel}
       className={cn(badgeVariants({ appearance, size, shape }), className)}

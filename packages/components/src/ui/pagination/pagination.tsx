@@ -192,9 +192,9 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                 {item.type === "ellipsis" ? (
                   <span
                     data-slot="pagination-ellipsis"
-                    aria-hidden="true"
-                    title={ellipsisLabel}
                     className={paginationEllipsisVariants({ size })}
+                    role="img"
+                    aria-label={ellipsisLabel}
                   >
                     …
                   </span>

@@ -70,8 +70,6 @@ export function FileUpload({
         multiple={multiple}
         disabled={disabled}
         onChange={handleChange}
-        aria-hidden
-        tabIndex={-1}
       />
       <label
         htmlFor={inputId}

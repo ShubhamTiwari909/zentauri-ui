@@ -5,7 +5,6 @@ export type SiteChromeNavItem = {
 };
 
 export const siteChromeNavItems: readonly SiteChromeNavItem[] = [
-  { href: "/", label: "Home" },
   { href: "/preview/installation", label: "Installation" },
   { href: "/preview/components", label: "Components" },
   { href: "/preview/hooks", label: "Hooks" },

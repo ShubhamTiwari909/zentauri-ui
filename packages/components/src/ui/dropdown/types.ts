@@ -7,6 +7,7 @@ export type DropdownContextType = {
   selectedValues: string[];
   toggleSelect: (value: string) => void;
   multiSelect: boolean;
+  menuId: string;
 };
 
 type Variant =

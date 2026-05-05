@@ -139,10 +139,8 @@ export function DrawerContent({
   return createPortal(
     open ? (
       <div className="fixed inset-0 z-50" data-slot="drawer-portal">
-        <button
-          type="button"
-          aria-hidden
-          tabIndex={-1}
+        <div
+          role="presentation"
           data-slot="drawer-overlay"
           className={drawerOverlayVariants()}
           onClick={() => setOpen(false)}

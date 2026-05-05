@@ -5,6 +5,7 @@ import {
   KeyboardEvent,
   useContext,
   useId,
+  useRef,
   useState,
 } from "react";
 
@@ -41,6 +42,7 @@ export function Tabs({
 }: TabsProps) {
   const [internalValue, setInternalValue] = useState(defaultValue);
   const idPrefix = useId();
+  const listRef = useRef<HTMLDivElement | null>(null);
 
   const isControlled = value !== undefined;
   const currentValue = isControlled ? value : internalValue;
@@ -60,6 +62,7 @@ export function Tabs({
       value={{
         value: currentValue,
         setValue,
+        listRef,
         orientation,
         size,
         variant,
@@ -76,10 +79,11 @@ export function Tabs({
 }
 
 export function TabsList({ children, className, ...props }: TabsListProps) {
-  const { orientation, size } = useTabs();
+  const { orientation, size, listRef } = useTabs();
 
   return (
     <div
+      ref={listRef}
       role="tablist"
       aria-orientation={orientation}
       className={cn(tabsListVariants({ orientation, size }), className)}
@@ -100,6 +104,8 @@ export function TabsTrigger({
   const {
     value: activeValue,
     setValue,
+    listRef,
+    orientation,
     tabTriggerId,
     tabPanelId,
     size,
@@ -110,30 +116,84 @@ export function TabsTrigger({
   const isActive = activeValue === value;
 
   const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
-    const triggers = Array.from(
-      document.querySelectorAll('[role="tab"]'),
-    ) as HTMLElement[];
+    const list = listRef.current;
+    const triggers =
+      list === null
+        ? []
+        : Array.from(list.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+
+    const nextKeys =
+      orientation === "vertical" ? ["ArrowDown"] : ["ArrowRight"];
+    const prevKeys = orientation === "vertical" ? ["ArrowUp"] : ["ArrowLeft"];
 
     const index = triggers.findIndex((el) => el === e.currentTarget);
-
-    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-      e.preventDefault();
-      triggers[index + 1]?.focus();
+    if (index === -1) {
+      return;
     }
 
-    if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+    const findEnabledIndex = (
+      start: number,
+      direction: 1 | -1,
+    ): number | undefined => {
+      const n = triggers.length;
+      if (n === 0) {
+        return undefined;
+      }
+      let i = start;
+      for (let step = 0; step < n; step += 1) {
+        i = (i + direction + n) % n;
+        if (triggers[i]?.disabled !== true) {
+          return i;
+        }
+      }
+      return undefined;
+    };
+
+    const focusAt = (i: number) => {
+      const target = triggers[i];
+      if (target !== undefined && target.disabled !== true) {
+        target.focus();
+      }
+    };
+
+    const isNext = nextKeys.includes(e.key);
+    const isPrev = prevKeys.includes(e.key);
+
+    if (isNext) {
       e.preventDefault();
-      triggers[index - 1]?.focus();
+      const nextIdx = findEnabledIndex(index, 1);
+      if (nextIdx !== undefined) {
+        focusAt(nextIdx);
+      }
+      return;
+    }
+
+    if (isPrev) {
+      e.preventDefault();
+      const prevIdx = findEnabledIndex(index, -1);
+      if (prevIdx !== undefined) {
+        focusAt(prevIdx);
+      }
+      return;
     }
 
     if (e.key === "Home") {
       e.preventDefault();
-      triggers[0]?.focus();
+      const firstEnabledIndex = triggers.findIndex((btn) => !btn.disabled);
+      if (firstEnabledIndex !== -1) {
+        triggers[firstEnabledIndex]?.focus();
+      }
+      return;
     }
 
     if (e.key === "End") {
       e.preventDefault();
-      triggers[triggers.length - 1]?.focus();
+      for (let i = triggers.length - 1; i >= 0; i -= 1) {
+        if (!triggers[i]?.disabled) {
+          triggers[i]?.focus();
+          break;
+        }
+      }
     }
   };
 
@@ -146,6 +206,7 @@ export function TabsTrigger({
       aria-selected={isActive}
       aria-controls={tabPanelId(value)}
       disabled={disabled}
+      tabIndex={activeValue === undefined ? undefined : isActive ? 0 : -1}
       onClick={() => setValue(value)}
       onKeyDown={handleKeyDown}
       className={cn(
