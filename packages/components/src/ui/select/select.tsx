@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useId } from "react";
 import {
   SelectProps,
   SelectOption,
@@ -32,6 +32,7 @@ export const Select = ({
   onChange,
   multiple = true,
 }: SelectProps) => {
+  const listboxId = `${useId()}-listbox`;
   const [internal, setInternal] = useState<string[]>(defaultValue);
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState<SelectOption[]>([]);
@@ -97,6 +98,7 @@ export const Select = ({
         registerOption,
         options,
         multiple,
+        listboxId,
       }}
     >
       <div ref={rootRef} className="relative w-full">
@@ -110,16 +112,25 @@ export const SelectTrigger = ({
   className,
   variant,
   size,
+  onClick,
   ...props
 }: SelectTriggerProps) => {
-  const { open, setOpen } = useSelect();
+  const { open, setOpen, listboxId } = useSelect();
 
   return (
     <button
       type="button"
-      onClick={() => setOpen(!open)}
+      aria-expanded={open}
+      aria-haspopup="listbox"
+      aria-controls={listboxId}
       className={cn(selectTriggerVariants({ variant, size }), className)}
       {...props}
+      onClick={(event) => {
+        onClick?.(event);
+        if (!event.defaultPrevented) {
+          setOpen(!open);
+        }
+      }}
     />
   );
 };
@@ -161,12 +172,85 @@ export const SelectContent = ({
   spacing = "default",
   ...props
 }: SelectContentProps) => {
-  const { open } = useSelect();
+  const { open, listboxId, multiple } = useSelect();
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    const panel = panelRef.current;
+    if (!panel) {
+      return;
+    }
+    const opts = Array.from(
+      panel.querySelectorAll<HTMLElement>('[role="option"]'),
+    ).filter((el) => el.getAttribute("aria-disabled") !== "true");
+    requestAnimationFrame(() => opts[0]?.focus());
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    const panel = panelRef.current;
+    if (!panel) {
+      return;
+    }
+
+    const enabledOptions = () =>
+      Array.from(panel.querySelectorAll<HTMLElement>('[role="option"]')).filter(
+        (el) => el.getAttribute("aria-disabled") !== "true",
+      );
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const options = enabledOptions();
+      if (options.length === 0) {
+        return;
+      }
+
+      const idx = options.findIndex((el) => el === document.activeElement);
+
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        const next = idx < 0 ? 0 : Math.min(idx + 1, options.length - 1);
+        options[next]?.focus();
+        return;
+      }
+
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+        const prev =
+          idx <= 0 ? options.length - 1 : Math.max(idx - 1, 0);
+        options[prev]?.focus();
+        return;
+      }
+
+      if (event.key === "Home") {
+        event.preventDefault();
+        options[0]?.focus();
+        return;
+      }
+
+      if (event.key === "End") {
+        event.preventDefault();
+        options[options.length - 1]?.focus();
+      }
+    };
+
+    panel.addEventListener("keydown", handleKeyDown);
+    return () => panel.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
 
   if (!open) return null;
 
   return (
     <div
+      ref={panelRef}
+      id={listboxId}
+      role="listbox"
+      aria-multiselectable={multiple}
+      tabIndex={-1}
       className={cn(
         selectContentVariants({ appearance, size, spacing }),
         className,
@@ -198,10 +282,17 @@ export const SelectItem = ({
     <div
       role="option"
       aria-selected={isActive}
-      tabIndex={0}
+      aria-disabled={disabled ? true : undefined}
+      tabIndex={-1}
       onClick={() => !disabled && toggleValue(value)}
       onKeyDown={(e) => {
-        if (e.key === "Enter") toggleValue(value);
+        if (disabled) {
+          return;
+        }
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggleValue(value);
+        }
       }}
       data-selected={isActive ? "true" : "false"}
       className={cn(

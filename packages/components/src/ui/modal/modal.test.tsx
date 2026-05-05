@@ -77,6 +77,21 @@ describe("Modal", () => {
     });
   });
 
+  it("should render overlay as non-focusable presentation surface", async () => {
+    render(
+      <Modal defaultOpen>
+        <ModalContent>
+          <ModalTitle>T</ModalTitle>
+        </ModalContent>
+      </Modal>,
+    );
+    await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
+    const overlay = document.querySelector('[data-slot="modal-overlay"]');
+    expect(overlay?.tagName.toLowerCase()).toBe("div");
+    expect(overlay).toHaveAttribute("role", "presentation");
+    expect((overlay as HTMLElement).tabIndex).toBe(-1);
+  });
+
   it("should close when Escape is pressed", async () => {
     const user = userEvent.setup();
     render(

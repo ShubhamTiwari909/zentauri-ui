@@ -24,7 +24,7 @@ export const tabsListVariants = cva("flex items-center gap-1", {
 });
 
 export const tabsTriggerVariants = cva(
-  "px-3 py-1.5 rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-ring",
+  "px-3 py-1.5 rounded-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
   {
     variants: {
       appearance: {

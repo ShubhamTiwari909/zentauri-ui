@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useId, useState } from "react";
 import { motion } from "framer-motion";
 
 import { cn, clamp } from "../../../lib/utils";
@@ -39,6 +39,19 @@ export function ProgressAnimated({
 }: ProgressAnimatedProps) {
   const clamped = clamp(value, min, max);
   const percent = max === min ? 0 : ((clamped - min) / (max - min)) * 100;
+  const labelSlotId = `${useId()}-progress-label`;
+  const [labelSlotMounted, setLabelSlotMounted] = useState(false);
+  const hasInlineLabelProp = Boolean(label?.trim().length);
+
+  const labelingProps = useMemo(() => {
+    if (hasInlineLabelProp) {
+      return { "aria-label": label?.trim() ?? "Progress" };
+    }
+    if (labelSlotMounted) {
+      return { "aria-labelledby": labelSlotId };
+    }
+    return { "aria-label": "Progress" };
+  }, [hasInlineLabelProp, label, labelSlotId, labelSlotMounted]);
 
   const ctx = useMemo<ProgressCtx>(
     () => ({
@@ -50,8 +63,20 @@ export function ProgressAnimated({
       striped: Boolean(striped),
       animated: Boolean(animated),
       appearance: appearance ?? "default",
+      labelSlotId,
+      setLabelSlotMounted,
     }),
-    [animated, appearance, clamped, max, min, shape, size, striped],
+    [
+      animated,
+      appearance,
+      clamped,
+      labelSlotId,
+      max,
+      min,
+      shape,
+      size,
+      striped,
+    ],
   );
 
   const motionProps = progressAnimationPresets[animation];
@@ -65,8 +90,8 @@ export function ProgressAnimated({
         aria-valuemin={min}
         aria-valuemax={max}
         aria-valuenow={clamped}
-        aria-label={label}
         aria-busy={busy ? true : undefined}
+        {...labelingProps}
         className={cn(
           progressVariants({ appearance, size, shape, striped, animated }),
           className,

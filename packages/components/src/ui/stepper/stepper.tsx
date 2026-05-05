@@ -6,7 +6,6 @@ import {
   isValidElement,
   useContext,
   useMemo,
-  type Ref,
 } from "react";
 
 import { cn } from "../../lib/utils";
@@ -54,7 +53,7 @@ export function Stepper({
   children,
   ref,
   ...rest
-}: StepperProps & { ref?: Ref<HTMLDivElement> }) {
+}: StepperProps) {
   const items = useMemo(
     () => Children.toArray(children).filter(isValidElement),
     [children],
@@ -70,11 +69,14 @@ export function Stepper({
 
   return (
     <StepperContext.Provider value={ctx}>
-      <div
+      <ol
         ref={ref}
         data-slot="stepper"
-        role="list"
-        className={cn(stepperVariants({ orientation }), className)}
+        className={cn(
+          stepperVariants({ orientation }),
+          "m-0 list-none p-0",
+          className,
+        )}
         {...rest}
       >
         {items.map((child, index) => (
@@ -82,7 +84,7 @@ export function Stepper({
             {child}
           </StepperIndexContext.Provider>
         ))}
-      </div>
+      </ol>
     </StepperContext.Provider>
   );
 }
@@ -94,18 +96,17 @@ export function StepperItem({
   ref,
   children,
   ...rest
-}: StepperItemProps & { ref?: React.Ref<HTMLDivElement> }) {
+}: StepperItemProps) {
   const { orientation } = useStepper("StepperItem");
   return (
-    <div
+    <li
       ref={ref}
       data-slot="stepper-item"
-      role="listitem"
       className={cn(stepperItemVariants({ orientation }), className)}
       {...rest}
     >
       {children}
-    </div>
+    </li>
   );
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useRef, useEffect } from "react";
+import { createContext, useContext, useState, useRef, useEffect, useId } from "react";
 import { FiCheck } from "react-icons/fi";
 import { cn } from "../../lib/utils";
 import type {
@@ -34,6 +34,7 @@ export const Dropdown = ({
   onOpenChange,
   multiSelect = false,
 }: DropdownProps) => {
+  const menuId = `${useId()}-menu`;
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
 
@@ -70,6 +71,7 @@ export const Dropdown = ({
         selectedValues,
         toggleSelect,
         multiSelect,
+        menuId,
       }}
     >
       <div className="relative inline-block">{children}</div>
@@ -85,15 +87,25 @@ export const DropdownTrigger = ({
   className,
   variant,
   size,
+  onClick,
   ...props
 }: DropdownTriggerProps) => {
-  const { toggle } = useDropdown();
+  const { toggle, open, menuId } = useDropdown();
 
   return (
     <button
-      onClick={toggle}
+      type="button"
+      aria-expanded={open}
+      aria-haspopup="menu"
+      aria-controls={menuId}
       className={cn(triggerVariants({ variant, size }), className)}
       {...props}
+      onClick={(event) => {
+        onClick?.(event);
+        if (!event.defaultPrevented) {
+          toggle();
+        }
+      }}
     >
       {children}
     </button>
@@ -111,7 +123,7 @@ export const DropdownContent = ({
   divider,
   ...props
 }: DropdownContentProps) => {
-  const { open, setOpen } = useDropdown();
+  const { open, setOpen, menuId } = useDropdown();
   const ref = useRef<HTMLDivElement>(null);
 
   // click outside
@@ -122,6 +134,8 @@ export const DropdownContent = ({
   return (
     <div
       ref={ref}
+      id={menuId}
+      role="menu"
       className={cn(
         contentVariants({ placement, spacing }),
         className,
@@ -157,10 +171,14 @@ export const DropdownItem = ({
 
   return (
     <div
-      tabIndex={0}
+      role="menuitem"
+      tabIndex={-1}
       onClick={handleClick}
       onKeyDown={(e) => {
-        if (e.key === "Enter") handleClick();
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleClick();
+        }
       }}
       className={cn(itemVariants({ variant }), className)}
       {...props}

@@ -25,17 +25,25 @@ export function EmptyStateBase(props: EmptyStateProps) {
     align,
     children,
     ref,
+    liveRegion = false,
     as: Wrapper = "section",
     ...rest
   } = props;
   const ctx = useMemo(() => size ?? "md", [size]);
+
+  const liveAria =
+    typeof liveRegion === "string"
+      ? liveRegion
+      : liveRegion === true
+        ? "polite"
+        : undefined;
 
   return (
     <EmptyStateSizeContext.Provider value={ctx}>
       <Wrapper
         ref={ref}
         data-slot="empty-state"
-        aria-live="polite"
+        aria-live={liveAria}
         className={cn(
           emptyStateVariants({ size, appearance, align }),
           className,

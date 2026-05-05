@@ -1,5 +1,9 @@
 import type { VariantProps } from "class-variance-authority";
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type {
+  ComponentPropsWithoutRef,
+  ComponentPropsWithRef,
+  ReactNode,
+} from "react";
 
 import type { stepperIndicatorVariants, stepperVariants } from "./variants";
 
@@ -8,9 +12,9 @@ type StepperVariantProps = VariantProps<typeof stepperVariants>;
 export type StepperProps = StepperVariantProps & {
   size?: VariantProps<typeof stepperIndicatorVariants>["size"];
   children?: ReactNode;
-} & Omit<ComponentPropsWithoutRef<"div">, "children">;
+} & Omit<ComponentPropsWithRef<"ol">, "children">;
 
-export type StepperItemProps = ComponentPropsWithoutRef<"div"> & {
+export type StepperItemProps = ComponentPropsWithRef<"li"> & {
   children?: ReactNode;
 };
 

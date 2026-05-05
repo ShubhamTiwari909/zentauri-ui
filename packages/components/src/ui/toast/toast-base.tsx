@@ -174,9 +174,9 @@ Toast.displayName = "Toast";
 
 export function ToastTitle({ className, children }: ToastSectionProps) {
   return (
-    <div data-slot="toast-title" className={cn("font-semibold", className)}>
+    <p data-slot="toast-title" className={cn("font-semibold", className)}>
       {children}
-    </div>
+    </p>
   );
 }
 
@@ -184,12 +184,9 @@ ToastTitle.displayName = "ToastTitle";
 
 export function ToastDescription({ className, children }: ToastSectionProps) {
   return (
-    <div
-      data-slot="toast-description"
-      className={cn("text-sm text-slate-300", className)}
-    >
+    <p data-slot="toast-description" className={cn("text-sm text-slate-300", className)}>
       {children}
-    </div>
+    </p>
   );
 }
 
@@ -217,7 +214,7 @@ export function ToastClose({
       data-slot="toast-close"
       aria-label="Dismiss notification"
       className={cn(
-        "absolute right-3 top-3 inline-flex size-8 items-center justify-center rounded-md text-slate-200 transition hover:bg-white/10",
+        "absolute right-3 top-3 inline-flex size-8 items-center justify-center rounded-md text-slate-200 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950",
         className,
       )}
       onClick={onClick}

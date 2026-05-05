@@ -19,7 +19,7 @@ describe("Stepper", () => {
     expect(StepperDescription.displayName).toBe("StepperDescription");
   });
 
-  it("should stamp data-slot on stepper root and use list semantics", () => {
+  it("should stamp data-slot on stepper root and use ordered list markup", () => {
     render(
       <Stepper>
         <StepperItem>
@@ -30,11 +30,10 @@ describe("Stepper", () => {
     );
     const root = document.querySelector('[data-slot="stepper"]');
     expect(root).toBeTruthy();
-    expect(root).toHaveAttribute("role", "list");
-    expect(document.querySelector('[data-slot="stepper-item"]')).toHaveAttribute(
-      "role",
-      "listitem",
-    );
+    expect(root?.tagName).toBe("OL");
+    expect(
+      document.querySelector('[data-slot="stepper-item"]')?.tagName,
+    ).toBe("LI");
   });
 
   it("should apply default upcoming appearance to indicators", () => {
@@ -153,7 +152,7 @@ describe("Stepper", () => {
   });
 
   it("should forward ref on Stepper", () => {
-    const ref = createRef<HTMLDivElement>();
+    const ref = createRef<HTMLOListElement>();
     render(
       <Stepper ref={ref}>
         <StepperItem>

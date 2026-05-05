@@ -51,7 +51,6 @@ export function TableBase(props: TableProps) {
         <table
           ref={ref}
           data-slot="table"
-          role="table"
           className={cn(
             tableVariants({ appearance, size, stickyHeader }),
             "w-full min-w-0 table",

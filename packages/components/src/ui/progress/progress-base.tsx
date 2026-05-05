@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, useContext, useMemo } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useId,
+  useState,
+} from "react";
 
 import { cn, clamp } from "../../lib/utils";
 
@@ -40,6 +47,19 @@ export function ProgressBase(props: ProgressProps) {
   } = props;
   const clamped = clamp(value, min, max);
   const percent = max === min ? 0 : ((clamped - min) / (max - min)) * 100;
+  const labelSlotId = `${useId()}-progress-label`;
+  const [labelSlotMounted, setLabelSlotMounted] = useState(false);
+  const hasInlineLabelProp = Boolean(label?.trim().length);
+
+  const labelingProps = useMemo(() => {
+    if (hasInlineLabelProp) {
+      return { "aria-label": label?.trim() ?? "Progress" };
+    }
+    if (labelSlotMounted) {
+      return { "aria-labelledby": labelSlotId };
+    }
+    return { "aria-label": "Progress" };
+  }, [hasInlineLabelProp, label, labelSlotId, labelSlotMounted]);
 
   const ctx = useMemo(
     () => ({
@@ -51,8 +71,20 @@ export function ProgressBase(props: ProgressProps) {
       striped: Boolean(striped),
       animated: Boolean(animated),
       appearance: appearance ?? "default",
+      labelSlotId,
+      setLabelSlotMounted,
     }),
-    [animated, appearance, clamped, max, min, shape, size, striped],
+    [
+      animated,
+      appearance,
+      clamped,
+      labelSlotId,
+      max,
+      min,
+      shape,
+      size,
+      striped,
+    ],
   );
 
   return (
@@ -64,7 +96,7 @@ export function ProgressBase(props: ProgressProps) {
         aria-valuemin={min}
         aria-valuemax={max}
         aria-valuenow={clamped}
-        aria-label={label}
+        {...labelingProps}
         className={cn(
           progressVariants({ appearance, size, shape, striped, animated }),
           className,
@@ -121,8 +153,17 @@ export function ProgressBar({
 ProgressBar.displayName = "ProgressBar";
 
 export function ProgressLabel({ className, children }: ProgressSectionProps) {
+  const { labelSlotId, setLabelSlotMounted } =
+    useProgressContext("ProgressLabel");
+
+  useEffect(() => {
+    setLabelSlotMounted(true);
+    return () => setLabelSlotMounted(false);
+  }, [setLabelSlotMounted]);
+
   return (
     <div
+      id={labelSlotId}
       data-slot="progress-label"
       className={cn("mb-2 font-medium text-slate-200", className)}
     >

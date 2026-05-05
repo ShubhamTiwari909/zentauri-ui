@@ -144,10 +144,8 @@ export function ModalContent({
   return createPortal(
     open ? (
       <div className="fixed inset-0 z-50" data-slot="modal-portal">
-        <button
-          type="button"
-          aria-hidden
-          tabIndex={-1}
+        <div
+          role="presentation"
           data-slot="modal-overlay"
           className={modalOverlayVariants()}
           onClick={() => setOpen(false)}

@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const selectTriggerVariants = cva(
-  "flex items-center justify-between rounded-md border transition-all focus:outline-none",
+  "flex items-center justify-between rounded-md border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2",
   {
     variants: {
       variant: {
@@ -50,8 +50,10 @@ export const selectTriggerVariants = cva(
   },
 );
 
-export const selectItemVariants = cva("cursor-pointer px-3 py-2 rounded-md", {
-  variants: {
+export const selectItemVariants = cva(
+  "cursor-pointer px-3 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-inset",
+  {
+    variants: {
     appearance: {
       default:
         "bg-white text-gray-900 data-[selected=true]:bg-gray-200 data-[selected=true]:text-gray-900",

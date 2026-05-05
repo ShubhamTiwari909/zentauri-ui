@@ -46,10 +46,8 @@ export function ModalContentAnimated({
     <AnimatePresence>
       {open ? (
         <div className="fixed inset-0 z-50" data-slot="modal-portal">
-          <motion.button
-            type="button"
-            aria-hidden
-            tabIndex={-1}
+          <motion.div
+            role="presentation"
             data-slot="modal-overlay"
             className={modalOverlayVariants()}
             onClick={() => setOpen(false)}

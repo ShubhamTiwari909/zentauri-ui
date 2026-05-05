@@ -104,9 +104,7 @@ describe("Dropdown", () => {
         </DropdownContent>
       </Dropdown>,
     );
-    const item = screen
-      .getByText("Alpha")
-      .closest('div[tabindex="0"]') as HTMLElement;
+    const item = screen.getByRole("menuitem", { name: "Alpha" });
     item.focus();
     fireEvent.keyDown(item, { key: "Enter" });
     expect(handleSelect).toHaveBeenCalledTimes(1);

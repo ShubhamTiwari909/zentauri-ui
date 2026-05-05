@@ -8,6 +8,7 @@ type EmptyStateVariantProps = VariantProps<typeof emptyStateVariants>;
 export type EmptyStateProps = EmptyStateVariantProps &
   (Omit<ComponentPropsWithRef<"section">, "children"> & {
     children?: ReactNode;
+    liveRegion?: false | true | "polite" | "assertive";
     as?: ElementType;
   });
 

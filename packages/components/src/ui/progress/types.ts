@@ -30,4 +30,6 @@ export type ProgressCtx = {
   striped: boolean;
   animated: boolean;
   appearance: NonNullable<ProgressProps["appearance"]>;
+  labelSlotId: string;
+  setLabelSlotMounted: (mounted: boolean) => void;
 };
