@@ -19,6 +19,8 @@ export type TableProps = TableVariantProps &
     children?: ReactNode;
     ref?: Ref<HTMLTableElement>;
     textAlign?: "left" | "center" | "right";
+    /** Label for the overflow scroll wrapper (keyboard-focusable region). */
+    scrollAreaAriaLabel?: string;
   };
 
 export type TableSectionProps = {
@@ -33,9 +35,14 @@ export type TableHeadCellProps = ThHTMLAttributes<HTMLTableCellElement> & {
   ref?: Ref<HTMLTableCellElement>;
 };
 
-export type TableCellProps = TdHTMLAttributes<HTMLTableCellElement> & {
+export type TableCellProps = Omit<
+  TdHTMLAttributes<HTMLTableCellElement>,
+  "scope"
+> & {
   ref?: Ref<HTMLTableCellElement>;
   textAlign?: "left" | "center" | "right";
+  /** Row/column header scope; when set, the cell renders as `<th>` (required for valid `scope` usage). */
+  scope?: ThHTMLAttributes<HTMLTableCellElement>["scope"];
 };
 
 export type TableCtx = {

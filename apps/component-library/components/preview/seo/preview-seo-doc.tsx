@@ -30,9 +30,17 @@ export function PreviewSeoDoc({ doc }: PreviewSeoDocProps) {
           const renderUseCasesList =
             section.body.trim() === "" && section.heading === useCasesHeading;
 
+          const sectionHeadingId = `preview-doc-section-${index}`;
           return (
-            <section key={`${section.heading}-${index}`} className="space-y-4">
-              <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <section
+              key={`${section.heading}-${index}`}
+              aria-labelledby={sectionHeadingId}
+              className="space-y-4"
+            >
+              <h2
+                id={sectionHeadingId}
+                className="text-2xl font-semibold tracking-tight text-white"
+              >
                 {section.heading}
               </h2>
               {renderUseCasesList ? (
@@ -52,8 +60,11 @@ export function PreviewSeoDoc({ doc }: PreviewSeoDocProps) {
           );
         })}
 
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold tracking-tight text-white">
+        <section aria-labelledby="preview-doc-faq-heading" className="space-y-4">
+          <h2
+            id="preview-doc-faq-heading"
+            className="text-2xl font-semibold tracking-tight text-white"
+          >
             {faqHeading}
           </h2>
           <div className="space-y-4">

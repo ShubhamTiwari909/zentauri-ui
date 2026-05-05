@@ -17,19 +17,21 @@ export default function HomePage({ seo }: HomePageProps) {
   return (
     <PreviewPageShell className="p-0">
       <SiteHeader />
-      <HomeHero seo={seo} />
-      <div className={mainColumnClassName}>
-        <HomeMarketing />
-        <section id="reference" aria-labelledby="reference-heading" className="space-y-6">
-          <h2
-            id="reference-heading"
-            className="text-xl font-semibold tracking-tight text-white"
-          >
-            Reference &amp; FAQ
-          </h2>
-          <PreviewSeoDoc doc={seo} />
-        </section>
-      </div>
+      <main>
+        <HomeHero seo={seo} />
+        <div className={mainColumnClassName}>
+          <HomeMarketing />
+          <section id="reference" aria-labelledby="reference-heading" className="space-y-6">
+            <h2
+              id="reference-heading"
+              className="text-xl font-semibold tracking-tight text-white"
+            >
+              Reference &amp; FAQ
+            </h2>
+            <PreviewSeoDoc doc={seo} />
+          </section>
+        </div>
+      </main>
     </PreviewPageShell>
   );
 }
