@@ -44,7 +44,7 @@ export function ProgressBase(props: ProgressProps) {
     label,
     children,
     ref,
-    as:Wrapper = "div",
+    as: Wrapper = "div",
     ...rest
   } = props;
   const clamped = clamp(value, min, max);
@@ -135,7 +135,7 @@ export function ProgressBar({
   className,
   style,
   ref,
-  as:Wrapper = "div",
+  as: Wrapper = "div",
   ...rest
 }: ProgressSectionProps & {
   style?: React.CSSProperties;

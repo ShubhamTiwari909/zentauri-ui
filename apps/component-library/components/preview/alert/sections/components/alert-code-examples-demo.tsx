@@ -8,11 +8,7 @@ import type { AlertDemoProps } from "./alert-code-examples.types";
 
 export function AlertDemo({ appearance, size }: AlertDemoProps) {
   return (
-    <Alert
-      appearance={appearance}
-      size={size}
-      className="text-xs md:text-sm"
-    >
+    <Alert appearance={appearance} size={size} className="text-xs md:text-sm">
       <div className="space-y-1">
         <AlertTitle>Heads up</AlertTitle>
         <AlertDescription>

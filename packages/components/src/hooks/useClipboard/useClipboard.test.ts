@@ -66,7 +66,9 @@ describe("useClipboard", () => {
       const ok = await result.current.copy("z");
       expect(ok).toBe(false);
     });
-    expect(result.current.error?.message).toBe("Clipboard API is not available");
+    expect(result.current.error?.message).toBe(
+      "Clipboard API is not available",
+    );
     expect(result.current.copied).toBe(false);
   });
 

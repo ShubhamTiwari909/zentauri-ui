@@ -21,14 +21,14 @@ Authoritative patterns:
 
 Pick one URL-safe folder name used **everywhere** (examples: `buttons`, `inputs`, `empty-state`):
 
-| Concern | Rule |
-|--------|------|
-| Route + imports | `apps/component-library/app/preview/<segment>/page.tsx` → `/preview/<segment>` |
-| Preview UI folder | `apps/component-library/components/preview/<segment>/` |
-| Package folder | `packages/components/src/ui/<segment>/` |
-| tsup entry name | Same string as `<segment>` in `uiComponentNames` → `@zentauri-ui/zentauri-components/ui/<segment>` |
-| SEO slug | Registry key in `getPreviewSeo("<segment>")` must match `previewSeoRegistry` (e.g. `"empty-state"`) |
-| SEO JSON file | `apps/component-library/content/seo/preview/<segment>.json` (filename = segment) |
+| Concern           | Rule                                                                                                |
+| ----------------- | --------------------------------------------------------------------------------------------------- |
+| Route + imports   | `apps/component-library/app/preview/<segment>/page.tsx` → `/preview/<segment>`                      |
+| Preview UI folder | `apps/component-library/components/preview/<segment>/`                                              |
+| Package folder    | `packages/components/src/ui/<segment>/`                                                             |
+| tsup entry name   | Same string as `<segment>` in `uiComponentNames` → `@zentauri-ui/zentauri-components/ui/<segment>`  |
+| SEO slug          | Registry key in `getPreviewSeo("<segment>")` must match `previewSeoRegistry` (e.g. `"empty-state"`) |
+| SEO JSON file     | `apps/component-library/content/seo/preview/<segment>.json` (filename = segment)                    |
 
 Display title in the sidebar (e.g. “Empty state”) is separate and lives only in `sidebar-data.ts`.
 
@@ -117,15 +117,15 @@ Display title in the sidebar (e.g. “Empty state”) is separate and lives only
 
 Short Markdown plan sections:
 
-1. Goal and non-goals  
-2. Public API (props, defaults, controlled/uncontrolled, `as` if any)  
-3. `data-slot` and any sub-slots  
-4. CVA variants (`variants.ts`)  
-5. Motion presets (`animations.ts`) if applicable  
-6. Accessibility (roles, keyboard, labels)  
-7. Files to create under `packages/components/src/ui/<segment>/`  
-8. Preview + SEO + sidebar + tsup touch list (this checklist)  
-9. Contract tests to write  
+1. Goal and non-goals
+2. Public API (props, defaults, controlled/uncontrolled, `as` if any)
+3. `data-slot` and any sub-slots
+4. CVA variants (`variants.ts`)
+5. Motion presets (`animations.ts`) if applicable
+6. Accessibility (roles, keyboard, labels)
+7. Files to create under `packages/components/src/ui/<segment>/`
+8. Preview + SEO + sidebar + tsup touch list (this checklist)
+9. Contract tests to write
 10. Validation commands (section 1F)
 
 Mirror **Accordion** (simple) or **Select** (rich code examples) for preview depth.

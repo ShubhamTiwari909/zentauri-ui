@@ -24,7 +24,6 @@ import {
   stepperVariants,
 } from "./variants";
 
-
 const StepperContext = createContext<StepperCtx | null>(null);
 
 function useStepper(component: string): StepperCtx {
@@ -44,7 +43,6 @@ function useStepperIndex(component: string): number {
   }
   return index;
 }
-
 
 export function Stepper({
   className,
@@ -144,10 +142,7 @@ export function StepperTitle({
     <div
       ref={ref}
       data-slot="stepper-title"
-      className={cn(
-        "mt-3 text-sm font-semibold",
-        className,
-      )}
+      className={cn("mt-3 text-sm font-semibold", className)}
       {...rest}
     />
   );

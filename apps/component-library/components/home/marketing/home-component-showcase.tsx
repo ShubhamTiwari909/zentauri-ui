@@ -349,39 +349,50 @@ export function HomeComponentShowcase() {
             title="Modal"
             href="/preview/components/modal"
             code={CODE_MODAL}
-            preview={<div className="flex flex-wrap gap-3">
-              {(
-                ["sky", "rose", "emerald", "gradient-teal", "gradient-indigo"] as const
-              ).map((appearance) => {
-                    return (
-                      <Modal key={appearance}>
-                        <ModalTrigger appearance={appearance} className="px-5 py-3">
-                          Open dialog
-                        </ModalTrigger>
-                        <ModalContentAnimated
-                          className=""
-                          size="sm"
-                          animation="scale"
-                          position="center"
-                          appearance={appearance}
-                        >
-                          <ModalClose className="">×</ModalClose>
-                          <ModalHeader className="">
-                            <ModalTitle className="">Edit field</ModalTitle>
-                            <ModalDescription className="">
-                              Save changes to this row.
-                            </ModalDescription>
-                          </ModalHeader>
-                          <ModalBody className="">
-                            <p className="text-sm text-slate-300">
-                              Modal content here.
-                            </p>
-                          </ModalBody>
-                        </ModalContentAnimated>
-                      </Modal>
-                    );
-                  })}
-            </div>}
+            preview={
+              <div className="flex flex-wrap gap-3">
+                {(
+                  [
+                    "sky",
+                    "rose",
+                    "emerald",
+                    "gradient-teal",
+                    "gradient-indigo",
+                  ] as const
+                ).map((appearance) => {
+                  return (
+                    <Modal key={appearance}>
+                      <ModalTrigger
+                        appearance={appearance}
+                        className="px-5 py-3"
+                      >
+                        Open dialog
+                      </ModalTrigger>
+                      <ModalContentAnimated
+                        className=""
+                        size="sm"
+                        animation="scale"
+                        position="center"
+                        appearance={appearance}
+                      >
+                        <ModalClose className="">×</ModalClose>
+                        <ModalHeader className="">
+                          <ModalTitle className="">Edit field</ModalTitle>
+                          <ModalDescription className="">
+                            Save changes to this row.
+                          </ModalDescription>
+                        </ModalHeader>
+                        <ModalBody className="">
+                          <p className="text-sm text-slate-300">
+                            Modal content here.
+                          </p>
+                        </ModalBody>
+                      </ModalContentAnimated>
+                    </Modal>
+                  );
+                })}
+              </div>
+            }
           />
           <ShowcaseRow
             title="Accordion"

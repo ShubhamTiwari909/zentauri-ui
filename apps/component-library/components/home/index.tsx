@@ -21,7 +21,11 @@ export default function HomePage({ seo }: HomePageProps) {
         <HomeHero seo={seo} />
         <div className={mainColumnClassName}>
           <HomeMarketing />
-          <section id="reference" aria-labelledby="reference-heading" className="space-y-6">
+          <section
+            id="reference"
+            aria-labelledby="reference-heading"
+            className="space-y-6"
+          >
             <h2
               id="reference-heading"
               className="text-xl font-semibold tracking-tight text-white"

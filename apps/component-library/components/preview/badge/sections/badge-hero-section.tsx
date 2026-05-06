@@ -15,7 +15,12 @@ export function BadgeHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           <BadgeAnimated appearance="emerald" animation="bounce">
             Live
           </BadgeAnimated>
-          <BadgeAnimated appearance="rose" animation="pop" closable closeLabel="Remove tag">
+          <BadgeAnimated
+            appearance="rose"
+            animation="pop"
+            closable
+            closeLabel="Remove tag"
+          >
             Blocking
           </BadgeAnimated>
         </div>

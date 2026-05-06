@@ -41,15 +41,15 @@ export function useLocalStorage<T>(
   key: string,
   initialValue: T,
 ): UseLocalStorageResult<T> {
-  const [stored, setStored] = useState<T>(() =>
-    readValue(key, initialValue),
-  );
+  const [stored, setStored] = useState<T>(() => readValue(key, initialValue));
 
   const setValue = useCallback(
     (value: T | ((previous: T) => T)) => {
       setStored((previous) => {
         const next =
-          typeof value === "function" ? (value as (p: T) => T)(previous) : value;
+          typeof value === "function"
+            ? (value as (p: T) => T)(previous)
+            : value;
         try {
           if (typeof window !== "undefined") {
             window.localStorage.setItem(key, JSON.stringify(next));

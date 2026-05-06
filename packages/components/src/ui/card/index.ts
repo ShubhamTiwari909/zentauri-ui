@@ -1,9 +1,13 @@
 "use client";
 
+export { Card } from "./card";
 export {
-  Card,
-} from "./card";
-export { CardBody, CardDescription, CardFooter, CardHeader, CardTitle } from "./card-base";
+  CardBody,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./card-base";
 export type {
   CardBaseProps,
   CardVariantProps,

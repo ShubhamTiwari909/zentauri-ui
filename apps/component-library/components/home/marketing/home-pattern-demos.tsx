@@ -13,7 +13,6 @@ import { MotionReveal } from "./motion-reveal";
 import { SectionShell } from "./section-shell";
 import { FiSun, FiMoon } from "react-icons/fi";
 
-
 function AuthPatternDemo() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,7 +47,9 @@ function AuthPatternDemo() {
         autoComplete="email"
         placeholder="you@team.dev"
         value={email}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setEmail(e.target.value)
+        }
         appearance="info"
         size="md"
         errorMessage={error && !email.includes("@") ? error : undefined}
@@ -66,7 +67,9 @@ function AuthPatternDemo() {
         appearance="info"
         size="md"
         errorMessage={
-          error && email.includes("@") && password.length < 8 ? error : undefined
+          error && email.includes("@") && password.length < 8
+            ? error
+            : undefined
         }
       />
       {ok ? (
@@ -97,7 +100,9 @@ export function HomePatternDemos() {
         <div className="grid gap-6 lg:grid-cols-3">
           <div className={patternCardClass}>
             <div className="space-y-1">
-              <h3 className="text-base font-semibold text-white">Auth-style form</h3>
+              <h3 className="text-base font-semibold text-white">
+                Auth-style form
+              </h3>
               <p className="text-sm text-slate-400">
                 Controlled fields with inline validation messaging.
               </p>
@@ -113,7 +118,9 @@ export function HomePatternDemos() {
           </div>
           <div className={patternCardClass}>
             <div className="space-y-1">
-              <h3 className="text-base font-semibold text-white">Dashboard strip</h3>
+              <h3 className="text-base font-semibold text-white">
+                Dashboard strip
+              </h3>
               <p className="text-sm text-slate-400">
                 Badge + progress readout for health or rollout metrics.
               </p>
@@ -190,7 +197,8 @@ export function HomePatternDemos() {
               <p className="text-sm font-medium">Preview panel</p>
               <p className="mt-2 text-sm opacity-80">
                 This toggle only affects this box—your app controls global theme
-                via Tailwind <code className="rounded bg-black/10 px-1 text-xs">dark:</code>{" "}
+                via Tailwind{" "}
+                <code className="rounded bg-black/10 px-1 text-xs">dark:</code>{" "}
                 variants or layout-level classes.
               </p>
               <div className="mt-4">
@@ -214,7 +222,8 @@ export function HomePatternDemos() {
               >
                 Installation
               </Link>{" "}
-              for globals, <code className="rounded bg-white/10 px-1 text-xs">@source</code>{" "}
+              for globals,{" "}
+              <code className="rounded bg-white/10 px-1 text-xs">@source</code>{" "}
               scanning, and theme overrides.
             </p>
           </div>

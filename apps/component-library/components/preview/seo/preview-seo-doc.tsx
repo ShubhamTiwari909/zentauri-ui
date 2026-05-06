@@ -60,7 +60,10 @@ export function PreviewSeoDoc({ doc }: PreviewSeoDocProps) {
           );
         })}
 
-        <section aria-labelledby="preview-doc-faq-heading" className="space-y-4">
+        <section
+          aria-labelledby="preview-doc-faq-heading"
+          className="space-y-4"
+        >
           <h2
             id="preview-doc-faq-heading"
             className="text-2xl font-semibold tracking-tight text-white"

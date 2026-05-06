@@ -1,4 +1,1 @@
-export {
-  useLocalStorage,
-  type UseLocalStorageResult,
-} from "./useLocalStorage";
+export { useLocalStorage, type UseLocalStorageResult } from "./useLocalStorage";

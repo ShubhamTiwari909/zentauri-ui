@@ -15,7 +15,9 @@ export function BreadcrumbDemo({ scenario, appearance }: BreadcrumbDemoProps) {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="#" appearance={appearance}>Docs</BreadcrumbLink>
+            <BreadcrumbLink href="#" appearance={appearance}>
+              Docs
+            </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>·</BreadcrumbSeparator>
           <BreadcrumbItem>
@@ -30,7 +32,9 @@ export function BreadcrumbDemo({ scenario, appearance }: BreadcrumbDemoProps) {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="#" appearance={appearance}>Home</BreadcrumbLink>
+            <BreadcrumbLink href="#" appearance={appearance}>
+              Home
+            </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator size="sm" />
           <BreadcrumbItem>
@@ -44,7 +48,9 @@ export function BreadcrumbDemo({ scenario, appearance }: BreadcrumbDemoProps) {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="#" appearance={appearance}>Library</BreadcrumbLink>
+          <BreadcrumbLink href="#" appearance={appearance}>
+            Library
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>

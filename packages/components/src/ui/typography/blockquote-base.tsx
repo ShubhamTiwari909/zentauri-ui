@@ -6,14 +6,7 @@ import type { BlockquoteProps } from "./types";
 import { typographyToneVariants } from "./variants";
 
 export const BlockquoteBase = (props: BlockquoteProps) => {
-  const {
-    tone,
-    attribution,
-    className,
-    children,
-    ref,
-    ...rest
-  } = props;
+  const { tone, attribution, className, children, ref, ...rest } = props;
 
   return (
     <blockquote

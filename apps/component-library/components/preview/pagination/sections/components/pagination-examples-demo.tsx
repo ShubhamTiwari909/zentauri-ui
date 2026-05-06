@@ -21,7 +21,9 @@ export function PaginationExamplesControlledDemo() {
         siblingCount={1}
         boundaryCount={1}
       />
-      <p className="text-xs text-slate-400 mt-5">Current page: <span className="font-bold">{page}</span></p>
+      <p className="text-xs text-slate-400 mt-5">
+        Current page: <span className="font-bold">{page}</span>
+      </p>
     </div>
   );
 }

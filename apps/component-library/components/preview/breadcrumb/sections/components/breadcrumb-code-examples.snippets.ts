@@ -43,7 +43,9 @@ export function breadcrumbSnippet(scenario: BreadcrumbScenario): string {
 </Breadcrumb>`;
 }
 
-export function breadcrumbSnippetForAppearance(appearance: BreadcrumbAppearance): string {
+export function breadcrumbSnippetForAppearance(
+  appearance: BreadcrumbAppearance,
+): string {
   return `${variantLeadComment("appearance · ${appearance}")}<Breadcrumb appearance="${appearance}">
   <BreadcrumbList>
     <BreadcrumbItem>

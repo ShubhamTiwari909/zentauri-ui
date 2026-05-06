@@ -94,7 +94,10 @@ export function SiteSearchModal({ open, onOpenChange }: SiteSearchModalProps) {
     if (suggestionItems.length === 0) {
       return undefined;
     }
-    if (userActiveId && suggestionItems.some((item) => item.id === userActiveId)) {
+    if (
+      userActiveId &&
+      suggestionItems.some((item) => item.id === userActiveId)
+    ) {
       return userActiveId;
     }
     return suggestionItems[0].id;
@@ -147,7 +150,10 @@ export function SiteSearchModal({ open, onOpenChange }: SiteSearchModalProps) {
       if (event.key === "ArrowDown") {
         event.preventDefault();
         const idx = suggestionItems.findIndex((item) => item.id === currentId);
-        const nextIndex = Math.min(suggestionItems.length - 1, Math.max(0, idx + 1));
+        const nextIndex = Math.min(
+          suggestionItems.length - 1,
+          Math.max(0, idx + 1),
+        );
         setUserActiveId(suggestionItems[nextIndex].id);
         return;
       }

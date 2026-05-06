@@ -10,11 +10,11 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 ## Package exports
 
-| Subpath                                         | Description                                                                                                                                 |
-| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@zentauri-ui/zentauri-components/ui/<name>`   | Single UI area: static primitives, compound parts, variants, and types. Does **not** include Framer Motion–based animated exports.           |
-| `@zentauri-ui/zentauri-components/ui/<name>/animated` | Motion entry for that area when published: animated components, motion presets, and related types (depends on **framer-motion**).     |
-| `@zentauri-ui/zentauri-components/hooks/<entry>` | One hook module or `utils` (`cn`, `clampPage`, `range` from `src/lib/utils.ts`). Entries match files under `src/hooks/` (see **React hooks**). |
+| Subpath                                               | Description                                                                                                                                    |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@zentauri-ui/zentauri-components/ui/<name>`          | Single UI area: static primitives, compound parts, variants, and types. Does **not** include Framer Motion–based animated exports.             |
+| `@zentauri-ui/zentauri-components/ui/<name>/animated` | Motion entry for that area when published: animated components, motion presets, and related types (depends on **framer-motion**).              |
+| `@zentauri-ui/zentauri-components/hooks/<entry>`      | One hook module or `utils` (`cn`, `clampPage`, `range` from `src/lib/utils.ts`). Entries match files under `src/hooks/` (see **React hooks**). |
 
 The UI `<name>` segment matches the folder under `src/ui/` (for example `accordion`, `select`, `empty-state`, `buttons` for `Button`, `inputs` for `Input`, `typography` for `Heading` / `Text` and related primitives). The hooks `<entry>` is the file stem (for example `useMediaQuery`, `usePagination`) or `utils`.
 
@@ -40,36 +40,36 @@ Published motion entries (same `<name>` as the base UI folder):
 
 Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` when the **Base** column lists a path. When the **Animated** column lists a path, motion components and preset helpers come from `@zentauri-ui/zentauri-components/ui/<subpath>/animated` (they are not exported from the base entry). **Spinner** has no static bundle—use only the animated subpath.
 
-| Area           | Base subpath `…/ui/…` | Animated subpath `…/ui/…/animated` |
-| -------------- | --------------------- | ------------------------------------ |
-| Accordion      | `accordion`           | `accordion/animated`                 |
-| Alert          | `alert`               | `alert/animated`                     |
-| Avatar         | `avatar`              | `avatar/animated`                    |
-| Badge          | `badge`               | `badge/animated`                     |
-| Breadcrumb     | `breadcrumb`          | —                                    |
-| Button         | `buttons`             | `buttons/animated`                   |
-| Card           | `card`                | `card/animated`                      |
-| Divider        | `divider`             | `divider/animated`                   |
-| Drawer         | `drawer`              | `drawer/animated`                    |
-| Dropdown       | `dropdown`            | —                                    |
-| Empty state    | `empty-state`         | `empty-state/animated`               |
-| File upload    | `file-upload`         | —                                    |
-| Input          | `inputs`              | `inputs/animated`                    |
-| Modal          | `modal`               | `modal/animated`                     |
-| Pagination     | `pagination`          | —                                    |
-| Progress       | `progress`            | `progress/animated`                  |
-| Search         | `search`              | -                                    |
-| Select         | `select`              | —                                    |
-| Skeleton       | `skeleton`            | `skeleton/animated`                  |
-| Slider         | `slider`              | —                                    |
-| Spinner        | —                     | `spinner/animated`                   |
-| Stepper        | `stepper`             | —                                    |
-| Table          | `table`               | `table/animated`                     |
-| Tabs           | `tabs`                | `tabs/animated`                      |
-| Toast          | `toast`               | `toast/animated`                     |
-| Toggle         | `toggle`              | `toggle/animated`                    |
-| Tooltip        | `tooltip`             | `tooltip/animated`                   |
-| Typography     | `typography`          | —                                    |
+| Area        | Base subpath `…/ui/…` | Animated subpath `…/ui/…/animated` |
+| ----------- | --------------------- | ---------------------------------- |
+| Accordion   | `accordion`           | `accordion/animated`               |
+| Alert       | `alert`               | `alert/animated`                   |
+| Avatar      | `avatar`              | `avatar/animated`                  |
+| Badge       | `badge`               | `badge/animated`                   |
+| Breadcrumb  | `breadcrumb`          | —                                  |
+| Button      | `buttons`             | `buttons/animated`                 |
+| Card        | `card`                | `card/animated`                    |
+| Divider     | `divider`             | `divider/animated`                 |
+| Drawer      | `drawer`              | `drawer/animated`                  |
+| Dropdown    | `dropdown`            | —                                  |
+| Empty state | `empty-state`         | `empty-state/animated`             |
+| File upload | `file-upload`         | —                                  |
+| Input       | `inputs`              | `inputs/animated`                  |
+| Modal       | `modal`               | `modal/animated`                   |
+| Pagination  | `pagination`          | —                                  |
+| Progress    | `progress`            | `progress/animated`                |
+| Search      | `search`              | -                                  |
+| Select      | `select`              | —                                  |
+| Skeleton    | `skeleton`            | `skeleton/animated`                |
+| Slider      | `slider`              | —                                  |
+| Spinner     | —                     | `spinner/animated`                 |
+| Stepper     | `stepper`             | —                                  |
+| Table       | `table`               | `table/animated`                   |
+| Tabs        | `tabs`                | `tabs/animated`                    |
+| Toast       | `toast`               | `toast/animated`                   |
+| Toggle      | `toggle`              | `toggle/animated`                  |
+| Tooltip     | `tooltip`             | `tooltip/animated`                 |
+| Typography  | `typography`          | —                                  |
 
 ## Typography
 
@@ -110,8 +110,7 @@ export function ArticleIntro() {
         Feature title
       </Heading>
       <Text as="p" size="sm" tone="muted">
-        Supporting copy with{" "}
-        <InlineCode tone="accent">inline code</InlineCode>.
+        Supporting copy with <InlineCode tone="accent">inline code</InlineCode>.
       </Text>
       <List marker="disc" tone="default">
         <List.Item>First item</List.Item>
@@ -136,34 +135,34 @@ export function ArticleIntro() {
 
 Hooks live in `src/hooks/`. Each hook is a separate published entry under `@zentauri-ui/zentauri-components/hooks/<name>` (same pattern as UI areas). Types are exported where the implementation defines them (for example `UseDisclosureResult`, `PaginationPageItem`). For class-name merging and pagination helpers used alongside hooks, import from `@zentauri-ui/zentauri-components/hooks/utils`.
 
-| Hook / module              | Subpath `…/hooks/…`           | Notes (selected exports) |
-| -------------------------- | ----------------------------- | -------------------------- |
-| `useBodyScrollLock`        | `useBodyScrollLock`           | Locks document scroll while open |
-| `useClickOutside`          | `useClickOutside`             | `ClickOutsideEventType`, `UseClickOutsideParams` |
-| `useClipboard`             | `useClipboard`                | `UseClipboardResult` |
-| `useControllableState`     | `useControllableState`        | `UseControllableStateParams` |
-| `useDebouncedValue`        | `useDebouncedValue`           | Debounced state from a value |
-| `useDisclosure`            | `useDisclosure`               | `UseDisclosureParams`, `UseDisclosureResult` |
-| `useDocumentTitle`         | `useDocumentTitle`            | `UseDocumentTitleParams` |
-| `useFocusManagement`       | `useFocusManagement`          | Focus trap / focus moves for overlays |
-| `useHover`                 | `useHover`                    | Pointer hover state |
-| `useInView`                | `useInView`                   | `UseInViewParams` |
-| `useIntersectionObserver`  | `useIntersectionObserver`     | `UseIntersectionObserverParams` |
-| `useIsomorphicLayoutEffect`| `useIsomorphicLayoutEffect`   | `useLayoutEffect` safe for SSR |
-| `useIsMounted`             | `useIsMounted`                | Ref / flag after mount |
-| `useLocalStorage`          | `useLocalStorage`             | `UseLocalStorageResult` |
-| `useMediaQuery`            | `useMediaQuery`               | Match CSS media queries |
-| `useNetworkStatus`         | `useNetworkStatus`            | Online / offline |
-| `usePageVisibility`        | `usePageVisibility`           | Document visibility API |
-| `usePagination`            | `usePagination`               | `buildPaginationItems`, `BuildPaginationItemsParams`, `PaginationPageItem` |
-| `usePrefersColorScheme`    | `usePrefersColorScheme`       | `ColorSchemePreference` |
-| `usePrefersReducedMotion`  | `usePrefersReducedMotion`     | `prefers-reduced-motion` |
-| `useResizeObserver`        | `useResizeObserver`           | `ElementSize` |
-| `useSessionStorage`        | `useSessionStorage`           | `UseSessionStorageResult` |
-| `useThrottledCallback`     | `useThrottledCallback`        | Throttled callback ref |
-| `useToggle`                | `useToggle`                   | Boolean toggle state |
-| `useWindowSize`            | `useWindowSize`               | `WindowSize` |
-| `cn`, `clampPage`, `range` | `utils`                       | Shared helpers from `src/lib/utils.ts` |
+| Hook / module               | Subpath `…/hooks/…`         | Notes (selected exports)                                                   |
+| --------------------------- | --------------------------- | -------------------------------------------------------------------------- |
+| `useBodyScrollLock`         | `useBodyScrollLock`         | Locks document scroll while open                                           |
+| `useClickOutside`           | `useClickOutside`           | `ClickOutsideEventType`, `UseClickOutsideParams`                           |
+| `useClipboard`              | `useClipboard`              | `UseClipboardResult`                                                       |
+| `useControllableState`      | `useControllableState`      | `UseControllableStateParams`                                               |
+| `useDebouncedValue`         | `useDebouncedValue`         | Debounced state from a value                                               |
+| `useDisclosure`             | `useDisclosure`             | `UseDisclosureParams`, `UseDisclosureResult`                               |
+| `useDocumentTitle`          | `useDocumentTitle`          | `UseDocumentTitleParams`                                                   |
+| `useFocusManagement`        | `useFocusManagement`        | Focus trap / focus moves for overlays                                      |
+| `useHover`                  | `useHover`                  | Pointer hover state                                                        |
+| `useInView`                 | `useInView`                 | `UseInViewParams`                                                          |
+| `useIntersectionObserver`   | `useIntersectionObserver`   | `UseIntersectionObserverParams`                                            |
+| `useIsomorphicLayoutEffect` | `useIsomorphicLayoutEffect` | `useLayoutEffect` safe for SSR                                             |
+| `useIsMounted`              | `useIsMounted`              | Ref / flag after mount                                                     |
+| `useLocalStorage`           | `useLocalStorage`           | `UseLocalStorageResult`                                                    |
+| `useMediaQuery`             | `useMediaQuery`             | Match CSS media queries                                                    |
+| `useNetworkStatus`          | `useNetworkStatus`          | Online / offline                                                           |
+| `usePageVisibility`         | `usePageVisibility`         | Document visibility API                                                    |
+| `usePagination`             | `usePagination`             | `buildPaginationItems`, `BuildPaginationItemsParams`, `PaginationPageItem` |
+| `usePrefersColorScheme`     | `usePrefersColorScheme`     | `ColorSchemePreference`                                                    |
+| `usePrefersReducedMotion`   | `usePrefersReducedMotion`   | `prefers-reduced-motion`                                                   |
+| `useResizeObserver`         | `useResizeObserver`         | `ElementSize`                                                              |
+| `useSessionStorage`         | `useSessionStorage`         | `UseSessionStorageResult`                                                  |
+| `useThrottledCallback`      | `useThrottledCallback`      | Throttled callback ref                                                     |
+| `useToggle`                 | `useToggle`                 | Boolean toggle state                                                       |
+| `useWindowSize`             | `useWindowSize`             | `WindowSize`                                                               |
+| `cn`, `clampPage`, `range`  | `utils`                     | Shared helpers from `src/lib/utils.ts`                                     |
 
 #### Hook import example
 
@@ -373,10 +372,10 @@ node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs add accordion
 node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs add hook useWindowSize
 ```
 
-| Command | What it does |
-| ------- | -------------- |
-| `init` | Writes **`components.json`** in the current working directory (or `--cwd`) with default `aliases` and `resolvedPaths`. Refuses to overwrite an existing file. |
-| `add <names...>` | Walks up from `--cwd` (default `.`) to find `components.json`, then copies each resolved **UI** folder under `src/ui`, pulls in hooks those files depend on (including transitive hook imports), and creates **`lib/utils`** at `resolvedPaths.utils` from the package template if it is missing. |
+| Command               | What it does                                                                                                                                                                                                                                                                                                                 |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `init`                | Writes **`components.json`** in the current working directory (or `--cwd`) with default `aliases` and `resolvedPaths`. Refuses to overwrite an existing file.                                                                                                                                                                |
+| `add <names...>`      | Walks up from `--cwd` (default `.`) to find `components.json`, then copies each resolved **UI** folder under `src/ui`, pulls in hooks those files depend on (including transitive hook imports), and creates **`lib/utils`** at `resolvedPaths.utils` from the package template if it is missing.                            |
 | `add hook <names...>` | Same config lookup; copies only **hook** folders listed under `registry.hooks` (from `hooksEntryNames` in `tsup.config.ts`), including transitive sibling-hook imports. Does not copy UI unless a hook’s imports require you to add a component separately (for example `usePagination` imports types from `ui/pagination`). |
 
 Global flags: `-h` / `--help`, `-v` / `--version`, `--cwd <dir>` (relative to `process.cwd()`).
@@ -417,10 +416,10 @@ After `add`, imports inside copied `.ts`/`.tsx` files are rewritten using your `
 
 ### When to use the CLI vs npm imports
 
-| Approach | Best when |
-| -------- | ----------- |
-| **`npm` + package `exports`** (earlier sections) | You want versioned dependencies, smallest app-owned surface, and tree-shaken `dist/` entries. |
-| **`init` / `add`** | You want vendored source under your repo (customize primitives, match shadcn-style workflows, or lock file-level behavior). |
+| Approach                                         | Best when                                                                                                                   |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| **`npm` + package `exports`** (earlier sections) | You want versioned dependencies, smallest app-owned surface, and tree-shaken `dist/` entries.                               |
+| **`init` / `add`**                               | You want vendored source under your repo (customize primitives, match shadcn-style workflows, or lock file-level behavior). |
 
 Tailwind still needs to see the classes your **copied** files use—point `@source` at those paths (for example your `src/components/ui`) rather than only at `node_modules/@zentauri-ui/zentauri-components` if you no longer rely on scanning the published package.
 
@@ -439,6 +438,7 @@ From this package directory in the monorepo:
 - **`prepack`** — invokes `generate:registry` automatically before `npm pack` / publish so the published tarball always ships an up-to-date registry alongside `cli/index.mjs`.
 
 ## Github Release log
+
 https://github.com/ShubhamTiwari909/zentauri-ui/releases
 
 ## NOTE:

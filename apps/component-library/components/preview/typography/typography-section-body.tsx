@@ -19,7 +19,10 @@ function ToneGridHeading() {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {TYPOGRAPHY_TONES.map((tone) => (
-        <div key={tone} className="rounded-xl border border-white/10 bg-white/3 p-4">
+        <div
+          key={tone}
+          className="rounded-xl border border-white/10 bg-white/3 p-4"
+        >
           <Heading level={3} tone={tone}>
             Tone: {tone}
           </Heading>
@@ -33,7 +36,10 @@ function ToneGridText() {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {TYPOGRAPHY_TONES.map((tone) => (
-        <div key={tone} className="rounded-xl border border-white/10 bg-white/3 p-4">
+        <div
+          key={tone}
+          className="rounded-xl border border-white/10 bg-white/3 p-4"
+        >
           <Text tone={tone}>Paragraph tone — {tone}</Text>
         </div>
       ))}
@@ -45,7 +51,10 @@ function ToneGridLists() {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {TYPOGRAPHY_TONES.map((tone) => (
-        <div key={tone} className="rounded-xl border border-white/10 bg-white/3 p-4">
+        <div
+          key={tone}
+          className="rounded-xl border border-white/10 bg-white/3 p-4"
+        >
           <Text className="mb-2 text-xs uppercase tracking-wide text-slate-500">
             {tone}
           </Text>
@@ -63,7 +72,10 @@ function ToneGridBlockquote() {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {TYPOGRAPHY_TONES.map((tone) => (
-        <div key={tone} className="rounded-xl border border-white/10 bg-white/3 p-4">
+        <div
+          key={tone}
+          className="rounded-xl border border-white/10 bg-white/3 p-4"
+        >
           <Blockquote tone={tone} attribution={`${tone}`}>
             <Text as="p">Short quotation sample.</Text>
           </Blockquote>
@@ -77,7 +89,10 @@ function ToneGridInline() {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {TYPOGRAPHY_TONES.map((tone) => (
-        <div key={tone} className="rounded-xl border border-white/10 bg-white/3 p-4">
+        <div
+          key={tone}
+          className="rounded-xl border border-white/10 bg-white/3 p-4"
+        >
           <Text tone={tone}>
             Tone {tone} with <InlineCode>token</InlineCode>
           </Text>
@@ -91,9 +106,18 @@ function ToneGridCodeBlock() {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {TYPOGRAPHY_TONES.map((tone) => (
-        <div key={tone} className="space-y-2 rounded-xl border border-white/10 bg-white/3 p-4">
-          <Text className="text-xs uppercase tracking-wide text-slate-500">{tone}</Text>
-          <CodeBlock tone={tone} className="wrap-anywhere" language="ts">{`export const tone = "${tone}";`}</CodeBlock>
+        <div
+          key={tone}
+          className="space-y-2 rounded-xl border border-white/10 bg-white/3 p-4"
+        >
+          <Text className="text-xs uppercase tracking-wide text-slate-500">
+            {tone}
+          </Text>
+          <CodeBlock
+            tone={tone}
+            className="wrap-anywhere"
+            language="ts"
+          >{`export const tone = "${tone}";`}</CodeBlock>
         </div>
       ))}
     </div>
@@ -223,13 +247,16 @@ function CombinationsSection({ section }: { section: TypographySectionSlug }) {
     case "blockquote":
       return (
         <Blockquote tone="accent" attribution="Release notes · April 2026">
-          <Text as="p">Accent quotation blocks draw attention without breaking rhythm.</Text>
+          <Text as="p">
+            Accent quotation blocks draw attention without breaking rhythm.
+          </Text>
         </Blockquote>
       );
     case "inline":
       return (
         <Text tone="secondary">
-          Deploy via <InlineCode>npx zentauri-ui add typography</InlineCode> then verify{" "}
+          Deploy via <InlineCode>npx zentauri-ui add typography</InlineCode>{" "}
+          then verify{" "}
           <Text as="span" bold tone="destructive">
             destructive warnings
           </Text>{" "}
@@ -259,7 +286,8 @@ export function TypographySectionBody({
       <section className={panel}>
         <h2 className="text-2xl font-semibold text-white">Variants showcase</h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-          Tone tokens align with dark shells across Zentauri previews—swap surfaces thoughtfully.
+          Tone tokens align with dark shells across Zentauri previews—swap
+          surfaces thoughtfully.
         </p>
         <div className="mt-6 w-full overflow-auto">
           <VariantsForSection section={section} />
@@ -267,7 +295,9 @@ export function TypographySectionBody({
       </section>
 
       <section className={panel}>
-        <h2 className="text-2xl font-semibold text-white">Formatting showcase</h2>
+        <h2 className="text-2xl font-semibold text-white">
+          Formatting showcase
+        </h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
           Boolean emphasis props layer Tailwind utilities consistently.
         </p>
@@ -277,7 +307,9 @@ export function TypographySectionBody({
       </section>
 
       <section className={panel}>
-        <h2 className="text-2xl font-semibold text-white">Combination examples</h2>
+        <h2 className="text-2xl font-semibold text-white">
+          Combination examples
+        </h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
           Patterns you can paste into marketing pages and dashboards.
         </p>

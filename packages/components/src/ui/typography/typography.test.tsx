@@ -64,7 +64,9 @@ describe("Typography primitives", () => {
 
   it("should render InlineCode with monospace styling token", () => {
     const { container } = render(<InlineCode>npm i</InlineCode>);
-    const code = container.querySelector('[data-slot="typography-inline-code"]');
+    const code = container.querySelector(
+      '[data-slot="typography-inline-code"]',
+    );
     expect(code?.tagName).toBe("CODE");
     expect(code?.className).toMatch(/font-mono/);
   });

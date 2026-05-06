@@ -9,7 +9,12 @@ import {
 
 import { cn } from "../../lib/utils";
 
-import type { AlertBaseProps, AlertProps, AlertSectionProps, AlertSize } from "./types";
+import type {
+  AlertBaseProps,
+  AlertProps,
+  AlertSectionProps,
+  AlertSize,
+} from "./types";
 import {
   alertDescriptionVariants,
   alertTitleVariants,

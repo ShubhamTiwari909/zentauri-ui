@@ -22,7 +22,11 @@ export async function generateMetadata({ params }: { params: PageParams }) {
   return previewSeoDocumentToMetadata(getHookPreviewSeo(slug));
 }
 
-export default async function HookDetailRoutePage({ params }: { params: PageParams }) {
+export default async function HookDetailRoutePage({
+  params,
+}: {
+  params: PageParams;
+}) {
   const { slug } = await params;
   if (!isHookPreviewSlug(slug)) {
     notFound();

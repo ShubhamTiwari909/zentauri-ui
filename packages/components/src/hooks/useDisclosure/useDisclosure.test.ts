@@ -48,8 +48,7 @@ describe("useDisclosure", () => {
   it("should be controlled when open prop is defined", () => {
     const onOpenChange = vi.fn();
     const { result, rerender } = renderHook(
-      ({ open }: { open: boolean }) =>
-        useDisclosure({ open, onOpenChange }),
+      ({ open }: { open: boolean }) => useDisclosure({ open, onOpenChange }),
       { initialProps: { open: false } },
     );
     expect(result.current.isOpen).toBe(false);

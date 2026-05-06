@@ -13,7 +13,6 @@ export type TooltipAnimationPresets = Record<
   TooltipPresetMotionProps
 >;
 
-
 export type TooltipContentAnimatedProps = TooltipContentProps & {
   animation?: TooltipAnimation;
 };

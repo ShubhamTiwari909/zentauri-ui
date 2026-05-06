@@ -3,6 +3,7 @@ You are a senior frontend architect and design system expert.
 I am building a Typography section for my component + hooks library preview website. I want you to create a COMPLETE planning and execution document that includes architecture, UX structure, component API design, and implementation steps.
 
 ## Context
+
 - Tech stack: React + TypeScript + Tailwind CSS v4, reference doc https://tailwindcss.com/docs/font-family (assume modern setup)
 - This is a component library showcase site (like shadcn/ui, radix, etc.)
 - Each typography type should have a dedicated preview page and should be added inside the `packages/components` as a package component, refer the `packages/components` folder to see the structure and folder pattern for the components
@@ -12,6 +13,7 @@ I am building a Typography section for my component + hooks library preview webs
 ## 🎯 Goal
 
 Design a scalable, developer-friendly Typography system that:
+
 1. Showcases all typography elements
 2. Provides variants and formatting options
 3. Is reusable as a component library API
@@ -46,17 +48,20 @@ Create a structured plan for these pages:
 Each typography component should support:
 
 ### 1. Semantic variants
+
 - h1 → h6 (for headings)
 - p sizes (sm, base, lg)
 - list styles (disc, decimal, etc.)
 
 ### 2. Style variants
+
 - Bold
 - Italic
 - Underline
 - Strikethrough
 
 ### 3. Color variants
+
 - Default
 - Muted
 - Primary
@@ -65,6 +70,7 @@ Each typography component should support:
 - Error (optional)
 
 ### 4. Combination examples
+
 - h1 + bold + underline
 - paragraph + muted + italic
 - blockquote + accent color
@@ -74,6 +80,7 @@ Each typography component should support:
 ## 🧩 What I Need You To Generate
 
 ### 1. 🏗️ Information Architecture
+
 - Folder structure
 - Routing structure (e.g. `/typography/heading`, `/typography/paragraph`)
 - Component organization within `packages/components` like this -> `components/src/typography/*`
@@ -90,6 +97,7 @@ Design reusable components like:
 - `<Blockquote />`
 
 Include:
+
 - Props interface (TypeScript)
 - Variant system (class-variance-authority or similar)
 - Examples of usage
@@ -101,24 +109,31 @@ Include:
 Each typography preview page should include:
 
 #### Section 1: Title + Description
+
 - What this typography is used for
 
 #### Section 2: Live Preview
+
 - Rendered examples
 
 #### Section 3: Variants Showcase
+
 - All variants in grid or stacked format
 
 #### Section 4: Formatting Showcase
+
 - Bold, italic, underline, etc.
 
 #### Section 5: Combination Examples
+
 - Real-world usage combinations
 
 #### Section 6: Code Snippets
+
 - Copy-paste usage
 
 #### Section 7 (Optional): Playground
+
 - Controls to toggle variants dynamically
 
 ---
@@ -126,6 +141,7 @@ Each typography preview page should include:
 ### 4. 🎯 UX Enhancements
 
 Suggest improvements like:
+
 - Copy-to-clipboard button
 - Theme support (dark/light)
 - Responsive typography preview
@@ -149,6 +165,7 @@ Step-by-step execution:
 ### 6. 💡 Best Practices
 
 Include:
+
 - Accessibility (semantic HTML usage)
 - SEO considerations
 - Performance (avoid unnecessary re-renders)

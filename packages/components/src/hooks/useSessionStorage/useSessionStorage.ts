@@ -47,7 +47,9 @@ export function useSessionStorage<T>(
     (value: T | ((previous: T) => T)) => {
       setStored((previous) => {
         const next =
-          typeof value === "function" ? (value as (p: T) => T)(previous) : value;
+          typeof value === "function"
+            ? (value as (p: T) => T)(previous)
+            : value;
         try {
           if (typeof window !== "undefined") {
             window.sessionStorage.setItem(key, JSON.stringify(next));
@@ -74,7 +76,7 @@ export function useSessionStorage<T>(
 
   useEffect(() => {
     const next = readValue(key, initialValue);
-  
+
     setStored((prev) => {
       return JSON.stringify(prev) === JSON.stringify(next) ? prev : next;
     });

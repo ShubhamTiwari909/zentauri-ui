@@ -17,7 +17,6 @@ export type SkeletonAnimationPresets = Record<
   SkeletonPresetMotionProps
 >;
 
-
 export type SkeletonAnimatedProps = SkeletonVariantProps &
   Omit<HTMLMotionProps<"div">, "children"> & {
     animation?: SkeletonAnimation;

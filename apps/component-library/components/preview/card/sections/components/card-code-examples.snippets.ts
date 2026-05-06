@@ -30,20 +30,20 @@ const visualPlaceholderSnippet = `const VisualPlaceholder = ({
       className={\`min-h-36 rounded-lg border border-white/10 bg-[linear-gradient(135deg,rgba(99,102,241,0.34),rgba(14,165,233,0.12)),linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-size-[100%_100%,22px_22px,22px_22px] \${className}\`}
     />
   );
-}`
+}`;
 
 const baseCardClassNameSnippet = `const baseCardClassName = 
-  "group h-full border-white/10 bg-slate-950/70 shadow-lg shadow-slate-950/30 transition duration-200 hover:-translate-y-1 hover:border-indigo-400/40 hover:shadow-indigo-950/30";`
+  "group h-full border-white/10 bg-slate-950/70 shadow-lg shadow-slate-950/30 transition duration-200 hover:-translate-y-1 hover:border-indigo-400/40 hover:shadow-indigo-950/30";`;
 
 const secondarActionClassNameSnippet = `const secondaryActionClassName =
-"inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-slate-100 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";`
+"inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-slate-100 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";`;
 
 const iconShellClassNameSnippet = `const iconShellClassName = 
-  "grid size-10 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5 text-indigo-300";`
+  "grid size-10 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5 text-indigo-300";`;
 
 const actionClassNameSnippet = `const actionClassName =
   "inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-500 px-3 py-2 text-sm font-medium text-white transition hover:bg-indigo-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
-`
+`;
 
 const avatarInitialsSnippet = `function AvatarInitials({ initials }: { initials: string }) {
   return (
@@ -54,10 +54,10 @@ const avatarInitialsSnippet = `function AvatarInitials({ initials }: { initials:
       {initials}
     </div>
   );
-}`
+}`;
 
 export const cardVariantSnippets = {
-    productCardSnippet: `${baseCardClassNameSnippet}
+  productCardSnippet: `${baseCardClassNameSnippet}
 
 ${visualPlaceholderSnippet}
 
@@ -79,7 +79,7 @@ ${actionClassNameSnippet}
     <a href="#product-card" className={actionClassName}>Add to cart</a>
   </CardFooter>
 </Card>`,
-    userProfileCardSnippet: `${baseCardClassNameSnippet}
+  userProfileCardSnippet: `${baseCardClassNameSnippet}
 
 const stats = [
   ["128", "Projects"],
@@ -105,8 +105,8 @@ ${avatarInitialsSnippet}
       ))}
     </div>
   </CardBody>
-</Card>`,   
-    blogPostCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  blogPostCardSnippet: `${baseCardClassNameSnippet}
 
 ${secondarActionClassNameSnippet}
 
@@ -128,8 +128,8 @@ ${visualPlaceholderSnippet}
       Read article <FiChevronRight aria-hidden="true" />
     </a>
   </CardFooter>
-</Card>`, 
-    pricingCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  pricingCardSnippet: `${baseCardClassNameSnippet}
   
 ${actionClassNameSnippet}
 
@@ -156,8 +156,8 @@ const features = ["Unlimited workflows", "Advanced permissions", "Priority suppo
     </ul>
   </CardBody>
   <CardFooter><a href="#pricing-card" className={actionClassName}>Start trial</a></CardFooter>
-</Card>`, 
-    testimonialCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  testimonialCardSnippet: `${baseCardClassNameSnippet}
 
 ${avatarInitialsSnippet}
 
@@ -179,8 +179,8 @@ ${avatarInitialsSnippet}
       <p className="text-xs text-slate-400">Security Lead, Helio</p>
     </div>
   </CardFooter>
-</Card>`, 
-    statsCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  statsCardSnippet: `${baseCardClassNameSnippet}
 
 ${iconShellClassNameSnippet}
 
@@ -195,8 +195,8 @@ ${iconShellClassNameSnippet}
       <CardDescription>Qualified product events this week</CardDescription>
     </div>
   </CardBody>
-</Card>`, 
-    dashboardSummaryCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  dashboardSummaryCardSnippet: `${baseCardClassNameSnippet}
 
 const rows = [
   ["Release readiness", "92%"],
@@ -217,8 +217,8 @@ const rows = [
       </div>
     ))}
   </CardBody>
-</Card>`, 
-    notificationCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  notificationCardSnippet: `${baseCardClassNameSnippet}
 
 <Card appearance="outline" rounded="lg" className={\`\${baseCardClassName} border-amber-400/30 bg-amber-500/10\`} role="status" aria-live="polite">
   <CardBody>
@@ -234,8 +234,8 @@ const rows = [
       </div>
     </div>
   </CardBody>
-</Card>`, 
-    featureCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  featureCardSnippet: `${baseCardClassNameSnippet}
 
 ${iconShellClassNameSnippet}
 
@@ -247,8 +247,8 @@ ${iconShellClassNameSnippet}
       Route work, assign owners, and escalate blockers without brittle scripts.
     </CardDescription>
   </CardHeader>
-</Card>`, 
-    ecommerceCartItemCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  ecommerceCartItemCardSnippet: `${baseCardClassNameSnippet}
 
 <Card appearance="glass" rounded="lg" className={baseCardClassName}>
   <CardBody className="flex-row gap-4">
@@ -264,8 +264,8 @@ ${iconShellClassNameSnippet}
       </div>
     </div>
   </CardBody>
-</Card>`, 
-    eventCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  eventCardSnippet: `${baseCardClassNameSnippet}
 
 ${secondarActionClassNameSnippet}
 
@@ -283,8 +283,8 @@ ${secondarActionClassNameSnippet}
     </div>
   </CardHeader>
   <CardFooter><a href="#event-card" className={secondaryActionClassName}>Reserve seat</a></CardFooter>
-</Card>`, 
-    jobListingCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  jobListingCardSnippet: `${baseCardClassNameSnippet}
   
 ${secondarActionClassNameSnippet}
 
@@ -303,8 +303,8 @@ ${iconShellClassNameSnippet}
     <span className="text-sm text-slate-400">$155k - $190k</span>
     <a href="#job-listing-card" className={secondaryActionClassName}>Apply</a>
   </CardFooter>
-</Card>`, 
-    courseCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  courseCardSnippet: `${baseCardClassNameSnippet}
 
 ${visualPlaceholderSnippet}
 
@@ -324,8 +324,8 @@ ${visualPlaceholderSnippet}
       </div>
     </div>
   </CardBody>
-</Card>`, 
-    musicMediaCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  musicMediaCardSnippet: `${baseCardClassNameSnippet}
 
 ${secondarActionClassNameSnippet}
 
@@ -344,7 +344,7 @@ ${secondarActionClassNameSnippet}
     </div>
   </CardBody>
 </Card>`,
-    socialPostCardSnippet: `${baseCardClassNameSnippet}
+  socialPostCardSnippet: `${baseCardClassNameSnippet}
 
 ${avatarInitialsSnippet}
 
@@ -366,8 +366,8 @@ ${avatarInitialsSnippet}
     <button type="button" className="inline-flex items-center gap-2 hover:text-white" aria-label="Comment on post"><FiMessageCircle aria-hidden="true" /> 32</button>
     <button type="button" className="inline-flex items-center gap-2 hover:text-white" aria-label="Share post"><FiShare2 aria-hidden="true" /> Share</button>
   </CardFooter>
-</Card>`, 
-    analyticsCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  analyticsCardSnippet: `${baseCardClassNameSnippet}
 
 const bars = ["h-100", "h-80", "h-60", "h-40", "h-20"];
 
@@ -384,7 +384,7 @@ const bars = ["h-100", "h-80", "h-60", "h-40", "h-20"];
     </div>
   </CardBody>
 </Card>`,
-    teamMemberCardSnippet: `${baseCardClassNameSnippet}
+  teamMemberCardSnippet: `${baseCardClassNameSnippet}
 
 ${avatarInitialsSnippet}
 
@@ -402,8 +402,8 @@ ${avatarInitialsSnippet}
   <CardFooter className="flex-row justify-center">
     <a href="mailto:noor@example.com" className={secondaryActionClassName}>Contact</a>
   </CardFooter>
-</Card>`, 
-    fileDocumentCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  fileDocumentCardSnippet: `${baseCardClassNameSnippet}
 
 ${secondarActionClassNameSnippet}
 
@@ -421,7 +421,7 @@ ${iconShellClassNameSnippet}
     </button>
   </CardBody>
 </Card>`,
-    paymentInvoiceCardSnippet: `${baseCardClassNameSnippet}
+  paymentInvoiceCardSnippet: `${baseCardClassNameSnippet}
 
 ${secondarActionClassNameSnippet}
 
@@ -444,8 +444,8 @@ ${iconShellClassNameSnippet}
       <span className="rounded-full bg-amber-500/15 px-2.5 py-1 text-xs text-amber-200">Pending</span>
     </div>
   </CardBody>
-</Card>`, 
-    emptyStateCardSnippet: `${baseCardClassNameSnippet}
+</Card>`,
+  emptyStateCardSnippet: `${baseCardClassNameSnippet}
 
 ${actionClassNameSnippet}
 
@@ -462,5 +462,5 @@ ${actionClassNameSnippet}
     </div>
     <button type="button" className={actionClassName}><FiPlus aria-hidden="true" /> Upload file</button>
   </CardBody>
-</Card>`
-}
+</Card>`,
+};

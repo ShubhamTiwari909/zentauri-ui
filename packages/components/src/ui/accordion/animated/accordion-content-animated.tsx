@@ -16,10 +16,7 @@ export function AccordionContentAnimated({
   ref,
 }: AccordionContentAnimatedProps) {
   const itemValue = useAccordionItemValue("AccordionContent");
-  const {
-    isOpen,
-    size,
-  } = useAccordionContext("AccordionContent");
+  const { isOpen, size } = useAccordionContext("AccordionContent");
   const open = isOpen(itemValue);
   const panelId = `${itemValue}-panel`;
   const transitionConfig = accordionContentTransitionPresets[transitionVariant];

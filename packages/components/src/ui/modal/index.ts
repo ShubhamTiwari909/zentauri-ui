@@ -9,7 +9,7 @@ export {
   ModalHeader,
   ModalDescription,
   ModalClose,
-  ModalFooter
+  ModalFooter,
 } from "./modal-base";
 export type {
   ModalContentProps,

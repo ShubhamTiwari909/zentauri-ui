@@ -67,7 +67,13 @@ export function ProgressCodeExamplesSection() {
         >
           <ProgressDemo {...defaults} appearance="sky" animated />
         </PreviewCodeShowcase>
-        <PreviewCodeShowcase code={progressSnippet({ ...defaults, appearance: "default", animated: true })}>
+        <PreviewCodeShowcase
+          code={progressSnippet({
+            ...defaults,
+            appearance: "default",
+            animated: true,
+          })}
+        >
           <ProgressControlledDemo {...defaults} appearance="sky" />
         </PreviewCodeShowcase>
       </div>

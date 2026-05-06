@@ -34,7 +34,10 @@ export function AvatarCodeExamplesSection() {
             <p className="mb-5 text-xs font-semibold text-white md:text-sm">
               Size: <span className="font-bold">{size.toUpperCase()}</span>
             </p>
-            <AvatarDemo size={size} animation={AVATAR_DEMO_ANIMATION_FOR_SIZE} />
+            <AvatarDemo
+              size={size}
+              animation={AVATAR_DEMO_ANIMATION_FOR_SIZE}
+            />
           </PreviewCodeShowcase>
         ))}
         {AVATAR_APPEARANCES.map((appearance) => (
@@ -43,7 +46,8 @@ export function AvatarCodeExamplesSection() {
             code={avatarSnippetForAppearance(appearance)}
           >
             <p className="mb-5 text-xs font-semibold text-white md:text-sm">
-              Appearance: <span className="font-bold">{appearance.toUpperCase()}</span>
+              Appearance:{" "}
+              <span className="font-bold">{appearance.toUpperCase()}</span>
             </p>
             <AvatarDemo size="sm" appearance={appearance} animation="none" />
           </PreviewCodeShowcase>

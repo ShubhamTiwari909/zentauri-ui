@@ -101,16 +101,20 @@ function BodyScrollLockDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
-        Toggle scroll lock on the document body. When locked, the page behind this
-        panel should not scroll.
+        Toggle scroll lock on the document body. When locked, the page behind
+        this panel should not scroll.
       </p>
       <Button type="button" onClick={() => setLocked((v) => !v)}>
         {locked ? "Unlock body scroll" : "Lock body scroll"}
       </Button>
       <div className="mt-6 h-64 overflow-auto rounded-lg border border-white/10 bg-slate-900/50 p-4 text-sm text-slate-400">
-        <p className="mb-2 font-medium text-slate-300">Tall inner scroll region</p>
+        <p className="mb-2 font-medium text-slate-300">
+          Tall inner scroll region
+        </p>
         {Array.from({ length: 24 }, (_, i) => (
-          <p key={i}>Line {i + 1} — scroll inside this box is independent of body lock.</p>
+          <p key={i}>
+            Line {i + 1} — scroll inside this box is independent of body lock.
+          </p>
         ))}
       </div>
     </HookDemoPanel>
@@ -147,7 +151,10 @@ function ClipboardDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <div className="flex flex-wrap items-center gap-3">
-        <Button type="button" onClick={() => void copy("zentauri-ui-clipboard-demo")}>
+        <Button
+          type="button"
+          onClick={() => void copy("zentauri-ui-clipboard-demo")}
+        >
           Copy sample text
         </Button>
         <Button type="button" appearance="outline" onClick={reset}>
@@ -169,7 +176,9 @@ function ClipboardDemo() {
 }
 
 function ControllableStateDemo() {
-  const [mode, setMode] = useState<"uncontrolled" | "controlled">("uncontrolled");
+  const [mode, setMode] = useState<"uncontrolled" | "controlled">(
+    "uncontrolled",
+  );
   const [controlled, setControlled] = useState(0);
   const [value, setValue] = useControllableState({
     value: mode === "controlled" ? controlled : undefined,
@@ -200,7 +209,9 @@ function ControllableStateDemo() {
           Controlled
         </Button>
       </div>
-      <p className="mb-2 text-2xl font-semibold tabular-nums text-white">{value}</p>
+      <p className="mb-2 text-2xl font-semibold tabular-nums text-white">
+        {value}
+      </p>
       <Button type="button" onClick={() => setValue((v) => v + 1)}>
         Increment
       </Button>
@@ -213,7 +224,10 @@ function DebouncedValueDemo() {
   const debounced = useDebouncedValue(raw, 400);
   return (
     <HookDemoPanel title="Interactive demo">
-      <label className="mb-2 block text-sm text-slate-400" htmlFor="debounce-input">
+      <label
+        className="mb-2 block text-sm text-slate-400"
+        htmlFor="debounce-input"
+      >
         Type quickly — debounced value updates 400ms after you pause.
       </label>
       <Input
@@ -249,7 +263,8 @@ function DisclosureDemo() {
         </Button>
       </div>
       <p className="mt-4 text-sm text-slate-400">
-        Panel is <span className="text-white">{isOpen ? "open" : "closed"}</span>.
+        Panel is{" "}
+        <span className="text-white">{isOpen ? "open" : "closed"}</span>.
       </p>
       {isOpen ? (
         <div className="mt-4 rounded-lg border border-white/10 bg-slate-900/60 p-4 text-sm">
@@ -266,8 +281,8 @@ function DocumentTitleDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
-        Updates the browser tab title live. Leaving this page restores the previous
-        title when restoreOnUnmount is true.
+        Updates the browser tab title live. Leaving this page restores the
+        previous title when restoreOnUnmount is true.
       </p>
       <Input
         appearance="info"
@@ -286,8 +301,8 @@ function FocusManagementDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
-        Opens a focus-managed region with Escape to close. Tab should stay inside
-        while open.
+        Opens a focus-managed region with Escape to close. Tab should stay
+        inside while open.
       </p>
       <Button type="button" onClick={() => setOpen(true)}>
         Open dialog
@@ -313,7 +328,11 @@ function FocusManagementDemo() {
               <Button type="button" appearance="outline">
                 Second action
               </Button>
-              <Button type="button" appearance="outline" onClick={() => setOpen(false)}>
+              <Button
+                type="button"
+                appearance="outline"
+                onClick={() => setOpen(false)}
+              >
                 Close
               </Button>
             </div>
@@ -347,7 +366,8 @@ function InViewDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
-        Scroll the sentinel into view — the hook reports intersection as a boolean.
+        Scroll the sentinel into view — the hook reports intersection as a
+        boolean.
       </p>
       <p className="mb-6 text-sm font-medium text-white">
         In view:{" "}
@@ -370,7 +390,9 @@ function InViewDemo() {
 }
 
 function IntersectionObserverDemo() {
-  const [ref, entry] = useIntersectionObserver<HTMLDivElement>({ threshold: [0, 0.5, 1] });
+  const [ref, entry] = useIntersectionObserver<HTMLDivElement>({
+    threshold: [0, 0.5, 1],
+  });
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
@@ -421,8 +443,9 @@ function IsomorphicLayoutEffectDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
-        After first paint, layout measurement from useIsomorphicLayoutEffect typically
-        matches the element; both values are shown for this static box.
+        After first paint, layout measurement from useIsomorphicLayoutEffect
+        typically matches the element; both values are shown for this static
+        box.
       </p>
       <div
         ref={ref}
@@ -465,9 +488,9 @@ function IsMountedDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
-        Schedules a timeout, then updates state only if this demo is still mounted. Leave
-        this page before 50ms and the callback does nothing (and the timer is cleared on
-        unmount).
+        Schedules a timeout, then updates state only if this demo is still
+        mounted. Leave this page before 50ms and the callback does nothing (and
+        the timer is cleared on unmount).
       </p>
       <Button type="button" onClick={run}>
         Check mounted in 50ms
@@ -505,7 +528,8 @@ function MediaQueryDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="text-sm text-slate-400">
-        <span className="font-medium text-white">(max-width: 640px)</span> matches:{" "}
+        <span className="font-medium text-white">(max-width: 640px)</span>{" "}
+        matches:{" "}
         <span className={narrow ? "text-emerald-400" : "text-slate-300"}>
           {narrow ? "true" : "false"}
         </span>
@@ -536,8 +560,8 @@ function PageVisibilityDemo() {
     <HookDemoPanel title="Interactive demo">
       <p className="text-sm text-slate-400">
         Current <code className="text-cyan-200">document.visibilityState</code>:{" "}
-        <span className="font-mono text-white">{state}</span>. Switch tabs to see it
-        change.
+        <span className="font-mono text-white">{state}</span>. Switch tabs to
+        see it change.
       </p>
     </HookDemoPanel>
   );
@@ -562,8 +586,8 @@ function PaginationDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
-        usePagination state plus buildPaginationItems for the same window (should
-        match <span className="font-mono text-cyan-200">items</span>).
+        usePagination state plus buildPaginationItems for the same window
+        (should match <span className="font-mono text-cyan-200">items</span>).
       </p>
       <div className="mb-4 flex flex-wrap items-center gap-2">
         <Button type="button" disabled={!canGoPrev} onClick={goPrev}>
@@ -611,8 +635,8 @@ function PrefersColorSchemeDemo() {
     <HookDemoPanel title="Interactive demo">
       <p className="text-sm text-slate-400">
         System color scheme preference:{" "}
-        <span className="font-medium text-white">{scheme}</span>. Change OS theme to
-        update.
+        <span className="font-medium text-white">{scheme}</span>. Change OS
+        theme to update.
       </p>
     </HookDemoPanel>
   );
@@ -623,8 +647,8 @@ function PrefersReducedMotionDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="text-sm text-slate-400">
-        <code className="text-cyan-200">prefers-reduced-motion: reduce</code> matches:{" "}
-        <span className="text-white">{reduce ? "true" : "false"}</span>
+        <code className="text-cyan-200">prefers-reduced-motion: reduce</code>{" "}
+        matches: <span className="text-white">{reduce ? "true" : "false"}</span>
       </p>
     </HookDemoPanel>
   );
@@ -644,7 +668,9 @@ function ResizeObserverDemo() {
         defaultValue="Resize me…"
       />
       <p className="mt-4 font-mono text-sm text-cyan-200">
-        {size ? `${Math.round(size?.width ?? 0)} × ${Math.round(size?.height ?? 0)} px` : "—"}
+        {size
+          ? `${Math.round(size?.width ?? 0)} × ${Math.round(size?.height ?? 0)} px`
+          : "—"}
       </p>
     </HookDemoPanel>
   );

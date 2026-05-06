@@ -13,9 +13,10 @@ import { useCallback, useEffect, useRef } from "react";
  * @param intervalMs - Minimum milliseconds between invocations.
  * @returns Throttled function with the same call signature as `callback`.
  */
-export function useThrottledCallback<
-  T extends (...args: any[]) => void,
->(callback: T, intervalMs: number): T {
+export function useThrottledCallback<T extends (...args: any[]) => void>(
+  callback: T,
+  intervalMs: number,
+): T {
   const callbackRef = useRef(callback);
   const lastRunRef = useRef(0);
 

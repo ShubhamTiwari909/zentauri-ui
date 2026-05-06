@@ -63,9 +63,7 @@ export const sidebarTypographyData: SidebarNavGroup[] = [
   ...sidebareRouteDataShared,
   {
     title: "Typography",
-    items: [
-      ...typographySidebarItems,
-    ],
+    items: [...typographySidebarItems],
   },
 ];
 
@@ -73,9 +71,7 @@ export const sidebarHooksData: SidebarNavGroup[] = [
   ...sidebareRouteDataShared,
   {
     title: "Hooks",
-    items: [
-      ...hookSidebarItems,
-    ],
+    items: [...hookSidebarItems],
   },
 ];
 

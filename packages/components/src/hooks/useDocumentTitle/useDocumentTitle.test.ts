@@ -6,9 +6,7 @@ import { useDocumentTitle } from "./useDocumentTitle";
 describe("useDocumentTitle", () => {
   it("should set document title from title prop", () => {
     document.title = "Original";
-    const { unmount } = renderHook(() =>
-      useDocumentTitle({ title: "Page A" }),
-    );
+    const { unmount } = renderHook(() => useDocumentTitle({ title: "Page A" }));
     expect(document.title).toBe("Page A");
     unmount();
     expect(document.title).toBe("Original");

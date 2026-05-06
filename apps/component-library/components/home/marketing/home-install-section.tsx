@@ -44,13 +44,21 @@ export function HomeInstallSection() {
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="pnpm" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="pnpm"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={INSTALL_COMMANDS.pnpm}
                   language="bash"
                 />
               </TabsContentAnimated>
-              <TabsContentAnimated value="yarn" animation="fade" className="m-0">
+              <TabsContentAnimated
+                value="yarn"
+                animation="fade"
+                className="m-0"
+              >
                 <CodeHighlight
                   codeString={INSTALL_COMMANDS.yarn}
                   language="bash"
@@ -74,7 +82,11 @@ export function HomeInstallSection() {
                 appearance="sky"
               >
                 <TabsListComponent />
-                <TabsContentAnimated value="npm" animation="fade" className="m-0">
+                <TabsContentAnimated
+                  value="npm"
+                  animation="fade"
+                  className="m-0"
+                >
                   <CodeHighlight
                     codeString={CLI_INIT_COMMANDS.npm}
                     language="bash"

@@ -6,10 +6,10 @@ export type TabsAnimation = "none" | "fade" | "slide";
 
 export type TabsPresetMotionProps = Pick<
   HTMLMotionProps<"div">,
-    "initial" | "animate" | "transition"
-  >;
+  "initial" | "animate" | "transition"
+>;
 
-  export type TabsAnimationPresets = Record<TabsAnimation, TabsPresetMotionProps>;
+export type TabsAnimationPresets = Record<TabsAnimation, TabsPresetMotionProps>;
 
 export type TabsOrientation = "horizontal" | "vertical";
 

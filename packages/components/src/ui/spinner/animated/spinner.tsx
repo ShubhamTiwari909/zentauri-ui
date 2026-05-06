@@ -112,9 +112,8 @@ export function Spinner(props: SpinnerProps) {
     xl: "w-2",
   };
 
-  const barWidth =
-    barWidths[size as keyof typeof barWidths];
-    
+  const barWidth = barWidths[size as keyof typeof barWidths];
+
   return (
     <motion.span
       ref={ref}

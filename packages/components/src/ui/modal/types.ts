@@ -1,9 +1,17 @@
 import type { VariantProps } from "class-variance-authority";
-import type { CSSProperties, ElementType, HTMLAttributes, ReactNode, Ref } from "react";
+import type {
+  CSSProperties,
+  ElementType,
+  HTMLAttributes,
+  ReactNode,
+  Ref,
+} from "react";
 
 import type { modalContentVariants, modalTriggerVariants } from "./variants";
 
-export type ModalContentVariantProps = VariantProps<typeof modalContentVariants>;
+export type ModalContentVariantProps = VariantProps<
+  typeof modalContentVariants
+>;
 
 export type ModalProps = {
   open?: boolean;

@@ -1,4 +1,8 @@
-import type { TabsAnimationPresets, TabsOrientation, TabsPresetMotionProps } from "./types";
+import type {
+  TabsAnimationPresets,
+  TabsOrientation,
+  TabsPresetMotionProps,
+} from "./types";
 import type { TabsAnimation } from "./types";
 
 const easeOutExpo: [number, number, number, number] = [0.16, 1, 0.3, 1];

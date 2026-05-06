@@ -27,7 +27,9 @@ export type StepperTitleProps = ComponentPropsWithoutRef<"div">;
 
 export type StepperDescriptionProps = ComponentPropsWithoutRef<"p">;
 
-export type StepperAppearance = VariantProps<typeof stepperIndicatorVariants>["appearance"];
+export type StepperAppearance = VariantProps<
+  typeof stepperIndicatorVariants
+>["appearance"];
 
 export type StepperCtx = {
   orientation: NonNullable<StepperProps["orientation"]>;

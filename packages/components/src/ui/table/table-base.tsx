@@ -196,12 +196,7 @@ export function TableCell({
   }
 
   return (
-    <td
-      ref={ref}
-      data-slot="table-cell"
-      className={cellClassName}
-      {...rest}
-    >
+    <td ref={ref} data-slot="table-cell" className={cellClassName} {...rest}>
       {children}
     </td>
   );

@@ -23,7 +23,10 @@ export {
   type UseDisclosureParams,
   type UseDisclosureResult,
 } from "./useDisclosure";
-export { useDocumentTitle, type UseDocumentTitleParams } from "./useDocumentTitle";
+export {
+  useDocumentTitle,
+  type UseDocumentTitleParams,
+} from "./useDocumentTitle";
 export { useHover } from "./useHover";
 export { useInView, type UseInViewParams } from "./useInView";
 export {
@@ -42,7 +45,10 @@ export {
 } from "./usePrefersColorScheme";
 export { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 export { useResizeObserver, type ElementSize } from "./useResizeObserver";
-export { useSessionStorage, type UseSessionStorageResult } from "./useSessionStorage";
+export {
+  useSessionStorage,
+  type UseSessionStorageResult,
+} from "./useSessionStorage";
 export { useThrottledCallback } from "./useThrottledCallback";
 export { useToggle } from "./useToggle";
 export { useWindowSize, type WindowSize } from "./useWindowSize";

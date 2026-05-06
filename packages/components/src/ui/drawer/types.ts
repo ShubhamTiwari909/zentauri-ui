@@ -1,9 +1,17 @@
 import type { VariantProps } from "class-variance-authority";
-import type { CSSProperties, HTMLAttributes, ReactNode, Ref, RefObject } from "react";
+import type {
+  CSSProperties,
+  HTMLAttributes,
+  ReactNode,
+  Ref,
+  RefObject,
+} from "react";
 
 import type { drawerContentVariants, drawerTriggerVariants } from "./variants";
 
-export type DrawerContentVariantProps = VariantProps<typeof drawerContentVariants>;
+export type DrawerContentVariantProps = VariantProps<
+  typeof drawerContentVariants
+>;
 
 export type DrawerProps = {
   open?: boolean;

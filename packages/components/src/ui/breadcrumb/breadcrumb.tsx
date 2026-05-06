@@ -84,7 +84,11 @@ export function BreadcrumbLink({
     <a
       ref={ref}
       data-slot="breadcrumb-link"
-      className={cn(breadcrumbLinkVariants(), breadcrumbNavVariants({ appearance }), className)}
+      className={cn(
+        breadcrumbLinkVariants(),
+        breadcrumbNavVariants({ appearance }),
+        className,
+      )}
       {...rest}
     />
   );
@@ -103,7 +107,11 @@ export function BreadcrumbPage({
       ref={ref}
       data-slot="breadcrumb-page"
       aria-current="page"
-      className={cn(breadcrumbPageVariants(), breadcrumbNavVariants({ appearance }), className)}
+      className={cn(
+        breadcrumbPageVariants(),
+        breadcrumbNavVariants({ appearance }),
+        className,
+      )}
       {...rest}
     />
   );

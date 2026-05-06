@@ -31,9 +31,9 @@ describe("Stepper", () => {
     const root = document.querySelector('[data-slot="stepper"]');
     expect(root).toBeTruthy();
     expect(root?.tagName).toBe("OL");
-    expect(
-      document.querySelector('[data-slot="stepper-item"]')?.tagName,
-    ).toBe("LI");
+    expect(document.querySelector('[data-slot="stepper-item"]')?.tagName).toBe(
+      "LI",
+    );
   });
 
   it("should apply default upcoming appearance to indicators", () => {

@@ -19,18 +19,14 @@ describe("useSessionStorage", () => {
   it("should apply stored value from sessionStorage after mount", async () => {
     const key = `${keyPrefix}-hydrate`;
     sessionStorage.setItem(key, JSON.stringify("stored"));
-    const { result } = renderHook(() =>
-      useSessionStorage(key, "initial"),
-    );
+    const { result } = renderHook(() => useSessionStorage(key, "initial"));
     await flushEffects();
     expect(result.current[0]).toBe("stored");
   });
 
   it("should persist setValue to sessionStorage", async () => {
     const key = `${keyPrefix}-persist`;
-    const { result } = renderHook(() =>
-      useSessionStorage(key, { n: 0 }),
-    );
+    const { result } = renderHook(() => useSessionStorage(key, { n: 0 }));
     await flushEffects();
     act(() => {
       result.current[1]({ n: 3 });

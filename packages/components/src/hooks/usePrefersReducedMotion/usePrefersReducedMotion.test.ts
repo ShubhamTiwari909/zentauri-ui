@@ -21,7 +21,9 @@ describe("usePrefersReducedMotion", () => {
         }) as unknown as MediaQueryList,
     );
     const { result } = renderHook(() => usePrefersReducedMotion());
-    expect(matchMediaSpy).toHaveBeenCalledWith("(prefers-reduced-motion: reduce)");
+    expect(matchMediaSpy).toHaveBeenCalledWith(
+      "(prefers-reduced-motion: reduce)",
+    );
     expect(result.current).toBe(true);
   });
 });

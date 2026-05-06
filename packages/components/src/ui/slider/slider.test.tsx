@@ -78,19 +78,12 @@ describe("Slider", () => {
 
 describe("RangeSlider", () => {
   it("should stamp data-slot on range slider", () => {
-    render(
-      <RangeSlider
-        aria-label="Budget"
-        defaultValue={[20, 80]}
-      />,
-    );
+    render(<RangeSlider aria-label="Budget" defaultValue={[20, 80]} />);
     expect(document.querySelector('[data-slot="range-slider"]')).toBeTruthy();
   });
 
   it("should render two slider thumbs", () => {
-    render(
-      <RangeSlider defaultValue={[10, 90]} aria-label="Range" />,
-    );
+    render(<RangeSlider defaultValue={[10, 90]} aria-label="Range" />);
     expect(screen.getAllByRole("slider")).toHaveLength(2);
   });
 
@@ -105,10 +98,7 @@ describe("RangeSlider", () => {
     render(
       <>
         <span id="range-lbl">Volume band</span>
-        <RangeSlider
-          defaultValue={[10, 90]}
-          aria-labelledby="range-lbl"
-        />
+        <RangeSlider defaultValue={[10, 90]} aria-labelledby="range-lbl" />
       </>,
     );
     const thumbs = screen.getAllByRole("slider");

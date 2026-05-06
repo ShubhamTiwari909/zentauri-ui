@@ -43,7 +43,7 @@ export function SkeletonBase(props: SkeletonProps) {
     busy,
     children,
     ref,
-    as:Wrapper = "div",
+    as: Wrapper = "div",
     ...rest
   } = props;
   const ctx = useMemo(() => animation, [animation]);
@@ -87,7 +87,7 @@ export function SkeletonTextBase(props: SkeletonTextProps) {
     shimmerTone,
     busy,
     ref,
-    as:Wrapper = "div",
+    as: Wrapper = "div",
   } = props;
   const effectiveAnimation = useSkeletonAnimation(animation);
   const motionClass = skeletonMotionClass(effectiveAnimation);
@@ -146,7 +146,7 @@ export function SkeletonAvatarBase(props: SkeletonAvatarProps) {
     shimmerTone,
     busy,
     ref,
-    as:Wrapper = "div",
+    as: Wrapper = "div",
     ...rest
   } = props;
   const effectiveAnimation = useSkeletonAnimation(animation ?? "shimmer");

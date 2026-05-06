@@ -45,14 +45,22 @@ describe("SidebarLayout", () => {
   });
 
   it("has mobile menu closed by default", () => {
-    renderWithSearch(<SidebarLayout sideBarContent={sidebarComponentsData}>Test</SidebarLayout>);
+    renderWithSearch(
+      <SidebarLayout sideBarContent={sidebarComponentsData}>
+        Test
+      </SidebarLayout>,
+    );
 
     const aside = screen.getByRole("complementary");
     expect(aside).toHaveClass("max-lg:-translate-x-full");
   });
 
   it("opens mobile menu when hamburger is clicked", () => {
-    renderWithSearch(<SidebarLayout sideBarContent={sidebarComponentsData}>Test</SidebarLayout>);
+    renderWithSearch(
+      <SidebarLayout sideBarContent={sidebarComponentsData}>
+        Test
+      </SidebarLayout>,
+    );
 
     const toggleButton = screen.getByLabelText("Toggle navigation menu");
     fireEvent.click(toggleButton);
@@ -62,21 +70,33 @@ describe("SidebarLayout", () => {
   });
 
   it("closes mobile menu when close button is clicked", () => {
-    renderWithSearch(<SidebarLayout sideBarContent={sidebarComponentsData}>Test</SidebarLayout>);
+    renderWithSearch(
+      <SidebarLayout sideBarContent={sidebarComponentsData}>
+        Test
+      </SidebarLayout>,
+    );
 
     const toggleButton = screen.getByLabelText("Toggle navigation menu");
 
     // Open it
     fireEvent.click(toggleButton);
-    expect(screen.getByRole("complementary")).toHaveClass("max-lg:translate-x-0");
+    expect(screen.getByRole("complementary")).toHaveClass(
+      "max-lg:translate-x-0",
+    );
 
     // Close it
     fireEvent.click(toggleButton);
-    expect(screen.getByRole("complementary")).toHaveClass("max-lg:-translate-x-full");
+    expect(screen.getByRole("complementary")).toHaveClass(
+      "max-lg:-translate-x-full",
+    );
   });
 
   it("closes mobile menu when overlay is clicked", () => {
-    renderWithSearch(<SidebarLayout sideBarContent={sidebarComponentsData}>Test</SidebarLayout>);
+    renderWithSearch(
+      <SidebarLayout sideBarContent={sidebarComponentsData}>
+        Test
+      </SidebarLayout>,
+    );
 
     const toggleButton = screen.getByLabelText("Toggle navigation menu");
 
@@ -93,6 +113,8 @@ describe("SidebarLayout", () => {
       fireEvent.click(overlay);
     }
 
-    expect(screen.getByRole("complementary")).toHaveClass("max-lg:-translate-x-full");
+    expect(screen.getByRole("complementary")).toHaveClass(
+      "max-lg:-translate-x-full",
+    );
   });
 });

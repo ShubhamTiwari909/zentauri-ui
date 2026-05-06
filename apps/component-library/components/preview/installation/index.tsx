@@ -14,7 +14,15 @@ import {
   REACT_ICONS_INSTALL_COMMANDS,
 } from "@/lib/home-install-commands";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { Modal, ModalTrigger, ModalClose, ModalHeader, ModalTitle, ModalDescription, ModalBody } from "@zentauri-ui/zentauri-components/ui/modal";
+import {
+  Modal,
+  ModalTrigger,
+  ModalClose,
+  ModalHeader,
+  ModalTitle,
+  ModalDescription,
+  ModalBody,
+} from "@zentauri-ui/zentauri-components/ui/modal";
 import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/animated";
 import { Tabs } from "@zentauri-ui/zentauri-components/ui/tabs";
 import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/animated";

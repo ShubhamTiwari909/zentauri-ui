@@ -49,9 +49,7 @@ export function SliderCodeExamplesSection() {
             <SliderRangeDemo appearance={appearance} />
           </PreviewCodeShowcase>
         ))}
-        <PreviewCodeShowcase
-          code={sliderRangeSnippet("indigo")}
-        >
+        <PreviewCodeShowcase code={sliderRangeSnippet("indigo")}>
           <p className="mb-5 text-xs font-semibold text-white md:text-sm">
             Range controlled
           </p>

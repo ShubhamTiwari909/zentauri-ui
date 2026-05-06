@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useId, useMemo, useState, type KeyboardEvent } from "react";
+import {
+  useCallback,
+  useId,
+  useMemo,
+  useState,
+  type KeyboardEvent,
+} from "react";
 import { FiSearch } from "react-icons/fi";
 
 import {
@@ -127,10 +133,13 @@ export function SearchExamplesSection() {
   return (
     <section className="mt-16 space-y-8">
       <div>
-        <h2 className="text-2xl font-semibold text-white">Inline search and list</h2>
+        <h2 className="text-2xl font-semibold text-white">
+          Inline search and list
+        </h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-          Filter the sample entries below. Use arrow keys and Enter from the field; selection
-          updates local state only (no navigation on this demo page).
+          Filter the sample entries below. Use arrow keys and Enter from the
+          field; selection updates local state only (no navigation on this demo
+          page).
         </p>
       </div>
 
@@ -164,14 +173,18 @@ export function SearchExamplesSection() {
         {lastSelected ? (
           <p className="mt-4 text-sm text-slate-400">
             Last selected id:{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-slate-200">{lastSelected}</code>
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-slate-200">
+              {lastSelected}
+            </code>
           </p>
         ) : null}
       </div>
 
       <div className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
         <h3 className="text-lg font-medium text-white">Disabled state</h3>
-        <p className="mt-1 text-sm text-slate-400">Same styles with interaction turned off.</p>
+        <p className="mt-1 text-sm text-slate-400">
+          Same styles with interaction turned off.
+        </p>
         <SearchBar
           value="Read-only preview"
           onValueChange={() => {}}

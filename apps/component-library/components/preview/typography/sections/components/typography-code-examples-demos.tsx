@@ -96,7 +96,8 @@ export function InlineToneDemo({ tone }: { tone: AppTypographyTone }) {
 export function InlineEmphasisDemo() {
   return (
     <Text tone="secondary">
-      Deploy via <InlineCode>npx zentauri-ui add typography</InlineCode> then verify{" "}
+      Deploy via <InlineCode>npx zentauri-ui add typography</InlineCode> then
+      verify{" "}
       <Text as="span" bold tone="destructive">
         destructive warnings
       </Text>
@@ -107,7 +108,10 @@ export function InlineEmphasisDemo() {
 export function CodeBlockToneDemo({ tone }: { tone: AppTypographyTone }) {
   return (
     <div className="w-full md:w-fit overflow-x-auto">
-      <CodeBlock tone={tone} language="ts">{`export const tone = "${tone}";`}</CodeBlock>
+      <CodeBlock
+        tone={tone}
+        language="ts"
+      >{`export const tone = "${tone}";`}</CodeBlock>
     </div>
   );
 }

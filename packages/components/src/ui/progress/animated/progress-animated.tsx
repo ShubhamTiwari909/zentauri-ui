@@ -137,8 +137,7 @@ export function ProgressBarAnimated({
   style?: React.CSSProperties;
   ref?: React.Ref<HTMLDivElement>;
 }) {
-  const { size, shape, striped, animated } =
-    useProgressContext("ProgressBar");
+  const { size, shape, striped, animated } = useProgressContext("ProgressBar");
 
   return (
     <div
