@@ -19,23 +19,23 @@ export const accordionVariants = cva("w-full", {
       emerald:
         "divide-y divide-emerald-600 rounded-xl border border-emerald-600",
       "gradient-blue":
-        "divide-y divide-gradient-to-r from-blue-600 to-purple-600 rounded-xl border border-gradient-to-r from-blue-600 to-purple-600",
+        "divide-y divide-blue-600 rounded-xl border border-blue-600",
       "gradient-green":
-        "divide-y divide-gradient-to-r from-green-600 to-lime-600 rounded-xl border border-gradient-to-r from-green-600 to-lime-600",
+        "divide-y divide-green-600 rounded-xl border border-green-600",
       "gradient-red":
-        "divide-y divide-gradient-to-r from-red-600 to-pink-600 rounded-xl border border-gradient-to-r from-red-600 to-pink-600",
+        "divide-y divide-red-600 rounded-xl border border-red-600",
       "gradient-yellow":
-        "divide-y divide-gradient-to-r from-yellow-600 to-orange-600 rounded-xl border border-gradient-to-r from-yellow-600 to-orange-600",
+        "divide-y divide-yellow-600 rounded-xl border border-yellow-600",
       "gradient-purple":
-        "divide-y divide-gradient-to-r from-purple-600 to-pink-600 rounded-xl border border-gradient-to-r from-purple-600 to-pink-600",
+        "divide-y divide-purple-600 rounded-xl border border-purple-600",
       "gradient-teal":
-        "divide-y divide-gradient-to-r from-teal-600 to-cyan-600 rounded-xl border border-gradient-to-r from-teal-600 to-cyan-600",
+        "divide-y divide-teal-600 rounded-xl border border-teal-600",
       "gradient-indigo":
-        "divide-y divide-gradient-to-r from-indigo-600 to-purple-600 rounded-xl border border-gradient-to-r from-indigo-600 to-purple-600",
+        "divide-y divide-indigo-600 rounded-xl border border-indigo-600",
       "gradient-pink":
-        "divide-y divide-gradient-to-r from-pink-600 to-rose-600 rounded-xl border border-gradient-to-r from-pink-600 to-rose-600",
+        "divide-y divide-pink-600 rounded-xl border border-pink-600",
       "gradient-orange":
-        "divide-y divide-gradient-to-r from-orange-600 to-red-600 rounded-xl border border-gradient-to-r from-orange-600 to-red-600",
+        "divide-y divide-orange-600 rounded-xl border border-orange-600",
     },
     size: {
       sm: "px-3 py-2 text-sm",

@@ -20,22 +20,20 @@ export const tooltipVariants = cva(
         orange: "bg-orange-600 text-white",
         green: "bg-green-600 text-white",
         "gradient-blue":
-          "bg-gradient-to-r from-blue-600 to-purple-600 text-white",
+          "bg-linear-to-r from-blue-600 to-purple-600 text-white",
         "gradient-green":
-          "bg-gradient-to-r from-green-600 to-lime-600 text-white",
-        "gradient-red": "bg-gradient-to-r from-red-600 to-pink-600 text-white",
+          "bg-linear-to-r from-green-600 to-lime-600 text-white",
+        "gradient-red": "bg-linear-to-r from-red-600 to-pink-600 text-white",
         "gradient-yellow":
-          "bg-gradient-to-r from-yellow-600 to-orange-600 text-white",
+          "bg-linear-to-r from-yellow-600 to-orange-600 text-white",
         "gradient-purple":
-          "bg-gradient-to-r from-purple-600 to-pink-600 text-white",
-        "gradient-teal":
-          "bg-gradient-to-r from-teal-600 to-cyan-600 text-white",
+          "bg-linear-to-r from-purple-600 to-pink-600 text-white",
+        "gradient-teal": "bg-linear-to-r from-teal-600 to-cyan-600 text-white",
         "gradient-indigo":
-          "bg-gradient-to-r from-indigo-600 to-purple-600 text-white",
-        "gradient-pink":
-          "bg-gradient-to-r from-pink-600 to-rose-600 text-white",
+          "bg-linear-to-r from-indigo-600 to-purple-600 text-white",
+        "gradient-pink": "bg-linear-to-r from-pink-600 to-rose-600 text-white",
         "gradient-orange":
-          "bg-gradient-to-r from-orange-600 to-red-600 text-white",
+          "bg-linear-to-r from-orange-600 to-red-600 text-white",
       },
       size: {
         sm: "text-xs px-2 py-1",

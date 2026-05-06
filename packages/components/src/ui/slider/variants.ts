@@ -30,7 +30,7 @@ export const sliderTrackVariants = cva(
 );
 
 export const sliderRangeVariants = cva(
-  "absolute h-full rounded-full bg-gradient-to-r from-violet-500 to-indigo-400",
+  "absolute h-full rounded-full bg-linear-to-r from-violet-500 to-indigo-400",
   {
     variants: {
       appearance: {
