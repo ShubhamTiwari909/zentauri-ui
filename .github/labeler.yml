@@ -1,0 +1,12 @@
+components:
+  - packages/components/**/*
+
+component-library:
+  - apps/component-library/**/*
+
+tooling:
+  - packages/eslint-config/**/*
+  - packages/typescript-config/**/*
+
+ci:
+  - .github/**/*
