@@ -10,7 +10,7 @@ export const clampPage = (page: number, pageCount: number): number => {
     return 1;
   }
   return Math.min(pageCount, Math.max(1, Math.floor(page)));
-}
+};
 
 export const range = (from: number, to: number): number[] => {
   const out: number[] = [];
@@ -18,8 +18,8 @@ export const range = (from: number, to: number): number[] => {
     out.push(i);
   }
   return out;
-}
+};
 
 export const clamp = (value: number, min: number, max: number) => {
   return Math.min(max, Math.max(min, value));
-}
+};

@@ -4,7 +4,11 @@ import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { SearchExamplesSection } from "./sections/search-examples-section";
 import { SearchHeroSection } from "./sections/search-hero-section";
 
-export default function SearchPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function SearchPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <SearchHeroSection seo={seo} />

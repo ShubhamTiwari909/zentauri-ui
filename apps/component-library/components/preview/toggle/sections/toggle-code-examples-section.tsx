@@ -39,10 +39,7 @@ export function ToggleCodeExamplesSection() {
             <ToggleDemo appearance="default" size={size} />
           </PreviewCodeShowcase>
         ))}
-        <PreviewCodeShowcase
-          key="controlled"
-          code={toggleControlledSnippet()}
-        >
+        <PreviewCodeShowcase key="controlled" code={toggleControlledSnippet()}>
           <ToggleControlledDemo />
         </PreviewCodeShowcase>
       </div>

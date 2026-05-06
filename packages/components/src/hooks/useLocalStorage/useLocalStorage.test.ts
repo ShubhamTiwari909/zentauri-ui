@@ -14,27 +14,21 @@ describe("useLocalStorage", () => {
   it("should read existing JSON value on mount", () => {
     const key = `${keyPrefix}-read`;
     localStorage.setItem(key, JSON.stringify({ count: 2 }));
-    const { result } = renderHook(() =>
-      useLocalStorage(key, { count: 0 }),
-    );
+    const { result } = renderHook(() => useLocalStorage(key, { count: 0 }));
     const value = result.current[0];
     expect(value).toEqual({ count: 2 });
   });
 
   it("should fall back to initialValue when key missing", () => {
     const key = `${keyPrefix}-missing`;
-    const { result } = renderHook(() =>
-      useLocalStorage(key, { count: 0 }),
-    );
+    const { result } = renderHook(() => useLocalStorage(key, { count: 0 }));
     const value = result.current[0];
     expect(value).toEqual({ count: 0 });
   });
 
   it("should persist setValue and support functional updates", () => {
     const key = `${keyPrefix}-set`;
-    const { result } = renderHook(() =>
-      useLocalStorage(key, { count: 0 }),
-    );
+    const { result } = renderHook(() => useLocalStorage(key, { count: 0 }));
     act(() => {
       result.current[1]({ count: 5 });
     });
@@ -49,9 +43,7 @@ describe("useLocalStorage", () => {
   it("should remove key and reset to initialValue", () => {
     const key = `${keyPrefix}-remove`;
     localStorage.setItem(key, JSON.stringify({ ok: true }));
-    const { result } = renderHook(() =>
-      useLocalStorage(key, { ok: false }),
-    );
+    const { result } = renderHook(() => useLocalStorage(key, { ok: false }));
     const remove = result.current[2];
     act(() => {
       remove();
@@ -62,9 +54,7 @@ describe("useLocalStorage", () => {
 
   it("should reconcile when storage event fires for same key", () => {
     const key = `${keyPrefix}-storage`;
-    const { result } = renderHook(() =>
-      useLocalStorage(key, { v: 0 }),
-    );
+    const { result } = renderHook(() => useLocalStorage(key, { v: 0 }));
     act(() => {
       window.dispatchEvent(
         new StorageEvent("storage", {
@@ -74,16 +64,14 @@ describe("useLocalStorage", () => {
         }),
       );
     });
-    const value= result.current[0];
+    const value = result.current[0];
     expect(value).toEqual({ v: 99 });
   });
 
   it("should reset to initial when storage event clears key", () => {
     const key = `${keyPrefix}-cleared`;
     localStorage.setItem(key, JSON.stringify({ v: 1 }));
-    const { result } = renderHook(() =>
-      useLocalStorage(key, { v: 0 }),
-    );
+    const { result } = renderHook(() => useLocalStorage(key, { v: 0 }));
     act(() => {
       window.dispatchEvent(
         new StorageEvent("storage", {
@@ -93,7 +81,7 @@ describe("useLocalStorage", () => {
         }),
       );
     });
-    const value= result.current[0];
+    const value = result.current[0];
     expect(value).toEqual({ v: 0 });
   });
 });

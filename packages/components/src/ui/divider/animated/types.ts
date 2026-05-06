@@ -12,7 +12,9 @@ export type DividerDomDragProps =
   | "onDragStart"
   | "onDrop";
 
-export type DividerAnimatedProps = Omit<DividerBaseProps, "as" | DividerDomDragProps> & {
+export type DividerAnimatedProps = Omit<
+  DividerBaseProps,
+  "as" | DividerDomDragProps
+> & {
   animation?: DividerAnimation;
 };
-

@@ -31,5 +31,7 @@ export default function PreviewLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <SidebarLayout sideBarContent={sidebarHooksData}>{children}</SidebarLayout>;
+  return (
+    <SidebarLayout sideBarContent={sidebarHooksData}>{children}</SidebarLayout>
+  );
 }

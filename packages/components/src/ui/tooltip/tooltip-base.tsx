@@ -139,8 +139,7 @@ export const TooltipTrigger = ({
   };
 
   const childList = Children.toArray(children).filter(
-    (node) =>
-      node !== null && node !== undefined && typeof node !== "boolean",
+    (node) => node !== null && node !== undefined && typeof node !== "boolean",
   );
 
   const soleCandidate =

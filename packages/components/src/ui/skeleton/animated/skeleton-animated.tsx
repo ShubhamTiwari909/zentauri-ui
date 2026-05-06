@@ -35,7 +35,14 @@ export function SkeletonTextAnimated(props: SkeletonTextAnimatedProps) {
   const effectiveAnimation = useSkeletonAnimation(animation);
   const motionProps = skeletonAnimationPresets[effectiveAnimation];
 
-  return <SkeletonTextBase {...props} as={motion.div} initial={false} {...motionProps} />;
+  return (
+    <SkeletonTextBase
+      {...props}
+      as={motion.div}
+      initial={false}
+      {...motionProps}
+    />
+  );
 }
 
 SkeletonTextAnimated.displayName = "SkeletonText";
@@ -44,7 +51,14 @@ export function SkeletonAvatarAnimated(props: SkeletonAvatarAnimatedProps) {
   const { animation = "shimmer" } = props;
   const effectiveAnimation = useSkeletonAnimation(animation);
   const motionProps = skeletonAnimationPresets[effectiveAnimation];
-  return <SkeletonAvatarBase {...props} as={motion.div} initial={false} {...motionProps} />;
+  return (
+    <SkeletonAvatarBase
+      {...props}
+      as={motion.div}
+      initial={false}
+      {...motionProps}
+    />
+  );
 }
 
 SkeletonAvatarAnimated.displayName = "SkeletonAvatar";
@@ -113,7 +127,14 @@ export function SkeletonButtonAnimated(props: SkeletonButtonAnimatedProps) {
   const { animation = "shimmer" } = props;
   const effectiveAnimation = useSkeletonAnimation(animation);
   const motionProps = skeletonAnimationPresets[effectiveAnimation];
-  return <SkeletonButtonBase {...props} as={motion.div} initial={false} {...motionProps} />;
+  return (
+    <SkeletonButtonBase
+      {...props}
+      as={motion.div}
+      initial={false}
+      {...motionProps}
+    />
+  );
 }
 
 SkeletonButtonAnimated.displayName = "SkeletonButton";

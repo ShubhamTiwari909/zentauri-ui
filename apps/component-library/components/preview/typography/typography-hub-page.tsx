@@ -10,7 +10,11 @@ import {
 } from "@/lib/typography-preview-registry";
 import { Heading, Text } from "@zentauri-ui/zentauri-components/ui/typography";
 
-export default function TypographyHubPage({ seo }: { seo: PreviewSeoDocument }) {
+export default function TypographyHubPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
   return (
     <PreviewPageShell>
       <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
@@ -19,7 +23,8 @@ export default function TypographyHubPage({ seo }: { seo: PreviewSeoDocument }) 
         <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
           <Heading level={3}>Browse sections</Heading>
           <Text className="mt-2" tone="muted">
-            Pick a topic to view variants, formatting, combinations, and snippets.
+            Pick a topic to view variants, formatting, combinations, and
+            snippets.
           </Text>
         </div>
       </section>

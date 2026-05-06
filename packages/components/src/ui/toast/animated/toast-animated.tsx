@@ -22,7 +22,9 @@ export function ToastViewportAnimated({
 }: ToastViewportProps) {
   const ctx = useContext(ToastStoreContext);
   if (!ctx) {
-    throw new Error("ToastViewportAnimated must be used within <ToastProvider>");
+    throw new Error(
+      "ToastViewportAnimated must be used within <ToastProvider>",
+    );
   }
 
   const portalTarget = typeof document !== "undefined" ? document.body : null;

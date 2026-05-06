@@ -2,10 +2,14 @@ import { createRef } from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
+import { Card } from "./card";
 import {
-  Card,
-} from "./card";
-import { CardBody, CardDescription, CardFooter, CardHeader, CardTitle } from "./card-base";
+  CardBody,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./card-base";
 
 const CARD_SLOT = '[data-slot="card"]';
 

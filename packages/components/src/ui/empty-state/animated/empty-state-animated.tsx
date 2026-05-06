@@ -3,9 +3,7 @@
 import { motion } from "framer-motion";
 import { emptyStateAnimationPresets } from "./animations";
 import type { EmptyStateAnimatedProps } from "./types";
-import {
-  EmptyStateBase,
-} from "../empty-state-base";
+import { EmptyStateBase } from "../empty-state-base";
 
 export function EmptyStateAnimated(props: EmptyStateAnimatedProps) {
   const { animation = "none" } = props;

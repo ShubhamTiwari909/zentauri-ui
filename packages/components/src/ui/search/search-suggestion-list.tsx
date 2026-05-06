@@ -24,7 +24,10 @@ export function SearchSuggestionList({
     return (
       <div
         data-slot="search-suggestion-list-empty"
-        className={cn("px-1 py-6 text-center text-sm text-slate-500", className)}
+        className={cn(
+          "px-1 py-6 text-center text-sm text-slate-500",
+          className,
+        )}
       >
         {emptyLabel ?? "No matches."}
       </div>
@@ -50,7 +53,10 @@ export function SearchSuggestionList({
     <nav
       data-slot="search-suggestion-list"
       aria-label="Search results"
-      className={cn("flex max-h-[min(50vh,360px)] flex-col gap-1 overflow-y-auto pr-1", className)}
+      className={cn(
+        "flex max-h-[min(50vh,360px)] flex-col gap-1 overflow-y-auto pr-1",
+        className,
+      )}
     >
       <div
         {...(useListbox
@@ -64,7 +70,9 @@ export function SearchSuggestionList({
         {rows.map(({ item, showGroup }) => {
           const isActive = activeId === item.id;
           const optionDomId =
-            useListbox && listboxId ? searchSuggestionOptionDomId(listboxId, item.id) : undefined;
+            useListbox && listboxId
+              ? searchSuggestionOptionDomId(listboxId, item.id)
+              : undefined;
           return (
             <Fragment key={item.id}>
               {showGroup ? (
@@ -88,7 +96,9 @@ export function SearchSuggestionList({
               >
                 <span className="font-medium text-slate-100">{item.label}</span>
                 {item.description ? (
-                  <span className="truncate text-xs text-slate-500">{item.description}</span>
+                  <span className="truncate text-xs text-slate-500">
+                    {item.description}
+                  </span>
                 ) : null}
               </button>
             </Fragment>
@@ -100,4 +110,3 @@ export function SearchSuggestionList({
 }
 
 SearchSuggestionList.displayName = "SearchSuggestionList";
-

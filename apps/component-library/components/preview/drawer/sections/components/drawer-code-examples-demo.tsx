@@ -17,11 +17,7 @@ export function DrawerDemo({ side, size, appearance, label }: DrawerDemoProps) {
       <DrawerTrigger appearance={appearance} className={DRAWER_TRIGGER_CLASS}>
         {label}
       </DrawerTrigger>
-      <DrawerContent
-        side={side}
-        size={size}
-        appearance={appearance}
-      >
+      <DrawerContent side={side} size={size} appearance={appearance}>
         <DrawerClose />
         <DrawerHeader>
           <DrawerTitle>Panel</DrawerTitle>

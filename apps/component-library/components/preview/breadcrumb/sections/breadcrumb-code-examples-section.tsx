@@ -6,7 +6,10 @@ import {
   BREADCRUMB_CODE_EXAMPLES_SECTION_CLASS,
   BREADCRUMB_SCENARIOS,
 } from "./components/breadcrumb-code-examples.data";
-import { breadcrumbSnippet, breadcrumbSnippetForAppearance } from "./components/breadcrumb-code-examples.snippets";
+import {
+  breadcrumbSnippet,
+  breadcrumbSnippetForAppearance,
+} from "./components/breadcrumb-code-examples.snippets";
 
 const scenarioLabel: Record<(typeof BREADCRUMB_SCENARIOS)[number], string> = {
   default: "Default slash separators",
@@ -45,7 +48,8 @@ export function BreadcrumbCodeExamplesSection() {
             code={breadcrumbSnippetForAppearance(appearance)}
           >
             <p className="mb-5 text-xs font-semibold text-white md:text-sm">
-              Appearance: <span className="font-bold">{appearance.toUpperCase()}</span>
+              Appearance:{" "}
+              <span className="font-bold">{appearance.toUpperCase()}</span>
             </p>
             <BreadcrumbDemo scenario="default" appearance={appearance} />
           </PreviewCodeShowcase>

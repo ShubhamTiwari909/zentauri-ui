@@ -32,12 +32,16 @@ export default function HooksHubPage({ seo }: HooksHubPageProps) {
                   Hook
                 </span>
               </div>
-              <p className="text-sm leading-relaxed text-slate-400">{hook.description}</p>
+              <p className="text-sm leading-relaxed text-slate-400">
+                {hook.description}
+              </p>
             </div>
 
             <div className="mt-8 flex items-center text-sm font-medium text-cyan-400">
               Open preview
-              <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+              <span className="ml-2 transition-transform group-hover:translate-x-1">
+                →
+              </span>
             </div>
           </Link>
         ))}

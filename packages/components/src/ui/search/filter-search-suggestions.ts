@@ -28,9 +28,9 @@ export function filterSearchSuggestions<T extends SearchFilterable>({
   for (const item of items) {
     const isMatch =
       item.label.toLowerCase().includes(normalized) ||
-      (item.description?.toLowerCase().includes(normalized)) ||
-      (item.href?.toLowerCase().includes(normalized)) ||
-      (item.keywords?.some((k) => k.toLowerCase().includes(normalized)));
+      item.description?.toLowerCase().includes(normalized) ||
+      item.href?.toLowerCase().includes(normalized) ||
+      item.keywords?.some((k) => k.toLowerCase().includes(normalized));
 
     if (isMatch) {
       matches.push(item);

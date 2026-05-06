@@ -1,6 +1,5 @@
 import type { TooltipAnimationPresets } from "./types";
 
-
 export const tooltipAnimationPresets: TooltipAnimationPresets = {
   none: {},
   fade: {

@@ -9,15 +9,7 @@ import {
 
 export function ListBase(props: ListProps) {
   if ("ordered" in props && props.ordered === true) {
-    const {
-      tone,
-      className,
-      children,
-      ref,
-      ordered,
-      marker,
-      ...rest
-    } = props;
+    const { tone, className, children, ref, ordered, marker, ...rest } = props;
 
     void ordered;
     void marker;

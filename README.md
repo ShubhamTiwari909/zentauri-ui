@@ -8,12 +8,12 @@ Public site: [zentauri-ui.vercel.app](https://zentauri-ui.vercel.app/)
 
 ## What is in this repository?
 
-| Location | Package name | Role |
-| -------- | ------------ | ---- |
-| `apps/component-library` | `component-library` | Next.js 16 app (App Router): marketing home, `/preview` docs, SEO helpers, Vercel Analytics |
-| `packages/components` | `@zentauri-ui/zentauri-components` | Source of UI primitives and hooks; built with **tsup** into `dist/` (ESM/CJS + types) |
-| `packages/eslint-config` | `@repo/eslint-config` | Shared ESLint presets (`base`, `next-js`, `react-internal`) |
-| `packages/typescript-config` | `@repo/typescript-config` | Shared `tsconfig` fragments for apps and packages |
+| Location                     | Package name                       | Role                                                                                        |
+| ---------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------- |
+| `apps/component-library`     | `component-library`                | Next.js 16 app (App Router): marketing home, `/preview` docs, SEO helpers, Vercel Analytics |
+| `packages/components`        | `@zentauri-ui/zentauri-components` | Source of UI primitives and hooks; built with **tsup** into `dist/` (ESM/CJS + types)       |
+| `packages/eslint-config`     | `@repo/eslint-config`              | Shared ESLint presets (`base`, `next-js`, `react-internal`)                                 |
+| `packages/typescript-config` | `@repo/typescript-config`          | Shared `tsconfig` fragments for apps and packages                                           |
 
 Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the app that runs `lint`). The component package uses **Vitest** and Testing Library for unit tests.
 
@@ -70,10 +70,10 @@ This links `component-library` to `@zentauri-ui/zentauri-components` via `worksp
 
 The docs app does **not** require a `.env` file for local work. For accurate canonical URLs and Open Graph metadata in production-like setups, you can set:
 
-| Variable | Required locally? | Purpose |
-| -------- | ----------------- | ------- |
-| `NEXT_PUBLIC_SITE_URL` | No | Public origin with scheme (e.g. `https://zentauri-ui.vercel.app`). Used as `metadataBase` and for canonical / OG URLs in `apps/component-library/lib/preview-seo.ts`. |
-| `VERCEL_URL` | Automatic on Vercel | Fallback hostname when `NEXT_PUBLIC_SITE_URL` is unset. |
+| Variable               | Required locally?   | Purpose                                                                                                                                                               |
+| ---------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | No                  | Public origin with scheme (e.g. `https://zentauri-ui.vercel.app`). Used as `metadataBase` and for canonical / OG URLs in `apps/component-library/lib/preview-seo.ts`. |
+| `VERCEL_URL`           | Automatic on Vercel | Fallback hostname when `NEXT_PUBLIC_SITE_URL` is unset.                                                                                                               |
 
 If neither is set, metadata falls back to **`http://localhost:3000`**.
 
@@ -149,14 +149,14 @@ You can install [turbo](https://turborepo.dev/docs/getting-started/installation)
 
 ## Root scripts (cheat sheet)
 
-| Command | What it does |
-| ------- | -------------- |
-| `pnpm install` | Install and link all workspaces |
-| `pnpm dev` | `turbo run dev` — persistent dev tasks (Next + tsup watch) |
-| `pnpm build` | `turbo run build` — builds packages and apps; caches via Turbo |
-| `pnpm lint` | `turbo run lint` — ESLint where defined |
-| `pnpm check-types` | `turbo run check-types` — `tsc --noEmit` where defined |
-| `pnpm format` | Prettier write on `**/*.{ts,tsx,md}` from the root (not routed through Turbo) |
+| Command            | What it does                                                                  |
+| ------------------ | ----------------------------------------------------------------------------- |
+| `pnpm install`     | Install and link all workspaces                                               |
+| `pnpm dev`         | `turbo run dev` — persistent dev tasks (Next + tsup watch)                    |
+| `pnpm build`       | `turbo run build` — builds packages and apps; caches via Turbo                |
+| `pnpm lint`        | `turbo run lint` — ESLint where defined                                       |
+| `pnpm check-types` | `turbo run check-types` — `tsc --noEmit` where defined                        |
+| `pnpm format`      | Prettier write on `**/*.{ts,tsx,md}` from the root (not routed through Turbo) |
 
 ### Scoped commands with pnpm filters
 
@@ -206,12 +206,12 @@ pnpm exec turbo link
 
 ## Troubleshooting
 
-| Symptom | Things to try |
-| ------- | --------------- |
-| Wrong pnpm / lockfile errors | `corepack prepare pnpm@9.0.0 --activate`; delete `node_modules` and run `pnpm install` from root. |
-| App shows stale components | Run `pnpm build` for the library or use `pnpm dev` so `tsup --watch` updates `dist/`. |
-| Types or imports fail after a pull | `pnpm install` then `pnpm check-types` and `pnpm build`. |
-| Port 3000 in use | `pnpm --filter component-library dev -- -p 3001` (forwards `-p` to `next dev`). |
+| Symptom                            | Things to try                                                                                     |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Wrong pnpm / lockfile errors       | `corepack prepare pnpm@9.0.0 --activate`; delete `node_modules` and run `pnpm install` from root. |
+| App shows stale components         | Run `pnpm build` for the library or use `pnpm dev` so `tsup --watch` updates `dist/`.             |
+| Types or imports fail after a pull | `pnpm install` then `pnpm check-types` and `pnpm build`.                                          |
+| Port 3000 in use                   | `pnpm --filter component-library dev -- -p 3001` (forwards `-p` to `next dev`).                   |
 
 ---
 

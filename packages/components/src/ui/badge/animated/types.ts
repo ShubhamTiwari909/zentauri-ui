@@ -6,7 +6,6 @@ export type BadgeAnimatedProps = Omit<BadgeBaseProps, "as"> & {
 };
 export type BadgeAnimation = "none" | "pop" | "bounce" | "fade";
 
-
 type BadgePresetMotionProps = Pick<
   HTMLMotionProps<"span">,
   "style" | "transition" | "whileHover" | "whileTap" | "animate" | "initial"

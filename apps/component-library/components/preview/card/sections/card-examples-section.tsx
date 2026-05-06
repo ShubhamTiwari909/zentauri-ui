@@ -79,7 +79,9 @@ export function ProductCard() {
         <div className="flex items-start justify-between gap-4">
           <div>
             <CardTitle>Pulse Analytics Hub</CardTitle>
-            <CardDescription>Real-time reporting for growing SaaS teams.</CardDescription>
+            <CardDescription>
+              Real-time reporting for growing SaaS teams.
+            </CardDescription>
           </div>
           <p className="text-lg font-semibold text-white">$149</p>
         </div>
@@ -112,7 +114,10 @@ export function UserProfileCard() {
       <CardBody>
         <div className="grid grid-cols-3 gap-2 text-center">
           {stats.map(([value, label]) => (
-            <div key={label} className="rounded-lg border border-white/10 bg-white/5 p-3">
+            <div
+              key={label}
+              className="rounded-lg border border-white/10 bg-white/5 p-3"
+            >
               <p className="font-semibold text-white">{value}</p>
               <p className="mt-1 text-xs text-slate-400">{label}</p>
             </div>
@@ -133,7 +138,9 @@ export function BlogPostCard() {
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-indigo-300">
             Operations
           </p>
-          <CardTitle className="mt-2">How elite teams design decision loops</CardTitle>
+          <CardTitle className="mt-2">
+            How elite teams design decision loops
+          </CardTitle>
           <CardDescription className="mt-2">
             A practical guide to reducing ambiguity without adding meeting load.
           </CardDescription>
@@ -150,10 +157,18 @@ export function BlogPostCard() {
 
 // 4. Pricing Card
 export function PricingCard() {
-  const features = ["Unlimited workflows", "Advanced permissions", "Priority support"];
+  const features = [
+    "Unlimited workflows",
+    "Advanced permissions",
+    "Priority support",
+  ];
 
   return (
-    <Card appearance="glass" rounded="lg" className={`${baseCardClassName} border-indigo-400/50`}>
+    <Card
+      appearance="glass"
+      rounded="lg"
+      className={`${baseCardClassName} border-indigo-400/50`}
+    >
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle>Pro</CardTitle>
@@ -164,12 +179,17 @@ export function PricingCard() {
         <p className="text-4xl font-semibold tracking-tight text-white">
           $29<span className="text-sm font-normal text-slate-400">/seat</span>
         </p>
-        <CardDescription>For teams ready to automate recurring work.</CardDescription>
+        <CardDescription>
+          For teams ready to automate recurring work.
+        </CardDescription>
       </CardHeader>
       <CardBody>
         <ul className="space-y-2" aria-label="Pro plan features">
           {features.map((feature) => (
-            <li key={feature} className="flex items-center gap-2 text-sm text-slate-300">
+            <li
+              key={feature}
+              className="flex items-center gap-2 text-sm text-slate-300"
+            >
               <FiCheck aria-hidden="true" className="text-emerald-300" />
               {feature}
             </li>
@@ -190,14 +210,18 @@ export function TestimonialCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardBody>
-        <div className="flex text-indigo-300" aria-label="5 out of 5 star rating">
+        <div
+          className="flex text-indigo-300"
+          aria-label="5 out of 5 star rating"
+        >
           {Array.from({ length: 5 }).map((_, index) => (
             <FiStar key={index} aria-hidden="true" fill="currentColor" />
           ))}
         </div>
         <blockquote className="text-sm leading-6 text-slate-200">
-          “The platform gave our product and support leaders one shared operating
-          picture. We stopped debating status and started improving outcomes.”
+          “The platform gave our product and support leaders one shared
+          operating picture. We stopped debating status and started improving
+          outcomes.”
         </blockquote>
       </CardBody>
       <CardFooter className="flex-row items-center gap-3">
@@ -225,7 +249,9 @@ export function StatsCard() {
           </span>
         </div>
         <div>
-          <p className="text-4xl font-semibold tracking-tight text-white">42.8k</p>
+          <p className="text-4xl font-semibold tracking-tight text-white">
+            42.8k
+          </p>
           <CardDescription>Qualified product events this week</CardDescription>
         </div>
       </CardBody>
@@ -249,7 +275,10 @@ export function DashboardSummaryCard() {
       </CardHeader>
       <CardBody>
         {rows.map(([label, value]) => (
-          <div key={label} className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2">
+          <div
+            key={label}
+            className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2"
+          >
             <span className="text-sm text-slate-300">{label}</span>
             <span className="text-sm font-medium text-white">{value}</span>
           </div>
@@ -296,7 +325,8 @@ export function FeatureCard() {
         </span>
         <CardTitle>Automation rules</CardTitle>
         <CardDescription>
-          Route work, assign owners, and escalate blockers without brittle scripts.
+          Route work, assign owners, and escalate blockers without brittle
+          scripts.
         </CardDescription>
       </CardHeader>
     </Card>
@@ -366,7 +396,9 @@ export function JobListingCard() {
           </span>
         </div>
         <CardTitle>Senior Frontend Engineer</CardTitle>
-        <CardDescription>Design Systems · Full-time · US/EU overlap</CardDescription>
+        <CardDescription>
+          Design Systems · Full-time · US/EU overlap
+        </CardDescription>
       </CardHeader>
       <CardFooter className="flex-row items-center justify-between">
         <span className="text-sm text-slate-400">$155k - $190k</span>
@@ -383,7 +415,10 @@ export function CourseCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardBody>
-        <VisualPlaceholder label="Course cover for analytics fundamentals" className="min-h-28" />
+        <VisualPlaceholder
+          label="Course cover for analytics fundamentals"
+          className="min-h-28"
+        />
         <div>
           <CardTitle>Analytics for product teams</CardTitle>
           <CardDescription>Instructor: Lena Ortiz · 18 lessons</CardDescription>
@@ -417,7 +452,11 @@ export function MusicMediaCard() {
           <CardTitle>Release notes radio</CardTitle>
           <CardDescription>Episode 42 · Platform reliability</CardDescription>
           <div className="mt-4 flex items-center gap-2">
-            <button type="button" className={secondaryActionClassName} aria-label="Play episode">
+            <button
+              type="button"
+              className={secondaryActionClassName}
+              aria-label="Play episode"
+            >
               <FiPlay aria-hidden="true" />
             </button>
             <div className="h-1.5 flex-1 rounded-full bg-white/10">
@@ -448,13 +487,25 @@ export function SocialPostCard() {
         </p>
       </CardBody>
       <CardFooter className="flex-row justify-between text-sm text-slate-300">
-        <button type="button" className="inline-flex items-center gap-2 hover:text-white" aria-label="Like post">
+        <button
+          type="button"
+          className="inline-flex items-center gap-2 hover:text-white"
+          aria-label="Like post"
+        >
           <FiHeart aria-hidden="true" /> 248
         </button>
-        <button type="button" className="inline-flex items-center gap-2 hover:text-white" aria-label="Comment on post">
+        <button
+          type="button"
+          className="inline-flex items-center gap-2 hover:text-white"
+          aria-label="Comment on post"
+        >
           <FiMessageCircle aria-hidden="true" /> 32
         </button>
-        <button type="button" className="inline-flex items-center gap-2 hover:text-white" aria-label="Share post">
+        <button
+          type="button"
+          className="inline-flex items-center gap-2 hover:text-white"
+          aria-label="Share post"
+        >
           <FiShare2 aria-hidden="true" /> Share
         </button>
       </CardFooter>
@@ -473,9 +524,15 @@ export function AnalyticsCard() {
         <CardDescription>Weekly conversion by stage</CardDescription>
       </CardHeader>
       <CardBody>
-        <div className="flex h-36 items-end gap-2 rounded-lg border border-white/10 bg-white/5 p-4" aria-label="Bar chart placeholder">
+        <div
+          className="flex h-36 items-end gap-2 rounded-lg border border-white/10 bg-white/5 p-4"
+          aria-label="Bar chart placeholder"
+        >
           {bars.map((height, index) => (
-            <div key={`${height}-${index}`} className={`${height} flex-1 rounded-t bg-indigo-400/70`} />
+            <div
+              key={`${height}-${index}`}
+              className={`${height} flex-1 rounded-t bg-indigo-400/70`}
+            />
           ))}
         </div>
         <div className="grid grid-cols-2 gap-2 text-sm">
@@ -529,7 +586,11 @@ export function FileDocumentCard() {
           <CardTitle className="truncate">Q2 operating review.pdf</CardTitle>
           <CardDescription>8.4 MB · Updated today</CardDescription>
         </div>
-        <button type="button" className={secondaryActionClassName} aria-label="Download Q2 operating review">
+        <button
+          type="button"
+          className={secondaryActionClassName}
+          aria-label="Download Q2 operating review"
+        >
           <FiDownload aria-hidden="true" />
         </button>
       </CardBody>
@@ -568,7 +629,11 @@ export function PaymentInvoiceCard() {
 // 20. Empty State Card
 export function EmptyStateCard() {
   return (
-    <Card appearance="outline" rounded="lg" className={`${baseCardClassName} items-center text-center`}>
+    <Card
+      appearance="outline"
+      rounded="lg"
+      className={`${baseCardClassName} items-center text-center`}
+    >
       <CardBody className="items-center py-8">
         <span className="grid size-12 place-items-center rounded-full border border-dashed border-indigo-300/40 text-indigo-200">
           <FiUploadCloud aria-hidden="true" />
@@ -576,7 +641,8 @@ export function EmptyStateCard() {
         <div>
           <CardTitle>No documents yet</CardTitle>
           <CardDescription className="mt-1">
-            Upload contracts, invoices, or onboarding files to keep this workspace organized.
+            Upload contracts, invoices, or onboarding files to keep this
+            workspace organized.
           </CardDescription>
         </div>
         <button type="button" className={actionClassName}>
@@ -586,7 +652,6 @@ export function EmptyStateCard() {
     </Card>
   );
 }
-
 
 const cardVariantPreviews = [
   {
@@ -627,7 +692,7 @@ const cardVariantPreviews = [
   {
     name: "Notification Card",
     Component: NotificationCard,
-   code: cardVariantSnippets.notificationCardSnippet,
+    code: cardVariantSnippets.notificationCardSnippet,
   },
   {
     name: "Feature Card",

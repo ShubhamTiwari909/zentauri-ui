@@ -47,13 +47,16 @@ import {
 function VariantLabel({ detail }: { detail: string }) {
   return (
     <p className="mb-5 text-xs md:text-sm font-semibold text-white">
-      Variant:{" "}
-      <span className="font-bold">{detail}</span>
+      Variant: <span className="font-bold">{detail}</span>
     </p>
   );
 }
 
-function TypographyCodeExampleRows({ section }: { section: TypographySectionSlug }) {
+function TypographyCodeExampleRows({
+  section,
+}: {
+  section: TypographySectionSlug;
+}) {
   switch (section) {
     case "heading":
       return (
@@ -76,7 +79,10 @@ function TypographyCodeExampleRows({ section }: { section: TypographySectionSlug
               <HeadingLevelDemo level={level} />
             </PreviewCodeShowcase>
           ))}
-          <PreviewCodeShowcase key="heading-emphasis" code={headingEmphasisSnippet()}>
+          <PreviewCodeShowcase
+            key="heading-emphasis"
+            code={headingEmphasisSnippet()}
+          >
             <VariantLabel detail="HEADING · EMPHASIS · BOLD + UNDERLINE + PRIMARY" />
             <HeadingEmphasisDemo />
           </PreviewCodeShowcase>
@@ -95,7 +101,10 @@ function TypographyCodeExampleRows({ section }: { section: TypographySectionSlug
             </PreviewCodeShowcase>
           ))}
           {TEXT_SIZE_VARIANTS.map((size) => (
-            <PreviewCodeShowcase key={`text-size-${size}`} code={textSizeSnippet(size)}>
+            <PreviewCodeShowcase
+              key={`text-size-${size}`}
+              code={textSizeSnippet(size)}
+            >
               <VariantLabel detail={`TEXT · SIZE · ${size.toUpperCase()}`} />
               <TextSizeDemo size={size} />
             </PreviewCodeShowcase>
@@ -114,7 +123,9 @@ function TypographyCodeExampleRows({ section }: { section: TypographySectionSlug
               key={`list-tone-${tone}`}
               code={listToneSnippet(tone)}
             >
-              <VariantLabel detail={`LIST · UNORDERED · TONE · ${tone.toUpperCase()}`} />
+              <VariantLabel
+                detail={`LIST · UNORDERED · TONE · ${tone.toUpperCase()}`}
+              />
               <ListToneDemo tone={tone} />
             </PreviewCodeShowcase>
           ))}
@@ -127,7 +138,9 @@ function TypographyCodeExampleRows({ section }: { section: TypographySectionSlug
               key={`list-marker-${marker}`}
               code={listMarkerSnippet(marker)}
             >
-              <VariantLabel detail={`LIST · MARKER · ${marker.toUpperCase()}`} />
+              <VariantLabel
+                detail={`LIST · MARKER · ${marker.toUpperCase()}`}
+              />
               <ListMarkerDemo marker={marker} />
             </PreviewCodeShowcase>
           ))}
@@ -141,7 +154,9 @@ function TypographyCodeExampleRows({ section }: { section: TypographySectionSlug
               key={`blockquote-tone-${tone}`}
               code={blockquoteToneSnippet(tone)}
             >
-              <VariantLabel detail={`BLOCKQUOTE · TONE · ${tone.toUpperCase()}`} />
+              <VariantLabel
+                detail={`BLOCKQUOTE · TONE · ${tone.toUpperCase()}`}
+              />
               <BlockquoteToneDemo tone={tone} />
             </PreviewCodeShowcase>
           ))}
@@ -159,7 +174,10 @@ function TypographyCodeExampleRows({ section }: { section: TypographySectionSlug
               <InlineToneDemo tone={tone} />
             </PreviewCodeShowcase>
           ))}
-          <PreviewCodeShowcase key="inline-emphasis" code={inlineEmphasisSnippet()}>
+          <PreviewCodeShowcase
+            key="inline-emphasis"
+            code={inlineEmphasisSnippet()}
+          >
             <VariantLabel detail="INLINE · NESTED EMPHASIS · BOLD SPAN" />
             <InlineEmphasisDemo />
           </PreviewCodeShowcase>
@@ -173,15 +191,23 @@ function TypographyCodeExampleRows({ section }: { section: TypographySectionSlug
               key={`code-block-tone-${tone}`}
               code={codeBlockToneSnippet(tone)}
             >
-              <VariantLabel detail={`CODE-BLOCK · TONE · ${tone.toUpperCase()}`} />
+              <VariantLabel
+                detail={`CODE-BLOCK · TONE · ${tone.toUpperCase()}`}
+              />
               <CodeBlockToneDemo tone={tone} />
             </PreviewCodeShowcase>
           ))}
-          <PreviewCodeShowcase key="code-block-bash" code={codeBlockLanguageBashSnippet()}>
+          <PreviewCodeShowcase
+            key="code-block-bash"
+            code={codeBlockLanguageBashSnippet()}
+          >
             <VariantLabel detail="CODE-BLOCK · LANGUAGE · BASH" />
             <CodeBlockLanguageBashDemo />
           </PreviewCodeShowcase>
-          <PreviewCodeShowcase key="code-block-tsx" code={codeBlockLanguageTsxSnippet()}>
+          <PreviewCodeShowcase
+            key="code-block-tsx"
+            code={codeBlockLanguageTsxSnippet()}
+          >
             <VariantLabel detail="CODE-BLOCK · LANGUAGE · TSX" />
             <CodeBlockLanguageTsxDemo />
           </PreviewCodeShowcase>
@@ -203,10 +229,11 @@ export function TypographyCodeExamplesSection({
         Typography variants examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Density mirrors other previews: each row pairs live output with the matching import and JSX.
-        Use Show output / Show code on every row; snippets start with{" "}
+        Density mirrors other previews: each row pairs live output with the
+        matching import and JSX. Use Show output / Show code on every row;
+        snippets start with{" "}
         <code className="rounded bg-white/10 px-1 py-0.5 font-mono text-xs">
-          // Variant:
+           Variant
         </code>{" "}
         naming the token row.
       </p>

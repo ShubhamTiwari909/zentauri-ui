@@ -220,8 +220,7 @@ export const SelectContent = ({
 
       if (event.key === "ArrowUp") {
         event.preventDefault();
-        const prev =
-          idx <= 0 ? options.length - 1 : Math.max(idx - 1, 0);
+        const prev = idx <= 0 ? options.length - 1 : Math.max(idx - 1, 0);
         options[prev]?.focus();
         return;
       }

@@ -10,4 +10,4 @@ export type ToastPresetMotionProps = Pick<
 export type ToastAnimationPresets = Record<
   ToastAnimation,
   ToastPresetMotionProps
->;  
+>;

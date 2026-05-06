@@ -20,7 +20,13 @@ const HOOK_SLUG_PREFIX = "/preview/hooks/";
 
 const navKeywords: Record<string, readonly string[]> = {
   "/": ["home", "landing", "zentauri"],
-  "/preview/installation": ["install", "setup", "npm", "package", "getting started"],
+  "/preview/installation": [
+    "install",
+    "setup",
+    "npm",
+    "package",
+    "getting started",
+  ],
   "/preview/components": ["components", "ui", "catalog"],
   "/preview/hooks": ["hooks", "react hooks", "catalog"],
   "/preview/typography": ["typography", "text", "styles", "catalog"],

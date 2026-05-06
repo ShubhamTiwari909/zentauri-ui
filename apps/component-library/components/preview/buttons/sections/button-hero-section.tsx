@@ -10,13 +10,25 @@ export function ButtonHeroSection({ seo }: { seo: PreviewSeoDocument }) {
 
       <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
         <div className="grid gap-3 sm:grid-cols-2">
-          <ButtonAnimated appearance="outline" animation="lift" className="w-full">
+          <ButtonAnimated
+            appearance="outline"
+            animation="lift"
+            className="w-full"
+          >
             Launch
           </ButtonAnimated>
-          <ButtonAnimated appearance="outline" animation="press" className="w-full">
+          <ButtonAnimated
+            appearance="outline"
+            animation="press"
+            className="w-full"
+          >
             Outline
           </ButtonAnimated>
-          <ButtonAnimated appearance="glass" animation="glow" className="w-full">
+          <ButtonAnimated
+            appearance="glass"
+            animation="glow"
+            className="w-full"
+          >
             Glass
           </ButtonAnimated>
           <ButtonAnimated

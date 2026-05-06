@@ -1,4 +1,1 @@
-export {
-  useResizeObserver,
-  type ElementSize,
-} from "./useResizeObserver";
+export { useResizeObserver, type ElementSize } from "./useResizeObserver";

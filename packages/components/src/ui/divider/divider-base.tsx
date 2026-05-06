@@ -10,7 +10,6 @@ import {
   dividerVariants,
 } from "./variants";
 
-
 export function DividerBase({
   className,
   appearance,

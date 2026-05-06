@@ -56,8 +56,7 @@ export function useClipboard(resetDelay = 2000): UseClipboardResult {
         }
         return true;
       } catch (cause) {
-        const err =
-          cause instanceof Error ? cause : new Error(String(cause));
+        const err = cause instanceof Error ? cause : new Error(String(cause));
         setError(err);
         return false;
       }

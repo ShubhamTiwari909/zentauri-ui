@@ -9,7 +9,9 @@ export {
   TableHeader,
 } from "../table-base";
 export { TableRowAnimated } from "./table-animated";
-export type { TableAnimatedProps, TableRowAnimationPresets, TableRowPresetMotionProps } from "./types";
-export {
-  tableAnimationPresets,
-} from "./animations";
+export type {
+  TableAnimatedProps,
+  TableRowAnimationPresets,
+  TableRowPresetMotionProps,
+} from "./types";
+export { tableAnimationPresets } from "./animations";

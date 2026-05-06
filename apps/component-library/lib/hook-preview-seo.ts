@@ -25,7 +25,7 @@ const sharedFaqs: PreviewSeoDocument["faqs"] = [
   {
     question: "Can I import this hook from a server component?",
     answer:
-      "No. These hooks rely on browser APIs or React client lifecycle. Import them from a file marked with the \"use client\" directive or from a client child component.",
+      'No. These hooks rely on browser APIs or React client lifecycle. Import them from a file marked with the "use client" directive or from a client child component.',
   },
   {
     question: "Does the preview site bundle the same code as npm?",
@@ -39,7 +39,9 @@ const sharedFaqs: PreviewSeoDocument["faqs"] = [
   },
 ];
 
-function sharedSections(entry: HookPreviewRegistryEntry): PreviewSeoDocument["sections"] {
+function sharedSections(
+  entry: HookPreviewRegistryEntry,
+): PreviewSeoDocument["sections"] {
   return [
     {
       heading: "What it does",

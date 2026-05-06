@@ -18,11 +18,15 @@ export function BreadcrumbHeroSection({ seo }: { seo: PreviewSeoDocument }) {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/preview" appearance="default">Library</BreadcrumbLink>
+              <BreadcrumbLink href="/preview" appearance="default">
+                Library
+              </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/preview/inputs" appearance="sky">Forms</BreadcrumbLink>
+              <BreadcrumbLink href="/preview/inputs" appearance="sky">
+                Forms
+              </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>

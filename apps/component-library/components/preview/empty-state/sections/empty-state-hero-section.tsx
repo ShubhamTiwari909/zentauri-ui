@@ -8,9 +8,7 @@ import {
   EmptyStateIcon,
   EmptyStateTitle,
 } from "@zentauri-ui/zentauri-components/ui/empty-state";
-import {
-  EmptyStateAnimated,
-} from "@zentauri-ui/zentauri-components/ui/empty-state/animated";
+import { EmptyStateAnimated } from "@zentauri-ui/zentauri-components/ui/empty-state/animated";
 
 export function EmptyStateHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (

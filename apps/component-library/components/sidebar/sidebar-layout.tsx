@@ -8,7 +8,13 @@ import { SiteHeader } from "@/components/common/site-header";
 import { SiteSearchOpenButton } from "@/components/common/site-search/site-search-open-button";
 import { SidebarNavGroup } from "./types";
 
-export function SidebarLayout({ children, sideBarContent }: { children: React.ReactNode, sideBarContent: SidebarNavGroup[] }) {
+export function SidebarLayout({
+  children,
+  sideBarContent,
+}: {
+  children: React.ReactNode;
+  sideBarContent: SidebarNavGroup[];
+}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Detect viewport on page load and resize
@@ -59,7 +65,10 @@ export function SidebarLayout({ children, sideBarContent }: { children: React.Re
             <SiteSearchOpenButton />
           </div>
           <div className="flex-1 overflow-y-auto pr-2">
-            <SidebarNav onLinkClick={() => setIsMobileMenuOpen(false)} sidebarRouteData={sideBarContent} />
+            <SidebarNav
+              onLinkClick={() => setIsMobileMenuOpen(false)}
+              sidebarRouteData={sideBarContent}
+            />
           </div>
         </div>
       </aside>

@@ -1,4 +1,8 @@
-import type { AccordionBaseProps, AccordionContentProps, AccordionTransition } from "../types";
+import type {
+  AccordionBaseProps,
+  AccordionContentProps,
+  AccordionTransition,
+} from "../types";
 
 export type AccordionAnimatedProps = AccordionBaseProps;
 

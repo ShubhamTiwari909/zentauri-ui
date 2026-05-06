@@ -57,9 +57,8 @@ export function ToggleBase(props: ToggleProps) {
 
   const thumbShiftPx = size === "sm" ? 14 : size === "lg" ? 26 : 20;
   const labeledByChildren = hasToggleLabelChildren(children);
-  const labeling =
-    labeledByChildren ?
-      {
+  const labeling = labeledByChildren
+    ? {
         "aria-labelledby": toggleLabelId,
       }
     : {
@@ -84,11 +83,11 @@ export function ToggleBase(props: ToggleProps) {
       }}
       {...rest}
     >
-      {labeledByChildren ?
+      {labeledByChildren ? (
         <span id={toggleLabelId} className="sr-only">
           {children}
         </span>
-      : null}
+      ) : null}
       <span
         className={cn(
           toggleThumbVariants({ size }),

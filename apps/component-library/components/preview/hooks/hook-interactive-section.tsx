@@ -19,8 +19,8 @@ export function HookInteractiveSection({ slug }: HookInteractiveSectionProps) {
           Demo source
         </h2>
         <p className="text-sm text-slate-500">
-          Full client component used for this preview (same JSX as below). Adjust
-          paths if you copy outside this app.
+          Full client component used for this preview (same JSX as below).
+          Adjust paths if you copy outside this app.
         </p>
         <div className="overflow-hidden rounded-xl border border-white/10">
           <CodeHighlight codeString={exampleCode} language="tsx" />

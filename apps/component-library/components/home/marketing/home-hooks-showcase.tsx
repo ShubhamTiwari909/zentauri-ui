@@ -47,7 +47,9 @@ export function HomeHooksShowcase() {
                   <FiExternalLink className="h-3.5 w-3.5" aria-hidden />
                 </Link>
               </div>
-              <p className="text-sm leading-6 text-slate-400">{hook.description}</p>
+              <p className="text-sm leading-6 text-slate-400">
+                {hook.description}
+              </p>
               <p className="text-xs leading-5 text-slate-500">
                 <span className="font-medium text-slate-400">Use case: </span>
                 {hook.intro}

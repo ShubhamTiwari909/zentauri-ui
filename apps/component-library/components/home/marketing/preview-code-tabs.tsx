@@ -4,7 +4,10 @@ import { useState } from "react";
 
 import { Tabs } from "@zentauri-ui/zentauri-components/ui/tabs";
 import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/animated";
-import { TabsList, TabsTrigger } from "@zentauri-ui/zentauri-components/ui/tabs";
+import {
+  TabsList,
+  TabsTrigger,
+} from "@zentauri-ui/zentauri-components/ui/tabs";
 import type { ReactNode } from "react";
 import CodeHighlight from "@/components/CodeHighlight";
 

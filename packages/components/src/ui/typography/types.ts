@@ -1,9 +1,5 @@
 import type { VariantProps } from "class-variance-authority";
-import type {
-  ComponentProps,
-  HTMLAttributes,
-  RefObject,
-} from "react";
+import type { ComponentProps, HTMLAttributes, RefObject } from "react";
 
 import type {
   textSizeVariants,
@@ -17,10 +13,7 @@ export type TypographyTone = NonNullable<
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
-export type HeadingProps = Omit<
-  ComponentProps<"h1">,
-  "color"
-> & {
+export type HeadingProps = Omit<ComponentProps<"h1">, "color"> & {
   level: HeadingLevel;
   /** Visual scale; defaults to `level`. */
   displayLevel?: HeadingLevel;
@@ -72,17 +65,11 @@ export type BlockquoteProps = ComponentProps<"blockquote"> & {
   ref?: RefObject<HTMLQuoteElement>;
 };
 
-export type InlineCodeProps = Omit<
-  ComponentProps<"code">,
-  "color"
-> & {
+export type InlineCodeProps = Omit<ComponentProps<"code">, "color"> & {
   tone?: TypographyTone;
 };
 
-export type CodeBlockProps = Omit<
-  ComponentProps<"pre">,
-  "color"
-> & {
+export type CodeBlockProps = Omit<ComponentProps<"pre">, "color"> & {
   tone?: TypographyTone;
   /** Hint for stacked highlighting stacks / aria-labels. */
   language?: string;

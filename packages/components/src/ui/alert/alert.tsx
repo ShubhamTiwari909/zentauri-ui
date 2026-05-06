@@ -4,6 +4,6 @@ import type { AlertProps } from "./types";
 
 export const Alert = (props: AlertProps) => {
   return <AlertBase {...props} />;
-}
+};
 
 Alert.displayName = "Alert";

@@ -4,10 +4,7 @@ import type { RefObject } from "react";
 import { Dispatch, SetStateAction, useEffect } from "react";
 
 /** DOM events that can represent an “outside” press for closing overlays. */
-export type ClickOutsideEventType =
-  | "mousedown"
-  | "pointerdown"
-  | "touchstart";
+export type ClickOutsideEventType = "mousedown" | "pointerdown" | "touchstart";
 
 export type UseClickOutsideParams = {
   /** Called with `false` when a qualifying event target is outside `ref.current`. */

@@ -1,6 +1,9 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Tooltip, TooltipTrigger } from "@zentauri-ui/zentauri-components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipTrigger,
+} from "@zentauri-ui/zentauri-components/ui/tooltip";
 import { TooltipContentAnimated } from "@zentauri-ui/zentauri-components/ui/tooltip/animated";
 
 const TRIGGER_SOFT =
@@ -30,7 +33,11 @@ export function TooltipExamplesSection() {
         >
           <Tooltip position="bottom" delay={400}>
             <TooltipTrigger className={TRIGGER_SOFT}>Slow hover</TooltipTrigger>
-            <TooltipContentAnimated variant="outline" size="sm" animation="fade">
+            <TooltipContentAnimated
+              variant="outline"
+              size="sm"
+              animation="fade"
+            >
               Opens after 400ms on hover; focus still opens immediately.
             </TooltipContentAnimated>
           </Tooltip>
@@ -51,7 +58,11 @@ export function TooltipExamplesSection() {
             <TooltipTrigger className={TRIGGER_EMPHASIS}>
               Delete row
             </TooltipTrigger>
-            <TooltipContentAnimated variant="default" size="lg" animation="scale">
+            <TooltipContentAnimated
+              variant="default"
+              size="lg"
+              animation="scale"
+            >
               This removes the row for everyone. You cannot undo this action.
             </TooltipContentAnimated>
           </Tooltip>

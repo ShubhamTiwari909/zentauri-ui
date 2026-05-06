@@ -4,7 +4,11 @@ import { createContext, useContext, useMemo } from "react";
 
 import { cn } from "../../lib/utils";
 
-import type { EmptyStateProps, EmptyStateSectionProps, EmptyStateSize } from "./types";
+import type {
+  EmptyStateProps,
+  EmptyStateSectionProps,
+  EmptyStateSize,
+} from "./types";
 import {
   emptyStateDescriptionVariants,
   emptyStateTitleVariants,

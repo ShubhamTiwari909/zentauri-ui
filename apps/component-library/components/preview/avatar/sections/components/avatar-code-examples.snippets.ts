@@ -1,6 +1,10 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 
-import type { AvatarDemoAnimation, AvatarDemoAppearance, AvatarDemoSize } from "./avatar-code-examples.types";
+import type {
+  AvatarDemoAnimation,
+  AvatarDemoAppearance,
+  AvatarDemoSize,
+} from "./avatar-code-examples.types";
 
 export function avatarSnippetForSize(size: AvatarDemoSize): string {
   return `${variantLeadComment(`size · ${size}, animation · none`)}<Avatar size="${size}">

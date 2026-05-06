@@ -1,6 +1,13 @@
 "use client";
 
-export { Tabs, TabsContent, TabsList, TabsTrigger, TabsContext, useTabs } from "./tabs";
+export {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  TabsContext,
+  useTabs,
+} from "./tabs";
 export type {
   TabsContentProps,
   TabsListProps,

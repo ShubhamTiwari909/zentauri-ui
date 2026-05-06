@@ -25,5 +25,4 @@ export type ButtonPresetMotionProps = Pick<
   "style" | "transition" | "whileHover" | "whileTap"
 >;
 
-
 export type AnimationPresets = Record<ButtonAnimation, ButtonPresetMotionProps>;

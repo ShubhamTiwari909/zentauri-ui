@@ -4,15 +4,14 @@ import type { RefObject } from "react";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import { useBodyScrollLock } from "../useBodyScrollLock";
 
-const FOCUSABLE_SELECTOR =
-  [
-    'a[href]',
-    'button:not([disabled])',
-    'textarea:not([disabled])',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    '[tabindex]:not([tabindex="-1"])',
-  ].join(", ");
+const FOCUSABLE_SELECTOR = [
+  "a[href]",
+  "button:not([disabled])",
+  "textarea:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  '[tabindex]:not([tabindex="-1"])',
+].join(", ");
 
 function getFocusableElements(
   root: HTMLElement,

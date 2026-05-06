@@ -381,7 +381,11 @@ describe("Input (component library)", () => {
       "should render without throwing when animation=%s",
       (animation) => {
         const { unmount } = render(
-          <InputAnimated animation={animation} placeholder="x" aria-label="Anim" />,
+          <InputAnimated
+            animation={animation}
+            placeholder="x"
+            aria-label="Anim"
+          />,
         );
         expect(
           getInputSlot(),

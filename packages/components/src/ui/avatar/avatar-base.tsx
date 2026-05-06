@@ -48,10 +48,7 @@ export function AvatarBase({
   ...rest
 }: AvatarBaseProps) {
   const [imageStatus, setImageStatus] = useState<ImageStatus>("idle");
-  const ctx = useMemo(
-    () => ({ imageStatus, setImageStatus }),
-    [imageStatus],
-  );
+  const ctx = useMemo(() => ({ imageStatus, setImageStatus }), [imageStatus]);
 
   return (
     <AvatarContext.Provider value={ctx}>
@@ -153,9 +150,7 @@ export function AvatarGroup({
   );
   const visible = max !== undefined ? childArray.slice(0, max) : childArray;
   const overflow =
-    max !== undefined && childArray.length > max
-      ? childArray.length - max
-      : 0;
+    max !== undefined && childArray.length > max ? childArray.length - max : 0;
 
   return (
     <div

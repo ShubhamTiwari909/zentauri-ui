@@ -44,12 +44,7 @@ const SiteHeaderMobile = () => {
       >
         <FiList className="h-6 w-6" aria-hidden />
       </DrawerTrigger>
-      <DrawerContent
-        className=""
-        side="right"
-        appearance="glass"
-        size="md"
-      >
+      <DrawerContent className="" side="right" appearance="glass" size="md">
         <DrawerHeader className="pr-12">
           <DrawerTitle className="text-slate-50">Navigate</DrawerTitle>
           <DrawerClose className="">

@@ -6,7 +6,8 @@ export const avatarVariants = cva(
     variants: {
       appearance: {
         default: "border-white/10 bg-white/10 text-slate-200",
-        muted: "border-black/40 bg-slate-950 dark:border-white/10 dark:bg-slate-950/40 text-slate-200",
+        muted:
+          "border-black/40 bg-slate-950 dark:border-white/10 dark:bg-slate-950/40 text-slate-200",
         sky: "border-sky-600 bg-sky-600/[0.03] text-slate-200",
         rose: "border-rose-600 bg-rose-600/[0.03] text-slate-200",
         purple: "border-purple-600 bg-purple-600/[0.03] text-slate-200",
@@ -19,15 +20,24 @@ export const avatarVariants = cva(
         gray: "border-gray-600 bg-gray-600/[0.03] text-slate-200",
         amber: "border-amber-600 bg-amber-600/[0.03] text-slate-200",
         violet: "border-violet-600 bg-violet-600/[0.03] text-slate-200",
-        "gradient-blue": "bg-linear-to-r from-blue-950/70 to-purple-950/70 backdrop-blur-xl text-slate-200",
-        "gradient-green": "bg-linear-to-r from-green-950/70 to-lime-950/70 backdrop-blur-xl text-slate-200",
-        "gradient-red": "bg-linear-to-r from-red-950/70 to-pink-950/70 backdrop-blur-xl text-slate-200",
-        "gradient-yellow": "bg-linear-to-r from-yellow-950/70 to-orange-950/70 backdrop-blur-xl text-slate-200",
-        "gradient-purple": "bg-linear-to-r from-purple-950/70 to-pink-950/70 backdrop-blur-xl text-slate-200",
-        "gradient-teal": "bg-linear-to-r from-teal-950/70 to-cyan-950/70 backdrop-blur-xl text-slate-200",
-        "gradient-indigo": "bg-linear-to-r from-indigo-950/70 to-purple-950/70 backdrop-blur-xl text-slate-200",
-        "gradient-pink": "bg-linear-to-r from-pink-950/70 to-rose-950/70 backdrop-blur-xl text-slate-200",
-        "gradient-orange": "bg-linear-to-r from-orange-950/70 to-red-950/70 backdrop-blur-xl text-slate-200",
+        "gradient-blue":
+          "bg-linear-to-r from-blue-950/70 to-purple-950/70 backdrop-blur-xl text-slate-200",
+        "gradient-green":
+          "bg-linear-to-r from-green-950/70 to-lime-950/70 backdrop-blur-xl text-slate-200",
+        "gradient-red":
+          "bg-linear-to-r from-red-950/70 to-pink-950/70 backdrop-blur-xl text-slate-200",
+        "gradient-yellow":
+          "bg-linear-to-r from-yellow-950/70 to-orange-950/70 backdrop-blur-xl text-slate-200",
+        "gradient-purple":
+          "bg-linear-to-r from-purple-950/70 to-pink-950/70 backdrop-blur-xl text-slate-200",
+        "gradient-teal":
+          "bg-linear-to-r from-teal-950/70 to-cyan-950/70 backdrop-blur-xl text-slate-200",
+        "gradient-indigo":
+          "bg-linear-to-r from-indigo-950/70 to-purple-950/70 backdrop-blur-xl text-slate-200",
+        "gradient-pink":
+          "bg-linear-to-r from-pink-950/70 to-rose-950/70 backdrop-blur-xl text-slate-200",
+        "gradient-orange":
+          "bg-linear-to-r from-orange-950/70 to-red-950/70 backdrop-blur-xl text-slate-200",
       },
       size: {
         sm: "size-8 text-xs",
@@ -49,4 +59,6 @@ export const avatarFallbackVariants = cva(
   "flex size-full items-center justify-center bg-slate-800 font-medium text-slate-100",
 );
 
-export const avatarGroupVariants = cva("flex items-center [&_[data-slot=avatar]]:-ml-2 [&_[data-slot=avatar]]:ring-2 [&_[data-slot=avatar]]:ring-slate-950 [&_[data-slot=avatar]]:first:ml-0");
+export const avatarGroupVariants = cva(
+  "flex items-center [&_[data-slot=avatar]]:-ml-2 [&_[data-slot=avatar]]:ring-2 [&_[data-slot=avatar]]:ring-slate-950 [&_[data-slot=avatar]]:first:ml-0",
+);

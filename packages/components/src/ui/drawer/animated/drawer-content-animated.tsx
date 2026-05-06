@@ -9,10 +9,7 @@ import { useFocusManagement } from "../../../hooks/useFocusManagement";
 
 import { drawerPanelPresets } from "./animations";
 import { useDrawerContext } from "../drawer-base";
-import {
-  drawerContentVariants,
-  drawerOverlayVariants,
-} from "../variants";
+import { drawerContentVariants, drawerOverlayVariants } from "../variants";
 import type { DrawerContentAnimatedProps } from "./types";
 
 export function DrawerContentAnimated({
@@ -67,8 +64,7 @@ export function DrawerContentAnimated({
               if (typeof ref === "function") {
                 ref(node);
               } else if (ref) {
-                (ref as MutableRefObject<HTMLDivElement | null>).current =
-                  node;
+                (ref as MutableRefObject<HTMLDivElement | null>).current = node;
               }
             }}
             role="dialog"

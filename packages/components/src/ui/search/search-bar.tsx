@@ -7,28 +7,26 @@ import { inputVariants } from "../inputs/variants";
 
 import type { SearchBarProps } from "./types";
 
-export const SearchBar = function SearchBar(
-  {
-    value,
-    onValueChange,
-    leadingSlot,
-    className,
-    inputClassName,
-    appearance = "default",
-    inputSize = "md",
-    ring = true,
-    id,
-    onChange,
-    disabled,
-    type,
-    comboboxListboxId,
-    comboboxActiveOptionId,
-    comboboxExpanded,
-    "aria-label": ariaLabel,
-    ref,
-    ...rest
-  }: SearchBarProps,
-) {
+export const SearchBar = function SearchBar({
+  value,
+  onValueChange,
+  leadingSlot,
+  className,
+  inputClassName,
+  appearance = "default",
+  inputSize = "md",
+  ring = true,
+  id,
+  onChange,
+  disabled,
+  type,
+  comboboxListboxId,
+  comboboxActiveOptionId,
+  comboboxExpanded,
+  "aria-label": ariaLabel,
+  ref,
+  ...rest
+}: SearchBarProps) {
   const generatedId = useId();
   const controlId = id ?? generatedId;
   const combobox = Boolean(comboboxListboxId);
@@ -54,10 +52,7 @@ export const SearchBar = function SearchBar(
         spellCheck={false}
         disabled={disabled}
         value={value}
-        aria-label={
-          ariaLabel ??
-          (combobox ? undefined : "Search")
-        }
+        aria-label={ariaLabel ?? (combobox ? undefined : "Search")}
         data-slot="search-bar-input"
         className={cn(
           inputVariants({ appearance, size: inputSize, ring, as: "input" }),
@@ -83,6 +78,6 @@ export const SearchBar = function SearchBar(
       />
     </div>
   );
-}
+};
 
 SearchBar.displayName = "SearchBar";

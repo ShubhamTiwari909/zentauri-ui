@@ -26,7 +26,10 @@ export function useWindowSize(): WindowSize {
 
   useEffect(() => {
     const onResize = () => {
-      setSize({ width: window.innerWidth || 0, height: window.innerHeight || 0 });
+      setSize({
+        width: window.innerWidth || 0,
+        height: window.innerHeight || 0,
+      });
     };
     onResize();
     window.addEventListener("resize", onResize);

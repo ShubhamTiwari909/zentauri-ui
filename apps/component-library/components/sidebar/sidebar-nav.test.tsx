@@ -80,7 +80,10 @@ describe("SidebarNav", () => {
   it("triggers onLinkClick when a link is clicked", () => {
     const onLinkClickMock = vi.fn();
     render(
-      <SidebarNav sidebarRouteData={mockSidebarRouteData} onLinkClick={onLinkClickMock} />,
+      <SidebarNav
+        sidebarRouteData={mockSidebarRouteData}
+        onLinkClick={onLinkClickMock}
+      />,
     );
 
     const inactiveLink = screen.getByText("Inactive Link");

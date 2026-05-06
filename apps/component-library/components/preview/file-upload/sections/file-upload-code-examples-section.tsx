@@ -7,23 +7,24 @@ import {
 } from "./components/file-upload-code-examples.data";
 import { fileUploadSnippet } from "./components/file-upload-code-examples.snippets";
 
-const scenarioLabel: Record<(typeof FILE_UPLOAD_APPEARANCES)[number], string> = {
-  idle: "Default copy · image accept",
-  active: "Active state",
-  disabled: "Disabled",
-  error: "Error state",
-  success: "Success state",
-  warning: "Warning state",
-  info: "Info state",
-  neutral: "Neutral state",
-  purple: "Purple state",
-  indigo: "Indigo state",
-  emerald: "Emerald state",
-  amber: "Amber state",
-  pink: "Pink state",
-  orange: "Orange state",
-  teal: "Teal state",
-};
+const scenarioLabel: Record<(typeof FILE_UPLOAD_APPEARANCES)[number], string> =
+  {
+    idle: "Default copy · image accept",
+    active: "Active state",
+    disabled: "Disabled",
+    error: "Error state",
+    success: "Success state",
+    warning: "Warning state",
+    info: "Info state",
+    neutral: "Neutral state",
+    purple: "Purple state",
+    indigo: "Indigo state",
+    emerald: "Emerald state",
+    amber: "Amber state",
+    pink: "Pink state",
+    orange: "Orange state",
+    teal: "Teal state",
+  };
 
 export function FileUploadCodeExamplesSection() {
   return (

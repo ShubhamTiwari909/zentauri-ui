@@ -126,7 +126,6 @@ export function ModalTrigger({
 
 ModalTrigger.displayName = "ModalTrigger";
 
-
 export function ModalContent({
   className,
   size,

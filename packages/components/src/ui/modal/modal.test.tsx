@@ -2,11 +2,15 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
+import { Modal } from "./modal";
 import {
-  Modal,
-} from "./modal";
-import { ModalTrigger, ModalContent, ModalTitle, ModalBody, ModalDescription, ModalClose } from "./modal-base";
-
+  ModalTrigger,
+  ModalContent,
+  ModalTitle,
+  ModalBody,
+  ModalDescription,
+  ModalClose,
+} from "./modal-base";
 
 describe("Modal", () => {
   it("should expose displayName on exported parts", () => {
@@ -155,9 +159,7 @@ describe("Modal", () => {
     const trigger = screen.getByRole("button", { name: "Open" });
     trigger.focus();
     await user.click(trigger);
-    await waitFor(() =>
-      expect(screen.getByRole("dialog")).toBeInTheDocument(),
-    );
+    await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
     await user.keyboard("{Escape}");
     await waitFor(() =>
       expect(screen.queryByRole("dialog")).not.toBeInTheDocument(),

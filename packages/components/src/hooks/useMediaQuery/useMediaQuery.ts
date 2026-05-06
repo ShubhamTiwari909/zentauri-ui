@@ -12,10 +12,7 @@ import { useEffect, useState } from "react";
  * @param defaultValue - Value to use before hydration or when `matchMedia` is unavailable (default `false`).
  * @returns Current `matches` boolean for the query.
  */
-export function useMediaQuery(
-  query: string,
-  defaultValue = false,
-): boolean {
+export function useMediaQuery(query: string, defaultValue = false): boolean {
   const [matches, setMatches] = useState(defaultValue);
 
   useEffect(() => {

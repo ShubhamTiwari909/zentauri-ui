@@ -5,7 +5,9 @@ import type { toastRootVariants, toastViewportVariants } from "./variants";
 
 export type ToastAnimation = "none" | "slide" | "fade";
 
-export type ToastViewportVariantProps = VariantProps<typeof toastViewportVariants>;
+export type ToastViewportVariantProps = VariantProps<
+  typeof toastViewportVariants
+>;
 export type ToastRootVariantProps = VariantProps<typeof toastRootVariants>;
 
 export type ToastPosition = NonNullable<ToastViewportVariantProps["position"]>;

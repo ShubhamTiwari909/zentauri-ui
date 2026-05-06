@@ -7,7 +7,9 @@ export type SiteSearchContextValue = {
   setOpen: (next: boolean) => void;
 };
 
-export const SiteSearchContext = createContext<SiteSearchContextValue | null>(null);
+export const SiteSearchContext = createContext<SiteSearchContextValue | null>(
+  null,
+);
 
 export function useSiteSearch(): SiteSearchContextValue {
   const ctx = useContext(SiteSearchContext);
