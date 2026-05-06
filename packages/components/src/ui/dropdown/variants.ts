@@ -23,23 +23,23 @@ export const triggerVariants = cva(
         amber: "border border-amber-600 text-amber-600",
         violet: "border border-violet-600 text-violet-600",
         "gradient-blue":
-          "bg-linear-to-r from-blue-600 to-purple-600 text-gradient-to-r from-blue-600 to-purple-600",
+          "bg-linear-to-r from-blue-600 to-purple-600 text-blue-200",
         "gradient-green":
-          "bg-linear-to-r from-green-600 to-lime-600 text-gradient-to-r from-green-600 to-lime-600",
+          "bg-linear-to-r from-green-600 to-lime-600 text-green-200",
         "gradient-red":
-          "bg-linear-to-r from-red-600 to-pink-600 text-gradient-to-r from-red-600 to-pink-600",
+          "bg-linear-to-r from-red-600 to-pink-600 text-red-200",
         "gradient-yellow":
-          "bg-linear-to-r from-yellow-600 to-orange-600 text-gradient-to-r from-yellow-600 to-orange-600",
+          "bg-linear-to-r from-yellow-600 to-orange-600 text-yellow-200",
         "gradient-purple":
-          "bg-linear-to-r from-purple-600 to-pink-600 text-gradient-to-r from-purple-600 to-pink-600",
+          "bg-linear-to-r from-purple-600 to-pink-600 text-purple-200",
         "gradient-teal":
-          "bg-linear-to-r from-teal-600 to-cyan-600 text-gradient-to-r from-teal-600 to-cyan-600",
+          "bg-linear-to-r from-teal-600 to-cyan-600 text-teal-200",
         "gradient-indigo":
-          "bg-linear-to-r from-indigo-600 to-purple-600 text-gradient-to-r from-indigo-600 to-purple-600",
+          "bg-linear-to-r from-indigo-600 to-purple-600 text-indigo-200",
         "gradient-pink":
-          "bg-linear-to-r from-pink-600 to-rose-600 text-gradient-to-r from-pink-600 to-rose-600",
+          "bg-linear-to-r from-pink-600 to-rose-600 text-pink-200",
         "gradient-orange":
-          "bg-linear-to-r from-orange-600 to-red-600 text-gradient-to-r from-orange-600 to-red-600",
+          "bg-linear-to-r from-orange-600 to-red-600 text-orange-200",
       },
       size: {
         sm: "px-2 py-1 text-sm",
