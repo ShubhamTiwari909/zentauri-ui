@@ -147,7 +147,7 @@ describe("Button (component library)", () => {
       expect(
         root.className,
         "Gradient-blue appearance must include directional gradient utilities",
-      ).toMatch(/bg-gradient-to-r/);
+      ).toMatch(/bg-linear-to-r/);
     });
   });
 

@@ -29,23 +29,23 @@ export const paginationListVariants = cva(
         amber: "border-amber-500/25 bg-amber-950/20",
         violet: "border-violet-500/25 bg-violet-950/20",
         "gradient-blue":
-          "border-blue-500/30 bg-gradient-to-r from-blue-950/30 to-purple-950/30",
+          "border-blue-500/30 bg-linear-to-r from-blue-950/30 to-purple-950/30",
         "gradient-green":
-          "border-lime-500/30 bg-gradient-to-r from-green-950/30 to-lime-950/30",
+          "border-lime-500/30 bg-linear-to-r from-green-950/30 to-lime-950/30",
         "gradient-red":
-          "border-pink-500/30 bg-gradient-to-r from-red-950/30 to-pink-950/30",
+          "border-pink-500/30 bg-linear-to-r from-red-950/30 to-pink-950/30",
         "gradient-yellow":
-          "border-orange-500/30 bg-gradient-to-r from-yellow-950/30 to-orange-950/30",
+          "border-orange-500/30 bg-linear-to-r from-yellow-950/30 to-orange-950/30",
         "gradient-purple":
-          "border-pink-500/30 bg-gradient-to-r from-purple-950/30 to-pink-950/30",
+          "border-pink-500/30 bg-linear-to-r from-purple-950/30 to-pink-950/30",
         "gradient-teal":
-          "border-cyan-500/30 bg-gradient-to-r from-teal-950/30 to-cyan-950/30",
+          "border-cyan-500/30 bg-linear-to-r from-teal-950/30 to-cyan-950/30",
         "gradient-indigo":
-          "border-purple-500/30 bg-gradient-to-r from-indigo-950/30 to-purple-950/30",
+          "border-purple-500/30 bg-linear-to-r from-indigo-950/30 to-purple-950/30",
         "gradient-pink":
-          "border-rose-500/30 bg-gradient-to-r from-pink-950/30 to-rose-950/30",
+          "border-rose-500/30 bg-linear-to-r from-pink-950/30 to-rose-950/30",
         "gradient-orange":
-          "border-orange-500/30 bg-gradient-to-r from-orange-950/30 to-red-950/30",
+          "border-orange-500/30 bg-linear-to-r from-orange-950/30 to-red-950/30",
       },
       size: {
         sm: "gap-0.5",

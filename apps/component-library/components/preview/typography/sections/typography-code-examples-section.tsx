@@ -233,7 +233,7 @@ export function TypographyCodeExamplesSection({
         matching import and JSX. Use Show output / Show code on every row;
         snippets start with{" "}
         <code className="rounded bg-white/10 px-1 py-0.5 font-mono text-xs">
-           Variant
+          Variant
         </code>{" "}
         naming the token row.
       </p>
