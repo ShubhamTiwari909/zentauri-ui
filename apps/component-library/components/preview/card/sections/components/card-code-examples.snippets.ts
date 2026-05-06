@@ -32,13 +32,13 @@ const visualPlaceholderSnippet = `const VisualPlaceholder = ({
   );
 }`
 
-const baseCardClassNameSnippet = `const baseCardClassName
+const baseCardClassNameSnippet = `const baseCardClassName = 
   "group h-full border-white/10 bg-slate-950/70 shadow-lg shadow-slate-950/30 transition duration-200 hover:-translate-y-1 hover:border-indigo-400/40 hover:shadow-indigo-950/30";`
 
 const secondarActionClassNameSnippet = `const secondaryActionClassName =
 "inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-slate-100 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";`
 
-const iconShellClassNameSnippet = `const iconShellClassName
+const iconShellClassNameSnippet = `const iconShellClassName = 
   "grid size-10 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5 text-indigo-300";`
 
 const actionClassNameSnippet = `const actionClassName =
@@ -369,7 +369,7 @@ ${avatarInitialsSnippet}
 </Card>`, 
     analyticsCardSnippet: `${baseCardClassNameSnippet}
 
-const bars = [100, 80, 60, 40, 20];
+const bars = ["h-100", "h-80", "h-60", "h-40", "h-20"];
 
 <Card appearance="glass" rounded="lg" className={baseCardClassName}>
   <CardHeader>
@@ -378,8 +378,8 @@ const bars = [100, 80, 60, 40, 20];
   </CardHeader>
   <CardBody>
     <div className="flex h-36 items-end gap-2 rounded-lg border border-white/10 bg-white/5 p-4" aria-label="Bar chart placeholder">
-      {bars.map((height, index) => (
-        <div key={\`\${height}-\${index}\`} className={\`\${height} flex-1 rounded-t bg-indigo-400/70\`} />
+      {bars.map((height) => (
+        <div key={height} className={\`\${height} flex-1 rounded-t bg-indigo-400/70\`} />
       ))}
     </div>
   </CardBody>
