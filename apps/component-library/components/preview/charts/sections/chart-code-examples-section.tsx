@@ -31,8 +31,18 @@ export function ChartCodeExamplesSection({ slug }: { slug: ChartPreviewSlug }) {
             key={"no-grid-lines"}
             code={chartAppearanceSnippet(slug, "default", undefined, false)}
           >
-            <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} />
+            <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} {...(slug === "pie" ? { colors: ["#0088FE", "#00C49F", "#FFBB28", "#FF0098"] } : {})} />
           </PreviewCodeShowcase>
+          {
+            slug === "pie" && (
+              <PreviewCodeShowcase
+                key={"no-grid-lines"}
+                code={chartAppearanceSnippet(slug, "default", undefined, false, "40%", "80%")}
+              >
+                <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} innerRadius="40%" {...(slug === "pie" ? { colors: ["#0088FE", "#00C49F", "#FFBB28", "#FF0098"] } : {})} />
+              </PreviewCodeShowcase>
+            )
+          }
       </div>
     </section>
   );

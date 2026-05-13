@@ -3,7 +3,7 @@ import type { CSSProperties, HTMLAttributes, ReactNode } from "react";
 
 import type { chartPalette, chartVariants } from "./variants";
 
-export type ChartType = "area" | "bar" | "bubble" | "line";
+export type ChartType = "area" | "bar" | "bubble" | "line" | "pie";
 
 export type ChartColor = keyof typeof chartPalette;
 
@@ -58,3 +58,25 @@ export type LineChartProps<TDatum extends ChartDatum = ChartDatum> =
 
 export type BubbleChartProps<TDatum extends ChartDatum = ChartDatum> =
   BaseChartProps<TDatum>;
+
+export type PieChartProps<TDatum extends ChartDatum = ChartDatum> =
+  ChartSharedStatic &
+    Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
+      data: TDatum[];
+      dataKey: keyof TDatum & string;
+      nameKey: keyof TDatum & string;
+      height?: number;
+      showLegend?: boolean;
+      showTooltip?: boolean;
+      tooltipColor?: string;
+      emptyState?: ReactNode;
+      containerStyle?: CSSProperties;
+      paddingAngle?: number;
+      cornerRadius?: number;
+      label?: boolean;
+      labelLine?: boolean;
+      stroke?: string;
+      colors?: string[];
+      innerRadius?: number | string;
+      outerRadius?: number | string;
+    };

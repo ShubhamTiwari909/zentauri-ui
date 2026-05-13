@@ -32,7 +32,7 @@ const uiComponentNames = [
   "typography",
 ] as const;
 
-const chartEntryNames = ["area", "bar", "bubble", "line"] as const;
+const chartEntryNames = ["area", "bar", "bubble", "line", "pie"] as const;
 
 const uiAnimatedComponentNames = [
   "accordion",

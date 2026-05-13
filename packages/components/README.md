@@ -14,7 +14,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | `@zentauri-ui/zentauri-components/ui/<name>`          | Single UI area: static primitives, compound parts, variants, and types. Does **not** include Framer Motion–based animated exports.             |
 | `@zentauri-ui/zentauri-components/ui/<name>/animated` | Motion entry for that area when published: animated components, motion presets, and related types (depends on **framer-motion**).              |
-| `@zentauri-ui/zentauri-components/charts/<type>`      | Responsive Recharts chart entry for `area`, `bar`, `bubble`, or `line`, with shared variants, palettes, and exported chart prop types.         |
+| `@zentauri-ui/zentauri-components/charts/<type>`      | Responsive Recharts chart entry for `area`, `bar`, `bubble`, `line`, or `pie`, with shared variants, palettes, and exported chart prop types.  |
 | `@zentauri-ui/zentauri-components/hooks/<entry>`      | One hook module or `utils` (`cn`, `clampPage`, `range` from `src/lib/utils.ts`). Entries match files under `src/hooks/` (see **React hooks**). |
 
 The UI `<name>` segment matches the folder under `src/ui/` (for example `accordion`, `select`, `empty-state`, `buttons` for `Button`, `inputs` for `Input`, `typography` for `Heading` / `Text` and related primitives). The hooks `<entry>` is the file stem (for example `useMediaQuery`, `usePagination`) or `utils`.
@@ -137,11 +137,11 @@ export function ArticleIntro() {
 
 Import the chart you need from `@zentauri-ui/zentauri-components/charts/<type>`, or vendor it with `zentauri-components add charts/<type>`. It is built on **Recharts**, so install `recharts` when you use these entries.
 
-**Components:** `AreaChart`, `BarChart`, `BubbleChart`, `LineChart`.
+**Components:** `AreaChart`, `BarChart`, `BubbleChart`, `LineChart`, `PieChart`.
 
-**Types:** `AreaChartProps`, `BarChartProps`, `BubbleChartProps`, `LineChartProps`, plus shared `ChartSeries`, `ChartDatum`, `ChartColor`, `ChartMargin`, and `ChartSharedStatic`.
+**Types:** `AreaChartProps`, `BarChartProps`, `BubbleChartProps`, `LineChartProps`, `PieChartProps`, plus shared `ChartSeries`, `ChartDatum`, `ChartColor`, `ChartMargin`, and `ChartSharedStatic`.
 
-**Chart entries:** `charts/area`, `charts/bar`, `charts/bubble`, `charts/line`.
+**Chart entries:** `charts/area`, `charts/bar`, `charts/bubble`, `charts/line`, `charts/pie`.
 
 **Variants:** `appearance` (`default`, `muted`, `outline`, `glass`) and `density` (`compact`, `comfortable`, `spacious`). Color presets are exported via `chartPalette` and `chartColorValues`.
 
@@ -480,7 +480,7 @@ From this package directory in the monorepo:
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, the chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
 - `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 300+ test cases in total
-**`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`** (`components` + `hooks`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
+  **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`** (`components` + `hooks`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
 
 ## Github Release log
 

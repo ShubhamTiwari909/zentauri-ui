@@ -96,6 +96,10 @@ const chartsSidebarItems = [
     title: "Bubble",
     href: "/preview/charts/bubble",
   },
+  {
+    title: "Pie",
+    href: "/preview/charts/pie",
+  },
 ];
 
 export const sidebarChartsData: SidebarNavGroup[] = [

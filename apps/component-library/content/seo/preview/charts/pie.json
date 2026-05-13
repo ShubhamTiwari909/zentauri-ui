@@ -1,0 +1,74 @@
+{
+  "category": "Charts",
+  "title": "Pie chart component for React",
+  "description": "PieChart for React and Next.js — reusable donut and pie visualizations with Zentauri UI framing, Recharts legends, and tooltip support.",
+  "keywords": [
+    "pie chart",
+    "donut chart",
+    "Recharts",
+    "React",
+    "Next.js",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Pie chart · Zentauri UI",
+    "description": "PieChart for React and Next.js — reusable donut and pie visualizations with Zentauri UI framing, Recharts legends, and tooltip support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Pie chart · Zentauri UI",
+    "description": "PieChart for React and Next.js — reusable donut and pie visualizations with Zentauri UI framing, Recharts legends, and tooltip support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/charts/pie",
+  "headings": {
+    "h1": "Pie charts for share of total",
+    "h2": [
+      "What it does",
+      "Data shape",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Show part-to-whole distribution with a reusable pie or donut wrapper. PieChart composes Recharts `Pie` and `Cell` primitives with the same Zentauri frame variants used across the chart system.",
+  "useCases": [
+    "Traffic mix by device class.",
+    "Revenue share by product line.",
+    "Ticket volume split across support channels."
+  ],
+  "faqs": [
+    {
+      "question": "Can I render a donut chart instead of a full pie?",
+      "answer": "Yes. Set `innerRadius` to a percentage or number to open the center; keep it at `0` or omit it for a full pie."
+    },
+    {
+      "question": "How do I control slice colors?",
+      "answer": "Add a `color` field to each datum or rely on the shared chart palette fallback order when `color` is omitted."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Renders proportional slices with shared tooltip and legend wiring.\n\nUse the same appearance and density tokens as the other Zentauri charts."
+    },
+    {
+      "heading": "Data shape",
+      "body": "Each row should include a label field and a numeric value field. Pass those keys through `nameKey` and `dataKey`."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keep segment labels concise and ensure color is not the only cue when comparing categories.\n\nPrefer the legend when slice labels would crowd the chart."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from `@zentauri-ui/zentauri-components/charts/pie` inside client components when interaction is required."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

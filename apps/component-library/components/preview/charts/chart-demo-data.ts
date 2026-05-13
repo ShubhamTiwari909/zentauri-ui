@@ -1,5 +1,6 @@
 import { VariantProps } from "class-variance-authority";
 import { chartVariants } from "@zentauri-ui/zentauri-components/charts/area";
+import pieChartDataJson from "@/content/preview/charts/pie.json";
 
 export const chartTimeSeriesData = [
   { month: "Jan", desktop: 186, mobile: 80 },
@@ -10,11 +11,23 @@ export const chartTimeSeriesData = [
   { month: "Jun", desktop: 214, mobile: 140 },
 ];
 
-export const chartTimeSeriesSeries = ({ appearance }: { appearance: VariantProps<typeof chartVariants>["appearance"] }) => {
+export const chartTimeSeriesSeries = ({
+  appearance,
+}: {
+  appearance: VariantProps<typeof chartVariants>["appearance"];
+}) => {
   return [
-    { dataKey: "desktop", name: "Desktop", color: appearance?.includes("gradient") ? "white" : "cyan" },
-    { dataKey: "mobile", name: "Mobile", color: appearance?.includes("gradient") ? "white" : "emerald" },
-  ]
+    {
+      dataKey: "desktop",
+      name: "Desktop",
+      color: appearance?.includes("gradient") ? "white" : "cyan",
+    },
+    {
+      dataKey: "mobile",
+      name: "Mobile",
+      color: appearance?.includes("gradient") ? "white" : "emerald",
+    },
+  ];
 };
 
 export const chartBubbleData = [
@@ -25,8 +38,20 @@ export const chartBubbleData = [
   { x: 410, bench: 320, benchZ: 610 },
 ];
 
-export const chartBubbleSeries = ({ appearance }: { appearance: VariantProps<typeof chartVariants>["appearance"] }) => {
+export const chartBubbleSeries = ({
+  appearance,
+}: {
+  appearance: VariantProps<typeof chartVariants>["appearance"];
+}) => {
   return [
-    { dataKey: "bench", name: "Benchmark", color: appearance?.includes("gradient") ? "white" : "violet", zKey: "benchZ", fill: appearance?.includes("gradient") ? "white" : "violet" },
-  ]
+    {
+      dataKey: "bench",
+      name: "Benchmark",
+      color: appearance?.includes("gradient") ? "white" : "violet",
+      zKey: "benchZ",
+      fill: appearance?.includes("gradient") ? "white" : "violet",
+    },
+  ];
 };
+
+export const chartPieData = pieChartDataJson;

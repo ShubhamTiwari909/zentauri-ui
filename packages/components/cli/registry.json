@@ -13,6 +13,7 @@
     "charts/bar",
     "charts/bubble",
     "charts/line",
+    "charts/pie",
     "divider",
     "drawer",
     "dropdown",
@@ -68,6 +69,7 @@
     "chart-bar": "charts/bar",
     "chart-bubble": "charts/bubble",
     "chart-line": "charts/line",
+    "chart-pie": "charts/pie",
     "input": "inputs"
   }
 }

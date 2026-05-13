@@ -55,6 +55,7 @@ const registry = {
     "chart-bar": "charts/bar",
     "chart-bubble": "charts/bubble",
     "chart-line": "charts/line",
+    "chart-pie": "charts/pie",
     input: "inputs",
   },
 };
