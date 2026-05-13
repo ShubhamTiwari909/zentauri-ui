@@ -98,6 +98,25 @@ ${props}  height={300}
 />`;
 }
 
+export function chartMutedSpaciousDashedSnippet(
+  slug: ChartPreviewSlug,
+): string {
+  const stackedAttr =
+    slug === "bar" || slug === "area" ? "\n  stacked" : "";
+  const detail =
+    slug === "bar" || slug === "area"
+      ? "appearance · muted, density · spacious, showGrid · false, stacked, strokeDasharray · 5,5"
+      : "appearance · muted, density · spacious, showGrid · false, strokeDasharray · 5,5";
+  const props = slug === "bubble" ? bubbleDataProps() : cartesianDataProps();
+  return `${variantLeadComment(detail)}${snippetPrefix(slug)}<${TAG[slug]}
+  appearance="muted"
+  density="spacious"
+${props}  height={300}
+  showGrid={false}${stackedAttr}
+  strokeDasharray="5,5"
+/>`;
+}
+
 export function chartAppearanceSnippet(
   slug: ChartPreviewSlug,
   appearance: (typeof CHART_APPEARANCES)[number],
@@ -109,7 +128,7 @@ export function chartAppearanceSnippet(
     appearance === "default" ? "" : `  appearance="${appearance}"\n`;
   return `${variantLeadComment(`appearance · ${appearance}`)}${snippetPrefix(slug)}<${TAG[slug]}
 ${appearanceLine}${props}  height={280}
-  strokeDasharray="${strokeDasharray ?? undefined}"
+  ${strokeDasharray ? `strokeDasharray="${strokeDasharray}"` : ""}
   showGrid={${showGrid ? "true" : "false"}}
 />`;
 }

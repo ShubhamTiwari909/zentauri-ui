@@ -1,7 +1,14 @@
 "use client";
 
 export { BubbleChart } from "./Bubble";
-export type { BubbleChartProps } from "../shared/types";
+export type {
+  BubbleChartProps,
+  ChartColor,
+  ChartDatum,
+  ChartMargin,
+  ChartSeries,
+  ChartSharedStatic,
+} from "../shared/types";
 export {
   chartColorValues,
   chartPalette,

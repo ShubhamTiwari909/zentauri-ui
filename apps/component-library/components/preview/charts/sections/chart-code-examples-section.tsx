@@ -22,14 +22,14 @@ export function ChartCodeExamplesSection({ slug }: { slug: ChartPreviewSlug }) {
         {CHART_APPEARANCES.map((appearance) => (
           <PreviewCodeShowcase
             key={appearance}
-            code={chartAppearanceSnippet(slug, appearance)}
+            code={chartAppearanceSnippet(slug, appearance, undefined, true)}
           >
             <ChartBySlug slug={slug} appearance={appearance} height={280} />
           </PreviewCodeShowcase>
         ))}
         <PreviewCodeShowcase
             key={"no-grid-lines"}
-            code={chartAppearanceSnippet(slug, "default", undefined)}
+            code={chartAppearanceSnippet(slug, "default", undefined, false)}
           >
             <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} />
           </PreviewCodeShowcase>

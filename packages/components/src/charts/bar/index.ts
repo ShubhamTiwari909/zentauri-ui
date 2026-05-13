@@ -1,7 +1,14 @@
 "use client";
 
 export { BarChart } from "./Bar";
-export type { BarChartProps } from "../shared/types";
+export type {
+  BarChartProps,
+  ChartColor,
+  ChartDatum,
+  ChartMargin,
+  ChartSeries,
+  ChartSharedStatic,
+} from "../shared/types";
 export {
   chartColorValues,
   chartPalette,

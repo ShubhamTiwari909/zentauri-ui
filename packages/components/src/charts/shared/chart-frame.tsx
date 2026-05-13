@@ -5,6 +5,30 @@ import { cn } from "../../lib/utils";
 import { chartVariants } from "./variants";
 import { VariantProps } from "class-variance-authority";
 
+/** Chart-level props that may be forwarded from *Chart `...rest` and must not reach a DOM node. */
+const CHART_ONLY_DIV_PROP_KEYS = new Set([
+  "data",
+  "margin",
+  "series",
+  "showGrid",
+  "showLegend",
+  "showTooltip",
+  "stacked",
+  "strokeDasharray",
+  "syncId",
+  "tooltipColor",
+  "xKey",
+]);
+
+function filterDivProps(
+  props: HTMLAttributes<HTMLDivElement>,
+): HTMLAttributes<HTMLDivElement> {
+  const entries = Object.entries(props).filter(
+    ([key]) => !CHART_ONLY_DIV_PROP_KEYS.has(key),
+  );
+  return Object.fromEntries(entries) as HTMLAttributes<HTMLDivElement>;
+}
+
 type ChartFrameProps = HTMLAttributes<HTMLDivElement> & {
   appearance?: VariantProps<typeof chartVariants>["appearance"];
   containerStyle?: CSSProperties;
@@ -12,9 +36,6 @@ type ChartFrameProps = HTMLAttributes<HTMLDivElement> & {
   emptyState?: ReactNode;
   hasData: boolean;
   height: number;
-  showGrid?: boolean;
-  showLegend?: boolean;
-  showTooltip?: boolean;
   style?: CSSProperties;
   children: ReactNode;
 };
@@ -33,6 +54,7 @@ export function ChartFrame({
   style,
   ...props
 }: ChartFrameProps) {
+  const divProps = filterDivProps(props);
   const chartStyle = {
     "--chart-height": `${height}px`,
     ...style,
@@ -43,7 +65,7 @@ export function ChartFrame({
       <div
         className={cn(chartVariants({ appearance, density }), className)}
         style={chartStyle}
-        {...props}
+        {...divProps}
       >
         <div className="flex h-full min-h-48 items-center justify-center text-sm text-slate-500">
           {emptyState}
@@ -56,7 +78,7 @@ export function ChartFrame({
     <div
       className={cn(chartVariants({ appearance, density }), className)}
       style={chartStyle}
-      {...props}
+      {...divProps}
     >
       <ResponsiveContainer
         width="100%"

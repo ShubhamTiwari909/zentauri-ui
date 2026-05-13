@@ -59,7 +59,7 @@ export function BubbleChart<
             <>
               <XAxis
                 dataKey={xAxisKey}
-                type="number"
+                type={typeof data[0]?.[xAxisKey] === "number" ? "number" : "category"}
                 minTickGap={24}
                 tickLine={false}
                 tickMargin={10}
@@ -68,7 +68,7 @@ export function BubbleChart<
               />
               <YAxis
                 dataKey="__chartY"
-                type="number"
+                type={typeof data[0]?.[xAxisKey] === "number" ? "number" : "category"}
                 width={40}
                 tickLine={false}
                 tickMargin={8}
@@ -94,14 +94,7 @@ export function BubbleChart<
               }))}
               name={item.name}
               fill={item.fill ?? color.stroke}
-            >
-              {data.map((_entry, cellIndex) => (
-                <Bar
-                  key={`${item.dataKey}-${cellIndex}`}
-                  fill={item.fill ?? color.stroke}
-                />
-              ))}
-            </Scatter>
+            />
           );
         })}
         <ZAxis dataKey="__chartZ" range={[64, 720]} />

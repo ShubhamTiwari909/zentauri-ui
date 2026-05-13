@@ -1,7 +1,14 @@
 "use client";
 
 export { AreaChart } from "./Area";
-export type { AreaChartProps } from "../shared/types";
+export type {
+  AreaChartProps,
+  ChartColor,
+  ChartDatum,
+  ChartMargin,
+  ChartSeries,
+  ChartSharedStatic,
+} from "../shared/types";
 export {
   chartColorValues,
   chartPalette,

@@ -3,7 +3,7 @@ import type { ChartPreviewSlug } from "@/lib/charts-preview-registry";
 
 import { ChartBySlug } from "../chart-by-slug";
 import {
-  chartAppearanceSnippet,
+  chartMutedSpaciousDashedSnippet,
   chartMutedSpaciousSnippet,
   chartOutlineCompactLegendSnippet,
 } from "../chart-snippets";
@@ -35,7 +35,7 @@ export function ChartExamplesSection({ slug }: { slug: ChartPreviewSlug }) {
             stacked={slug === "bar" || slug === "area"}
           />
         </PreviewCodeShowcase>
-        <PreviewCodeShowcase code={chartAppearanceSnippet(slug, "muted", "5,5", false)}>
+        <PreviewCodeShowcase code={chartMutedSpaciousDashedSnippet(slug)}>
           <ChartBySlug
             slug={slug}
             appearance="muted"
