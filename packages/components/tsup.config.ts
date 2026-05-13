@@ -32,6 +32,8 @@ const uiComponentNames = [
   "typography",
 ] as const;
 
+const chartEntryNames = ["area", "bar", "bubble", "line"] as const;
+
 const uiAnimatedComponentNames = [
   "accordion",
   "alert",
@@ -86,6 +88,13 @@ const uiEntries = Object.fromEntries(
   uiComponentNames.map((name) => [`ui/${name}`, `src/ui/${name}/index.ts`]),
 );
 
+const chartEntries = Object.fromEntries(
+  chartEntryNames.map((name) => [
+    `charts/${name}`,
+    `src/charts/${name}/index.ts`,
+  ]),
+);
+
 const uiAnimatedEntries = Object.fromEntries(
   uiAnimatedComponentNames.map((name) => [
     `ui/${name}/animated`,
@@ -106,6 +115,7 @@ const hooksEntries = {
 export default defineConfig({
   entry: {
     ...uiEntries,
+    ...chartEntries,
     ...uiAnimatedEntries,
     ...hooksEntries,
   },
@@ -120,8 +130,10 @@ export default defineConfig({
     "class-variance-authority",
     "tailwind-merge",
     "react-icons",
+    "recharts",
     "framer-motion",
     /^react-icons\//,
+    /^recharts/,
     /^framer-motion/,
   ],
   sourcemap: true,

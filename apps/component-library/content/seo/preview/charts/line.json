@@ -1,0 +1,74 @@
+{
+  "category": "Charts",
+  "title": "Line chart component for React",
+  "description": "LineChart for React and Next.js — multi-series trends with Zentauri UI frame styling, tooltips, and Recharts-backed paths.",
+  "keywords": [
+    "line chart",
+    "Recharts",
+    "React",
+    "Next.js",
+    "time series",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Line chart · Zentauri UI",
+    "description": "LineChart for React and Next.js — multi-series trends with Zentauri UI frame styling, tooltips, and Recharts-backed paths.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Line chart · Zentauri UI",
+    "description": "LineChart for React and Next.js — multi-series trends with Zentauri UI frame styling, tooltips, and Recharts-backed paths.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/charts/line",
+  "headings": {
+    "h1": "Line charts for trends over time",
+    "h2": [
+      "What it does",
+      "Data shape",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Plot one or more numeric series against a shared category or time axis. LineChart composes Recharts `Line` primitives with shared decorators for grid, axes, tooltip, and legend.",
+  "useCases": [
+    "Revenue or usage trends by week.",
+    "Latency percentiles compared across environments.",
+    "Conversion funnels as simple step trends."
+  ],
+  "faqs": [
+    {
+      "question": "How do I add another series?",
+      "answer": "Append an entry to `series` with a distinct `dataKey` that exists on each datum; optional `name` and palette `color` keys customize the legend and stroke."
+    },
+    {
+      "question": "Can lines share a sync id?",
+      "answer": "Pass `syncId` to coordinate tooltips or brushing across multiple charts that use the same identifier."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Renders monotone lines with configurable grid, tooltip, and legend.\n\nControl density and frame appearance with tokens instead of one-off CSS."
+    },
+    {
+      "heading": "Data shape",
+      "body": "Each row is an object; `xKey` names the categorical or ordinal field; numeric fields back each `series.dataKey`."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Provide meaningful `name` values for series so tooltips and legends read clearly.\n\nValidate contrast for axes and labels against your chosen `appearance` background."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from `@zentauri-ui/zentauri-components/charts/line` inside client components when interaction is required."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

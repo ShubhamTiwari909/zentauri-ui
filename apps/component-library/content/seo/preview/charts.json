@@ -1,0 +1,74 @@
+{
+  "category": "Charts",
+  "title": "Chart components for React dashboards",
+  "description": "Line, bar, area, and bubble charts built on Recharts with Zentauri UI framing — Tailwind-backed variants for Next.js and React 19 apps.",
+  "keywords": [
+    "chart component",
+    "Recharts",
+    "React",
+    "Next.js",
+    "data visualization",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Charts · Zentauri UI",
+    "description": "Line, bar, area, and bubble charts built on Recharts with Zentauri UI framing — Tailwind-backed variants for Next.js and React 19 apps.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Charts · Zentauri UI",
+    "description": "Line, bar, area, and bubble charts built on Recharts with Zentauri UI framing — Tailwind-backed variants for Next.js and React 19 apps.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/charts",
+  "headings": {
+    "h1": "Charts for metrics and comparisons",
+    "h2": [
+      "What it does",
+      "Chart types",
+      "Composition and API",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Pick a chart type to see live examples, appearance variants, and copy-paste snippets. Components live under `@zentauri-ui/zentauri-components/charts/*` and expect `recharts` as a peer dependency.",
+  "useCases": [
+    "Trend lines and stacked areas on analytics dashboards.",
+    "Category bars for funnel or cohort summaries.",
+    "Bubble plots for three-dimensional comparisons.",
+    "Consistent tooltips, axes, and density across screens."
+  ],
+  "faqs": [
+    {
+      "question": "Do I need to install Recharts?",
+      "answer": "Yes. Add `recharts` to your app so the peer dependency resolves; align the major version with what Zentauri UI tests against."
+    },
+    {
+      "question": "Do charts work in the Next.js App Router?",
+      "answer": "Use them in client components or import from client boundaries—Recharts relies on browser APIs and React state for interaction."
+    },
+    {
+      "question": "Can I restyle charts with Tailwind?",
+      "answer": "Use the `appearance` and `density` variants on the frame plus `className` for layout; inner Recharts elements pick up token-friendly defaults from the wrapper."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Wraps Recharts Cartesian and scatter primitives with shared margins, axes, grid, tooltip, and legend wiring.\n\nSwap appearance tokens instead of hand-tuning SVG colors for every screen."
+    },
+    {
+      "heading": "Chart types",
+      "body": ""
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Pass `data`, `xKey`, and `series` for most charts. Area and bar support `stacked` when series share a stack id.\n\nBubble charts use numeric `xKey` and optional `zKey` on each series for bubble size."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Mark preview routes or parents as client components when embedding interactive charts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical metadata resolves on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Chart types"
+}

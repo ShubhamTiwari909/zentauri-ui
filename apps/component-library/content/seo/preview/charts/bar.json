@@ -1,0 +1,74 @@
+{
+  "category": "Charts",
+  "title": "Bar chart component for React",
+  "description": "BarChart for React and Next.js — grouped or stacked bars with Zentauri UI framing and Recharts cartesian layers.",
+  "keywords": [
+    "bar chart",
+    "Recharts",
+    "React",
+    "Next.js",
+    "dashboard",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Bar chart · Zentauri UI",
+    "description": "BarChart for React and Next.js — grouped or stacked bars with Zentauri UI framing and Recharts cartesian layers.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Bar chart · Zentauri UI",
+    "description": "BarChart for React and Next.js — grouped or stacked bars with Zentauri UI framing and Recharts cartesian layers.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/charts/bar",
+  "headings": {
+    "h1": "Bar charts for category comparisons",
+    "h2": [
+      "What it does",
+      "Data shape",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Compare values across categories or stack segments per bucket. BarChart shares the same `data`, `xKey`, and `series` model as other cartesian charts.",
+  "useCases": [
+    "Monthly totals beside one another.",
+    "Stacked contributions by team or region.",
+    "Survey response counts by option."
+  ],
+  "faqs": [
+    {
+      "question": "How do I stack bars?",
+      "answer": "Set `stacked` on the chart and assign the same `stackId` on series that should pile together."
+    },
+    {
+      "question": "Can I tune bar spacing?",
+      "answer": "Use Recharts props via composition when you need finer control; defaults favor legible category spacing."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Draws vertical bars per category with optional stacking.\n\nAxes, grid, and tooltip wiring mirror line and area charts for predictability."
+    },
+    {
+      "heading": "Data shape",
+      "body": "Rows hold category labels in `xKey` and numeric measures per `series.dataKey`."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keep category labels short and unique for screen reader context in tooltips.\n\nPrefer sufficient color separation between adjacent series."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from `@zentauri-ui/zentauri-components/charts/bar` inside client components when interaction is required."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

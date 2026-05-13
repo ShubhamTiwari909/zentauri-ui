@@ -1,0 +1,74 @@
+{
+  "category": "Charts",
+  "title": "Area chart component for React",
+  "description": "AreaChart for React and Next.js — filled trends and stacks with Zentauri UI framing and Recharts areas.",
+  "keywords": [
+    "area chart",
+    "Recharts",
+    "React",
+    "Next.js",
+    "stacked area",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Area chart · Zentauri UI",
+    "description": "AreaChart for React and Next.js — filled trends and stacks with Zentauri UI framing and Recharts areas.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Area chart · Zentauri UI",
+    "description": "AreaChart for React and Next.js — filled trends and stacks with Zentauri UI framing and Recharts areas.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/charts/area",
+  "headings": {
+    "h1": "Area charts for volume and share",
+    "h2": [
+      "What it does",
+      "Data shape",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Show cumulative or overlapping magnitude with filled regions under each series. AreaChart supports stacking via `stacked` and matching `stackId` values on series.",
+  "useCases": [
+    "Market share over quarters.",
+    "Traffic sources as a stacked composition.",
+    "Smoothed demand curves with fill emphasis."
+  ],
+  "faqs": [
+    {
+      "question": "When should I stack areas?",
+      "answer": "Use stacking when parts compose a meaningful total; keep unstacked areas when overlap is intentional and totals are not additive."
+    },
+    {
+      "question": "Do fills respect theme colors?",
+      "answer": "Series resolve palette strokes and fills; override with `color` or `fill` on each series when branding requires it."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Layers `Area` shapes with gradients friendly defaults.\n\nDensity and appearance tokens align with line and bar charts."
+    },
+    {
+      "heading": "Data shape",
+      "body": "Same cartesian model: `xKey` for the shared axis, numeric keys per series."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Ensure stacked fills remain distinguishable at reduced opacity.\n\nProvide textual alternatives where precise values matter for compliance."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from `@zentauri-ui/zentauri-components/charts/area` inside client components when interaction is required."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

@@ -1,0 +1,74 @@
+{
+  "category": "Charts",
+  "title": "Bubble chart component for React",
+  "description": "BubbleChart for React and Next.js — scatter-style bubbles with optional size channel via Recharts and Zentauri UI framing.",
+  "keywords": [
+    "bubble chart",
+    "scatter",
+    "Recharts",
+    "React",
+    "Next.js",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Bubble chart · Zentauri UI",
+    "description": "BubbleChart for React and Next.js — scatter-style bubbles with optional size channel via Recharts and Zentauri UI framing.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Bubble chart · Zentauri UI",
+    "description": "BubbleChart for React and Next.js — scatter-style bubbles with optional size channel via Recharts and Zentauri UI framing.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/charts/bubble",
+  "headings": {
+    "h1": "Bubble charts for three-way comparisons",
+    "h2": [
+      "What it does",
+      "Data shape",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Plot numeric X and Y with bubbles sized by a third metric. BubbleChart expects numeric `xKey` and uses each series `dataKey` for the vertical measure plus optional `zKey` for radius.",
+  "useCases": [
+    "Campaign cost versus conversions with spend as bubble size.",
+    "Risk versus return with liquidity as radius.",
+    "Feature adoption scatter with active users as size."
+  ],
+  "faqs": [
+    {
+      "question": "What if I omit zKey?",
+      "answer": "Bubbles still render with default sizing from the ZAxis range; add `zKey` on the series when the third metric should drive radius."
+    },
+    {
+      "question": "Are axes always numeric?",
+      "answer": "Bubble charts use continuous axes suitable for scatter data; map categorical encodings to numbers before plotting."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Combines scatter points with a sized Z channel.\n\nDecorators for grid, tooltip, and legend match other charts."
+    },
+    {
+      "heading": "Data shape",
+      "body": "Each row includes numeric `xKey`, numeric fields for vertical positions per series, and optional size fields referenced by `zKey`."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Size differences can be hard to judge; pair tooltips with exact values.\n\nAvoid relying on color alone when more than a few bubbles overlap."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from `@zentauri-ui/zentauri-components/charts/bubble` inside client components when interaction is required."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

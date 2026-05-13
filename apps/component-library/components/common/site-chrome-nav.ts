@@ -9,6 +9,7 @@ export const siteChromeNavItems: readonly SiteChromeNavItem[] = [
   { href: "/preview/components", label: "Components" },
   { href: "/preview/hooks", label: "Hooks" },
   { href: "/preview/typography", label: "Typography" },
+  { href: "/preview/charts", label: "Charts" },
   {
     href: "https://github.com/ShubhamTiwari909/zentauri-ui",
     label: "GitHub",

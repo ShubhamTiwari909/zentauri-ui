@@ -1,9 +1,16 @@
 {
   "name": "@zentauri-ui/zentauri-components",
   "version": "1.4.64",
-  "description": "React + Tailwind UI kit with ESM/CJS builds, per-entry exports, and a zentauri-components / zentauri-ui CLI to vendor UI or hook source into your app",
+  "description": "React + Tailwind UI kit with charts, ESM/CJS builds, per-entry exports, and a zentauri-components / zentauri-ui CLI to vendor UI or hook source into your app",
   "license": "MIT",
-  "files": ["dist", "src/ui", "src/lib", "src/hooks", "cli"],
+  "files": [
+    "dist",
+    "src/ui",
+    "src/charts",
+    "src/lib",
+    "src/hooks",
+    "cli"
+  ],
   "sideEffects": false,
   "bin": {
     "zentauri-components": "cli/index.mjs",
@@ -22,6 +29,11 @@
       "types": "./dist/ui/*/animated/index.d.ts",
       "import": "./dist/ui/*/animated.mjs",
       "require": "./dist/ui/*/animated.js"
+    },
+    "./charts/*": {
+      "types": "./dist/charts/*/index.d.ts",
+      "import": "./dist/charts/*.mjs",
+      "require": "./dist/charts/*.js"
     },
     "./hooks/utils": {
       "types": "./dist/lib/utils.d.ts",
@@ -45,17 +57,25 @@
     "test:watch": "vitest"
   },
   "peerDependencies": {
-    "react": ">18",
-    "react-dom": ">18",
     "class-variance-authority": "*",
     "clsx": "*",
-    "tailwind-merge": "*",
     "framer-motion": "*",
-    "react-icons": "*"
+    "react": ">18",
+    "react-dom": ">18",
+    "react-icons": "*",
+    "recharts": "*",
+    "tailwind-merge": "*"
   },
   "peerDependenciesMeta": {
-    "framer-motion": { "optional": true },
-    "react-icons": { "optional": true }
+    "framer-motion": {
+      "optional": true
+    },
+    "react-icons": {
+      "optional": true
+    },
+    "recharts": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
@@ -66,8 +86,8 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "jsdom": "^26.1.0",
+    "tsup": "^8.5.1",
     "typescript": "^5",
-    "vitest": "^4.1.4",
-    "tsup": "^8.5.1"
+    "vitest": "^4.1.4"
   }
 }
