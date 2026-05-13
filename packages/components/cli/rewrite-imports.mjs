@@ -10,8 +10,7 @@ export function rewriteImports(source, options) {
   const usedHooks = new Set();
 
   const collectHooks = (text) => {
-    const re =
-      /from\s+(["'])((?:\.\.\/)+)hooks\/([^'"]+)\1/g;
+    const re = /from\s+(["'])((?:\.\.\/)+)hooks\/([^'"]+)\1/g;
     let m;
     while ((m = re.exec(text)) !== null) {
       usedHooks.add(m[3]);
@@ -29,13 +28,19 @@ export function rewriteImports(source, options) {
 
   code = code.replace(
     /from\s+(["'])((?:\.\.\/)+)hooks\/([^'"]+)\1/g,
-    (_, quote, _rel, hookName) => `from ${quote}${hooksAlias}/${hookName}${quote}`,
+    (_, quote, _rel, hookName) =>
+      `from ${quote}${hooksAlias}/${hookName}${quote}`,
   );
 
   if (uiAlias) {
     code = code.replace(
       /from\s+(["'])((?:\.\.\/)+)ui\/([^'"]+)\1/g,
       (_, quote, _rel, rest) => `from ${quote}${uiAlias}/${rest}${quote}`,
+    );
+
+    code = code.replace(
+      /from\s+(["'])((?:\.\.\/)+)charts([^'"]*)\1/g,
+      (_, quote, _rel, rest) => `from ${quote}${uiAlias}/charts${rest}${quote}`,
     );
   }
 

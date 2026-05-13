@@ -3,6 +3,7 @@ import {
   sidebarComponentsData,
   sidebarHooksData,
   sidebarTypographyData,
+  sidebarChartsData,
 } from "@/components/sidebar/sidebar-data";
 import { HOOK_PREVIEW_REGISTRY } from "@/lib/constants";
 
@@ -106,6 +107,21 @@ function buildSiteSearchEntries(): SiteSearchEntryRecord[] {
   }
 
   for (const group of sidebarTypographyData) {
+    for (const item of group.items) {
+      if (byHref.has(item.href)) {
+        continue;
+      }
+      byHref.set(item.href, {
+        id: item.href,
+        label: item.title,
+        href: item.href,
+        group: group.title,
+        external: item.external,
+        keywords: pathKeywordTokens(item.href),
+      });
+    }
+  }
+  for (const group of sidebarChartsData) {
     for (const item of group.items) {
       if (byHref.has(item.href)) {
         continue;

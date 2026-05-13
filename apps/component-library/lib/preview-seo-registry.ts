@@ -6,6 +6,7 @@ import badge from "@/content/seo/preview/components/badge.json";
 import breadcrumb from "@/content/seo/preview/components/breadcrumb.json";
 import buttons from "@/content/seo/preview/components/buttons.json";
 import card from "@/content/seo/preview/components/card.json";
+import charts from "@/content/seo/preview/charts.json";
 import divider from "@/content/seo/preview/components/divider.json";
 import drawer from "@/content/seo/preview/components/drawer.json";
 import dropdown from "@/content/seo/preview/components/dropdown.json";
@@ -41,6 +42,7 @@ const previewSeoRegistry = {
   breadcrumb: breadcrumb as PreviewSeoDocument,
   buttons: buttons as PreviewSeoDocument,
   card: card as PreviewSeoDocument,
+  charts: charts as PreviewSeoDocument,
   divider: divider as PreviewSeoDocument,
   drawer: drawer as PreviewSeoDocument,
   dropdown: dropdown as PreviewSeoDocument,

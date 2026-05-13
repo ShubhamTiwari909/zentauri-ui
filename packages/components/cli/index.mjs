@@ -20,12 +20,13 @@
  *        ├── cli/index.mjs      ← this file (entry when run via bin)
  *        ├── cli/registry.json  ← list of installable component folder names
  *        └── src/ui/<name>/     ← source copied by `add`
+ *        └── src/charts/<type>/ ← chart source copied by `add charts/area` etc.
  *        └── src/hooks/<name>/  ← hooks pulled in as dependencies
  *        └── src/lib/utils.ts   ← template for `cn()` etc. if missing in app
  * ```
  *
  * - **packageRoot**: directory of the published `components` package (parent of
- *   `cli/`). Used to read `registry.json`, `src/ui`, `src/hooks`, `src/lib`.
+ *   `cli/`). Used to read `registry.json`, `src/ui`, `src/charts`, `src/hooks`, `src/lib`.
  * - **configDir**: directory containing `components.json` (may differ from
  *   `--cwd` when the config is found by walking up from `cwd`).
  *
@@ -88,7 +89,7 @@ import {
   copyFile,
   readdir,
 } from "node:fs/promises";
-import { dirname, join, relative } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 
@@ -102,7 +103,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 /**
  * Root of the components package (`…/packages/components`), i.e. parent of `cli/`.
- * All reads from `src/ui`, `src/hooks`, `registry.json`, and `package.json` are
+ * All reads from `src/ui`, `src/charts`, `src/hooks`, `registry.json`, and `package.json` are
  * relative to this path — not the consumer’s project root.
  */
 const packageRoot = join(__dirname, "..");
@@ -189,7 +190,9 @@ If npx does not pick the right binary:
  * isTestFile("foo.test.utils.ts"); // true (substring ".test.")
  */
 function isTestFile(name) {
-  return /\.(?:test|spec)\.(?:tsx?|jsx?)$/.test(name) || name.includes(".test.");
+  return (
+    /\.(?:test|spec)\.(?:tsx?|jsx?)$/.test(name) || name.includes(".test.")
+  );
 }
 
 /**
@@ -303,7 +306,11 @@ function validateConfig(cfg) {
       "components.json must define aliases.utils, aliases.hooks, and aliases.ui",
     );
   }
-  if (!cfg.resolvedPaths?.ui || !cfg.resolvedPaths?.utils || !cfg.resolvedPaths?.hooks) {
+  if (
+    !cfg.resolvedPaths?.ui ||
+    !cfg.resolvedPaths?.utils ||
+    !cfg.resolvedPaths?.hooks
+  ) {
     throw new Error(
       "components.json must define resolvedPaths.ui, resolvedPaths.utils, and resolvedPaths.hooks",
     );
@@ -312,7 +319,7 @@ function validateConfig(cfg) {
 
 /**
  * Maps CLI input (any casing, optional registry alias) to a canonical folder name
- * under `src/ui/<name>` in the package.
+ * under `src/ui/<name>` or `src/charts/<type>`.
  *
  * Resolution order:
  * 1. Exact key in `registry.nameAliases`
@@ -416,12 +423,12 @@ async function collectHookTransitiveClosure(packageRoot, seedHooks) {
 }
 
 /**
- * Copies `packageRoot/src/ui/<componentName>` into
+ * Copies `packageRoot/src/ui/<componentName>` or `packageRoot/src/charts/<type>` into
  * `<configDir>/<resolvedPaths.ui>/<componentName>`, skipping tests, rewriting
  * imports in TS/JS files, and collecting hook folder names referenced by those
  * files for later copying.
  *
- * @param {string} componentName — resolved registry name (directory under `src/ui`)
+ * @param {string} componentName — resolved registry name (directory under `src/ui`, or `charts/<type>`)
  * @param {object} config — validated `components.json`
  * @param {string} configDir — dirname(components.json)
  * @param {string} packageRoot — package containing source
@@ -433,18 +440,29 @@ async function collectHookTransitiveClosure(packageRoot, seedHooks) {
  * // src/components/ui/buttons/Button.tsx
  * // with imports pointing at @/lib/utils, @/hooks/useX, etc.
  */
-async function copyUiComponent(
-  componentName,
-  config,
-  configDir,
-  packageRoot,
-) {
-  const srcRoot = join(packageRoot, "src", "ui", componentName);
+async function copyUiComponent(componentName, config, configDir, packageRoot) {
+  const isChartEntry = componentName.startsWith("charts/");
+  const srcRoot = isChartEntry
+    ? join(packageRoot, "src", "charts")
+    : join(packageRoot, "src", "ui", componentName);
   if (!existsSync(srcRoot)) {
-    throw new Error(`Missing package source: ${relative(packageRoot, srcRoot)}`);
+    throw new Error(
+      `Missing package source: ${relative(packageRoot, srcRoot)}`,
+    );
   }
-  const destRoot = join(configDir, config.resolvedPaths.ui, componentName);
-  const files = await walkFiles(srcRoot);
+  const destRoot = isChartEntry
+    ? join(configDir, config.resolvedPaths.ui, "charts")
+    : join(configDir, config.resolvedPaths.ui, componentName);
+  const files = (await walkFiles(srcRoot)).filter((absSrc) => {
+    if (!isChartEntry) {
+      return true;
+    }
+    const relFromChartsRoot = relative(srcRoot, absSrc);
+    return (
+      relFromChartsRoot.startsWith("shared/") ||
+      relFromChartsRoot.startsWith(`${componentName.slice("charts/".length)}/`)
+    );
+  });
   const usedHooks = new Set();
 
   for (const absSrc of files) {
@@ -594,8 +612,7 @@ async function cmdAdd(names, cwd) {
   validateConfig(config);
 
   const registry = loadRegistry();
-  const hookMode =
-    names.length > 0 && names[0].toLowerCase() === "hook";
+  const hookMode = names.length > 0 && names[0].toLowerCase() === "hook";
   const payload = hookMode ? names.slice(1) : names;
 
   if (hookMode && payload.length === 0) {
@@ -604,9 +621,10 @@ async function cmdAdd(names, cwd) {
     );
     process.exitCode = 1;
     return;
-  }  
+  }
 
   if (hookMode) {
+    await ensureUtilsFile(config, configDir, packageRoot);
     const resolvedHooks = payload.map((n) => resolveHookName(n, registry));
     const finalHooks = await collectHookTransitiveClosure(
       packageRoot,
@@ -622,6 +640,8 @@ async function cmdAdd(names, cwd) {
 
   const resolvedNames = payload.map((n) => resolveComponentName(n, registry));
 
+  await ensureUtilsFile(config, configDir, packageRoot);
+
   const allHooks = new Set();
   for (const name of resolvedNames) {
     console.log(`Adding ${name}…`);
@@ -631,10 +651,9 @@ async function cmdAdd(names, cwd) {
     }
   }
 
-  const finalHooks = await collectHookTransitiveClosure(
-    packageRoot,
-    [...allHooks],
-  );
+  const finalHooks = await collectHookTransitiveClosure(packageRoot, [
+    ...allHooks,
+  ]);
 
   for (const h of finalHooks) {
     console.log(`Adding hook ${h}…`);
@@ -685,7 +704,7 @@ async function main() {
     return;
   }
 
-  const cwd = values.cwd ? join(process.cwd(), values.cwd) : process.cwd();
+  const cwd = values.cwd ? resolve(process.cwd(), values.cwd) : process.cwd();
   const cmd = positionals[0];
   const rest = positionals.slice(1);
 

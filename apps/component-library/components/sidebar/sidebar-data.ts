@@ -28,6 +28,10 @@ export const sidebareRouteDataShared = [
         title: "Typography",
         href: "/preview/typography",
       },
+      {
+        title: "Charts",
+        href: "/preview/charts",
+      },
     ],
   },
 ];
@@ -72,6 +76,33 @@ export const sidebarHooksData: SidebarNavGroup[] = [
   {
     title: "Hooks",
     items: [...hookSidebarItems],
+  },
+];
+
+const chartsSidebarItems = [
+  {
+    title: "Line",
+    href: "/preview/charts/line",
+  },
+  {
+    title: "Bar",
+    href: "/preview/charts/bar",
+  },
+  {
+    title: "Area",
+    href: "/preview/charts/area",
+  },
+  {
+    title: "Bubble",
+    href: "/preview/charts/bubble",
+  },
+];
+
+export const sidebarChartsData: SidebarNavGroup[] = [
+  ...sidebareRouteDataShared,
+  {
+    title: "Charts",
+    items: [...chartsSidebarItems],
   },
 ];
 

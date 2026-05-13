@@ -6,7 +6,7 @@ A React UI kit for building product interfaces with Tailwind CSS. Components are
 
 The library targets **React 18+** apps that use **Tailwind CSS v4** (or an equivalent setup where Tailwind can scan this package via `@source`). Styling uses utility classes; **class-variance-authority** powers variant APIs (size, appearance, and similar props), with **clsx** and **tailwind-merge** for predictable `className` composition. **Framer Motion** backs motion where a feature ships animated variants, and **react-icons** is used for iconography where applicable.
 
-Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@zentauri-ui/zentauri-components/ui/<area>` for static UI, `@zentauri-ui/zentauri-components/ui/<area>/animated` where a motion bundle exists, and `@zentauri-ui/zentauri-components/hooks/<entry>` for React hooks (and shared helpers under `hooks/utils`). Base UI entries do **not** re-export animated components; motion lives on its own entry so optional `framer-motion` usage stays tree-shakeable and chunk-friendly. Each entry resolves to its own ESM (`.mjs`), CJS (`.js`), and types (`.d.ts`) so bundlers pull only what you import. Most apps rely on Tailwind scanning the package sources (see installation); a separate CSS import is not required for that setup.
+Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@zentauri-ui/zentauri-components/ui/<area>` for static UI, `@zentauri-ui/zentauri-components/ui/<area>/animated` where a motion bundle exists, `@zentauri-ui/zentauri-components/charts/<type>` for Recharts-powered chart primitives, and `@zentauri-ui/zentauri-components/hooks/<entry>` for React hooks (and shared helpers under `hooks/utils`). Base UI entries do **not** re-export animated components; motion lives on its own entry so optional `framer-motion` usage stays tree-shakeable and chunk-friendly. Each entry resolves to its own ESM (`.mjs`), CJS (`.js`), and types (`.d.ts`) so bundlers pull only what you import. Most apps rely on Tailwind scanning the package sources (see installation); a separate CSS import is not required for that setup.
 
 ## Package exports
 
@@ -14,6 +14,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | `@zentauri-ui/zentauri-components/ui/<name>`          | Single UI area: static primitives, compound parts, variants, and types. Does **not** include Framer Motion–based animated exports.             |
 | `@zentauri-ui/zentauri-components/ui/<name>/animated` | Motion entry for that area when published: animated components, motion presets, and related types (depends on **framer-motion**).              |
+| `@zentauri-ui/zentauri-components/charts/<type>`      | Responsive Recharts chart entry for `area`, `bar`, `bubble`, or `line`, with shared variants, palettes, and exported chart prop types.         |
 | `@zentauri-ui/zentauri-components/hooks/<entry>`      | One hook module or `utils` (`cn`, `clampPage`, `range` from `src/lib/utils.ts`). Entries match files under `src/hooks/` (see **React hooks**). |
 
 The UI `<name>` segment matches the folder under `src/ui/` (for example `accordion`, `select`, `empty-state`, `buttons` for `Button`, `inputs` for `Input`, `typography` for `Heading` / `Text` and related primitives). The hooks `<entry>` is the file stem (for example `useMediaQuery`, `usePagination`) or `utils`.
@@ -23,7 +24,7 @@ Only a subset of UI areas publish a `/animated` entry (see **Components**). Some
 ## Animated components (`ui/<name>/animated`)
 
 - **Why a separate subpath:** animated modules import **framer-motion**. Keeping them on `…/ui/<name>/animated` avoids pulling motion into pages that only use the static `…/ui/<name>` entry and keeps server/client boundaries predictable in app routers.
-- **When to install `framer-motion`:** add it when your app imports any `@zentauri-ui/zentauri-components/ui/*/animated` path (see **Optional: animations and icons** under installation).
+- **When to install `framer-motion`:** add it when your app imports any `@zentauri-ui/zentauri-components/ui/*/animated` path (see **Optional: animations, icons, and charts** under installation).
 
 Published motion entries (same `<name>` as the base UI folder):
 
@@ -38,38 +39,39 @@ Published motion entries (same `<name>` as the base UI folder):
 
 ## Components
 
-Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` when the **Base** column lists a path. When the **Animated** column lists a path, motion components and preset helpers come from `@zentauri-ui/zentauri-components/ui/<subpath>/animated` (they are not exported from the base entry). **Spinner** has no static bundle—use only the animated subpath.
+Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` when the **Base** column lists a path. Charts use `@zentauri-ui/zentauri-components/charts/<type>`. When the **Animated** column lists a path, motion components and preset helpers come from `@zentauri-ui/zentauri-components/ui/<subpath>/animated` (they are not exported from the base entry). **Spinner** has no static bundle—use only the animated subpath.
 
-| Area        | Base subpath `…/ui/…` | Animated subpath `…/ui/…/animated` |
-| ----------- | --------------------- | ---------------------------------- |
-| Accordion   | `accordion`           | `accordion/animated`               |
-| Alert       | `alert`               | `alert/animated`                   |
-| Avatar      | `avatar`              | `avatar/animated`                  |
-| Badge       | `badge`               | `badge/animated`                   |
-| Breadcrumb  | `breadcrumb`          | —                                  |
-| Button      | `buttons`             | `buttons/animated`                 |
-| Card        | `card`                | `card/animated`                    |
-| Divider     | `divider`             | `divider/animated`                 |
-| Drawer      | `drawer`              | `drawer/animated`                  |
-| Dropdown    | `dropdown`            | —                                  |
-| Empty state | `empty-state`         | `empty-state/animated`             |
-| File upload | `file-upload`         | —                                  |
-| Input       | `inputs`              | `inputs/animated`                  |
-| Modal       | `modal`               | `modal/animated`                   |
-| Pagination  | `pagination`          | —                                  |
-| Progress    | `progress`            | `progress/animated`                |
-| Search      | `search`              | -                                  |
-| Select      | `select`              | —                                  |
-| Skeleton    | `skeleton`            | `skeleton/animated`                |
-| Slider      | `slider`              | —                                  |
-| Spinner     | —                     | `spinner/animated`                 |
-| Stepper     | `stepper`             | —                                  |
-| Table       | `table`               | `table/animated`                   |
-| Tabs        | `tabs`                | `tabs/animated`                    |
-| Toast       | `toast`               | `toast/animated`                   |
-| Toggle      | `toggle`              | `toggle/animated`                  |
-| Tooltip     | `tooltip`             | `tooltip/animated`                 |
-| Typography  | `typography`          | —                                  |
+| Area        | Base subpath    | Animated subpath `…/ui/…/animated` |
+| ----------- | --------------- | ---------------------------------- |
+| Accordion   | `accordion`     | `accordion/animated`               |
+| Alert       | `alert`         | `alert/animated`                   |
+| Avatar      | `avatar`        | `avatar/animated`                  |
+| Badge       | `badge`         | `badge/animated`                   |
+| Breadcrumb  | `breadcrumb`    | —                                  |
+| Button      | `buttons`       | `buttons/animated`                 |
+| Card        | `card`          | `card/animated`                    |
+| Charts      | `charts/<type>` | —                                  |
+| Divider     | `divider`       | `divider/animated`                 |
+| Drawer      | `drawer`        | `drawer/animated`                  |
+| Dropdown    | `dropdown`      | —                                  |
+| Empty state | `empty-state`   | `empty-state/animated`             |
+| File upload | `file-upload`   | —                                  |
+| Input       | `inputs`        | `inputs/animated`                  |
+| Modal       | `modal`         | `modal/animated`                   |
+| Pagination  | `pagination`    | —                                  |
+| Progress    | `progress`      | `progress/animated`                |
+| Search      | `search`        | -                                  |
+| Select      | `select`        | —                                  |
+| Skeleton    | `skeleton`      | `skeleton/animated`                |
+| Slider      | `slider`        | —                                  |
+| Spinner     | —               | `spinner/animated`                 |
+| Stepper     | `stepper`       | —                                  |
+| Table       | `table`         | `table/animated`                   |
+| Tabs        | `tabs`          | `tabs/animated`                    |
+| Toast       | `toast`         | `toast/animated`                   |
+| Toggle      | `toggle`        | `toggle/animated`                  |
+| Tooltip     | `tooltip`       | `tooltip/animated`                 |
+| Typography  | `typography`    | —                                  |
 
 ## Typography
 
@@ -127,6 +129,48 @@ export function ArticleIntro() {
         {`export const app = () => null;`}
       </CodeBlock>
     </>
+  );
+}
+```
+
+## Charts
+
+Import the chart you need from `@zentauri-ui/zentauri-components/charts/<type>`, or vendor it with `zentauri-components add charts/<type>`. It is built on **Recharts**, so install `recharts` when you use these entries.
+
+**Components:** `AreaChart`, `BarChart`, `BubbleChart`, `LineChart`.
+
+**Types:** `AreaChartProps`, `BarChartProps`, `BubbleChartProps`, `LineChartProps`, plus shared `ChartSeries`, `ChartDatum`, `ChartColor`, `ChartMargin`, and `ChartSharedStatic`.
+
+**Chart entries:** `charts/area`, `charts/bar`, `charts/bubble`, `charts/line`.
+
+**Variants:** `appearance` (`default`, `muted`, `outline`, `glass`) and `density` (`compact`, `comfortable`, `spacious`). Color presets are exported via `chartPalette` and `chartColorValues`.
+
+```tsx
+import {
+  AreaChart,
+  type ChartSeries,
+} from "@zentauri-ui/zentauri-components/charts/area";
+
+const data = [
+  { month: "Jan", revenue: 4200, signups: 240 },
+  { month: "Feb", revenue: 5100, signups: 280 },
+  { month: "Mar", revenue: 6800, signups: 360 },
+];
+
+const series: ChartSeries[] = [
+  { dataKey: "revenue", name: "Revenue", color: "cyan" },
+  { dataKey: "signups", name: "Signups", color: "emerald" },
+];
+
+export function RevenueChart() {
+  return (
+    <AreaChart
+      xKey="month"
+      data={data}
+      series={series}
+      appearance="outline"
+      showLegend
+    />
   );
 }
 ```
@@ -214,23 +258,23 @@ pnpm add react react-dom class-variance-authority clsx tailwind-merge
 yarn add react react-dom class-variance-authority clsx tailwind-merge
 ```
 
-#### Optional: animations and icons
+#### Optional: animations, icons, and charts
 
-Add **`framer-motion`** when you import any `@zentauri-ui/zentauri-components/ui/<name>/animated` entry (including **Spinner**, which is only published under `ui/spinner/animated`). Add **`react-icons`** when using icon sets from that package.
+Add **`framer-motion`** when you import any `@zentauri-ui/zentauri-components/ui/<name>/animated` entry (including **Spinner**, which is only published under `ui/spinner/animated`). Add **`react-icons`** when using icon sets from that package. Add **`recharts`** when you import any `@zentauri-ui/zentauri-components/charts/<type>` entry or vendor charts with the CLI.
 
 ```bash
-npm install framer-motion react-icons
+npm install framer-motion react-icons recharts
 ```
 
 ```bash
-pnpm add framer-motion react-icons
+pnpm add framer-motion react-icons recharts
 ```
 
 ```bash
-yarn add framer-motion react-icons
+yarn add framer-motion react-icons recharts
 ```
 
-Published `dist/` files **import** these packages; they are **not** vendored inside `@zentauri-ui/zentauri-components`. Static `ui/<name>` bundles do not depend on `framer-motion`; only `ui/<name>/animated` entries do. Your app installs peers via `dependencies` where needed, and your bundler resolves them from `node_modules`.
+Published `dist/` files **import** these packages; they are **not** vendored inside `@zentauri-ui/zentauri-components`. Static `ui/<name>` bundles do not depend on `framer-motion`; only `ui/<name>/animated` entries do. Chart bundles are isolated to `charts/<type>` entries and depend on `recharts`. Your app installs peers via `dependencies` where needed, and your bundler resolves them from `node_modules`.
 
 ### Next.js: smaller route chunks
 
@@ -242,7 +286,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
-    optimizePackageImports: ["framer-motion", "react-icons"],
+    optimizePackageImports: ["framer-motion", "react-icons", "recharts"],
   },
 };
 
@@ -291,6 +335,7 @@ import {
 ```tsx
 import { useDisclosure } from "@zentauri-ui/zentauri-components/hooks/useDisclosure";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { AreaChart } from "@zentauri-ui/zentauri-components/charts/area";
 ```
 
 #### Imports (animated / Framer Motion)
@@ -336,9 +381,9 @@ import { Spinner } from "@zentauri-ui/zentauri-components/ui/spinner/animated";
 
 ## CLI — copy component source into your app
 
-The package ships a small **Node CLI** (`zentauri-components` and `zentauri-ui` point to the same `cli/index.mjs`) that copies **selected** folders from this package’s `src/ui` and `src/hooks` into your repository—similar to shadcn/ui. You keep the files, control paths via `components.json`, and imports are rewritten to your path aliases (`@/components/ui`, `@/hooks`, `@/lib/utils`, and so on).
+The package ships a small **Node CLI** (`zentauri-components` and `zentauri-ui` point to the same `cli/index.mjs`) that copies **selected** folders from this package’s `src/ui`, `src/charts`, and `src/hooks` into your repository—similar to shadcn/ui. You keep the files, control paths via `components.json`, and imports are rewritten to your path aliases (`@/components/ui`, `@/hooks`, `@/lib/utils`, and so on).
 
-Which UI folders are valid for `add` is driven by **`cli/registry.json`**: a generated manifest listing every addable directory name (matching `src/ui/<name>`) plus optional **`nameAliases`** so the CLI accepts friendly tokens (for example `button` → `buttons`).
+Which UI folders are valid for `add` is driven by **`cli/registry.json`**: a generated manifest listing every addable directory name (matching `src/ui/<name>` plus chart entries like `src/charts/area`) plus optional **`nameAliases`** so the CLI accepts friendly tokens (for example `button` → `buttons`).
 
 ### Commands
 
@@ -347,6 +392,7 @@ Call the published binary by name after the package (recommended so `npx` does n
 ```bash
 npx @zentauri-ui/zentauri-components init
 npx @zentauri-ui/zentauri-components add buttons inputs
+npx @zentauri-ui/zentauri-components add charts/area charts/line
 npx @zentauri-ui/zentauri-components -h
 ```
 
@@ -372,11 +418,11 @@ node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs add accordion
 node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs add hook useWindowSize
 ```
 
-| Command               | What it does                                                                                                                                                                                                                                                                                                                 |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `init`                | Writes **`components.json`** in the current working directory (or `--cwd`) with default `aliases` and `resolvedPaths`. Refuses to overwrite an existing file.                                                                                                                                                                |
-| `add <names...>`      | Walks up from `--cwd` (default `.`) to find `components.json`, then copies each resolved **UI** folder under `src/ui`, pulls in hooks those files depend on (including transitive hook imports), and creates **`lib/utils`** at `resolvedPaths.utils` from the package template if it is missing.                            |
-| `add hook <names...>` | Same config lookup; copies only **hook** folders listed under `registry.hooks` (from `hooksEntryNames` in `tsup.config.ts`), including transitive sibling-hook imports. Does not copy UI unless a hook’s imports require you to add a component separately (for example `usePagination` imports types from `ui/pagination`). |
+| Command               | What it does                                                                                                                                                                                                                                                                                                                               |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `init`                | Writes **`components.json`** in the current working directory (or `--cwd`) with default `aliases` and `resolvedPaths`. Refuses to overwrite an existing file.                                                                                                                                                                              |
+| `add <names...>`      | Walks up from `--cwd` (default `.`) to find `components.json`, then copies each resolved **UI** folder under `src/ui` or chart entry under `src/charts/<type>`, pulls in hooks those files depend on (including transitive hook imports), and creates **`lib/utils`** at `resolvedPaths.utils` from the package template if it is missing. |
+| `add hook <names...>` | Same config lookup; copies only **hook** folders listed under `registry.hooks` (from `hooksEntryNames` in `tsup.config.ts`), including transitive sibling-hook imports. Does not copy UI unless a hook’s imports require you to add a component separately (for example `usePagination` imports types from `ui/pagination`).               |
 
 Global flags: `-h` / `--help`, `-v` / `--version`, `--cwd <dir>` (relative to `process.cwd()`).
 
@@ -401,7 +447,7 @@ Defaults look like this; edit `resolvedPaths` and `aliases` so they match your a
 
 ### Registry (`cli/registry.json`)
 
-- **`components`**: sorted list of folder names under **`src/ui/`** that `add` may copy. The file is **generated**; the canonical build list lives in **`tsup.config.ts`** as `uiComponentNames`, and the generator always ensures **`spinner`** is included so the CLI stays aligned with the animated-only spinner bundle.
+- **`components`**: sorted list of folder names under **`src/ui/`**, plus chart entries from **`src/charts/<type>`**, that `add` may copy. The file is **generated**; the canonical build list lives in **`tsup.config.ts`** as `uiComponentNames` and `chartEntryNames`, and the generator always ensures **`spinner`** is included so the CLI stays aligned with the animated-only spinner bundle.
 - **`hooks`**: sorted list of folder names under **`src/hooks/`** that `add hook` may copy; generated from **`hooksEntryNames`** in **`tsup.config.ts`** (same entries as published `…/hooks/<name>` subpaths).
 - **`nameAliases`**: optional map from a CLI token to a real folder name. Today: `button` → `buttons`, `input` → `inputs` (matching common singular names while folders stay plural).
 
@@ -431,11 +477,10 @@ https://zentauri-ui.vercel.app/
 
 From this package directory in the monorepo:
 
-- `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, including `dist/ui/<name>/animated.*`, starts with `"use client"` where needed)
+- `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, the chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
 - `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 300+ test cases in total
-- **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`** and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`** (`components` + `hooks`). Run this after adding or renaming UI areas or hook entries so the CLI stays in sync (the script prints counts).
-- **`prepack`** — invokes `generate:registry` automatically before `npm pack` / publish so the published tarball always ships an up-to-date registry alongside `cli/index.mjs`.
+**`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`** (`components` + `hooks`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
 
 ## Github Release log
 
