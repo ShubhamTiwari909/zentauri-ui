@@ -22,6 +22,7 @@ export type ChartSeries = {
   color?: ChartColor | string;
   textColor?: string;
   fill?: string;
+  stroke?: string;
   stackId?: string;
   zKey?: string;
 };
@@ -75,8 +76,9 @@ export type PieChartProps<TDatum extends ChartDatum = ChartDatum> =
       cornerRadius?: number;
       label?: boolean;
       labelLine?: boolean;
+      labelColor?: string;
       stroke?: string;
-      colors?: string[];
+      fill?: string;
       innerRadius?: number | string;
       outerRadius?: number | string;
     };

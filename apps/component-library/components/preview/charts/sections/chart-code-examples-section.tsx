@@ -22,25 +22,33 @@ export function ChartCodeExamplesSection({ slug }: { slug: ChartPreviewSlug }) {
         {CHART_APPEARANCES.map((appearance) => (
           <PreviewCodeShowcase
             key={appearance}
-            code={chartAppearanceSnippet(slug, appearance, undefined, true)}
+            code={chartAppearanceSnippet({ slug, appearance, showGrid: true })}
           >
             <ChartBySlug slug={slug} appearance={appearance} height={280} />
           </PreviewCodeShowcase>
         ))}
         <PreviewCodeShowcase
             key={"no-grid-lines"}
-            code={chartAppearanceSnippet(slug, "default", undefined, false)}
+            code={chartAppearanceSnippet({ slug, appearance: "default", showGrid: false })}
           >
             <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} {...(slug === "pie" ? { colors: ["#0088FE", "#00C49F", "#FFBB28", "#FF0098"] } : {})} />
           </PreviewCodeShowcase>
           {
             slug === "pie" && (
+             <>
               <PreviewCodeShowcase
                 key={"pie-with-custom-inner-radius"}
-                code={chartAppearanceSnippet(slug, "default", undefined, false, "40%")}
+                code={chartAppearanceSnippet({ slug, appearance: "default", showGrid: false, innerRadius: "40%" })}
               >
                 <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} innerRadius="40%" {...(slug === "pie" ? { colors: ["#0088FE", "#00C49F", "#FFBB28", "#FF0098"] } : {})} />
               </PreviewCodeShowcase>
+              <PreviewCodeShowcase
+                key={"pie-with-custom-stroke-fill"}
+                code={chartAppearanceSnippet({ slug, appearance: "default", showGrid: false, stroke: "#ff0000", fill: "#000000",  labelColor: "#f1dac4" })}
+              >
+                <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} stroke="#974970" fill="#631831" labelColor="#f1dac4" {...(slug === "pie" ? { colors: ["#0088FE", "#00C49F", "#FFBB28", "#FF0098"] } : {})} />
+              </PreviewCodeShowcase>
+             </>
             )
           }
       </div>

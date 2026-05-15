@@ -30,8 +30,8 @@ const DATA_AND_SERIES = `const data = [
 
 const series = ({ appearance }: { appearance: VariantProps<typeof chartVariants>["appearance"] }) => {
   return [
-    { dataKey: "desktop", name: "Desktop", color: appearance?.includes("gradient") ? "white" : "cyan" },
-    { dataKey: "mobile", name: "Mobile", color: appearance?.includes("gradient") ? "white" : "emerald" },
+    { dataKey: "desktop", name: "Desktop", color: appearance?.includes("gradient") ? "white" : "cyan", stroke: "black" },
+    { dataKey: "mobile", name: "Mobile", color: appearance?.includes("gradient") ? "white" : "emerald", stroke: "black" },
   ]
 };
 `;
@@ -150,14 +150,27 @@ ${props}  height={300}
 />`;
 }
 
-export function chartAppearanceSnippet(
-  slug: ChartPreviewSlug,
-  appearance: (typeof CHART_APPEARANCES)[number],
-  strokeDasharray?: string,
-  showGrid?: boolean,
-  innerRadius?: number | string,
-  outerRadius?: number | string,
-): string {
+export function chartAppearanceSnippet({
+  slug,
+  appearance,
+  strokeDasharray,
+  showGrid,
+  innerRadius,
+  outerRadius,
+  stroke,
+  fill,
+  labelColor,
+}: {
+  slug: ChartPreviewSlug;
+  appearance: (typeof CHART_APPEARANCES)[number];
+  strokeDasharray?: string;
+  showGrid?: boolean;
+  innerRadius?: number | string;
+  outerRadius?: number | string;
+  stroke?: string;
+  fill?: string;
+  labelColor?: string;
+}): string {
   const props =
     slug === "bubble"
       ? bubbleDataProps()
@@ -172,5 +185,8 @@ ${appearanceLine}${props}  height={280}
   showGrid={${showGrid ? "true" : "false"}}
   ${innerRadius != null ? `innerRadius="${innerRadius}"` : ""}
   ${outerRadius != null ? `outerRadius="${outerRadius}"` : ""}
+  ${stroke != null ? `stroke="${stroke}"` : ""}
+  ${fill != null ? `fill="${fill}"` : ""}
+  ${labelColor != null ? `labelColor="${labelColor}"` : ""}
 />`;
 }

@@ -83,6 +83,7 @@ export function BarChart<
               stackId={stacked ? (item.stackId ?? "stack") : item.stackId}
               fill={item.fill ?? color.stroke}
               radius={[6, 6, 0, 0]}
+              stroke={item.stroke ?? color.stroke}
             />
           );
         })}

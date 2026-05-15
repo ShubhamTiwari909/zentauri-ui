@@ -33,15 +33,19 @@ export type ChartBySlugProps = {
   stacked?: boolean;
   height?: number;
   className?: string;
-  colors?: string[];
+  labelColor?: string;
   innerRadius?: number | string;
   outerRadius?: number | string;
+  stroke?: string;
+  fill?: string;
 };
 
 export function ChartBySlug({
   slug,
   appearance = "default",
   density = "comfortable",
+  stroke,
+  fill,
   strokeDasharray,
   showGrid = true,
   showLegend = false,
@@ -49,7 +53,7 @@ export function ChartBySlug({
   stacked = false,
   height = 320,
   className,
-  colors,
+  labelColor = "white",
   innerRadius,
   outerRadius = "100%",
 }: ChartBySlugProps) {
@@ -63,9 +67,12 @@ export function ChartBySlug({
         Show Tooltip:{" "}
         <span className="font-semibold">{showTooltip.toString()}</span> |
         Stacked: <span className="font-semibold">{stacked.toString()}</span>{" "}
-        {strokeDasharray ? `| Stroke Dasharray: ${strokeDasharray}` : ""}
-        {innerRadius ? `| Inner Radius: ${innerRadius}` : ""}
-        {outerRadius ? ` | Outer Radius: ${outerRadius}` : ""}
+        {strokeDasharray ? `| Stroke Dasharray: ` : ""}{strokeDasharray ? <span className="font-semibold">{strokeDasharray}</span> : null}
+        {innerRadius ? `| Inner Radius: ` : ""}{innerRadius ? <span className="font-semibold">{innerRadius}</span> : null}
+        {outerRadius ? ` | Outer Radius: ` : ""}{outerRadius ? <span className="font-semibold">{outerRadius}</span> : null}
+        {stroke ? ` | Stroke: ` : ""}{stroke ? <span className="font-semibold">{stroke}</span> : null}
+        {fill ? ` | Fill: ` : ""}{fill ? <span className="font-semibold">{fill}</span> : null}
+        {labelColor ? ` | Label Color: ` : ""}{labelColor ? <span className="font-semibold">{labelColor}</span> : null}
       </Text>
       {chart}
     </div>
@@ -131,7 +138,9 @@ export function ChartBySlug({
           innerRadius={innerRadius}
           outerRadius={outerRadius}
           label
-          colors={colors}
+          stroke={stroke}
+          fill={fill}
+          labelColor={labelColor}
         />,
       );
     default: {
