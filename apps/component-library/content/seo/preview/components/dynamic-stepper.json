@@ -1,0 +1,65 @@
+{
+  "category": "Navigation",
+  "title": "Dynamic Stepper for guided flows",
+  "description": "Data-driven Dynamic Stepper with Previous and Next buttons, controlled or uncontrolled active step, stable DOM ids for Tailwind overrides, and companion useDynamicStepper hook.",
+  "keywords": [
+    "dynamic stepper",
+    "wizard",
+    "React",
+    "Next.js",
+    "multi-step",
+    "Tailwind CSS",
+    "useDynamicStepper"
+  ],
+  "og": {
+    "title": "Dynamic Stepper · Zentauri UI",
+    "description": "Navigate ordered steps with prev/next controls and optional callbacks.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Dynamic Stepper · Zentauri UI",
+    "description": "Navigate ordered steps with prev/next controls and optional callbacks.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/dynamic-stepper",
+  "headings": {
+    "h1": "Dynamic steppers for wizards",
+    "h2": [
+      "Overview",
+      "Common use cases",
+      "FAQ"
+    ]
+  },
+  "intro": "DynamicStepper renders steps from list data with Button controls. useDynamicStepper holds the same navigation logic for fully custom layouts.",
+  "useCases": [
+    "Checkout and onboarding flows.",
+    "Settings panels split into stages.",
+    "Headless step state with your own markup.",
+    "Style overrides via ids or data-slot attributes."
+  ],
+  "faqs": [
+    {
+      "question": "How do I target buttons or the step list with Tailwind?",
+      "answer": "Each instance exposes stable id suffixes :previous, :next, and :mapper (based on React useId). data-slot attributes dynamic-stepper-previous, dynamic-stepper-next, and dynamic-stepper-mapper are also set."
+    },
+    {
+      "question": "Is this the same as the Stepper component?",
+      "answer": "No. The compositional Stepper under ui/stepper stays separate. Dynamic Stepper is its own package focused on data-driven navigation."
+    },
+    {
+      "question": "Can I control the active step from the parent?",
+      "answer": "Yes. Pass activeStep and onActiveStepChange for controlled mode, or defaultActiveStep for uncontrolled usage."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Steps accept optional title, description, and indicator content. Button appearance and sizes map to the shared Button component variants."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

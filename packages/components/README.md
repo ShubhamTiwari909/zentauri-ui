@@ -54,6 +54,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Divider     | `divider`       | `divider/animated`                 |
 | Drawer      | `drawer`        | `drawer/animated`                  |
 | Dropdown    | `dropdown`      | —                                  |
+| Dynamic stepper | `dynamic-stepper` | —                                  |
 | Empty state | `empty-state`   | `empty-state/animated`             |
 | File upload | `file-upload`   | —                                  |
 | Input       | `inputs`        | `inputs/animated`                  |
@@ -175,6 +176,60 @@ export function RevenueChart() {
 }
 ```
 
+## Dynamic Stepper
+
+Import the UI from **`@zentauri-ui/zentauri-components/ui/dynamic-stepper`**. This entry is **static only** (no `/animated` subpath). It is separate from the compositional **Stepper** primitives under `ui/stepper` (for example `Stepper`, `StepperItem`, `StepperIndicator`).
+
+**Component:** `DynamicStepper` — data-driven steps with Previous / Next controls backed by the **Button** component (`buttonAppearance`, `buttonSize`).
+
+**Hook:** `useDynamicStepper` — `@zentauri-ui/zentauri-components/hooks/useDynamicStepper`. Holds a clamped 0-based active step, `goPrevious` / `goNext`, `canGoPrevious` / `canGoNext`, and controlled/uncontrolled wiring (`activeStep`, `defaultActiveStep`, `onActiveStepChange`, `onPrevious`, `onNext`). `DynamicStepper` uses this hook internally.
+
+**Types (UI barrel):** `DynamicStepperProps`, `DynamicStepperStep`, `DynamicStepperOrientation`, `DynamicStepperButtonAppearance`, `DynamicStepperButtonSize`, `DynamicStepperIndicatorSize`, `DynamicStepperIndicatorToneAppearance`, `UseDynamicStepperParams`, `UseDynamicStepperResult`.
+
+**Step items (`steps`):** optional `id`, `title`, `description`, `indicator` (defaults to a 1-based index).
+
+**Indicator tones:** `indicatorCompleteAppearance`, `indicatorCurrentAppearance`, `indicatorUpcomingAppearance` — same keys as **Button** `appearance` except **`gradient-*`** values (defaults: `emerald`, `violet`, `outline`).
+
+**Layout:** `orientation` (`horizontal` | `vertical`), `indicatorSize` (`sm` | `md` | `lg`).
+
+**Stable targeting:** DOM **`id`** suffixes `-previous`, `-next`, `-mapper` (prefixed by React `useId`) and **`data-slot`** keys including `dynamic-stepper-previous`, `dynamic-stepper-next`, `dynamic-stepper-mapper`.
+
+**CVA helpers:** `dynamicStepperRootVariants`, `dynamicStepperMapperVariants`, `dynamicStepperItemVariants`, `dynamicStepperIndicatorVariants`, `dynamicStepperIndicatorToneClass`.
+
+```tsx
+import {
+  DynamicStepper,
+  type DynamicStepperStep,
+} from "@zentauri-ui/zentauri-components/ui/dynamic-stepper";
+import { useDynamicStepper } from "@zentauri-ui/zentauri-components/hooks/useDynamicStepper";
+
+const steps: DynamicStepperStep[] = [
+  { id: "cart", title: "Cart", description: "Review items" },
+  { id: "pay", title: "Payment", description: "Enter details" },
+];
+
+export function CheckoutFlow() {
+  return (
+    <DynamicStepper
+      steps={steps}
+      defaultActiveStep={0}
+      buttonAppearance="outline"
+      indicatorCompleteAppearance="sky"
+      indicatorCurrentAppearance="rose"
+      indicatorUpcomingAppearance="outline"
+    />
+  );
+}
+
+/** Headless-only example */
+export function useWizardSteps(stepCount: number) {
+  return useDynamicStepper({
+    stepCount,
+    defaultActiveStep: 0,
+  });
+}
+```
+
 ## React hooks
 
 Hooks live in `src/hooks/`. Each hook is a separate published entry under `@zentauri-ui/zentauri-components/hooks/<name>` (same pattern as UI areas). Types are exported where the implementation defines them (for example `UseDisclosureResult`, `PaginationPageItem`). For class-name merging and pagination helpers used alongside hooks, import from `@zentauri-ui/zentauri-components/hooks/utils`.
@@ -188,6 +243,7 @@ Hooks live in `src/hooks/`. Each hook is a separate published entry under `@zent
 | `useDebouncedValue`         | `useDebouncedValue`         | Debounced state from a value                                               |
 | `useDisclosure`             | `useDisclosure`             | `UseDisclosureParams`, `UseDisclosureResult`                               |
 | `useDocumentTitle`          | `useDocumentTitle`          | `UseDocumentTitleParams`                                                   |
+| `useDynamicStepper`         | `useDynamicStepper`         | `UseDynamicStepperParams`, `UseDynamicStepperResult` (types also on `ui/dynamic-stepper`) |
 | `useFocusManagement`        | `useFocusManagement`        | Focus trap / focus moves for overlays                                      |
 | `useHover`                  | `useHover`                  | Pointer hover state                                                        |
 | `useInView`                 | `useInView`                 | `UseInViewParams`                                                          |
@@ -212,6 +268,7 @@ Hooks live in `src/hooks/`. Each hook is a separate published entry under `@zent
 
 ```tsx
 import { useDisclosure } from "@zentauri-ui/zentauri-components/hooks/useDisclosure";
+import { useDynamicStepper } from "@zentauri-ui/zentauri-components/hooks/useDynamicStepper";
 import { useMediaQuery } from "@zentauri-ui/zentauri-components/hooks/useMediaQuery";
 import {
   buildPaginationItems,
@@ -220,7 +277,7 @@ import {
 import { cn } from "@zentauri-ui/zentauri-components/hooks/utils";
 ```
 
-Some UI packages re-export the hook that belongs to that component (for example `usePagination` from `@zentauri-ui/zentauri-components/ui/pagination`). Prefer `hooks/<name>` when you only need the hook without the UI primitives.
+Some UI packages re-export the hook that belongs to that component (for example `usePagination` from `@zentauri-ui/zentauri-components/ui/pagination`). **`dynamic-stepper`** exports hook-related **types** only; import **`useDynamicStepper`** from `hooks/useDynamicStepper`. Prefer `hooks/<name>` when you only need the hook without the UI primitives.
 
 ## Installation
 
@@ -422,7 +479,7 @@ node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs add hook useWin
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `init`                | Writes **`components.json`** in the current working directory (or `--cwd`) with default `aliases` and `resolvedPaths`. Refuses to overwrite an existing file.                                                                                                                                                                              |
 | `add <names...>`      | Walks up from `--cwd` (default `.`) to find `components.json`, then copies each resolved **UI** folder under `src/ui` or chart entry under `src/charts/<type>`, pulls in hooks those files depend on (including transitive hook imports), and creates **`lib/utils`** at `resolvedPaths.utils` from the package template if it is missing. |
-| `add hook <names...>` | Same config lookup; copies only **hook** folders listed under `registry.hooks` (from `hooksEntryNames` in `tsup.config.ts`), including transitive sibling-hook imports. Does not copy UI unless a hook’s imports require you to add a component separately (for example `usePagination` imports types from `ui/pagination`).               |
+| `add hook <names...>` | Same config lookup; copies only **hook** folders listed under `registry.hooks` (from `hooksEntryNames` in `tsup.config.ts`), including transitive sibling-hook imports. Does not copy UI unless a hook’s imports require you to add a component separately (for example `usePagination` imports types from `ui/pagination`; `useDynamicStepper` imports types from `ui/dynamic-stepper`).               |
 
 Global flags: `-h` / `--help`, `-v` / `--version`, `--cwd <dir>` (relative to `process.cwd()`).
 
