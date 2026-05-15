@@ -54,6 +54,7 @@ export function PieChart<
   fill = "#0d3b66",
   innerRadius,
   outerRadius,
+  shape,
   style,
   ...props
 }: PieChartProps<TDatum>) {
@@ -92,6 +93,7 @@ export function PieChart<
           label={label ? (props: PieLabelRenderProps) => renderCustomizedLabel({...props, fill: labelColor}) : undefined}
           stroke={stroke}
           fill={fill}
+          shape={shape}
         />
       </RechartsPieChart>
     </ChartFrame>

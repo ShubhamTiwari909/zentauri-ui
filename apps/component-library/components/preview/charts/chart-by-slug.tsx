@@ -22,6 +22,14 @@ import {
 import { Text } from "@zentauri-ui/zentauri-components/ui/typography";
 import { VariantProps } from "class-variance-authority";
 
+import { PieSectorShapeProps, Sector } from "recharts";
+
+export const COLORS = ['#1F6F5F', '#622B14', '#0D0B61', '#D92243']
+export const MyCustomPie = (props: PieSectorShapeProps) => {
+  return <Sector {...props} fill={COLORS[props.index % COLORS.length]} />;
+};
+
+
 export type ChartBySlugProps = {
   slug: ChartPreviewSlug;
   appearance?: VariantProps<typeof chartVariants>["appearance"];
@@ -38,6 +46,7 @@ export type ChartBySlugProps = {
   outerRadius?: number | string;
   stroke?: string;
   fill?: string;
+  customShape?: boolean ;
 };
 
 export function ChartBySlug({
@@ -56,6 +65,7 @@ export function ChartBySlug({
   labelColor = "white",
   innerRadius,
   outerRadius = "100%",
+  customShape,
 }: ChartBySlugProps) {
   const wrap = (chart: ReactElement) => (
     <div className="w-full min-w-0" style={{ minHeight: height }}>
@@ -141,6 +151,7 @@ export function ChartBySlug({
           stroke={stroke}
           fill={fill}
           labelColor={labelColor}
+          shape={customShape ? MyCustomPie : undefined}
         />,
       );
     default: {

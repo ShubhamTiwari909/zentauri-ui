@@ -2,6 +2,7 @@ import type { VariantProps } from "class-variance-authority";
 import type { CSSProperties, HTMLAttributes, ReactNode } from "react";
 
 import type { chartPalette, chartVariants } from "./variants";
+import { PieProps } from "recharts";
 
 export type ChartType = "area" | "bar" | "bubble" | "line" | "pie";
 
@@ -72,13 +73,14 @@ export type PieChartProps<TDatum extends ChartDatum = ChartDatum> =
       tooltipColor?: string;
       emptyState?: ReactNode;
       containerStyle?: CSSProperties;
-      paddingAngle?: number;
-      cornerRadius?: number;
+      paddingAngle?: PieProps["paddingAngle"];
+      cornerRadius?: PieProps["cornerRadius"];
       label?: boolean;
       labelLine?: boolean;
       labelColor?: string;
-      stroke?: string;
-      fill?: string;
-      innerRadius?: number | string;
-      outerRadius?: number | string;
+      stroke?: PieProps["stroke"];
+      fill?: PieProps["fill"];
+      innerRadius?: PieProps["innerRadius"];
+      outerRadius?: PieProps["outerRadius"];
+      shape?: PieProps["shape"]
     };
