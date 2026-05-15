@@ -30,8 +30,8 @@ const DATA_AND_SERIES = `const data = [
 
 const series = ({ appearance }: { appearance: VariantProps<typeof chartVariants>["appearance"] }) => {
   return [
-    { dataKey: "desktop", name: "Desktop", color: appearance?.includes("gradient") ? "white" : "cyan" },
-    { dataKey: "mobile", name: "Mobile", color: appearance?.includes("gradient") ? "white" : "emerald" },
+    { dataKey: "desktop", name: "Desktop", color: appearance?.includes("gradient") ? "white" : "cyan", stroke: "black" },
+    { dataKey: "mobile", name: "Mobile", color: appearance?.includes("gradient") ? "white" : "emerald", stroke: "black" },
   ]
 };
 `;
@@ -64,7 +64,11 @@ function snippetPrefix(slug: ChartPreviewSlug): string {
     return `${IMPORT[slug]}\n\n${BUBBLE_DATA_AND_SERIES}\n`;
   }
   if (slug === "pie") {
-    return `${IMPORT[slug]}\n\n${PIE_DATA}\n`;
+    return `${IMPORT[slug]}\n\n${PIE_DATA}\n\n${`export const COLORS = ['#1F6F5F', '#622B14', '#0D0B61', '#D92243'];\n
+export const MyCustomPie = (props: PieSectorShapeProps) => {
+  return <Sector {...props} fill={COLORS[props.index % COLORS.length]} />;
+};
+`}\n`;
   }
   return `${IMPORT[slug]}\n\n${DATA_AND_SERIES}\n`;
 }
@@ -150,14 +154,29 @@ ${props}  height={300}
 />`;
 }
 
-export function chartAppearanceSnippet(
-  slug: ChartPreviewSlug,
-  appearance: (typeof CHART_APPEARANCES)[number],
-  strokeDasharray?: string,
-  showGrid?: boolean,
-  innerRadius?: number | string,
-  outerRadius?: number | string,
-): string {
+export function chartAppearanceSnippet({
+  slug,
+  appearance,
+  strokeDasharray,
+  showGrid,
+  innerRadius,
+  outerRadius,
+  stroke,
+  fill,
+  labelColor,
+  customShape,
+}: {
+  slug: ChartPreviewSlug;
+  appearance: (typeof CHART_APPEARANCES)[number];
+  strokeDasharray?: string;
+  showGrid?: boolean;
+  innerRadius?: number | string;
+  outerRadius?: number | string;
+  stroke?: string;
+  fill?: string;
+  labelColor?: string;
+  customShape?: boolean;
+}): string {
   const props =
     slug === "bubble"
       ? bubbleDataProps()
@@ -166,11 +185,20 @@ export function chartAppearanceSnippet(
         : cartesianDataProps();
   const appearanceLine =
     appearance === "default" ? "" : `  appearance="${appearance}"\n`;
+  const trailingProps = [
+    strokeDasharray ? `  strokeDasharray="${strokeDasharray}"` : null,
+    `  showGrid={${showGrid ? "true" : "false"}}`,
+    innerRadius != null ? `  innerRadius="${innerRadius}"` : null,
+    outerRadius != null ? `  outerRadius="${outerRadius}"` : null,
+    stroke != null ? `  stroke="${stroke}"` : null,
+    fill != null ? `  fill="${fill}"` : null,
+    labelColor != null ? `  labelColor="${labelColor}"` : null,
+    customShape ? "  shape={MyCustomPie}" : null,
+  ]
+    .filter((line: string | null) => line != null && line !== "")
+    .join("\n");
   return `${variantLeadComment(`appearance · ${appearance}`)}${snippetPrefix(slug)}<${TAG[slug]}
 ${appearanceLine}${props}  height={280}
-  ${strokeDasharray ? `strokeDasharray="${strokeDasharray}"` : ""}
-  showGrid={${showGrid ? "true" : "false"}}
-  ${innerRadius != null ? `innerRadius="${innerRadius}"` : ""}
-  ${outerRadius != null ? `outerRadius="${outerRadius}"` : ""}
+${trailingProps}
 />`;
 }

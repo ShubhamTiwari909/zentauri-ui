@@ -88,7 +88,7 @@ export function AreaChart<
               name={item.name}
               stackId={stacked ? (item.stackId ?? "stack") : item.stackId}
               stroke={color.stroke}
-              fill={fill}
+              fill={fill ?? color.fill}
               fillOpacity={1}
               strokeWidth={2}
             />

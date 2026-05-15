@@ -21,11 +21,13 @@ export const chartTimeSeriesSeries = ({
       dataKey: "desktop",
       name: "Desktop",
       color: appearance?.includes("gradient") ? "white" : "cyan",
+      stroke: "black"
     },
     {
       dataKey: "mobile",
       name: "Mobile",
       color: appearance?.includes("gradient") ? "white" : "emerald",
+      stroke: "black"
     },
   ];
 };
@@ -47,7 +49,6 @@ export const chartBubbleSeries = ({
     {
       dataKey: "bench",
       name: "Benchmark",
-      color: appearance?.includes("gradient") ? "white" : "violet",
       zKey: "benchZ",
       fill: appearance?.includes("gradient") ? "white" : "violet",
     },

@@ -13,7 +13,7 @@ import type { PieChartProps } from "../shared/types";
 
 const RADIAN = Math.PI / 180;
 
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: PieLabelRenderProps) => {
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, fill }: PieLabelRenderProps) => {
   if (cx == null || cy == null || innerRadius == null || outerRadius == null) {
     return null;
   }
@@ -24,13 +24,11 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   const y = ncy + radius * Math.sin(-(midAngle ?? 0) * RADIAN);
 
   return (
-    <text x={x} y={y} fill="white" textAnchor={x > ncx ? 'start' : 'end'} dominantBaseline="central">
+    <text x={x} y={y} fill={fill} textAnchor={x > ncx ? 'start' : 'end'} dominantBaseline="central">
       {`${((percent ?? 0) * 100).toFixed(0)}%`}
     </text>
   );
 };
-
-const DEFAULT_COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 export function PieChart<
   TDatum extends Record<string, number | string | null | undefined>,
@@ -46,15 +44,17 @@ export function PieChart<
   height = 320,
   label = false,
   labelLine = false,
+  labelColor = "white",
   nameKey,
   paddingAngle = 2,
   showLegend = true,
   showTooltip = true,
   tooltipColor = "#0f172a",
-  stroke,
-  colors = DEFAULT_COLORS,
+  stroke = "#000000",
+  fill = "#0d3b66",
   innerRadius,
   outerRadius,
+  shape,
   style,
   ...props
 }: PieChartProps<TDatum>) {
@@ -90,8 +90,10 @@ export function PieChart<
           paddingAngle={paddingAngle}
           cornerRadius={cornerRadius}
           labelLine={labelLine}
-          label={label ? renderCustomizedLabel : undefined}
+          label={label ? (props: PieLabelRenderProps) => renderCustomizedLabel({...props, fill: labelColor}) : undefined}
           stroke={stroke}
+          fill={fill}
+          shape={shape}
         />
       </RechartsPieChart>
     </ChartFrame>

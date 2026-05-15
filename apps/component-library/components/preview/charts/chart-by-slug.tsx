@@ -22,6 +22,14 @@ import {
 import { Text } from "@zentauri-ui/zentauri-components/ui/typography";
 import { VariantProps } from "class-variance-authority";
 
+import { PieSectorShapeProps, Sector } from "recharts";
+
+export const COLORS = ['#1F6F5F', '#622B14', '#0D0B61', '#D92243']
+export const MyCustomPie = (props: PieSectorShapeProps) => {
+  return <Sector {...props} fill={COLORS[props.index % COLORS.length]} />;
+};
+
+
 export type ChartBySlugProps = {
   slug: ChartPreviewSlug;
   appearance?: VariantProps<typeof chartVariants>["appearance"];
@@ -33,15 +41,20 @@ export type ChartBySlugProps = {
   stacked?: boolean;
   height?: number;
   className?: string;
-  colors?: string[];
+  labelColor?: string;
   innerRadius?: number | string;
   outerRadius?: number | string;
+  stroke?: string;
+  fill?: string;
+  customShape?: boolean ;
 };
 
 export function ChartBySlug({
   slug,
   appearance = "default",
   density = "comfortable",
+  stroke,
+  fill,
   strokeDasharray,
   showGrid = true,
   showLegend = false,
@@ -49,9 +62,10 @@ export function ChartBySlug({
   stacked = false,
   height = 320,
   className,
-  colors,
+  labelColor = "white",
   innerRadius,
   outerRadius = "100%",
+  customShape,
 }: ChartBySlugProps) {
   const wrap = (chart: ReactElement) => (
     <div className="w-full min-w-0" style={{ minHeight: height }}>
@@ -63,9 +77,12 @@ export function ChartBySlug({
         Show Tooltip:{" "}
         <span className="font-semibold">{showTooltip.toString()}</span> |
         Stacked: <span className="font-semibold">{stacked.toString()}</span>{" "}
-        {strokeDasharray ? `| Stroke Dasharray: ${strokeDasharray}` : ""}
-        {innerRadius ? `| Inner Radius: ${innerRadius}` : ""}
-        {outerRadius ? ` | Outer Radius: ${outerRadius}` : ""}
+        {strokeDasharray ? `| Stroke Dasharray: ` : ""}{strokeDasharray ? <span className="font-semibold">{strokeDasharray}</span> : null}
+        {innerRadius ? `| Inner Radius: ` : ""}{innerRadius ? <span className="font-semibold">{innerRadius}</span> : null}
+        {outerRadius ? ` | Outer Radius: ` : ""}{outerRadius ? <span className="font-semibold">{outerRadius}</span> : null}
+        {stroke ? ` | Stroke: ` : ""}{stroke ? <span className="font-semibold">{stroke}</span> : null}
+        {fill ? ` | Fill: ` : ""}{fill ? <span className="font-semibold">{fill}</span> : null}
+        {labelColor ? ` | Label Color: ` : ""}{labelColor ? <span className="font-semibold">{labelColor}</span> : null}
       </Text>
       {chart}
     </div>
@@ -131,7 +148,10 @@ export function ChartBySlug({
           innerRadius={innerRadius}
           outerRadius={outerRadius}
           label
-          colors={colors}
+          stroke={stroke}
+          fill={fill}
+          labelColor={labelColor}
+          shape={customShape ? MyCustomPie : undefined}
         />,
       );
     default: {
