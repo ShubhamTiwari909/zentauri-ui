@@ -170,7 +170,7 @@ export function chartAppearanceSnippet(
 ${appearanceLine}${props}  height={280}
   ${strokeDasharray ? `strokeDasharray="${strokeDasharray}"` : ""}
   showGrid={${showGrid ? "true" : "false"}}
-  ${innerRadius ? `innerRadius="${innerRadius}"` : ""}
-  ${outerRadius ? `outerRadius="${outerRadius}"` : ""}
+  ${innerRadius != null ? `innerRadius="${innerRadius}"` : ""}
+  ${outerRadius != null ? `outerRadius="${outerRadius}"` : ""}
 />`;
 }

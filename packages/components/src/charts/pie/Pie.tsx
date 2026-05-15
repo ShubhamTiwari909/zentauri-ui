@@ -4,17 +4,13 @@ import {
   Legend,
   Pie,
   PieLabelRenderProps,
-  PieSectorShapeProps,
   PieChart as RechartsPieChart,
-  Sector,
   Tooltip,
 } from "recharts";
 
 import { ChartFrame } from "../shared/chart-frame";
-import type { ChartColor, PieChartProps } from "../shared/types";
-import { chartPalette } from "../area";
+import type { PieChartProps } from "../shared/types";
 
-// #endregion
 const RADIAN = Math.PI / 180;
 
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: PieLabelRenderProps) => {
@@ -29,13 +25,9 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
   return (
     <text x={x} y={y} fill="white" textAnchor={x > ncx ? 'start' : 'end'} dominantBaseline="central">
-      {`${((percent ?? 1) * 100).toFixed(0)}%`}
+      {`${((percent ?? 0) * 100).toFixed(0)}%`}
     </text>
   );
-};
-
-const CustomPie = (props: PieSectorShapeProps & { colors: string[] }) => {
-  return <Sector {...props} fill={props.colors[props.index % props.colors.length]} />;
 };
 
 const DEFAULT_COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -67,7 +59,6 @@ export function PieChart<
   ...props
 }: PieChartProps<TDatum>) {
   const hasData = data.length > 0;
-  console.log(appearance, chartPalette[appearance as ChartColor]?.fill)
 
   return (
     <ChartFrame
@@ -99,10 +90,8 @@ export function PieChart<
           paddingAngle={paddingAngle}
           cornerRadius={cornerRadius}
           labelLine={labelLine}
-          label={renderCustomizedLabel}
+          label={label ? renderCustomizedLabel : undefined}
           stroke={stroke}
-          fill={chartPalette[appearance as ChartColor]?.fill}
-          shape={(props: PieSectorShapeProps) => <CustomPie {...props} colors={colors} />}
         />
       </RechartsPieChart>
     </ChartFrame>
