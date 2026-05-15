@@ -60,6 +60,7 @@ export const DynamicStepper = ({
   return (
     <div
       ref={ref}
+      role="navigation"
       data-slot="dynamic-stepper"
       className={cn(dynamicStepperRootVariants({ orientation }), className)}
       {...rest}
@@ -81,15 +82,17 @@ export const DynamicStepper = ({
 
       <ol
         id={mapperId}
+        aria-label="Steps"
         data-slot="dynamic-stepper-mapper"
         className={dynamicStepperMapperVariants({ orientation })}
       >
         {steps.map((step, index) => {
           const key = step.id ?? `dynamic-stepper-step-${index}`;
+          const isCurrent = index === activeStep;
           const semanticState =
             index < activeStep
               ? "complete"
-              : index === activeStep
+              : isCurrent
                 ? "current"
                 : "upcoming";
           const indicatorTone =
@@ -99,74 +102,51 @@ export const DynamicStepper = ({
                 ? indicatorCurrentAppearance
                 : indicatorUpcomingAppearance;
 
-          const inner =
-            orientation === "vertical" ? (
-              <div className="flex gap-3">
-                <div
-                  data-slot="dynamic-stepper-indicator"
-                  className={cn(
-                    dynamicStepperIndicatorVariants({
-                      size: indicatorSize,
-                    }),
-                    dynamicStepperIndicatorToneClass(
-                      semanticState,
-                      indicatorTone,
-                    ),
-                  )}
-                >
-                  {step.indicator ?? index + 1}
-                </div>
-                <div className="min-w-0">
-                  {step.title != null ? (
-                    <div className="text-sm font-semibold text-white">
-                      {step.title}
-                    </div>
-                  ) : null}
-                  {step.description != null ? (
-                    <p className="mt-1 text-xs text-slate-400">
-                      {step.description}
-                    </p>
-                  ) : null}
-                </div>
-              </div>
-            ) : (
-              <>
-                <div
-                  data-slot="dynamic-stepper-indicator"
-                  className={cn(
-                    dynamicStepperIndicatorVariants({
-                      size: indicatorSize,
-                    }),
-                    dynamicStepperIndicatorToneClass(
-                      semanticState,
-                      indicatorTone,
-                    ),
-                  )}
-                >
-                  {step.indicator ?? index + 1}
-                </div>
-                {step.title != null ? (
-                  <div className="mt-3 text-sm font-semibold text-white">
-                    {step.title}
-                  </div>
-                ) : null}
-                {step.description != null ? (
-                  <p className="mt-1 text-xs text-slate-400">
-                    {step.description}
-                  </p>
-                ) : null}
-              </>
-            );
+          const isVertical = orientation === "vertical";
 
           return (
             <li
               key={key}
               data-slot="dynamic-stepper-item"
+              aria-current={isCurrent ? "step" : undefined}
               className={dynamicStepperItemVariants({
                 orientation: itemOrientation,
               })}
             >
-              {inner}
+              <div
+                data-slot="dynamic-stepper-indicator"
+                className={cn(
+                  dynamicStepperIndicatorVariants({ size: indicatorSize }),
+                  dynamicStepperIndicatorToneClass(
+                    semanticState,
+                    indicatorTone,
+                  ),
+                )}
+              >
+                {step.indicator ?? index + 1}
+              </div>
+              <div
+                className={cn(
+                  "min-w-0",
+                  !isVertical && "flex flex-col items-center",
+                )}
+              >
+                {step.title != null && (
+                  <div
+                    className={cn(
+                      "text-sm font-semibold text-white",
+                      !isVertical && "mt-3",
+                    )}
+                  >
+                    {step.title}
+                  </div>
+                )}
+                {step.description != null && (
+                  <p className="mt-1 text-xs text-slate-400">
+                    {step.description}
+                  </p>
+                )}
+              </div>
             </li>
           );
         })}

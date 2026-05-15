@@ -82,6 +82,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Navigation",
   },
   {
+    id: "dynamic-stepper",
+    name: "Dynamic Stepper",
+    description:
+      "Sequential progress indicators with clickable steps and optional labels.",
+    href: "/preview/components/dynamic-stepper",
+    badge: "Navigation",
+  },
+  {
     id: "empty-state",
     name: "Empty state",
     description:
