@@ -13,7 +13,15 @@ import type { PieChartProps } from "../shared/types";
 
 const RADIAN = Math.PI / 180;
 
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, fill }: PieLabelRenderProps) => {
+const renderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+  fill,
+}: PieLabelRenderProps) => {
   if (cx == null || cy == null || innerRadius == null || outerRadius == null) {
     return null;
   }
@@ -24,7 +32,13 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   const y = ncy + radius * Math.sin(-(midAngle ?? 0) * RADIAN);
 
   return (
-    <text x={x} y={y} fill={fill} textAnchor={x > ncx ? 'start' : 'end'} dominantBaseline="central">
+    <text
+      x={x}
+      y={y}
+      fill={fill}
+      textAnchor={x > ncx ? "start" : "end"}
+      dominantBaseline="central"
+    >
       {`${((percent ?? 0) * 100).toFixed(0)}%`}
     </text>
   );
@@ -90,7 +104,12 @@ export function PieChart<
           paddingAngle={paddingAngle}
           cornerRadius={cornerRadius}
           labelLine={labelLine}
-          label={label ? (props: PieLabelRenderProps) => renderCustomizedLabel({...props, fill: labelColor}) : undefined}
+          label={
+            label
+              ? (props: PieLabelRenderProps) =>
+                  renderCustomizedLabel({ ...props, fill: labelColor })
+              : undefined
+          }
           stroke={stroke}
           fill={fill}
           shape={shape}

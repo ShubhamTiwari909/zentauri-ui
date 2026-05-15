@@ -41,38 +41,38 @@ Published motion entries (same `<name>` as the base UI folder):
 
 Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` when the **Base** column lists a path. Charts use `@zentauri-ui/zentauri-components/charts/<type>`. When the **Animated** column lists a path, motion components and preset helpers come from `@zentauri-ui/zentauri-components/ui/<subpath>/animated` (they are not exported from the base entry). **Spinner** has no static bundle—use only the animated subpath.
 
-| Area        | Base subpath    | Animated subpath `…/ui/…/animated` |
-| ----------- | --------------- | ---------------------------------- |
-| Accordion   | `accordion`     | `accordion/animated`               |
-| Alert       | `alert`         | `alert/animated`                   |
-| Avatar      | `avatar`        | `avatar/animated`                  |
-| Badge       | `badge`         | `badge/animated`                   |
-| Breadcrumb  | `breadcrumb`    | —                                  |
-| Button      | `buttons`       | `buttons/animated`                 |
-| Card        | `card`          | `card/animated`                    |
-| Charts      | `charts/<type>` | —                                  |
-| Divider     | `divider`       | `divider/animated`                 |
-| Drawer      | `drawer`        | `drawer/animated`                  |
-| Dropdown    | `dropdown`      | —                                  |
+| Area            | Base subpath      | Animated subpath `…/ui/…/animated` |
+| --------------- | ----------------- | ---------------------------------- |
+| Accordion       | `accordion`       | `accordion/animated`               |
+| Alert           | `alert`           | `alert/animated`                   |
+| Avatar          | `avatar`          | `avatar/animated`                  |
+| Badge           | `badge`           | `badge/animated`                   |
+| Breadcrumb      | `breadcrumb`      | —                                  |
+| Button          | `buttons`         | `buttons/animated`                 |
+| Card            | `card`            | `card/animated`                    |
+| Charts          | `charts/<type>`   | —                                  |
+| Divider         | `divider`         | `divider/animated`                 |
+| Drawer          | `drawer`          | `drawer/animated`                  |
+| Dropdown        | `dropdown`        | —                                  |
 | Dynamic stepper | `dynamic-stepper` | —                                  |
-| Empty state | `empty-state`   | `empty-state/animated`             |
-| File upload | `file-upload`   | —                                  |
-| Input       | `inputs`        | `inputs/animated`                  |
-| Modal       | `modal`         | `modal/animated`                   |
-| Pagination  | `pagination`    | —                                  |
-| Progress    | `progress`      | `progress/animated`                |
-| Search      | `search`        | -                                  |
-| Select      | `select`        | —                                  |
-| Skeleton    | `skeleton`      | `skeleton/animated`                |
-| Slider      | `slider`        | —                                  |
-| Spinner     | —               | `spinner/animated`                 |
-| Stepper     | `stepper`       | —                                  |
-| Table       | `table`         | `table/animated`                   |
-| Tabs        | `tabs`          | `tabs/animated`                    |
-| Toast       | `toast`         | `toast/animated`                   |
-| Toggle      | `toggle`        | `toggle/animated`                  |
-| Tooltip     | `tooltip`       | `tooltip/animated`                 |
-| Typography  | `typography`    | —                                  |
+| Empty state     | `empty-state`     | `empty-state/animated`             |
+| File upload     | `file-upload`     | —                                  |
+| Input           | `inputs`          | `inputs/animated`                  |
+| Modal           | `modal`           | `modal/animated`                   |
+| Pagination      | `pagination`      | —                                  |
+| Progress        | `progress`        | `progress/animated`                |
+| Search          | `search`          | -                                  |
+| Select          | `select`          | —                                  |
+| Skeleton        | `skeleton`        | `skeleton/animated`                |
+| Slider          | `slider`          | —                                  |
+| Spinner         | —                 | `spinner/animated`                 |
+| Stepper         | `stepper`         | —                                  |
+| Table           | `table`           | `table/animated`                   |
+| Tabs            | `tabs`            | `tabs/animated`                    |
+| Toast           | `toast`           | `toast/animated`                   |
+| Toggle          | `toggle`          | `toggle/animated`                  |
+| Tooltip         | `tooltip`         | `tooltip/animated`                 |
+| Typography      | `typography`      | —                                  |
 
 ## Typography
 
@@ -234,35 +234,35 @@ export function useWizardSteps(stepCount: number) {
 
 Hooks live in `src/hooks/`. Each hook is a separate published entry under `@zentauri-ui/zentauri-components/hooks/<name>` (same pattern as UI areas). Types are exported where the implementation defines them (for example `UseDisclosureResult`, `PaginationPageItem`). For class-name merging and pagination helpers used alongside hooks, import from `@zentauri-ui/zentauri-components/hooks/utils`.
 
-| Hook / module               | Subpath `…/hooks/…`         | Notes (selected exports)                                                   |
-| --------------------------- | --------------------------- | -------------------------------------------------------------------------- |
-| `useBodyScrollLock`         | `useBodyScrollLock`         | Locks document scroll while open                                           |
-| `useClickOutside`           | `useClickOutside`           | `ClickOutsideEventType`, `UseClickOutsideParams`                           |
-| `useClipboard`              | `useClipboard`              | `UseClipboardResult`                                                       |
-| `useControllableState`      | `useControllableState`      | `UseControllableStateParams`                                               |
-| `useDebouncedValue`         | `useDebouncedValue`         | Debounced state from a value                                               |
-| `useDisclosure`             | `useDisclosure`             | `UseDisclosureParams`, `UseDisclosureResult`                               |
-| `useDocumentTitle`          | `useDocumentTitle`          | `UseDocumentTitleParams`                                                   |
+| Hook / module               | Subpath `…/hooks/…`         | Notes (selected exports)                                                                  |
+| --------------------------- | --------------------------- | ----------------------------------------------------------------------------------------- |
+| `useBodyScrollLock`         | `useBodyScrollLock`         | Locks document scroll while open                                                          |
+| `useClickOutside`           | `useClickOutside`           | `ClickOutsideEventType`, `UseClickOutsideParams`                                          |
+| `useClipboard`              | `useClipboard`              | `UseClipboardResult`                                                                      |
+| `useControllableState`      | `useControllableState`      | `UseControllableStateParams`                                                              |
+| `useDebouncedValue`         | `useDebouncedValue`         | Debounced state from a value                                                              |
+| `useDisclosure`             | `useDisclosure`             | `UseDisclosureParams`, `UseDisclosureResult`                                              |
+| `useDocumentTitle`          | `useDocumentTitle`          | `UseDocumentTitleParams`                                                                  |
 | `useDynamicStepper`         | `useDynamicStepper`         | `UseDynamicStepperParams`, `UseDynamicStepperResult` (types also on `ui/dynamic-stepper`) |
-| `useFocusManagement`        | `useFocusManagement`        | Focus trap / focus moves for overlays                                      |
-| `useHover`                  | `useHover`                  | Pointer hover state                                                        |
-| `useInView`                 | `useInView`                 | `UseInViewParams`                                                          |
-| `useIntersectionObserver`   | `useIntersectionObserver`   | `UseIntersectionObserverParams`                                            |
-| `useIsomorphicLayoutEffect` | `useIsomorphicLayoutEffect` | `useLayoutEffect` safe for SSR                                             |
-| `useIsMounted`              | `useIsMounted`              | Ref / flag after mount                                                     |
-| `useLocalStorage`           | `useLocalStorage`           | `UseLocalStorageResult`                                                    |
-| `useMediaQuery`             | `useMediaQuery`             | Match CSS media queries                                                    |
-| `useNetworkStatus`          | `useNetworkStatus`          | Online / offline                                                           |
-| `usePageVisibility`         | `usePageVisibility`         | Document visibility API                                                    |
-| `usePagination`             | `usePagination`             | `buildPaginationItems`, `BuildPaginationItemsParams`, `PaginationPageItem` |
-| `usePrefersColorScheme`     | `usePrefersColorScheme`     | `ColorSchemePreference`                                                    |
-| `usePrefersReducedMotion`   | `usePrefersReducedMotion`   | `prefers-reduced-motion`                                                   |
-| `useResizeObserver`         | `useResizeObserver`         | `ElementSize`                                                              |
-| `useSessionStorage`         | `useSessionStorage`         | `UseSessionStorageResult`                                                  |
-| `useThrottledCallback`      | `useThrottledCallback`      | Throttled callback ref                                                     |
-| `useToggle`                 | `useToggle`                 | Boolean toggle state                                                       |
-| `useWindowSize`             | `useWindowSize`             | `WindowSize`                                                               |
-| `cn`, `clampPage`, `range`  | `utils`                     | Shared helpers from `src/lib/utils.ts`                                     |
+| `useFocusManagement`        | `useFocusManagement`        | Focus trap / focus moves for overlays                                                     |
+| `useHover`                  | `useHover`                  | Pointer hover state                                                                       |
+| `useInView`                 | `useInView`                 | `UseInViewParams`                                                                         |
+| `useIntersectionObserver`   | `useIntersectionObserver`   | `UseIntersectionObserverParams`                                                           |
+| `useIsomorphicLayoutEffect` | `useIsomorphicLayoutEffect` | `useLayoutEffect` safe for SSR                                                            |
+| `useIsMounted`              | `useIsMounted`              | Ref / flag after mount                                                                    |
+| `useLocalStorage`           | `useLocalStorage`           | `UseLocalStorageResult`                                                                   |
+| `useMediaQuery`             | `useMediaQuery`             | Match CSS media queries                                                                   |
+| `useNetworkStatus`          | `useNetworkStatus`          | Online / offline                                                                          |
+| `usePageVisibility`         | `usePageVisibility`         | Document visibility API                                                                   |
+| `usePagination`             | `usePagination`             | `buildPaginationItems`, `BuildPaginationItemsParams`, `PaginationPageItem`                |
+| `usePrefersColorScheme`     | `usePrefersColorScheme`     | `ColorSchemePreference`                                                                   |
+| `usePrefersReducedMotion`   | `usePrefersReducedMotion`   | `prefers-reduced-motion`                                                                  |
+| `useResizeObserver`         | `useResizeObserver`         | `ElementSize`                                                                             |
+| `useSessionStorage`         | `useSessionStorage`         | `UseSessionStorageResult`                                                                 |
+| `useThrottledCallback`      | `useThrottledCallback`      | Throttled callback ref                                                                    |
+| `useToggle`                 | `useToggle`                 | Boolean toggle state                                                                      |
+| `useWindowSize`             | `useWindowSize`             | `WindowSize`                                                                              |
+| `cn`, `clampPage`, `range`  | `utils`                     | Shared helpers from `src/lib/utils.ts`                                                    |
 
 #### Hook import example
 
@@ -475,11 +475,11 @@ node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs add accordion
 node node_modules/@zentauri-ui/zentauri-components/cli/index.mjs add hook useWindowSize
 ```
 
-| Command               | What it does                                                                                                                                                                                                                                                                                                                               |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `init`                | Writes **`components.json`** in the current working directory (or `--cwd`) with default `aliases` and `resolvedPaths`. Refuses to overwrite an existing file.                                                                                                                                                                              |
-| `add <names...>`      | Walks up from `--cwd` (default `.`) to find `components.json`, then copies each resolved **UI** folder under `src/ui` or chart entry under `src/charts/<type>`, pulls in hooks those files depend on (including transitive hook imports), and creates **`lib/utils`** at `resolvedPaths.utils` from the package template if it is missing. |
-| `add hook <names...>` | Same config lookup; copies only **hook** folders listed under `registry.hooks` (from `hooksEntryNames` in `tsup.config.ts`), including transitive sibling-hook imports. Does not copy UI unless a hook’s imports require you to add a component separately (for example `usePagination` imports types from `ui/pagination`; `useDynamicStepper` imports types from `ui/dynamic-stepper`).               |
+| Command               | What it does                                                                                                                                                                                                                                                                                                                                                                              |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `init`                | Writes **`components.json`** in the current working directory (or `--cwd`) with default `aliases` and `resolvedPaths`. Refuses to overwrite an existing file.                                                                                                                                                                                                                             |
+| `add <names...>`      | Walks up from `--cwd` (default `.`) to find `components.json`, then copies each resolved **UI** folder under `src/ui` or chart entry under `src/charts/<type>`, pulls in hooks those files depend on (including transitive hook imports), and creates **`lib/utils`** at `resolvedPaths.utils` from the package template if it is missing.                                                |
+| `add hook <names...>` | Same config lookup; copies only **hook** folders listed under `registry.hooks` (from `hooksEntryNames` in `tsup.config.ts`), including transitive sibling-hook imports. Does not copy UI unless a hook’s imports require you to add a component separately (for example `usePagination` imports types from `ui/pagination`; `useDynamicStepper` imports types from `ui/dynamic-stepper`). |
 
 Global flags: `-h` / `--help`, `-v` / `--version`, `--cwd <dir>` (relative to `process.cwd()`).
 

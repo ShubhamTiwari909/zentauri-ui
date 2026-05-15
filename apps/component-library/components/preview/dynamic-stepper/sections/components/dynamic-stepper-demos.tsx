@@ -59,9 +59,7 @@ export function DynamicStepperCallbacksDemo() {
           {log.length === 0 ? (
             <li className="text-slate-500">Use Previous / Next…</li>
           ) : (
-            log.map((line, index) => (
-              <li key={`${index}-${line}`}>{line}</li>
-            ))
+            log.map((line, index) => <li key={`${index}-${line}`}>{line}</li>)
           )}
         </ul>
       </div>

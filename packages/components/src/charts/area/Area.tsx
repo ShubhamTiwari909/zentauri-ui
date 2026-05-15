@@ -79,7 +79,7 @@ export function AreaChart<
         />
         {series.map((item, index) => {
           const color = resolveColor(item.color, index);
-          const fill = getSeriesFill(item, index)
+          const fill = getSeriesFill(item, index);
           return (
             <Area
               key={item.dataKey}

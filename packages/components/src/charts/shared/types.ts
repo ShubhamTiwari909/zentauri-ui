@@ -82,5 +82,5 @@ export type PieChartProps<TDatum extends ChartDatum = ChartDatum> =
       fill?: PieProps["fill"];
       innerRadius?: PieProps["innerRadius"];
       outerRadius?: PieProps["outerRadius"];
-      shape?: PieProps["shape"]
+      shape?: PieProps["shape"];
     };

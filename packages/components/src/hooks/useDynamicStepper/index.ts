@@ -1,3 +1,1 @@
-export {
-  useDynamicStepper,
-} from "./useDynamicStepper";
+export { useDynamicStepper } from "./useDynamicStepper";

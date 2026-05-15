@@ -36,10 +36,7 @@ export type UsePaginationResult = {
   canGoNext: boolean;
 };
 
-export type PaginationProps = Omit<
-  ComponentPropsWithRef<"nav">,
-  "onChange"
-> &
+export type PaginationProps = Omit<ComponentPropsWithRef<"nav">, "onChange"> &
   VariantProps<typeof buttonVariants> & {
     pageCount: number;
     page?: number;

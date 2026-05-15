@@ -10,11 +10,7 @@ import {
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { Heading, Text } from "@zentauri-ui/zentauri-components/ui/typography";
 
-export default function ChartsHubPage({
-  seo,
-}: {
-  seo: PreviewSeoDocument;
-}) {
+export default function ChartsHubPage({ seo }: { seo: PreviewSeoDocument }) {
   return (
     <PreviewPageShell>
       <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">

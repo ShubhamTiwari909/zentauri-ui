@@ -316,4 +316,3 @@ export function LightLines({
     </div>
   );
 }
-export default LightLines;

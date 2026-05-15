@@ -19,6 +19,4 @@ export {
   dynamicStepperMapperVariants,
   dynamicStepperRootVariants,
 } from "./variants";
-export type {
-  DynamicStepperIndicatorSemanticState,
-} from "./variants";
+export type { DynamicStepperIndicatorSemanticState } from "./variants";

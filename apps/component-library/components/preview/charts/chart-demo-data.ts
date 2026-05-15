@@ -21,13 +21,13 @@ export const chartTimeSeriesSeries = ({
       dataKey: "desktop",
       name: "Desktop",
       color: appearance?.includes("gradient") ? "white" : "cyan",
-      stroke: "black"
+      stroke: "black",
     },
     {
       dataKey: "mobile",
       name: "Mobile",
       color: appearance?.includes("gradient") ? "white" : "emerald",
-      stroke: "black"
+      stroke: "black",
     },
   ];
 };

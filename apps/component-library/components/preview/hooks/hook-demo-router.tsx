@@ -571,11 +571,7 @@ function PageVisibilityDemo() {
 }
 
 function DynamicStepperHookDemo() {
-  const steps = [
-    { label: "Account" },
-    { label: "Plan" },
-    { label: "Billing" },
-  ];
+  const steps = [{ label: "Account" }, { label: "Plan" }, { label: "Billing" }];
   const { activeStep, goPrevious, goNext, canGoPrevious, canGoNext } =
     useDynamicStepper({
       stepCount: steps.length,

@@ -53,15 +53,13 @@ const INDICATOR_TONE_CLASSES: Record<
   outline: {
     complete:
       "border-emerald-500/55 bg-transparent text-emerald-200 ring-2 ring-emerald-500/25",
-    current:
-      "border-white/30 bg-white/10 text-white ring-2 ring-white/25",
+    current: "border-white/30 bg-white/10 text-white ring-2 ring-white/25",
     upcoming: "border-white/15 bg-white/5 text-slate-400",
   },
   ghost: {
     complete:
       "border-transparent bg-emerald-500/15 text-emerald-200 ring-2 ring-emerald-400/20",
-    current:
-      "border-transparent bg-white/10 text-white ring-2 ring-white/15",
+    current: "border-transparent bg-white/10 text-white ring-2 ring-white/15",
     upcoming: "border-transparent bg-transparent text-slate-500",
   },
   link: {
@@ -76,104 +74,90 @@ const INDICATOR_TONE_CLASSES: Record<
       "border-white/25 bg-white/10 text-emerald-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md ring-2 ring-emerald-400/25",
     current:
       "border-white/35 bg-white/15 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md ring-2 ring-white/30",
-    upcoming:
-      "border-white/15 bg-white/5 text-slate-400 backdrop-blur-sm",
+    upcoming: "border-white/15 bg-white/5 text-slate-400 backdrop-blur-sm",
   },
   emerald: {
     complete:
       "border-emerald-500/60 bg-emerald-500/20 text-emerald-100 ring-2 ring-emerald-400/30",
     current:
       "border-emerald-400 bg-emerald-500/30 text-white ring-2 ring-emerald-400/50",
-    upcoming:
-      "border-white/15 bg-emerald-950/30 text-emerald-200/55",
+    upcoming: "border-white/15 bg-emerald-950/30 text-emerald-200/55",
   },
   indigo: {
     complete:
       "border-indigo-500/60 bg-indigo-500/20 text-indigo-100 ring-2 ring-indigo-400/30",
     current:
       "border-indigo-400 bg-indigo-500/30 text-white ring-2 ring-indigo-400/50",
-    upcoming:
-      "border-white/15 bg-indigo-950/30 text-indigo-200/55",
+    upcoming: "border-white/15 bg-indigo-950/30 text-indigo-200/55",
   },
   purple: {
     complete:
       "border-purple-500/60 bg-purple-500/20 text-purple-100 ring-2 ring-purple-400/30",
     current:
       "border-purple-400 bg-purple-500/30 text-white ring-2 ring-purple-400/50",
-    upcoming:
-      "border-white/15 bg-purple-950/30 text-purple-200/55",
+    upcoming: "border-white/15 bg-purple-950/30 text-purple-200/55",
   },
   pink: {
     complete:
       "border-pink-500/60 bg-pink-500/20 text-pink-100 ring-2 ring-pink-400/30",
     current:
       "border-pink-400 bg-pink-500/30 text-white ring-2 ring-pink-400/50",
-    upcoming:
-      "border-white/15 bg-pink-950/30 text-pink-200/55",
+    upcoming: "border-white/15 bg-pink-950/30 text-pink-200/55",
   },
   rose: {
     complete:
       "border-rose-500/60 bg-rose-500/20 text-rose-100 ring-2 ring-rose-400/30",
     current:
       "border-rose-400 bg-rose-500/30 text-white ring-2 ring-rose-400/50",
-    upcoming:
-      "border-white/15 bg-rose-950/30 text-rose-200/55",
+    upcoming: "border-white/15 bg-rose-950/30 text-rose-200/55",
   },
   sky: {
     complete:
       "border-sky-500/60 bg-sky-500/20 text-sky-100 ring-2 ring-sky-400/30",
-    current:
-      "border-sky-400 bg-sky-500/30 text-white ring-2 ring-sky-400/50",
-    upcoming:
-      "border-white/15 bg-sky-950/30 text-sky-200/55",
+    current: "border-sky-400 bg-sky-500/30 text-white ring-2 ring-sky-400/50",
+    upcoming: "border-white/15 bg-sky-950/30 text-sky-200/55",
   },
   teal: {
     complete:
       "border-teal-500/60 bg-teal-500/20 text-teal-100 ring-2 ring-teal-400/30",
     current:
       "border-teal-400 bg-teal-500/30 text-white ring-2 ring-teal-400/50",
-    upcoming:
-      "border-white/15 bg-teal-950/30 text-teal-200/55",
+    upcoming: "border-white/15 bg-teal-950/30 text-teal-200/55",
   },
   yellow: {
     complete:
       "border-yellow-500/60 bg-yellow-500/20 text-yellow-100 ring-2 ring-yellow-400/30",
     current:
       "border-yellow-400 bg-yellow-600/35 text-white ring-2 ring-yellow-400/50",
-    upcoming:
-      "border-white/15 bg-yellow-950/35 text-yellow-200/55",
+    upcoming: "border-white/15 bg-yellow-950/35 text-yellow-200/55",
   },
   orange: {
     complete:
       "border-orange-500/60 bg-orange-500/20 text-orange-100 ring-2 ring-orange-400/30",
     current:
       "border-orange-400 bg-orange-600/35 text-white ring-2 ring-orange-400/50",
-    upcoming:
-      "border-white/15 bg-orange-950/30 text-orange-200/55",
+    upcoming: "border-white/15 bg-orange-950/30 text-orange-200/55",
   },
   gray: {
     complete:
       "border-gray-500/60 bg-gray-500/20 text-gray-100 ring-2 ring-gray-400/30",
     current:
       "border-gray-400 bg-gray-600/35 text-white ring-2 ring-gray-400/50",
-    upcoming:
-      "border-white/15 bg-gray-950/30 text-gray-300/70",
+    upcoming: "border-white/15 bg-gray-950/30 text-gray-300/70",
   },
   amber: {
     complete:
       "border-amber-500/60 bg-amber-500/20 text-amber-100 ring-2 ring-amber-400/30",
     current:
       "border-amber-400 bg-amber-600/35 text-white ring-2 ring-amber-400/50",
-    upcoming:
-      "border-white/15 bg-amber-950/35 text-amber-200/55",
+    upcoming: "border-white/15 bg-amber-950/35 text-amber-200/55",
   },
   violet: {
     complete:
       "border-violet-500/60 bg-violet-500/20 text-violet-100 ring-2 ring-violet-400/30",
     current:
       "border-violet-400 bg-violet-500/30 text-white ring-2 ring-violet-400/50",
-    upcoming:
-      "border-white/15 bg-violet-950/30 text-violet-200/55",
+    upcoming: "border-white/15 bg-violet-950/30 text-violet-200/55",
   },
 };
 
@@ -197,17 +181,20 @@ export const dynamicStepperRootVariants = cva("flex w-full", {
   },
 });
 
-export const dynamicStepperMapperVariants = cva("m-0 min-w-0 flex-1 list-none p-0", {
-  variants: {
-    orientation: {
-      horizontal: "flex flex-row flex-wrap items-start justify-center gap-4",
-      vertical: "flex flex-col gap-6",
+export const dynamicStepperMapperVariants = cva(
+  "m-0 min-w-0 flex-1 list-none p-0",
+  {
+    variants: {
+      orientation: {
+        horizontal: "flex flex-row flex-wrap items-start justify-center gap-4",
+        vertical: "flex flex-col gap-6",
+      },
+    },
+    defaultVariants: {
+      orientation: "horizontal",
     },
   },
-  defaultVariants: {
-    orientation: "horizontal",
-  },
-});
+);
 
 export const dynamicStepperItemVariants = cva("relative flex gap-3", {
   variants: {

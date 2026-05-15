@@ -23,11 +23,15 @@ describe("DynamicStepper", () => {
 
   it("should stamp mapper ol and button ids with suffixes", () => {
     render(<DynamicStepper steps={sampleSteps} />);
-    const mapper = document.querySelector('[data-slot="dynamic-stepper-mapper"]');
+    const mapper = document.querySelector(
+      '[data-slot="dynamic-stepper-mapper"]',
+    );
     expect(mapper?.tagName).toBe("OL");
     expect(mapper?.id.endsWith("-mapper")).toBe(true);
 
-    const prev = document.querySelector('[data-slot="dynamic-stepper-previous"]');
+    const prev = document.querySelector(
+      '[data-slot="dynamic-stepper-previous"]',
+    );
     const next = document.querySelector('[data-slot="dynamic-stepper-next"]');
     expect(prev?.id.endsWith("-previous")).toBe(true);
     expect(next?.id.endsWith("-next")).toBe(true);

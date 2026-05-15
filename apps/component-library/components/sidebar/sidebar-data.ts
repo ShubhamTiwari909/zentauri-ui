@@ -8,7 +8,7 @@ const hookSidebarItems = [...HOOK_PREVIEW_REGISTRY]
     href: `/preview/hooks/${hook.slug}`,
   }));
 
-export const sidebareRouteDataShared = [
+const sidebarRouteDataShared = [
   {
     title: "Getting Started",
     items: [
@@ -64,7 +64,7 @@ const typographySidebarItems = [
 ];
 
 export const sidebarTypographyData: SidebarNavGroup[] = [
-  ...sidebareRouteDataShared,
+  ...sidebarRouteDataShared,
   {
     title: "Typography",
     items: [...typographySidebarItems],
@@ -72,7 +72,7 @@ export const sidebarTypographyData: SidebarNavGroup[] = [
 ];
 
 export const sidebarHooksData: SidebarNavGroup[] = [
-  ...sidebareRouteDataShared,
+  ...sidebarRouteDataShared,
   {
     title: "Hooks",
     items: [...hookSidebarItems],
@@ -103,7 +103,7 @@ const chartsSidebarItems = [
 ];
 
 export const sidebarChartsData: SidebarNavGroup[] = [
-  ...sidebareRouteDataShared,
+  ...sidebarRouteDataShared,
   {
     title: "Charts",
     items: [...chartsSidebarItems],
@@ -111,7 +111,7 @@ export const sidebarChartsData: SidebarNavGroup[] = [
 ];
 
 export const sidebarComponentsData: SidebarNavGroup[] = [
-  ...sidebareRouteDataShared,
+  ...sidebarRouteDataShared,
   {
     title: "Components",
     items: [

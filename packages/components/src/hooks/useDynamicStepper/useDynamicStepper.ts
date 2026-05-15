@@ -62,13 +62,7 @@ export function useDynamicStepper({
     const nextStep = clampDynamicStepperIndex(activeStep - 1, stepCount);
     setStoredStep(nextStep);
     onPrevious?.(nextStep);
-  }, [
-    activeStep,
-    canGoPrevious,
-    onPrevious,
-    setStoredStep,
-    stepCount,
-  ]);
+  }, [activeStep, canGoPrevious, onPrevious, setStoredStep, stepCount]);
 
   const goNext = useCallback(() => {
     if (!canGoNext) {
