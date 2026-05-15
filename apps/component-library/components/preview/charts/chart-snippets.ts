@@ -193,7 +193,7 @@ export function chartAppearanceSnippet({
     stroke != null ? `  stroke="${stroke}"` : null,
     fill != null ? `  fill="${fill}"` : null,
     labelColor != null ? `  labelColor="${labelColor}"` : null,
-    customShape != null ? "  shape={MyCustomPie}" : null,
+    customShape ? "  shape={MyCustomPie}" : null,
   ]
     .filter((line: string | null) => line != null && line !== "")
     .join("\n");

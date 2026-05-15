@@ -44,7 +44,7 @@ export function ChartCodeExamplesSection({ slug }: { slug: ChartPreviewSlug }) {
               </PreviewCodeShowcase>
               <PreviewCodeShowcase
                 key={"pie-with-custom-stroke-fill"}
-                code={chartAppearanceSnippet({ slug, appearance: "default", showGrid: false, stroke: "#974970", fill: "#631831",  labelColor: "#f1dac4", customShape: true })}
+                code={chartAppearanceSnippet({ slug, appearance: "default", showGrid: false, stroke: "#974970", fill: "#631831",  labelColor: "#ffffff", customShape: true })}
                 >
                   <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} stroke="#974970" fill="#631831" labelColor="#ffffff" customShape={true} />
               </PreviewCodeShowcase>
