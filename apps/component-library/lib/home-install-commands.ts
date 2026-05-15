@@ -24,6 +24,12 @@ export const REACT_ICONS_INSTALL_COMMANDS = {
   yarn: "yarn add react-icons",
 } as const;
 
+export const RECHARTS_INSTALL_COMMANDS = {
+  npm: "npm install recharts",
+  pnpm: "pnpm add recharts",
+  yarn: "yarn add recharts",
+} as const;
+
 export const CLI_INIT_COMMANDS = {
   npm: "npx @zentauri-ui/zentauri-components init",
   pnpm: "pnpm dlx @zentauri-ui/zentauri-components init",

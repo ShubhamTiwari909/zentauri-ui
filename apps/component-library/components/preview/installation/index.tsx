@@ -12,6 +12,7 @@ import {
   INSTALL_COMMANDS,
   PEER_INSTALL_COMMANDS,
   REACT_ICONS_INSTALL_COMMANDS,
+  RECHARTS_INSTALL_COMMANDS,
 } from "@/lib/home-install-commands";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import {
@@ -36,6 +37,9 @@ const GLOBALS_CSS_SNIPPET = `@import "tailwindcss";
 const STATIC_IMPORT_SNIPPET = `import { Modal, ModalTrigger, ModalClose, ModalHeader, ModalTitle, ModalDescription, ModalBody } from "@zentauri-ui/zentauri-components/ui/modal";`;
 
 const ANIMATED_IMPORT_SNIPPET = `import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/animated";`;
+
+const CHART_IMPORT_SNIPPET = `import { AreaChart } from "@zentauri-ui/zentauri-components/charts/area";
+// Line, bar, bubble, pie: charts/line | charts/bar | charts/bubble | charts/pie`;
 
 const USAGE_SNIPPET = `<div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
   <Modal>
@@ -335,6 +339,74 @@ export default function InstallationPreviewPage({
               </TabsContentAnimated>
             </Tabs>
           </div>
+          <h3 className="mt-6 text-sm font-medium text-slate-200">
+            Charts components: optional recharts
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            Chart primitives ship from{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              @zentauri-ui/zentauri-components/charts/&lt;type&gt;
+            </code>{" "}
+            and are implemented with{" "}
+            <strong className="font-medium text-slate-300">Recharts</strong>.
+            Install{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              recharts
+            </code>{" "}
+            in your app when you import any chart entry (
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              area
+            </code>
+            ,{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              bar
+            </code>
+            ,{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              line
+            </code>
+            ,{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              bubble
+            </code>
+            ,{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              pie
+            </code>
+            ) or vendor chart source with the CLI. If your app uses only UI
+            components and hooks, skip this dependency.
+          </p>
+          <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
+            <Tabs defaultValue="npm">
+              <TabsListComponent />
+              <TabsContentAnimated value="npm" animation="fade" className="m-0">
+                <CodeHighlight
+                  codeString={RECHARTS_INSTALL_COMMANDS.npm}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+              <TabsContentAnimated
+                value="pnpm"
+                animation="fade"
+                className="m-0"
+              >
+                <CodeHighlight
+                  codeString={RECHARTS_INSTALL_COMMANDS.pnpm}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+              <TabsContentAnimated
+                value="yarn"
+                animation="fade"
+                className="m-0"
+              >
+                <CodeHighlight
+                  codeString={RECHARTS_INSTALL_COMMANDS.yarn}
+                  language="bash"
+                />
+              </TabsContentAnimated>
+            </Tabs>
+          </div>
         </section>
 
         <section className={SECTION}>
@@ -392,7 +464,19 @@ export default function InstallationPreviewPage({
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
               framer-motion
             </code>{" "}
-            as described in Step 2.
+            as described in Step 2. Chart primitives import from parallel{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              charts/&lt;type&gt;
+            </code>{" "}
+            entry points instead of{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              ui/&lt;name&gt;
+            </code>{" "}
+            and require{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              recharts
+            </code>{" "}
+            (see Charts components in Step 2).
           </p>
           <h3 className="mt-6 text-sm font-medium text-slate-200">
             Static imports
@@ -416,6 +500,23 @@ export default function InstallationPreviewPage({
               codeString={ANIMATED_IMPORT_SNIPPET}
               language="tsx"
             />
+          </div>
+          <h3 className="mt-6 text-sm font-medium text-slate-200">
+            Chart imports
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            Use one entry per chart type after adding{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              recharts
+            </code>{" "}
+            (
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              charts
+            </code>{" "}
+            are not bundled from the base UI paths).
+          </p>
+          <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
+            <CodeHighlight codeString={CHART_IMPORT_SNIPPET} language="tsx" />
           </div>
           <h3 className="mt-6 text-sm font-medium text-slate-200">Usage</h3>
           <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
@@ -588,8 +689,16 @@ export default function InstallationPreviewPage({
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
               src/ui
             </code>
+            , chart folders such as{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              charts/area
+            </code>
             , or a configured alias). Test files from the package are not
-            copied.
+            copied. Chart entries copied into your repo still rely on{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+              recharts
+            </code>{" "}
+            installed in the app (Step 2).
           </p>
           <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
             <Tabs defaultValue="npm">

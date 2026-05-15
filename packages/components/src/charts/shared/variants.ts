@@ -63,6 +63,11 @@ export const chartVariants = cva(
 );
 
 export const chartPalette = {
+  glass: { stroke: "#0f172a", fill: "#0f172a", textColor: "#0f172a" },
+  outline: { stroke: "#0f172a", fill: "#0f172a", textColor: "#0f172a" },
+  muted: { stroke: "#0f172a", fill: "#0f172a", textColor: "#0f172a" },
+  default: { stroke: "#0f172a", fill: "#0f172a", textColor: "#0f172a" },
+  sky: { stroke: "#0f172a", fill: "#0f172a", textColor: "#0f172a" },
   cyan: { stroke: "#0891b2", fill: "#67e8f9", textColor: "#0891b2" },
   emerald: { stroke: "#059669", fill: "#6ee7b7", textColor: "#059669" },
   violet: { stroke: "#7c3aed", fill: "#c4b5fd", textColor: "#7c3aed" },
@@ -72,14 +77,46 @@ export const chartPalette = {
   gray: { stroke: "#6b7280", fill: "#d1d5db", textColor: "#6b7280" },
   white: { stroke: "#ffffff", fill: "#ffffff", textColor: "#ffffff" },
   indigo: { stroke: "#6366f1", fill: "#c7d2fe", textColor: "#6366f1" },
-  "gradient-cyan-violet": { stroke: "#0891b2", fill: "#67e8f9", textColor: "#0891b2" },
-  "gradient-emerald-violet": { stroke: "#059669", fill: "#6ee7b7", textColor: "#059669" },
-  "gradient-amber-rose": { stroke: "#d97706", fill: "#fcd34d", textColor: "#d97706" },
-  "gradient-slate-gray": { stroke: "#475569", fill: "#cbd5e1", textColor: "#475569" },
-  "gradient-indigo-purple": { stroke: "#6366f1", fill: "#c7d2fe", textColor: "#6366f1" },
-  "gradient-cyan-blue": { stroke: "#0891b2", fill: "#67e8f9", textColor: "#0891b2" },
-  "gradient-emerald-blue": { stroke: "#059669", fill: "#6ee7b7", textColor: "#059669" },
-  "gradient-amber-blue": { stroke: "#d97706", fill: "#fcd34d", textColor: "#d97706" },
+  "gradient-cyan-violet": {
+    stroke: "#0891b2",
+    fill: "#67e8f9",
+    textColor: "#0891b2",
+  },
+  "gradient-emerald-violet": {
+    stroke: "#059669",
+    fill: "#6ee7b7",
+    textColor: "#059669",
+  },
+  "gradient-amber-rose": {
+    stroke: "#d97706",
+    fill: "#fcd34d",
+    textColor: "#d97706",
+  },
+  "gradient-slate-gray": {
+    stroke: "#475569",
+    fill: "#cbd5e1",
+    textColor: "#475569",
+  },
+  "gradient-indigo-purple": {
+    stroke: "#6366f1",
+    fill: "#c7d2fe",
+    textColor: "#6366f1",
+  },
+  "gradient-cyan-blue": {
+    stroke: "#0891b2",
+    fill: "#67e8f9",
+    textColor: "#0891b2",
+  },
+  "gradient-emerald-blue": {
+    stroke: "#059669",
+    fill: "#6ee7b7",
+    textColor: "#059669",
+  },
+  "gradient-amber-blue": {
+    stroke: "#d97706",
+    fill: "#fcd34d",
+    textColor: "#d97706",
+  },
 } as const;
 
 export const chartColorValues = Object.keys(chartPalette) as Array<
