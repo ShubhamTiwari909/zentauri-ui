@@ -156,6 +156,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/dropdown",
       },
       {
+        title: "Dynamic stepper",
+        href: "/preview/components/dynamic-stepper",
+      },
+      {
         title: "Empty state",
         href: "/preview/components/empty-state",
       },

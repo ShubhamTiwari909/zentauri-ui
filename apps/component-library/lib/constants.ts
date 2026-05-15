@@ -63,6 +63,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Use for wizard steps, live counters in the tab label, or transient status without leaving the tree.",
   },
   {
+    slug: "use-dynamic-stepper",
+    module: "useDynamicStepper",
+    name: "useDynamicStepper",
+    description:
+      "Clamped step index with goPrevious, goNext, and controlled or uncontrolled state for multi-step flows.",
+    intro:
+      "Headless navigation for wizards; pair with DynamicStepper or build your own step chrome.",
+  },
+  {
     slug: "use-focus-management",
     module: "useFocusManagement",
     name: "useFocusManagement",

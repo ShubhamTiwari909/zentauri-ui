@@ -10,6 +10,7 @@ import charts from "@/content/seo/preview/charts.json";
 import divider from "@/content/seo/preview/components/divider.json";
 import drawer from "@/content/seo/preview/components/drawer.json";
 import dropdown from "@/content/seo/preview/components/dropdown.json";
+import dynamicStepper from "@/content/seo/preview/components/dynamic-stepper.json";
 import emptyState from "@/content/seo/preview/components/empty-state.json";
 import hooks from "@/content/seo/preview/hooks/hooks.json";
 import fileUpload from "@/content/seo/preview/components/file-upload.json";
@@ -46,6 +47,7 @@ const previewSeoRegistry = {
   divider: divider as PreviewSeoDocument,
   drawer: drawer as PreviewSeoDocument,
   dropdown: dropdown as PreviewSeoDocument,
+  "dynamic-stepper": dynamicStepper as PreviewSeoDocument,
   "empty-state": emptyState as PreviewSeoDocument,
   hooks: hooks as PreviewSeoDocument,
   "file-upload": fileUpload as PreviewSeoDocument,

@@ -1,5 +1,5 @@
 import type { VariantProps } from "class-variance-authority";
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import type { buttonVariants } from "../buttons/variants";
 
@@ -37,7 +37,7 @@ export type UsePaginationResult = {
 };
 
 export type PaginationProps = Omit<
-  ComponentPropsWithoutRef<"nav">,
+  ComponentPropsWithRef<"nav">,
   "onChange"
 > &
   VariantProps<typeof buttonVariants> & {

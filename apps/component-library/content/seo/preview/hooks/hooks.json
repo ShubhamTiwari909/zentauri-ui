@@ -6,7 +6,7 @@
     "React hooks",
     "Zentauri UI",
     "Next.js",
-    "usePagination",
+    "useDynamicStepper",
     "useLocalStorage",
     "headless hooks",
     "TypeScript"
@@ -37,6 +37,7 @@
   "useCases": [
     "Persist UI state with useLocalStorage or useSessionStorage.",
     "Drive tables and lists with usePagination or buildPaginationItems.",
+    "Step through wizards with useDynamicStepper or the DynamicStepper UI.",
     "Respond to viewport and motion preferences with useMediaQuery and usePrefersReducedMotion.",
     "Manage overlays with useBodyScrollLock, useClickOutside, and useFocusManagement.",
     "Observe layout and visibility with useResizeObserver, useInView, and useIntersectionObserver."

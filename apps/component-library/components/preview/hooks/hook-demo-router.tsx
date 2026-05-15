@@ -21,6 +21,7 @@ import {
   buildPaginationItems,
   usePagination,
 } from "@zentauri-ui/zentauri-components/hooks/usePagination";
+import { useDynamicStepper } from "@zentauri-ui/zentauri-components/hooks/useDynamicStepper";
 import { usePrefersColorScheme } from "@zentauri-ui/zentauri-components/hooks/usePrefersColorScheme";
 import { usePrefersReducedMotion } from "@zentauri-ui/zentauri-components/hooks/usePrefersReducedMotion";
 import { useResizeObserver } from "@zentauri-ui/zentauri-components/hooks/useResizeObserver";
@@ -76,6 +77,8 @@ export function HookDemoRouter({ slug }: HookDemoRouterProps) {
       return <PageVisibilityDemo />;
     case "use-pagination":
       return <PaginationDemo />;
+    case "use-dynamic-stepper":
+      return <DynamicStepperHookDemo />;
     case "use-prefers-color-scheme":
       return <PrefersColorSchemeDemo />;
     case "use-prefers-reduced-motion":
@@ -563,6 +566,44 @@ function PageVisibilityDemo() {
         <span className="font-mono text-white">{state}</span>. Switch tabs to
         see it change.
       </p>
+    </HookDemoPanel>
+  );
+}
+
+function DynamicStepperHookDemo() {
+  const steps = [
+    { label: "Account" },
+    { label: "Plan" },
+    { label: "Billing" },
+  ];
+  const { activeStep, goPrevious, goNext, canGoPrevious, canGoNext } =
+    useDynamicStepper({
+      stepCount: steps.length,
+      defaultActiveStep: 0,
+    });
+
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Minimal labels wired to{" "}
+        <span className="font-mono text-cyan-200">useDynamicStepper</span>. Same
+        API backs{" "}
+        <span className="font-mono text-cyan-200">DynamicStepper</span> UI.
+      </p>
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <Button type="button" disabled={!canGoPrevious} onClick={goPrevious}>
+          Previous
+        </Button>
+        <Button type="button" disabled={!canGoNext} onClick={goNext}>
+          Next
+        </Button>
+        <span className="ml-2 text-sm text-slate-400">
+          Step {activeStep + 1} / {steps.length}:{" "}
+          <span className="font-medium text-white">
+            {steps[activeStep]?.label}
+          </span>
+        </span>
+      </div>
     </HookDemoPanel>
   );
 }

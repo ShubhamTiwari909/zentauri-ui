@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, useCallback, useId, type KeyboardEvent } from "react";
+import { useCallback, useId, type KeyboardEvent } from "react";
 
 import { cn, clampPage } from "../../lib/utils";
 import { buttonVariants } from "../buttons/variants";
@@ -13,28 +13,7 @@ const defaultPrevLabel = "Previous page";
 const defaultNextLabel = "Next page";
 const defaultEllipsisLabel = "More pages";
 
-export const Pagination = forwardRef<HTMLElement, PaginationProps>(
-  function Pagination(
-    {
-      className,
-      appearance = "default",
-      size = "md",
-      pageCount,
-      page,
-      defaultPage = 1,
-      onPageChange,
-      siblingCount = 1,
-      boundaryCount = 1,
-      showPrevNext = true,
-      prevLabel = defaultPrevLabel,
-      nextLabel = defaultNextLabel,
-      ellipsisLabel = defaultEllipsisLabel,
-      getPageHref,
-      "aria-label": ariaLabel = "Pagination",
-      ...rest
-    },
-    ref,
-  ) {
+export const Pagination = ({ className, appearance = "default", size = "md", pageCount, page, defaultPage = 1, onPageChange, siblingCount = 1, boundaryCount = 1, showPrevNext = true, prevLabel = defaultPrevLabel, nextLabel = defaultNextLabel, ellipsisLabel = defaultEllipsisLabel, getPageHref, "aria-label": ariaLabel = "Pagination", ref, ...rest }: PaginationProps) => {
     const id = useId();
     const listId = `${id}-list`;
 
@@ -231,7 +210,6 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
         </div>
       </nav>
     );
-  },
-);
+};
 
 Pagination.displayName = "Pagination";
