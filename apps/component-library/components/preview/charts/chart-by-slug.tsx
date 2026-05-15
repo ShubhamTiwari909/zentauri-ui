@@ -24,11 +24,10 @@ import { VariantProps } from "class-variance-authority";
 
 import { PieSectorShapeProps, Sector } from "recharts";
 
-export const COLORS = ['#1F6F5F', '#622B14', '#0D0B61', '#D92243']
-export const MyCustomPie = (props: PieSectorShapeProps) => {
+const COLORS = ["#1F6F5F", "#622B14", "#0D0B61", "#D92243"];
+const MyCustomPie = (props: PieSectorShapeProps) => {
   return <Sector {...props} fill={COLORS[props.index % COLORS.length]} />;
 };
-
 
 export type ChartBySlugProps = {
   slug: ChartPreviewSlug;
@@ -46,7 +45,7 @@ export type ChartBySlugProps = {
   outerRadius?: number | string;
   stroke?: string;
   fill?: string;
-  customShape?: boolean ;
+  customShape?: boolean;
 };
 
 export function ChartBySlug({
@@ -77,12 +76,26 @@ export function ChartBySlug({
         Show Tooltip:{" "}
         <span className="font-semibold">{showTooltip.toString()}</span> |
         Stacked: <span className="font-semibold">{stacked.toString()}</span>{" "}
-        {strokeDasharray ? `| Stroke Dasharray: ` : ""}{strokeDasharray ? <span className="font-semibold">{strokeDasharray}</span> : null}
-        {innerRadius ? `| Inner Radius: ` : ""}{innerRadius ? <span className="font-semibold">{innerRadius}</span> : null}
-        {outerRadius ? ` | Outer Radius: ` : ""}{outerRadius ? <span className="font-semibold">{outerRadius}</span> : null}
-        {stroke ? ` | Stroke: ` : ""}{stroke ? <span className="font-semibold">{stroke}</span> : null}
-        {fill ? ` | Fill: ` : ""}{fill ? <span className="font-semibold">{fill}</span> : null}
-        {labelColor ? ` | Label Color: ` : ""}{labelColor ? <span className="font-semibold">{labelColor}</span> : null}
+        {strokeDasharray ? `| Stroke Dasharray: ` : ""}
+        {strokeDasharray ? (
+          <span className="font-semibold">{strokeDasharray}</span>
+        ) : null}
+        {innerRadius ? `| Inner Radius: ` : ""}
+        {innerRadius ? (
+          <span className="font-semibold">{innerRadius}</span>
+        ) : null}
+        {outerRadius ? ` | Outer Radius: ` : ""}
+        {outerRadius ? (
+          <span className="font-semibold">{outerRadius}</span>
+        ) : null}
+        {stroke ? ` | Stroke: ` : ""}
+        {stroke ? <span className="font-semibold">{stroke}</span> : null}
+        {fill ? ` | Fill: ` : ""}
+        {fill ? <span className="font-semibold">{fill}</span> : null}
+        {labelColor ? ` | Label Color: ` : ""}
+        {labelColor ? (
+          <span className="font-semibold">{labelColor}</span>
+        ) : null}
       </Text>
       {chart}
     </div>

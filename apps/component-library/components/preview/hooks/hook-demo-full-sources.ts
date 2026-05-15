@@ -255,7 +255,7 @@ const dynamicStepperHookFullSource = [
   PANEL_IMPORT,
   "",
   "export default function HookDemo() {",
-  "  const steps = [{ label: \"Account\" }, { label: \"Plan\" }, { label: \"Billing\" }];",
+  '  const steps = [{ label: "Account" }, { label: "Plan" }, { label: "Billing" }];',
   "  const { activeStep, goPrevious, goNext, canGoPrevious, canGoNext } =",
   "    useDynamicStepper({",
   "      stepCount: steps.length,",
@@ -867,7 +867,7 @@ const windowSizeFullSource = [
   "}",
 ].join("\n");
 
-export const HOOK_DEMO_FULL_SOURCES: Record<HookPreviewSlug, string> = {
+const HOOK_DEMO_FULL_SOURCES: Record<HookPreviewSlug, string> = {
   "use-body-scroll-lock": bodyScrollLockFullSource,
   "use-click-outside": clickOutsideFullSource,
   "use-clipboard": clipboardFullSource,

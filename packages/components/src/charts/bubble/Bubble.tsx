@@ -59,7 +59,11 @@ export function BubbleChart<
             <>
               <XAxis
                 dataKey={xAxisKey}
-                type={typeof data[0]?.[xAxisKey] === "number" ? "number" : "category"}
+                type={
+                  typeof data[0]?.[xAxisKey] === "number"
+                    ? "number"
+                    : "category"
+                }
                 minTickGap={24}
                 tickLine={false}
                 tickMargin={10}
@@ -68,7 +72,11 @@ export function BubbleChart<
               />
               <YAxis
                 dataKey="__chartY"
-                type={typeof data[0]?.[xAxisKey] === "number" ? "number" : "category"}
+                type={
+                  typeof data[0]?.[xAxisKey] === "number"
+                    ? "number"
+                    : "category"
+                }
                 width={40}
                 tickLine={false}
                 tickMargin={8}

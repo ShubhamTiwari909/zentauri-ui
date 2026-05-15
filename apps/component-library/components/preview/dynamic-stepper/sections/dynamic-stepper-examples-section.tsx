@@ -31,8 +31,8 @@ export function DynamicStepperExamplesSection() {
         Uncontrolled and controlled active step, callbacks, orientation,
         <code className="text-slate-200">buttonAppearance</code> on navigation
         buttons, indicator tone palettes (non-gradient{" "}
-        <code className="text-slate-200">Button</code> appearances), sizing,
-        and DOM hooks for Tailwind.
+        <code className="text-slate-200">Button</code> appearances), sizing, and
+        DOM hooks for Tailwind.
       </p>
 
       <div className="mt-8 space-y-10">
@@ -40,8 +40,8 @@ export function DynamicStepperExamplesSection() {
           <div className="space-y-3">
             <h3 className="text-sm font-semibold text-white">Uncontrolled</h3>
             <p className="max-w-2xl text-sm text-slate-400">
-              <code className="text-slate-200">defaultActiveStep</code> seeds the
-              initial index; Previous / Next update internal state.
+              <code className="text-slate-200">defaultActiveStep</code> seeds
+              the initial index; Previous / Next update internal state.
             </p>
             <DynamicStepperUncontrolledDemo />
           </div>
@@ -97,7 +97,9 @@ export function DynamicStepperExamplesSection() {
           </div>
         </PreviewCodeShowcase>
 
-        <PreviewCodeShowcase code={dynamicStepperAppearanceSnippet("secondary")}>
+        <PreviewCodeShowcase
+          code={dynamicStepperAppearanceSnippet("secondary")}
+        >
           <div className="space-y-3">
             <h3 className="text-sm font-semibold text-white">
               Button appearance: secondary
@@ -125,17 +127,10 @@ export function DynamicStepperExamplesSection() {
           <div className="space-y-3">
             <h3 className="text-sm font-semibold text-white">
               Indicator tones (
-              <code className="text-cyan-200">
-                indicatorCompleteAppearance
-              </code>
+              <code className="text-cyan-200">indicatorCompleteAppearance</code>
               ,{" "}
-              <code className="text-cyan-200">
-                indicatorCurrentAppearance
-              </code>
-              ,{" "}
-              <code className="text-cyan-200">
-                indicatorUpcomingAppearance
-              </code>
+              <code className="text-cyan-200">indicatorCurrentAppearance</code>,{" "}
+              <code className="text-cyan-200">indicatorUpcomingAppearance</code>
               )
             </h3>
             <p className="max-w-2xl text-sm text-slate-400">
@@ -143,8 +138,8 @@ export function DynamicStepperExamplesSection() {
               <code className="text-slate-200">Button</code> appearances (
               <code className="text-slate-200">default</code>,{" "}
               <code className="text-slate-200">emerald</code>,{" "}
-              <code className="text-slate-200">outline</code>, etc.) per semantic
-              state.
+              <code className="text-slate-200">outline</code>, etc.) per
+              semantic state.
             </p>
             <DynamicStepperIndicatorTonesDemo />
           </div>
@@ -156,9 +151,8 @@ export function DynamicStepperExamplesSection() {
               IDs and data-slot for Tailwind
             </h3>
             <p className="max-w-2xl text-sm text-slate-400">
-              Each instance sets{" "}
-              <code className="text-slate-200">id</code> suffixes{" "}
-              <code className="text-slate-200">-previous</code>,{" "}
+              Each instance sets <code className="text-slate-200">id</code>{" "}
+              suffixes <code className="text-slate-200">-previous</code>,{" "}
               <code className="text-slate-200">-next</code>, and{" "}
               <code className="text-slate-200">-mapper</code> (prefixed by React{" "}
               <code className="text-slate-200">useId()</code>). Prefer attribute

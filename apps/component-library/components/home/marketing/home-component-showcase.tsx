@@ -512,9 +512,7 @@ export function HomeComponentShowcase() {
                 height={260}
                 showLegend
                 xKey="month"
-                series={[
-                  ...chartTimeSeriesSeries({ appearance: "outline" }),
-                ]}
+                series={[...chartTimeSeriesSeries({ appearance: "outline" })]}
               />
             }
           />

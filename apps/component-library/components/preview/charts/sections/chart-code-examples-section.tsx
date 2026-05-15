@@ -28,29 +28,64 @@ export function ChartCodeExamplesSection({ slug }: { slug: ChartPreviewSlug }) {
           </PreviewCodeShowcase>
         ))}
         <PreviewCodeShowcase
-            key={"no-grid-lines"}
-            code={chartAppearanceSnippet({ slug, appearance: "default", showGrid: false })}
-          >
-            <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} />
-          </PreviewCodeShowcase>
-          {
-            slug === "pie" && (
-             <>
-              <PreviewCodeShowcase
-                key={"pie-with-custom-inner-radius"}
-                code={chartAppearanceSnippet({ slug, appearance: "default", showGrid: false, innerRadius: "40%" })}
-              >
-                <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} innerRadius="40%" />
-              </PreviewCodeShowcase>
-              <PreviewCodeShowcase
-                key={"pie-with-custom-stroke-fill"}
-                code={chartAppearanceSnippet({ slug, appearance: "default", showGrid: false, stroke: "#974970", fill: "#631831",  labelColor: "#ffffff", customShape: true })}
-                >
-                  <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} stroke="#974970" fill="#631831" labelColor="#ffffff" customShape={true} />
-              </PreviewCodeShowcase>
-             </>
-            )
-          }
+          key={"no-grid-lines"}
+          code={chartAppearanceSnippet({
+            slug,
+            appearance: "default",
+            showGrid: false,
+          })}
+        >
+          <ChartBySlug
+            slug={slug}
+            appearance={"default"}
+            height={280}
+            showGrid={false}
+          />
+        </PreviewCodeShowcase>
+        {slug === "pie" && (
+          <>
+            <PreviewCodeShowcase
+              key={"pie-with-custom-inner-radius"}
+              code={chartAppearanceSnippet({
+                slug,
+                appearance: "default",
+                showGrid: false,
+                innerRadius: "40%",
+              })}
+            >
+              <ChartBySlug
+                slug={slug}
+                appearance={"default"}
+                height={280}
+                showGrid={false}
+                innerRadius="40%"
+              />
+            </PreviewCodeShowcase>
+            <PreviewCodeShowcase
+              key={"pie-with-custom-stroke-fill"}
+              code={chartAppearanceSnippet({
+                slug,
+                appearance: "default",
+                showGrid: false,
+                stroke: "#974970",
+                fill: "#631831",
+                labelColor: "#ffffff",
+                customShape: true,
+              })}
+            >
+              <ChartBySlug
+                slug={slug}
+                appearance={"default"}
+                height={280}
+                showGrid={false}
+                stroke="#974970"
+                fill="#631831"
+                labelColor="#ffffff"
+                customShape={true}
+              />
+            </PreviewCodeShowcase>
+          </>
+        )}
       </div>
     </section>
   );

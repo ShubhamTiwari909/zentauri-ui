@@ -71,7 +71,7 @@ function VisualPlaceholder({
 }
 
 // 1. Product Card
-export function ProductCard() {
+function ProductCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardBody>
@@ -97,7 +97,7 @@ export function ProductCard() {
 }
 
 // 2. User Profile Card
-export function UserProfileCard() {
+function UserProfileCard() {
   const stats = [
     ["128", "Projects"],
     ["94%", "SLA"],
@@ -129,7 +129,7 @@ export function UserProfileCard() {
 }
 
 // 3. Blog Post Card
-export function BlogPostCard() {
+function BlogPostCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardBody>
@@ -156,7 +156,7 @@ export function BlogPostCard() {
 }
 
 // 4. Pricing Card
-export function PricingCard() {
+function PricingCard() {
   const features = [
     "Unlimited workflows",
     "Advanced permissions",
@@ -206,7 +206,7 @@ export function PricingCard() {
 }
 
 // 5. Testimonial Card
-export function TestimonialCard() {
+function TestimonialCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardBody>
@@ -236,7 +236,7 @@ export function TestimonialCard() {
 }
 
 // 6. Stats Card
-export function StatsCard() {
+function StatsCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardBody>
@@ -260,7 +260,7 @@ export function StatsCard() {
 }
 
 // 7. Dashboard Summary Card
-export function DashboardSummaryCard() {
+function DashboardSummaryCard() {
   const rows = [
     ["Release readiness", "92%"],
     ["Open approvals", "14"],
@@ -289,7 +289,7 @@ export function DashboardSummaryCard() {
 }
 
 // 8. Notification Card
-export function NotificationCard() {
+function NotificationCard() {
   return (
     <Card
       appearance="outline"
@@ -316,7 +316,7 @@ export function NotificationCard() {
 }
 
 // 9. Feature Card
-export function FeatureCard() {
+function FeatureCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardHeader>
@@ -334,7 +334,7 @@ export function FeatureCard() {
 }
 
 // 10. E-commerce Cart Item Card
-export function EcommerceCartItemCard() {
+function EcommerceCartItemCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardBody className="flex-row gap-4">
@@ -358,7 +358,7 @@ export function EcommerceCartItemCard() {
 }
 
 // 11. Event Card
-export function EventCard() {
+function EventCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardHeader className="flex-row items-start gap-4">
@@ -383,7 +383,7 @@ export function EventCard() {
 }
 
 // 12. Job Listing Card
-export function JobListingCard() {
+function JobListingCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardHeader>
@@ -411,7 +411,7 @@ export function JobListingCard() {
 }
 
 // 13. Course Card
-export function CourseCard() {
+function CourseCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardBody>
@@ -438,7 +438,7 @@ export function CourseCard() {
 }
 
 // 14. Music/Media Card
-export function MusicMediaCard() {
+function MusicMediaCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardBody className="flex-row items-center gap-4">
@@ -470,7 +470,7 @@ export function MusicMediaCard() {
 }
 
 // 15. Social Post Card
-export function SocialPostCard() {
+function SocialPostCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardHeader className="flex-row items-center gap-3">
@@ -514,7 +514,7 @@ export function SocialPostCard() {
 }
 
 // 16. Analytics Card
-export function AnalyticsCard() {
+function AnalyticsCard() {
   const bars = ["h-10", "h-16", "h-12", "h-24", "h-20", "h-28", "h-14"];
 
   return (
@@ -551,7 +551,7 @@ export function AnalyticsCard() {
 }
 
 // 17. Team Member Card
-export function TeamMemberCard() {
+function TeamMemberCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardHeader className="items-center text-center">
@@ -575,7 +575,7 @@ export function TeamMemberCard() {
 }
 
 // 18. File/Document Card
-export function FileDocumentCard() {
+function FileDocumentCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardBody className="flex-row items-center gap-4">
@@ -599,7 +599,7 @@ export function FileDocumentCard() {
 }
 
 // 19. Payment/Invoice Card
-export function PaymentInvoiceCard() {
+function PaymentInvoiceCard() {
   return (
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardHeader className="flex-row items-center justify-between">
@@ -627,7 +627,7 @@ export function PaymentInvoiceCard() {
 }
 
 // 20. Empty State Card
-export function EmptyStateCard() {
+function EmptyStateCard() {
   return (
     <Card
       appearance="outline"

@@ -26,8 +26,7 @@ export const triggerVariants = cva(
           "bg-linear-to-r from-blue-600 to-purple-600 text-blue-200",
         "gradient-green":
           "bg-linear-to-r from-green-600 to-lime-600 text-green-200",
-        "gradient-red":
-          "bg-linear-to-r from-red-600 to-pink-600 text-red-200",
+        "gradient-red": "bg-linear-to-r from-red-600 to-pink-600 text-red-200",
         "gradient-yellow":
           "bg-linear-to-r from-yellow-600 to-orange-600 text-yellow-200",
         "gradient-purple":
