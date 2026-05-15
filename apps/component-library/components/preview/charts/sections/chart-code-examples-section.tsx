@@ -31,7 +31,7 @@ export function ChartCodeExamplesSection({ slug }: { slug: ChartPreviewSlug }) {
             key={"no-grid-lines"}
             code={chartAppearanceSnippet({ slug, appearance: "default", showGrid: false })}
           >
-            <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} {...(slug === "pie" ? { colors: ["#0088FE", "#00C49F", "#FFBB28", "#FF0098"] } : {})} />
+            <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} />
           </PreviewCodeShowcase>
           {
             slug === "pie" && (
@@ -40,7 +40,7 @@ export function ChartCodeExamplesSection({ slug }: { slug: ChartPreviewSlug }) {
                 key={"pie-with-custom-inner-radius"}
                 code={chartAppearanceSnippet({ slug, appearance: "default", showGrid: false, innerRadius: "40%" })}
               >
-                <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} innerRadius="40%" {...(slug === "pie" ? { colors: ["#0088FE", "#00C49F", "#FFBB28", "#FF0098"] } : {})} />
+                <ChartBySlug slug={slug} appearance={"default"} height={280} showGrid={false} innerRadius="40%" />
               </PreviewCodeShowcase>
               <PreviewCodeShowcase
                 key={"pie-with-custom-stroke-fill"}
