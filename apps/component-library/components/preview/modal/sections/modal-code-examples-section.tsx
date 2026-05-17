@@ -17,10 +17,10 @@ import {
 export function ModalCodeExamplesSection() {
   return (
     <section className={MODAL_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Modal variants examples
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Max width, vertical anchor, and surface style with a shared dialog
         layout. Code uses a Variant: lead-in per row.
       </p>

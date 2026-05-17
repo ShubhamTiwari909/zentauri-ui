@@ -2,11 +2,11 @@ import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
 
 export function InputsStatesSection() {
   return (
-    <section className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+    <section className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-100 dark:shadow-slate-950/40">
       <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-200">
         States
       </p>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Disabled and read-only
       </h2>
       <div className="mt-6 grid gap-4 sm:grid-cols-2">

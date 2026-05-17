@@ -27,7 +27,7 @@ export function DynamicStepperExamplesSection() {
   return (
     <section className={DYNAMIC_STEPPER_CODE_EXAMPLES_SECTION_CLASS}>
       <h2 className="text-2xl font-semibold text-white">Examples</h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Uncontrolled and controlled active step, callbacks, orientation,
         <code className="text-slate-200">buttonAppearance</code> on navigation
         buttons, indicator tone palettes (non-gradient{" "}

@@ -12,10 +12,10 @@ import { badgeSnippet } from "./components/badge-code-examples.snippets";
 export function BadgeCodeExamplesSection() {
   return (
     <section className={BADGE_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Badge variants examples
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Appearance tokens (pill, medium), then sizes, then shapes including dot.
         Each snippet begins with Variant: naming the row.
       </p>

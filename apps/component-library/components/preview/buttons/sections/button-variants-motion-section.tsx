@@ -9,7 +9,7 @@ export function ButtonVariantsMotionSection() {
         <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-200">
           Variants
         </p>
-        <h2 className="mt-3 text-2xl font-semibold text-white">
+        <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
           One component, multiple visual styles
         </h2>
         <p className="mt-3 text-sm leading-6 text-slate-400">
@@ -41,7 +41,7 @@ export function ButtonVariantsMotionSection() {
         <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-200">
           Motion presets
         </p>
-        <h2 className="mt-3 text-2xl font-semibold text-white">
+        <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
           Animation options through a prop
         </h2>
         <p className="mt-3 text-sm leading-6 text-slate-300">

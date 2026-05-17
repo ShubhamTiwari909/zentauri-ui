@@ -15,10 +15,10 @@ import {
 export function ToggleCodeExamplesSection() {
   return (
     <section className={TOGGLE_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Toggle variants examples
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Track colors by appearance and thumb scale by size. Code uses a Variant:
         lead-in per row.
       </p>

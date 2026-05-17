@@ -10,7 +10,7 @@ export function InputsControlledSection() {
       <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-200">
         Controlled
       </p>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Value driven by React state
       </h2>
       <p className="mt-3 text-sm text-slate-400">

@@ -13,7 +13,7 @@ import type { TypographySectionSlug } from "@/lib/typography-preview-registry";
 import { TYPOGRAPHY_TONES } from "./sections/components/typography-code-examples.data";
 
 const panel =
-  "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
+  "rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-100 dark:shadow-slate-950/40";
 
 function ToneGridHeading() {
   return (
@@ -285,7 +285,7 @@ export function TypographySectionBody({
     <>
       <section className={panel}>
         <h2 className="text-2xl font-semibold text-white">Variants showcase</h2>
-        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
           Tone tokens align with dark shells across Zentauri previews—swap
           surfaces thoughtfully.
         </p>
@@ -298,7 +298,7 @@ export function TypographySectionBody({
         <h2 className="text-2xl font-semibold text-white">
           Formatting showcase
         </h2>
-        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
           Boolean emphasis props layer Tailwind utilities consistently.
         </p>
         <div className="mt-6">
@@ -310,7 +310,7 @@ export function TypographySectionBody({
         <h2 className="text-2xl font-semibold text-white">
           Combination examples
         </h2>
-        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
           Patterns you can paste into marketing pages and dashboards.
         </p>
         <div className="mt-6 space-y-4">

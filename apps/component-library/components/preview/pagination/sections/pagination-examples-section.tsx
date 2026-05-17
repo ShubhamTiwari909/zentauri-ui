@@ -16,7 +16,7 @@ export function PaginationExamplesSection() {
   return (
     <section className={PAGINATION_CODE_EXAMPLES_SECTION_CLASS}>
       <h2 className="text-2xl font-semibold text-white">Examples</h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Each block uses the same Show output / Show code toggle as the variant
         gallery below so you can match the live UI to a copy-ready snippet.
       </p>

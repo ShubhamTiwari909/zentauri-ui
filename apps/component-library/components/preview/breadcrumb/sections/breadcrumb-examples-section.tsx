@@ -12,7 +12,7 @@ export function BreadcrumbExamplesSection() {
     <section className="space-y-6">
       <h2 className="text-2xl font-semibold text-white">Examples</h2>
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+        <div className="rounded-2xl border border-white/10 bg-slate-100 dark:bg-white/5 p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
             Custom separator
           </p>
@@ -34,7 +34,7 @@ export function BreadcrumbExamplesSection() {
             </Breadcrumb>
           </div>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+        <div className="rounded-2xl border border-white/10 bg-slate-100 dark:bg-white/5 p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
             Small separators
           </p>

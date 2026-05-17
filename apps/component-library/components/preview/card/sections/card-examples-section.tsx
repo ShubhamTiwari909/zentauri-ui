@@ -758,13 +758,13 @@ const cardVariantPreviews = [
 
 export function CardExamplesSection() {
   return (
-    <section className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+    <section className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-100 dark:shadow-slate-950/40">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="mt-3 text-2xl font-semibold text-white">
+          <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
             Production card patterns
           </h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
             Twenty reusable card compositions built only from the existing Card
             primitive and its exported sections.
           </p>
