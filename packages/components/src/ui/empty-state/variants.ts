@@ -10,9 +10,9 @@ export const emptyStateVariants = cva(
         lg: "gap-4 p-8 text-base",
       },
       appearance: {
-        default: "text-slate-50",
-        ghost: "text-slate-200",
-        card: "rounded-2xl border border-white/10 bg-white/5 p-8 text-slate-50 shadow-[0_18px_48px_rgba(15,23,42,0.35)]",
+        default: "text-slate-900 dark:text-slate-50",
+        ghost: "text-slate-700 dark:text-slate-200",
+        card: "rounded-2xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 p-8 text-slate-900 dark:text-slate-50 shadow-[0_8px_24px_rgba(15,23,42,0.12)] dark:shadow-[0_18px_48px_rgba(15,23,42,0.35)]",
       },
       align: {
         start: "items-start text-left",
@@ -39,7 +39,7 @@ export const emptyStateTitleVariants = cva("font-semibold tracking-tight", {
   defaultVariants: { size: "md" },
 });
 
-export const emptyStateDescriptionVariants = cva("max-w-md text-slate-400", {
+export const emptyStateDescriptionVariants = cva("max-w-md text-slate-500 dark:text-slate-400", {
   variants: {
     size: {
       sm: "text-xs",

@@ -33,13 +33,13 @@ export const skeletonShimmerGradientClasses = {
 export type SkeletonShimmerTone = keyof typeof skeletonShimmerGradientClasses;
 
 export const skeletonVariants = cva(
-  "relative overflow-hidden bg-white/10 text-transparent",
+  "relative overflow-hidden bg-black/10 dark:bg-white/10 text-transparent",
   {
     variants: {
       appearance: {
-        default: "bg-white/10",
-        subtle: "bg-white/[0.07]",
-        muted: "bg-slate-800/80",
+        default: "bg-black/10 dark:bg-white/10",
+        subtle: "bg-black/[0.07] dark:bg-white/[0.07]",
+        muted: "bg-slate-200/80 dark:bg-slate-800/80",
         sky: "bg-sky-500/10",
         rose: "bg-rose-500/10",
         purple: "bg-purple-500/10",
@@ -52,15 +52,15 @@ export const skeletonVariants = cva(
         gray: "bg-gray-500/10",
         amber: "bg-amber-500/10",
         violet: "bg-violet-500/10",
-        "gradient-blue": "bg-linear-to-r from-blue-600 to-purple-600",
-        "gradient-green": "bg-linear-to-r from-green-600 to-lime-600",
-        "gradient-red": "bg-linear-to-r from-red-600 to-pink-600",
-        "gradient-yellow": "bg-linear-to-r from-yellow-600 to-orange-600",
-        "gradient-purple": "bg-linear-to-r from-purple-600 to-pink-600",
-        "gradient-teal": "bg-linear-to-r from-teal-600 to-cyan-600",
-        "gradient-indigo": "bg-linear-to-r from-indigo-600 to-purple-600",
-        "gradient-pink": "bg-linear-to-r from-pink-600 to-rose-600",
-        "gradient-orange": "bg-linear-to-r from-orange-600 to-red-600",
+        "gradient-blue": "bg-linear-to-r from-blue-800 dark:from-blue-600 to-purple-800 dark:to-purple-600",
+        "gradient-green": "bg-linear-to-r from-green-800 dark:from-green-600 to-lime-800 dark:to-lime-600",
+        "gradient-red": "bg-linear-to-r from-red-800 dark:from-red-600 to-pink-800 dark:to-pink-600",
+        "gradient-yellow": "bg-linear-to-r from-yellow-800 dark:from-yellow-600 to-orange-800 dark:to-orange-600",
+        "gradient-purple": "bg-linear-to-r from-purple-800 dark:from-purple-600 to-pink-800 dark:to-pink-600",
+        "gradient-teal": "bg-linear-to-r from-teal-800 dark:from-teal-600 to-cyan-800 dark:to-cyan-600",
+        "gradient-indigo": "bg-linear-to-r from-indigo-800 dark:from-indigo-600 to-purple-800 dark:to-purple-600",
+        "gradient-pink": "bg-linear-to-r from-pink-800 dark:from-pink-600 to-rose-800 dark:to-rose-600",
+        "gradient-orange": "bg-linear-to-r from-orange-800 dark:from-orange-600 to-red-800 dark:to-red-600",
       },
       size: {
         sm: "min-h-3",
