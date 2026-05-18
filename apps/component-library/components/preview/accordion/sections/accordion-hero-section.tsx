@@ -22,7 +22,7 @@ export function AccordionHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           <AccordionItem value="item-1">
             <AccordionTrigger>Shipping</AccordionTrigger>
             <AccordionContentAnimated transitionVariant="smooth">
-              <p className="text-sm text-slate-300">
+              <p className="text-sm text-slate-900 dark:text-slate-300">
                 Standard delivery in 3-5 business days. Express options at
                 checkout.
               </p>
@@ -31,7 +31,7 @@ export function AccordionHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           <AccordionItem value="item-2">
             <AccordionTrigger>Returns</AccordionTrigger>
             <AccordionContentAnimated transitionVariant="smooth">
-              <p className="text-sm text-slate-300">
+              <p className="text-sm text-slate-900 dark:text-slate-300">
                 Free returns within 30 days of delivery in original condition.
               </p>
             </AccordionContentAnimated>

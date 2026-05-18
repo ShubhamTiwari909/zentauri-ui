@@ -13,7 +13,7 @@ import type { TypographySectionSlug } from "@/lib/typography-preview-registry";
 import { TYPOGRAPHY_TONES } from "./sections/components/typography-code-examples.data";
 
 const panel =
-  "rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-100 dark:shadow-slate-950/40";
+  "rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
 function ToneGridHeading() {
   return (

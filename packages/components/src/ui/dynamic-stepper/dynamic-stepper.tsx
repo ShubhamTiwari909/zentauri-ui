@@ -134,7 +134,7 @@ export const DynamicStepper = ({
                 {step.title != null && (
                   <div
                     className={cn(
-                      "text-sm font-semibold text-white",
+                      "text-sm font-semibold dark:text-white text-slate-900",
                       !isVertical && "mt-3",
                     )}
                   >
@@ -142,7 +142,7 @@ export const DynamicStepper = ({
                   </div>
                 )}
                 {step.description != null && (
-                  <p className="mt-1 text-xs text-slate-400">
+                  <p className="mt-1 text-xs text-slate-900 dark:text-slate-400">
                     {step.description}
                   </p>
                 )}

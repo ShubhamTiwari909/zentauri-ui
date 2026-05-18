@@ -33,7 +33,7 @@ export function ModalHeroSection({ seo }: { seo: PreviewSeoDocument }) {
               </ModalDescription>
             </ModalHeader>
             <ModalBody>
-              <p className="text-sm text-slate-300">
+              <p className="text-sm text-slate-900 dark:text-slate-300">
                 You can always undo from the activity log within 24 hours.
               </p>
             </ModalBody>

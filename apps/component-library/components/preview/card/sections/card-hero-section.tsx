@@ -17,13 +17,13 @@ export function CardHeroSection({ seo }: { seo: PreviewSeoDocument }) {
       <PreviewHeroSeoBlock seo={seo} />
 
       <CardAnimated
-        appearance="glass"
+        appearance="outline"
         animation="lift"
         rounded="lg"
         className="max-w-md"
       >
         <CardHeader>
-          <CardTitle>Usage this month</CardTitle>
+          <CardTitle className="text-slate-100 dark:text-slate-50">Usage this month</CardTitle>
           <CardDescription>Resets on the first of next month.</CardDescription>
         </CardHeader>
         <CardBody>
@@ -33,7 +33,7 @@ export function CardHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           </p>
         </CardBody>
         <CardFooter className="flex gap-2">
-          <Button appearance="outline" size="sm">
+          <Button appearance="teal" size="sm">
             Details
           </Button>
           <ButtonAnimated appearance="sky" size="sm" animation="lift">

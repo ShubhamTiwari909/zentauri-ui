@@ -20,9 +20,9 @@ export function DynamicStepperControlledDemo() {
   const [activeStep, setActiveStep] = useState(0);
   return (
     <div className="space-y-3">
-      <p className="text-sm text-slate-400">
+      <p className="text-sm text-slate-900 dark:text-slate-400">
         Controlled index:{" "}
-        <span className="font-mono text-white">{activeStep}</span>
+        <span className="font-mono text-slate-900 dark:text-white">{activeStep}</span>
       </p>
       <DynamicStepper
         steps={DEMO_STEPS_FOR_PREVIEW}
@@ -51,13 +51,13 @@ export function DynamicStepperCallbacksDemo() {
         onPrevious={(step: number) => push(`onPrevious → ${step}`)}
         onNext={(step: number) => push(`onNext → ${step}`)}
       />
-      <div className="rounded-lg border border-white/10 bg-slate-950/60 p-3">
-        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+      <div className="rounded-lg border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-3 shadow-xl shadow-slate-950/40">
+        <p className="text-xs font-semibold uppercase tracking-wider text-slate-900 dark:text-slate-500">
           Recent callbacks
         </p>
-        <ul className="mt-2 space-y-1 font-mono text-xs text-slate-300">
+        <ul className="mt-2 space-y-1 font-mono text-xs text-slate-900 dark:text-slate-300">
           {log.length === 0 ? (
-            <li className="text-slate-500">Use Previous / Next…</li>
+            <li className="text-slate-900 dark:text-slate-500">Use Previous / Next…</li>
           ) : (
             log.map((line, index) => <li key={`${index}-${line}`}>{line}</li>)
           )}

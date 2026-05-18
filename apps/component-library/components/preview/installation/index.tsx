@@ -29,7 +29,7 @@ import { Tabs } from "@zentauri-ui/zentauri-components/ui/tabs";
 import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/animated";
 
 const SECTION =
-  "rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-100 dark:shadow-slate-950/40";
+  "rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
 const GLOBALS_CSS_SNIPPET = `@import "tailwindcss";
 @source "../node_modules/@zentauri-ui/zentauri-components";`;
@@ -53,7 +53,7 @@ const USAGE_SNIPPET = `<div className="rounded-3xl border border-white/10 bg-whi
         <ModalDescription>Supporting description.</ModalDescription>
       </ModalHeader>
       <ModalBody>
-        <p className="text-sm text-slate-300">Modal body copy.</p>
+        <p className="text-sm text-slate-900 dark:text-slate-300">Modal body copy.</p>
       </ModalBody>
     </ModalContentAnimated>
   </Modal>
@@ -538,7 +538,7 @@ export default function InstallationPreviewPage({
                   <ModalDescription>Supporting description.</ModalDescription>
                 </ModalHeader>
                 <ModalBody>
-                  <p className="text-sm text-slate-300">Modal body copy.</p>
+                  <p className="text-sm text-slate-900 dark:text-slate-300">Modal body copy.</p>
                 </ModalBody>
               </ModalContentAnimated>
             </Modal>

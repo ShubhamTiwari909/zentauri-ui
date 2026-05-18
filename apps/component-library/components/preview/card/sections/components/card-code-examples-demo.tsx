@@ -1,5 +1,6 @@
 import {
   Card,
+  CardBody,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -17,8 +18,10 @@ export function CardDemo({ appearance, size, rounded }: CardDemoProps) {
           <span className="font-bold">{size.toUpperCase()}</span>, Rounded:{" "}
           <span className="font-bold">{rounded.toUpperCase()}</span>
         </CardTitle>
-        <CardDescription>Brief supporting description.</CardDescription>
       </CardHeader>
+      <CardBody>
+        <CardDescription>Brief supporting description.</CardDescription>
+      </CardBody>
     </Card>
   );
 }

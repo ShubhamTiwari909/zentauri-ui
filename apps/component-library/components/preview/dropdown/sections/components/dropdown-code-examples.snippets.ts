@@ -18,7 +18,7 @@ export function dropdownTriggerSnippet(
     `DropdownTrigger · variant · ${variant}, size · ${size}`,
   )}<Dropdown>
   <DropdownTrigger${variantAttr}${sizeAttr}>
-    Menu
+    Menu ${variant} ${size}
   </DropdownTrigger>
   <DropdownContent className="${DROPDOWN_MENU_SURFACE_CLASS}">
     <DropdownItem value="one">One</DropdownItem>
@@ -34,7 +34,7 @@ export function dropdownPlacementSnippet(
     placement === "bottom" ? "" : ` placement="${placement}"`;
   return `${variantLeadComment(`DropdownContent · placement · ${placement}`)}<Dropdown>
   <DropdownTrigger variant="outline" size="sm">
-    Menu
+    Menu ${placement}
   </DropdownTrigger>
   <DropdownContent${placementAttr} className="${DROPDOWN_MENU_SURFACE_CLASS}">
     <DropdownItem value="a">Alpha</DropdownItem>
@@ -49,7 +49,7 @@ export function dropdownSpacingSnippet(
   const spacingAttr = spacing === "default" ? "" : ` spacing="${spacing}"`;
   return `${variantLeadComment(`DropdownContent · spacing · ${spacing}`)}<Dropdown>
   <DropdownTrigger variant="outline" size="sm">
-    Menu
+    Menu ${spacing}
   </DropdownTrigger>
   <DropdownContent${spacingAttr} className="${DROPDOWN_MENU_SURFACE_CLASS}">
     <DropdownItem value="a">Alpha</DropdownItem>
@@ -61,7 +61,7 @@ export function dropdownSpacingSnippet(
 export function dropdownContentDividerSnippet(): string {
   return `${variantLeadComment(`DropdownContent · divider`)}<Dropdown>
   <DropdownTrigger variant="outline" size="sm">
-    Menu
+    Menu divider
   </DropdownTrigger>
   <DropdownContent divider className="${DROPDOWN_MENU_SURFACE_CLASS}">
     <DropdownItem value="a">Alpha</DropdownItem>

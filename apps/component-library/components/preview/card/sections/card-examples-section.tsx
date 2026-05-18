@@ -30,27 +30,26 @@ import {
   CardTitle,
 } from "@zentauri-ui/zentauri-components/ui/card";
 import { cardVariantSnippets } from "./components/card-code-examples.snippets";
+import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
+import { Avatar, AvatarFallback } from "@zentauri-ui/zentauri-components/ui/avatar";
 
 const baseCardClassName =
-  "group h-full border-white/10 bg-slate-950/70 shadow-lg shadow-slate-950/30 transition duration-200 hover:-translate-y-1 hover:border-indigo-400/40 hover:shadow-indigo-950/30";
+  "group h-full border-white/10 bg-slate-100 dark:bg-slate-950/70 shadow-lg shadow-slate-950/30 transition duration-200 hover:-translate-y-1 hover:border-indigo-400/40 hover:shadow-indigo-950/30";
 
 const iconShellClassName =
-  "grid size-10 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5 text-indigo-300";
+  "grid size-10 shrink-0 place-items-center rounded-lg border border-slate-900/10 dark:border-white/10 dark:bg-white/5 text-indigo-300";
 
 const actionClassName =
   "inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-500 px-3 py-2 text-sm font-medium text-white transition hover:bg-indigo-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
 
 const secondaryActionClassName =
-  "inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-slate-100 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
+  "inline-flex items-center justify-center gap-2 rounded-lg border border-slate-900/10 bg-slate-100 text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-100 px-3 py-2 text-sm font-medium transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
 
 function AvatarInitials({ initials }: { initials: string }) {
   return (
-    <div
-      aria-hidden="true"
-      className="grid size-11 place-items-center rounded-full bg-indigo-500/20 text-sm font-semibold text-indigo-100 ring-1 ring-indigo-300/30"
-    >
-      {initials}
-    </div>
+    <Avatar appearance="indigo">
+      <AvatarFallback>{initials}</AvatarFallback>
+    </Avatar>
   );
 }
 
@@ -83,11 +82,11 @@ function ProductCard() {
               Real-time reporting for growing SaaS teams.
             </CardDescription>
           </div>
-          <p className="text-lg font-semibold text-white">$149</p>
+          <p className="text-lg font-semibold text-slate-900 dark:text-white">$149</p>
         </div>
       </CardBody>
       <CardFooter className="flex-row items-center justify-between">
-        <span className="text-xs text-emerald-300">In stock</span>
+        <span className="text-xs text-emerald-800 dark:text-emerald-300">In stock</span>
         <a href="#product-card" className={actionClassName}>
           Add to cart
         </a>
@@ -118,8 +117,8 @@ function UserProfileCard() {
               key={label}
               className="rounded-lg border border-white/10 bg-white/5 p-3"
             >
-              <p className="font-semibold text-white">{value}</p>
-              <p className="mt-1 text-xs text-slate-400">{label}</p>
+              <p className="font-semibold text-slate-900 dark:text-white">{value}</p>
+              <p className="mt-1 text-xs text-slate-800 dark:text-slate-400">{label}</p>
             </div>
           ))}
         </div>
@@ -135,7 +134,7 @@ function BlogPostCard() {
       <CardBody>
         <VisualPlaceholder label="Abstract editorial image for a workflow article" />
         <div>
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-indigo-300">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-indigo-600 dark:text-indigo-300">
             Operations
           </p>
           <CardTitle className="mt-2">
@@ -172,12 +171,12 @@ function PricingCard() {
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle>Pro</CardTitle>
-          <span className="rounded-full bg-indigo-500/15 px-2.5 py-1 text-xs font-medium text-indigo-200">
+          <Badge appearance="indigo">
             Popular
-          </span>
+          </Badge>
         </div>
-        <p className="text-4xl font-semibold tracking-tight text-white">
-          $29<span className="text-sm font-normal text-slate-400">/seat</span>
+        <p className="text-4xl font-semibold tracking-tight text-slate-900 dark:text-white">
+          $29<span className="text-sm font-normal text-slate-800 dark:text-slate-400">/seat</span>
         </p>
         <CardDescription>
           For teams ready to automate recurring work.
@@ -188,9 +187,9 @@ function PricingCard() {
           {features.map((feature) => (
             <li
               key={feature}
-              className="flex items-center gap-2 text-sm text-slate-300"
+              className="flex items-center gap-2 text-sm text-slate-800 dark:text-slate-300"
             >
-              <FiCheck aria-hidden="true" className="text-emerald-300" />
+              <FiCheck aria-hidden="true" className="text-emerald-800 dark:text-emerald-300" />
               {feature}
             </li>
           ))}
@@ -211,14 +210,14 @@ function TestimonialCard() {
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardBody>
         <div
-          className="flex text-indigo-300"
+          className="flex text-indigo-600 dark:text-indigo-300"
           aria-label="5 out of 5 star rating"
         >
           {Array.from({ length: 5 }).map((_, index) => (
             <FiStar key={index} aria-hidden="true" fill="currentColor" />
           ))}
         </div>
-        <blockquote className="text-sm leading-6 text-slate-200">
+        <blockquote className="text-sm leading-6 text-slate-800 dark:text-slate-200">
           “The platform gave our product and support leaders one shared
           operating picture. We stopped debating status and started improving
           outcomes.”
@@ -227,8 +226,8 @@ function TestimonialCard() {
       <CardFooter className="flex-row items-center gap-3">
         <AvatarInitials initials="AS" />
         <div>
-          <p className="text-sm font-medium text-white">Amara Singh</p>
-          <p className="text-xs text-slate-400">Security Lead, Helio</p>
+          <p className="text-sm font-medium text-slate-900 dark:text-white">Amara Singh</p>
+          <p className="text-xs text-slate-800 dark:text-slate-400">Security Lead, Helio</p>
         </div>
       </CardFooter>
     </Card>
@@ -244,12 +243,12 @@ function StatsCard() {
           <span className={iconShellClassName}>
             <FiTrendingUp aria-hidden="true" />
           </span>
-          <span className="rounded-full bg-emerald-500/10 px-2 py-1 text-xs text-emerald-300">
+          <Badge appearance="emerald">
             +18.4%
-          </span>
+          </Badge>
         </div>
         <div>
-          <p className="text-4xl font-semibold tracking-tight text-white">
+          <p className="text-4xl font-semibold tracking-tight text-slate-900 dark:text-white">
             42.8k
           </p>
           <CardDescription>Qualified product events this week</CardDescription>
@@ -277,10 +276,10 @@ function DashboardSummaryCard() {
         {rows.map(([label, value]) => (
           <div
             key={label}
-            className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2"
+            className="flex items-center justify-between rounded-lg bg-slate-200 dark:bg-slate-900/5 px-3 py-2"
           >
-            <span className="text-sm text-slate-300">{label}</span>
-            <span className="text-sm font-medium text-white">{value}</span>
+            <span className="text-sm text-slate-800 dark:text-slate-300">{label}</span>
+            <span className="text-sm font-medium text-slate-900 dark:text-white">{value}</span>
           </div>
         ))}
       </CardBody>
@@ -300,12 +299,12 @@ function NotificationCard() {
     >
       <CardBody>
         <div className="flex gap-3">
-          <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-amber-400/15 text-amber-200">
+          <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-amber-400/15 text-amber-800 dark:text-amber-200">
             <FiAlertCircle aria-hidden="true" />
           </span>
           <div>
             <CardTitle>Usage threshold reached</CardTitle>
-            <CardDescription className="mt-1 text-amber-50/80">
+            <CardDescription className="mt-1 text-amber-800 dark:text-amber-50/80">
               Your ingestion volume is at 82% for the current billing cycle.
             </CardDescription>
           </div>
@@ -340,16 +339,16 @@ function EcommerceCartItemCard() {
       <CardBody className="flex-row gap-4">
         <div
           aria-hidden="true"
-          className="grid size-20 shrink-0 place-items-center rounded-lg border border-white/10 bg-indigo-500/15 text-indigo-200"
+          className="grid size-20 shrink-0 place-items-center rounded-lg border border-slate-900/10 dark:border-white/10 bg-indigo-500/15 text-indigo-200"
         >
-          <FiPackage />
+          <FiPackage className="text-indigo-800 dark:text-indigo-200" />
         </div>
         <div className="min-w-0 flex-1">
           <CardTitle>Workflow Console</CardTitle>
           <CardDescription>Annual subscription, 10 seats</CardDescription>
           <div className="mt-3 flex items-center justify-between">
-            <span className="text-sm text-slate-400">Qty 1</span>
-            <span className="font-semibold text-white">$2,900</span>
+            <span className="text-sm text-slate-800 dark:text-slate-400">Qty 1</span>
+            <span className="font-semibold text-slate-900 dark:text-white">$2,900</span>
           </div>
         </div>
       </CardBody>
@@ -363,8 +362,8 @@ function EventCard() {
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardHeader className="flex-row items-start gap-4">
         <div className="rounded-lg border border-indigo-300/30 bg-indigo-500/15 px-3 py-2 text-center">
-          <p className="text-xs uppercase text-indigo-200">May</p>
-          <p className="text-2xl font-semibold text-white">21</p>
+          <p className="text-xs uppercase text-indigo-800 dark:text-indigo-200">May</p>
+          <p className="text-2xl font-semibold text-indigo-800 dark:text-indigo-200">21</p>
         </div>
         <div>
           <CardTitle>ScaleOps roundtable</CardTitle>
@@ -391,9 +390,7 @@ function JobListingCard() {
           <span className={iconShellClassName}>
             <FiBriefcase aria-hidden="true" />
           </span>
-          <span className="rounded-full bg-white/5 px-2 py-1 text-xs text-slate-300">
-            Remote
-          </span>
+         <Badge appearance="outline">Remote</Badge>
         </div>
         <CardTitle>Senior Frontend Engineer</CardTitle>
         <CardDescription>
@@ -401,7 +398,7 @@ function JobListingCard() {
         </CardDescription>
       </CardHeader>
       <CardFooter className="flex-row items-center justify-between">
-        <span className="text-sm text-slate-400">$155k - $190k</span>
+        <span className="text-sm text-slate-800 dark:text-slate-400">$155k - $190k</span>
         <a href="#job-listing-card" className={secondaryActionClassName}>
           Apply
         </a>
@@ -424,11 +421,11 @@ function CourseCard() {
           <CardDescription>Instructor: Lena Ortiz · 18 lessons</CardDescription>
         </div>
         <div>
-          <div className="flex justify-between text-xs text-slate-400">
+          <div className="flex justify-between text-xs text-slate-800 dark:text-slate-400">
             <span>Progress</span>
             <span>64%</span>
           </div>
-          <div className="mt-2 h-2 rounded-full bg-white/10">
+          <div className="mt-2 h-2 rounded-full bg-slate-200 dark:bg-slate-900/5">
             <div className="h-full w-2/3 rounded-full bg-indigo-400" />
           </div>
         </div>
@@ -459,7 +456,7 @@ function MusicMediaCard() {
             >
               <FiPlay aria-hidden="true" />
             </button>
-            <div className="h-1.5 flex-1 rounded-full bg-white/10">
+            <div className="h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-900/5">
               <div className="h-full w-1/3 rounded-full bg-indigo-400" />
             </div>
           </div>
@@ -481,29 +478,29 @@ function SocialPostCard() {
         </div>
       </CardHeader>
       <CardBody>
-        <p className="text-sm leading-6 text-slate-300">
+        <p className="text-sm leading-6 text-slate-800 dark:text-slate-300">
           We cut review time by pairing release ownership with automated risk
           signals. The biggest win was fewer context-switching escalations.
         </p>
       </CardBody>
-      <CardFooter className="flex-row justify-between text-sm text-slate-300">
+      <CardFooter className="flex-row justify-between text-sm text-slate-800 dark:text-slate-300">
         <button
           type="button"
-          className="inline-flex items-center gap-2 hover:text-white"
+          className="inline-flex items-center gap-2 hover:text-slate-900 dark:hover:text-white"
           aria-label="Like post"
         >
           <FiHeart aria-hidden="true" /> 248
         </button>
         <button
           type="button"
-          className="inline-flex items-center gap-2 hover:text-white"
+          className="inline-flex items-center gap-2 hover:text-slate-900 dark:hover:text-white"
           aria-label="Comment on post"
         >
           <FiMessageCircle aria-hidden="true" /> 32
         </button>
         <button
           type="button"
-          className="inline-flex items-center gap-2 hover:text-white"
+          className="inline-flex items-center gap-2 hover:text-slate-900 dark:hover:text-white"
           aria-label="Share post"
         >
           <FiShare2 aria-hidden="true" /> Share
@@ -537,12 +534,12 @@ function AnalyticsCard() {
         </div>
         <div className="grid grid-cols-2 gap-2 text-sm">
           <div className="rounded-lg bg-white/5 p-3">
-            <p className="text-slate-400">Conversion</p>
-            <p className="font-semibold text-white">31.8%</p>
+            <p className="text-slate-800 dark:text-slate-400">Conversion</p>
+            <p className="font-semibold text-slate-900 dark:text-white">31.8%</p>
           </div>
           <div className="rounded-lg bg-white/5 p-3">
-            <p className="text-slate-400">Velocity</p>
-            <p className="font-semibold text-white">4.2 days</p>
+            <p className="text-slate-800 dark:text-slate-400">Velocity</p>
+            <p className="font-semibold text-slate-900 dark:text-white">4.2 days</p>
           </div>
         </div>
       </CardBody>
@@ -560,7 +557,7 @@ function TeamMemberCard() {
         <CardDescription>Design Systems Lead</CardDescription>
       </CardHeader>
       <CardBody>
-        <p className="text-center text-sm leading-6 text-slate-300">
+        <p className="text-center text-sm leading-6 text-slate-800 dark:text-slate-300">
           Owns component quality, accessibility reviews, and release polish for
           the product surface.
         </p>
@@ -614,12 +611,10 @@ function PaymentInvoiceCard() {
       <CardBody>
         <div className="flex items-end justify-between">
           <div>
-            <p className="text-sm text-slate-400">Amount due</p>
-            <p className="text-3xl font-semibold text-white">$4,820.00</p>
+            <p className="text-sm text-slate-800 dark:text-slate-400">Amount due</p>
+            <p className="text-3xl font-semibold text-slate-900 dark:text-white">$4,820.00</p>
           </div>
-          <span className="rounded-full bg-amber-500/15 px-2.5 py-1 text-xs text-amber-200">
-            Pending
-          </span>
+          <Badge appearance="yellow">Pending</Badge>
         </div>
       </CardBody>
     </Card>
@@ -635,7 +630,7 @@ function EmptyStateCard() {
       className={`${baseCardClassName} items-center text-center`}
     >
       <CardBody className="items-center py-8">
-        <span className="grid size-12 place-items-center rounded-full border border-dashed border-indigo-300/40 text-indigo-200">
+        <span className="grid size-12 place-items-center rounded-full border border-dashed border-indigo-300/40 text-indigo-800 dark:text-indigo-200">
           <FiUploadCloud aria-hidden="true" />
         </span>
         <div>
@@ -758,7 +753,7 @@ const cardVariantPreviews = [
 
 export function CardExamplesSection() {
   return (
-    <section className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-100 dark:shadow-slate-950/40">
+    <section className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">

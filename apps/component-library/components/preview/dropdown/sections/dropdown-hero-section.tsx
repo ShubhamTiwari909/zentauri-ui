@@ -15,7 +15,7 @@ export function DropdownHeroSection({ seo }: { seo: PreviewSeoDocument }) {
     <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
       <PreviewHeroSeoBlock seo={seo} />
 
-      <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+      <div className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
         <Dropdown>
           <DropdownTrigger variant="outline" size="md">
             Open menu

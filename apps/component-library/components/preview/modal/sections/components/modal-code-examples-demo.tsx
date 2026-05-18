@@ -37,7 +37,7 @@ export function ModalDemo({
           <ModalDescription>Supporting description.</ModalDescription>
         </ModalHeader>
         <ModalBody>
-          <p className="text-sm text-slate-300">Modal body copy.</p>
+          <p className="text-sm text-slate-900 dark:text-slate-300">Modal body copy.</p>
         </ModalBody>
       </ModalContentAnimated>
     </Modal>
