@@ -18,21 +18,21 @@ export const typographyToneVariants = cva("", {
       warning: "text-amber-700 dark:text-amber-300 border-amber-300/40",
       error: "text-red-700 dark:text-red-300 border-red-300/40",
       "gradient-pink-violet":
-        "bg-linear-to-r from-pink-600 dark:from-pink-400 to-violet-600 dark:to-violet-400 bg-clip-text text-transparent",
+        "bg-linear-to-r from-pink-600 dark:from-pink-400 to-violet-600 dark:to-violet-400 bg-clip-text text-transparent border-violet-300/40",
       "gradient-cyan-violet":
-        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-violet-600 dark:to-violet-400 bg-clip-text text-transparent",
+        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-violet-600 dark:to-violet-400 bg-clip-text text-transparent border-violet-300/40",
       "gradient-cyan-blue":
-        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-blue-600 dark:to-blue-400 bg-clip-text text-transparent",
+        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-blue-600 dark:to-blue-400 bg-clip-text text-transparent border-blue-300/40",
       "gradient-cyan-green":
-        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-green-600 dark:to-green-400 bg-clip-text text-transparent",
+        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-green-600 dark:to-green-400 bg-clip-text text-transparent border-green-300/40",
       "gradient-cyan-orange":
-        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-orange-600 dark:to-orange-400 bg-clip-text text-transparent",
+        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-orange-600 dark:to-orange-400 bg-clip-text text-transparent border-orange-300/40",
       "gradient-cyan-red":
-        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-red-600 dark:to-red-400 bg-clip-text text-transparent",
+        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-red-600 dark:to-red-400 bg-clip-text text-transparent border-red-300/40",
       "gradient-cyan-purple":
-        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-purple-600 dark:to-purple-400 bg-clip-text text-transparent",
+        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-purple-600 dark:to-purple-400 bg-clip-text text-transparent border-purple-300/40",
       "gradient-cyan-pink":
-        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-pink-600 dark:to-pink-400 bg-clip-text text-transparent",
+        "bg-linear-to-r from-cyan-600 dark:from-cyan-400 to-pink-600 dark:to-pink-400 bg-clip-text text-transparent border-pink-300/40",
     },
   },
   defaultVariants: {

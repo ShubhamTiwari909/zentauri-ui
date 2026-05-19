@@ -16,7 +16,7 @@ export function TypographyHeroDemo({
   section: TypographySectionSlug;
 }) {
   const shell =
-    "rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl w-full overflow-auto";
+    "rounded-3xl border border-white/10 bg-white/90 dark:bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl w-full overflow-auto";
 
   switch (section) {
     case "heading":
