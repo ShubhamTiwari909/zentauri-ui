@@ -21,7 +21,7 @@ export function PaginationExamplesControlledDemo() {
         siblingCount={1}
         boundaryCount={1}
       />
-      <p className="text-xs text-slate-400 mt-5">
+      <p className="text-xs text-slate-800 dark:text-slate-400 mt-5">
         Current page: <span className="font-bold">{page}</span>
       </p>
     </div>
@@ -40,17 +40,17 @@ export function PaginationExamplesHeadlessDemo() {
 
   return (
     <>
-      <p className="max-w-2xl text-sm text-slate-400">
+      <p className="max-w-2xl text-sm text-slate-800 dark:text-slate-400">
         Current page {headless.currentPage} of {headless.pageCount}.{" "}
-        <code className="text-slate-200">canGoPrev</code>=
+        <code className="text-slate-800 dark:text-slate-200">canGoPrev</code>=
         {String(headless.canGoPrev)},{" "}
-        <code className="text-slate-200">canGoNext</code>=
+        <code className="text-slate-800 dark:text-slate-200">canGoNext</code>=
         {String(headless.canGoNext)}.
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
         <button
           type="button"
-          className="rounded-lg border border-white/15 px-3 py-1.5 text-sm text-slate-200 hover:bg-white/5"
+          className="rounded-lg border border-slate-900/15 px-3 py-1.5 text-sm text-slate-800 hover:bg-white dark:border-white/15 dark:text-slate-200 dark:hover:bg-white/5"
           disabled={!headless.canGoPrev}
           onClick={headless.goPrev}
         >
@@ -58,14 +58,14 @@ export function PaginationExamplesHeadlessDemo() {
         </button>
         <button
           type="button"
-          className="rounded-lg border border-white/15 px-3 py-1.5 text-sm text-slate-200 hover:bg-white/5"
+          className="rounded-lg border border-slate-900/15 px-3 py-1.5 text-sm text-slate-800 hover:bg-white dark:border-white/15 dark:text-slate-200 dark:hover:bg-white/5"
           disabled={!headless.canGoNext}
           onClick={headless.goNext}
         >
           usePagination.goNext
         </button>
       </div>
-      <pre className="mt-3 overflow-x-auto rounded-xl border border-white/10 bg-black/40 p-4 text-xs text-slate-300">
+      <pre className="mt-3 overflow-x-auto rounded-xl border border-slate-900/10 dark:border-white/10 bg-black/40 p-4 text-xs text-slate-800 dark:text-slate-300">
         {JSON.stringify(headless.items, null, 2)}
       </pre>
     </>

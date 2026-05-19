@@ -77,7 +77,7 @@ export const Pagination = ({
 
   const inactiveTriggerClass = cn(
     buttonVariants({ appearance: "ghost", size }),
-    "bg-white/[0.04] text-slate-200 hover:bg-white/10",
+    "bg-white/[0.04] text-slate-900 dark:text-slate-200 hover:bg-white/10",
   );
 
   const currentTriggerClass = buttonVariants({ appearance, size });

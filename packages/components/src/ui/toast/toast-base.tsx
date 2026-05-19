@@ -186,7 +186,7 @@ export function ToastDescription({ className, children }: ToastSectionProps) {
   return (
     <div
       data-slot="toast-description"
-      className={cn("text-sm text-slate-300", className)}
+      className={cn("text-sm", className)}
     >
       {children}
     </div>

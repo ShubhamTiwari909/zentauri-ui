@@ -2,11 +2,12 @@ import { ToggleAnimated } from "@zentauri-ui/zentauri-components/ui/toggle/anima
 
 import type { ToggleDemoProps } from "./toggle-code-examples.types";
 
-export function ToggleDemo({ appearance, size }: ToggleDemoProps) {
+export function ToggleDemo({ appearance, size, thumbColor }: ToggleDemoProps) {
   return (
     <ToggleAnimated
       appearance={appearance}
       size={size}
+      thumbColor={thumbColor}
       defaultChecked
       animation="spring"
       aria-label="Demo toggle"

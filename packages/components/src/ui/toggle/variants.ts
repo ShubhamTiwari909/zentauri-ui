@@ -10,34 +10,34 @@ export const toggleTrackVariants = cva(
         lg: "h-7 w-[3.25rem]",
       },
       appearance: {
-        default: "data-[state=checked]:bg-cyan-100/50 dark:data-[state=checked]:bg-cyan-600/80",
+        default: "data-[state=checked]:bg-cyan-400/50 dark:data-[state=checked]:bg-cyan-600/80",
         success:
-          "data-[state=checked]:border-emerald-500/40 data-[state=checked]:bg-emerald-100/50 dark:data-[state=checked]:bg-emerald-600/80",
+          "data-[state=checked]:border-emerald-500/40 data-[state=checked]:bg-emerald-400/50 dark:data-[state=checked]:bg-emerald-600/80",
         destructive:
-          "data-[state=checked]:border-rose-500/40 data-[state=checked]:bg-rose-100/50 dark:data-[state=checked]:bg-rose-600/80",
+          "data-[state=checked]:border-rose-500/40 data-[state=checked]:bg-rose-400/50 dark:data-[state=checked]:bg-rose-600/80",
         neutral:
           "data-[state=checked]:border-slate-500/40 dark:data-[state=checked]:border-slate-400/40 data-[state=checked]:bg-slate-400/90 dark:data-[state=checked]:bg-slate-600/90",
         indigo:
-          "data-[state=checked]:border-indigo-500/40 data-[state=checked]:bg-indigo-100/50 dark:data-[state=checked]:bg-indigo-600/80",
+          "data-[state=checked]:border-indigo-500/40 data-[state=checked]:bg-indigo-400/50 dark:data-[state=checked]:bg-indigo-600/80",
         purple:
-          "data-[state=checked]:border-purple-500/40 data-[state=checked]:bg-purple-100/50 dark:data-[state=checked]:bg-purple-600/80",
-        pink: "data-[state=checked]:border-pink-500/40 data-[state=checked]:bg-pink-100/50 dark:data-[state=checked]:bg-pink-600/80",
+          "data-[state=checked]:border-purple-500/40 data-[state=checked]:bg-purple-400/50 dark:data-[state=checked]:bg-purple-600/80",
+        pink: "data-[state=checked]:border-pink-500/40 data-[state=checked]:bg-pink-400/50 dark:data-[state=checked]:bg-pink-600/80",
         orange:
-          "data-[state=checked]:border-orange-500/40 data-[state=checked]:bg-orange-100/50 dark:data-[state=checked]:bg-orange-600/80",
+          "data-[state=checked]:border-orange-500/40 data-[state=checked]:bg-orange-400/50 dark:data-[state=checked]:bg-orange-600/80",
         yellow:
-          "data-[state=checked]:border-yellow-500/40 data-[state=checked]:bg-yellow-100/50 dark:data-[state=checked]:bg-yellow-600/80",
+          "data-[state=checked]:border-yellow-500/40 data-[state=checked]:bg-yellow-400/50 dark:data-[state=checked]:bg-yellow-600/80",
         green:
-          "data-[state=checked]:border-green-500/40 data-[state=checked]:bg-green-100/50 dark:data-[state=checked]:bg-green-600/80",
-        teal: "data-[state=checked]:border-teal-500/40 data-[state=checked]:bg-teal-100/50 dark:data-[state=checked]:bg-teal-600/80",
-        cyan: "data-[state=checked]:border-cyan-500/40 data-[state=checked]:bg-cyan-100/50 dark:data-[state=checked]:bg-cyan-600/80",
-        lime: "data-[state=checked]:border-lime-500/40 data-[state=checked]:bg-lime-100/50 dark:data-[state=checked]:bg-lime-600/80",
+          "data-[state=checked]:border-green-500/40 data-[state=checked]:bg-green-400/50 dark:data-[state=checked]:bg-green-600/80",
+        teal: "data-[state=checked]:border-teal-500/40 data-[state=checked]:bg-teal-400/50 dark:data-[state=checked]:bg-teal-600/80",
+        cyan: "data-[state=checked]:border-cyan-500/40 data-[state=checked]:bg-cyan-400/50 dark:data-[state=checked]:bg-cyan-600/80",
+        lime: "data-[state=checked]:border-lime-500/40 data-[state=checked]:bg-lime-400/50 dark:data-[state=checked]:bg-lime-600/80",
         emerald:
-          "data-[state=checked]:border-emerald-500/40 data-[state=checked]:bg-emerald-100/50 dark:data-[state=checked]:bg-emerald-600/80",
-        rose: "data-[state=checked]:border-rose-500/40 data-[state=checked]:bg-rose-100/50 dark:data-[state=checked]:bg-rose-600/80",
+          "data-[state=checked]:border-emerald-500/40 data-[state=checked]:bg-emerald-400/50 dark:data-[state=checked]:bg-emerald-600/80",
+        rose: "data-[state=checked]:border-rose-500/40 data-[state=checked]:bg-rose-400/50 dark:data-[state=checked]:bg-rose-600/80",
         slate:
           "data-[state=checked]:border-slate-500/40 dark:data-[state=checked]:border-slate-400/40 data-[state=checked]:bg-slate-400/90 dark:data-[state=checked]:bg-slate-600/90",
         zinc: "data-[state=checked]:border-zinc-400/40 data-[state=checked]:bg-zinc-600/90",
-        gray: "data-[state=checked]:border-gray-400/40 data-[state=checked]:bg-gray-100/50 dark:data-[state=checked]:bg-gray-600/90",
+        gray: "data-[state=checked]:border-gray-400/40 data-[state=checked]:bg-gray-400/50 dark:data-[state=checked]:bg-gray-600/90",
         stone:
           "data-[state=checked]:border-stone-400/40 data-[state=checked]:bg-stone-600/90",
         "gradient-blue":
@@ -68,7 +68,7 @@ export const toggleTrackVariants = cva(
 );
 
 export const toggleThumbVariants = cva(
-  "pointer-events-none block rounded-full bg-black dark:bg-white shadow-[0_1px_2px_rgba(15,23,42,0.12)] dark:shadow-[0_1px_2px_rgba(15,23,42,0.35)] ring-0",
+  "pointer-events-none block rounded-full border border-slate-900/30 dark:border-white/10 shadow-[0_1px_2px_rgba(15,23,42,0.12)] dark:shadow-[0_1px_2px_rgba(15,23,42,0.35)] ring-0",
   {
     variants: {
       size: {
@@ -76,9 +76,40 @@ export const toggleThumbVariants = cva(
         md: "size-5",
         lg: "size-6",
       },
+      thumbColor: {
+        default: "bg-white",
+        success: "bg-emerald-500",
+        destructive: "bg-rose-500",
+        neutral: "bg-slate-500",
+        indigo: "bg-indigo-500",
+        purple: "bg-purple-500",
+        pink: "bg-pink-500",
+        orange: "bg-orange-500",
+        yellow: "bg-yellow-500",
+        green: "bg-green-500",
+        teal: "bg-teal-500",
+        cyan: "bg-cyan-500",
+        lime: "bg-lime-500",
+        emerald: "bg-emerald-500",
+        rose: "bg-rose-500",
+        slate: "bg-slate-500",
+        zinc: "bg-zinc-500",
+        gray: "bg-gray-500",
+        stone: "bg-stone-500",
+        "gradient-blue": "bg-blue-500",
+        "gradient-green": "bg-green-500",
+        "gradient-red": "bg-red-500",
+        "gradient-yellow": "bg-yellow-500",
+        "gradient-purple": "bg-purple-500",
+        "gradient-teal": "bg-teal-500",
+        "gradient-indigo": "bg-indigo-500",
+        "gradient-pink": "bg-pink-500",
+        "gradient-orange": "bg-orange-500",
+      }
     },
     defaultVariants: {
       size: "md",
+      thumbColor: "default",
     },
   },
 );

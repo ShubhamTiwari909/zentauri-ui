@@ -58,7 +58,7 @@ export function InputsCodeExamplesSection() {
             key={row.label}
             code={inputAppearanceSnippet(row)}
           >
-            <p className="mb-5 text-xs font-semibold text-white">
+            <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
               Appearance:{" "}
               <span className="font-bold">{row.appearance.toUpperCase()}</span>
             </p>
@@ -72,7 +72,7 @@ export function InputsCodeExamplesSection() {
               key={`anim-${label}`}
               code={inputAnimationSnippet(preset)}
             >
-              <p className="mb-5 text-xs font-semibold text-white">
+              <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
                 Animation:{" "}
                 <span className="font-bold">{preset[1].toUpperCase()}</span>
               </p>
@@ -85,7 +85,7 @@ export function InputsCodeExamplesSection() {
             key={`size-${row.label}`}
             code={inputSizeSnippet(row)}
           >
-            <p className="mb-5 text-xs font-semibold text-white">
+            <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
               Size: <span className="font-bold">{row.size.toUpperCase()}</span>
             </p>
             <InputsSizeDemo row={row} />
@@ -95,13 +95,13 @@ export function InputsCodeExamplesSection() {
           key="textarea-showcase"
           code={inputTextareaSnippet()}
         >
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
             Pattern: <span className="font-bold">TEXTAREA + GLOW</span>
           </p>
           <InputsTextareaDemo />
         </PreviewCodeShowcase>
         <PreviewCodeShowcase key="password-type" code={inputPasswordSnippet()}>
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
             Type: <span className="font-bold">PASSWORD</span>
           </p>
           <InputsPasswordDemo />
@@ -110,7 +110,7 @@ export function InputsCodeExamplesSection() {
           key="disabled-showcase"
           code={inputDisabledSnippet()}
         >
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
             State: <span className="font-bold">DISABLED</span>
           </p>
           <InputsDisabledDemo />
@@ -119,7 +119,7 @@ export function InputsCodeExamplesSection() {
           key="readonly-showcase"
           code={inputReadOnlySnippet()}
         >
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
             State: <span className="font-bold">READ ONLY</span>
           </p>
           <InputsReadOnlyDemo />
@@ -128,7 +128,7 @@ export function InputsCodeExamplesSection() {
           key="controlled-showcase"
           code={inputControlledSnippet()}
         >
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
             Pattern: <span className="font-bold">CONTROLLED</span>
           </p>
           <InputsControlledDemo />
@@ -137,19 +137,19 @@ export function InputsCodeExamplesSection() {
           key="error-message-showcase"
           code={inputErrorMessageSnippet()}
         >
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
             Slot: <span className="font-bold">ERROR MESSAGE</span>
           </p>
           <InputsErrorMessageDemo />
         </PreviewCodeShowcase>
         <PreviewCodeShowcase key="no-ring-showcase" code={inputNoRingSnippet()}>
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
             Ring: <span className="font-bold">FALSE</span>
           </p>
           <InputsNoRingDemo />
         </PreviewCodeShowcase>
         <PreviewCodeShowcase key="file-showcase" code={inputFileSnippet()}>
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
             As: <span className="font-bold">FILE</span>
           </p>
           <InputsFileDemo />
@@ -158,13 +158,13 @@ export function InputsCodeExamplesSection() {
           key="checkbox-showcase"
           code={inputCheckboxSnippet()}
         >
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
             As: <span className="font-bold">CHECKBOX</span>
           </p>
           <InputsCheckboxDemo />
         </PreviewCodeShowcase>
         <PreviewCodeShowcase key="radio-showcase" code={inputRadioSnippet()}>
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
             As: <span className="font-bold">RADIO</span>
           </p>
           <InputsRadioDemo />
@@ -173,13 +173,13 @@ export function InputsCodeExamplesSection() {
           key="radio-group-showcase"
           code={inputRadioGroupSnippet()}
         >
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
             Pattern: <span className="font-bold">RADIO GROUP</span>
           </p>
           <InputsRadioGroupDemo />
         </PreviewCodeShowcase>
         <PreviewCodeShowcase key="date-showcase" code={inputDateSnippet()}>
-          <p className="mb-5 text-xs font-semibold text-white">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
             Type: <span className="font-bold">DATE</span>
           </p>
           <InputsDateDemo />

@@ -19,9 +19,7 @@ export function DrawerHeroSection({ seo }: { seo: PreviewSeoDocument }) {
 
       <div className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
         <Drawer defaultOpen={false}>
-          <DrawerTrigger appearance="sky">
-            Open drawer
-          </DrawerTrigger>
+          <DrawerTrigger appearance="sky">Open drawer</DrawerTrigger>
           <DrawerContentAnimated
             side="right"
             animation="slide"

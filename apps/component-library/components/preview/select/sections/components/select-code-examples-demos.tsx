@@ -44,7 +44,7 @@ export function SelectContentDemo({
 }: SelectContentDemoProps) {
   return (
     <div className="max-w-md">
-      <p className="mb-5 text-sm text-slate-400">
+      <p className="mb-5 text-sm text-slate-800 dark:text-slate-400">
         SelectContent · Appearance ·{" "}
         <span className="font-bold">{contentAppearance}</span>, Size ·{" "}
         <span className="font-bold">{contentSize}</span>, Spacing ·{" "}
@@ -74,7 +74,7 @@ export function SelectContentDemo({
 export function SelectMultiDemo() {
   return (
     <div className="max-w-md">
-      <p className="mb-5 text-sm text-slate-400">
+      <p className="mb-5 text-sm text-slate-800 dark:text-slate-400">
         Select · multi, controlled value + onChange
       </p>
       <Select multiple defaultValue={["opt-a", "opt-b"]}>

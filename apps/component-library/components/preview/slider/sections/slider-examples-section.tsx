@@ -8,10 +8,12 @@ import {
 export function SliderExamplesSection() {
   return (
     <section className="space-y-6">
-      <h2 className="text-2xl font-semibold text-white">Appearances</h2>
+      <h2 className="text-2xl font-semibold text-white">
+        Appearances
+      </h2>
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+        <div className="rounded-2xl border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-5">
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-800 dark:text-slate-400">
             Default
           </p>
           <Slider
@@ -25,8 +27,8 @@ export function SliderExamplesSection() {
             </SliderTrack>
           </Slider>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+        <div className="rounded-2xl border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-5">
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-800 dark:text-slate-400">
             Violet (default gradient)
           </p>
           <Slider

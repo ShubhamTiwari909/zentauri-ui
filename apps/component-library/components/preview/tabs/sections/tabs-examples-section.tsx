@@ -5,35 +5,15 @@ import {
   Tabs,
   TabsList,
   TabsTrigger,
-  tabsListVariants,
-  tabsTriggerVariants,
 } from "@zentauri-ui/zentauri-components/ui/tabs";
 import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/animated";
-
-const listUnderlineSm = tabsListVariants({
-  variant: "underline",
-  size: "sm",
-  orientation: "horizontal",
-});
-const triggerUnderlineSm = tabsTriggerVariants({
-  variant: "underline",
-  size: "sm",
-});
-
-const listVerticalDefault = tabsListVariants({
-  variant: "default",
-  size: "sm",
-  orientation: "vertical",
-});
-const triggerVerticalDefault = tabsTriggerVariants({
-  variant: "default",
-  size: "sm",
-});
 
 export function TabsExamplesSection() {
   return (
     <section className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
-      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">Examples</h2>
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
+        Examples
+      </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Underline list styling with small density, then vertical orientation
         with slide-in panels.
@@ -41,34 +21,51 @@ export function TabsExamplesSection() {
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase
           code={`${variantLeadComment(`Tabs · underline list + sm triggers, TabsContent · animation · fade`)}
-<Tabs defaultValue="general">
-  <TabsList className={tabsListVariants({ variant: "underline", size: "sm", orientation: "horizontal" })}>
-    <TabsTrigger className={tabsTriggerVariants({ variant: "underline", size: "sm" })} value="general">General</TabsTrigger>
-    ...
+<Tabs defaultValue="general" appearance="sky">
+  <TabsList>
+    <TabsTrigger value="general">
+      General
+    </TabsTrigger>
+    <TabsTrigger value="billing">
+      Billing
+    </TabsTrigger>
   </TabsList>
-  <TabsContentAnimated value="general" animation="fade">...</TabsContentAnimated>
+  <TabsContentAnimated
+    value="general"
+    animation="fade"
+    className="mt-3 text-xs text-slate-800 dark:text-slate-300"
+  >
+    Workspace name, timezone, and defaults.
+  </TabsContentAnimated>
+  <TabsContentAnimated
+    value="billing"
+    animation="fade"
+    className="mt-3 text-xs text-slate-800 dark:text-slate-300"
+  >
+    Invoices and payment methods.
+  </TabsContentAnimated>
 </Tabs>`}
         >
-          <Tabs defaultValue="general">
-            <TabsList className={listUnderlineSm}>
-              <TabsTrigger className={triggerUnderlineSm} value="general">
+          <Tabs defaultValue="general" appearance="sky">
+            <TabsList>
+              <TabsTrigger value="general">
                 General
               </TabsTrigger>
-              <TabsTrigger className={triggerUnderlineSm} value="billing">
+              <TabsTrigger value="billing">
                 Billing
               </TabsTrigger>
             </TabsList>
             <TabsContentAnimated
               value="general"
               animation="fade"
-              className="mt-3 text-xs text-slate-300"
+              className="mt-3 text-xs text-slate-800 dark:text-slate-300"
             >
               Workspace name, timezone, and defaults.
             </TabsContentAnimated>
             <TabsContentAnimated
               value="billing"
               animation="fade"
-              className="mt-3 text-xs text-slate-300"
+              className="mt-3 text-xs text-slate-800 dark:text-slate-300"
             >
               Invoices and payment methods.
             </TabsContentAnimated>
@@ -77,24 +74,49 @@ export function TabsExamplesSection() {
 
         <PreviewCodeShowcase
           code={`${variantLeadComment(`Tabs · orientation · vertical, TabsContent · animation · slide`)}
-<Tabs defaultValue="profile" orientation="vertical" className="flex items-center gap-4 sm:flex-row sm:items-start">
-  <TabsList className={tabsListVariants({ variant: "default", size: "sm", orientation: "vertical" })}>
-    <TabsTrigger className={tabsTriggerVariants({ variant: "default", size: "sm" })} value="profile">Profile</TabsTrigger>
-    ...
+<Tabs
+  defaultValue="profile"
+  orientation="vertical"
+  className="flex items-center justify-center gap-4 sm:flex-row"
+  appearance="emerald"
+>
+  <TabsList>
+    <TabsTrigger value="profile">
+      Profile
+    </TabsTrigger>
+    <TabsTrigger value="security">
+      Security
+    </TabsTrigger>
   </TabsList>
-  <TabsContentAnimated value="profile" animation="slide">...</TabsContentAnimated>
+  <div className="min-w-0 flex-1">
+    <TabsContentAnimated
+      value="profile"
+      animation="slide"
+      className="mt-0 text-xs text-slate-800 dark:text-slate-300 sm:mt-2"
+    >
+      Avatar, display name, and locale.
+    </TabsContentAnimated>
+    <TabsContentAnimated
+      value="security"
+      animation="slide"
+      className="mt-0 text-xs text-slate-800 dark:text-slate-300 sm:mt-2"
+    >
+      Sessions, 2FA, and API keys.
+    </TabsContentAnimated>
+  </div>
 </Tabs>`}
         >
           <Tabs
             defaultValue="profile"
             orientation="vertical"
-            className="flex items-center gap-4 sm:flex-row sm:items-start"
+            className="flex items-center justify-center gap-4 sm:flex-row"
+            appearance="emerald"
           >
-            <TabsList className={listVerticalDefault}>
-              <TabsTrigger className={triggerVerticalDefault} value="profile">
+            <TabsList>
+              <TabsTrigger value="profile">
                 Profile
               </TabsTrigger>
-              <TabsTrigger className={triggerVerticalDefault} value="security">
+              <TabsTrigger value="security">
                 Security
               </TabsTrigger>
             </TabsList>
@@ -102,14 +124,14 @@ export function TabsExamplesSection() {
               <TabsContentAnimated
                 value="profile"
                 animation="slide"
-                className="mt-0 text-xs text-slate-300 sm:mt-2"
+                className="mt-0 text-xs text-slate-800 dark:text-slate-300 sm:mt-2"
               >
                 Avatar, display name, and locale.
               </TabsContentAnimated>
               <TabsContentAnimated
                 value="security"
                 animation="slide"
-                className="mt-0 text-xs text-slate-300 sm:mt-2"
+                className="mt-0 text-xs text-slate-800 dark:text-slate-300 sm:mt-2"
               >
                 Sessions, 2FA, and API keys.
               </TabsContentAnimated>

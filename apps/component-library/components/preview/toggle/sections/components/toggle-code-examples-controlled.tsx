@@ -8,7 +8,7 @@ export function ToggleControlledDemo() {
   const [checked, setChecked] = useState(false);
   return (
     <>
-      <p className="mb-5 text-xs md:text-sm">
+      <p className="mb-5 text-xs md:text-sm text-slate-900 dark:text-slate-400">
         Controlled:{" "}
         <span className="font-bold">{checked ? "Checked" : "Unchecked"}</span>
       </p>
@@ -17,6 +17,7 @@ export function ToggleControlledDemo() {
         onCheckedChange={setChecked}
         animation="spring"
         aria-label="Demo toggle"
+        thumbColor="default"
       />
     </>
   );

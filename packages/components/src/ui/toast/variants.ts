@@ -20,26 +20,26 @@ export const toastViewportVariants = cva(
 );
 
 export const toastRootVariants = cva(
-  "pointer-events-auto w-[min(100vw-2rem,380px)] rounded-xl border border-black/10 dark:border-white/10 bg-slate-50 dark:bg-slate-950 p-4 text-slate-900 dark:text-slate-50 shadow-[0_8px_24px_rgba(15,23,42,0.12)] dark:shadow-[0_18px_48px_rgba(15,23,42,0.45)]",
+  "pointer-events-auto w-[min(100vw-2rem,380px)] rounded-xl border bg-slate-50 p-4 text-slate-900 dark:text-slate-50 shadow-[0_8px_24px_rgba(15,23,42,0.12)] dark:shadow-[0_18px_48px_rgba(15,23,42,0.45)]",
   {
     variants: {
       appearance: {
-        default: "bg-slate-50 dark:bg-slate-950",
-        success: "border-emerald-500/40 bg-emerald-950",
-        warning: "border-amber-500/40 bg-amber-950",
-        error: "border-rose-500/50 bg-rose-950",
-        info: "border-sky-500/40 bg-sky-950",
-        ghost: "border-transparent bg-transparent text-slate-700 dark:text-slate-200",
-        purple: "border-purple-800 dark:border-purple-600 bg-purple-50 dark:bg-purple-950/70 backdrop-blur-xl",
-        pink: "border-pink-800 dark:border-pink-600 bg-pink-50 dark:bg-pink-950/70 backdrop-blur-xl",
-        orange: "border-orange-800 dark:border-orange-600 bg-orange-50 dark:bg-orange-950/70 backdrop-blur-xl",
-        yellow: "border-yellow-800 dark:border-yellow-600 bg-yellow-50 dark:bg-yellow-950/70 backdrop-blur-xl",
-        teal: "border-teal-800 dark:border-teal-600 bg-teal-50 dark:bg-teal-950/70 backdrop-blur-xl",
-        indigo: "border-indigo-800 dark:border-indigo-600 bg-indigo-50 dark:bg-indigo-950/70 backdrop-blur-xl",
-        emerald: "border-emerald-800 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-950/70 backdrop-blur-xl",
-        gray: "border-gray-800 dark:border-gray-600 bg-gray-50 dark:bg-gray-950/70 backdrop-blur-xl",
-        amber: "border-amber-800 dark:border-amber-600 bg-amber-50 dark:bg-amber-950/70 backdrop-blur-xl",
-        violet: "border-violet-800 dark:border-violet-600 bg-violet-50 dark:bg-violet-950/70 backdrop-blur-xl",
+        default: "bg-slate-950 text-slate-50",
+        success: "border-emerald-500/40 bg-emerald-950 text-emerald-50",
+        warning: "border-amber-500/40 bg-amber-950 text-amber-50",
+        error: "border-rose-500/50 bg-rose-950 text-rose-50",
+        info: "border-sky-500/40 bg-sky-950 text-sky-50",
+        ghost: "border-transparent bg-transparent text-slate-900",
+        purple: "border-purple-800 dark:border-purple-600 bg-purple-950 backdrop-blur-xl text-purple-50",
+        pink: "border-pink-800 dark:border-pink-600 bg-pink-950 backdrop-blur-xl text-pink-50",
+        orange: "border-orange-800 dark:border-orange-600 bg-orange-950 backdrop-blur-xl text-orange-50",
+        yellow: "border-yellow-800 dark:border-yellow-600 bg-yellow-950 backdrop-blur-xl text-yellow-50",
+        teal: "border-teal-800 dark:border-teal-600 bg-teal-950 backdrop-blur-xl text-teal-50",
+        indigo: "border-indigo-800 dark:border-indigo-600 bg-indigo-950 backdrop-blur-xl text-indigo-50",
+        emerald: "border-emerald-800 dark:border-emerald-600 bg-emerald-950 backdrop-blur-xl text-emerald-50",
+        gray: "border-gray-800 dark:border-gray-600 bg-gray-950 backdrop-blur-xl text-gray-50",
+        amber: "border-amber-800 dark:border-amber-600 bg-amber-950 backdrop-blur-xl text-amber-50",
+        violet: "border-violet-800 dark:border-violet-600 bg-violet-950 backdrop-blur-xl text-violet-50",
         "gradient-blue":
           "border-blue-800 dark:border-blue-600 bg-linear-to-r from-blue-50 dark:from-blue-950/70 to-purple-50 dark:to-purple-950/70 backdrop-blur-xl",
         "gradient-green":

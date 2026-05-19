@@ -25,12 +25,16 @@ export function SelectCodeExamplesSection() {
         Select variants examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
-        Trigger uses CVA <code className="text-slate-300">variant</code> and{" "}
-        <code className="text-slate-300">size</code>; the list panel uses{" "}
-        <code className="text-slate-300">appearance</code> and{" "}
-        <code className="text-slate-300">size</code> on{" "}
-        <code className="text-slate-300">SelectContent</code>. Each snippet
-        starts with a Variant: lead-in.
+        Trigger uses CVA{" "}
+        <code className="text-slate-800 dark:text-slate-300">variant</code> and{" "}
+        <code className="text-slate-800 dark:text-slate-300">size</code>; the
+        list panel uses{" "}
+        <code className="text-slate-800 dark:text-slate-300">appearance</code>{" "}
+        and <code className="text-slate-800 dark:text-slate-300">size</code> on{" "}
+        <code className="text-slate-800 dark:text-slate-300">
+          SelectContent
+        </code>
+        . Each snippet starts with a Variant: lead-in.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase code={selectMultiSnippet()}>
@@ -51,11 +55,13 @@ export function SelectCodeExamplesSection() {
           <PreviewCodeShowcase
             key={`tr-size-${triggerSize}`}
             code={selectTriggerSnippet({
+              appearance: "default",
               triggerVariant: "default",
               triggerSize,
             })}
           >
             <SelectTriggerDemo
+              appearance="default"
               triggerVariant="default"
               triggerSize={triggerSize}
             />

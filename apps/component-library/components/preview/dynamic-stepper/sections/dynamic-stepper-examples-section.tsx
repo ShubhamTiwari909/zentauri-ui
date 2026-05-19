@@ -26,22 +26,30 @@ import {
 export function DynamicStepperExamplesSection() {
   return (
     <section className={DYNAMIC_STEPPER_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">Examples</h2>
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
+        Examples
+      </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Uncontrolled and controlled active step, callbacks, orientation,
-        <code className="text-slate-900 dark:text-slate-200">buttonAppearance</code> on navigation
-        buttons, indicator tone palettes (non-gradient{" "}
-        <code className="text-slate-900 dark:text-slate-200">Button</code> appearances), sizing, and
-        DOM hooks for Tailwind.
+        <code className="text-slate-900 dark:text-slate-200">
+          buttonAppearance
+        </code>{" "}
+        on navigation buttons, indicator tone palettes (non-gradient{" "}
+        <code className="text-slate-900 dark:text-slate-200">Button</code>{" "}
+        appearances), sizing, and DOM hooks for Tailwind.
       </p>
 
       <div className="mt-8 space-y-10">
         <PreviewCodeShowcase code={dynamicStepperUncontrolledSnippet()}>
           <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Uncontrolled</h3>
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
+              Uncontrolled
+            </h3>
             <p className="max-w-2xl text-sm text-slate-900 dark:text-slate-400">
-              <code className="text-slate-900 dark:text-slate-200">defaultActiveStep</code> seeds
-              the initial index; Previous / Next update internal state.
+              <code className="text-slate-900 dark:text-slate-200">
+                defaultActiveStep
+              </code>{" "}
+              seeds the initial index; Previous / Next update internal state.
             </p>
             <DynamicStepperUncontrolledDemo />
           </div>
@@ -49,11 +57,19 @@ export function DynamicStepperExamplesSection() {
 
         <PreviewCodeShowcase code={dynamicStepperControlledSnippet()}>
           <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Controlled</h3>
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
+              Controlled
+            </h3>
             <p className="max-w-2xl text-sm text-slate-900 dark:text-slate-400">
-              Parent owns <code className="text-slate-900 dark:text-slate-200">activeStep</code> and
-              syncs via{" "}
-              <code className="text-slate-900 dark:text-slate-200">onActiveStepChange</code>.
+              Parent owns{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                activeStep
+              </code>{" "}
+              and syncs via{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                onActiveStepChange
+              </code>
+              .
             </p>
             <DynamicStepperControlledDemo />
           </div>
@@ -62,9 +78,17 @@ export function DynamicStepperExamplesSection() {
         <PreviewCodeShowcase code={dynamicStepperCallbacksSnippet()}>
           <div className="space-y-3">
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
-              Callbacks (<code className="text-slate-900 dark:text-slate-200">onPrevious</code>,{" "}
-              <code className="text-slate-900 dark:text-slate-200">onNext</code>,{" "}
-              <code className="text-slate-900 dark:text-slate-200">onActiveStepChange</code>)
+              Callbacks (
+              <code className="text-slate-900 dark:text-slate-200">
+                onPrevious
+              </code>
+              ,{" "}
+              <code className="text-slate-900 dark:text-slate-200">onNext</code>
+              ,{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                onActiveStepChange
+              </code>
+              )
             </h3>
             <DynamicStepperCallbacksDemo />
           </div>
@@ -114,9 +138,15 @@ export function DynamicStepperExamplesSection() {
               Button size + indicator size
             </h3>
             <p className="max-w-2xl text-sm text-slate-900 dark:text-slate-400">
-              <code className="text-slate-900 dark:text-slate-200">buttonSize</code> flows to both
-              Previous / Next <code className="text-slate-900 dark:text-slate-200">Button</code>{" "}
-              components; <code className="text-slate-900 dark:text-slate-200">indicatorSize</code>{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                buttonSize
+              </code>{" "}
+              flows to both Previous / Next{" "}
+              <code className="text-slate-900 dark:text-slate-200">Button</code>{" "}
+              components;{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                indicatorSize
+              </code>{" "}
               scales circles and labels in the mapper.
             </p>
             <DynamicStepperSizesDemo />
@@ -127,19 +157,35 @@ export function DynamicStepperExamplesSection() {
           <div className="space-y-3">
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
               Indicator tones (
-              <code className="text-slate-900 dark:text-slate-200">indicatorCompleteAppearance</code>
+              <code className="text-slate-900 dark:text-slate-200">
+                indicatorCompleteAppearance
+              </code>
               ,{" "}
-              <code className="text-slate-900 dark:text-slate-200">indicatorCurrentAppearance</code>,{" "}
-              <code className="text-slate-900 dark:text-slate-200">indicatorUpcomingAppearance</code>
+              <code className="text-slate-900 dark:text-slate-200">
+                indicatorCurrentAppearance
+              </code>
+              ,{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                indicatorUpcomingAppearance
+              </code>
               )
             </h3>
             <p className="max-w-2xl text-sm text-slate-900 dark:text-slate-400">
               Options mirror non-gradient{" "}
-              <code className="text-slate-900 dark:text-slate-200">Button</code> appearances (
-              <code className="text-slate-900 dark:text-slate-200">default</code>,{" "}
-              <code className="text-slate-900 dark:text-slate-200">emerald</code>,{" "}
-              <code className="text-slate-900 dark:text-slate-200">outline</code>, etc.) per
-              semantic state.
+              <code className="text-slate-900 dark:text-slate-200">Button</code>{" "}
+              appearances (
+              <code className="text-slate-900 dark:text-slate-200">
+                default
+              </code>
+              ,{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                emerald
+              </code>
+              ,{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                outline
+              </code>
+              , etc.) per semantic state.
             </p>
             <DynamicStepperIndicatorTonesDemo />
           </div>
@@ -151,15 +197,31 @@ export function DynamicStepperExamplesSection() {
               IDs and data-slot for Tailwind
             </h3>
             <p className="max-w-2xl text-sm text-slate-900 dark:text-slate-400">
-              Each instance sets <code className="text-slate-900 dark:text-slate-200">id</code>{" "}
-              suffixes <code className="text-slate-900 dark:text-slate-200">-previous</code>,{" "}
-              <code className="text-slate-900 dark:text-slate-200">-next</code>, and{" "}
-              <code className="text-slate-900 dark:text-slate-200">-mapper</code> (prefixed by React{" "}
-              <code className="text-slate-900 dark:text-slate-200">useId()</code>). Prefer attribute
-              selectors such as{" "}
-              <code className="text-slate-900 dark:text-slate-200">[id$=&quot;-mapper&quot;]</code>{" "}
-              or <code className="text-slate-900 dark:text-slate-200">data-slot</code> keys shown in
-              the snippet.
+              Each instance sets{" "}
+              <code className="text-slate-900 dark:text-slate-200">id</code>{" "}
+              suffixes{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                -previous
+              </code>
+              ,{" "}
+              <code className="text-slate-900 dark:text-slate-200">-next</code>,
+              and{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                -mapper
+              </code>{" "}
+              (prefixed by React{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                useId()
+              </code>
+              ). Prefer attribute selectors such as{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                [id$=&quot;-mapper&quot;]
+              </code>{" "}
+              or{" "}
+              <code className="text-slate-900 dark:text-slate-200">
+                data-slot
+              </code>{" "}
+              keys shown in the snippet.
             </p>
           </div>
         </PreviewCodeShowcase>

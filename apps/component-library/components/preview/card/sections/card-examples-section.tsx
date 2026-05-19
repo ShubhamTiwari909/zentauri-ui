@@ -31,19 +31,22 @@ import {
 } from "@zentauri-ui/zentauri-components/ui/card";
 import { cardVariantSnippets } from "./components/card-code-examples.snippets";
 import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
-import { Avatar, AvatarFallback } from "@zentauri-ui/zentauri-components/ui/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+} from "@zentauri-ui/zentauri-components/ui/avatar";
 
 const baseCardClassName =
-  "group h-full border-white/10 bg-slate-100 dark:bg-slate-950/70 shadow-lg shadow-slate-950/30 transition duration-200 hover:-translate-y-1 hover:border-indigo-400/40 hover:shadow-indigo-950/30";
+  "group h-full border-slate-900/10 dark:border-white/10 bg-slate-100 dark:bg-slate-950/70 shadow-lg shadow-slate-950/30 transition duration-200 hover:-translate-y-1 hover:border-indigo-400/40 hover:shadow-indigo-950/30";
 
 const iconShellClassName =
-  "grid size-10 shrink-0 place-items-center rounded-lg border border-slate-900/10 dark:border-white/10 dark:bg-white/5 text-indigo-300";
+  "grid size-10 shrink-0 place-items-center rounded-lg border border-slate-900/10 dark:border-white/10 dark:bg-white/5 text-indigo-700 dark:text-indigo-300";
 
 const actionClassName =
   "inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-500 px-3 py-2 text-sm font-medium text-white transition hover:bg-indigo-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
 
 const secondaryActionClassName =
-  "inline-flex items-center justify-center gap-2 rounded-lg border border-slate-900/10 bg-slate-100 text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-100 px-3 py-2 text-sm font-medium transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
+  "inline-flex items-center justify-center gap-2 rounded-lg border border-slate-900/10 bg-slate-100 text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-100 px-3 py-2 text-sm font-medium transition hover:bg-slate-200 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
 
 function AvatarInitials({ initials }: { initials: string }) {
   return (
@@ -64,7 +67,7 @@ function VisualPlaceholder({
     <div
       role="img"
       aria-label={label}
-      className={`min-h-36 rounded-lg border border-white/10 bg-[linear-gradient(135deg,rgba(99,102,241,0.34),rgba(14,165,233,0.12)),linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-size-[100%_100%,22px_22px,22px_22px] ${className}`}
+      className={`min-h-36 rounded-lg border border-slate-900/10 dark:border-white/10 bg-[linear-gradient(135deg,rgba(99,102,241,0.34),rgba(14,165,233,0.12)),linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-size-[100%_100%,22px_22px,22px_22px] ${className}`}
     />
   );
 }
@@ -82,11 +85,15 @@ function ProductCard() {
               Real-time reporting for growing SaaS teams.
             </CardDescription>
           </div>
-          <p className="text-lg font-semibold text-slate-900 dark:text-white">$149</p>
+          <p className="text-lg font-semibold text-slate-900 dark:text-white">
+            $149
+          </p>
         </div>
       </CardBody>
       <CardFooter className="flex-row items-center justify-between">
-        <span className="text-xs text-emerald-800 dark:text-emerald-300">In stock</span>
+        <span className="text-xs text-emerald-800 dark:text-emerald-300">
+          In stock
+        </span>
         <a href="#product-card" className={actionClassName}>
           Add to cart
         </a>
@@ -115,10 +122,14 @@ function UserProfileCard() {
           {stats.map(([value, label]) => (
             <div
               key={label}
-              className="rounded-lg border border-white/10 bg-white/5 p-3"
+              className="rounded-lg border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-3"
             >
-              <p className="font-semibold text-slate-900 dark:text-white">{value}</p>
-              <p className="mt-1 text-xs text-slate-800 dark:text-slate-400">{label}</p>
+              <p className="font-semibold text-slate-900 dark:text-white">
+                {value}
+              </p>
+              <p className="mt-1 text-xs text-slate-800 dark:text-slate-400">
+                {label}
+              </p>
             </div>
           ))}
         </div>
@@ -171,12 +182,13 @@ function PricingCard() {
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle>Pro</CardTitle>
-          <Badge appearance="indigo">
-            Popular
-          </Badge>
+          <Badge appearance="indigo">Popular</Badge>
         </div>
         <p className="text-4xl font-semibold tracking-tight text-slate-900 dark:text-white">
-          $29<span className="text-sm font-normal text-slate-800 dark:text-slate-400">/seat</span>
+          $29
+          <span className="text-sm font-normal text-slate-800 dark:text-slate-400">
+            /seat
+          </span>
         </p>
         <CardDescription>
           For teams ready to automate recurring work.
@@ -189,7 +201,10 @@ function PricingCard() {
               key={feature}
               className="flex items-center gap-2 text-sm text-slate-800 dark:text-slate-300"
             >
-              <FiCheck aria-hidden="true" className="text-emerald-800 dark:text-emerald-300" />
+              <FiCheck
+                aria-hidden="true"
+                className="text-emerald-800 dark:text-emerald-300"
+              />
               {feature}
             </li>
           ))}
@@ -226,8 +241,12 @@ function TestimonialCard() {
       <CardFooter className="flex-row items-center gap-3">
         <AvatarInitials initials="AS" />
         <div>
-          <p className="text-sm font-medium text-slate-900 dark:text-white">Amara Singh</p>
-          <p className="text-xs text-slate-800 dark:text-slate-400">Security Lead, Helio</p>
+          <p className="text-sm font-medium text-slate-900 dark:text-white">
+            Amara Singh
+          </p>
+          <p className="text-xs text-slate-800 dark:text-slate-400">
+            Security Lead, Helio
+          </p>
         </div>
       </CardFooter>
     </Card>
@@ -243,9 +262,7 @@ function StatsCard() {
           <span className={iconShellClassName}>
             <FiTrendingUp aria-hidden="true" />
           </span>
-          <Badge appearance="emerald">
-            +18.4%
-          </Badge>
+          <Badge appearance="emerald">+18.4%</Badge>
         </div>
         <div>
           <p className="text-4xl font-semibold tracking-tight text-slate-900 dark:text-white">
@@ -278,8 +295,12 @@ function DashboardSummaryCard() {
             key={label}
             className="flex items-center justify-between rounded-lg bg-slate-200 dark:bg-slate-900/5 px-3 py-2"
           >
-            <span className="text-sm text-slate-800 dark:text-slate-300">{label}</span>
-            <span className="text-sm font-medium text-slate-900 dark:text-white">{value}</span>
+            <span className="text-sm text-slate-800 dark:text-slate-300">
+              {label}
+            </span>
+            <span className="text-sm font-medium text-slate-900 dark:text-white">
+              {value}
+            </span>
           </div>
         ))}
       </CardBody>
@@ -339,7 +360,7 @@ function EcommerceCartItemCard() {
       <CardBody className="flex-row gap-4">
         <div
           aria-hidden="true"
-          className="grid size-20 shrink-0 place-items-center rounded-lg border border-slate-900/10 dark:border-white/10 bg-indigo-500/15 text-indigo-200"
+          className="grid size-20 shrink-0 place-items-center rounded-lg border border-slate-900/10 dark:border-white/10 bg-indigo-500/15 text-indigo-700 dark:text-indigo-200"
         >
           <FiPackage className="text-indigo-800 dark:text-indigo-200" />
         </div>
@@ -347,8 +368,12 @@ function EcommerceCartItemCard() {
           <CardTitle>Workflow Console</CardTitle>
           <CardDescription>Annual subscription, 10 seats</CardDescription>
           <div className="mt-3 flex items-center justify-between">
-            <span className="text-sm text-slate-800 dark:text-slate-400">Qty 1</span>
-            <span className="font-semibold text-slate-900 dark:text-white">$2,900</span>
+            <span className="text-sm text-slate-800 dark:text-slate-400">
+              Qty 1
+            </span>
+            <span className="font-semibold text-slate-900 dark:text-white">
+              $2,900
+            </span>
           </div>
         </div>
       </CardBody>
@@ -362,8 +387,12 @@ function EventCard() {
     <Card appearance="glass" rounded="lg" className={baseCardClassName}>
       <CardHeader className="flex-row items-start gap-4">
         <div className="rounded-lg border border-indigo-300/30 bg-indigo-500/15 px-3 py-2 text-center">
-          <p className="text-xs uppercase text-indigo-800 dark:text-indigo-200">May</p>
-          <p className="text-2xl font-semibold text-indigo-800 dark:text-indigo-200">21</p>
+          <p className="text-xs uppercase text-indigo-800 dark:text-indigo-200">
+            May
+          </p>
+          <p className="text-2xl font-semibold text-indigo-800 dark:text-indigo-200">
+            21
+          </p>
         </div>
         <div>
           <CardTitle>ScaleOps roundtable</CardTitle>
@@ -390,7 +419,7 @@ function JobListingCard() {
           <span className={iconShellClassName}>
             <FiBriefcase aria-hidden="true" />
           </span>
-         <Badge appearance="outline">Remote</Badge>
+          <Badge appearance="outline">Remote</Badge>
         </div>
         <CardTitle>Senior Frontend Engineer</CardTitle>
         <CardDescription>
@@ -398,7 +427,9 @@ function JobListingCard() {
         </CardDescription>
       </CardHeader>
       <CardFooter className="flex-row items-center justify-between">
-        <span className="text-sm text-slate-800 dark:text-slate-400">$155k - $190k</span>
+        <span className="text-sm text-slate-800 dark:text-slate-400">
+          $155k - $190k
+        </span>
         <a href="#job-listing-card" className={secondaryActionClassName}>
           Apply
         </a>
@@ -441,7 +472,7 @@ function MusicMediaCard() {
       <CardBody className="flex-row items-center gap-4">
         <div
           aria-hidden="true"
-          className="grid size-20 shrink-0 place-items-center rounded-lg bg-linear-to-br from-indigo-500/40 to-cyan-500/20 text-2xl text-white"
+          className="grid size-20 shrink-0 place-items-center rounded-lg bg-linear-to-br from-indigo-500/40 to-cyan-500/20 text-2xl text-slate-900 dark:text-white"
         >
           <FiMusic />
         </div>
@@ -486,21 +517,21 @@ function SocialPostCard() {
       <CardFooter className="flex-row justify-between text-sm text-slate-800 dark:text-slate-300">
         <button
           type="button"
-          className="inline-flex items-center gap-2 hover:text-slate-900 dark:hover:text-white"
+          className="inline-flex items-center gap-2 hover:text-slate-900 dark:text-white dark:hover:text-white"
           aria-label="Like post"
         >
           <FiHeart aria-hidden="true" /> 248
         </button>
         <button
           type="button"
-          className="inline-flex items-center gap-2 hover:text-slate-900 dark:hover:text-white"
+          className="inline-flex items-center gap-2 hover:text-slate-900 dark:text-white dark:hover:text-white"
           aria-label="Comment on post"
         >
           <FiMessageCircle aria-hidden="true" /> 32
         </button>
         <button
           type="button"
-          className="inline-flex items-center gap-2 hover:text-slate-900 dark:hover:text-white"
+          className="inline-flex items-center gap-2 hover:text-slate-900 dark:text-white dark:hover:text-white"
           aria-label="Share post"
         >
           <FiShare2 aria-hidden="true" /> Share
@@ -522,7 +553,7 @@ function AnalyticsCard() {
       </CardHeader>
       <CardBody>
         <div
-          className="flex h-36 items-end gap-2 rounded-lg border border-white/10 bg-white/5 p-4"
+          className="flex h-36 items-end gap-2 rounded-lg border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-4"
           aria-label="Bar chart placeholder"
         >
           {bars.map((height, index) => (
@@ -533,13 +564,17 @@ function AnalyticsCard() {
           ))}
         </div>
         <div className="grid grid-cols-2 gap-2 text-sm">
-          <div className="rounded-lg bg-white/5 p-3">
+          <div className="rounded-lg bg-white dark:bg-white/5 p-3">
             <p className="text-slate-800 dark:text-slate-400">Conversion</p>
-            <p className="font-semibold text-slate-900 dark:text-white">31.8%</p>
+            <p className="font-semibold text-slate-900 dark:text-white">
+              31.8%
+            </p>
           </div>
-          <div className="rounded-lg bg-white/5 p-3">
+          <div className="rounded-lg bg-white dark:bg-white/5 p-3">
             <p className="text-slate-800 dark:text-slate-400">Velocity</p>
-            <p className="font-semibold text-slate-900 dark:text-white">4.2 days</p>
+            <p className="font-semibold text-slate-900 dark:text-white">
+              4.2 days
+            </p>
           </div>
         </div>
       </CardBody>
@@ -611,8 +646,12 @@ function PaymentInvoiceCard() {
       <CardBody>
         <div className="flex items-end justify-between">
           <div>
-            <p className="text-sm text-slate-800 dark:text-slate-400">Amount due</p>
-            <p className="text-3xl font-semibold text-slate-900 dark:text-white">$4,820.00</p>
+            <p className="text-sm text-slate-800 dark:text-slate-400">
+              Amount due
+            </p>
+            <p className="text-3xl font-semibold text-slate-900 dark:text-white">
+              $4,820.00
+            </p>
           </div>
           <Badge appearance="yellow">Pending</Badge>
         </div>
@@ -764,7 +803,7 @@ export function CardExamplesSection() {
             primitive and its exported sections.
           </p>
         </div>
-        <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
+        <span className="inline-flex w-fit items-center gap-2 rounded-full border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 px-3 py-1 text-xs font-medium text-slate-800 dark:text-slate-300">
           <FiArchive aria-hidden="true" /> 20 variants
         </span>
       </div>

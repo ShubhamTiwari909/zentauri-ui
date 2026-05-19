@@ -34,19 +34,19 @@ const visualPlaceholderSnippet = `const VisualPlaceholder = ({
     <div
       role="img"
       aria-label={label}
-      className={\`min-h-36 rounded-lg border border-white/10 bg-[linear-gradient(135deg,rgba(99,102,241,0.34),rgba(14,165,233,0.12)),linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-size-[100%_100%,22px_22px,22px_22px] \${className}\`}
+      className={\`min-h-36 rounded-lg border border-slate-900/10 dark:border-white/10 bg-[linear-gradient(135deg,rgba(99,102,241,0.34),rgba(14,165,233,0.12)),linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-size-[100%_100%,22px_22px,22px_22px] \${className}\`}
     />
   );
 }`;
 
 const baseCardClassNameSnippet = `const baseCardClassName = 
-  "group h-full border-white/10 bg-slate-100 dark:bg-slate-950/70 shadow-lg shadow-slate-950/30 transition duration-200 hover:-translate-y-1 hover:border-indigo-400/40 hover:shadow-indigo-950/30";`;
+  "group h-full border-slate-900/10 dark:border-white/10 bg-slate-100 dark:bg-slate-950/70 shadow-lg shadow-slate-950/30 transition duration-200 hover:-translate-y-1 hover:border-indigo-400/40 hover:shadow-indigo-950/30";`;
 
 const secondarActionClassNameSnippet = `const secondaryActionClassName =
-"inline-flex items-center justify-center gap-2 rounded-lg border border-slate-900/10 bg-slate-100 text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-100 px-3 py-2 text-sm font-medium transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";`;
+"inline-flex items-center justify-center gap-2 rounded-lg border border-slate-900/10 bg-slate-100 text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-100 px-3 py-2 text-sm font-medium transition hover:bg-slate-200 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";`;
 
 const iconShellClassNameSnippet = `const iconShellClassName = 
-  "grid size-10 shrink-0 place-items-center rounded-lg border border-slate-900/10 dark:border-white/10 dark:bg-white/5 text-indigo-300";`;
+  "grid size-10 shrink-0 place-items-center rounded-lg border border-slate-900/10 dark:border-white/10 dark:bg-white/5 text-indigo-700 dark:text-indigo-300";`;
 
 const actionClassNameSnippet = `const actionClassName =
   "inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-500 px-3 py-2 text-sm font-medium text-white transition hover:bg-indigo-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
@@ -104,7 +104,7 @@ ${avatarInitialsSnippet}
   <CardBody>
     <div className="grid grid-cols-3 gap-2 text-center">
       {stats.map(([value, label]) => (
-        <div key={label} className="rounded-lg border border-white/10 bg-white/5 p-3">
+        <div key={label} className="rounded-lg border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-3">
           <p className="font-semibold text-slate-900 dark:text-white">{value}</p>
           <p className="mt-1 text-xs text-slate-800 dark:text-slate-400">{label}</p>
         </div>
@@ -122,7 +122,7 @@ ${visualPlaceholderSnippet}
   <CardBody>
     <VisualPlaceholder label="Article cover image" />
     <div>
-      <p className="text-xs font-medium uppercase tracking-[0.18em] text-indigo-300">Operations</p>
+      <p className="text-xs font-medium uppercase tracking-[0.18em] text-indigo-700 dark:text-indigo-300">Operations</p>
       <CardTitle className="mt-2">How elite teams design decision loops</CardTitle>
       <CardDescription className="mt-2">
         A practical guide to reducing ambiguity without adding meeting load.
@@ -266,7 +266,7 @@ ${iconShellClassNameSnippet}
 
 <Card appearance="glass" rounded="lg" className={baseCardClassName}>
   <CardBody className="flex-row gap-4">
-    <div aria-hidden="true" className="grid size-20 shrink-0 place-items-center rounded-lg border border-slate-900/10 dark:border-white/10 bg-indigo-500/15 text-indigo-200">
+    <div aria-hidden="true" className="grid size-20 shrink-0 place-items-center rounded-lg border border-slate-900/10 dark:border-white/10 bg-indigo-500/15 text-indigo-700 dark:text-indigo-200">
       <FiPackage className="text-indigo-800 dark:text-indigo-200" />
     </div>
     <div className="min-w-0 flex-1">
@@ -347,7 +347,7 @@ ${secondarActionClassNameSnippet}
 
 <Card appearance="glass" rounded="lg" className={baseCardClassName}>
   <CardBody className="flex-row items-center gap-4">
-    <div aria-hidden="true" className="grid size-20 shrink-0 place-items-center rounded-lg bg-linear-to-br from-indigo-500/40 to-cyan-500/20 text-2xl text-white">
+    <div aria-hidden="true" className="grid size-20 shrink-0 place-items-center rounded-lg bg-linear-to-br from-indigo-500/40 to-cyan-500/20 text-2xl text-slate-900 dark:text-white">
       <FiMusic />
     </div>
     <div className="min-w-0 flex-1">
@@ -380,9 +380,9 @@ ${avatarInitialsSnippet}
     </p>
   </CardBody>
   <CardFooter className="flex-row justify-between text-sm text-slate-800 dark:text-slate-300">
-    <button type="button" className="inline-flex items-center gap-2 hover:text-slate-900 dark:hover:text-white" aria-label="Like post"><FiHeart aria-hidden="true" /> 248</button>
-    <button type="button" className="inline-flex items-center gap-2 hover:text-slate-900 dark:hover:text-white" aria-label="Comment on post"><FiMessageCircle aria-hidden="true" /> 32</button>
-    <button type="button" className="inline-flex items-center gap-2 hover:text-slate-900 dark:hover:text-white" aria-label="Share post"><FiShare2 aria-hidden="true" /> Share</button>
+    <button type="button" className="inline-flex items-center gap-2 hover:text-slate-900 dark:text-white dark:hover:text-white" aria-label="Like post"><FiHeart aria-hidden="true" /> 248</button>
+    <button type="button" className="inline-flex items-center gap-2 hover:text-slate-900 dark:text-white dark:hover:text-white" aria-label="Comment on post"><FiMessageCircle aria-hidden="true" /> 32</button>
+    <button type="button" className="inline-flex items-center gap-2 hover:text-slate-900 dark:text-white dark:hover:text-white" aria-label="Share post"><FiShare2 aria-hidden="true" /> Share</button>
   </CardFooter>
 </Card>`,
   analyticsCardSnippet: `${baseCardClassNameSnippet}
@@ -395,17 +395,17 @@ const bars = ["h-100", "h-80", "h-60", "h-40", "h-20"];
     <CardDescription>Weekly conversion by stage</CardDescription>
   </CardHeader>
   <CardBody>
-    <div className="flex h-36 items-end gap-2 rounded-lg border border-white/10 bg-white/5 p-4" aria-label="Bar chart placeholder">
+    <div className="flex h-36 items-end gap-2 rounded-lg border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-4" aria-label="Bar chart placeholder">
       {bars.map((height) => (
         <div key={height} className={\`\${height} flex-1 rounded-t bg-indigo-400/70\`} />
       ))}
     </div>
       <div className="grid grid-cols-2 gap-2 text-sm">
-        <div className="rounded-lg bg-white/5 p-3">
+        <div className="rounded-lg bg-white dark:bg-white/5 p-3">
           <p className="text-slate-800 dark:text-slate-400">Conversion</p>
           <p className="font-semibold text-slate-900 dark:text-white">31.8%</p>
         </div>
-        <div className="rounded-lg bg-white/5 p-3">
+        <div className="rounded-lg bg-white dark:bg-white/5 p-3">
           <p className="text-slate-800 dark:text-slate-400">Velocity</p>
           <p className="font-semibold text-slate-900 dark:text-white">4.2 days</p>
         </div>

@@ -22,7 +22,9 @@ export function DynamicStepperControlledDemo() {
     <div className="space-y-3">
       <p className="text-sm text-slate-900 dark:text-slate-400">
         Controlled index:{" "}
-        <span className="font-mono text-slate-900 dark:text-white">{activeStep}</span>
+        <span className="font-mono text-slate-900 dark:text-white">
+          {activeStep}
+        </span>
       </p>
       <DynamicStepper
         steps={DEMO_STEPS_FOR_PREVIEW}
@@ -57,7 +59,9 @@ export function DynamicStepperCallbacksDemo() {
         </p>
         <ul className="mt-2 space-y-1 font-mono text-xs text-slate-900 dark:text-slate-300">
           {log.length === 0 ? (
-            <li className="text-slate-900 dark:text-slate-500">Use Previous / Next…</li>
+            <li className="text-slate-900 dark:text-slate-500">
+              Use Previous / Next…
+            </li>
           ) : (
             log.map((line, index) => <li key={`${index}-${line}`}>{line}</li>)
           )}

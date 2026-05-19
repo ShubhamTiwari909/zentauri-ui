@@ -7,7 +7,7 @@ export function PaginationHeroSection({ seo }: { seo: PreviewSeoDocument }) {
     <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
       <PreviewHeroSeoBlock seo={seo} />
 
-      <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-6">
+      <div className="rounded-2xl border border-slate-900/10 dark:border-white/10 bg-slate-100 dark:bg-slate-950/40 p-6">
         <Pagination
           appearance="indigo"
           pageCount={24}

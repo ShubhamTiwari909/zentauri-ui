@@ -38,7 +38,7 @@ export const SearchBar = function SearchBar({
     >
       {leadingSlot ? (
         <span
-          className="pointer-events-none absolute left-3 top-1/2 z-1 flex -translate-y-1/2 text-slate-400 [&_svg]:size-4"
+          className="pointer-events-none absolute left-3 top-1/2 z-1 flex -translate-y-1/2 text-slate-900 dark:text-slate-200 [&_svg]:size-4"
           aria-hidden
         >
           {leadingSlot}
@@ -58,6 +58,7 @@ export const SearchBar = function SearchBar({
           inputVariants({ appearance, size: inputSize, ring, as: "input" }),
           leadingSlot ? "pl-10" : null,
           inputClassName,
+          "[&::-webkit-search-cancel-button]:hidden"
         )}
         onChange={(event) => {
           onChange?.(event);

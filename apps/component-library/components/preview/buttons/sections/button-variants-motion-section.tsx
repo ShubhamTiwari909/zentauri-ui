@@ -5,7 +5,7 @@ import { showcaseButtons, buttonAnimationPresets } from "../variants";
 export function ButtonVariantsMotionSection() {
   return (
     <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-      <article className="rounded-3xl border border-white/10 bg-slate-100 dark:bg-slate-900/70 p-6 shadow-xl shadow-slate-950/30 backdrop-blur">
+      <article className="rounded-3xl border border-slate-900/10 dark:border-white/10 bg-slate-100 dark:bg-slate-900/70 p-6 shadow-xl shadow-slate-950/30 backdrop-blur">
         <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-600 dark:text-cyan-200">
           Variants
         </p>
@@ -37,7 +37,7 @@ export function ButtonVariantsMotionSection() {
         </div>
       </article>
 
-      <article className="rounded-3xl border border-white/10 bg-slate-100 dark:bg-white/5 p-6 shadow-xl shadow-slate-950/30 backdrop-blur">
+      <article className="rounded-3xl border border-slate-900/10 dark:border-white/10 bg-slate-100 dark:bg-white/5 p-6 shadow-xl shadow-slate-950/30 backdrop-blur">
         <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-600 dark:text-cyan-200">
           Motion presets
         </p>

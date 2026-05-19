@@ -112,5 +112,41 @@ export function inputRadioGroupSnippet(): string {
 
 export function inputDateSnippet(): string {
   return `${variantLeadComment(`type · date, appearance · violet`)}
-<Input as="input" type="date" appearance="violet" size="md" aria-label="Pick a date" className="w-auto shrink-0" />`;
+<div className="flex flex-wrap gap-2">
+  <Input
+    as="date"
+    type="date"
+    appearance="warning"
+    size="md"
+    aria-label="Pick a date"
+  />
+  <Input
+    as="date"
+    type="date"
+    appearance="default"
+    size="md"
+    aria-label="Pick a date"
+  />
+  <Input
+    as="date"
+    type="date"
+    appearance="error"
+    size="md"
+    aria-label="Pick a date"
+  />
+  <Input
+    as="date"
+    type="date"
+    appearance="success"
+    size="md"
+    aria-label="Pick a date"
+  />
+  <Input
+    as="date"
+    type="date"
+    appearance="info"
+    size="md"
+    aria-label="Pick a date"
+  />
+</div>`;
 }

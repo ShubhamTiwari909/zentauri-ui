@@ -14,6 +14,7 @@ export function ToggleAnimated(props: ToggleAnimatedProps) {
     className,
     size,
     appearance,
+    thumbColor,
     animation = "spring",
     checked,
     defaultChecked = false,
@@ -39,7 +40,7 @@ export function ToggleAnimated(props: ToggleAnimatedProps) {
     [isControlled, onCheckedChange],
   );
 
-  const thumbShiftPx = size === "sm" ? 14 : size === "lg" ? 26 : 20;
+  const thumbShiftPx = size === "sm" ? 14 : size === "lg" ? 24 : 18;
 
   return (
     <button
@@ -62,7 +63,7 @@ export function ToggleAnimated(props: ToggleAnimatedProps) {
       <span className="sr-only">{children}</span>
       <motion.span
         className={cn(
-          toggleThumbVariants({ size }),
+          toggleThumbVariants({ size, thumbColor }),
           "absolute left-1 top-1/2 -translate-y-1/2",
         )}
         animate={{ x: resolved ? thumbShiftPx : 0 }}

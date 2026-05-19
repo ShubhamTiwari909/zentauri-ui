@@ -8,12 +8,14 @@ import {
 } from "@zentauri-ui/zentauri-components/ui/dropdown";
 
 const MENU_SURFACE_CLASS =
-  "border border-white/10 bg-slate-900 text-slate-100 shadow-lg";
+  "border border-slate-900/10 dark:border-white/10 bg-slate-100 dark:bg-slate-900 text-slate-100 shadow-lg";
 
 export function DropdownExamplesSection() {
   return (
     <section className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
-      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">Examples</h2>
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
+        Examples
+      </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Single-select closes the menu after a choice. Multi-select keeps the
         menu open and toggles checkmarks per item value.

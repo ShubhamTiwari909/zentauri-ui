@@ -8,7 +8,7 @@ import {
 } from "@zentauri-ui/zentauri-components/ui/dropdown";
 
 const MENU_SURFACE_CLASS =
-  "border border-white/10 bg-slate-900 text-slate-100 shadow-lg";
+  "border border-slate-900/10 dark:border-white/10 bg-slate-100 dark:bg-slate-900 text-slate-100 shadow-lg";
 
 export function DropdownHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (

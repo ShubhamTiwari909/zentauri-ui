@@ -94,16 +94,16 @@ export function FileUpload({
       >
         {children ?? (
           <>
-            <span className="text-base font-semibold text-slate-100">
+            <span className="text-base font-semibold text-slate-900 dark:text-slate-100">
               Drop files here
             </span>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-slate-600 dark:text-slate-400">
               or click to browse from your device
             </span>
           </>
         )}
         {dragOver && (
-          <span className="text-xs text-slate-400">Drop files here</span>
+          <span className="text-xs text-slate-600 dark:text-slate-400">Drop files here</span>
         )}
       </label>
     </div>

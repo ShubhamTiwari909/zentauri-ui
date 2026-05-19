@@ -7,15 +7,17 @@ import {
 import { TooltipContentAnimated } from "@zentauri-ui/zentauri-components/ui/tooltip/animated";
 
 const TRIGGER_SOFT =
-  "rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200 outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50";
+  "rounded-lg border border-slate-900/15 dark:border-white/15 bg-white dark:bg-white/5 px-3 py-1.5 text-sm text-slate-800 dark:text-slate-200 outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50";
 
 const TRIGGER_EMPHASIS =
-  "rounded-lg border border-cyan-500/30 bg-cyan-950/40 px-3 py-1.5 text-sm text-cyan-100 outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50";
+  "rounded-lg border border-cyan-500/30 bg-cyan-50 px-3 py-1.5 text-sm text-cyan-900 outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50 dark:bg-cyan-950/40 dark:text-cyan-100";
 
 export function TooltipExamplesSection() {
   return (
     <section className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
-      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">Examples</h2>
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
+        Examples
+      </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Longer hover delay and danger intent for critical controls.
       </p>

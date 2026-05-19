@@ -4,7 +4,7 @@ export const EMPTY_STATE_CODE_EXAMPLES_SECTION_CLASS =
   "rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
 export const EMPTY_STATE_ICON_SNIPPET = `<EmptyStateIcon>
-  <HiCloudArrowUp className="size-8 text-slate-400" aria-hidden />
+  <HiCloudArrowUp className="size-8 text-slate-800 dark:text-slate-400" aria-hidden />
 </EmptyStateIcon>`;
 
 export const EMPTY_APPEARANCES = [
