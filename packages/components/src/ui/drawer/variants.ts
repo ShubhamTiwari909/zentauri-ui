@@ -10,19 +10,27 @@ export const drawerTriggerVariants = cva(
     variants: {
       appearance: {
         default: "bg-slate-950",
-        glass: "border-black/15 dark:border-white/15 bg-slate-50/70 dark:bg-slate-950/70 backdrop-blur-xl text-slate-900 dark:text-white",
+        glass:
+          "border-black/15 dark:border-white/15 bg-slate-50/70 dark:bg-slate-950/70 backdrop-blur-xl text-slate-900 dark:text-white",
         sky: "border-sky-800 dark:border-sky-600 bg-sky-50 dark:bg-sky-950/70 backdrop-blur-xl text-sky-800 dark:text-white",
         rose: "border-rose-800 dark:border-rose-600 bg-rose-50 dark:bg-rose-950/70 backdrop-blur-xl text-rose-800 dark:text-white",
-        purple: "border-purple-800 dark:border-purple-600 bg-purple-50 dark:bg-purple-950/70 backdrop-blur-xl text-purple-800 dark:text-white",
+        purple:
+          "border-purple-800 dark:border-purple-600 bg-purple-50 dark:bg-purple-950/70 backdrop-blur-xl text-purple-800 dark:text-white",
         pink: "border-pink-800 dark:border-pink-600 bg-pink-50 dark:bg-pink-950/70 backdrop-blur-xl text-pink-800 dark:text-white",
-        orange: "border-orange-800 dark:border-orange-600 bg-orange-50 dark:bg-orange-950/70 backdrop-blur-xl text-orange-800 dark:text-white",
-        yellow: "border-yellow-800 dark:border-yellow-600 bg-yellow-50 dark:bg-yellow-950/70 backdrop-blur-xl text-yellow-800 dark:text-white",
+        orange:
+          "border-orange-800 dark:border-orange-600 bg-orange-50 dark:bg-orange-950/70 backdrop-blur-xl text-orange-800 dark:text-white",
+        yellow:
+          "border-yellow-800 dark:border-yellow-600 bg-yellow-50 dark:bg-yellow-950/70 backdrop-blur-xl text-yellow-800 dark:text-white",
         teal: "border-teal-800 dark:border-teal-600 bg-teal-50 dark:bg-teal-950/70 backdrop-blur-xl text-teal-800 dark:text-white",
-        indigo: "border-indigo-800 dark:border-indigo-600 bg-indigo-50 dark:bg-indigo-950/70 backdrop-blur-xl text-indigo-800 dark:text-white",
-        emerald: "border-emerald-800 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-950/70 backdrop-blur-xl text-emerald-800 dark:text-white",
+        indigo:
+          "border-indigo-800 dark:border-indigo-600 bg-indigo-50 dark:bg-indigo-950/70 backdrop-blur-xl text-indigo-800 dark:text-white",
+        emerald:
+          "border-emerald-800 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-950/70 backdrop-blur-xl text-emerald-800 dark:text-white",
         gray: "border-gray-800 dark:border-gray-600 bg-gray-50 dark:bg-gray-950/70 backdrop-blur-xl text-gray-800 dark:text-white",
-        amber: "border-amber-800 dark:border-amber-600 bg-amber-50 dark:bg-amber-950/70 backdrop-blur-xl text-amber-800 dark:text-white",
-        violet: "border-violet-800 dark:border-violet-600 bg-violet-50 dark:bg-violet-950/70 backdrop-blur-xl text-violet-800 dark:text-white",
+        amber:
+          "border-amber-800 dark:border-amber-600 bg-amber-50 dark:bg-amber-950/70 backdrop-blur-xl text-amber-800 dark:text-white",
+        violet:
+          "border-violet-800 dark:border-violet-600 bg-violet-50 dark:bg-violet-950/70 backdrop-blur-xl text-violet-800 dark:text-white",
         "gradient-blue":
           "border-blue-800 dark:border-blue-600 bg-linear-to-r from-blue-50 dark:from-blue-950/70 to-purple-50 dark:to-purple-950/70 backdrop-blur-xl text-blue-800 dark:text-white",
         "gradient-green":
@@ -68,19 +76,27 @@ export const drawerContentVariants = cva(
       },
       appearance: {
         default: "bg-slate-50 dark:bg-slate-950",
-        glass: "border-black/15 dark:border-white/15 bg-slate-50/70 dark:bg-slate-950/70 backdrop-blur-xl",
+        glass:
+          "border-black/15 dark:border-white/15 bg-slate-50/70 dark:bg-slate-950/70 backdrop-blur-xl",
         sky: "border-sky-800 dark:border-sky-600 bg-sky-50 dark:bg-sky-950/70 backdrop-blur-xl",
         rose: "border-rose-800 dark:border-rose-600 bg-rose-50 dark:bg-rose-950/70 backdrop-blur-xl",
-        purple: "border-purple-800 dark:border-purple-600 bg-purple-50 dark:bg-purple-950/70 backdrop-blur-xl",
+        purple:
+          "border-purple-800 dark:border-purple-600 bg-purple-50 dark:bg-purple-950/70 backdrop-blur-xl",
         pink: "border-pink-800 dark:border-pink-600 bg-pink-50 dark:bg-pink-950/70 backdrop-blur-xl",
-        orange: "border-orange-800 dark:border-orange-600 bg-orange-50 dark:bg-orange-950/70 backdrop-blur-xl",
-        yellow: "border-yellow-800 dark:border-yellow-600 bg-yellow-50 dark:bg-yellow-950/70 backdrop-blur-xl",
+        orange:
+          "border-orange-800 dark:border-orange-600 bg-orange-50 dark:bg-orange-950/70 backdrop-blur-xl",
+        yellow:
+          "border-yellow-800 dark:border-yellow-600 bg-yellow-50 dark:bg-yellow-950/70 backdrop-blur-xl",
         teal: "border-teal-800 dark:border-teal-600 bg-teal-50 dark:bg-teal-950/70 backdrop-blur-xl",
-        indigo: "border-indigo-800 dark:border-indigo-600 bg-indigo-50 dark:bg-indigo-950/70 backdrop-blur-xl",
-        emerald: "border-emerald-800 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-950/70 backdrop-blur-xl",
+        indigo:
+          "border-indigo-800 dark:border-indigo-600 bg-indigo-50 dark:bg-indigo-950/70 backdrop-blur-xl",
+        emerald:
+          "border-emerald-800 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-950/70 backdrop-blur-xl",
         gray: "border-gray-800 dark:border-gray-600 bg-gray-50 dark:bg-gray-950/70 backdrop-blur-xl",
-        amber: "border-amber-800 dark:border-amber-600 bg-amber-50 dark:bg-amber-950/70 backdrop-blur-xl",
-        violet: "border-violet-800 dark:border-violet-600 bg-violet-50 dark:bg-violet-950/70 backdrop-blur-xl",
+        amber:
+          "border-amber-800 dark:border-amber-600 bg-amber-50 dark:bg-amber-950/70 backdrop-blur-xl",
+        violet:
+          "border-violet-800 dark:border-violet-600 bg-violet-50 dark:bg-violet-950/70 backdrop-blur-xl",
         "gradient-blue":
           "border-blue-800 dark:border-blue-600 bg-linear-to-r from-blue-50 dark:from-blue-950/70 to-purple-50 dark:to-purple-950/70 backdrop-blur-xl",
         "gradient-green":

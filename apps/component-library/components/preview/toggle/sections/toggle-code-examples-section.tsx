@@ -26,15 +26,27 @@ export function ToggleCodeExamplesSection() {
         {TOGGLE_APPEARANCES.map((appearance) => (
           <PreviewCodeShowcase
             key={`app-${appearance}`}
-            code={toggleSnippet({ appearance, size: "md", thumbColor: "default" })}
+            code={toggleSnippet({
+              appearance,
+              size: "md",
+              thumbColor: "default",
+            })}
           >
-            <ToggleDemo appearance={appearance} size="md" thumbColor="default" />
+            <ToggleDemo
+              appearance={appearance}
+              size="md"
+              thumbColor="default"
+            />
           </PreviewCodeShowcase>
         ))}
         {TOGGLE_SIZES.map((size) => (
           <PreviewCodeShowcase
             key={`size-${size}`}
-            code={toggleSnippet({ appearance: "default", size, thumbColor: "default" })}
+            code={toggleSnippet({
+              appearance: "default",
+              size,
+              thumbColor: "default",
+            })}
           >
             <ToggleDemo appearance="default" size={size} thumbColor="default" />
           </PreviewCodeShowcase>
@@ -43,11 +55,15 @@ export function ToggleCodeExamplesSection() {
           <ToggleControlledDemo />
         </PreviewCodeShowcase>
         <PreviewCodeShowcase
-            key={`thumb-color-emerald`}
-            code={toggleSnippet({ appearance: "emerald", size: "md", thumbColor: "emerald" })}
-          >
-            <ToggleDemo appearance="emerald" size="md" thumbColor="emerald" />
-          </PreviewCodeShowcase>
+          key={`thumb-color-emerald`}
+          code={toggleSnippet({
+            appearance: "emerald",
+            size: "md",
+            thumbColor: "emerald",
+          })}
+        >
+          <ToggleDemo appearance="emerald" size="md" thumbColor="emerald" />
+        </PreviewCodeShowcase>
       </div>
     </section>
   );

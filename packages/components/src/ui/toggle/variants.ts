@@ -10,7 +10,8 @@ export const toggleTrackVariants = cva(
         lg: "h-7 w-[3.25rem]",
       },
       appearance: {
-        default: "data-[state=checked]:bg-cyan-400/50 dark:data-[state=checked]:bg-cyan-600/80",
+        default:
+          "data-[state=checked]:bg-cyan-400/50 dark:data-[state=checked]:bg-cyan-600/80",
         success:
           "data-[state=checked]:border-emerald-500/40 data-[state=checked]:bg-emerald-400/50 dark:data-[state=checked]:bg-emerald-600/80",
         destructive:
@@ -105,7 +106,7 @@ export const toggleThumbVariants = cva(
         "gradient-indigo": "bg-indigo-500",
         "gradient-pink": "bg-pink-500",
         "gradient-orange": "bg-orange-500",
-      }
+      },
     },
     defaultVariants: {
       size: "md",

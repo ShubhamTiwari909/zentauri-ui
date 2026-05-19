@@ -103,7 +103,9 @@ export function FileUpload({
           </>
         )}
         {dragOver && (
-          <span className="text-xs text-slate-600 dark:text-slate-400">Drop files here</span>
+          <span className="text-xs text-slate-600 dark:text-slate-400">
+            Drop files here
+          </span>
         )}
       </label>
     </div>

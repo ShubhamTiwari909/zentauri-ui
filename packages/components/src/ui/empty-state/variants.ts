@@ -39,13 +39,16 @@ export const emptyStateTitleVariants = cva("font-semibold tracking-tight", {
   defaultVariants: { size: "md" },
 });
 
-export const emptyStateDescriptionVariants = cva("max-w-md text-slate-500 dark:text-slate-400", {
-  variants: {
-    size: {
-      sm: "text-xs",
-      md: "text-sm",
-      lg: "text-base",
+export const emptyStateDescriptionVariants = cva(
+  "max-w-md text-slate-500 dark:text-slate-400",
+  {
+    variants: {
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
+      },
     },
+    defaultVariants: { size: "md" },
   },
-  defaultVariants: { size: "md" },
-});
+);

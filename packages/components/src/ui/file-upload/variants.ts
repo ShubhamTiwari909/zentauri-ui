@@ -6,7 +6,8 @@ export const fileUploadVariants = cva(
     variants: {
       appearance: {
         idle: "border-black/15 dark:border-white/15 bg-black/5 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:border-black/25 dark:hover:border-white/25 hover:bg-black/[0.07] dark:bg-white/[0.07]",
-        active: "border-violet-400/70 bg-violet-500/10 text-slate-900 dark:text-white",
+        active:
+          "border-violet-400/70 bg-violet-500/10 text-slate-900 dark:text-white",
         disabled: "cursor-not-allowed opacity-50",
         error:
           "border-red-400/70 bg-red-500/10 text-red-600 dark:text-red-400 hover:border-red-400/80 hover:bg-red-500/15",

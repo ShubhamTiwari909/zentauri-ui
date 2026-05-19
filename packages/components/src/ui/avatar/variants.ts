@@ -5,21 +5,29 @@ export const avatarVariants = cva(
   {
     variants: {
       appearance: {
-        default: "border-black/10 dark:border-white/10 bg-black/10 dark:bg-white/10 text-slate-700 dark:text-slate-200",
+        default:
+          "border-black/10 dark:border-white/10 bg-black/10 dark:bg-white/10 text-slate-700 dark:text-slate-200",
         muted:
           "border-black/40 bg-slate-50 dark:border-white/10 dark:bg-slate-950/40 text-slate-700 dark:text-slate-200",
         sky: "border-sky-800 dark:border-sky-600 bg-sky-100/50 dark:bg-sky-600/[0.03] text-slate-700 dark:text-slate-200",
         rose: "border-rose-800 dark:border-rose-600 bg-rose-100/50 dark:bg-rose-600/[0.03] text-slate-700 dark:text-slate-200",
-        purple: "border-purple-800 dark:border-purple-600 bg-purple-100/50 dark:bg-purple-600/[0.03] text-slate-700 dark:text-slate-200",
+        purple:
+          "border-purple-800 dark:border-purple-600 bg-purple-100/50 dark:bg-purple-600/[0.03] text-slate-700 dark:text-slate-200",
         pink: "border-pink-800 dark:border-pink-600 bg-pink-100/50 dark:bg-pink-600/[0.03] text-slate-700 dark:text-slate-200",
-        orange: "border-orange-800 dark:border-orange-600 bg-orange-100/50 dark:bg-orange-600/[0.03] text-slate-700 dark:text-slate-200",
-        yellow: "border-yellow-800 dark:border-yellow-600 bg-yellow-100/50 dark:bg-yellow-600/[0.03] text-slate-700 dark:text-slate-200",
+        orange:
+          "border-orange-800 dark:border-orange-600 bg-orange-100/50 dark:bg-orange-600/[0.03] text-slate-700 dark:text-slate-200",
+        yellow:
+          "border-yellow-800 dark:border-yellow-600 bg-yellow-100/50 dark:bg-yellow-600/[0.03] text-slate-700 dark:text-slate-200",
         teal: "border-teal-800 dark:border-teal-600 bg-teal-100/50 dark:bg-teal-600/[0.03] text-slate-700 dark:text-slate-200",
-        indigo: "border-indigo-800 dark:border-indigo-600 bg-indigo-100/50 dark:bg-indigo-600/[0.03] text-slate-700 dark:text-slate-200",
-        emerald: "border-emerald-800 dark:border-emerald-600 bg-emerald-100/50 dark:bg-emerald-600/[0.03] text-slate-700 dark:text-slate-200",
+        indigo:
+          "border-indigo-800 dark:border-indigo-600 bg-indigo-100/50 dark:bg-indigo-600/[0.03] text-slate-700 dark:text-slate-200",
+        emerald:
+          "border-emerald-800 dark:border-emerald-600 bg-emerald-100/50 dark:bg-emerald-600/[0.03] text-slate-700 dark:text-slate-200",
         gray: "border-gray-800 dark:border-gray-600 bg-gray-100/50 dark:bg-gray-600/[0.03] text-slate-700 dark:text-slate-200",
-        amber: "border-amber-800 dark:border-amber-600 bg-amber-100/50 dark:bg-amber-600/[0.03] text-slate-700 dark:text-slate-200",
-        violet: "border-violet-800 dark:border-violet-600 bg-violet-100/50 dark:bg-violet-600/[0.03] text-slate-700 dark:text-slate-200",
+        amber:
+          "border-amber-800 dark:border-amber-600 bg-amber-100/50 dark:bg-amber-600/[0.03] text-slate-700 dark:text-slate-200",
+        violet:
+          "border-violet-800 dark:border-violet-600 bg-violet-100/50 dark:bg-violet-600/[0.03] text-slate-700 dark:text-slate-200",
         "gradient-blue":
           "bg-linear-to-r from-blue-500 dark:from-blue-600 to-purple-500 dark:to-purple-600 backdrop-blur-xl text-slate-700 dark:text-slate-200",
         "gradient-green":

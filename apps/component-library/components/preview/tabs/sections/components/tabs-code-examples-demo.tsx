@@ -9,7 +9,6 @@ import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/an
 import type { TabsDemoProps } from "./tabs-code-examples.types";
 
 export function TabsDemo({ variant, size, appearance }: TabsDemoProps) {
-
   return (
     <div>
       <p className="mb-5 text-xs md:text-sm text-slate-900 dark:text-slate-50">
@@ -17,19 +16,29 @@ export function TabsDemo({ variant, size, appearance }: TabsDemoProps) {
         <span className="font-bold">{size}</span> | Appearance:{" "}
         <span className="font-bold">{appearance}</span>
       </p>
-      <Tabs defaultValue="one" appearance={appearance} orientation="horizontal" size={size} variant={variant}>
+      <Tabs
+        defaultValue="one"
+        appearance={appearance}
+        orientation="horizontal"
+        size={size}
+        variant={variant}
+      >
         <TabsList>
-          <TabsTrigger value="one">
-            One
-          </TabsTrigger>
-          <TabsTrigger value="two">
-            Two
-          </TabsTrigger>
+          <TabsTrigger value="one">One</TabsTrigger>
+          <TabsTrigger value="two">Two</TabsTrigger>
         </TabsList>
-        <TabsContentAnimated value="one" animation="fade" className="text-slate-900 dark:text-slate-50">
+        <TabsContentAnimated
+          value="one"
+          animation="fade"
+          className="text-slate-900 dark:text-slate-50"
+        >
           First panel content.
         </TabsContentAnimated>
-        <TabsContentAnimated value="two" animation="fade" className="text-slate-900 dark:text-slate-50">
+        <TabsContentAnimated
+          value="two"
+          animation="fade"
+          className="text-slate-900 dark:text-slate-50"
+        >
           Second panel content.
         </TabsContentAnimated>
       </Tabs>

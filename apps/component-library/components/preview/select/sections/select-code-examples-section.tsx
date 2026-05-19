@@ -55,13 +55,11 @@ export function SelectCodeExamplesSection() {
           <PreviewCodeShowcase
             key={`tr-size-${triggerSize}`}
             code={selectTriggerSnippet({
-              appearance: "default",
               triggerVariant: "default",
               triggerSize,
             })}
           >
             <SelectTriggerDemo
-              appearance="default"
               triggerVariant="default"
               triggerSize={triggerSize}
             />

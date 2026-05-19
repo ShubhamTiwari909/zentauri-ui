@@ -48,7 +48,8 @@ export const inputVariants = cva(
         date: "w-auto shrink-0",
       },
       appearance: {
-        default: "border-black/10 dark:border-white/10 focus-visible:border-black/20 dark:focus-visible:border-white/20",
+        default:
+          "border-black/10 dark:border-white/10 focus-visible:border-black/20 dark:focus-visible:border-white/20",
         warning:
           "border-yellow-500/80 text-yellow-950 dark:text-yellow-50 placeholder:text-yellow-800 dark:placeholder:text-yellow-300/70 focus-visible:border-yellow-600 dark:focus-visible:border-yellow-400 focus-visible:ring-yellow-400/80",
         error:
@@ -327,8 +328,7 @@ export const inputVariants = cva(
       {
         as: "date",
         appearance: "error",
-        class:
-          "bg-rose-900 dark:bg-transparent text-rose-50 dark:text-rose-50",
+        class: "bg-rose-900 dark:bg-transparent text-rose-50 dark:text-rose-50",
       },
       {
         as: "date",
@@ -339,8 +339,7 @@ export const inputVariants = cva(
       {
         as: "date",
         appearance: "info",
-        class:
-          "bg-blue-900 dark:bg-transparent text-blue-50 dark:text-blue-50",
+        class: "bg-blue-900 dark:bg-transparent text-blue-50 dark:text-blue-50",
       },
       {
         as: "date",
@@ -357,15 +356,14 @@ export const inputVariants = cva(
       {
         as: "date",
         appearance: "pink",
-        class:
-          "bg-pink-900 dark:bg-transparent text-pink-50 dark:text-pink-50",
+        class: "bg-pink-900 dark:bg-transparent text-pink-50 dark:text-pink-50",
       },
       {
         as: "date",
         appearance: "indigo",
         class:
           "bg-indigo-900 dark:bg-transparent text-indigo-50 dark:text-indigo-50",
-      },  
+      },
       {
         as: "date",
         appearance: "orange",

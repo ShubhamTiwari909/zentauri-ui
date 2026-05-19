@@ -5,19 +5,25 @@ export const selectTriggerVariants = cva(
   {
     variants: {
       variant: {
-        default: "border-gray-700 dark:border-gray-300 bg-black dark:bg-white text-slate-100 dark:text-gray-900",
+        default:
+          "border-gray-700 dark:border-gray-300 bg-black dark:bg-white text-slate-100 dark:text-gray-900",
         outline: "border-2 border-gray-500 text-gray-500 dark:text-gray-100",
         ghost: "border-transparent text-slate-900 dark:text-slate-200",
         sky: "border-sky-800 dark:border-sky-600 text-sky-800 dark:text-sky-600",
         rose: "border-rose-800 dark:border-rose-600 text-rose-800 dark:text-rose-600",
-        purple: "border-purple-800 dark:border-purple-600 text-purple-800 dark:text-purple-600",
+        purple:
+          "border-purple-800 dark:border-purple-600 text-purple-800 dark:text-purple-600",
         pink: "border-pink-800 dark:border-pink-600 text-pink-800 dark:text-pink-600",
-        orange: "border-orange-800 dark:border-orange-600 text-orange-800 dark:text-orange-600",
-        yellow: "border-yellow-800 dark:border-yellow-600 text-yellow-800 dark:text-yellow-600",
+        orange:
+          "border-orange-800 dark:border-orange-600 text-orange-800 dark:text-orange-600",
+        yellow:
+          "border-yellow-800 dark:border-yellow-600 text-yellow-800 dark:text-yellow-600",
         teal: "border-teal-800 dark:border-teal-600 text-teal-800 dark:text-teal-600",
         indigo: "border-indigo-500 text-indigo-500",
-        emerald: "border-emerald-800 dark:border-emerald-600 text-emerald-800 dark:text-emerald-600",
-        glass: "border-black/15 dark:border-white/15 bg-black/10 dark:bg-white/10 text-slate-900 dark:text-white backdrop-blur-md",
+        emerald:
+          "border-emerald-800 dark:border-emerald-600 text-emerald-800 dark:text-emerald-600",
+        glass:
+          "border-black/15 dark:border-white/15 bg-black/10 dark:bg-white/10 text-slate-900 dark:text-white backdrop-blur-md",
         "gradient-blue":
           "bg-linear-to-r from-blue-800 dark:from-blue-600 to-purple-800 dark:to-purple-600 backdrop-blur-xl text-white",
         "gradient-green":
@@ -79,22 +85,22 @@ export const selectItemVariants = cva(
           "border-emerald-800 dark:border-emerald-600 text-emerald-200 dark:text-emerald-800 data-[selected=true]:border-emerald-800 dark:data-[selected=true]:border-emerald-600 data-[selected=true]:bg-emerald-200 data-[selected=true]:text-emerald-800 dark:data-[selected=true]:text-emerald-800",
         "gradient-blue":
           "bg-transparent backdrop-blur-xl text-blue-50 dark:text-blue-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-blue-50 dark:data-[selected=true]:from-blue-50 data-[selected=true]:to-purple-50 dark:data-[selected=true]:to-purple-50 data-[selected=true]:text-blue-900",
-          "gradient-green":
-            "bg-transparent backdrop-blur-xl text-green-50 dark:text-green-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-green-50 dark:data-[selected=true]:from-green-50 data-[selected=true]:to-lime-50 dark:data-[selected=true]:to-lime-50 data-[selected=true]:text-green-900",
-          "gradient-red":
-            "bg-transparent backdrop-blur-xl text-red-50 dark:text-red-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-red-50 dark:data-[selected=true]:from-red-50 data-[selected=true]:to-pink-50 dark:data-[selected=true]:to-pink-50 data-[selected=true]:text-red-900",
-          "gradient-yellow":
-            "bg-transparent backdrop-blur-xl text-yellow-50 dark:text-yellow-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-yellow-50 dark:data-[selected=true]:from-yellow-50 data-[selected=true]:to-orange-50 dark:data-[selected=true]:to-orange-50 data-[selected=true]:text-yellow-900",
-          "gradient-purple":
-            "bg-transparent backdrop-blur-xl text-purple-50 dark:text-purple-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-purple-50 dark:data-[selected=true]:from-purple-50 data-[selected=true]:to-pink-50 dark:data-[selected=true]:to-pink-50 data-[selected=true]:text-purple-900",
-          "gradient-teal":
-            "bg-transparent backdrop-blur-xl text-teal-50 dark:text-teal-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-teal-50 dark:data-[selected=true]:from-teal-50 data-[selected=true]:to-cyan-50 dark:data-[selected=true]:to-cyan-50 data-[selected=true]:text-teal-900",
-          "gradient-indigo":
-            "bg-transparent backdrop-blur-xl text-indigo-50 dark:text-indigo-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-indigo-50 dark:data-[selected=true]:from-indigo-50 data-[selected=true]:to-purple-50 dark:data-[selected=true]:to-purple-50 data-[selected=true]:text-indigo-900",
-          "gradient-pink":
-            "bg-transparent backdrop-blur-xl text-pink-50 dark:text-pink-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-pink-50 dark:data-[selected=true]:from-pink-50 data-[selected=true]:to-rose-50 dark:data-[selected=true]:to-rose-50 data-[selected=true]:text-pink-900",
-          "gradient-orange":
-            "bg-transparent backdrop-blur-xl text-orange-50 dark:text-orange-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-orange-50 dark:data-[selected=true]:from-orange-50 data-[selected=true]:to-red-50 dark:data-[selected=true]:to-red-50 data-[selected=true]:text-orange-900",
+        "gradient-green":
+          "bg-transparent backdrop-blur-xl text-green-50 dark:text-green-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-green-50 dark:data-[selected=true]:from-green-50 data-[selected=true]:to-lime-50 dark:data-[selected=true]:to-lime-50 data-[selected=true]:text-green-900",
+        "gradient-red":
+          "bg-transparent backdrop-blur-xl text-red-50 dark:text-red-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-red-50 dark:data-[selected=true]:from-red-50 data-[selected=true]:to-pink-50 dark:data-[selected=true]:to-pink-50 data-[selected=true]:text-red-900",
+        "gradient-yellow":
+          "bg-transparent backdrop-blur-xl text-yellow-50 dark:text-yellow-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-yellow-50 dark:data-[selected=true]:from-yellow-50 data-[selected=true]:to-orange-50 dark:data-[selected=true]:to-orange-50 data-[selected=true]:text-yellow-900",
+        "gradient-purple":
+          "bg-transparent backdrop-blur-xl text-purple-50 dark:text-purple-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-purple-50 dark:data-[selected=true]:from-purple-50 data-[selected=true]:to-pink-50 dark:data-[selected=true]:to-pink-50 data-[selected=true]:text-purple-900",
+        "gradient-teal":
+          "bg-transparent backdrop-blur-xl text-teal-50 dark:text-teal-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-teal-50 dark:data-[selected=true]:from-teal-50 data-[selected=true]:to-cyan-50 dark:data-[selected=true]:to-cyan-50 data-[selected=true]:text-teal-900",
+        "gradient-indigo":
+          "bg-transparent backdrop-blur-xl text-indigo-50 dark:text-indigo-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-indigo-50 dark:data-[selected=true]:from-indigo-50 data-[selected=true]:to-purple-50 dark:data-[selected=true]:to-purple-50 data-[selected=true]:text-indigo-900",
+        "gradient-pink":
+          "bg-transparent backdrop-blur-xl text-pink-50 dark:text-pink-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-pink-50 dark:data-[selected=true]:from-pink-50 data-[selected=true]:to-rose-50 dark:data-[selected=true]:to-rose-50 data-[selected=true]:text-pink-900",
+        "gradient-orange":
+          "bg-transparent backdrop-blur-xl text-orange-50 dark:text-orange-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-orange-50 dark:data-[selected=true]:from-orange-50 data-[selected=true]:to-red-50 dark:data-[selected=true]:to-red-50 data-[selected=true]:text-orange-900",
       },
       disabled: {
         true: "opacity-50 cursor-not-allowed",

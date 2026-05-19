@@ -4,10 +4,13 @@ import { cva } from "class-variance-authority";
 export const typographyToneVariants = cva("", {
   variants: {
     tone: {
-      default: "text-slate-900 dark:text-slate-50 border-black/15 dark:border-white/15",
-      muted: "text-slate-500 dark:text-slate-400 border-black/15 dark:border-white/15",
+      default:
+        "text-slate-900 dark:text-slate-50 border-black/15 dark:border-white/15",
+      muted:
+        "text-slate-500 dark:text-slate-400 border-black/15 dark:border-white/15",
       primary: "text-cyan-700 dark:text-cyan-300 border-cyan-300/40",
-      secondary: "text-slate-600 dark:text-slate-300 border-black/15 dark:border-white/15",
+      secondary:
+        "text-slate-600 dark:text-slate-300 border-black/15 dark:border-white/15",
       accent: "text-violet-700 dark:text-violet-300 border-violet-300/40",
       destructive: "text-rose-600 dark:text-rose-400 border-rose-300/40",
       info: "text-sky-700 dark:text-sky-300 border-sky-300/40",

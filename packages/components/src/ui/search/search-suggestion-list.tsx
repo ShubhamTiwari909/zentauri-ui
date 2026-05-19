@@ -94,7 +94,9 @@ export function SearchSuggestionList({
                 onFocus={() => onActiveIdChange?.(item.id)}
                 onClick={() => onSelect(item.id)}
               >
-                <span className="font-medium text-slate-900 dark:text-slate-100">{item.label}</span>
+                <span className="font-medium text-slate-900 dark:text-slate-100">
+                  {item.label}
+                </span>
                 {item.description ? (
                   <span className="truncate text-xs text-slate-900 dark:text-slate-200">
                     {item.description}

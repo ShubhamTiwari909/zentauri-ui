@@ -48,12 +48,8 @@ export function TabsExamplesSection() {
         >
           <Tabs defaultValue="general" appearance="sky">
             <TabsList>
-              <TabsTrigger value="general">
-                General
-              </TabsTrigger>
-              <TabsTrigger value="billing">
-                Billing
-              </TabsTrigger>
+              <TabsTrigger value="general">General</TabsTrigger>
+              <TabsTrigger value="billing">Billing</TabsTrigger>
             </TabsList>
             <TabsContentAnimated
               value="general"
@@ -113,12 +109,8 @@ export function TabsExamplesSection() {
             appearance="emerald"
           >
             <TabsList>
-              <TabsTrigger value="profile">
-                Profile
-              </TabsTrigger>
-              <TabsTrigger value="security">
-                Security
-              </TabsTrigger>
+              <TabsTrigger value="profile">Profile</TabsTrigger>
+              <TabsTrigger value="security">Security</TabsTrigger>
             </TabsList>
             <div className="min-w-0 flex-1">
               <TabsContentAnimated

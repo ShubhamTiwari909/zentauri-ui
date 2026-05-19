@@ -3,19 +3,25 @@ import { cva } from "class-variance-authority";
 export const accordionVariants = cva("w-full", {
   variants: {
     appearance: {
-      default: "divide-y divide-black/10 dark:divide-white/10 rounded-xl border border-black/10 dark:border-white/10",
-      outline: "divide-y divide-black/10 dark:divide-white/10 rounded-xl border border-black/15 dark:border-white/15",
+      default:
+        "divide-y divide-black/10 dark:divide-white/10 rounded-xl border border-black/10 dark:border-white/10",
+      outline:
+        "divide-y divide-black/10 dark:divide-white/10 rounded-xl border border-black/15 dark:border-white/15",
       ghost: "divide-y divide-black/5 dark:divide-white/5",
       card: "space-y-2",
       separated: "space-y-3",
       sky: "divide-y divide-sky-800 dark:divide-sky-600 rounded-xl border border-sky-800 dark:border-sky-600",
       rose: "divide-y divide-rose-800 dark:divide-rose-600 rounded-xl border border-rose-800 dark:border-rose-600",
-      purple: "divide-y divide-purple-800 dark:divide-purple-600 rounded-xl border border-purple-800 dark:border-purple-600",
+      purple:
+        "divide-y divide-purple-800 dark:divide-purple-600 rounded-xl border border-purple-800 dark:border-purple-600",
       pink: "divide-y divide-pink-800 dark:divide-pink-600 rounded-xl border border-pink-800 dark:border-pink-600",
-      orange: "divide-y divide-orange-800 dark:divide-orange-600 rounded-xl border border-orange-800 dark:border-orange-600",
-      yellow: "divide-y divide-yellow-800 dark:divide-yellow-600 rounded-xl border border-yellow-800 dark:border-yellow-600",
+      orange:
+        "divide-y divide-orange-800 dark:divide-orange-600 rounded-xl border border-orange-800 dark:border-orange-600",
+      yellow:
+        "divide-y divide-yellow-800 dark:divide-yellow-600 rounded-xl border border-yellow-800 dark:border-yellow-600",
       teal: "divide-y divide-teal-800 dark:divide-teal-600 rounded-xl border border-teal-800 dark:border-teal-600",
-      indigo: "divide-y divide-indigo-800 dark:divide-indigo-600 rounded-xl border border-indigo-800 dark:border-indigo-600",
+      indigo:
+        "divide-y divide-indigo-800 dark:divide-indigo-600 rounded-xl border border-indigo-800 dark:border-indigo-600",
       emerald:
         "divide-y divide-emerald-800 dark:divide-emerald-600 rounded-xl border border-emerald-800 dark:border-emerald-600",
       "gradient-blue":
@@ -56,22 +62,28 @@ export const accordionItemVariants = cva("text-slate-900 dark:text-slate-200", {
       outline: "",
       ghost: "",
       card: "rounded-xl border border-black/10 bg-black/5 p-2",
-      separated: "rounded-xl border border-black/10 dark:border-white/10 bg-slate-50/40 dark:bg-slate-950/40 p-2",
+      separated:
+        "rounded-xl border border-black/10 dark:border-white/10 bg-slate-50/40 dark:bg-slate-950/40 p-2",
       sky: "rounded-xl border border-sky-800 dark:border-sky-600 bg-sky-100/50 dark:bg-sky-600/[0.03] p-2",
       rose: "rounded-xl border border-rose-800 dark:border-rose-600 bg-rose-100/50 dark:bg-rose-600/[0.03] p-2",
-      purple: "rounded-xl border border-purple-800 dark:border-purple-600 bg-purple-100/50 dark:bg-purple-600/[0.03] p-2",
+      purple:
+        "rounded-xl border border-purple-800 dark:border-purple-600 bg-purple-100/50 dark:bg-purple-600/[0.03] p-2",
       pink: "rounded-xl border border-pink-800 dark:border-pink-600 bg-pink-100/50 dark:bg-pink-600/[0.03] p-2",
-      orange: "rounded-xl border border-orange-800 dark:border-orange-600 bg-orange-100/50 dark:bg-orange-600/[0.03] p-2",
-      yellow: "rounded-xl border border-yellow-800 dark:border-yellow-600 bg-yellow-100/50 dark:bg-yellow-600/[0.03] p-2",
+      orange:
+        "rounded-xl border border-orange-800 dark:border-orange-600 bg-orange-100/50 dark:bg-orange-600/[0.03] p-2",
+      yellow:
+        "rounded-xl border border-yellow-800 dark:border-yellow-600 bg-yellow-100/50 dark:bg-yellow-600/[0.03] p-2",
       teal: "rounded-xl border border-teal-800 dark:border-teal-600 bg-teal-100/50 dark:bg-teal-600/[0.03] p-2",
-      indigo: "rounded-xl border border-indigo-800 dark:border-indigo-600 bg-indigo-100/50 dark:bg-indigo-600/[0.03] p-2",
-      emerald: "rounded-xl border border-emerald-800 dark:border-emerald-600 bg-emerald-100/50 dark:bg-emerald-600/[0.03] p-2",
+      indigo:
+        "rounded-xl border border-indigo-800 dark:border-indigo-600 bg-indigo-100/50 dark:bg-indigo-600/[0.03] p-2",
+      emerald:
+        "rounded-xl border border-emerald-800 dark:border-emerald-600 bg-emerald-100/50 dark:bg-emerald-600/[0.03] p-2",
       "gradient-blue":
         "rounded-xl bg-linear-to-r from-blue-300 dark:from-blue-600 to-purple-300 dark:to-purple-600 p-2",
       "gradient-green":
         "rounded-xl bg-linear-to-r from-green-300 dark:from-green-600 to-lime-300 dark:to-lime-600 p-2",
       "gradient-red":
-      "rounded-xl bg-linear-to-r from-red-300 dark:from-red-600 to-pink-300 dark:to-pink-600 p-2",
+        "rounded-xl bg-linear-to-r from-red-300 dark:from-red-600 to-pink-300 dark:to-pink-600 p-2",
       "gradient-yellow":
         "rounded-xl bg-linear-to-r from-yellow-300 dark:from-yellow-600 to-orange-300 dark:to-orange-600 p-2",
       "gradient-purple":

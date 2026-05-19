@@ -6,27 +6,36 @@ export const triggerVariants = cva(
     variants: {
       variant: {
         default: "bg-gray-200 dark:bg-gray-900 text-slate-900 dark:text-white",
-        outline: "border border-gray-700 dark:border-gray-300 text-gray-900 dark:text-gray-100",
+        outline:
+          "border border-gray-700 dark:border-gray-300 text-gray-900 dark:text-gray-100",
         ghost: "bg-transparent text-gray-900 dark:text-gray-100",
         white: "bg-white text-gray-900",
         black: "bg-black text-white",
         sky: "border border-sky-800 dark:border-sky-600 text-sky-800 dark:text-sky-600",
         rose: "border border-rose-800 dark:border-rose-600 text-rose-800 dark:text-rose-600",
-        purple: "border border-purple-800 dark:border-purple-600 text-purple-800 dark:text-purple-600",
+        purple:
+          "border border-purple-800 dark:border-purple-600 text-purple-800 dark:text-purple-600",
         pink: "border border-pink-800 dark:border-pink-600 text-pink-800 dark:text-pink-600",
-        orange: "border border-orange-800 dark:border-orange-600 text-orange-800 dark:text-orange-600",
-        yellow: "border border-yellow-800 dark:border-yellow-600 text-yellow-800 dark:text-yellow-600",
+        orange:
+          "border border-orange-800 dark:border-orange-600 text-orange-800 dark:text-orange-600",
+        yellow:
+          "border border-yellow-800 dark:border-yellow-600 text-yellow-800 dark:text-yellow-600",
         teal: "border border-teal-800 dark:border-teal-600 text-teal-800 dark:text-teal-600",
-        indigo: "border border-indigo-800 dark:border-indigo-600 text-indigo-800 dark:text-indigo-600",
-        emerald: "border border-emerald-800 dark:border-emerald-600 text-emerald-800 dark:text-emerald-600",
+        indigo:
+          "border border-indigo-800 dark:border-indigo-600 text-indigo-800 dark:text-indigo-600",
+        emerald:
+          "border border-emerald-800 dark:border-emerald-600 text-emerald-800 dark:text-emerald-600",
         gray: "border border-gray-800 dark:border-gray-600 text-gray-800 dark:text-gray-600",
-        amber: "border border-amber-800 dark:border-amber-600 text-amber-800 dark:text-amber-600",
-        violet: "border border-violet-800 dark:border-violet-600 text-violet-800 dark:text-violet-600",
+        amber:
+          "border border-amber-800 dark:border-amber-600 text-amber-800 dark:text-amber-600",
+        violet:
+          "border border-violet-800 dark:border-violet-600 text-violet-800 dark:text-violet-600",
         "gradient-blue":
           "bg-linear-to-r from-blue-800 dark:from-blue-600 to-purple-800 dark:to-purple-600 text-blue-200",
         "gradient-green":
           "bg-linear-to-r from-green-800 dark:from-green-600 to-lime-800 dark:to-lime-600 text-green-200",
-        "gradient-red": "bg-linear-to-r from-red-800 dark:from-red-600 to-pink-800 dark:to-pink-600 text-red-200",
+        "gradient-red":
+          "bg-linear-to-r from-red-800 dark:from-red-600 to-pink-800 dark:to-pink-600 text-red-200",
         "gradient-yellow":
           "bg-linear-to-r from-yellow-800 dark:from-yellow-600 to-orange-800 dark:to-orange-600 text-yellow-200",
         "gradient-purple":
@@ -84,13 +93,16 @@ export const itemVariants = cva(
   {
     variants: {
       variant: {
-        default: "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 text-gray-100",
+        default:
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 text-gray-100",
         outline:
           "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 border border-black dark:border-white text-gray-100",
         ghost:
           "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-transparent text-gray-100",
-        white: "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-black dark:bg-white text-gray-500 dark:text-gray-900",
-        black: "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-white dark:bg-black text-slate-900 dark:text-white",
+        white:
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-black dark:bg-white text-gray-500 dark:text-gray-900",
+        black:
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-white dark:bg-black text-slate-900 dark:text-white",
         sky: "hover:bg-sky-100 hover:text-sky-800 dark:hover:text-sky-600 bg-sky-200 text-sky-900 dark:text-sky-800",
         rose: "hover:bg-rose-100 hover:text-rose-800 dark:hover:text-rose-600 bg-rose-200 text-rose-900 dark:text-rose-800",
         purple:

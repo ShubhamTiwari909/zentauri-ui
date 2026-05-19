@@ -184,10 +184,7 @@ ToastTitle.displayName = "ToastTitle";
 
 export function ToastDescription({ className, children }: ToastSectionProps) {
   return (
-    <div
-      data-slot="toast-description"
-      className={cn("text-sm", className)}
-    >
+    <div data-slot="toast-description" className={cn("text-sm", className)}>
       {children}
     </div>
   );

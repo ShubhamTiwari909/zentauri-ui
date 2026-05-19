@@ -13,26 +13,36 @@ export const buttonVariants = cva(
       appearance: {
         default:
           "bg-slate-900 dark:bg-slate-50 text-slate-50 dark:text-slate-950 shadow-[0_1px_2px_rgba(15,23,42,0.08)] dark:shadow-[0_1px_2px_rgba(15,23,42,0.12)] hover:bg-black dark:hover:bg-white",
-        secondary: "bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-50 hover:bg-slate-300 dark:hover:bg-slate-700",
-        destructive: "bg-rose-500 dark:bg-rose-700 text-white hover:bg-rose-500 dark:hover:bg-rose-800",
+        secondary:
+          "bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-50 hover:bg-slate-300 dark:hover:bg-slate-700",
+        destructive:
+          "bg-rose-500 dark:bg-rose-700 text-white hover:bg-rose-500 dark:hover:bg-rose-800",
         outline:
           "border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 text-slate-900 dark:text-slate-50 hover:bg-black/10 dark:hover:bg-white/10",
-        ghost: "bg-transparent text-slate-700 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5",
+        ghost:
+          "bg-transparent text-slate-700 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5",
         link: "bg-transparent text-cyan-700 dark:text-cyan-300 underline-offset-4 hover:underline",
         glass:
           "border border-black/15 dark:border-white/15 bg-black/10 dark:bg-white/10 text-slate-900 dark:text-white backdrop-blur-md hover:bg-black/15 dark:hover:bg-white/15",
-        emerald: "bg-emerald-500 dark:bg-emerald-800 text-white hover:bg-emerald-500 dark:hover:bg-emerald-900",
-        indigo: "bg-indigo-800 dark:bg-indigo-600 text-white hover:bg-indigo-800 dark:hover:bg-indigo-600",
-        purple: "bg-purple-800 dark:bg-purple-600 text-white hover:bg-purple-800 dark:hover:bg-purple-600",
+        emerald:
+          "bg-emerald-500 dark:bg-emerald-800 text-white hover:bg-emerald-500 dark:hover:bg-emerald-900",
+        indigo:
+          "bg-indigo-800 dark:bg-indigo-600 text-white hover:bg-indigo-800 dark:hover:bg-indigo-600",
+        purple:
+          "bg-purple-800 dark:bg-purple-600 text-white hover:bg-purple-800 dark:hover:bg-purple-600",
         pink: "bg-pink-800 dark:bg-pink-600 text-white hover:bg-pink-800 dark:hover:bg-pink-600",
         rose: "bg-rose-800 dark:bg-rose-600 text-white hover:bg-rose-800 dark:hover:bg-rose-600",
         sky: "bg-sky-500 dark:bg-sky-700 text-white hover:bg-sky-500 dark:hover:bg-sky-800",
         teal: "bg-teal-500 dark:bg-teal-700 text-white hover:bg-teal-500 dark:hover:bg-teal-800",
-        yellow: "bg-yellow-500 dark:bg-yellow-800 text-white hover:bg-yellow-500 dark:hover:bg-yellow-900",
-        orange: "bg-orange-500 dark:bg-orange-800 text-white hover:bg-orange-500 dark:hover:bg-orange-900",
+        yellow:
+          "bg-yellow-500 dark:bg-yellow-800 text-white hover:bg-yellow-500 dark:hover:bg-yellow-900",
+        orange:
+          "bg-orange-500 dark:bg-orange-800 text-white hover:bg-orange-500 dark:hover:bg-orange-900",
         gray: "bg-gray-500 dark:bg-gray-700 text-white hover:bg-gray-500 dark:hover:bg-gray-800",
-        amber: "bg-amber-500 dark:bg-amber-800 text-white hover:bg-amber-500 dark:hover:bg-amber-900",
-        violet: "bg-violet-800 dark:bg-violet-600 text-white hover:bg-violet-800 dark:hover:bg-violet-600",
+        amber:
+          "bg-amber-500 dark:bg-amber-800 text-white hover:bg-amber-500 dark:hover:bg-amber-900",
+        violet:
+          "bg-violet-800 dark:bg-violet-600 text-white hover:bg-violet-800 dark:hover:bg-violet-600",
         "gradient-blue":
           "bg-linear-to-r from-blue-800 dark:from-blue-600 to-purple-800 dark:to-purple-600 text-white hover:from-blue-800 dark:hover:from-blue-600 hover:to-purple-800 dark:hover:to-purple-600",
         "gradient-green":

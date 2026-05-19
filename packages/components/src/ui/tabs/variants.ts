@@ -32,23 +32,37 @@ export const tabsTriggerVariants = cva(
         default: "bg-transparent text-slate-900 dark:text-slate-50",
         sky: "bg-sky-300/60 text-sky-700 dark:text-sky-200 data-[state=active]:bg-sky-700 dark:data-[state=active]:bg-sky-500 data-[state=active]:text-sky-100 dark:data-[state=active]:text-text-sky-100",
         rose: "bg-rose-300/60 text-rose-700 dark:text-rose-200 data-[state=active]:bg-rose-700 dark:data-[state=active]:bg-rose-500 data-[state=active]:text-rose-100 dark:data-[state=active]:text-rose-100",
-        purple: "bg-purple-300/60 text-purple-700 dark:text-purple-200 data-[state=active]:bg-purple-700 dark:data-[state=active]:bg-purple-500 data-[state=active]:text-purple-100 dark:data-[state=active]:text-purple-100",
+        purple:
+          "bg-purple-300/60 text-purple-700 dark:text-purple-200 data-[state=active]:bg-purple-700 dark:data-[state=active]:bg-purple-500 data-[state=active]:text-purple-100 dark:data-[state=active]:text-purple-100",
         pink: "bg-pink-300/60 text-pink-700 dark:text-pink-200 data-[state=active]:bg-pink-700 dark:data-[state=active]:bg-pink-500 data-[state=active]:text-pink-100 dark:data-[state=active]:text-pink-100",
-        orange: "bg-orange-300/60 text-orange-700 dark:text-orange-200 data-[state=active]:bg-orange-700 dark:data-[state=active]:bg-orange-500 data-[state=active]:text-orange-100 dark:data-[state=active]:text-orange-100",
-        yellow: "bg-yellow-300/60 text-yellow-700 dark:text-yellow-200 data-[state=active]:bg-yellow-700 dark:data-[state=active]:bg-yellow-500 data-[state=active]:text-yellow-100 dark:data-[state=active]:text-yellow-100",
+        orange:
+          "bg-orange-300/60 text-orange-700 dark:text-orange-200 data-[state=active]:bg-orange-700 dark:data-[state=active]:bg-orange-500 data-[state=active]:text-orange-100 dark:data-[state=active]:text-orange-100",
+        yellow:
+          "bg-yellow-300/60 text-yellow-700 dark:text-yellow-200 data-[state=active]:bg-yellow-700 dark:data-[state=active]:bg-yellow-500 data-[state=active]:text-yellow-100 dark:data-[state=active]:text-yellow-100",
         teal: "bg-teal-300/60 text-teal-700 dark:text-teal-200 data-[state=active]:bg-teal-700 dark:data-[state=active]:bg-teal-500 data-[state=active]:text-teal-100 dark:data-[state=active]:text-teal-100",
-        indigo: "bg-indigo-300/60 text-indigo-700 dark:text-indigo-200 data-[state=active]:bg-indigo-700 dark:data-[state=active]:bg-indigo-500 data-[state=active]:text-indigo-100 dark:data-[state=active]:text-indigo-100",
-        emerald: "bg-emerald-300/60 text-emerald-700 dark:text-emerald-200 data-[state=active]:bg-emerald-700 dark:data-[state=active]:bg-emerald-500 data-[state=active]:text-emerald-100 dark:data-[state=active]:text-emerald-100",
+        indigo:
+          "bg-indigo-300/60 text-indigo-700 dark:text-indigo-200 data-[state=active]:bg-indigo-700 dark:data-[state=active]:bg-indigo-500 data-[state=active]:text-indigo-100 dark:data-[state=active]:text-indigo-100",
+        emerald:
+          "bg-emerald-300/60 text-emerald-700 dark:text-emerald-200 data-[state=active]:bg-emerald-700 dark:data-[state=active]:bg-emerald-500 data-[state=active]:text-emerald-100 dark:data-[state=active]:text-emerald-100",
         gray: "bg-gray-300/60 text-gray-700 dark:text-gray-200 data-[state=active]:bg-gray-700 dark:data-[state=active]:bg-gray-500 data-[state=active]:text-gray-100 dark:data-[state=active]:text-gray-100",
-        "gradient-blue": "bg-linear-to-r from-blue-800 dark:from-blue-800 to-purple-800 dark:to-purple-800 text-blue-100 dark:text-blue-200 data-[state=active]:from-blue-600 dark:data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 dark:data-[state=active]:to-purple-600 data-[state=active]:text-blue-100 dark:data-[state=active]:text-blue-100",
-        "gradient-green": "bg-linear-to-r from-green-800 dark:from-green-800 to-lime-800 dark:to-lime-800 text-green-100 dark:text-green-200 data-[state=active]:from-green-600 dark:data-[state=active]:from-green-600 data-[state=active]:to-lime-600 dark:data-[state=active]:to-lime-600 data-[state=active]:text-green-100 dark:data-[state=active]:text-green-100",
-        "gradient-red": "bg-linear-to-r from-red-800 dark:from-red-800 to-pink-800 dark:to-pink-800 text-red-100 dark:text-red-200 data-[state=active]:from-red-600 dark:data-[state=active]:from-red-600 data-[state=active]:to-pink-600 dark:data-[state=active]:to-pink-600 data-[state=active]:text-red-100 dark:data-[state=active]:text-red-100",
-        "gradient-yellow": "bg-linear-to-r from-yellow-800 dark:from-yellow-800 to-orange-800 dark:to-orange-800 text-yellow-100 dark:text-yellow-200 data-[state=active]:from-yellow-600 dark:data-[state=active]:from-yellow-600 data-[state=active]:to-orange-600 dark:data-[state=active]:to-orange-600 data-[state=active]:text-yellow-100 dark:data-[state=active]:text-yellow-100",
-        "gradient-purple": "bg-linear-to-r from-purple-800 dark:from-purple-800 to-pink-800 dark:to-pink-800 text-purple-100 dark:text-purple-200 data-[state=active]:from-purple-600 dark:data-[state=active]:from-purple-600 data-[state=active]:to-pink-600 dark:data-[state=active]:to-pink-600 data-[state=active]:text-purple-100 dark:data-[state=active]:text-purple-100",
-        "gradient-teal": "bg-linear-to-r from-teal-800 dark:from-teal-800 to-cyan-800 dark:to-cyan-800 text-teal-100 dark:text-teal-200 data-[state=active]:from-teal-600 dark:data-[state=active]:from-teal-600 data-[state=active]:to-cyan-600 dark:data-[state=active]:to-cyan-600 data-[state=active]:text-teal-100 dark:data-[state=active]:text-teal-100",
-        "gradient-indigo": "bg-linear-to-r from-indigo-800 dark:from-indigo-800 to-purple-800 dark:to-purple-800 text-indigo-100 dark:text-indigo-200 data-[state=active]:from-indigo-600 dark:data-[state=active]:from-indigo-600 data-[state=active]:to-purple-600 dark:data-[state=active]:to-purple-600 data-[state=active]:text-indigo-100 dark:data-[state=active]:text-indigo-100",
-        "gradient-pink": "bg-linear-to-r from-pink-800 dark:from-pink-800 to-rose-800 dark:to-rose-800 text-pink-100 dark:text-pink-200 data-[state=active]:from-pink-600 dark:data-[state=active]:from-pink-600 data-[state=active]:to-rose-600 dark:data-[state=active]:to-rose-600 data-[state=active]:text-pink-100 dark:data-[state=active]:text-pink-100",
-        "gradient-orange": "bg-linear-to-r from-orange-800 dark:from-orange-800 to-red-800 dark:to-red-800 text-orange-100 dark:text-orange-200 data-[state=active]:from-orange-600 dark:data-[state=active]:from-orange-600 data-[state=active]:to-red-600 dark:data-[state=active]:to-red-600 data-[state=active]:text-orange-100 dark:data-[state=active]:text-orange-100",
+        "gradient-blue":
+          "bg-linear-to-r from-blue-800 dark:from-blue-800 to-purple-800 dark:to-purple-800 text-blue-100 dark:text-blue-200 data-[state=active]:from-blue-600 dark:data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 dark:data-[state=active]:to-purple-600 data-[state=active]:text-blue-100 dark:data-[state=active]:text-blue-100",
+        "gradient-green":
+          "bg-linear-to-r from-green-800 dark:from-green-800 to-lime-800 dark:to-lime-800 text-green-100 dark:text-green-200 data-[state=active]:from-green-600 dark:data-[state=active]:from-green-600 data-[state=active]:to-lime-600 dark:data-[state=active]:to-lime-600 data-[state=active]:text-green-100 dark:data-[state=active]:text-green-100",
+        "gradient-red":
+          "bg-linear-to-r from-red-800 dark:from-red-800 to-pink-800 dark:to-pink-800 text-red-100 dark:text-red-200 data-[state=active]:from-red-600 dark:data-[state=active]:from-red-600 data-[state=active]:to-pink-600 dark:data-[state=active]:to-pink-600 data-[state=active]:text-red-100 dark:data-[state=active]:text-red-100",
+        "gradient-yellow":
+          "bg-linear-to-r from-yellow-800 dark:from-yellow-800 to-orange-800 dark:to-orange-800 text-yellow-100 dark:text-yellow-200 data-[state=active]:from-yellow-600 dark:data-[state=active]:from-yellow-600 data-[state=active]:to-orange-600 dark:data-[state=active]:to-orange-600 data-[state=active]:text-yellow-100 dark:data-[state=active]:text-yellow-100",
+        "gradient-purple":
+          "bg-linear-to-r from-purple-800 dark:from-purple-800 to-pink-800 dark:to-pink-800 text-purple-100 dark:text-purple-200 data-[state=active]:from-purple-600 dark:data-[state=active]:from-purple-600 data-[state=active]:to-pink-600 dark:data-[state=active]:to-pink-600 data-[state=active]:text-purple-100 dark:data-[state=active]:text-purple-100",
+        "gradient-teal":
+          "bg-linear-to-r from-teal-800 dark:from-teal-800 to-cyan-800 dark:to-cyan-800 text-teal-100 dark:text-teal-200 data-[state=active]:from-teal-600 dark:data-[state=active]:from-teal-600 data-[state=active]:to-cyan-600 dark:data-[state=active]:to-cyan-600 data-[state=active]:text-teal-100 dark:data-[state=active]:text-teal-100",
+        "gradient-indigo":
+          "bg-linear-to-r from-indigo-800 dark:from-indigo-800 to-purple-800 dark:to-purple-800 text-indigo-100 dark:text-indigo-200 data-[state=active]:from-indigo-600 dark:data-[state=active]:from-indigo-600 data-[state=active]:to-purple-600 dark:data-[state=active]:to-purple-600 data-[state=active]:text-indigo-100 dark:data-[state=active]:text-indigo-100",
+        "gradient-pink":
+          "bg-linear-to-r from-pink-800 dark:from-pink-800 to-rose-800 dark:to-rose-800 text-pink-100 dark:text-pink-200 data-[state=active]:from-pink-600 dark:data-[state=active]:from-pink-600 data-[state=active]:to-rose-600 dark:data-[state=active]:to-rose-600 data-[state=active]:text-pink-100 dark:data-[state=active]:text-pink-100",
+        "gradient-orange":
+          "bg-linear-to-r from-orange-800 dark:from-orange-800 to-red-800 dark:to-red-800 text-orange-100 dark:text-orange-200 data-[state=active]:from-orange-600 dark:data-[state=active]:from-orange-600 data-[state=active]:to-red-600 dark:data-[state=active]:to-red-600 data-[state=active]:text-orange-100 dark:data-[state=active]:text-orange-100",
       },
       variant: {
         default: "data-[state=active]:bg-background",

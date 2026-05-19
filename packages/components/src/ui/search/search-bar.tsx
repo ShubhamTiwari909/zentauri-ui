@@ -58,7 +58,7 @@ export const SearchBar = function SearchBar({
           inputVariants({ appearance, size: inputSize, ring, as: "input" }),
           leadingSlot ? "pl-10" : null,
           inputClassName,
-          "[&::-webkit-search-cancel-button]:hidden"
+          "[&::-webkit-search-cancel-button]:hidden",
         )}
         onChange={(event) => {
           onChange?.(event);

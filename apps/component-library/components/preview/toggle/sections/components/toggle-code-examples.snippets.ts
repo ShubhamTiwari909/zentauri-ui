@@ -7,7 +7,8 @@ export function toggleSnippet(opts: ToggleDemoProps): string {
   const appearanceAttr =
     appearance === "default" ? "" : ` appearance="${appearance}"`;
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
-  const thumbColorAttr = thumbColor === "default" ? "" : ` thumbColor="${thumbColor}"`;
+  const thumbColorAttr =
+    thumbColor === "default" ? "" : ` thumbColor="${thumbColor}"`;
   return `${variantLeadComment(`appearance · ${appearance}, size · ${size}`)}<ToggleAnimated${appearanceAttr}${sizeAttr}${thumbColorAttr} defaultChecked animation="spring" aria-label="Demo toggle" />`;
 }
 

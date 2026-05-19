@@ -33,7 +33,8 @@ export const stepperIndicatorVariants = cva(
           "border-emerald-500/60 bg-emerald-500/20 text-emerald-900 dark:text-emerald-100 ring-2 ring-emerald-400/30",
         current:
           "border-violet-600 dark:border-violet-400 bg-violet-500/20 text-slate-900 dark:text-white ring-2 ring-violet-400/50",
-        upcoming: "border-black/15 dark:border-white/15 bg-black/5 dark:bg-white/5 text-slate-500 dark:text-slate-400",
+        upcoming:
+          "border-black/15 dark:border-white/15 bg-black/5 dark:bg-white/5 text-slate-500 dark:text-slate-400",
         sky: "border-sky-500/60 bg-sky-500/20 text-sky-900 dark:text-sky-100 ring-2 ring-sky-400/30",
         rose: "border-rose-500/60 bg-rose-500/20 text-rose-900 dark:text-rose-100 ring-2 ring-rose-400/30",
         purple:

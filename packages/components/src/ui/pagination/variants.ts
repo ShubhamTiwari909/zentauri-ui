@@ -9,13 +9,16 @@ export const paginationListVariants = cva(
   {
     variants: {
       appearance: {
-        default: "border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.03]",
-        secondary: "border-black/10 dark:border-white/10 bg-slate-100/40 dark:bg-slate-900/40",
+        default:
+          "border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.03]",
+        secondary:
+          "border-black/10 dark:border-white/10 bg-slate-100/40 dark:bg-slate-900/40",
         destructive: "border-rose-500/25 bg-rose-50 dark:bg-rose-950/20",
         outline: "border-black/15 dark:border-white/15 bg-transparent",
         ghost: "border-transparent bg-transparent",
         link: "border-transparent bg-transparent",
-        glass: "border-black/15 dark:border-white/15 bg-black/5 dark:bg-white/5 backdrop-blur-md",
+        glass:
+          "border-black/15 dark:border-white/15 bg-black/5 dark:bg-white/5 backdrop-blur-md",
         emerald: "border-emerald-500/25 bg-emerald-50 dark:bg-emerald-950/20",
         indigo: "border-indigo-500/25 bg-indigo-50 dark:bg-indigo-950/20",
         purple: "border-purple-500/25 bg-purple-50 dark:bg-purple-950/20",

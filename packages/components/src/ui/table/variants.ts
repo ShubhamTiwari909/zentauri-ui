@@ -51,16 +51,23 @@ export const tableRowVariants = cva(
         ghost: "border-transparent hover:bg-black/[0.03] dark:bg-white/[0.03]",
         sky: "border-sky-800 dark:border-sky-600 hover:bg-sky-800 dark:hover:bg-sky-600 hover:text-sky-100",
         rose: "border-rose-800 dark:border-rose-600 hover:bg-rose-500 dark:hover:bg-rose-900 hover:text-rose-100",
-        purple: "border-purple-800 dark:border-purple-600 hover:bg-purple-500 dark:hover:bg-purple-900 hover:text-purple-100",
+        purple:
+          "border-purple-800 dark:border-purple-600 hover:bg-purple-500 dark:hover:bg-purple-900 hover:text-purple-100",
         pink: "border-pink-800 dark:border-pink-600 hover:bg-pink-500 dark:hover:bg-pink-900 hover:text-pink-100",
-        orange: "border-orange-800 dark:border-orange-600 hover:bg-orange-500 dark:hover:bg-orange-900 hover:text-orange-100",
-        yellow: "border-yellow-800 dark:border-yellow-600 hover:bg-yellow-500 dark:hover:bg-yellow-900 hover:text-yellow-100",
+        orange:
+          "border-orange-800 dark:border-orange-600 hover:bg-orange-500 dark:hover:bg-orange-900 hover:text-orange-100",
+        yellow:
+          "border-yellow-800 dark:border-yellow-600 hover:bg-yellow-500 dark:hover:bg-yellow-900 hover:text-yellow-100",
         teal: "border-teal-800 dark:border-teal-600 hover:bg-teal-500 dark:hover:bg-teal-900 hover:text-teal-100",
-        indigo: "border-indigo-800 dark:border-indigo-600 hover:bg-indigo-500 dark:hover:bg-indigo-900 hover:text-indigo-100",
-        emerald: "border-emerald-800 dark:border-emerald-600 hover:bg-emerald-500 dark:hover:bg-emerald-900 hover:text-emerald-100",
+        indigo:
+          "border-indigo-800 dark:border-indigo-600 hover:bg-indigo-500 dark:hover:bg-indigo-900 hover:text-indigo-100",
+        emerald:
+          "border-emerald-800 dark:border-emerald-600 hover:bg-emerald-500 dark:hover:bg-emerald-900 hover:text-emerald-100",
         gray: "border-gray-800 dark:border-gray-600 hover:bg-gray-500 dark:hover:bg-gray-900 hover:text-gray-100",
-        amber: "border-amber-800 dark:border-amber-600 hover:bg-amber-500 dark:hover:bg-amber-900 hover:text-amber-100",
-        violet: "border-violet-800 dark:border-violet-600 hover:bg-violet-500 dark:hover:bg-violet-900 hover:text-violet-100",
+        amber:
+          "border-amber-800 dark:border-amber-600 hover:bg-amber-500 dark:hover:bg-amber-900 hover:text-amber-100",
+        violet:
+          "border-violet-800 dark:border-violet-600 hover:bg-violet-500 dark:hover:bg-violet-900 hover:text-violet-100",
       },
     },
     defaultVariants: { appearance: "default" },

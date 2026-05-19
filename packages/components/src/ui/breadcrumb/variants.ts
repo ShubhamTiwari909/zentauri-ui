@@ -34,16 +34,21 @@ export const breadcrumbLinkVariants = cva(
   "rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 dark:focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 dark:focus-visible:ring-offset-slate-950",
 );
 
-export const breadcrumbPageVariants = cva("font-medium text-slate-800 dark:text-slate-100");
+export const breadcrumbPageVariants = cva(
+  "font-medium text-slate-800 dark:text-slate-100",
+);
 
-export const breadcrumbSeparatorVariants = cva("select-none text-slate-400 dark:text-slate-600", {
-  variants: {
-    size: {
-      sm: "text-xs",
-      md: "text-sm",
+export const breadcrumbSeparatorVariants = cva(
+  "select-none text-slate-400 dark:text-slate-600",
+  {
+    variants: {
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
+      },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
-  defaultVariants: {
-    size: "md",
-  },
-});
+);
