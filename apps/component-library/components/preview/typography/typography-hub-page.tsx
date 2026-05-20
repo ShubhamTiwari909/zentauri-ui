@@ -22,7 +22,7 @@ export default function TypographyHubPage({
 
         <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
           <Heading level={3} tone="primary">Browse sections</Heading>
-          <Text className="mt-2" tone="white">
+          <Text className="mt-2" tone="default">
             Pick a topic to view variants, formatting, combinations, and
             snippets.
           </Text>
@@ -39,7 +39,7 @@ export default function TypographyHubPage({
             <Heading level={4} tone="primary">
               {typographySectionLabels[slug]}
             </Heading>
-            <Text className="mt-2 text-sm" tone="white">
+            <Text className="mt-2 text-sm" tone="default">
               Open preview
             </Text>
           </Link>

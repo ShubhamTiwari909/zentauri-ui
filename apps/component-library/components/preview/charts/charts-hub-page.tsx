@@ -18,7 +18,7 @@ export default function ChartsHubPage({ seo }: { seo: PreviewSeoDocument }) {
 
         <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
           <Heading level={3} tone="primary">Browse chart types</Heading>
-          <Text className="mt-2" tone="white">
+          <Text className="mt-2" tone="default">
             Open a chart for hero demos, examples, appearance variants, and
             snippets.
           </Text>
@@ -35,7 +35,7 @@ export default function ChartsHubPage({ seo }: { seo: PreviewSeoDocument }) {
             <Heading level={4} tone="primary">
               {chartPreviewLabels[slug]}
             </Heading>
-            <Text className="mt-2 text-sm" tone="white">
+            <Text className="mt-2 text-sm" tone="default">
               Open preview
             </Text>
           </Link>
