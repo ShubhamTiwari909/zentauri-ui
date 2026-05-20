@@ -1,5 +1,8 @@
 # @zentauri-ui/zentauri-components
 
+[![npm version](https://img.shields.io/npm/v/@zentauri-ui/zentauri-components)](https://www.npmjs.com/package/@zentauri-ui/zentauri-components)
+[![npm downloads](https://img.shields.io/npm/dm/@zentauri-ui/zentauri-components)](https://www.npmjs.com/package/@zentauri-ui/zentauri-components)
+
 A React UI kit for building product interfaces with Tailwind CSS. Components are implemented in TypeScript, ship with declaration files, and are bundled as ESM and CommonJS for broad bundler compatibility.
 
 ## Overview
@@ -7,6 +10,85 @@ A React UI kit for building product interfaces with Tailwind CSS. Components are
 The library targets **React 18+** apps that use **Tailwind CSS v4** (or an equivalent setup where Tailwind can scan this package via `@source`). Styling uses utility classes; **class-variance-authority** powers variant APIs (size, appearance, and similar props), with **clsx** and **tailwind-merge** for predictable `className` composition. Component variants are light-theme ready by default and include paired `dark:` Tailwind classes for dark-mode surfaces, text, borders, focus rings, gradients, and form controls. **Framer Motion** backs motion where a feature ships animated variants, and **react-icons** is used for iconography where applicable.
 
 Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@zentauri-ui/zentauri-components/ui/<area>` for static UI, `@zentauri-ui/zentauri-components/ui/<area>/animated` where a motion bundle exists, `@zentauri-ui/zentauri-components/charts/<type>` for Recharts-powered chart primitives, and `@zentauri-ui/zentauri-components/hooks/<entry>` for React hooks (and shared helpers under `hooks/utils`). Base UI entries do **not** re-export animated components; motion lives on its own entry so optional `framer-motion` usage stays tree-shakeable and chunk-friendly. Each entry resolves to its own ESM (`.mjs`), CJS (`.js`), and types (`.d.ts`) so bundlers pull only what you import. Most apps rely on Tailwind scanning the package sources (see installation); a separate CSS import is not required for that setup.
+
+## Package status and test coverage
+
+| Metric      | Result           |
+| ----------- | ---------------- |
+| Test files  | 54 passed (54)   |
+| Tests       | 336 passed (336) |
+| Duration    | 15.75s           |
+| Started at  | 15:51:22         |
+| Transform   | 3.97s            |
+| Setup       | 24.06s           |
+| Import      | 13.16s           |
+| Test time   | 10.40s           |
+| Environment | 45.37s           |
+
+| Area                        | Test files | Tests |
+| --------------------------- | ---------- | ----- |
+| Components and UI utilities | 26         | 252   |
+| React hooks                 | 26         | 75    |
+| CLI and import rewriting    | 2          | 9     |
+
+### Per-suite snapshot
+
+| Suite                                                                   | Tests |
+| ----------------------------------------------------------------------- | ----: |
+| `src/ui/dynamic-stepper/dynamic-stepper.test.tsx`                       |     8 |
+| `src/ui/select/select.test.tsx`                                         |     6 |
+| `src/ui/modal/modal.test.tsx`                                           |     9 |
+| `src/ui/drawer/drawer.test.tsx`                                         |     7 |
+| `cli/cli.integration.test.ts`                                           |     4 |
+| `src/ui/buttons/button.test.tsx`                                        |    40 |
+| `src/ui/inputs/input.test.tsx`                                          |    40 |
+| `src/ui/card/card.test.tsx`                                             |     7 |
+| `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
+| `src/ui/dropdown/dropdown.test.tsx`                                     |     6 |
+| `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
+| `src/ui/progress/progress.test.tsx`                                     |     8 |
+| `src/ui/accordion/accordion.test.tsx`                                   |     7 |
+| `src/ui/toast/toast.test.tsx`                                           |     5 |
+| `src/ui/pagination/pagination.test.tsx`                                 |    15 |
+| `src/ui/tabs/tabs.test.tsx`                                             |     3 |
+| `src/ui/stepper/stepper.test.tsx`                                       |    12 |
+| `src/ui/toggle/toggle.test.tsx`                                         |     5 |
+| `src/ui/slider/slider.test.tsx`                                         |     9 |
+| `src/ui/typography/typography.test.tsx`                                 |     7 |
+| `src/ui/alert/alert.test.tsx`                                           |    11 |
+| `src/ui/badge/badge.test.tsx`                                           |     6 |
+| `src/hooks/useClipboard/useClipboard.test.ts`                           |     6 |
+| `src/hooks/useLocalStorage/useLocalStorage.test.ts`                     |     6 |
+| `src/hooks/useDisclosure/useDisclosure.test.ts`                         |     5 |
+| `src/ui/avatar/avatar.test.tsx`                                         |     4 |
+| `src/ui/file-upload/file-upload.test.tsx`                               |     4 |
+| `src/ui/spinner/animated/spinner.test.tsx`                              |     8 |
+| `src/hooks/useDynamicStepper/useDynamicStepper.test.ts`                 |     7 |
+| `src/hooks/useClickOutside/useClickOutside.test.tsx`                    |     3 |
+| `src/hooks/useControllableState/useControllableState.test.ts`           |     4 |
+| `src/ui/breadcrumb/breadcrumb.test.tsx`                                 |     4 |
+| `src/hooks/useThrottledCallback/useThrottledCallback.test.ts`           |     4 |
+| `src/hooks/useToggle/useToggle.test.ts`                                 |     4 |
+| `src/hooks/usePagination/usePagination.test.ts`                         |    10 |
+| `src/hooks/useSessionStorage/useSessionStorage.test.ts`                 |     3 |
+| `src/hooks/usePrefersColorScheme/usePrefersColorScheme.test.ts`         |     1 |
+| `src/hooks/useIsMounted/useIsMounted.test.ts`                           |     3 |
+| `src/hooks/useDebouncedValue/useDebouncedValue.test.ts`                 |     4 |
+| `src/hooks/useHover/useHover.test.ts`                                   |     2 |
+| `src/hooks/useIntersectionObserver/useIntersectionObserver.test.ts`     |     2 |
+| `src/hooks/usePageVisibility/usePageVisibility.test.ts`                 |     1 |
+| `src/hooks/useResizeObserver/useResizeObserver.test.ts`                 |     2 |
+| `src/hooks/useNetworkStatus/useNetworkStatus.test.ts`                   |     2 |
+| `src/hooks/useMediaQuery/useMediaQuery.test.ts`                         |     2 |
+| `src/hooks/useDocumentTitle/useDocumentTitle.test.ts`                   |     3 |
+| `src/hooks/usePrefersReducedMotion/usePrefersReducedMotion.test.ts`     |     1 |
+| `src/hooks/useBodyScrollLock/useBodyScrollLock.test.ts`                 |     4 |
+| `src/hooks/useWindowSize/useWindowSize.test.ts`                         |     1 |
+| `src/hooks/useInView/useInView.test.ts`                                 |     1 |
+| `src/hooks/useIsomorphicLayoutEffect/useIsomorphicLayoutEffect.test.ts` |     1 |
+| `cli/rewrite-imports.test.ts`                                           |     5 |
+| `src/ui/search/filter-search-suggestions.test.ts`                       |     6 |
+| `src/ui/search/search-suggestion-utils.test.ts`                         |     1 |
 
 ## Package exports
 
