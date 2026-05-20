@@ -9,6 +9,7 @@ import { HomeDxSection } from "./marketing/home-dx-section";
 import { HomeFeatureHighlights } from "./marketing/home-feature-highlights";
 import { HomeHooksShowcase } from "./marketing/home-hooks-showcase";
 import { HomeInstallSection } from "./marketing/home-install-section";
+import { HomePackageHealth } from "./marketing/home-package-health";
 import { HomePatternDemos } from "./marketing/home-pattern-demos";
 
 export function HomeMarketing() {
@@ -16,12 +17,13 @@ export function HomeMarketing() {
     <ToastProvider>
       <div className="flex flex-col gap-16 sm:gap-20 lg:gap-24">
         <HomeFeatureHighlights />
+        <HomeComparisonTable />
+        <HomeDxSection />
+        <HomePackageHealth />
+        <HomeInstallSection />
         <HomeComponentShowcase />
         <HomeHooksShowcase />
         <HomePatternDemos />
-        <HomeDxSection />
-        <HomeInstallSection />
-        <HomeComparisonTable />
       </div>
       <ToastViewportAnimated position="bottom-right" className="" />
     </ToastProvider>

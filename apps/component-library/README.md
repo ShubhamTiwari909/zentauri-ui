@@ -1,5 +1,8 @@
 # Zentauri UI — Component library app
 
+[![npm version](https://img.shields.io/npm/v/@zentauri-ui/zentauri-components)](https://www.npmjs.com/package/@zentauri-ui/zentauri-components)
+[![npm downloads](https://img.shields.io/npm/dm/@zentauri-ui/zentauri-components)](https://www.npmjs.com/package/@zentauri-ui/zentauri-components)
+
 This package is the **Zentauri UI** site: a Next.js application that combines a small marketing home page with an interactive **preview and documentation** experience for the workspace library [`@zentauri-ui/zentauri-components`](../../packages/components/README.md).
 
 Contributors work here when they change how components are showcased, how copy and SEO are structured for each preview route, or how the shell (header, sidebar, footer) behaves. Changes to the actual UI primitives live in `packages/components`; this app imports them and presents examples, props guidance, and syntax-highlighted snippets.
@@ -23,6 +26,25 @@ Supporting pieces include:
 - **`react-syntax-highlighter`** for fenced code in the UI.
 - **`lib/preview-seo.ts`** — Types and helpers that turn structured SEO documents into Next.js `metadata`, canonical URLs, and FAQ JSON-LD.
 - **Vercel Analytics** — Wired in the root layout for usage insights on the deployed site.
+
+## Package status and test coverage
+
+The home page includes a package health section with live npm badge images and the current Vitest snapshot for `@zentauri-ui/zentauri-components`.
+
+[![@zentauri-ui/zentauri-components npm version](https://img.shields.io/npm/v/@zentauri-ui/zentauri-components)](https://www.npmjs.com/package/@zentauri-ui/zentauri-components)
+[![@zentauri-ui/zentauri-components monthly npm downloads](https://img.shields.io/npm/dm/@zentauri-ui/zentauri-components)](https://www.npmjs.com/package/@zentauri-ui/zentauri-components)
+
+| Metric     | Result           |
+| ---------- | ---------------- |
+| Test files | 54 passed (54)   |
+| Tests      | 336 passed (336) |
+| Duration   | 15.75s           |
+
+| Area                        | Test files | Tests |
+| --------------------------- | ---------- | ----- |
+| Components and UI utilities | 26         | 242   |
+| React hooks                 | 26         | 85    |
+| CLI and import rewriting    | 2          | 9     |
 
 ## Tech stack
 
