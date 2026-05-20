@@ -5,7 +5,6 @@ import {
   DropdownTrigger,
 } from "@zentauri-ui/zentauri-components/ui/dropdown";
 
-import { DROPDOWN_MENU_SURFACE_CLASS } from "./dropdown-code-examples.data";
 import type {
   DropdownContentPlacement,
   DropdownContentSpacing,
@@ -25,7 +24,7 @@ export function DropdownTriggerDemo({
       <DropdownTrigger variant={variant} size={size}>
         Menu {variant} {size}
       </DropdownTrigger>
-      <DropdownContent className={DROPDOWN_MENU_SURFACE_CLASS}>
+      <DropdownContent>
         <DropdownItem value="one" variant={variant}>
           One
         </DropdownItem>
@@ -59,7 +58,6 @@ export function DropdownPlacementDemo({
         </DropdownTrigger>
         <DropdownContent
           placement={placement}
-          className={DROPDOWN_MENU_SURFACE_CLASS}
         >
           <DropdownItem value="a">Alpha</DropdownItem>
           <DropdownItem value="b">Beta</DropdownItem>
@@ -82,7 +80,6 @@ export function DropdownSpacingDemo({
         </DropdownTrigger>
         <DropdownContent
           spacing={spacing}
-          className={DROPDOWN_MENU_SURFACE_CLASS}
         >
           <DropdownItem value="a">Alpha</DropdownItem>
           <DropdownItem value="b">Beta</DropdownItem>
@@ -98,7 +95,7 @@ export function DropdownContentDividerDemo() {
       <DropdownTrigger variant="outline" size="sm">
         Menu divider
       </DropdownTrigger>
-      <DropdownContent divider className={DROPDOWN_MENU_SURFACE_CLASS}>
+      <DropdownContent divider>
         <DropdownItem value="a">Alpha</DropdownItem>
         <DropdownItem value="b">Beta</DropdownItem>
         <DropdownItem value="c">Charlie</DropdownItem>

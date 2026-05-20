@@ -63,7 +63,7 @@ export const triggerVariants = cva(
 );
 
 export const contentVariants = cva(
-  "absolute min-w-[200px] rounded-md p-2 shadow-md z-50 border",
+  "absolute min-w-[200px] rounded-md p-2 shadow-md z-50 border border-slate-900/10 dark:border-white/10 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-lg rounded-lg",
   {
     variants: {
       placement: {
@@ -94,15 +94,15 @@ export const itemVariants = cva(
     variants: {
       variant: {
         default:
-          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 text-gray-100",
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 text-gray-900 dark:text-gray-100",
         outline:
-          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 border border-black dark:border-white text-gray-100",
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 border border-black dark:border-white text-gray-900 dark:text-gray-100",
         ghost:
-          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-transparent text-gray-100",
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-transparent text-gray-900 dark:text-gray-100",
         white:
-          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-black dark:bg-white text-gray-500 dark:text-gray-900",
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-white dark:bg-black text-gray-900 dark:text-white",
         black:
-          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-white dark:bg-black text-slate-900 dark:text-white",
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-black dark:bg-white text-white dark:text-gray-900",
         sky: "hover:bg-sky-100 hover:text-sky-800 dark:hover:text-sky-600 bg-sky-200 text-sky-900 dark:text-sky-800",
         rose: "hover:bg-rose-100 hover:text-rose-800 dark:hover:text-rose-600 bg-rose-200 text-rose-900 dark:text-rose-800",
         purple:

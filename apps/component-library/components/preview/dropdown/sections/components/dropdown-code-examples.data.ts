@@ -1,9 +1,6 @@
 export const DROPDOWN_CODE_EXAMPLES_SECTION_CLASS =
   "rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
-export const DROPDOWN_MENU_SURFACE_CLASS =
-  "border border-slate-900/10 dark:border-white/10 bg-slate-100 dark:bg-slate-900 text-slate-100 shadow-lg rounded-lg";
-
 export const DROPDOWN_TRIGGER_VARIANTS = [
   "default",
   "outline",

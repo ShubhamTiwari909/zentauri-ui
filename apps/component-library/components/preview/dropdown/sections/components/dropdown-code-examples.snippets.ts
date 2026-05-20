@@ -1,6 +1,5 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 
-import { DROPDOWN_MENU_SURFACE_CLASS } from "./dropdown-code-examples.data";
 import type {
   DropdownContentPlacement,
   DropdownContentSpacing,
@@ -20,7 +19,7 @@ export function dropdownTriggerSnippet(
   <DropdownTrigger${variantAttr}${sizeAttr}>
     Menu ${variant} ${size}
   </DropdownTrigger>
-  <DropdownContent className="${DROPDOWN_MENU_SURFACE_CLASS}">
+  <DropdownContent>
     <DropdownItem value="one">One</DropdownItem>
     <DropdownItem value="two">Two</DropdownItem>
   </DropdownContent>
@@ -36,7 +35,7 @@ export function dropdownPlacementSnippet(
   <DropdownTrigger variant="outline" size="sm">
     Menu ${placement}
   </DropdownTrigger>
-  <DropdownContent${placementAttr} className="${DROPDOWN_MENU_SURFACE_CLASS}">
+  <DropdownContent${placementAttr}>
     <DropdownItem value="a">Alpha</DropdownItem>
     <DropdownItem value="b">Beta</DropdownItem>
   </DropdownContent>
@@ -51,7 +50,7 @@ export function dropdownSpacingSnippet(
   <DropdownTrigger variant="outline" size="sm">
     Menu ${spacing}
   </DropdownTrigger>
-  <DropdownContent${spacingAttr} className="${DROPDOWN_MENU_SURFACE_CLASS}">
+  <DropdownContent${spacingAttr}>
     <DropdownItem value="a">Alpha</DropdownItem>
     <DropdownItem value="b">Beta</DropdownItem>
   </DropdownContent>
@@ -63,7 +62,7 @@ export function dropdownContentDividerSnippet(): string {
   <DropdownTrigger variant="outline" size="sm">
     Menu divider
   </DropdownTrigger>
-  <DropdownContent divider className="${DROPDOWN_MENU_SURFACE_CLASS}">
+  <DropdownContent divider>
     <DropdownItem value="a">Alpha</DropdownItem>
     <DropdownItem value="b">Beta</DropdownItem>
   </DropdownContent>

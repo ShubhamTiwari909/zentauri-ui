@@ -1,12 +1,12 @@
 import { cva } from "class-variance-authority";
 
 export const selectTriggerVariants = cva(
-  "flex items-center justify-between rounded-md border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-600 dark:focus-visible:ring-gray-400 focus-visible:ring-offset-2",
+  "flex items-center cursor-pointer justify-between rounded-md border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-600 dark:focus-visible:ring-gray-400 focus-visible:ring-offset-2",
   {
     variants: {
       variant: {
         default:
-          "border-gray-700 dark:border-gray-300 bg-black dark:bg-white text-slate-100 dark:text-gray-900",
+          "border-gray-300 dark:border-gray-300 bg-white dark:bg-black text-gray-900 dark:text-white",
         outline: "border-2 border-gray-500 text-gray-500 dark:text-gray-100",
         ghost: "border-transparent text-slate-900 dark:text-slate-200",
         sky: "border-sky-800 dark:border-sky-600 text-sky-800 dark:text-sky-600",
@@ -62,13 +62,13 @@ export const selectItemVariants = cva(
     variants: {
       appearance: {
         default:
-          "bg-black dark:bg-white text-gray-200 dark:text-gray-900 data-[selected=true]:bg-gray-200 data-[selected=true]:text-gray-700 dark:data-[selected=true]:text-gray-900",
+          "bg-white dark:bg-black text-gray-900 dark:text-gray-200 data-[selected=true]:bg-gray-200 data-[selected=true]:text-gray-700 dark:data-[selected=true]:text-gray-900",
         glass:
           "bg-black/10 dark:bg-white/10 text-gray-700 dark:text-gray-900 data-[selected=true]:bg-black/10 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-gray-700 dark:data-[selected=true]:text-gray-900",
         outline:
-          "border-2 border-gray-500 text-gray-200 dark:text-gray-100 data-[selected=true]:border-2 data-[selected=true]:border-gray-500 data-[selected=true]:bg-gray-200 data-[selected=true]:text-gray-900 dark:data-[selected=true]:text-gray-900",
+          "border-2 border-gray-500 text-gray-900 dark:text-gray-100 data-[selected=true]:border-2 data-[selected=true]:border-gray-500 data-[selected=true]:bg-gray-200 data-[selected=true]:text-gray-900 dark:data-[selected=true]:text-gray-900",
         ghost:
-          "border-transparent text-gray-200 dark:text-gray-900 data-[selected=true]:border-transparent data-[selected=true]:bg-transparent data-[selected=true]:text-gray-100 dark:data-[selected=true]:text-gray-900",
+          "border-transparent text-gray-900 dark:text-gray-100 data-[selected=true]:border-transparent data-[selected=true]:bg-transparent data-[selected=true]:text-gray-900 dark:data-[selected=true]:text-gray-100",
         sky: "border-sky-800 dark:border-sky-600 text-sky-200 dark:text-sky-800 data-[selected=true]:border-sky-800 dark:data-[selected=true]:border-sky-600 data-[selected=true]:bg-sky-200 data-[selected=true]:text-sky-800 dark:data-[selected=true]:text-sky-800",
         rose: "border-rose-800 dark:border-rose-600 text-rose-200 dark:text-rose-800 data-[selected=true]:border-rose-800 dark:data-[selected=true]:border-rose-600 data-[selected=true]:bg-rose-200 data-[selected=true]:text-rose-800 dark:data-[selected=true]:text-rose-800",
         purple:
@@ -113,11 +113,11 @@ export const selectItemVariants = cva(
 );
 
 export const selectContentVariants = cva(
-  "absolute z-10 mt-2 w-full rounded-md border bg-black dark:bg-white shadow-md",
+  "absolute z-10 mt-2 w-full rounded-md border bg-white dark:bg-black shadow-md",
   {
     variants: {
       appearance: {
-        default: "bg-black dark:bg-white shadow-md",
+        default: "bg-white dark:bg-black shadow-md",
         glass: "bg-black/10 dark:bg-white/10 backdrop-blur-md",
         outline: "border-2 border-gray-500",
         ghost: "border-transparent",

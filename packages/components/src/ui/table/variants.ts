@@ -41,14 +41,15 @@ export const tableVariants = cva(
 );
 
 export const tableRowVariants = cva(
-  "border-b border-black/5 dark:border-white/5 transition-colors data-[state=selected]:bg-black/[0.06] dark:bg-white/[0.06]",
+  "border-b border-black/5 dark:border-white/5 transition-colors data-[state=selected]:bg-black/[0.06] dark:data-[state=selected]:bg-white/[0.06]",
   {
     variants: {
       appearance: {
         default: "",
-        striped: "odd:bg-black/[0.03] dark:bg-white/[0.03]",
+        striped: "odd:bg-black/[0.03] dark:odd:bg-white/[0.03]",
         bordered: "",
-        ghost: "border-transparent hover:bg-black/[0.03] dark:bg-white/[0.03]",
+        ghost:
+          "border-transparent hover:bg-black/[0.03] dark:hover:bg-white/[0.03]",
         sky: "border-sky-800 dark:border-sky-600 hover:bg-sky-800 dark:hover:bg-sky-600 hover:text-sky-100",
         rose: "border-rose-800 dark:border-rose-600 hover:bg-rose-500 dark:hover:bg-rose-900 hover:text-rose-100",
         purple:

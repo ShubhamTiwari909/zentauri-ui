@@ -47,8 +47,8 @@
     }
   },
   "scripts": {
-    "dev": "tsup --watch",
-    "build:js": "tsup",
+    "dev": "NODE_OPTIONS=--max-old-space-size=8192 tsup --watch",
+    "build:js": "NODE_OPTIONS=--max-old-space-size=8192 tsup",
     "build:types": "tsc -p tsconfig.emit-types.json",
     "build": "npm run build:js && npm run build:types",
     "generate:registry": "node scripts/generate-registry.mjs",
