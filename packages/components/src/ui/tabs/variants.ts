@@ -30,7 +30,7 @@ export const tabsTriggerVariants = cva(
     variants: {
       appearance: {
         default: "bg-transparent text-slate-900 dark:text-slate-50",
-        sky: "bg-sky-300 text-sky-900 dark:text-sky-200 data-[state=active]:bg-sky-900 dark:data-[state=active]:bg-sky-500 data-[state=active]:text-sky-100 dark:data-[state=active]:text-text-sky-100",
+        sky: "bg-sky-300 text-sky-900 dark:text-sky-200 data-[state=active]:bg-sky-900 dark:data-[state=active]:bg-sky-500 data-[state=active]:text-sky-100 dark:data-[state=active]:text-sky-100",
         rose: "bg-rose-300 text-rose-900 dark:text-rose-200 data-[state=active]:bg-rose-900 dark:data-[state=active]:bg-rose-500 data-[state=active]:text-rose-100 dark:data-[state=active]:text-rose-100",
         purple:
           "bg-purple-300 text-purple-900 dark:text-purple-200 data-[state=active]:bg-purple-900 dark:data-[state=active]:bg-purple-500 data-[state=active]:text-purple-100 dark:data-[state=active]:text-purple-100",
