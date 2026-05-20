@@ -4,7 +4,7 @@ A React UI kit for building product interfaces with Tailwind CSS. Components are
 
 ## Overview
 
-The library targets **React 18+** apps that use **Tailwind CSS v4** (or an equivalent setup where Tailwind can scan this package via `@source`). Styling uses utility classes; **class-variance-authority** powers variant APIs (size, appearance, and similar props), with **clsx** and **tailwind-merge** for predictable `className` composition. **Framer Motion** backs motion where a feature ships animated variants, and **react-icons** is used for iconography where applicable.
+The library targets **React 18+** apps that use **Tailwind CSS v4** (or an equivalent setup where Tailwind can scan this package via `@source`). Styling uses utility classes; **class-variance-authority** powers variant APIs (size, appearance, and similar props), with **clsx** and **tailwind-merge** for predictable `className` composition. Component variants are light-theme ready by default and include paired `dark:` Tailwind classes for dark-mode surfaces, text, borders, focus rings, gradients, and form controls. **Framer Motion** backs motion where a feature ships animated variants, and **react-icons** is used for iconography where applicable.
 
 Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@zentauri-ui/zentauri-components/ui/<area>` for static UI, `@zentauri-ui/zentauri-components/ui/<area>/animated` where a motion bundle exists, `@zentauri-ui/zentauri-components/charts/<type>` for Recharts-powered chart primitives, and `@zentauri-ui/zentauri-components/hooks/<entry>` for React hooks (and shared helpers under `hooks/utils`). Base UI entries do **not** re-export animated components; motion lives on its own entry so optional `framer-motion` usage stays tree-shakeable and chunk-friendly. Each entry resolves to its own ESM (`.mjs`), CJS (`.js`), and types (`.d.ts`) so bundlers pull only what you import. Most apps rely on Tailwind scanning the package sources (see installation); a separate CSS import is not required for that setup.
 
@@ -36,6 +36,7 @@ Published motion entries (same `<name>` as the base UI folder):
 
 - **React** and **React DOM** `>= 18` (peer dependencies)
 - A Tailwind pipeline that can **scan** this package (see Step 3 below)
+- Tailwind dark-mode support through the standard `dark:` variant (`class` / selector or media strategy, depending on your app)
 
 ## Components
 
@@ -359,6 +360,14 @@ Add an `@source` entry so Tailwind scans class names inside `@zentauri-ui/zentau
 @source "../node_modules/@zentauri-ui/zentauri-components";
 ```
 
+The package ships light-first styles with `dark:` overrides in the same class strings, so Tailwind must see both the base utilities and the dark variant utilities. With Tailwind v4, keep your app's existing dark-mode selector or media setup; the components respond wherever your app activates Tailwind's `dark:` variant.
+
+```tsx
+<main className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+  <Button appearance="outline">Theme-aware action</Button>
+</main>
+```
+
 ### Step 4 — Import and use components and hooks
 
 Use **one subpath per UI area** (static and animated are separate entries: `ui/<name>` vs `ui/<name>/animated`) and **one subpath per hook module** so the bundler resolves only the entries you use.
@@ -409,7 +418,7 @@ import { Spinner } from "@zentauri-ui/zentauri-components/ui/spinner/animated";
 #### Usage
 
 ```tsx
-<div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+<div className="rounded-3xl border border-slate-900/10 bg-white p-5 shadow-2xl shadow-slate-950/10 backdrop-blur-xl dark:border-white/10 dark:bg-white/5 dark:shadow-slate-950/40">
   <Accordion
     type="single"
     defaultValue="item-1"
@@ -524,7 +533,7 @@ After `add`, imports inside copied `.ts`/`.tsx` files are rewritten using your `
 | **`npm` + package `exports`** (earlier sections) | You want versioned dependencies, smallest app-owned surface, and tree-shaken `dist/` entries.                               |
 | **`init` / `add`**                               | You want vendored source under your repo (customize primitives, match shadcn-style workflows, or lock file-level behavior). |
 
-Tailwind still needs to see the classes your **copied** files use—point `@source` at those paths (for example your `src/components/ui`) rather than only at `node_modules/@zentauri-ui/zentauri-components` if you no longer rely on scanning the published package.
+Tailwind still needs to see the classes your **copied** files use—point `@source` at those paths (for example your `src/components/ui`) rather than only at `node_modules/@zentauri-ui/zentauri-components` if you no longer rely on scanning the published package. This matters for the light/dark variant pairs too: copied components keep their base light utilities and `dark:` overrides, and both need to be included in Tailwind's generated CSS.
 
 ## Checkout the components:
 
