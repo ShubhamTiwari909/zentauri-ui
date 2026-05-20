@@ -1,8 +1,8 @@
 "use client";
 
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
-import { PAGINATION_CODE_EXAMPLES_SECTION_CLASS } from "./components/pagination-code-examples.data";
 import {
   PaginationExamplesControlledDemo,
   PaginationExamplesHeadlessDemo,
@@ -14,7 +14,7 @@ import {
 
 export function PaginationExamplesSection() {
   return (
-    <section className={PAGINATION_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
         Examples
       </h2>
@@ -53,6 +53,6 @@ export function PaginationExamplesSection() {
           </div>
         </PreviewCodeShowcase>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
 import { appearanceInputsExtended } from "../variants";
 
@@ -5,7 +6,7 @@ const checkboxSizes = ["sm", "md", "lg"] as const;
 
 export function InputsCheckboxSection() {
   return (
-    <section className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+    <Section>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-700 dark:text-cyan-200">
@@ -76,6 +77,6 @@ export function InputsCheckboxSection() {
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

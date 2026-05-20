@@ -1,10 +1,8 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { FileUploadDemo } from "./components/file-upload-code-examples-demo";
-import {
-  FILE_UPLOAD_CODE_EXAMPLES_SECTION_CLASS,
-  FILE_UPLOAD_APPEARANCES,
-} from "./components/file-upload-code-examples.data";
+import { FILE_UPLOAD_APPEARANCES } from "./components/file-upload-code-examples.data";
 import { fileUploadSnippet } from "./components/file-upload-code-examples.snippets";
 
 const scenarioLabel: Record<(typeof FILE_UPLOAD_APPEARANCES)[number], string> =
@@ -28,7 +26,7 @@ const scenarioLabel: Record<(typeof FILE_UPLOAD_APPEARANCES)[number], string> =
 
 export function FileUploadCodeExamplesSection() {
   return (
-    <section className={FILE_UPLOAD_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         File upload code examples
       </h2>
@@ -52,6 +50,6 @@ export function FileUploadCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

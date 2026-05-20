@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import {
   Stepper,
   StepperDescription,
@@ -8,7 +9,7 @@ import {
 
 export function StepperExamplesSection() {
   return (
-    <section className="space-y-6">
+    <Section variant="plain" className="space-y-6">
       <h2 className="text-2xl font-semibold text-white">Vertical</h2>
       <div className="max-w-xl rounded-2xl border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-5">
         <Stepper orientation="vertical" size="sm">
@@ -41,6 +42,6 @@ export function StepperExamplesSection() {
           </StepperItem>
         </Stepper>
       </div>
-    </section>
+    </Section>
   );
 }

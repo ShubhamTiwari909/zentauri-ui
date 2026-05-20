@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { EmptyStateDemo } from "./components/empty-state-code-examples-demo";
@@ -5,7 +6,6 @@ import {
   EMPTY_ALIGNS,
   EMPTY_APPEARANCES,
   EMPTY_SIZES,
-  EMPTY_STATE_CODE_EXAMPLES_SECTION_CLASS,
   EMPTY_STATE_SNIPPET_DEFAULTS,
 } from "./components/empty-state-code-examples.data";
 import { emptyStateSnippet } from "./components/empty-state-code-examples.snippets";
@@ -13,7 +13,7 @@ import { emptyStateSnippet } from "./components/empty-state-code-examples.snippe
 export function EmptyStateCodeExamplesSection() {
   const defaults = EMPTY_STATE_SNIPPET_DEFAULTS;
   return (
-    <section className={EMPTY_STATE_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Empty state variants examples
       </h2>
@@ -47,6 +47,6 @@ export function EmptyStateCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

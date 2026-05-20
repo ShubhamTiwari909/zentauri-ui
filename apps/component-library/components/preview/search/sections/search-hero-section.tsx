@@ -1,5 +1,6 @@
 "use client";
 
+import { Section, SectionCard } from "@/components/common/Section";
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
@@ -11,9 +12,9 @@ export function SearchHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   const [query, setQuery] = useState("");
 
   return (
-    <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+    <Section variant="hero">
       <PreviewHeroSeoBlock seo={seo} />
-      <div className="rounded-3xl border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+      <SectionCard className="p-6">
         <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-800 dark:text-slate-400">
           Controlled example
         </p>
@@ -30,7 +31,7 @@ export function SearchHeroSection({ seo }: { seo: PreviewSeoDocument }) {
             <span className="text-slate-800 dark:text-slate-200">{query}</span>
           </p>
         ) : null}
-      </div>
-    </section>
+      </SectionCard>
+    </Section>
   );
 }

@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,8 +10,8 @@ import {
 
 export function BreadcrumbExamplesSection() {
   return (
-    <section className="space-y-6">
-      <h2 className="text-2xl font-semibold text-white">
+    <Section variant="plain" className="space-y-6">
+      <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
         Examples
       </h2>
       <div className="grid gap-6 lg:grid-cols-2">
@@ -55,6 +56,6 @@ export function BreadcrumbExamplesSection() {
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

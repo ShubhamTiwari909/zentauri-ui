@@ -1,3 +1,4 @@
+import { Section, SectionCard } from "@/components/common/Section";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import {
@@ -11,10 +12,10 @@ const TRIGGER_CLASS =
 
 export function TooltipHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
-    <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+    <Section variant="hero">
       <PreviewHeroSeoBlock seo={seo} />
 
-      <div className="rounded-3xl border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+      <SectionCard>
         <Tooltip position="top" delay={150}>
           <TooltipTrigger className={TRIGGER_CLASS}>
             Hover or focus me
@@ -23,7 +24,7 @@ export function TooltipHeroSection({ seo }: { seo: PreviewSeoDocument }) {
             Shortcuts: ⌘S to save, ⌘K to search.
           </TooltipContent>
         </Tooltip>
-      </div>
-    </section>
+      </SectionCard>
+    </Section>
   );
 }

@@ -1,9 +1,9 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { TableDemo } from "./components/table-code-examples-demo";
 import {
   TABLE_APPEARANCES,
-  TABLE_CODE_EXAMPLES_SECTION_CLASS,
   TABLE_SNIPPET_BASE,
   TABLE_SIZES,
   TABLE_TEXT_ALIGNS,
@@ -13,7 +13,7 @@ import { tableSnippet } from "./components/table-code-examples.snippets";
 export function TableCodeExamplesSection() {
   const base = TABLE_SNIPPET_BASE;
   return (
-    <section className={TABLE_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Table variants examples
       </h2>
@@ -67,6 +67,6 @@ export function TableCodeExamplesSection() {
           <TableDemo {...base} appearance="bordered" stickyHeader={false} />
         </PreviewCodeShowcase>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -80,7 +80,11 @@ export function ListMarkerDemo({ marker }: { marker: ListMarkerVariant }) {
 
 export function BlockquoteToneDemo({ tone }: { tone: AppTypographyTone }) {
   return (
-    <Blockquote attribution="Design Systems Weekly" tone={tone} className="w-fit">
+    <Blockquote
+      attribution="Design Systems Weekly"
+      tone={tone}
+      className="w-fit"
+    >
       <Text as="p">Composable primitives beat monolithic widgets.</Text>
     </Blockquote>
   );
@@ -108,7 +112,12 @@ export function InlineEmphasisDemo() {
 
 export function CodeBlockToneDemo({ tone }: { tone: AppTypographyTone }) {
   return (
-    <div className={cn(tone.includes("gradient") ? "bg-white/90 dark:bg-slate-950/80" : "", "w-full md:w-fit overflow-x-auto")}>
+    <div
+      className={cn(
+        tone.includes("gradient") ? "bg-white/90 dark:bg-slate-950/80" : "",
+        "w-full md:w-fit overflow-x-auto",
+      )}
+    >
       <CodeBlock
         tone={tone}
         language="ts"

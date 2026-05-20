@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import Link from "next/link";
 
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
@@ -17,7 +18,7 @@ export default function TypographyHubPage({
 }) {
   return (
     <PreviewPageShell>
-      <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+      <Section variant="hero">
         <PreviewHeroSeoBlock seo={seo} />
 
         <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
@@ -27,9 +28,12 @@ export default function TypographyHubPage({
             snippets.
           </Text>
         </div>
-      </section>
+      </Section>
 
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <Section
+        variant="plain"
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      >
         {TYPOGRAPHY_SECTION_SLUGS.map((slug) => (
           <Link
             key={slug}
@@ -44,7 +48,7 @@ export default function TypographyHubPage({
             </Text>
           </Link>
         ))}
-      </section>
+      </Section>
 
       <PreviewSeoDoc doc={seo} />
     </PreviewPageShell>

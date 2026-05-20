@@ -1,9 +1,9 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { DividerDemo } from "./components/divider-code-examples-demo";
 import {
   DIVIDER_APPEARANCES,
-  DIVIDER_CODE_EXAMPLES_SECTION_CLASS,
   DIVIDER_ORIENTATIONS,
   DIVIDER_SIZES,
 } from "./components/divider-code-examples.data";
@@ -11,7 +11,7 @@ import { dividerSnippet } from "./components/divider-code-examples.snippets";
 
 export function DividerCodeExamplesSection() {
   return (
-    <section className={DIVIDER_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Divider variants examples
       </h2>
@@ -75,6 +75,6 @@ export function DividerCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

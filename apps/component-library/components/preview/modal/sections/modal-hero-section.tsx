@@ -1,3 +1,4 @@
+import { Section, SectionCard } from "@/components/common/Section";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
@@ -16,10 +17,10 @@ import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/
 
 export function ModalHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
-    <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+    <Section variant="hero">
       <PreviewHeroSeoBlock seo={seo} />
 
-      <div className="rounded-3xl border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+      <SectionCard>
         <Modal defaultOpen={false}>
           <ModalTrigger className="rounded-lg bg-slate-200 dark:bg-white/10 px-4 py-2 text-sm font-medium text-slate-900 dark:text-white transition hover:bg-slate-200 dark:hover:bg-white/15">
             Open modal
@@ -47,7 +48,7 @@ export function ModalHeroSection({ seo }: { seo: PreviewSeoDocument }) {
             </ModalFooter>
           </ModalContentAnimated>
         </Modal>
-      </div>
-    </section>
+      </SectionCard>
+    </Section>
   );
 }

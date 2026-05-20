@@ -104,7 +104,7 @@ export const cardFooterVariants = cva(
 );
 
 export const cardTitleVariants = cva(
-  "font-semibold tracking-tight text-slate-900 dark:text-slate-50",
+  "font-semibold tracking-tight text-slate-950 dark:text-white",
   {
     variants: {
       size: {
@@ -118,7 +118,7 @@ export const cardTitleVariants = cva(
 );
 
 export const cardDescriptionVariants = cva(
-  "text-slate-500 dark:text-slate-400",
+  "text-slate-500 dark:text-slate-50",
   {
     variants: {
       size: {

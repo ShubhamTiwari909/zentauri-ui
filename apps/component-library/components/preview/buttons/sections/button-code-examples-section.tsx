@@ -1,4 +1,6 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
+
 
 import {
   ButtonAnimationDemo,
@@ -6,7 +8,6 @@ import {
   ButtonSizeDemo,
 } from "./components/button-code-examples-demo";
 import {
-  BUTTON_CODE_EXAMPLES_SECTION_CLASS,
   buttonAnimationPresets,
   showcaseButtons,
   sizeButtons,
@@ -19,7 +20,7 @@ import {
 
 export function ButtonCodeExamplesSection() {
   return (
-    <section className={BUTTON_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Button variants examples
       </h2>
@@ -70,6 +71,6 @@ export function ButtonCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

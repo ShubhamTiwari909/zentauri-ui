@@ -1,10 +1,10 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { AvatarDemo } from "./components/avatar-code-examples-demo";
 import {
   AVATAR_ANIMATIONS,
   AVATAR_APPEARANCES,
-  AVATAR_CODE_EXAMPLES_SECTION_CLASS,
   AVATAR_DEMO_ANIMATION_FOR_SIZE,
   AVATAR_DEMO_SIZE_FOR_ANIMATION,
   AVATAR_SIZES,
@@ -17,7 +17,7 @@ import {
 
 export function AvatarCodeExamplesSection() {
   return (
-    <section className={AVATAR_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Avatar code examples
       </h2>
@@ -68,6 +68,6 @@ export function AvatarCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

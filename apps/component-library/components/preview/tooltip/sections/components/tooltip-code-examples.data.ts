@@ -4,8 +4,7 @@ import type {
   TooltipPosition,
 } from "@zentauri-ui/zentauri-components/ui/tooltip";
 
-export const TOOLTIP_CODE_EXAMPLES_SECTION_CLASS =
-  "rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
+export { PREVIEW_SECTION_CLASS as TOOLTIP_CODE_EXAMPLES_SECTION_CLASS } from "@/components/common/Section";
 
 export const TOOLTIP_TRIGGER_CLASS =
   "rounded-lg border border-slate-900/15 dark:border-white/15 bg-white dark:bg-white/5 px-3 py-1.5 text-sm text-slate-800 dark:text-slate-200 outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50";

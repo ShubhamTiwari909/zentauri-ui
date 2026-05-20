@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
@@ -14,9 +15,9 @@ type HookPreviewPageProps = {
 export default function HookPreviewPage({ seo, slug }: HookPreviewPageProps) {
   return (
     <PreviewPageShell>
-      <section className="space-y-6">
+      <Section variant="plain" className="space-y-6">
         <PreviewHeroSeoBlock seo={seo} />
-      </section>
+      </Section>
       <HookImportSnippet slug={slug} />
       <HookInteractiveSection slug={slug} />
       <PreviewSeoDoc doc={seo} />

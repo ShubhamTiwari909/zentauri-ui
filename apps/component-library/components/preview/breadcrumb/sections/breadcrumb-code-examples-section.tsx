@@ -1,9 +1,9 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { BreadcrumbDemo } from "./components/breadcrumb-code-examples-demo";
 import {
   BREADCRUMB_APPEARANCES,
-  BREADCRUMB_CODE_EXAMPLES_SECTION_CLASS,
   BREADCRUMB_SCENARIOS,
 } from "./components/breadcrumb-code-examples.data";
 import {
@@ -19,7 +19,7 @@ const scenarioLabel: Record<(typeof BREADCRUMB_SCENARIOS)[number], string> = {
 
 export function BreadcrumbCodeExamplesSection() {
   return (
-    <section className={BREADCRUMB_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Breadcrumb code examples
       </h2>
@@ -55,6 +55,6 @@ export function BreadcrumbCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

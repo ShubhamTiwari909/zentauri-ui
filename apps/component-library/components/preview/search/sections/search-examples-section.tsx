@@ -1,5 +1,6 @@
 "use client";
 
+import { Section, SectionCard } from "@/components/common/Section";
 import {
   useCallback,
   useId,
@@ -131,7 +132,7 @@ export function SearchExamplesSection() {
   const hasSuggestions = listItems.length > 0;
 
   return (
-    <section className="mt-16 space-y-8">
+    <Section variant="plain" className="mt-16 space-y-8">
       <div>
         <h2 className="text-2xl font-semibold text-white">
           Inline search and list
@@ -143,7 +144,7 @@ export function SearchExamplesSection() {
         </p>
       </div>
 
-      <div className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+      <SectionCard variant="panel">
         <SearchBar
           value={query}
           onValueChange={setQuery}
@@ -178,9 +179,9 @@ export function SearchExamplesSection() {
             </code>
           </p>
         ) : null}
-      </div>
+      </SectionCard>
 
-      <div className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+      <SectionCard variant="panel">
         <h3 className="text-lg font-medium text-slate-900 dark:text-white">
           Disabled state
         </h3>
@@ -195,7 +196,7 @@ export function SearchExamplesSection() {
           aria-label="Disabled search demo"
           className="mt-4 max-w-xl"
         />
-      </div>
-    </section>
+      </SectionCard>
+    </Section>
   );
 }

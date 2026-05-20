@@ -7,6 +7,7 @@ import {
 } from "@/lib/typography-preview-registry";
 import { previewSeoDocumentToMetadata } from "@/lib/preview-seo";
 import { notFound } from "next/navigation";
+import PageWrapper from "@/components/common/PageWrapper";
 
 export function generateStaticParams(): { section: TypographySectionSlug }[] {
   return TYPOGRAPHY_SECTION_SLUGS.map((section) => ({ section }));
@@ -32,5 +33,5 @@ export default async function TypographySectionRoutePage({
     notFound();
   }
   const seo = getTypographySectionSeo(section);
-  return <TypographySectionPage seo={seo} section={section} />;
+  return <PageWrapper><TypographySectionPage seo={seo} section={section} /></PageWrapper>;
 }

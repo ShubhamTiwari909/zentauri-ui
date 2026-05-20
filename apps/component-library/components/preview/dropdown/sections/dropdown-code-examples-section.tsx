@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import {
@@ -7,7 +8,6 @@ import {
   DropdownTriggerDemo,
 } from "./components/dropdown-code-examples-demos";
 import {
-  DROPDOWN_CODE_EXAMPLES_SECTION_CLASS,
   DROPDOWN_CONTENT_PLACEMENTS,
   DROPDOWN_CONTENT_SPACINGS,
   DROPDOWN_TRIGGER_SIZES,
@@ -22,7 +22,7 @@ import {
 
 export function DropdownCodeExamplesSection() {
   return (
-    <section className={DROPDOWN_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Variant code examples
       </h2>
@@ -92,6 +92,6 @@ export function DropdownCodeExamplesSection() {
       <PreviewCodeShowcase key="divider" code={dropdownContentDividerSnippet()}>
         <DropdownContentDividerDemo />
       </PreviewCodeShowcase>
-    </section>
+    </Section>
   );
 }

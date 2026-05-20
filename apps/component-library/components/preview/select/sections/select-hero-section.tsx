@@ -1,3 +1,4 @@
+import { Section, SectionCard } from "@/components/common/Section";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import {
@@ -10,10 +11,10 @@ import {
 
 export function SelectHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
-    <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+    <Section variant="hero">
       <PreviewHeroSeoBlock seo={seo} />
 
-      <div className="max-w-md rounded-3xl border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+      <SectionCard className="max-w-md">
         <Select defaultValue={["next"]} multiple={false}>
           <SelectTrigger variant="emerald" size="md">
             <SelectValue placeholder="Pick a framework" />
@@ -30,7 +31,7 @@ export function SelectHeroSection({ seo }: { seo: PreviewSeoDocument }) {
             </SelectItem>
           </SelectContent>
         </Select>
-      </div>
-    </section>
+      </SectionCard>
+    </Section>
   );
 }

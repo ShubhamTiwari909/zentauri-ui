@@ -1,7 +1,6 @@
 import type { PaginationProps } from "@zentauri-ui/zentauri-components/ui/pagination";
 
-export const PAGINATION_CODE_EXAMPLES_SECTION_CLASS =
-  "rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
+export { PREVIEW_SECTION_CLASS as PAGINATION_CODE_EXAMPLES_SECTION_CLASS } from "@/components/common/Section";
 
 export const PAGINATION_APPEARANCES = [
   "default",

@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import {
@@ -5,10 +6,7 @@ import {
   SliderRangeDemoControlled,
   SliderSingleDemo,
 } from "./components/slider-code-examples-demo";
-import {
-  SLIDER_APPEARANCES,
-  SLIDER_CODE_EXAMPLES_SECTION_CLASS,
-} from "./components/slider-code-examples.data";
+import { SLIDER_APPEARANCES } from "./components/slider-code-examples.data";
 import {
   sliderRangeSnippet,
   sliderSingleSnippet,
@@ -16,7 +14,7 @@ import {
 
 export function SliderCodeExamplesSection() {
   return (
-    <section className={SLIDER_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Slider code examples
       </h2>
@@ -56,6 +54,6 @@ export function SliderCodeExamplesSection() {
           <SliderRangeDemoControlled appearance="indigo" />
         </PreviewCodeShowcase>
       </div>
-    </section>
+    </Section>
   );
 }

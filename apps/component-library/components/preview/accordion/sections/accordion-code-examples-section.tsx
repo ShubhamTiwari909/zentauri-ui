@@ -1,9 +1,9 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { AccordionDemo } from "./components/accordion-code-examples-demo";
 import {
   ACCORDION_APPEARANCES,
-  ACCORDION_CODE_EXAMPLES_SECTION_CLASS,
   ACCORDION_SIZES,
   ACCORDION_TRANSITIONS,
 } from "./components/accordion-code-examples.data";
@@ -11,7 +11,7 @@ import { accordionSnippet } from "./components/accordion-code-examples.snippets"
 
 export function AccordionCodeExamplesSection() {
   return (
-    <section className={ACCORDION_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Accordion variants examples
       </h2>
@@ -99,6 +99,6 @@ export function AccordionCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }
