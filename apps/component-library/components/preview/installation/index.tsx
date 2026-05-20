@@ -127,13 +127,13 @@ export default function InstallationPreviewPage({
 
       <div className="space-y-10">
         <Section>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] dark:text-slate-50 text-slate-900">
             Step 1
           </p>
-          <h2 className="mt-2 text-xl font-semibold text-white">
+          <h2 className="mt-2 text-xl font-semibold dark:text-white text-slate-900">
             Install the package
           </h2>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             Choose your package manager.
           </p>
           <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
@@ -170,13 +170,13 @@ export default function InstallationPreviewPage({
         </Section>
 
         <Section>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] dark:text-slate-50 text-slate-900">
             Step 2
           </p>
-          <h2 className="mt-2 text-xl font-semibold text-white">
+          <h2 className="mt-2 text-xl font-semibold dark:text-white text-slate-900">
             Install peer dependencies
           </h2>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             The library expects{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
               react
@@ -233,34 +233,34 @@ export default function InstallationPreviewPage({
           <h3 className="mt-6 text-sm font-medium text-slate-200">
             Animated components: install framer-motion
           </h3>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             Anything imported from an{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               /animated
             </code>{" "}
             subpath (for example{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               ui/alert/animated
             </code>
             ,{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               ui/accordion/animated
             </code>
             , or{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               ui/tabs/animated
             </code>
             ) depends on{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               framer-motion
             </code>
             . Install it in apps that use those entry points. If you only use
             static imports from the main UI path (no{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               /animated
             </code>
             ),{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               framer-motion
             </code>{" "}
             is optional.
@@ -296,12 +296,12 @@ export default function InstallationPreviewPage({
               </TabsContentAnimated>
             </Tabs>
           </div>
-          <h3 className="mt-6 text-sm font-medium text-slate-200">
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
             Optional: react-icons
           </h3>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             Install{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               react-icons
             </code>{" "}
             when you use icon sets from that package.
@@ -337,38 +337,38 @@ export default function InstallationPreviewPage({
               </TabsContentAnimated>
             </Tabs>
           </div>
-          <h3 className="mt-6 text-sm font-medium text-slate-200">
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
             Charts components: optional recharts
           </h3>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             Chart primitives ship from{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               @zentauri-ui/zentauri-components/charts/&lt;type&gt;
             </code>{" "}
             and are implemented with{" "}
             <strong className="font-medium text-slate-300">Recharts</strong>.
             Install{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               recharts
             </code>{" "}
             in your app when you import any chart entry (
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               area
             </code>
             ,{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               bar
             </code>
             ,{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               line
             </code>
             ,{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               bubble
             </code>
             ,{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               pie
             </code>
             ) or vendor chart source with the CLI. If your app uses only UI
@@ -408,23 +408,23 @@ export default function InstallationPreviewPage({
         </Section>
 
         <Section>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] dark:text-slate-50 text-slate-900">
             Step 3
           </p>
-          <h2 className="mt-2 text-xl font-semibold text-white">
+          <h2 className="mt-2 text-xl font-semibold dark:text-white text-slate-900">
             Include library paths in globals.css
           </h2>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             Add an{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-cyan-200">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-cyan-200 text-slate-900">
               @source
             </code>{" "}
             entry so Tailwind scans class names inside{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               @zentauri-ui/zentauri-components
             </code>
             . The path is relative to this CSS file—adjust{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               ../
             </code>{" "}
             if your file lives elsewhere.
@@ -435,59 +435,59 @@ export default function InstallationPreviewPage({
         </Section>
 
         <Section>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] dark:text-slate-50 text-slate-900">
             Step 4
           </p>
-          <h2 className="mt-2 text-xl font-semibold text-white">
+          <h2 className="mt-2 text-xl font-semibold dark:text-white text-slate-900">
             Import and use components
           </h2>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             Static building blocks live under the component path (for example{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               ui/alert
             </code>
             ,{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               ui/accordion
             </code>
             ). Motion-enabled variants live under a matching{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               /animated
             </code>{" "}
             entry (for example{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               ui/alert/animated
             </code>
             ) and require{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               framer-motion
             </code>{" "}
             as described in Step 2. Chart primitives import from parallel{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               charts/&lt;type&gt;
             </code>{" "}
             entry points instead of{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               ui/&lt;name&gt;
             </code>{" "}
             and require{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               recharts
             </code>{" "}
             (see Charts components in Step 2).
           </p>
-          <h3 className="mt-6 text-sm font-medium text-slate-200">
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
             Static imports
           </h3>
           <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
             <CodeHighlight codeString={STATIC_IMPORT_SNIPPET} language="tsx" />
           </div>
-          <h3 className="mt-6 text-sm font-medium text-slate-200">
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
             Animated imports
           </h3>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             Use a separate import from the{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               /animated
             </code>{" "}
             module when you need animated primitives (pattern matches other
@@ -499,16 +499,16 @@ export default function InstallationPreviewPage({
               language="tsx"
             />
           </div>
-          <h3 className="mt-6 text-sm font-medium text-slate-200">
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
             Chart imports
           </h3>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             Use one entry per chart type after adding{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               recharts
             </code>{" "}
             (
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               charts
             </code>{" "}
             are not bundled from the base UI paths).
@@ -516,11 +516,11 @@ export default function InstallationPreviewPage({
           <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
             <CodeHighlight codeString={CHART_IMPORT_SNIPPET} language="tsx" />
           </div>
-          <h3 className="mt-6 text-sm font-medium text-slate-200">Usage</h3>
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">Usage</h3>
           <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
             <CodeHighlight codeString={USAGE_SNIPPET} language="tsx" />
           </div>
-          <h3 className="mt-6 text-sm font-medium text-slate-200">Preview</h3>
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">Preview</h3>
           <div className="mt-3 rounded-3xl border border-white/10 bg-white/5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
             <Modal>
               <ModalTrigger
@@ -546,105 +546,105 @@ export default function InstallationPreviewPage({
         </Section>
 
         <Section>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] dark:text-slate-50 text-slate-900">
             Alternative
           </p>
-          <h2 className="mt-2 text-xl font-semibold text-white">
+          <h2 className="mt-2 text-xl font-semibold dark:text-white text-slate-900">
             CLI — copy source into your app
           </h2>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             Instead of importing only from{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               node_modules
             </code>
             , you can vendor UI (and related hooks) with the same binary as the
             published package:{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               zentauri-components
             </code>{" "}
             or{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               zentauri-ui
             </code>
             . After the package name, pass that binary name (for example{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               zentauri-components init
             </code>
             ) so{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               npx
             </code>{" "}
             runs the CLI instead of a missing shell command. UI tokens for{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               add
             </code>{" "}
             come from{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               cli/registry.json
             </code>{" "}
             (
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               components
             </code>
             , plus{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               nameAliases
             </code>{" "}
             such as{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               button
             </code>{" "}
             →{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               buttons
             </code>
             ). For hook source only, use{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               add hook …
             </code>{" "}
             with names from the{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               hooks
             </code>{" "}
             array (generated from{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               tsup.config.ts
             </code>
             ). Run{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               init
             </code>{" "}
             once, then{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               add
             </code>{" "}
             for each UI area; the CLI copies that folder from the package tree{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               src/ui
             </code>{" "}
             under the path from{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               resolvedPaths.ui
             </code>{" "}
             (one subfolder per component), rewrites imports to your aliases,
             pulls hook dependencies, and creates{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               lib/utils
             </code>{" "}
             if missing.
           </p>
 
-          <h3 className="mt-6 text-sm font-medium text-slate-200">
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
             Initialize components.json
           </h3>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             Creates{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               components.json
             </code>{" "}
             with default path aliases. The CLI walks up from the working
             directory to find this file for{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               add
             </code>
             .
@@ -681,21 +681,21 @@ export default function InstallationPreviewPage({
             </Tabs>
           </div>
 
-          <h3 className="mt-6 text-sm font-medium text-slate-200">
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
             Add components (registry-driven)
           </h3>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             Pass one or more names from the registry (folder names under{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               src/ui
             </code>
             , chart folders such as{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               charts/area
             </code>
             , or a configured alias). Test files from the package are not
             copied. Chart entries copied into your repo still rely on{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               recharts
             </code>{" "}
             installed in the app (Step 2).
@@ -732,25 +732,25 @@ export default function InstallationPreviewPage({
             </Tabs>
           </div>
 
-          <h3 className="mt-6 text-sm font-medium text-slate-200">
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
             Add hooks only (optional)
           </h3>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             To vendor hook source without adding a UI folder, use{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               add hook
             </code>{" "}
             plus hook names from the registry (for example{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               useWindowSize
             </code>
             ). The CLI also copies transitive sibling-hook dependencies (for
             example{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               useMediaQuery
             </code>{" "}
             when you add{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               usePrefersReducedMotion
             </code>
             ). Hooks that import UI types still expect you to add the matching
@@ -788,27 +788,27 @@ export default function InstallationPreviewPage({
             </Tabs>
           </div>
 
-          <h3 className="mt-6 text-sm font-medium text-slate-200">
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
             If npx does not resolve the binary
           </h3>
           <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
             <CodeHighlight codeString={CLI_NPX_PIN_SNIPPET} language="bash" />
           </div>
 
-          <h3 className="mt-6 text-sm font-medium text-slate-200">
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
             Default components.json shape
           </h3>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             Edit{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               aliases
             </code>{" "}
             and{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               resolvedPaths
             </code>{" "}
             so they match your app&apos;s{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               tsconfig
             </code>{" "}
             paths and folder layout.
@@ -820,24 +820,24 @@ export default function InstallationPreviewPage({
             />
           </div>
 
-          <h3 className="mt-6 text-sm font-medium text-slate-200">
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
             Tailwind after vendoring
           </h3>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             When you rely on copied files instead of the package under{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               node_modules
             </code>
             , point{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-cyan-200">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-cyan-200 text-slate-900">
               @source
             </code>{" "}
             at those paths (adjust relative segments to match where your{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               globals.css
             </code>{" "}
             lives). You can keep both package and local{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
               @source
             </code>{" "}
             lines during a migration.
@@ -851,13 +851,13 @@ export default function InstallationPreviewPage({
         </Section>
 
         <Section>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] dark:text-slate-50 text-slate-900">
             Overriding theme colors
           </p>
-          <h2 className="mt-2 text-xl font-semibold text-white">
+          <h2 className="mt-2 text-xl font-semibold dark:text-white text-slate-900">
             Override theme colors
           </h2>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             You can override the theme colors by using the theme.colors object
             but be careful as it will override all the colors in your project if
             you are already using tailwind default colors like slate, red,
@@ -872,13 +872,13 @@ export default function InstallationPreviewPage({
           </div>
         </Section>
         <Section>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] dark:text-slate-50 text-slate-900">
             Adding new themes
           </p>
-          <h2 className="mt-2 text-xl font-semibold text-white">
+          <h2 className="mt-2 text-xl font-semibold dark:text-white text-slate-900">
             Adding new themes colors
           </h2>
-          <p className="mt-2 text-sm leading-6 text-slate-400">
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
             You can add new themes colors by adding a new theme mapper, passing
             the required variants like 100, 200, 500, 900 and removing the
             appearance prop from the component.

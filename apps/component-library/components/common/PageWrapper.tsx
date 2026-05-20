@@ -8,7 +8,7 @@ const PageWrapper = ({ children, theme = "dark" }: { children: React.ReactNode, 
 
   return (
     <body data-theme={on ? "dark" : "light"} className='flex min-h-dvh flex-col bg-slate-950 text-slate-50'>
-      <ToggleAnimated className="fixed top-20 right-2 lg:top-4 lg:right-4 z-40" appearance="gradient-indigo" animation="spring" aria-label="Demo toggle" checked={on} onClick={toggle} />
+      <ToggleAnimated className="fixed top-20 right-2 lg:right-4 z-40" appearance="gradient-indigo" animation="spring" aria-label="Demo toggle" checked={on} onClick={toggle} />
       {children}
     </body>
   )
