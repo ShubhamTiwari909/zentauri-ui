@@ -29,7 +29,7 @@ import { Tabs } from "@zentauri-ui/zentauri-components/ui/tabs";
 import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/animated";
 
 const SECTION =
-  "rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
+  "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
 const GLOBALS_CSS_SNIPPET = `@import "tailwindcss";
 @source "../node_modules/@zentauri-ui/zentauri-components";`;
@@ -139,7 +139,7 @@ export default function InstallationPreviewPage({
             Choose your package manager.
           </p>
           <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
-            <Tabs defaultValue="npm">
+            <Tabs defaultValue="npm" appearance="sky" variant="pills">
               <TabsListComponent />
               <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
@@ -202,7 +202,7 @@ export default function InstallationPreviewPage({
             in your app. Install them alongside the components package.
           </p>
           <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
-            <Tabs defaultValue="npm">
+            <Tabs defaultValue="npm" appearance="sky">
               <TabsListComponent />
               <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
@@ -268,7 +268,7 @@ export default function InstallationPreviewPage({
             is optional.
           </p>
           <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
-            <Tabs defaultValue="npm">
+            <Tabs defaultValue="npm" appearance="sky">
               <TabsListComponent />
               <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
@@ -309,7 +309,7 @@ export default function InstallationPreviewPage({
             when you use icon sets from that package.
           </p>
           <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
-            <Tabs defaultValue="npm">
+            <Tabs defaultValue="npm" appearance="sky">
               <TabsListComponent />
               <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
@@ -377,7 +377,7 @@ export default function InstallationPreviewPage({
             components and hooks, skip this dependency.
           </p>
           <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
-            <Tabs defaultValue="npm">
+            <Tabs defaultValue="npm" appearance="sky">
               <TabsListComponent />
               <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
@@ -652,7 +652,7 @@ export default function InstallationPreviewPage({
             .
           </p>
           <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
-            <Tabs defaultValue="npm">
+            <Tabs defaultValue="npm" appearance="sky">
               <TabsListComponent />
               <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
@@ -703,7 +703,7 @@ export default function InstallationPreviewPage({
             installed in the app (Step 2).
           </p>
           <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
-            <Tabs defaultValue="npm">
+            <Tabs defaultValue="npm" appearance="sky">
               <TabsListComponent />
               <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight
@@ -759,7 +759,7 @@ export default function InstallationPreviewPage({
             component or adjust imports.
           </p>
           <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
-            <Tabs defaultValue="npm">
+            <Tabs defaultValue="npm" appearance="sky">
               <TabsListComponent />
               <TabsContentAnimated value="npm" animation="fade" className="m-0">
                 <CodeHighlight

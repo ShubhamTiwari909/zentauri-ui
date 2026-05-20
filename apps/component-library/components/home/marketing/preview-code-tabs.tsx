@@ -11,11 +11,6 @@ import {
 import type { ReactNode } from "react";
 import CodeHighlight from "@/components/CodeHighlight";
 
-const listClass =
-  "inline-flex gap-1 rounded-xl border border-white/10 bg-slate-950/80 p-1";
-const triggerClass =
-  "rounded-lg px-3 py-1.5 text-xs font-medium text-slate-100 transition data-[state=active]:bg-white/10 data-[state=active]:text-white";
-
 type PreviewCodeTabsProps = {
   preview: ReactNode;
   code: string;
@@ -35,15 +30,14 @@ export function PreviewCodeTabs({ preview, code }: PreviewCodeTabsProps) {
       appearance="sky"
     >
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <TabsList className={listClass}>
+        <TabsList>
           <TabsTrigger
             value="preview"
-            className={triggerClass}
             disabled={false}
           >
             Preview
           </TabsTrigger>
-          <TabsTrigger value="code" className={triggerClass} disabled={false}>
+          <TabsTrigger value="code" disabled={false}>
             Code
           </TabsTrigger>
         </TabsList>

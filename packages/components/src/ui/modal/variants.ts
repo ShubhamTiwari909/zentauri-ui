@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const modalOverlayVariants = cva(
-  "fixed inset-0 z-50 bg-slate-50/70 dark:bg-slate-950/70 backdrop-blur-sm data-[state=open]:animate-in",
+  "fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm data-[state=open]:animate-in",
 );
 
 export const modalTriggerVariants = cva(
