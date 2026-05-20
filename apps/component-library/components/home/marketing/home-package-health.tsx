@@ -42,26 +42,9 @@ const TEST_TOTALS = [
 ] as const;
 
 const TEST_AREAS = [
-  { area: "Components and UI utilities", files: "26", tests: "252" },
-  { area: "React hooks", files: "26", tests: "75" },
+  { area: "Components and UI utilities", files: "26", tests: "242" },
+  { area: "React hooks", files: "26", tests: "85" },
   { area: "CLI and import rewriting", files: "2", tests: "9" },
-] as const;
-
-const FEATURED_SUITES = [
-  { suite: "Button", path: "src/ui/buttons/button.test.tsx", tests: "40" },
-  { suite: "Input", path: "src/ui/inputs/input.test.tsx", tests: "40" },
-  {
-    suite: "Pagination",
-    path: "src/ui/pagination/pagination.test.tsx",
-    tests: "15",
-  },
-  { suite: "Stepper", path: "src/ui/stepper/stepper.test.tsx", tests: "12" },
-  { suite: "Alert", path: "src/ui/alert/alert.test.tsx", tests: "11" },
-  {
-    suite: "usePagination",
-    path: "src/hooks/usePagination/usePagination.test.ts",
-    tests: "10",
-  },
 ] as const;
 
 export function HomePackageHealth() {
@@ -74,21 +57,17 @@ export function HomePackageHealth() {
       >
         <div className="space-y-6">
           <div className="flex flex-wrap gap-3">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="https://img.shields.io/npm/v/@zentauri-ui/zentauri-components"
               alt="@zentauri-ui/zentauri-components npm version"
-              width={224}
-              height={20}
               className="h-5 w-auto"
-              unoptimized
             />
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="https://img.shields.io/npm/dm/@zentauri-ui/zentauri-components"
               alt="@zentauri-ui/zentauri-components monthly npm downloads"
-              width={236}
-              height={20}
               className="h-5 w-auto"
-              unoptimized
             />
           </div>
 

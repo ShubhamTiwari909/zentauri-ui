@@ -42,8 +42,8 @@ The home page includes a package health section with live npm badge images and t
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 26         | 252   |
-| React hooks                 | 26         | 75    |
+| Components and UI utilities | 26         | 242   |
+| React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 
 ## Tech stack

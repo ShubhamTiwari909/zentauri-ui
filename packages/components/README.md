@@ -17,18 +17,11 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | ----------- | ---------------- |
 | Test files  | 54 passed (54)   |
 | Tests       | 336 passed (336) |
-| Duration    | 15.75s           |
-| Started at  | 15:51:22         |
-| Transform   | 3.97s            |
-| Setup       | 24.06s           |
-| Import      | 13.16s           |
-| Test time   | 10.40s           |
-| Environment | 45.37s           |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 26         | 252   |
-| React hooks                 | 26         | 75    |
+| Components and UI utilities | 26         | 242   |
+| React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 
 ### Per-suite snapshot
