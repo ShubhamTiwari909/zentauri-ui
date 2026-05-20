@@ -47,8 +47,8 @@
     }
   },
   "scripts": {
-    "dev": "NODE_OPTIONS=--max-old-space-size=8192 tsup --watch",
-    "build:js": "NODE_OPTIONS=--max-old-space-size=8192 tsup",
+    "dev": "cross-env NODE_OPTIONS=--max-old-space-size=8192 tsup --watch",
+    "build:js": "cross-env NODE_OPTIONS=--max-old-space-size=8192 tsup",
     "build:types": "tsc -p tsconfig.emit-types.json",
     "build": "npm run build:js && npm run build:types",
     "generate:registry": "node scripts/generate-registry.mjs",
@@ -79,6 +79,7 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
+    "cross-env": "^7.0.3",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
