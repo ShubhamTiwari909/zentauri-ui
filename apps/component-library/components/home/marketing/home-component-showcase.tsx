@@ -447,7 +447,7 @@ export function HomeComponentShowcase() {
             code={CODE_ACCORDION}
             preview={
               <Accordion
-                className="space-y-4"
+                className="space-y-4 bg-white dark:bg-transparent"
                 type="single"
                 defaultValue="a"
                 appearance="sky"
@@ -456,7 +456,7 @@ export function HomeComponentShowcase() {
                 <AccordionItem className="" value="a">
                   <AccordionTrigger className="">API keys</AccordionTrigger>
                   <AccordionContent className="">
-                    <p className="text-sm text-slate-900 dark:text-slate-300">
+                    <p className="text-sm text-slate-900">
                       Rotate keys from the security tab.
                     </p>
                   </AccordionContent>
@@ -464,7 +464,7 @@ export function HomeComponentShowcase() {
                 <AccordionItem className="" value="b">
                   <AccordionTrigger className="">Webhooks</AccordionTrigger>
                   <AccordionContent className="">
-                    <p className="text-sm text-slate-900 dark:text-slate-300">
+                    <p className="text-sm text-slate-900">
                       Retry policy and signing secrets.
                     </p>
                   </AccordionContent>

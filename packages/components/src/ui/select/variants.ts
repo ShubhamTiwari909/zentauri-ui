@@ -9,39 +9,39 @@ export const selectTriggerVariants = cva(
           "border-gray-300 dark:border-gray-300 bg-white dark:bg-black text-gray-900 dark:text-white",
         outline: "border-2 border-gray-500 text-gray-500 dark:text-gray-100",
         ghost: "border-transparent text-slate-900 dark:text-slate-200",
-        sky: "border-sky-800 dark:border-sky-600 text-sky-800 dark:text-sky-600",
-        rose: "border-rose-800 dark:border-rose-600 text-rose-800 dark:text-rose-600",
+        sky: "border-sky-900 dark:border-sky-600 text-sky-900 dark:text-sky-600",
+        rose: "border-rose-900 dark:border-rose-600 text-rose-900 dark:text-rose-600",
         purple:
-          "border-purple-800 dark:border-purple-600 text-purple-800 dark:text-purple-600",
-        pink: "border-pink-800 dark:border-pink-600 text-pink-800 dark:text-pink-600",
+          "border-purple-900 dark:border-purple-600 text-purple-900 dark:text-purple-600",
+        pink: "border-pink-900 dark:border-pink-600 text-pink-900 dark:text-pink-600",
         orange:
-          "border-orange-800 dark:border-orange-600 text-orange-800 dark:text-orange-600",
+          "border-orange-900 dark:border-orange-600 text-orange-900 dark:text-orange-600",
         yellow:
-          "border-yellow-800 dark:border-yellow-600 text-yellow-800 dark:text-yellow-600",
-        teal: "border-teal-800 dark:border-teal-600 text-teal-800 dark:text-teal-600",
+          "border-yellow-900 dark:border-yellow-600 text-yellow-900 dark:text-yellow-600",
+        teal: "border-teal-900 dark:border-teal-600 text-teal-900 dark:text-teal-600",
         indigo: "border-indigo-500 text-indigo-500",
         emerald:
-          "border-emerald-800 dark:border-emerald-600 text-emerald-800 dark:text-emerald-600",
+          "border-emerald-900 dark:border-emerald-600 text-emerald-900 dark:text-emerald-600",
         glass:
           "border-black/15 dark:border-white/15 bg-black/10 dark:bg-white/10 text-slate-900 dark:text-white backdrop-blur-md",
         "gradient-blue":
-          "bg-linear-to-r from-blue-800 dark:from-blue-600 to-purple-800 dark:to-purple-600 backdrop-blur-xl text-white",
+          "bg-linear-to-r from-blue-900 dark:from-blue-600 to-purple-900 dark:to-purple-600 backdrop-blur-xl text-white",
         "gradient-green":
-          "bg-linear-to-r from-green-800 dark:from-green-600 to-lime-800 dark:to-lime-600 backdrop-blur-xl text-white",
+          "bg-linear-to-r from-green-900 dark:from-green-600 to-lime-900 dark:to-lime-600 backdrop-blur-xl text-white",
         "gradient-red":
-          "bg-linear-to-r from-red-800 dark:from-red-600 to-pink-800 dark:to-pink-600 backdrop-blur-xl text-white",
+          "bg-linear-to-r from-red-900 dark:from-red-600 to-pink-900 dark:to-pink-600 backdrop-blur-xl text-white",
         "gradient-yellow":
-          "bg-linear-to-r from-yellow-800 dark:from-yellow-600 to-orange-800 dark:to-orange-600 backdrop-blur-xl text-white",
+          "bg-linear-to-r from-yellow-900 dark:from-yellow-600 to-orange-900 dark:to-orange-600 backdrop-blur-xl text-white",
         "gradient-purple":
-          "bg-linear-to-r from-purple-800 dark:from-purple-600 to-pink-800 dark:to-pink-600 backdrop-blur-xl text-white",
+          "bg-linear-to-r from-purple-900 dark:from-purple-600 to-pink-900 dark:to-pink-600 backdrop-blur-xl text-white",
         "gradient-teal":
-          "bg-linear-to-r from-teal-800 dark:from-teal-600 to-cyan-800 dark:to-cyan-600 backdrop-blur-xl text-white",
+          "bg-linear-to-r from-teal-900 dark:from-teal-600 to-cyan-900 dark:to-cyan-600 backdrop-blur-xl text-white",
         "gradient-indigo":
-          "bg-linear-to-r from-indigo-800 dark:from-indigo-600 to-purple-800 dark:to-purple-600 backdrop-blur-xl text-white",
+          "bg-linear-to-r from-indigo-900 dark:from-indigo-600 to-purple-900 dark:to-purple-600 backdrop-blur-xl text-white",
         "gradient-pink":
-          "bg-linear-to-r from-pink-800 dark:from-pink-600 to-rose-800 dark:to-rose-600 backdrop-blur-xl text-white",
+          "bg-linear-to-r from-pink-900 dark:from-pink-600 to-rose-900 dark:to-rose-600 backdrop-blur-xl text-white",
         "gradient-orange":
-          "bg-linear-to-r from-orange-800 dark:from-orange-600 to-red-800 dark:to-red-600 backdrop-blur-xl text-white",
+          "bg-linear-to-r from-orange-900 dark:from-orange-600 to-red-900 dark:to-red-600 backdrop-blur-xl text-white",
       },
       size: {
         sm: "px-2 py-1 text-sm",
@@ -69,20 +69,20 @@ export const selectItemVariants = cva(
           "border-2 border-gray-500 text-gray-900 dark:text-gray-100 data-[selected=true]:border-2 data-[selected=true]:border-gray-500 data-[selected=true]:bg-gray-200 data-[selected=true]:text-gray-900 dark:data-[selected=true]:text-gray-900",
         ghost:
           "border-transparent text-gray-900 dark:text-gray-100 data-[selected=true]:border-transparent data-[selected=true]:bg-transparent data-[selected=true]:text-gray-900 dark:data-[selected=true]:text-gray-100",
-        sky: "border-sky-800 dark:border-sky-600 text-sky-200 dark:text-sky-800 data-[selected=true]:border-sky-800 dark:data-[selected=true]:border-sky-600 data-[selected=true]:bg-sky-200 data-[selected=true]:text-sky-800 dark:data-[selected=true]:text-sky-800",
-        rose: "border-rose-800 dark:border-rose-600 text-rose-200 dark:text-rose-800 data-[selected=true]:border-rose-800 dark:data-[selected=true]:border-rose-600 data-[selected=true]:bg-rose-200 data-[selected=true]:text-rose-800 dark:data-[selected=true]:text-rose-800",
+        sky: "border-sky-900 dark:border-sky-600 text-sky-900 dark:text-sky-200 data-[selected=true]:border-sky-900 dark:data-[selected=true]:border-sky-600 data-[selected=true]:bg-sky-200 data-[selected=true]:text-sky-900 dark:data-[selected=true]:text-sky-900",
+        rose: "border-rose-900 dark:border-rose-600 text-rose-900 dark:text-rose-200 data-[selected=true]:border-rose-900 dark:data-[selected=true]:border-rose-600 data-[selected=true]:bg-rose-200 data-[selected=true]:text-rose-900 dark:data-[selected=true]:text-rose-900",
         purple:
-          "border-purple-800 dark:border-purple-600 text-purple-200 dark:text-purple-800 data-[selected=true]:border-purple-800 dark:data-[selected=true]:border-purple-600 data-[selected=true]:bg-purple-200 data-[selected=true]:text-purple-800 dark:data-[selected=true]:text-purple-800",
-        pink: "border-pink-800 dark:border-pink-600 text-pink-200 dark:text-pink-800 data-[selected=true]:border-pink-800 dark:data-[selected=true]:border-pink-600 data-[selected=true]:bg-pink-200 data-[selected=true]:text-pink-800 dark:data-[selected=true]:text-pink-800",
+          "border-purple-900 dark:border-purple-600 text-purple-900 dark:text-purple-200 data-[selected=true]:border-purple-900 dark:data-[selected=true]:border-purple-600 data-[selected=true]:bg-purple-200 data-[selected=true]:text-purple-900 dark:data-[selected=true]:text-purple-900",
+        pink: "border-pink-900 dark:border-pink-600 text-pink-900 dark:text-pink-200 data-[selected=true]:border-pink-900 dark:data-[selected=true]:border-pink-600 data-[selected=true]:bg-pink-200 data-[selected=true]:text-pink-900 dark:data-[selected=true]:text-pink-900",
         orange:
-          "border-orange-800 dark:border-orange-600 text-orange-200 dark:text-orange-800 data-[selected=true]:border-orange-800 dark:data-[selected=true]:border-orange-600 data-[selected=true]:bg-orange-200 data-[selected=true]:text-orange-800 dark:data-[selected=true]:text-orange-800",
+          "border-orange-900 dark:border-orange-600 text-orange-900 dark:text-orange-200 data-[selected=true]:border-orange-900 dark:data-[selected=true]:border-orange-600 data-[selected=true]:bg-orange-200 data-[selected=true]:text-orange-900 dark:data-[selected=true]:text-orange-900",
         yellow:
-          "border-yellow-800 dark:border-yellow-600 text-yellow-200 dark:text-yellow-800 data-[selected=true]:border-yellow-800 dark:data-[selected=true]:border-yellow-600 data-[selected=true]:bg-yellow-200 data-[selected=true]:text-yellow-800 dark:data-[selected=true]:text-yellow-800",
-        teal: "border-teal-800 dark:border-teal-600 text-teal-200 dark:text-teal-800 data-[selected=true]:border-teal-800 dark:data-[selected=true]:border-teal-600 data-[selected=true]:bg-teal-200 data-[selected=true]:text-teal-800 dark:data-[selected=true]:text-teal-800",
+          "border-yellow-900 dark:border-yellow-600 text-yellow-900 dark:text-yellow-200 data-[selected=true]:border-yellow-900 dark:data-[selected=true]:border-yellow-600 data-[selected=true]:bg-yellow-200 data-[selected=true]:text-yellow-900 dark:data-[selected=true]:text-yellow-900",
+        teal: "border-teal-900 dark:border-teal-600 text-teal-900 dark:text-teal-200 data-[selected=true]:border-teal-900 dark:data-[selected=true]:border-teal-600 data-[selected=true]:bg-teal-200 data-[selected=true]:text-teal-900 dark:data-[selected=true]:text-teal-900",
         indigo:
-          "border-indigo-800 dark:border-indigo-600 text-indigo-200 dark:text-indigo-800 data-[selected=true]:border-indigo-800 dark:data-[selected=true]:border-indigo-600 data-[selected=true]:bg-indigo-200 data-[selected=true]:text-indigo-800 dark:data-[selected=true]:text-indigo-800",
+          "border-indigo-900 dark:border-indigo-600 text-indigo-900 dark:text-indigo-200 data-[selected=true]:border-indigo-900 dark:data-[selected=true]:border-indigo-600 data-[selected=true]:bg-indigo-200 data-[selected=true]:text-indigo-900 dark:data-[selected=true]:text-indigo-900",
         emerald:
-          "border-emerald-800 dark:border-emerald-600 text-emerald-200 dark:text-emerald-800 data-[selected=true]:border-emerald-800 dark:data-[selected=true]:border-emerald-600 data-[selected=true]:bg-emerald-200 data-[selected=true]:text-emerald-800 dark:data-[selected=true]:text-emerald-800",
+          "border-emerald-900 dark:border-emerald-600 text-emerald-900 dark:text-emerald-200 data-[selected=true]:border-emerald-900 dark:data-[selected=true]:border-emerald-600 data-[selected=true]:bg-emerald-200 data-[selected=true]:text-emerald-900 dark:data-[selected=true]:text-emerald-900",
         "gradient-blue":
           "bg-transparent backdrop-blur-xl text-blue-50 dark:text-blue-50 data-[selected=true]:bg-linear-to-r data-[selected=true]:from-blue-50 dark:data-[selected=true]:from-blue-50 data-[selected=true]:to-purple-50 dark:data-[selected=true]:to-purple-50 data-[selected=true]:text-blue-900",
         "gradient-green":
@@ -121,33 +121,33 @@ export const selectContentVariants = cva(
         glass: "bg-black/10 dark:bg-white/10 backdrop-blur-md",
         outline: "border-2 border-gray-500",
         ghost: "border-transparent",
-        sky: "border-sky-800 dark:border-sky-600",
-        rose: "border-rose-800 dark:border-rose-600",
-        purple: "border-purple-800 dark:border-purple-600",
-        pink: "border-pink-800 dark:border-pink-600",
-        orange: "border-orange-800 dark:border-orange-600",
-        yellow: "border-yellow-800 dark:border-yellow-600",
-        teal: "border-teal-800 dark:border-teal-600",
-        indigo: "border-indigo-800 dark:border-indigo-600",
-        emerald: "border-emerald-800 dark:border-emerald-600",
+        sky: "border-sky-900 dark:border-sky-600",
+        rose: "border-rose-900 dark:border-rose-600",
+        purple: "border-purple-900 dark:border-purple-600",
+        pink: "border-pink-900 dark:border-pink-600",
+        orange: "border-orange-900 dark:border-orange-600",
+        yellow: "border-yellow-900 dark:border-yellow-600",
+        teal: "border-teal-900 dark:border-teal-600",
+        indigo: "border-indigo-900 dark:border-indigo-600",
+        emerald: "border-emerald-900 dark:border-emerald-600",
         "gradient-blue":
-          "bg-linear-to-r from-blue-800 dark:from-blue-600 to-purple-800 dark:to-purple-600 backdrop-blur-xl",
+          "bg-linear-to-r from-blue-900 dark:from-blue-600 to-purple-900 dark:to-purple-600 backdrop-blur-xl",
         "gradient-green":
-          "bg-linear-to-r from-green-800 dark:from-green-600 to-lime-800 dark:to-lime-600 backdrop-blur-xl",
+          "bg-linear-to-r from-green-900 dark:from-green-600 to-lime-900 dark:to-lime-600 backdrop-blur-xl",
         "gradient-red":
-          "bg-linear-to-r from-red-800 dark:from-red-600 to-pink-800 dark:to-pink-600 backdrop-blur-xl",
+          "bg-linear-to-r from-red-900 dark:from-red-600 to-pink-900 dark:to-pink-600 backdrop-blur-xl",
         "gradient-yellow":
-          "bg-linear-to-r from-yellow-800 dark:from-yellow-600 to-orange-800 dark:to-orange-600 backdrop-blur-xl",
+          "bg-linear-to-r from-yellow-900 dark:from-yellow-600 to-orange-900 dark:to-orange-600 backdrop-blur-xl",
         "gradient-purple":
-          "bg-linear-to-r from-purple-800 dark:from-purple-600 to-pink-800 dark:to-pink-600 backdrop-blur-xl",
+          "bg-linear-to-r from-purple-900 dark:from-purple-600 to-pink-900 dark:to-pink-600 backdrop-blur-xl",
         "gradient-teal":
-          "bg-linear-to-r from-teal-800 dark:from-teal-600 to-cyan-800 dark:to-cyan-600 backdrop-blur-xl",
+          "bg-linear-to-r from-teal-900 dark:from-teal-600 to-cyan-900 dark:to-cyan-600 backdrop-blur-xl",
         "gradient-indigo":
-          "bg-linear-to-r from-indigo-800 dark:from-indigo-600 to-purple-800 dark:to-purple-600 backdrop-blur-xl",
+          "bg-linear-to-r from-indigo-900 dark:from-indigo-600 to-purple-900 dark:to-purple-600 backdrop-blur-xl",
         "gradient-pink":
-          "bg-linear-to-r from-pink-800 dark:from-pink-600 to-rose-800 dark:to-rose-600 backdrop-blur-xl",
+          "bg-linear-to-r from-pink-900 dark:from-pink-600 to-rose-900 dark:to-rose-600 backdrop-blur-xl",
         "gradient-orange":
-          "bg-linear-to-r from-orange-800 dark:from-orange-600 to-red-800 dark:to-red-600 backdrop-blur-xl",
+          "bg-linear-to-r from-orange-900 dark:from-orange-600 to-red-900 dark:to-red-600 backdrop-blur-xl",
       },
       size: {
         sm: "px-2 py-1 text-sm",

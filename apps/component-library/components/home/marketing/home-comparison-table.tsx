@@ -52,7 +52,7 @@ export function HomeComparisonTable() {
       >
         <Table appearance="emerald" className="min-w-3xl">
           <TableHeader>
-            <TableRow>
+            <TableRow className="text-white">
               <TableHead className="p-5">Aspect</TableHead>
               <TableHead className="p-5">Zentauri UI</TableHead>
               <TableHead className="p-5">ShadCN</TableHead>

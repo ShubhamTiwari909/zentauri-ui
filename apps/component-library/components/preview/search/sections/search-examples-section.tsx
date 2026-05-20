@@ -133,10 +133,10 @@ export function SearchExamplesSection() {
   return (
     <section className="mt-16 space-y-8">
       <div>
-        <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
+        <h2 className="text-2xl font-semibold text-white">
           Inline search and list
         </h2>
-        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
           Filter the sample entries below. Use arrow keys and Enter from the
           field; selection updates local state only (no navigation on this demo
           page).

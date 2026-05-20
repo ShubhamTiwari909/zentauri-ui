@@ -36,22 +36,22 @@ export function HomeHooksShowcase() {
               appearance="sky"
             >
               <div className="flex flex-wrap items-start justify-between gap-2">
-                <h3 className="font-mono text-sm font-semibold text-cyan-100">
+                <h3 className="font-mono text-sm font-semibold text-slate-900 dark:text-cyan-100">
                   {hook.name}
                 </h3>
                 <Link
                   href={`/preview/hooks/${hook.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-medium text-slate-400 transition hover:text-cyan-200"
+                  className="inline-flex items-center gap-1 text-xs font-medium text-slate-900 dark:text-slate-400 transition hover:text-cyan-600"
                 >
                   Preview
                   <FiExternalLink className="h-3.5 w-3.5" aria-hidden />
                 </Link>
               </div>
-              <p className="text-sm leading-6 text-slate-400">
+              <p className="text-sm leading-6 text-slate-900 dark:text-slate-400">
                 {hook.description}
               </p>
-              <p className="text-xs leading-5 text-slate-500">
-                <span className="font-medium text-slate-400">Use case: </span>
+              <p className="text-xs leading-5 text-slate-900 dark:text-slate-500">
+                <span className="font-medium text-slate-900 dark:text-slate-400">Use case: </span>
                 {hook.intro}
               </p>
             </Card>
@@ -60,7 +60,7 @@ export function HomeHooksShowcase() {
         <p className="text-center text-sm">
           <Link
             href="/preview/hooks"
-            className="font-medium text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline"
+            className="font-medium text-slate-900 dark:text-cyan-300 underline-offset-4 hover:text-cyan-600 hover:underline"
           >
             Browse all hooks
           </Link>
