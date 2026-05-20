@@ -1,9 +1,9 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { ProgressDemo } from "./components/progress-code-examples-demo";
 import {
   PROGRESS_APPEARANCES,
-  PROGRESS_CODE_EXAMPLES_SECTION_CLASS,
   PROGRESS_SHAPES,
   PROGRESS_SIZES,
   PROGRESS_SNIPPET_DEFAULTS,
@@ -14,7 +14,7 @@ import { ProgressControlledDemo } from "./components/progress-code-examples-cont
 export function ProgressCodeExamplesSection() {
   const defaults = PROGRESS_SNIPPET_DEFAULTS;
   return (
-    <section className={PROGRESS_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Progress variants examples
       </h2>
@@ -77,6 +77,6 @@ export function ProgressCodeExamplesSection() {
           <ProgressControlledDemo {...defaults} appearance="sky" />
         </PreviewCodeShowcase>
       </div>
-    </section>
+    </Section>
   );
 }

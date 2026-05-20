@@ -1,16 +1,16 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { PaginationDemo } from "./components/pagination-code-examples-demo";
 import {
   PAGINATION_APPEARANCES,
-  PAGINATION_CODE_EXAMPLES_SECTION_CLASS,
   PAGINATION_SIZES,
 } from "./components/pagination-code-examples.data";
 import { paginationSnippet } from "./components/pagination-code-examples.snippets";
 
 export function PaginationCodeExamplesSection() {
   return (
-    <section className={PAGINATION_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Pagination variants examples
       </h2>
@@ -53,6 +53,6 @@ export function PaginationCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

@@ -56,9 +56,7 @@ export function DropdownPlacementDemo({
         <DropdownTrigger variant="outline" size="sm">
           Menu {placement}
         </DropdownTrigger>
-        <DropdownContent
-          placement={placement}
-        >
+        <DropdownContent placement={placement}>
           <DropdownItem value="a">Alpha</DropdownItem>
           <DropdownItem value="b">Beta</DropdownItem>
         </DropdownContent>
@@ -78,9 +76,7 @@ export function DropdownSpacingDemo({
         <DropdownTrigger variant="outline" size="sm">
           Menu {spacing}
         </DropdownTrigger>
-        <DropdownContent
-          spacing={spacing}
-        >
+        <DropdownContent spacing={spacing}>
           <DropdownItem value="a">Alpha</DropdownItem>
           <DropdownItem value="b">Beta</DropdownItem>
         </DropdownContent>

@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { HiInbox } from "react-icons/hi2";
@@ -12,7 +13,10 @@ import { EmptyStateAnimated } from "@zentauri-ui/zentauri-components/ui/empty-st
 
 export function EmptyStateHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
-    <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end ">
+    <Section
+      variant="plain"
+      className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end "
+    >
       <PreviewHeroSeoBlock seo={seo} />
 
       <EmptyStateAnimated
@@ -37,6 +41,6 @@ export function EmptyStateHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           </ButtonAnimated>
         </EmptyStateAction>
       </EmptyStateAnimated>
-    </section>
+    </Section>
   );
 }

@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { ChartPreviewSlug } from "@/lib/charts-preview-registry";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
@@ -12,9 +13,9 @@ export function ChartHeroSection({
   slug: ChartPreviewSlug;
 }) {
   return (
-    <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+    <Section variant="hero">
       <PreviewHeroSeoBlock seo={seo} />
       <ChartHeroDemo slug={slug} />
-    </section>
+    </Section>
   );
 }

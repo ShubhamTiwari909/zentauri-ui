@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import type { TypographySectionSlug } from "@/lib/typography-preview-registry";
@@ -23,7 +24,6 @@ import {
   HEADING_LEVEL_SHOWCASE,
   LIST_MARKERS,
   TEXT_SIZE_VARIANTS,
-  TYPOGRAPHY_CODE_EXAMPLES_SECTION_CLASS,
   TYPOGRAPHY_TONES,
 } from "./components/typography-code-examples.data";
 import {
@@ -224,7 +224,7 @@ export function TypographyCodeExamplesSection({
   section: TypographySectionSlug;
 }) {
   return (
-    <section className={TYPOGRAPHY_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Typography variants examples
       </h2>
@@ -240,6 +240,6 @@ export function TypographyCodeExamplesSection({
       <div className="mt-6 space-y-10 rounded-xl">
         <TypographyCodeExampleRows section={section} />
       </div>
-    </section>
+    </Section>
   );
 }

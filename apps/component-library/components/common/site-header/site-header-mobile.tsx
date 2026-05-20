@@ -15,7 +15,7 @@ import { siteChromeNavItems } from "@/components/common/site-chrome-nav";
 import SiteNavLink from "./site-link";
 
 const drawerNavLinkClassName =
-  "block rounded-md px-2 py-3 text-base font-medium text-slate-100 underline-offset-4 transition hover:bg-white/5 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60";
+  "block rounded-md px-2 py-3 text-base font-medium underline-offset-4 transition hover:bg-white/5 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60";
 
 const SiteHeaderMobile = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -44,14 +44,14 @@ const SiteHeaderMobile = () => {
       >
         <FiList className="h-6 w-6" aria-hidden />
       </DrawerTrigger>
-      <DrawerContent className="" side="right" appearance="glass" size="md">
+      <DrawerContent className="bg-slate-950" side="right" appearance="default" size="md">
         <DrawerHeader className="pr-12">
-          <DrawerTitle className="text-slate-50">Navigate</DrawerTitle>
-          <DrawerClose className="">
+          <DrawerTitle className="text-white">Navigate</DrawerTitle>
+          <DrawerClose className="text-white">
             <FiX className="h-5 w-5" aria-hidden />
           </DrawerClose>
         </DrawerHeader>
-        <DrawerBody className="">
+        <DrawerBody className="text-white">
           <nav aria-label="Mobile main" className="flex flex-col gap-1">
             {siteChromeNavItems.map((item) => (
               <SiteNavLink

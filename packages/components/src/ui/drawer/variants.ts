@@ -75,7 +75,7 @@ export const drawerContentVariants = cva(
         full: "",
       },
       appearance: {
-        default: "bg-slate-50 dark:bg-slate-950",
+        default: "bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white",
         glass:
           "border-black/15 dark:border-white/15 bg-slate-50/70 dark:bg-slate-950/70 backdrop-blur-xl",
         sky: "border-sky-800 dark:border-sky-600 bg-sky-50 dark:bg-sky-950/70 backdrop-blur-xl",

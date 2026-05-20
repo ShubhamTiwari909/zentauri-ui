@@ -1,9 +1,9 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { DrawerDemo } from "./components/drawer-code-examples-demo";
 import {
   DRAWER_APPEARANCES,
-  DRAWER_CODE_EXAMPLES_SECTION_CLASS,
   DRAWER_SIDES,
   DRAWER_SIZES,
 } from "./components/drawer-code-examples.data";
@@ -11,7 +11,7 @@ import { drawerSnippet } from "./components/drawer-code-examples.snippets";
 
 export function DrawerCodeExamplesSection() {
   return (
-    <section className={DRAWER_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Drawer variants examples
       </h2>
@@ -75,6 +75,6 @@ export function DrawerCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

@@ -1,10 +1,10 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { ToggleDemo } from "./components/toggle-code-examples-demo";
 import { ToggleControlledDemo } from "./components/toggle-code-examples-controlled";
 import {
   TOGGLE_APPEARANCES,
-  TOGGLE_CODE_EXAMPLES_SECTION_CLASS,
   TOGGLE_SIZES,
 } from "./components/toggle-code-examples.data";
 import {
@@ -14,7 +14,7 @@ import {
 
 export function ToggleCodeExamplesSection() {
   return (
-    <section className={TOGGLE_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Toggle variants examples
       </h2>
@@ -65,6 +65,6 @@ export function ToggleCodeExamplesSection() {
           <ToggleDemo appearance="emerald" size="md" thumbColor="emerald" />
         </PreviewCodeShowcase>
       </div>
-    </section>
+    </Section>
   );
 }

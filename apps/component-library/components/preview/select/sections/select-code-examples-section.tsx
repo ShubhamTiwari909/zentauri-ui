@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import {
@@ -6,7 +7,6 @@ import {
   SelectTriggerDemo,
 } from "./components/select-code-examples-demos";
 import {
-  SELECT_CODE_EXAMPLES_SECTION_CLASS,
   SELECT_CONTENT_SIZES,
   SELECT_CONTENT_SPACING,
   SELECT_TRIGGER_SIZES,
@@ -20,7 +20,7 @@ import {
 
 export function SelectCodeExamplesSection() {
   return (
-    <section className={SELECT_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Select variants examples
       </h2>
@@ -98,6 +98,6 @@ export function SelectCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

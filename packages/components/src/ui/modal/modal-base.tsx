@@ -154,7 +154,7 @@ export function ModalContent({
 
   return createPortal(
     open ? (
-      <div className="fixed inset-0 z-50" data-slot="modal-portal">
+      <div className="fixed inset-0 z-9999" data-slot="modal-portal">
         <div
           role="presentation"
           data-slot="modal-overlay"

@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
@@ -17,10 +18,10 @@ export default function TypographySectionPage({
 }) {
   return (
     <PreviewPageShell>
-      <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+      <Section variant="hero">
         <PreviewHeroSeoBlock seo={seo} />
         <TypographyHeroDemo section={section} />
-      </section>
+      </Section>
 
       <div className="flex flex-col gap-12">
         <TypographySectionBody section={section} />

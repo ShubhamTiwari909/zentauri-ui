@@ -1,9 +1,9 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { SpinnerDemo } from "./components/spinner-code-examples-demo";
 import {
   SPINNER_APPEARANCES,
-  SPINNER_CODE_EXAMPLES_SECTION_CLASS,
   SPINNER_SIZES,
   SPINNER_VARIANTS,
 } from "./components/spinner-code-examples.data";
@@ -11,7 +11,7 @@ import { spinnerSnippet } from "./components/spinner-code-examples.snippets";
 
 export function SpinnerCodeExamplesSection() {
   return (
-    <section className={SPINNER_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Spinner variants examples
       </h2>
@@ -49,6 +49,6 @@ export function SpinnerCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

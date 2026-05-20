@@ -1,5 +1,6 @@
 "use client";
 
+import { Section } from "@/components/common/Section";
 import CodeHighlight from "@/components/CodeHighlight";
 import type { HookPreviewSlug } from "@/lib/hook-preview-registry";
 import { getHookDemoFullSource } from "./hook-demo-full-sources";
@@ -13,7 +14,7 @@ export function HookInteractiveSection({ slug }: HookInteractiveSectionProps) {
   const exampleCode = getHookDemoFullSource(slug);
 
   return (
-    <section className="mt-10 space-y-8">
+    <Section variant="plain" className="mt-10 space-y-8">
       <div className="space-y-3">
         <h2 className="text-sm font-medium uppercase tracking-wider text-slate-400">
           Demo source
@@ -27,6 +28,6 @@ export function HookInteractiveSection({ slug }: HookInteractiveSectionProps) {
         </div>
       </div>
       <HookDemoRouter slug={slug} />
-    </section>
+    </Section>
   );
 }

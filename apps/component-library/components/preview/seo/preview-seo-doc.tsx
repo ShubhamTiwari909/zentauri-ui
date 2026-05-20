@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import { getPreviewFaqJsonLd } from "@/lib/preview-seo";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
@@ -32,8 +33,9 @@ export function PreviewSeoDoc({ doc }: PreviewSeoDocProps) {
 
           const sectionHeadingId = `preview-doc-section-${index}`;
           return (
-            <section
-              key={`${section.heading}-${index}`}
+            <Section
+              key={sectionHeadingId}
+              variant="plain"
               aria-labelledby={sectionHeadingId}
               className="space-y-4"
             >
@@ -56,11 +58,12 @@ export function PreviewSeoDoc({ doc }: PreviewSeoDocProps) {
                   ))}
                 </div>
               )}
-            </section>
+            </Section>
           );
         })}
 
-        <section
+        <Section
+          variant="plain"
           aria-labelledby="preview-doc-faq-heading"
           className="space-y-4"
         >
@@ -85,7 +88,7 @@ export function PreviewSeoDoc({ doc }: PreviewSeoDocProps) {
               </details>
             ))}
           </div>
-        </section>
+        </Section>
       </article>
     </>
   );

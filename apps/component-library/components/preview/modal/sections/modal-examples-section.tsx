@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
@@ -15,7 +16,7 @@ import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/
 
 export function ModalExamplesSection() {
   return (
-    <section className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Examples
       </h2>
@@ -58,6 +59,6 @@ export function ModalExamplesSection() {
           </Modal>
         </PreviewCodeShowcase>
       </div>
-    </section>
+    </Section>
   );
 }

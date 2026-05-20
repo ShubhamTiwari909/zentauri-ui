@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { ModalDemo } from "./components/modal-code-examples-demo";
@@ -5,7 +6,6 @@ import { ModalControlledDemo } from "./components/moda-code-examples-controlled"
 import {
   MODAL_ANIMATIONS,
   MODAL_APPEARANCES,
-  MODAL_CODE_EXAMPLES_SECTION_CLASS,
   MODAL_POSITIONS,
   MODAL_SIZES,
 } from "./components/modal-code-examples.data";
@@ -16,7 +16,7 @@ import {
 
 export function ModalCodeExamplesSection() {
   return (
-    <section className={MODAL_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Modal variants examples
       </h2>
@@ -103,6 +103,6 @@ export function ModalCodeExamplesSection() {
           <ModalControlledDemo />
         </PreviewCodeShowcase>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import {
@@ -18,7 +19,6 @@ import {
 } from "./components/inputs-code-examples-demos";
 import { InputsControlledDemo } from "./components/input-code-example-controlled-demo";
 import {
-  INPUTS_CODE_EXAMPLES_SECTION_CLASS,
   animationPresets,
   appearanceInputsExtended,
   sizeInputs,
@@ -43,7 +43,7 @@ import {
 
 export function InputsCodeExamplesSection() {
   return (
-    <section className={INPUTS_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Input variants examples
       </h2>
@@ -185,6 +185,6 @@ export function InputsCodeExamplesSection() {
           <InputsDateDemo />
         </PreviewCodeShowcase>
       </div>
-    </section>
+    </Section>
   );
 }

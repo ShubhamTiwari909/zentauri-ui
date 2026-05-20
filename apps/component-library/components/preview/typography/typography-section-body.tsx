@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import {
   Blockquote,
   CodeBlock,
@@ -11,9 +12,6 @@ import {
 import type { TypographySectionSlug } from "@/lib/typography-preview-registry";
 
 import { TYPOGRAPHY_TONES } from "./sections/components/typography-code-examples.data";
-
-const panel =
-  "rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
 function ToneGridHeading() {
   return (
@@ -113,7 +111,13 @@ function ToneGridCodeBlock() {
           <Text className="text-xs uppercase tracking-wide text-slate-800 dark:text-slate-400">
             {tone}
           </Text>
-          <div className={tone.includes("gradient") ? "bg-white/90 dark:bg-slate-950/80" : ""}>
+          <div
+            className={
+              tone.includes("gradient")
+                ? "bg-white/90 dark:bg-slate-950/80"
+                : ""
+            }
+          >
             <CodeBlock
               tone={tone}
               className="wrap-anywhere"
@@ -285,8 +289,10 @@ export function TypographySectionBody({
 }) {
   return (
     <>
-      <section className={panel}>
-        <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">Variants showcase</h2>
+      <Section>
+        <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
+          Variants showcase
+        </h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
           Tone tokens align with dark shells across Zentauri previews—swap
           surfaces thoughtfully.
@@ -294,9 +300,9 @@ export function TypographySectionBody({
         <div className="mt-6 w-full overflow-auto">
           <VariantsForSection section={section} />
         </div>
-      </section>
+      </Section>
 
-      <section className={panel}>
+      <Section>
         <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
           Formatting showcase
         </h2>
@@ -306,9 +312,9 @@ export function TypographySectionBody({
         <div className="mt-6">
           <FormattingSection section={section} />
         </div>
-      </section>
+      </Section>
 
-      <section className={panel}>
+      <Section>
         <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
           Combination examples
         </h2>
@@ -318,7 +324,7 @@ export function TypographySectionBody({
         <div className="mt-6 space-y-4">
           <CombinationsSection section={section} />
         </div>
-      </section>
+      </Section>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import PageWrapper from "@/components/common/PageWrapper";
 import { SiteFooter } from "@/components/common/site-footer";
 import { SiteSearchProvider } from "@/components/common/site-search/site-search-provider";
 import { Analytics } from "@vercel/analytics/next";
@@ -16,13 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="flex min-h-dvh flex-col bg-slate-950 text-slate-50">
+      <PageWrapper>
         <SiteSearchProvider>
           <div className="flex min-h-0 flex-1 flex-col">{children}</div>
           <SiteFooter />
           <Analytics />
         </SiteSearchProvider>
-      </body>
+      </PageWrapper>
     </html>
   );
 }

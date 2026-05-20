@@ -1,10 +1,14 @@
+import { Section } from "@/components/common/Section";
 import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
 import { InputAnimated } from "@zentauri-ui/zentauri-components/ui/inputs/animated";
 import { animationPresets, appearanceInputs } from "../variants";
 
 export function InputsAppearanceMotionSection() {
   return (
-    <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+    <Section
+      variant="plain"
+      className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]"
+    >
       <article className="rounded-3xl border border-slate-900/10 dark:border-white/10 bg-slate-100 dark:bg-slate-900/70 p-6 shadow-xl shadow-slate-950/30 backdrop-blur">
         <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-700 dark:text-cyan-200">
           Appearance
@@ -58,6 +62,6 @@ export function InputsAppearanceMotionSection() {
           ))}
         </div>
       </article>
-    </section>
+    </Section>
   );
 }

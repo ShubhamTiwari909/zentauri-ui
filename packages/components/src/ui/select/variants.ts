@@ -6,24 +6,24 @@ export const selectTriggerVariants = cva(
     variants: {
       variant: {
         default:
-          "border-gray-300 dark:border-gray-300 bg-white dark:bg-black text-gray-900 dark:text-white",
-        outline: "border-2 border-gray-500 text-gray-500 dark:text-gray-100",
-        ghost: "border-transparent text-slate-900 dark:text-slate-200",
-        sky: "border-sky-900 dark:border-sky-600 text-sky-900 dark:text-sky-600",
-        rose: "border-rose-900 dark:border-rose-600 text-rose-900 dark:text-rose-600",
+          "border-gray-300 dark:border-gray-300 bg-white dark:bg-black text-gray-950 dark:text-white",
+        outline: "border-2 border-gray-500 text-gray-950 dark:text-gray-100",
+        ghost: "border-transparent text-gray-950 dark:text-gray-100",
+        sky: "border-sky-800 dark:border-sky-600 text-sky-950 dark:text-sky-600",
+        rose: "border-rose-800 dark:border-rose-600 text-rose-950 dark:text-rose-600",
         purple:
-          "border-purple-900 dark:border-purple-600 text-purple-900 dark:text-purple-600",
-        pink: "border-pink-900 dark:border-pink-600 text-pink-900 dark:text-pink-600",
+          "border-purple-800 dark:border-purple-600 text-purple-950 dark:text-purple-600",
+        pink: "border-pink-800 dark:border-pink-600 text-pink-950 dark:text-pink-600",
         orange:
-          "border-orange-900 dark:border-orange-600 text-orange-900 dark:text-orange-600",
+          "border-orange-800 dark:border-orange-600 text-orange-950 dark:text-orange-600",
         yellow:
-          "border-yellow-900 dark:border-yellow-600 text-yellow-900 dark:text-yellow-600",
-        teal: "border-teal-900 dark:border-teal-600 text-teal-900 dark:text-teal-600",
-        indigo: "border-indigo-500 text-indigo-500",
+          "border-yellow-800 dark:border-yellow-600 text-yellow-950 dark:text-yellow-600",
+        teal: "border-teal-800 dark:border-teal-600 text-teal-950 dark:text-teal-600",
+        indigo: "border-indigo-500 text-indigo-950",
         emerald:
-          "border-emerald-900 dark:border-emerald-600 text-emerald-900 dark:text-emerald-600",
+          "border-emerald-800 dark:border-emerald-600 text-emerald-950 dark:text-emerald-600",
         glass:
-          "border-black/15 dark:border-white/15 bg-black/10 dark:bg-white/10 text-slate-900 dark:text-white backdrop-blur-md",
+          "border-black/15 dark:border-white/15 bg-black/10 dark:bg-white/10 text-gray-950 dark:text-white backdrop-blur-md",
         "gradient-blue":
           "bg-linear-to-r from-blue-900 dark:from-blue-600 to-purple-900 dark:to-purple-600 backdrop-blur-xl text-white",
         "gradient-green":

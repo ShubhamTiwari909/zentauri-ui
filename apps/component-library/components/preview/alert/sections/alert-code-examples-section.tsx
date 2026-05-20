@@ -1,16 +1,16 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { AlertDemo } from "./components/alert-code-examples-demo";
 import {
   ALERT_APPEARANCES,
-  ALERT_CODE_EXAMPLES_SECTION_CLASS,
   ALERT_SIZES,
 } from "./components/alert-code-examples.data";
 import { alertSnippet } from "./components/alert-code-examples.snippets";
 
 export function AlertCodeExamplesSection() {
   return (
-    <section className={ALERT_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Alert variants examples
       </h2>
@@ -36,6 +36,6 @@ export function AlertCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

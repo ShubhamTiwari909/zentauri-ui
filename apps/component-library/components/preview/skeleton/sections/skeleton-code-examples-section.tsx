@@ -1,9 +1,9 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { SkeletonDemo } from "./components/skeleton-code-examples-demo";
 import {
   SKELETON_APPEARANCES,
-  SKELETON_CODE_EXAMPLES_SECTION_CLASS,
   SKELETON_ROUNDED,
   SKELETON_SIZES,
 } from "./components/skeleton-code-examples.data";
@@ -11,7 +11,7 @@ import { skeletonSnippet } from "./components/skeleton-code-examples.snippets";
 
 export function SkeletonCodeExamplesSection() {
   return (
-    <section className={SKELETON_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Skeleton variants examples
       </h2>
@@ -99,6 +99,6 @@ export function SkeletonCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

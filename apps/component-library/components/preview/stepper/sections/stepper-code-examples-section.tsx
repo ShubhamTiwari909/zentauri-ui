@@ -1,15 +1,13 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { StepperDemo } from "./components/stepper-code-examples-demo";
-import {
-  STEPPER_APPEARANCES,
-  STEPPER_CODE_EXAMPLES_SECTION_CLASS,
-} from "./components/stepper-code-examples.data";
+import { STEPPER_APPEARANCES } from "./components/stepper-code-examples.data";
 import { stepperSnippet } from "./components/stepper-code-examples.snippets";
 
 export function StepperCodeExamplesSection() {
   return (
-    <section className={STEPPER_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Stepper code examples
       </h2>
@@ -59,6 +57,6 @@ export function StepperCodeExamplesSection() {
           </div>
         </PreviewCodeShowcase>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import type { ChartPreviewSlug } from "@/lib/charts-preview-registry";
 
@@ -10,7 +11,7 @@ import {
 
 export function ChartExamplesSection({ slug }: { slug: ChartPreviewSlug }) {
   return (
-    <section className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Examples
       </h2>
@@ -49,6 +50,6 @@ export function ChartExamplesSection({ slug }: { slug: ChartPreviewSlug }) {
           />
         </PreviewCodeShowcase>
       </div>
-    </section>
+    </Section>
   );
 }

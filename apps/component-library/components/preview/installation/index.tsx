@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import CodeHighlight from "@/components/CodeHighlight";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import TabsListComponent from "@/components/preview/installation/tabs-list";
@@ -27,9 +28,6 @@ import {
 import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/animated";
 import { Tabs } from "@zentauri-ui/zentauri-components/ui/tabs";
 import { TabsContentAnimated } from "@zentauri-ui/zentauri-components/ui/tabs/animated";
-
-const SECTION =
-  "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
 const GLOBALS_CSS_SNIPPET = `@import "tailwindcss";
 @source "../node_modules/@zentauri-ui/zentauri-components";`;
@@ -123,12 +121,12 @@ export default function InstallationPreviewPage({
 }) {
   return (
     <PreviewPageShell>
-      <section className="space-y-6">
+      <Section variant="plain" className="space-y-6">
         <PreviewHeroSeoBlock seo={seo} />
-      </section>
+      </Section>
 
       <div className="space-y-10">
-        <section className={SECTION}>
+        <Section>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
             Step 1
           </p>
@@ -169,9 +167,9 @@ export default function InstallationPreviewPage({
               </TabsContentAnimated>
             </Tabs>
           </div>
-        </section>
+        </Section>
 
-        <section className={SECTION}>
+        <Section>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
             Step 2
           </p>
@@ -407,9 +405,9 @@ export default function InstallationPreviewPage({
               </TabsContentAnimated>
             </Tabs>
           </div>
-        </section>
+        </Section>
 
-        <section className={SECTION}>
+        <Section>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
             Step 3
           </p>
@@ -434,9 +432,9 @@ export default function InstallationPreviewPage({
           <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
             <CodeHighlight codeString={GLOBALS_CSS_SNIPPET} language="css" />
           </div>
-        </section>
+        </Section>
 
-        <section className={SECTION}>
+        <Section>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
             Step 4
           </p>
@@ -545,9 +543,9 @@ export default function InstallationPreviewPage({
               </ModalContentAnimated>
             </Modal>
           </div>
-        </section>
+        </Section>
 
-        <section className={SECTION}>
+        <Section>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
             Alternative
           </p>
@@ -850,9 +848,9 @@ export default function InstallationPreviewPage({
               language="css"
             />
           </div>
-        </section>
+        </Section>
 
-        <section className={SECTION}>
+        <Section>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
             Overriding theme colors
           </p>
@@ -872,8 +870,8 @@ export default function InstallationPreviewPage({
               language="css"
             />
           </div>
-        </section>
-        <section className={SECTION}>
+        </Section>
+        <Section>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
             Adding new themes
           </p>
@@ -891,7 +889,7 @@ export default function InstallationPreviewPage({
               language="tsx"
             />
           </div>
-        </section>
+        </Section>
       </div>
       <PreviewSeoDoc doc={seo} />
     </PreviewPageShell>

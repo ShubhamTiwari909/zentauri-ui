@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import {
@@ -13,7 +14,7 @@ import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/anim
 
 export function CardHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
-    <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+    <Section variant="hero">
       <PreviewHeroSeoBlock seo={seo} />
 
       <CardAnimated
@@ -23,16 +24,16 @@ export function CardHeroSection({ seo }: { seo: PreviewSeoDocument }) {
         className="max-w-md"
       >
         <CardHeader>
-          <CardTitle className="text-slate-100 dark:text-slate-50">
+          <CardTitle className="text-white">
             Usage this month
           </CardTitle>
           <CardDescription>Resets on the first of next month.</CardDescription>
         </CardHeader>
         <CardBody>
-          <p className="text-2xl font-semibold text-slate-900 dark:text-white">
+          <p className="text-2xl font-semibold text-white">
             72%
           </p>
-          <p className="text-sm text-slate-800 dark:text-slate-400">
+          <p className="text-sm text-white">
             of included API calls consumed
           </p>
         </CardBody>
@@ -45,6 +46,6 @@ export function CardHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           </ButtonAnimated>
         </CardFooter>
       </CardAnimated>
-    </section>
+    </Section>
   );
 }

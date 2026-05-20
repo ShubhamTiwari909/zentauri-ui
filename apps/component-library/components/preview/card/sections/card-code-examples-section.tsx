@@ -1,9 +1,9 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { CardDemo } from "./components/card-code-examples-demo";
 import {
   CARD_APPEARANCES,
-  CARD_CODE_EXAMPLES_SECTION_CLASS,
   CARD_ROUNDED,
   CARD_SIZES,
 } from "./components/card-code-examples.data";
@@ -11,7 +11,7 @@ import { cardSnippet } from "./components/card-code-examples.snippets";
 
 export function CardCodeExamplesSection() {
   return (
-    <section className={CARD_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Card variants examples
       </h2>
@@ -45,6 +45,6 @@ export function CardCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

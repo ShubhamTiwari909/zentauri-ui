@@ -1,9 +1,9 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { BadgeDemo } from "./components/badge-code-examples-demo";
 import {
   BADGE_APPEARANCES,
-  BADGE_CODE_EXAMPLES_SECTION_CLASS,
   BADGE_SHAPES,
   BADGE_SIZES,
 } from "./components/badge-code-examples.data";
@@ -11,7 +11,7 @@ import { badgeSnippet } from "./components/badge-code-examples.snippets";
 
 export function BadgeCodeExamplesSection() {
   return (
-    <section className={BADGE_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Badge variants examples
       </h2>
@@ -49,6 +49,6 @@ export function BadgeCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

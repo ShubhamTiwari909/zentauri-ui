@@ -1,16 +1,16 @@
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { ToastVariantDemo } from "./components/toast-code-examples-demo";
 import {
   TOAST_APPEARANCES,
-  TOAST_CODE_EXAMPLES_SECTION_CLASS,
   TOAST_SIZES,
 } from "./components/toast-code-examples.data";
 import { toastCallSnippet } from "./components/toast-code-examples.snippets";
 
 export function ToastCodeExamplesSection() {
   return (
-    <section className={TOAST_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Toast variants examples
       </h2>
@@ -36,6 +36,6 @@ export function ToastCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

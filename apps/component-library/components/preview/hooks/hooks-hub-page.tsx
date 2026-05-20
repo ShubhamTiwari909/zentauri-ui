@@ -1,3 +1,4 @@
+import { Section } from "@/components/common/Section";
 import Link from "next/link";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
@@ -12,11 +13,14 @@ type HooksHubPageProps = {
 export default function HooksHubPage({ seo }: HooksHubPageProps) {
   return (
     <PreviewPageShell>
-      <section className="max-w-3xl space-y-6">
+      <Section variant="plain" className="max-w-3xl space-y-6">
         <PreviewHeroSeoBlock seo={seo} />
-      </section>
+      </Section>
 
-      <section className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <Section
+        variant="plain"
+        className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+      >
         {HOOK_PREVIEW_REGISTRY.map((hook) => (
           <Link
             key={hook.slug}
@@ -45,7 +49,7 @@ export default function HooksHubPage({ seo }: HooksHubPageProps) {
             </div>
           </Link>
         ))}
-      </section>
+      </Section>
       <PreviewSeoDoc doc={seo} />
     </PreviewPageShell>
   );

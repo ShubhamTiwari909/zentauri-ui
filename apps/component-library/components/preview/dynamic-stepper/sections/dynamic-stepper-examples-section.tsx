@@ -1,5 +1,6 @@
 "use client";
 
+import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import {
@@ -11,7 +12,6 @@ import {
   DynamicStepperUncontrolledDemo,
   DynamicStepperVerticalDemo,
 } from "./components/dynamic-stepper-demos";
-import { DYNAMIC_STEPPER_CODE_EXAMPLES_SECTION_CLASS } from "./components/dynamic-stepper-demo-data";
 import {
   dynamicStepperAppearanceSnippet,
   dynamicStepperCallbacksSnippet,
@@ -25,7 +25,7 @@ import {
 
 export function DynamicStepperExamplesSection() {
   return (
-    <section className={DYNAMIC_STEPPER_CODE_EXAMPLES_SECTION_CLASS}>
+    <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Examples
       </h2>
@@ -226,6 +226,6 @@ export function DynamicStepperExamplesSection() {
           </div>
         </PreviewCodeShowcase>
       </div>
-    </section>
+    </Section>
   );
 }
