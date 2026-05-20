@@ -24,16 +24,16 @@ export function CardHeroSection({ seo }: { seo: PreviewSeoDocument }) {
         className="max-w-md"
       >
         <CardHeader>
-          <CardTitle className="text-slate-100 dark:text-slate-50">
+          <CardTitle className="text-white">
             Usage this month
           </CardTitle>
           <CardDescription>Resets on the first of next month.</CardDescription>
         </CardHeader>
         <CardBody>
-          <p className="text-2xl font-semibold text-slate-900 dark:text-white">
+          <p className="text-2xl font-semibold text-white">
             72%
           </p>
-          <p className="text-sm text-slate-800 dark:text-slate-400">
+          <p className="text-sm text-white">
             of included API calls consumed
           </p>
         </CardBody>

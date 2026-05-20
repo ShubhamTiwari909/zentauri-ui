@@ -7,5 +7,5 @@ const seo = getPreviewSeo("index");
 export const metadata = previewSeoDocumentToMetadata(seo);
 
 export default function PreviewIndexPage() {
-  return <IntroductionPage seo={seo} />
+  return <IntroductionPage seo={seo} />;
 }

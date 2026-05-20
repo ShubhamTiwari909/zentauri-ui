@@ -7,10 +7,10 @@ const PageWrapper = ({ children, theme = "dark" }: { children: React.ReactNode, 
   const [on, toggle] = useToggle(theme === "dark");
 
   return (
-    <div data-theme={on ? "dark" : "light"}>
-      <ToggleAnimated className="fixed top-20 right-2 lg:top-4 lg:right-4 z-40" appearance="gradient-indigo" defaultChecked={on} animation="spring" aria-label="Demo toggle" checked={on} onClick={toggle} />
+    <body data-theme={on ? "dark" : "light"}>
+      <ToggleAnimated className="fixed top-20 right-2 lg:top-4 lg:right-4 z-40" appearance="gradient-indigo" animation="spring" aria-label="Demo toggle" checked={on} onClick={toggle} />
       {children}
-    </div>
+    </body>
   )
 }
 

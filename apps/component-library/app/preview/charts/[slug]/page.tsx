@@ -7,7 +7,6 @@ import {
 } from "@/lib/charts-preview-registry";
 import { previewSeoDocumentToMetadata } from "@/lib/preview-seo";
 import { notFound } from "next/navigation";
-import PageWrapper from "@/components/common/PageWrapper";
 
 export function generateStaticParams(): { slug: ChartPreviewSlug }[] {
   return CHART_PREVIEW_SLUGS.map((slug) => ({ slug }));
@@ -33,5 +32,5 @@ export default async function ChartSectionRoutePage({
     notFound();
   }
   const seo = getChartSectionSeo(slug);
-  return <PageWrapper><ChartPreviewPage seo={seo} slug={slug} /></PageWrapper>;
+  return <ChartPreviewPage seo={seo} slug={slug} />;
 }
