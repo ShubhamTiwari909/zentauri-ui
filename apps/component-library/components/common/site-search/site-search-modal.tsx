@@ -182,7 +182,7 @@ export function SiteSearchModal({ open, onOpenChange }: SiteSearchModalProps) {
       <ModalContent
         size="lg"
         position="top"
-        appearance="glass"
+        appearance="sky"
         className="top-24 max-h-[min(90vh,640px)]"
       >
         <ModalHeader className="sr-only">

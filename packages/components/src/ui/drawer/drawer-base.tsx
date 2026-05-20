@@ -204,7 +204,7 @@ export function DrawerBody({ className, children }: DrawerSectionProps) {
   return (
     <div
       data-slot="drawer-body"
-      className={cn("flex-1 text-sm text-slate-300", className)}
+      className={cn("flex-1 text-sm", className)}
     >
       {children}
     </div>
