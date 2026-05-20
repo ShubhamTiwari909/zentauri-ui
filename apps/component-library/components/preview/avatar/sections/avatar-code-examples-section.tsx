@@ -18,10 +18,10 @@ import {
 export function AvatarCodeExamplesSection() {
   return (
     <section className={AVATAR_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Avatar code examples
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Use Show output / Show code on each row. Snippets start with a Variant
         line naming size or animation.
       </p>
@@ -31,7 +31,7 @@ export function AvatarCodeExamplesSection() {
             key={`size-${size}`}
             code={avatarSnippetForSize(size)}
           >
-            <p className="mb-5 text-xs font-semibold text-white md:text-sm">
+            <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
               Size: <span className="font-bold">{size.toUpperCase()}</span>
             </p>
             <AvatarDemo
@@ -45,7 +45,7 @@ export function AvatarCodeExamplesSection() {
             key={`appearance-${appearance}`}
             code={avatarSnippetForAppearance(appearance)}
           >
-            <p className="mb-5 text-xs font-semibold text-white md:text-sm">
+            <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
               Appearance:{" "}
               <span className="font-bold">{appearance.toUpperCase()}</span>
             </p>
@@ -57,7 +57,7 @@ export function AvatarCodeExamplesSection() {
             key={`anim-${animation}`}
             code={avatarSnippetForAnimation(animation)}
           >
-            <p className="mb-5 text-xs font-semibold text-white md:text-sm">
+            <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
               Animation:{" "}
               <span className="font-bold">{animation.toUpperCase()}</span>
             </p>

@@ -142,7 +142,10 @@ export function StepperTitle({
     <div
       ref={ref}
       data-slot="stepper-title"
-      className={cn("mt-3 text-sm font-semibold", className)}
+      className={cn(
+        "text-sm font-semibold text-slate-900 dark:text-white",
+        className,
+      )}
       {...rest}
     />
   );
@@ -159,7 +162,7 @@ export function StepperDescription({
     <p
       ref={ref}
       data-slot="stepper-description"
-      className={cn("mt-1 text-xs text-slate-400", className)}
+      className={cn("text-xs text-slate-900 dark:text-slate-400", className)}
       {...rest}
     />
   );

@@ -14,7 +14,7 @@ export const sliderRootVariants = cva("w-full select-none touch-none", {
 });
 
 export const sliderTrackVariants = cva(
-  "relative h-2 w-full shrink-0 overflow-hidden rounded-full bg-white/10",
+  "relative h-2 w-full shrink-0 overflow-hidden rounded-full bg-black/10 dark:bg-white/10",
   {
     variants: {
       size: {
@@ -30,32 +30,32 @@ export const sliderTrackVariants = cva(
 );
 
 export const sliderRangeVariants = cva(
-  "absolute h-full rounded-full bg-linear-to-r from-violet-500 to-indigo-400",
+  "absolute h-full rounded-full bg-linear-to-r from-violet-500 to-indigo-600 dark:to-indigo-400",
   {
     variants: {
       appearance: {
-        default: "from-violet-500 to-indigo-400",
-        sky: "from-sky-500 to-indigo-400",
-        rose: "from-rose-500 to-indigo-400",
-        purple: "from-purple-500 to-indigo-400",
-        pink: "from-pink-500 to-indigo-400",
-        orange: "from-orange-500 to-indigo-400",
-        yellow: "from-yellow-500 to-indigo-400",
-        teal: "from-teal-500 to-indigo-400",
-        indigo: "from-indigo-500 to-indigo-400",
-        emerald: "from-emerald-500 to-teal-400",
-        amber: "from-amber-500 to-orange-400",
-        gray: "from-gray-500 to-indigo-400",
-        violet: "from-violet-500 to-indigo-400",
-        "gradient-blue": "from-blue-500 to-indigo-400",
-        "gradient-green": "from-green-500 to-indigo-400",
-        "gradient-red": "from-red-500 to-indigo-400",
-        "gradient-yellow": "from-yellow-500 to-indigo-400",
-        "gradient-purple": "from-purple-500 to-indigo-400",
-        "gradient-teal": "from-teal-500 to-indigo-400",
-        "gradient-indigo": "from-indigo-500 to-indigo-400",
-        "gradient-pink": "from-pink-500 to-indigo-400",
-        "gradient-orange": "from-orange-500 to-indigo-400",
+        default: "from-violet-500 to-indigo-600 dark:to-indigo-400",
+        sky: "from-sky-500 to-indigo-600 dark:to-indigo-400",
+        rose: "from-rose-500 to-indigo-600 dark:to-indigo-400",
+        purple: "from-purple-500 to-indigo-600 dark:to-indigo-400",
+        pink: "from-pink-500 to-indigo-600 dark:to-indigo-400",
+        orange: "from-orange-500 to-indigo-600 dark:to-indigo-400",
+        yellow: "from-yellow-500 to-indigo-600 dark:to-indigo-400",
+        teal: "from-teal-500 to-indigo-600 dark:to-indigo-400",
+        indigo: "from-indigo-500 to-indigo-600 dark:to-indigo-400",
+        emerald: "from-emerald-500 to-teal-600 dark:to-teal-400",
+        amber: "from-amber-500 to-orange-600 dark:to-orange-400",
+        gray: "from-gray-500 to-indigo-600 dark:to-indigo-400",
+        violet: "from-violet-500 to-indigo-600 dark:to-indigo-400",
+        "gradient-blue": "from-blue-500 to-indigo-600 dark:to-indigo-400",
+        "gradient-green": "from-green-500 to-indigo-600 dark:to-indigo-400",
+        "gradient-red": "from-red-500 to-indigo-600 dark:to-indigo-400",
+        "gradient-yellow": "from-yellow-500 to-indigo-600 dark:to-indigo-400",
+        "gradient-purple": "from-purple-500 to-indigo-600 dark:to-indigo-400",
+        "gradient-teal": "from-teal-500 to-indigo-600 dark:to-indigo-400",
+        "gradient-indigo": "from-indigo-500 to-indigo-600 dark:to-indigo-400",
+        "gradient-pink": "from-pink-500 to-indigo-600 dark:to-indigo-400",
+        "gradient-orange": "from-orange-500 to-indigo-600 dark:to-indigo-400",
       },
     },
     defaultVariants: {
@@ -65,7 +65,7 @@ export const sliderRangeVariants = cva(
 );
 
 export const sliderThumbVariants = cva(
-  "block size-4 rounded-full border border-white/20 bg-white shadow-md ring-offset-2 ring-offset-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 disabled:pointer-events-none disabled:opacity-40",
+  "block size-4 rounded-full border border-black/20 dark:border-white/20 bg-black dark:bg-white shadow-md ring-offset-2 ring-offset-slate-50 dark:ring-offset-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40 dark:focus-visible:ring-white/40 disabled:pointer-events-none disabled:opacity-40",
   {
     variants: {
       size: {

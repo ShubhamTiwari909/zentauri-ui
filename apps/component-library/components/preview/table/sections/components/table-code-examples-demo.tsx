@@ -19,7 +19,7 @@ export function TableDemo({
 }: TableDemoProps) {
   return (
     <div>
-      <p className="mb-5 text-xs md:text-sm">
+      <p className="mb-5 text-xs md:text-sm text-slate-900 dark:text-slate-50">
         Appearance: <span className="font-bold">{appearance}</span> | Size:{" "}
         <span className="font-bold">{size}</span> | Sticky Header:{" "}
         <span className="font-bold">{stickyHeader ? "true" : "false"}</span>

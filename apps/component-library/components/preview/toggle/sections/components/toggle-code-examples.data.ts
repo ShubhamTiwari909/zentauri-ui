@@ -1,7 +1,7 @@
 import type { ToggleProps } from "@zentauri-ui/zentauri-components/ui/toggle";
 
 export const TOGGLE_CODE_EXAMPLES_SECTION_CLASS =
-  "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
+  "rounded-3xl border dark:border-white/10 border-slate-900 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
 export const TOGGLE_APPEARANCES = [
   "default",

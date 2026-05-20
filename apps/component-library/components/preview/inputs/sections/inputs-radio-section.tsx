@@ -6,35 +6,37 @@ const planTiers = ["Starter", "Pro", "Enterprise"] as const;
 
 export function InputsRadioSection() {
   return (
-    <section className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+    <section className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-200">
+          <p className="text-sm font-medium uppercase tracking-[0.24em] text-cyan-700 dark:text-cyan-200">
             Radio
           </p>
-          <h2 className="mt-3 text-2xl font-semibold text-white">
-            <code className="text-cyan-200/90">as=&quot;radio&quot;</code>
+          <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
+            <code className="text-cyan-700 dark:text-cyan-200/90">
+              as=&quot;radio&quot;
+            </code>
           </h2>
         </div>
-        <p className="max-w-xl text-sm leading-6 text-slate-400">
+        <p className="max-w-xl text-sm leading-6 text-slate-800 dark:text-slate-400">
           Native{" "}
-          <code className="rounded bg-white/10 px-1.5 py-0.5 text-cyan-100/90">
+          <code className="rounded bg-slate-200 dark:bg-white/10 px-1.5 py-0.5 text-cyan-800 dark:text-cyan-100/90">
             type=&quot;radio&quot;
           </code>{" "}
           uses the same accent mapping when checked; use a shared{" "}
-          <code className="text-cyan-100/90">name</code> for mutually exclusive
-          options.
+          <code className="text-cyan-800 dark:text-cyan-100/90">name</code> for
+          mutually exclusive options.
         </p>
       </div>
       <div className="mt-6">
-        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+        <p className="text-xs font-medium uppercase tracking-wide text-slate-700 dark:text-slate-500">
           Appearances
         </p>
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {appearanceInputsExtended.map((row) => (
             <label
               key={`rb-${row.label}`}
-              className="flex cursor-pointer items-center gap-3 rounded-xl border border-white/5 bg-white/2 px-3 py-2.5 text-sm text-slate-200 transition hover:border-white/10"
+              className="flex cursor-pointer items-center gap-3 rounded-xl border border-slate-900/10 bg-white/80 px-3 py-2.5 text-sm text-slate-800 transition hover:border-slate-900/20 dark:border-white/5 dark:bg-white/2 dark:text-slate-200 dark:hover:border-white/10"
             >
               <Input
                 as="radio"
@@ -51,14 +53,14 @@ export function InputsRadioSection() {
             </label>
           ))}
         </div>
-        <p className="mt-8 text-xs font-medium uppercase tracking-wide text-slate-500">
+        <p className="mt-8 text-xs font-medium uppercase tracking-wide text-slate-700 dark:text-slate-500">
           Sizes
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-6">
           {radioSizes.map((size) => (
             <label
               key={`rb-size-${size}`}
-              className="flex cursor-pointer items-center gap-2 text-xs text-slate-400"
+              className="flex cursor-pointer items-center gap-2 text-xs text-slate-800 dark:text-slate-400"
             >
               <Input
                 as="radio"
@@ -74,14 +76,14 @@ export function InputsRadioSection() {
             </label>
           ))}
         </div>
-        <p className="mt-8 text-xs font-medium uppercase tracking-wide text-slate-500">
+        <p className="mt-8 text-xs font-medium uppercase tracking-wide text-slate-700 dark:text-slate-500">
           Group
         </p>
-        <div className="mt-3 grid max-w-md gap-2 rounded-xl border border-white/10 bg-white/2 p-4">
+        <div className="mt-3 grid max-w-md gap-2 rounded-xl border border-slate-900/10 dark:border-white/10 bg-white/80 dark:bg-white/2 p-4">
           {planTiers.map((tier, index) => (
             <label
               key={tier}
-              className="flex cursor-pointer items-center gap-3 text-sm text-slate-200"
+              className="flex cursor-pointer items-center gap-3 text-sm text-slate-800 dark:text-slate-200"
             >
               <Input
                 as="radio"

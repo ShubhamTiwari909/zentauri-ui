@@ -13,8 +13,8 @@ export function SearchHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
     <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
       <PreviewHeroSeoBlock seo={seo} />
-      <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
-        <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-400">
+      <div className="rounded-3xl border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+        <p className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-800 dark:text-slate-400">
           Controlled example
         </p>
         <SearchBar
@@ -25,8 +25,9 @@ export function SearchHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           aria-label="Demo search"
         />
         {query.trim().length > 0 ? (
-          <p className="mt-3 text-sm text-slate-400">
-            Current value: <span className="text-slate-200">{query}</span>
+          <p className="mt-3 text-sm text-slate-800 dark:text-slate-400">
+            Current value:{" "}
+            <span className="text-slate-800 dark:text-slate-200">{query}</span>
           </p>
         ) : null}
       </div>

@@ -80,7 +80,7 @@ TableBase.displayName = "Table";
 export function TableHeader({ className, children }: TableSectionProps) {
   const { stickyHeader } = useTableContext("TableHeader");
   const stickyClass = stickyHeader
-    ? "sticky top-0 z-10 bg-slate-950/95 backdrop-blur"
+    ? "sticky top-0 z-10 dark:bg-slate-950/95 bg-slate-50/95 backdrop-blur"
     : "";
   return (
     <thead data-slot="table-header" className={cn(stickyClass, className)}>

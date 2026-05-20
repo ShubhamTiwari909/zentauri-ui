@@ -21,16 +21,20 @@ import {
 export function SelectCodeExamplesSection() {
   return (
     <section className={SELECT_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Select variants examples
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-        Trigger uses CVA <code className="text-slate-300">variant</code> and{" "}
-        <code className="text-slate-300">size</code>; the list panel uses{" "}
-        <code className="text-slate-300">appearance</code> and{" "}
-        <code className="text-slate-300">size</code> on{" "}
-        <code className="text-slate-300">SelectContent</code>. Each snippet
-        starts with a Variant: lead-in.
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
+        Trigger uses CVA{" "}
+        <code className="text-slate-800 dark:text-slate-300">variant</code> and{" "}
+        <code className="text-slate-800 dark:text-slate-300">size</code>; the
+        list panel uses{" "}
+        <code className="text-slate-800 dark:text-slate-300">appearance</code>{" "}
+        and <code className="text-slate-800 dark:text-slate-300">size</code> on{" "}
+        <code className="text-slate-800 dark:text-slate-300">
+          SelectContent
+        </code>
+        . Each snippet starts with a Variant: lead-in.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase code={selectMultiSnippet()}>

@@ -14,7 +14,7 @@ export function selectTriggerSnippet(opts: SelectTriggerDemoProps): string {
   <SelectTrigger${variantAttr}${sizeAttr}>
     <SelectValue placeholder="Choose one" />
   </SelectTrigger>
-  <SelectContent appearance="default" size="md">
+  <SelectContent appearance=${triggerVariant} size="md">
     <SelectItem value="opt-a">Option A</SelectItem>
     <SelectItem value="opt-b">Option B</SelectItem>
     <SelectItem value="opt-c" disabled>

@@ -10,10 +10,10 @@ import { stepperSnippet } from "./components/stepper-code-examples.snippets";
 export function StepperCodeExamplesSection() {
   return (
     <section className={STEPPER_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Stepper code examples
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Use Show output / Show code on each row. Snippets start with a Variant
         line naming orientation, active step, and size.
       </p>
@@ -27,7 +27,7 @@ export function StepperCodeExamplesSection() {
               size: "md",
             })}
           >
-            <p className="mb-5 text-xs font-semibold text-white md:text-sm">
+            <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
               Horizontal · appearance:{" "}
               <span className="font-bold">{appearance}</span>
             </p>
@@ -46,7 +46,7 @@ export function StepperCodeExamplesSection() {
             size: "sm",
           })}
         >
-          <p className="mb-5 text-xs font-semibold text-white md:text-sm">
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
             Vertical
             <span className="font-bold">SM</span>
           </p>

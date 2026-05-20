@@ -38,6 +38,7 @@ export function ToggleBase(props: ToggleProps) {
     ref,
     "aria-label": ariaLabelProp,
     children,
+    thumbColor,
     ...rest
   } = props;
   const toggleLabelId = useId();
@@ -55,7 +56,7 @@ export function ToggleBase(props: ToggleProps) {
     [isControlled, onCheckedChange],
   );
 
-  const thumbShiftPx = size === "sm" ? 14 : size === "lg" ? 26 : 20;
+  const thumbShiftPx = size === "sm" ? 14 : size === "lg" ? 24 : 19;
   const labeledByChildren = hasToggleLabelChildren(children);
   const labeling = labeledByChildren
     ? {
@@ -90,8 +91,8 @@ export function ToggleBase(props: ToggleProps) {
       ) : null}
       <span
         className={cn(
-          toggleThumbVariants({ size }),
-          "absolute left-1 top-1/2 -translate-y-1/2 transition-[transform] duration-200 ease-out",
+          toggleThumbVariants({ size, thumbColor }),
+          "absolute top-1/2 -translate-y-1/2 transition-[transform] duration-200 ease-out",
         )}
         style={{ transform: `translateX(${resolved ? thumbShiftPx : 0}px)` }}
       />

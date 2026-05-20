@@ -68,7 +68,7 @@ export function ChartBySlug({
 }: ChartBySlugProps) {
   const wrap = (chart: ReactElement) => (
     <div className="w-full min-w-0" style={{ minHeight: height }}>
-      <Text className="mb-5">
+      <Text className="mb-5 text-slate-900 dark:text-white text-sm">
         Appearance: <span className="font-semibold">{appearance}</span> |
         Density: <span className="font-semibold">{density}</span> | Show Grid:{" "}
         <span className="font-semibold">{showGrid.toString()}</span> | Show

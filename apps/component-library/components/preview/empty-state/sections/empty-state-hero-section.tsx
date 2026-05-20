@@ -12,7 +12,7 @@ import { EmptyStateAnimated } from "@zentauri-ui/zentauri-components/ui/empty-st
 
 export function EmptyStateHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
-    <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+    <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end ">
       <PreviewHeroSeoBlock seo={seo} />
 
       <EmptyStateAnimated
@@ -22,7 +22,10 @@ export function EmptyStateHeroSection({ seo }: { seo: PreviewSeoDocument }) {
         className="max-w-lg"
       >
         <EmptyStateIcon>
-          <HiInbox className="size-10 text-slate-300" aria-hidden />
+          <HiInbox
+            className="size-10 text-slate-800 dark:text-slate-300"
+            aria-hidden
+          />
         </EmptyStateIcon>
         <EmptyStateTitle>No messages yet</EmptyStateTitle>
         <EmptyStateDescription>

@@ -16,7 +16,7 @@ export const stepperItemVariants = cva("relative flex gap-3", {
   variants: {
     orientation: {
       horizontal: "min-w-0 flex-col items-center text-center",
-      vertical: "flex-row items-start text-left",
+      vertical: "flex-row items-center text-left",
     },
   },
   defaultVariants: {
@@ -30,45 +30,46 @@ export const stepperIndicatorVariants = cva(
     variants: {
       appearance: {
         complete:
-          "border-emerald-500/60 bg-emerald-500/20 text-emerald-100 ring-2 ring-emerald-400/30",
+          "border-emerald-500/60 bg-emerald-500/20 text-emerald-900 dark:text-emerald-100 ring-2 ring-emerald-400/30",
         current:
-          "border-violet-400 bg-violet-500/20 text-white ring-2 ring-violet-400/50",
-        upcoming: "border-white/15 bg-white/5 text-slate-400",
-        sky: "border-sky-500/60 bg-sky-500/20 text-sky-100 ring-2 ring-sky-400/30",
-        rose: "border-rose-500/60 bg-rose-500/20 text-rose-100 ring-2 ring-rose-400/30",
+          "border-violet-600 dark:border-violet-400 bg-violet-500/20 text-slate-900 dark:text-white ring-2 ring-violet-400/50",
+        upcoming:
+          "border-black/15 dark:border-white/15 bg-black/5 dark:bg-white/5 text-slate-500 dark:text-slate-400",
+        sky: "border-sky-500/60 bg-sky-500/20 text-sky-900 dark:text-sky-100 ring-2 ring-sky-400/30",
+        rose: "border-rose-500/60 bg-rose-500/20 text-rose-900 dark:text-rose-100 ring-2 ring-rose-400/30",
         purple:
-          "border-purple-500/60 bg-purple-500/20 text-purple-100 ring-2 ring-purple-400/30",
-        pink: "border-pink-500/60 bg-pink-500/20 text-pink-100 ring-2 ring-pink-400/30",
+          "border-purple-500/60 bg-purple-500/20 text-purple-900 dark:text-purple-100 ring-2 ring-purple-400/30",
+        pink: "border-pink-500/60 bg-pink-500/20 text-pink-900 dark:text-pink-100 ring-2 ring-pink-400/30",
         orange:
-          "border-orange-500/60 bg-orange-500/20 text-orange-100 ring-2 ring-orange-400/30",
+          "border-orange-500/60 bg-orange-500/20 text-orange-900 dark:text-orange-100 ring-2 ring-orange-400/30",
         yellow:
-          "border-yellow-500/60 bg-yellow-500/20 text-yellow-100 ring-2 ring-yellow-400/30",
-        teal: "border-teal-500/60 bg-teal-500/20 text-teal-100 ring-2 ring-teal-400/30",
+          "border-yellow-500/60 bg-yellow-500/20 text-yellow-900 dark:text-yellow-100 ring-2 ring-yellow-400/30",
+        teal: "border-teal-500/60 bg-teal-500/20 text-teal-900 dark:text-teal-100 ring-2 ring-teal-400/30",
         indigo:
-          "border-indigo-500/60 bg-indigo-500/20 text-indigo-100 ring-2 ring-indigo-400/30",
+          "border-indigo-500/60 bg-indigo-500/20 text-indigo-900 dark:text-indigo-100 ring-2 ring-indigo-400/30",
         emerald:
-          "border-emerald-500/60 bg-emerald-500/20 text-emerald-100 ring-2 ring-emerald-400/30",
-        gray: "border-gray-500/60 bg-gray-500/20 text-gray-100 ring-2 ring-gray-400/30",
+          "border-emerald-500/60 bg-emerald-500/20 text-emerald-900 dark:text-emerald-100 ring-2 ring-emerald-400/30",
+        gray: "border-gray-500/60 bg-gray-500/20 text-gray-900 dark:text-gray-100 ring-2 ring-gray-400/30",
         violet:
-          "border-violet-500/60 bg-violet-500/20 text-violet-100 ring-2 ring-violet-400/30",
+          "border-violet-500/60 bg-violet-500/20 text-violet-900 dark:text-violet-100 ring-2 ring-violet-400/30",
         "gradient-blue":
-          "border-blue-500/60 bg-blue-500/20 text-blue-100 ring-2 ring-blue-400/30",
+          "border-blue-500/60 bg-blue-500/20 text-blue-900 dark:text-blue-100 ring-2 ring-blue-400/30",
         "gradient-green":
-          "border-green-500/60 bg-green-500/20 text-green-100 ring-2 ring-green-400/30",
+          "border-green-500/60 bg-green-500/20 text-green-900 dark:text-green-100 ring-2 ring-green-400/30",
         "gradient-red":
-          "border-red-500/60 bg-red-500/20 text-red-100 ring-2 ring-red-400/30",
+          "border-red-500/60 bg-red-500/20 text-red-900 dark:text-red-100 ring-2 ring-red-400/30",
         "gradient-yellow":
-          "border-yellow-500/60 bg-yellow-500/20 text-yellow-100 ring-2 ring-yellow-400/30",
+          "border-yellow-500/60 bg-yellow-500/20 text-yellow-900 dark:text-yellow-100 ring-2 ring-yellow-400/30",
         "gradient-purple":
-          "border-purple-500/60 bg-purple-500/20 text-purple-100 ring-2 ring-purple-400/30",
+          "border-purple-500/60 bg-purple-500/20 text-purple-900 dark:text-purple-100 ring-2 ring-purple-400/30",
         "gradient-teal":
-          "border-teal-500/60 bg-teal-500/20 text-teal-100 ring-2 ring-teal-400/30",
+          "border-teal-500/60 bg-teal-500/20 text-teal-900 dark:text-teal-100 ring-2 ring-teal-400/30",
         "gradient-indigo":
-          "border-indigo-500/60 bg-indigo-500/20 text-indigo-100 ring-2 ring-indigo-400/30",
+          "border-indigo-500/60 bg-indigo-500/20 text-indigo-900 dark:text-indigo-100 ring-2 ring-indigo-400/30",
         "gradient-pink":
-          "border-pink-500/60 bg-pink-500/20 text-pink-100 ring-2 ring-pink-400/30",
+          "border-pink-500/60 bg-pink-500/20 text-pink-900 dark:text-pink-100 ring-2 ring-pink-400/30",
         "gradient-orange":
-          "border-orange-500/60 bg-orange-500/20 text-orange-100 ring-2 ring-orange-400/30",
+          "border-orange-500/60 bg-orange-500/20 text-orange-900 dark:text-orange-100 ring-2 ring-orange-400/30",
       },
       size: {
         sm: "size-8 text-xs",

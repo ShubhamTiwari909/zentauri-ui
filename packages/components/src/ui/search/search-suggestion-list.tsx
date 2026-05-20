@@ -8,7 +8,7 @@ import { searchSuggestionOptionDomId } from "./search-suggestion-utils";
 import type { SearchSuggestionListProps } from "./types";
 
 const rowClassName =
-  "flex w-full flex-col gap-0.5 rounded-lg px-3 py-2.5 text-left text-sm transition-colors hover:bg-white/5 focus-visible:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50";
+  "flex w-full flex-col gap-0.5 rounded-lg px-3 py-2.5 text-left text-sm transition-colors dark:hover:bg-white/5 hover:bg-black/10 focus-visible:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50";
 
 export function SearchSuggestionList({
   items,
@@ -25,7 +25,7 @@ export function SearchSuggestionList({
       <div
         data-slot="search-suggestion-list-empty"
         className={cn(
-          "px-1 py-6 text-center text-sm text-slate-500",
+          "px-1 py-6 text-center text-sm text-slate-900 dark:text-slate-200",
           className,
         )}
       >
@@ -78,7 +78,7 @@ export function SearchSuggestionList({
               {showGroup ? (
                 <div
                   role="presentation"
-                  className="sticky top-0 z-1 bg-slate-950/95 px-2 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-slate-500 backdrop-blur-sm"
+                  className="sticky rounded-lg top-0 z-1 dark:bg-slate-950/95 bg-slate-50/95 px-2 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-slate-900 dark:text-slate-200 backdrop-blur-sm"
                 >
                   {item.group}
                 </div>
@@ -94,9 +94,11 @@ export function SearchSuggestionList({
                 onFocus={() => onActiveIdChange?.(item.id)}
                 onClick={() => onSelect(item.id)}
               >
-                <span className="font-medium text-slate-100">{item.label}</span>
+                <span className="font-medium text-slate-900 dark:text-slate-100">
+                  {item.label}
+                </span>
                 {item.description ? (
-                  <span className="truncate text-xs text-slate-500">
+                  <span className="truncate text-xs text-slate-900 dark:text-slate-200">
                     {item.description}
                   </span>
                 ) : null}

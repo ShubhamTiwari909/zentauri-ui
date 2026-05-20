@@ -273,7 +273,7 @@ export function ModalClose({
       type="button"
       data-slot="modal-close"
       className={cn(
-        "absolute right-4 top-4 inline-flex size-9 items-center justify-center rounded-md text-slate-200 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30",
+        "absolute right-4 top-4 inline-flex size-14 items-center cursor-pointer justify-center rounded-md text-slate-800 dark:text-slate-200 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30",
         className,
       )}
       aria-label="Close dialog"

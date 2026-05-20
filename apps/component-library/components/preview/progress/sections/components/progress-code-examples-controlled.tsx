@@ -25,8 +25,8 @@ export function ProgressControlledDemo({
   }, [value]);
   return (
     <div>
-      <p className="mb-5 text-xs md:text-sm">
-        Value: <span className="font-bold">{value}</span>
+      <p className="mb-5 text-xs md:text-sm text-slate-900 dark:text-slate-200">
+        Controlled Value: <span className="font-bold">{value}</span>
       </p>
       <Progress
         appearance={appearance}

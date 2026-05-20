@@ -9,7 +9,7 @@ const ToastButtons = () => {
   return (
     <>
       <ButtonAnimated
-        appearance="sky"
+        appearance="teal"
         size="sm"
         animation="lift"
         type="button"
@@ -24,7 +24,7 @@ const ToastButtons = () => {
         Success toast
       </ButtonAnimated>
       <Button
-        appearance="outline"
+        appearance="amber"
         size="sm"
         type="button"
         onClick={() =>

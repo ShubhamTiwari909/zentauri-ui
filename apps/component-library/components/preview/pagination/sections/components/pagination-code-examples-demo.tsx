@@ -5,7 +5,7 @@ import type { PaginationDemoProps } from "./pagination-code-examples.types";
 export function PaginationDemo({ appearance, size }: PaginationDemoProps) {
   return (
     <div>
-      <p className="mb-5 text-xs md:text-sm">
+      <p className="mb-5 text-xs md:text-sm text-slate-900 dark:text-slate-200">
         Appearance:{" "}
         <span className="font-bold">{appearance.toUpperCase()}</span>, Size:{" "}
         <span className="font-bold">{size.toUpperCase()}</span>

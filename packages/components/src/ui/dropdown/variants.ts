@@ -5,40 +5,49 @@ export const triggerVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-gray-900 text-white",
-        outline: "border border-gray-300",
-        ghost: "bg-transparent",
+        default: "bg-gray-200 dark:bg-gray-900 text-slate-900 dark:text-white",
+        outline:
+          "border border-gray-700 dark:border-gray-300 text-gray-900 dark:text-gray-100",
+        ghost: "bg-transparent text-gray-900 dark:text-gray-100",
         white: "bg-white text-gray-900",
         black: "bg-black text-white",
-        sky: "border border-sky-600 text-sky-600",
-        rose: "border border-rose-600 text-rose-600",
-        purple: "border border-purple-600 text-purple-600",
-        pink: "border border-pink-600 text-pink-600",
-        orange: "border border-orange-600 text-orange-600",
-        yellow: "border border-yellow-600 text-yellow-600",
-        teal: "border border-teal-600 text-teal-600",
-        indigo: "border border-indigo-600 text-indigo-600",
-        emerald: "border border-emerald-600 text-emerald-600",
-        gray: "border border-gray-600 text-gray-600",
-        amber: "border border-amber-600 text-amber-600",
-        violet: "border border-violet-600 text-violet-600",
+        sky: "border border-sky-800 dark:border-sky-600 text-sky-800 dark:text-sky-600",
+        rose: "border border-rose-800 dark:border-rose-600 text-rose-800 dark:text-rose-600",
+        purple:
+          "border border-purple-800 dark:border-purple-600 text-purple-800 dark:text-purple-600",
+        pink: "border border-pink-800 dark:border-pink-600 text-pink-800 dark:text-pink-600",
+        orange:
+          "border border-orange-800 dark:border-orange-600 text-orange-800 dark:text-orange-600",
+        yellow:
+          "border border-yellow-800 dark:border-yellow-600 text-yellow-800 dark:text-yellow-600",
+        teal: "border border-teal-800 dark:border-teal-600 text-teal-800 dark:text-teal-600",
+        indigo:
+          "border border-indigo-800 dark:border-indigo-600 text-indigo-800 dark:text-indigo-600",
+        emerald:
+          "border border-emerald-800 dark:border-emerald-600 text-emerald-800 dark:text-emerald-600",
+        gray: "border border-gray-800 dark:border-gray-600 text-gray-800 dark:text-gray-600",
+        amber:
+          "border border-amber-800 dark:border-amber-600 text-amber-800 dark:text-amber-600",
+        violet:
+          "border border-violet-800 dark:border-violet-600 text-violet-800 dark:text-violet-600",
         "gradient-blue":
-          "bg-linear-to-r from-blue-600 to-purple-600 text-blue-200",
+          "bg-linear-to-r from-blue-800 dark:from-blue-600 to-purple-800 dark:to-purple-600 text-blue-200",
         "gradient-green":
-          "bg-linear-to-r from-green-600 to-lime-600 text-green-200",
-        "gradient-red": "bg-linear-to-r from-red-600 to-pink-600 text-red-200",
+          "bg-linear-to-r from-green-800 dark:from-green-600 to-lime-800 dark:to-lime-600 text-green-200",
+        "gradient-red":
+          "bg-linear-to-r from-red-800 dark:from-red-600 to-pink-800 dark:to-pink-600 text-red-200",
         "gradient-yellow":
-          "bg-linear-to-r from-yellow-600 to-orange-600 text-yellow-200",
+          "bg-linear-to-r from-yellow-800 dark:from-yellow-600 to-orange-800 dark:to-orange-600 text-yellow-200",
         "gradient-purple":
-          "bg-linear-to-r from-purple-600 to-pink-600 text-purple-200",
+          "bg-linear-to-r from-purple-800 dark:from-purple-600 to-pink-800 dark:to-pink-600 text-purple-200",
         "gradient-teal":
-          "bg-linear-to-r from-teal-600 to-cyan-600 text-teal-200",
+          "bg-linear-to-r from-teal-800 dark:from-teal-600 to-cyan-800 dark:to-cyan-600 text-teal-200",
         "gradient-indigo":
-          "bg-linear-to-r from-indigo-600 to-purple-600 text-indigo-200",
+          "bg-linear-to-r from-indigo-800 dark:from-indigo-600 to-purple-800 dark:to-purple-600 text-indigo-200",
         "gradient-pink":
-          "bg-linear-to-r from-pink-600 to-rose-600 text-pink-200",
+          "bg-linear-to-r from-pink-800 dark:from-pink-600 to-rose-800 dark:to-rose-600 text-pink-200",
         "gradient-orange":
-          "bg-linear-to-r from-orange-600 to-red-600 text-orange-200",
+          "bg-linear-to-r from-orange-800 dark:from-orange-600 to-red-800 dark:to-red-600 text-orange-200",
       },
       size: {
         sm: "px-2 py-1 text-sm",
@@ -54,7 +63,7 @@ export const triggerVariants = cva(
 );
 
 export const contentVariants = cva(
-  "absolute min-w-[200px] rounded-md p-2 shadow-md z-50 border",
+  "absolute min-w-[200px] rounded-md p-2 shadow-md z-50 border border-slate-900/10 dark:border-white/10 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-lg rounded-lg",
   {
     variants: {
       placement: {
@@ -80,54 +89,57 @@ export const contentVariants = cva(
 );
 
 export const itemVariants = cva(
-  "flex items-center justify-between px-3 py-2 text-sm cursor-pointer rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500/60",
+  "flex items-center justify-between px-3 py-2 text-sm cursor-pointer rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500/60 font-semibold",
   {
     variants: {
       variant: {
-        default: "hover:bg-gray-100 hover:text-gray-900 text-gray-100",
+        default:
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 text-gray-900 dark:text-gray-100",
         outline:
-          "hover:bg-gray-100 hover:text-gray-900 border border-white text-gray-100",
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 border border-black dark:border-white text-gray-900 dark:text-gray-100",
         ghost:
-          "hover:bg-gray-100 hover:text-gray-900 bg-transparent text-gray-100",
-        white: "hover:bg-gray-100 hover:text-gray-900 bg-white text-gray-900",
-        black: "hover:bg-gray-100 hover:text-gray-900 bg-black text-white",
-        sky: "hover:bg-sky-100 hover:text-sky-600 bg-sky-200 text-sky-800",
-        rose: "hover:bg-rose-100 hover:text-rose-600 bg-rose-200 text-rose-800",
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-transparent text-gray-900 dark:text-gray-100",
+        white:
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-white dark:bg-black text-gray-900 dark:text-white",
+        black:
+          "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-black dark:bg-white text-white dark:text-gray-900",
+        sky: "hover:bg-sky-100 hover:text-sky-800 dark:hover:text-sky-600 bg-sky-200 text-sky-900 dark:text-sky-800",
+        rose: "hover:bg-rose-100 hover:text-rose-800 dark:hover:text-rose-600 bg-rose-200 text-rose-900 dark:text-rose-800",
         purple:
-          "hover:bg-purple-100 hover:text-purple-600 bg-purple-200 text-purple-800",
-        pink: "hover:bg-pink-100 hover:text-pink-600 bg-pink-200 text-pink-800",
+          "hover:bg-purple-100 hover:text-purple-800 dark:hover:text-purple-600 bg-purple-200 text-purple-900 dark:text-purple-800",
+        pink: "hover:bg-pink-100 hover:text-pink-800 dark:hover:text-pink-600 bg-pink-200 text-pink-900 dark:text-pink-800",
         orange:
-          "hover:bg-orange-100 hover:text-orange-600 bg-orange-200 text-orange-800",
+          "hover:bg-orange-100 hover:text-orange-800 dark:hover:text-orange-600 bg-orange-200 text-orange-900 dark:text-orange-800",
         yellow:
-          "hover:bg-yellow-100 hover:text-yellow-600 bg-yellow-200 text-yellow-800",
-        teal: "hover:bg-teal-100 hover:text-teal-600 bg-teal-200 text-teal-800",
+          "hover:bg-yellow-100 hover:text-yellow-800 dark:hover:text-yellow-600 bg-yellow-200 text-yellow-900 dark:text-yellow-800",
+        teal: "hover:bg-teal-100 hover:text-teal-800 dark:hover:text-teal-600 bg-teal-200 text-teal-900 dark:text-teal-800",
         indigo:
-          "hover:bg-indigo-100 hover:text-indigo-600 bg-indigo-200 text-indigo-800",
+          "hover:bg-indigo-100 hover:text-indigo-800 dark:hover:text-indigo-600 bg-indigo-200 text-indigo-900 dark:text-indigo-800",
         emerald:
-          "hover:bg-emerald-100 hover:text-emerald-600 bg-emerald-200 text-emerald-800",
-        gray: "hover:bg-gray-100 hover:text-gray-900 bg-gray-200 text-gray-800",
+          "hover:bg-emerald-100 hover:text-emerald-800 dark:hover:text-emerald-600 bg-emerald-200 text-emerald-900 dark:text-emerald-800",
+        gray: "hover:bg-gray-100 hover:text-gray-500 dark:hover:text-gray-900 bg-gray-200 text-gray-500 dark:text-gray-800",
         amber:
-          "hover:bg-amber-100 hover:text-amber-600 bg-amber-200 text-amber-800",
+          "hover:bg-amber-100 hover:text-amber-800 dark:hover:text-amber-600 bg-amber-200 text-amber-900 dark:text-amber-800",
         violet:
-          "hover:bg-violet-100 hover:text-violet-600 bg-violet-200 text-violet-800",
+          "hover:bg-violet-100 hover:text-violet-800 dark:hover:text-violet-600 bg-violet-200 text-violet-900 dark:text-violet-800",
         "gradient-blue":
-          "hover:bg-linear-to-r from-blue-600 to-purple-600 hover:text-blue-900 bg-linear-to-r from-blue-200 to-purple-200 text-blue-800",
+          "hover:bg-linear-to-r from-blue-800 dark:from-blue-600 to-purple-800 dark:to-purple-600 hover:text-blue-500 dark:hover:text-blue-900 bg-linear-to-r from-blue-200 to-purple-200 text-blue-900 dark:text-blue-200",
         "gradient-green":
-          "hover:bg-linear-to-r from-green-600 to-lime-600 hover:text-green-900 bg-linear-to-r from-green-200 to-lime-200 text-green-800",
+          "hover:bg-linear-to-r from-green-800 dark:from-green-600 to-lime-800 dark:to-lime-600 hover:text-green-500 dark:hover:text-green-900 bg-linear-to-r from-green-200 to-lime-200 text-green-900 dark:text-green-200",
         "gradient-red":
-          "hover:bg-linear-to-r from-red-600 to-pink-600 hover:text-red-900 bg-linear-to-r from-red-200 to-pink-200 text-red-800",
+          "hover:bg-linear-to-r from-red-800 dark:from-red-600 to-pink-800 dark:to-pink-600 hover:text-red-500 dark:hover:text-red-900 bg-linear-to-r from-red-200 to-pink-200 text-red-900 dark:text-red-200",
         "gradient-yellow":
-          "hover:bg-linear-to-r from-yellow-600 to-orange-600 hover:text-yellow-900 bg-linear-to-r from-yellow-200 to-orange-200 text-yellow-800",
+          "hover:bg-linear-to-r from-yellow-800 dark:from-yellow-600 to-orange-800 dark:to-orange-600 hover:text-yellow-500 dark:hover:text-yellow-900 bg-linear-to-r from-yellow-200 to-orange-200 text-yellow-900 dark:text-yellow-200",
         "gradient-purple":
-          "hover:bg-linear-to-r from-purple-600 to-pink-600 hover:text-purple-900 bg-linear-to-r from-purple-200 to-pink-200 text-purple-800",
+          "hover:bg-linear-to-r from-purple-800 dark:from-purple-600 to-pink-800 dark:to-pink-600 hover:text-purple-500 dark:hover:text-purple-900 bg-linear-to-r from-purple-200 to-pink-200 text-purple-900 dark:text-purple-200",
         "gradient-teal":
-          "hover:bg-linear-to-r from-teal-600 to-cyan-600 hover:text-teal-900 bg-linear-to-r from-teal-200 to-cyan-200 text-teal-800",
+          "hover:bg-linear-to-r from-teal-800 dark:from-teal-600 to-cyan-800 dark:to-cyan-600 hover:text-teal-500 dark:hover:text-teal-900 bg-linear-to-r from-teal-200 to-cyan-200 text-teal-900 dark:text-teal-200",
         "gradient-indigo":
-          "hover:bg-linear-to-r from-indigo-600 to-purple-600 hover:text-indigo-900 bg-linear-to-r from-indigo-200 to-purple-200 text-indigo-800",
+          "hover:bg-linear-to-r from-indigo-800 dark:from-indigo-600 to-purple-800 dark:to-purple-600 hover:text-indigo-500 dark:hover:text-indigo-900 bg-linear-to-r from-indigo-200 to-purple-200 text-indigo-900 dark:text-indigo-200",
         "gradient-pink":
-          "hover:bg-linear-to-r from-pink-600 to-rose-600 hover:text-pink-900 bg-linear-to-r from-pink-200 to-rose-200 text-pink-800",
+          "hover:bg-linear-to-r from-pink-800 dark:from-pink-600 to-rose-800 dark:to-rose-600 hover:text-pink-500 dark:hover:text-pink-900 bg-linear-to-r from-pink-200 to-rose-200 text-pink-900 dark:text-pink-200",
         "gradient-orange":
-          "hover:bg-linear-to-r from-orange-600 to-red-600 hover:text-orange-900 bg-linear-to-r from-orange-200 to-red-200 text-orange-800",
+          "hover:bg-linear-to-r from-orange-800 dark:from-orange-600 to-red-800 dark:to-red-600 hover:text-orange-500 dark:hover:text-orange-900 bg-linear-to-r from-orange-200 to-red-200 text-orange-900 dark:text-orange-200",
       },
     },
     defaultVariants: {

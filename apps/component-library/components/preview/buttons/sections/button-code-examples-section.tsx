@@ -20,10 +20,10 @@ import {
 export function ButtonCodeExamplesSection() {
   return (
     <section className={BUTTON_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Button variants examples
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Use Show output / Show code on each row. Snippets start with a Variant
         line naming the token row.
       </p>
@@ -33,7 +33,7 @@ export function ButtonCodeExamplesSection() {
             key={button.label}
             code={buttonAppearanceSnippet(button)}
           >
-            <p className="mb-5 text-xs md:text-sm font-semibold text-white">
+            <p className="mb-5 text-xs md:text-sm font-semibold text-slate-900 dark:text-white">
               Appearance:{" "}
               <span className="font-bold">
                 {button.appearance.toUpperCase()}
@@ -49,7 +49,7 @@ export function ButtonCodeExamplesSection() {
               key={label}
               code={buttonAnimationSnippet(preset)}
             >
-              <p className="mb-5 text-xs md:text-sm font-semibold text-white">
+              <p className="mb-5 text-xs md:text-sm font-semibold text-slate-900 dark:text-white">
                 Animation:{" "}
                 <span className="font-bold">{preset[1].toUpperCase()}</span>
               </p>
@@ -62,7 +62,7 @@ export function ButtonCodeExamplesSection() {
             key={button.label}
             code={buttonSizeSnippet(button)}
           >
-            <p className="mb-5 text-xs md:text-sm font-semibold text-white">
+            <p className="mb-5 text-xs md:text-sm font-semibold text-slate-900 dark:text-white">
               Size:{" "}
               <span className="font-bold">{button.size.toUpperCase()}</span>
             </p>

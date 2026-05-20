@@ -13,7 +13,7 @@ import type { TypographySectionSlug } from "@/lib/typography-preview-registry";
 import { TYPOGRAPHY_TONES } from "./sections/components/typography-code-examples.data";
 
 const panel =
-  "rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
+  "rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
 function ToneGridHeading() {
   return (
@@ -21,7 +21,7 @@ function ToneGridHeading() {
       {TYPOGRAPHY_TONES.map((tone) => (
         <div
           key={tone}
-          className="rounded-xl border border-white/10 bg-white/3 p-4"
+          className="rounded-xl border border-white/10 bg-white/50 dark:bg-white/3 p-4"
         >
           <Heading level={3} tone={tone}>
             Tone: {tone}
@@ -38,7 +38,7 @@ function ToneGridText() {
       {TYPOGRAPHY_TONES.map((tone) => (
         <div
           key={tone}
-          className="rounded-xl border border-white/10 bg-white/3 p-4"
+          className="rounded-xl border border-white/10 bg-white/50 dark:bg-white/3 p-4"
         >
           <Text tone={tone}>Paragraph tone — {tone}</Text>
         </div>
@@ -53,9 +53,9 @@ function ToneGridLists() {
       {TYPOGRAPHY_TONES.map((tone) => (
         <div
           key={tone}
-          className="rounded-xl border border-white/10 bg-white/3 p-4"
+          className="rounded-xl border border-white/10 bg-white/50 dark:bg-white/3 p-4"
         >
-          <Text className="mb-2 text-xs uppercase tracking-wide text-slate-500">
+          <Text className="mb-2 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
             {tone}
           </Text>
           <List tone={tone}>
@@ -74,9 +74,9 @@ function ToneGridBlockquote() {
       {TYPOGRAPHY_TONES.map((tone) => (
         <div
           key={tone}
-          className="rounded-xl border border-white/10 bg-white/3 p-4"
+          className="rounded-xl border border-white/10 bg-white/50 dark:bg-white/3 p-4"
         >
-          <Blockquote tone={tone} attribution={`${tone}`}>
+          <Blockquote tone={tone} attribution={`${tone}`} className="w-fit">
             <Text as="p">Short quotation sample.</Text>
           </Blockquote>
         </div>
@@ -91,7 +91,7 @@ function ToneGridInline() {
       {TYPOGRAPHY_TONES.map((tone) => (
         <div
           key={tone}
-          className="rounded-xl border border-white/10 bg-white/3 p-4"
+          className="rounded-xl border border-white/10 bg-white/50 dark:bg-white/3 p-4"
         >
           <Text tone={tone}>
             Tone {tone} with <InlineCode>token</InlineCode>
@@ -108,16 +108,18 @@ function ToneGridCodeBlock() {
       {TYPOGRAPHY_TONES.map((tone) => (
         <div
           key={tone}
-          className="space-y-2 rounded-xl border border-white/10 bg-white/3 p-4"
+          className="space-y-2 rounded-xl border border-white/10 bg-white/50 dark:bg-white/3 p-4"
         >
-          <Text className="text-xs uppercase tracking-wide text-slate-500">
+          <Text className="text-xs uppercase tracking-wide text-slate-800 dark:text-slate-400">
             {tone}
           </Text>
-          <CodeBlock
-            tone={tone}
-            className="wrap-anywhere"
-            language="ts"
-          >{`export const tone = "${tone}";`}</CodeBlock>
+          <div className={tone.includes("gradient") ? "bg-white/90 dark:bg-slate-950/80" : ""}>
+            <CodeBlock
+              tone={tone}
+              className="wrap-anywhere"
+              language="ts"
+            >{`export const tone = "${tone}";`}</CodeBlock>
+          </div>
         </div>
       ))}
     </div>
@@ -147,12 +149,12 @@ function FormattingSection({ section }: { section: TypographySectionSlug }) {
   if (section === "heading") {
     return (
       <div className="grid gap-4 md:grid-cols-2">
-        <div className="rounded-xl border border-white/10 bg-white/3 p-4">
+        <div className="rounded-xl border border-white/10 bg-white/50 dark:bg-white/3 p-4">
           <Heading level={4} bold italic>
             Bold + italic
           </Heading>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white/3 p-4">
+        <div className="rounded-xl border border-white/10 bg-white/50 dark:bg-white/3 p-4">
           <Heading level={4} underline strikethrough tone="muted">
             Underline + strike
           </Heading>
@@ -165,7 +167,7 @@ function FormattingSection({ section }: { section: TypographySectionSlug }) {
     return (
       <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <Text className="mb-2 text-xs uppercase tracking-wide text-slate-500">
+          <Text className="mb-2 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
             Unordered markers
           </Text>
           <List marker="disc">
@@ -179,7 +181,7 @@ function FormattingSection({ section }: { section: TypographySectionSlug }) {
           </List>
         </div>
         <div>
-          <Text className="mb-2 text-xs uppercase tracking-wide text-slate-500">
+          <Text className="mb-2 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
             Ordered
           </Text>
           <List ordered>
@@ -201,12 +203,12 @@ function FormattingSection({ section }: { section: TypographySectionSlug }) {
 
   return (
     <div className="grid gap-3 md:grid-cols-2">
-      <div className="rounded-xl border border-white/10 bg-white/3 p-4">
+      <div className="rounded-xl border border-white/10 bg-white/50 dark:bg-white/3 p-4">
         <Text bold italic underline>
           Bold + italic + underline
         </Text>
       </div>
-      <div className="rounded-xl border border-white/10 bg-white/3 p-4">
+      <div className="rounded-xl border border-white/10 bg-white/50 dark:bg-white/3 p-4">
         <Text strikethrough highlight tone="muted">
           Highlight + muted + strike
         </Text>
@@ -284,8 +286,8 @@ export function TypographySectionBody({
   return (
     <>
       <section className={panel}>
-        <h2 className="text-2xl font-semibold text-white">Variants showcase</h2>
-        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+        <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">Variants showcase</h2>
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
           Tone tokens align with dark shells across Zentauri previews—swap
           surfaces thoughtfully.
         </p>
@@ -295,10 +297,10 @@ export function TypographySectionBody({
       </section>
 
       <section className={panel}>
-        <h2 className="text-2xl font-semibold text-white">
+        <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
           Formatting showcase
         </h2>
-        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
           Boolean emphasis props layer Tailwind utilities consistently.
         </p>
         <div className="mt-6">
@@ -307,10 +309,10 @@ export function TypographySectionBody({
       </section>
 
       <section className={panel}>
-        <h2 className="text-2xl font-semibold text-white">
+        <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
           Combination examples
         </h2>
-        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
           Patterns you can paste into marketing pages and dashboards.
         </p>
         <div className="mt-6 space-y-4">

@@ -12,10 +12,10 @@ import { skeletonSnippet } from "./components/skeleton-code-examples.snippets";
 export function SkeletonCodeExamplesSection() {
   return (
     <section className={SKELETON_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Skeleton variants examples
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Surface tone, block height, and corner radius. Each code view starts
         with Variant: for clarity.
       </p>

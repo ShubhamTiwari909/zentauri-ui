@@ -11,7 +11,7 @@ export function SkeletonDemo({
 }: SkeletonDemoProps) {
   return (
     <div>
-      <p className="mb-5">
+      <p className="mb-5 text-sm text-slate-900 dark:text-slate-50">
         Appearance: <span className="font-bold">{appearance}</span> | Size:{" "}
         <span className="font-bold">{size}</span> | Rounded:{" "}
         <span className="font-bold">{rounded}</span> | Animation:{" "}

@@ -15,10 +15,10 @@ export function ProgressCodeExamplesSection() {
   const defaults = PROGRESS_SNIPPET_DEFAULTS;
   return (
     <section className={PROGRESS_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Progress variants examples
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Fill tokens, track scale, shape, and motion flags at a fixed value. Each
         snippet starts with Variant: listing the row tokens.
       </p>

@@ -161,8 +161,8 @@ export function InputsRadioDemo() {
 
 export function InputsRadioGroupDemo() {
   return (
-    <div className="flex max-w-md flex-col gap-5 rounded-xl border border-white/10 bg-white/2 p-4">
-      <label className="flex cursor-pointer items-center gap-3 text-sm text-slate-200">
+    <div className="flex max-w-md flex-col gap-5 rounded-xl border border-slate-900/10 dark:border-white/10 bg-white/80 dark:bg-white/2 p-4">
+      <label className="flex cursor-pointer items-center gap-3 text-sm text-slate-800 dark:text-slate-200">
         <Input
           as="radio"
           type="radio"
@@ -175,7 +175,7 @@ export function InputsRadioGroupDemo() {
         />
         Starter
       </label>
-      <label className="flex cursor-pointer items-center gap-3 text-sm text-slate-200">
+      <label className="flex cursor-pointer items-center gap-3 text-sm text-slate-800 dark:text-slate-200">
         <Input
           as="radio"
           type="radio"
@@ -195,13 +195,42 @@ export function InputsRadioGroupDemo() {
 
 export function InputsDateDemo() {
   return (
-    <Input
-      as="input"
-      type="date"
-      appearance="violet"
-      size="md"
-      aria-label="Pick a date"
-      className="w-auto shrink-0"
-    />
+    <div className="flex flex-wrap gap-2">
+      <Input
+        as="date"
+        type="date"
+        appearance="warning"
+        size="md"
+        aria-label="Pick a date"
+      />
+      <Input
+        as="date"
+        type="date"
+        appearance="default"
+        size="md"
+        aria-label="Pick a date"
+      />
+      <Input
+        as="date"
+        type="date"
+        appearance="error"
+        size="md"
+        aria-label="Pick a date"
+      />
+      <Input
+        as="date"
+        type="date"
+        appearance="success"
+        size="md"
+        aria-label="Pick a date"
+      />
+      <Input
+        as="date"
+        type="date"
+        appearance="info"
+        size="md"
+        aria-label="Pick a date"
+      />
+    </div>
   );
 }

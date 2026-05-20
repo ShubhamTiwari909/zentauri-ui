@@ -15,9 +15,11 @@ import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/
 
 export function ModalExamplesSection() {
   return (
-    <section className="rounded-3xl border border-white/10 bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
-      <h2 className="mt-3 text-2xl font-semibold text-white">Examples</h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+    <section className="rounded-3xl border dark:border-white/10 border-slate-900/10 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
+        Examples
+      </h2>
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Slide-up animation with a top-aligned panel.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
@@ -32,7 +34,7 @@ export function ModalExamplesSection() {
 </Modal>`}
         >
           <Modal>
-            <ModalTrigger className="rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-slate-200">
+            <ModalTrigger className="rounded-lg border border-slate-900/15 dark:border-white/15 bg-white dark:bg-white/5 px-3 py-1.5 text-sm text-slate-800 dark:text-slate-200">
               Open top sheet
             </ModalTrigger>
             <ModalContentAnimated animation="slide-up" position="top" size="md">
@@ -42,7 +44,7 @@ export function ModalExamplesSection() {
                 <ModalDescription>Version 2.4 highlights.</ModalDescription>
               </ModalHeader>
               <ModalBody>
-                <ul className="list-inside list-disc text-sm text-slate-300">
+                <ul className="list-inside list-disc text-sm text-slate-800 dark:text-slate-300">
                   <li>Faster cold starts</li>
                   <li>Improved tracing defaults</li>
                 </ul>

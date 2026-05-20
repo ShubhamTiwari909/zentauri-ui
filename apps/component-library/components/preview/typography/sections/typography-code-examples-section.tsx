@@ -46,7 +46,7 @@ import {
 
 function VariantLabel({ detail }: { detail: string }) {
   return (
-    <p className="mb-5 text-xs md:text-sm font-semibold text-white">
+    <p className="mb-5 text-xs md:text-sm font-semibold text-slate-900 dark:text-white">
       Variant: <span className="font-bold">{detail}</span>
     </p>
   );
@@ -225,10 +225,10 @@ export function TypographyCodeExamplesSection({
 }) {
   return (
     <section className={TYPOGRAPHY_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Typography variants examples
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Density mirrors other previews: each row pairs live output with the
         matching import and JSX. Use Show output / Show code on every row;
         snippets start with{" "}

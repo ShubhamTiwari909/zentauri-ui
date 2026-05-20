@@ -83,7 +83,7 @@ const CODE_MODAL = `<div className="flex flex-wrap gap-3">
                 </ModalDescription>
               </ModalHeader>
               <ModalBody className="">
-                <p className="text-sm text-slate-300">
+                <p className="text-sm text-slate-900 dark:text-slate-300">
                   Modal content here.
                 </p>
               </ModalBody>
@@ -99,13 +99,13 @@ const CODE_ACCORDION = `<Accordion type="single" defaultValue="a" appearance="sk
   <AccordionItem value="a">
     <AccordionTrigger>API keys</AccordionTrigger>
     <AccordionContent>
-      <p className="text-sm text-slate-300">Rotate keys from the security tab.</p>
+      <p className="text-sm text-slate-900 dark:text-slate-300">Rotate keys from the security tab.</p>
     </AccordionContent>
   </AccordionItem>
   <AccordionItem value="b">
     <AccordionTrigger>Webhooks</AccordionTrigger>
     <AccordionContent>
-      <p className="text-sm text-slate-300">Retry policy and signing secrets.</p>
+      <p className="text-sm text-slate-900 dark:text-slate-300">Retry policy and signing secrets.</p>
     </AccordionContent>
   </AccordionItem>
 </Accordion>`;
@@ -430,7 +430,7 @@ export function HomeComponentShowcase() {
                           </ModalDescription>
                         </ModalHeader>
                         <ModalBody className="">
-                          <p className="text-sm text-slate-300">
+                          <p className="text-sm text-slate-900 dark:text-slate-300">
                             Modal content here.
                           </p>
                         </ModalBody>
@@ -456,7 +456,7 @@ export function HomeComponentShowcase() {
                 <AccordionItem className="" value="a">
                   <AccordionTrigger className="">API keys</AccordionTrigger>
                   <AccordionContent className="">
-                    <p className="text-sm text-slate-300">
+                    <p className="text-sm text-slate-900 dark:text-slate-300">
                       Rotate keys from the security tab.
                     </p>
                   </AccordionContent>
@@ -464,7 +464,7 @@ export function HomeComponentShowcase() {
                 <AccordionItem className="" value="b">
                   <AccordionTrigger className="">Webhooks</AccordionTrigger>
                   <AccordionContent className="">
-                    <p className="text-sm text-slate-300">
+                    <p className="text-sm text-slate-900 dark:text-slate-300">
                       Retry policy and signing secrets.
                     </p>
                   </AccordionContent>

@@ -44,7 +44,7 @@ export default function PreviewCodeShowcase({
           Show code
         </Button>
       </div>
-      <hr className="my-5" />
+      <hr className="my-5 border-slate-900 dark:border-white/10" />
       {showCode ? (
         <div className="relative text-xs md:text-base">
           <CodeHighlight codeString={code} />

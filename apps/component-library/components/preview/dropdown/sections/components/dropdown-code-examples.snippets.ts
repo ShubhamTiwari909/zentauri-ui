@@ -1,6 +1,5 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 
-import { DROPDOWN_MENU_SURFACE_CLASS } from "./dropdown-code-examples.data";
 import type {
   DropdownContentPlacement,
   DropdownContentSpacing,
@@ -18,9 +17,9 @@ export function dropdownTriggerSnippet(
     `DropdownTrigger · variant · ${variant}, size · ${size}`,
   )}<Dropdown>
   <DropdownTrigger${variantAttr}${sizeAttr}>
-    Menu
+    Menu ${variant} ${size}
   </DropdownTrigger>
-  <DropdownContent className="${DROPDOWN_MENU_SURFACE_CLASS}">
+  <DropdownContent>
     <DropdownItem value="one">One</DropdownItem>
     <DropdownItem value="two">Two</DropdownItem>
   </DropdownContent>
@@ -34,9 +33,9 @@ export function dropdownPlacementSnippet(
     placement === "bottom" ? "" : ` placement="${placement}"`;
   return `${variantLeadComment(`DropdownContent · placement · ${placement}`)}<Dropdown>
   <DropdownTrigger variant="outline" size="sm">
-    Menu
+    Menu ${placement}
   </DropdownTrigger>
-  <DropdownContent${placementAttr} className="${DROPDOWN_MENU_SURFACE_CLASS}">
+  <DropdownContent${placementAttr}>
     <DropdownItem value="a">Alpha</DropdownItem>
     <DropdownItem value="b">Beta</DropdownItem>
   </DropdownContent>
@@ -49,9 +48,9 @@ export function dropdownSpacingSnippet(
   const spacingAttr = spacing === "default" ? "" : ` spacing="${spacing}"`;
   return `${variantLeadComment(`DropdownContent · spacing · ${spacing}`)}<Dropdown>
   <DropdownTrigger variant="outline" size="sm">
-    Menu
+    Menu ${spacing}
   </DropdownTrigger>
-  <DropdownContent${spacingAttr} className="${DROPDOWN_MENU_SURFACE_CLASS}">
+  <DropdownContent${spacingAttr}>
     <DropdownItem value="a">Alpha</DropdownItem>
     <DropdownItem value="b">Beta</DropdownItem>
   </DropdownContent>
@@ -61,9 +60,9 @@ export function dropdownSpacingSnippet(
 export function dropdownContentDividerSnippet(): string {
   return `${variantLeadComment(`DropdownContent · divider`)}<Dropdown>
   <DropdownTrigger variant="outline" size="sm">
-    Menu
+    Menu divider
   </DropdownTrigger>
-  <DropdownContent divider className="${DROPDOWN_MENU_SURFACE_CLASS}">
+  <DropdownContent divider>
     <DropdownItem value="a">Alpha</DropdownItem>
     <DropdownItem value="b">Beta</DropdownItem>
   </DropdownContent>

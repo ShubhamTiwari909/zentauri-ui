@@ -5,35 +5,36 @@ export const tooltipVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-black text-white",
-        outline: "border bg-white text-black",
+        default: "bg-white dark:bg-black text-slate-900 dark:text-white",
+        outline: "border bg-black dark:bg-white text-white dark:text-black",
         ghost: "bg-gray-800 text-white/90",
-        glass: "border border-white/15 bg-white/10 text-white backdrop-blur-md",
+        glass:
+          "border border-black/15 dark:border-white/15 bg-black/10 dark:bg-white/10 text-slate-900 dark:text-white backdrop-blur-md",
         emerald: "bg-emerald-800 text-white",
-        indigo: "bg-indigo-600 text-white",
-        purple: "bg-purple-600 text-white",
-        pink: "bg-pink-600 text-white",
-        rose: "bg-rose-600 text-white",
+        indigo: "bg-indigo-800 text-white",
+        purple: "bg-purple-800 text-white",
+        pink: "bg-pink-800 text-white",
+        rose: "bg-rose-800 text-white",
         sky: "bg-sky-700 text-white",
-        teal: "bg-teal-600 text-white",
-        yellow: "bg-yellow-600 text-white",
-        orange: "bg-orange-600 text-white",
-        green: "bg-green-600 text-white",
+        teal: "bg-teal-800 text-white",
+        yellow: "bg-yellow-800 text-white",
+        orange: "bg-orange-800 text-white",
+        green: "bg-green-800 text-white",
         "gradient-blue":
-          "bg-linear-to-r from-blue-600 to-purple-600 text-white",
+          "bg-linear-to-r from-blue-800 to-purple-800 text-white",
         "gradient-green":
-          "bg-linear-to-r from-green-600 to-lime-600 text-white",
-        "gradient-red": "bg-linear-to-r from-red-600 to-pink-600 text-white",
+          "bg-linear-to-r from-green-800 to-lime-800 text-white",
+        "gradient-red": "bg-linear-to-r from-red-800 to-pink-800 text-white",
         "gradient-yellow":
-          "bg-linear-to-r from-yellow-600 to-orange-600 text-white",
+          "bg-linear-to-r from-yellow-800 to-orange-800 text-white",
         "gradient-purple":
-          "bg-linear-to-r from-purple-600 to-pink-600 text-white",
-        "gradient-teal": "bg-linear-to-r from-teal-600 to-cyan-600 text-white",
+          "bg-linear-to-r from-purple-800 to-pink-800 text-white",
+        "gradient-teal": "bg-linear-to-r from-teal-800 to-cyan-800 text-white",
         "gradient-indigo":
-          "bg-linear-to-r from-indigo-600 to-purple-600 text-white",
-        "gradient-pink": "bg-linear-to-r from-pink-600 to-rose-600 text-white",
+          "bg-linear-to-r from-indigo-800 to-purple-800 text-white",
+        "gradient-pink": "bg-linear-to-r from-pink-800 to-rose-800 text-white",
         "gradient-orange":
-          "bg-linear-to-r from-orange-600 to-red-600 text-white",
+          "bg-linear-to-r from-orange-800 to-red-800 text-white",
       },
       size: {
         sm: "text-xs px-2 py-1",

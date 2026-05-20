@@ -9,20 +9,20 @@ export function TabsHeroSection({ seo }: { seo: PreviewSeoDocument }) {
     <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
       <PreviewHeroSeoBlock seo={seo} />
 
-      <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+      <div className="rounded-3xl border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
         <Tabs defaultValue="overview">
           <TabsListComponent />
           <TabsContentAnimated
             value="overview"
             animation="fade"
-            className="mt-4 text-sm text-slate-300"
+            className="mt-4 text-sm text-slate-800 dark:text-slate-300"
           >
             High-level metrics and health for this service.
           </TabsContentAnimated>
           <TabsContentAnimated
             value="activity"
             animation="fade"
-            className="mt-4 text-sm text-slate-300"
+            className="mt-4 text-sm text-slate-800 dark:text-slate-300"
           >
             Recent events and audit entries appear here.
           </TabsContentAnimated>

@@ -15,7 +15,7 @@ export const CodeBlockBase = (props: CodeBlockProps) => {
       aria-label={ariaLabel}
       className={cn(
         typographyToneVariants({ tone }),
-        "overflow-x-auto rounded-xl border border-white/10 bg-slate-950/80 p-4 text-sm leading-relaxed shadow-inner shadow-slate-950/40",
+        "overflow-x-auto rounded-xl border border-white/10 bg-white/90 dark:bg-slate-950/80 p-4 text-sm leading-relaxed shadow-inner shadow-slate-950/40",
         className,
       )}
       {...rest}

@@ -23,7 +23,10 @@ export function EmptyStateDemo({
       </p>
       <EmptyState appearance={appearance} size={size} align={align}>
         <EmptyStateIcon>
-          <HiCloudArrowUp className="size-8 text-slate-400" aria-hidden />
+          <HiCloudArrowUp
+            className="size-8 text-slate-800 dark:text-slate-400"
+            aria-hidden
+          />
         </EmptyStateIcon>
         <EmptyStateTitle>No uploads</EmptyStateTitle>
         <EmptyStateDescription>

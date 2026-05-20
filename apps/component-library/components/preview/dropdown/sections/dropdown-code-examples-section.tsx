@@ -23,18 +23,18 @@ import {
 export function DropdownCodeExamplesSection() {
   return (
     <section className={DROPDOWN_CODE_EXAMPLES_SECTION_CLASS}>
-      <h2 className="mt-3 text-2xl font-semibold text-white">
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Variant code examples
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
         Each block matches one combination. Open “Show code” to copy the JSX;
         the leading comment names the variant row.
       </p>
 
-      <h3 className="mt-10 text-lg font-semibold text-white">
+      <h3 className="mt-10 text-lg font-semibold text-slate-900 dark:text-white">
         DropdownTrigger — variant × size
       </h3>
-      <p className="mt-1 max-w-2xl text-sm text-slate-400">
+      <p className="mt-1 max-w-2xl text-sm text-slate-800 dark:text-slate-300">
         Three trigger variants with small, medium, and large sizes.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
@@ -56,10 +56,10 @@ export function DropdownCodeExamplesSection() {
         ))}
       </div>
 
-      <h3 className="mt-14 text-lg font-semibold text-white">
+      <h3 className="mt-14 text-lg font-semibold text-slate-900 dark:text-white">
         DropdownContent — placement
       </h3>
-      <p className="mt-1 max-w-2xl text-sm text-slate-400">
+      <p className="mt-1 max-w-2xl text-sm text-slate-800 dark:text-slate-300">
         Surfaces position relative to the trigger on top, bottom, left, or
         right.
       </p>
@@ -73,10 +73,10 @@ export function DropdownCodeExamplesSection() {
           </PreviewCodeShowcase>
         ))}
       </div>
-      <h3 className="mt-14 text-lg font-semibold text-white">
+      <h3 className="mt-14 text-lg font-semibold text-slate-900 dark:text-white">
         DropdownContent — spacing
       </h3>
-      <p className="mt-1 max-w-2xl text-sm text-slate-400">
+      <p className="mt-1 max-w-2xl text-sm text-slate-800 dark:text-slate-300">
         The spacing between the items in the dropdown content.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">

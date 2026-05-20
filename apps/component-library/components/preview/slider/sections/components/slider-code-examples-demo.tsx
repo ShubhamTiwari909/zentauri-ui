@@ -61,7 +61,7 @@ export function SliderRangeDemoControlled({
           <SliderThumb />
         </SliderTrack>
       </Slider>
-      <p className="text-xs text-slate-400">
+      <p className="text-xs text-slate-800 dark:text-slate-400">
         Value: <span className="font-bold">{value}</span>
       </p>
     </div>

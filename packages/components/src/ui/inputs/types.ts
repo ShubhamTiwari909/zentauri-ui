@@ -15,7 +15,7 @@ export type InputSharedProps = Omit<
 export type InputProps =
   | (InputSharedProps &
       Omit<ComponentPropsWithRef<"input">, "size" | "as"> & {
-        as?: "input" | "file" | "checkbox" | "radio";
+        as?: "input" | "file" | "checkbox" | "radio" | "date";
       })
   | (InputSharedProps &
       Omit<ComponentPropsWithRef<"textarea">, "size" | "as"> & {

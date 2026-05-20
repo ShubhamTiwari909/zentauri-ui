@@ -12,7 +12,7 @@ export function AccordionHeroSection({ seo }: { seo: PreviewSeoDocument }) {
     <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
       <PreviewHeroSeoBlock seo={seo} />
 
-      <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+      <div className="rounded-3xl border border-slate-900/10 dark:border-white/10 bg-white dark:bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
         <Accordion
           type="single"
           defaultValue="item-1"
@@ -22,7 +22,7 @@ export function AccordionHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           <AccordionItem value="item-1">
             <AccordionTrigger>Shipping</AccordionTrigger>
             <AccordionContentAnimated transitionVariant="smooth">
-              <p className="text-sm text-slate-300">
+              <p className="text-sm text-slate-900 dark:text-slate-300">
                 Standard delivery in 3-5 business days. Express options at
                 checkout.
               </p>
@@ -31,7 +31,7 @@ export function AccordionHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           <AccordionItem value="item-2">
             <AccordionTrigger>Returns</AccordionTrigger>
             <AccordionContentAnimated transitionVariant="smooth">
-              <p className="text-sm text-slate-300">
+              <p className="text-sm text-slate-900 dark:text-slate-300">
                 Free returns within 30 days of delivery in original condition.
               </p>
             </AccordionContentAnimated>
