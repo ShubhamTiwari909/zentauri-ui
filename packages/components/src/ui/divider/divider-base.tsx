@@ -36,7 +36,7 @@ export function DividerBase({
           dividerToneVariants({ appearance }),
           orientation === "horizontal"
             ? "flex w-full min-h-px flex-row items-stretch"
-            : "flex h-full min-h-8 w-auto min-w-0 flex-col items-stretch self-stretch",
+            : "flex h-full min-h-8 w-auto min-w-0 items-stretch self-stretch",
           className,
         )}
         {...rest}

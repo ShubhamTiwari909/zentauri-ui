@@ -4,7 +4,7 @@ export type SiteChromeNavItem = {
   external?: boolean;
 };
 
-export const siteChromeNavItems: readonly SiteChromeNavItem[] = [
+export const siteChromeNavItems = [
   { href: "/preview/installation", label: "Installation" },
   { href: "/preview/components", label: "Components" },
   { href: "/preview/hooks", label: "Hooks" },
@@ -16,4 +16,4 @@ export const siteChromeNavItems: readonly SiteChromeNavItem[] = [
     label: "GitHub",
     external: true,
   },
-] as const;
+] satisfies SiteChromeNavItem[];

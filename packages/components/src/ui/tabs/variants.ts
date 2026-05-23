@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 
-export const tabsListVariants = cva("flex items-center gap-1", {
+export const tabsListVariants = cva("flex flex-wrap items-center gap-1", {
   variants: {
     variant: {
       default: "bg-transparent",
