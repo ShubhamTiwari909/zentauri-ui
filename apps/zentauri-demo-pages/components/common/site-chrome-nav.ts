@@ -5,11 +5,11 @@ export type SiteChromeNavItem = {
 };
 
 export const siteChromeNavItems = [
-  { href: "/preview/installation", label: "Installation" },
-  { href: "/preview/components", label: "Components" },
-  { href: "/preview/hooks", label: "Hooks" },
-  { href: "/preview/typography", label: "Typography" },
-  { href: "/preview/charts", label: "Charts" },
+  { href: "https://zentauri-ui.vercel.app/preview/installation", label: "Installation" },
+  { href: "https://zentauri-ui.vercel.app/preview/components", label: "Components" },
+  { href: "https://zentauri-ui.vercel.app/preview/hooks", label: "Hooks" },
+  { href: "https://zentauri-ui.vercel.app/preview/typography", label: "Typography" },
+  { href: "https://zentauri-ui.vercel.app/preview/charts", label: "Charts" },
   { href: "/demo", label: "Demos" },
   {
     href: "https://github.com/ShubhamTiwari909/zentauri-ui",

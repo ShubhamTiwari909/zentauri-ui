@@ -10,7 +10,7 @@ export const siteChromeNavItems: readonly SiteChromeNavItem[] = [
   { href: "/preview/hooks", label: "Hooks" },
   { href: "/preview/typography", label: "Typography" },
   { href: "/preview/charts", label: "Charts" },
-  { href: "/demo", label: "Demos" },
+  { href: "https://zentauri-ui-demo.vercel.app/demo", label: "Demos" },
   {
     href: "https://github.com/ShubhamTiwari909/zentauri-ui",
     label: "GitHub",
