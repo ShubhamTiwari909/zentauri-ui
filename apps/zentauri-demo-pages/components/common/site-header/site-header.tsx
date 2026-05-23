@@ -15,7 +15,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-white/8 bg-slate-950/70 shadow-[0_1px_0_0_rgba(255,255,255,0.04)_inset] backdrop-blur-xl backdrop-saturate-150">
       <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3.5 sm:px-6 lg:px-8">
         <Link
-          href="/"
+          href="https://zentauri-ui.vercel.app"
           className="group flex shrink-0 items-center gap-2.5 rounded-xl py-1 pr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
         >
           <span
