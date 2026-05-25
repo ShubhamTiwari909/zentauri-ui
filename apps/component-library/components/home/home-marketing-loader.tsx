@@ -12,14 +12,13 @@ const HomeMarketing = dynamic(
 );
 
 export function HomeMarketingLoader() {
-
-  const [sentinelRef] = useIntersectionObserver<HTMLDivElement>({
-    threshold: [0, 0.5, 1],
+  const [sentinelRef, entry] = useIntersectionObserver<HTMLDivElement>({
+    threshold: 0.1,
+    rootMargin: "200px",
   });
-
   return (
-    <div ref={sentinelRef}>
-      <HomeMarketing />
+    <div ref={sentinelRef} className="min-h-80">
+      {entry?.isIntersecting && <HomeMarketing />}
     </div>
   );
 }

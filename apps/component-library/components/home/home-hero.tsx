@@ -41,7 +41,7 @@ export function HomeHero({ seo }: HomeHeroProps) {
               size="lg"
               className="cursor-pointer px-8 py-3 text-lg font-medium"
             >
-              <Link href="/preview/components">Browse Hooks</Link>
+              <Link href="/preview/hooks">Browse hooks</Link>
             </Button>
           </div>
         </div>
