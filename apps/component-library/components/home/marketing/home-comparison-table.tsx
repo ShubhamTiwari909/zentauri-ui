@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Table,
   TableBody,
@@ -8,7 +6,6 @@ import {
   TableHeader,
   TableCell,
 } from "@zentauri-ui/zentauri-components/ui/table";
-import { MotionReveal } from "./motion-reveal";
 import { SectionShell } from "./section-shell";
 
 const ROWS = [
@@ -44,8 +41,7 @@ const ROWS = [
 
 export function HomeComparisonTable() {
   return (
-    <MotionReveal>
-      <SectionShell
+    <SectionShell
         eyebrow="Landscape"
         title="How Zentauri fits in"
         lead="Every stack makes tradeoffs—here is a compact, honest snapshot. Try the previews and judge for your team."
@@ -89,6 +85,5 @@ export function HomeComparisonTable() {
           </TableBody>
         </Table>
       </SectionShell>
-    </MotionReveal>
   );
 }

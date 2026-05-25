@@ -24,7 +24,7 @@ export function PreviewHeroSeoBlock({
         >
           {seo.headings.h1}
         </h1>
-        <p className="max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
+        <p className="text-base leading-7 text-slate-300 sm:text-lg">
           {seo.intro}
         </p>
       </div>

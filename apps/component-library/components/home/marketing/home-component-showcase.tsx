@@ -43,7 +43,6 @@ import {
 import { AreaChart } from "@zentauri-ui/zentauri-components/charts/area";
 import { FiExternalLink } from "react-icons/fi";
 
-import { MotionReveal } from "./motion-reveal";
 import { PreviewCodeTabs } from "./preview-code-tabs";
 import { SectionShell } from "./section-shell";
 
@@ -336,8 +335,7 @@ function ShowcaseRow({ title, href, preview, code }: ShowcaseRowProps) {
 
 export function HomeComponentShowcase() {
   return (
-    <MotionReveal>
-      <SectionShell
+    <SectionShell
         eyebrow="Live previews"
         title="Components in context"
         lead="Toggle Preview and Code—snippets mirror real props from the package."
@@ -518,6 +516,5 @@ export function HomeComponentShowcase() {
           />
         </div>
       </SectionShell>
-    </MotionReveal>
   );
 }

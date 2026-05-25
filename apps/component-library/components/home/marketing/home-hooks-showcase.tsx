@@ -1,11 +1,8 @@
-"use client";
-
 import Link from "next/link";
 import { FiExternalLink } from "react-icons/fi";
 
 import { HOOK_PREVIEW_REGISTRY } from "@/lib/constants";
 
-import { MotionReveal } from "./motion-reveal";
 import { SectionShell } from "./section-shell";
 import { Card } from "@zentauri-ui/zentauri-components/ui/card";
 
@@ -22,8 +19,7 @@ export function HomeHooksShowcase() {
   ).filter((h): h is (typeof HOOK_PREVIEW_REGISTRY)[number] => h !== undefined);
 
   return (
-    <MotionReveal>
-      <SectionShell
+    <SectionShell
         eyebrow="Headless hooks"
         title="Utilities that match the kit"
         lead="Typed helpers for storage, timing, gestures, and layout—each with an interactive preview route."
@@ -66,6 +62,5 @@ export function HomeHooksShowcase() {
           </Link>
         </p>
       </SectionShell>
-    </MotionReveal>
   );
 }

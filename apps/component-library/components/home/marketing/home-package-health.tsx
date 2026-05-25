@@ -1,6 +1,3 @@
-"use client";
-
-import Image from "next/image";
 import {
   Table,
   TableBody,
@@ -11,7 +8,6 @@ import {
 } from "@zentauri-ui/zentauri-components/ui/table";
 import { FiCheckCircle, FiClock, FiFileText, FiPackage } from "react-icons/fi";
 
-import { MotionReveal } from "./motion-reveal";
 import { SectionShell } from "./section-shell";
 
 const TEST_TOTALS = [
@@ -49,8 +45,7 @@ const TEST_AREAS = [
 
 export function HomePackageHealth() {
   return (
-    <MotionReveal>
-      <SectionShell
+    <SectionShell
         eyebrow="Package health"
         title="Published on npm and covered by Vitest"
         lead="The component package is tracked with live npm badges and a current test snapshot across UI primitives, hooks, and CLI behavior."
@@ -61,12 +56,20 @@ export function HomePackageHealth() {
             <img
               src="https://img.shields.io/npm/v/@zentauri-ui/zentauri-components"
               alt="@zentauri-ui/zentauri-components npm version"
+              width="184"
+              height="20"
+              loading="lazy"
+              decoding="async"
               className="h-5 w-auto"
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://img.shields.io/npm/dm/@zentauri-ui/zentauri-components"
               alt="@zentauri-ui/zentauri-components monthly npm downloads"
+              width="214"
+              height="20"
+              loading="lazy"
+              decoding="async"
               className="h-5 w-auto"
             />
           </div>
@@ -126,6 +129,5 @@ export function HomePackageHealth() {
           </Table>
         </div>
       </SectionShell>
-    </MotionReveal>
   );
 }
