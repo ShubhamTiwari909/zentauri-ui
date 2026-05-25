@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     debug: bool = False
     api_v1_prefix: str = "/api/v1"
 
-    mongodb_uri: MongoDsn | str = "mongodb+srv://zentauri-contact-us:Shubham%40909@cluster0.pqccvri.mongodb.net/?appName=Cluster0"
+    mongodb_uri: MongoDsn | str = "mongodb://localhost:27017"
     mongodb_db_name: str = "zentauri_backend"
     mongodb_forms_collection: str = "form_submissions"
 
