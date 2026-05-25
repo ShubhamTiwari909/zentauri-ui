@@ -3,7 +3,7 @@ import { FileUpload } from "@zentauri-ui/zentauri-components/ui/file-upload";
 
 export function FileUploadExamplesSection() {
   return (
-    <Section variant="plain" className="space-y-6">
+    <Section className="space-y-6">
       <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
         Custom label
       </h2>

@@ -11,7 +11,7 @@ import {
 export function BreadcrumbExamplesSection() {
   return (
     <Section variant="plain" className="space-y-6">
-      <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
+      <h2 className="text-2xl font-semibold text-white">
         Examples
       </h2>
       <div className="grid gap-6 lg:grid-cols-2">
