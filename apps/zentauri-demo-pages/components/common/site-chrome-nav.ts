@@ -10,6 +10,7 @@ export const siteChromeNavItems = [
   { href: "https://zentauri-ui.vercel.app/preview/hooks", label: "Hooks" },
   { href: "https://zentauri-ui.vercel.app/preview/typography", label: "Typography" },
   { href: "https://zentauri-ui.vercel.app/preview/charts", label: "Charts" },
+  { href: "https://zentauri-ui.vercel.app/contact-us", label: "Contact" },
   { href: "/demo", label: "Demos" },
   {
     href: "https://github.com/ShubhamTiwari909/zentauri-ui",

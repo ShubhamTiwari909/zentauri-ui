@@ -4,11 +4,6 @@ import Link from "next/link";
 import { useRef, useState, type ReactNode } from "react";
 
 import {
-  chartTimeSeriesData,
-  chartTimeSeriesSeries,
-} from "@/components/preview/charts/chart-demo-data";
-
-import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -497,22 +492,6 @@ export function HomeComponentShowcase() {
             href="/preview/components/slider"
             code={CODE_SLIDER}
             preview={<SliderDemoPreview />}
-          />
-          <ShowcaseRow
-            title="Charts"
-            href="/preview/charts"
-            code={CODE_CHART}
-            preview={
-              <AreaChart
-                appearance="outline"
-                density="compact"
-                data={chartTimeSeriesData}
-                height={260}
-                showLegend
-                xKey="month"
-                series={[...chartTimeSeriesSeries({ appearance: "outline" })]}
-              />
-            }
           />
         </div>
       </SectionShell>
