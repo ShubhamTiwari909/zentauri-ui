@@ -6,7 +6,7 @@ import {
 
 export function AvatarExamplesSection() {
   return (
-    <Section variant="plain" className="space-y-6">
+    <Section className="space-y-6">
       <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
         Sizes
       </h2>
