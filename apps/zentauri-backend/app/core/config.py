@@ -17,7 +17,7 @@ class Settings(BaseSettings):
         default_factory=lambda: ["http://localhost:3000", "http://localhost:3001"]
     )
     allowed_hosts: list[str] = Field(
-        default_factory=lambda: ["localhost", "127.0.0.1", "zentauri-contact-form.vercel.app"]
+        default_factory=lambda: ["localhost", "127.0.0.1", "*.vercel.app"]
     )
     rate_limit_default: str = "100/minute"
     rate_limit_form_create: str = "10/minute"
