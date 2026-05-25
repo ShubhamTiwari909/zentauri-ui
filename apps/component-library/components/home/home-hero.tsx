@@ -16,7 +16,7 @@ export function HomeHero({ seo }: HomeHeroProps) {
   return (
     <section
       aria-labelledby={HOME_HERO_TITLE_ID}
-      className="relative overflow-hidden py-20 min-h-screen lg:min-h-[calc(100vh-100px)]"
+      className="relative overflow-hidden py-20 min-h-screen lg:min-h-[calc(100vh-60px)]"
     >
       <HomeLightLinesShell>
         <div className="mx-auto flex max-w-3xl flex-col items-center px-5 py-20 text-center sm:py-24">

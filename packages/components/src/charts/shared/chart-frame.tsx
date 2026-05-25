@@ -1,6 +1,9 @@
+"use client";
+
 import type { CSSProperties, HTMLAttributes, ReactNode } from "react";
 import { CartesianGrid, Legend, ResponsiveContainer, Tooltip } from "recharts";
 
+import { useResizeObserver } from "../../hooks/useResizeObserver/useResizeObserver";
 import { cn } from "../../lib/utils";
 import { chartVariants } from "./variants";
 import { VariantProps } from "class-variance-authority";
@@ -55,10 +58,13 @@ export function ChartFrame({
   ...props
 }: ChartFrameProps) {
   const divProps = filterDivProps(props);
+  const [measureRef, size] = useResizeObserver<HTMLDivElement>();
   const chartStyle = {
     "--chart-height": `${height}px`,
     ...style,
   } as CSSProperties;
+  const canRenderChart =
+    (size?.width ?? 0) > 0 && (size?.height ?? 0) > 0;
 
   if (!hasData) {
     return (
@@ -80,14 +86,19 @@ export function ChartFrame({
       style={chartStyle}
       {...divProps}
     >
-      <ResponsiveContainer
-        width="100%"
-        height="100%"
-        debounce={80}
-        style={containerStyle}
-      >
-        {children}
-      </ResponsiveContainer>
+      <div ref={measureRef} className="h-full min-h-0 w-full min-w-0">
+        {canRenderChart ? (
+          <ResponsiveContainer
+            width="100%"
+            height="100%"
+            minWidth={0}
+            debounce={80}
+            style={containerStyle}
+          >
+            {children}
+          </ResponsiveContainer>
+        ) : null}
+      </div>
     </div>
   );
 }

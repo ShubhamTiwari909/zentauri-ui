@@ -1,0 +1,29 @@
+[project]
+name = "zentauri-backend"
+version = "0.1.0"
+description = "FastAPI backend for Zentauri form submissions."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "certifi>=2025.1.31",
+    "email-validator>=2.2.0",
+    "fastapi[standard]>=0.115.0",
+    "motor>=3.6.0",
+    "pydantic-settings>=2.6.0",
+    "python-dotenv>=1.0.1",
+    "slowapi>=0.1.9",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.7.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

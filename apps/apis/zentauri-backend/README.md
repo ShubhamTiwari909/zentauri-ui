@@ -1,0 +1,64 @@
+# Zentauri Backend
+
+FastAPI service for receiving and reading form submissions from MongoDB.
+
+## Setup
+
+```sh
+cd apis/zentauri-backend
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+cp .env.example .env
+```
+
+Update `MONGODB_URI`, `ALLOWED_ORIGINS`, and `ALLOWED_HOSTS` in `.env` when you have the real deployment details.
+
+### MongoDB Atlas
+
+If you use Atlas instead of local Docker:
+
+1. In Atlas → **Network Access**, add your current IP (or `0.0.0.0/0` for dev only).
+2. In Atlas → **Database Access**, ensure the user in your URI has read/write on the cluster.
+3. Copy the **SRV** connection string (Connect → Drivers) into `.env` as `MONGODB_URI`, with the real password (not `<password>`).
+4. If the password contains `@`, `#`, or `%`, [URL-encode](https://www.mongodb.com/docs/manual/reference/connection-string/) it.
+
+`ReplicaSetNoPrimary` / `server_type: Unknown` at startup almost always means the URI is wrong, the password placeholder was left in place, or Atlas is blocking your IP.
+
+## Run
+
+Start MongoDB locally first:
+
+```sh
+docker compose up -d
+```
+
+Then start the API:
+
+```sh
+fastapi dev app/main.py
+```
+
+The API will be available at `http://127.0.0.1:8000`.
+
+If you already have MongoDB running elsewhere, skip Docker and update `MONGODB_URI` in `.env`.
+
+## Endpoints
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/health` | Service health check |
+| `POST` | `/api/v1/forms` | Submit validated form data as form fields |
+| `GET` | `/api/v1/forms?page=1&page_size=20` | List form submissions with pagination |
+| `GET` | `/api/v1/forms/{form_id}` | Read a specific form submission |
+
+## Example submit request
+
+```sh
+curl -X POST http://127.0.0.1:8000/api/v1/forms \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "name=Jane Doe" \
+  -d "email=jane@example.com" \
+  -d "subject=Demo request" \
+  -d "message=I would like to learn more about Zentauri."
+```
