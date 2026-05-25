@@ -4,7 +4,7 @@ import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
 import { HomeHero } from "./home-hero";
-import { HomeMarketing } from "./home-marketing";
+import { HomeMarketingLoader } from "./home-marketing-loader";
 
 const mainColumnClassName =
   "mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 py-12 sm:gap-20 sm:px-10 sm:py-16 lg:px-12";
@@ -20,7 +20,7 @@ export default function HomePage({ seo }: HomePageProps) {
       <main>
         <HomeHero seo={seo} />
         <div className={mainColumnClassName}>
-          <HomeMarketing />
+          <HomeMarketingLoader />
           <section
             id="reference"
             aria-labelledby="reference-heading"

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
+import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 
 import { HomeLightLinesShell } from "./home-light-lines-shell";
 
@@ -22,22 +22,27 @@ export function HomeHero({ seo }: HomeHeroProps) {
         <div className="mx-auto flex max-w-3xl flex-col items-center px-5 py-20 text-center sm:py-24">
           <PreviewHeroSeoBlock seo={seo} headingId={HOME_HERO_TITLE_ID} />
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
-            <ButtonAnimated
-              appearance="emerald"
-              animation="lift"
+            <Button
+              appearance="gradient-teal"
               size="lg"
               className="cursor-pointer px-8 py-3 text-lg font-medium"
             >
               <Link href="/preview/installation">Get started</Link>
-            </ButtonAnimated>
-            <ButtonAnimated
-              appearance="sky"
-              animation="lift"
+            </Button>
+            <Button
+              appearance="gradient-blue"
               size="lg"
               className="cursor-pointer px-8 py-3 text-lg font-medium"
             >
               <Link href="/preview/components">Browse components</Link>
-            </ButtonAnimated>
+            </Button>
+            <Button
+              appearance="gradient-purple"
+              size="lg"
+              className="cursor-pointer px-8 py-3 text-lg font-medium"
+            >
+              <Link href="/preview/hooks">Browse hooks</Link>
+            </Button>
           </div>
         </div>
       </HomeLightLinesShell>

@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import {
   FiBox,
   FiCpu,
@@ -10,7 +7,6 @@ import {
   FiGrid,
 } from "react-icons/fi";
 
-import { MotionReveal } from "./motion-reveal";
 import { SectionShell } from "./section-shell";
 
 const FEATURES = [
@@ -47,35 +43,26 @@ const FEATURES = [
 ] as const;
 
 export function HomeFeatureHighlights() {
-  const reduceMotion = useReducedMotion();
-
   return (
-    <MotionReveal>
-      <SectionShell
+    <SectionShell
         eyebrow="Why this library"
         title="Built for product engineers"
         lead="Opinionated visuals with escape hatches—fast to scan, fast to ship."
       >
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map(({ icon: Icon, title, body }) => (
-            <motion.article
+            <article
               key={title}
-              whileHover={
-                reduceMotion
-                  ? undefined
-                  : { y: -3, scale: 1.01, transition: { duration: 0.2 } }
-              }
-              className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-slate-950/60 p-5 shadow-lg shadow-slate-950/30 transition-colors hover:border-cyan-400/20"
+              className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-slate-950/60 p-5 shadow-lg shadow-slate-950/30 transition hover:-translate-y-0.5 hover:border-cyan-400/20"
             >
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-200 ring-1 ring-white/10">
                 <Icon className="h-5 w-5" aria-hidden />
               </span>
               <h3 className="text-base font-semibold text-white">{title}</h3>
               <p className="text-sm leading-6 text-slate-400">{body}</p>
-            </motion.article>
+            </article>
           ))}
         </div>
       </SectionShell>
-    </MotionReveal>
   );
 }

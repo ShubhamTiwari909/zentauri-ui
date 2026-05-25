@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import {
   FiCode,
@@ -12,7 +10,6 @@ import {
 
 import { CLI_INIT_COMMANDS } from "@/lib/home-install-commands";
 
-import { MotionReveal } from "./motion-reveal";
 import { SectionShell } from "./section-shell";
 
 const DX_ITEMS = [
@@ -50,8 +47,7 @@ const DX_ITEMS = [
 
 export function HomeDxSection() {
   return (
-    <MotionReveal>
-      <SectionShell
+    <SectionShell
         eyebrow="Developer experience"
         title="DX that stays out of your way"
         lead="Familiar tooling, predictable exports, and previews that mirror what you import in production."
@@ -80,6 +76,5 @@ export function HomeDxSection() {
           ))}
         </div>
       </SectionShell>
-    </MotionReveal>
   );
 }

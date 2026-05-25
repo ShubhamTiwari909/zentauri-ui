@@ -9,7 +9,6 @@ import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
 import { Progress } from "@zentauri-ui/zentauri-components/ui/progress";
 import { FiExternalLink } from "react-icons/fi";
 
-import { MotionReveal } from "./motion-reveal";
 import { SectionShell } from "./section-shell";
 import { FiSun, FiMoon } from "react-icons/fi";
 
@@ -91,8 +90,7 @@ export function HomePatternDemos() {
   const [surface, setSurface] = useState<"dark" | "light">("dark");
 
   return (
-    <MotionReveal>
-      <SectionShell
+    <SectionShell
         eyebrow="Composition"
         title="Patterns that ship together"
         lead="Inputs, overlays, and feedback primitives combine without custom glue code."
@@ -229,6 +227,5 @@ export function HomePatternDemos() {
           </div>
         </div>
       </SectionShell>
-    </MotionReveal>
   );
 }
