@@ -1,13 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 
-import { siteChromeNavItems } from "@/components/common/site-chrome-nav";
-import { SiteSearchOpenButton } from "@/components/common/site-search/site-search-open-button";
-import { cn } from "@/lib/utils";
-import SiteNavLink from "./site-link";
+import { cn } from "../lib/cn";
+import { getSiteChromeNavItems, getSiteHeaderBrand } from "./navigation";
+import { SiteHeaderMobile } from "./site-header-mobile";
+import { SiteNavLink } from "./site-link";
 
 import type { SiteHeaderProps } from "./types";
-import SiteHeaderMobile from "./site-header-mobile";
 
 const iconButtonClassName =
   "inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] p-0 text-slate-400 shadow-sm shadow-slate-950/20 transition hover:border-cyan-400/20 hover:bg-white/[0.07] hover:text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
@@ -17,11 +18,16 @@ const navLinkClassName =
 
 export function SiteHeader({
   className,
+  site,
+  SearchOpenButton,
   showMenuToggle = false,
   isMenuOpen = false,
   onMenuToggle,
   menuControlsId,
 }: SiteHeaderProps) {
+  const navItems = getSiteChromeNavItems(site);
+  const brand = getSiteHeaderBrand(site);
+
   return (
     <header
       data-slot="site-header"
@@ -32,7 +38,7 @@ export function SiteHeader({
     >
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5 sm:gap-6 sm:px-8 sm:py-4 lg:px-10">
         <Link
-          href="/"
+          href={brand.href}
           className="group flex shrink-0 items-center gap-2.5 rounded-xl py-1 pr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
         >
           <span
@@ -48,7 +54,7 @@ export function SiteHeader({
               Zentauri UI
             </span>
             <span className="hidden text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-slate-500 sm:block">
-              Library
+              {brand.subtitle}
             </span>
           </span>
         </Link>
@@ -57,7 +63,7 @@ export function SiteHeader({
           aria-label="Main"
           className="hidden min-w-0 flex-1 items-center justify-center gap-1 sm:flex"
         >
-          {siteChromeNavItems.map((item) => (
+          {navItems.map((item) => (
             <SiteNavLink
               key={item.href}
               item={item}
@@ -67,9 +73,9 @@ export function SiteHeader({
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:ml-0">
-          <SiteSearchOpenButton className={iconButtonClassName} />
+          <SearchOpenButton className={iconButtonClassName} />
           <div className="sm:hidden">
-            <SiteHeaderMobile />
+            <SiteHeaderMobile navItems={navItems} />
           </div>
           {showMenuToggle ? (
             <button
