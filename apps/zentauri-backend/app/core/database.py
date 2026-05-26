@@ -16,8 +16,8 @@ class MongoDatabase:
             tlsCAFile=certifi.where(),
         )
         self._database = self._client[settings.mongodb_db_name]
-        await self.forms.create_index("email")
-        await self.forms.create_index("created_at")
+        await self.contact_form.create_index("email")
+        await self.contact_form.create_index("created_at")
 
     async def close(self) -> None:
         if self._client is not None:
@@ -32,12 +32,12 @@ class MongoDatabase:
         return self._database
 
     @property
-    def forms(self) -> AsyncIOMotorCollection:
-        return self.db[settings.mongodb_forms_collection]
+    def contact_form(self) -> AsyncIOMotorCollection:
+        return self.db[settings.mongodb_contact_form_collection]
 
 
 database = MongoDatabase()
 
 
-def get_forms_collection() -> AsyncIOMotorCollection:
-    return database.forms
+def get_contact_form_collection() -> AsyncIOMotorCollection:
+    return database.contact_form

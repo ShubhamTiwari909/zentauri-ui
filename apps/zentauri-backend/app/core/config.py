@@ -11,7 +11,7 @@ class Settings(BaseSettings):
 
     mongodb_uri: MongoDsn | str = "mongodb://localhost:27017"
     mongodb_db_name: str = "zentauri_backend"
-    mongodb_forms_collection: str = "form_submissions"
+    mongodb_contact_form_collection: str = "contact_form_submissions"
 
     allowed_origins: list[str] = Field(
         default_factory=lambda: ["http://localhost:3000", "http://localhost:3001"]

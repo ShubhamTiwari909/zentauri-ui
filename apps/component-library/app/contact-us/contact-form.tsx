@@ -110,10 +110,7 @@ export function ContactForm() {
     return (
       <Card appearance="glass" rounded="lg" size="lg">
         <div className="flex flex-col gap-6">
-          <div className="flex items-start gap-4">
-            <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-200 ring-1 ring-emerald-300/30">
-              <HiCheckCircle className="size-6" aria-hidden />
-            </span>
+          <div className="flex items-start justify-between gap-4">
             <div className="space-y-2">
               <h2 className="text-xl font-semibold text-white">
                 Thank you for reaching out.
@@ -124,8 +121,10 @@ export function ContactForm() {
                 same request again.
               </p>
             </div>
+            <span className="flex size-7 lg:size-11 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-200 ring-1 ring-emerald-300/30">
+              <HiCheckCircle className="size-4 lg:size-6" aria-hidden />
+            </span>
           </div>
-
           <div className="rounded-lg border border-white/10 bg-white/4 px-4 py-3 text-sm text-slate-300">
             Need to send a different request? Clear this confirmation and the
             form will be ready again.

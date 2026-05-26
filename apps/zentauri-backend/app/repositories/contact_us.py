@@ -7,13 +7,13 @@ from app.schemas.form import FormCreate, FormListResponse, FormResponse
 from app.utils.mongo import serialize_form_document
 
 
-class FormRepository:
+class ContactFormRepository:
     def __init__(self, collection: AsyncIOMotorCollection) -> None:
         self.collection = collection
 
     async def create(self, payload: FormCreate) -> FormResponse:
         now = datetime.now(UTC)
-        document = payload.model_dump()
+        document = payload.model_dump() # This converts the FormCreate Pydantic object into a normal Python dictionary.
         document["created_at"] = now
         document["updated_at"] = now
 
@@ -21,6 +21,9 @@ class FormRepository:
         created = await self.collection.find_one({"_id": result.inserted_id})
         if created is None:
             raise RuntimeError("Unable to read form submission after insert.")
+
+        # This converts the MongoDB document into a FormResponse.
+        # # MongoDB documents usually have _id as an ObjectId, which cannot be directly returned as JSON.
         return serialize_form_document(created)
 
     async def list(self, page: int, page_size: int) -> FormListResponse:
