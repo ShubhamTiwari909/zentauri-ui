@@ -1,11 +1,18 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useLocalStorage } from "@zentauri-ui/zentauri-components/hooks/useLocalStorage";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 import { Card } from "@zentauri-ui/zentauri-components/ui/card";
 import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
-import { useState, useTransition } from "react";
+import {
+  useEffect,
+  useState,
+  useSyncExternalStore,
+  useTransition,
+} from "react";
 import { useForm } from "react-hook-form";
+import { HiCheckCircle } from "react-icons/hi2";
 
 import { submitContactForm, type ContactFormActionState } from "./actions";
 import { contactFormSchema, type ContactFormValues } from "./schema";
@@ -15,9 +22,41 @@ const initialState: ContactFormActionState = {
   message: "",
 };
 
+const contactSubmissionStorageKey = "zentauri-contact-submission";
+const contactSubmissionWindowMs = 24 * 60 * 60 * 1000;
+
+type ContactSubmissionMarker = {
+  expiresAt: number;
+};
+
+function subscribeToClientReady(onStoreChange: () => void) {
+  const timeoutId = window.setTimeout(onStoreChange, 0);
+  return () => {
+    window.clearTimeout(timeoutId);
+  };
+}
+
+function getClientSnapshot() {
+  return true;
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
 export function ContactForm() {
   const [actionState, setActionState] = useState(initialState);
+  const hasMounted = useSyncExternalStore(
+    subscribeToClientReady,
+    getClientSnapshot,
+    getServerSnapshot,
+  );
   const [isPending, startTransition] = useTransition();
+  const [submissionMarker, setSubmissionMarker, clearSubmissionMarker] =
+    useLocalStorage(
+      contactSubmissionStorageKey,
+      null as ContactSubmissionMarker | null,
+    );
 
   const {
     formState: { errors },
@@ -41,10 +80,71 @@ export function ContactForm() {
       setActionState(result);
 
       if (result.ok) {
+        setSubmissionMarker({
+          expiresAt: Date.now() + contactSubmissionWindowMs,
+        });
         reset();
       }
     });
   });
+
+  useEffect(() => {
+    if (!submissionMarker) {
+      return;
+    }
+
+    const remainingMs = submissionMarker.expiresAt - Date.now();
+    const timeoutId = window.setTimeout(
+      () => {
+        clearSubmissionMarker();
+      },
+      Math.max(0, remainingMs),
+    );
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [clearSubmissionMarker, submissionMarker]);
+
+  if (hasMounted && submissionMarker) {
+    return (
+      <Card appearance="glass" rounded="lg" size="lg">
+        <div className="flex flex-col gap-6">
+          <div className="flex items-start justify-between gap-4">
+            <div className="space-y-2">
+              <h2 className="text-xl font-semibold text-white">
+                Thank you for reaching out.
+              </h2>
+              <p className="max-w-2xl text-sm leading-6 text-slate-300">
+                Your message has been submitted successfully. We have saved this
+                confirmation for 24 hours so you do not accidentally send the
+                same request again.
+              </p>
+            </div>
+            <span className="flex size-7 lg:size-11 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-200 ring-1 ring-emerald-300/30">
+              <HiCheckCircle className="size-4 lg:size-6" aria-hidden />
+            </span>
+          </div>
+          <div className="rounded-lg border border-white/10 bg-white/4 px-4 py-3 text-sm text-slate-300">
+            Need to send a different request? Clear this confirmation and the
+            form will be ready again.
+          </div>
+
+          <Button
+            appearance="gradient-teal"
+            className="w-full md:w-fit"
+            onClick={() => {
+              clearSubmissionMarker();
+              setActionState(initialState);
+            }}
+            type="button"
+          >
+            Submit another form
+          </Button>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <Card appearance="glass" rounded="lg" size="lg">

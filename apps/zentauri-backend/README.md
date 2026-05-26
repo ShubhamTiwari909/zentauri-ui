@@ -48,14 +48,14 @@ If you already have MongoDB running elsewhere, skip Docker and update `MONGODB_U
 | Method | Path | Description |
 | --- | --- | --- |
 | `GET` | `/health` | Service health check |
-| `POST` | `/api/v1/forms` | Submit validated form data as form fields |
-| `GET` | `/api/v1/forms?page=1&page_size=20` | List form submissions with pagination |
-| `GET` | `/api/v1/forms/{form_id}` | Read a specific form submission |
+| `POST` | `/api/v1/contact-us` | Submit validated form data as form fields |
+| `GET` | `/api/v1/contact-us?page=1&page_size=20` | List form submissions with pagination |
+| `GET` | `/api/v1/contact-us/{form_id}` | Read a specific form submission |
 
 ## Example submit request
 
 ```sh
-curl -X POST http://127.0.0.1:8000/api/v1/forms \
+curl -X POST http://127.0.0.1:8000/api/v1/contact-us \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "name=Jane Doe" \
   -d "email=jane@example.com" \

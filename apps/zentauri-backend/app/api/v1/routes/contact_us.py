@@ -4,18 +4,18 @@ from fastapi import APIRouter, Depends, Form, HTTPException, Query, Request, sta
 from motor.motor_asyncio import AsyncIOMotorCollection
 
 from app.core.config import settings
-from app.core.database import get_forms_collection
+from app.core.database import get_contact_form_collection
 from app.core.rate_limit import limiter
-from app.repositories.forms import FormRepository
+from app.repositories.contact_us import ContactFormRepository
 from app.schemas.form import FormCreate, FormListResponse, FormResponse
 
 router = APIRouter()
 
 
-def get_form_repository(
-    collection: Annotated[AsyncIOMotorCollection, Depends(get_forms_collection)],
-) -> FormRepository:
-    return FormRepository(collection)
+def get_contact_form_repository(
+    collection: Annotated[AsyncIOMotorCollection, Depends(get_contact_form_collection)],
+) -> ContactFormRepository:
+    return ContactFormRepository(collection)
 
 
 def form_payload(
@@ -39,7 +39,7 @@ def form_payload(
 async def create_form_submission(
     request: Request,
     payload: Annotated[FormCreate, Depends(form_payload)],
-    repository: Annotated[FormRepository, Depends(get_form_repository)],
+    repository: Annotated[ContactFormRepository, Depends(get_contact_form_repository)],
 ) -> FormResponse:
     del request
     return await repository.create(payload)
@@ -47,7 +47,7 @@ async def create_form_submission(
 
 @router.get("", response_model=FormListResponse)
 async def list_form_submissions(
-    repository: Annotated[FormRepository, Depends(get_form_repository)],
+    repository: Annotated[ContactFormRepository, Depends(get_contact_form_repository)],
     page: Annotated[int, Query(ge=1)] = 1,
     page_size: Annotated[int, Query(ge=1, le=100)] = 20,
 ) -> FormListResponse:
@@ -57,7 +57,7 @@ async def list_form_submissions(
 @router.get("/{form_id}", response_model=FormResponse)
 async def get_form_submission(
     form_id: str,
-    repository: Annotated[FormRepository, Depends(get_form_repository)],
+    repository: Annotated[ContactFormRepository, Depends(get_contact_form_repository)],
 ) -> FormResponse:
     submission = await repository.get_by_id(form_id)
     if submission is None:

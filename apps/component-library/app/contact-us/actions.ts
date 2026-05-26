@@ -35,7 +35,7 @@ export async function submitContactForm(
   }
 
   try {
-    const response = await fetch(`${backendBaseUrl}/api/v1/forms`, {
+    const response = await fetch(`${backendBaseUrl}/api/v1/contact-us`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",

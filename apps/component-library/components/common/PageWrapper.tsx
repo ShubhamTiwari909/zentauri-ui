@@ -4,7 +4,7 @@ import React from 'react'
 import { usePathname, } from 'next/navigation';
 import { Toggle } from '@zentauri-ui/zentauri-components/ui/toggle';
 
-const routesToSkip = ["/", "/preview/components", "/preview/hooks","/preview/typography","/preview/charts"]
+const routesToSkip = ["/", "/preview/components", "/preview/hooks","/preview/typography","/preview/charts","/contact-us"]
 
 const PageWrapper = ({ children, theme = "dark" }: { children: React.ReactNode, theme?: "light" | "dark" }) => {
   const [on, toggle] = useToggle(theme === "dark");
