@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import type { SiteChromeNavItem } from "../site-chrome-nav";
+import type { SiteChromeNavItem } from "./navigation";
 
 export function SiteNavLink({
   item,

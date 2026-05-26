@@ -9,7 +9,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  transpilePackages: ["@zentauri-ui/zentauri-components"],
+  transpilePackages: [
+    "@zentauri-ui/shared",
+    "@zentauri-ui/zentauri-components",
+  ],
 };
 
 export default nextConfig;

@@ -153,49 +153,59 @@ export function ContactForm() {
       </div>
       <div className="flex flex-1 flex-col">
         <form className="flex flex-col gap-5 pt-1" onSubmit={onSubmit}>
-          <Input
-            label="Name"
-            placeholder="Your name"
-            autoComplete="name"
-            appearance={errors.name ? "error" : "default"}
-            errorMessage={errors.name?.message}
-            {...register("name")}
-          />
-          <Input
-            label="Email"
-            placeholder="you@example.com"
-            autoComplete="email"
-            type="email"
-            appearance={errors.email ? "error" : "default"}
-            errorMessage={errors.email?.message}
-            {...register("email")}
-          />
+          <div>
+            <Input
+              label="Name"
+              placeholder="Your name"
+              autoComplete="name"
+              appearance={errors.name ? "error" : "info"}
+              errorMessage={errors.name?.message}
+              {...register("name")}
+            />
+          </div>
+          <div>
+            <Input
+              label="Email"
+              placeholder="you@example.com"
+              autoComplete="email"
+              type="email"
+              appearance={errors.email ? "error" : "info"}
+              errorMessage={errors.email?.message}
+              {...register("email")}
+            />
+          </div>
 
-          <Input
-            label="Phone"
-            placeholder="Optional"
-            autoComplete="tel"
-            appearance={errors.phone ? "error" : "default"}
-            errorMessage={errors.phone?.message}
-            {...register("phone")}
-          />
-          <Input
-            label="Subject"
-            placeholder="What should we talk about?"
-            appearance={errors.subject ? "error" : "default"}
-            errorMessage={errors.subject?.message}
-            {...register("subject")}
-          />
+          <div>
+            <Input
+              label="Phone"
+              placeholder="Optional"
+              autoComplete="tel"
+              appearance={errors.phone ? "error" : "info"}
+              errorMessage={errors.phone?.message}
+              {...register("phone")}
+            />
+          </div>
+          <div>
+            <Input
+              label="Subject"
+              placeholder="What should we talk about?"
+              appearance={errors.subject ? "error" : "info"}
+              errorMessage={errors.subject?.message}
+              {...register("subject")}
+            />
+          </div>
 
-          <Input
-            as="textarea"
-            label="Message"
-            placeholder="Share the details here."
-            rows={7}
-            appearance={errors.message ? "error" : "default"}
-            errorMessage={errors.message?.message}
-            {...register("message")}
-          />
+          <div>
+            <Input
+              as="textarea"
+              label="Message"
+              placeholder="Share the details here."
+              rows={7}
+              appearance={errors.message ? "error" : "info"}
+              errorMessage={errors.message?.message}
+              {...register("message")}
+            />
+          </div>
 
           {actionState.message ? (
             <p
@@ -212,7 +222,7 @@ export function ContactForm() {
 
           <Button
             appearance="gradient-teal"
-            className="w-full md:w-fit"
+            className="w-full md:w-fit cursor-pointer"
             disabled={isPending}
             type="submit"
           >

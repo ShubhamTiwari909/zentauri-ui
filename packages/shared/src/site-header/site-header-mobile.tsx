@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
 
+import { useEffect, useState } from "react";
 import {
   Drawer,
   DrawerBody,
@@ -11,29 +11,37 @@ import {
   DrawerTrigger,
 } from "@zentauri-ui/zentauri-components/ui/drawer";
 import { FiList, FiX } from "react-icons/fi";
-import { siteChromeNavItems } from "@/components/common/site-chrome-nav";
-import SiteNavLink from "./site-link";
+
+import type { SiteChromeNavItem } from "./navigation";
+import { SiteNavLink } from "./site-link";
 
 const drawerNavLinkClassName =
   "block rounded-md px-2 py-3 text-base font-medium underline-offset-4 transition hover:bg-white/5 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60";
 
-const SiteHeaderMobile = () => {
+export function SiteHeaderMobile({
+  navItems,
+}: {
+  navItems: readonly SiteChromeNavItem[];
+}) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
     if (typeof window.matchMedia !== "function") {
       return;
     }
+
     const media = window.matchMedia("(min-width: 640px)");
     const closeIfWide = () => {
       if (media.matches) {
         setMobileNavOpen(false);
       }
     };
+
     closeIfWide();
     media.addEventListener("change", closeIfWide);
     return () => media.removeEventListener("change", closeIfWide);
   }, []);
+
   return (
     <Drawer open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
       <DrawerTrigger
@@ -41,10 +49,19 @@ const SiteHeaderMobile = () => {
         className="rounded-md p-2 text-slate-400 hover:bg-white/5 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
         aria-label="Open site navigation"
         onClick={() => {}}
+        ref={null}
       >
         <FiList className="h-6 w-6" aria-hidden />
       </DrawerTrigger>
-      <DrawerContent className="bg-slate-950" side="right" appearance="default" size="md">
+      <DrawerContent
+        className="bg-slate-950 backdrop-blur-xl"
+        side="right"
+        appearance="default"
+        size="md"
+        id={undefined}
+        ref={null}
+        style={undefined}
+      >
         <DrawerHeader className="pr-12">
           <DrawerTitle className="text-white">Navigate</DrawerTitle>
           <DrawerClose className="text-white">
@@ -53,7 +70,7 @@ const SiteHeaderMobile = () => {
         </DrawerHeader>
         <DrawerBody className="text-white">
           <nav aria-label="Mobile main" className="flex flex-col gap-1">
-            {siteChromeNavItems.map((item) => (
+            {navItems.map((item) => (
               <SiteNavLink
                 key={item.href}
                 item={item}
@@ -66,6 +83,4 @@ const SiteHeaderMobile = () => {
       </DrawerContent>
     </Drawer>
   );
-};
-
-export default SiteHeaderMobile;
+}

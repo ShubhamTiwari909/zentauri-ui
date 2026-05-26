@@ -1,20 +1,8 @@
-export type SiteChromeNavItem = {
-  href: string;
-  label: string;
-  external?: boolean;
-};
+import {
+  getSiteChromeNavItems,
+  type SiteChromeNavItem,
+} from "@zentauri-ui/shared/site-header";
 
-export const siteChromeNavItems = [
-  { href: "https://zentauri-ui.vercel.app/preview/installation", label: "Installation" },
-  { href: "https://zentauri-ui.vercel.app/preview/components", label: "Components" },
-  { href: "https://zentauri-ui.vercel.app/preview/hooks", label: "Hooks" },
-  { href: "https://zentauri-ui.vercel.app/preview/typography", label: "Typography" },
-  { href: "https://zentauri-ui.vercel.app/preview/charts", label: "Charts" },
-  { href: "https://zentauri-ui.vercel.app/contact-us", label: "Contact" },
-  { href: "/demo", label: "Demos" },
-  {
-    href: "https://github.com/ShubhamTiwari909/zentauri-ui",
-    label: "GitHub",
-    external: true,
-  },
-] satisfies SiteChromeNavItem[];
+export type { SiteChromeNavItem };
+
+export const siteChromeNavItems = getSiteChromeNavItems("demos");

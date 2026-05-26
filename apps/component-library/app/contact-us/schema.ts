@@ -12,10 +12,9 @@ export const contactFormSchema = z.object({
     .email("Enter a valid email address.")
     .max(254, "Email must be 254 characters or fewer."),
   phone: z
-    .string()
-    .trim()
-    .max(32, "Phone must be 32 characters or fewer.")
+    .e164("Enter a valid phone number like +919876543210")
     .optional()
+    .or(z.literal(""))
     .transform((value) => value || undefined),
   subject: z
     .string()

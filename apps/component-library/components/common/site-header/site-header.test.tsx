@@ -1,8 +1,9 @@
+import type { ComponentProps } from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { SiteHeader } from "./site-header";
+import { SiteHeader } from "@zentauri-ui/shared/site-header";
 
 const HEADER_SLOT_SELECTOR = '[data-slot="site-header"]';
 
@@ -12,9 +13,25 @@ function getHeaderSlot(container: HTMLElement = document.body) {
   return elements[0] as HTMLElement;
 }
 
+function TestSearchOpenButton({ className }: { className?: string }) {
+  return (
+    <button type="button" className={className} aria-label="Open site search" />
+  );
+}
+
+function renderSiteHeader(props?: Partial<ComponentProps<typeof SiteHeader>>) {
+  return render(
+    <SiteHeader
+      site="library"
+      SearchOpenButton={TestSearchOpenButton}
+      {...props}
+    />,
+  );
+}
+
 describe("SiteHeader", () => {
   it("should stamp data-slot on the root element", () => {
-    render(<SiteHeader />);
+    renderSiteHeader();
     expect(getHeaderSlot().getAttribute("data-slot")).toBe("site-header");
   });
 
@@ -23,22 +40,22 @@ describe("SiteHeader", () => {
   });
 
   it("should render logo link to home", () => {
-    render(<SiteHeader />);
-    const logo = screen.getByRole("link", { name: "Zentauri UI" });
+    renderSiteHeader();
+    const logo = screen.getByRole("link", { name: /Zentauri UI/ });
     expect(logo).toHaveAttribute("href", "/");
   });
 
   it("should render primary nav links", () => {
-    render(<SiteHeader />);
+    renderSiteHeader();
     const nav = screen.getByRole("navigation", { name: "Main" });
     expect(nav).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Installation" })).toHaveAttribute(
       "href",
-      "/",
+      "/preview/installation",
     );
-    expect(screen.getByRole("link", { name: "Components" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Demos" })).toHaveAttribute(
       "href",
-      "/preview",
+      "https://zentauri-ui-demo.vercel.app/demo",
     );
   });
 
@@ -46,14 +63,12 @@ describe("SiteHeader", () => {
     const user = userEvent.setup();
     const onMenuToggle = vi.fn();
 
-    render(
-      <SiteHeader
-        showMenuToggle
-        isMenuOpen={false}
-        onMenuToggle={onMenuToggle}
-        menuControlsId="sidebar-nav"
-      />,
-    );
+    renderSiteHeader({
+      showMenuToggle: true,
+      isMenuOpen: false,
+      onMenuToggle,
+      menuControlsId: "sidebar-nav",
+    });
 
     const toggle = screen.getByRole("button", {
       name: "Toggle navigation menu",
@@ -66,14 +81,12 @@ describe("SiteHeader", () => {
   });
 
   it("should reflect open state on menu toggle", () => {
-    render(
-      <SiteHeader
-        showMenuToggle
-        isMenuOpen
-        onMenuToggle={vi.fn()}
-        menuControlsId="sidebar-nav"
-      />,
-    );
+    renderSiteHeader({
+      showMenuToggle: true,
+      isMenuOpen: true,
+      onMenuToggle: vi.fn(),
+      menuControlsId: "sidebar-nav",
+    });
     expect(
       screen.getByRole("button", { name: "Toggle navigation menu" }),
     ).toHaveAttribute("aria-expanded", "true");
@@ -81,7 +94,7 @@ describe("SiteHeader", () => {
 
   it("should open glass drawer with mobile nav when site navigation trigger is used", async () => {
     const user = userEvent.setup();
-    render(<SiteHeader />);
+    renderSiteHeader();
 
     const openSiteNav = screen.getByRole("button", {
       name: "Open site navigation",
