@@ -147,7 +147,7 @@ describe("Pagination (component library)", () => {
   it("should apply list variant classes for the selected appearance", () => {
     render(<Pagination pageCount={3} page={1} appearance="emerald" />);
     const list = document.querySelector('[data-slot="pagination-list"]');
-    expect(list?.className).toMatch(/border-emerald-500/);
+    expect(list?.className).toMatch(/--zui-pagination-list-emerald-border/);
   });
 
   it("should render anchors for page controls when getPageHref is provided", () => {

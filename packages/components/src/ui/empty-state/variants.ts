@@ -1,54 +1,39 @@
 import { cva } from "class-variance-authority";
 
-export const emptyStateVariants = cva(
-  "flex w-full flex-col items-center text-center",
-  {
-    variants: {
-      size: {
-        sm: "gap-2 p-4 text-sm",
-        md: "gap-3 p-6 text-sm",
-        lg: "gap-4 p-8 text-base",
-      },
-      appearance: {
-        default: "text-slate-900 dark:text-slate-50",
-        ghost: "text-slate-700 dark:text-slate-200",
-        card: "rounded-2xl border border-black/10 dark:border-white/10 bg-white/90 dark:bg-white/5 p-8 text-slate-900 dark:text-slate-50 shadow-[0_8px_24px_rgba(15,23,42,0.12)] dark:shadow-[0_18px_48px_rgba(15,23,42,0.35)]",
-      },
-      align: {
-        start: "items-start text-left",
-        center: "items-center text-center",
-        end: "items-end text-right",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-      appearance: "default",
-      align: "center",
-    },
-  },
-);
+import {
+  zuiEmptyStateAlignments,
+  zuiEmptyStateAppearances,
+  zuiEmptyStateBase,
+  zuiEmptyStateDescriptionBase,
+  zuiEmptyStateDescriptionSizes,
+  zuiEmptyStateSizes,
+  zuiEmptyStateTitleBase,
+  zuiEmptyStateTitleSizes,
+} from "../../design-system/empty-state";
 
-export const emptyStateTitleVariants = cva("font-semibold tracking-tight", {
+export const emptyStateVariants = cva(zuiEmptyStateBase, {
   variants: {
-    size: {
-      sm: "text-base",
-      md: "text-lg",
-      lg: "text-xl",
-    },
+    size: zuiEmptyStateSizes,
+    appearance: zuiEmptyStateAppearances,
+    align: zuiEmptyStateAlignments,
+  },
+  defaultVariants: {
+    size: "md",
+    appearance: "default",
+    align: "center",
+  },
+});
+
+export const emptyStateTitleVariants = cva(zuiEmptyStateTitleBase, {
+  variants: {
+    size: zuiEmptyStateTitleSizes,
   },
   defaultVariants: { size: "md" },
 });
 
-export const emptyStateDescriptionVariants = cva(
-  "max-w-md text-slate-500 dark:text-slate-400",
-  {
-    variants: {
-      size: {
-        sm: "text-xs",
-        md: "text-sm",
-        lg: "text-base",
-      },
-    },
-    defaultVariants: { size: "md" },
+export const emptyStateDescriptionVariants = cva(zuiEmptyStateDescriptionBase, {
+  variants: {
+    size: zuiEmptyStateDescriptionSizes,
   },
-);
+  defaultVariants: { size: "md" },
+});

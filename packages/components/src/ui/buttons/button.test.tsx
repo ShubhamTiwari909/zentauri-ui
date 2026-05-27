@@ -111,7 +111,7 @@ describe("Button (component library)", () => {
       expect(
         root.className,
         "Default appearance must include the default surface token classes",
-      ).toMatch(/bg-slate-50/);
+      ).toMatch(/--zui-button-default-bg/);
     });
 
     it("should apply secondary appearance when appearance='secondary'", () => {
@@ -120,7 +120,7 @@ describe("Button (component library)", () => {
       expect(
         root.className,
         "Secondary appearance must switch to the slate surface recipe",
-      ).toMatch(/bg-slate-800/);
+      ).toMatch(/--zui-button-secondary-bg/);
     });
 
     it("should apply destructive appearance when appearance='destructive'", () => {
@@ -129,7 +129,7 @@ describe("Button (component library)", () => {
       expect(
         root.className,
         "Destructive appearance must surface danger styling",
-      ).toMatch(/bg-rose-700/);
+      ).toMatch(/--zui-button-destructive-bg/);
     });
 
     it("should apply outline appearance when appearance='outline'", () => {
@@ -138,7 +138,7 @@ describe("Button (component library)", () => {
       expect(
         root.className,
         "Outline appearance must include border and translucent surface classes",
-      ).toMatch(/border-white\/10/);
+      ).toMatch(/--zui-button-outline-border/);
     });
 
     it("should apply gradient appearance tokens for gradient presets", () => {
@@ -148,6 +148,10 @@ describe("Button (component library)", () => {
         root.className,
         "Gradient-blue appearance must include directional gradient utilities",
       ).toMatch(/bg-linear-to-r/);
+      expect(
+        root.className,
+        "Gradient-blue appearance must expose gradient color variables",
+      ).toMatch(/--zui-button-gradient-blue-from/);
     });
   });
 
@@ -198,11 +202,27 @@ describe("Button (component library)", () => {
       expect(
         root.className,
         "Consumer class names must not replace variant output",
-      ).toMatch(/bg-slate-800/);
+      ).toMatch(/--zui-button-secondary-bg/);
       expect(
         root.className,
         "Consumer class names must be appended for Tailwind overrides",
       ).toMatch(/my-custom-trigger/);
+    });
+
+    it("should allow consumers to override button CSS variables without changing variant props", () => {
+      render(
+        <Button
+          className="[--zui-button-secondary-bg:#123456]"
+          appearance="secondary"
+        >
+          Branded
+        </Button>,
+      );
+      const root = getButtonSlot();
+      expect(
+        root.className,
+        "Appearance API should stay stable while CSS variables remain overrideable",
+      ).toMatch(/--zui-button-secondary-bg:#123456/);
     });
   });
 

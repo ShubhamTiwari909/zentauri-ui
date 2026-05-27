@@ -1,4 +1,5 @@
 import { Section } from "@/components/common/Section";
+import { CssVariableReferenceSection } from "@/components/css-variables/css-variable-reference-section";
 import { getPreviewFaqJsonLd } from "@/lib/preview-seo";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
@@ -25,6 +26,8 @@ export function PreviewSeoDoc({ doc }: PreviewSeoDocProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
+      <CssVariableReferenceSection canonicalPath={doc.canonicalPath} />
 
       <article className="space-y-12 border-t border-white/10 pt-12">
         {doc.sections.map((section, index) => {

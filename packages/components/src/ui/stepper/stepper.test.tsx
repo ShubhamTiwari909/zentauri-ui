@@ -53,8 +53,12 @@ describe("Stepper", () => {
       '[data-slot="stepper-indicator"]',
     );
     expect(indicators).toHaveLength(2);
-    expect(indicators[0]?.className).toContain("border-white/15");
-    expect(indicators[1]?.className).toContain("border-white/15");
+    expect(indicators[0]?.className).toContain(
+      "--zui-stepper-indicator-upcoming-border",
+    );
+    expect(indicators[1]?.className).toContain(
+      "--zui-stepper-indicator-upcoming-border",
+    );
   });
 
   it("should honor appearance prop on each indicator", () => {
@@ -73,8 +77,12 @@ describe("Stepper", () => {
     const indicators = document.querySelectorAll(
       '[data-slot="stepper-indicator"]',
     );
-    expect(indicators[0]?.className).toMatch(/emerald/);
-    expect(indicators[1]?.className).toMatch(/violet/);
+    expect(indicators[0]?.className).toMatch(
+      /--zui-stepper-indicator-complete-border/,
+    );
+    expect(indicators[1]?.className).toMatch(
+      /--zui-stepper-indicator-current-border/,
+    );
   });
 
   it("should render step index as indicator content when children are omitted", () => {

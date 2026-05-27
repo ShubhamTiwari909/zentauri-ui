@@ -65,7 +65,7 @@ export function PaginationExamplesHeadlessDemo() {
           usePagination.goNext
         </button>
       </div>
-      <pre className="mt-3 overflow-x-auto rounded-xl border border-slate-900/10 dark:border-white/10 bg-black/40 p-4 text-xs text-slate-800 dark:text-slate-300">
+      <pre className="mt-3 overflow-x-auto rounded-xl border border-slate-900/10 dark:border-white/10 bg-black/90 p-4 text-xs text-slate-100 dark:text-slate-300">
         {JSON.stringify(headless.items, null, 2)}
       </pre>
     </>

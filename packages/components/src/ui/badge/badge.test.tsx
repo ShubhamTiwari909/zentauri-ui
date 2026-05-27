@@ -20,7 +20,7 @@ describe("Badge", () => {
   it("should apply secondary appearance", () => {
     render(<Badge appearance="secondary">S</Badge>);
     const root = document.querySelector('[data-slot="badge"]') as HTMLElement;
-    expect(root.className).toMatch(/bg-slate-800/);
+    expect(root.className).toMatch(/--zui-badge-secondary-bg/);
   });
 
   it("should call onClose when closable", async () => {

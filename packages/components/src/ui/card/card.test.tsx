@@ -42,7 +42,7 @@ describe("Card", () => {
 
   it("should apply default appearance classes", () => {
     render(<Card>Inner</Card>);
-    expect(getCardRoot().className).toMatch(/border-white\/10/);
+    expect(getCardRoot().className).toMatch(/--zui-card-default-border/);
   });
 
   it("should apply glass appearance when requested", () => {

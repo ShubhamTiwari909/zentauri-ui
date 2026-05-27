@@ -20,13 +20,15 @@
  *        ├── cli/index.mjs      ← this file (entry when run via bin)
  *        ├── cli/registry.json  ← list of installable component folder names
  *        └── src/ui/<name>/     ← source copied by `add`
+ *        └── src/design-system/ ← shared tokens/variant maps copied by `add`
  *        └── src/charts/<type>/ ← chart source copied by `add charts/area` etc.
  *        └── src/hooks/<name>/  ← hooks pulled in as dependencies
  *        └── src/lib/utils.ts   ← template for `cn()` etc. if missing in app
  * ```
  *
  * - **packageRoot**: directory of the published `components` package (parent of
- *   `cli/`). Used to read `registry.json`, `src/ui`, `src/charts`, `src/hooks`, `src/lib`.
+ *   `cli/`). Used to read `registry.json`, `src/ui`, `src/design-system`,
+ *   `src/charts`, `src/hooks`, `src/lib`.
  * - **configDir**: directory containing `components.json` (may differ from
  *   `--cwd` when the config is found by walking up from `cwd`).
  *
@@ -529,6 +531,48 @@ async function copyHookFolder(hookName, config, configDir, packageRoot) {
 }
 
 /**
+ * Copies shared component design tokens/variant maps beside the consumer's UI
+ * folder so vendored components can keep relative `../../design-system/*`
+ * imports without adding a new public alias to `components.json`.
+ */
+async function copyDesignSystemFolder(config, configDir, packageRoot) {
+  const srcRoot = join(packageRoot, "src", "design-system");
+  if (!existsSync(srcRoot)) {
+    return;
+  }
+  if (!config?.resolvedPaths?.ui) {
+    return;
+  }
+  const destRoot = join(
+    configDir,
+    dirname(config.resolvedPaths.ui),
+    "design-system",
+  );
+  const files = await walkFiles(srcRoot);
+  for (const absSrc of files) {
+    const rel = relative(srcRoot, absSrc);
+    if (isTestFile(rel)) {
+      continue;
+    }
+    if (existsSync(absDest)) {
+      continue;
+    }
+    await mkdir(dirname(absDest), { recursive: true });
+    if (/\.(tsx?|jsx?)$/.test(absSrc)) {
+      const raw = await readFile(absSrc, "utf8");
+      const { code } = rewriteImports(raw, {
+        utilsAlias: config.aliases.utils,
+        hooksAlias: config.aliases.hooks,
+        uiAlias: config.aliases.ui,
+      });
+      await writeFile(absDest, code, "utf8");
+    } else {
+      await copyFile(absSrc, absDest);
+    }
+  }
+}
+
+/**
  * If the target utils file from config does not exist, copies the package default
  * `src/lib/utils.ts` (with import paths rewritten) and logs creation.
  *
@@ -641,6 +685,7 @@ async function cmdAdd(names, cwd) {
   const resolvedNames = payload.map((n) => resolveComponentName(n, registry));
 
   await ensureUtilsFile(config, configDir, packageRoot);
+  await copyDesignSystemFolder(config, configDir, packageRoot);
 
   const allHooks = new Set();
   for (const name of resolvedNames) {

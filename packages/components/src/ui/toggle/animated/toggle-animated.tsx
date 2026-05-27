@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useCallback, useState } from "react";
+import { useCallback, useId, useState } from "react";
 
 import { cn } from "../../../lib/utils";
 
 import { toggleThumbAnimationPresets } from "./animations";
 import type { ToggleAnimatedProps } from "./types";
 import { toggleThumbVariants, toggleTrackVariants } from "../variants";
+import { hasToggleLabelChildren } from "../toggle-base";
 
 export function ToggleAnimated(props: ToggleAnimatedProps) {
   const {
@@ -25,6 +26,7 @@ export function ToggleAnimated(props: ToggleAnimatedProps) {
     children,
     ...rest
   } = props;
+  const toggleLabelId = useId();
   const isControlled = checked !== undefined;
   const [uncontrolled, setUncontrolled] = useState(defaultChecked);
   const resolved = isControlled ? Boolean(checked) : uncontrolled;
@@ -40,7 +42,15 @@ export function ToggleAnimated(props: ToggleAnimatedProps) {
     [isControlled, onCheckedChange],
   );
 
-  const thumbShiftPx = size === "sm" ? 14 : size === "lg" ? 24 : 18;
+  const thumbShiftPx = size === "sm" ? 16 : size === "lg" ? 24 : 20;
+  const labeledByChildren = hasToggleLabelChildren(children);
+  const labeling = labeledByChildren
+    ? {
+        "aria-labelledby": toggleLabelId,
+      }
+    : {
+        "aria-label": ariaLabel ?? "Toggle",
+      };
 
   return (
     <button
@@ -49,9 +59,9 @@ export function ToggleAnimated(props: ToggleAnimatedProps) {
       role="switch"
       data-slot="toggle"
       aria-checked={resolved}
-      aria-label={ariaLabel}
       data-state={resolved ? "checked" : "unchecked"}
       disabled={disabled}
+      {...labeling}
       className={cn(toggleTrackVariants({ size, appearance }), className)}
       onClick={() => {
         if (!disabled) {
@@ -60,7 +70,7 @@ export function ToggleAnimated(props: ToggleAnimatedProps) {
       }}
       {...rest}
     >
-      <span className="sr-only">{children}</span>
+      <span className="sr-only" id={labeledByChildren ? toggleLabelId : undefined}>{children}</span>
       <motion.span
         className={cn(
           toggleThumbVariants({ size, thumbColor }),

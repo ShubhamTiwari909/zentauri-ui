@@ -19,8 +19,8 @@ const TEST_TOTALS = [
   },
   {
     label: "Assertions",
-    value: "336",
-    detail: "336 passed",
+    value: "337",
+    detail: "337 passed",
     icon: FiCheckCircle,
   },
   {
@@ -38,7 +38,7 @@ const TEST_TOTALS = [
 ] as const;
 
 const TEST_AREAS = [
-  { area: "Components and UI utilities", files: "26", tests: "242" },
+  { area: "Components and UI utilities", files: "26", tests: "243" },
   { area: "React hooks", files: "26", tests: "85" },
   { area: "CLI and import rewriting", files: "2", tests: "9" },
 ] as const;

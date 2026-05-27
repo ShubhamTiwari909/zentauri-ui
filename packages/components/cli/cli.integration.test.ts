@@ -44,6 +44,14 @@ describe("zentauri-ui CLI", () => {
       expect(
         existsSync(join(dir, "src/components/ui/buttons/button.tsx")),
       ).toBe(true);
+      expect(
+        existsSync(join(dir, "src/components/design-system/button.ts")),
+      ).toBe(true);
+      const variants = readFileSync(
+        join(dir, "src/components/ui/buttons/variants.ts"),
+        "utf8",
+      );
+      expect(variants).toContain("../../design-system");
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

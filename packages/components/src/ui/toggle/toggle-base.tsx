@@ -7,7 +7,7 @@ import { cn } from "../../lib/utils";
 import type { ToggleProps } from "./types";
 import { toggleThumbVariants, toggleTrackVariants } from "./variants";
 
-function hasToggleLabelChildren(node: ReactNode): boolean {
+export function hasToggleLabelChildren(node: ReactNode): boolean {
   if (node === undefined || node === null) {
     return false;
   }
@@ -56,7 +56,7 @@ export function ToggleBase(props: ToggleProps) {
     [isControlled, onCheckedChange],
   );
 
-  const thumbShiftPx = size === "sm" ? 14 : size === "lg" ? 24 : 19;
+  const thumbShiftPx = size === "sm" ? 16 : size === "lg" ? 24 : 20;
   const labeledByChildren = hasToggleLabelChildren(children);
   const labeling = labeledByChildren
     ? {
@@ -84,11 +84,7 @@ export function ToggleBase(props: ToggleProps) {
       }}
       {...rest}
     >
-      {labeledByChildren ? (
-        <span id={toggleLabelId} className="sr-only">
-          {children}
-        </span>
-      ) : null}
+      <span className="sr-only" id={labeledByChildren ? toggleLabelId : undefined}>{children}</span>
       <span
         className={cn(
           toggleThumbVariants({ size, thumbColor }),
