@@ -27,7 +27,7 @@ describe("Typography primitives", () => {
       </Text>,
     );
     const node = container.querySelector('[data-testid="muted-text"]');
-    expect(node?.className).toMatch(/text-slate-400/);
+    expect(node?.className).toMatch(/--zui-typography-muted-fg/);
   });
 
   it("should render unordered List with list marker utilities", () => {

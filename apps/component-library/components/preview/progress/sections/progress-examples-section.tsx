@@ -16,7 +16,7 @@ export function ProgressExamplesSection() {
         <PreviewCodeShowcase
           code={`${variantLeadComment(`appearance · emerald, striped · true, animated · true, value · 65`)}<Progress value={65} appearance="emerald" striped animated />`}
         >
-          <Progress value={65} appearance="emerald" striped animated />
+          <Progress value={65} appearance="emerald" striped={true} animated />
         </PreviewCodeShowcase>
       </div>
     </Section>

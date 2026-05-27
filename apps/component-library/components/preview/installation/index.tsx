@@ -58,17 +58,34 @@ const USAGE_SNIPPET = `<div className="rounded-3xl border border-white/10 bg-whi
 </div>`;
 
 const OVERRIDE_THEME_COLORS_SNIPPET = `@theme {
-  --color-slate-50: oklch(0.984 0.003 247.858);
-  --color-slate-100: oklch(0.968 0.007 247.896);
-  --color-slate-200: oklch(0.929 0.013 255.508);
-  --color-slate-300: oklch(0.869 0.022 252.894);
-  --color-slate-400: oklch(0.704 0.04 256.788);
-  --color-slate-500: oklch(0.554 0.046 257.417);
-  --color-slate-600: oklch(0.446 0.043 257.281);
-  --color-slate-700: oklch(0.372 0.044 257.287);
-  --color-slate-800: oklch(0.279 0.041 260.031);
-  --color-slate-900: oklch(0.208 0.042 265.755);
-  --color-slate-950: oklch(0.129 0.042 264.695);
+  --zui-typography-default-fg: oklch(20.8% 0.042 265.755);
+  --zui-typography-default-border: #00000026;
+  --zui-typography-muted-fg: oklch(55.4% 0.046 257.417);
+  --zui-typography-muted-border: #00000026;
+  --zui-accordion-default-divider: #0000001a;
+  --zui-accordion-default-border: #0000001a;
+  --zui-accordion-outline-divider: #0000001a;
+  --zui-accordion-outline-border: #00000026;
+}`;
+
+const COMPONENT_CSS_VARIABLE_OVERRIDES_SNIPPET = `:root {
+  --zui-button-secondary-bg: #eef2ff;
+  --zui-button-secondary-fg: #312e81;
+  --zui-input-bg: #ffffff;
+  --zui-input-default-border: #c7d2fe;
+}
+
+/* Dark theme variables follow the same names with -dark appended. */
+.dark {
+  --zui-button-secondary-bg-dark: #312e81;
+  --zui-button-secondary-fg-dark: #eef2ff;
+  /* ...same variables with -dark at the end */
+}
+
+/* Scope overrides to one product surface when needed. */
+.billing-dashboard {
+  --zui-button-default-bg: #0f766e;
+  --zui-button-default-bg-hover: #115e59;
 }`;
 
 const CLI_NPX_PIN_SNIPPET = `npx --yes --package=@zentauri-ui/zentauri-components zentauri-components init
@@ -436,6 +453,44 @@ export default function InstallationPreviewPage({
 
         <Section>
           <p className="text-xs font-medium uppercase tracking-[0.2em] dark:text-slate-50 text-slate-900">
+            Optional
+          </p>
+          <h2 className="mt-2 text-xl font-semibold dark:text-white text-slate-900">
+            Override component CSS variables
+          </h2>
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
+            Components expose zui-scoped CSS variables that you can override in{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
+              :root
+            </code>
+            ,{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
+              .dark
+            </code>
+            , or a wrapper element. Each component preview page includes the
+            variables available for that component.
+          </p>
+          <p className="mt-3 text-sm leading-6 dark:text-slate-400 text-slate-900">
+            Naming follows{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-cyan-200 text-slate-900">
+              --zui-&lt;component&gt;-&lt;slot?&gt;-&lt;variant?&gt;-&lt;property&gt;-&lt;state?&gt;-dark?
+            </code>
+            . Dark theme values use the same variable name with{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-cyan-200 text-slate-900">
+              -dark
+            </code>{" "}
+            appended.
+          </p>
+          <div className="mt-5 overflow-hidden rounded-xl border border-white/10">
+            <CodeHighlight
+              codeString={COMPONENT_CSS_VARIABLE_OVERRIDES_SNIPPET}
+              language="css"
+            />
+          </div>
+        </Section>
+
+        <Section>
+          <p className="text-xs font-medium uppercase tracking-[0.2em] dark:text-slate-50 text-slate-900">
             Step 4
           </p>
           <h2 className="mt-2 text-xl font-semibold dark:text-white text-slate-900">
@@ -516,11 +571,15 @@ export default function InstallationPreviewPage({
           <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
             <CodeHighlight codeString={CHART_IMPORT_SNIPPET} language="tsx" />
           </div>
-          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">Usage</h3>
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
+            Usage
+          </h3>
           <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
             <CodeHighlight codeString={USAGE_SNIPPET} language="tsx" />
           </div>
-          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">Preview</h3>
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
+            Preview
+          </h3>
           <div className="mt-3 rounded-3xl border border-white/10 bg-white/5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
             <Modal>
               <ModalTrigger

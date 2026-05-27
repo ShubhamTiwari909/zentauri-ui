@@ -124,7 +124,7 @@ describe("Alert", () => {
         </Alert>,
       );
       const root = document.querySelector('[data-slot="alert"]') as HTMLElement;
-      expect(root.className).toMatch(/border-emerald-500/);
+      expect(root.className).toMatch(/--zui-alert-success-border/);
     });
   });
 

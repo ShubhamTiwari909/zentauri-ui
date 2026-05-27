@@ -27,11 +27,11 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 | Metric      | Result           |
 | ----------- | ---------------- |
 | Test files  | 54 passed (54)   |
-| Tests       | 336 passed (336) |
+| Tests       | 337 passed (337) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 26         | 242   |
+| Components and UI utilities | 26         | 243   |
 | React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 
@@ -44,7 +44,7 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 | `src/ui/modal/modal.test.tsx`                                           |     9 |
 | `src/ui/drawer/drawer.test.tsx`                                         |     7 |
 | `cli/cli.integration.test.ts`                                           |     4 |
-| `src/ui/buttons/button.test.tsx`                                        |    40 |
+| `src/ui/buttons/button.test.tsx`                                        |    41 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
 | `src/ui/card/card.test.tsx`                                             |     7 |
 | `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |

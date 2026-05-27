@@ -81,7 +81,7 @@ describe("Input (component library)", () => {
       expect(
         root.className,
         "Default appearance must include neutral border utilities",
-      ).toMatch(/border-white\/10/);
+      ).toMatch(/--zui-input-default-border/);
     });
 
     it("should apply error appearance when appearance='error'", () => {
@@ -90,7 +90,7 @@ describe("Input (component library)", () => {
       expect(
         root.className,
         "Error appearance must surface danger border tokens",
-      ).toMatch(/border-rose-500/);
+      ).toMatch(/--zui-input-error-border/);
     });
 
     it("should apply success appearance when appearance='success'", () => {
@@ -99,7 +99,7 @@ describe("Input (component library)", () => {
       expect(
         root.className,
         "Success appearance must surface positive border tokens",
-      ).toMatch(/border-emerald-500/);
+      ).toMatch(/--zui-input-success-border/);
     });
 
     const additionalAppearances: {
@@ -108,13 +108,13 @@ describe("Input (component library)", () => {
     }[] = [
       {
         appearance: "warning",
-        borderPattern: /border-yellow-500/,
+        borderPattern: /--zui-input-warning-border/,
       },
-      { appearance: "info", borderPattern: /border-blue-500/ },
-      { appearance: "violet", borderPattern: /border-violet-500/ },
-      { appearance: "amber", borderPattern: /border-amber-500/ },
-      { appearance: "pink", borderPattern: /border-pink-500/ },
-      { appearance: "indigo", borderPattern: /border-indigo-500/ },
+      { appearance: "info", borderPattern: /--zui-input-info-border/ },
+      { appearance: "violet", borderPattern: /--zui-input-violet-border/ },
+      { appearance: "amber", borderPattern: /--zui-input-amber-border/ },
+      { appearance: "pink", borderPattern: /--zui-input-pink-border/ },
+      { appearance: "indigo", borderPattern: /--zui-input-indigo-border/ },
     ];
 
     it.each(additionalAppearances)(
@@ -163,7 +163,7 @@ describe("Input (component library)", () => {
         />,
       );
       const root = getInputSlot();
-      expect(root.className).toMatch(/border-rose-500/);
+      expect(root.className).toMatch(/--zui-input-error-border/);
       expect(root.className).not.toMatch(/focus-visible:ring-2/);
       expect(root.className).not.toMatch(/focus-visible:ring-offset-2/);
     });
@@ -204,7 +204,7 @@ describe("Input (component library)", () => {
       expect(
         root.className,
         "Consumer class names must not replace variant output",
-      ).toMatch(/border-white\/10/);
+      ).toMatch(/--zui-input-default-border/);
       expect(
         root.className,
         "Consumer class names must be merged for Tailwind overrides",

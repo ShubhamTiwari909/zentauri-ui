@@ -6,9 +6,6 @@ import type {
 
 export { PREVIEW_SECTION_CLASS as TOOLTIP_CODE_EXAMPLES_SECTION_CLASS } from "@/components/common/Section";
 
-export const TOOLTIP_TRIGGER_CLASS =
-  "rounded-lg border border-slate-900/15 dark:border-white/15 bg-white dark:bg-white/5 px-3 py-1.5 text-sm text-slate-800 dark:text-slate-200 outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50";
-
 export const CONTENT_VARIANTS = [
   "default",
   "outline",

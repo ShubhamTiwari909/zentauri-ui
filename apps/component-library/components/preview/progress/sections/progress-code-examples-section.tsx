@@ -51,11 +51,12 @@ export function ProgressCodeExamplesSection() {
           key="striped"
           code={progressSnippet({
             ...defaults,
-            appearance: "default",
+            appearance: "sky",
             striped: true,
+            animated:true
           })}
         >
-          <ProgressDemo {...defaults} appearance="default" striped />
+          <ProgressDemo {...defaults} appearance="sky" striped animated />
         </PreviewCodeShowcase>
         <PreviewCodeShowcase
           key="animated"

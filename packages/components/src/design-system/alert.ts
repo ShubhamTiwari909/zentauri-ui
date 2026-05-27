@@ -1,0 +1,64 @@
+export const zuiAlertBase =
+  "relative flex w-full gap-3 border text-sm ring-offset-[var(--zui-alert-ring-offset,oklch(98.4%_0.003_247.858))] dark:ring-offset-[var(--zui-alert-ring-offset-dark,oklch(12.9%_0.042_264.695))] transition-colors";
+
+export const zuiAlertAppearances = {
+  default:
+    "border-[color:var(--zui-alert-default-border,#0000001a)] dark:border-[color:var(--zui-alert-default-border-dark,#ffffff1a)] bg-[var(--zui-alert-default-bg,#0000000d)] dark:bg-[var(--zui-alert-default-bg-dark,#ffffff0d)] text-[color:var(--zui-alert-default-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-default-fg-dark,oklch(98.4%_0.003_247.858))]",
+  success:
+    "border-[color:var(--zui-alert-success-border,oklch(69.6%_0.17_162.48_/_0.4))] bg-[var(--zui-alert-success-bg,oklch(69.6%_0.17_162.48_/_0.1))] text-[color:var(--zui-alert-success-fg,oklch(26.2%_0.051_172.552))] dark:text-[color:var(--zui-alert-success-fg-dark,oklch(97.9%_0.021_166.113))]",
+  warning:
+    "border-[color:var(--zui-alert-warning-border,oklch(76.9%_0.188_70.08_/_0.4))] bg-[var(--zui-alert-warning-bg,oklch(76.9%_0.188_70.08_/_0.1))] text-[color:var(--zui-alert-warning-fg,oklch(27.9%_0.077_45.635))] dark:text-[color:var(--zui-alert-warning-fg-dark,oklch(98.7%_0.022_95.277))]",
+  error:
+    "border-[color:var(--zui-alert-error-border,oklch(64.5%_0.246_16.439_/_0.5))] bg-[var(--zui-alert-error-bg,oklch(64.5%_0.246_16.439_/_0.1))] text-[color:var(--zui-alert-error-fg,oklch(27.1%_0.105_12.094))] dark:text-[color:var(--zui-alert-error-fg-dark,oklch(96.9%_0.015_12.422))]",
+  info: "border-[color:var(--zui-alert-info-border,oklch(68.5%_0.169_237.323_/_0.4))] bg-[var(--zui-alert-info-bg,oklch(68.5%_0.169_237.323_/_0.1))] text-[color:var(--zui-alert-info-fg,oklch(29.3%_0.066_243.157))] dark:text-[color:var(--zui-alert-info-fg-dark,oklch(97.7%_0.013_236.62))]",
+  ghost:
+    "border-[color:var(--zui-alert-ghost-border,transparent)] bg-[var(--zui-alert-ghost-bg,transparent)] text-[color:var(--zui-alert-ghost-fg,oklch(37.2%_0.044_257.287))] dark:text-[color:var(--zui-alert-ghost-fg-dark,oklch(92.9%_0.013_255.508))]",
+  purple:
+    "border-[color:var(--zui-alert-purple-border,oklch(43.8%_0.218_303.724))] dark:border-[color:var(--zui-alert-purple-border-dark,oklch(55.8%_0.288_302.321))] bg-[var(--zui-alert-purple-bg,oklch(97.7%_0.014_308.299))] dark:bg-[var(--zui-alert-purple-bg-dark,oklch(29.1%_0.149_302.717_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-purple-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-purple-fg-dark,oklch(98.4%_0.003_247.858))]",
+  pink: "border-[color:var(--zui-alert-pink-border,oklch(45.9%_0.187_3.815))] dark:border-[color:var(--zui-alert-pink-border-dark,oklch(59.2%_0.249_0.584))] bg-[var(--zui-alert-pink-bg,oklch(97.1%_0.014_343.198))] dark:bg-[var(--zui-alert-pink-bg-dark,oklch(28.4%_0.109_3.907_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-pink-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-pink-fg-dark,oklch(98.4%_0.003_247.858))]",
+  orange:
+    "border-[color:var(--zui-alert-orange-border,oklch(47%_0.157_37.304))] dark:border-[color:var(--zui-alert-orange-border-dark,oklch(64.6%_0.222_41.116))] bg-[var(--zui-alert-orange-bg,oklch(98%_0.016_73.684))] dark:bg-[var(--zui-alert-orange-bg-dark,oklch(26.6%_0.079_36.259_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-orange-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-orange-fg-dark,oklch(98.4%_0.003_247.858))]",
+  yellow:
+    "border-[color:var(--zui-alert-yellow-border,oklch(47.6%_0.114_61.907))] dark:border-[color:var(--zui-alert-yellow-border-dark,oklch(68.1%_0.162_75.834))] bg-[var(--zui-alert-yellow-bg,oklch(98.7%_0.026_102.212))] dark:bg-[var(--zui-alert-yellow-bg-dark,oklch(28.6%_0.066_53.813_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-yellow-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-yellow-fg-dark,oklch(98.4%_0.003_247.858))]",
+  teal: "border-[color:var(--zui-alert-teal-border,oklch(43.7%_0.078_188.216))] dark:border-[color:var(--zui-alert-teal-border-dark,oklch(60%_0.118_184.704))] bg-[var(--zui-alert-teal-bg,oklch(98.4%_0.014_180.72))] dark:bg-[var(--zui-alert-teal-bg-dark,oklch(27.7%_0.046_192.524_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-teal-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-teal-fg-dark,oklch(98.4%_0.003_247.858))]",
+  indigo:
+    "border-[color:var(--zui-alert-indigo-border,oklch(39.8%_0.195_277.366))] dark:border-[color:var(--zui-alert-indigo-border-dark,oklch(51.1%_0.262_276.966))] bg-[var(--zui-alert-indigo-bg,oklch(96.2%_0.018_272.314))] dark:bg-[var(--zui-alert-indigo-bg-dark,oklch(25.7%_0.09_281.288_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-indigo-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-indigo-fg-dark,oklch(98.4%_0.003_247.858))]",
+  gray: "border-[color:var(--zui-alert-gray-border,oklch(27.8%_0.033_256.848))] dark:border-[color:var(--zui-alert-gray-border-dark,oklch(44.6%_0.03_256.802))] bg-[var(--zui-alert-gray-bg,oklch(98.5%_0.002_247.839))] dark:bg-[var(--zui-alert-gray-bg-dark,oklch(13%_0.028_261.692_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-gray-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-gray-fg-dark,oklch(98.4%_0.003_247.858))]",
+  violet:
+    "border-[color:var(--zui-alert-violet-border,oklch(43.2%_0.232_292.759))] dark:border-[color:var(--zui-alert-violet-border-dark,oklch(54.1%_0.281_293.009))] bg-[var(--zui-alert-violet-bg,oklch(96.9%_0.016_293.756))] dark:bg-[var(--zui-alert-violet-bg-dark,oklch(28.3%_0.141_291.089_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-violet-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-violet-fg-dark,oklch(98.4%_0.003_247.858))]",
+  "gradient-blue":
+    "border-[color:var(--zui-alert-gradient-blue-border,oklch(42.4%_0.199_265.638))] dark:border-[color:var(--zui-alert-gradient-blue-border-dark,oklch(54.6%_0.245_262.881))] bg-linear-to-r from-[var(--zui-alert-gradient-blue-from,oklch(97%_0.014_254.604))] dark:from-[var(--zui-alert-gradient-blue-from-dark,oklch(28.2%_0.091_267.935_/_0.7))] to-[var(--zui-alert-gradient-blue-to,oklch(97.7%_0.014_308.299))] dark:to-[var(--zui-alert-gradient-blue-to-dark,oklch(29.1%_0.149_302.717_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-gradient-blue-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-gradient-blue-fg-dark,oklch(98.4%_0.003_247.858))]",
+  "gradient-green":
+    "border-[color:var(--zui-alert-gradient-green-border,oklch(44.8%_0.119_151.328))] dark:border-[color:var(--zui-alert-gradient-green-border-dark,oklch(62.7%_0.194_149.214))] bg-linear-to-r from-[var(--zui-alert-gradient-green-from,oklch(98.2%_0.018_155.826))] dark:from-[var(--zui-alert-gradient-green-from-dark,oklch(26.6%_0.065_152.934_/_0.7))] to-[var(--zui-alert-gradient-green-to,oklch(98.6%_0.031_120.757))] dark:to-[var(--zui-alert-gradient-green-to-dark,oklch(27.4%_0.072_132.109_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-gradient-green-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-gradient-green-fg-dark,oklch(98.4%_0.003_247.858))]",
+  "gradient-red":
+    "border-[color:var(--zui-alert-gradient-red-border,oklch(44.4%_0.177_26.899))] dark:border-[color:var(--zui-alert-gradient-red-border-dark,oklch(57.7%_0.245_27.325))] bg-linear-to-r from-[var(--zui-alert-gradient-red-from,oklch(97.1%_0.013_17.38))] dark:from-[var(--zui-alert-gradient-red-from-dark,oklch(25.8%_0.092_26.042_/_0.7))] to-[var(--zui-alert-gradient-red-to,oklch(97.1%_0.014_343.198))] dark:to-[var(--zui-alert-gradient-red-to-dark,oklch(28.4%_0.109_3.907_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-gradient-red-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-gradient-red-fg-dark,oklch(98.4%_0.003_247.858))]",
+  "gradient-yellow":
+    "border-[color:var(--zui-alert-gradient-yellow-border,oklch(47.6%_0.114_61.907))] dark:border-[color:var(--zui-alert-gradient-yellow-border-dark,oklch(68.1%_0.162_75.834))] bg-linear-to-r from-[var(--zui-alert-gradient-yellow-from,oklch(98.7%_0.026_102.212))] dark:from-[var(--zui-alert-gradient-yellow-from-dark,oklch(28.6%_0.066_53.813_/_0.7))] to-[var(--zui-alert-gradient-yellow-to,oklch(98%_0.016_73.684))] dark:to-[var(--zui-alert-gradient-yellow-to-dark,oklch(26.6%_0.079_36.259_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-gradient-yellow-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-gradient-yellow-fg-dark,oklch(98.4%_0.003_247.858))]",
+  "gradient-purple":
+    "border-[color:var(--zui-alert-gradient-purple-border,oklch(43.8%_0.218_303.724))] dark:border-[color:var(--zui-alert-gradient-purple-border-dark,oklch(55.8%_0.288_302.321))] bg-linear-to-r from-[var(--zui-alert-gradient-purple-from,oklch(97.7%_0.014_308.299))] dark:from-[var(--zui-alert-gradient-purple-from-dark,oklch(29.1%_0.149_302.717_/_0.7))] to-[var(--zui-alert-gradient-purple-to,oklch(97.1%_0.014_343.198))] dark:to-[var(--zui-alert-gradient-purple-to-dark,oklch(28.4%_0.109_3.907_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-gradient-purple-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-gradient-purple-fg-dark,oklch(98.4%_0.003_247.858))]",
+  "gradient-teal":
+    "border-[color:var(--zui-alert-gradient-teal-border,oklch(43.7%_0.078_188.216))] dark:border-[color:var(--zui-alert-gradient-teal-border-dark,oklch(60%_0.118_184.704))] bg-linear-to-r from-[var(--zui-alert-gradient-teal-from,oklch(98.4%_0.014_180.72))] dark:from-[var(--zui-alert-gradient-teal-from-dark,oklch(27.7%_0.046_192.524_/_0.7))] to-[var(--zui-alert-gradient-teal-to,oklch(98.4%_0.019_200.873))] dark:to-[var(--zui-alert-gradient-teal-to-dark,oklch(30.2%_0.056_229.695_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-gradient-teal-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-gradient-teal-fg-dark,oklch(98.4%_0.003_247.858))]",
+  "gradient-indigo":
+    "border-[color:var(--zui-alert-gradient-indigo-border,oklch(39.8%_0.195_277.366))] dark:border-[color:var(--zui-alert-gradient-indigo-border-dark,oklch(51.1%_0.262_276.966))] bg-linear-to-r from-[var(--zui-alert-gradient-indigo-from,oklch(96.2%_0.018_272.314))] dark:from-[var(--zui-alert-gradient-indigo-from-dark,oklch(25.7%_0.09_281.288_/_0.7))] to-[var(--zui-alert-gradient-indigo-to,oklch(97.7%_0.014_308.299))] dark:to-[var(--zui-alert-gradient-indigo-to-dark,oklch(29.1%_0.149_302.717_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-gradient-indigo-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-gradient-indigo-fg-dark,oklch(98.4%_0.003_247.858))]",
+  "gradient-pink":
+    "border-[color:var(--zui-alert-gradient-pink-border,oklch(45.9%_0.187_3.815))] dark:border-[color:var(--zui-alert-gradient-pink-border-dark,oklch(59.2%_0.249_0.584))] bg-linear-to-r from-[var(--zui-alert-gradient-pink-from,oklch(97.1%_0.014_343.198))] dark:from-[var(--zui-alert-gradient-pink-from-dark,oklch(28.4%_0.109_3.907_/_0.7))] to-[var(--zui-alert-gradient-pink-to,oklch(96.9%_0.015_12.422))] dark:to-[var(--zui-alert-gradient-pink-to-dark,oklch(27.1%_0.105_12.094_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-gradient-pink-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-gradient-pink-fg-dark,oklch(98.4%_0.003_247.858))]",
+  "gradient-orange":
+    "border-[color:var(--zui-alert-gradient-orange-border,oklch(47%_0.157_37.304))] dark:border-[color:var(--zui-alert-gradient-orange-border-dark,oklch(64.6%_0.222_41.116))] bg-linear-to-r from-[var(--zui-alert-gradient-orange-from,oklch(98%_0.016_73.684))] dark:from-[var(--zui-alert-gradient-orange-from-dark,oklch(26.6%_0.079_36.259_/_0.7))] to-[var(--zui-alert-gradient-orange-to,oklch(97.1%_0.013_17.38))] dark:to-[var(--zui-alert-gradient-orange-to-dark,oklch(25.8%_0.092_26.042_/_0.7))] backdrop-blur-xl text-[color:var(--zui-alert-gradient-orange-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-alert-gradient-orange-fg-dark,oklch(98.4%_0.003_247.858))]",
+} as const;
+
+export const zuiAlertSizes = {
+  sm: "rounded-lg p-3",
+  md: "rounded-xl p-4",
+  lg: "rounded-2xl p-5 text-base",
+} as const;
+
+export const zuiAlertTitleBase = "font-semibold leading-tight";
+
+export const zuiAlertTextSizes = {
+  sm: "text-xs md:text-sm",
+  md: "text-xs md:text-sm",
+  lg: "text-xs md:text-sm",
+} as const;
+
+export const zuiAlertDescriptionBase =
+  "text-[color:var(--zui-alert-description-fg,oklch(44.6%_0.043_257.281))] dark:text-[color:var(--zui-alert-description-fg-dark,oklch(86.9%_0.022_252.894))]";

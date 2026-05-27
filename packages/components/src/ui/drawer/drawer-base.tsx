@@ -148,7 +148,7 @@ export function DrawerContent({
 
   return createPortal(
     open ? (
-      <div className="fixed inset-0 z-50" data-slot="drawer-portal">
+      <div className="fixed inset-0 z-101" data-slot="drawer-portal">
         <div
           role="presentation"
           data-slot="drawer-overlay"

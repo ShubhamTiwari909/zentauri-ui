@@ -16,11 +16,11 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | Metric      | Result           |
 | ----------- | ---------------- |
 | Test files  | 54 passed (54)   |
-| Tests       | 336 passed (336) |
+| Tests       | 337 passed (337) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 26         | 242   |
+| Components and UI utilities | 26         | 243   |
 | React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 
@@ -33,7 +33,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/ui/modal/modal.test.tsx`                                           |     9 |
 | `src/ui/drawer/drawer.test.tsx`                                         |     7 |
 | `cli/cli.integration.test.ts`                                           |     4 |
-| `src/ui/buttons/button.test.tsx`                                        |    40 |
+| `src/ui/buttons/button.test.tsx`                                        |    41 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
 | `src/ui/card/card.test.tsx`                                             |     7 |
 | `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
@@ -442,6 +442,36 @@ The package ships light-first styles with `dark:` overrides in the same class st
   <Button appearance="outline">Theme-aware action</Button>
 </main>
 ```
+
+### Optional — Override component CSS variables
+
+Components expose **zui-scoped** CSS variables that you can override in `:root`, `.dark`, or a wrapper element. Each component preview in the [component library](https://zentauri-ui.vercel.app/) lists the variables available for that component.
+
+**Naming:** variables follow `--zui-<component>-<slot?>-<variant?>-<property>-<state?>`. Dark theme values use the **same variable name** with `-dark` appended (for example `--zui-button-secondary-bg-dark` under `.dark`).
+
+```css
+:root {
+  --zui-button-secondary-bg: #eef2ff;
+  --zui-button-secondary-fg: #312e81;
+  --zui-input-bg: #ffffff;
+  --zui-input-default-border: #c7d2fe;
+}
+
+/* Dark theme variables follow the same names with -dark appended. */
+.dark {
+  --zui-button-secondary-bg-dark: #312e81;
+  --zui-button-secondary-fg-dark: #eef2ff;
+  /* ...same variables with -dark at the end */
+}
+
+/* Scope overrides to one product surface when needed. */
+.billing-dashboard {
+  --zui-button-default-bg: #0f766e;
+  --zui-button-default-bg-hover: #115e59;
+}
+```
+
+Place these rules in your global stylesheet (for example `globals.css`) after Tailwind’s `@import` so overrides apply before components render.
 
 ### Step 4 — Import and use components and hooks
 

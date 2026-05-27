@@ -6,7 +6,6 @@ import {
 import { TooltipContentAnimated } from "@zentauri-ui/zentauri-components/ui/tooltip/animated";
 import { cn } from "@/lib/utils";
 
-import { TOOLTIP_TRIGGER_CLASS } from "./tooltip-code-examples.data";
 import type {
   ContentAnimation,
   ContentSize,
@@ -24,7 +23,7 @@ export function ContentVariantSizeDemo({
 }) {
   return (
     <Tooltip>
-      <TooltipTrigger className={TOOLTIP_TRIGGER_CLASS}>
+      <TooltipTrigger className="text-slate-900 dark:text-white">
         Hover · Variant: {variant} · Size: {size}
       </TooltipTrigger>
       <TooltipContent variant={variant} size={size}>
@@ -53,7 +52,7 @@ export function PositionDemo({ position }: { position: TooltipPlacement }) {
       >
         <p className="mb-5 text-xs md:text-sm"></p>
         <Tooltip position={position}>
-          <TooltipTrigger className={TOOLTIP_TRIGGER_CLASS}>
+          <TooltipTrigger className="text-slate-900 dark:text-white">
             Hover
           </TooltipTrigger>
           <TooltipContent className="min-w-50" variant="outline">
@@ -74,7 +73,7 @@ export function ContentVariantWidthDemo({
 }) {
   return (
     <Tooltip>
-      <TooltipTrigger className={TOOLTIP_TRIGGER_CLASS}>
+      <TooltipTrigger className="text-slate-900 dark:text-white">
         Hover · Variant: {variant} · Width: {width}
       </TooltipTrigger>
       <TooltipContent variant={variant} width={width}>
@@ -87,7 +86,7 @@ export function ContentVariantWidthDemo({
 export function AnimationDemo({ animation }: { animation: ContentAnimation }) {
   return (
     <Tooltip>
-      <TooltipTrigger className={TOOLTIP_TRIGGER_CLASS}>
+      <TooltipTrigger className="text-slate-900 dark:text-white">
         Hover · animation · {animation}
       </TooltipTrigger>
       <TooltipContentAnimated variant="outline" animation={animation}>

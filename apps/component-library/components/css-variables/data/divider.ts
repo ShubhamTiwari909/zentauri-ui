@@ -1,0 +1,40 @@
+import { defineCssVariableReference } from "../css-variable-reference-types";
+
+export const dividerCssVariables = defineCssVariableReference({
+  title: "Divider CSS variables",
+  description:
+    "Override these divider variables on :root, a theme selector, or a component wrapper.",
+  lightVariables: [
+    ["divider-default-fg", "oklch(37.2% 0.044 257.287)"],
+    ["divider-muted-fg", "oklch(55.4% 0.046 257.417)"],
+    ["divider-primary-fg", "oklch(52% 0.105 223.128)"],
+    ["divider-destructive-fg", "oklch(58.6% 0.253 17.585)"],
+    ["divider-ghost-fg", "oklch(70.4% 0.04 256.788)"],
+    ["divider-sky-fg", "oklch(58.8% 0.158 241.966)"],
+    ["divider-rose-fg", "oklch(58.6% 0.253 17.585)"],
+    ["divider-purple-fg", "oklch(55.8% 0.288 302.321)"],
+    ["divider-pink-fg", "oklch(59.2% 0.249 0.584)"],
+    ["divider-orange-fg", "oklch(64.6% 0.222 41.116)"],
+    ["divider-yellow-fg", "oklch(68.1% 0.162 75.834)"],
+    ["divider-teal-fg", "oklch(60% 0.118 184.704)"],
+    ["divider-indigo-fg", "oklch(51.1% 0.262 276.966)"],
+    ["divider-emerald-fg", "oklch(59.6% 0.145 163.225)"],
+    ["divider-gray-fg", "oklch(44.6% 0.03 256.802)"],
+    ["divider-amber-fg", "oklch(66.6% 0.179 58.318)"],
+    ["divider-violet-fg", "oklch(54.1% 0.281 293.009)"],
+    ["divider-gradient-blue-fg", "oklch(54.6% 0.245 262.881)"],
+    ["divider-gradient-green-fg", "oklch(62.7% 0.194 149.214)"],
+    ["divider-gradient-red-fg", "oklch(57.7% 0.245 27.325)"],
+    ["divider-gradient-yellow-fg", "oklch(68.1% 0.162 75.834)"],
+    ["divider-gradient-purple-fg", "oklch(55.8% 0.288 302.321)"],
+    ["divider-gradient-teal-fg", "oklch(60% 0.118 184.704)"],
+    ["divider-gradient-indigo-fg", "oklch(51.1% 0.262 276.966)"],
+    ["divider-gradient-pink-fg", "oklch(59.2% 0.249 0.584)"],
+    ["divider-gradient-orange-fg", "oklch(64.6% 0.222 41.116)"],
+  ],
+  darkExamples: [
+    ["divider-default-fg-dark", "oklch(92.9% 0.013 255.508)"],
+    ["divider-muted-fg-dark", "oklch(55.4% 0.046 257.417)"],
+  ],
+  darkVariableCount: 26,
+});

@@ -1,6 +1,5 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 
-import { TOOLTIP_TRIGGER_CLASS } from "./tooltip-code-examples.data";
 import type {
   ContentAnimation,
   ContentSize,
@@ -18,7 +17,7 @@ export function contentVariantSizeSnippet(
   return `${variantLeadComment(
     `TooltipContent · variant · ${variant}, size · ${size}`,
   )}<Tooltip>
-  <TooltipTrigger className="${TOOLTIP_TRIGGER_CLASS}">
+  <TooltipTrigger className="text-slate-900 dark:text-white">
     Hover · ${variant} · ${size}
   </TooltipTrigger>
   <TooltipContent${variantAttr}${sizeAttr}>
@@ -30,7 +29,7 @@ export function contentVariantSizeSnippet(
 export function positionSnippet(position: TooltipPlacement): string {
   const positionAttr = position === "top" ? "" : ` position="${position}"`;
   return `${variantLeadComment(`Tooltip · position · ${position}`)}<Tooltip${positionAttr}>
-  <TooltipTrigger className="${TOOLTIP_TRIGGER_CLASS}">
+  <TooltipTrigger className="text-slate-900 dark:text-white"> 
     Hover
   </TooltipTrigger>
   <TooltipContent className="min-w-50">
@@ -42,7 +41,7 @@ export function positionSnippet(position: TooltipPlacement): string {
 export function animationSnippet(animation: ContentAnimation): string {
   const animationAttr = animation === "fade" ? "" : ` animation="${animation}"`;
   return `${variantLeadComment(`TooltipContentAnimated · animation · ${animation}`)}<Tooltip>
-  <TooltipTrigger className="${TOOLTIP_TRIGGER_CLASS}">
+  <TooltipTrigger className="text-slate-900 dark:text-white">
     Hover · animation · ${animation}
   </TooltipTrigger>
   <TooltipContentAnimated variant="outline"${animationAttr}>
@@ -60,7 +59,7 @@ export function contentVariantWidthSnippet(
   return `${variantLeadComment(
     `TooltipContent · variant · ${variant}, width · ${width}`,
   )}<Tooltip>
-  <TooltipTrigger className="${TOOLTIP_TRIGGER_CLASS}">
+  <TooltipTrigger className="text-slate-900 dark:text-white">
     Hover · {variant} · {width}
   </TooltipTrigger>
   <TooltipContent${variantAttr}${widthAttr}>
