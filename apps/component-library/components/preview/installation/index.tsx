@@ -57,7 +57,7 @@ const USAGE_SNIPPET = `<div className="rounded-3xl border border-white/10 bg-whi
   </Modal>
 </div>`;
 
-const OVERRIDE_THEME_COLORS_SNIPPET = `@theme {
+const OVERRIDE_THEME_COLORS_SNIPPET = `:root {
   --zui-typography-default-fg: oklch(20.8% 0.042 265.755);
   --zui-typography-default-border: #00000026;
   --zui-typography-muted-fg: oklch(55.4% 0.046 257.417);

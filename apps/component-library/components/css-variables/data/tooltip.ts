@@ -66,5 +66,5 @@ export const tooltipCssVariables = defineCssVariableReference({
     ["tooltip-default-bg-dark", "#000000"],
     ["tooltip-default-fg-dark", "#ffffff"],
   ],
-  darkVariableCount: 7,
+  darkVariableCount: 56,
 });

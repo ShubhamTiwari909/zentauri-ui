@@ -540,6 +540,9 @@ async function copyDesignSystemFolder(config, configDir, packageRoot) {
   if (!existsSync(srcRoot)) {
     return;
   }
+  if (!config?.resolvedPaths?.ui) {
+    return;
+  }
   const destRoot = join(
     configDir,
     dirname(config.resolvedPaths.ui),
@@ -551,7 +554,9 @@ async function copyDesignSystemFolder(config, configDir, packageRoot) {
     if (isTestFile(rel)) {
       continue;
     }
-    const absDest = join(destRoot, rel);
+    if (existsSync(absDest)) {
+      continue;
+    }
     await mkdir(dirname(absDest), { recursive: true });
     if (/\.(tsx?|jsx?)$/.test(absSrc)) {
       const raw = await readFile(absSrc, "utf8");

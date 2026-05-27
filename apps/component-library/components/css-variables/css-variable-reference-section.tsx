@@ -24,7 +24,10 @@ function getCssVariableReferenceSlug(canonicalPath: string) {
     return null;
   }
 
-  const slug = canonicalPath.slice(componentPreviewPrefix.length);
+  const slug = canonicalPath
+  .slice(componentPreviewPrefix.length)
+  .split(/[?#]/)[0]
+  .replace(/\/$/, "");
 
   if (!Object.hasOwn(cssVariableReferences, slug)) {
     return null;

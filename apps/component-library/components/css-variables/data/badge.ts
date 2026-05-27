@@ -73,5 +73,5 @@ export const badgeCssVariables = defineCssVariableReference({
     ["badge-default-bg-dark", "oklch(98.4% 0.003 247.858)"],
     ["badge-default-fg-dark", "oklch(12.9% 0.042 264.695)"],
   ],
-  darkVariableCount: 62,
+  darkVariableCount: 63,
 });

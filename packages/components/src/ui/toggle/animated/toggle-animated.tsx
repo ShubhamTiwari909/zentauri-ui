@@ -70,11 +70,11 @@ export function ToggleAnimated(props: ToggleAnimatedProps) {
       }}
       {...rest}
     >
-      <span className="sr-only">{children}</span>
+      <span className="sr-only" id={labeledByChildren ? toggleLabelId : undefined}>{children}</span>
       <motion.span
         className={cn(
           toggleThumbVariants({ size, thumbColor }),
-          "absolute top-1/2 -translate-y-1/2 transition-[transform] duration-200 ease-out",
+          "absolute left-1 top-1/2 -translate-y-1/2",
         )}
         animate={{ x: resolved ? thumbShiftPx : 0 }}
         transition={thumbMotion.transition}
