@@ -1,0 +1,80 @@
+{
+  "category": "Overlay",
+  "title": "Command palette (Cmd+K) component for React",
+  "description": "Command palette component for React and Next.js with a global Cmd+K hotkey, keyboard navigation, grouped results, live filtering, empty state, and animated entry.",
+  "keywords": [
+    "command palette",
+    "cmdk",
+    "Cmd+K",
+    "React",
+    "Next.js",
+    "keyboard navigation",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Command palette · Zentauri UI",
+    "description": "Command palette component for React and Next.js with a global Cmd+K hotkey, keyboard navigation, grouped results, live filtering, and animated entry.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Command palette · Zentauri UI",
+    "description": "Command palette component for React and Next.js with a global Cmd+K hotkey, keyboard navigation, grouped results, live filtering, and animated entry.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/command",
+  "headings": {
+    "h1": "Command palette for fast navigation",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "A command palette gives people a keyboard-first way to search and run actions from anywhere in an app. Zentauri UI ships a composable Command primitive with a global Cmd+K hotkey, grouped results, live filtering, an empty state, and an optional animated entry — themeable through --zui-command-* tokens.",
+  "useCases": [
+    "Global Cmd+K navigation across pages and resources.",
+    "Quick action launchers in dashboards and developer tools.",
+    "Searchable menus that combine navigation and commands.",
+    "Keyboard-driven workflows for power users."
+  ],
+  "faqs": [
+    {
+      "question": "Does Command support a global Cmd+K shortcut?",
+      "answer": "Yes. Set the hotkey prop (defaults to k) and the palette binds meta/ctrl + key to toggle open from anywhere."
+    },
+    {
+      "question": "How does keyboard navigation work?",
+      "answer": "Arrow Up and Down move the active item, Enter selects it and fires onSelect, and Escape closes the palette. Typing filters items by value and keywords."
+    },
+    {
+      "question": "Is there an animated command palette?",
+      "answer": "Yes. Import CommandContentAnimated from the animated entrypoint to spring the palette in; it falls back to a fade when reduced motion is preferred."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Render a portal dialog with a search input, grouped items, separators, and an empty state.\n\nFiltering, active-item tracking, and keyboard navigation are handled internally."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Compose Command with CommandTrigger, CommandContent, CommandInput, CommandList, CommandGroup, CommandItem, CommandSeparator, CommandEmpty, and CommandFooter. Use appearance and size variants for visual tone, and the hotkey prop for a global shortcut."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The palette renders role=dialog with aria-modal, traps focus while open, restores focus on close, and exposes the input as a combobox with role=option items. Provide a label for the dialog."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Use Command inside client components since it manages open state and key handlers in the browser. The base entry stays free of framer-motion; import CommandContentAnimated only where you want motion."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

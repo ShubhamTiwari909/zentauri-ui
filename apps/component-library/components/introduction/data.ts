@@ -66,6 +66,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "command",
+    name: "Command palette",
+    description:
+      "Cmd+K command palette with global hotkey, keyboard navigation, grouped results, live filtering, and an animated entry.",
+    href: "/preview/components/command",
+    badge: "Overlay",
+  },
+  {
     id: "divider",
     name: "Divider",
     description:
