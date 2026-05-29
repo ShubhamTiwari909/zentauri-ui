@@ -13,6 +13,18 @@ export type PopoverAnimationPresets = Record<
   PopoverPresetMotionProps
 >;
 
-export type PopoverContentAnimatedProps = PopoverContentProps & {
-  animation?: PopoverAnimation;
-};
+export type PopoverMotionHandlerProps =
+  | "onDrag"
+  | "onDragStart"
+  | "onDragEnd"
+  | "onAnimationStart"
+  | "onAnimationEnd"
+  | "onAnimationIteration";
+
+export type PopoverContentAnimatedProps = Omit<
+  PopoverContentProps,
+  PopoverMotionHandlerProps
+> &
+  HTMLMotionProps<"div"> & {
+    animation?: PopoverAnimation;
+  };

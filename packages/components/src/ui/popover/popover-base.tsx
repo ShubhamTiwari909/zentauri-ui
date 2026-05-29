@@ -41,8 +41,8 @@ export const usePopover = () => {
   return context;
 };
 
-function mergeRefs<T>(...refs: Array<Ref<T> | undefined>) {
-  return (node: T) => {
+export function mergeRefs<T>(...refs: Array<Ref<T> | undefined>) {
+  return (node: T | null) => {
     for (const ref of refs) {
       if (typeof ref === "function") {
         ref(node);
@@ -157,9 +157,7 @@ export const Popover = ({
   );
 
   return (
-    <PopoverContext.Provider
-      value={contextValue}
-    >
+    <PopoverContext.Provider value={contextValue}>
       <div className="relative inline-block">{children}</div>
     </PopoverContext.Provider>
   );
@@ -233,6 +231,7 @@ export const PopoverContent = ({
   side = "bottom",
   align = "center",
   role = "dialog",
+  ref,
   ...props
 }: PopoverContentProps) => {
   const { open, contentId, contentRef } = usePopover();
@@ -243,7 +242,7 @@ export const PopoverContent = ({
 
   return (
     <div
-      ref={contentRef}
+      ref={mergeRefs(contentRef, ref)}
       id={contentId}
       data-open={open}
       role={role}

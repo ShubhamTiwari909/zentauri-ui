@@ -1,3 +1,5 @@
+import { createRef } from "react";
+
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
@@ -62,6 +64,34 @@ describe("Popover", () => {
       expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     });
     expect(screen.getByRole("button", { name: "Focus trigger" })).toHaveFocus();
+  });
+
+  it("should merge a consumer content ref with the internal dismissal ref", async () => {
+    const user = userEvent.setup();
+    const contentRef = createRef<HTMLDivElement>();
+
+    render(
+      <>
+        <Popover defaultOpen>
+          <PopoverTrigger>
+            <button type="button">Open panel</button>
+          </PopoverTrigger>
+          <PopoverContent ref={contentRef}>Panel with ref</PopoverContent>
+        </Popover>
+        <button type="button">Outside</button>
+      </>,
+    );
+
+    const panel = screen.getByRole("dialog");
+    expect(contentRef.current).toBe(panel);
+
+    await user.click(panel);
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Outside" }));
+    await waitFor(() => {
+      expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    });
   });
 
   it("should support controlled open state", async () => {

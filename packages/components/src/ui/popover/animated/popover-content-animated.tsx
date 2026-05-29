@@ -6,7 +6,7 @@ import { cn } from "../../../lib/utils";
 
 import { popoverAnimationPresets } from "./animations";
 import type { PopoverContentAnimatedProps } from "./types";
-import { sideAlignClass, usePopover } from "../popover-base";
+import { mergeRefs, sideAlignClass, usePopover } from "../popover-base";
 import { popoverContentVariants } from "../variants";
 
 export const PopoverContentAnimated = ({
@@ -19,10 +19,7 @@ export const PopoverContentAnimated = ({
   align = "center",
   role = "dialog",
   animation = "none",
-  onDrag: _onDrag,
-  onDragStart: _onDragStart,
-  onDragEnd: _onDragEnd,
-  onAnimationStart: _onAnimationStart,
+  ref,
   ...props
 }: PopoverContentAnimatedProps) => {
   const { open, contentId, contentRef } = usePopover();
@@ -35,7 +32,7 @@ export const PopoverContentAnimated = ({
 
   return (
     <motion.div
-      ref={contentRef}
+      ref={mergeRefs(contentRef, ref)}
       id={contentId}
       data-open={open}
       role={role}
