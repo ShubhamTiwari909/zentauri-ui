@@ -19,6 +19,11 @@ export const PopoverContentAnimated = ({
   align = "center",
   role = "dialog",
   animation = "none",
+  onDrag: _onDrag,
+  onDragStart: _onDragStart,
+  onDragEnd: _onDragEnd,
+  onAnimationStart: _onAnimationStart,
+  ...props
 }: PopoverContentAnimatedProps) => {
   const { open, contentId, contentRef } = usePopover();
 
@@ -41,6 +46,7 @@ export const PopoverContentAnimated = ({
         sideAlignClass(side, align),
         className,
       )}
+      {...props}
     >
       {children}
     </motion.div>

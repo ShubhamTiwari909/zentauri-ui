@@ -32,7 +32,7 @@ export function PopoverCodeExamplesSection() {
         Use Show output / Show code on each row. Snippets start with a Variant
         line naming the axis and token.
       </p>
-      <p className="text-cyan-400 font-semibold text-sm mt-2">For mobile viewport, all the popovers are top and start aligned so they won't overflow outside the screen</p>
+      <p className="text-cyan-400 font-semibold text-sm mt-2">For mobile viewport, all the popovers are top and start aligned so they won&rsquo;t overflow outside the screen</p>
       <div className="mt-6 space-y-10 rounded-xl">
         {POPOVER_VARIANTS.map((variant) => (
           <PreviewCodeShowcase
