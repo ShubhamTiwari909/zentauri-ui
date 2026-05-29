@@ -19,9 +19,9 @@ export const zuiOtpErrorBase =
   "text-sm leading-6 text-[color:var(--zui-otp-error-fg,oklch(58.6%_0.253_17.585))] dark:text-[color:var(--zui-otp-error-fg-dark,oklch(71.2%_0.194_13.428))]";
 
 export const zuiOtpSizes = {
-  sm: "size-9 rounded-lg text-sm",
-  md: "size-11 text-base",
-  lg: "size-13 rounded-2xl text-lg",
+  sm: "size-7 md:size-9 rounded-lg text-sm",
+  md: "size-9 md:size-11 text-base",
+  lg: "size-11 md:size-13 rounded-2xl text-lg",
 } as const;
 
 export const zuiOtpAppearances = {
