@@ -144,6 +144,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/card",
       },
       {
+        title: "Checkbox",
+        href: "/preview/components/checkbox",
+      },
+      {
         title: "Divider",
         href: "/preview/components/divider",
       },
@@ -182,6 +186,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
       {
         title: "Progress",
         href: "/preview/components/progress",
+      },
+      {
+        title: "Radio group",
+        href: "/preview/components/radio-group",
       },
       {
         title: "Search",

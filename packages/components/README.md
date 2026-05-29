@@ -15,12 +15,12 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 | Metric      | Result           |
 | ----------- | ---------------- |
-| Test files  | 54 passed (54)   |
-| Tests       | 337 passed (337) |
+| Test files  | 56 passed (56)   |
+| Tests       | 348 passed (348) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 26         | 243   |
+| Components and UI utilities | 28         | 254   |
 | React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 
@@ -36,10 +36,12 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/ui/buttons/button.test.tsx`                                        |    41 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
 | `src/ui/card/card.test.tsx`                                             |     7 |
+| `src/ui/checkbox/checkbox.test.tsx`                                     |     6 |
 | `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
 | `src/ui/dropdown/dropdown.test.tsx`                                     |     6 |
 | `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
 | `src/ui/progress/progress.test.tsx`                                     |     8 |
+| `src/ui/radio-group/radio-group.test.tsx`                               |     5 |
 | `src/ui/accordion/accordion.test.tsx`                                   |     7 |
 | `src/ui/toast/toast.test.tsx`                                           |     5 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
@@ -103,7 +105,7 @@ Only a subset of UI areas publish a `/animated` entry (see **Components**). Some
 
 Published motion entries (same `<name>` as the base UI folder):
 
-`accordion`, `alert`, `avatar`, `badge`, `buttons`, `card`, `divider`, `drawer`, `empty-state`, `inputs`, `modal`, `progress`, `skeleton`, `spinner`, `table`, `tabs`, `toast`, `toggle`, `tooltip`
+`accordion`, `alert`, `avatar`, `badge`, `buttons`, `card`, `checkbox`, `divider`, `drawer`, `empty-state`, `inputs`, `modal`, `progress`, `radio-group`, `skeleton`, `spinner`, `table`, `tabs`, `toast`, `toggle`, `tooltip`
 
 **Spinner:** only the motion entry is built—import from `@zentauri-ui/zentauri-components/ui/spinner/animated` (there is no separate `ui/spinner` static bundle).
 
@@ -126,6 +128,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Breadcrumb      | `breadcrumb`      | —                                  |
 | Button          | `buttons`         | `buttons/animated`                 |
 | Card            | `card`            | `card/animated`                    |
+| Checkbox        | `checkbox`        | `checkbox/animated`                |
 | Charts          | `charts/<type>`   | —                                  |
 | Divider         | `divider`         | `divider/animated`                 |
 | Drawer          | `drawer`          | `drawer/animated`                  |
@@ -137,6 +140,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Modal           | `modal`           | `modal/animated`                   |
 | Pagination      | `pagination`      | —                                  |
 | Progress        | `progress`        | `progress/animated`                |
+| Radio group     | `radio-group`     | `radio-group/animated`             |
 | Search          | `search`          | -                                  |
 | Select          | `select`          | —                                  |
 | Skeleton        | `skeleton`        | `skeleton/animated`                |
@@ -650,7 +654,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, the chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 300+ test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 348 test cases in total
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`** (`components` + `hooks`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
 
 ## Github Release log

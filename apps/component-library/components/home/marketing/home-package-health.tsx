@@ -19,8 +19,8 @@ const TEST_TOTALS = [
   },
   {
     label: "Assertions",
-    value: "337",
-    detail: "337 passed",
+    value: "348",
+    detail: "348 passed",
     icon: FiCheckCircle,
   },
   {

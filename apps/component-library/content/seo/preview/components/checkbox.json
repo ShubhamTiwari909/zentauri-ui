@@ -1,0 +1,79 @@
+{
+  "category": "Forms",
+  "title": "Checkbox component for React forms",
+  "description": "Checkbox component for React and Next.js with dedicated variants, indeterminate state, labels, controlled state, and animated checkmark support.",
+  "keywords": [
+    "checkbox",
+    "React",
+    "Next.js",
+    "forms",
+    "indeterminate checkbox",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Checkbox · Zentauri UI",
+    "description": "Checkbox component for React and Next.js with dedicated variants, indeterminate state, labels, controlled state, and animated checkmark support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Checkbox · Zentauri UI",
+    "description": "Checkbox component for React and Next.js with dedicated variants, indeterminate state, labels, controlled state, and animated checkmark support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/checkbox",
+  "headings": {
+    "h1": "Checkboxes for form selection",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Checkboxes let people select one or more independent options. Zentauri UI ships a standalone Checkbox primitive so forms can use dedicated state, label, size, appearance, and indeterminate APIs instead of the generic Input fallback.",
+  "useCases": [
+    "Terms acceptance in onboarding and checkout flows.",
+    "Bulk selection with a parent indeterminate state.",
+    "Notification and preference lists.",
+    "Feature permissions in admin settings."
+  ],
+  "faqs": [
+    {
+      "question": "Does Checkbox support indeterminate state?",
+      "answer": "Yes. Pass indeterminate to render the mixed visual state and aria-checked=mixed for assistive technology."
+    },
+    {
+      "question": "Can I control Checkbox state from React?",
+      "answer": "Yes. Use checked with onCheckedChange for controlled state, or defaultChecked for uncontrolled state."
+    },
+    {
+      "question": "Is there an animated Checkbox?",
+      "answer": "Yes. Import CheckboxAnimated from the animated entrypoint to animate the checkmark or mixed-state indicator."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Expose a label-friendly checkbox primitive with checked, unchecked, and mixed states.\n\nUse it for independent selections, not mutually exclusive choices."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Import Checkbox from the dedicated checkbox entrypoint. Use appearance and size variants for visual tone, and use rootClassName or controlClassName when you need slot-level styling."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The component renders a native checkbox input with visible label composition. Provide a text label or aria-label, and reserve indeterminate state for partial selection."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Use Checkbox inside client components when state changes in the browser. Static defaultChecked examples can still be colocated with App Router preview pages."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

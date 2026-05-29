@@ -6,6 +6,7 @@ import badge from "@/content/seo/preview/components/badge.json";
 import breadcrumb from "@/content/seo/preview/components/breadcrumb.json";
 import buttons from "@/content/seo/preview/components/buttons.json";
 import card from "@/content/seo/preview/components/card.json";
+import checkbox from "@/content/seo/preview/components/checkbox.json";
 import charts from "@/content/seo/preview/charts.json";
 import divider from "@/content/seo/preview/components/divider.json";
 import drawer from "@/content/seo/preview/components/drawer.json";
@@ -20,6 +21,7 @@ import installation from "@/content/seo/preview/components/installation.json";
 import modal from "@/content/seo/preview/components/modal.json";
 import pagination from "@/content/seo/preview/components/pagination.json";
 import progress from "@/content/seo/preview/components/progress.json";
+import radioGroup from "@/content/seo/preview/components/radio-group.json";
 import select from "@/content/seo/preview/components/select.json";
 import search from "@/content/seo/preview/components/search.json";
 import skeleton from "@/content/seo/preview/components/skeleton.json";
@@ -43,6 +45,7 @@ const previewSeoRegistry = {
   breadcrumb: breadcrumb as PreviewSeoDocument,
   buttons: buttons as PreviewSeoDocument,
   card: card as PreviewSeoDocument,
+  checkbox: checkbox as PreviewSeoDocument,
   charts: charts as PreviewSeoDocument,
   divider: divider as PreviewSeoDocument,
   drawer: drawer as PreviewSeoDocument,
@@ -55,6 +58,7 @@ const previewSeoRegistry = {
   modal: modal as PreviewSeoDocument,
   pagination: pagination as PreviewSeoDocument,
   progress: progress as PreviewSeoDocument,
+  "radio-group": radioGroup as PreviewSeoDocument,
   select: select as PreviewSeoDocument,
   search: search as PreviewSeoDocument,
   skeleton: skeleton as PreviewSeoDocument,

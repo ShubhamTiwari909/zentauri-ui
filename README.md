@@ -26,12 +26,12 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 
 | Metric      | Result           |
 | ----------- | ---------------- |
-| Test files  | 54 passed (54)   |
-| Tests       | 337 passed (337) |
+| Test files  | 56 passed (56)   |
+| Tests       | 348 passed (348) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 26         | 243   |
+| Components and UI utilities | 28         | 254   |
 | React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 
@@ -47,10 +47,12 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 | `src/ui/buttons/button.test.tsx`                                        |    41 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
 | `src/ui/card/card.test.tsx`                                             |     7 |
+| `src/ui/checkbox/checkbox.test.tsx`                                     |     6 |
 | `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
 | `src/ui/dropdown/dropdown.test.tsx`                                     |     6 |
 | `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
 | `src/ui/progress/progress.test.tsx`                                     |     8 |
+| `src/ui/radio-group/radio-group.test.tsx`                               |     5 |
 | `src/ui/accordion/accordion.test.tsx`                                   |     7 |
 | `src/ui/toast/toast.test.tsx`                                           |     5 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |

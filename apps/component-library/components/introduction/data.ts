@@ -58,6 +58,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Layout",
   },
   {
+    id: "checkbox",
+    name: "Checkbox",
+    description:
+      "Standalone checkbox controls with labels, indeterminate state, controlled state, and animated checkmarks.",
+    href: "/preview/components/checkbox",
+    badge: "Form",
+  },
+  {
     id: "divider",
     name: "Divider",
     description:
@@ -128,6 +136,14 @@ export const componentsData: ComponentHighlight[] = [
       "Determinate progress bars with shimmer animation and a wide appearance scale.",
     href: "/preview/components/progress",
     badge: "Feedback",
+  },
+  {
+    id: "radio-group",
+    name: "Radio group",
+    description:
+      "Compound radio controls for exclusive choices with shared state, orientation, and animated indicators.",
+    href: "/preview/components/radio-group",
+    badge: "Form",
   },
   {
     id: "select",
