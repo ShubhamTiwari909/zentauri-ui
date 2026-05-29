@@ -16,6 +16,7 @@ import {
   type MouseEventHandler,
   type ReactElement,
   type Ref,
+  useMemo,
 } from "react";
 
 import { cn } from "../../lib/utils";
@@ -143,16 +144,21 @@ export const Popover = ({
     };
   }, [closeOnEscape, closeOnOutsideClick, open, setOpen]);
 
+  const contextValue = useMemo(
+    () => ({
+      open,
+      setOpen,
+      toggleOpen,
+      contentId,
+      triggerRef,
+      contentRef,
+    }),
+    [open, setOpen, toggleOpen, contentId],
+  );
+
   return (
     <PopoverContext.Provider
-      value={{
-        open,
-        setOpen,
-        toggleOpen,
-        contentId,
-        triggerRef,
-        contentRef,
-      }}
+      value={contextValue}
     >
       <div className="relative inline-block">{children}</div>
     </PopoverContext.Provider>

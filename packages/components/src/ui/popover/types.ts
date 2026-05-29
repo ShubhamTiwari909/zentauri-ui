@@ -1,5 +1,5 @@
 import { VariantProps } from "class-variance-authority";
-import type { HTMLAttributes, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { popoverContentVariants } from "./variants";
 
 export type PopoverSide = "top" | "left" | "bottom" | "right";
@@ -28,7 +28,7 @@ export type PopoverTriggerProps = {
   className?: string;
 };
 
-export type PopoverContentProps = HTMLAttributes<HTMLDivElement> & {
+export type PopoverContentProps = ComponentPropsWithRef<"div"> & {
   children: ReactNode;
   variant?: VariantProps<typeof popoverContentVariants>["variant"]
   size?: VariantProps<typeof popoverContentVariants>["size"];
