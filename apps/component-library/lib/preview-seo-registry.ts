@@ -7,6 +7,7 @@ import breadcrumb from "@/content/seo/preview/components/breadcrumb.json";
 import buttons from "@/content/seo/preview/components/buttons.json";
 import card from "@/content/seo/preview/components/card.json";
 import checkbox from "@/content/seo/preview/components/checkbox.json";
+import command from "@/content/seo/preview/components/command.json";
 import charts from "@/content/seo/preview/charts.json";
 import divider from "@/content/seo/preview/components/divider.json";
 import drawer from "@/content/seo/preview/components/drawer.json";
@@ -47,6 +48,7 @@ const previewSeoRegistry = {
   buttons: buttons as PreviewSeoDocument,
   card: card as PreviewSeoDocument,
   checkbox: checkbox as PreviewSeoDocument,
+  command: command as PreviewSeoDocument,
   charts: charts as PreviewSeoDocument,
   divider: divider as PreviewSeoDocument,
   drawer: drawer as PreviewSeoDocument,

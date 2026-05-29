@@ -6,6 +6,7 @@ export * from "./breadcrumb";
 export * from "./button";
 export * from "./card";
 export * from "./checkbox";
+export * from "./command";
 export * from "./divider";
 export * from "./drawer";
 export * from "./dropdown";

@@ -15,6 +15,7 @@
     "charts/line",
     "charts/pie",
     "checkbox",
+    "command",
     "divider",
     "drawer",
     "dropdown",
