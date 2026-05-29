@@ -24,10 +24,10 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 
 ## Package status and test coverage
 
-| Metric      | Result           |
-| ----------- | ---------------- |
-| Test files  | 57 passed (57)   |
-| Tests       | 355 passed (355) |
+| Metric     | Result           |
+| ---------- | ---------------- |
+| Test files | 57 passed (57)   |
+| Tests      | 355 passed (355) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
@@ -48,6 +48,8 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
 | `src/ui/card/card.test.tsx`                                             |     7 |
 | `src/ui/checkbox/checkbox.test.tsx`                                     |     6 |
+| `src/ui/popover/popover.test.tsx`                                       |     4 |
+| `src/ui/command/command.test.tsx`                                       |     7 |
 | `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
 | `src/ui/dropdown/dropdown.test.tsx`                                     |     6 |
 | `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |

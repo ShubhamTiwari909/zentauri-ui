@@ -69,7 +69,6 @@ export type CommandSectionProps = {
   children?: ReactNode;
 };
 
-
 export type ItemMeta = {
   keywords?: string[];
   disabled?: boolean;
@@ -86,6 +85,7 @@ export type CommandCtx = {
   open: boolean;
   setOpen: (next: boolean) => void;
   labelId: string;
+  listId: string;
   query: string;
   setQuery: (next: string) => void;
   activeValue: string | null;
@@ -98,4 +98,32 @@ export type CommandCtx = {
   contentRef: RefObject<HTMLDivElement | null>;
   triggerRef: RefObject<HTMLElement | null>;
   inputRef: RefObject<HTMLInputElement | null>;
+};
+
+
+export type CommandContentOverlayRenderProps = {
+  role: "presentation";
+  "data-slot": "command-overlay";
+  className: string;
+  onClick: () => void;
+};
+
+export type CommandContentPanelRenderProps = {
+  ref: (node: HTMLDivElement | null) => void;
+  role: "dialog";
+  "aria-modal": true;
+  "aria-labelledby": string;
+  "data-slot": "command-content";
+  tabIndex: -1;
+  className: string;
+  id?: string;
+  style?: CommandContentProps["style"];
+  children: ReactNode;
+};
+
+export type CommandContentLayerProps = CommandContentProps & {
+  componentName: string;
+  renderPresence?: (children: ReactNode) => ReactNode;
+  renderOverlay?: (props: CommandContentOverlayRenderProps) => ReactNode;
+  renderPanel?: (props: CommandContentPanelRenderProps) => ReactNode;
 };

@@ -35,6 +35,11 @@ export function CommandExamplesSection() {
       <CommandEmpty>No results found.</CommandEmpty>
       <CommandGroup heading="Navigation">
         <CommandItem value="home">Home</CommandItem>
+        <CommandItem value="projects">Projects</CommandItem>
+      </CommandGroup>
+      <CommandSeparator />
+      <CommandGroup heading="Actions">
+        <CommandItem value="new-project">Create project</CommandItem>
       </CommandGroup>
     </CommandList>
   </CommandContentAnimated>

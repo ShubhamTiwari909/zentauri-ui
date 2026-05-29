@@ -9,6 +9,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type ReactNode,
   type RefObject,
 } from "react";
 import { createPortal } from "react-dom";
@@ -28,6 +29,10 @@ import type {
   CommandTriggerProps,
   ItemMeta,
   RegisteredItem,
+  CommandContentVariantProps,
+  CommandContentLayerProps,
+  CommandContentOverlayRenderProps,
+  CommandContentPanelRenderProps
 } from "./types";
 import {
   commandContentVariants,
@@ -40,9 +45,8 @@ import {
   commandListVariants,
   commandOverlayVariants,
   commandSeparatorVariants,
-  commandTriggerVariants,
+  commandTriggerVariants
 } from "./variants";
-
 
 const CommandContext = createContext<CommandCtx | null>(null);
 
@@ -54,7 +58,11 @@ export function useCommandContext(component: string): CommandCtx {
   return ctx;
 }
 
-function itemMatches(value: string, meta: ItemMeta, normalized: string): boolean {
+function itemMatches(
+  value: string,
+  meta: ItemMeta,
+  normalized: string,
+): boolean {
   if (!normalized) {
     return true;
   }
@@ -65,7 +73,117 @@ function itemMatches(value: string, meta: ItemMeta, normalized: string): boolean
     return true;
   }
   return Boolean(
-    meta.keywords?.some((keyword) => keyword.toLowerCase().includes(normalized)),
+    meta.keywords?.some((keyword) =>
+      keyword.toLowerCase().includes(normalized),
+    ),
+  );
+}
+
+function isEditableEventTarget(target: EventTarget | null): boolean {
+  if (!(target instanceof HTMLElement)) {
+    return false;
+  }
+  if (target.isContentEditable) {
+    return true;
+  }
+  return Boolean(
+    target.closest("input, textarea, select, [contenteditable=true]"),
+  );
+}
+
+function useCommandPortalTarget(): HTMLElement | null {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
+  return document.body;
+}
+
+export function CommandPortal({ children }: { children: ReactNode }) {
+  const portalTarget = useCommandPortalTarget();
+
+  if (!portalTarget) {
+    return null;
+  }
+
+  return createPortal(children, portalTarget);
+}
+
+export function CommandPortalFrame({ children }: { children: ReactNode }) {
+  return (
+    <div className="fixed inset-0 z-9999" data-slot="command-portal">
+      {children}
+    </div>
+  );
+}
+
+export function CommandContentLayer({
+  className,
+  size,
+  appearance,
+  children,
+  ref,
+  id,
+  style,
+  componentName,
+  renderPresence,
+  renderOverlay,
+  renderPanel,
+}: CommandContentLayerProps) {
+  const { open, setOpen, labelId, contentRef, triggerRef } =
+    useCommandContext(componentName);
+
+  useFocusManagement({
+    open,
+    setOpen,
+    contentRef,
+    triggerRef,
+  });
+
+  const overlayProps: CommandContentOverlayRenderProps = {
+    role: "presentation",
+    "data-slot": "command-overlay",
+    className: commandOverlayVariants(),
+    onClick: () => setOpen(false),
+  };
+
+  const panelProps: CommandContentPanelRenderProps = {
+    ref: (node) => {
+      contentRef.current = node;
+      if (typeof ref === "function") {
+        ref(node);
+      } else if (ref) {
+        (ref as RefObject<HTMLDivElement | null>).current = node;
+      }
+    },
+    role: "dialog",
+    "aria-modal": true,
+    "aria-labelledby": labelId,
+    "data-slot": "command-content",
+    tabIndex: -1,
+    className: cn(commandContentVariants({ size, appearance }), className),
+    id,
+    style,
+    children,
+  };
+
+  const content = open ? (
+    <CommandPortalFrame>
+      {renderOverlay ? renderOverlay(overlayProps) : <div {...overlayProps} />}
+      {renderPanel ? renderPanel(panelProps) : <div {...panelProps} />}
+    </CommandPortalFrame>
+  ) : null;
+
+  return (
+    <CommandPortal>
+      {renderPresence ? renderPresence(content) : content}
+    </CommandPortal>
   );
 }
 
@@ -92,6 +210,7 @@ export function Command({
   );
 
   const labelId = useId();
+  const listId = useId();
   const contentRef = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -168,6 +287,9 @@ export function Command({
     }
     const key = (typeof hotkey === "string" ? hotkey : "k").toLowerCase();
     const handler = (event: KeyboardEvent) => {
+      if (isEditableEventTarget(event.target)) {
+        return;
+      }
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === key) {
         event.preventDefault();
         setOpen(!resolvedOpen);
@@ -182,6 +304,7 @@ export function Command({
       open: resolvedOpen,
       setOpen,
       labelId,
+      listId,
       query,
       setQuery,
       activeValue,
@@ -199,6 +322,7 @@ export function Command({
       resolvedOpen,
       setOpen,
       labelId,
+      listId,
       query,
       activeValue,
       visibleValues,
@@ -264,68 +388,28 @@ export function CommandContent({
   id,
   style,
 }: CommandContentProps) {
-  const { open, setOpen, labelId, contentRef, triggerRef } =
-    useCommandContext("CommandContent");
-  const [isMounted, setIsMounted] = useState(false);
-
-  useFocusManagement({
-    open,
-    setOpen,
-    contentRef,
-    triggerRef,
-  });
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
-
-  const portalTarget = document.body;
-
-  return createPortal(
-    open ? (
-      <div className="fixed inset-0 z-9999" data-slot="command-portal">
-        <div
-          role="presentation"
-          data-slot="command-overlay"
-          className={commandOverlayVariants()}
-          onClick={() => setOpen(false)}
-        />
-        <div
-          ref={(node) => {
-            contentRef.current = node;
-            if (typeof ref === "function") {
-              ref(node);
-            } else if (ref) {
-              (ref as RefObject<HTMLDivElement | null>).current = node;
-            }
-          }}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby={labelId}
-          data-slot="command-content"
-          tabIndex={-1}
-          className={cn(
-            commandContentVariants({ size, appearance }),
-            className,
-          )}
-          id={id}
-          style={style}
-        >
-          {children}
-        </div>
-      </div>
-    ) : null,
-    portalTarget,
+  return (
+    <CommandContentLayer
+      appearance={appearance}
+      className={className}
+      componentName="CommandContent"
+      id={id}
+      ref={ref}
+      size={size}
+      style={style}
+    >
+      {children}
+    </CommandContentLayer>
   );
 }
 
 CommandContent.displayName = "CommandContent";
 
-export function CommandInput({ className, placeholder, ref }: CommandInputProps) {
+export function CommandInput({
+  className,
+  placeholder,
+  ref,
+}: CommandInputProps) {
   const {
     query,
     setQuery,
@@ -335,15 +419,14 @@ export function CommandInput({ className, placeholder, ref }: CommandInputProps)
     selectValue,
     setOpen,
     inputRef,
+    listId,
   } = useCommandContext("CommandInput");
 
   const moveActive = (direction: 1 | -1) => {
     if (visibleValues.length === 0) {
       return;
     }
-    const currentIndex = activeValue
-      ? visibleValues.indexOf(activeValue)
-      : -1;
+    const currentIndex = activeValue ? visibleValues.indexOf(activeValue) : -1;
     const nextIndex =
       currentIndex === -1
         ? direction === 1
@@ -382,7 +465,7 @@ export function CommandInput({ className, placeholder, ref }: CommandInputProps)
         autoFocus
         role="combobox"
         aria-expanded
-        aria-controls="command-list"
+        aria-controls={listId}
         aria-autocomplete="list"
         data-slot="command-input"
         className={cn(commandInputVariants(), className)}
@@ -413,9 +496,11 @@ export function CommandInput({ className, placeholder, ref }: CommandInputProps)
 CommandInput.displayName = "CommandInput";
 
 export function CommandList({ className, children }: CommandListProps) {
+  const { listId } = useCommandContext("CommandList");
+
   return (
     <div
-      id="command-list"
+      id={listId}
       role="listbox"
       aria-label="Commands"
       data-slot="command-list"
@@ -428,7 +513,11 @@ export function CommandList({ className, children }: CommandListProps) {
 
 CommandList.displayName = "CommandList";
 
-export function CommandGroup({ className, heading, children }: CommandGroupProps) {
+export function CommandGroup({
+  className,
+  heading,
+  children,
+}: CommandGroupProps) {
   return (
     <div
       role="group"
