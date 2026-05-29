@@ -15,6 +15,7 @@ import { fileUploadCssVariables } from "./data/file-upload";
 import { inputsCssVariables } from "./data/inputs";
 import { modalCssVariables } from "./data/modal";
 import { paginationCssVariables } from "./data/pagination";
+import { popoverCssVariables } from "./data/popover";
 import { progressCssVariables } from "./data/progress";
 import { radioGroupCssVariables } from "./data/radio-group";
 import { searchCssVariables } from "./data/search";
@@ -50,6 +51,7 @@ export const cssVariableReferences = {
   inputs: inputsCssVariables,
   modal: modalCssVariables,
   pagination: paginationCssVariables,
+  popover: popoverCssVariables,
   progress: progressCssVariables,
   "radio-group": radioGroupCssVariables,
   search: searchCssVariables,
