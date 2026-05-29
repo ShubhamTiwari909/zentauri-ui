@@ -138,6 +138,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Feedback",
   },
   {
+    id: "popover",
+    name: "Popover",
+    description:
+      "Click-triggered floating panels for forms, action previews, and rich contextual content.",
+    href: "/preview/components/popover",
+    badge: "Overlay",
+  },
+  {
     id: "radio-group",
     name: "Radio group",
     description:

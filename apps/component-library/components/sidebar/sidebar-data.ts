@@ -184,6 +184,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/pagination",
       },
       {
+        title: "Popover",
+        href: "/preview/components/popover",
+      },
+      {
         title: "Progress",
         href: "/preview/components/progress",
       },

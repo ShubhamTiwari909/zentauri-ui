@@ -20,6 +20,7 @@ import inputs from "@/content/seo/preview/components/inputs.json";
 import installation from "@/content/seo/preview/components/installation.json";
 import modal from "@/content/seo/preview/components/modal.json";
 import pagination from "@/content/seo/preview/components/pagination.json";
+import popover from "@/content/seo/preview/components/popover.json";
 import progress from "@/content/seo/preview/components/progress.json";
 import radioGroup from "@/content/seo/preview/components/radio-group.json";
 import select from "@/content/seo/preview/components/select.json";
@@ -57,6 +58,7 @@ const previewSeoRegistry = {
   inputs: inputs as PreviewSeoDocument,
   modal: modal as PreviewSeoDocument,
   pagination: pagination as PreviewSeoDocument,
+  popover: popover as PreviewSeoDocument,
   progress: progress as PreviewSeoDocument,
   "radio-group": radioGroup as PreviewSeoDocument,
   select: select as PreviewSeoDocument,

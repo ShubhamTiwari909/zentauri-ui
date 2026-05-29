@@ -194,46 +194,6 @@ const sliderRef = useRef<HTMLDivElement | null>(null);;
 />
 <p className="text-xs text-slate-400">Range Value: {rangeValue[0]} - {rangeValue[1]}</p>`;
 
-const CODE_CHART = `// Install peer dependency: recharts — see Installation → Step 2.
-import type { VariantProps } from "class-variance-authority";
-import {
-  AreaChart,
-  chartVariants,
-} from "@zentauri-ui/zentauri-components/charts/area";
-
-const data = [
-  { month: "Jan", desktop: 186, mobile: 80 },
-  { month: "Feb", desktop: 305, mobile: 200 },
-  { month: "Mar", desktop: 237, mobile: 120 },
-  { month: "Apr", desktop: 273, mobile: 190 },
-];
-
-const series = ({
-  appearance,
-}: {
-  appearance: VariantProps<typeof chartVariants>["appearance"];
-}) => [
-  {
-    dataKey: "desktop",
-    name: "Desktop",
-    color: appearance?.includes("gradient") ? "white" : "cyan",
-  },
-  {
-    dataKey: "mobile",
-    name: "Mobile",
-    color: appearance?.includes("gradient") ? "white" : "emerald",
-  },
-];
-
-<AreaChart
-  appearance="outline"
-  density="compact"
-  data={data}
-  xKey="month"
-  series={series({ appearance: "outline" })}
-  height={260}
-  showLegend
-/>`;
 
 function ToastDemoPreview({
   btnAppearance,

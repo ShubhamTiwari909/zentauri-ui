@@ -15,6 +15,7 @@ export * from "./file-upload";
 export * from "./inputs";
 export * from "./modal";
 export * from "./pagination";
+export * from "./popover";
 export * from "./progress";
 export * from "./radio-group";
 export * from "./select";
