@@ -1,0 +1,79 @@
+{
+  "category": "Overlay",
+  "title": "Popover component for React interfaces",
+  "description": "Popover component for React and Next.js—click-triggered, interactive floating panels for forms, actions, and rich contextual content.",
+  "keywords": [
+    "popover component",
+    "React",
+    "Next.js",
+    "floating panel",
+    "interactive overlay",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Popover · Zentauri UI",
+    "description": "Popover component for React and Next.js—click-triggered, interactive floating panels for forms, actions, and rich contextual content.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Popover · Zentauri UI",
+    "description": "Popover component for React and Next.js—click-triggered, interactive floating panels for forms, actions, and rich contextual content.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/popover",
+  "headings": {
+    "h1": "Popovers for interactive floating content",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Popovers open from a trigger and hold interactive content such as short forms, status details, and compact action panels. Use them when a tooltip is too passive and a modal is too heavy.",
+  "useCases": [
+    "Open quick-edit forms from dense tables.",
+    "Show notification summaries without leaving the current page.",
+    "Collect a small amount of metadata near the related control.",
+    "Expose secondary actions while preserving the current workflow."
+  ],
+  "faqs": [
+    {
+      "question": "When should I use Popover instead of Tooltip?",
+      "answer": "Use Tooltip for short, non-interactive hints. Use Popover when the content needs focusable controls, links, forms, or click-driven disclosure."
+    },
+    {
+      "question": "Does the Popover component work with Next.js App Router?",
+      "answer": "Yes. Popover is a client component because it manages open state, outside clicks, and keyboard dismissal. Import it inside client boundaries where the trigger is interactive."
+    },
+    {
+      "question": "Can I theme Popover with CSS variables?",
+      "answer": "Yes. Popover follows the Zentauri UI token pattern with --zui-popover-* variables for content surfaces, brand appearances, and gradients."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Popover provides click-triggered floating content that can contain buttons, inputs, links, and compact workflows.\n\nIt closes on outside click and Escape by default, while supporting controlled state for application-managed overlays."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Use Popover, PopoverTrigger, and PopoverContent as compound parts. Content controls side, align, width, size, and variant independently from the trigger."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The trigger exposes expanded state and controls the dialog content. Keep labels visible, preserve focus rings, and test keyboard-only flows when content contains form controls."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Keep Popover usage in client components. Static page copy and SEO can remain server-rendered, while the interactive preview islands import the popover primitives."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

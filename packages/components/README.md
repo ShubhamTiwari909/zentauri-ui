@@ -15,12 +15,12 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 | Metric      | Result           |
 | ----------- | ---------------- |
-| Test files  | 56 passed (56)   |
-| Tests       | 348 passed (348) |
+| Test files  | 57 passed (57)   |
+| Tests       | 352 passed (352) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 28         | 254   |
+| Components and UI utilities | 29         | 258   |
 | React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 
@@ -37,6 +37,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
 | `src/ui/card/card.test.tsx`                                             |     7 |
 | `src/ui/checkbox/checkbox.test.tsx`                                     |     6 |
+| `src/ui/popover/popover.test.tsx`                                       |     4 |
 | `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
 | `src/ui/dropdown/dropdown.test.tsx`                                     |     6 |
 | `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
@@ -105,7 +106,7 @@ Only a subset of UI areas publish a `/animated` entry (see **Components**). Some
 
 Published motion entries (same `<name>` as the base UI folder):
 
-`accordion`, `alert`, `avatar`, `badge`, `buttons`, `card`, `checkbox`, `divider`, `drawer`, `empty-state`, `inputs`, `modal`, `progress`, `radio-group`, `skeleton`, `spinner`, `table`, `tabs`, `toast`, `toggle`, `tooltip`
+`accordion`, `alert`, `avatar`, `badge`, `buttons`, `card`, `checkbox`, `divider`, `drawer`, `empty-state`, `inputs`, `modal`, `popover`, `progress`, `radio-group`, `skeleton`, `spinner`, `table`, `tabs`, `toast`, `toggle`, `tooltip`
 
 **Spinner:** only the motion entry is built—import from `@zentauri-ui/zentauri-components/ui/spinner/animated` (there is no separate `ui/spinner` static bundle).
 
@@ -139,6 +140,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Input           | `inputs`          | `inputs/animated`                  |
 | Modal           | `modal`           | `modal/animated`                   |
 | Pagination      | `pagination`      | —                                  |
+| Popover         | `popover`         | `popover/animated`                 |
 | Progress        | `progress`        | `progress/animated`                |
 | Radio group     | `radio-group`     | `radio-group/animated`             |
 | Search          | `search`          | -                                  |
