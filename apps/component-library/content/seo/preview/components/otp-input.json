@@ -1,0 +1,80 @@
+{
+  "category": "Forms",
+  "title": "OTP input component for React authentication flows",
+  "description": "OTP input component for React and Next.js with segmented cells, paste fill, auto-advance, completion callbacks, validation state, and accessible labels.",
+  "keywords": [
+    "OTP input",
+    "one time password",
+    "React",
+    "Next.js",
+    "2FA",
+    "authentication",
+    "verification code"
+  ],
+  "og": {
+    "title": "OTP Input · Zentauri UI",
+    "description": "Segmented OTP input for React and Next.js authentication, payment verification, and 2FA flows.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "OTP Input · Zentauri UI",
+    "description": "Segmented OTP input for React and Next.js authentication, payment verification, and 2FA flows.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/otp-input",
+  "headings": {
+    "h1": "OTP input for verification flows",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "OTPInput renders a segmented one-time code field for sign-in, two-factor authentication, payment approval, and invite-code flows. It keeps native inputs under the hood while handling auto-advance, paste fill, backspace behavior, hidden form value, and completion callbacks.",
+  "useCases": [
+    "Two-factor authentication and passwordless sign-in.",
+    "Payment or wire-transfer approval codes.",
+    "Phone and email verification during onboarding.",
+    "Invite, recovery, and device pairing codes."
+  ],
+  "faqs": [
+    {
+      "question": "Can OTPInput paste a full code?",
+      "answer": "Yes. Paste into any cell and OTPInput distributes valid characters across the remaining cells."
+    },
+    {
+      "question": "Does OTPInput support controlled state?",
+      "answer": "Yes. Use value with onValueChange for controlled state, or defaultValue for uncontrolled state."
+    },
+    {
+      "question": "Can OTPInput submit with a form?",
+      "answer": "Yes. Pass name to render a hidden input containing the full sanitized code."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Provide a purpose-built code entry primitive with individual cells that still behave like a single verification value.\n\nThe component sanitizes input, advances focus after entry, moves backward on Backspace, and fires onComplete when every cell is filled."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Import OTPInput from the otp-input entrypoint. Use length, allowedCharacters, separatorEvery, size, appearance, mask, name, value, defaultValue, onValueChange, and onComplete to tune the experience."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "OTPInput renders a role=group wrapper with labelled native input cells. Provide label text or an accessible name, use hint for delivery instructions, and keep errorMessage concise so screen reader users hear the actionable state."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Use OTPInput in client components when value changes in the browser. Static defaultValue examples can be rendered on preview pages, while verification calls should run from your own server action or API route after onComplete."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

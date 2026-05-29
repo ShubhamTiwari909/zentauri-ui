@@ -14,6 +14,7 @@ import { emptyStateCssVariables } from "./data/empty-state";
 import { fileUploadCssVariables } from "./data/file-upload";
 import { inputsCssVariables } from "./data/inputs";
 import { modalCssVariables } from "./data/modal";
+import { otpInputCssVariables } from "./data/otp-input";
 import { paginationCssVariables } from "./data/pagination";
 import { popoverCssVariables } from "./data/popover";
 import { progressCssVariables } from "./data/progress";
@@ -50,6 +51,7 @@ export const cssVariableReferences = {
   "file-upload": fileUploadCssVariables,
   inputs: inputsCssVariables,
   modal: modalCssVariables,
+  "otp-input": otpInputCssVariables,
   pagination: paginationCssVariables,
   popover: popoverCssVariables,
   progress: progressCssVariables,

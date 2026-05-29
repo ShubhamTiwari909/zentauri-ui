@@ -20,6 +20,7 @@ import index from "@/content/seo/preview/components/index.json";
 import inputs from "@/content/seo/preview/components/inputs.json";
 import installation from "@/content/seo/preview/components/installation.json";
 import modal from "@/content/seo/preview/components/modal.json";
+import otpInput from "@/content/seo/preview/components/otp-input.json";
 import pagination from "@/content/seo/preview/components/pagination.json";
 import popover from "@/content/seo/preview/components/popover.json";
 import progress from "@/content/seo/preview/components/progress.json";
@@ -59,6 +60,7 @@ const previewSeoRegistry = {
   "file-upload": fileUpload as PreviewSeoDocument,
   inputs: inputs as PreviewSeoDocument,
   modal: modal as PreviewSeoDocument,
+  "otp-input": otpInput as PreviewSeoDocument,
   pagination: pagination as PreviewSeoDocument,
   popover: popover as PreviewSeoDocument,
   progress: progress as PreviewSeoDocument,

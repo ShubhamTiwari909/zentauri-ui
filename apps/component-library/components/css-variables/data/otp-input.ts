@@ -1,0 +1,42 @@
+import { defineCssVariableReference } from "../css-variable-reference-types";
+
+export const otpInputCssVariables = defineCssVariableReference({
+  title: "OTP input CSS variables",
+  description:
+    "Override these OTP input variables on :root, a theme selector, or a component wrapper.",
+  lightVariables: [
+    ["otp-label-fg", "oklch(20.8% 0.042 265.755)"],
+    ["otp-hint-fg", "oklch(55.4% 0.046 257.417)"],
+    ["otp-bg", "#ffffff"],
+    ["otp-fg", "oklch(20.8% 0.042 265.755)"],
+    ["otp-ring-offset-focus", "#ffffff"],
+    ["otp-separator", "#94a3b8"],
+    ["otp-error-fg", "oklch(58.6% 0.253 17.585)"],
+    ["otp-default-border", "#cbd5e1"],
+    ["otp-default-border-focus", "oklch(44.6% 0.043 257.281)"],
+    ["otp-default-ring-focus", "oklch(44.6% 0.043 257.281 / 0.25)"],
+    ["otp-outline-border", "#64748b"],
+    ["otp-outline-border-focus", "oklch(54.6% 0.245 262.881)"],
+    ["otp-outline-ring-focus", "oklch(54.6% 0.245 262.881 / 0.28)"],
+    ["otp-glass-border", "#ffffff66"],
+    ["otp-glass-bg", "#ffffffcc"],
+    ["otp-glass-border-focus", "oklch(70.7% 0.165 254.624)"],
+    ["otp-glass-ring-focus", "oklch(70.7% 0.165 254.624 / 0.32)"],
+    ["otp-success-border", "oklch(69.6% 0.17 162.48 / 0.6)"],
+    ["otp-success-border-focus", "oklch(59.6% 0.145 163.225)"],
+    ["otp-success-ring-focus", "oklch(59.6% 0.145 163.225 / 0.28)"],
+    ["otp-error-border", "oklch(58.6% 0.253 17.585 / 0.7)"],
+    ["otp-error-border-focus", "oklch(58.6% 0.253 17.585)"],
+    ["otp-error-ring-focus", "oklch(58.6% 0.253 17.585 / 0.28)"],
+  ],
+  darkExamples: [
+    ["otp-label-fg-dark", "oklch(98.4% 0.003 247.858)"],
+    ["otp-hint-fg-dark", "oklch(70.4% 0.04 256.788)"],
+    ["otp-bg-dark", "oklch(12.9% 0.042 264.695)"],
+    ["otp-fg-dark", "oklch(98.4% 0.003 247.858)"],
+    ["otp-ring-offset-focus-dark", "oklch(12.9% 0.042 264.695)"],
+    ["otp-separator-dark", "#64748b"],
+    ["otp-error-fg-dark", "oklch(71.2% 0.194 13.428)"],
+  ],
+  darkVariableCount: 23,
+});

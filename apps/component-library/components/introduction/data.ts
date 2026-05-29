@@ -138,6 +138,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Overlay",
   },
   {
+    id: "otp-input",
+    name: "OTP input",
+    description:
+      "Segmented one-time code fields with paste fill, auto-advance, completion callbacks, and validation state.",
+    href: "/preview/components/otp-input",
+    badge: "Form",
+  },
+  {
     id: "progress",
     name: "Progress",
     description:
