@@ -130,14 +130,14 @@ export function OTPInput(props: OTPInputProps) {
 
   const updateAtIndex = useCallback(
     (index: number, nextChars: string, isPaste = false) => {
-      let chars = sanitizeValue(nextChars, allowedCharacters, resolvedLength);
+      let chars: string | undefined = sanitizeValue(nextChars, allowedCharacters, resolvedLength);
 
       // Detect single-char overwrite: browser gives "existingChar + typedChar"
       if (!isPaste && chars && chars.length === 2 && chars[0] === (cells[index] ?? "")) {
         chars = chars[1];
       }
 
-      if (!chars.length || (!isPaste && chars === cells[index])) {
+      if (!chars?.length || (!isPaste && chars === cells[index])) {
         return;
       }
 
