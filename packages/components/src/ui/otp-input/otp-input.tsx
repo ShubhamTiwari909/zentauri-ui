@@ -123,20 +123,28 @@ export function OTPInput(props: OTPInputProps) {
   );
 
   const updateAtIndex = useCallback(
-    (index: number, nextChars: string) => {
-      const chars = sanitizeValue(nextChars, allowedCharacters, resolvedLength);
-  
-      if (!chars.length) return; // ← nothing valid was typed, stay put
-  
+    (index: number, nextChars: string, isPaste = false) => {
+      let chars = sanitizeValue(nextChars, allowedCharacters, resolvedLength);
+
+      if (!isPaste && chars.length > 1) {
+        const oldChar = cells[index] ?? "";
+        chars = chars.replace(oldChar, "") || oldChar;
+        chars = chars.slice(0, 1);
+      }
+
+      if (!chars.length || (!isPaste && chars === cells[index])) {
+        return;
+      }
+
       const nextCells = [...cells];
-  
+
       chars.split("").forEach((char, offset) => {
         const targetIndex = index + offset;
         if (targetIndex < resolvedLength) {
           nextCells[targetIndex] = char;
         }
       });
-  
+
       const nextValue = nextCells.join("").slice(0, resolvedLength);
       commitValue(nextValue);
       focusCell(
@@ -158,7 +166,7 @@ export function OTPInput(props: OTPInputProps) {
   const handlePaste = useCallback(
     (event: ClipboardEvent<HTMLInputElement>, index: number) => {
       event.preventDefault();
-      updateAtIndex(index, event.clipboardData.getData("text"));
+      updateAtIndex(index, event.clipboardData.getData("text"), true);
     },
     [updateAtIndex],
   );
@@ -254,8 +262,9 @@ export function OTPInput(props: OTPInputProps) {
               inputMode={allowedCharacters === "numeric" ? "numeric" : "text"}
               maxLength={resolvedLength}
               onChange={(event) =>
-                updateAtIndex(index, event.currentTarget.value)
+                updateAtIndex(index, event.currentTarget.value, false)
               }
+              onFocus={(event) => event.currentTarget.select()}
               onKeyDown={(event) => handleKeyDown(event, index)}
               onPaste={(event) => handlePaste(event, index)}
               pattern={
