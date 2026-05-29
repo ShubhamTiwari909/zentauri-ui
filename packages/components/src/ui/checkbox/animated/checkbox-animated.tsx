@@ -82,7 +82,7 @@ export function CheckboxAnimated(props: CheckboxAnimatedProps) {
         checked={resolvedChecked}
         disabled={disabled}
         aria-checked={indeterminate ? "mixed" : resolvedChecked}
-        aria-label={hasVisibleLabel ? undefined : (ariaLabel ?? "Checkbox")}
+        aria-label={ariaLabel ?? (hasVisibleLabel ? undefined : "Checkbox")}
         onChange={(event) => setChecked(event.currentTarget.checked)}
         {...rest}
       />

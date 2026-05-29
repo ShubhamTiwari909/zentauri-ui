@@ -131,7 +131,7 @@ export function RadioGroupItemAnimated(props: RadioGroupItemAnimatedProps) {
         checked={checked}
         disabled={disabled}
         required={required}
-        aria-label={hasVisibleLabel ? undefined : (ariaLabel ?? value)}
+        aria-label={ariaLabel ?? (hasVisibleLabel ? undefined : value)}
         onChange={(event) => {
           if (event.currentTarget.checked) {
             context?.onValueChange(value);
