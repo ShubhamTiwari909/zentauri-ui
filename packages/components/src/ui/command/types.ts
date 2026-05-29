@@ -1,5 +1,5 @@
 import type { VariantProps } from "class-variance-authority";
-import type { CSSProperties, ReactNode, Ref } from "react";
+import type { CSSProperties, ReactNode, Ref, RefObject } from "react";
 
 import type { commandContentVariants } from "./variants";
 
@@ -67,4 +67,35 @@ export type CommandItemProps = {
 export type CommandSectionProps = {
   className?: string;
   children?: ReactNode;
+};
+
+
+export type ItemMeta = {
+  keywords?: string[];
+  disabled?: boolean;
+  onSelect?: (value: string) => void;
+  searchText?: string;
+};
+
+export type RegisteredItem = {
+  value: string;
+  metaRef: RefObject<ItemMeta>;
+};
+
+export type CommandCtx = {
+  open: boolean;
+  setOpen: (next: boolean) => void;
+  labelId: string;
+  query: string;
+  setQuery: (next: string) => void;
+  activeValue: string | null;
+  setActiveValue: (next: string | null) => void;
+  visibleValues: string[];
+  isVisible: (value: string) => boolean;
+  registerItem: (item: RegisteredItem) => () => void;
+  invalidateRegistry: () => void;
+  selectValue: (value: string) => boolean;
+  contentRef: RefObject<HTMLDivElement | null>;
+  triggerRef: RefObject<HTMLElement | null>;
+  inputRef: RefObject<HTMLInputElement | null>;
 };

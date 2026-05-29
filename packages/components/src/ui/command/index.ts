@@ -23,6 +23,9 @@ export type {
   CommandGroupProps,
   CommandItemProps,
   CommandSectionProps,
+  CommandCtx,
+  ItemMeta,
+  RegisteredItem
 } from "./types";
 export {
   commandContentVariants,

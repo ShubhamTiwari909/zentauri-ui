@@ -18,6 +18,7 @@ import { useFocusManagement } from "../../hooks/useFocusManagement";
 
 import type {
   CommandContentProps,
+  CommandCtx,
   CommandGroupProps,
   CommandInputProps,
   CommandItemProps,
@@ -25,6 +26,8 @@ import type {
   CommandProps,
   CommandSectionProps,
   CommandTriggerProps,
+  ItemMeta,
+  RegisteredItem,
 } from "./types";
 import {
   commandContentVariants,
@@ -40,35 +43,6 @@ import {
   commandTriggerVariants,
 } from "./variants";
 
-type ItemMeta = {
-  keywords?: string[];
-  disabled?: boolean;
-  onSelect?: (value: string) => void;
-  searchText?: string;
-};
-
-type RegisteredItem = {
-  value: string;
-  metaRef: RefObject<ItemMeta>;
-};
-
-type CommandCtx = {
-  open: boolean;
-  setOpen: (next: boolean) => void;
-  labelId: string;
-  query: string;
-  setQuery: (next: string) => void;
-  activeValue: string | null;
-  setActiveValue: (next: string | null) => void;
-  visibleValues: string[];
-  isVisible: (value: string) => boolean;
-  registerItem: (item: RegisteredItem) => () => void;
-  invalidateRegistry: () => void;
-  selectValue: (value: string) => boolean;
-  contentRef: RefObject<HTMLDivElement | null>;
-  triggerRef: RefObject<HTMLElement | null>;
-  inputRef: RefObject<HTMLInputElement | null>;
-};
 
 const CommandContext = createContext<CommandCtx | null>(null);
 
