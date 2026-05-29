@@ -55,6 +55,8 @@ export function CheckboxAnimated(props: CheckboxAnimatedProps) {
   const hasVisibleLabel =
     labelContent !== undefined && labelContent !== null && labelContent !== false;
   const motionPreset = checkboxAnimationPresets[animation];
+  const svgMotionProps = animation === "spring" ? motionPreset : undefined;
+  const pathMotionProps = animation === "draw" ? motionPreset : undefined;
 
   const setChecked = useCallback(
     (next: boolean) => {
@@ -104,15 +106,18 @@ export function CheckboxAnimated(props: CheckboxAnimatedProps) {
               "opacity-100",
               indicatorClassName,
             )}
-            initial={motionPreset.initial}
-            animate={motionPreset.animate}
-            transition={motionPreset.transition}
+            initial={svgMotionProps?.initial}
+            animate={svgMotionProps?.animate}
+            transition={svgMotionProps?.transition}
           >
             {state === "indeterminate" ? (
               <motion.path
                 d="M3.5 8H12.5"
                 strokeWidth="2.4"
                 strokeLinecap="round"
+                initial={pathMotionProps?.initial}
+                animate={pathMotionProps?.animate}
+                transition={pathMotionProps?.transition}
               />
             ) : (
               <motion.path
@@ -120,6 +125,9 @@ export function CheckboxAnimated(props: CheckboxAnimatedProps) {
                 strokeWidth="2.2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                initial={pathMotionProps?.initial}
+                animate={pathMotionProps?.animate}
+                transition={pathMotionProps?.transition}
               />
             )}
           </motion.svg>

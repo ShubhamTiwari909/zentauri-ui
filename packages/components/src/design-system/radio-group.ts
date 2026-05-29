@@ -7,7 +7,7 @@ export const zuiRadioGroupControlBase =
   "grid shrink-0 place-items-center rounded-full border-2 border-[color:var(--zui-radio-border,#0000004d)] bg-[var(--zui-radio-bg,transparent)] transition-[background-color,border-color,box-shadow] peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--zui-radio-ring-focus,oklch(44.6%_0.043_257.281_/_0.7))] peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-[var(--zui-radio-ring-offset-focus,oklch(98.4%_0.003_247.858))] dark:border-[color:var(--zui-radio-border-dark,#ffffff4d)] dark:peer-focus-visible:ring-[var(--zui-radio-ring-focus-dark,oklch(86.9%_0.022_252.894_/_0.7))] dark:peer-focus-visible:ring-offset-[var(--zui-radio-ring-offset-focus-dark,oklch(12.9%_0.042_264.695))] group-data-[disabled=true]:cursor-not-allowed";
 
 export const zuiRadioGroupIndicatorBase =
-  "pointer-events-none rounded-full opacity-0 transition-opacity duration-150 group-data-[state=checked]:opacity-100";
+  "pointer-events-none block rounded-full opacity-0 transition-opacity duration-150 group-data-[state=checked]:opacity-100";
 
 export const zuiRadioGroupSizes = {
   sm: {
