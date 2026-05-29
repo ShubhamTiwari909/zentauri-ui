@@ -13,14 +13,14 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 ## Package status and test coverage
 
-| Metric      | Result           |
-| ----------- | ---------------- |
-| Test files  | 57 passed (57)   |
-| Tests       | 355 passed (355) |
+| Metric     | Result           |
+| ---------- | ---------------- |
+| Test files | 57 passed (57)   |
+| Tests      | 358 passed (358) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 29         | 261   |
+| Components and UI utilities | 29         | 264   |
 | React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 
@@ -35,6 +35,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `cli/cli.integration.test.ts`                                           |     4 |
 | `src/ui/buttons/button.test.tsx`                                        |    41 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
+| `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
 | `src/ui/card/card.test.tsx`                                             |     7 |
 | `src/ui/checkbox/checkbox.test.tsx`                                     |     6 |
 | `src/ui/popover/popover.test.tsx`                                       |     4 |
@@ -141,6 +142,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | File upload     | `file-upload`     | —                                  |
 | Input           | `inputs`          | `inputs/animated`                  |
 | Modal           | `modal`           | `modal/animated`                   |
+| OTP input       | `otp-input`       | —                                  |
 | Pagination      | `pagination`      | —                                  |
 | Popover         | `popover`         | `popover/animated`                 |
 | Progress        | `progress`        | `progress/animated`                |
@@ -658,7 +660,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, the chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 355 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 358 test cases in total
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`** (`components` + `hooks`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
 
 ## Github Release log

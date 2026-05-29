@@ -184,6 +184,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/modal",
       },
       {
+        title: "OTP input",
+        href: "/preview/components/otp-input",
+      },
+      {
         title: "Pagination",
         href: "/preview/components/pagination",
       },

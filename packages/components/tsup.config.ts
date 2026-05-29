@@ -20,6 +20,7 @@ const uiComponentNames = [
   "file-upload",
   "inputs",
   "modal",
+  "otp-input",
   "pagination",
   "popover",
   "progress",
