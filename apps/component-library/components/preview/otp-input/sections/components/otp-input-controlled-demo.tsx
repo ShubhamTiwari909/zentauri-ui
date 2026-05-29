@@ -12,7 +12,6 @@ export function OTPInputControlledDemo() {
       <OTPInput
         appearance={complete ? "success" : "outline"}
         label="Secure sign in"
-        onComplete={setCode}
         onValueChange={setCode}
         value={code}
       />

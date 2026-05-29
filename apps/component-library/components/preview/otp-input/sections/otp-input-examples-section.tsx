@@ -36,12 +36,13 @@ export function OTPInputExamplesSection() {
         </PreviewCodeShowcase>
         <PreviewCodeShowcase
           code={`${variantLeadComment("controlled completion")}const [code, setCode] = useState("");
+const complete = code.length === 6;
 
 <OTPInput
   value={code}
   onValueChange={setCode}
   onComplete={(value) => verify(value)}
-  appearance="success"
+  appearance={complete ? "success" : "outline"}
   label="Secure sign in"
 />`}
         >

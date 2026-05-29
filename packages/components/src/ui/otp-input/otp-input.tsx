@@ -37,7 +37,14 @@ function sanitizeValue(
 }
 
 function valueToCells(value: string, length: number): string[] {
-  return Array.from({ length }, (_, index) => value[index] ?? "");
+  return Array.from({ length }, (_, index) => {
+    const c = value[index] ?? "\x00";
+    return c === "\x00" ? "" : c;
+  });
+}
+
+function cellsToInternal(cells: string[], length: number): string {
+  return Array.from({ length }, (_, i) => cells[i] || "\x00").join("");
 }
 
 export function OTPInput(props: OTPInputProps) {
@@ -68,20 +75,25 @@ export function OTPInput(props: OTPInputProps) {
   const rootId = id ?? generatedId;
   const resolvedLength = clampLength(length);
   const isControlled = value !== undefined;
-  const [uncontrolledValue, setUncontrolledValue] = useState(() =>
-    sanitizeValue(defaultValue, allowedCharacters, resolvedLength),
-  );
+  const [uncontrolledValue, setUncontrolledValue] = useState(() => {
+    const clean = sanitizeValue(defaultValue, allowedCharacters, resolvedLength);
+    return clean.padEnd(resolvedLength, "\x00");
+  });
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
-  const rawValue = isControlled ? value : uncontrolledValue;
-  const sanitizedValue = sanitizeValue(
-    rawValue ?? "",
-    allowedCharacters,
-    resolvedLength,
-  );
   const cells = useMemo(
-    () => valueToCells(sanitizedValue, resolvedLength),
-    [resolvedLength, sanitizedValue],
+    () =>
+      isControlled
+        ? valueToCells(
+            sanitizeValue(value ?? "", allowedCharacters, resolvedLength).padEnd(
+              resolvedLength,
+              "\x00",
+            ),
+            resolvedLength,
+          )
+        : valueToCells(uncontrolledValue, resolvedLength),
+    [allowedCharacters, isControlled, resolvedLength, uncontrolledValue, value],
   );
+  const sanitizedValue = cells.filter(Boolean).join("");
   const labelId = `${rootId}-label`;
   const hintId = `${rootId}-hint`;
   const errorId = `${rootId}-error`;
@@ -93,23 +105,17 @@ export function OTPInput(props: OTPInputProps) {
     .join(" ");
 
   const commitValue = useCallback(
-    (nextValue: string) => {
-      const next = sanitizeValue(nextValue, allowedCharacters, resolvedLength);
+    (nextCells: string[]) => {
       if (!isControlled) {
-        setUncontrolledValue(next);
+        setUncontrolledValue(cellsToInternal(nextCells, resolvedLength));
       }
+      const next = nextCells.filter(Boolean).join("").slice(0, resolvedLength);
       onValueChange?.(next);
       if (next.length === resolvedLength) {
         onComplete?.(next);
       }
     },
-    [
-      allowedCharacters,
-      isControlled,
-      onComplete,
-      onValueChange,
-      resolvedLength,
-    ],
+    [isControlled, onComplete, onValueChange, resolvedLength],
   );
 
   const focusCell = useCallback(
@@ -126,10 +132,9 @@ export function OTPInput(props: OTPInputProps) {
     (index: number, nextChars: string, isPaste = false) => {
       let chars = sanitizeValue(nextChars, allowedCharacters, resolvedLength);
 
-      if (!isPaste && chars.length > 1) {
-        const oldChar = cells[index] ?? "";
-        chars = chars.replace(oldChar, "") || oldChar;
-        chars = chars.slice(0, 1);
+      // Detect single-char overwrite: browser gives "existingChar + typedChar"
+      if (!isPaste && chars && chars.length === 2 && chars[0] === (cells[index] ?? "")) {
+        chars = chars[1];
       }
 
       if (!chars.length || (!isPaste && chars === cells[index])) {
@@ -145,8 +150,7 @@ export function OTPInput(props: OTPInputProps) {
         }
       });
 
-      const nextValue = nextCells.join("").slice(0, resolvedLength);
-      commitValue(nextValue);
+      commitValue(nextCells);
       focusCell(
         Math.min(index + Math.max(chars.length, 1), resolvedLength - 1),
       );
@@ -158,7 +162,7 @@ export function OTPInput(props: OTPInputProps) {
     (index: number) => {
       const nextCells = [...cells];
       nextCells[index] = "";
-      commitValue(nextCells.join(""));
+      commitValue(nextCells);
     },
     [cells, commitValue],
   );
@@ -287,7 +291,7 @@ export function OTPInput(props: OTPInputProps) {
         ))}
       </div>
       {name !== undefined && (
-        <input type="hidden" name={name} value={sanitizedValue} />
+        <input type="hidden" name={name} value={sanitizedValue} disabled={disabled} />
       )}
       {errorMessage !== undefined && (
         <p id={errorId} className={zuiOtpErrorBase}>

@@ -38,5 +38,5 @@ export const otpInputCssVariables = defineCssVariableReference({
     ["otp-separator-dark", "#64748b"],
     ["otp-error-fg-dark", "oklch(71.2% 0.194 13.428)"],
   ],
-  darkVariableCount: 20,
+  darkVariableCount: 23,
 });
