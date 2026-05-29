@@ -76,7 +76,11 @@ export function OTPInput(props: OTPInputProps) {
   const resolvedLength = clampLength(length);
   const isControlled = value !== undefined;
   const [uncontrolledValue, setUncontrolledValue] = useState(() => {
-    const clean = sanitizeValue(defaultValue, allowedCharacters, resolvedLength);
+    const clean = sanitizeValue(
+      defaultValue,
+      allowedCharacters,
+      resolvedLength,
+    );
     return clean.padEnd(resolvedLength, "\x00");
   });
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
@@ -84,13 +88,17 @@ export function OTPInput(props: OTPInputProps) {
     () =>
       isControlled
         ? valueToCells(
-            sanitizeValue(value ?? "", allowedCharacters, resolvedLength).padEnd(
+            sanitizeValue(
+              value ?? "",
+              allowedCharacters,
               resolvedLength,
-              "\x00",
-            ),
+            ).padEnd(resolvedLength, "\x00"),
             resolvedLength,
           )
-        : valueToCells(uncontrolledValue, resolvedLength),
+        : Array.from({ length: resolvedLength }, (_, index) => {
+            const c = uncontrolledValue[index] ?? "\x00";
+            return c === "\x00" ? "" : sanitizeValue(c, allowedCharacters, 1);
+          }),
     [allowedCharacters, isControlled, resolvedLength, uncontrolledValue, value],
   );
   const sanitizedValue = cells.filter(Boolean).join("");
@@ -130,10 +138,19 @@ export function OTPInput(props: OTPInputProps) {
 
   const updateAtIndex = useCallback(
     (index: number, nextChars: string, isPaste = false) => {
-      let chars: string | undefined = sanitizeValue(nextChars, allowedCharacters, resolvedLength);
+      let chars: string | undefined = sanitizeValue(
+        nextChars,
+        allowedCharacters,
+        resolvedLength,
+      );
 
       // Detect single-char overwrite: browser gives "existingChar + typedChar"
-      if (!isPaste && chars && chars.length === 2 && chars[0] === (cells[index] ?? "")) {
+      if (
+        !isPaste &&
+        chars &&
+        chars.length === 2 &&
+        chars[0] === (cells[index] ?? "")
+      ) {
         chars = chars[1];
       }
 
@@ -291,7 +308,12 @@ export function OTPInput(props: OTPInputProps) {
         ))}
       </div>
       {name !== undefined && (
-        <input type="hidden" name={name} value={sanitizedValue} disabled={disabled} />
+        <input
+          type="hidden"
+          name={name}
+          value={sanitizedValue}
+          disabled={disabled}
+        />
       )}
       {errorMessage !== undefined && (
         <p id={errorId} className={zuiOtpErrorBase}>
