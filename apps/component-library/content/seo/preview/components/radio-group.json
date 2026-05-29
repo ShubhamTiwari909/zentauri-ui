@@ -1,0 +1,79 @@
+{
+  "category": "Forms",
+  "title": "RadioGroup component for React forms",
+  "description": "RadioGroup component for React and Next.js with exclusive selection, compound items, orientation, controlled state, and animated indicator support.",
+  "keywords": [
+    "radio group",
+    "radio button",
+    "React",
+    "Next.js",
+    "forms",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "RadioGroup · Zentauri UI",
+    "description": "RadioGroup component for React and Next.js with exclusive selection, compound items, orientation, controlled state, and animated indicator support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "RadioGroup · Zentauri UI",
+    "description": "RadioGroup component for React and Next.js with exclusive selection, compound items, orientation, controlled state, and animated indicator support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/radio-group",
+  "headings": {
+    "h1": "Radio groups for exclusive choices",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "RadioGroup coordinates a set of radio items so people can choose exactly one option. Zentauri UI provides a compound RadioGroup API with shared value, name, required, orientation, size, appearance, and animated indicator support.",
+  "useCases": [
+    "Plan selection in pricing and billing flows.",
+    "Single-choice survey questions.",
+    "Delivery or payment method selection.",
+    "Settings where one mode must be active."
+  ],
+  "faqs": [
+    {
+      "question": "Does RadioGroup manage exclusive selection?",
+      "answer": "Yes. RadioGroupItem components receive the group name and selected value from context, so only one item in the group is selected."
+    },
+    {
+      "question": "Can RadioGroup be horizontal?",
+      "answer": "Yes. Set orientation=\"horizontal\" on RadioGroup for compact rows of options."
+    },
+    {
+      "question": "Is there an animated RadioGroup?",
+      "answer": "Yes. Import RadioGroupAnimated and RadioGroupItemAnimated from the animated entrypoint for a spring or fade selected indicator."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Coordinate exclusive selection across related radio items.\n\nUse RadioGroup when exactly one option should be selected from a known list."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Use RadioGroup as the root and RadioGroupItem for each option. The root owns value, defaultValue, onValueChange, orientation, size, appearance, required, and disabled state."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The component renders a radiogroup wrapper and native radio inputs. Provide an aria-label or external label for the group, and keep each item label clear."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Keep controlled RadioGroup examples in client components. Use defaultValue for simple server-rendered defaults in App Router pages."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

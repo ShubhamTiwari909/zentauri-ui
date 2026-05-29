@@ -554,6 +554,7 @@ async function copyDesignSystemFolder(config, configDir, packageRoot) {
     if (isTestFile(rel)) {
       continue;
     }
+    const absDest = join(destRoot, rel);
     if (existsSync(absDest)) {
       continue;
     }

@@ -5,6 +5,7 @@ import { badgeCssVariables } from "./data/badge";
 import { breadcrumbCssVariables } from "./data/breadcrumb";
 import { buttonsCssVariables } from "./data/buttons";
 import { cardCssVariables } from "./data/card";
+import { checkboxCssVariables } from "./data/checkbox";
 import { dividerCssVariables } from "./data/divider";
 import { drawerCssVariables } from "./data/drawer";
 import { dropdownCssVariables } from "./data/dropdown";
@@ -15,6 +16,7 @@ import { inputsCssVariables } from "./data/inputs";
 import { modalCssVariables } from "./data/modal";
 import { paginationCssVariables } from "./data/pagination";
 import { progressCssVariables } from "./data/progress";
+import { radioGroupCssVariables } from "./data/radio-group";
 import { searchCssVariables } from "./data/search";
 import { selectCssVariables } from "./data/select";
 import { skeletonCssVariables } from "./data/skeleton";
@@ -38,6 +40,7 @@ export const cssVariableReferences = {
   breadcrumb: breadcrumbCssVariables,
   buttons: buttonsCssVariables,
   card: cardCssVariables,
+  checkbox: checkboxCssVariables,
   divider: dividerCssVariables,
   drawer: drawerCssVariables,
   dropdown: dropdownCssVariables,
@@ -48,6 +51,7 @@ export const cssVariableReferences = {
   modal: modalCssVariables,
   pagination: paginationCssVariables,
   progress: progressCssVariables,
+  "radio-group": radioGroupCssVariables,
   search: searchCssVariables,
   select: selectCssVariables,
   skeleton: skeletonCssVariables,
