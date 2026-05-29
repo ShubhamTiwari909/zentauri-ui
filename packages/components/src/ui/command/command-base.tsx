@@ -44,6 +44,7 @@ type ItemMeta = {
   keywords?: string[];
   disabled?: boolean;
   onSelect?: (value: string) => void;
+  searchText?: string;
 };
 
 type RegisteredItem = {
@@ -62,7 +63,8 @@ type CommandCtx = {
   visibleValues: string[];
   isVisible: (value: string) => boolean;
   registerItem: (item: RegisteredItem) => () => void;
-  selectValue: (value: string) => void;
+  invalidateRegistry: () => void;
+  selectValue: (value: string) => boolean;
   contentRef: RefObject<HTMLDivElement | null>;
   triggerRef: RefObject<HTMLElement | null>;
   inputRef: RefObject<HTMLInputElement | null>;
@@ -83,6 +85,9 @@ function itemMatches(value: string, meta: ItemMeta, normalized: string): boolean
     return true;
   }
   if (value.toLowerCase().includes(normalized)) {
+    return true;
+  }
+  if (meta.searchText?.toLowerCase().includes(normalized)) {
     return true;
   }
   return Boolean(
@@ -131,6 +136,10 @@ export function Command({
     };
   }, []);
 
+  const invalidateRegistry = useCallback(() => {
+    setRegistryVersion((version) => version + 1);
+  }, []);
+
   const visibleValues = useMemo(() => {
     void registryVersion;
     const normalized = query.trim().toLowerCase();
@@ -153,7 +162,11 @@ export function Command({
 
   const selectValue = useCallback((value: string) => {
     const entry = itemsRef.current.find((item) => item.value === value);
+    if (!entry || entry.metaRef.current.disabled) {
+      return false;
+    }
     entry?.metaRef.current.onSelect?.(value);
+    return true;
   }, []);
 
   // Reset transient state when the palette closes; keep active in sync with results.
@@ -202,6 +215,7 @@ export function Command({
       visibleValues,
       isVisible,
       registerItem,
+      invalidateRegistry,
       selectValue,
       contentRef,
       triggerRef,
@@ -216,6 +230,7 @@ export function Command({
       visibleValues,
       isVisible,
       registerItem,
+      invalidateRegistry,
       selectValue,
     ],
   );
@@ -277,6 +292,7 @@ export function CommandContent({
 }: CommandContentProps) {
   const { open, setOpen, labelId, contentRef, triggerRef } =
     useCommandContext("CommandContent");
+  const [isMounted, setIsMounted] = useState(false);
 
   useFocusManagement({
     open,
@@ -285,11 +301,15 @@ export function CommandContent({
     triggerRef,
   });
 
-  const portalTarget = typeof document !== "undefined" ? document.body : null;
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-  if (!portalTarget) {
+  if (!isMounted) {
     return null;
   }
+
+  const portalTarget = document.body;
 
   return createPortal(
     open ? (
@@ -351,7 +371,12 @@ export function CommandInput({ className, placeholder, ref }: CommandInputProps)
       ? visibleValues.indexOf(activeValue)
       : -1;
     const nextIndex =
-      (currentIndex + direction + visibleValues.length) % visibleValues.length;
+      currentIndex === -1
+        ? direction === 1
+          ? 0
+          : visibleValues.length - 1
+        : (currentIndex + direction + visibleValues.length) %
+          visibleValues.length;
     setActiveValue(visibleValues[nextIndex] ?? null);
   };
 
@@ -398,10 +423,11 @@ export function CommandInput({ className, placeholder, ref }: CommandInputProps)
             event.preventDefault();
             moveActive(-1);
           } else if (event.key === "Enter") {
-            if (activeValue) {
+            if (activeValue && visibleValues.includes(activeValue)) {
               event.preventDefault();
-              selectValue(activeValue);
-              setOpen(false);
+              if (selectValue(activeValue)) {
+                setOpen(false);
+              }
             }
           }
         }}
@@ -429,27 +455,14 @@ export function CommandList({ className, children }: CommandListProps) {
 CommandList.displayName = "CommandList";
 
 export function CommandGroup({ className, heading, children }: CommandGroupProps) {
-  const groupRef = useRef<HTMLDivElement | null>(null);
-  const { visibleValues } = useCommandContext("CommandGroup");
-  const [hasVisible, setHasVisible] = useState(true);
-
-  useEffect(() => {
-    const node = groupRef.current;
-    if (!node) {
-      return;
-    }
-    const items = node.querySelectorAll<HTMLElement>(
-      '[data-slot="command-item"]:not([hidden])',
-    );
-    setHasVisible(items.length > 0);
-  }, [visibleValues]);
-
   return (
     <div
-      ref={groupRef}
       role="group"
       data-slot="command-group"
-      className={cn(!hasVisible && "hidden", className)}
+      className={cn(
+        "[&:not(:has([data-slot=command-item]:not([hidden])))]:hidden",
+        className,
+      )}
     >
       {heading ? (
         <div className={commandGroupHeadingVariants()} aria-hidden>
@@ -473,6 +486,7 @@ export function CommandItem({
 }: CommandItemProps) {
   const {
     registerItem,
+    invalidateRegistry,
     isVisible,
     activeValue,
     setActiveValue,
@@ -480,19 +494,37 @@ export function CommandItem({
     setOpen,
   } = useCommandContext("CommandItem");
 
+  const itemRef = useRef<HTMLDivElement | null>(null);
+  const keywordSignature = keywords?.join("\u0000") ?? "";
   const metaRef = useRef<ItemMeta>({ keywords, disabled, onSelect });
-  metaRef.current = { keywords, disabled, onSelect };
+  metaRef.current = {
+    keywords,
+    disabled,
+    onSelect,
+    searchText: metaRef.current.searchText,
+  };
 
   useEffect(() => {
     const unregister = registerItem({ value, metaRef });
     return unregister;
   }, [registerItem, value]);
 
+  useEffect(() => {
+    metaRef.current = {
+      keywords: metaRef.current.keywords,
+      disabled,
+      onSelect: metaRef.current.onSelect,
+      searchText: itemRef.current?.textContent ?? undefined,
+    };
+    invalidateRegistry();
+  }, [children, disabled, invalidateRegistry, keywordSignature]);
+
   const visible = isVisible(value);
   const active = activeValue === value;
 
   return (
     <div
+      ref={itemRef}
       role="option"
       aria-selected={active}
       aria-disabled={disabled || undefined}
@@ -510,8 +542,9 @@ export function CommandItem({
         if (disabled) {
           return;
         }
-        selectValue(value);
-        setOpen(false);
+        if (selectValue(value)) {
+          setOpen(false);
+        }
       }}
     >
       {children}

@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { createPortal } from "react-dom";
-import type { RefObject } from "react";
+import { useEffect, useState, type RefObject } from "react";
 
 import { cn } from "../../../lib/utils";
 import { useFocusManagement } from "../../../hooks/useFocusManagement";
@@ -28,6 +28,7 @@ export function CommandContentAnimated({
   const overlayMotion = commandOverlayAnimationPresets.fade;
   const panelMotion =
     commandOverlayAnimationPresets[reduceMotion ? "fade" : animation];
+  const [isMounted, setIsMounted] = useState(false);
 
   useFocusManagement({
     open,
@@ -36,11 +37,15 @@ export function CommandContentAnimated({
     triggerRef,
   });
 
-  const portalTarget = typeof document !== "undefined" ? document.body : null;
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-  if (!portalTarget) {
+  if (!isMounted) {
     return null;
   }
+
+  const portalTarget = document.body;
 
   return createPortal(
     <AnimatePresence>
