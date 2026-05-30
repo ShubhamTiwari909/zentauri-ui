@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion";
 import { AlertBase } from "../alert-base";
 import { alertAnimationPresets } from "./animations";
