@@ -35,8 +35,8 @@ export const zuiScrollAreaOrientations = {
 export const zuiScrollAreaVisibility = {
   auto: "",
   hover:
-    "[scrollbar-color:transparent_transparent] hover:[scrollbar-color:var(--zui-scroll-area-thumb,#94a3b8)_var(--zui-scroll-area-track,transparent)] [&::-webkit-scrollbar-thumb]:bg-transparent hover:[&::-webkit-scrollbar-thumb]:bg-[var(--zui-scroll-area-thumb,#94a3b8)]",
-  always: "overflow-scroll",
+    "[scrollbar-color:transparent_transparent] hover:[scrollbar-color:var(--zui-scroll-area-thumb,#94a3b8)_var(--zui-scroll-area-track,transparent)] [&::-webkit-scrollbar-thumb]:bg-transparent hover:[&::-webkit-scrollbar-thumb]:bg-[var(--zui-scroll-area-thumb,#94a3b8)] [&::-webkit-scrollbar-track]:bg-transparent hover:[&::-webkit-scrollbar-track]:bg-[var(--zui-scroll-area-track,transparent)]",
+  always: "",
   hidden:
     "[scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar]:w-0",
 } as const;

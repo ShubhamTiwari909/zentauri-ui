@@ -1,5 +1,7 @@
 "use client";
 
+import { forwardRef } from "react";
+
 import { cn } from "../../lib/utils";
 
 import type { ScrollAreaProps } from "./types";
@@ -21,7 +23,11 @@ export function ScrollArea(props: ScrollAreaProps) {
     ...rest
   } = props;
   const ariaLabel = rest["aria-label"];
-  const isNamedRegion = role === "region" || ariaLabel !== undefined;
+  const ariaLabelledBy = rest["aria-labelledby"];
+  const isNamedRegion =
+    role === "region" ||
+    ariaLabel !== undefined ||
+    ariaLabelledBy !== undefined;
 
   return (
     <div
@@ -29,7 +35,12 @@ export function ScrollArea(props: ScrollAreaProps) {
       data-orientation={orientation ?? "vertical"}
       data-scrollbar={scrollbar ?? "auto"}
       data-slot="scroll-area"
-      role={role ?? (ariaLabel !== undefined ? "region" : undefined)}
+      role={
+        role ??
+        (ariaLabel !== undefined || ariaLabelledBy !== undefined
+          ? "region"
+          : undefined)
+      }
       tabIndex={tabIndex ?? (isNamedRegion ? 0 : undefined)}
       className={cn(
         scrollAreaVariants({

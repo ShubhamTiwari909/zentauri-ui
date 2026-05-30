@@ -17,6 +17,23 @@ export const scrollAreaVariants = cva(zuiScrollAreaBase, {
     shadow: zuiScrollAreaShadows,
     size: zuiScrollAreaSizes,
   },
+  compoundVariants: [
+    {
+      scrollbar: "always",
+      orientation: "vertical",
+      class: "overflow-x-hidden overflow-y-scroll",
+    },
+    {
+      scrollbar: "always",
+      orientation: "horizontal",
+      class: "overflow-x-scroll overflow-y-hidden",
+    },
+    {
+      scrollbar: "always",
+      orientation: "both",
+      class: "overflow-scroll",
+    },
+  ],
   defaultVariants: {
     appearance: "default",
     orientation: "vertical",

@@ -64,7 +64,7 @@
     },
     {
       "heading": "Common use cases",
-      "body": ""
+      "body": "Use ScrollArea to standardize scrollbar appearance across different browsers and platforms. It is ideal for sidebar navigation, dropdown menus, chat feeds, log viewers, and horizontal card carousels where native scrollbars would look inconsistent or bulky."
     },
     {
       "heading": "Accessibility",
