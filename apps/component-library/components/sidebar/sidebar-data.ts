@@ -204,6 +204,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/radio-group",
       },
       {
+        title: "Scroll area",
+        href: "/preview/components/scroll-area",
+      },
+      {
         title: "Search",
         href: "/preview/components/search",
       },

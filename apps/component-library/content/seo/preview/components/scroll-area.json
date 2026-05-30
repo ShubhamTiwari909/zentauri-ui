@@ -1,0 +1,79 @@
+{
+  "category": "Layout",
+  "title": "ScrollArea component for React interfaces",
+  "description": "ScrollArea component for React and Next.js - themeable overflow panels, horizontal rails, hover scrollbars, and CSS variable styling.",
+  "keywords": [
+    "scroll area component",
+    "React",
+    "Next.js",
+    "custom scrollbar",
+    "overflow container",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "ScrollArea · Zentauri UI",
+    "description": "Themeable ScrollArea component for React and Next.js layouts with vertical, horizontal, hover, hidden, and always-visible scrollbar variants.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "ScrollArea · Zentauri UI",
+    "description": "Themeable ScrollArea component for React and Next.js layouts with vertical, horizontal, hover, hidden, and always-visible scrollbar variants.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/scroll-area",
+  "headings": {
+    "h1": "Themeable scroll containers for dense interfaces",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "ScrollArea wraps overflowing content in a consistent, token-driven container. Use it for activity feeds, command panels, metric rails, compact tables, and any section where browser default scrollbars feel too heavy or inconsistent.",
+  "useCases": [
+    "Keep dashboard panels readable when feeds grow long.",
+    "Build horizontal rails for metrics, chips, filters, and compact cards.",
+    "Use hover-revealed scrollbars in dense operational tools.",
+    "Hide native scrollbar chrome while preserving scroll behavior."
+  ],
+  "faqs": [
+    {
+      "question": "Does ScrollArea require JavaScript for positioning?",
+      "answer": "No. ScrollArea uses CSS overflow, CSS custom properties, and browser scrollbar styling, so it does not need a layout or positioning dependency."
+    },
+    {
+      "question": "Can ScrollArea scroll horizontally?",
+      "answer": "Yes. Set orientation to horizontal and give the viewport content a minimum width, such as min-w-max or a fixed grid width."
+    },
+    {
+      "question": "How do I make a ScrollArea accessible?",
+      "answer": "Provide aria-label or role and label content when the scroll region is meaningful on its own. Named regions become keyboard-focusable by default so users can scroll them with the keyboard."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "ScrollArea gives overflowing content a consistent scrollbar treatment across product surfaces.\n\nIt supports vertical, horizontal, and two-axis scrolling, plus auto, hover, always, and hidden scrollbar visibility modes."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Use ScrollArea as a single wrapper around content. Pass className for the scroll container size and padding, viewportClassName for inner layout, and variants such as appearance, size, orientation, scrollbar, and shadow."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Use aria-label when the scrollable region has standalone meaning. The component maps named regions to role=region and tabIndex=0 unless you provide your own role or tabIndex."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "ScrollArea ships as a client-safe package entry because it owns interactive focus attributes, but it has no effects or runtime layout work. You can render it inside App Router preview pages while keeping SEO content server-rendered."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

@@ -170,6 +170,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "scroll-area",
+    name: "Scroll area",
+    description:
+      "Themeable overflow containers with vertical, horizontal, hover, hidden, and always-visible scrollbar variants.",
+    href: "/preview/components/scroll-area",
+    badge: "Layout",
+  },
+  {
     id: "select",
     name: "Select",
     description:
