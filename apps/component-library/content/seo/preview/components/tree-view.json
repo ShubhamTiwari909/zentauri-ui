@@ -1,0 +1,80 @@
+{
+  "category": "Data",
+  "title": "TreeView component for React interfaces",
+  "description": "TreeView component for React and Next.js - data-driven hierarchical trees with keyboard navigation, aria-tree semantics, selection, and animated expand/collapse.",
+  "keywords": [
+    "tree view component",
+    "React",
+    "Next.js",
+    "file explorer",
+    "hierarchy tree",
+    "aria-tree",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "TreeView · Zentauri UI",
+    "description": "Data-driven TreeView component for React and Next.js with keyboard navigation, selection state, indentation guides, and animated expand/collapse variants.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "TreeView · Zentauri UI",
+    "description": "Data-driven TreeView component for React and Next.js with keyboard navigation, selection state, indentation guides, and animated expand/collapse variants.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/tree-view",
+  "headings": {
+    "h1": "Accessible hierarchical trees for developer tools",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "TreeView renders nested data as an accessible, keyboard-navigable tree. Use it for file explorers, org charts, nested configuration, and any hierarchy where users expand, collapse, and select nodes.",
+  "useCases": [
+    "Build file explorers and source trees in developer tools and dashboards.",
+    "Render nested configuration, categories, or org charts with selection state.",
+    "Drive expansion and selection from controlled state synced to a router or store.",
+    "Customize each row with renderNode for icons, badges, counts, or actions."
+  ],
+  "faqs": [
+    {
+      "question": "Is TreeView keyboard accessible?",
+      "answer": "Yes. TreeView implements the WAI-ARIA tree pattern: arrow keys move between visible nodes, ArrowRight expands or steps into children, ArrowLeft collapses or steps to the parent, Home and End jump to the first and last node, and Enter or Space selects."
+    },
+    {
+      "question": "How do I control which nodes are expanded?",
+      "answer": "Pass defaultExpanded for uncontrolled state, or expanded plus onExpandedChange for controlled state. Selection works the same way with defaultSelected or selected plus onSelect."
+    },
+    {
+      "question": "Does the animated variant require Framer Motion?",
+      "answer": "Only the animated entry imports framer-motion. Import TreeView from ui/tree-view for the static version, or TreeViewAnimated from ui/tree-view/animated for spring-based expand and collapse."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "TreeView turns an array of nested nodes into an accessible tree with expandable branches and selectable leaves.\n\nIt manages expansion and selection state (controlled or uncontrolled), roving tabindex focus, and full keyboard navigation, while leaving node rendering open through renderNode."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Pass a data array of nodes, each with an id, label, optional icon, optional disabled flag, and optional children. Use defaultExpanded or expanded for expansion, defaultSelected or selected for selection, and onSelect and onExpandedChange for events. Variants such as appearance, size, and showGuides theme the container and indentation."
+    },
+    {
+      "heading": "Common use cases",
+      "body": "Use TreeView for file and folder explorers, nested navigation, settings categories, taxonomy editors, and org charts. The renderNode prop lets each row carry icons, badges, counts, or inline actions while the component keeps accessibility and keyboard behavior consistent."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The container uses role=tree and each node uses role=treeitem with aria-expanded, aria-selected, aria-level, and aria-disabled. A roving tabindex keeps one node in the tab order, and arrow keys, Home, End, Enter, and Space follow the WAI-ARIA tree interaction pattern."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "TreeView ships as a client-safe package entry because it owns focus and keyboard state. Render it inside App Router preview pages while keeping SEO content server-rendered, and reach for the ui/tree-view/animated entry only when you want motion on expand and collapse."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

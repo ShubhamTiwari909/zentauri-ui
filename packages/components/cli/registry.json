@@ -43,6 +43,7 @@
     "toast",
     "toggle",
     "tooltip",
+    "tree-view",
     "typography"
   ],
   "hooks": [

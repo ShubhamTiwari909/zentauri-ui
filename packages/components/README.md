@@ -36,6 +36,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/ui/buttons/button.test.tsx`                                        |    41 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
 | `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
+| `src/ui/tree-view/tree-view.test.tsx`                                   |    10 |
 | `src/ui/card/card.test.tsx`                                             |     7 |
 | `src/ui/checkbox/checkbox.test.tsx`                                     |     6 |
 | `src/ui/popover/popover.test.tsx`                                       |     4 |
@@ -111,7 +112,7 @@ Only a subset of UI areas publish a `/animated` entry (see **Components**). Some
 
 Published motion entries (same `<name>` as the base UI folder):
 
-`accordion`, `alert`, `avatar`, `badge`, `buttons`, `card`, `checkbox`, `divider`, `drawer`, `empty-state`, `inputs`, `modal`, `popover`, `progress`, `radio-group`, `skeleton`, `spinner`, `table`, `tabs`, `toast`, `toggle`, `tooltip`
+`accordion`, `alert`, `avatar`, `badge`, `buttons`, `card`, `checkbox`, `divider`, `drawer`, `empty-state`, `inputs`, `modal`, `popover`, `progress`, `radio-group`, `skeleton`, `spinner`, `table`, `tabs`, `toast`, `toggle`, `tooltip`, `tree-view`
 
 **Spinner:** only the motion entry is built—import from `@zentauri-ui/zentauri-components/ui/spinner/animated` (there is no separate `ui/spinner` static bundle).
 
@@ -163,6 +164,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Toast           | `toast`           | `toast/animated`                   |
 | Toggle          | `toggle`          | `toggle/animated`                  |
 | Tooltip         | `tooltip`         | `tooltip/animated`                 |
+| Tree view       | `tree-view`       | `tree-view/animated`               |
 | Typography      | `typography`      | —                                  |
 
 ## Typography

@@ -34,4 +34,5 @@ export * from "./toast";
 export * from "./tokens";
 export * from "./toggle";
 export * from "./tooltip";
+export * from "./tree-view";
 export * from "./typography";
