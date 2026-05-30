@@ -10,9 +10,9 @@ export const zuiCardAppearances = {
   glass:
     "border border-[color:var(--zui-card-glass-border,#00000026)] dark:border-[color:var(--zui-card-glass-border-dark,#ffffff26)] bg-[var(--zui-card-glass-bg,#0000001a)] dark:bg-[var(--zui-card-glass-bg-dark,#ffffff1a)] backdrop-blur-md shadow-[var(--zui-card-glass-shadow,0_8px_24px_rgba(15,23,42,0.12))] dark:shadow-[var(--zui-card-glass-shadow-dark,0_18px_48px_rgba(15,23,42,0.35))]",
   outline:
-    "border border-[color:var(--zui-card-outline-border,#00000026)] dark:border-[color:var(--zui-card-outline-border-dark,#ffffff26)] bg-[var(--zui-card-outline-bg,transparent)]",
+    "border border-[color:var(--zui-card-outline-border,#00000026)] dark:border-[color:var(--zui-card-outline-border-dark,#ffffff26)] bg-[var(--zui-card-outline-bg,transparent)] dark:bg-[var(--zui-card-outline-bg-dark,transparent)]",
   ghost:
-    "border border-[color:var(--zui-card-ghost-border,transparent)] bg-[var(--zui-card-ghost-bg,transparent)]",
+    "border border-[color:var(--zui-card-ghost-border,transparent)] dark:border-[color:var(--zui-card-ghost-border-dark,transparent)] bg-[var(--zui-card-ghost-bg,transparent)] dark:bg-[var(--zui-card-ghost-bg-dark,transparent)]",
   elevated:
     "border border-[color:var(--zui-card-elevated-border,#0000001a)] dark:border-[color:var(--zui-card-elevated-border-dark,#ffffff1a)] bg-[var(--zui-card-elevated-bg,oklch(96.8%_0.007_247.896_/_0.8))] dark:bg-[var(--zui-card-elevated-bg-dark,oklch(20.8%_0.042_265.755_/_0.8))] shadow-[var(--zui-card-elevated-shadow,0_12px_32px_rgba(15,23,42,0.12))] dark:shadow-[var(--zui-card-elevated-shadow-dark,0_24px_64px_rgba(15,23,42,0.45))]",
   sky: "border border-[color:var(--zui-card-sky-border,oklch(44.3%_0.11_240.79))] dark:border-[color:var(--zui-card-sky-border-dark,oklch(58.8%_0.158_241.966))] bg-[var(--zui-card-sky-bg,oklch(97.7%_0.013_236.62))] dark:bg-[var(--zui-card-sky-bg-dark,oklch(29.3%_0.066_243.157_/_0.7))] backdrop-blur-xl",

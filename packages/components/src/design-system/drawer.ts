@@ -6,7 +6,7 @@ export const zuiDrawerTriggerBase =
 
 export const zuiDrawerTriggerAppearances = {
   default:
-    "bg-[var(--zui-drawer-trigger-default-bg,oklch(12.9%_0.042_264.695))]",
+    "bg-[var(--zui-drawer-trigger-default-bg,oklch(12.9%_0.042_264.695))] dark:bg-[var(--zui-drawer-trigger-default-bg-dark,oklch(12.9%_0.042_264.695))]",
   glass:
     "border-[color:var(--zui-drawer-trigger-glass-border,#00000026)] dark:border-[color:var(--zui-drawer-trigger-glass-border-dark,#ffffff26)] bg-[var(--zui-drawer-trigger-glass-bg,oklch(98.4%_0.003_247.858_/_0.7))] dark:bg-[var(--zui-drawer-trigger-glass-bg-dark,oklch(12.9%_0.042_264.695_/_0.7))] backdrop-blur-xl text-[color:var(--zui-drawer-trigger-glass-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-drawer-trigger-glass-fg-dark,#ffffff)]",
   sky: "border-[color:var(--zui-drawer-trigger-sky-border,oklch(44.3%_0.11_240.79))] dark:border-[color:var(--zui-drawer-trigger-sky-border-dark,oklch(58.8%_0.158_241.966))] bg-[var(--zui-drawer-trigger-sky-bg,oklch(97.7%_0.013_236.62))] dark:bg-[var(--zui-drawer-trigger-sky-bg-dark,oklch(29.3%_0.066_243.157_/_0.7))] backdrop-blur-xl text-[color:var(--zui-drawer-trigger-sky-fg,oklch(44.3%_0.11_240.79))] dark:text-[color:var(--zui-drawer-trigger-sky-fg-dark,#ffffff)]",

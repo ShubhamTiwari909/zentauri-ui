@@ -56,7 +56,7 @@ export const zuiAccordionItemAppearances = {
   default: "",
   outline: "",
   ghost: "",
-  card: "rounded-xl border border-[color:var(--zui-accordion-item-card-border,#0000001a)] bg-[var(--zui-accordion-item-card-bg,#0000000d)] p-2",
+  card: "rounded-xl border border-[color:var(--zui-accordion-item-card-border,#0000001a)] dark:border-[color:var(--zui-accordion-item-card-border-dark,#ffffff1a)] bg-[var(--zui-accordion-item-card-bg,#0000000d)] dark:bg-[var(--zui-accordion-item-card-bg-dark,#00000099)] p-2",
   separated:
     "rounded-xl border border-[color:var(--zui-accordion-item-separated-border,#0000001a)] dark:border-[color:var(--zui-accordion-item-separated-border-dark,#ffffff1a)] bg-[var(--zui-accordion-item-separated-bg,oklch(98.4%_0.003_247.858_/_0.4))] dark:bg-[var(--zui-accordion-item-separated-bg-dark,oklch(12.9%_0.042_264.695_/_0.4))] p-2",
   sky: "rounded-xl border border-[color:var(--zui-accordion-item-sky-border,oklch(44.3%_0.11_240.79))] dark:border-[color:var(--zui-accordion-item-sky-border-dark,oklch(58.8%_0.158_241.966))] bg-[var(--zui-accordion-item-sky-bg,oklch(95.1%_0.026_236.824_/_0.5))] dark:bg-[var(--zui-accordion-item-sky-bg-dark,oklch(58.8%_0.158_241.966_/_0.03))] p-2",

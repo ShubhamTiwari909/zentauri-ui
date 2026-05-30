@@ -1,5 +1,5 @@
 export const zuiCommandOverlayBase =
-  "fixed inset-0 z-9999 bg-[var(--zui-command-overlay-bg,oklch(12.9%_0.042_264.695_/_0.6))] backdrop-blur-sm";
+  "fixed inset-0 z-9999 bg-[var(--zui-command-overlay-bg,oklch(12.9%_0.042_264.695_/_0.6))] dark:bg-[var(--zui-command-overlay-bg-dark,oklch(12.9%_0.042_264.695_/_0.6))] backdrop-blur-sm";
 
 export const zuiCommandTriggerBase =
   "relative inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-md border border-[color:var(--zui-command-trigger-border,#0000001a)] dark:border-[color:var(--zui-command-trigger-border-dark,#ffffff1a)] bg-[var(--zui-command-trigger-bg,oklch(98.4%_0.003_247.858))] dark:bg-[var(--zui-command-trigger-bg-dark,oklch(12.9%_0.042_264.695))] px-3 py-2 text-sm text-[color:var(--zui-command-trigger-fg,oklch(44.6%_0.03_256.802))] dark:text-[color:var(--zui-command-trigger-fg-dark,oklch(86.9%_0.022_252.894))] transition hover:bg-black/5 dark:hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40";
