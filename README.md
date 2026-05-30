@@ -296,6 +296,14 @@ pnpm exec turbo link
 | Port 3000 in use                   | `pnpm --filter component-library dev -- -p 3001` (forwards `-p` to `next dev`).                   |
 
 ---
+## AI Tools used
+- Cursor (Composer 2.0 and 2.5)
+- Chatgpt Codex (GPT 5.5)
+- Claude code (Opus 4.7 and 4.8)
+- Gemini AI code assist (code review)
+- Chatgpt codex connector (code review)
+- Cubic AI (code review)
+---
 
 ## Further reading
 
