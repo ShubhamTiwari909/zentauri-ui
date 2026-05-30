@@ -52,6 +52,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
 | `src/ui/tabs/tabs.test.tsx`                                             |     3 |
 | `src/ui/stepper/stepper.test.tsx`                                       |    12 |
+| `src/ui/timeline/timeline.test.tsx`                                     |    14 |
 | `src/ui/toggle/toggle.test.tsx`                                         |     5 |
 | `src/ui/slider/slider.test.tsx`                                         |     9 |
 | `src/ui/typography/typography.test.tsx`                                 |     7 |

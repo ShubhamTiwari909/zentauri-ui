@@ -242,6 +242,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Navigation",
   },
   {
+    id: "timeline",
+    name: "Timeline",
+    description:
+      "Vertical event tracks with themeable indicators, connector lines, and an optional staggered scroll-in animation.",
+    href: "/preview/components/timeline",
+    badge: "Data",
+  },
+  {
     id: "toast",
     name: "Toast",
     description:

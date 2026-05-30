@@ -35,6 +35,7 @@ import spinner from "@/content/seo/preview/components/spinner.json";
 import stepper from "@/content/seo/preview/components/stepper.json";
 import table from "@/content/seo/preview/components/table.json";
 import tabs from "@/content/seo/preview/components/tabs.json";
+import timeline from "@/content/seo/preview/components/timeline.json";
 import toast from "@/content/seo/preview/components/toast.json";
 import toggle from "@/content/seo/preview/components/toggle.json";
 import tooltip from "@/content/seo/preview/components/tooltip.json";
@@ -77,6 +78,7 @@ const previewSeoRegistry = {
   stepper: stepper as PreviewSeoDocument,
   table: table as PreviewSeoDocument,
   tabs: tabs as PreviewSeoDocument,
+  timeline: timeline as PreviewSeoDocument,
   toast: toast as PreviewSeoDocument,
   toggle: toggle as PreviewSeoDocument,
   tooltip: tooltip as PreviewSeoDocument,
