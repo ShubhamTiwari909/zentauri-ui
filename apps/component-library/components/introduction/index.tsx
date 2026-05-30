@@ -4,19 +4,20 @@ import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-b
 import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { useIntroduction } from "./use-introduction";
+import Section from "@/components/common/Section";
 
 export default function IntroductionPage({ seo }: { seo: PreviewSeoDocument }) {
   const { components } = useIntroduction();
 
   return (
     <PreviewPageShell>
-      <section className="max-w-3xl space-y-6">
+      <section className="max-w-3xl">
         <PreviewHeroSeoBlock seo={seo} />
       </section>
 
-      <section className="mt-12">
+      <Section variant="plain">
         <h2 className="mb-6 text-2xl font-semibold tracking-tight text-white">
-          Components
+          Components ({components.length})
         </h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {components.map((component) => (
@@ -50,7 +51,7 @@ export default function IntroductionPage({ seo }: { seo: PreviewSeoDocument }) {
             </Link>
           ))}
         </div>
-      </section>
+      </Section>
       <PreviewSeoDoc doc={seo} />
     </PreviewPageShell>
   );

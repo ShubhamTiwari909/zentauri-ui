@@ -6,6 +6,8 @@ import { breadcrumbCssVariables } from "./data/breadcrumb";
 import { buttonsCssVariables } from "./data/buttons";
 import { cardCssVariables } from "./data/card";
 import { checkboxCssVariables } from "./data/checkbox";
+import { commandCssVariables } from "./data/command";
+import { contextMenuCssVariables } from "./data/context-menu";
 import { dividerCssVariables } from "./data/divider";
 import { drawerCssVariables } from "./data/drawer";
 import { dropdownCssVariables } from "./data/dropdown";
@@ -44,6 +46,8 @@ export const cssVariableReferences = {
   buttons: buttonsCssVariables,
   card: cardCssVariables,
   checkbox: checkboxCssVariables,
+  command: commandCssVariables,
+  "context-menu": contextMenuCssVariables,
   divider: dividerCssVariables,
   drawer: drawerCssVariables,
   dropdown: dropdownCssVariables,

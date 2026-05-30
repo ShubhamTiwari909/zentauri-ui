@@ -12,6 +12,7 @@ const uiComponentNames = [
   "card",
   "checkbox",
   "command",
+  "context-menu",
   "divider",
   "drawer",
   "dropdown",

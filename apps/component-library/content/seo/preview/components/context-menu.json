@@ -1,0 +1,79 @@
+{
+  "category": "Overlay",
+  "title": "ContextMenu component for React dashboards",
+  "description": "ContextMenu component for React and Next.js - right-click menus with labels, separators, submenus, disabled states, and dropdown-aligned variants.",
+  "keywords": [
+    "context menu component",
+    "React",
+    "Next.js",
+    "right click menu",
+    "dashboard actions",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "ContextMenu · Zentauri UI",
+    "description": "Right-click ContextMenu component for React and Next.js interfaces with nested actions, labels, separators, disabled items, and dropdown token styling.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "ContextMenu · Zentauri UI",
+    "description": "Right-click ContextMenu component for React and Next.js interfaces with nested actions, labels, separators, disabled items, and dropdown token styling.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/context-menu",
+  "headings": {
+    "h1": "Right-click actions for dense product surfaces",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "ContextMenu opens from the native contextmenu gesture and renders an action surface at the pointer position. Use it for file rows, data tables, canvases, schedulers, and operational dashboards where secondary actions should stay close to the object being edited.",
+  "useCases": [
+    "Attach file actions such as open, rename, duplicate, move, and delete to explorer rows.",
+    "Give data tables compact row-level actions without adding another visible button column.",
+    "Group advanced workspace or dashboard operations behind nested submenus.",
+    "Use disabled menu items to explain unavailable actions without changing layout."
+  ],
+  "faqs": [
+    {
+      "question": "Does ContextMenu share Dropdown styling?",
+      "answer": "Yes. ContextMenu uses the same dropdown item variants and dropdown-scoped CSS variables, so existing menu theming carries across."
+    },
+    {
+      "question": "Can ContextMenu render nested actions?",
+      "answer": "Yes. Use ContextMenuSub, ContextMenuSubTrigger, and ContextMenuSubContent to create hover and keyboard-opened nested menus."
+    },
+    {
+      "question": "How should I label a ContextMenu?",
+      "answer": "Use ContextMenuLabel for short group labels and ContextMenuSeparator between action groups. The label renders as a paragraph element so it follows the preview code example labeling pattern."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "ContextMenu turns the browser contextmenu event into a themed React menu. It positions content at the pointer, clamps the menu inside the viewport, and closes on outside click, Escape, or item selection."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Compose ContextMenu with ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuLabel, ContextMenuSeparator, and the ContextMenuSub parts. Items support the same variants as Dropdown items, and content supports the same spacing tokens."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "ContextMenuContent uses role=menu and items use role=menuitem. Items can be selected by pointer, Enter, or Space, Escape closes the menu and returns focus to the trigger, and disabled actions expose aria-disabled."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "ContextMenu is a client component because it listens to pointer and keyboard events. Keep the preview route itself server-rendered and pass SEO content into the interactive sections, matching the rest of the App Router preview pages."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
