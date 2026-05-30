@@ -42,9 +42,9 @@ export function ContextMenuDemo({
             <ContextMenuSubTrigger variant={itemVariant}>
               Share
             </ContextMenuSubTrigger>
-            <ContextMenuSubContent>
-              <ContextMenuItem>Email digest</ContextMenuItem>
-              <ContextMenuItem>Slack channel</ContextMenuItem>
+            <ContextMenuSubContent spacing={spacing}>
+              <ContextMenuItem variant={itemVariant}>Email digest</ContextMenuItem>
+              <ContextMenuItem variant={itemVariant}>Slack channel</ContextMenuItem>
             </ContextMenuSubContent>
           </ContextMenuSub>
         ) : null}

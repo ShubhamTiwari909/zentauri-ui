@@ -4,7 +4,7 @@ import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-b
 import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { useIntroduction } from "./use-introduction";
-import Section from "@/components/common/Section";
+import { Section } from "@/components/common/Section";
 
 export default function IntroductionPage({ seo }: { seo: PreviewSeoDocument }) {
   const { components } = useIntroduction();

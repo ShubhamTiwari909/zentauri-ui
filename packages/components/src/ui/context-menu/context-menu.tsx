@@ -38,6 +38,8 @@ import type {
   ContextMenuSubProps,
   ContextMenuSubTriggerProps,
   ContextMenuTriggerProps,
+  GetSafePositionProps,
+  ReactChildSoleCandidate,
 } from "./types";
 import {
   contextMenuContentVariants,
@@ -49,15 +51,15 @@ const ContextMenuSubContext = createContext<ContextMenuSubContextType | null>(
   null,
 );
 
-function useContextMenu() {
+const useContextMenu = () => {
   const context = useContext(ContextMenuContext);
   if (!context) {
     throw new Error("ContextMenu components must be used within ContextMenu");
   }
   return context;
-}
+};
 
-function useContextMenuSub() {
+const useContextMenuSub = () => {
   const context = useContext(ContextMenuSubContext);
   if (!context) {
     throw new Error(
@@ -65,7 +67,7 @@ function useContextMenuSub() {
     );
   }
   return context;
-}
+};
 
 function mergeRefs<T>(...refs: Array<Ref<T> | undefined>) {
   return (node: T) => {
@@ -79,11 +81,12 @@ function mergeRefs<T>(...refs: Array<Ref<T> | undefined>) {
   };
 }
 
-function getSafePosition(
-  position: ContextMenuPosition | null,
-  width: number,
-  collisionPadding: number,
-) {
+const getSafePosition = ({
+  position,
+  width,
+  height,
+  collisionPadding,
+}: GetSafePositionProps) => {
   const fallback = position ?? { x: collisionPadding, y: collisionPadding };
 
   if (typeof window === "undefined") {
@@ -97,19 +100,19 @@ function getSafePosition(
     ),
     y: Math.max(
       collisionPadding,
-      Math.min(fallback.y, window.innerHeight - collisionPadding),
+      Math.min(fallback.y, window.innerHeight - height - collisionPadding),
     ),
   };
-}
+};
 
-export function ContextMenu({
+export const ContextMenu = ({
   children,
   defaultOpen = false,
   open: controlledOpen,
   onOpenChange,
   closeOnEscape = true,
   closeOnOutsideClick = true,
-}: ContextMenuProps) {
+}: ContextMenuProps) => {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
   const [position, setPosition] = useState<ContextMenuPosition | null>(null);
   const contentId = `${useId()}-context-menu`;
@@ -147,10 +150,10 @@ export function ContextMenu({
         return;
       }
       const target = event.target as Node;
-      if (
-        contentRef.current?.contains(target) ||
-        triggerRef.current?.contains(target)
-      ) {
+      if (contentRef.current?.contains(target)) {
+        return;
+      }
+      if (triggerRef.current?.contains(target) && event.button !== 0) {
         return;
       }
       setOpen(false);
@@ -163,12 +166,18 @@ export function ContextMenu({
       }
     };
 
+    const onScroll = () => {
+      setOpen(false);
+    };
+
     document.addEventListener("pointerdown", onPointerDown);
     document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("scroll", onScroll, { capture: true });
 
     return () => {
       document.removeEventListener("pointerdown", onPointerDown);
       document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("scroll", onScroll, { capture: true });
     };
   }, [closeOnEscape, closeOnOutsideClick, open, setOpen]);
 
@@ -190,13 +199,13 @@ export function ContextMenu({
       <div className="contents">{children}</div>
     </ContextMenuContext.Provider>
   );
-}
+};
 
-export function ContextMenuTrigger({
+export const ContextMenuTrigger = ({
   children,
   className,
   disabled = false,
-}: ContextMenuTriggerProps) {
+}: ContextMenuTriggerProps) => {
   const { open, openAt, contentId, triggerRef } = useContextMenu();
 
   const handleContextMenu = (event: MouseEvent<HTMLElement>) => {
@@ -204,23 +213,20 @@ export function ContextMenuTrigger({
       return;
     }
     event.preventDefault();
-    openAt({ x: event.clientX, y: event.clientY });
+    const isKeyboardTrigger = event.clientX === 0 && event.clientY === 0;
+    if (isKeyboardTrigger) {
+      const rect = event.currentTarget.getBoundingClientRect();
+      openAt({ x: rect.left, y: rect.bottom });
+    } else {
+      openAt({ x: event.clientX, y: event.clientY });
+    }
   };
-
   const childList = Children.toArray(children).filter(
     (node) => node !== null && node !== undefined && typeof node !== "boolean",
   );
   const soleCandidate =
     childList.length === 1 && isValidElement(childList[0])
-      ? (childList[0] as ReactElement<{
-          className?: string;
-          ref?: Ref<HTMLElement>;
-          onContextMenu?: (event: MouseEvent<HTMLElement>) => void;
-          tabIndex?: number;
-          "aria-controls"?: string;
-          "aria-expanded"?: boolean;
-          "aria-haspopup"?: string;
-        }>)
+      ? (childList[0] as ReactChildSoleCandidate)
       : undefined;
 
   if (soleCandidate) {
@@ -253,24 +259,30 @@ export function ContextMenuTrigger({
       {children}
     </span>
   );
-}
+};
 
-export function ContextMenuContent({
+export const ContextMenuContent = ({
   children,
   className,
   collisionPadding = 8,
   spacing,
   style,
   width = 220,
+  height = 220,
   ...props
-}: ContextMenuContentProps) {
+}: ContextMenuContentProps) => {
   const { open, contentId, contentRef, position } = useContextMenu();
 
   if (!open) {
     return null;
   }
 
-  const safePosition = getSafePosition(position, width, collisionPadding);
+  const safePosition = getSafePosition({
+    position,
+    width,
+    height,
+    collisionPadding,
+  });
 
   return (
     <div
@@ -294,9 +306,9 @@ export function ContextMenuContent({
       {children}
     </div>
   );
-}
+};
 
-export function ContextMenuItem({
+export const ContextMenuItem = ({
   children,
   className,
   closeOnSelect = true,
@@ -309,7 +321,7 @@ export function ContextMenuItem({
   rightIcon,
   variant,
   ...props
-}: ContextMenuItemProps) {
+}: ContextMenuItemProps) => {
   const { setOpen } = useContextMenu();
 
   const handleSelect = () => {
@@ -364,12 +376,12 @@ export function ContextMenuItem({
   );
 }
 
-export function ContextMenuLabel({
+export const ContextMenuLabel = ({
   children,
   className,
   inset = false,
   ...props
-}: ContextMenuLabelProps) {
+}: ContextMenuLabelProps) => {
   return (
     <p
       className={cn(zuiContextMenuLabelBase, inset && "pl-8", className)}
@@ -380,10 +392,10 @@ export function ContextMenuLabel({
   );
 }
 
-export function ContextMenuSeparator({
+export const ContextMenuSeparator = ({
   className,
   ...props
-}: ContextMenuSeparatorProps) {
+}: ContextMenuSeparatorProps) => {
   return (
     <div
       role="separator"
@@ -393,10 +405,10 @@ export function ContextMenuSeparator({
   );
 }
 
-export function ContextMenuSub({
+export const ContextMenuSub = ({
   children,
   defaultOpen = false,
-}: ContextMenuSubProps) {
+}: ContextMenuSubProps) => {
   const [open, setOpen] = useState(defaultOpen);
   const value = useMemo(() => ({ open, setOpen }), [open]);
 
@@ -409,7 +421,7 @@ export function ContextMenuSub({
   );
 }
 
-export function ContextMenuSubTrigger({
+export const ContextMenuSubTrigger = ({
   children,
   className,
   disabled = false,
@@ -420,7 +432,7 @@ export function ContextMenuSubTrigger({
   rightIcon = <FiChevronRight aria-hidden="true" />,
   variant,
   ...props
-}: ContextMenuSubTriggerProps) {
+}: ContextMenuSubTriggerProps) => {
   const { open, setOpen } = useContextMenuSub();
 
   return (
@@ -438,9 +450,6 @@ export function ContextMenuSubTrigger({
       )}
       onFocus={(event) => {
         onFocus?.(event);
-        if (!disabled) {
-          setOpen(true);
-        }
       }}
       onPointerEnter={(event) => {
         onPointerEnter?.(event);
@@ -472,12 +481,12 @@ export function ContextMenuSubTrigger({
   );
 }
 
-export function ContextMenuSubContent({
+export const ContextMenuSubContent = ({
   children,
   className,
   spacing,
   ...props
-}: ContextMenuSubContentProps) {
+}: ContextMenuSubContentProps) => {
   const { open } = useContextMenuSub();
 
   if (!open) {

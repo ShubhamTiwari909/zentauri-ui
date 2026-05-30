@@ -2,7 +2,10 @@ import type { VariantProps } from "class-variance-authority";
 import type {
   ComponentPropsWithRef,
   HTMLAttributes,
+  MouseEvent,
+  ReactElement,
   ReactNode,
+  Ref,
   RefObject,
 } from "react";
 
@@ -46,6 +49,7 @@ export type ContextMenuContentProps = ComponentPropsWithRef<"div"> &
     children: ReactNode;
     collisionPadding?: number;
     width?: number;
+    height?: number;
   };
 
 export type ContextMenuItemProps = HTMLAttributes<HTMLDivElement> &
@@ -88,3 +92,20 @@ export type ContextMenuSubContentProps = ComponentPropsWithRef<"div"> &
   VariantProps<typeof contextMenuContentVariants> & {
     children: ReactNode;
   };
+
+export type GetSafePositionProps = {
+  position: ContextMenuPosition | null;
+  width: number;
+  height: number;
+  collisionPadding: number;
+};
+
+export type ReactChildSoleCandidate = ReactElement<{
+  className?: string;
+  ref?: Ref<HTMLElement>;
+  onContextMenu?: (event: MouseEvent<HTMLElement>) => void;
+  tabIndex?: number;
+  "aria-controls"?: string;
+  "aria-expanded"?: boolean;
+  "aria-haspopup"?: string;
+}>;
