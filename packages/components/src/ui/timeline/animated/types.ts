@@ -8,11 +8,7 @@ export type TimelineItemMotionConflictProps =
   | "onAnimationStart"
   | "onDrag"
   | "onDragEnd"
-  | "onDragEnter"
-  | "onDragLeave"
-  | "onDragOver"
-  | "onDragStart"
-  | "onDrop";
+  | "onDragStart";
 
 export type TimelineItemAnimatedProps = Omit<
   TimelineItemProps,
