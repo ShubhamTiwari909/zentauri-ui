@@ -1,9 +1,10 @@
 export const zuiTabsListBase = "flex flex-wrap items-center gap-1";
 
 export const zuiTabsListVariants = {
-  default: "bg-[var(--zui-tabs-list-default-bg,transparent)]",
+  default:
+    "bg-[var(--zui-tabs-list-default-bg,transparent)] dark:bg-[var(--zui-tabs-list-default-bg-dark,transparent)]",
   underline:
-    "border-b-2 border-[color:var(--zui-tabs-list-underline-border,transparent)]",
+    "border-b-2 border-[color:var(--zui-tabs-list-underline-border,transparent)] dark:border-[color:var(--zui-tabs-list-underline-border-dark,transparent)]",
   pills: "rounded-md",
 } as const;
 
@@ -23,7 +24,7 @@ export const zuiTabsTriggerBase =
 
 export const zuiTabsTriggerAppearances = {
   default:
-    "bg-[var(--zui-tabs-trigger-default-bg,transparent)] text-[color:var(--zui-tabs-trigger-default-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-tabs-trigger-default-fg-dark,oklch(98.4%_0.003_247.858))]",
+    "bg-[var(--zui-tabs-trigger-default-bg,transparent)] dark:bg-[var(--zui-tabs-trigger-default-bg-dark,transparent)] text-[color:var(--zui-tabs-trigger-default-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-tabs-trigger-default-fg-dark,oklch(98.4%_0.003_247.858))]",
   sky: "bg-[var(--zui-tabs-trigger-sky-bg,oklch(82.8%_0.111_230.318))] text-[color:var(--zui-tabs-trigger-sky-fg,oklch(39.1%_0.09_240.876))] dark:bg-[var(--zui-tabs-trigger-sky-bg-dark,oklch(39.1%_0.09_240.876))] dark:text-[color:var(--zui-tabs-trigger-sky-fg-dark,oklch(90.1%_0.058_230.902))] data-[state=active]:bg-[var(--zui-tabs-trigger-sky-bg-active,oklch(39.1%_0.09_240.876))] dark:data-[state=active]:bg-[var(--zui-tabs-trigger-sky-bg-active-dark,oklch(50%_0.134_242.749))] data-[state=active]:text-[color:var(--zui-tabs-trigger-sky-fg-active,oklch(97.7%_0.013_236.62))] dark:data-[state=active]:text-[color:var(--zui-tabs-trigger-sky-fg-active-dark,oklch(95.1%_0.026_236.824))]",
   rose: "bg-[var(--zui-tabs-trigger-rose-bg,oklch(81%_0.117_11.638))] text-[color:var(--zui-tabs-trigger-rose-fg,oklch(41%_0.159_10.272))] dark:bg-[var(--zui-tabs-trigger-rose-bg-dark,oklch(41%_0.159_10.272))] dark:text-[color:var(--zui-tabs-trigger-rose-fg-dark,oklch(89.2%_0.058_10.001))] data-[state=active]:bg-[var(--zui-tabs-trigger-rose-bg-active,oklch(41%_0.159_10.272))] dark:data-[state=active]:bg-[var(--zui-tabs-trigger-rose-bg-active-dark,oklch(51.4%_0.222_16.935))] data-[state=active]:text-[color:var(--zui-tabs-trigger-rose-fg-active,oklch(96.9%_0.015_12.422))] dark:data-[state=active]:text-[color:var(--zui-tabs-trigger-rose-fg-active-dark,oklch(94.1%_0.03_12.58))]",
   purple:
@@ -62,7 +63,7 @@ export const zuiTabsTriggerAppearances = {
 export const zuiTabsTriggerVariants = {
   default: "data-[state=active]:bg-background",
   underline:
-    "border-b-2 border-[color:var(--zui-tabs-trigger-underline-border,transparent)] data-[state=active]:border-current rounded-none",
+    "border-b-2 border-[color:var(--zui-tabs-trigger-underline-border,transparent)] dark:border-[color:var(--zui-tabs-trigger-underline-border-dark,transparent)] data-[state=active]:border-current rounded-none",
   pills: "",
 } as const;
 

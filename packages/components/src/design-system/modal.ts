@@ -1,5 +1,5 @@
 export const zuiModalOverlayBase =
-  "fixed inset-0 z-50 bg-[var(--zui-modal-overlay-bg,oklch(12.9%_0.042_264.695_/_0.7))] backdrop-blur-sm data-[state=open]:animate-in";
+  "fixed inset-0 z-50 bg-[var(--zui-modal-overlay-bg,oklch(12.9%_0.042_264.695_/_0.7))] dark:bg-[var(--zui-modal-overlay-bg-dark,oklch(12.9%_0.042_264.695_/_0.7))] backdrop-blur-sm data-[state=open]:animate-in";
 
 export const zuiModalTriggerBase =
   "relative inline-flex shrink-0 cursor-pointer rounded-md border";
