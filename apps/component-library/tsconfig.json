@@ -19,6 +19,21 @@
       }
     ],
     "paths": {
+      "@zentauri-ui/zentauri-components/ui/*/animated": [
+        "../../packages/components/src/ui/*/animated"
+      ],
+      "@zentauri-ui/zentauri-components/ui/*": [
+        "../../packages/components/src/ui/*"
+      ],
+      "@zentauri-ui/zentauri-components/charts/*": [
+        "../../packages/components/src/charts/*"
+      ],
+      "@zentauri-ui/zentauri-components/hooks/*": [
+        "../../packages/components/src/hooks/*"
+      ],
+      "@zentauri-ui/zentauri-components/hooks/utils": [
+        "../../packages/components/src/lib/utils"
+      ],
       "@/*": ["./*"]
     }
   },

@@ -25,6 +25,7 @@ const uiComponentNames = [
   "popover",
   "progress",
   "radio-group",
+  "scroll-area",
   "search",
   "select",
   "skeleton",

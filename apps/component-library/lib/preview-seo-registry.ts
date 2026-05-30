@@ -25,6 +25,7 @@ import pagination from "@/content/seo/preview/components/pagination.json";
 import popover from "@/content/seo/preview/components/popover.json";
 import progress from "@/content/seo/preview/components/progress.json";
 import radioGroup from "@/content/seo/preview/components/radio-group.json";
+import scrollArea from "@/content/seo/preview/components/scroll-area.json";
 import select from "@/content/seo/preview/components/select.json";
 import search from "@/content/seo/preview/components/search.json";
 import skeleton from "@/content/seo/preview/components/skeleton.json";
@@ -65,6 +66,7 @@ const previewSeoRegistry = {
   popover: popover as PreviewSeoDocument,
   progress: progress as PreviewSeoDocument,
   "radio-group": radioGroup as PreviewSeoDocument,
+  "scroll-area": scrollArea as PreviewSeoDocument,
   select: select as PreviewSeoDocument,
   search: search as PreviewSeoDocument,
   skeleton: skeleton as PreviewSeoDocument,

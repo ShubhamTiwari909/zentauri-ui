@@ -19,6 +19,7 @@ import { paginationCssVariables } from "./data/pagination";
 import { popoverCssVariables } from "./data/popover";
 import { progressCssVariables } from "./data/progress";
 import { radioGroupCssVariables } from "./data/radio-group";
+import { scrollAreaCssVariables } from "./data/scroll-area";
 import { searchCssVariables } from "./data/search";
 import { selectCssVariables } from "./data/select";
 import { skeletonCssVariables } from "./data/skeleton";
@@ -56,6 +57,7 @@ export const cssVariableReferences = {
   popover: popoverCssVariables,
   progress: progressCssVariables,
   "radio-group": radioGroupCssVariables,
+  "scroll-area": scrollAreaCssVariables,
   search: searchCssVariables,
   select: selectCssVariables,
   skeleton: skeletonCssVariables,
