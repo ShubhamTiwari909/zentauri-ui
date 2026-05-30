@@ -74,6 +74,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Overlay",
   },
   {
+    id: "context-menu",
+    name: "Context menu",
+    description:
+      "Right-click action menus with labels, separators, disabled items, nested submenus, and dropdown-aligned variants.",
+    href: "/preview/components/context-menu",
+    badge: "Overlay",
+  },
+  {
     id: "divider",
     name: "Divider",
     description:

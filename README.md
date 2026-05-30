@@ -26,12 +26,12 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 60 passed (60)   |
-| Tests      | 377 passed (377) |
+| Test files | 61 passed (61)   |
+| Tests      | 385 passed (385) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 32         | 283   |
+| Components and UI utilities | 33         | 291   |
 | React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 
@@ -51,11 +51,13 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 | `src/ui/checkbox/checkbox.test.tsx`                                     |     6 |
 | `src/ui/popover/popover.test.tsx`                                       |     4 |
 | `src/ui/command/command.test.tsx`                                       |     7 |
+| `src/ui/context-menu/context-menu.test.tsx`                             |     8 |
 | `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
 | `src/ui/dropdown/dropdown.test.tsx`                                     |     6 |
 | `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
 | `src/ui/progress/progress.test.tsx`                                     |     8 |
 | `src/ui/radio-group/radio-group.test.tsx`                               |     5 |
+| `src/ui/scroll-area/scroll-area.test.tsx`                               |     8 |
 | `src/ui/accordion/accordion.test.tsx`                                   |     7 |
 | `src/ui/toast/toast.test.tsx`                                           |     5 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
@@ -296,13 +298,16 @@ pnpm exec turbo link
 | Port 3000 in use                   | `pnpm --filter component-library dev -- -p 3001` (forwards `-p` to `next dev`).                   |
 
 ---
+
 ## AI Tools used
+
 - Cursor (Composer 2.0 and 2.5)
 - Chatgpt Codex (GPT 5.5)
 - Claude code (Opus 4.7 and 4.8)
 - Gemini AI code assist (code review)
 - Chatgpt codex connector (code review)
 - Cubic AI (code review)
+
 ---
 
 ## Further reading

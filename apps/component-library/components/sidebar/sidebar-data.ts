@@ -152,6 +152,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/command",
       },
       {
+        title: "Context menu",
+        href: "/preview/components/context-menu",
+      },
+      {
         title: "Divider",
         href: "/preview/components/divider",
       },
