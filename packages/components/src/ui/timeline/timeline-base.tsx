@@ -91,7 +91,7 @@ export function Timeline({
         {...rest}
       >
         {items.map((child, index) => (
-          <TimelineIndexContext.Provider key={index} value={index}>
+          <TimelineIndexContext.Provider key={child.key} value={index}>
             {child}
           </TimelineIndexContext.Provider>
         ))}

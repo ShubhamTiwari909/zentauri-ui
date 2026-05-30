@@ -8,14 +8,8 @@ import {
 } from "@zentauri-ui/zentauri-components/ui/timeline";
 import { TimelineItem as TimelineItemAnimated } from "@zentauri-ui/zentauri-components/ui/timeline/animated";
 
+import { TIMELINE_EVENTS } from "./timeline-code-examples.data";
 import type { TimelineDemoProps } from "./timeline-code-examples.types";
-
-const TIMELINE_EVENTS = [
-  { title: "Order placed", description: "We received your order." },
-  { title: "Processing", description: "Your items are being prepared." },
-  { title: "Shipped", description: "The package is on the way to you." },
-  { title: "Delivered", description: "Handed off at the front door." },
-] as const;
 
 export function TimelineDemo({
   appearance,

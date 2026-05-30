@@ -10,6 +10,8 @@ import {
   TimelineTitle,
 } from "@zentauri-ui/zentauri-components/ui/timeline";
 
+import { TIMELINE_EVENTS } from "./components/timeline-code-examples.data";
+
 export function TimelineHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
     <Section variant="hero">
@@ -18,42 +20,15 @@ export function TimelineHeroSection({ seo }: { seo: PreviewSeoDocument }) {
       <SectionCard>
         <div className="mx-auto max-w-md">
           <Timeline appearance="sky">
-            <TimelineItem>
-              <TimelineIndicator />
-              <TimelineContent>
-                <TimelineTitle>Order placed</TimelineTitle>
-                <TimelineDescription>
-                  We received your order.
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-            <TimelineItem>
-              <TimelineIndicator />
-              <TimelineContent>
-                <TimelineTitle>Processing</TimelineTitle>
-                <TimelineDescription>
-                  Your items are being prepared.
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-            <TimelineItem>
-              <TimelineIndicator />
-              <TimelineContent>
-                <TimelineTitle>Shipped</TimelineTitle>
-                <TimelineDescription>
-                  The package is on the way to you.
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-            <TimelineItem>
-              <TimelineIndicator />
-              <TimelineContent>
-                <TimelineTitle>Delivered</TimelineTitle>
-                <TimelineDescription>
-                  Handed off at the front door.
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
+            {TIMELINE_EVENTS.map((event) => (
+              <TimelineItem key={event.title}>
+                <TimelineIndicator />
+                <TimelineContent>
+                  <TimelineTitle>{event.title}</TimelineTitle>
+                  <TimelineDescription>{event.description}</TimelineDescription>
+                </TimelineContent>
+              </TimelineItem>
+            ))}
           </Timeline>
         </div>
       </SectionCard>

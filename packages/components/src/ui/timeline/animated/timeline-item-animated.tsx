@@ -27,6 +27,7 @@ export function TimelineItem({
   transitionVariant = "default",
   stagger = TIMELINE_DEFAULT_STAGGER,
   ref,
+  ...rest
 }: TimelineItemAnimatedProps & { ref?: React.Ref<HTMLLIElement> }) {
   const { size, total } = useTimelineContext("TimelineItem");
   const index = useTimelineIndex("TimelineItem");
@@ -52,6 +53,7 @@ export function TimelineItem({
         whileInView={motionless ? undefined : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ ...transition, delay }}
+        {...rest}
       >
         {!isLast ? (
           <motion.span

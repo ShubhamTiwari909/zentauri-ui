@@ -41,3 +41,10 @@ export const TIMELINE_TRANSITIONS = [
   "smooth",
   "slow",
 ] as const satisfies readonly TimelineTransition[];
+
+export const TIMELINE_EVENTS = [
+  { title: "Order placed", description: "We received your order." },
+  { title: "Processing", description: "Your items are being prepared." },
+  { title: "Shipped", description: "The package is on the way to you." },
+  { title: "Delivered", description: "Handed off at the front door." },
+] as const;
