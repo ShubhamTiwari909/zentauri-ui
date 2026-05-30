@@ -13,19 +13,19 @@ import { SectionShell } from "./section-shell";
 const TEST_TOTALS = [
   {
     label: "Test files",
-    value: "61",
-    detail: "61 passed",
+    value: "62",
+    detail: "62 passed",
     icon: FiFileText,
   },
   {
     label: "Assertions",
-    value: "385",
-    detail: "385 passed",
+    value: "399",
+    detail: "399 passed",
     icon: FiCheckCircle,
   },
   {
     label: "Runtime",
-    value: "11.67s",
+    value: "12.92s",
     detail: "Vitest duration",
     icon: FiClock,
   },

@@ -244,6 +244,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/tabs",
       },
       {
+        title: "Timeline",
+        href: "/preview/components/timeline",
+      },
+      {
         title: "Toast",
         href: "/preview/components/toast",
       },

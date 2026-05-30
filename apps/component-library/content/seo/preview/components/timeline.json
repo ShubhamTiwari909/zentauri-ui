@@ -1,0 +1,56 @@
+{
+  "category": "Data display",
+  "title": "Timeline component for activity and history",
+  "description": "Vertical Timeline with indicators, titles, and descriptions for activity feeds, order tracking, and changelogs in React and Next.js. Includes optional animated entrances.",
+  "keywords": [
+    "timeline",
+    "activity feed",
+    "history",
+    "React",
+    "Next.js",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Timeline · Zentauri UI",
+    "description": "Vertical timeline with connector lines, themeable indicators, and optional scroll-in animation.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Timeline · Zentauri UI",
+    "description": "Vertical timeline with connector lines, themeable indicators, and optional scroll-in animation.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/timeline",
+  "headings": {
+    "h1": "Timelines for activity and history",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "Timelines render ordered events down a connected vertical track. Each TimelineItem carries an indicator plus a content slot for a title and supporting description, while the connector line is drawn automatically between items.",
+  "useCases": [
+    "Order and shipment tracking.",
+    "Activity and audit feeds.",
+    "Product changelogs and release notes.",
+    "Project milestones and roadmaps."
+  ],
+  "faqs": [
+    {
+      "question": "How is the connector line drawn?",
+      "answer": "Each item except the last renders an absolutely-positioned connector that runs from its indicator down to the next item. The last item drops its bottom padding so the track ends cleanly."
+    },
+    {
+      "question": "Can the timeline animate on scroll?",
+      "answer": "Import TimelineItem from the /animated entry to get a staggered fade-and-rise entrance that respects prefers-reduced-motion. The static entry ships without framer-motion."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Indicators inherit a themeable appearance and size from the Timeline root, and any item can override its own appearance. Every color is a --zui-timeline-* CSS variable with a paired dark-mode value."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

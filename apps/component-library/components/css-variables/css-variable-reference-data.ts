@@ -30,6 +30,7 @@ import { spinnerCssVariables } from "./data/spinner";
 import { stepperCssVariables } from "./data/stepper";
 import { tableCssVariables } from "./data/table";
 import { tabsCssVariables } from "./data/tabs";
+import { timelineCssVariables } from "./data/timeline";
 import { toastCssVariables } from "./data/toast";
 import { toggleCssVariables } from "./data/toggle";
 import { tooltipCssVariables } from "./data/tooltip";
@@ -70,6 +71,7 @@ export const cssVariableReferences = {
   stepper: stepperCssVariables,
   table: tableCssVariables,
   tabs: tabsCssVariables,
+  timeline: timelineCssVariables,
   toast: toastCssVariables,
   toggle: toggleCssVariables,
   tooltip: tooltipCssVariables,

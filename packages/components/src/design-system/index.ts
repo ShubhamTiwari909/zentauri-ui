@@ -29,6 +29,7 @@ export * from "./spinner";
 export * from "./stepper";
 export * from "./table";
 export * from "./tabs";
+export * from "./timeline";
 export * from "./toast";
 export * from "./tokens";
 export * from "./toggle";
