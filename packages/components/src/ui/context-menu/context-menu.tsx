@@ -9,6 +9,7 @@ import {
   useContext,
   useEffect,
   useId,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -268,10 +269,35 @@ export const ContextMenuContent = ({
   spacing,
   style,
   width = 220,
-  height = 220,
   ...props
 }: ContextMenuContentProps) => {
   const { open, contentId, contentRef, position } = useContextMenu();
+  const [menuSize, setMenuSize] = useState({ width, height: 0 });
+
+  useLayoutEffect(() => {
+    if (!open || !contentRef.current) {
+      return;
+    }
+
+    const rect = contentRef.current.getBoundingClientRect();
+    const nextSize = {
+      width: Math.max(width, rect.width),
+      height: rect.height,
+    };
+
+    setMenuSize((currentSize) =>
+      currentSize.width === nextSize.width &&
+      currentSize.height === nextSize.height
+        ? currentSize
+        : nextSize,
+    );
+  });
+
+  useEffect(() => {
+    if (!open) {
+      setMenuSize({ width, height: 0 });
+    }
+  }, [open, width]);
 
   if (!open) {
     return null;
@@ -279,8 +305,8 @@ export const ContextMenuContent = ({
 
   const safePosition = getSafePosition({
     position,
-    width,
-    height,
+    width: menuSize.width,
+    height: menuSize.height,
     collisionPadding,
   });
 
@@ -374,7 +400,7 @@ export const ContextMenuItem = ({
       ) : null}
     </div>
   );
-}
+};
 
 export const ContextMenuLabel = ({
   children,
@@ -390,7 +416,7 @@ export const ContextMenuLabel = ({
       {children}
     </p>
   );
-}
+};
 
 export const ContextMenuSeparator = ({
   className,
@@ -403,7 +429,7 @@ export const ContextMenuSeparator = ({
       {...props}
     />
   );
-}
+};
 
 export const ContextMenuSub = ({
   children,
@@ -419,7 +445,7 @@ export const ContextMenuSub = ({
       </div>
     </ContextMenuSubContext.Provider>
   );
-}
+};
 
 export const ContextMenuSubTrigger = ({
   children,
@@ -479,7 +505,7 @@ export const ContextMenuSubTrigger = ({
       <div className="ml-4 flex items-center">{rightIcon}</div>
     </div>
   );
-}
+};
 
 export const ContextMenuSubContent = ({
   children,
@@ -507,4 +533,4 @@ export const ContextMenuSubContent = ({
       {children}
     </div>
   );
-}
+};

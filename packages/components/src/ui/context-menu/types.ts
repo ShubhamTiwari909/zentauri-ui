@@ -49,7 +49,6 @@ export type ContextMenuContentProps = ComponentPropsWithRef<"div"> &
     children: ReactNode;
     collisionPadding?: number;
     width?: number;
-    height?: number;
   };
 
 export type ContextMenuItemProps = HTMLAttributes<HTMLDivElement> &

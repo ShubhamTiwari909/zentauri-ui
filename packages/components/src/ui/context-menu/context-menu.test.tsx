@@ -53,6 +53,41 @@ describe("ContextMenu", () => {
     expect(screen.getByText("Row actions").tagName).toBe("P");
   });
 
+  it("should clamp using the rendered menu dimensions", async () => {
+    vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({
+      bottom: 0,
+      height: 300,
+      left: 0,
+      right: 0,
+      top: 0,
+      width: 320,
+      x: 0,
+      y: 0,
+      toJSON: () => ({}),
+    });
+    Object.defineProperty(window, "innerHeight", {
+      configurable: true,
+      value: 768,
+    });
+    Object.defineProperty(window, "innerWidth", {
+      configurable: true,
+      value: 800,
+    });
+    renderContextMenu();
+
+    fireEvent.contextMenu(screen.getByTestId("surface"), {
+      clientX: 760,
+      clientY: 740,
+    });
+
+    await waitFor(() => {
+      expect(screen.getByRole("menu")).toHaveStyle({
+        left: "472px",
+        top: "460px",
+      });
+    });
+  });
+
   it("should invoke item selection and close the menu", async () => {
     const user = userEvent.setup();
     const onSelect = vi.fn();
