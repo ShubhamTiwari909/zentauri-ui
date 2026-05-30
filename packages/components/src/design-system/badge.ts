@@ -4,7 +4,7 @@ export const zuiButtonLikeSolidAppearances = {
   secondary:
     "bg-[var(--zui-badge-secondary-bg,oklch(92.9%_0.013_255.508))] dark:bg-[var(--zui-badge-secondary-bg-dark,oklch(27.9%_0.041_260.031))] text-[color:var(--zui-badge-secondary-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-badge-secondary-fg-dark,oklch(98.4%_0.003_247.858))]",
   destructive:
-    "bg-[var(--zui-badge-destructive-bg,oklch(64.5%_0.246_16.439))] dark:bg-[var(--zui-badge-destructive-bg-dark,oklch(51.4%_0.222_16.935))] text-[color:var(--zui-badge-default-fg,oklch(98.4%_0.003_247.858))] dark:text-[color:var(--zui-badge-default-fg-dark,oklch(98.4%_0.003_247.858))] dark:text-[color:var(--zui-badge-destructive-fg-dark,#ffffff)]",
+    "bg-[var(--zui-badge-destructive-bg,oklch(64.5%_0.246_16.439))] dark:bg-[var(--zui-badge-destructive-bg-dark,oklch(51.4%_0.222_16.935))] text-[color:var(--zui-badge-default-fg,oklch(98.4%_0.003_247.858))] dark:text-[color:var(--zui-badge-destructive-fg-dark,#ffffff)]",
   outline:
     "border border-[color:var(--zui-badge-outline-border,#0000001a)] dark:border-[color:var(--zui-badge-outline-border-dark,#ffffff1a)] bg-[var(--zui-badge-outline-bg,#0000000d)] dark:bg-[var(--zui-badge-outline-bg-dark,#ffffff0d)] text-[color:var(--zui-badge-outline-fg,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-badge-outline-fg-dark,oklch(98.4%_0.003_247.858))]",
   ghost:

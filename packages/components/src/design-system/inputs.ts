@@ -4,7 +4,7 @@ export const zuiInputBase = [
   "placeholder:text-[color:var(--zui-input-placeholder-fg,oklch(55.4%_0.046_257.417))] dark:placeholder:text-[color:var(--zui-input-placeholder-fg-dark,oklch(55.4%_0.046_257.417))]",
   "focus-visible:outline-none",
   "disabled:cursor-not-allowed disabled:opacity-50",
-  "read-only:cursor-default read-only:bg-[var(--zui-input-bg-read-only,#00000008)] dark:read-only:bg-[var(--zui-input-bg-read-only-dark,#00000008)] dark:bg-[var(--zui-input-bg-dark,#ffffff08)]",
+  "read-only:cursor-default read-only:bg-[var(--zui-input-bg-read-only,#00000008)] dark:read-only:bg-[var(--zui-input-bg-read-only-dark,#ffffff08)] dark:bg-[var(--zui-input-bg-dark,#ffffff08)]",
   "file:h-8",
 ] as const;
 
