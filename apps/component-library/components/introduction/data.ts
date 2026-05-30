@@ -178,6 +178,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "rating",
+    name: "Rating",
+    description:
+      "Feedback ratings with half-step values, custom react-icons support, hidden form values, and accessible radio options.",
+    href: "/preview/components/rating",
+    badge: "Form",
+  },
+  {
     id: "scroll-area",
     name: "Scroll area",
     description:

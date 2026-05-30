@@ -25,6 +25,7 @@ import otpInput from "@/content/seo/preview/components/otp-input.json";
 import pagination from "@/content/seo/preview/components/pagination.json";
 import popover from "@/content/seo/preview/components/popover.json";
 import progress from "@/content/seo/preview/components/progress.json";
+import rating from "@/content/seo/preview/components/rating.json";
 import radioGroup from "@/content/seo/preview/components/radio-group.json";
 import scrollArea from "@/content/seo/preview/components/scroll-area.json";
 import select from "@/content/seo/preview/components/select.json";
@@ -69,6 +70,7 @@ const previewSeoRegistry = {
   pagination: pagination as PreviewSeoDocument,
   popover: popover as PreviewSeoDocument,
   progress: progress as PreviewSeoDocument,
+  rating: rating as PreviewSeoDocument,
   "radio-group": radioGroup as PreviewSeoDocument,
   "scroll-area": scrollArea as PreviewSeoDocument,
   select: select as PreviewSeoDocument,

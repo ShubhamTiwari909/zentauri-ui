@@ -25,7 +25,7 @@ const TEST_TOTALS = [
   },
   {
     label: "Runtime",
-    value: "10.420s",
+    value: "11.80s",
     detail: "Vitest duration",
     icon: FiClock,
   },

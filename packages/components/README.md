@@ -15,12 +15,12 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 62 passed (62)   |
-| Tests      | 399 passed (399) |
+| Test files | 63 passed (63)   |
+| Tests      | 409 passed (409) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 34         | 305   |
+| Components and UI utilities | 35         | 315   |
 | React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 
@@ -46,6 +46,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/ui/dropdown/dropdown.test.tsx`                                     |     6 |
 | `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
 | `src/ui/progress/progress.test.tsx`                                     |     8 |
+| `src/ui/rating/rating.test.tsx`                                         |    10 |
 | `src/ui/radio-group/radio-group.test.tsx`                               |     5 |
 | `src/ui/scroll-area/scroll-area.test.tsx`                               |     8 |
 | `src/ui/accordion/accordion.test.tsx`                                   |     7 |
@@ -151,6 +152,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Pagination      | `pagination`      | —                                  |
 | Popover         | `popover`         | `popover/animated`                 |
 | Progress        | `progress`        | `progress/animated`                |
+| Rating          | `rating`          | —                                  |
 | Radio group     | `radio-group`     | `radio-group/animated`             |
 | Scroll area     | `scroll-area`     | —                                  |
 | Search          | `search`          | -                                  |

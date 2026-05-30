@@ -37,7 +37,7 @@ The home page includes a package health section with live npm badge images and t
 | Metric     | Result           |
 | ---------- | ---------------- |
 | Test files | 63 passed (63)   |
-| Tests      | 409 passed (399) |
+| Tests      | 409 passed (409) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |

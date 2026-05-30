@@ -27,7 +27,7 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 | Metric     | Result           |
 | ---------- | ---------------- |
 | Test files | 63 passed (63)   |
-| Tests      | 409 passed (399) |
+| Tests      | 409 passed (409) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
@@ -57,6 +57,7 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 | `src/ui/dropdown/dropdown.test.tsx`                                     |     6 |
 | `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
 | `src/ui/progress/progress.test.tsx`                                     |     8 |
+| `src/ui/rating/rating.test.tsx`                                         |    10 |
 | `src/ui/radio-group/radio-group.test.tsx`                               |     5 |
 | `src/ui/scroll-area/scroll-area.test.tsx`                               |     8 |
 | `src/ui/accordion/accordion.test.tsx`                                   |     7 |

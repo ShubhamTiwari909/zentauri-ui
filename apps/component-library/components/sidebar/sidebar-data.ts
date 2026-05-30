@@ -204,6 +204,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/progress",
       },
       {
+        title: "Rating",
+        href: "/preview/components/rating",
+      },
+      {
         title: "Radio group",
         href: "/preview/components/radio-group",
       },
