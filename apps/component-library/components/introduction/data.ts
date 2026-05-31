@@ -90,6 +90,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Overlay",
   },
   {
+    id: "copy-button",
+    name: "Copy button",
+    description:
+      "One-click copy-to-clipboard button with idle and copied states, an optional animated icon swap, and tokenized appearances.",
+    href: "/preview/components/copy-button",
+    badge: "Actions",
+  },
+  {
     id: "divider",
     name: "Divider",
     description:
@@ -144,6 +152,14 @@ export const componentsData: ComponentHighlight[] = [
       "Accessible input fields including text, file, date, checkbox, and radio inputs with unified styling.",
     href: "/preview/components/inputs",
     badge: "Form",
+  },
+  {
+    id: "kbd",
+    name: "Kbd",
+    description:
+      "Semantic keyboard shortcut keycaps for single keys or chords, with configurable separators and an optional animated key press.",
+    href: "/preview/components/kbd",
+    badge: "Display",
   },
   {
     id: "marquee",

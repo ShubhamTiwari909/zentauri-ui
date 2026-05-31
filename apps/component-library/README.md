@@ -36,12 +36,12 @@ The home page includes a package health section with live npm badge images and t
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 66 passed (66)   |
-| Tests      | 438 passed (438) |
+| Test files | 68 passed (68)   |
+| Tests      | 453 passed (453) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 38         | 344   |
+| Components and UI utilities | 40         | 359   |
 | React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 

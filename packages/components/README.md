@@ -15,12 +15,12 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 66 passed (66)   |
-| Tests      | 438 passed (438) |
+| Test files | 68 passed (68)   |
+| Tests      | 453 passed (453) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 38         | 344   |
+| Components and UI utilities | 40         | 359   |
 | React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 
@@ -43,6 +43,8 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/ui/popover/popover.test.tsx`                                       |     4 |
 | `src/ui/command/command.test.tsx`                                       |     7 |
 | `src/ui/context-menu/context-menu.test.tsx`                             |     8 |
+| `src/ui/copy-button/copy-button.test.tsx`                               |     8 |
+| `src/ui/kbd/kbd.test.tsx`                                               |     7 |
 | `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
 | `src/ui/dropdown/dropdown.test.tsx`                                     |     6 |
 | `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
@@ -142,6 +144,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Charts          | `charts/<type>`   | —                                  |
 | Command         | `command`         | `command/animated`                 |
 | Context menu    | `context-menu`    | —                                  |
+| Copy button     | `copy-button`     | `copy-button/animated`             |
 | Divider         | `divider`         | `divider/animated`                 |
 | Drawer          | `drawer`          | `drawer/animated`                  |
 | Dropdown        | `dropdown`        | —                                  |
@@ -149,6 +152,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Empty state     | `empty-state`     | `empty-state/animated`             |
 | File upload     | `file-upload`     | —                                  |
 | Input           | `inputs`          | `inputs/animated`                  |
+| Kbd             | `kbd`             | `kbd/animated`                     |
 | Marquee         | `marquee`         | —                                  |
 | Modal           | `modal`           | `modal/animated`                   |
 | OTP input       | `otp-input`       | —                                  |
@@ -672,7 +676,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, the chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 438 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 453 test cases in total
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`** (`components` + `hooks`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
 
 ## Github Release log

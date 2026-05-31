@@ -10,6 +10,7 @@ import card from "@/content/seo/preview/components/card.json";
 import checkbox from "@/content/seo/preview/components/checkbox.json";
 import command from "@/content/seo/preview/components/command.json";
 import contextMenu from "@/content/seo/preview/components/context-menu.json";
+import copyButton from "@/content/seo/preview/components/copy-button.json";
 import charts from "@/content/seo/preview/charts.json";
 import divider from "@/content/seo/preview/components/divider.json";
 import drawer from "@/content/seo/preview/components/drawer.json";
@@ -21,6 +22,7 @@ import fileUpload from "@/content/seo/preview/components/file-upload.json";
 import index from "@/content/seo/preview/components/index.json";
 import inputs from "@/content/seo/preview/components/inputs.json";
 import installation from "@/content/seo/preview/components/installation.json";
+import kbd from "@/content/seo/preview/components/kbd.json";
 import marquee from "@/content/seo/preview/components/marquee.json";
 import modal from "@/content/seo/preview/components/modal.json";
 import otpInput from "@/content/seo/preview/components/otp-input.json";
@@ -59,6 +61,7 @@ const previewSeoRegistry = {
   checkbox: checkbox as PreviewSeoDocument,
   command: command as PreviewSeoDocument,
   "context-menu": contextMenu as PreviewSeoDocument,
+  "copy-button": copyButton as PreviewSeoDocument,
   charts: charts as PreviewSeoDocument,
   divider: divider as PreviewSeoDocument,
   drawer: drawer as PreviewSeoDocument,
@@ -68,6 +71,7 @@ const previewSeoRegistry = {
   hooks: hooks as PreviewSeoDocument,
   "file-upload": fileUpload as PreviewSeoDocument,
   inputs: inputs as PreviewSeoDocument,
+  kbd: kbd as PreviewSeoDocument,
   marquee: marquee as PreviewSeoDocument,
   modal: modal as PreviewSeoDocument,
   "otp-input": otpInput as PreviewSeoDocument,

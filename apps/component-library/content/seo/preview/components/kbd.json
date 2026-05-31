@@ -1,0 +1,80 @@
+{
+  "category": "Display",
+  "title": "Kbd component for React keyboard shortcut keycaps",
+  "description": "Kbd component for React and Next.js that renders keyboard shortcuts as semantic keycaps, with single keys or multi-key chords, configurable separators, an optional animated key press, and the full Zentauri appearance system.",
+  "keywords": [
+    "Kbd component",
+    "React keyboard shortcut",
+    "Next.js",
+    "keycap component",
+    "kbd element",
+    "shortcut hint",
+    "keyboard key"
+  ],
+  "og": {
+    "title": "Kbd · Zentauri UI",
+    "description": "Semantic keyboard shortcut keycaps for React and Next.js with key chords, separators, and themeable appearances.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Kbd · Zentauri UI",
+    "description": "Semantic keyboard shortcut keycaps for React and Next.js with key chords, separators, and themeable appearances.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/kbd",
+  "headings": {
+    "h1": "Kbd for keyboard shortcut keycaps",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Kbd renders keyboard shortcuts as semantic <kbd> keycaps. Pass a single key through children or a multi-key chord through the keys array with an optional separator. It ships sizes, the full Zentauri appearance and gradient system, and an optional animated key press from the kbd/animated entry.",
+  "useCases": [
+    "Documenting keyboard shortcuts in docs, help menus, and command palettes.",
+    "Surfacing hotkey hints next to buttons, menu items, and tooltips.",
+    "Onboarding flows that teach navigation and editor shortcuts.",
+    "Cheat sheets and settings screens that list configurable key bindings."
+  ],
+  "faqs": [
+    {
+      "question": "How do I render a multi-key chord?",
+      "answer": "Pass the keys prop an array such as keys={['⌘', 'K']} and set separator to the node you want between keycaps, like \"+\" or \"then\". Each entry renders as its own keycap."
+    },
+    {
+      "question": "What is the difference between children and the keys prop?",
+      "answer": "Use children for a single keycap, e.g. <Kbd>Esc</Kbd>. Use keys for a chord of multiple keycaps. When keys is provided it takes precedence over children."
+    },
+    {
+      "question": "Does Kbd render semantic markup?",
+      "answer": "Yes. Each keycap is a real <kbd> element wrapped in a span, so assistive technology and styling hooks recognize the shortcut as keyboard input."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Kbd turns a key or chord into styled keycaps backed by semantic <kbd> elements. A single key comes from children, while the keys array renders a sequence of keycaps joined by an optional separator node.\n\nThe static entry renders instantly, while the animated entry adds a subtle press or pop motion when a keycap mounts."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Import Kbd from the kbd entrypoint, or KbdAnimated from kbd/animated for the motion variant. Use children for a single keycap, keys for a chord, and separator for the node between keycaps. Tune the look with appearance and size."
+    },
+    {
+      "heading": "Common use cases",
+      "body": "Reach for Kbd wherever a keyboard shortcut needs to be visible: command palettes, help menus, tooltips and buttons that expose hotkeys, onboarding tours, and settings or cheat-sheet screens that list key bindings."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Each keycap renders a native <kbd> element so the shortcut is exposed as keyboard input to assistive technology. Keep separators meaningful (for example \"+\" or \"then\") and ensure the surrounding context names what the shortcut does."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The static Kbd is a plain presentational component and works in server and client components alike. KbdAnimated relies on framer-motion, so render it inside client components or interactive islands."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

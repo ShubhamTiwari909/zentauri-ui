@@ -160,6 +160,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/context-menu",
       },
       {
+        title: "Copy button",
+        href: "/preview/components/copy-button",
+      },
+      {
         title: "Divider",
         href: "/preview/components/divider",
       },
@@ -186,6 +190,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
       {
         title: "Inputs",
         href: "/preview/components/inputs",
+      },
+      {
+        title: "Kbd",
+        href: "/preview/components/kbd",
       },
       {
         title: "Marquee",

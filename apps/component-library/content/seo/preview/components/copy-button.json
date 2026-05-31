@@ -1,0 +1,80 @@
+{
+  "category": "Actions",
+  "title": "Copy button component for React clipboard actions",
+  "description": "Copy button component for React and Next.js that copies any string to the clipboard with an idle to copied icon swap, optional animated transition, accessible labels, and the full Zentauri appearance system.",
+  "keywords": [
+    "Copy button component",
+    "React copy to clipboard",
+    "Next.js",
+    "clipboard button",
+    "copy code button",
+    "useClipboard",
+    "react-icons"
+  ],
+  "og": {
+    "title": "Copy button · Zentauri UI",
+    "description": "Accessible copy-to-clipboard button for React and Next.js with animated icon swap and themeable appearances.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Copy button · Zentauri UI",
+    "description": "Accessible copy-to-clipboard button for React and Next.js with animated icon swap and themeable appearances.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/copy-button",
+  "headings": {
+    "h1": "Copy button for clipboard actions",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Copy button copies any string to the clipboard and transitions from an idle clipboard icon to a copied checkmark, then resets after a configurable timeout. It ships icon-only and labeled layouts, an optional animated icon swap, an onCopy callback, and the full Zentauri appearance and size system.",
+  "useCases": [
+    "Copy buttons on code blocks, install commands, and CLI snippets.",
+    "Copying API keys, tokens, IDs, and share links from dashboards.",
+    "Inline copy actions inside tables, cards, and detail panels.",
+    "Documentation and onboarding surfaces that surface copyable values."
+  ],
+  "faqs": [
+    {
+      "question": "How long does the copied state last?",
+      "answer": "It resets after the timeout prop in milliseconds (2000 by default). Pass timeout={0} to keep the copied state until the button is pressed again."
+    },
+    {
+      "question": "Can I show a text label instead of just an icon?",
+      "answer": "Yes. Pass iconOnly={false} to render the label and copiedLabel text next to the icon. The icon-only layout still exposes an accessible label."
+    },
+    {
+      "question": "How do I react to a successful copy?",
+      "answer": "Pass an onCopy callback. It receives the copied value after the clipboard write resolves, so you can toast, log analytics, or update local state."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Copy button wraps the clipboard write in a single accessible control with built-in idle and copied states. It uses the library's useClipboard hook, so the copied flag is managed for you and resets on the timeout you choose.\n\nThe static entry swaps the icon instantly, while the animated entry transitions the clipboard and checkmark icons through a spring scale and rotation."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Import CopyButton from the copy-button entrypoint, or CopyButtonAnimated from copy-button/animated for the motion variant. Set value with the text to copy, and tune the control with timeout, iconOnly, label, copiedLabel, copyIcon, copiedIcon, onCopy, appearance, and size."
+    },
+    {
+      "heading": "Common use cases",
+      "body": "Reach for Copy button anywhere a user benefits from one-click copying: install commands and code samples in docs, API keys and tokens in dashboards, share links, invoice or order IDs in tables, and onboarding steps that surface copyable values."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The control renders a real button with an aria-label that reflects the current state, and a visually hidden live region announces the copied label to assistive technology. Provide your own aria-label when the surrounding context already names the value."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Copy button is a client component because it reads navigator.clipboard in the browser. Render it inside client components or interactive islands; the clipboard write is a no-op during SSR and resolves only once the component is hydrated."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

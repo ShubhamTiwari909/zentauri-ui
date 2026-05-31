@@ -9,6 +9,7 @@ import { cardCssVariables } from "./data/card";
 import { checkboxCssVariables } from "./data/checkbox";
 import { commandCssVariables } from "./data/command";
 import { contextMenuCssVariables } from "./data/context-menu";
+import { copyButtonCssVariables } from "./data/copy-button";
 import { dividerCssVariables } from "./data/divider";
 import { drawerCssVariables } from "./data/drawer";
 import { dropdownCssVariables } from "./data/dropdown";
@@ -16,6 +17,7 @@ import { dynamicStepperCssVariables } from "./data/dynamic-stepper";
 import { emptyStateCssVariables } from "./data/empty-state";
 import { fileUploadCssVariables } from "./data/file-upload";
 import { inputsCssVariables } from "./data/inputs";
+import { kbdCssVariables } from "./data/kbd";
 import { marqueeCssVariables } from "./data/marquee";
 import { modalCssVariables } from "./data/modal";
 import { otpInputCssVariables } from "./data/otp-input";
@@ -54,6 +56,7 @@ export const cssVariableReferences = {
   checkbox: checkboxCssVariables,
   command: commandCssVariables,
   "context-menu": contextMenuCssVariables,
+  "copy-button": copyButtonCssVariables,
   divider: dividerCssVariables,
   drawer: drawerCssVariables,
   dropdown: dropdownCssVariables,
@@ -61,6 +64,7 @@ export const cssVariableReferences = {
   "empty-state": emptyStateCssVariables,
   "file-upload": fileUploadCssVariables,
   inputs: inputsCssVariables,
+  kbd: kbdCssVariables,
   marquee: marqueeCssVariables,
   modal: modalCssVariables,
   "otp-input": otpInputCssVariables,
