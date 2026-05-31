@@ -1,0 +1,80 @@
+{
+  "category": "Forms",
+  "title": "Rating component for React feedback and reviews",
+  "description": "Rating component for React and Next.js with star, heart, flame, thumb, and custom react-icons support, half-step values, accessible radiogroup semantics, and form-friendly hidden input output.",
+  "keywords": [
+    "Rating component",
+    "React rating",
+    "Next.js",
+    "star rating",
+    "feedback form",
+    "review UI",
+    "react-icons"
+  ],
+  "og": {
+    "title": "Rating · Zentauri UI",
+    "description": "Accessible rating input for React and Next.js feedback forms, reviews, surveys, and read-only aggregate scores.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Rating · Zentauri UI",
+    "description": "Accessible rating input for React and Next.js feedback forms, reviews, surveys, and read-only aggregate scores.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/rating",
+  "headings": {
+    "h1": "Rating for product feedback",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Rating renders an interactive review control for product scores, customer sentiment, support quality, marketplace cards, and survey feedback. It supports controlled and uncontrolled values, half-step selection, clear-on-repeat behavior, read-only aggregate displays, hidden form values, and icon presets powered by react-icons.",
+  "useCases": [
+    "Product review and marketplace rating forms.",
+    "Customer satisfaction, support quality, and feature feedback prompts.",
+    "Read-only aggregate ratings in cards, tables, and dashboards.",
+    "Survey inputs that use stars, hearts, flames, thumbs, or custom icons."
+  ],
+  "faqs": [
+    {
+      "question": "Can Rating collect half-star values?",
+      "answer": "Yes. Pass allowHalf to expose half-step radio options and keep the fill clipped to the selected fractional value."
+    },
+    {
+      "question": "Can I use icons other than stars?",
+      "answer": "Yes. Use the built-in star, heart, flame, and thumb presets, or pass any react-icons component through the icon prop."
+    },
+    {
+      "question": "Does Rating work in forms?",
+      "answer": "Yes. Pass name to render a hidden input with the current numeric rating value."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Provide a polished rating primitive with animated fill clipping, hover previews, keyboard stepping, and the same appearance system used across Zentauri UI components.\n\nThe component keeps the visual icon row separate from the radio options so half-step values stay accessible while the display remains compact."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Import Rating from the rating entrypoint. Use value and onValueChange for controlled state, or defaultValue for uncontrolled state. Tune the control with max, allowHalf, allowClear, readOnly, disabled, name, size, appearance, icon, getLabel, hint, and errorMessage."
+    },
+    {
+      "heading": "Common use cases",
+      "body": "Use Rating anywhere a product surface needs compact sentiment input or a read-only quality signal. It fits product reviews, post-support satisfaction prompts, survey questions, testimonial cards, marketplace summaries, and admin dashboards that compare customer feedback across teams or releases."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Rating renders a role=radiogroup wrapper with individual role=radio options. Provide label text, use hint for helper copy, and customize getLabel when your scoring language needs more context than the default numeric value."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Use Rating in client components when the selected value changes in the browser. Read-only aggregate displays can be rendered from server data, while interactive feedback forms should submit the hidden input or controlled value to your own server action or API route."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

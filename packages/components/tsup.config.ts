@@ -25,6 +25,7 @@ const uiComponentNames = [
   "pagination",
   "popover",
   "progress",
+  "rating",
   "radio-group",
   "scroll-area",
   "search",

@@ -20,6 +20,7 @@ export * from "./otp-input";
 export * from "./pagination";
 export * from "./popover";
 export * from "./progress";
+export * from "./rating";
 export * from "./radio-group";
 export * from "./scroll-area";
 export * from "./select";
