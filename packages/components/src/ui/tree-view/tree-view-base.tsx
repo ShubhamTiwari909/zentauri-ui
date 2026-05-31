@@ -149,16 +149,16 @@ function TreeItemNode({ node, level }: { node: TreeNode; level: number }) {
       </div>
       {hasChildren ? (
         <Group open={expanded} level={level}>
-          <div
+          <ol
             className={cn(
               ctx.showGuides && zuiTreeViewGuide,
               ctx.showGuides && "ml-5",
             )}
           >
-            {node.children!.map((child) => (
+            {node.children?.map((child) => (
               <TreeItemNode key={child.id} node={child} level={level + 1} />
             ))}
-          </div>
+          </ol>
         </Group>
       ) : null}
     </li>
@@ -166,7 +166,7 @@ function TreeItemNode({ node, level }: { node: TreeNode; level: number }) {
 }
 
 export function TreeViewBase({
-  data,
+  data = [],
   defaultExpanded,
   expanded,
   onExpandedChange,
@@ -261,10 +261,11 @@ export function TreeViewBase({
   const [activeIdState, setActiveIdState] = useState<string | undefined>(
     undefined,
   );
+  const isSelectedVisible = selectedId !== undefined && visible.some((entry) => entry.node.id === selectedId);
   const activeId =
     activeIdState && visible.some((entry) => entry.node.id === activeIdState)
       ? activeIdState
-      : (selectedId ?? firstEnabledId);
+      : (isSelectedVisible ? selectedId : firstEnabledId);
 
   const focusItem = useCallback((id: string) => {
     setActiveIdState(id);

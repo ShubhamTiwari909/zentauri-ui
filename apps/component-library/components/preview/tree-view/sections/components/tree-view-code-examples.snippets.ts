@@ -22,8 +22,12 @@ export function treeViewSnippet(opts: TreeViewDemoProps): string {
     ? `transition ${opts.transition ?? "default"}`
     : `appearance ${opts.appearance ?? "default"} / size ${opts.size ?? "md"}`;
 
-  return `${variantLeadComment(lead)}${importPath}
-
+  return `${variantLeadComment(lead)}import { FiFile, FiFolder, FiHash } from "react-icons/fi";
+${importPath}
+const folder = <FiFolder className="h-4 w-4" />;
+const file = <FiFile className="h-4 w-4" />;
+const route = <FiHash className="h-4 w-4" />;
+  
 const nodes = [
  {
     id: "app",
