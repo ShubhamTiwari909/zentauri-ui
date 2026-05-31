@@ -23,6 +23,7 @@ import type {
   TreeViewCtx,
 } from "./types";
 import { treeViewItemVariants, treeViewVariants } from "./variants";
+import { FaChevronDown } from "react-icons/fa6";
 
 const TreeViewContext = createContext<TreeViewCtx | null>(null);
 
@@ -63,37 +64,41 @@ function StaticTreeGroup({ open, children }: TreeGroupProps) {
   );
 }
 
-function ChevronIcon() {
-  return (
-    <svg
-      viewBox="0 0 20 20"
-      fill="none"
-      aria-hidden
-      className="h-3.5 w-3.5"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M7 5l6 5-6 5" />
-    </svg>
-  );
-}
-
-function TreeItemNode({ node, level }: { node: TreeNode; level: number }) {
-  const ctx = useTreeViewContext("TreeItem");
+function TreeItemNode({
+  node,
+  level,
+  chevronIcon,
+}: {
+  node: TreeNode;
+  level: number;
+  chevronIcon?: React.ReactNode;
+}) {
+  const {
+    isExpanded,
+    selectedId,
+    activeId,
+    GroupComponent,
+    registerItem,
+    appearance,
+    size,
+    toggleExpanded,
+    selectNode,
+    onItemKeyDown,
+    renderNode,
+    showGuides,
+  } = useTreeViewContext("TreeItem");
   const hasChildren = Boolean(node.children?.length);
-  const expanded = hasChildren && ctx.isExpanded(node.id);
-  const selected = ctx.selectedId === node.id;
-  const active = ctx.activeId === node.id;
+  const expanded = hasChildren && isExpanded(node.id);
+  const selected = selectedId === node.id;
+  const active = activeId === node.id;
   const disabled = Boolean(node.disabled);
-  const Group = ctx.GroupComponent;
+  const Group = GroupComponent;
 
   return (
     <li role="none" data-slot="tree-view-item">
       <div
         role="treeitem"
-        ref={(el) => ctx.registerItem(node.id, el)}
+        ref={(el) => registerItem(node.id, el)}
         aria-expanded={hasChildren ? expanded : undefined}
         aria-selected={selected}
         aria-level={level}
@@ -106,19 +111,19 @@ function TreeItemNode({ node, level }: { node: TreeNode; level: number }) {
         tabIndex={active ? 0 : -1}
         style={{ paddingLeft: `${(level - 1) * 1.25 + 0.5}rem` }}
         className={treeViewItemVariants({
-          appearance: ctx.appearance,
-          size: ctx.size,
+          appearance: appearance,
+          size: size,
         })}
         onClick={() => {
           if (disabled) {
             return;
           }
           if (hasChildren) {
-            ctx.toggleExpanded(node.id);
+            toggleExpanded(node.id);
           }
-          ctx.selectNode(node);
+          selectNode(node);
         }}
-        onKeyDown={ctx.onItemKeyDown}
+        onKeyDown={onItemKeyDown}
       >
         {hasChildren ? (
           <span
@@ -126,7 +131,7 @@ function TreeItemNode({ node, level }: { node: TreeNode; level: number }) {
             data-expanded={expanded}
             className={zuiTreeViewChevron}
           >
-            <ChevronIcon />
+            {chevronIcon || <FaChevronDown />}
           </span>
         ) : (
           <span aria-hidden className="inline-flex h-5 w-5 shrink-0" />
@@ -137,8 +142,8 @@ function TreeItemNode({ node, level }: { node: TreeNode; level: number }) {
           </span>
         ) : null}
         <span data-slot="tree-view-label" className="truncate">
-          {ctx.renderNode
-            ? ctx.renderNode({
+          {renderNode
+            ? renderNode({
                 node,
                 depth: level,
                 isExpanded: expanded,
@@ -150,10 +155,7 @@ function TreeItemNode({ node, level }: { node: TreeNode; level: number }) {
       {hasChildren ? (
         <Group open={expanded} level={level}>
           <ol
-            className={cn(
-              ctx.showGuides && zuiTreeViewGuide,
-              ctx.showGuides && "ml-5",
-            )}
+            className={cn(showGuides && zuiTreeViewGuide, showGuides && "ml-5")}
           >
             {node.children?.map((child) => (
               <TreeItemNode key={child.id} node={child} level={level + 1} />
@@ -237,16 +239,13 @@ export function TreeViewBase({
   );
 
   const itemRefs = useRef(new Map<string, HTMLDivElement>());
-  const registerItem = useCallback(
-    (id: string, el: HTMLDivElement | null) => {
-      if (el) {
-        itemRefs.current.set(id, el);
-      } else {
-        itemRefs.current.delete(id);
-      }
-    },
-    [],
-  );
+  const registerItem = useCallback((id: string, el: HTMLDivElement | null) => {
+    if (el) {
+      itemRefs.current.set(id, el);
+    } else {
+      itemRefs.current.delete(id);
+    }
+  }, []);
 
   const visible = useMemo(
     () => flattenVisible(data, isExpanded),
@@ -261,11 +260,15 @@ export function TreeViewBase({
   const [activeIdState, setActiveIdState] = useState<string | undefined>(
     undefined,
   );
-  const isSelectedVisible = selectedId !== undefined && visible.some((entry) => entry.node.id === selectedId);
+  const isSelectedVisible =
+    selectedId !== undefined &&
+    visible.some((entry) => entry.node.id === selectedId);
   const activeId =
     activeIdState && visible.some((entry) => entry.node.id === activeIdState)
       ? activeIdState
-      : (isSelectedVisible ? selectedId : firstEnabledId);
+      : isSelectedVisible
+        ? selectedId
+        : firstEnabledId;
 
   const focusItem = useCallback((id: string) => {
     setActiveIdState(id);
