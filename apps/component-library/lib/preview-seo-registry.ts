@@ -39,6 +39,7 @@ import timeline from "@/content/seo/preview/components/timeline.json";
 import toast from "@/content/seo/preview/components/toast.json";
 import toggle from "@/content/seo/preview/components/toggle.json";
 import tooltip from "@/content/seo/preview/components/tooltip.json";
+import treeView from "@/content/seo/preview/components/tree-view.json";
 import typography from "@/content/seo/preview/components/typography.json";
 
 const previewSeoRegistry = {
@@ -82,6 +83,7 @@ const previewSeoRegistry = {
   toast: toast as PreviewSeoDocument,
   toggle: toggle as PreviewSeoDocument,
   tooltip: tooltip as PreviewSeoDocument,
+  "tree-view": treeView as PreviewSeoDocument,
   typography: typography as PreviewSeoDocument,
 } as const;
 

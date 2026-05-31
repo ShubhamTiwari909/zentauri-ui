@@ -259,6 +259,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "Tooltip",
         href: "/preview/components/tooltip",
       },
+      {
+        title: "Tree view",
+        href: "/preview/components/tree-view",
+      },
     ],
   },
 ];

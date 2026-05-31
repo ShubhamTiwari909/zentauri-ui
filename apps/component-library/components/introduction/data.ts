@@ -273,4 +273,12 @@ export const componentsData: ComponentHighlight[] = [
     href: "/preview/components/tooltip",
     badge: "Overlay",
   },
+  {
+    id: "tree-view",
+    name: "Tree view",
+    description:
+      "Data-driven hierarchical trees with keyboard navigation, selection state, indentation guides, and animated expand/collapse.",
+    href: "/preview/components/tree-view",
+    badge: "Data",
+  },
 ];

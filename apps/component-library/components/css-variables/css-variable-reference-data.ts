@@ -34,6 +34,7 @@ import { timelineCssVariables } from "./data/timeline";
 import { toastCssVariables } from "./data/toast";
 import { toggleCssVariables } from "./data/toggle";
 import { tooltipCssVariables } from "./data/tooltip";
+import { treeViewCssVariables } from "./data/tree-view";
 import { typographyCssVariables } from "./data/typography";
 
 import type { CssVariableReference } from "./css-variable-reference-types";
@@ -75,6 +76,7 @@ export const cssVariableReferences = {
   toast: toastCssVariables,
   toggle: toggleCssVariables,
   tooltip: tooltipCssVariables,
+  "tree-view": treeViewCssVariables,
   typography: typographyCssVariables,
 } as const satisfies Record<string, CssVariableReference>;
 

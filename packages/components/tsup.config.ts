@@ -38,6 +38,7 @@ const uiComponentNames = [
   "toast",
   "toggle",
   "tooltip",
+  "tree-view",
   "typography",
 ] as const;
 
@@ -68,6 +69,7 @@ const uiAnimatedComponentNames = [
   "toast",
   "toggle",
   "tooltip",
+  "tree-view",
 ] as const;
 
 const hooksEntryNames = [
