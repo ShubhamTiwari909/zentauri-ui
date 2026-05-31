@@ -1,0 +1,65 @@
+{
+  "category": "Data display",
+  "title": "Animated Number component for counters and stats",
+  "description": "Animated Number for React and Next.js with digit-by-digit entrance animations and a count-up counter. Themeable appearances, sizes, and motion presets built on framer-motion.",
+  "keywords": [
+    "animated number",
+    "counter",
+    "count up",
+    "statistics",
+    "React",
+    "Next.js",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Animated Number · Zentauri UI",
+    "description": "Digit-by-digit number entrances and a count-up counter with themeable appearances and motion presets.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Animated Number · Zentauri UI",
+    "description": "Digit-by-digit number entrances and a count-up counter with themeable appearances and motion presets.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/animated-number",
+  "headings": {
+    "h1": "Animated numbers for counters and stats",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "Animated Number renders a value with motion. AnimatedNumber splits a number into digits and animates each one in with a staggered transition, while AnimatedNumberCounter tweens from zero up to the target value. Both share themeable --zui-animated-number-* colors and sizes.",
+  "useCases": [
+    "Dashboard KPIs and live metrics.",
+    "Landing-page stat counters.",
+    "Pricing and revenue highlights.",
+    "Score and progress readouts."
+  ],
+  "faqs": [
+    {
+      "question": "What is the difference between AnimatedNumber and AnimatedNumberCounter?",
+      "answer": "AnimatedNumber animates each digit into place using a motion preset (slide, scale, rotate, skew, or fade) and is best for revealing a fixed value. AnimatedNumberCounter tweens the displayed value from zero up to the target, which reads as a counting-up effect."
+    },
+    {
+      "question": "How do I choose the entrance animation?",
+      "answer": "Pass the type prop on AnimatedNumber: up, down, scaleUp, scaleDown, rotateX, rotateY, skewX, skewY, or fade. Tune timing with the transition and delayInSecond props."
+    },
+    {
+      "question": "How are the colors themed?",
+      "answer": "Every appearance maps to a --zui-animated-number-* CSS variable with a hardcoded fallback and a paired dark-mode value. Solid appearances set the text color; gradient appearances clip a linear gradient to the text."
+    },
+    {
+      "question": "When does the animation run?",
+      "answer": "Both components are viewport-aware: the digit entrance and the count-up only start once the element scrolls into view, and they run a single time. They also respect prefers-reduced-motion, falling back to the final value with no animation."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Both components accept appearance and size variants. Appearances cover semantic tones (success, warning, error, info), a palette of named colors, and gradient text. Sizes scale the type from sm to lg. Animations are triggered on scroll into view, run once, and respect prefers-reduced-motion. framer-motion is an optional peer dependency."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

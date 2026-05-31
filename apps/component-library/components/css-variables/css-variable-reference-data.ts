@@ -1,5 +1,6 @@
 import { accordionCssVariables } from "./data/accordion";
 import { alertCssVariables } from "./data/alert";
+import { animatedNumberCssVariables } from "./data/animated-number";
 import { avatarCssVariables } from "./data/avatar";
 import { badgeCssVariables } from "./data/badge";
 import { breadcrumbCssVariables } from "./data/breadcrumb";
@@ -22,6 +23,7 @@ import { paginationCssVariables } from "./data/pagination";
 import { popoverCssVariables } from "./data/popover";
 import { progressCssVariables } from "./data/progress";
 import { radioGroupCssVariables } from "./data/radio-group";
+import { ratingCssVariables } from "./data/rating";
 import { scrollAreaCssVariables } from "./data/scroll-area";
 import { searchCssVariables } from "./data/search";
 import { selectCssVariables } from "./data/select";
@@ -43,6 +45,7 @@ import type { CssVariableReference } from "./css-variable-reference-types";
 export const cssVariableReferences = {
   accordion: accordionCssVariables,
   alert: alertCssVariables,
+  "animated-number": animatedNumberCssVariables,
   avatar: avatarCssVariables,
   badge: badgeCssVariables,
   breadcrumb: breadcrumbCssVariables,
@@ -65,6 +68,7 @@ export const cssVariableReferences = {
   popover: popoverCssVariables,
   progress: progressCssVariables,
   "radio-group": radioGroupCssVariables,
+  rating: ratingCssVariables,
   "scroll-area": scrollAreaCssVariables,
   search: searchCssVariables,
   select: selectCssVariables,

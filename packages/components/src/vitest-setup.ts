@@ -33,3 +33,25 @@ Object.defineProperty(window, "matchMedia", {
     .fn()
     .mockImplementation((query: string) => createMatchMediaList(query, true)),
 });
+
+class MockIntersectionObserver implements IntersectionObserver {
+  readonly root = null;
+  readonly rootMargin = "";
+  readonly thresholds: ReadonlyArray<number> = [];
+  observe = vi.fn();
+  unobserve = vi.fn();
+  disconnect = vi.fn();
+  takeRecords = vi.fn(() => []);
+  constructor(_callback: IntersectionObserverCallback) {}
+}
+
+Object.defineProperty(window, "IntersectionObserver", {
+  writable: true,
+  configurable: true,
+  value: MockIntersectionObserver,
+});
+Object.defineProperty(globalThis, "IntersectionObserver", {
+  writable: true,
+  configurable: true,
+  value: MockIntersectionObserver,
+});
