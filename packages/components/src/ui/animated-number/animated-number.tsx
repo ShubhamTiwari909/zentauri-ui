@@ -1,11 +1,11 @@
 "use client";
-import { animate, motion, useReducedMotion } from "framer-motion";
+import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 import { animatedNumberAppearance } from "./variants";
 import { AnimatedNumberCounterProps, AnimatedNumberProps } from "./types";
 import { cn } from "../../lib/utils";
 import { zuiAnimatedNumberBase } from "../../design-system/animated-number";
 import { animationFinalType, animationInitialType } from "./animations";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const DEFAULT_VIEWPORT = { once: true, amount: 0.2 } as const;
 
@@ -66,16 +66,19 @@ export const AnimatedNumber = ({
 export const AnimatedNumberCounter = ({
   number,
   className,
-  ref,
+  ref: externalRef,
   appearance,
   size,
   duration = 2,
-  viewport,
+  viewport: _viewport,
   ...rest
 }: AnimatedNumberCounterProps) => {
   const [currentNumber, setCurrentNumber] = useState(0);
-  const [isInView, setIsInView] = useState(false);
   const reducedMotion = useReducedMotion();
+  const internalRef = useRef<HTMLParagraphElement>(null);
+  // once: false gives real two-way tracking so isInView flips false when scrolled away,
+  // preventing offscreen animations when the number prop changes later.
+  const isInView = useInView(internalRef, { once: false, amount: 0.2 });
 
   useEffect(() => {
     if (!isInView) return;
@@ -92,17 +95,19 @@ export const AnimatedNumberCounter = ({
     });
 
     return () => controls.stop();
-    // currentNumber intentionally omitted — stale closure gives smooth from→to on prop changes
+    // currentNumber intentionally omitted — captured value gives smooth from→to on prop changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInView, number, duration, reducedMotion]);
 
   return (
     <motion.p
       className={cn(animatedNumberAppearance({ appearance, size }), className)}
-      ref={ref}
-      viewport={viewport ?? DEFAULT_VIEWPORT}
-      onViewportEnter={() => setIsInView(true)}
-      onViewportLeave={() => setIsInView(false)}
+      ref={(node: HTMLParagraphElement) => {
+        internalRef.current = node;
+        if (externalRef) {
+          externalRef.current = node;
+        }
+      }}
       {...rest}
     >
       {currentNumber}
