@@ -19,22 +19,21 @@ export type MotionPropsWithoutTransitionDelay = Omit<
 
 export type AnimatedNumberProps = MotionPropsWithoutTransitionDelay & {
   number: number;
-  wrapperClassName?:string,
+  wrapperClassName?: string;
   className?: string;
   ref?: RefObject<HTMLDivElement>;
   appearance?: VariantProps<typeof animatedNumberAppearance>["appearance"];
   size?: VariantProps<typeof animatedNumberAppearance>["size"];
   type?: "up" | "down" | "scaleUp" | "scaleDown" | "rotateX" | "rotateY" | "skewX" | "skewY" | "fade";
   delayInSecond?: number;
-  transition?: MotionProps["transition"]
+  transition?: MotionProps["transition"];
 };
-
 
 export type AnimatedNumberCounterProps = MotionProps & {
   number: number;
   className?: string;
-  ref?: RefObject<HTMLDivElement>;
+  ref?: RefObject<HTMLParagraphElement>;
   appearance?: VariantProps<typeof animatedNumberAppearance>["appearance"];
   size?: VariantProps<typeof animatedNumberAppearance>["size"];
-  duration?:number
+  duration?: number;
 };

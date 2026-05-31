@@ -1,5 +1,5 @@
 export const zuiAnimatedNumberBase =
-  "relative flex w-full overflow-hidden";
+  "relative flex w-full overflow-hidden [perspective:1000px]";
 
 export const zuiAnimatedNumberAppearance = {
   default:
