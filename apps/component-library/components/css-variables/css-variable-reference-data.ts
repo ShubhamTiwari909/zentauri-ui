@@ -15,6 +15,7 @@ import { dynamicStepperCssVariables } from "./data/dynamic-stepper";
 import { emptyStateCssVariables } from "./data/empty-state";
 import { fileUploadCssVariables } from "./data/file-upload";
 import { inputsCssVariables } from "./data/inputs";
+import { marqueeCssVariables } from "./data/marquee";
 import { modalCssVariables } from "./data/modal";
 import { otpInputCssVariables } from "./data/otp-input";
 import { paginationCssVariables } from "./data/pagination";
@@ -57,6 +58,7 @@ export const cssVariableReferences = {
   "empty-state": emptyStateCssVariables,
   "file-upload": fileUploadCssVariables,
   inputs: inputsCssVariables,
+  marquee: marqueeCssVariables,
   modal: modalCssVariables,
   "otp-input": otpInputCssVariables,
   pagination: paginationCssVariables,

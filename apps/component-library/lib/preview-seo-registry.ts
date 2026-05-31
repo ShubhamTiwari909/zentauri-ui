@@ -20,6 +20,7 @@ import fileUpload from "@/content/seo/preview/components/file-upload.json";
 import index from "@/content/seo/preview/components/index.json";
 import inputs from "@/content/seo/preview/components/inputs.json";
 import installation from "@/content/seo/preview/components/installation.json";
+import marquee from "@/content/seo/preview/components/marquee.json";
 import modal from "@/content/seo/preview/components/modal.json";
 import otpInput from "@/content/seo/preview/components/otp-input.json";
 import pagination from "@/content/seo/preview/components/pagination.json";
@@ -65,6 +66,7 @@ const previewSeoRegistry = {
   hooks: hooks as PreviewSeoDocument,
   "file-upload": fileUpload as PreviewSeoDocument,
   inputs: inputs as PreviewSeoDocument,
+  marquee: marquee as PreviewSeoDocument,
   modal: modal as PreviewSeoDocument,
   "otp-input": otpInput as PreviewSeoDocument,
   pagination: pagination as PreviewSeoDocument,

@@ -15,6 +15,7 @@ export * from "./dynamic-stepper";
 export * from "./empty-state";
 export * from "./file-upload";
 export * from "./inputs";
+export * from "./marquee";
 export * from "./modal";
 export * from "./otp-input";
 export * from "./pagination";
