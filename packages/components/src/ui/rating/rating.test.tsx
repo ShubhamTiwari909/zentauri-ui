@@ -88,6 +88,19 @@ describe("Rating", () => {
       "aria-checked",
       "true",
     );
+    expect(screen.getByLabelText("2.5 of 5")).toHaveFocus();
+  });
+
+  it("should fall back to the star icon for unknown icon preset strings", () => {
+    render(
+      <Rating
+        icon={"unknown" as never}
+        defaultValue={3}
+        label="Product score"
+      />,
+    );
+
+    expect(screen.getByRole("radiogroup")).toBeInTheDocument();
   });
 
   it("should not change when disabled", async () => {

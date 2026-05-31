@@ -21,6 +21,7 @@ export function ratingSnippet(opts: RatingDemoProps): string {
   {icons.map((icon, index) => {
     return (
       <Rating
+        key={icon}
         label="${readOnly ? "Average rating" : "Product rating"}"
         defaultValue={${defaultValue}}${appearanceAttr}${sizeAttr}${iconAttr}${halfAttr}${clearAttr}${readOnlyAttr}${maxAttr}
       />

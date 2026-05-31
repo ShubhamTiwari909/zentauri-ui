@@ -3,7 +3,6 @@
 import {
   type CSSProperties,
   type KeyboardEvent,
-  type PointerEvent,
   useCallback,
   useId,
   useState,
@@ -59,7 +58,11 @@ function resolveIcon(icon: RatingProps["icon"]): IconType {
     return PRESET_ICONS.star;
   }
 
-  return typeof icon === "string" ? PRESET_ICONS[icon] : icon;
+  if (typeof icon === "string") {
+    return PRESET_ICONS[icon as RatingPresetIcon] ?? PRESET_ICONS.star;
+  }
+
+  return icon;
 }
 
 export function Rating(props: RatingProps) {
@@ -135,54 +138,47 @@ export function Rating(props: RatingProps) {
     ],
   );
 
-  const getPointerValue = useCallback(
-    (
-      event: PointerEvent<HTMLButtonElement>,
-      fullValue: number,
-      fallbackValue: number,
-    ) => {
-      if (!allowHalf) {
-        return fullValue;
-      }
-
-      const rect = event.currentTarget.getBoundingClientRect();
-      if (rect.width === 0) {
-        return fallbackValue;
-      }
-
-      const midpoint = rect.left + rect.width / 2;
-      return event.clientX < midpoint ? fullValue - 0.5 : fullValue;
-    },
-    [allowHalf],
-  );
-
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLButtonElement>) => {
       if (!interactive) {
         return;
       }
 
+      const root = event.currentTarget.closest('[data-slot="rating"]');
+      const focusValue = (nextValue: number) => {
+        const control = root?.querySelector(
+          `button[data-value="${nextValue}"]`,
+        ) as HTMLButtonElement | null;
+        control?.focus();
+      };
+
       if (event.key === "ArrowRight" || event.key === "ArrowUp") {
         event.preventDefault();
-        commitValue(clamp(resolvedValue + step, step, resolvedMax));
+        const nextValue = clamp(resolvedValue + step, step, resolvedMax);
+        commitValue(nextValue);
+        focusValue(nextValue);
         return;
       }
 
       if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
         event.preventDefault();
-        commitValue(clamp(resolvedValue - step, 0, resolvedMax));
+        const nextValue = clamp(resolvedValue - step, 0, resolvedMax);
+        commitValue(nextValue);
+        focusValue(nextValue === 0 ? step : nextValue);
         return;
       }
 
       if (event.key === "Home") {
         event.preventDefault();
         commitValue(step);
+        focusValue(step);
         return;
       }
 
       if (event.key === "End") {
         event.preventDefault();
         commitValue(resolvedMax);
+        focusValue(resolvedMax);
       }
     },
     [commitValue, interactive, resolvedMax, resolvedValue, step],
@@ -263,6 +259,7 @@ export function Rating(props: RatingProps) {
                       : "inset-x-0",
                   )}
                   data-slot="rating-control"
+                  data-value={optionValue}
                   disabled={controlsDisabled}
                   onClick={() => {
                     if (interactive) {
@@ -270,18 +267,9 @@ export function Rating(props: RatingProps) {
                     }
                   }}
                   onKeyDown={handleKeyDown}
-                  onPointerEnter={(event) => {
+                  onPointerEnter={() => {
                     if (interactive) {
-                      setHoverValue(
-                        getPointerValue(event, fullValue, optionValue),
-                      );
-                    }
-                  }}
-                  onPointerMove={(event) => {
-                    if (interactive) {
-                      setHoverValue(
-                        getPointerValue(event, fullValue, optionValue),
-                      );
+                      setHoverValue(optionValue);
                     }
                   }}
                   role="radio"

@@ -27,6 +27,7 @@ export function RatingExamplesSection() {
   value={score}
   onValueChange={setScore}
   appearance="amber"
+  hint={\`Current value: \${score}\`}
   label="Review score"
 />`}
         >
