@@ -1,5 +1,5 @@
 "use client";
-import { animate, motion, useInView, useReducedMotion } from "framer-motion";
+import { animate, motion, useInView, useReducedMotion, type UseInViewOptions } from "framer-motion";
 import { animatedNumberAppearance } from "./variants";
 import { AnimatedNumberCounterProps, AnimatedNumberProps } from "./types";
 import { cn } from "../../lib/utils";
@@ -70,7 +70,7 @@ export const AnimatedNumberCounter = ({
   appearance,
   size,
   duration = 2,
-  viewport: _viewport,
+  viewport,
   ...rest
 }: AnimatedNumberCounterProps) => {
   const [currentNumber, setCurrentNumber] = useState(0);
@@ -78,7 +78,11 @@ export const AnimatedNumberCounter = ({
   const internalRef = useRef<HTMLParagraphElement>(null);
   // once: false gives real two-way tracking so isInView flips false when scrolled away,
   // preventing offscreen animations when the number prop changes later.
-  const isInView = useInView(internalRef, { once: false, amount: 0.2 });
+  const isInView = useInView(internalRef, {
+    once: false,
+    amount: 0.2,
+    ...viewport,
+  } as UseInViewOptions);
 
   useEffect(() => {
     if (!isInView) return;
