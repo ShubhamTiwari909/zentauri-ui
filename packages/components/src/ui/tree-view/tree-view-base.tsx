@@ -23,7 +23,7 @@ import type {
   TreeViewCtx,
 } from "./types";
 import { treeViewItemVariants, treeViewVariants } from "./variants";
-import { FaChevronDown } from "react-icons/fa6";
+import { FaChevronRight } from "react-icons/fa6";
 
 const TreeViewContext = createContext<TreeViewCtx | null>(null);
 
@@ -131,7 +131,7 @@ function TreeItemNode({
             data-expanded={expanded}
             className={zuiTreeViewChevron}
           >
-            {chevronIcon || <FaChevronDown />}
+            {chevronIcon || <FaChevronRight />}
           </span>
         ) : (
           <span aria-hidden className="inline-flex h-5 w-5 shrink-0" />
