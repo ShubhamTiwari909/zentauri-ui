@@ -45,7 +45,6 @@ export function Marquee(props: MarqueeProps) {
   const animationName =
     resolvedOrientation === "vertical" ? "zui-marquee-y" : "zui-marquee-x";
   const marqueeStyle = {
-    "--zui-marquee-duration": `${speed}s`,
     ...(gap !== undefined ? { "--zui-marquee-gap": toCssLength(gap) } : null),
     ...style,
   } as CSSProperties;
@@ -72,7 +71,7 @@ export function Marquee(props: MarqueeProps) {
       <div
         data-slot="marquee-track"
         className={cn(
-          "flex shrink-0 gap-[var(--zui-marquee-gap)] will-change-transform [animation-duration:var(--zui-marquee-duration)] [animation-iteration-count:infinite] [animation-name:var(--zui-marquee-animation)] [animation-timing-function:linear] motion-reduce:[animation-play-state:paused]",
+          "flex shrink-0 gap-[var(--zui-marquee-gap)] will-change-transform [animation-iteration-count:infinite] [animation-timing-function:linear] motion-reduce:[animation-play-state:paused]",
           resolvedOrientation === "vertical" ? "flex-col" : "w-max flex-row",
           pauseOnHover && "group-hover/marquee:[animation-play-state:paused]",
           isReverse && "[animation-direction:reverse]",
@@ -80,7 +79,8 @@ export function Marquee(props: MarqueeProps) {
         )}
         style={
           {
-            "--zui-marquee-animation": animationName,
+            animationDuration: `${speed}s`,
+            animationName,
           } as CSSProperties
         }
       >
@@ -96,6 +96,7 @@ export function Marquee(props: MarqueeProps) {
         </div>
         <div
           aria-hidden="true"
+          inert
           data-slot="marquee-item-group"
           className={cn(
             "flex shrink-0 items-center justify-around gap-[var(--zui-marquee-gap)]",

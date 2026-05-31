@@ -29,6 +29,16 @@ const releaseEvents = [
   ["v1.7.5", "Rating variants added"],
 ] as const;
 
+const notifications = [
+  "Usage alerts",
+  "Billing synced",
+  "Incidents clear",
+] as const;
+
+const notificationItemsSnippet = notifications
+  .map((label) => `"${label}"`)
+  .join(", ");
+
 const logoRailSnippet = `${variantLeadComment("customer logo rail")}import { Marquee } from "@zentauri-ui/zentauri-components/ui/marquee";
 import {
   FiBarChart2,
@@ -108,7 +118,7 @@ export function ReleaseTicker() {
 const notificationBannerSnippet = `${variantLeadComment("compact notification banner")}import { Marquee } from "@zentauri-ui/zentauri-components/ui/marquee";
 import { FiPackage } from "react-icons/fi";
 
-const notifications = ["Usage alerts", "Billing synced", "Incidents clear"];
+const notifications = [${notificationItemsSnippet}];
 
 export function NotificationBanner() {
   return (
@@ -197,17 +207,15 @@ export function MarqueeExamplesSection() {
             size="sm"
             speed={26}
           >
-            {["Usage alerts", "Billing synced", "Incidents clear"].map(
-              (label) => (
-                <span
-                  key={label}
-                  className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold text-white ring-1 ring-white/20"
-                >
-                  <FiPackage className="h-3.5 w-3.5" aria-hidden />
-                  {label}
-                </span>
-              ),
-            )}
+            {notifications.map((label) => (
+              <span
+                key={label}
+                className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold text-white ring-1 ring-white/20"
+              >
+                <FiPackage className="h-3.5 w-3.5" aria-hidden />
+                {label}
+              </span>
+            ))}
           </Marquee>
         </PreviewCodeShowcase>
       </div>

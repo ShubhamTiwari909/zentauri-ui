@@ -18,6 +18,12 @@ describe("Marquee", () => {
     expect(document.querySelector('[data-slot="marquee"]')).toBeTruthy();
     expect(document.querySelector('[data-slot="marquee-track"]')).toBeTruthy();
     expect(screen.getAllByText("Acme")).toHaveLength(2);
+
+    const groups = document.querySelectorAll(
+      '[data-slot="marquee-item-group"]',
+    );
+    expect(groups[1]).toHaveAttribute("aria-hidden", "true");
+    expect(groups[1]).toHaveAttribute("inert");
   });
 
   it("applies horizontal metadata by default", () => {
@@ -60,7 +66,7 @@ describe("Marquee", () => {
     );
   });
 
-  it("maps speed and gap to CSS custom properties", () => {
+  it("maps speed to track animation styles and gap to a CSS custom property", () => {
     render(
       <Marquee speed={42} gap={24} data-testid="marquee">
         <span>Timing</span>
@@ -69,8 +75,12 @@ describe("Marquee", () => {
 
     const marquee = screen.getByTestId("marquee");
     expect(marquee).toHaveStyle({
-      "--zui-marquee-duration": "42s",
       "--zui-marquee-gap": "24px",
+    });
+
+    expect(document.querySelector('[data-slot="marquee-track"]')).toHaveStyle({
+      animationDuration: "42s",
+      animationName: "zui-marquee-x",
     });
   });
 

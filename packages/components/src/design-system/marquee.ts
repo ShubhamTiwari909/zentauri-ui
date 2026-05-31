@@ -1,5 +1,5 @@
 export const zuiMarqueeBase =
-  "group/marquee relative isolate flex min-w-0 overflow-hidden rounded-xl border border-transparent bg-[var(--zui-marquee-bg,transparent)] text-[color:var(--zui-marquee-fg,inherit)] [--zui-marquee-duration:30s] [--zui-marquee-gap:1rem]";
+  "group/marquee relative isolate flex min-w-0 overflow-hidden rounded-xl border border-transparent bg-[var(--zui-marquee-bg,transparent)] text-[color:var(--zui-marquee-fg,inherit)] [--zui-marquee-gap:1rem]";
 
 export const zuiMarqueeAppearances = {
   default:

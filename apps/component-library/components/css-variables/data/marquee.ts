@@ -7,7 +7,6 @@ export const marqueeCssVariables = defineCssVariableReference({
   lightVariables: [
     ["marquee-bg", "transparent"],
     ["marquee-fg", "oklch(20.8% 0.042 265.755)"],
-    ["marquee-duration", "30s"],
     ["marquee-gap", "1rem"],
     ["marquee-card-bg", "#ffffff"],
     ["marquee-card-border", "oklch(92.9% 0.013 255.508)"],
@@ -56,5 +55,5 @@ export const marqueeCssVariables = defineCssVariableReference({
     ["marquee-indigo-border-dark", "oklch(67.3% 0.182 276.935 / 0.32)"],
     ["marquee-emerald-border-dark", "oklch(76.5% 0.177 163.223 / 0.32)"],
   ],
-  darkVariableCount: 13,
+  darkVariableCount: 34,
 });
