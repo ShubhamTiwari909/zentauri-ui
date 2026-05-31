@@ -20,6 +20,7 @@ const uiComponentNames = [
   "empty-state",
   "file-upload",
   "inputs",
+  "marquee",
   "modal",
   "otp-input",
   "pagination",

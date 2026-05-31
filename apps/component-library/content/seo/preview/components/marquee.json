@@ -1,0 +1,79 @@
+{
+  "category": "Display",
+  "title": "Marquee component for React interfaces",
+  "description": "Marquee component for React and Next.js - CSS-only infinite logo rails, notification tickers, testimonial rows, and vertical release feeds.",
+  "keywords": [
+    "marquee component",
+    "React",
+    "Next.js",
+    "infinite ticker",
+    "logo carousel",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Marquee · Zentauri UI",
+    "description": "CSS-only Marquee component for React and Next.js layouts with horizontal, vertical, reverse, pause-on-hover, fade, and appearance variants.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Marquee · Zentauri UI",
+    "description": "CSS-only Marquee component for React and Next.js layouts with horizontal, vertical, reverse, pause-on-hover, fade, and appearance variants.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/marquee",
+  "headings": {
+    "h1": "Infinite tickers for logos, launches, and live product signals",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Marquee renders a seamless auto-scrolling rail from the content you already have. Use it for brand logo rows, launch banners, testimonial snippets, activity signals, status tickers, and compact vertical release feeds.",
+  "useCases": [
+    "Build continuous customer logo rails on marketing pages.",
+    "Show release notes, uptime signals, or status events without manual carousel controls.",
+    "Create compact testimonial or social-proof tickers.",
+    "Add vertical activity streams for product dashboards and changelogs."
+  ],
+  "faqs": [
+    {
+      "question": "Does Marquee require Framer Motion?",
+      "answer": "No. Marquee uses CSS keyframes and duplicated children, so it does not require Framer Motion or another animation dependency."
+    },
+    {
+      "question": "Can Marquee pause on hover?",
+      "answer": "Yes. Set pauseOnHover to pause the track when the user hovers the rail. Reduced-motion users also get a paused animation through motion-reduce styles."
+    },
+    {
+      "question": "Can Marquee scroll vertically?",
+      "answer": "Yes. Set orientation to vertical and use direction up or down. Provide a height with className when the default vertical height does not fit your layout."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Marquee creates a continuous ticker by rendering two matching content groups and translating the track with CSS keyframes.\n\nIt supports horizontal and vertical movement, reverse directions, configurable gap and speed, optional fade masks, and pause-on-hover behavior."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Use Marquee as a wrapper around repeated items such as logo pills, cards, status badges, or testimonials. Configure appearance, size, orientation, direction, speed, gap, fade, and pauseOnHover from props while keeping the child markup fully yours."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keep marquee content short and non-critical. If the ticker communicates important information, duplicate it elsewhere in static copy or provide an aria-label on the container that summarizes the purpose. Duplicate visual content is hidden from assistive technology."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Marquee is a small client-safe component with no effects, timers, layout measurements, or browser APIs. It works well inside App Router pages while the surrounding SEO content remains server-rendered."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

@@ -138,6 +138,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "marquee",
+    name: "Marquee",
+    description:
+      "CSS-only infinite logo rails, status tickers, and vertical release feeds with tokenized appearances.",
+    href: "/preview/components/marquee",
+    badge: "Display",
+  },
+  {
     id: "modal",
     name: "Modal",
     description:

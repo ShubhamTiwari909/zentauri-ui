@@ -184,6 +184,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/inputs",
       },
       {
+        title: "Marquee",
+        href: "/preview/components/marquee",
+      },
+      {
         title: "Modal",
         href: "/preview/components/modal",
       },
