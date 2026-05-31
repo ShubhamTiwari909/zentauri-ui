@@ -1,5 +1,6 @@
 export * from "./accordion";
 export * from "./alert";
+export * from "./animated-number";
 export * from "./avatar";
 export * from "./badge";
 export * from "./breadcrumb";

@@ -13,19 +13,19 @@ import { SectionShell } from "./section-shell";
 const TEST_TOTALS = [
   {
     label: "Test files",
-    value: "65",
-    detail: "65 passed",
+    value: "66",
+    detail: "66 passed",
     icon: FiFileText,
   },
   {
     label: "Assertions",
-    value: "429",
-    detail: "429 passed",
+    value: "438",
+    detail: "438 passed",
     icon: FiCheckCircle,
   },
   {
     label: "Runtime",
-    value: "17.08s",
+    value: "11.20s",
     detail: "Vitest duration",
     icon: FiClock,
   },
@@ -38,7 +38,7 @@ const TEST_TOTALS = [
 ] as const;
 
 const TEST_AREAS = [
-  { area: "Components and UI utilities", files: "37", tests: "335" },
+  { area: "Components and UI utilities", files: "38", tests: "344" },
   { area: "React hooks", files: "26", tests: "85" },
   { area: "CLI and import rewriting", files: "2", tests: "9" },
 ] as const;

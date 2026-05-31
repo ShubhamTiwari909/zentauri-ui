@@ -1,5 +1,6 @@
 import { accordionCssVariables } from "./data/accordion";
 import { alertCssVariables } from "./data/alert";
+import { animatedNumberCssVariables } from "./data/animated-number";
 import { avatarCssVariables } from "./data/avatar";
 import { badgeCssVariables } from "./data/badge";
 import { breadcrumbCssVariables } from "./data/breadcrumb";
@@ -43,6 +44,7 @@ import type { CssVariableReference } from "./css-variable-reference-types";
 export const cssVariableReferences = {
   accordion: accordionCssVariables,
   alert: alertCssVariables,
+  "animated-number": animatedNumberCssVariables,
   avatar: avatarCssVariables,
   badge: badgeCssVariables,
   breadcrumb: breadcrumbCssVariables,

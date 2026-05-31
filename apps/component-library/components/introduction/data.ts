@@ -18,6 +18,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Feedback",
   },
   {
+    id: "animated-number",
+    name: "Animated Number",
+    description:
+      "Digit-by-digit number entrances and a count-up counter with themeable appearances and motion presets.",
+    href: "/preview/components/animated-number",
+    badge: "Data",
+  },
+  {
     id: "avatar",
     name: "Avatar",
     description:
