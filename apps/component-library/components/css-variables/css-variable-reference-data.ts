@@ -23,6 +23,7 @@ import { paginationCssVariables } from "./data/pagination";
 import { popoverCssVariables } from "./data/popover";
 import { progressCssVariables } from "./data/progress";
 import { radioGroupCssVariables } from "./data/radio-group";
+import { ratingCssVariables } from "./data/rating";
 import { scrollAreaCssVariables } from "./data/scroll-area";
 import { searchCssVariables } from "./data/search";
 import { selectCssVariables } from "./data/select";
@@ -67,6 +68,7 @@ export const cssVariableReferences = {
   popover: popoverCssVariables,
   progress: progressCssVariables,
   "radio-group": radioGroupCssVariables,
+  rating: ratingCssVariables,
   "scroll-area": scrollAreaCssVariables,
   search: searchCssVariables,
   select: selectCssVariables,
