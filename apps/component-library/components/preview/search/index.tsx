@@ -1,8 +1,8 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { SearchExamplesSection } from "./sections/search-examples-section";
-import { SearchHeroSection } from "./sections/search-hero-section";
+import { SearchExamplesSection } from "./sections/component-demo";
+import { SearchHeroSection } from "./sections/hero";
 
 export default function SearchPreviewPage({
   seo,

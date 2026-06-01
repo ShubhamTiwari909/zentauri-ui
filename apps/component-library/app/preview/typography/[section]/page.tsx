@@ -1,4 +1,4 @@
-import TypographySectionPage from "@/components/preview/typography/typography-section-page";
+import TypographySectionPage from "@/components/preview/typography/section-page";
 import {
   TYPOGRAPHY_SECTION_SLUGS,
   getTypographySectionSeo,

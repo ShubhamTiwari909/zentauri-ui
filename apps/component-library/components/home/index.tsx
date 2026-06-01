@@ -1,10 +1,10 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { SiteHeader } from "@/components/common/site-header";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
-import { HomeHero } from "./home-hero";
-import { HomeMarketingLoader } from "./home-marketing-loader";
+import { HomeHero } from "./hero";
+import { HomeMarketingLoader } from "./marketing-loader";
 
 const mainColumnClassName =
   "mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 py-12 sm:gap-20 sm:px-10 sm:py-16 lg:px-12";

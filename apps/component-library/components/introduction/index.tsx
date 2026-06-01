@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewHeroSeoBlock } from "@/components/preview/seo/hero-seo-block";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { useIntroduction } from "./use-introduction";
 import { Section } from "@/components/common/Section";

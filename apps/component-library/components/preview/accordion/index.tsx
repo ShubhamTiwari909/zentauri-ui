@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { AccordionCodeExamplesSection } from "./sections/accordion-code-examples-section";
-import { AccordionExamplesSection } from "./sections/accordion-examples-section";
-import { AccordionHeroSection } from "./sections/accordion-hero-section";
+import { AccordionCodeExamplesSection } from "./sections/snippet-sections";
+import { AccordionExamplesSection } from "./sections/component-demo";
+import { AccordionHeroSection } from "./sections/hero";
 
 export default function AccordionPreviewPage({
   seo,

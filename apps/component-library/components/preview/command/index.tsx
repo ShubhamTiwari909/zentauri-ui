@@ -1,10 +1,10 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
-import { CommandCodeExamplesSection } from "./sections/command-code-examples-section";
-import { CommandExamplesSection } from "./sections/command-examples-section";
-import { CommandHeroSection } from "./sections/command-hero-section";
+import { CommandCodeExamplesSection } from "./sections/snippet-sections";
+import { CommandExamplesSection } from "./sections/component-demo";
+import { CommandHeroSection } from "./sections/hero";
 
 export default function CommandPreviewPage({
   seo,

@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { TooltipCodeExamplesSection } from "./sections/tooltip-code-examples-section";
-import { TooltipExamplesSection } from "./sections/tooltip-examples-section";
-import { TooltipHeroSection } from "./sections/tooltip-hero-section";
+import { TooltipCodeExamplesSection } from "./sections/snippet-sections";
+import { TooltipExamplesSection } from "./sections/component-demo";
+import { TooltipHeroSection } from "./sections/hero";
 
 export default function TooltipPreviewPage({
   seo,

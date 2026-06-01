@@ -3,8 +3,8 @@ import CodeHighlight from "@/components/CodeHighlight";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import TabsListComponent from "@/components/preview/installation/tabs-list";
 
-import { PreviewHeroSeoBlock } from "@/components/preview/seo/preview-hero-seo-block";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewHeroSeoBlock } from "@/components/preview/seo/hero-seo-block";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import {
   CLI_ADD_COMMANDS,
   CLI_ADD_HOOK_COMMANDS,

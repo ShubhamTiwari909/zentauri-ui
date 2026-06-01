@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { TimelineCodeExamplesSection } from "./sections/timeline-code-examples-section";
-import { TimelineExamplesSection } from "./sections/timeline-examples-section";
-import { TimelineHeroSection } from "./sections/timeline-hero-section";
+import { TimelineCodeExamplesSection } from "./sections/snippet-sections";
+import { TimelineExamplesSection } from "./sections/component-demo";
+import { TimelineHeroSection } from "./sections/hero";
 
 export default function TimelinePreviewPage({
   seo,

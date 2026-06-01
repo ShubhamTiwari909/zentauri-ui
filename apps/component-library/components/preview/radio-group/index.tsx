@@ -1,10 +1,10 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
-import { RadioGroupCodeExamplesSection } from "./sections/radio-group-code-examples-section";
-import { RadioGroupExamplesSection } from "./sections/radio-group-examples-section";
-import { RadioGroupHeroSection } from "./sections/radio-group-hero-section";
+import { RadioGroupCodeExamplesSection } from "./sections/snippet-sections";
+import { RadioGroupExamplesSection } from "./sections/component-demo";
+import { RadioGroupHeroSection } from "./sections/hero";
 
 export default function RadioGroupPreviewPage({
   seo,

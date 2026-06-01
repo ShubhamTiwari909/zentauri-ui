@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
-import { DynamicStepperExamplesSection } from "./sections/dynamic-stepper-examples-section";
-import { DynamicStepperHeroSection } from "./sections/dynamic-stepper-hero-section";
+import { DynamicStepperExamplesSection } from "./sections/component-demo";
+import { DynamicStepperHeroSection } from "./sections/hero";
 
 export default function DynamicStepperPreviewPage({
   seo,

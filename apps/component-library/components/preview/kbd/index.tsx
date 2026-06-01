@@ -1,10 +1,10 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
-import { KbdCodeExamplesSection } from "./sections/kbd-code-examples-section";
-import { KbdExamplesSection } from "./sections/kbd-examples-section";
-import { KbdHeroSection } from "./sections/kbd-hero-section";
+import { KbdCodeExamplesSection } from "./sections/snippet-sections";
+import { KbdExamplesSection } from "./sections/component-demo";
+import { KbdHeroSection } from "./sections/hero";
 
 export default function KbdPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
   return (

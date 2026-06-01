@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { FileUploadCodeExamplesSection } from "./sections/file-upload-code-examples-section";
-import { FileUploadExamplesSection } from "./sections/file-upload-examples-section";
-import { FileUploadHeroSection } from "./sections/file-upload-hero-section";
+import { FileUploadCodeExamplesSection } from "./sections/snippet-sections";
+import { FileUploadExamplesSection } from "./sections/component-demo";
+import { FileUploadHeroSection } from "./sections/hero";
 
 export default function FileUploadPreviewPage({
   seo,

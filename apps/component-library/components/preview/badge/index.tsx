@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { BadgeCodeExamplesSection } from "./sections/badge-code-examples-section";
-import { BadgeExamplesSection } from "./sections/badge-examples-section";
-import { BadgeHeroSection } from "./sections/badge-hero-section";
+import { BadgeCodeExamplesSection } from "./sections/snippet-sections";
+import { BadgeExamplesSection } from "./sections/component-demo";
+import { BadgeHeroSection } from "./sections/hero";
 
 export default function BadgePreviewPage({ seo }: { seo: PreviewSeoDocument }) {
   return (
