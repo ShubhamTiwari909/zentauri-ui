@@ -1,0 +1,74 @@
+{
+  "category": "Charts",
+  "title": "Funnel chart component for React",
+  "description": "FunnelChart for React and Next.js — conversion step visualizations with Zentauri UI frames, labels, and Recharts funnel shapes.",
+  "keywords": [
+    "funnel chart",
+    "conversion funnel",
+    "Recharts",
+    "React",
+    "Next.js",
+    "product analytics"
+  ],
+  "og": {
+    "title": "Funnel chart · Zentauri UI",
+    "description": "FunnelChart for React and Next.js — conversion step visualizations with Zentauri UI frames, labels, and Recharts funnel shapes.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Funnel chart · Zentauri UI",
+    "description": "FunnelChart for React and Next.js — conversion step visualizations with Zentauri UI frames, labels, and Recharts funnel shapes.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/charts/funnel",
+  "headings": {
+    "h1": "Funnel charts for conversion steps",
+    "h2": [
+      "What it does",
+      "Data shape",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Visualize how a population narrows across ordered steps. FunnelChart accepts label and value keys plus optional per-row colors.",
+  "useCases": [
+    "Signup funnel from visitor to paid user.",
+    "Sales pipeline volume by stage.",
+    "Onboarding completion across required milestones."
+  ],
+  "faqs": [
+    {
+      "question": "How do I color each funnel step?",
+      "answer": "Add a color field to each datum or pass `colorKey` if your color field uses a different name."
+    },
+    {
+      "question": "Can labels be hidden?",
+      "answer": "Yes. Set `label={false}` and rely on tooltip or surrounding copy when the chart is compact."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Draws ordered funnel segments with optional labels, tooltip, and legend.\n\nThe surrounding ChartFrame variants match the rest of the chart family."
+    },
+    {
+      "heading": "Data shape",
+      "body": "Each row should include a step label and numeric value. Pass the keys with `nameKey` and `dataKey`."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keep step names readable and pair the chart with exact conversion numbers where decisions depend on small changes.\n\nDo not rely only on area differences for critical comparisons."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from `@zentauri-ui/zentauri-components/charts/funnel` inside client components when interaction is required."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

@@ -9,13 +9,22 @@ import {
 } from "@zentauri-ui/zentauri-components/charts/area";
 import { BarChart } from "@zentauri-ui/zentauri-components/charts/bar";
 import { BubbleChart } from "@zentauri-ui/zentauri-components/charts/bubble";
+import { FunnelChart } from "@zentauri-ui/zentauri-components/charts/funnel";
 import { LineChart } from "@zentauri-ui/zentauri-components/charts/line";
 import { PieChart } from "@zentauri-ui/zentauri-components/charts/pie";
+import { RadarChart } from "@zentauri-ui/zentauri-components/charts/radar";
+import { ScatterChart } from "@zentauri-ui/zentauri-components/charts/scatter";
+import { StackedBarChart } from "@zentauri-ui/zentauri-components/charts/stacked-bar";
 
 import {
   chartBubbleData,
-  chartPieData,
   chartBubbleSeries,
+  chartFunnelData,
+  chartPieData,
+  chartRadarData,
+  chartRadarSeries,
+  chartScatterData,
+  chartScatterSeries,
   chartTimeSeriesData,
   chartTimeSeriesSeries,
 } from "./data";
@@ -46,6 +55,7 @@ export type ChartBySlugProps = {
   stroke?: string;
   fill?: string;
   customShape?: boolean;
+  center?: boolean;
 };
 
 export function ChartBySlug({
@@ -65,6 +75,7 @@ export function ChartBySlug({
   innerRadius,
   outerRadius = "100%",
   customShape,
+  center,
 }: ChartBySlugProps) {
   const wrap = (chart: ReactElement) => (
     <div className="w-full min-w-0" style={{ minHeight: height }}>
@@ -96,6 +107,8 @@ export function ChartBySlug({
         {labelColor ? (
           <span className="font-semibold">{labelColor}</span>
         ) : null}
+        {center ? ` | Center slot: ` : ""}
+        {center ? <span className="font-semibold">enabled</span> : null}
       </Text>
       {chart}
     </div>
@@ -132,6 +145,15 @@ export function ChartBySlug({
           stacked={stacked}
         />,
       );
+    case "stacked-bar":
+      return wrap(
+        <StackedBarChart
+          {...frameProps}
+          data={chartTimeSeriesData}
+          xKey="month"
+          series={[...chartTimeSeriesSeries({ appearance })]}
+        />,
+      );
     case "area":
       return wrap(
         <AreaChart
@@ -142,6 +164,24 @@ export function ChartBySlug({
           stacked={stacked}
         />,
       );
+    case "radar":
+      return wrap(
+        <RadarChart
+          {...frameProps}
+          data={chartRadarData}
+          xKey="axis"
+          series={[...chartRadarSeries({ appearance })]}
+        />,
+      );
+    case "scatter":
+      return wrap(
+        <ScatterChart
+          {...frameProps}
+          data={chartScatterData}
+          xKey="traffic"
+          series={[...chartScatterSeries({ appearance })]}
+        />,
+      );
     case "bubble":
       return wrap(
         <BubbleChart
@@ -149,6 +189,15 @@ export function ChartBySlug({
           data={chartBubbleData}
           xKey="x"
           series={[...chartBubbleSeries({ appearance })]}
+        />,
+      );
+    case "funnel":
+      return wrap(
+        <FunnelChart
+          {...frameProps}
+          data={chartFunnelData}
+          dataKey="value"
+          nameKey="stage"
         />,
       );
     case "pie":
@@ -164,6 +213,16 @@ export function ChartBySlug({
           stroke={stroke}
           fill={fill}
           labelColor={labelColor}
+          center={
+            center ? (
+              <div className="rounded-full bg-white/85 px-4 py-3 text-slate-900 shadow-sm ring-1 ring-slate-200">
+                <div className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+                  Total
+                </div>
+                <div className="text-2xl font-semibold">100%</div>
+              </div>
+            ) : null
+          }
           shape={customShape ? MyCustomPie : undefined}
         />,
       );

@@ -1,0 +1,74 @@
+{
+  "category": "Charts",
+  "title": "Scatter chart component for React",
+  "description": "ScatterChart for React and Next.js — correlation plots with shared Zentauri UI chart frames, tooltips, and Recharts scatter primitives.",
+  "keywords": [
+    "scatter chart",
+    "correlation plot",
+    "Recharts",
+    "React",
+    "Next.js",
+    "analytics"
+  ],
+  "og": {
+    "title": "Scatter chart · Zentauri UI",
+    "description": "ScatterChart for React and Next.js — correlation plots with shared Zentauri UI chart frames, tooltips, and Recharts scatter primitives.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Scatter chart · Zentauri UI",
+    "description": "ScatterChart for React and Next.js — correlation plots with shared Zentauri UI chart frames, tooltips, and Recharts scatter primitives.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/charts/scatter",
+  "headings": {
+    "h1": "Scatter charts for correlation analysis",
+    "h2": [
+      "What it does",
+      "Data shape",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Plot one or more numeric Y series against a shared X field. ScatterChart fills the gap between simple trends and bubble charts when point size is not needed.",
+  "useCases": [
+    "Traffic versus conversion rate.",
+    "Latency versus request volume.",
+    "Quality score versus adoption rate."
+  ],
+  "faqs": [
+    {
+      "question": "How is ScatterChart different from BubbleChart?",
+      "answer": "ScatterChart plots X and Y values only. BubbleChart adds an optional `zKey` channel for point size."
+    },
+    {
+      "question": "Can the X axis be categorical?",
+      "answer": "Yes. If the first `xKey` value is not numeric, the chart renders a category X axis."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Renders points for each series with shared axes, grid, tooltip, and legend controls.\n\nUse appearance and density variants to match surrounding dashboards."
+    },
+    {
+      "heading": "Data shape",
+      "body": "`xKey` names the horizontal field; each `series.dataKey` names a numeric vertical measure."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Use clear series names and avoid relying on dense point clusters alone.\n\nConsider a table or summary for outliers and exact values."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from `@zentauri-ui/zentauri-components/charts/scatter` inside client components when interaction is required."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

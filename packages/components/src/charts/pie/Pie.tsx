@@ -4,11 +4,14 @@ import {
   Legend,
   Pie,
   PieLabelRenderProps,
+  PieSectorShapeProps,
   PieChart as RechartsPieChart,
+  Sector,
   Tooltip,
 } from "recharts";
 
 import { ChartFrame } from "../shared/chart-frame";
+import { resolveColor } from "../shared/colors";
 import type { PieChartProps } from "../shared/types";
 
 const RADIAN = Math.PI / 180;
@@ -51,8 +54,10 @@ export function PieChart<
   className,
   containerStyle,
   cornerRadius = 10,
+  center,
   data,
   dataKey,
+  colorKey = "color" as keyof TDatum & string,
   density,
   emptyState = null,
   height = 320,
@@ -73,6 +78,21 @@ export function PieChart<
   ...props
 }: PieChartProps<TDatum>) {
   const hasData = data.length > 0;
+  const renderDefaultShape = (props: PieSectorShapeProps, index: number) => {
+    const payload = props.payload as TDatum | undefined;
+    const shapeDatum = props as unknown as TDatum;
+    const datumColor = payload?.[colorKey] ?? shapeDatum[colorKey];
+    const color = resolveColor(
+      typeof datumColor === "string"
+        ? datumColor
+        : typeof fill === "string"
+          ? fill
+          : undefined,
+      typeof index === "number" ? index : props.index,
+    );
+
+    return <Sector {...props} fill={color.fill} stroke={stroke} />;
+  };
 
   return (
     <ChartFrame
@@ -83,6 +103,13 @@ export function PieChart<
       emptyState={emptyState}
       hasData={hasData}
       height={height}
+      overlay={
+        center ? (
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center text-center">
+            {center}
+          </div>
+        ) : null
+      }
       style={style}
       {...props}
     >
@@ -112,7 +139,7 @@ export function PieChart<
           }
           stroke={stroke}
           fill={fill}
-          shape={shape}
+          shape={shape ?? renderDefaultShape}
         />
       </RechartsPieChart>
     </ChartFrame>

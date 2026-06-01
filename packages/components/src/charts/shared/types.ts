@@ -2,9 +2,18 @@ import type { VariantProps } from "class-variance-authority";
 import type { CSSProperties, HTMLAttributes, ReactNode } from "react";
 
 import type { chartPalette, chartVariants } from "./variants";
-import { PieProps } from "recharts";
+import type { PieProps } from "recharts";
 
-export type ChartType = "area" | "bar" | "bubble" | "line" | "pie";
+export type ChartType =
+  | "area"
+  | "bar"
+  | "bubble"
+  | "funnel"
+  | "line"
+  | "pie"
+  | "radar"
+  | "scatter"
+  | "stacked-bar";
 
 export type ChartColor = keyof typeof chartPalette;
 
@@ -61,6 +70,17 @@ export type LineChartProps<TDatum extends ChartDatum = ChartDatum> =
 export type BubbleChartProps<TDatum extends ChartDatum = ChartDatum> =
   BaseChartProps<TDatum>;
 
+export type RadarChartProps<TDatum extends ChartDatum = ChartDatum> =
+  BaseChartProps<TDatum>;
+
+export type ScatterChartProps<TDatum extends ChartDatum = ChartDatum> =
+  BaseChartProps<TDatum>;
+
+export type StackedBarChartProps<TDatum extends ChartDatum = ChartDatum> = Omit<
+  BaseChartProps<TDatum>,
+  "stacked"
+>;
+
 export type PieChartProps<TDatum extends ChartDatum = ChartDatum> =
   ChartSharedStatic &
     Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
@@ -75,6 +95,8 @@ export type PieChartProps<TDatum extends ChartDatum = ChartDatum> =
       containerStyle?: CSSProperties;
       paddingAngle?: PieProps["paddingAngle"];
       cornerRadius?: PieProps["cornerRadius"];
+      center?: ReactNode;
+      colorKey?: keyof TDatum & string;
       label?: boolean;
       labelLine?: boolean;
       labelColor?: string;
@@ -83,4 +105,22 @@ export type PieChartProps<TDatum extends ChartDatum = ChartDatum> =
       innerRadius?: PieProps["innerRadius"];
       outerRadius?: PieProps["outerRadius"];
       shape?: PieProps["shape"];
+    };
+
+export type FunnelChartProps<TDatum extends ChartDatum = ChartDatum> =
+  ChartSharedStatic &
+    Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
+      data: TDatum[];
+      dataKey: keyof TDatum & string;
+      nameKey: keyof TDatum & string;
+      height?: number;
+      showLegend?: boolean;
+      showTooltip?: boolean;
+      tooltipColor?: string;
+      emptyState?: ReactNode;
+      containerStyle?: CSSProperties;
+      colorKey?: keyof TDatum & string;
+      label?: boolean;
+      stroke?: string;
+      fill?: string;
     };

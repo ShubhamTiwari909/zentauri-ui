@@ -49,6 +49,7 @@ export function ChartCodeExamplesSection({ slug }: { slug: ChartPreviewSlug }) {
                 appearance: "default",
                 showGrid: false,
                 innerRadius: "40%",
+                center: true,
               })}
             >
               <ChartBySlug
@@ -57,6 +58,7 @@ export function ChartCodeExamplesSection({ slug }: { slug: ChartPreviewSlug }) {
                 height={280}
                 showGrid={false}
                 innerRadius="40%"
+                center
               />
             </PreviewCodeShowcase>
             <PreviewCodeShowcase

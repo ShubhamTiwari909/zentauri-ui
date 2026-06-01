@@ -1,0 +1,74 @@
+{
+  "category": "Charts",
+  "title": "Stacked bar chart component for React",
+  "description": "StackedBarChart for React and Next.js — part-to-whole category bars with Zentauri UI frames and Recharts stacked bar layers.",
+  "keywords": [
+    "stacked bar chart",
+    "bar chart",
+    "Recharts",
+    "React",
+    "Next.js",
+    "dashboard"
+  ],
+  "og": {
+    "title": "Stacked bar chart · Zentauri UI",
+    "description": "StackedBarChart for React and Next.js — part-to-whole category bars with Zentauri UI frames and Recharts stacked bar layers.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Stacked bar chart · Zentauri UI",
+    "description": "StackedBarChart for React and Next.js — part-to-whole category bars with Zentauri UI frames and Recharts stacked bar layers.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/charts/stacked-bar",
+  "headings": {
+    "h1": "Stacked bars for part-to-whole categories",
+    "h2": [
+      "What it does",
+      "Data shape",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Show component parts inside each category bucket. StackedBarChart is a dedicated entry that applies the BarChart stacking behavior by default.",
+  "useCases": [
+    "Revenue split by product across months.",
+    "Traffic source mix by campaign.",
+    "Completed versus pending work by team."
+  ],
+  "faqs": [
+    {
+      "question": "Why use StackedBarChart instead of BarChart with stacked?",
+      "answer": "Use StackedBarChart when stacking is the primary chart type you want to expose from an entry or CLI vendor command."
+    },
+    {
+      "question": "Can series customize stack groups?",
+      "answer": "The component applies one shared stack by default through the BarChart implementation; use BarChart directly for more specialized grouped stacking."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Stacks each series into the same category bar with shared grid, axis, legend, and tooltip controls.\n\nIt uses the same appearance and density variants as BarChart."
+    },
+    {
+      "heading": "Data shape",
+      "body": "Rows hold category labels in `xKey`; numeric fields referenced by `series.dataKey` become stacked segments."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Use legends and tooltips with explicit series names.\n\nAvoid too many stacked segments when comparisons need precision."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from `@zentauri-ui/zentauri-components/charts/stacked-bar` inside client components when interaction is required."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

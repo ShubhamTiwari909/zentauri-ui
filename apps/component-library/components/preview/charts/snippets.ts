@@ -6,16 +6,24 @@ import { CHART_APPEARANCES } from "./sections/components/data";
 const IMPORT: Record<ChartPreviewSlug, string> = {
   line: `import { LineChart } from "@zentauri-ui/zentauri-components/charts/line";`,
   bar: `import { BarChart } from "@zentauri-ui/zentauri-components/charts/bar";`,
+  "stacked-bar": `import { StackedBarChart } from "@zentauri-ui/zentauri-components/charts/stacked-bar";`,
   area: `import { AreaChart } from "@zentauri-ui/zentauri-components/charts/area";`,
+  radar: `import { RadarChart } from "@zentauri-ui/zentauri-components/charts/radar";`,
+  scatter: `import { ScatterChart } from "@zentauri-ui/zentauri-components/charts/scatter";`,
   bubble: `import { BubbleChart } from "@zentauri-ui/zentauri-components/charts/bubble";`,
+  funnel: `import { FunnelChart } from "@zentauri-ui/zentauri-components/charts/funnel";`,
   pie: `import { PieChart } from "@zentauri-ui/zentauri-components/charts/pie";`,
 };
 
 const TAG: Record<ChartPreviewSlug, string> = {
   line: "LineChart",
   bar: "BarChart",
+  "stacked-bar": "StackedBarChart",
   area: "AreaChart",
+  radar: "RadarChart",
+  scatter: "ScatterChart",
   bubble: "BubbleChart",
+  funnel: "FunnelChart",
   pie: "PieChart",
 };
 
@@ -51,6 +59,40 @@ const bubbleSeries = ({ appearance }: { appearance: VariantProps<typeof chartVar
 };
 `;
 
+const RADAR_DATA_AND_SERIES = `const radarData = [
+  { axis: "Reliability", current: 88, target: 92 },
+  { axis: "Speed", current: 74, target: 86 },
+  { axis: "Adoption", current: 69, target: 80 },
+  { axis: "Quality", current: 82, target: 90 },
+  { axis: "Support", current: 76, target: 84 },
+  { axis: "Cost", current: 64, target: 72 },
+];
+
+const radarSeries = ({ appearance }: { appearance: VariantProps<typeof chartVariants>["appearance"] }) => {
+  return [
+    { dataKey: "current", name: "Current", color: appearance?.includes("gradient") ? "white" : "cyan" },
+    { dataKey: "target", name: "Target", color: appearance?.includes("gradient") ? "white" : "violet" },
+  ]
+};
+`;
+
+const SCATTER_DATA_AND_SERIES = `const scatterData = [
+  { traffic: 18, conversion: 2.6, qualified: 21 },
+  { traffic: 26, conversion: 3.8, qualified: 28 },
+  { traffic: 34, conversion: 4.1, qualified: 35 },
+  { traffic: 42, conversion: 5.2, qualified: 41 },
+  { traffic: 55, conversion: 5.8, qualified: 49 },
+  { traffic: 63, conversion: 7.1, qualified: 58 },
+];
+
+const scatterSeries = ({ appearance }: { appearance: VariantProps<typeof chartVariants>["appearance"] }) => {
+  return [
+    { dataKey: "conversion", name: "Conversion rate", color: appearance?.includes("gradient") ? "white" : "emerald" },
+    { dataKey: "qualified", name: "Qualified leads", color: appearance?.includes("gradient") ? "white" : "amber" },
+  ]
+};
+`;
+
 const PIE_DATA = `const pieData = [
   { segment: "Desktop", value: 44, color: "#0891b2" },
   { segment: "Mobile", value: 31, color: "#059669" },
@@ -59,9 +101,26 @@ const PIE_DATA = `const pieData = [
 ];
 `;
 
+const FUNNEL_DATA = `const funnelData = [
+  { stage: "Visitors", value: 12000, color: "#0891b2" },
+  { stage: "Trials", value: 7200, color: "#059669" },
+  { stage: "Activated", value: 3900, color: "#7c3aed" },
+  { stage: "Paid", value: 1850, color: "#d97706" },
+];
+`;
+
 function snippetPrefix(slug: ChartPreviewSlug): string {
   if (slug === "bubble") {
     return `${IMPORT[slug]}\n\n${BUBBLE_DATA_AND_SERIES}\n`;
+  }
+  if (slug === "radar") {
+    return `${IMPORT[slug]}\n\n${RADAR_DATA_AND_SERIES}\n`;
+  }
+  if (slug === "scatter") {
+    return `${IMPORT[slug]}\n\n${SCATTER_DATA_AND_SERIES}\n`;
+  }
+  if (slug === "funnel") {
+    return `${IMPORT[slug]}\n\n${FUNNEL_DATA}\n`;
   }
   if (slug === "pie") {
     return `${IMPORT[slug]}\n\n${PIE_DATA}\n\n${`export const COLORS = ['#1F6F5F', '#622B14', '#0D0B61', '#D92243'];\n
@@ -94,15 +153,54 @@ function pieDataProps(): string {
 `;
 }
 
+function radarDataProps(): string {
+  return `  data={radarData}
+  xKey="axis"
+  series={radarSeries}
+`;
+}
+
+function scatterDataProps(): string {
+  return `  data={scatterData}
+  xKey="traffic"
+  series={scatterSeries}
+`;
+}
+
+function funnelDataProps(): string {
+  return `  data={funnelData}
+  dataKey="value"
+  nameKey="stage"
+`;
+}
+
+function chartDataProps(slug: ChartPreviewSlug): string {
+  if (slug === "bubble") {
+    return bubbleDataProps();
+  }
+  if (slug === "pie") {
+    return pieDataProps();
+  }
+  if (slug === "radar") {
+    return radarDataProps();
+  }
+  if (slug === "scatter") {
+    return scatterDataProps();
+  }
+  if (slug === "funnel") {
+    return funnelDataProps();
+  }
+  return cartesianDataProps();
+}
+
+function supportsStackedProp(slug: ChartPreviewSlug): boolean {
+  return slug === "bar" || slug === "area";
+}
+
 export function chartOutlineCompactLegendSnippet(
   slug: ChartPreviewSlug,
 ): string {
-  const props =
-    slug === "bubble"
-      ? bubbleDataProps()
-      : slug === "pie"
-        ? pieDataProps()
-        : cartesianDataProps();
+  const props = chartDataProps(slug);
   return `${variantLeadComment("appearance · outline, density · compact, showLegend")}${snippetPrefix(slug)}<${TAG[slug]}
   appearance="outline"
   density="compact"
@@ -112,17 +210,11 @@ ${props}  height={300}
 }
 
 export function chartMutedSpaciousSnippet(slug: ChartPreviewSlug): string {
-  const stackedAttr = slug === "bar" || slug === "area" ? "\n  stacked" : "";
-  const detail =
-    slug === "bar" || slug === "area"
-      ? "appearance · muted, density · spacious, showGrid · false, stacked"
-      : "appearance · muted, density · spacious, showGrid · false";
-  const props =
-    slug === "bubble"
-      ? bubbleDataProps()
-      : slug === "pie"
-        ? pieDataProps()
-        : cartesianDataProps();
+  const stackedAttr = supportsStackedProp(slug) ? "\n  stacked" : "";
+  const detail = supportsStackedProp(slug)
+    ? "appearance · muted, density · spacious, showGrid · false, stacked"
+    : "appearance · muted, density · spacious, showGrid · false";
+  const props = chartDataProps(slug);
   return `${variantLeadComment(detail)}${snippetPrefix(slug)}<${TAG[slug]}
   appearance="muted"
   density="spacious"
@@ -134,17 +226,11 @@ ${props}  height={300}
 export function chartMutedSpaciousDashedSnippet(
   slug: ChartPreviewSlug,
 ): string {
-  const stackedAttr = slug === "bar" || slug === "area" ? "\n  stacked" : "";
-  const detail =
-    slug === "bar" || slug === "area"
-      ? "appearance · muted, density · spacious, showGrid · false, stacked, strokeDasharray · 5,5"
-      : "appearance · muted, density · spacious, showGrid · false, strokeDasharray · 5,5";
-  const props =
-    slug === "bubble"
-      ? bubbleDataProps()
-      : slug === "pie"
-        ? pieDataProps()
-        : cartesianDataProps();
+  const stackedAttr = supportsStackedProp(slug) ? "\n  stacked" : "";
+  const detail = supportsStackedProp(slug)
+    ? "appearance · muted, density · spacious, showGrid · false, stacked, strokeDasharray · 5,5"
+    : "appearance · muted, density · spacious, showGrid · false, strokeDasharray · 5,5";
+  const props = chartDataProps(slug);
   return `${variantLeadComment(detail)}${snippetPrefix(slug)}<${TAG[slug]}
   appearance="muted"
   density="spacious"
@@ -165,6 +251,7 @@ export function chartAppearanceSnippet({
   fill,
   labelColor,
   customShape,
+  center,
 }: {
   slug: ChartPreviewSlug;
   appearance: (typeof CHART_APPEARANCES)[number];
@@ -176,13 +263,9 @@ export function chartAppearanceSnippet({
   fill?: string;
   labelColor?: string;
   customShape?: boolean;
+  center?: boolean;
 }): string {
-  const props =
-    slug === "bubble"
-      ? bubbleDataProps()
-      : slug === "pie"
-        ? pieDataProps()
-        : cartesianDataProps();
+  const props = chartDataProps(slug);
   const appearanceLine =
     appearance === "default" ? "" : `  appearance="${appearance}"\n`;
   const trailingProps = [
@@ -193,6 +276,9 @@ export function chartAppearanceSnippet({
     stroke != null ? `  stroke="${stroke}"` : null,
     fill != null ? `  fill="${fill}"` : null,
     labelColor != null ? `  labelColor="${labelColor}"` : null,
+    center
+      ? `  center={<div className="rounded-full bg-white/85 px-4 py-3 text-slate-900">100%</div>}`
+      : null,
     customShape ? "  shape={MyCustomPie}" : null,
   ]
     .filter((line: string | null) => line != null && line !== "")

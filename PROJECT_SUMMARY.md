@@ -167,8 +167,8 @@ You must touch **all** of these:
 
 ## Test Suite (packages/components)
 
-- **74 test files, 501 total tests**
-  - UI components: 44 files, 391 tests
+- **74 test files, 507 total tests**
+  - UI components: 45 files, 397 tests
   - Hooks: 28 files, 101 tests
   - CLI: 2 files, 9 tests
 - Run: `pnpm --filter @zentauri-ui/zentauri-components test`

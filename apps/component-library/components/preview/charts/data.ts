@@ -55,4 +55,67 @@ export const chartBubbleSeries = ({
   ];
 };
 
+export const chartRadarData = [
+  { axis: "Reliability", current: 88, target: 92 },
+  { axis: "Speed", current: 74, target: 86 },
+  { axis: "Adoption", current: 69, target: 80 },
+  { axis: "Quality", current: 82, target: 90 },
+  { axis: "Support", current: 76, target: 84 },
+  { axis: "Cost", current: 64, target: 72 },
+];
+
+export const chartRadarSeries = ({
+  appearance,
+}: {
+  appearance: VariantProps<typeof chartVariants>["appearance"];
+}) => {
+  return [
+    {
+      dataKey: "current",
+      name: "Current",
+      color: appearance?.includes("gradient") ? "white" : "cyan",
+    },
+    {
+      dataKey: "target",
+      name: "Target",
+      color: appearance?.includes("gradient") ? "white" : "violet",
+    },
+  ];
+};
+
+export const chartScatterData = [
+  { traffic: 18, conversion: 2.6, qualified: 21 },
+  { traffic: 26, conversion: 3.8, qualified: 28 },
+  { traffic: 34, conversion: 4.1, qualified: 35 },
+  { traffic: 42, conversion: 5.2, qualified: 41 },
+  { traffic: 55, conversion: 5.8, qualified: 49 },
+  { traffic: 63, conversion: 7.1, qualified: 58 },
+];
+
+export const chartScatterSeries = ({
+  appearance,
+}: {
+  appearance: VariantProps<typeof chartVariants>["appearance"];
+}) => {
+  return [
+    {
+      dataKey: "conversion",
+      name: "Conversion rate",
+      color: appearance?.includes("gradient") ? "white" : "emerald",
+    },
+    {
+      dataKey: "qualified",
+      name: "Qualified leads",
+      color: appearance?.includes("gradient") ? "white" : "amber",
+    },
+  ];
+};
+
+export const chartFunnelData = [
+  { stage: "Visitors", value: 12000, color: "#0891b2" },
+  { stage: "Trials", value: 7200, color: "#059669" },
+  { stage: "Activated", value: 3900, color: "#7c3aed" },
+  { stage: "Paid", value: 1850, color: "#d97706" },
+];
+
 export const chartPieData = pieChartDataJson;

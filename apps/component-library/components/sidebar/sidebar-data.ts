@@ -89,12 +89,28 @@ const chartsSidebarItems = [
     href: "/preview/charts/bar",
   },
   {
+    title: "Stacked Bar",
+    href: "/preview/charts/stacked-bar",
+  },
+  {
     title: "Area",
     href: "/preview/charts/area",
   },
   {
+    title: "Radar",
+    href: "/preview/charts/radar",
+  },
+  {
+    title: "Scatter",
+    href: "/preview/charts/scatter",
+  },
+  {
     title: "Bubble",
     href: "/preview/charts/bubble",
+  },
+  {
+    title: "Funnel",
+    href: "/preview/charts/funnel",
   },
   {
     title: "Pie",

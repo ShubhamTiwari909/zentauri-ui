@@ -39,6 +39,7 @@ type ChartFrameProps = HTMLAttributes<HTMLDivElement> & {
   emptyState?: ReactNode;
   hasData: boolean;
   height: number;
+  overlay?: ReactNode;
   style?: CSSProperties;
   children: ReactNode;
 };
@@ -54,6 +55,7 @@ export function ChartFrame({
   emptyState = null,
   hasData,
   height,
+  overlay,
   style,
   ...props
 }: ChartFrameProps) {
@@ -63,8 +65,7 @@ export function ChartFrame({
     "--chart-height": `${height}px`,
     ...style,
   } as CSSProperties;
-  const canRenderChart =
-    (size?.width ?? 0) > 0 && (size?.height ?? 0) > 0;
+  const canRenderChart = (size?.width ?? 0) > 0 && (size?.height ?? 0) > 0;
 
   if (!hasData) {
     return (
@@ -99,6 +100,7 @@ export function ChartFrame({
           </ResponsiveContainer>
         ) : null}
       </div>
+      {overlay}
     </div>
   );
 }

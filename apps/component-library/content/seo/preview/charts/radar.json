@@ -1,0 +1,74 @@
+{
+  "category": "Charts",
+  "title": "Radar chart component for React",
+  "description": "RadarChart for React and Next.js — multi-axis spider charts with Zentauri UI frame styling, legends, and Recharts-backed polar layers.",
+  "keywords": [
+    "radar chart",
+    "spider chart",
+    "Recharts",
+    "React",
+    "Next.js",
+    "dashboard"
+  ],
+  "og": {
+    "title": "Radar chart · Zentauri UI",
+    "description": "RadarChart for React and Next.js — multi-axis spider charts with Zentauri UI frame styling, legends, and Recharts-backed polar layers.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Radar chart · Zentauri UI",
+    "description": "RadarChart for React and Next.js — multi-axis spider charts with Zentauri UI frame styling, legends, and Recharts-backed polar layers.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/charts/radar",
+  "headings": {
+    "h1": "Radar charts for multi-axis comparisons",
+    "h2": [
+      "What it does",
+      "Data shape",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Compare several metrics around a shared polar axis. RadarChart uses the same `data`, `xKey`, and `series` model as the cartesian chart entries.",
+  "useCases": [
+    "Product scorecards across quality, cost, and adoption.",
+    "Team capability comparisons by skill area.",
+    "Vendor evaluation dashboards with target and current profiles."
+  ],
+  "faqs": [
+    {
+      "question": "Can I render multiple radar shapes?",
+      "answer": "Yes. Add more series entries; each `series.dataKey` draws another radar polygon against the same axis labels."
+    },
+    {
+      "question": "When should I avoid radar charts?",
+      "answer": "Avoid them when exact ranking is more important than shape comparison; use bars or tables for precise ordered values."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Draws one or more filled polar shapes with optional grid, tooltip, and legend.\n\nAppearance and density props match the rest of the chart system."
+    },
+    {
+      "heading": "Data shape",
+      "body": "`xKey` points to the axis label field; each numeric field referenced by `series.dataKey` becomes one radar shape."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keep axis labels short and provide descriptive series names.\n\nPair with summary text when exact values matter."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from `@zentauri-ui/zentauri-components/charts/radar` inside client components when interaction is required."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

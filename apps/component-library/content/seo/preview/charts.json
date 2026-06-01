@@ -1,7 +1,7 @@
 {
   "category": "Charts",
   "title": "Chart components for React dashboards",
-  "description": "Line, bar, area, bubble, and pie charts built on Recharts with Zentauri UI framing — Tailwind-backed variants for Next.js and React 19 apps.",
+  "description": "Line, bar, stacked bar, area, radar, scatter, bubble, funnel, and pie charts built on Recharts with Zentauri UI framing — Tailwind-backed variants for Next.js and React 19 apps.",
   "keywords": [
     "chart component",
     "Recharts",
@@ -12,12 +12,12 @@
   ],
   "og": {
     "title": "Charts · Zentauri UI",
-    "description": "Line, bar, area, bubble, and pie charts built on Recharts with Zentauri UI framing — Tailwind-backed variants for Next.js and React 19 apps.",
+    "description": "Line, bar, stacked bar, area, radar, scatter, bubble, funnel, and pie charts built on Recharts with Zentauri UI framing — Tailwind-backed variants for Next.js and React 19 apps.",
     "type": "website"
   },
   "twitter": {
     "title": "Charts · Zentauri UI",
-    "description": "Line, bar, area, bubble, and pie charts built on Recharts with Zentauri UI framing — Tailwind-backed variants for Next.js and React 19 apps.",
+    "description": "Line, bar, stacked bar, area, radar, scatter, bubble, funnel, and pie charts built on Recharts with Zentauri UI framing — Tailwind-backed variants for Next.js and React 19 apps.",
     "card": "summary_large_image"
   },
   "canonicalPath": "/preview/charts",
@@ -35,7 +35,8 @@
   "useCases": [
     "Trend lines and stacked areas on analytics dashboards.",
     "Category bars for funnel or cohort summaries.",
-    "Bubble plots for three-dimensional comparisons.",
+    "Radar, scatter, and bubble plots for multi-axis or correlation analysis.",
+    "Funnel charts for product and sales conversion steps.",
     "Pie and donut charts for part-to-whole summaries.",
     "Consistent tooltips, axes, and density across screens."
   ],
@@ -64,7 +65,7 @@
     },
     {
       "heading": "Composition and API",
-      "body": "Pass `data`, `xKey`, and `series` for most charts. Area and bar support `stacked` when series share a stack id.\n\nBubble charts use numeric `xKey` and optional `zKey` on each series for bubble size. Pie charts use `dataKey` and `nameKey` for slice values and labels."
+      "body": "Pass `data`, `xKey`, and `series` for cartesian, radar, scatter, and bubble charts. Area and bar support `stacked`; StackedBarChart applies it by default.\n\nBubble charts use optional `zKey` on each series for bubble size. Pie and funnel charts use `dataKey` and `nameKey` for values and labels."
     },
     {
       "heading": "Next.js integration notes",

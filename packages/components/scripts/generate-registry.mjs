@@ -54,8 +54,12 @@ const registry = {
     "chart-area": "charts/area",
     "chart-bar": "charts/bar",
     "chart-bubble": "charts/bubble",
+    "chart-funnel": "charts/funnel",
     "chart-line": "charts/line",
     "chart-pie": "charts/pie",
+    "chart-radar": "charts/radar",
+    "chart-scatter": "charts/scatter",
+    "chart-stacked-bar": "charts/stacked-bar",
     input: "inputs",
   },
 };

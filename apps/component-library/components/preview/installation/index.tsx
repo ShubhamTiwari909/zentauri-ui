@@ -37,7 +37,8 @@ const STATIC_IMPORT_SNIPPET = `import { Modal, ModalTrigger, ModalClose, ModalHe
 const ANIMATED_IMPORT_SNIPPET = `import { ModalContentAnimated } from "@zentauri-ui/zentauri-components/ui/modal/animated";`;
 
 const CHART_IMPORT_SNIPPET = `import { AreaChart } from "@zentauri-ui/zentauri-components/charts/area";
-// Line, bar, bubble, pie: charts/line | charts/bar | charts/bubble | charts/pie`;
+// Line, bar, stacked bar, radar, scatter, bubble, funnel, pie:
+// charts/line | charts/bar | charts/stacked-bar | charts/radar | charts/scatter | charts/bubble | charts/funnel | charts/pie`;
 
 const USAGE_SNIPPET = `<div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
   <Modal>
