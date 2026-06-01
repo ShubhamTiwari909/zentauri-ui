@@ -1,16 +1,9 @@
 "use client";
 
-import {
-  Children,
-  Fragment,
-  useCallback,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { Children, useCallback, useMemo, useRef, useState } from "react";
 import type { CSSProperties, Ref } from "react";
 
+import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
 import { cn } from "../../lib/utils";
 
 import type { MarqueeProps } from "./types";
@@ -32,7 +25,7 @@ function assignRef<TElement>(
   if (typeof ref === "function") {
     ref(value);
   } else if (ref) {
-    ref.current = value;
+    (ref as { current: TElement | null }).current = value;
   }
 }
 
@@ -84,11 +77,16 @@ export function Marquee(props: MarqueeProps) {
     resolvedOrientation === "vertical" ? "flex-col" : "flex-row",
     itemClassName,
   );
-  const repeatedChildren = Array.from({ length: copyCount }, (_, index) => (
-    <Fragment key={index}>{childArray}</Fragment>
-  ));
+  const fillerChildren = Array.from(
+    { length: Math.max(0, copyCount - 1) },
+    (_, index) => (
+      <div key={index} aria-hidden="true" inert className="contents">
+        {childArray}
+      </div>
+    ),
+  );
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const updateCopyCount = () => {
       const root = rootRef.current;
       const measure = measureRef.current;
@@ -178,7 +176,8 @@ export function Marquee(props: MarqueeProps) {
         }
       >
         <div data-slot="marquee-item-group" className={groupClassName}>
-          {repeatedChildren}
+          {childArray}
+          {fillerChildren}
         </div>
         <div
           aria-hidden="true"
@@ -186,7 +185,8 @@ export function Marquee(props: MarqueeProps) {
           data-slot="marquee-item-group"
           className={groupClassName}
         >
-          {repeatedChildren}
+          {childArray}
+          {fillerChildren}
         </div>
       </div>
     </div>

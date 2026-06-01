@@ -1,9 +1,13 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { render, screen, waitFor } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { Marquee } from "./marquee";
 
 describe("Marquee", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it("exposes a display name", () => {
     expect(Marquee.displayName).toBe("Marquee");
   });
@@ -83,6 +87,42 @@ describe("Marquee", () => {
       animationDuration: "42s",
       animationName: "zui-marquee-x",
     });
+  });
+
+  it("hides filler copies from assistive technology", async () => {
+    vi.spyOn(HTMLElement.prototype, "offsetWidth", "get").mockImplementation(
+      function (this: HTMLElement) {
+        return this.getAttribute("data-slot") === "marquee" ? 300 : 0;
+      },
+    );
+    vi.spyOn(HTMLElement.prototype, "scrollWidth", "get").mockImplementation(
+      function (this: HTMLElement) {
+        return this.getAttribute("data-slot") === "marquee-measure" ? 100 : 0;
+      },
+    );
+
+    render(
+      <Marquee>
+        <button type="button">Focusable item</button>
+      </Marquee>,
+    );
+
+    const firstGroup = document.querySelector(
+      '[data-slot="marquee-item-group"]',
+    );
+
+    await waitFor(() => {
+      expect(firstGroup?.textContent).toBe(
+        "Focusable itemFocusable itemFocusable item",
+      );
+    });
+
+    expect(
+      screen.getAllByRole("button", { name: "Focusable item" }),
+    ).toHaveLength(1);
+    expect(
+      firstGroup?.querySelectorAll('[aria-hidden="true"][inert]'),
+    ).toHaveLength(2);
   });
 
   it("accepts string gap values", () => {
