@@ -179,6 +179,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Use for data tables that need external sort state without baking sorting behavior into the Table primitive.",
   },
   {
+    slug: "use-table-filter",
+    module: "useTableFilter",
+    name: "useTableFilter",
+    description:
+      "Column filter state plus filtered row derivation for client-side table and list data.",
+    intro:
+      "Use for small to medium client-side datasets that need composable filters without coupling logic to the Table primitive.",
+  },
+  {
     slug: "use-prefers-color-scheme",
     module: "usePrefersColorScheme",
     name: "usePrefersColorScheme",

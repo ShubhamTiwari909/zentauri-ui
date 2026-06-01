@@ -1,8 +1,8 @@
 import { act, renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
+import type { TableSortDirection } from "../../ui/table/types";
 import { useTableSort } from "./useTableSort";
-import { TableSortDirection } from "@/src/ui/table/types";
 
 describe("useTableSort", () => {
   it("should default to no active sort", () => {
@@ -84,6 +84,48 @@ describe("useTableSort", () => {
 
     rerender({ sortKey: "createdAt", sortDirection: "descending" });
     expect(result.current.sortDirection).toBe("descending");
+  });
+
+  it("should allow only sortKey to be controlled", () => {
+    const handleSortChange = vi.fn();
+    const { result } = renderHook(() =>
+      useTableSort({
+        sortKey: "name",
+        onSortChange: handleSortChange,
+      }),
+    );
+
+    act(() => {
+      result.current.toggleSort("name");
+    });
+
+    expect(handleSortChange).toHaveBeenCalledWith({
+      sortKey: "name",
+      sortDirection: "ascending",
+    });
+    expect(result.current.sortKey).toBe("name");
+    expect(result.current.sortDirection).toBe("ascending");
+  });
+
+  it("should allow only sortDirection to be controlled", () => {
+    const handleSortChange = vi.fn();
+    const { result } = renderHook(() =>
+      useTableSort<"name">({
+        sortDirection: "ascending",
+        onSortChange: handleSortChange,
+      }),
+    );
+
+    act(() => {
+      result.current.toggleSort("name");
+    });
+
+    expect(handleSortChange).toHaveBeenCalledWith({
+      sortKey: "name",
+      sortDirection: "ascending",
+    });
+    expect(result.current.sortKey).toBe("name");
+    expect(result.current.sortDirection).toBe("ascending");
   });
 
   it("should return TableHead-compatible sort props", () => {

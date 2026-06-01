@@ -9,8 +9,12 @@ import type {
 } from "./types";
 
 function normalizeFilters<TKey extends string>(
-  filters: TableFilterState<TKey>,
+  filters: TableFilterState<TKey> | null | undefined,
 ): TableFilterState<TKey> {
+  if (!filters || typeof filters !== "object") {
+    return {};
+  }
+
   return Object.fromEntries(
     Object.entries(filters).filter(
       (entry): entry is [TKey, string] =>
@@ -27,22 +31,6 @@ function defaultColumnValue<TData, TKey extends string>(
     return (row as Record<TKey, unknown>)[filterKey];
   }
   return undefined;
-}
-
-function defaultFilterPredicate<TData, TKey extends string>(
-  row: TData,
-  filterValue: string,
-  filterKey: TKey,
-  getColumnValue: (row: TData, filterKey: TKey) => unknown,
-): boolean {
-  const columnValue = getColumnValue(row, filterKey);
-  if (columnValue == null) {
-    return false;
-  }
-
-  return String(columnValue)
-    .toLocaleLowerCase()
-    .includes(filterValue.toLocaleLowerCase());
 }
 
 export function useTableFilter<TData, TKey extends string = string>({
@@ -74,52 +62,89 @@ export function useTableFilter<TData, TKey extends string = string>({
     [isControlled, onFiltersChange],
   );
 
-  const setFilter = useCallback(
-    (filterKey: TKey, value: string) => {
-      setFilters({
-        ...currentFilters,
-        [filterKey]: value,
+  const updateFilters = useCallback(
+    (
+      updater: (
+        previousFilters: TableFilterState<TKey>,
+      ) => TableFilterState<TKey>,
+    ) => {
+      if (isControlled) {
+        const normalized = normalizeFilters(updater(currentFilters));
+        onFiltersChange?.(normalized);
+        return;
+      }
+
+      setInternalFilters((previousFilters) => {
+        const normalized = normalizeFilters(updater(previousFilters));
+        onFiltersChange?.(normalized);
+        return normalized;
       });
     },
-    [currentFilters, setFilters],
+    [currentFilters, isControlled, onFiltersChange],
+  );
+
+  const setFilter = useCallback(
+    (filterKey: TKey, value: string) => {
+      updateFilters((previousFilters) => ({
+        ...previousFilters,
+        [filterKey]: value,
+      }));
+    },
+    [updateFilters],
   );
 
   const clearFilter = useCallback(
     (filterKey: TKey) => {
-      const nextFilters = { ...currentFilters };
-      delete nextFilters[filterKey];
-      setFilters(nextFilters);
+      updateFilters((previousFilters) => {
+        const nextFilters = { ...previousFilters };
+        delete nextFilters[filterKey];
+        return nextFilters;
+      });
     },
-    [currentFilters, setFilters],
+    [updateFilters],
   );
 
   const clearFilters = useCallback(() => {
     setFilters({});
   }, [setFilters]);
 
-  const activeEntries = useMemo(
-    () => Object.entries(currentFilters) as [TKey, string][],
+  const activeFilters = useMemo(
+    () =>
+      (Object.entries(currentFilters) as [TKey, string][]).map(
+        ([filterKey, filterValue]) => ({
+          filterKey,
+          filterValue,
+          lowerFilterValue: filterValue.toLowerCase(),
+        }),
+      ),
     [currentFilters],
   );
 
   const filteredData = useMemo(() => {
-    if (activeEntries.length === 0) {
+    if (activeFilters.length === 0) {
       return [...data];
     }
 
     return data.filter((row) =>
-      activeEntries.every(([filterKey, filterValue]) =>
-        filterPredicate
-          ? filterPredicate(row, filterValue, filterKey)
-          : defaultFilterPredicate(row, filterValue, filterKey, getColumnValue),
-      ),
+      activeFilters.every(({ filterKey, filterValue, lowerFilterValue }) => {
+        if (filterPredicate) {
+          return filterPredicate(row, filterValue, filterKey);
+        }
+
+        const columnValue = getColumnValue(row, filterKey);
+        if (columnValue == null) {
+          return false;
+        }
+
+        return String(columnValue).toLowerCase().includes(lowerFilterValue);
+      }),
     );
-  }, [activeEntries, data, filterPredicate, getColumnValue]);
+  }, [activeFilters, data, filterPredicate, getColumnValue]);
 
   return {
     filters: currentFilters,
     filteredData,
-    hasActiveFilters: activeEntries.length > 0,
+    hasActiveFilters: activeFilters.length > 0,
     setFilter,
     setFilters,
     clearFilter,

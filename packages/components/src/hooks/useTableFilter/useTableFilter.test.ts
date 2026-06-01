@@ -64,6 +64,21 @@ describe("useTableFilter", () => {
     expect(result.current.filteredData).toEqual(rows);
   });
 
+  it("should preserve batched uncontrolled filter updates", () => {
+    const { result } = renderHook(() => useTableFilter({ data: rows }));
+
+    act(() => {
+      result.current.setFilter("status", "active");
+      result.current.setFilter("name", "atlas");
+    });
+
+    expect(result.current.filters).toEqual({
+      status: "active",
+      name: "atlas",
+    });
+    expect(result.current.filteredData).toEqual([rows[0]]);
+  });
+
   it("should support controlled filters", () => {
     const handleFiltersChange = vi.fn();
     const { result, rerender } = renderHook(
@@ -111,5 +126,16 @@ describe("useTableFilter", () => {
     );
     expect(result.current.filters).toEqual({});
     expect(result.current.hasActiveFilters).toBe(false);
+  });
+
+  it("should guard against null filters at runtime", () => {
+    const { result } = renderHook(() =>
+      useTableFilter({
+        data: rows,
+        filters: null as unknown as Record<string, string>,
+      }),
+    );
+    expect(result.current.filters).toEqual({});
+    expect(result.current.filteredData).toEqual(rows);
   });
 });

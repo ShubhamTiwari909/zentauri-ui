@@ -183,30 +183,36 @@ export function TableHead({
     });
   }, [onSortChange, sortKey, sortableDirection]);
 
-  const handleClick: TableHeadCellProps["onClick"] = (event) => {
-    onClick?.(event);
-    if (!event.defaultPrevented) {
-      handleSort();
-    }
-  };
+  const handleClick = useCallback<NonNullable<TableHeadCellProps["onClick"]>>(
+    (event) => {
+      onClick?.(event);
+      if (!event.defaultPrevented) {
+        handleSort();
+      }
+    },
+    [handleSort, onClick],
+  );
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLTableCellElement>) => {
-    onKeyDown?.(event);
-    if (event.defaultPrevented || !isSortable) {
-      return;
-    }
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      handleSort();
-    }
-  };
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLTableCellElement>) => {
+      onKeyDown?.(event);
+      if (event.defaultPrevented || !isSortable) {
+        return;
+      }
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        handleSort();
+      }
+    },
+    [handleSort, isSortable, onKeyDown],
+  );
 
   return (
     <th
       ref={ref}
       data-slot="table-head"
       scope={scope}
-      aria-sort={sortDirection}
+      aria-sort={isSortable ? sortableDirection : sortDirection}
       data-sort-key={sortKey}
       data-sort-direction={sortDirection}
       tabIndex={isSortable ? (tabIndex ?? 0) : tabIndex}

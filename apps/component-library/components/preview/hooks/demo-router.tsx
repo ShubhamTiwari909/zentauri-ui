@@ -26,6 +26,7 @@ import { usePrefersColorScheme } from "@zentauri-ui/zentauri-components/hooks/us
 import { usePrefersReducedMotion } from "@zentauri-ui/zentauri-components/hooks/usePrefersReducedMotion";
 import { useResizeObserver } from "@zentauri-ui/zentauri-components/hooks/useResizeObserver";
 import { useSessionStorage } from "@zentauri-ui/zentauri-components/hooks/useSessionStorage";
+import { useTableFilter } from "@zentauri-ui/zentauri-components/hooks/useTableFilter";
 import { useTableSort } from "@zentauri-ui/zentauri-components/hooks/useTableSort";
 import { useThrottledCallback } from "@zentauri-ui/zentauri-components/hooks/useThrottledCallback";
 import { useToggle } from "@zentauri-ui/zentauri-components/hooks/useToggle";
@@ -86,6 +87,8 @@ export function HookDemoRouter({ slug }: HookDemoRouterProps) {
       return <PageVisibilityDemo />;
     case "use-pagination":
       return <PaginationDemo />;
+    case "use-table-filter":
+      return <TableFilterDemo />;
     case "use-table-sort":
       return <TableSortDemo />;
     case "use-dynamic-stepper":
@@ -673,6 +676,88 @@ function PaginationDemo() {
       <pre className="max-h-32 overflow-auto rounded-lg border border-white/10 bg-slate-950/80 p-3 text-xs text-slate-300">
         {JSON.stringify(built, null, 2)}
       </pre>
+    </HookDemoPanel>
+  );
+}
+
+type TableFilterRow = {
+  name: string;
+  status: "active" | "paused";
+  seats: number;
+};
+
+type TableFilterKey = keyof TableFilterRow;
+
+const tableFilterRows: TableFilterRow[] = [
+  { name: "Atlas", status: "active", seats: 12 },
+  { name: "Beacon", status: "paused", seats: 4 },
+  { name: "Comet", status: "active", seats: 8 },
+];
+
+function TableFilterDemo() {
+  const [nameFilter, setNameFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+  const { filteredData, hasActiveFilters, clearFilters } = useTableFilter<
+    TableFilterRow,
+    TableFilterKey
+  >({
+    data: tableFilterRows,
+    filters: {
+      name: nameFilter,
+      status: statusFilter,
+    },
+    onFiltersChange: (nextFilters) => {
+      setNameFilter(nextFilters.name ?? "");
+      setStatusFilter(nextFilters.status ?? "");
+    },
+  });
+
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <div className="mb-4 grid gap-3 sm:grid-cols-[1fr_1fr_auto]">
+        <Input
+          aria-label="Filter by name"
+          appearance="info"
+          value={nameFilter}
+          onChange={(event) => setNameFilter(event.target.value)}
+          placeholder="Filter name..."
+        />
+        <Input
+          aria-label="Filter by status"
+          appearance="info"
+          value={statusFilter}
+          onChange={(event) => setStatusFilter(event.target.value)}
+          placeholder="active or paused"
+        />
+        <Button
+          type="button"
+          appearance="outline"
+          disabled={!hasActiveFilters}
+          onClick={clearFilters}
+        >
+          Clear
+        </Button>
+      </div>
+      <Table appearance="bordered" size="sm">
+        <TableHeader>
+          <TableRow>
+            <TableHead>Name</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead className="text-right">Seats</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {filteredData.map((row) => (
+            <TableRow key={row.name}>
+              <TableCell>{row.name}</TableCell>
+              <TableCell>{row.status}</TableCell>
+              <TableCell className="text-right tabular-nums">
+                {row.seats}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </HookDemoPanel>
   );
 }

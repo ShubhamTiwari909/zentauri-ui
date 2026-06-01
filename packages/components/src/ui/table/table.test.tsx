@@ -104,6 +104,24 @@ describe("Table", () => {
     expect(header).toHaveAttribute("data-sort-direction", "ascending");
   });
 
+  it("should mark sortable unsorted header cells with aria-sort none", () => {
+    render(
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead sortKey="name" onSortChange={vi.fn()}>
+              Name
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+      </Table>,
+    );
+    expect(screen.getByRole("columnheader", { name: "Name" })).toHaveAttribute(
+      "aria-sort",
+      "none",
+    );
+  });
+
   it("should call onSortChange with the next direction on click", async () => {
     const user = userEvent.setup();
     const handleSortChange = vi.fn();

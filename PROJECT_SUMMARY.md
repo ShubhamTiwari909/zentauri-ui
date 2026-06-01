@@ -8,15 +8,15 @@ pnpm + Turborepo monorepo shipping a **React UI component library** (`@zentauri-
 
 ## Quick Commands (root)
 
-| Command | Action |
-|---|---|
-| `pnpm dev` | Turbo: runs `tsup --watch` for library + Next dev server for docs |
-| `pnpm build` | Turbo: builds packages first, then apps |
-| `pnpm lint` | Turbo: ESLint across apps |
-| `pnpm check-types` | Turbo: `tsc --noEmit` across workspaces |
-| `pnpm format` | Prettier write across repo |
-| `pnpm --filter @zentauri-ui/zentauri-components test` | Vitest run for the library (all tests) |
-| `pnpm exec vitest run -t "test name"` | Run single test by name |
+| Command                                               | Action                                                            |
+| ----------------------------------------------------- | ----------------------------------------------------------------- |
+| `pnpm dev`                                            | Turbo: runs `tsup --watch` for library + Next dev server for docs |
+| `pnpm build`                                          | Turbo: builds packages first, then apps                           |
+| `pnpm lint`                                           | Turbo: ESLint across apps                                         |
+| `pnpm check-types`                                    | Turbo: `tsc --noEmit` across workspaces                           |
+| `pnpm format`                                         | Prettier write across repo                                        |
+| `pnpm --filter @zentauri-ui/zentauri-components test` | Vitest run for the library (all tests)                            |
+| `pnpm exec vitest run -t "test name"`                 | Run single test by name                                           |
 
 ---
 
@@ -58,7 +58,7 @@ packages/components/src/
 │   ├── buttons/
 │   ├── ...                     # (see full list below)
 │   └── typography/
-├── hooks/                      # 25 hooks (useClipboard, useMediaQuery, etc.)
+├── hooks/                      # 28 hooks (useClipboard, useMediaQuery, etc.)
 ├── charts/                     # 5 Recharts wrappers (area, bar, bubble, line, pie)
 ├── design-system/              # 41 token files (CSS variable strings)
 │   ├── button.ts               # zuiButtonBase, zuiButtonAppearances, zuiButtonSizes
@@ -88,15 +88,15 @@ Each component folder follows a fixed 5-layer architecture:
 
 ### All UI Components (41)
 
-| Component | Has Animated? | Has Test? |
-|---|---|---|
-| accordion, alert, avatar, badge, buttons, card, checkbox, command, divider, drawer, empty-state, inputs, modal, popover, progress, radio-group, skeleton, table, tabs, timeline, toast, toggle, tooltip, tree-view | Yes | Yes (most) |
-| animated-number, breadcrumb, context-menu, dropdown, dynamic-stepper, file-upload, marquee, otp-input, pagination, rating, scroll-area, search, select, slider, stepper, typography | No | Yes |
-| spinner | Yes (animated only) | Yes |
+| Component                                                                                                                                                                                                          | Has Animated?       | Has Test?  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- | ---------- |
+| accordion, alert, avatar, badge, buttons, card, checkbox, command, divider, drawer, empty-state, inputs, modal, popover, progress, radio-group, skeleton, table, tabs, timeline, toast, toggle, tooltip, tree-view | Yes                 | Yes (most) |
+| animated-number, breadcrumb, context-menu, dropdown, dynamic-stepper, file-upload, marquee, otp-input, pagination, rating, scroll-area, search, select, slider, stepper, typography                                | No                  | Yes        |
+| spinner                                                                                                                                                                                                            | Yes (animated only) | Yes        |
 
 ### Hooks (25)
 
-```useBodyScrollLock, useClickOutside, useClipboard, useControllableState, useDebouncedValue, useDisclosure, useDocumentTitle, useDynamicStepper, useFocusManagement, useHover, useInView, useIntersectionObserver, useIsomorphicLayoutEffect, useIsMounted, useLocalStorage, useMediaQuery, useNetworkStatus, usePageVisibility, usePagination, usePrefersColorScheme, usePrefersReducedMotion, useResizeObserver, useSessionStorage, useThrottledCallback, useToggle, useWindowSize```
+`useBodyScrollLock, useClickOutside, useClipboard, useControllableState, useDebouncedValue, useDisclosure, useDocumentTitle, useDynamicStepper, useFocusManagement, useHover, useInView, useIntersectionObserver, useIsomorphicLayoutEffect, useIsMounted, useLocalStorage, useMediaQuery, useNetworkStatus, usePageVisibility, usePagination, usePrefersColorScheme, usePrefersReducedMotion, useResizeObserver, useSessionStorage, useThrottledCallback, useToggle, useWindowSize`
 
 ### Charts (5)
 
@@ -104,8 +104,8 @@ AreaChart, BarChart, BubbleChart, LineChart, PieChart — thin Recharts wrappers
 
 ### Peer Dependencies (installer must provide)
 
-| Required | Optional |
-|---|---|
+| Required                                                                           | Optional                                   |
+| ---------------------------------------------------------------------------------- | ------------------------------------------ |
 | `react >18`, `react-dom >18`, `class-variance-authority`, `clsx`, `tailwind-merge` | `framer-motion`, `react-icons`, `recharts` |
 
 ### Tailwind v4 Requirement (consumer)
@@ -167,9 +167,9 @@ You must touch **all** of these:
 
 ## Test Suite (packages/components)
 
-- **68 test files, 496 total tests**
-  - UI components: 44 files, 390 tests
-  - Hooks: 27 files, 97 tests
+- **74 test files, 501 total tests**
+  - UI components: 44 files, 391 tests
+  - Hooks: 28 files, 101 tests
   - CLI: 2 files, 9 tests
 - Run: `pnpm --filter @zentauri-ui/zentauri-components test`
 - Single file: `pnpm --filter @zentauri-ui/zentauri-components exec vitest run src/ui/accordion/accordion.test.tsx`

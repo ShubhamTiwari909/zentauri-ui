@@ -16,12 +16,12 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | Metric     | Result           |
 | ---------- | ---------------- |
 | Test files | 74 passed (74)   |
-| Tests      | 496 passed (496) |
+| Tests      | 501 passed (501) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 44         | 390   |
-| React hooks                 | 28         | 97    |
+| Components and UI utilities | 44         | 391   |
+| React hooks                 | 28         | 101   |
 | CLI and import rewriting    | 2          | 9     |
 
 ### Per-suite snapshot
@@ -55,7 +55,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/ui/accordion/accordion.test.tsx`                                   |     7 |
 | `src/ui/toast/toast.test.tsx`                                           |     5 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
-| `src/ui/table/table.test.tsx`                                           |    10 |
+| `src/ui/table/table.test.tsx`                                           |    11 |
 | `src/ui/tabs/tabs.test.tsx`                                             |     3 |
 | `src/ui/stepper/stepper.test.tsx`                                       |    12 |
 | `src/ui/timeline/timeline.test.tsx`                                     |    14 |
@@ -81,8 +81,8 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/hooks/useThrottledCallback/useThrottledCallback.test.ts`           |     4 |
 | `src/hooks/useToggle/useToggle.test.ts`                                 |     4 |
 | `src/hooks/usePagination/usePagination.test.ts`                         |    10 |
-| `src/hooks/useTableFilter/useTableFilter.test.ts`                       |     7 |
-| `src/hooks/useTableSort/useTableSort.test.ts`                           |     5 |
+| `src/hooks/useTableFilter/useTableFilter.test.ts`                       |     9 |
+| `src/hooks/useTableSort/useTableSort.test.ts`                           |     7 |
 | `src/hooks/useSessionStorage/useSessionStorage.test.ts`                 |     3 |
 | `src/hooks/usePrefersColorScheme/usePrefersColorScheme.test.ts`         |     1 |
 | `src/hooks/useIsMounted/useIsMounted.test.ts`                           |     3 |
@@ -686,7 +686,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, the chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 496 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 501 test cases in total
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`** (`components` + `hooks`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
 
 ## Github Release log

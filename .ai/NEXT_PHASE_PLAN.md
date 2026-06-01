@@ -1,20 +1,20 @@
 # Zentauri UI — Next Phase Plan
 
 > Generated: 2026-06-01  
-> Based on: 47 UI components · 5 charts · 25 hooks · 453 tests
+> Based on: 43 UI components · 5 charts · 28 hooks · 501 tests
 
 ---
 
 ## Current State Snapshot
 
-| Category | Count | Health |
-|---|---|---|
-| UI Components | 47 | Solid — consistent layering across all |
-| Charts | 5 types | Covered, preview pages exist |
-| Hooks | 25 | All tested |
-| Tests | 453 across 68 files | Good baseline |
-| Animated variants | 27 / 47 components | 16 gaps |
-| Missing tests | 4 components | `divider`, `empty-state`, `skeleton`, `table` |
+| Category          | Count               | Health                                 |
+| ----------------- | ------------------- | -------------------------------------- |
+| UI Components     | 43                  | Solid — consistent layering across all |
+| Charts            | 5 types             | Covered, preview pages exist           |
+| Hooks             | 28                  | All tested                             |
+| Tests             | 501 across 74 files | Good baseline                          |
+| Animated variants | 27 / 43 components  | 16 gaps                                |
+| Missing tests     | 0 components        | Phase 1 test gaps closed               |
 
 ---
 
@@ -24,7 +24,7 @@ Quick wins with low risk — no new scope, just completing what's already partia
 
 ### 1.1 Add missing test files
 
-These four components have zero test coverage:
+These four components previously had no dedicated test files and are now covered:
 
 - `src/ui/divider/divider.test.tsx`
 - `src/ui/empty-state/empty-state.test.tsx`
@@ -51,18 +51,18 @@ These should be composable — not baked into the component itself — matching 
 
 Components that consumers of any UI kit expect and currently have to source elsewhere.
 
-| Component | Why it matters |
-|---|---|
-| **`Textarea`** | Critical missing form input — every form needs it, no workaround exists |
-| **`Switch`** | Visually distinct from `Toggle` — binary on/off for settings screens |
-| **`NumberInput`** | Stepper-style number field with increment/decrement buttons |
-| **`Combobox`** | Searchable select with autocomplete — more common than raw `Select` in real apps |
-| **`MultiSelect`** | Tag-based multi-value input — impossible to compose from existing components |
-| **`DatePicker`** | Single-date picker paired with a `useCalendar` hook. No external date library required for the primitive |
-| **`NavigationMenu`** | Top-bar horizontal nav with dropdowns — missing from the layout toolkit |
-| **`Carousel`** | Horizontal scroll with controls. Can wrap Embla internally |
-| **`Resizable`** | Split-pane panels with drag handle — high demand in dashboard UIs |
-| **`ColorPicker`** | Hue/saturation picker + hex input — rounds out the form set |
+| Component            | Why it matters                                                                                           |
+| -------------------- | -------------------------------------------------------------------------------------------------------- |
+| **`Textarea`**       | Critical missing form input — every form needs it, no workaround exists                                  |
+| **`Switch`**         | Visually distinct from `Toggle` — binary on/off for settings screens                                     |
+| **`NumberInput`**    | Stepper-style number field with increment/decrement buttons                                              |
+| **`Combobox`**       | Searchable select with autocomplete — more common than raw `Select` in real apps                         |
+| **`MultiSelect`**    | Tag-based multi-value input — impossible to compose from existing components                             |
+| **`DatePicker`**     | Single-date picker paired with a `useCalendar` hook. No external date library required for the primitive |
+| **`NavigationMenu`** | Top-bar horizontal nav with dropdowns — missing from the layout toolkit                                  |
+| **`Carousel`**       | Horizontal scroll with controls. Can wrap Embla internally                                               |
+| **`Resizable`**      | Split-pane panels with drag handle — high demand in dashboard UIs                                        |
+| **`ColorPicker`**    | Hue/saturation picker + hex input — rounds out the form set                                              |
 
 **Suggested build order** (each unlocks more usage patterns):
 
@@ -94,13 +94,13 @@ slider          stepper         typography      animated-number *
 
 The 5 existing charts (area, bar, bubble, line, pie) cover basic cases. Additions:
 
-| Chart | Use case |
-|---|---|
-| **Radar / Spider** | Multi-axis comparison — very common in dashboards |
-| **Scatter** | Correlation plots — completes the data science toolkit |
-| **Stacked Bar** | Part-to-whole over categories — frequently requested variant of `Bar` |
-| **Donut** | Pie with center slot for a metric display — add as a prop on the existing `Pie` entry, not a new file |
-| **Funnel** | Conversion step visualization — product analytics dashboards |
+| Chart              | Use case                                                                                              |
+| ------------------ | ----------------------------------------------------------------------------------------------------- |
+| **Radar / Spider** | Multi-axis comparison — very common in dashboards                                                     |
+| **Scatter**        | Correlation plots — completes the data science toolkit                                                |
+| **Stacked Bar**    | Part-to-whole over categories — frequently requested variant of `Bar`                                 |
+| **Donut**          | Pie with center slot for a metric display — add as a prop on the existing `Pie` entry, not a new file |
+| **Funnel**         | Conversion step visualization — product analytics dashboards                                          |
 
 ---
 
@@ -108,14 +108,14 @@ The 5 existing charts (area, bar, bubble, line, pie) cover basic cases. Addition
 
 Gaps in the hook set that consumers commonly reach for:
 
-| Hook | Fills the gap |
-|---|---|
-| `useEventListener` | Typed, SSR-safe `addEventListener` — prevents the boilerplate everyone writes |
-| `useKeyPress` / `useHotkeys` | Keyboard shortcut binding — natural companion to the `Kbd` component |
-| `useInterval` | `setInterval` with automatic cleanup |
-| `useTimeout` | `setTimeout` with automatic cleanup |
-| `useAsync` | Wraps async functions with `loading / data / error` state — replaces dozens of `useState` triplets |
-| `useFormField` | Controlled field state with validation message — companion to `Textarea`, `NumberInput`, `Combobox` |
+| Hook                         | Fills the gap                                                                                       |
+| ---------------------------- | --------------------------------------------------------------------------------------------------- |
+| `useEventListener`           | Typed, SSR-safe `addEventListener` — prevents the boilerplate everyone writes                       |
+| `useKeyPress` / `useHotkeys` | Keyboard shortcut binding — natural companion to the `Kbd` component                                |
+| `useInterval`                | `setInterval` with automatic cleanup                                                                |
+| `useTimeout`                 | `setTimeout` with automatic cleanup                                                                 |
+| `useAsync`                   | Wraps async functions with `loading / data / error` state — replaces dozens of `useState` triplets  |
+| `useFormField`               | Controlled field state with validation message — companion to `Textarea`, `NumberInput`, `Combobox` |
 
 ---
 

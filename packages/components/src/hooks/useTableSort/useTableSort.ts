@@ -40,23 +40,31 @@ export function useTableSort<TKey extends string = string>({
     }),
   );
 
-  const isControlled = sortKey !== undefined || sortDirection !== undefined;
+  const isSortKeyControlled = sortKey !== undefined;
+  const isSortDirectionControlled = sortDirection !== undefined;
   const currentSort = normalizeSortState({
-    sortKey: isControlled ? sortKey : internalSort.sortKey,
-    sortDirection: isControlled
-      ? (sortDirection ?? "none")
+    sortKey: isSortKeyControlled ? sortKey : internalSort.sortKey,
+    sortDirection: isSortDirectionControlled
+      ? sortDirection
       : internalSort.sortDirection,
   });
 
   const setSort = useCallback(
     (nextSort: TableSortState<TKey>) => {
       const normalized = normalizeSortState(nextSort);
-      if (!isControlled) {
-        setInternalSort(normalized);
+      if (!isSortKeyControlled || !isSortDirectionControlled) {
+        setInternalSort((previousSort) => ({
+          sortKey: isSortKeyControlled
+            ? previousSort.sortKey
+            : normalized.sortKey,
+          sortDirection: isSortDirectionControlled
+            ? previousSort.sortDirection
+            : normalized.sortDirection,
+        }));
       }
       onSortChange?.(normalized);
     },
-    [isControlled, onSortChange],
+    [isSortDirectionControlled, isSortKeyControlled, onSortChange],
   );
 
   const clearSort = useCallback(() => {
