@@ -167,9 +167,9 @@ You must touch **all** of these:
 
 ## Test Suite (packages/components)
 
-- **68 test files, 453 total tests**
-  - UI components: 40 files, 359 tests
-  - Hooks: 26 files, 85 tests
+- **68 test files, 496 total tests**
+  - UI components: 44 files, 390 tests
+  - Hooks: 27 files, 97 tests
   - CLI: 2 files, 9 tests
 - Run: `pnpm --filter @zentauri-ui/zentauri-components test`
 - Single file: `pnpm --filter @zentauri-ui/zentauri-components exec vitest run src/ui/accordion/accordion.test.tsx`

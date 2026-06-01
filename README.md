@@ -26,12 +26,13 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 68 passed (68)   |
-| Tests      | 453 passed (453) |
+| Test files | 74 passed (74)   |
+| Tests      | 496 passed (496) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 40         | 359   |
+| Components and UI utilities | 44         | 390   |
+| React hooks                 | 28         | 97    |
 | React hooks                 | 26         | 85    |
 | CLI and import rewriting    | 2          | 9     |
 
