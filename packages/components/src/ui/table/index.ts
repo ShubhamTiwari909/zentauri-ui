@@ -18,5 +18,8 @@ export type {
   TableHeadCellProps,
   TableProps,
   TableSectionProps,
+  TableSortChangeHandler,
+  TableSortDirection,
+  TableSortState,
 } from "./types";
 export { tableVariants, tableRowVariants, tableCellVariants } from "./variants";

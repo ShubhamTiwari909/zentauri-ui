@@ -18,7 +18,7 @@ const sharedUseCases = [
   "Reuse the same hook in client components across Next.js App Router routes.",
   "Keep server components free of browser APIs; colocate interactive demos in client files.",
   "Compose hooks with Zentauri UI primitives for overlays, forms, and data views.",
-  "Align documentation with published @zentauri-ui/zentauri-components/lib/* paths.",
+  "Align documentation with published @zentauri-ui/zentauri-components/hooks/* paths.",
 ];
 
 const sharedFaqs: PreviewSeoDocument["faqs"] = [
@@ -45,7 +45,7 @@ function sharedSections(
   return [
     {
       heading: "What it does",
-      body: `${entry.name} ships as a small client module you can import from @zentauri-ui/zentauri-components/lib/${entry.module}. Use it when the behavior matches your integration without copying utility code.`,
+      body: `${entry.name} ships as a small client module you can import from @zentauri-ui/zentauri-components/hooks/${entry.module}. Use it when the behavior matches your integration without copying utility code.`,
     },
     {
       heading: "API notes",

@@ -11,6 +11,16 @@ import type {
 import type { tableVariants } from "./variants";
 
 export type TableAnimation = "none" | "hover";
+export type TableSortDirection = "ascending" | "descending" | "none";
+
+export type TableSortState<TKey extends string = string> = {
+  sortKey?: TKey;
+  sortDirection: TableSortDirection;
+};
+
+export type TableSortChangeHandler<TKey extends string = string> = (
+  nextSort: TableSortState<TKey>,
+) => void;
 
 type TableVariantProps = VariantProps<typeof tableVariants>;
 
@@ -31,7 +41,9 @@ export type TableSectionProps = {
 };
 
 export type TableHeadCellProps = ThHTMLAttributes<HTMLTableCellElement> & {
-  sortDirection?: "ascending" | "descending" | "none";
+  sortKey?: string;
+  sortDirection?: TableSortDirection;
+  onSortChange?: TableSortChangeHandler;
   ref?: Ref<HTMLTableCellElement>;
 };
 

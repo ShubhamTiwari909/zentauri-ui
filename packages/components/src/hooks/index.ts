@@ -49,6 +49,18 @@ export {
   useSessionStorage,
   type UseSessionStorageResult,
 } from "./useSessionStorage";
+export {
+  useTableFilter,
+  type TableFilterPredicate,
+  type TableFilterState,
+  type UseTableFilterParams,
+  type UseTableFilterResult,
+} from "./useTableFilter";
+export {
+  useTableSort,
+  type UseTableSortParams,
+  type UseTableSortResult,
+} from "./useTableSort";
 export { useThrottledCallback } from "./useThrottledCallback";
 export { useToggle } from "./useToggle";
 export { useWindowSize, type WindowSize } from "./useWindowSize";

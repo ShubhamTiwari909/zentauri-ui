@@ -9,6 +9,34 @@ import {
   TableHeader,
   TableRow,
 } from "@zentauri-ui/zentauri-components/ui/table";
+import { SortableTableDemo } from "./components/sortable-demo";
+
+const sortableTableSnippet = `${variantLeadComment(
+  "useTableSort + sortable TableHead props",
+)}
+const { sortKey, sortDirection, getSortProps } = useTableSort({
+  defaultSortKey: "customer",
+  defaultSortDirection: "ascending",
+});
+
+const sortedRows = useMemo(() => {
+  if (!sortKey || sortDirection === "none") return rows;
+  return [...rows].sort((a, b) => {
+    const result = String(a[sortKey]).localeCompare(String(b[sortKey]));
+    return sortDirection === "ascending" ? result : -result;
+  });
+}, [sortDirection, sortKey]);
+
+<Table appearance="bordered" stickyHeader>
+  <TableHeader>
+    <TableRow>
+      <TableHead {...getSortProps("customer")}>Customer</TableHead>
+      <TableHead {...getSortProps("status")}>Status</TableHead>
+      <TableHead {...getSortProps("amount")}>Amount</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>{/* sorted rows */}</TableBody>
+</Table>`;
 
 export function TableExamplesSection() {
   return (
@@ -17,9 +45,13 @@ export function TableExamplesSection() {
         Examples
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
-        Bordered appearance with sticky header for long lists.
+        Bordered appearance with sticky headers and composable sorting for data
+        views.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
+        <PreviewCodeShowcase code={sortableTableSnippet}>
+          <SortableTableDemo />
+        </PreviewCodeShowcase>
         <PreviewCodeShowcase
           code={`${variantLeadComment(`appearance · bordered, stickyHeader · true, size · sm (preview)`)}
 <Table appearance="bordered" stickyHeader>

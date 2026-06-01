@@ -15,13 +15,13 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 68 passed (68)   |
-| Tests      | 453 passed (453) |
+| Test files | 74 passed (74)   |
+| Tests      | 501 passed (501) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 40         | 359   |
-| React hooks                 | 26         | 85    |
+| Components and UI utilities | 44         | 391   |
+| React hooks                 | 28         | 101   |
 | CLI and import rewriting    | 2          | 9     |
 
 ### Per-suite snapshot
@@ -35,7 +35,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `cli/cli.integration.test.ts`                                           |     4 |
 | `src/ui/buttons/button.test.tsx`                                        |    41 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
-| `src/ui/marquee/marquee.test.tsx`                                       |     9 |
+| `src/ui/marquee/marquee.test.tsx`                                       |    10 |
 | `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
 | `src/ui/tree-view/tree-view.test.tsx`                                   |    10 |
 | `src/ui/card/card.test.tsx`                                             |     7 |
@@ -55,6 +55,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/ui/accordion/accordion.test.tsx`                                   |     7 |
 | `src/ui/toast/toast.test.tsx`                                           |     5 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
+| `src/ui/table/table.test.tsx`                                           |    11 |
 | `src/ui/tabs/tabs.test.tsx`                                             |     3 |
 | `src/ui/stepper/stepper.test.tsx`                                       |    12 |
 | `src/ui/timeline/timeline.test.tsx`                                     |    14 |
@@ -62,6 +63,9 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/ui/toggle/toggle.test.tsx`                                         |     5 |
 | `src/ui/slider/slider.test.tsx`                                         |     9 |
 | `src/ui/typography/typography.test.tsx`                                 |     7 |
+| `src/ui/skeleton/skeleton.test.tsx`                                     |     8 |
+| `src/ui/divider/divider.test.tsx`                                       |     6 |
+| `src/ui/empty-state/empty-state.test.tsx`                               |     6 |
 | `src/ui/alert/alert.test.tsx`                                           |    11 |
 | `src/ui/badge/badge.test.tsx`                                           |     6 |
 | `src/hooks/useClipboard/useClipboard.test.ts`                           |     6 |
@@ -77,6 +81,8 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/hooks/useThrottledCallback/useThrottledCallback.test.ts`           |     4 |
 | `src/hooks/useToggle/useToggle.test.ts`                                 |     4 |
 | `src/hooks/usePagination/usePagination.test.ts`                         |    10 |
+| `src/hooks/useTableFilter/useTableFilter.test.ts`                       |     9 |
+| `src/hooks/useTableSort/useTableSort.test.ts`                           |     7 |
 | `src/hooks/useSessionStorage/useSessionStorage.test.ts`                 |     3 |
 | `src/hooks/usePrefersColorScheme/usePrefersColorScheme.test.ts`         |     1 |
 | `src/hooks/useIsMounted/useIsMounted.test.ts`                           |     3 |
@@ -361,6 +367,8 @@ Hooks live in `src/hooks/`. Each hook is a separate published entry under `@zent
 | `usePrefersReducedMotion`   | `usePrefersReducedMotion`   | `prefers-reduced-motion`                                                                  |
 | `useResizeObserver`         | `useResizeObserver`         | `ElementSize`                                                                             |
 | `useSessionStorage`         | `useSessionStorage`         | `UseSessionStorageResult`                                                                 |
+| `useTableFilter`            | `useTableFilter`            | `TableFilterState`, `UseTableFilterResult`                                                |
+| `useTableSort`              | `useTableSort`              | `UseTableSortParams`, `UseTableSortResult`                                                |
 | `useThrottledCallback`      | `useThrottledCallback`      | Throttled callback ref                                                                    |
 | `useToggle`                 | `useToggle`                 | Boolean toggle state                                                                      |
 | `useWindowSize`             | `useWindowSize`             | `WindowSize`                                                                              |
@@ -376,6 +384,8 @@ import {
   buildPaginationItems,
   usePagination,
 } from "@zentauri-ui/zentauri-components/hooks/usePagination";
+import { useTableFilter } from "@zentauri-ui/zentauri-components/hooks/useTableFilter";
+import { useTableSort } from "@zentauri-ui/zentauri-components/hooks/useTableSort";
 import { cn } from "@zentauri-ui/zentauri-components/hooks/utils";
 ```
 
@@ -676,7 +686,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, the chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 453 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 501 test cases in total
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`** (`components` + `hooks`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
 
 ## Github Release log

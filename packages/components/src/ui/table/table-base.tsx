@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useMemo } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  type KeyboardEvent,
+} from "react";
 
 import { cn } from "../../lib/utils";
 
@@ -10,6 +16,7 @@ import type {
   TableHeadCellProps,
   TableProps,
   TableSectionProps,
+  TableSortDirection,
 } from "./types";
 import { tableCellVariants, tableRowVariants, tableVariants } from "./variants";
 
@@ -122,19 +129,20 @@ export function TableRow({
   children,
   ref,
   as: Wrapper = "tr",
+  rowAnimation: _rowAnimation,
   ...rest
 }: TableSectionProps & { ref?: React.Ref<HTMLTableRowElement> }) {
   const { appearance } = useTableContext("TableRow");
 
   return (
-    <tr
+    <Wrapper
       ref={ref}
       data-slot="table-row"
       className={cn(tableRowVariants({ appearance }), className)}
       {...rest}
     >
       {children}
-    </tr>
+    </Wrapper>
   );
 }
 
@@ -144,21 +152,78 @@ export function TableHead({
   className,
   children,
   scope = "col",
+  sortKey,
   sortDirection,
+  onSortChange,
+  onClick,
+  onKeyDown,
+  tabIndex,
   ref,
   ...rest
 }: TableHeadCellProps) {
   const { appearance, size, textAlign } = useTableContext("TableHead");
+  const isSortable = Boolean(sortKey && onSortChange);
+  const sortableDirection: TableSortDirection = sortDirection ?? "none";
+
+  const handleSort = useCallback(() => {
+    if (!sortKey || !onSortChange) {
+      return;
+    }
+
+    const nextDirection: TableSortDirection =
+      sortableDirection === "ascending"
+        ? "descending"
+        : sortableDirection === "descending"
+          ? "none"
+          : "ascending";
+
+    onSortChange({
+      sortKey,
+      sortDirection: nextDirection,
+    });
+  }, [onSortChange, sortKey, sortableDirection]);
+
+  const handleClick = useCallback<NonNullable<TableHeadCellProps["onClick"]>>(
+    (event) => {
+      onClick?.(event);
+      if (!event.defaultPrevented) {
+        handleSort();
+      }
+    },
+    [handleSort, onClick],
+  );
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLTableCellElement>) => {
+      onKeyDown?.(event);
+      if (event.defaultPrevented || !isSortable) {
+        return;
+      }
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        handleSort();
+      }
+    },
+    [handleSort, isSortable, onKeyDown],
+  );
+
   return (
     <th
       ref={ref}
       data-slot="table-head"
       scope={scope}
-      aria-sort={sortDirection}
+      aria-sort={isSortable ? sortableDirection : sortDirection}
+      data-sort-key={sortKey}
+      data-sort-direction={sortDirection}
+      tabIndex={isSortable ? (tabIndex ?? 0) : tabIndex}
       className={cn(
         tableCellVariants({ appearance, size, textAlign }),
+        isSortable &&
+          "cursor-pointer select-none outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950",
         className,
       )}
+      onClick={isSortable ? handleClick : onClick}
+      onKeyDown={isSortable ? handleKeyDown : onKeyDown}
       {...rest}
     >
       {children}
