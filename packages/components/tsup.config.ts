@@ -103,6 +103,8 @@ const hooksEntryNames = [
   "usePrefersReducedMotion",
   "useResizeObserver",
   "useSessionStorage",
+  "useTableFilter",
+  "useTableSort",
   "useThrottledCallback",
   "useToggle",
   "useWindowSize",

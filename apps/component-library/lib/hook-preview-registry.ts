@@ -23,5 +23,5 @@ export function getHookPreviewEntry(
 }
 
 export function hookImportPath(moduleName: string): string {
-  return `@zentauri-ui/zentauri-components/lib/${moduleName}`;
+  return `@zentauri-ui/zentauri-components/hooks/${moduleName}`;
 }

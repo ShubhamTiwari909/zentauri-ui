@@ -170,6 +170,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Headless pagination for tables and lists; pair with your own buttons or the Pagination component.",
   },
   {
+    slug: "use-table-sort",
+    module: "useTableSort",
+    name: "useTableSort",
+    description:
+      "Controlled or uncontrolled sort state for table headers, including sortable TableHead props.",
+    intro:
+      "Use for data tables that need external sort state without baking sorting behavior into the Table primitive.",
+  },
+  {
     slug: "use-prefers-color-scheme",
     module: "usePrefersColorScheme",
     name: "usePrefersColorScheme",

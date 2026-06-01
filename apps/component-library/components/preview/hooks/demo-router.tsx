@@ -26,14 +26,23 @@ import { usePrefersColorScheme } from "@zentauri-ui/zentauri-components/hooks/us
 import { usePrefersReducedMotion } from "@zentauri-ui/zentauri-components/hooks/usePrefersReducedMotion";
 import { useResizeObserver } from "@zentauri-ui/zentauri-components/hooks/useResizeObserver";
 import { useSessionStorage } from "@zentauri-ui/zentauri-components/hooks/useSessionStorage";
+import { useTableSort } from "@zentauri-ui/zentauri-components/hooks/useTableSort";
 import { useThrottledCallback } from "@zentauri-ui/zentauri-components/hooks/useThrottledCallback";
 import { useToggle } from "@zentauri-ui/zentauri-components/hooks/useToggle";
 import { useWindowSize } from "@zentauri-ui/zentauri-components/hooks/useWindowSize";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 import type { HookPreviewSlug } from "@/lib/hook-preview-registry";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { HookDemoPanel } from "./demo-panel";
 import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@zentauri-ui/zentauri-components/ui/table";
 
 type HookDemoRouterProps = {
   slug: HookPreviewSlug;
@@ -77,6 +86,8 @@ export function HookDemoRouter({ slug }: HookDemoRouterProps) {
       return <PageVisibilityDemo />;
     case "use-pagination":
       return <PaginationDemo />;
+    case "use-table-sort":
+      return <TableSortDemo />;
     case "use-dynamic-stepper":
       return <DynamicStepperHookDemo />;
     case "use-prefers-color-scheme":
@@ -661,6 +672,91 @@ function PaginationDemo() {
       </p>
       <pre className="max-h-32 overflow-auto rounded-lg border border-white/10 bg-slate-950/80 p-3 text-xs text-slate-300">
         {JSON.stringify(built, null, 2)}
+      </pre>
+    </HookDemoPanel>
+  );
+}
+
+type TableSortRow = {
+  name: string;
+  team: string;
+  tickets: number;
+};
+
+type TableSortKey = keyof TableSortRow;
+
+const tableSortRows: TableSortRow[] = [
+  { name: "Avery Stone", team: "Support", tickets: 24 },
+  { name: "Mira Chen", team: "Platform", tickets: 16 },
+  { name: "Noah Rivera", team: "Design", tickets: 31 },
+  { name: "Priya Shah", team: "Support", tickets: 12 },
+];
+
+function compareTableSortValues(a: string | number, b: string | number) {
+  if (typeof a === "number" && typeof b === "number") {
+    return a - b;
+  }
+  return String(a).localeCompare(String(b));
+}
+
+function TableSortDemo() {
+  const { sortKey, sortDirection, getSortProps, clearSort } =
+    useTableSort<TableSortKey>({
+      defaultSortKey: "name",
+      defaultSortDirection: "ascending",
+    });
+
+  const sortedRows = useMemo(() => {
+    if (!sortKey || sortDirection === "none") {
+      return tableSortRows;
+    }
+
+    const activeSortKey = sortKey as TableSortKey;
+    return [...tableSortRows].sort((a, b) => {
+      const result = compareTableSortValues(a[activeSortKey], b[activeSortKey]);
+      return sortDirection === "ascending" ? result : -result;
+    });
+  }, [sortDirection, sortKey]);
+
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-slate-400">
+          Click a sortable header to cycle ascending, descending, and none.
+        </p>
+        <Button
+          type="button"
+          size="sm"
+          appearance="outline"
+          onClick={clearSort}
+        >
+          Clear sort
+        </Button>
+      </div>
+      <Table appearance="bordered" size="sm">
+        <TableHeader>
+          <TableRow>
+            <TableHead {...getSortProps("name")}>Name</TableHead>
+            <TableHead {...getSortProps("team")}>Team</TableHead>
+            <TableHead {...getSortProps("tickets")} className="text-right">
+              Tickets
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {sortedRows.map((row) => (
+            <TableRow key={row.name}>
+              <TableCell>{row.name}</TableCell>
+              <TableCell>{row.team}</TableCell>
+              <TableCell className="text-right tabular-nums">
+                {row.tickets}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      <pre className="mt-4 overflow-auto rounded-lg border border-white/10 bg-slate-950/80 p-3 text-xs text-slate-300">
+        {JSON.stringify({ sortKey, sortDirection }, null, 2)}
       </pre>
     </HookDemoPanel>
   );
