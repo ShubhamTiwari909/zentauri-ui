@@ -1,4 +1,4 @@
-import ChartsHubPage from "@/components/preview/charts/charts-hub-page";
+import ChartsHubPage from "@/components/preview/charts/hub-page";
 import { previewSeoDocumentToMetadata } from "@/lib/preview-seo";
 import { getPreviewSeo } from "@/lib/preview-seo-registry";
 

@@ -1,0 +1,97 @@
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@zentauri-ui/zentauri-components/ui/tooltip";
+import { TooltipContentAnimated } from "@zentauri-ui/zentauri-components/ui/tooltip/animated";
+import { cn } from "@/lib/utils";
+
+import type {
+  ContentAnimation,
+  ContentSize,
+  ContentVariant,
+  ContentWidth,
+  TooltipPlacement,
+} from "./types";
+
+export function ContentVariantSizeDemo({
+  variant,
+  size,
+}: {
+  variant: ContentVariant;
+  size: ContentSize;
+}) {
+  return (
+    <Tooltip>
+      <TooltipTrigger className="text-slate-900 dark:text-white">
+        Hover · Variant: {variant} · Size: {size}
+      </TooltipTrigger>
+      <TooltipContent variant={variant} size={size}>
+        Tooltip for {variant} / {size}.
+      </TooltipContent>
+    </Tooltip>
+  );
+}
+
+const positionLayoutClass: Record<TooltipPlacement, string> = {
+  top: "justify-center",
+  bottom: "justify-center",
+  left: "justify-end",
+  right: "justify-start",
+};
+
+export function PositionDemo({ position }: { position: TooltipPlacement }) {
+  return (
+    <>
+      <p className="mb-5 text-xs md:text-sm">Position: {position}</p>
+      <div
+        className={cn(
+          "flex min-h-44 w-full max-w-xl items-center p-4",
+          positionLayoutClass[position],
+        )}
+      >
+        <p className="mb-5 text-xs md:text-sm"></p>
+        <Tooltip position={position}>
+          <TooltipTrigger className="text-slate-900 dark:text-white">
+            Hover
+          </TooltipTrigger>
+          <TooltipContent className="min-w-50" variant="outline">
+            Tooltip body.
+          </TooltipContent>
+        </Tooltip>
+      </div>
+    </>
+  );
+}
+
+export function ContentVariantWidthDemo({
+  variant,
+  width,
+}: {
+  variant: ContentVariant;
+  width: ContentWidth;
+}) {
+  return (
+    <Tooltip>
+      <TooltipTrigger className="text-slate-900 dark:text-white">
+        Hover · Variant: {variant} · Width: {width}
+      </TooltipTrigger>
+      <TooltipContent variant={variant} width={width}>
+        Tooltip for {variant} / {width}.
+      </TooltipContent>
+    </Tooltip>
+  );
+}
+
+export function AnimationDemo({ animation }: { animation: ContentAnimation }) {
+  return (
+    <Tooltip>
+      <TooltipTrigger className="text-slate-900 dark:text-white">
+        Hover · animation · {animation}
+      </TooltipTrigger>
+      <TooltipContentAnimated variant="outline" animation={animation}>
+        Motion preset: {animation}.
+      </TooltipContentAnimated>
+    </Tooltip>
+  );
+}

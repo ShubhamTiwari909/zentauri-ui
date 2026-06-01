@@ -1,10 +1,10 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
-import { CheckboxCodeExamplesSection } from "./sections/checkbox-code-examples-section";
-import { CheckboxExamplesSection } from "./sections/checkbox-examples-section";
-import { CheckboxHeroSection } from "./sections/checkbox-hero-section";
+import { CheckboxCodeExamplesSection } from "./sections/snippet-sections";
+import { CheckboxExamplesSection } from "./sections/component-demo";
+import { CheckboxHeroSection } from "./sections/hero";
 
 export default function CheckboxPreviewPage({
   seo,

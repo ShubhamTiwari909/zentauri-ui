@@ -1,4 +1,4 @@
-import HookPreviewPage from "@/components/preview/hooks/hook-preview-page";
+import HookPreviewPage from "@/components/preview/hooks/page";
 import {
   HOOK_PREVIEW_SLUGS,
   isHookPreviewSlug,

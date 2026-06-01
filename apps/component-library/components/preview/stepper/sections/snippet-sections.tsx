@@ -1,0 +1,62 @@
+import { Section } from "@/components/common/Section";
+import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
+
+import { StepperDemo } from "./components/demo";
+import { STEPPER_APPEARANCES } from "./components/data";
+import { stepperSnippet } from "./components/snippets";
+
+export function StepperCodeExamplesSection() {
+  return (
+    <Section>
+      <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
+        Stepper code examples
+      </h2>
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
+        Use Show output / Show code on each row. Snippets start with a Variant
+        line naming orientation, active step, and size.
+      </p>
+      <div className="mt-6 space-y-10 rounded-xl">
+        {STEPPER_APPEARANCES.map((appearance) => (
+          <PreviewCodeShowcase
+            key={`h-${appearance}`}
+            code={stepperSnippet({
+              orientation: "horizontal",
+              appearance,
+              size: "md",
+            })}
+          >
+            <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
+              Horizontal · appearance:{" "}
+              <span className="font-bold">{appearance}</span>
+            </p>
+            <StepperDemo
+              orientation="horizontal"
+              appearance={appearance}
+              size="md"
+            />
+          </PreviewCodeShowcase>
+        ))}
+        <PreviewCodeShowcase
+          key="vertical"
+          code={stepperSnippet({
+            orientation: "vertical",
+            appearance: "complete",
+            size: "sm",
+          })}
+        >
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
+            Vertical
+            <span className="font-bold">SM</span>
+          </p>
+          <div className="max-w-xl">
+            <StepperDemo
+              orientation="vertical"
+              size="sm"
+              appearance="complete"
+            />
+          </div>
+        </PreviewCodeShowcase>
+      </div>
+    </Section>
+  );
+}

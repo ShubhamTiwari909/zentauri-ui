@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { PaginationCodeExamplesSection } from "./sections/pagination-code-examples-section";
-import { PaginationHeroSection } from "./sections/pagination-hero-section";
-import { PaginationExamplesSection } from "./sections/pagination-examples-section";
+import { PaginationCodeExamplesSection } from "./sections/snippet-sections";
+import { PaginationHeroSection } from "./sections/hero";
+import { PaginationExamplesSection } from "./sections/component-demo";
 
 export default function PaginationPreviewPage({
   seo,

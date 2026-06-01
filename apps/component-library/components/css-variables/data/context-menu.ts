@@ -1,4 +1,4 @@
-import { defineCssVariableReference } from "../css-variable-reference-types";
+import { defineCssVariableReference } from "../reference-types";
 import { dropdownCssVariables } from "./dropdown";
 
 const contextMenuLightVariables = [

@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { DrawerCodeExamplesSection } from "./sections/drawer-code-examples-section";
-import { DrawerExamplesSection } from "./sections/drawer-examples-section";
-import { DrawerHeroSection } from "./sections/drawer-hero-section";
+import { DrawerCodeExamplesSection } from "./sections/snippet-sections";
+import { DrawerExamplesSection } from "./sections/component-demo";
+import { DrawerHeroSection } from "./sections/hero";
 
 export default function DrawerPreviewPage({
   seo,

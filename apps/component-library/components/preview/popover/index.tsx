@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { PopoverCodeExamplesSection } from "./sections/popover-code-examples-section";
-import { PopoverExamplesSection } from "./sections/popover-examples-section";
-import { PopoverHeroSection } from "./sections/popover-hero-section";
+import { PopoverCodeExamplesSection } from "./sections/snippet-sections";
+import { PopoverExamplesSection } from "./sections/component-demo";
+import { PopoverHeroSection } from "./sections/hero";
 
 export default function PopoverPreviewPage({
   seo,

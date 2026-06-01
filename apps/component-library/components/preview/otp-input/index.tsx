@@ -1,10 +1,10 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
-import { OTPInputCodeExamplesSection } from "./sections/otp-input-code-examples-section";
-import { OTPInputExamplesSection } from "./sections/otp-input-examples-section";
-import { OTPInputHeroSection } from "./sections/otp-input-hero-section";
+import { OTPInputCodeExamplesSection } from "./sections/snippet-sections";
+import { OTPInputExamplesSection } from "./sections/component-demo";
+import { OTPInputHeroSection } from "./sections/hero";
 
 export default function OTPInputPreviewPage({
   seo,

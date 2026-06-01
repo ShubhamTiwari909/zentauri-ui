@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { BreadcrumbCodeExamplesSection } from "./sections/breadcrumb-code-examples-section";
-import { BreadcrumbExamplesSection } from "./sections/breadcrumb-examples-section";
-import { BreadcrumbHeroSection } from "./sections/breadcrumb-hero-section";
+import { BreadcrumbCodeExamplesSection } from "./sections/snippet-sections";
+import { BreadcrumbExamplesSection } from "./sections/component-demo";
+import { BreadcrumbHeroSection } from "./sections/hero";
 
 export default function BreadcrumbPreviewPage({
   seo,

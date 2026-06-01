@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { DropdownCodeExamplesSection } from "./sections/dropdown-code-examples-section";
-import { DropdownExamplesSection } from "./sections/dropdown-examples-section";
-import { DropdownHeroSection } from "./sections/dropdown-hero-section";
+import { DropdownCodeExamplesSection } from "./sections/snippet-sections";
+import { DropdownExamplesSection } from "./sections/component-demo";
+import { DropdownHeroSection } from "./sections/hero";
 
 export default function DropdownPreviewPage({
   seo,

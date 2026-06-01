@@ -1,4 +1,4 @@
-import { defineCssVariableReference } from "../css-variable-reference-types";
+import { defineCssVariableReference } from "../reference-types";
 
 export const otpInputCssVariables = defineCssVariableReference({
   title: "OTP input CSS variables",

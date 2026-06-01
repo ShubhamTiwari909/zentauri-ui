@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { TabsCodeExamplesSection } from "./sections/tabs-code-examples-section";
-import { TabsExamplesSection } from "./sections/tabs-examples-section";
-import { TabsHeroSection } from "./sections/tabs-hero-section/tabs-hero-section";
+import { TabsCodeExamplesSection } from "./sections/snippet-sections";
+import { TabsExamplesSection } from "./sections/component-demo";
+import { TabsHeroSection } from "./sections/hero";
 
 export default function TabsPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
   return (

@@ -1,10 +1,10 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
-import { MarqueeCodeExamplesSection } from "./sections/marquee-code-examples-section";
-import { MarqueeExamplesSection } from "./sections/marquee-examples-section";
-import { MarqueeHeroSection } from "./sections/marquee-hero-section";
+import { MarqueeCodeExamplesSection } from "./sections/snippet-sections";
+import { MarqueeExamplesSection } from "./sections/component-demo";
+import { MarqueeHeroSection } from "./sections/hero";
 
 export default function MarqueePreviewPage({
   seo,

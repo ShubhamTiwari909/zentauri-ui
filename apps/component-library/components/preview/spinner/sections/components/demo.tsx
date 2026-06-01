@@ -1,0 +1,14 @@
+import { Spinner } from "@zentauri-ui/zentauri-components/ui/spinner/animated";
+
+import type { SpinnerDemoProps } from "./types";
+
+export function SpinnerDemo({ appearance, variant, size }: SpinnerDemoProps) {
+  return (
+    <Spinner
+      appearance={appearance}
+      variant={variant}
+      size={size}
+      aria-label="Loading"
+    />
+  );
+}

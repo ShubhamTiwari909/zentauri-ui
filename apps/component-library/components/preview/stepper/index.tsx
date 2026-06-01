@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { StepperCodeExamplesSection } from "./sections/stepper-code-examples-section";
-import { StepperExamplesSection } from "./sections/stepper-examples-section";
-import { StepperHeroSection } from "./sections/stepper-hero-section";
+import { StepperCodeExamplesSection } from "./sections/snippet-sections";
+import { StepperExamplesSection } from "./sections/component-demo";
+import { StepperHeroSection } from "./sections/hero";
 
 export default function StepperPreviewPage({
   seo,

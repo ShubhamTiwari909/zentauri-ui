@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { TableCodeExamplesSection } from "./sections/table-code-examples-section";
-import { TableExamplesSection } from "./sections/table-examples-section";
-import { TableHeroSection } from "./sections/table-hero-section";
+import { TableCodeExamplesSection } from "./sections/snippet-sections";
+import { TableExamplesSection } from "./sections/component-demo";
+import { TableHeroSection } from "./sections/hero";
 
 export default function TablePreviewPage({ seo }: { seo: PreviewSeoDocument }) {
   return (

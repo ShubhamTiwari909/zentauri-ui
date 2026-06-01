@@ -1,4 +1,4 @@
-import HooksHubPage from "@/components/preview/hooks/hooks-hub-page";
+import HooksHubPage from "@/components/preview/hooks/hub-page";
 import { previewSeoDocumentToMetadata } from "@/lib/preview-seo";
 import { getPreviewSeo } from "@/lib/preview-seo-registry";
 

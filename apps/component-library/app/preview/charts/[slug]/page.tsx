@@ -1,4 +1,4 @@
-import ChartPreviewPage from "@/components/preview/charts/chart-preview-page";
+import ChartPreviewPage from "@/components/preview/charts/page";
 import {
   CHART_PREVIEW_SLUGS,
   getChartSectionSeo,

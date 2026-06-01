@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { AnimatedNumberCodeExamplesSection } from "./sections/animated-number-code-examples-section";
-import { AnimatedNumberExamplesSection } from "./sections/animated-number-examples-section";
-import { AnimatedNumberHeroSection } from "./sections/animated-number-hero-section";
+import { AnimatedNumberCodeExamplesSection } from "./sections/snippet-sections";
+import { AnimatedNumberExamplesSection } from "./sections/component-demo";
+import { AnimatedNumberHeroSection } from "./sections/hero";
 
 export default function AnimatedNumberPreviewPage({
   seo,

@@ -1,9 +1,9 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { ProgressCodeExamplesSection } from "./sections/progress-code-examples-section";
-import { ProgressExamplesSection } from "./sections/progress-examples-section";
-import { ProgressHeroSection } from "./sections/progress-hero-section";
+import { ProgressCodeExamplesSection } from "./sections/snippet-sections";
+import { ProgressExamplesSection } from "./sections/component-demo";
+import { ProgressHeroSection } from "./sections/hero";
 
 export default function ProgressPreviewPage({
   seo,

@@ -1,10 +1,10 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
-import { PreviewSeoDoc } from "@/components/preview/seo/preview-seo-doc";
+import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
-import { ScrollAreaCodeExamplesSection } from "./sections/scroll-area-code-examples-section";
-import { ScrollAreaExamplesSection } from "./sections/scroll-area-examples-section";
-import { ScrollAreaHeroSection } from "./sections/scroll-area-hero-section";
+import { ScrollAreaCodeExamplesSection } from "./sections/snippet-sections";
+import { ScrollAreaExamplesSection } from "./sections/component-demo";
+import { ScrollAreaHeroSection } from "./sections/hero";
 
 export default function ScrollAreaPreviewPage({
   seo,

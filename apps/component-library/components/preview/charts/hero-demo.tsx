@@ -1,0 +1,19 @@
+"use client";
+
+import type { ChartPreviewSlug } from "@/lib/charts-preview-registry";
+
+import { ChartBySlug } from "./by-slug";
+
+export function ChartHeroDemo({ slug }: { slug: ChartPreviewSlug }) {
+  return (
+    <div className="min-w-0 space-y-3 rounded-3xl border border-white/10 bg-white/90 dark:bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+      <ChartBySlug
+        slug={slug}
+        appearance="glass"
+        height={340}
+        stroke="#ff0000"
+        fill="#000000"
+      />
+    </div>
+  );
+}
