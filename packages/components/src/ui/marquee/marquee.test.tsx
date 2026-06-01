@@ -17,13 +17,14 @@ describe("Marquee", () => {
 
     expect(document.querySelector('[data-slot="marquee"]')).toBeTruthy();
     expect(document.querySelector('[data-slot="marquee-track"]')).toBeTruthy();
-    expect(screen.getAllByText("Acme")).toHaveLength(2);
-
     const groups = document.querySelectorAll(
       '[data-slot="marquee-item-group"]',
     );
+    expect(groups).toHaveLength(2);
+    expect(groups[0]?.textContent).toContain("Acme");
     expect(groups[1]).toHaveAttribute("aria-hidden", "true");
     expect(groups[1]).toHaveAttribute("inert");
+    expect(groups[1]?.textContent).toContain("Acme");
   });
 
   it("applies horizontal metadata by default", () => {

@@ -145,7 +145,7 @@ export function NotificationBanner() {
 
 export function MarqueeExamplesSection() {
   return (
-    <Section className="max-w-7xl">
+    <Section className="max-w-7xl min-[2000px]:max-w-full">
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
         Examples
       </h2>
