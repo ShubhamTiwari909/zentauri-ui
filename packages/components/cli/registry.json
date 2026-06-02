@@ -180,6 +180,9 @@
       "react-icons",
       "framer-motion"
     ],
+    "spinner": [
+      "framer-motion"
+    ],
     "charts/area": [
       "recharts"
     ],

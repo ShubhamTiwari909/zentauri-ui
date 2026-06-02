@@ -113,6 +113,8 @@ def test_list_paginates_submissions(client: TestClient) -> None:
     assert body["page_size"] == 2
     assert body["pages"] == 2
     assert len(body["items"]) == 2
+    assert body["items"][0]["subject"] == "Request 2"
+    assert body["items"][1]["subject"] == "Request 1"
 
 
 def test_get_unknown_submission_returns_404(client: TestClient) -> None:

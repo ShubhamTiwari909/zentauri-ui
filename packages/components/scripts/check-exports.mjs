@@ -21,7 +21,7 @@ function parseNames(constName) {
   if (!match) {
     throw new Error(`Could not parse ${constName} from tsup.config.ts`);
   }
-  return [...match[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]);
+  return [...match[1].matchAll(/["']([^"']+)["']/g)].map((m) => m[1]);
 }
 
 const ui = parseNames("uiComponentNames");

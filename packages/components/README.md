@@ -669,7 +669,7 @@ Defaults look like this; edit `resolvedPaths` and `aliases` so they match your a
 
 ### Registry (`cli/registry.json`)
 
-- **`components`**: sorted list of folder names under **`src/ui/`**, plus chart entries from **`src/charts/<type>`**, that `add` may copy. The file is **generated**; the canonical build list lives in **`tsup.config.ts`** as `uiComponentNames` and `chartEntryNames`, and the generator always ensures **`spinner`** is included so the CLI stays aligned with the animated-only spinner bundle.
+- **`components`**: sorted list of folder names under **`src/ui/`**, plus chart entries from **`src/charts/<type>`**, that `add` may copy. The file is **generated**; the canonical build lists live in **`tsup.config.ts`** as `uiComponentNames`, `uiAnimatedComponentNames`, and `chartEntryNames`, so animated-only entries such as **`spinner`** stay aligned with the CLI.
 - **`hooks`**: sorted list of folder names under **`src/hooks/`** that `add hook` may copy; generated from **`hooksEntryNames`** in **`tsup.config.ts`** (same entries as published `…/hooks/<name>` subpaths).
 - **`nameAliases`**: optional map from a CLI token to a real folder name: `button` → `buttons`, `input` → `inputs` (singular forms while folders stay plural), and `chart-<type>` → `charts/<type>` for every chart (so `add chart-line` and `add charts/line` are equivalent).
 - **`peerHints`**: generated map from a component/chart name to the **optional peer dependencies** its source imports (`framer-motion` for components that ship an `animated/` variant, `react-icons` where icons are used, `recharts` for every chart). After `add`, the CLI prints a deduplicated install hint built from this map, so you never have to guess which peers a vendored component needs.
@@ -775,7 +775,7 @@ From this package directory in the monorepo:
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, the chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
 - `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 548 test cases in total
-- **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `hooks` + `peerHints`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
+- **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `hooks` + `peerHints`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
 
 ## Github Release log
 
