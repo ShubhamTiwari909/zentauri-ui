@@ -182,11 +182,6 @@ You must touch **all** of these:
 - Run: `pnpm --filter @zentauri-ui/zentauri-components test`
 - Single file: `pnpm --filter @zentauri-ui/zentauri-components exec vitest run src/ui/accordion/accordion.test.tsx`
 - Single test: add `-t "renders"`
-- Regenerate Markdown health tables from Vitest JSON with `pnpm summarize:test-health packages/components/vitest-results.json`
-
-## Drift Audit
-
-Run `pnpm audit:drift` from the repository root after adding, removing, or renaming package entries or docs previews. It compares `tsup.config.ts`, `src/ui`, `src/charts`, `src/hooks`, docs component routes, SEO JSON, chart preview links, hook preview modules, and `cli/registry.json`.
 
 ---
 

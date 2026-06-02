@@ -282,7 +282,6 @@ To regenerate the Markdown package-health tables from Vitest JSON:
 
 ```sh
 pnpm --filter @zentauri-ui/zentauri-components exec vitest run --reporter=json --outputFile vitest-results.json
-pnpm summarize:test-health packages/components/vitest-results.json
 ```
 
 ### Docs app tests

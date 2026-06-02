@@ -1,3 +1,4 @@
+import type { ComponentProps, ReactNode } from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { SidebarNav } from "./sidebar-nav";
@@ -6,6 +7,30 @@ import * as navigation from "next/navigation";
 
 vi.mock("next/navigation", () => ({
   usePathname: vi.fn(),
+}));
+
+vi.mock("next/link", () => ({
+  default: ({
+    children,
+    href,
+    onClick,
+    ...props
+  }: {
+    children: ReactNode;
+    href: string;
+    onClick?: ComponentProps<"a">["onClick"];
+  }) => (
+    <a
+      href={href}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick?.(e);
+      }}
+      {...props}
+    >
+      {children}
+    </a>
+  ),
 }));
 
 const mockSidebarRouteData: SidebarNavGroup[] = [
