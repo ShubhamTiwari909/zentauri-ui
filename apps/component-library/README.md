@@ -17,9 +17,10 @@ For local development, the app serves at [http://localhost:3000](http://localhos
 
 - **Home** (`/`) — Entry landing for Zentauri UI.
 - **Preview hub** (`/preview/components`) — Sidebar-driven navigation, live demos, and code examples (`app/preview/components/page.tsx`; SEO from `content/seo/preview/components/index.json`).
-- **Installation** (`/preview/components/installation`) — On-site getting-started context that complements the package README.
+- **Installation** (`/preview/installation`) — On-site getting-started context that complements the package README.
 - **Component previews** (`/preview/components/<name>`) — Each route loads a preview module under `components/preview/<name>/` with sections (hero, examples, code panels). Matching SEO lives in `content/seo/preview/components/<name>.json` and is registered in `lib/preview-seo-registry.ts`.
-- **Hooks previews** (`/preview/components/hooks`, `/preview/components/hooks/<slug>`) — Hook gallery and individual hook pages under `app/preview/components/hooks/`; hub SEO JSON is `content/seo/preview/hooks/hooks.json`, and per-hook titles and descriptions are assembled in `lib/hook-preview-seo.ts` from the hook registry.
+- **Hooks previews** (`/preview/hooks`, `/preview/hooks/<slug>`) — Hook gallery and individual hook pages under `app/preview/hooks/`; hub SEO JSON is `content/seo/preview/hooks/hooks.json`, and per-hook titles and descriptions are assembled in `lib/hook-preview-seo.ts` from the hook registry.
+- **Charts previews** (`/preview/charts`, `/preview/charts/<slug>`) — Chart gallery and individual chart pages backed by `lib/charts-preview-registry.ts` and `content/seo/preview/charts/*.json`.
 
 Supporting pieces include:
 
@@ -70,7 +71,7 @@ The home page includes a package health section with live npm badge images and t
 - **`content/seo/preview/components/`** — One JSON document per component (or hub) preview slug (for example `alert.json`, `buttons.json`, `index.json`, `installation.json`). Consumed via `lib/preview-seo-registry.ts` for `metadata` and long-form sections (headings, intro, FAQs).
 - **`content/seo/preview/hooks/`** — Hooks gallery SEO (`hooks.json`) registered alongside component docs in `preview-seo-registry.ts`.
 - **`lib/`** — Shared logic such as `preview-seo.ts` (metadata base URL, document-to-metadata mapping, FAQ schema).
-- **`vitest.config.ts`** / **`vitest.setup.ts`** — Unit test runner and DOM test setup.
+- **`vitest.config.mts`** / **`vitest.setup.ts`** — Unit test runner and DOM test setup.
 
 The monorepo root uses [Turborepo](https://turbo.build/repo) and [pnpm](https://pnpm.io/) workspaces (`apps/*`, `packages/*`).
 
@@ -91,20 +92,23 @@ From **`apps/component-library`** (after install from repo root):
 | `pnpm lint`        | ESLint (Next.js config)                                                |
 | `pnpm format`      | Prettier write for `**/*.{ts,tsx,md}` under this app only              |
 | `pnpm check-types` | TypeScript `tsc --noEmit` (no `.next` emit; validates `tsconfig.json`) |
+| `pnpm test`        | Vitest run for docs app chrome/sidebar tests                           |
+| `pnpm test:watch`  | Vitest watch mode                                                      |
 
 From the **repository root**:
 
-| Command                                                 | Purpose                                                                        |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| `pnpm install`                                          | Install all workspace packages                                                 |
-| `pnpm dev`                                              | `turbo run dev` for every package that defines `dev`                           |
-| `pnpm build`                                            | `turbo run build` (depends on upstream package builds per `turbo.json`)        |
-| `pnpm lint`                                             | `turbo run lint`                                                               |
-| `pnpm format`                                           | Prettier write across the repo (`**/*.{ts,tsx,md}`)                            |
-| `pnpm check-types`                                      | `turbo run check-types` (runs `check-types` in each workspace that defines it) |
-| `pnpm turbo run dev --filter=component-library`         | Start only this app’s dev task                                                 |
-| `pnpm turbo run format --filter=component-library`      | Run this app’s `format` script                                                 |
-| `pnpm turbo run check-types --filter=component-library` | Run this app’s `check-types` script                                            |
+| Command                                                 | Purpose                                                                             |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `pnpm install`                                          | Install all workspace packages                                                      |
+| `pnpm dev`                                              | `turbo run dev` for every package that defines `dev`                                |
+| `pnpm build`                                            | `turbo run build` (depends on upstream package builds per `turbo.json`)             |
+| `pnpm lint`                                             | `turbo run lint`                                                                    |
+| `pnpm format`                                           | Prettier write across the repo (`**/*.{ts,tsx,md}`)                                 |
+| `pnpm check-types`                                      | `turbo run check-types` (runs `check-types` in each workspace that defines it)      |
+| `pnpm test:docs`                                        | Run this app’s Vitest test suite                                                    |
+| `pnpm turbo run dev --filter=component-library`         | Start only this app’s dev task                                                      |
+| `pnpm turbo run format --filter=component-library`      | Run this app’s `format` script                                                      |
+| `pnpm turbo run check-types --filter=component-library` | Run this app’s `check-types` script                                                 |
 
 Root `pnpm format` runs Prettier once from the monorepo root (it is not wired through Turbo). [`turbo.json`](../../turbo.json) defines a `format` task so `pnpm turbo run format` can run each package’s `format` script in parallel where present.
 

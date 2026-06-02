@@ -250,14 +250,15 @@ You can install [turbo](https://turborepo.dev/docs/getting-started/installation)
 
 ## Root scripts (cheat sheet)
 
-| Command            | What it does                                                                  |
-| ------------------ | ----------------------------------------------------------------------------- |
-| `pnpm install`     | Install and link all workspaces                                               |
-| `pnpm dev`         | `turbo run dev` — persistent dev tasks (Next + tsup watch)                    |
-| `pnpm build`       | `turbo run build` — builds packages and apps; caches via Turbo                |
-| `pnpm lint`        | `turbo run lint` — ESLint where defined                                       |
-| `pnpm check-types` | `turbo run check-types` — `tsc --noEmit` where defined                        |
-| `pnpm format`      | Prettier write on `**/*.{ts,tsx,md}` from the root (not routed through Turbo) |
+| Command            | What it does                                                                              |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| `pnpm install`     | Install and link all workspaces                                                           |
+| `pnpm dev`         | `turbo run dev` — persistent dev tasks (Next + tsup watch)                                |
+| `pnpm build`       | `turbo run build` — builds packages and apps; caches via Turbo                            |
+| `pnpm lint`        | `turbo run lint` — ESLint where defined                                                   |
+| `pnpm check-types` | `turbo run check-types` — `tsc --noEmit` where defined                                    |
+| `pnpm format`      | Prettier write on `**/*.{ts,tsx,md}` from the root (not routed through Turbo)             |
+| `pnpm test:docs`   | Runs the docs app Vitest suite                                                            |
 
 ### Scoped commands with pnpm filters
 
@@ -275,6 +276,21 @@ The **`test`** script is defined on `@zentauri-ui/zentauri-components`, not in t
 ```sh
 pnpm --filter @zentauri-ui/zentauri-components test
 pnpm --filter @zentauri-ui/zentauri-components test:watch
+```
+
+To regenerate the Markdown package-health tables from Vitest JSON:
+
+```sh
+pnpm --filter @zentauri-ui/zentauri-components exec vitest run --reporter=json --outputFile vitest-results.json
+```
+
+### Docs app tests
+
+The docs app has its own Vitest tests for shared chrome and sidebar behavior:
+
+```sh
+pnpm --filter component-library test
+pnpm --filter component-library test:watch
 ```
 
 ---

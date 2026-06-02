@@ -16,6 +16,7 @@ pnpm + Turborepo monorepo shipping a **React UI component library** (`@zentauri-
 | `pnpm check-types`                                    | Turbo: `tsc --noEmit` across workspaces                           |
 | `pnpm format`                                         | Prettier write across repo                                        |
 | `pnpm --filter @zentauri-ui/zentauri-components test` | Vitest run for the library (all tests)                            |
+| `pnpm --filter component-library test`                | Vitest run for the docs app tests                                 |
 | `pnpm exec vitest run -t "test name"`                 | Run single test by name                                           |
 
 ---
@@ -168,7 +169,7 @@ You must touch **all** of these:
 4. **"use client" is prepended by post-build script** (`scripts/prepend-use-client.mjs`), not written in source (tsup's treeshake can reorder it).
 5. **Registry is generated** (`scripts/generate-registry.mjs`), never hand-edited.
 6. **package.json `exports` use wildcards** (`./ui/*`), so no per-component export edit needed when adding components.
-7. **Tests live only in `packages/components`** (Vitest + Testing Library, jsdom). Docs app has a few tests but no `test` script.
+7. **Tests are split by workspace**: the component package owns the main package suite; the docs app has its own Vitest script for sidebar and chrome tests.
 
 ---
 
@@ -187,6 +188,6 @@ You must touch **all** of these:
 ## Common Gotchas
 
 - **Next.js 16** has breaking changes from older versions — read `node_modules/next/dist/docs/` before writing Next code
-- Test-count surfaces in docs (`home-package-health.tsx`) and README coverage table are **hand-maintained** — update them when tests change
+- Test-count surfaces in docs (`home-package-health.tsx`) and README coverage table are **hand-maintained** — use `pnpm summarize:test-health` on Vitest JSON before updating them
 - The `viewport` prop on motion components types `margin` as `string`, while `useInView` expects `MarginType` (template literal union) — use `as UseInViewOptions` when merging
 - **Spinner** has no static entry; it's animated-only
