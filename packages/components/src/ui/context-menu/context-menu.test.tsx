@@ -173,4 +173,34 @@ describe("ContextMenu", () => {
 
     expect(screen.getByRole("menuitem", { name: "Archive" })).toBeVisible();
   });
+
+  it("should not invoke onSelect for a disabled item and keep the menu open", async () => {
+    const user = userEvent.setup();
+    const onSelect = vi.fn();
+    render(
+      <ContextMenu defaultOpen>
+        <ContextMenuTrigger>Right-click row</ContextMenuTrigger>
+        <ContextMenuContent>
+          <ContextMenuItem disabled onSelect={onSelect}>
+            Copy
+          </ContextMenuItem>
+        </ContextMenuContent>
+      </ContextMenu>,
+    );
+
+    const item = screen.getByRole("menuitem", { name: "Copy" });
+    expect(item).toHaveAttribute("aria-disabled", "true");
+
+    await user.click(item);
+    expect(onSelect).not.toHaveBeenCalled();
+    expect(screen.getByRole("menu")).toBeInTheDocument();
+  });
+
+  it("should mark the submenu trigger with aria-haspopup menu", () => {
+    renderContextMenu();
+    fireEvent.contextMenu(screen.getByTestId("surface"));
+    expect(
+      screen.getByRole("menuitem", { name: "More actions" }),
+    ).toHaveAttribute("aria-haspopup", "menu");
+  });
 });

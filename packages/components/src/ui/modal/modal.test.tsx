@@ -166,4 +166,28 @@ describe("Modal", () => {
     );
     expect(trigger).toHaveFocus();
   });
+
+  it("should expose aria-modal and wire labelledby/describedby to its title and description", async () => {
+    render(
+      <Modal defaultOpen>
+        <ModalContent>
+          <ModalTitle>Confirm</ModalTitle>
+          <ModalDescription>Please review</ModalDescription>
+        </ModalContent>
+      </Modal>,
+    );
+    const dialog = await screen.findByRole("dialog");
+    expect(dialog).toHaveAttribute("aria-modal", "true");
+
+    const labelledby = dialog.getAttribute("aria-labelledby");
+    const describedby = dialog.getAttribute("aria-describedby");
+    expect(labelledby).toBeTruthy();
+    expect(describedby).toBeTruthy();
+    expect(document.getElementById(labelledby as string)).toHaveTextContent(
+      "Confirm",
+    );
+    expect(document.getElementById(describedby as string)).toHaveTextContent(
+      "Please review",
+    );
+  });
 });

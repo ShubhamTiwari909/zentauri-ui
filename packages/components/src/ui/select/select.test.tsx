@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import {
   Select,
@@ -124,5 +124,101 @@ describe("Select", () => {
     const beta = screen.getByRole("option", { name: /beta/i });
     expect(alpha).toHaveAttribute("aria-selected", "true");
     expect(beta).toHaveAttribute("aria-selected", "false");
+  });
+});
+
+describe("Select — keyboard and a11y", () => {
+  it("wires trigger aria attributes to the listbox", async () => {
+    const user = userEvent.setup();
+    render(
+      <Select multiple defaultValue={[]}>
+        <SelectTrigger>
+          <SelectValue placeholder="Pick" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="a">Alpha</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+    const trigger = screen.getByRole("button");
+    expect(trigger).toHaveAttribute("aria-haspopup", "listbox");
+    expect(trigger).toHaveAttribute("aria-expanded", "false");
+    const controls = trigger.getAttribute("aria-controls");
+
+    await user.click(trigger);
+    expect(trigger).toHaveAttribute("aria-expanded", "true");
+    const listbox = screen.getByRole("listbox");
+    expect(listbox).toHaveAttribute("id", controls);
+    expect(listbox).toHaveAttribute("aria-multiselectable", "true");
+  });
+
+  it("moves focus across enabled options with arrow keys", async () => {
+    const user = userEvent.setup();
+    render(
+      <Select defaultValue={[]}>
+        <SelectTrigger>
+          <SelectValue placeholder="Pick" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="a">Alpha</SelectItem>
+          <SelectItem value="b">Beta</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+    await user.click(screen.getByRole("button"));
+    const alpha = await screen.findByRole("option", { name: /alpha/i });
+    const beta = screen.getByRole("option", { name: /beta/i });
+    await waitFor(() => expect(alpha).toHaveFocus());
+
+    await user.keyboard("{ArrowDown}");
+    expect(beta).toHaveFocus();
+    await user.keyboard("{ArrowUp}");
+    expect(alpha).toHaveFocus();
+  });
+
+  it("selects the focused option with the Enter key", async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(
+      <Select multiple defaultValue={[]} onChange={onChange}>
+        <SelectTrigger>
+          <SelectValue placeholder="Pick" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="a">Alpha</SelectItem>
+          <SelectItem value="b">Beta</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+    await user.click(screen.getByRole("button"));
+    const alpha = await screen.findByRole("option", { name: /alpha/i });
+    await waitFor(() => expect(alpha).toHaveFocus());
+
+    await user.keyboard("{Enter}");
+    expect(onChange).toHaveBeenCalledWith(["a"]);
+  });
+
+  it("ignores a disabled option for pointer and marks it aria-disabled", async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(
+      <Select multiple defaultValue={[]} onChange={onChange}>
+        <SelectTrigger>
+          <SelectValue placeholder="Pick" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="a" disabled>
+            Alpha
+          </SelectItem>
+          <SelectItem value="b">Beta</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+    await user.click(screen.getByRole("button"));
+    const alpha = await screen.findByRole("option", { name: /alpha/i });
+    expect(alpha).toHaveAttribute("aria-disabled", "true");
+
+    await user.click(alpha);
+    expect(onChange).not.toHaveBeenCalled();
   });
 });

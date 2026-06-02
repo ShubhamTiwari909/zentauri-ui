@@ -13,14 +13,14 @@ import { SectionShell } from "./section-shell";
 const TEST_TOTALS = [
   {
     label: "Test files",
-    value: "75",
-    detail: "75 passed",
+    value: "76",
+    detail: "76 passed",
     icon: FiFileText,
   },
   {
     label: "Assertions",
-    value: "507",
-    detail: "507 passed",
+    value: "548",
+    detail: "548 passed",
     icon: FiCheckCircle,
   },
   {
@@ -38,9 +38,9 @@ const TEST_TOTALS = [
 ] as const;
 
 const TEST_AREAS = [
-  { area: "Components and UI utilities", files: "45", tests: "397" },
+  { area: "Components and UI utilities", files: "46", tests: "433" },
   { area: "React hooks", files: "28", tests: "101" },
-  { area: "CLI and import rewriting", files: "2", tests: "9" },
+  { area: "CLI and import rewriting", files: "2", tests: "14" },
 ] as const;
 
 export function HomePackageHealth() {

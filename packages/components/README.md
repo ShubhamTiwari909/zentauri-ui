@@ -26,25 +26,26 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 75 passed (75)   |
-| Tests      | 507 passed (507) |
+| Test files | 76 passed (76)   |
+| Tests      | 548 passed (548) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 45         | 397   |
+| Components and UI utilities | 46         | 433   |
 | React hooks                 | 28         | 101   |
-| CLI and import rewriting    | 2          | 9     |
+| CLI and import rewriting    | 2          | 14    |
 
 ### Per-suite snapshot
 
 | Suite                                                                   | Tests |
 | ----------------------------------------------------------------------- | ----: |
 | `src/ui/dynamic-stepper/dynamic-stepper.test.tsx`                       |     8 |
-| `src/ui/select/select.test.tsx`                                         |     6 |
+| `src/ui/select/select.test.tsx`                                         |    10 |
 | `src/charts/charts.test.tsx`                                            |     6 |
-| `src/ui/modal/modal.test.tsx`                                           |     9 |
+| `src/ui/modal/modal.test.tsx`                                           |    10 |
 | `src/ui/drawer/drawer.test.tsx`                                         |     7 |
-| `cli/cli.integration.test.ts`                                           |     4 |
+| `src/ui/peer-isolation.test.ts`                                         |    29 |
+| `cli/cli.integration.test.ts`                                           |     9 |
 | `src/ui/buttons/button.test.tsx`                                        |    41 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
 | `src/ui/marquee/marquee.test.tsx`                                       |    10 |
@@ -54,7 +55,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/ui/checkbox/checkbox.test.tsx`                                     |     6 |
 | `src/ui/popover/popover.test.tsx`                                       |     4 |
 | `src/ui/command/command.test.tsx`                                       |     7 |
-| `src/ui/context-menu/context-menu.test.tsx`                             |     8 |
+| `src/ui/context-menu/context-menu.test.tsx`                             |    10 |
 | `src/ui/copy-button/copy-button.test.tsx`                               |     8 |
 | `src/ui/kbd/kbd.test.tsx`                                               |     7 |
 | `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
@@ -668,9 +669,10 @@ Defaults look like this; edit `resolvedPaths` and `aliases` so they match your a
 
 ### Registry (`cli/registry.json`)
 
-- **`components`**: sorted list of folder names under **`src/ui/`**, plus chart entries from **`src/charts/<type>`**, that `add` may copy. The file is **generated**; the canonical build list lives in **`tsup.config.ts`** as `uiComponentNames` and `chartEntryNames`, and the generator always ensures **`spinner`** is included so the CLI stays aligned with the animated-only spinner bundle.
+- **`components`**: sorted list of folder names under **`src/ui/`**, plus chart entries from **`src/charts/<type>`**, that `add` may copy. The file is **generated**; the canonical build lists live in **`tsup.config.ts`** as `uiComponentNames`, `uiAnimatedComponentNames`, and `chartEntryNames`, so animated-only entries such as **`spinner`** stay aligned with the CLI.
 - **`hooks`**: sorted list of folder names under **`src/hooks/`** that `add hook` may copy; generated from **`hooksEntryNames`** in **`tsup.config.ts`** (same entries as published `…/hooks/<name>` subpaths).
-- **`nameAliases`**: optional map from a CLI token to a real folder name. Today: `button` → `buttons`, `input` → `inputs` (matching common singular names while folders stay plural).
+- **`nameAliases`**: optional map from a CLI token to a real folder name: `button` → `buttons`, `input` → `inputs` (singular forms while folders stay plural), and `chart-<type>` → `charts/<type>` for every chart (so `add chart-line` and `add charts/line` are equivalent).
+- **`peerHints`**: generated map from a component/chart name to the **optional peer dependencies** its source imports (`framer-motion` for components that ship an `animated/` variant, `react-icons` where icons are used, `recharts` for every chart). After `add`, the CLI prints a deduplicated install hint built from this map, so you never have to guess which peers a vendored component needs.
 
 Example: these are equivalent when `nameAliases` is configured:
 
@@ -680,6 +682,45 @@ zentauri-components add buttons
 ```
 
 After `add`, imports inside copied `.ts`/`.tsx` files are rewritten using your `aliases`; test files (`*.test.*`, `*.spec.*`) from the package are not copied.
+
+### Worked examples
+
+```bash
+# A static UI primitive — copies src/ui/buttons plus the shared design-system tokens it imports.
+zentauri-ui add button
+
+# A chart — copies src/charts/line and the shared chart frame; CLI hints `recharts`.
+zentauri-ui add charts/line
+
+# A hook on its own — copies src/hooks/useClipboard (plus any sibling hooks it imports).
+zentauri-ui add hook useClipboard
+```
+
+### Vendored destination structure
+
+Given the default `components.json`, running `zentauri-ui add button charts/line` then `add hook useClipboard` produces:
+
+```
+your-app/
+├── components.json
+└── src/
+    ├── components/
+    │   ├── design-system/        # shared token + variant strings (copied once, never overwritten)
+    │   │   └── button.ts
+    │   └── ui/
+    │       ├── buttons/          # the component folder (index.ts, button.tsx, variants.ts, …)
+    │       └── charts/
+    │           ├── shared/       # chart frame + helpers shared by every chart
+    │           └── line/         # the requested chart entry only
+    ├── hooks/
+    │   └── useClipboard/         # hooks pulled in by components or `add hook`
+    └── lib/
+        └── utils.ts              # cn() helper, created from the package template if missing
+```
+
+- `design-system/` lands beside `ui/` (one level up from `resolvedPaths.ui`) so vendored components keep their `../../design-system/*` imports working without a new alias. Existing files there are left untouched on re-add.
+- Charts always land under `<ui>/charts/`, with a single shared `charts/shared/` folder regardless of how many chart types you add.
+- Re-adding a component overwrites that component's files but preserves your `design-system/` and `lib/utils.ts` edits.
 
 ### When to use the CLI vs npm imports
 
@@ -694,14 +735,47 @@ Tailwind still needs to see the classes your **copied** files use—point `@sour
 
 https://zentauri-ui.vercel.app/
 
+## Accessibility checklist for contributors
+
+Every new or changed component should clear this bar before it merges. The
+highest-risk primitives (overlays and keyboard-heavy controls) are expected to
+have explicit tests for the items below.
+
+**Semantics & ARIA**
+
+- [ ] Correct landmark/role for the pattern (`dialog`, `menu`/`menuitem`, `listbox`/`option`, `tab`/`tabpanel`, `slider`, `tree`/`treeitem`, …).
+- [ ] State is announced: `aria-expanded`, `aria-selected`, `aria-checked`, `aria-disabled`, `aria-current` as appropriate.
+- [ ] Overlays set `aria-modal` and wire `aria-labelledby` / `aria-describedby` to the rendered title/description.
+- [ ] Compound parts are linked by id (`aria-controls`, `aria-haspopup`) rather than relying on DOM proximity.
+
+**Keyboard**
+
+- [ ] All interactive parts are reachable and operable by keyboard (Enter/Space activate; Arrow keys navigate where the role implies it).
+- [ ] Roving tabindex for composite widgets (one tab stop; arrows move within).
+- [ ] Dismissible surfaces close on `Escape`.
+- [ ] Focus moves into an opened overlay and **returns to the trigger** on close.
+
+**Disabled & edge states**
+
+- [ ] Disabled items are skipped by keyboard navigation and ignore pointer activation, and expose `aria-disabled`.
+- [ ] SSR-safe: no access to `window`/`document` during render (guard effects; the package targets React 18+ server rendering).
+
+**Motion**
+
+- [ ] Animated entries respect `prefers-reduced-motion` (use `usePrefersReducedMotion` / Framer Motion's `useReducedMotion`).
+- [ ] `framer-motion` stays out of static entries — enforced by `src/ui/peer-isolation.test.ts`. Charts stay isolated to `src/charts/*`.
+
+Add or extend the component's `*.test.tsx` to cover the items that apply; see
+`modal`, `select`, and `context-menu` tests for worked examples.
+
 ## Development
 
 From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, the chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 507 test cases in total
-- **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, merges in **`spinner`**, applies fixed **`nameAliases`**, and writes **`cli/registry.json`** (`components` + `hooks`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 548 test cases in total
+- **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `hooks` + `peerHints`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
 
 ## Github Release log
 

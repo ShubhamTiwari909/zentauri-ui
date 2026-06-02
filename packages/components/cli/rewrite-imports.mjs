@@ -13,7 +13,10 @@ export function rewriteImports(source, options) {
     const re = /from\s+(["'])((?:\.\.\/)+)hooks\/([^'"]+)\1/g;
     let m;
     while ((m = re.exec(text)) !== null) {
-      usedHooks.add(m[3]);
+      // Imports may target a file inside the hook folder
+      // (e.g. hooks/useResizeObserver/useResizeObserver); the copyable unit is
+      // the folder, so keep only the first path segment.
+      usedHooks.add(m[3].split("/")[0]);
     }
   };
 
