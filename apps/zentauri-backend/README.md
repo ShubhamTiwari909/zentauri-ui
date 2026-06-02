@@ -52,6 +52,21 @@ If you already have MongoDB running elsewhere, skip Docker and update `MONGODB_U
 | `GET`  | `/api/v1/contact-us?page=1&page_size=20` | List form submissions with pagination     |
 | `GET`  | `/api/v1/contact-us/{form_id}`           | Read a specific form submission           |
 
+## Tests
+
+Endpoint smoke tests run without a real MongoDB: the repository dependency is
+overridden with an in-memory fake and the rate limiter is disabled, so no
+network or database connection is required.
+
+```sh
+cd apps/zentauri-backend
+source .venv/bin/activate
+pytest
+```
+
+Coverage: health check, create (201 + returned id), missing-field and
+short-message validation (422), pagination, and unknown-id (404).
+
 ## Example submit request
 
 ```sh

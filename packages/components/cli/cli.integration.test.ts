@@ -9,8 +9,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const packageRoot = join(__dirname, "..");
 const cliEntry = join(packageRoot, "cli", "index.mjs");
 
-function runCli(cwd: string, args: string[]) {
-  execFileSync(process.execPath, [cliEntry, ...args], {
+function runCli(cwd: string, args: string[]): string {
+  return execFileSync(process.execPath, [cliEntry, ...args], {
     cwd,
     encoding: "utf8",
     stdio: ["pipe", "pipe", "pipe"],
@@ -79,6 +79,81 @@ describe("zentauri-ui CLI", () => {
       runCli(dir, ["add", "hook", "usePrefersReducedMotion"]);
       expect(
         existsSync(join(dir, "src/hooks/useMediaQuery/useMediaQuery.ts")),
+      ).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("should add a chart entry under charts/ and hint recharts", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-chart-"));
+    try {
+      runCli(dir, ["init"]);
+      const out = runCli(dir, ["add", "charts/line"]);
+      expect(
+        existsSync(join(dir, "src/components/ui/charts/line/index.ts")),
+      ).toBe(true);
+      // chart-line alias resolves to charts/line as well
+      expect(out).toContain("recharts");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("should add multiple components in one run", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-multi-"));
+    try {
+      runCli(dir, ["init"]);
+      const out = runCli(dir, ["add", "buttons", "card", "badge"]);
+      expect(existsSync(join(dir, "src/components/ui/buttons/button.tsx"))).toBe(
+        true,
+      );
+      expect(existsSync(join(dir, "src/components/ui/card/card.tsx"))).toBe(
+        true,
+      );
+      expect(existsSync(join(dir, "src/components/ui/badge/badge.tsx"))).toBe(
+        true,
+      );
+      expect(out).toContain("Adding buttons…");
+      expect(out).toContain("Adding badge…");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("should print react-icons peer hint for components that use icons", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-peer-"));
+    try {
+      runCli(dir, ["init"]);
+      const out = runCli(dir, ["add", "rating"]);
+      expect(out).toContain("Optional peer dependencies");
+      expect(out).toContain("react-icons");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("should print Tailwind v4 source guidance after adding", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-tw-"));
+    try {
+      runCli(dir, ["init"]);
+      const out = runCli(dir, ["add", "buttons"]);
+      expect(out).toContain("Tailwind v4");
+      expect(out).toContain("@source");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("should not error when re-adding a component (existing files)", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-reAdd-"));
+    try {
+      runCli(dir, ["init"]);
+      runCli(dir, ["add", "buttons"]);
+      // Second add over existing files must succeed and keep the design-system.
+      expect(() => runCli(dir, ["add", "buttons"])).not.toThrow();
+      expect(
+        existsSync(join(dir, "src/components/design-system/button.ts")),
       ).toBe(true);
     } finally {
       rmSync(dir, { recursive: true, force: true });

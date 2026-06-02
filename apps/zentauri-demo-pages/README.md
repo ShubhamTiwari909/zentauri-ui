@@ -17,8 +17,30 @@ The current demo surface lives under `/demo` and uses `@zentauri-ui/zentauri-com
 | `/demo/minimal`   | Minimal product layout.                  |
 | `/demo/terminal`  | Terminal-inspired product layout.        |
 | `/demo/pricing`   | Pricing-led layout.                      |
+| `/contact`        | End-to-end form submitting to the backend. |
 
 Each layout reuses the same landing content and exposes theme options so the component appearances can be compared in context.
+
+## End-to-end backend flow
+
+`/contact` is a working component-to-backend demo: a form built from Zentauri UI
+primitives (`Input`, `Button`, `Text`) that POSTs to the FastAPI service in
+`apps/zentauri-backend` at `POST /api/v1/contact-us`.
+
+To run it locally, start the backend (see `apps/zentauri-backend/README.md`) and
+this app together:
+
+```sh
+# terminal 1 — backend on http://127.0.0.1:8000
+cd apps/zentauri-backend && source .venv/bin/activate && fastapi dev main.py
+
+# terminal 2 — demo app on http://localhost:3000
+pnpm --filter zentauri-demo-pages dev
+```
+
+The form's backend base URL defaults to `http://localhost:8000` and can be
+overridden with `NEXT_PUBLIC_API_BASE_URL`. Ensure the demo app's origin is in
+the backend's `ALLOWED_ORIGINS` (localhost:3000/3001 are allowed by default).
 
 ## Commands
 

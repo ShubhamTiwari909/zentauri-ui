@@ -58,7 +58,8 @@
     "build:types": "tsc -p tsconfig.emit-types.json",
     "build": "npm run build:js && npm run build:types",
     "generate:registry": "node scripts/generate-registry.mjs",
-    "prepack": "npm run build && node scripts/generate-registry.mjs",
+    "check:exports": "node scripts/check-exports.mjs",
+    "prepack": "npm run build && node scripts/generate-registry.mjs && node scripts/check-exports.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },
