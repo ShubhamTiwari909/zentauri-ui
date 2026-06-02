@@ -17,6 +17,10 @@ const sidebarRouteDataShared = [
         href: "/preview/installation",
       },
       {
+        title: "Design tokens",
+        href: "/preview/tokens",
+      },
+      {
         title: "Components",
         href: "/preview/components",
       },

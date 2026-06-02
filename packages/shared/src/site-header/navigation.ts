@@ -17,6 +17,7 @@ const libraryRouteItems = [
   { href: "/preview/hooks", label: "Hooks" },
   { href: "/preview/typography", label: "Typography" },
   { href: "/preview/charts", label: "Charts" },
+  { href: "/preview/tokens", label: "Design tokens" },
   { href: "/contact-us", label: "Contact" },
 ] as const;
 

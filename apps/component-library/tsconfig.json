@@ -19,6 +19,9 @@
       }
     ],
     "paths": {
+      "@zentauri-ui/zentauri-components/design-system/tokens": [
+        "../../packages/components/src/design-system/tokens"
+      ],
       "@zentauri-ui/zentauri-components/ui/*/animated": [
         "../../packages/components/src/ui/*/animated"
       ],

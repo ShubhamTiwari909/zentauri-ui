@@ -43,6 +43,7 @@ import tabs from "@/content/seo/preview/components/tabs.json";
 import timeline from "@/content/seo/preview/components/timeline.json";
 import toast from "@/content/seo/preview/components/toast.json";
 import toggle from "@/content/seo/preview/components/toggle.json";
+import tokens from "@/content/seo/preview/components/tokens.json";
 import tooltip from "@/content/seo/preview/components/tooltip.json";
 import treeView from "@/content/seo/preview/components/tree-view.json";
 import typography from "@/content/seo/preview/components/typography.json";
@@ -92,6 +93,7 @@ const previewSeoRegistry = {
   timeline: timeline as PreviewSeoDocument,
   toast: toast as PreviewSeoDocument,
   toggle: toggle as PreviewSeoDocument,
+  tokens: tokens as PreviewSeoDocument,
   tooltip: tooltip as PreviewSeoDocument,
   "tree-view": treeView as PreviewSeoDocument,
   typography: typography as PreviewSeoDocument,
