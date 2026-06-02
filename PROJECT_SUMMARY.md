@@ -43,10 +43,10 @@ zentauri-ui/
 
 ## Library Package (`packages/components`)
 
-**Name:** `@zentauri-ui/zentauri-components` (v1.8.0)  
-**Consumed via:** per-entry subpaths (e.g. `@zentauri-ui/zentauri-components/ui/button`, `@zentauri-ui/zentauri-components/hooks/useClipboard`)  
+**Name:** `@zentauri-ui/zentauri-components` (v1.8.2)  
+**Consumed via:** per-entry subpaths (e.g. `@zentauri-ui/zentauri-components/ui/buttons`, `@zentauri-ui/zentauri-components/hooks/useClipboard`)  
 **Entry types:** `ui/*`, `ui/*/animated`, `charts/*`, `hooks/*`, `hooks/utils`  
-**Build:** tsup (ESM + CJS) → `dist/`, types via `tsc --noEmit`  
+**Build:** tsup (ESM + CJS) → `dist/`, types via `tsc -p tsconfig.emit-types.json`  
 **Key scripts:** `dev` (tsup --watch), `build` (tsup + tsc types), `test` (vitest), `generate:registry` (CLI registry)
 
 ### Directory Layout
@@ -56,11 +56,11 @@ packages/components/src/
 ├── ui/
 │   ├── accordion/              # 40+ components, each with ~7 files
 │   ├── buttons/
-│   ├── ...                     # (see full list below)
+│   ├── ...                     # (see published surface below)
 │   └── typography/
 ├── hooks/                      # 28 hooks (useClipboard, useMediaQuery, etc.)
-├── charts/                     # 5 Recharts wrappers (area, bar, bubble, line, pie)
-├── design-system/              # 41 token files (CSS variable strings)
+├── charts/                     # 9 Recharts wrappers
+├── design-system/              # 42 token files (CSS variable strings)
 │   ├── button.ts               # zuiButtonBase, zuiButtonAppearances, zuiButtonSizes
 │   ├── tokens.ts               # Shared tokens (focus ring, radius, etc.)
 │   └── index.ts                # Barrel export of all token files
@@ -86,21 +86,28 @@ Each component folder follows a fixed 5-layer architecture:
 
 7. **`src/ui/<name>/index.ts`** — Starts with `"use client"`, re-exports component + types + variants.
 
-### All UI Components (41)
+### Published Surface
 
-| Component                                                                                                                                                                                                          | Has Animated?       | Has Test?  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- | ---------- |
-| accordion, alert, avatar, badge, buttons, card, checkbox, command, divider, drawer, empty-state, inputs, modal, popover, progress, radio-group, skeleton, table, tabs, timeline, toast, toggle, tooltip, tree-view | Yes                 | Yes (most) |
-| animated-number, breadcrumb, context-menu, dropdown, dynamic-stepper, file-upload, marquee, otp-input, pagination, rating, scroll-area, search, select, slider, stepper, typography                                | No                  | Yes        |
-| spinner                                                                                                                                                                                                            | Yes (animated only) | Yes        |
+| Surface             | Count | Notes                                                                                        |
+| ------------------- | ----: | -------------------------------------------------------------------------------------------- |
+| Static UI entries   |    42 | Published as `@zentauri-ui/zentauri-components/ui/<name>`.                                   |
+| Animated UI entries |    27 | Published as `@zentauri-ui/zentauri-components/ui/<name>/animated`; imports `framer-motion`. |
+| Chart entries       |     9 | Published as `@zentauri-ui/zentauri-components/charts/<type>`; imports `recharts`.           |
+| Hook entries        |    28 | Published as `@zentauri-ui/zentauri-components/hooks/<entry>`.                               |
 
-### Hooks (25)
+**Static UI entries:** `accordion`, `alert`, `animated-number`, `avatar`, `badge`, `breadcrumb`, `buttons`, `card`, `checkbox`, `command`, `context-menu`, `copy-button`, `divider`, `drawer`, `dropdown`, `dynamic-stepper`, `empty-state`, `file-upload`, `inputs`, `kbd`, `marquee`, `modal`, `otp-input`, `pagination`, `popover`, `progress`, `rating`, `radio-group`, `scroll-area`, `search`, `select`, `skeleton`, `slider`, `stepper`, `table`, `tabs`, `timeline`, `toast`, `toggle`, `tooltip`, `tree-view`, `typography`.
 
-`useBodyScrollLock, useClickOutside, useClipboard, useControllableState, useDebouncedValue, useDisclosure, useDocumentTitle, useDynamicStepper, useFocusManagement, useHover, useInView, useIntersectionObserver, useIsomorphicLayoutEffect, useIsMounted, useLocalStorage, useMediaQuery, useNetworkStatus, usePageVisibility, usePagination, usePrefersColorScheme, usePrefersReducedMotion, useResizeObserver, useSessionStorage, useThrottledCallback, useToggle, useWindowSize`
+**Animated UI entries:** `accordion`, `alert`, `avatar`, `badge`, `buttons`, `card`, `checkbox`, `command`, `copy-button`, `divider`, `drawer`, `empty-state`, `inputs`, `kbd`, `modal`, `popover`, `progress`, `radio-group`, `skeleton`, `spinner`, `table`, `tabs`, `timeline`, `toast`, `toggle`, `tooltip`, `tree-view`.
 
-### Charts (5)
+**Spinner:** animated-only. Import from `@zentauri-ui/zentauri-components/ui/spinner/animated`; there is no `ui/spinner` static entry.
 
-AreaChart, BarChart, BubbleChart, LineChart, PieChart — thin Recharts wrappers with `appearance` (default, muted, outline, glass) and `density` (compact, comfortable, spacious) variants.
+### Hooks (28)
+
+`useBodyScrollLock, useClickOutside, useClipboard, useControllableState, useDebouncedValue, useDisclosure, useDocumentTitle, useDynamicStepper, useFocusManagement, useHover, useInView, useIntersectionObserver, useIsomorphicLayoutEffect, useIsMounted, useLocalStorage, useMediaQuery, useNetworkStatus, usePageVisibility, usePagination, usePrefersColorScheme, usePrefersReducedMotion, useResizeObserver, useSessionStorage, useTableFilter, useTableSort, useThrottledCallback, useToggle, useWindowSize`
+
+### Charts (9)
+
+AreaChart, BarChart, StackedBarChart, RadarChart, ScatterChart, BubbleChart, FunnelChart, LineChart, PieChart — thin Recharts wrappers with `appearance` (default, muted, outline, glass) and `density` (compact, comfortable, spacious) variants.
 
 ### Peer Dependencies (installer must provide)
 
@@ -167,7 +174,7 @@ You must touch **all** of these:
 
 ## Test Suite (packages/components)
 
-- **74 test files, 507 total tests**
+- **75 test files, 507 total tests**
   - UI components: 45 files, 397 tests
   - Hooks: 28 files, 101 tests
   - CLI: 2 files, 9 tests

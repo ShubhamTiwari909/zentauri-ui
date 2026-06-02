@@ -11,6 +11,17 @@ The library targets **React 18+** apps that use **Tailwind CSS v4** (or an equiv
 
 Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@zentauri-ui/zentauri-components/ui/<area>` for static UI, `@zentauri-ui/zentauri-components/ui/<area>/animated` where a motion bundle exists, `@zentauri-ui/zentauri-components/charts/<type>` for Recharts-powered chart primitives, and `@zentauri-ui/zentauri-components/hooks/<entry>` for React hooks (and shared helpers under `hooks/utils`). Base UI entries do **not** re-export animated components; motion lives on its own entry so optional `framer-motion` usage stays tree-shakeable and chunk-friendly. Each entry resolves to its own ESM (`.mjs`), CJS (`.js`), and types (`.d.ts`) so bundlers pull only what you import. Most apps rely on Tailwind scanning the package sources (see installation); a separate CSS import is not required for that setup.
 
+## Current package surface
+
+| Surface             | Count | Import shape                                          |
+| ------------------- | ----: | ----------------------------------------------------- |
+| Static UI entries   |    42 | `@zentauri-ui/zentauri-components/ui/<name>`          |
+| Animated UI entries |    27 | `@zentauri-ui/zentauri-components/ui/<name>/animated` |
+| Chart entries       |     9 | `@zentauri-ui/zentauri-components/charts/<type>`      |
+| Hook entries        |    28 | `@zentauri-ui/zentauri-components/hooks/<entry>`      |
+
+`spinner` is the only animated-only UI area. Import it from `@zentauri-ui/zentauri-components/ui/spinner/animated`; there is no `@zentauri-ui/zentauri-components/ui/spinner` static entry.
+
 ## Package status and test coverage
 
 | Metric     | Result           |
@@ -106,12 +117,12 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 ## Package exports
 
-| Subpath                                               | Description                                                                                                                                    |
-| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@zentauri-ui/zentauri-components/ui/<name>`          | Single UI area: static primitives, compound parts, variants, and types. Does **not** include Framer Motion–based animated exports.             |
-| `@zentauri-ui/zentauri-components/ui/<name>/animated` | Motion entry for that area when published: animated components, motion presets, and related types (depends on **framer-motion**).              |
-| `@zentauri-ui/zentauri-components/charts/<type>`      | Responsive Recharts chart entry for `area`, `bar`, `stacked-bar`, `radar`, `scatter`, `bubble`, `funnel`, `line`, or `pie`, with shared variants, palettes, and exported chart prop types.  |
-| `@zentauri-ui/zentauri-components/hooks/<entry>`      | One hook module or `utils` (`cn`, `clampPage`, `range` from `src/lib/utils.ts`). Entries match files under `src/hooks/` (see **React hooks**). |
+| Subpath                                               | Description                                                                                                                                                                                |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `@zentauri-ui/zentauri-components/ui/<name>`          | Single UI area: static primitives, compound parts, variants, and types. Does **not** include Framer Motion–based animated exports.                                                         |
+| `@zentauri-ui/zentauri-components/ui/<name>/animated` | Motion entry for that area when published: animated components, motion presets, and related types (depends on **framer-motion**).                                                          |
+| `@zentauri-ui/zentauri-components/charts/<type>`      | Responsive Recharts chart entry for `area`, `bar`, `stacked-bar`, `radar`, `scatter`, `bubble`, `funnel`, `line`, or `pie`, with shared variants, palettes, and exported chart prop types. |
+| `@zentauri-ui/zentauri-components/hooks/<entry>`      | One hook module or `utils` (`cn`, `clampPage`, `range` from `src/lib/utils.ts`). Entries match files under `src/hooks/` (see **React hooks**).                                             |
 
 The UI `<name>` segment matches the folder under `src/ui/` (for example `accordion`, `select`, `empty-state`, `buttons` for `Button`, `inputs` for `Input`, `typography` for `Heading` / `Text` and related primitives). The hooks `<entry>` is the file stem (for example `useMediaQuery`, `usePagination`) or `utils`.
 
@@ -124,7 +135,7 @@ Only a subset of UI areas publish a `/animated` entry (see **Components**). Some
 
 Published motion entries (same `<name>` as the base UI folder):
 
-`accordion`, `alert`, `avatar`, `badge`, `buttons`, `card`, `checkbox`, `divider`, `drawer`, `empty-state`, `inputs`, `modal`, `popover`, `progress`, `radio-group`, `skeleton`, `spinner`, `table`, `tabs`, `toast`, `toggle`, `tooltip`, `tree-view`
+`accordion`, `alert`, `avatar`, `badge`, `buttons`, `card`, `checkbox`, `command`, `copy-button`, `divider`, `drawer`, `empty-state`, `inputs`, `kbd`, `modal`, `popover`, `progress`, `radio-group`, `skeleton`, `spinner`, `table`, `tabs`, `timeline`, `toast`, `toggle`, `tooltip`, `tree-view`
 
 **Spinner:** only the motion entry is built—import from `@zentauri-ui/zentauri-components/ui/spinner/animated` (there is no separate `ui/spinner` static bundle).
 
@@ -142,6 +153,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | --------------- | ----------------- | ---------------------------------- |
 | Accordion       | `accordion`       | `accordion/animated`               |
 | Alert           | `alert`           | `alert/animated`                   |
+| Animated number | `animated-number` | —                                  |
 | Avatar          | `avatar`          | `avatar/animated`                  |
 | Badge           | `badge`           | `badge/animated`                   |
 | Breadcrumb      | `breadcrumb`      | —                                  |
@@ -169,7 +181,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Rating          | `rating`          | —                                  |
 | Radio group     | `radio-group`     | `radio-group/animated`             |
 | Scroll area     | `scroll-area`     | —                                  |
-| Search          | `search`          | -                                  |
+| Search          | `search`          | —                                  |
 | Select          | `select`          | —                                  |
 | Skeleton        | `skeleton`        | `skeleton/animated`                |
 | Slider          | `slider`          | —                                  |
@@ -177,6 +189,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Stepper         | `stepper`         | —                                  |
 | Table           | `table`           | `table/animated`                   |
 | Tabs            | `tabs`            | `tabs/animated`                    |
+| Timeline        | `timeline`        | `timeline/animated`                |
 | Toast           | `toast`           | `toast/animated`                   |
 | Toggle          | `toggle`          | `toggle/animated`                  |
 | Tooltip         | `tooltip`         | `tooltip/animated`                 |
