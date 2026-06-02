@@ -14,7 +14,10 @@ Public site: [zentauri-ui.vercel.app](https://zentauri-ui.vercel.app/)
 | Location                     | Package name                       | Role                                                                                        |
 | ---------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------- |
 | `apps/component-library`     | `component-library`                | Next.js 16 app (App Router): marketing home, `/preview` docs, SEO helpers, Vercel Analytics |
+| `apps/zentauri-demo-pages`   | `zentauri-demo-pages`              | Next.js 16 demo gallery for reusable landing-page layouts and theme previews                |
+| `apps/zentauri-backend`      | `zentauri-backend`                 | FastAPI service for contact-form submissions backed by MongoDB                              |
 | `packages/components`        | `@zentauri-ui/zentauri-components` | Source of UI primitives and hooks; built with **tsup** into `dist/` (ESM/CJS + types)       |
+| `packages/shared`            | `@zentauri-ui/shared`              | Shared React chrome and utilities consumed by the apps                                      |
 | `packages/eslint-config`     | `@repo/eslint-config`              | Shared ESLint presets (`base`, `next-js`, `react-internal`)                                 |
 | `packages/typescript-config` | `@repo/typescript-config`          | Shared `tsconfig` fragments for apps and packages                                           |
 
@@ -26,14 +29,13 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 74 passed (74)   |
-| Tests      | 496 passed (496) |
+| Test files | 75 passed (75)   |
+| Tests      | 507 passed (507) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 44         | 390   |
-| React hooks                 | 28         | 97    |
-| React hooks                 | 26         | 85    |
+| Components and UI utilities | 45         | 397   |
+| React hooks                 | 28         | 101   |
 | CLI and import rewriting    | 2          | 9     |
 
 ### Per-suite snapshot
@@ -42,12 +44,13 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 | ----------------------------------------------------------------------- | ----: |
 | `src/ui/dynamic-stepper/dynamic-stepper.test.tsx`                       |     8 |
 | `src/ui/select/select.test.tsx`                                         |     6 |
+| `src/charts/charts.test.tsx`                                            |     6 |
 | `src/ui/modal/modal.test.tsx`                                           |     9 |
 | `src/ui/drawer/drawer.test.tsx`                                         |     7 |
 | `cli/cli.integration.test.ts`                                           |     4 |
 | `src/ui/buttons/button.test.tsx`                                        |    41 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
-| `src/ui/marquee/marquee.test.tsx`                                       |     9 |
+| `src/ui/marquee/marquee.test.tsx`                                       |    10 |
 | `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
 | `src/ui/tree-view/tree-view.test.tsx`                                   |    10 |
 | `src/ui/card/card.test.tsx`                                             |     7 |
@@ -55,6 +58,8 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 | `src/ui/popover/popover.test.tsx`                                       |     4 |
 | `src/ui/command/command.test.tsx`                                       |     7 |
 | `src/ui/context-menu/context-menu.test.tsx`                             |     8 |
+| `src/ui/copy-button/copy-button.test.tsx`                               |     8 |
+| `src/ui/kbd/kbd.test.tsx`                                               |     7 |
 | `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
 | `src/ui/dropdown/dropdown.test.tsx`                                     |     6 |
 | `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
@@ -65,12 +70,17 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 | `src/ui/accordion/accordion.test.tsx`                                   |     7 |
 | `src/ui/toast/toast.test.tsx`                                           |     5 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
+| `src/ui/table/table.test.tsx`                                           |    11 |
 | `src/ui/tabs/tabs.test.tsx`                                             |     3 |
 | `src/ui/stepper/stepper.test.tsx`                                       |    12 |
 | `src/ui/timeline/timeline.test.tsx`                                     |    14 |
+| `src/ui/animated-number/animated-number.test.tsx`                       |     9 |
 | `src/ui/toggle/toggle.test.tsx`                                         |     5 |
 | `src/ui/slider/slider.test.tsx`                                         |     9 |
 | `src/ui/typography/typography.test.tsx`                                 |     7 |
+| `src/ui/skeleton/skeleton.test.tsx`                                     |     8 |
+| `src/ui/divider/divider.test.tsx`                                       |     6 |
+| `src/ui/empty-state/empty-state.test.tsx`                               |     6 |
 | `src/ui/alert/alert.test.tsx`                                           |    11 |
 | `src/ui/badge/badge.test.tsx`                                           |     6 |
 | `src/hooks/useClipboard/useClipboard.test.ts`                           |     6 |
@@ -86,6 +96,8 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 | `src/hooks/useThrottledCallback/useThrottledCallback.test.ts`           |     4 |
 | `src/hooks/useToggle/useToggle.test.ts`                                 |     4 |
 | `src/hooks/usePagination/usePagination.test.ts`                         |    10 |
+| `src/hooks/useTableFilter/useTableFilter.test.ts`                       |     9 |
+| `src/hooks/useTableSort/useTableSort.test.ts`                           |     7 |
 | `src/hooks/useSessionStorage/useSessionStorage.test.ts`                 |     3 |
 | `src/hooks/usePrefersColorScheme/usePrefersColorScheme.test.ts`         |     1 |
 | `src/hooks/useIsMounted/useIsMounted.test.ts`                           |     3 |

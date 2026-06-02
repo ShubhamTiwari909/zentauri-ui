@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zentauri Demo Pages
 
-## Getting Started
+Next.js 16 app for showcasing complete Zentauri UI page patterns outside the main documentation catalog.
 
-First, run the development server:
+The current demo surface lives under `/demo` and uses `@zentauri-ui/zentauri-components` plus `@zentauri-ui/shared` from the monorepo workspace.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Routes
+
+| Route             | Purpose                                  |
+| ----------------- | ---------------------------------------- |
+| `/demo`           | Index of available landing-page layouts. |
+| `/demo/split`     | Split hero layout.                       |
+| `/demo/dashboard` | Dashboard-forward layout.                |
+| `/demo/centered`  | Centered launch layout.                  |
+| `/demo/sidebar`   | Sidebar navigation layout.               |
+| `/demo/bento`     | Bento-card layout.                       |
+| `/demo/minimal`   | Minimal product layout.                  |
+| `/demo/terminal`  | Terminal-inspired product layout.        |
+| `/demo/pricing`   | Pricing-led layout.                      |
+
+Each layout reuses the same landing content and exposes theme options so the component appearances can be compared in context.
+
+## Commands
+
+Run from the repository root unless you are already inside this workspace.
+
+```sh
+pnpm --filter zentauri-demo-pages dev
+pnpm --filter zentauri-demo-pages build
+pnpm --filter zentauri-demo-pages lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To run the demo app together with the rest of the monorepo dev tasks:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Local Development Notes
 
-## Learn More
+- This app consumes the component package through `workspace:*`; if you are editing library source at the same time, run the component package watcher or the root `pnpm dev` task.
+- Global styles live in `app/globals.css`.
+- Layout data and theme options live in `app/demo/landing-data.ts`.
+- Shared site chrome comes from `@zentauri-ui/shared`.
 
-To learn more about Next.js, take a look at the following resources:
+## Next.js 16 Note
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This app uses Next.js 16. Before making framework-level routing, metadata, caching, or middleware changes, check the matching guidance in `node_modules/next/dist/docs/` from this repo install.
