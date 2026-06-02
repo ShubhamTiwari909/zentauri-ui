@@ -21,6 +21,11 @@
     "access": "public"
   },
   "exports": {
+    "./design-system/tokens": {
+      "types": "./dist/design-system/tokens.d.ts",
+      "import": "./dist/design-system/tokens.mjs",
+      "require": "./dist/design-system/tokens.js"
+    },
     "./ui/*": {
       "types": "./dist/ui/*/index.d.ts",
       "import": "./dist/ui/*.mjs",

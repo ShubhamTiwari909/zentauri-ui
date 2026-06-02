@@ -26,6 +26,11 @@ const themeLabels: Record<TokenTheme, string> = {
   shared: "Shared",
 };
 
+const allTokenCount = zuiTokenReferences.length + componentTokenReferences.length;
+const darkTokenCount = [...zuiTokenReferences, ...componentTokenReferences].filter(
+  (token) => token.theme === "dark",
+).length;
+
 function formatCssDeclarations(tokens: readonly ZuiTokenReference[]) {
   return tokens
     .map((token) => `  ${token.name}: ${token.fallback};`)
@@ -126,7 +131,7 @@ function ComponentTokenDropdown({
 
   return (
     <details className="group overflow-hidden rounded-2xl border border-white/10 bg-slate-200 dark:bg-slate-950/50">
-      <summary className="flex cursor-pointer list-none flex-col gap-3 bg-slate-50 dark:bg-white/5 px-4 py-4 marker:hidden sm:flex-row sm:items-center sm:justify-between">
+      <summary className="flex cursor-pointer list-none flex-col gap-3 bg-slate-50 px-4 py-4 marker:hidden [&::-webkit-details-marker]:hidden dark:bg-white/5 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-1">
           <h3 className="text-base font-semibold text-slate-900 dark:text-white">
             {group.title.replace(" CSS variables", "")}
@@ -156,15 +161,6 @@ export default function TokenReferencePage({
 }: {
   seo: PreviewSeoDocument;
 }) {
-  const allTokenCount =
-    zuiTokenReferences.length + componentTokenReferences.length;
-  const darkTokenCount = [
-    ...zuiTokenReferences,
-    ...componentTokenReferences,
-  ].filter(
-    (token) => token.theme === "dark",
-  ).length;
-
   return (
     <PreviewPageShell>
       <Section variant="plain" className="space-y-6">

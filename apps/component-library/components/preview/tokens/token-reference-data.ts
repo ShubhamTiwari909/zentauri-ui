@@ -98,17 +98,15 @@ function extractCssVariables(className: string) {
 
     const content = readBalancedExpression(className, varIndex + "var".length);
     const commaIndex = findTopLevelComma(content);
+    const name = commaIndex > -1 ? content.slice(0, commaIndex).trim() : content.trim();
+    const fallback =
+      commaIndex > -1 ? content.slice(commaIndex + 1).trim().replace(/_/g, " ") : "";
 
-    if (commaIndex > -1) {
-      const name = content.slice(0, commaIndex).trim();
-      const fallback = content.slice(commaIndex + 1).trim();
-
-      if (name.startsWith("--zui-")) {
-        variables.push({
-          name: name as `--zui-${string}`,
-          fallback,
-        });
-      }
+    if (name.startsWith("--zui-")) {
+      variables.push({
+        name: name as `--zui-${string}`,
+        fallback,
+      });
     }
 
     searchIndex = varIndex + "var(".length;
@@ -160,7 +158,7 @@ export const zuiTokenReferences = zuiTokenReferenceGroups.flatMap(
 );
 
 function toZuiVariableName(name: string) {
-  return `--zui-${name}` as `--zui-${string}`;
+  return (name.startsWith("--zui-") ? name : `--zui-${name}`) as `--zui-${string}`;
 }
 
 function getComponentDarkTokens(
@@ -169,11 +167,11 @@ function getComponentDarkTokens(
   description: string,
 ) {
   const reference = cssVariableReferences[slug];
-  const darkExamples = new Map(reference.darkExamples);
+  const darkExamples = new Map(reference.darkExamples ?? []);
   const darkTokenNames = new Set<string>();
   const darkTokens: ZuiTokenReference[] = [];
 
-  for (const [name] of reference.darkExamples) {
+  for (const [name] of reference.darkExamples ?? []) {
     darkTokenNames.add(name);
     const lightPairName = name.replace(/-dark$/, "");
 
@@ -219,11 +217,12 @@ export const componentTokenReferenceGroups = Object.entries(
   cssVariableReferences,
 ).map(([slug, reference]) => {
   const description = reference.description;
+  const darkExamples = reference.darkExamples ?? [];
   const lightTokens = reference.lightVariables.map(([name, fallback]) => {
     const darkName = `${name}-dark`;
     const hasDarkPair =
       reference.darkVariableCount > 0 &&
-      reference.darkExamples.some(([darkExampleName]) => darkExampleName === darkName);
+      darkExamples.some(([darkExampleName]) => darkExampleName === darkName);
 
     return {
       name: toZuiVariableName(name),
