@@ -33,13 +33,12 @@ describe("SiteFooter", () => {
   it("should render primary nav links", () => {
     render(<SiteFooter />);
     const nav = screen.getByRole("navigation", { name: "Footer" });
-    expect(within(nav).getByRole("link", { name: "Home" })).toHaveAttribute(
-      "href",
-      "/",
-    );
+    expect(
+      within(nav).getByRole("link", { name: "Installation" }),
+    ).toHaveAttribute("href", "/preview/installation");
     expect(
       within(nav).getByRole("link", { name: "Components" }),
-    ).toHaveAttribute("href", "/preview");
+    ).toHaveAttribute("href", "/preview/components");
     const github = within(nav).getByRole("link", { name: "GitHub" });
     expect(github).toHaveAttribute(
       "href",

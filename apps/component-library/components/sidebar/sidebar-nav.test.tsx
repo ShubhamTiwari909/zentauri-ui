@@ -87,6 +87,7 @@ describe("SidebarNav", () => {
     );
 
     const inactiveLink = screen.getByText("Inactive Link");
+    inactiveLink.addEventListener("click", (event) => event.preventDefault());
     fireEvent.click(inactiveLink);
 
     expect(onLinkClickMock).toHaveBeenCalledTimes(1);

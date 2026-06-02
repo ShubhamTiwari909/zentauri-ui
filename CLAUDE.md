@@ -15,13 +15,13 @@ Also present: `apps/zentauri-demo-pages` (separate Next app), `apps/zentauri-bac
 
 Run from the repo root unless noted. Use **pnpm 9** (`corepack prepare pnpm@9.0.0 --activate`).
 
-| Command | What it does |
-| --- | --- |
-| `pnpm dev` | `turbo run dev` — Next dev server **and** `tsup --watch` for the library |
-| `pnpm build` | `turbo run build` — builds packages first (`^build`), then apps |
-| `pnpm lint` | `turbo run lint` (ESLint runs in the apps that define it) |
-| `pnpm check-types` | `turbo run check-types` (`tsc --noEmit`) |
-| `pnpm format` | Prettier write across the repo (not routed through Turbo) |
+| Command            | What it does                                                             |
+| ------------------ | ------------------------------------------------------------------------ |
+| `pnpm dev`         | `turbo run dev` — Next dev server **and** `tsup --watch` for the library |
+| `pnpm build`       | `turbo run build` — builds packages first (`^build`), then apps          |
+| `pnpm lint`        | `turbo run lint` (ESLint runs in the apps that define it)                |
+| `pnpm check-types` | `turbo run check-types` (`tsc --noEmit`)                                 |
+| `pnpm format`      | Prettier write across the repo (not routed through Turbo)                |
 
 Scope to one workspace when iterating: `pnpm exec turbo run dev --filter=component-library` or `--filter=@zentauri-ui/zentauri-components`.
 
@@ -37,7 +37,7 @@ pnpm --filter @zentauri-ui/zentauri-components exec vitest run src/ui/accordion/
 pnpm --filter @zentauri-ui/zentauri-components exec vitest run -t "renders"
 ```
 
-The docs app has a `vitest.config.ts` and a few tests (e.g. `components/sidebar/*.test.tsx`) but **no `test` script** — run them with `pnpm --filter component-library exec vitest run`.
+The docs app has a `vitest.config.mts` and a few tests (e.g. `components/sidebar/*.test.tsx`). Run them with `pnpm --filter component-library test`.
 
 ### Library build internals
 
