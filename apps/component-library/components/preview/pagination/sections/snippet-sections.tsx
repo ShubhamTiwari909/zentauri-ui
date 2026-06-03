@@ -2,10 +2,7 @@ import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { PaginationDemo } from "./components/demo";
-import {
-  PAGINATION_APPEARANCES,
-  PAGINATION_SIZES,
-} from "./components/data";
+import { PAGINATION_APPEARANCES, PAGINATION_SIZES } from "./components/data";
 import { paginationSnippet } from "./components/snippets";
 
 export function PaginationCodeExamplesSection() {

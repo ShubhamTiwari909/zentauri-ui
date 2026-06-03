@@ -7,9 +7,7 @@ import {
 export function AnimatedNumberExamplesSection() {
   return (
     <Section variant="plain" className="space-y-6">
-      <h2 className="text-2xl font-semibold text-white">
-        Dashboard stats
-      </h2>
+      <h2 className="text-2xl font-semibold text-white">Dashboard stats</h2>
       <div className="grid gap-6 md:grid-cols-3">
         <div className="rounded-2xl border border-slate-900/10 bg-white p-5 dark:border-white/10 dark:bg-white/5">
           <p className="mb-2 text-sm text-slate-500 dark:text-slate-400">

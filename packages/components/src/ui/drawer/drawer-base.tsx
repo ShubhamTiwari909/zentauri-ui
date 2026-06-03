@@ -202,10 +202,7 @@ DrawerHeader.displayName = "DrawerHeader";
 
 export function DrawerBody({ className, children }: DrawerSectionProps) {
   return (
-    <div
-      data-slot="drawer-body"
-      className={cn("flex-1 text-sm", className)}
-    >
+    <div data-slot="drawer-body" className={cn("flex-1 text-sm", className)}>
       {children}
     </div>
   );

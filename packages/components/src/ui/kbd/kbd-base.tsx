@@ -31,7 +31,10 @@ export function KbdBase({
       {items.map((key, index) => (
         <Fragment key={index}>
           {index > 0 && separator != null ? (
-            <span data-slot="kbd-separator" className={kbdSeparatorVariants({ size })}>
+            <span
+              data-slot="kbd-separator"
+              className={kbdSeparatorVariants({ size })}
+            >
               {separator}
             </span>
           ) : null}

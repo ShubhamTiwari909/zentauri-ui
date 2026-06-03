@@ -1,6 +1,9 @@
 "use client";
 
-export { RadioGroupAnimated, RadioGroupItemAnimated } from "./radio-group-animated";
+export {
+  RadioGroupAnimated,
+  RadioGroupItemAnimated,
+} from "./radio-group-animated";
 export type {
   RadioGroupAnimatedProps,
   RadioGroupAnimation,

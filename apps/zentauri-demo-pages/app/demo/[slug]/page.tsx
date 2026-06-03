@@ -14,7 +14,9 @@ export function generateStaticParams() {
   return layoutRoutes.map((route) => ({ slug: route.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const route = getLayoutRoute(slug);
 

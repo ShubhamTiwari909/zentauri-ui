@@ -31,14 +31,14 @@ describe("Checkbox", () => {
       </Checkbox>,
     );
 
-    await user.click(screen.getByRole("checkbox", { name: "Marketing emails" }));
+    await user.click(
+      screen.getByRole("checkbox", { name: "Marketing emails" }),
+    );
     expect(onCheckedChange).toHaveBeenLastCalledWith(true);
   });
 
   it("should expose mixed state when indeterminate", () => {
-    render(
-      <Checkbox indeterminate aria-label="Select partial group" />,
-    );
+    render(<Checkbox indeterminate aria-label="Select partial group" />);
     expect(screen.getByRole("checkbox")).toHaveAttribute(
       "aria-checked",
       "mixed",

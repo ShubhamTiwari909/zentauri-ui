@@ -4,10 +4,7 @@ import { useCallback, useId, useState } from "react";
 
 import { cn } from "../../lib/utils";
 
-import {
-  RadioGroupContext,
-  useRadioGroupContext,
-} from "./radio-group-context";
+import { RadioGroupContext, useRadioGroupContext } from "./radio-group-context";
 import type { RadioGroupItemProps, RadioGroupProps } from "./types";
 import {
   radioGroupControlVariants,
@@ -103,7 +100,9 @@ export function RadioGroupItem(props: RadioGroupItemProps) {
   const size = sizeProp ?? context?.size;
   const labelContent = label ?? children;
   const hasVisibleLabel =
-    labelContent !== undefined && labelContent !== null && labelContent !== false;
+    labelContent !== undefined &&
+    labelContent !== null &&
+    labelContent !== false;
 
   return (
     <label

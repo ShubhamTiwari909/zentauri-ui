@@ -22,7 +22,12 @@ export function PopoverHeroSection({ seo }: { seo: PreviewSeoDocument }) {
               Project actions
             </button>
           </PopoverTrigger>
-          <PopoverContent align="start" variant="outline" width="sm" className="min-w-75">
+          <PopoverContent
+            align="start"
+            variant="outline"
+            width="sm"
+            className="min-w-75"
+          >
             <div className="space-y-3">
               <p className="text-sm font-semibold">Ship checklist</p>
               <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">

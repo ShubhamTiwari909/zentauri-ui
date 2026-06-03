@@ -1,10 +1,7 @@
 import type { AvatarAnimation } from "@zentauri-ui/zentauri-components/ui/avatar/animated";
 import type { AvatarProps } from "@zentauri-ui/zentauri-components/ui/avatar";
 
-import type {
-  AvatarDemoAnimation,
-  AvatarDemoSize,
-} from "./types";
+import type { AvatarDemoAnimation, AvatarDemoSize } from "./types";
 
 export { PREVIEW_SECTION_CLASS as AVATAR_CODE_EXAMPLES_SECTION_CLASS } from "@/components/common/Section";
 

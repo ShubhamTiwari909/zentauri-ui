@@ -1,5 +1,11 @@
 "use client";
-import { animate, motion, useInView, useReducedMotion, type UseInViewOptions } from "framer-motion";
+import {
+  animate,
+  motion,
+  useInView,
+  useReducedMotion,
+  type UseInViewOptions,
+} from "framer-motion";
 import { animatedNumberAppearance } from "./variants";
 import { AnimatedNumberCounterProps, AnimatedNumberProps } from "./types";
 import { cn } from "../../lib/utils";

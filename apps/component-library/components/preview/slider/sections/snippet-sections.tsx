@@ -7,10 +7,7 @@ import {
   SliderSingleDemo,
 } from "./components/demo";
 import { SLIDER_APPEARANCES } from "./components/data";
-import {
-  sliderRangeSnippet,
-  sliderSingleSnippet,
-} from "./components/snippets";
+import { sliderRangeSnippet, sliderSingleSnippet } from "./components/snippets";
 
 export function SliderCodeExamplesSection() {
   return (

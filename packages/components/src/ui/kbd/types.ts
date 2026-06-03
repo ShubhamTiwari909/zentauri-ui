@@ -5,8 +5,10 @@ import type { kbdKeyVariants } from "./variants";
 
 export type KbdVariantProps = VariantProps<typeof kbdKeyVariants>;
 
-export interface KbdBaseProps
-  extends Omit<ComponentPropsWithRef<"span">, "children"> {
+export interface KbdBaseProps extends Omit<
+  ComponentPropsWithRef<"span">,
+  "children"
+> {
   /** Keys to render as individual keycaps, e.g. `["⌘", "K"]`. Takes precedence over `children`. */
   keys?: ReactNode[];
   /** Optional node rendered between keycaps (e.g. "+" or "then"). */

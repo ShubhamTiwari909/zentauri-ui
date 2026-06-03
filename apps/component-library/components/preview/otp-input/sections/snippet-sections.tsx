@@ -1,10 +1,7 @@
 import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
-import {
-  OTP_INPUT_APPEARANCES,
-  OTP_INPUT_SIZES,
-} from "./components/data";
+import { OTP_INPUT_APPEARANCES, OTP_INPUT_SIZES } from "./components/data";
 import { OTPInputDemo } from "./components/demo";
 import {
   otpInputSnippet,

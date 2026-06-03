@@ -9,10 +9,7 @@ import {
   MODAL_POSITIONS,
   MODAL_SIZES,
 } from "./components/data";
-import {
-  modalControlledSnippet,
-  modalSnippet,
-} from "./components/snippets";
+import { modalControlledSnippet, modalSnippet } from "./components/snippets";
 
 export function ModalCodeExamplesSection() {
   return (

@@ -51,9 +51,7 @@ describe("Command", () => {
     const user = userEvent.setup();
     render(<Palette />);
     await user.click(screen.getByRole("button", { name: "Open palette" }));
-    await waitFor(() =>
-      expect(screen.getByRole("dialog")).toBeInTheDocument(),
-    );
+    await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
     expect(screen.getByText("Home")).toBeInTheDocument();
   });
 
@@ -61,23 +59,19 @@ describe("Command", () => {
     const { rerender } = render(<Palette open={false} />);
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     rerender(<Palette open />);
-    await waitFor(() =>
-      expect(screen.getByRole("dialog")).toBeInTheDocument(),
-    );
+    await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
   });
 
   it("should filter items as the user types", async () => {
     const user = userEvent.setup();
     render(<Palette open />);
-    await waitFor(() =>
-      expect(screen.getByRole("dialog")).toBeInTheDocument(),
-    );
+    await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
     await user.type(screen.getByRole("combobox"), "settings");
     await waitFor(() => {
       expect(screen.getByText("Settings")).toBeVisible();
-      expect(screen.getByText("Home").closest("[data-slot=command-item]")).toHaveAttribute(
-        "hidden",
-      );
+      expect(
+        screen.getByText("Home").closest("[data-slot=command-item]"),
+      ).toHaveAttribute("hidden");
     });
   });
 
@@ -94,9 +88,7 @@ describe("Command", () => {
     const user = userEvent.setup();
     const onSelectHome = vi.fn();
     render(<Palette open onSelectHome={onSelectHome} />);
-    await waitFor(() =>
-      expect(screen.getByRole("dialog")).toBeInTheDocument(),
-    );
+    await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
     const input = screen.getByRole("combobox");
     input.focus();
     await user.keyboard("{Enter}");
@@ -107,20 +99,14 @@ describe("Command", () => {
     const user = userEvent.setup();
     const onOpenChange = vi.fn();
     render(<Palette open onOpenChange={onOpenChange} />);
-    await waitFor(() =>
-      expect(screen.getByRole("dialog")).toBeInTheDocument(),
-    );
+    await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
     await user.keyboard("{Escape}");
-    await waitFor(() =>
-      expect(onOpenChange).toHaveBeenLastCalledWith(false),
-    );
+    await waitFor(() => expect(onOpenChange).toHaveBeenLastCalledWith(false));
   });
 
   it("should render group headings and a separator", async () => {
     render(<Palette open />);
-    await waitFor(() =>
-      expect(screen.getByRole("dialog")).toBeInTheDocument(),
-    );
+    await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
     expect(screen.getByText("Navigation")).toBeInTheDocument();
     expect(screen.getByText("Actions")).toBeInTheDocument();
     expect(

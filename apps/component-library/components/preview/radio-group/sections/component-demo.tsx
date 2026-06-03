@@ -30,8 +30,12 @@ export function RadioGroupExamplesSection() {
             orientation="horizontal"
           >
             <RadioGroupItemAnimated value="daily">Daily</RadioGroupItemAnimated>
-            <RadioGroupItemAnimated value="weekly">Weekly</RadioGroupItemAnimated>
-            <RadioGroupItemAnimated value="monthly">Monthly</RadioGroupItemAnimated>
+            <RadioGroupItemAnimated value="weekly">
+              Weekly
+            </RadioGroupItemAnimated>
+            <RadioGroupItemAnimated value="monthly">
+              Monthly
+            </RadioGroupItemAnimated>
           </RadioGroupAnimated>
         </PreviewCodeShowcase>
       </div>

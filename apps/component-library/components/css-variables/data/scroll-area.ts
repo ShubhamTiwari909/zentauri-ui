@@ -18,7 +18,7 @@ export const scrollAreaCssVariables = defineCssVariableReference({
     ["scroll-area-emerald-border", "oklch(59.6% 0.145 163.225 / 0.35)"],
     ["scroll-area-rose-border", "oklch(58.6% 0.253 17.585 / 0.3)"],
     ["scroll-area-amber-border", "oklch(76.9% 0.188 70.08 / 0.35)"],
-    ["scroll-area-violet-border", "oklch(60.6% 0.25 292.717 / 0.35)"]
+    ["scroll-area-violet-border", "oklch(60.6% 0.25 292.717 / 0.35)"],
   ],
   darkExamples: [
     ["scroll-area-thumb-dark", "#64748b"],

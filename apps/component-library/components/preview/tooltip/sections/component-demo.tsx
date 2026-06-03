@@ -29,7 +29,9 @@ export function TooltipExamplesSection() {
 </Tooltip>`}
         >
           <Tooltip position="bottom" delay={400}>
-            <TooltipTrigger className="text-slate-900 dark:text-white">Slow hover</TooltipTrigger>
+            <TooltipTrigger className="text-slate-900 dark:text-white">
+              Slow hover
+            </TooltipTrigger>
             <TooltipContentAnimated
               variant="outline"
               size="sm"

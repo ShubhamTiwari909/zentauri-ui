@@ -7,10 +7,7 @@ import {
   SliderTrack,
 } from "@zentauri-ui/zentauri-components/ui/slider";
 
-import type {
-  SliderRangeDemoProps,
-  SliderSingleDemoProps,
-} from "./types";
+import type { SliderRangeDemoProps, SliderSingleDemoProps } from "./types";
 import { useState } from "react";
 
 export function SliderSingleDemo({

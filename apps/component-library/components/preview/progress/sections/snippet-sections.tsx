@@ -53,7 +53,7 @@ export function ProgressCodeExamplesSection() {
             ...defaults,
             appearance: "sky",
             striped: true,
-            animated:true
+            animated: true,
           })}
         >
           <ProgressDemo {...defaults} appearance="sky" striped animated />

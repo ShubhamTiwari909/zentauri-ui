@@ -31,10 +31,7 @@ export function PreviewCodeTabs({ preview, code }: PreviewCodeTabsProps) {
     >
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <TabsList>
-          <TabsTrigger
-            value="preview"
-            disabled={false}
-          >
+          <TabsTrigger value="preview" disabled={false}>
             Preview
           </TabsTrigger>
           <TabsTrigger value="code" disabled={false}>

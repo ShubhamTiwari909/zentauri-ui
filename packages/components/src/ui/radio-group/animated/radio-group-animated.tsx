@@ -110,7 +110,9 @@ export function RadioGroupItemAnimated(props: RadioGroupItemAnimatedProps) {
   const size = sizeProp ?? context?.size;
   const labelContent = label ?? children;
   const hasVisibleLabel =
-    labelContent !== undefined && labelContent !== null && labelContent !== false;
+    labelContent !== undefined &&
+    labelContent !== null &&
+    labelContent !== false;
   const motionPreset = radioGroupAnimationPresets[animation];
 
   return (

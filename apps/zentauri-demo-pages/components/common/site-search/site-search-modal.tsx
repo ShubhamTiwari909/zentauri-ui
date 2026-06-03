@@ -75,7 +75,9 @@ export function SiteSearchModal({
         }))
         .sort((a, b) => {
           const groupCompare = (a.group ?? "").localeCompare(b.group ?? "");
-          return groupCompare === 0 ? a.label.localeCompare(b.label) : groupCompare;
+          return groupCompare === 0
+            ? a.label.localeCompare(b.label)
+            : groupCompare;
         }),
     [filtered],
   );
@@ -130,7 +132,10 @@ export function SiteSearchModal({
       );
       if (event.key === "ArrowDown") {
         event.preventDefault();
-        const nextIndex = Math.min(suggestionItems.length - 1, currentIndex + 1);
+        const nextIndex = Math.min(
+          suggestionItems.length - 1,
+          currentIndex + 1,
+        );
         setUserActiveId(suggestionItems[nextIndex]?.id);
       }
       if (event.key === "ArrowUp") {

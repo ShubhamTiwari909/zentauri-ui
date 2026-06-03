@@ -11,10 +11,7 @@ import {
   useTimelineIndex,
 } from "../timeline-base";
 import type { TimelineItemCtx } from "../types";
-import {
-  timelineConnectorVariants,
-  timelineItemVariants,
-} from "../variants";
+import { timelineConnectorVariants, timelineItemVariants } from "../variants";
 import {
   TIMELINE_DEFAULT_STAGGER,
   timelineItemTransitionPresets,

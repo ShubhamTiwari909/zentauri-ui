@@ -1,10 +1,7 @@
 import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
-import {
-  CHECKBOX_APPEARANCES,
-  CHECKBOX_SIZES,
-} from "./components/data";
+import { CHECKBOX_APPEARANCES, CHECKBOX_SIZES } from "./components/data";
 import { CheckboxDemo } from "./components/demo";
 import {
   checkboxControlledSnippet,
@@ -29,7 +26,7 @@ export function CheckboxCodeExamplesSection() {
           >
             <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
               Appearance:{" "}
-              <span className="font-bold">{appearance.toUpperCase()}</span> | 
+              <span className="font-bold">{appearance.toUpperCase()}</span> |
               Size: <span className="font-bold">MD</span>
             </p>
             <CheckboxDemo appearance={appearance} size="md" />
@@ -41,9 +38,8 @@ export function CheckboxCodeExamplesSection() {
             code={checkboxSnippet({ appearance: "violet", size })}
           >
             <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
-              Appearance:{" "}
-              <span className="font-bold">VIOLET</span> | 
-              Size: <span className="font-bold">{size.toUpperCase()}</span>
+              Appearance: <span className="font-bold">VIOLET</span> | Size:{" "}
+              <span className="font-bold">{size.toUpperCase()}</span>
             </p>
             <CheckboxDemo appearance="violet" size={size} />
           </PreviewCodeShowcase>
@@ -56,12 +52,13 @@ export function CheckboxCodeExamplesSection() {
             indeterminate: true,
           })}
         >
-           <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
-            Appearance:{" "}
-            <span className="font-bold">INFO</span> | 
-            Size: <span className="font-bold">md</span> | 
-            Indeterminate:{" "}
-            <span className="font-bold">TRUE</span> - The indeterminate state is a visual-only condition for HTML checkboxes where the input appears neither checked nor unchecked, typically displayed as a horizontal dash (—) or a filled square.
+          <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
+            Appearance: <span className="font-bold">INFO</span> | Size:{" "}
+            <span className="font-bold">md</span> | Indeterminate:{" "}
+            <span className="font-bold">TRUE</span> - The indeterminate state is
+            a visual-only condition for HTML checkboxes where the input appears
+            neither checked nor unchecked, typically displayed as a horizontal
+            dash (—) or a filled square.
           </p>
           <CheckboxDemo appearance="info" size="md" indeterminate />
         </PreviewCodeShowcase>

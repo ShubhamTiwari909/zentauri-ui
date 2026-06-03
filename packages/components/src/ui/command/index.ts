@@ -25,7 +25,7 @@ export type {
   CommandSectionProps,
   CommandCtx,
   ItemMeta,
-  RegisteredItem
+  RegisteredItem,
 } from "./types";
 export {
   commandContentVariants,

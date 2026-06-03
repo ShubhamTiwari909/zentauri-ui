@@ -26,8 +26,13 @@ export default function DemoIndexPage() {
           >
             Eight distinct Zentauri UI landing layouts with switchable themes.
           </Heading>
-          <Text size="lg" tone="muted" className="max-w-2xl leading-7 sm:leading-8">
-            Choose a layout route, then use the theme tabs inside the page to preview the same content across visual styles.
+          <Text
+            size="lg"
+            tone="muted"
+            className="max-w-2xl leading-7 sm:leading-8"
+          >
+            Choose a layout route, then use the theme tabs inside the page to
+            preview the same content across visual styles.
           </Text>
         </div>
 
@@ -43,7 +48,9 @@ export default function DemoIndexPage() {
                 </CardDescription>
               </CardHeader>
               <CardBody className="gap-5 flex flex-col justify-between">
-                <Text bold>Shared content, route-level layout, local theme tabs.</Text>
+                <Text bold>
+                  Shared content, route-level layout, local theme tabs.
+                </Text>
                 <Button
                   as="link"
                   href={`/demo/${route.slug}`}

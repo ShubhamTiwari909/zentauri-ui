@@ -10,7 +10,12 @@ export function KbdDemo({ appearance, size }: KbdDemoProps) {
       <Kbd appearance={appearance} size={size}>
         Esc
       </Kbd>
-      <Kbd appearance={appearance} size={size} keys={["⌘", "K"]} separator="+" />
+      <Kbd
+        appearance={appearance}
+        size={size}
+        keys={["⌘", "K"]}
+        separator="+"
+      />
       <Kbd
         appearance={appearance}
         size={size}

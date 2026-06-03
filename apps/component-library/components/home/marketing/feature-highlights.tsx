@@ -45,24 +45,24 @@ const FEATURES = [
 export function HomeFeatureHighlights() {
   return (
     <SectionShell
-        eyebrow="Why this library"
-        title="Built for product engineers"
-        lead="Opinionated visuals with escape hatches—fast to scan, fast to ship."
-      >
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map(({ icon: Icon, title, body }) => (
-            <article
-              key={title}
-              className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-slate-950/60 p-5 shadow-lg shadow-slate-950/30 transition hover:-translate-y-0.5 hover:border-cyan-400/20"
-            >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-200 ring-1 ring-white/10">
-                <Icon className="h-5 w-5" aria-hidden />
-              </span>
-              <h3 className="text-base font-semibold text-white">{title}</h3>
-              <p className="text-sm leading-6 text-slate-400">{body}</p>
-            </article>
-          ))}
-        </div>
-      </SectionShell>
+      eyebrow="Why this library"
+      title="Built for product engineers"
+      lead="Opinionated visuals with escape hatches—fast to scan, fast to ship."
+    >
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {FEATURES.map(({ icon: Icon, title, body }) => (
+          <article
+            key={title}
+            className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-slate-950/60 p-5 shadow-lg shadow-slate-950/30 transition hover:-translate-y-0.5 hover:border-cyan-400/20"
+          >
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-200 ring-1 ring-white/10">
+              <Icon className="h-5 w-5" aria-hidden />
+            </span>
+            <h3 className="text-base font-semibold text-white">{title}</h3>
+            <p className="text-sm leading-6 text-slate-400">{body}</p>
+          </article>
+        ))}
+      </div>
+    </SectionShell>
   );
 }

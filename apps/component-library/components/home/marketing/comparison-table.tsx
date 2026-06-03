@@ -42,48 +42,42 @@ const ROWS = [
 export function HomeComparisonTable() {
   return (
     <SectionShell
-        eyebrow="Landscape"
-        title="How Zentauri fits in"
-        lead="Every stack makes tradeoffs—here is a compact, honest snapshot. Try the previews and judge for your team."
-      >
-        <Table appearance="emerald" className="min-w-3xl">
-          <TableHeader>
-            <TableRow className="text-white">
-              <TableHead className="p-5">Aspect</TableHead>
-              <TableHead className="p-5">Zentauri UI</TableHead>
-              <TableHead className="p-5">ShadCN</TableHead>
-              <TableHead className="p-5">Chakra UI</TableHead>
-              <TableHead className="p-5">Radix</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {ROWS.map((row) => (
-              <TableRow
-                key={row.aspect}
-                className="border-b border-white/5 last:border-0 hover:bg-white/2"
+      eyebrow="Landscape"
+      title="How Zentauri fits in"
+      lead="Every stack makes tradeoffs—here is a compact, honest snapshot. Try the previews and judge for your team."
+    >
+      <Table appearance="emerald" className="min-w-3xl">
+        <TableHeader>
+          <TableRow className="text-white">
+            <TableHead className="p-5">Aspect</TableHead>
+            <TableHead className="p-5">Zentauri UI</TableHead>
+            <TableHead className="p-5">ShadCN</TableHead>
+            <TableHead className="p-5">Chakra UI</TableHead>
+            <TableHead className="p-5">Radix</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {ROWS.map((row) => (
+            <TableRow
+              key={row.aspect}
+              className="border-b border-white/5 last:border-0 hover:bg-white/2"
+            >
+              <TableCell
+                scope="row"
+                className="whitespace-nowrap p-5 font-medium text-white"
               >
-                <TableCell
-                  scope="row"
-                  className="whitespace-nowrap p-5 font-medium text-white"
-                >
-                  {row.aspect}
-                </TableCell>
-                <TableCell className="p-3 text-slate-200">
-                  {row.zentauri}
-                </TableCell>
-                <TableCell className="p-3 text-slate-200">
-                  {row.shadcn}
-                </TableCell>
-                <TableCell className="p-3 text-slate-200">
-                  {row.chakra}
-                </TableCell>
-                <TableCell className="p-3 text-slate-200">
-                  {row.radix}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </SectionShell>
+                {row.aspect}
+              </TableCell>
+              <TableCell className="p-3 text-slate-200">
+                {row.zentauri}
+              </TableCell>
+              <TableCell className="p-3 text-slate-200">{row.shadcn}</TableCell>
+              <TableCell className="p-3 text-slate-200">{row.chakra}</TableCell>
+              <TableCell className="p-3 text-slate-200">{row.radix}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </SectionShell>
   );
 }

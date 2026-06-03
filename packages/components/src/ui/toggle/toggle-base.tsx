@@ -84,7 +84,12 @@ export function ToggleBase(props: ToggleProps) {
       }}
       {...rest}
     >
-      <span className="sr-only" id={labeledByChildren ? toggleLabelId : undefined}>{children}</span>
+      <span
+        className="sr-only"
+        id={labeledByChildren ? toggleLabelId : undefined}
+      >
+        {children}
+      </span>
       <span
         className={cn(
           toggleThumbVariants({ size, thumbColor }),

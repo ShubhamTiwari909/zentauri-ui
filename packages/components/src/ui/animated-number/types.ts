@@ -24,7 +24,16 @@ export type AnimatedNumberProps = MotionPropsWithoutTransitionDelay & {
   ref?: RefObject<HTMLDivElement>;
   appearance?: VariantProps<typeof animatedNumberAppearance>["appearance"];
   size?: VariantProps<typeof animatedNumberAppearance>["size"];
-  type?: "up" | "down" | "scaleUp" | "scaleDown" | "rotateX" | "rotateY" | "skewX" | "skewY" | "fade";
+  type?:
+    | "up"
+    | "down"
+    | "scaleUp"
+    | "scaleDown"
+    | "rotateX"
+    | "rotateY"
+    | "skewX"
+    | "skewY"
+    | "fade";
   delayInSecond?: number;
   transition?: MotionProps["transition"];
 };

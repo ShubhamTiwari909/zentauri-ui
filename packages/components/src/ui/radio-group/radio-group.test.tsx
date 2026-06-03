@@ -18,7 +18,9 @@ describe("RadioGroup", () => {
       </RadioGroup>,
     );
     expect(document.querySelector('[data-slot="radio-group"]')).toBeTruthy();
-    expect(document.querySelector('[data-slot="radio-group-item"]')).toBeTruthy();
+    expect(
+      document.querySelector('[data-slot="radio-group-item"]'),
+    ).toBeTruthy();
   });
 
   it("should select one value at a time", async () => {

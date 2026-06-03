@@ -2,10 +2,7 @@ import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { AlertDemo } from "./components/demo";
-import {
-  ALERT_APPEARANCES,
-  ALERT_SIZES,
-} from "./components/data";
+import { ALERT_APPEARANCES, ALERT_SIZES } from "./components/data";
 import { alertSnippet } from "./components/snippets";
 
 export function AlertCodeExamplesSection() {

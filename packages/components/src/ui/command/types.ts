@@ -100,7 +100,6 @@ export type CommandCtx = {
   inputRef: RefObject<HTMLInputElement | null>;
 };
 
-
 export type CommandContentOverlayRenderProps = {
   role: "presentation";
   "data-slot": "command-overlay";

@@ -97,18 +97,18 @@ From **`apps/component-library`** (after install from repo root):
 
 From the **repository root**:
 
-| Command                                                 | Purpose                                                                             |
-| ------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `pnpm install`                                          | Install all workspace packages                                                      |
-| `pnpm dev`                                              | `turbo run dev` for every package that defines `dev`                                |
-| `pnpm build`                                            | `turbo run build` (depends on upstream package builds per `turbo.json`)             |
-| `pnpm lint`                                             | `turbo run lint`                                                                    |
-| `pnpm format`                                           | Prettier write across the repo (`**/*.{ts,tsx,md}`)                                 |
-| `pnpm check-types`                                      | `turbo run check-types` (runs `check-types` in each workspace that defines it)      |
-| `pnpm test:docs`                                        | Run this app’s Vitest test suite                                                    |
-| `pnpm turbo run dev --filter=component-library`         | Start only this app’s dev task                                                      |
-| `pnpm turbo run format --filter=component-library`      | Run this app’s `format` script                                                      |
-| `pnpm turbo run check-types --filter=component-library` | Run this app’s `check-types` script                                                 |
+| Command                                                 | Purpose                                                                        |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `pnpm install`                                          | Install all workspace packages                                                 |
+| `pnpm dev`                                              | `turbo run dev` for every package that defines `dev`                           |
+| `pnpm build`                                            | `turbo run build` (depends on upstream package builds per `turbo.json`)        |
+| `pnpm lint`                                             | `turbo run lint`                                                               |
+| `pnpm format`                                           | Prettier write across the repo (`**/*.{ts,tsx,md}`)                            |
+| `pnpm check-types`                                      | `turbo run check-types` (runs `check-types` in each workspace that defines it) |
+| `pnpm test:docs`                                        | Run this app’s Vitest test suite                                               |
+| `pnpm turbo run dev --filter=component-library`         | Start only this app’s dev task                                                 |
+| `pnpm turbo run format --filter=component-library`      | Run this app’s `format` script                                                 |
+| `pnpm turbo run check-types --filter=component-library` | Run this app’s `check-types` script                                            |
 
 Root `pnpm format` runs Prettier once from the monorepo root (it is not wired through Turbo). [`turbo.json`](../../turbo.json) defines a `format` task so `pnpm turbo run format` can run each package’s `format` script in parallel where present.
 
