@@ -30,7 +30,7 @@ export type PopoverTriggerProps = {
 
 export type PopoverContentProps = ComponentPropsWithRef<"div"> & {
   children: ReactNode;
-  variant?: VariantProps<typeof popoverContentVariants>["variant"]
+  variant?: VariantProps<typeof popoverContentVariants>["variant"];
   size?: VariantProps<typeof popoverContentVariants>["size"];
   width?: VariantProps<typeof popoverContentVariants>["width"];
   side?: PopoverSide;

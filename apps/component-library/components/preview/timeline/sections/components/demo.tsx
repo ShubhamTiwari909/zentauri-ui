@@ -21,7 +21,10 @@ export function TimelineDemo({
     return (
       <Timeline appearance={appearance} size={size}>
         {TIMELINE_EVENTS.map((event) => (
-          <TimelineItemAnimated key={event.title} transitionVariant={transition}>
+          <TimelineItemAnimated
+            key={event.title}
+            transitionVariant={transition}
+          >
             <TimelineIndicator />
             <TimelineContent>
               <TimelineTitle>{event.title}</TimelineTitle>

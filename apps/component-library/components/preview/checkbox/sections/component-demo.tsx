@@ -19,7 +19,11 @@ export function CheckboxExamplesSection() {
   Sync billing contacts
 </CheckboxAnimated>`}
         >
-          <CheckboxAnimated appearance="success" defaultChecked animation="draw">
+          <CheckboxAnimated
+            appearance="success"
+            defaultChecked
+            animation="draw"
+          >
             Sync billing contacts
           </CheckboxAnimated>
         </PreviewCodeShowcase>

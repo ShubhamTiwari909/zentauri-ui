@@ -1,6 +1,7 @@
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import accordion from "@/content/seo/preview/components/accordion.json";
 import alert from "@/content/seo/preview/components/alert.json";
+import animations from "@/content/seo/preview/animations.json";
 import animatedNumber from "@/content/seo/preview/components/animated-number.json";
 import avatar from "@/content/seo/preview/components/avatar.json";
 import badge from "@/content/seo/preview/components/badge.json";
@@ -53,6 +54,7 @@ const previewSeoRegistry = {
   installation: installation as PreviewSeoDocument,
   accordion: accordion as PreviewSeoDocument,
   alert: alert as PreviewSeoDocument,
+  animations: animations as PreviewSeoDocument,
   "animated-number": animatedNumber as PreviewSeoDocument,
   avatar: avatar as PreviewSeoDocument,
   badge: badge as PreviewSeoDocument,

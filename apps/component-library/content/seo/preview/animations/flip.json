@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Flip animation for React",
+  "description": "Flip repeats a 3D rotateY motion for cards, tiles, and playful indicators.",
+  "keywords": ["flip animation", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Flip animation · Zentauri UI",
+    "description": "Flip repeats a 3D rotateY motion for cards, tiles, and playful indicators.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Flip animation · Zentauri UI",
+    "description": "Flip repeats a 3D rotateY motion for cards, tiles, and playful indicators.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/flip",
+  "headings": {
+    "h1": "Flip animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Flip when a card or tile should rotate through a repeated 3D motion.",
+  "useCases": ["Interactive cards.", "Feature tiles.", "Gamified states."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/flip`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Repeats a rotateY motion with perspective applied."
+    }
+  ]
+}

@@ -3,14 +3,8 @@ import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase"
 
 import { ToggleDemo } from "./components/demo";
 import { ToggleControlledDemo } from "./components/controlled";
-import {
-  TOGGLE_APPEARANCES,
-  TOGGLE_SIZES,
-} from "./components/data";
-import {
-  toggleControlledSnippet,
-  toggleSnippet,
-} from "./components/snippets";
+import { TOGGLE_APPEARANCES, TOGGLE_SIZES } from "./components/data";
+import { toggleControlledSnippet, toggleSnippet } from "./components/snippets";
 
 export function ToggleCodeExamplesSection() {
   return (

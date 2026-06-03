@@ -1,0 +1,40 @@
+{
+  "category": "Animations",
+  "title": "Parallax animation for React",
+  "description": "Parallax repeats a subtle vertical offset for layered depth effects.",
+  "keywords": [
+    "parallax animation",
+    "React animation",
+    "Framer Motion",
+    "Motion"
+  ],
+  "og": {
+    "title": "Parallax animation · Zentauri UI",
+    "description": "Parallax repeats a subtle vertical offset for layered depth effects.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Parallax animation · Zentauri UI",
+    "description": "Parallax repeats a subtle vertical offset for layered depth effects.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/parallax",
+  "headings": {
+    "h1": "Parallax animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Parallax for subtle layered movement in cards and hero details.",
+  "useCases": ["Hero layers.", "Feature cards.", "Decorative depth."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/parallax`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Repeats a slow y-axis offset to suggest depth."
+    }
+  ]
+}

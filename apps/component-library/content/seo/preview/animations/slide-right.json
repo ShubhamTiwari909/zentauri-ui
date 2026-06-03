@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Slide Right animation for React",
+  "description": "SlideRight moves content horizontally from the left into its final position.",
+  "keywords": ["slide right", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Slide Right animation · Zentauri UI",
+    "description": "SlideRight moves content horizontally from the left into its final position.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Slide Right animation · Zentauri UI",
+    "description": "SlideRight moves content horizontally from the left into its final position.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/slide-right",
+  "headings": {
+    "h1": "Slide Right animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use SlideRight for horizontal content changes that should move into place from the left.",
+  "useCases": ["Side panels.", "Stepper content.", "Inline detail views."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/slide-right`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates horizontal position from a left-side offset into the final position."
+    }
+  ]
+}

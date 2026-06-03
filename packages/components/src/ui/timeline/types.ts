@@ -6,10 +6,7 @@ import type {
 } from "react";
 
 import type { TimelineTransition } from "./animated/animations";
-import type {
-  timelineIndicatorVariants,
-  timelineVariants,
-} from "./variants";
+import type { timelineIndicatorVariants, timelineVariants } from "./variants";
 
 export type { TimelineTransition };
 

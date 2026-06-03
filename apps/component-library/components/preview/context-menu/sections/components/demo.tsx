@@ -43,8 +43,12 @@ export function ContextMenuDemo({
               Share
             </ContextMenuSubTrigger>
             <ContextMenuSubContent spacing={spacing}>
-              <ContextMenuItem variant={itemVariant}>Email digest</ContextMenuItem>
-              <ContextMenuItem variant={itemVariant}>Slack channel</ContextMenuItem>
+              <ContextMenuItem variant={itemVariant}>
+                Email digest
+              </ContextMenuItem>
+              <ContextMenuItem variant={itemVariant}>
+                Slack channel
+              </ContextMenuItem>
             </ContextMenuSubContent>
           </ContextMenuSub>
         ) : null}

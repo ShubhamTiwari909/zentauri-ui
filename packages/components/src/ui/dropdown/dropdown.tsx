@@ -146,7 +146,7 @@ export const DropdownContent = ({
       className={cn(
         contentVariants({ placement, spacing }),
         className,
-        divider && "divide-y divide-current"
+        divider && "divide-y divide-current",
       )}
       {...props}
     >

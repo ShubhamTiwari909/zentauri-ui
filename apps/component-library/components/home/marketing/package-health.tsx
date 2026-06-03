@@ -13,19 +13,19 @@ import { SectionShell } from "./section-shell";
 const TEST_TOTALS = [
   {
     label: "Test files",
-    value: "76",
-    detail: "76 passed",
+    value: "77",
+    detail: "77 passed",
     icon: FiFileText,
   },
   {
     label: "Assertions",
-    value: "548",
-    detail: "548 passed",
+    value: "591",
+    detail: "591 passed",
     icon: FiCheckCircle,
   },
   {
     label: "Runtime",
-    value: "12.00s",
+    value: "16.83s",
     detail: "Vitest duration",
     icon: FiClock,
   },
@@ -39,8 +39,9 @@ const TEST_TOTALS = [
 
 const TEST_AREAS = [
   { area: "Components and UI utilities", files: "46", tests: "433" },
+  { area: "Standalone animations", files: "1", tests: "42" },
   { area: "React hooks", files: "28", tests: "101" },
-  { area: "CLI and import rewriting", files: "2", tests: "14" },
+  { area: "CLI and import rewriting", files: "2", tests: "15" },
 ] as const;
 
 export function HomePackageHealth() {

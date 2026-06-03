@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Text Shimmer animation for React",
+  "description": "TextShimmer animates background position for shiny gradient text treatments.",
+  "keywords": ["text shimmer", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Text Shimmer animation · Zentauri UI",
+    "description": "TextShimmer animates background position for shiny gradient text treatments.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Text Shimmer animation · Zentauri UI",
+    "description": "TextShimmer animates background position for shiny gradient text treatments.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/text-shimmer",
+  "headings": {
+    "h1": "Text Shimmer animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use TextShimmer with gradient text classes when a heading or label should catch attention.",
+  "useCases": ["Hero phrases.", "Featured labels.", "Marketing callouts."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/text-shimmer`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates opacity and background position so gradient text can shimmer across the content."
+    }
+  ]
+}

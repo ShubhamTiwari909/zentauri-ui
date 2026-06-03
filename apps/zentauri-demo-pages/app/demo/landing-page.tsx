@@ -14,7 +14,11 @@ import {
 } from "@zentauri-ui/zentauri-components/ui/card";
 import { Divider } from "@zentauri-ui/zentauri-components/ui/divider";
 import { Progress } from "@zentauri-ui/zentauri-components/ui/progress";
-import { Tabs, TabsList, TabsTrigger } from "@zentauri-ui/zentauri-components/ui/tabs";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+} from "@zentauri-ui/zentauri-components/ui/tabs";
 import { Heading, Text } from "@zentauri-ui/zentauri-components/ui/typography";
 
 import {
@@ -57,7 +61,10 @@ function TagTabs({
   activeTheme,
   firstTag,
   setActiveTag,
-}: Pick<TemplateContext, "activeTag" | "activeTheme" | "firstTag" | "setActiveTag">) {
+}: Pick<
+  TemplateContext,
+  "activeTag" | "activeTheme" | "firstTag" | "setActiveTag"
+>) {
   return (
     <Tabs
       value={activeTag}
@@ -123,7 +130,9 @@ function CtaRow({
   activeTheme,
   nextRoute,
   centered = false,
-}: Pick<TemplateContext, "activeTheme" | "nextRoute"> & { centered?: boolean }) {
+}: Pick<TemplateContext, "activeTheme" | "nextRoute"> & {
+  centered?: boolean;
+}) {
   return (
     <div
       className={
@@ -176,7 +185,13 @@ function HeroCopy({
   compact?: boolean;
 }) {
   return (
-    <div className={centered ? "mx-auto flex max-w-5xl flex-col items-center gap-7 text-center" : "flex flex-col gap-7"}>
+    <div
+      className={
+        centered
+          ? "mx-auto flex max-w-5xl flex-col items-center gap-7 text-center"
+          : "flex flex-col gap-7"
+      }
+    >
       <div
         className={
           centered
@@ -211,7 +226,11 @@ function HeroCopy({
         <Text
           size="lg"
           tone="muted"
-          className={centered ? "mx-auto max-w-3xl leading-7 sm:leading-8" : "max-w-2xl leading-7 sm:leading-8"}
+          className={
+            centered
+              ? "mx-auto max-w-3xl leading-7 sm:leading-8"
+              : "max-w-2xl leading-7 sm:leading-8"
+          }
         >
           {activeDescription}
         </Text>
@@ -355,7 +374,11 @@ function SplitTemplate(ctx: TemplateContext) {
 function DashboardTemplate(ctx: TemplateContext) {
   return (
     <section className="mx-auto grid min-h-dvh w-full max-w-7xl content-center gap-8 px-4 py-8 sm:px-6 sm:py-12 lg:grid-cols-[0.82fr_1.18fr] lg:px-8 lg:py-16">
-      <ProductPanel {...ctx} rounded="lg" className="w-full self-center lg:order-first" />
+      <ProductPanel
+        {...ctx}
+        rounded="lg"
+        className="w-full self-center lg:order-first"
+      />
       <div className="flex flex-col justify-center gap-8">
         <HeroCopy {...ctx} compact />
         <ThemeTabs {...ctx} />
@@ -407,17 +430,31 @@ function SidebarTemplate(ctx: TemplateContext) {
 function BentoTemplate(ctx: TemplateContext) {
   return (
     <section className="mx-auto grid min-h-dvh w-full max-w-7xl content-center gap-4 px-4 py-8 sm:px-6 sm:py-12 lg:grid-cols-4 lg:px-8 lg:py-16">
-      <Card appearance="outline" rounded="lg" size="lg" className="lg:col-span-2 lg:row-span-2">
+      <Card
+        appearance="outline"
+        rounded="lg"
+        size="lg"
+        className="lg:col-span-2 lg:row-span-2"
+      >
         <CardBody className="gap-7">
           <HeroCopy {...ctx} compact />
           <ThemeTabs {...ctx} />
           <CtaRow {...ctx} />
         </CardBody>
       </Card>
-      <ProductPanel {...ctx} rounded="lg" className="w-full lg:col-span-2 lg:row-span-3" />
+      <ProductPanel
+        {...ctx}
+        rounded="lg"
+        className="w-full lg:col-span-2 lg:row-span-3"
+      />
       <OutcomeCard {...ctx} themed className="w-full lg:col-span-2" />
       {ctx.proofCards.slice(0, 2).map((card) => (
-        <Card key={card.tag} appearance={ctx.activeTheme.accent} rounded="lg" size="lg">
+        <Card
+          key={card.tag}
+          appearance={ctx.activeTheme.accent}
+          rounded="lg"
+          size="lg"
+        >
           <CardBody className="gap-3">
             <Badge appearance="glass">{card.tag}</Badge>
             <Heading level={3} displayLevel={3}>
@@ -450,7 +487,11 @@ function MinimalTemplate(ctx: TemplateContext) {
 function TerminalTemplate(ctx: TemplateContext) {
   return (
     <section className="mx-auto grid min-h-dvh w-full max-w-7xl content-center gap-8 px-4 py-8 sm:px-6 sm:py-12 lg:grid-cols-[0.72fr_1.28fr] lg:px-8 lg:py-16">
-      <ProductPanel {...ctx} rounded="lg" className="w-full self-center lg:order-first" />
+      <ProductPanel
+        {...ctx}
+        rounded="lg"
+        className="w-full self-center lg:order-first"
+      />
       <div className="flex flex-col justify-center gap-6">
         <Card appearance="outline" rounded="lg" size="lg">
           <CardBody className="gap-6">
@@ -475,7 +516,12 @@ function PricingTemplate(ctx: TemplateContext) {
         <CtaRow {...ctx} />
         <ProductPanel {...ctx} rounded="lg" statMode="stack" />
       </div>
-      <Card appearance={ctx.activeTheme.accent} rounded="lg" size="lg" className="w-full self-center">
+      <Card
+        appearance={ctx.activeTheme.accent}
+        rounded="lg"
+        size="lg"
+        className="w-full self-center"
+      >
         <CardHeader className="">
           <Badge appearance="glass">Preview plan</Badge>
           <CardTitle as="h2" className="" ref={undefined}>
@@ -665,8 +711,13 @@ export function DemoLandingPage({ route }: LandingPageProps) {
           <Heading level={2} displayLevel={2} className="max-w-3xl">
             From first signal to confident action.
           </Heading>
-          <Text size="lg" tone="muted" className="max-w-3xl leading-7 sm:leading-8">
-            A simple operating rhythm keeps the page useful after the first impression.
+          <Text
+            size="lg"
+            tone="muted"
+            className="max-w-3xl leading-7 sm:leading-8"
+          >
+            A simple operating rhythm keeps the page useful after the first
+            impression.
           </Text>
         </div>
 
@@ -674,7 +725,9 @@ export function DemoLandingPage({ route }: LandingPageProps) {
           {processSteps.map((step, index) => (
             <Card
               key={step.label}
-              appearance={index === activeIndex ? activeTheme.accent : "outline"}
+              appearance={
+                index === activeIndex ? activeTheme.accent : "outline"
+              }
               rounded="lg"
               size="lg"
             >

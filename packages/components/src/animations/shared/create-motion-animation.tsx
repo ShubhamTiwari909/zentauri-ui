@@ -1,0 +1,89 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+
+import { cn } from "../../lib/utils";
+
+import type {
+  MotionAnimationPreset,
+  MotionAnimationProps,
+  MotionAnimationTargetOverrides,
+} from "./types";
+
+function formatBlurValue(value: number | string) {
+  if (typeof value === "number") {
+    return `blur(${value}px)`;
+  }
+  return value.includes("(") ? value : `blur(${value})`;
+}
+
+function mergeTargetOverrides(
+  target: MotionAnimationPreset["initial"] | undefined,
+  overrides: MotionAnimationTargetOverrides | undefined,
+) {
+  if (!overrides) {
+    return target;
+  }
+
+  const { blur, ...rest } = overrides;
+  return {
+    ...(target ?? {}),
+    ...rest,
+    ...(blur === undefined ? null : { filter: formatBlurValue(blur) }),
+  };
+}
+
+export function createMotionAnimation(
+  displayName: string,
+  slot: string,
+  preset: MotionAnimationPreset,
+) {
+  function MotionAnimation(props: MotionAnimationProps) {
+    const {
+      children,
+      className,
+      initial,
+      animate,
+      exit,
+      transition,
+      layout,
+      whileHover,
+      whileTap,
+      from,
+      to,
+      exitTo,
+      ...rest
+    } = props;
+    const shouldReduceMotion = useReducedMotion();
+    const resolvedAnimate = animate ?? mergeTargetOverrides(preset.animate, to);
+    const resolvedInitial =
+      initial ??
+      (shouldReduceMotion
+        ? resolvedAnimate
+        : mergeTargetOverrides(preset.initial, from));
+    const resolvedExit = exit ?? mergeTargetOverrides(preset.exit, exitTo);
+    const resolvedTransition = transition
+      ? { ...preset.transition, ...transition }
+      : preset.transition;
+
+    return (
+      <motion.div
+        data-slot={slot}
+        className={cn(className)}
+        initial={resolvedInitial}
+        animate={resolvedAnimate}
+        exit={resolvedExit}
+        layout={layout ?? preset.layout}
+        whileHover={whileHover ?? preset.whileHover}
+        whileTap={whileTap ?? preset.whileTap}
+        transition={resolvedTransition}
+        {...rest}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
+  MotionAnimation.displayName = displayName;
+  return MotionAnimation;
+}

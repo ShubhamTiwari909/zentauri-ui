@@ -65,7 +65,9 @@ export function TimelineExamplesSection() {
               <TimelineIndicator />
               <TimelineContent>
                 <TimelineTitle>Launch</TimelineTitle>
-                <TimelineDescription>Shipped to production.</TimelineDescription>
+                <TimelineDescription>
+                  Shipped to production.
+                </TimelineDescription>
               </TimelineContent>
             </TimelineItem>
           </Timeline>

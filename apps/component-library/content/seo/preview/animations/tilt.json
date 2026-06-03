@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Tilt animation for React",
+  "description": "Tilt repeats subtle rotateX and rotateY movement with perspective for dimensional cards.",
+  "keywords": ["tilt animation", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Tilt animation · Zentauri UI",
+    "description": "Tilt repeats subtle rotateX and rotateY movement with perspective for dimensional cards.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Tilt animation · Zentauri UI",
+    "description": "Tilt repeats subtle rotateX and rotateY movement with perspective for dimensional cards.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/tilt",
+  "headings": {
+    "h1": "Tilt animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Tilt for subtle dimensional movement on cards and feature blocks.",
+  "useCases": ["Product cards.", "Feature blocks.", "Showcase tiles."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/tilt`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Repeats rotateX and rotateY values with perspective."
+    }
+  ]
+}

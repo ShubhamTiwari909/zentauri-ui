@@ -250,15 +250,15 @@ You can install [turbo](https://turborepo.dev/docs/getting-started/installation)
 
 ## Root scripts (cheat sheet)
 
-| Command            | What it does                                                                              |
-| ------------------ | ----------------------------------------------------------------------------------------- |
-| `pnpm install`     | Install and link all workspaces                                                           |
-| `pnpm dev`         | `turbo run dev` — persistent dev tasks (Next + tsup watch)                                |
-| `pnpm build`       | `turbo run build` — builds packages and apps; caches via Turbo                            |
-| `pnpm lint`        | `turbo run lint` — ESLint where defined                                                   |
-| `pnpm check-types` | `turbo run check-types` — `tsc --noEmit` where defined                                    |
-| `pnpm format`      | Prettier write on `**/*.{ts,tsx,md}` from the root (not routed through Turbo)             |
-| `pnpm test:docs`   | Runs the docs app Vitest suite                                                            |
+| Command            | What it does                                                                  |
+| ------------------ | ----------------------------------------------------------------------------- |
+| `pnpm install`     | Install and link all workspaces                                               |
+| `pnpm dev`         | `turbo run dev` — persistent dev tasks (Next + tsup watch)                    |
+| `pnpm build`       | `turbo run build` — builds packages and apps; caches via Turbo                |
+| `pnpm lint`        | `turbo run lint` — ESLint where defined                                       |
+| `pnpm check-types` | `turbo run check-types` — `tsc --noEmit` where defined                        |
+| `pnpm format`      | Prettier write on `**/*.{ts,tsx,md}` from the root (not routed through Turbo) |
+| `pnpm test:docs`   | Runs the docs app Vitest suite                                                |
 
 ### Scoped commands with pnpm filters
 

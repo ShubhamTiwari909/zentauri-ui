@@ -19,7 +19,9 @@ export function RadioGroupDemoControlled({
 
   return (
     <>
-      <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">Value: {value}</p>
+      <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
+        Value: {value}
+      </p>
       <RadioGroup
         appearance={appearance}
         size={size}

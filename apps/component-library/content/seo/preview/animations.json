@@ -1,0 +1,70 @@
+{
+  "category": "Animations",
+  "title": "Motion animation presets for React",
+  "description": "Reusable Motion-powered animation wrappers for React and Next.js, published separately from UI components, hooks, typography, and charts.",
+  "keywords": [
+    "React animations",
+    "Framer Motion",
+    "Motion",
+    "Next.js",
+    "UI animation",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Animations · Zentauri UI",
+    "description": "Reusable Motion-powered animation wrappers for React and Next.js, published separately from UI components, hooks, typography, and charts.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Animations · Zentauri UI",
+    "description": "Reusable Motion-powered animation wrappers for React and Next.js, published separately from UI components, hooks, typography, and charts.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations",
+  "headings": {
+    "h1": "Animations for focused interface motion",
+    "h2": [
+      "What it does",
+      "Animation entries",
+      "Composition and API",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Browse small Motion wrappers that live under `@zentauri-ui/zentauri-components/animations/*`. They are separate from UI components so motion can be adopted one preset at a time.",
+  "useCases": [
+    "Fade page sections and cards into view.",
+    "Add directional entrance motion to menus, panels, and list items.",
+    "Use scale, pop, slide, reveal, text, rotate, and blur transitions for overlays or featured content.",
+    "Keep animation imports separate from static component imports."
+  ],
+  "faqs": [
+    {
+      "question": "Do animations require Framer Motion?",
+      "answer": "Yes. Install `framer-motion` before importing any `@zentauri-ui/zentauri-components/animations/*` entry."
+    },
+    {
+      "question": "Are these UI components?",
+      "answer": "No. They are Motion wrappers and presets published under the separate `animations/*` category."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Provides small Motion wrappers for common entrance, slide, reveal, text, rotate, and exit transitions.\n\nEach entry exports a component and its preset object."
+    },
+    {
+      "heading": "Animation entries",
+      "body": ""
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Wrap content with the animation component and pass regular Motion div props such as `transition`, `initial`, `animate`, `exit`, and `className`."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Use animation entries inside client components or client boundaries in the App Router."
+    }
+  ],
+  "useCasesSectionHeading": "Animation entries"
+}

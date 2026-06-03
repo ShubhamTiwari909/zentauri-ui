@@ -16,7 +16,11 @@ export function KbdHeroSection({ seo }: { seo: PreviewSeoDocument }) {
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <Kbd>Esc</Kbd>
-            <Kbd appearance="default" keys={["Ctrl", "Shift", "P"]} separator="+" />
+            <Kbd
+              appearance="default"
+              keys={["Ctrl", "Shift", "P"]}
+              separator="+"
+            />
             <Kbd appearance="emerald" keys={["⌘", "Enter"]} separator="+" />
             <Kbd appearance="gradient-blue" keys={["⌥", "Tab"]} separator="+" />
           </div>

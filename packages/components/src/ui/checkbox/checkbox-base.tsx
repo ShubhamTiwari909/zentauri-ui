@@ -49,7 +49,9 @@ export function CheckboxBase(props: CheckboxProps) {
   const state = resolveCheckboxState(resolvedChecked, indeterminate);
   const labelContent = label ?? children;
   const hasVisibleLabel =
-    labelContent !== undefined && labelContent !== null && labelContent !== false;
+    labelContent !== undefined &&
+    labelContent !== null &&
+    labelContent !== false;
 
   const setChecked = useCallback(
     (next: boolean) => {
@@ -98,11 +100,7 @@ export function CheckboxBase(props: CheckboxProps) {
               indicatorClassName,
             )}
           >
-            <path
-              d="M3.5 8H12.5"
-              strokeWidth="2.4"
-              strokeLinecap="round"
-            />
+            <path d="M3.5 8H12.5" strokeWidth="2.4" strokeLinecap="round" />
           </svg>
         ) : (
           <svg

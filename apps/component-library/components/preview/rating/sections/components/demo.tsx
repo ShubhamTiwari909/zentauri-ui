@@ -1,7 +1,10 @@
 "use client";
 
 import { FiZap } from "react-icons/fi";
-import { Rating, RatingProps } from "@zentauri-ui/zentauri-components/ui/rating";
+import {
+  Rating,
+  RatingProps,
+} from "@zentauri-ui/zentauri-components/ui/rating";
 
 import type { RatingDemoProps } from "./types";
 

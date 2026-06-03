@@ -1,0 +1,40 @@
+{
+  "category": "Animations",
+  "title": "Magnetic animation for React",
+  "description": "Magnetic shifts and scales on hover for buttons, chips, and interactive cards.",
+  "keywords": [
+    "magnetic animation",
+    "React animation",
+    "Framer Motion",
+    "Motion"
+  ],
+  "og": {
+    "title": "Magnetic animation · Zentauri UI",
+    "description": "Magnetic shifts and scales on hover for buttons, chips, and interactive cards.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Magnetic animation · Zentauri UI",
+    "description": "Magnetic shifts and scales on hover for buttons, chips, and interactive cards.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/magnetic",
+  "headings": {
+    "h1": "Magnetic animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Magnetic for hover-responsive controls that should feel tactile.",
+  "useCases": ["CTA buttons.", "Interactive chips.", "Feature cards."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/magnetic`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Applies spring-based x, y, and scale targets on hover and tap."
+    }
+  ]
+}

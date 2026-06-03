@@ -100,14 +100,31 @@ describe("zentauri-ui CLI", () => {
     }
   });
 
+  it("should add an animation entry under animations/ and hint framer-motion", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-animation-"));
+    try {
+      runCli(dir, ["init"]);
+      const out = runCli(dir, ["add", "animations/fade-in"]);
+      expect(
+        existsSync(join(dir, "src/components/animations/fade-in/index.ts")),
+      ).toBe(true);
+      expect(
+        existsSync(join(dir, "src/components/animations/shared/index.ts")),
+      ).toBe(true);
+      expect(out).toContain("framer-motion");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("should add multiple components in one run", () => {
     const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-multi-"));
     try {
       runCli(dir, ["init"]);
       const out = runCli(dir, ["add", "buttons", "card", "badge"]);
-      expect(existsSync(join(dir, "src/components/ui/buttons/button.tsx"))).toBe(
-        true,
-      );
+      expect(
+        existsSync(join(dir, "src/components/ui/buttons/button.tsx")),
+      ).toBe(true);
       expect(existsSync(join(dir, "src/components/ui/card/card.tsx"))).toBe(
         true,
       );

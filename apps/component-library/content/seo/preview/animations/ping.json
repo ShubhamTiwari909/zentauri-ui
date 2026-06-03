@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Ping animation for React",
+  "description": "Ping expands and fades in a repeating signal for rings, indicators, and active states.",
+  "keywords": ["ping animation", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Ping animation · Zentauri UI",
+    "description": "Ping expands and fades in a repeating signal for rings, indicators, and active states.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Ping animation · Zentauri UI",
+    "description": "Ping expands and fades in a repeating signal for rings, indicators, and active states.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/ping",
+  "headings": {
+    "h1": "Ping animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Ping for repeating signal or activity indicators.",
+  "useCases": ["Live markers.", "Map pins.", "Active notifications."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/ping`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Expands scale while fading opacity, then loops."
+    }
+  ]
+}

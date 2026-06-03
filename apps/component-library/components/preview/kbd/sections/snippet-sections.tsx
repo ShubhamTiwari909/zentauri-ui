@@ -4,10 +4,7 @@ import { KbdAnimated } from "@zentauri-ui/zentauri-components/ui/kbd/animated";
 
 import { KBD_APPEARANCES, KBD_SIZES } from "./components/data";
 import { KbdDemo } from "./components/demo";
-import {
-  kbdAnimatedSnippet,
-  kbdSnippet,
-} from "./components/snippets";
+import { kbdAnimatedSnippet, kbdSnippet } from "./components/snippets";
 
 export function KbdCodeExamplesSection() {
   return (

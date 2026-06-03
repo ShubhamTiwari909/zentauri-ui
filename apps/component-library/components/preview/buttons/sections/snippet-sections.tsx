@@ -1,7 +1,6 @@
 import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
-
 import {
   ButtonAnimationDemo,
   ButtonAppearanceDemo,

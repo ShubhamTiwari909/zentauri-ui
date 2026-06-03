@@ -2,11 +2,7 @@ import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { CardDemo } from "./components/demo";
-import {
-  CARD_APPEARANCES,
-  CARD_ROUNDED,
-  CARD_SIZES,
-} from "./components/data";
+import { CARD_APPEARANCES, CARD_ROUNDED, CARD_SIZES } from "./components/data";
 import { cardSnippet } from "./components/snippets";
 
 export function CardCodeExamplesSection() {

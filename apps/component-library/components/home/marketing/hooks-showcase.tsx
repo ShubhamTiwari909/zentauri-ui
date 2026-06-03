@@ -20,47 +20,49 @@ export function HomeHooksShowcase() {
 
   return (
     <SectionShell
-        eyebrow="Headless hooks"
-        title="Utilities that match the kit"
-        lead="Typed helpers for storage, timing, gestures, and layout—each with an interactive preview route."
-      >
-        <div className="grid gap-4 md:grid-cols-2">
-          {hooks.map((hook) => (
-            <Card
-              key={hook.slug}
-              className="flex flex-col gap-3 p-5 max-w-full"
-              appearance="sky"
-            >
-              <div className="flex flex-wrap items-start justify-between gap-2">
-                <h3 className="font-mono text-sm font-semibold text-slate-900 dark:text-cyan-100">
-                  {hook.name}
-                </h3>
-                <Link
-                  href={`/preview/hooks/${hook.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-medium text-slate-900 dark:text-slate-400 transition hover:text-cyan-600"
-                >
-                  Preview
-                  <FiExternalLink className="h-3.5 w-3.5" aria-hidden />
-                </Link>
-              </div>
-              <p className="text-sm leading-6 text-slate-900 dark:text-slate-400">
-                {hook.description}
-              </p>
-              <p className="text-xs leading-5 text-slate-900 dark:text-slate-500">
-                <span className="font-medium text-slate-900 dark:text-slate-400">Use case: </span>
-                {hook.intro}
-              </p>
-            </Card>
-          ))}
-        </div>
-        <p className="text-center text-sm">
-          <Link
-            href="/preview/hooks"
-            className="font-medium text-slate-900 dark:text-cyan-300 underline-offset-4 hover:text-cyan-600 hover:underline"
+      eyebrow="Headless hooks"
+      title="Utilities that match the kit"
+      lead="Typed helpers for storage, timing, gestures, and layout—each with an interactive preview route."
+    >
+      <div className="grid gap-4 md:grid-cols-2">
+        {hooks.map((hook) => (
+          <Card
+            key={hook.slug}
+            className="flex flex-col gap-3 p-5 max-w-full"
+            appearance="sky"
           >
-            Browse all hooks
-          </Link>
-        </p>
-      </SectionShell>
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <h3 className="font-mono text-sm font-semibold text-slate-900 dark:text-cyan-100">
+                {hook.name}
+              </h3>
+              <Link
+                href={`/preview/hooks/${hook.slug}`}
+                className="inline-flex items-center gap-1 text-xs font-medium text-slate-900 dark:text-slate-400 transition hover:text-cyan-600"
+              >
+                Preview
+                <FiExternalLink className="h-3.5 w-3.5" aria-hidden />
+              </Link>
+            </div>
+            <p className="text-sm leading-6 text-slate-900 dark:text-slate-400">
+              {hook.description}
+            </p>
+            <p className="text-xs leading-5 text-slate-900 dark:text-slate-500">
+              <span className="font-medium text-slate-900 dark:text-slate-400">
+                Use case:{" "}
+              </span>
+              {hook.intro}
+            </p>
+          </Card>
+        ))}
+      </div>
+      <p className="text-center text-sm">
+        <Link
+          href="/preview/hooks"
+          className="font-medium text-slate-900 dark:text-cyan-300 underline-offset-4 hover:text-cyan-600 hover:underline"
+        >
+          Browse all hooks
+        </Link>
+      </p>
+    </SectionShell>
   );
 }

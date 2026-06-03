@@ -83,7 +83,9 @@ describe("TreeView", () => {
   it("should expand with ArrowRight and move into children", async () => {
     const user = userEvent.setup();
     render(<TreeView data={data} />);
-    const src = screen.getByText("src").closest('[role="treeitem"]') as HTMLElement;
+    const src = screen
+      .getByText("src")
+      .closest('[role="treeitem"]') as HTMLElement;
     src.focus();
     await user.keyboard("{ArrowRight}");
     expect(src).toHaveAttribute("aria-expanded", "true");
@@ -96,7 +98,9 @@ describe("TreeView", () => {
   it("should collapse with ArrowLeft on an expanded branch", async () => {
     const user = userEvent.setup();
     render(<TreeView data={data} defaultExpanded={["src"]} />);
-    const src = screen.getByText("src").closest('[role="treeitem"]') as HTMLElement;
+    const src = screen
+      .getByText("src")
+      .closest('[role="treeitem"]') as HTMLElement;
     src.focus();
     await user.keyboard("{ArrowLeft}");
     expect(src).toHaveAttribute("aria-expanded", "false");

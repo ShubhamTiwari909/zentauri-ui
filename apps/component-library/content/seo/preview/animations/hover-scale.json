@@ -1,0 +1,40 @@
+{
+  "category": "Animations",
+  "title": "Hover Scale animation for React",
+  "description": "HoverScale grows an element on hover and settles back with spring timing.",
+  "keywords": [
+    "hover scale animation",
+    "React animation",
+    "Framer Motion",
+    "Motion"
+  ],
+  "og": {
+    "title": "Hover Scale animation · Zentauri UI",
+    "description": "HoverScale grows an element on hover and settles back with spring timing.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Hover Scale animation · Zentauri UI",
+    "description": "HoverScale grows an element on hover and settles back with spring timing.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/hover-scale",
+  "headings": {
+    "h1": "Hover Scale animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use HoverScale when an interactive element should grow on hover.",
+  "useCases": ["Buttons.", "Cards.", "Icon buttons."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/hover-scale`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Applies a spring scale target through whileHover."
+    }
+  ]
+}

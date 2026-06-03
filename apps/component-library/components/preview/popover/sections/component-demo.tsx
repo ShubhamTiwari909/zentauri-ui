@@ -42,10 +42,7 @@ export function PopoverExamplesSection() {
             </PopoverTrigger>
             <PopoverContent align="start" width="sm">
               <div className="space-y-3">
-                <label
-                  htmlFor="popover-note"
-                  className="text-sm font-semibold"
-                >
+                <label htmlFor="popover-note" className="text-sm font-semibold">
                   Release note
                 </label>
                 <textarea

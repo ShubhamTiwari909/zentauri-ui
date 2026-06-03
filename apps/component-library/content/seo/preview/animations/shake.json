@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Shake animation for React",
+  "description": "Shake repeats a short horizontal movement for validation, warning, or attention moments.",
+  "keywords": ["shake animation", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Shake animation · Zentauri UI",
+    "description": "Shake repeats a short horizontal movement for validation, warning, or attention moments.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Shake animation · Zentauri UI",
+    "description": "Shake repeats a short horizontal movement for validation, warning, or attention moments.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/shake",
+  "headings": {
+    "h1": "Shake animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Shake when an element needs to reject, warn, or draw attention.",
+  "useCases": ["Form errors.", "Invalid drops.", "Alert cards."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/shake`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Moves along the x-axis in a short repeated sequence."
+    }
+  ]
+}

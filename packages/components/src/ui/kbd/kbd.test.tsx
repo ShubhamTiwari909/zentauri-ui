@@ -34,9 +34,7 @@ describe("Kbd", () => {
 
   it("should apply the appearance token", () => {
     render(<Kbd keys={["A"]} appearance="emerald" />);
-    const key = document.querySelector(
-      '[data-slot="kbd-key"]',
-    ) as HTMLElement;
+    const key = document.querySelector('[data-slot="kbd-key"]') as HTMLElement;
     expect(key.className).toMatch(/--zui-kbd-emerald-bg/);
   });
 

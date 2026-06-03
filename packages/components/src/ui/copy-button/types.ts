@@ -12,8 +12,10 @@ export type CopyButtonIconRenderer = (state: {
   copiedIcon: ReactNode;
 }) => ReactNode;
 
-export interface CopyButtonBaseProps
-  extends Omit<ComponentPropsWithRef<"button">, "value" | "onCopy"> {
+export interface CopyButtonBaseProps extends Omit<
+  ComponentPropsWithRef<"button">,
+  "value" | "onCopy"
+> {
   /** Text written to the clipboard when the button is pressed. */
   value: string;
   /** Milliseconds the copied state stays active before resetting. `0` keeps it until re-copied. */

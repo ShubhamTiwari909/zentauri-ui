@@ -26,9 +26,7 @@ function PopoverBody({ label }: { label: string }) {
         <FiCheckCircle className="h-4 w-4" aria-hidden />
         <p className="text-sm font-semibold">{label}</p>
       </div>
-      <p className="text-sm leading-6 opacity-90">
-        {label}
-      </p>
+      <p className="text-sm leading-6 opacity-90">{label}</p>
       <button
         type="button"
         className="rounded-md bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white dark:bg-white dark:text-slate-950"
@@ -87,10 +85,15 @@ export function PopoverSideAlignDemo({
     left: "justify-end",
     right: "justify-start",
     top: "justify-center",
-    bottom: "justify-center"
-  }
+    bottom: "justify-center",
+  };
   return (
-    <div className={cn("flex min-h-56 w-full items-center py-8", rootSideClassNames[side])}>
+    <div
+      className={cn(
+        "flex min-h-56 w-full items-center py-8",
+        rootSideClassNames[side],
+      )}
+    >
       <Popover>
         <PopoverTrigger>
           <button type="button" className={triggerClass}>
@@ -118,7 +121,11 @@ export function PopoverAnimationDemo({
           Motion · {animation}
         </button>
       </PopoverTrigger>
-      <PopoverContentAnimated variant="outline" animation={animation} align="start">
+      <PopoverContentAnimated
+        variant="outline"
+        animation={animation}
+        align="start"
+      >
         <PopoverBody label={`Motion ${animation}`} />
       </PopoverContentAnimated>
     </Popover>

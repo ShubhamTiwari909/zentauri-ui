@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Slide Up animation for React",
+  "description": "SlideUp moves content upward into place without changing opacity, useful for crisp positional motion.",
+  "keywords": ["slide up", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Slide Up animation · Zentauri UI",
+    "description": "SlideUp moves content upward into place without changing opacity, useful for crisp positional motion.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Slide Up animation · Zentauri UI",
+    "description": "SlideUp moves content upward into place without changing opacity, useful for crisp positional motion.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/slide-up",
+  "headings": {
+    "h1": "Slide Up animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use SlideUp for content that should move into position while staying fully visible.",
+  "useCases": ["Toolbar reveals.", "Inline panels.", "Stacked list items."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/slide-up`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates vertical position from a lower offset into the final position."
+    }
+  ]
+}

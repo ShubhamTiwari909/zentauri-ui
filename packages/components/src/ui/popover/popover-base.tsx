@@ -157,9 +157,7 @@ export const Popover = ({
   );
 
   return (
-    <PopoverContext.Provider
-      value={contextValue}
-    >
+    <PopoverContext.Provider value={contextValue}>
       <div className="relative inline-block">{children}</div>
     </PopoverContext.Provider>
   );

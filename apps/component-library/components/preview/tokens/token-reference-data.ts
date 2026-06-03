@@ -98,9 +98,15 @@ function extractCssVariables(className: string) {
 
     const content = readBalancedExpression(className, varIndex + "var".length);
     const commaIndex = findTopLevelComma(content);
-    const name = commaIndex > -1 ? content.slice(0, commaIndex).trim() : content.trim();
+    const name =
+      commaIndex > -1 ? content.slice(0, commaIndex).trim() : content.trim();
     const fallback =
-      commaIndex > -1 ? content.slice(commaIndex + 1).trim().replace(/_/g, " ") : "";
+      commaIndex > -1
+        ? content
+            .slice(commaIndex + 1)
+            .trim()
+            .replace(/_/g, " ")
+        : "";
 
     if (name.startsWith("--zui-")) {
       variables.push({
@@ -158,7 +164,9 @@ export const zuiTokenReferences = zuiTokenReferenceGroups.flatMap(
 );
 
 function toZuiVariableName(name: string) {
-  return (name.startsWith("--zui-") ? name : `--zui-${name}`) as `--zui-${string}`;
+  return (
+    name.startsWith("--zui-") ? name : `--zui-${name}`
+  ) as `--zui-${string}`;
 }
 
 function getComponentDarkTokens(

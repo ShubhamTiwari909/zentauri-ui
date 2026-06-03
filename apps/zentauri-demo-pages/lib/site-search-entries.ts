@@ -69,7 +69,11 @@ export function getSiteSearchEntries(): SiteSearchEntryRecord[] {
   }));
 
   const byHref = new Map<string, SiteSearchEntryRecord>();
-  for (const entry of [...layoutEntries, ...componentLibraryEntries, ...navEntries]) {
+  for (const entry of [
+    ...layoutEntries,
+    ...componentLibraryEntries,
+    ...navEntries,
+  ]) {
     byHref.set(entry.href, entry);
   }
   return [...byHref.values()];

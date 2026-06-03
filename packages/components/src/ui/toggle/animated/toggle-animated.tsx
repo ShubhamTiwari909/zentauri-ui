@@ -70,7 +70,12 @@ export function ToggleAnimated(props: ToggleAnimatedProps) {
       }}
       {...rest}
     >
-      <span className="sr-only" id={labeledByChildren ? toggleLabelId : undefined}>{children}</span>
+      <span
+        className="sr-only"
+        id={labeledByChildren ? toggleLabelId : undefined}
+      >
+        {children}
+      </span>
       <motion.span
         className={cn(
           toggleThumbVariants({ size, thumbColor }),

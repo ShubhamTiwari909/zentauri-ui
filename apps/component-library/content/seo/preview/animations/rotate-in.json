@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Rotate In animation for React",
+  "description": "RotateIn combines opacity, scale, and a small rotation for playful but restrained entrances.",
+  "keywords": ["rotate in", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Rotate In animation · Zentauri UI",
+    "description": "RotateIn combines opacity, scale, and a small rotation for playful but restrained entrances.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Rotate In animation · Zentauri UI",
+    "description": "RotateIn combines opacity, scale, and a small rotation for playful but restrained entrances.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/rotate-in",
+  "headings": {
+    "h1": "Rotate In animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use RotateIn for icons, featured cards, and small content blocks that can handle a little personality.",
+  "useCases": ["Icon callouts.", "Featured cards.", "Empty states."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/rotate-in`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates opacity, scale, and rotation into a neutral visible state."
+    }
+  ]
+}

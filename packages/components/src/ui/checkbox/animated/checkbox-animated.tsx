@@ -53,7 +53,9 @@ export function CheckboxAnimated(props: CheckboxAnimatedProps) {
   const state = resolveCheckboxState(resolvedChecked, indeterminate);
   const labelContent = label ?? children;
   const hasVisibleLabel =
-    labelContent !== undefined && labelContent !== null && labelContent !== false;
+    labelContent !== undefined &&
+    labelContent !== null &&
+    labelContent !== false;
   const motionPreset = checkboxAnimationPresets[animation];
   const svgMotionProps = animation === "spring" ? motionPreset : undefined;
   const pathMotionProps = animation === "draw" ? motionPreset : undefined;

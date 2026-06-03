@@ -14,15 +14,9 @@ import {
   CommandSeparator,
 } from "@zentauri-ui/zentauri-components/ui/command";
 
-import {
-  COMMAND_APPEARANCES,
-  COMMAND_SIZES,
-} from "./components/data";
+import { COMMAND_APPEARANCES, COMMAND_SIZES } from "./components/data";
 import { CommandDemo } from "./components/demo";
-import {
-  commandHotkeySnippet,
-  commandSnippet,
-} from "./components/snippets";
+import { commandHotkeySnippet, commandSnippet } from "./components/snippets";
 
 export function CommandCodeExamplesSection() {
   return (

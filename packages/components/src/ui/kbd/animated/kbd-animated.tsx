@@ -8,7 +8,10 @@ import type { KbdBaseProps } from "../types";
 import { kbdAnimationPresets } from "./animations";
 import type { KbdAnimatedProps } from "./types";
 
-export function KbdAnimated({ animation = "none", ...props }: KbdAnimatedProps) {
+export function KbdAnimated({
+  animation = "none",
+  ...props
+}: KbdAnimatedProps) {
   const motionProps = kbdAnimationPresets[animation];
 
   return (

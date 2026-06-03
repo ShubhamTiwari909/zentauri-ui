@@ -26,10 +26,12 @@ const themeLabels: Record<TokenTheme, string> = {
   shared: "Shared",
 };
 
-const allTokenCount = zuiTokenReferences.length + componentTokenReferences.length;
-const darkTokenCount = [...zuiTokenReferences, ...componentTokenReferences].filter(
-  (token) => token.theme === "dark",
-).length;
+const allTokenCount =
+  zuiTokenReferences.length + componentTokenReferences.length;
+const darkTokenCount = [
+  ...zuiTokenReferences,
+  ...componentTokenReferences,
+].filter((token) => token.theme === "dark").length;
 
 function formatCssDeclarations(tokens: readonly ZuiTokenReference[]) {
   return tokens
@@ -126,8 +128,9 @@ function ComponentTokenDropdown({
 }: {
   group: ComponentTokenReferenceGroup;
 }) {
-  const darkCount = group.tokens.filter((token) => token.theme === "dark")
-    .length;
+  const darkCount = group.tokens.filter(
+    (token) => token.theme === "dark",
+  ).length;
 
   return (
     <details className="group overflow-hidden rounded-2xl border border-white/10 bg-slate-200 dark:bg-slate-950/50">

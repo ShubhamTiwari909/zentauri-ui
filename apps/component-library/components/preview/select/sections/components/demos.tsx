@@ -6,10 +6,7 @@ import {
   SelectValue,
 } from "@zentauri-ui/zentauri-components/ui/select";
 
-import type {
-  SelectContentDemoProps,
-  SelectTriggerDemoProps,
-} from "./types";
+import type { SelectContentDemoProps, SelectTriggerDemoProps } from "./types";
 
 export function SelectTriggerDemo({
   triggerVariant,

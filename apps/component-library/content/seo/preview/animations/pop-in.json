@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Pop In animation for React",
+  "description": "PopIn uses a snappy scale-and-opacity entrance for badges, calls to action, and playful UI moments.",
+  "keywords": ["pop in", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Pop In animation · Zentauri UI",
+    "description": "PopIn uses a snappy scale-and-opacity entrance for badges, calls to action, and playful UI moments.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Pop In animation · Zentauri UI",
+    "description": "PopIn uses a snappy scale-and-opacity entrance for badges, calls to action, and playful UI moments.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/pop-in",
+  "headings": {
+    "h1": "Pop In animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use PopIn when content should feel quick, tactile, and slightly more expressive.",
+  "useCases": ["Badges.", "CTA accents.", "Freshly added list items."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/pop-in`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates from a smaller transparent state into full size with a snappy easing curve."
+    }
+  ]
+}

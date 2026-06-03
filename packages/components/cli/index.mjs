@@ -22,6 +22,7 @@
  *        └── src/ui/<name>/     ← source copied by `add`
  *        └── src/design-system/ ← shared tokens/variant maps copied by `add`
  *        └── src/charts/<type>/ ← chart source copied by `add charts/area` etc.
+ *        └── src/animations/<name>/ ← animation source copied by `add animations/fade-in`
  *        └── src/hooks/<name>/  ← hooks pulled in as dependencies
  *        └── src/lib/utils.ts   ← template for `cn()` etc. if missing in app
  * ```
@@ -136,6 +137,7 @@ function loadRegistry() {
 function printHelp() {
   const reg = loadRegistry();
   const componentsList = (reg.components ?? []).join("\n");
+  const animationsList = (reg.animations ?? []).join("\n");
   const hooksList = (reg.hooks ?? []).join("\n");
 
   console.log(`Zentauri UI — copy component source into your app (shadcn-style)
@@ -147,6 +149,9 @@ Usage:
 
 List of components:
 ${componentsList}
+
+List of animations:
+${animationsList}
 
 List of hooks:
 ${hooksList}
@@ -278,11 +283,13 @@ function defaultConfig() {
   return {
     aliases: {
       ui: "@/components/ui",
+      animations: "@/components/animations",
       utils: "@/lib/utils",
       hooks: "@/hooks",
     },
     resolvedPaths: {
       ui: "src/components/ui",
+      animations: "src/components/animations",
       utils: "src/lib/utils.ts",
       hooks: "src/hooks",
     },
@@ -321,7 +328,7 @@ function validateConfig(cfg) {
 
 /**
  * Maps CLI input (any casing, optional registry alias) to a canonical folder name
- * under `src/ui/<name>` or `src/charts/<type>`.
+ * under `src/ui/<name>`, `src/animations/<name>`, or `src/charts/<type>`.
  *
  * Resolution order:
  * 1. Exact key in `registry.nameAliases`
@@ -425,10 +432,10 @@ async function collectHookTransitiveClosure(packageRoot, seedHooks) {
 }
 
 /**
- * Copies `packageRoot/src/ui/<componentName>` or `packageRoot/src/charts/<type>` into
- * `<configDir>/<resolvedPaths.ui>/<componentName>`, skipping tests, rewriting
- * imports in TS/JS files, and collecting hook folder names referenced by those
- * files for later copying.
+ * Copies `packageRoot/src/ui/<componentName>`,
+ * `packageRoot/src/animations/<name>`, or `packageRoot/src/charts/<type>` into
+ * the configured destination, skipping tests, rewriting imports in TS/JS files,
+ * and collecting hook folder names referenced by those files for later copying.
  *
  * @param {string} componentName — resolved registry name (directory under `src/ui`, or `charts/<type>`)
  * @param {object} config — validated `components.json`
@@ -444,26 +451,44 @@ async function collectHookTransitiveClosure(packageRoot, seedHooks) {
  */
 async function copyUiComponent(componentName, config, configDir, packageRoot) {
   const isChartEntry = componentName.startsWith("charts/");
+  const isAnimationEntry = componentName.startsWith("animations/");
+  const animationName = componentName.slice("animations/".length);
   const srcRoot = isChartEntry
     ? join(packageRoot, "src", "charts")
-    : join(packageRoot, "src", "ui", componentName);
+    : isAnimationEntry
+      ? join(packageRoot, "src", "animations")
+      : join(packageRoot, "src", "ui", componentName);
   if (!existsSync(srcRoot)) {
     throw new Error(
       `Missing package source: ${relative(packageRoot, srcRoot)}`,
     );
   }
+  const animationsPath =
+    config.resolvedPaths.animations ??
+    join(dirname(config.resolvedPaths.ui), "animations");
   const destRoot = isChartEntry
     ? join(configDir, config.resolvedPaths.ui, "charts")
-    : join(configDir, config.resolvedPaths.ui, componentName);
+    : isAnimationEntry
+      ? join(configDir, animationsPath)
+      : join(configDir, config.resolvedPaths.ui, componentName);
   const files = (await walkFiles(srcRoot)).filter((absSrc) => {
-    if (!isChartEntry) {
-      return true;
+    if (isAnimationEntry) {
+      const relFromAnimationsRoot = relative(srcRoot, absSrc);
+      return (
+        relFromAnimationsRoot.startsWith("shared/") ||
+        relFromAnimationsRoot.startsWith(`${animationName}/`)
+      );
     }
-    const relFromChartsRoot = relative(srcRoot, absSrc);
-    return (
-      relFromChartsRoot.startsWith("shared/") ||
-      relFromChartsRoot.startsWith(`${componentName.slice("charts/".length)}/`)
-    );
+    if (isChartEntry) {
+      const relFromChartsRoot = relative(srcRoot, absSrc);
+      return (
+        relFromChartsRoot.startsWith("shared/") ||
+        relFromChartsRoot.startsWith(
+          `${componentName.slice("charts/".length)}/`,
+        )
+      );
+    }
+    return true;
   });
   const usedHooks = new Set();
 
@@ -604,7 +629,7 @@ async function ensureUtilsFile(config, configDir, packageRoot) {
  * needed, so the install hint is self-explanatory.
  */
 const PEER_HINT_REASONS = {
-  "framer-motion": "only if you use the animated variants",
+  "framer-motion": "only if you use animated UI or animation entries",
   "react-icons": "icons used by this component",
   recharts: "required to render charts",
 };
@@ -643,9 +668,14 @@ function printAdoptionHints(resolvedNames, registry, config) {
   }
 
   const uiPath = config?.resolvedPaths?.ui ?? "your components directory";
+  const animationsPath =
+    config?.resolvedPaths?.animations ?? "your animations directory";
   console.log(
     `\nTailwind v4: vendored files live in ${uiPath}, so they are scanned automatically when inside your app's content sources.`,
   );
+  if (resolvedNames.some((name) => name.startsWith("animations/"))) {
+    console.log(`  Animation files live in ${animationsPath}.`);
+  }
   console.log(
     `  If you placed them elsewhere, add: @source "${uiPath}";  (light + dark: classes are paired, so the whole tree must be scanned)`,
   );

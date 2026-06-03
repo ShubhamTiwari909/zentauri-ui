@@ -1,0 +1,40 @@
+{
+  "category": "Animations",
+  "title": "Progress animation for React",
+  "description": "Progress animates scaleX for progress bars and completion indicators.",
+  "keywords": [
+    "progress animation",
+    "React animation",
+    "Framer Motion",
+    "Motion"
+  ],
+  "og": {
+    "title": "Progress animation · Zentauri UI",
+    "description": "Progress animates scaleX for progress bars and completion indicators.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Progress animation · Zentauri UI",
+    "description": "Progress animates scaleX for progress bars and completion indicators.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/progress",
+  "headings": {
+    "h1": "Progress animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Progress for loading bars, step completion, and measurable status.",
+  "useCases": ["Progress bars.", "Step completion.", "Upload states."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/progress`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates scaleX from empty to full with transform origin on the left."
+    }
+  ]
+}

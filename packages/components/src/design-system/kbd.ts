@@ -22,20 +22,15 @@ export const zuiKbdKeyAppearances = {
     "bg-[var(--zui-kbd-indigo-bg,#3730a3)] dark:bg-[var(--zui-kbd-indigo-bg-dark,#4f46e5)] text-[color:var(--zui-kbd-indigo-fg,#ffffff)] dark:text-[color:var(--zui-kbd-indigo-fg-dark,#ffffff)]",
   purple:
     "bg-[var(--zui-kbd-purple-bg,#6b21a8)] dark:bg-[var(--zui-kbd-purple-bg-dark,#9333ea)] text-[color:var(--zui-kbd-purple-fg,#ffffff)] dark:text-[color:var(--zui-kbd-purple-fg-dark,#ffffff)]",
-  pink:
-    "bg-[var(--zui-kbd-pink-bg,#9d174d)] dark:bg-[var(--zui-kbd-pink-bg-dark,#db2777)] text-[color:var(--zui-kbd-pink-fg,#ffffff)] dark:text-[color:var(--zui-kbd-pink-fg-dark,#ffffff)]",
-  rose:
-    "bg-[var(--zui-kbd-rose-bg,#9f1239)] dark:bg-[var(--zui-kbd-rose-bg-dark,#e11d48)] text-[color:var(--zui-kbd-rose-fg,#ffffff)] dark:text-[color:var(--zui-kbd-rose-fg-dark,#ffffff)]",
-  sky:
-    "bg-[var(--zui-kbd-sky-bg,#0ea5e9)] dark:bg-[var(--zui-kbd-sky-bg-dark,#0369a1)] text-[color:var(--zui-kbd-sky-fg,#ffffff)] dark:text-[color:var(--zui-kbd-sky-fg-dark,#ffffff)]",
-  teal:
-    "bg-[var(--zui-kbd-teal-bg,#14b8a6)] dark:bg-[var(--zui-kbd-teal-bg-dark,#0f766e)] text-[color:var(--zui-kbd-teal-fg,#ffffff)] dark:text-[color:var(--zui-kbd-teal-fg-dark,#ffffff)]",
+  pink: "bg-[var(--zui-kbd-pink-bg,#9d174d)] dark:bg-[var(--zui-kbd-pink-bg-dark,#db2777)] text-[color:var(--zui-kbd-pink-fg,#ffffff)] dark:text-[color:var(--zui-kbd-pink-fg-dark,#ffffff)]",
+  rose: "bg-[var(--zui-kbd-rose-bg,#9f1239)] dark:bg-[var(--zui-kbd-rose-bg-dark,#e11d48)] text-[color:var(--zui-kbd-rose-fg,#ffffff)] dark:text-[color:var(--zui-kbd-rose-fg-dark,#ffffff)]",
+  sky: "bg-[var(--zui-kbd-sky-bg,#0ea5e9)] dark:bg-[var(--zui-kbd-sky-bg-dark,#0369a1)] text-[color:var(--zui-kbd-sky-fg,#ffffff)] dark:text-[color:var(--zui-kbd-sky-fg-dark,#ffffff)]",
+  teal: "bg-[var(--zui-kbd-teal-bg,#14b8a6)] dark:bg-[var(--zui-kbd-teal-bg-dark,#0f766e)] text-[color:var(--zui-kbd-teal-fg,#ffffff)] dark:text-[color:var(--zui-kbd-teal-fg-dark,#ffffff)]",
   yellow:
     "bg-[var(--zui-kbd-yellow-bg,#eab308)] dark:bg-[var(--zui-kbd-yellow-bg-dark,#854d0e)] text-[color:var(--zui-kbd-yellow-fg,#ffffff)] dark:text-[color:var(--zui-kbd-yellow-fg-dark,#ffffff)]",
   orange:
     "bg-[var(--zui-kbd-orange-bg,#f97316)] dark:bg-[var(--zui-kbd-orange-bg-dark,#9a3412)] text-[color:var(--zui-kbd-orange-fg,#ffffff)] dark:text-[color:var(--zui-kbd-orange-fg-dark,#ffffff)]",
-  gray:
-    "bg-[var(--zui-kbd-gray-bg,#6b7280)] dark:bg-[var(--zui-kbd-gray-bg-dark,#374151)] text-[color:var(--zui-kbd-gray-fg,#ffffff)] dark:text-[color:var(--zui-kbd-gray-fg-dark,#ffffff)]",
+  gray: "bg-[var(--zui-kbd-gray-bg,#6b7280)] dark:bg-[var(--zui-kbd-gray-bg-dark,#374151)] text-[color:var(--zui-kbd-gray-fg,#ffffff)] dark:text-[color:var(--zui-kbd-gray-fg-dark,#ffffff)]",
   amber:
     "bg-[var(--zui-kbd-amber-bg,#f59e0b)] dark:bg-[var(--zui-kbd-amber-bg-dark,#92400e)] text-[color:var(--zui-kbd-amber-fg,#ffffff)] dark:text-[color:var(--zui-kbd-amber-fg-dark,#ffffff)]",
   violet:

@@ -1,10 +1,7 @@
 import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
-import {
-  RADIO_GROUP_APPEARANCES,
-  RADIO_GROUP_SIZES,
-} from "./components/data";
+import { RADIO_GROUP_APPEARANCES, RADIO_GROUP_SIZES } from "./components/data";
 import {
   RadioGroupDemoControlled,
   RadioGroupDemoUnControlled,
@@ -32,9 +29,9 @@ export function RadioGroupCodeExamplesSection() {
           >
             <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
               Appearance:{" "}
-              <span className="font-bold">{appearance.toUpperCase()}</span> | 
-              Size: <span className="font-bold">MD</span> | 
-              Orientation: <span className="font-bold">VERTICAL</span>
+              <span className="font-bold">{appearance.toUpperCase()}</span> |
+              Size: <span className="font-bold">MD</span> | Orientation:{" "}
+              <span className="font-bold">VERTICAL</span>
             </p>
             <RadioGroupDemoUnControlled appearance={appearance} size="md" />
           </PreviewCodeShowcase>
@@ -49,8 +46,8 @@ export function RadioGroupCodeExamplesSection() {
             })}
           >
             <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
-              Appearance: <span className="font-bold">INDIGO</span> | 
-              Size: <span className="font-bold">{size.toUpperCase()}</span> | 
+              Appearance: <span className="font-bold">INDIGO</span> | Size:{" "}
+              <span className="font-bold">{size.toUpperCase()}</span> |
               Orientation: <span className="font-bold">HORIZONTAL</span>
             </p>
             <RadioGroupDemoUnControlled
@@ -65,9 +62,8 @@ export function RadioGroupCodeExamplesSection() {
           code={radioGroupControlledSnippet()}
         >
           <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white md:text-sm">
-            Appearance: <span className="font-bold">SUCCESS</span> | 
-            Size: <span className="font-bold">MD</span> | 
-            Controlled:{" "}
+            Appearance: <span className="font-bold">SUCCESS</span> | Size:{" "}
+            <span className="font-bold">MD</span> | Controlled:{" "}
             <span className="font-bold">TRUE</span> - The controlled state keeps
             the selected radio value in React state and updates it through
             onValueChange.

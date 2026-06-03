@@ -35,7 +35,6 @@ import {
   useToast,
   type ToastRootVariantProps,
 } from "@zentauri-ui/zentauri-components/ui/toast";
-import { AreaChart } from "@zentauri-ui/zentauri-components/charts/area";
 import { FiExternalLink } from "react-icons/fi";
 
 import { PreviewCodeTabs } from "./preview-code-tabs";
@@ -194,7 +193,6 @@ const sliderRef = useRef<HTMLDivElement | null>(null);;
 />
 <p className="text-xs text-slate-400">Range Value: {rangeValue[0]} - {rangeValue[1]}</p>`;
 
-
 function ToastDemoPreview({
   btnAppearance,
   toastAppearance,
@@ -291,169 +289,166 @@ function ShowcaseRow({ title, href, preview, code }: ShowcaseRowProps) {
 export function HomeComponentShowcase() {
   return (
     <SectionShell
-        eyebrow="Live previews"
-        title="Components in context"
-        lead="Toggle Preview and Code—snippets mirror real props from the package."
-      >
-        <div className="space-y-12">
-          <ShowcaseRow
-            title="Button"
-            href="/preview/components/buttons"
-            code={CODE_BUTTON}
-            preview={
-              <div className="flex flex-wrap gap-3">
-                <ButtonAnimated
-                  className=""
-                  appearance="sky"
-                  animation="lift"
-                  size="sm"
-                >
-                  Button sky
-                </ButtonAnimated>
-                <ButtonAnimated
-                  className=""
-                  appearance="pink"
-                  animation="lift"
-                  size="sm"
-                >
-                  Button pink
-                </ButtonAnimated>
-                <ButtonAnimated
-                  className=""
-                  appearance="amber"
-                  animation="lift"
-                  size="sm"
-                >
-                  Button amber
-                </ButtonAnimated>
-                <ButtonAnimated
-                  className=""
-                  appearance="gradient-purple"
-                  animation="lift"
-                  size="sm"
-                >
-                  Button gradient-purple
-                </ButtonAnimated>
-                <ButtonAnimated
-                  className=""
-                  appearance="gradient-red"
-                  animation="lift"
-                  size="sm"
-                >
-                  Button gradient-red
-                </ButtonAnimated>
-              </div>
-            }
-          />
-          <ShowcaseRow
-            title="Modal"
-            href="/preview/components/modal"
-            code={CODE_MODAL}
-            preview={
-              <div className="flex flex-wrap gap-3">
-                {(
-                  [
-                    "sky",
-                    "rose",
-                    "emerald",
-                    "gradient-teal",
-                    "gradient-indigo",
-                  ] as const
-                ).map((appearance) => {
-                  return (
-                    <Modal key={appearance}>
-                      <ModalTrigger
-                        appearance={appearance}
-                        className="px-5 py-3"
-                      >
-                        Open dialog
-                      </ModalTrigger>
-                      <ModalContentAnimated
-                        className=""
-                        size="sm"
-                        animation="scale"
-                        position="center"
-                        appearance={appearance}
-                      >
-                        <ModalClose className="">×</ModalClose>
-                        <ModalHeader className="">
-                          <ModalTitle className="">Edit field</ModalTitle>
-                          <ModalDescription className="">
-                            Save changes to this row.
-                          </ModalDescription>
-                        </ModalHeader>
-                        <ModalBody className="">
-                          <p className="text-sm text-slate-900 dark:text-slate-300">
-                            Modal content here.
-                          </p>
-                        </ModalBody>
-                      </ModalContentAnimated>
-                    </Modal>
-                  );
-                })}
-              </div>
-            }
-          />
-          <ShowcaseRow
-            title="Accordion"
-            href="/preview/components/accordion"
-            code={CODE_ACCORDION}
-            preview={
-              <Accordion
-                className="space-y-4 bg-white dark:bg-transparent"
-                type="single"
-                defaultValue="a"
+      eyebrow="Live previews"
+      title="Components in context"
+      lead="Toggle Preview and Code—snippets mirror real props from the package."
+    >
+      <div className="space-y-12">
+        <ShowcaseRow
+          title="Button"
+          href="/preview/components/buttons"
+          code={CODE_BUTTON}
+          preview={
+            <div className="flex flex-wrap gap-3">
+              <ButtonAnimated
+                className=""
                 appearance="sky"
+                animation="lift"
                 size="sm"
               >
-                <AccordionItem className="" value="a">
-                  <AccordionTrigger className="">API keys</AccordionTrigger>
-                  <AccordionContent className="">
-                    <p className="text-sm text-slate-900">
-                      Rotate keys from the security tab.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem className="" value="b">
-                  <AccordionTrigger className="">Webhooks</AccordionTrigger>
-                  <AccordionContent className="">
-                    <p className="text-sm text-slate-900">
-                      Retry policy and signing secrets.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            }
-          />
-          <ShowcaseRow
-            title="Toast"
-            href="/preview/components/toast"
-            code={CODE_TOAST}
-            preview={
-              <div className="flex flex-wrap gap-3">
-                <ToastDemoPreview
-                  btnAppearance="emerald"
-                  toastAppearance="success"
-                />
-                <ToastDemoPreview btnAppearance="sky" toastAppearance="info" />
-                <ToastDemoPreview
-                  btnAppearance="amber"
-                  toastAppearance="warning"
-                />
-                <ToastDemoPreview
-                  btnAppearance="gradient-purple"
-                  toastAppearance="purple"
-                />
-              </div>
-            }
-          />
-          <ShowcaseRow
-            title="Slider"
-            href="/preview/components/slider"
-            code={CODE_SLIDER}
-            preview={<SliderDemoPreview />}
-          />
-        </div>
-      </SectionShell>
+                Button sky
+              </ButtonAnimated>
+              <ButtonAnimated
+                className=""
+                appearance="pink"
+                animation="lift"
+                size="sm"
+              >
+                Button pink
+              </ButtonAnimated>
+              <ButtonAnimated
+                className=""
+                appearance="amber"
+                animation="lift"
+                size="sm"
+              >
+                Button amber
+              </ButtonAnimated>
+              <ButtonAnimated
+                className=""
+                appearance="gradient-purple"
+                animation="lift"
+                size="sm"
+              >
+                Button gradient-purple
+              </ButtonAnimated>
+              <ButtonAnimated
+                className=""
+                appearance="gradient-red"
+                animation="lift"
+                size="sm"
+              >
+                Button gradient-red
+              </ButtonAnimated>
+            </div>
+          }
+        />
+        <ShowcaseRow
+          title="Modal"
+          href="/preview/components/modal"
+          code={CODE_MODAL}
+          preview={
+            <div className="flex flex-wrap gap-3">
+              {(
+                [
+                  "sky",
+                  "rose",
+                  "emerald",
+                  "gradient-teal",
+                  "gradient-indigo",
+                ] as const
+              ).map((appearance) => {
+                return (
+                  <Modal key={appearance}>
+                    <ModalTrigger appearance={appearance} className="px-5 py-3">
+                      Open dialog
+                    </ModalTrigger>
+                    <ModalContentAnimated
+                      className=""
+                      size="sm"
+                      animation="scale"
+                      position="center"
+                      appearance={appearance}
+                    >
+                      <ModalClose className="">×</ModalClose>
+                      <ModalHeader className="">
+                        <ModalTitle className="">Edit field</ModalTitle>
+                        <ModalDescription className="">
+                          Save changes to this row.
+                        </ModalDescription>
+                      </ModalHeader>
+                      <ModalBody className="">
+                        <p className="text-sm text-slate-900 dark:text-slate-300">
+                          Modal content here.
+                        </p>
+                      </ModalBody>
+                    </ModalContentAnimated>
+                  </Modal>
+                );
+              })}
+            </div>
+          }
+        />
+        <ShowcaseRow
+          title="Accordion"
+          href="/preview/components/accordion"
+          code={CODE_ACCORDION}
+          preview={
+            <Accordion
+              className="space-y-4 bg-white dark:bg-transparent"
+              type="single"
+              defaultValue="a"
+              appearance="sky"
+              size="sm"
+            >
+              <AccordionItem className="" value="a">
+                <AccordionTrigger className="">API keys</AccordionTrigger>
+                <AccordionContent className="">
+                  <p className="text-sm text-slate-900">
+                    Rotate keys from the security tab.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem className="" value="b">
+                <AccordionTrigger className="">Webhooks</AccordionTrigger>
+                <AccordionContent className="">
+                  <p className="text-sm text-slate-900">
+                    Retry policy and signing secrets.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          }
+        />
+        <ShowcaseRow
+          title="Toast"
+          href="/preview/components/toast"
+          code={CODE_TOAST}
+          preview={
+            <div className="flex flex-wrap gap-3">
+              <ToastDemoPreview
+                btnAppearance="emerald"
+                toastAppearance="success"
+              />
+              <ToastDemoPreview btnAppearance="sky" toastAppearance="info" />
+              <ToastDemoPreview
+                btnAppearance="amber"
+                toastAppearance="warning"
+              />
+              <ToastDemoPreview
+                btnAppearance="gradient-purple"
+                toastAppearance="purple"
+              />
+            </div>
+          }
+        />
+        <ShowcaseRow
+          title="Slider"
+          href="/preview/components/slider"
+          code={CODE_SLIDER}
+          preview={<SliderDemoPreview />}
+        />
+      </div>
+    </SectionShell>
   );
 }

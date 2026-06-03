@@ -9,7 +9,9 @@ import type {
 
 export type CheckboxState = "checked" | "unchecked" | "indeterminate";
 
-export type CheckboxRootVariantProps = VariantProps<typeof checkboxRootVariants>;
+export type CheckboxRootVariantProps = VariantProps<
+  typeof checkboxRootVariants
+>;
 export type CheckboxControlVariantProps = VariantProps<
   typeof checkboxControlVariants
 >;
@@ -21,12 +23,7 @@ export type CheckboxProps = CheckboxRootVariantProps &
   CheckboxControlVariantProps &
   Omit<
     ComponentPropsWithRef<"input">,
-    | "type"
-    | "size"
-    | "checked"
-    | "defaultChecked"
-    | "onChange"
-    | "children"
+    "type" | "size" | "checked" | "defaultChecked" | "onChange" | "children"
   > & {
     checked?: boolean;
     defaultChecked?: boolean;

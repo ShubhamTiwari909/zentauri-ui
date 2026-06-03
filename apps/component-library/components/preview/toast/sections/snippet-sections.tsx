@@ -2,10 +2,7 @@ import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import { ToastVariantDemo } from "./components/demo";
-import {
-  TOAST_APPEARANCES,
-  TOAST_SIZES,
-} from "./components/data";
+import { TOAST_APPEARANCES, TOAST_SIZES } from "./components/data";
 import { toastCallSnippet } from "./components/snippets";
 
 export function ToastCodeExamplesSection() {

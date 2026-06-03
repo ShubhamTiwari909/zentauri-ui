@@ -5,10 +5,7 @@ import {
   cssVariableReferences,
   type CssVariableReferenceSlug,
 } from "./reference-data";
-import type {
-  CssVariableReference,
-  CssVariableToken,
-} from "./reference-types";
+import type { CssVariableReference, CssVariableToken } from "./reference-types";
 
 const ZUI_CSS_VARIABLE_PREFIX = "--zui-";
 const DARK_VARIABLE_EXAMPLE_LIMIT = 2;
@@ -25,9 +22,9 @@ function getCssVariableReferenceSlug(canonicalPath: string) {
   }
 
   const slug = canonicalPath
-  .slice(componentPreviewPrefix.length)
-  .split(/[?#]/)[0]
-  .replace(/\/$/, "");
+    .slice(componentPreviewPrefix.length)
+    .split(/[?#]/)[0]
+    .replace(/\/$/, "");
 
   if (!Object.hasOwn(cssVariableReferences, slug)) {
     return null;

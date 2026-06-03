@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Reveal Up animation for React",
+  "description": "RevealUp combines opacity, upward movement, and subtle scale for polished content entrances.",
+  "keywords": ["reveal up", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Reveal Up animation · Zentauri UI",
+    "description": "RevealUp combines opacity, upward movement, and subtle scale for polished content entrances.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Reveal Up animation · Zentauri UI",
+    "description": "RevealUp combines opacity, upward movement, and subtle scale for polished content entrances.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/reveal-up",
+  "headings": {
+    "h1": "Reveal Up animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use RevealUp for cards and sections that should feel gently introduced.",
+  "useCases": ["Feature cards.", "Dashboard modules.", "Docs callouts."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/reveal-up`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates opacity, vertical position, and scale into a settled visible state."
+    }
+  ]
+}

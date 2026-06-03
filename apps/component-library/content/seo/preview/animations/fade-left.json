@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Fade Left animation for React",
+  "description": "FadeLeft combines opacity with leftward settling motion for side-by-side content.",
+  "keywords": ["fade left", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Fade Left animation · Zentauri UI",
+    "description": "FadeLeft combines opacity with leftward settling motion for side-by-side content.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Fade Left animation · Zentauri UI",
+    "description": "FadeLeft combines opacity with leftward settling motion for side-by-side content.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/fade-left",
+  "headings": {
+    "h1": "Fade Left animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use FadeLeft for content that should enter from the right and settle left.",
+  "useCases": ["Carousel items.", "Side panel content.", "Comparison rows."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/fade-left`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates from a right offset and transparent opacity into the final position."
+    }
+  ]
+}

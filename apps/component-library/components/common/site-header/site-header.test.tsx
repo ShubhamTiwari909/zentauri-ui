@@ -59,6 +59,32 @@ describe("SiteHeader", () => {
     );
   });
 
+  it("should group catalog links into the UI dropdown", async () => {
+    const user = userEvent.setup();
+    renderSiteHeader();
+
+    await user.click(screen.getByRole("button", { name: /UI/ }));
+
+    const menu = screen.getByRole("menu");
+    expect(menu).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Components" })).toHaveAttribute(
+      "href",
+      "/preview/components",
+    );
+    expect(screen.getByRole("link", { name: "Animations" })).toHaveAttribute(
+      "href",
+      "/preview/animations",
+    );
+    expect(screen.getByRole("link", { name: "Charts" })).toHaveAttribute(
+      "href",
+      "/preview/charts",
+    );
+    expect(screen.getByRole("link", { name: "Typography" })).toHaveAttribute(
+      "href",
+      "/preview/typography",
+    );
+  });
+
   it("should wire menu toggle with aria-expanded and aria-controls when enabled", async () => {
     const user = userEvent.setup();
     const onMenuToggle = vi.fn();

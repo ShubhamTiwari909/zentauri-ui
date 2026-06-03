@@ -11,8 +11,5 @@ const HomeMarketing = dynamic(
 );
 
 export function HomeMarketingLoader() {
-
-  return (
-    <HomeMarketing />
-  );
+  return <HomeMarketing />;
 }

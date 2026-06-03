@@ -32,7 +32,7 @@ import type {
   CommandContentVariantProps,
   CommandContentLayerProps,
   CommandContentOverlayRenderProps,
-  CommandContentPanelRenderProps
+  CommandContentPanelRenderProps,
 } from "./types";
 import {
   commandContentVariants,
@@ -45,7 +45,7 @@ import {
   commandListVariants,
   commandOverlayVariants,
   commandSeparatorVariants,
-  commandTriggerVariants
+  commandTriggerVariants,
 } from "./variants";
 
 const CommandContext = createContext<CommandCtx | null>(null);

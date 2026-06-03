@@ -59,6 +59,50 @@ const chartEntryNames = [
   "stacked-bar",
 ] as const;
 
+const animationEntryNames = [
+  "fade-in",
+  "fade-out",
+  "fade-up",
+  "fade-down",
+  "fade-left",
+  "fade-right",
+  "scale-in",
+  "scale-out",
+  "pop-in",
+  "blur-in",
+  "blur-out",
+  "slide-up",
+  "slide-down",
+  "slide-left",
+  "slide-right",
+  "reveal-up",
+  "reveal-down",
+  "reveal-left",
+  "reveal-right",
+  "reveal-blur",
+  "text-reveal",
+  "text-shimmer",
+  "rotate-in",
+  "pulse",
+  "ping",
+  "shake",
+  "bounce",
+  "wiggle",
+  "float",
+  "spin",
+  "flip",
+  "flip-in",
+  "tilt",
+  "magnetic",
+  "hover-lift",
+  "hover-scale",
+  "press",
+  "reorder",
+  "skeleton-shimmer",
+  "progress",
+  "parallax",
+] as const;
+
 const uiAnimatedComponentNames = [
   "accordion",
   "alert",
@@ -131,6 +175,13 @@ const chartEntries = Object.fromEntries(
   ]),
 );
 
+const animationEntries = Object.fromEntries(
+  animationEntryNames.map((name) => [
+    `animations/${name}`,
+    `src/animations/${name}/index.ts`,
+  ]),
+);
+
 const uiAnimatedEntries = Object.fromEntries(
   uiAnimatedComponentNames.map((name) => [
     `ui/${name}/animated`,
@@ -153,6 +204,7 @@ export default defineConfig({
     "design-system/tokens": "src/design-system/tokens.ts",
     ...uiEntries,
     ...chartEntries,
+    ...animationEntries,
     ...uiAnimatedEntries,
     ...hooksEntries,
   },

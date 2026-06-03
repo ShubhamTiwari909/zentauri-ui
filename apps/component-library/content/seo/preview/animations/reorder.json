@@ -1,0 +1,40 @@
+{
+  "category": "Animations",
+  "title": "Reorder animation for React",
+  "description": "Reorder provides a layout spring wrapper for smooth list item movement.",
+  "keywords": [
+    "reorder animation",
+    "React animation",
+    "Framer Motion",
+    "Motion"
+  ],
+  "og": {
+    "title": "Reorder animation · Zentauri UI",
+    "description": "Reorder provides a layout spring wrapper for smooth list item movement.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Reorder animation · Zentauri UI",
+    "description": "Reorder provides a layout spring wrapper for smooth list item movement.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/reorder",
+  "headings": {
+    "h1": "Reorder animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Reorder on items that should animate smoothly when their layout changes.",
+  "useCases": ["Sortable lists.", "Queue items.", "Stacked cards."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/reorder`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Enables Motion layout animation and spring timing for list movement."
+    }
+  ]
+}

@@ -2,10 +2,7 @@ import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import { CopyButtonAnimated } from "@zentauri-ui/zentauri-components/ui/copy-button/animated";
 
-import {
-  COPY_BUTTON_APPEARANCES,
-  COPY_BUTTON_SIZES,
-} from "./components/data";
+import { COPY_BUTTON_APPEARANCES, COPY_BUTTON_SIZES } from "./components/data";
 import { CopyButtonDemo } from "./components/demo";
 import {
   copyButtonAnimatedSnippet,
