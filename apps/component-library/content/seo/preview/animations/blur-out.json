@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Blur Out animation for React",
+  "description": "BlurOut combines opacity with a soft blur exit for polished dismissals and transitions.",
+  "keywords": ["blur out", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Blur Out animation · Zentauri UI",
+    "description": "BlurOut combines opacity with a soft blur exit for polished dismissals and transitions.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Blur Out animation · Zentauri UI",
+    "description": "BlurOut combines opacity with a soft blur exit for polished dismissals and transitions.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/blur-out",
+  "headings": {
+    "h1": "Blur Out animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use BlurOut when content should soften as it leaves the interface.",
+  "useCases": ["Overlay exits.", "Panel swaps.", "Dismissed previews."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/blur-out`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates from a sharp visible state into a blurred transparent state."
+    }
+  ]
+}

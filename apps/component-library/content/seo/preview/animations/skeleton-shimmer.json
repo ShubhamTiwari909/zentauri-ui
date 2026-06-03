@@ -1,0 +1,40 @@
+{
+  "category": "Animations",
+  "title": "Skeleton Shimmer animation for React",
+  "description": "SkeletonShimmer animates background position for loading skeleton placeholders.",
+  "keywords": [
+    "skeleton shimmer",
+    "React animation",
+    "Framer Motion",
+    "Motion"
+  ],
+  "og": {
+    "title": "Skeleton Shimmer animation · Zentauri UI",
+    "description": "SkeletonShimmer animates background position for loading skeleton placeholders.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Skeleton Shimmer animation · Zentauri UI",
+    "description": "SkeletonShimmer animates background position for loading skeleton placeholders.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/skeleton-shimmer",
+  "headings": {
+    "h1": "Skeleton Shimmer animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use SkeletonShimmer for loading bars, cards, and placeholder rows.",
+  "useCases": ["Loading cards.", "Table placeholders.", "Content skeletons."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/skeleton-shimmer`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates background position across a gradient skeleton surface."
+    }
+  ]
+}

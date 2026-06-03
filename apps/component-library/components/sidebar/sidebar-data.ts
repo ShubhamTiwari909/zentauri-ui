@@ -1,4 +1,8 @@
 import { HOOK_PREVIEW_REGISTRY } from "@/lib/constants";
+import {
+  ANIMATION_PREVIEW_SLUGS,
+  animationPreviewLabels,
+} from "@/lib/animations-preview-registry";
 import { SidebarNavGroup } from "./types";
 
 const hookSidebarItems = [...HOOK_PREVIEW_REGISTRY]
@@ -27,6 +31,10 @@ const sidebarRouteDataShared = [
       {
         title: "Hooks",
         href: "/preview/hooks",
+      },
+      {
+        title: "Animations",
+        href: "/preview/animations",
       },
       {
         title: "Typography",
@@ -80,6 +88,19 @@ export const sidebarHooksData: SidebarNavGroup[] = [
   {
     title: "Hooks",
     items: [...hookSidebarItems],
+  },
+];
+
+const animationsSidebarItems = ANIMATION_PREVIEW_SLUGS.map((slug) => ({
+  title: animationPreviewLabels[slug],
+  href: `/preview/animations/${slug}`,
+}));
+
+export const sidebarAnimationsData: SidebarNavGroup[] = [
+  ...sidebarRouteDataShared,
+  {
+    title: "Animations",
+    items: [...animationsSidebarItems],
   },
 ];
 

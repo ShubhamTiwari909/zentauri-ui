@@ -1,0 +1,39 @@
+{
+  "category": "Animations",
+  "title": "Fade In animation for React",
+  "description": "FadeIn is a small Motion wrapper for opacity-based entrances in React and Next.js interfaces.",
+  "keywords": ["fade in", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Fade In animation · Zentauri UI",
+    "description": "FadeIn is a small Motion wrapper for opacity-based entrances in React and Next.js interfaces.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Fade In animation · Zentauri UI",
+    "description": "FadeIn is a small Motion wrapper for opacity-based entrances in React and Next.js interfaces.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/fade-in",
+  "headings": {
+    "h1": "Fade In animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use FadeIn when content should appear quietly without spatial movement.",
+  "useCases": [
+    "Cards entering a dashboard.",
+    "Section copy appearing after data loads.",
+    "Lightweight content reveals."
+  ],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/fade-in`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates opacity from transparent to visible with a short ease-out transition."
+    }
+  ]
+}

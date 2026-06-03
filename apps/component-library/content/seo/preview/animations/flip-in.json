@@ -1,0 +1,40 @@
+{
+  "category": "Animations",
+  "title": "Flip In animation for React",
+  "description": "FlipIn enters with opacity and a 3D rotateY reveal for cards and panels.",
+  "keywords": [
+    "flip in animation",
+    "React animation",
+    "Framer Motion",
+    "Motion"
+  ],
+  "og": {
+    "title": "Flip In animation · Zentauri UI",
+    "description": "FlipIn enters with opacity and a 3D rotateY reveal for cards and panels.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Flip In animation · Zentauri UI",
+    "description": "FlipIn enters with opacity and a 3D rotateY reveal for cards and panels.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/flip-in",
+  "headings": {
+    "h1": "Flip In animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use FlipIn for one-time 3D card or panel entrances.",
+  "useCases": ["Card reveals.", "Modal contents.", "Panel entrances."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/flip-in`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Combines opacity with a rotateY entrance and exit."
+    }
+  ]
+}

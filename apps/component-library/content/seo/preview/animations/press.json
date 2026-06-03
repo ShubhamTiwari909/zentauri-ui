@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Press animation for React",
+  "description": "Press compresses an element on tap for tactile buttons and controls.",
+  "keywords": ["press animation", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Press animation · Zentauri UI",
+    "description": "Press compresses an element on tap for tactile buttons and controls.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Press animation · Zentauri UI",
+    "description": "Press compresses an element on tap for tactile buttons and controls.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/press",
+  "headings": {
+    "h1": "Press animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Press for tactile tap feedback on controls and small surfaces.",
+  "useCases": ["Buttons.", "Icon controls.", "Clickable cards."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/press`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Applies y and scale targets through whileTap."
+    }
+  ]
+}

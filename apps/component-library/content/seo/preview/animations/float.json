@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Float animation for React",
+  "description": "Float repeats a slow vertical drift for ambient cards, icons, and decorative content.",
+  "keywords": ["float animation", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Float animation · Zentauri UI",
+    "description": "Float repeats a slow vertical drift for ambient cards, icons, and decorative content.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Float animation · Zentauri UI",
+    "description": "Float repeats a slow vertical drift for ambient cards, icons, and decorative content.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/float",
+  "headings": {
+    "h1": "Float animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Float for slow ambient movement that should not distract.",
+  "useCases": ["Feature cards.", "Decorative badges.", "Hero details."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/float`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Repeats a smooth y-axis drift."
+    }
+  ]
+}

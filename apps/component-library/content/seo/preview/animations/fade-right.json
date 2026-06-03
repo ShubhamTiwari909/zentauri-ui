@@ -1,0 +1,39 @@
+{
+  "category": "Animations",
+  "title": "Fade Right animation for React",
+  "description": "FadeRight combines opacity with rightward settling motion for side-by-side content.",
+  "keywords": ["fade right", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Fade Right animation · Zentauri UI",
+    "description": "FadeRight combines opacity with rightward settling motion for side-by-side content.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Fade Right animation · Zentauri UI",
+    "description": "FadeRight combines opacity with rightward settling motion for side-by-side content.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/fade-right",
+  "headings": {
+    "h1": "Fade Right animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use FadeRight for content that should enter from the left and settle right.",
+  "useCases": [
+    "Navigation content.",
+    "Media captions.",
+    "Stepped form panels."
+  ],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/fade-right`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates from a left offset and transparent opacity into the final position."
+    }
+  ]
+}

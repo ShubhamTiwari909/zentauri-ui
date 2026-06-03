@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Fade Up animation for React",
+  "description": "FadeUp combines opacity with upward motion for section, card, and list entrances.",
+  "keywords": ["fade up", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Fade Up animation · Zentauri UI",
+    "description": "FadeUp combines opacity with upward motion for section, card, and list entrances.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Fade Up animation · Zentauri UI",
+    "description": "FadeUp combines opacity with upward motion for section, card, and list entrances.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/fade-up",
+  "headings": {
+    "h1": "Fade Up animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use FadeUp for content that should rise into place as it appears.",
+  "useCases": ["Feature cards.", "Docs sections.", "Search results."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/fade-up`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates from a lower offset and transparent opacity into the final position."
+    }
+  ]
+}

@@ -1,7 +1,13 @@
 "use client";
 
+import { Fragment } from "react";
 import Link from "next/link";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiChevronDown, FiMenu, FiX } from "react-icons/fi";
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownTrigger,
+} from "@zentauri-ui/zentauri-components/ui/dropdown";
 
 import { cn } from "../lib/cn";
 import { getSiteChromeNavItems, getSiteHeaderBrand } from "./navigation";
@@ -16,6 +22,43 @@ const iconButtonClassName =
 const navLinkClassName =
   "rounded-full px-3.5 py-1.5 text-sm font-medium text-slate-400 transition-colors hover:bg-white/[0.06] hover:text-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/45 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
 
+const catalogNavLabels = ["Components", "Animations", "Charts", "Typography"];
+
+function isCatalogNavItem(label: string) {
+  return catalogNavLabels.includes(label);
+}
+
+function SiteHeaderCatalogDropdown({
+  items,
+}: {
+  items: readonly ReturnType<typeof getSiteChromeNavItems>[number][];
+}) {
+  return (
+    <Dropdown>
+      <DropdownTrigger
+        className={cn(navLinkClassName, "inline-flex items-center gap-1.5")}
+        size="sm"
+        variant="ghost"
+      >
+        UI
+        <FiChevronDown className="h-3.5 w-3.5" aria-hidden />
+      </DropdownTrigger>
+      <DropdownContent
+        className="z-50 min-w-44 rounded-xl border border-white/10 bg-slate-950/95 p-1.5 text-slate-200 shadow-2xl shadow-slate-950/50 backdrop-blur-xl"
+        placement="bottom"
+      >
+        {items.map((catalogItem) => (
+          <SiteNavLink
+            key={catalogItem.href}
+            item={catalogItem}
+            className="block rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/6 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/45"
+          />
+        ))}
+      </DropdownContent>
+    </Dropdown>
+  );
+}
+
 export function SiteHeader({
   className,
   site,
@@ -26,6 +69,12 @@ export function SiteHeader({
   menuControlsId,
 }: SiteHeaderProps) {
   const navItems = getSiteChromeNavItems(site);
+  const primaryNavItems = navItems.filter(
+    (item) => !isCatalogNavItem(item.label),
+  );
+  const catalogNavItems = catalogNavLabels
+    .map((label) => navItems.find((item) => item.label === label))
+    .filter((item): item is (typeof navItems)[number] => Boolean(item));
   const brand = getSiteHeaderBrand(site);
 
   return (
@@ -63,13 +112,28 @@ export function SiteHeader({
           aria-label="Main"
           className="hidden min-w-0 flex-1 items-center justify-center gap-1 sm:flex"
         >
-          {navItems.map((item) => (
-            <SiteNavLink
-              key={item.href}
-              item={item}
-              className={navLinkClassName}
-            />
-          ))}
+          {primaryNavItems.map((item) => {
+            if (item.label === "Hooks" && catalogNavItems.length > 0) {
+              return (
+                <Fragment key={item.href}>
+                  <SiteHeaderCatalogDropdown items={catalogNavItems} />
+                  <SiteNavLink item={item} className={navLinkClassName} />
+                </Fragment>
+              );
+            }
+
+            return (
+              <SiteNavLink
+                key={item.href}
+                item={item}
+                className={navLinkClassName}
+              />
+            );
+          })}
+          {primaryNavItems.every((item) => item.label !== "Hooks") &&
+          catalogNavItems.length > 0 ? (
+            <SiteHeaderCatalogDropdown items={catalogNavItems} />
+          ) : null}
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:ml-0">

@@ -1,0 +1,39 @@
+{
+  "category": "Animations",
+  "title": "Pulse animation for React",
+  "description": "Pulse softly repeats opacity and scale for attention states and ambient emphasis.",
+  "keywords": ["pulse animation", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Pulse animation · Zentauri UI",
+    "description": "Pulse softly repeats opacity and scale for attention states and ambient emphasis.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Pulse animation · Zentauri UI",
+    "description": "Pulse softly repeats opacity and scale for attention states and ambient emphasis.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/pulse",
+  "headings": {
+    "h1": "Pulse animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Pulse when a surface needs a calm repeating emphasis.",
+  "useCases": [
+    "Status badges.",
+    "Featured cards.",
+    "Notification affordances."
+  ],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/pulse`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Repeats opacity and scale with a gentle rhythm."
+    }
+  ]
+}

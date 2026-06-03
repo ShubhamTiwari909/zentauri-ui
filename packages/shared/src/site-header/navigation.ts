@@ -15,6 +15,7 @@ const libraryRouteItems = [
   { href: "/preview/installation", label: "Installation" },
   { href: "/preview/components", label: "Components" },
   { href: "/preview/hooks", label: "Hooks" },
+  { href: "/preview/animations", label: "Animations" },
   { href: "/preview/typography", label: "Typography" },
   { href: "/preview/charts", label: "Charts" },
   { href: "/preview/tokens", label: "Design tokens" },

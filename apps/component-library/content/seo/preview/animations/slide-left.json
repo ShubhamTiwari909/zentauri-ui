@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Slide Left animation for React",
+  "description": "SlideLeft moves content horizontally from the right into its final position.",
+  "keywords": ["slide left", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Slide Left animation · Zentauri UI",
+    "description": "SlideLeft moves content horizontally from the right into its final position.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Slide Left animation · Zentauri UI",
+    "description": "SlideLeft moves content horizontally from the right into its final position.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/slide-left",
+  "headings": {
+    "h1": "Slide Left animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use SlideLeft for horizontal content changes that should move into place from the right.",
+  "useCases": ["Panels.", "Cards.", "Timeline items."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/slide-left`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates horizontal position from a right-side offset into the final position."
+    }
+  ]
+}

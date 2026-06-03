@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Reveal Down animation for React",
+  "description": "RevealDown combines opacity, downward movement, and subtle scale for polished top-origin entrances.",
+  "keywords": ["reveal down", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Reveal Down animation · Zentauri UI",
+    "description": "RevealDown combines opacity, downward movement, and subtle scale for polished top-origin entrances.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Reveal Down animation · Zentauri UI",
+    "description": "RevealDown combines opacity, downward movement, and subtle scale for polished top-origin entrances.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/reveal-down",
+  "headings": {
+    "h1": "Reveal Down animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use RevealDown for banners, menus, and content that should enter from above.",
+  "useCases": ["Menus.", "Top panels.", "Status banners."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/reveal-down`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates opacity, vertical position, and scale from an upper offset into place."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Text Reveal animation for React",
+  "description": "TextReveal combines opacity, vertical movement, and blur for soft headline and label entrances.",
+  "keywords": ["text reveal", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Text Reveal animation · Zentauri UI",
+    "description": "TextReveal combines opacity, vertical movement, and blur for soft headline and label entrances.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Text Reveal animation · Zentauri UI",
+    "description": "TextReveal combines opacity, vertical movement, and blur for soft headline and label entrances.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/text-reveal",
+  "headings": {
+    "h1": "Text Reveal animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use TextReveal for headings, labels, and short copy that should settle into focus.",
+  "useCases": ["Hero headings.", "Section titles.", "Inline status text."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/text-reveal`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates text-like content from a blurred, offset, transparent state into a sharp visible state."
+    }
+  ]
+}

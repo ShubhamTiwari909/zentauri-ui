@@ -1,0 +1,40 @@
+{
+  "category": "Animations",
+  "title": "Bounce animation for React",
+  "description": "Bounce moves vertically in a lively repeated rhythm for playful emphasis.",
+  "keywords": [
+    "bounce animation",
+    "React animation",
+    "Framer Motion",
+    "Motion"
+  ],
+  "og": {
+    "title": "Bounce animation · Zentauri UI",
+    "description": "Bounce moves vertically in a lively repeated rhythm for playful emphasis.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Bounce animation · Zentauri UI",
+    "description": "Bounce moves vertically in a lively repeated rhythm for playful emphasis.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/bounce",
+  "headings": {
+    "h1": "Bounce animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Bounce for expressive, repeated vertical motion.",
+  "useCases": ["Empty states.", "Badges.", "Playful prompts."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/bounce`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Moves upward and settles back down in a repeating sequence."
+    }
+  ]
+}

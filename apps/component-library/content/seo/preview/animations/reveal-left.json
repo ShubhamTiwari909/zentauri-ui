@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Reveal Left animation for React",
+  "description": "RevealLeft combines opacity, horizontal movement, and subtle scale for right-to-left entrances.",
+  "keywords": ["reveal left", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Reveal Left animation · Zentauri UI",
+    "description": "RevealLeft combines opacity, horizontal movement, and subtle scale for right-to-left entrances.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Reveal Left animation · Zentauri UI",
+    "description": "RevealLeft combines opacity, horizontal movement, and subtle scale for right-to-left entrances.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/reveal-left",
+  "headings": {
+    "h1": "Reveal Left animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use RevealLeft for cards, previews, and detail panels entering from the right.",
+  "useCases": ["Detail panels.", "Card grids.", "Content swaps."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/reveal-left`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates opacity, horizontal position, and scale from a right-side offset into place."
+    }
+  ]
+}

@@ -26,6 +26,7 @@ function parseNames(constName) {
 
 const ui = parseNames("uiComponentNames");
 const charts = parseNames("chartEntryNames");
+const animations = parseNames("animationEntryNames");
 const animated = parseNames("uiAnimatedComponentNames");
 const hooks = parseNames("hooksEntryNames");
 
@@ -45,6 +46,13 @@ for (const name of animated) {
 }
 for (const name of charts) {
   add(`charts/${name}.mjs`, `charts/${name}.js`, `charts/${name}/index.d.ts`);
+}
+for (const name of animations) {
+  add(
+    `animations/${name}.mjs`,
+    `animations/${name}.js`,
+    `animations/${name}/index.d.ts`,
+  );
 }
 for (const name of hooks) {
   add(`hooks/${name}.mjs`, `hooks/${name}.js`, `hooks/${name}/index.d.ts`);

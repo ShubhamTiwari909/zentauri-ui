@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Scale Out animation for React",
+  "description": "ScaleOut combines opacity with a compact scale exit for overlays, cards, and media tiles.",
+  "keywords": ["scale out", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Scale Out animation · Zentauri UI",
+    "description": "ScaleOut combines opacity with a compact scale exit for overlays, cards, and media tiles.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Scale Out animation · Zentauri UI",
+    "description": "ScaleOut combines opacity with a compact scale exit for overlays, cards, and media tiles.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/scale-out",
+  "headings": {
+    "h1": "Scale Out animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use ScaleOut when content should shrink away as it leaves.",
+  "useCases": ["Closing overlays.", "Removing cards.", "Dismissing previews."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/scale-out`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates from full size into a slightly smaller transparent state."
+    }
+  ]
+}

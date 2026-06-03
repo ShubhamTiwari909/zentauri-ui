@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Blur In animation for React",
+  "description": "BlurIn combines opacity with a soft blur entrance for polished text, panels, and media previews.",
+  "keywords": ["blur in", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Blur In animation · Zentauri UI",
+    "description": "BlurIn combines opacity with a soft blur entrance for polished text, panels, and media previews.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Blur In animation · Zentauri UI",
+    "description": "BlurIn combines opacity with a soft blur entrance for polished text, panels, and media previews.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/blur-in",
+  "headings": {
+    "h1": "Blur In animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use BlurIn for soft reveals where opacity alone feels too flat.",
+  "useCases": ["Hero text.", "Preview panels.", "Image-adjacent captions."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/blur-in`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates from a blurred transparent state into a sharp visible state."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Spin animation for React",
+  "description": "Spin rotates continuously for loaders, icons, and repeating activity states.",
+  "keywords": ["spin animation", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Spin animation · Zentauri UI",
+    "description": "Spin rotates continuously for loaders, icons, and repeating activity states.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Spin animation · Zentauri UI",
+    "description": "Spin rotates continuously for loaders, icons, and repeating activity states.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/spin",
+  "headings": {
+    "h1": "Spin animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Spin for continuous rotation on compact elements.",
+  "useCases": ["Loading marks.", "Refresh icons.", "Activity states."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/spin`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Rotates from zero to a full turn with linear repeat timing."
+    }
+  ]
+}

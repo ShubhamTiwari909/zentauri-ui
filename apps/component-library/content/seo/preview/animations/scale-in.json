@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Scale In animation for React",
+  "description": "ScaleIn combines opacity with a compact scale entrance for overlays, cards, and media tiles.",
+  "keywords": ["scale in", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Scale In animation · Zentauri UI",
+    "description": "ScaleIn combines opacity with a compact scale entrance for overlays, cards, and media tiles.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Scale In animation · Zentauri UI",
+    "description": "ScaleIn combines opacity with a compact scale entrance for overlays, cards, and media tiles.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/scale-in",
+  "headings": {
+    "h1": "Scale In animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use ScaleIn when content should gently grow into its final size.",
+  "useCases": ["Modal content.", "Popover bodies.", "Media previews."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/scale-in`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates from a slightly smaller scale and transparent opacity into full size."
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "category": "Animations",
+  "title": "Hover Lift animation for React",
+  "description": "HoverLift raises and slightly scales an element on hover with a spring transition.",
+  "keywords": [
+    "hover lift animation",
+    "React animation",
+    "Framer Motion",
+    "Motion"
+  ],
+  "og": {
+    "title": "Hover Lift animation · Zentauri UI",
+    "description": "HoverLift raises and slightly scales an element on hover with a spring transition.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Hover Lift animation · Zentauri UI",
+    "description": "HoverLift raises and slightly scales an element on hover with a spring transition.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/hover-lift",
+  "headings": {
+    "h1": "Hover Lift animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use HoverLift for cards and buttons that should rise on pointer hover.",
+  "useCases": ["Cards.", "Buttons.", "Dashboard tiles."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/hover-lift`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Adds y-axis lift and subtle scale through whileHover."
+    }
+  ]
+}

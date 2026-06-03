@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Reveal Blur animation for React",
+  "description": "RevealBlur combines opacity, position, and blur for a soft focused content entrance.",
+  "keywords": ["reveal blur", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Reveal Blur animation · Zentauri UI",
+    "description": "RevealBlur combines opacity, position, and blur for a soft focused content entrance.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Reveal Blur animation · Zentauri UI",
+    "description": "RevealBlur combines opacity, position, and blur for a soft focused content entrance.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/reveal-blur",
+  "headings": {
+    "h1": "Reveal Blur animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use RevealBlur when content should sharpen and settle into focus.",
+  "useCases": ["Hero details.", "Modal content.", "Featured panels."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/reveal-blur`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates opacity, vertical position, and blur into a sharp visible state."
+    }
+  ]
+}

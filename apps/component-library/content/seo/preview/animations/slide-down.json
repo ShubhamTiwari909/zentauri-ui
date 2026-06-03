@@ -1,0 +1,35 @@
+{
+  "category": "Animations",
+  "title": "Slide Down animation for React",
+  "description": "SlideDown moves content downward into place for menus, headers, and compact panels.",
+  "keywords": ["slide down", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Slide Down animation · Zentauri UI",
+    "description": "SlideDown moves content downward into place for menus, headers, and compact panels.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Slide Down animation · Zentauri UI",
+    "description": "SlideDown moves content downward into place for menus, headers, and compact panels.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/slide-down",
+  "headings": {
+    "h1": "Slide Down animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use SlideDown for content that should settle into place from above.",
+  "useCases": ["Top bars.", "Dropdown shells.", "Notification rows."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/slide-down`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates vertical position from an upper offset into the final position."
+    }
+  ]
+}

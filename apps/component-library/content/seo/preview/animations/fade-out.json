@@ -1,0 +1,39 @@
+{
+  "category": "Animations",
+  "title": "Fade Out animation for React",
+  "description": "FadeOut is a small Motion wrapper for opacity-based exits in React and Next.js interfaces.",
+  "keywords": ["fade out", "React animation", "Framer Motion", "Motion"],
+  "og": {
+    "title": "Fade Out animation · Zentauri UI",
+    "description": "FadeOut is a small Motion wrapper for opacity-based exits in React and Next.js interfaces.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Fade Out animation · Zentauri UI",
+    "description": "FadeOut is a small Motion wrapper for opacity-based exits in React and Next.js interfaces.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/fade-out",
+  "headings": {
+    "h1": "Fade Out animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use FadeOut when content should leave without spatial motion.",
+  "useCases": [
+    "Dismissible alerts.",
+    "Soft overlay exits.",
+    "Transient helper text."
+  ],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/fade-out`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Animates opacity from visible to transparent with a short ease-in transition."
+    }
+  ]
+}

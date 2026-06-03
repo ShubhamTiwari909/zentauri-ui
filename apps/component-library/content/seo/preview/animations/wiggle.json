@@ -1,0 +1,40 @@
+{
+  "category": "Animations",
+  "title": "Wiggle animation for React",
+  "description": "Wiggle rotates side to side in a short repeated motion for compact attention states.",
+  "keywords": [
+    "wiggle animation",
+    "React animation",
+    "Framer Motion",
+    "Motion"
+  ],
+  "og": {
+    "title": "Wiggle animation · Zentauri UI",
+    "description": "Wiggle rotates side to side in a short repeated motion for compact attention states.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Wiggle animation · Zentauri UI",
+    "description": "Wiggle rotates side to side in a short repeated motion for compact attention states.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/animations/wiggle",
+  "headings": {
+    "h1": "Wiggle animation",
+    "h2": ["What it does", "Examples", "Code", "FAQ"]
+  },
+  "intro": "Use Wiggle for icons, labels, or small cards that need a compact nudge.",
+  "useCases": ["Icon hints.", "Small badges.", "Attention prompts."],
+  "faqs": [
+    {
+      "question": "Where do I import it from?",
+      "answer": "Import from `@zentauri-ui/zentauri-components/animations/wiggle`."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Rotates back and forth with a short repeat delay."
+    }
+  ]
+}

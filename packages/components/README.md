@@ -9,7 +9,7 @@ A React UI kit for building product interfaces with Tailwind CSS. Components are
 
 The library targets **React 18+** apps that use **Tailwind CSS v4** (or an equivalent setup where Tailwind can scan this package via `@source`). Styling uses utility classes; **class-variance-authority** powers variant APIs (size, appearance, and similar props), with **clsx** and **tailwind-merge** for predictable `className` composition. Component variants are light-theme ready by default and include paired `dark:` Tailwind classes for dark-mode surfaces, text, borders, focus rings, gradients, and form controls. **Framer Motion** backs motion where a feature ships animated variants, and **react-icons** is used for iconography where applicable.
 
-Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@zentauri-ui/zentauri-components/ui/<area>` for static UI, `@zentauri-ui/zentauri-components/ui/<area>/animated` where a motion bundle exists, `@zentauri-ui/zentauri-components/charts/<type>` for Recharts-powered chart primitives, and `@zentauri-ui/zentauri-components/hooks/<entry>` for React hooks (and shared helpers under `hooks/utils`). Base UI entries do **not** re-export animated components; motion lives on its own entry so optional `framer-motion` usage stays tree-shakeable and chunk-friendly. Each entry resolves to its own ESM (`.mjs`), CJS (`.js`), and types (`.d.ts`) so bundlers pull only what you import. Most apps rely on Tailwind scanning the package sources (see installation); a separate CSS import is not required for that setup.
+Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@zentauri-ui/zentauri-components/ui/<area>` for static UI, `@zentauri-ui/zentauri-components/ui/<area>/animated` where a motion bundle exists, `@zentauri-ui/zentauri-components/animations/<name>` for standalone Motion wrappers, `@zentauri-ui/zentauri-components/charts/<type>` for Recharts-powered chart primitives, and `@zentauri-ui/zentauri-components/hooks/<entry>` for React hooks (and shared helpers under `hooks/utils`). Base UI entries do **not** re-export animated components; motion lives on its own entry so optional `framer-motion` usage stays tree-shakeable and chunk-friendly. Each entry resolves to its own ESM (`.mjs`), CJS (`.js`), and types (`.d.ts`) so bundlers pull only what you import. Most apps rely on Tailwind scanning the package sources (see installation); a separate CSS import is not required for that setup.
 
 ## Current package surface
 
@@ -17,6 +17,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | ------------------- | ----: | ----------------------------------------------------- |
 | Static UI entries   |    42 | `@zentauri-ui/zentauri-components/ui/<name>`          |
 | Animated UI entries |    27 | `@zentauri-ui/zentauri-components/ui/<name>/animated` |
+| Animation entries   |    41 | `@zentauri-ui/zentauri-components/animations/<name>`  |
 | Chart entries       |     9 | `@zentauri-ui/zentauri-components/charts/<type>`      |
 | Hook entries        |    28 | `@zentauri-ui/zentauri-components/hooks/<entry>`      |
 
@@ -26,14 +27,15 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 76 passed (76)   |
-| Tests      | 548 passed (548) |
+| Test files | 77 passed (77)   |
+| Tests      | 591 passed (591) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
 | Components and UI utilities | 46         | 433   |
+| Standalone animations       | 1          | 42    |
 | React hooks                 | 28         | 101   |
-| CLI and import rewriting    | 2          | 14    |
+| CLI and import rewriting    | 2          | 15    |
 
 ### Per-suite snapshot
 
@@ -45,7 +47,8 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | `src/ui/modal/modal.test.tsx`                                           |    10 |
 | `src/ui/drawer/drawer.test.tsx`                                         |     7 |
 | `src/ui/peer-isolation.test.ts`                                         |    29 |
-| `cli/cli.integration.test.ts`                                           |     9 |
+| `cli/cli.integration.test.ts`                                           |    10 |
+| `src/animations/animations.test.tsx`                                    |    42 |
 | `src/ui/buttons/button.test.tsx`                                        |    41 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
 | `src/ui/marquee/marquee.test.tsx`                                       |    10 |
@@ -122,6 +125,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `@zentauri-ui/zentauri-components/ui/<name>`          | Single UI area: static primitives, compound parts, variants, and types. Does **not** include Framer Motion–based animated exports.                                                         |
 | `@zentauri-ui/zentauri-components/ui/<name>/animated` | Motion entry for that area when published: animated components, motion presets, and related types (depends on **framer-motion**).                                                          |
+| `@zentauri-ui/zentauri-components/animations/<name>`  | Standalone Motion wrapper and preset entry for reusable transitions such as `fade-in`, `scale-in`, and `blur-out` (depends on **framer-motion**).                                          |
 | `@zentauri-ui/zentauri-components/charts/<type>`      | Responsive Recharts chart entry for `area`, `bar`, `stacked-bar`, `radar`, `scatter`, `bubble`, `funnel`, `line`, or `pie`, with shared variants, palettes, and exported chart prop types. |
 | `@zentauri-ui/zentauri-components/hooks/<entry>`      | One hook module or `utils` (`cn`, `clampPage`, `range` from `src/lib/utils.ts`). Entries match files under `src/hooks/` (see **React hooks**).                                             |
 
@@ -139,6 +143,35 @@ Published motion entries (same `<name>` as the base UI folder):
 `accordion`, `alert`, `avatar`, `badge`, `buttons`, `card`, `checkbox`, `command`, `copy-button`, `divider`, `drawer`, `empty-state`, `inputs`, `kbd`, `modal`, `popover`, `progress`, `radio-group`, `skeleton`, `spinner`, `table`, `tabs`, `timeline`, `toast`, `toggle`, `tooltip`, `tree-view`
 
 **Spinner:** only the motion entry is built—import from `@zentauri-ui/zentauri-components/ui/spinner/animated` (there is no separate `ui/spinner` static bundle).
+
+## Animations
+
+Standalone animations live outside `ui/*` under `@zentauri-ui/zentauri-components/animations/<name>`. They are small **framer-motion** wrappers around `motion.div`, designed for composing page sections, cards, panels, list items, and route-level content without coupling the motion preset to a UI primitive.
+
+**Animation entries:** `fade-in`, `fade-out`, `fade-up`, `fade-down`, `fade-left`, `fade-right`, `scale-in`, `scale-out`, `pop-in`, `blur-in`, `blur-out`, `slide-up`, `slide-down`, `slide-left`, `slide-right`, `reveal-up`, `reveal-down`, `reveal-left`, `reveal-right`, `reveal-blur`, `text-reveal`, `text-shimmer`, `rotate-in`, `pulse`, `ping`, `shake`, `bounce`, `wiggle`, `float`, `spin`, `flip`, `flip-in`, `tilt`, `magnetic`, `hover-lift`, `hover-scale`, `press`, `reorder`, `skeleton-shimmer`, `progress`, `parallax`.
+
+Each entry exports a named component and its preset object, for example `FadeIn` and `fadeInPreset`. Components accept regular `HTMLMotionProps<"div">`, so you can pass `className`, `transition`, `initial`, `animate`, `exit`, and accessibility attributes directly.
+
+For lighter customization without replacing the whole Motion target, pass `from`, `to`, and `exitTo`. These override preset values for `opacity`, `x`, `y`, `scale`, `scaleX`, `scaleY`, `rotate`, `rotateX`, `rotateY`, and `blur`.
+
+```tsx
+import { FadeIn } from "@zentauri-ui/zentauri-components/animations/fade-in";
+import { ScaleIn } from "@zentauri-ui/zentauri-components/animations/scale-in";
+
+export function MotionPanel() {
+  return (
+    <FadeIn className="rounded-xl border border-white/10 bg-white/5 p-4">
+      <ScaleIn
+        from={{ scale: 0.92, blur: 8 }}
+        to={{ scale: 1, blur: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        Content with a nested scale entrance.
+      </ScaleIn>
+    </FadeIn>
+  );
+}
+```
 
 ## Requirements
 
@@ -444,7 +477,7 @@ yarn add react react-dom class-variance-authority clsx tailwind-merge
 
 #### Optional: animations, icons, and charts
 
-Add **`framer-motion`** when you import any `@zentauri-ui/zentauri-components/ui/<name>/animated` entry (including **Spinner**, which is only published under `ui/spinner/animated`). Add **`react-icons`** when using icon sets from that package. Add **`recharts`** when you import any `@zentauri-ui/zentauri-components/charts/<type>` entry or vendor charts with the CLI.
+Add **`framer-motion`** when you import any `@zentauri-ui/zentauri-components/ui/<name>/animated` entry, any `@zentauri-ui/zentauri-components/animations/<name>` entry, or **Spinner** (which is only published under `ui/spinner/animated`). Add **`react-icons`** when using icon sets from that package. Add **`recharts`** when you import any `@zentauri-ui/zentauri-components/charts/<type>` entry or vendor charts with the CLI.
 
 ```bash
 npm install framer-motion react-icons recharts
@@ -458,7 +491,7 @@ pnpm add framer-motion react-icons recharts
 yarn add framer-motion react-icons recharts
 ```
 
-Published `dist/` files **import** these packages; they are **not** vendored inside `@zentauri-ui/zentauri-components`. Static `ui/<name>` bundles do not depend on `framer-motion`; only `ui/<name>/animated` entries do. Chart bundles are isolated to `charts/<type>` entries and depend on `recharts`. Your app installs peers via `dependencies` where needed, and your bundler resolves them from `node_modules`.
+Published `dist/` files **import** these packages; they are **not** vendored inside `@zentauri-ui/zentauri-components`. Static `ui/<name>` bundles do not depend on `framer-motion`; only `ui/<name>/animated` and `animations/<name>` entries do. Chart bundles are isolated to `charts/<type>` entries and depend on `recharts`. Your app installs peers via `dependencies` where needed, and your bundler resolves them from `node_modules`.
 
 ### Next.js: smaller route chunks
 
@@ -526,7 +559,7 @@ Place these rules in your global stylesheet (for example `globals.css`) after Ta
 
 ### Step 4 — Import and use components and hooks
 
-Use **one subpath per UI area** (static and animated are separate entries: `ui/<name>` vs `ui/<name>/animated`) and **one subpath per hook module** so the bundler resolves only the entries you use.
+Use **one subpath per UI area** (static and animated are separate entries: `ui/<name>` vs `ui/<name>/animated`), **one subpath per animation**, and **one subpath per hook module** so the bundler resolves only the entries you use.
 
 #### Imports (single UI area)
 
@@ -571,6 +604,13 @@ import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/anim
 import { Spinner } from "@zentauri-ui/zentauri-components/ui/spinner/animated";
 ```
 
+#### Imports (standalone animations)
+
+```tsx
+import { FadeUp } from "@zentauri-ui/zentauri-components/animations/fade-up";
+import { BlurIn } from "@zentauri-ui/zentauri-components/animations/blur-in";
+```
+
 #### Usage
 
 ```tsx
@@ -603,9 +643,9 @@ import { Spinner } from "@zentauri-ui/zentauri-components/ui/spinner/animated";
 
 ## CLI — copy component source into your app
 
-The package ships a small **Node CLI** (`zentauri-components` and `zentauri-ui` point to the same `cli/index.mjs`) that copies **selected** folders from this package’s `src/ui`, `src/charts`, and `src/hooks` into your repository—similar to shadcn/ui. You keep the files, control paths via `components.json`, and imports are rewritten to your path aliases (`@/components/ui`, `@/hooks`, `@/lib/utils`, and so on).
+The package ships a small **Node CLI** (`zentauri-components` and `zentauri-ui` point to the same `cli/index.mjs`) that copies **selected** folders from this package’s `src/ui`, `src/animations`, `src/charts`, and `src/hooks` into your repository—similar to shadcn/ui. You keep the files, control paths via `components.json`, and imports are rewritten to your path aliases (`@/components/ui`, `@/components/animations`, `@/hooks`, `@/lib/utils`, and so on).
 
-Which UI folders are valid for `add` is driven by **`cli/registry.json`**: a generated manifest listing every addable directory name (matching `src/ui/<name>` plus chart entries like `src/charts/area`) plus optional **`nameAliases`** so the CLI accepts friendly tokens (for example `button` → `buttons`).
+Which UI folders are valid for `add` is driven by **`cli/registry.json`**: a generated manifest listing every addable directory name (matching `src/ui/<name>`, animation entries like `animations/fade-in`, plus chart entries like `charts/area`) plus optional **`nameAliases`** so the CLI accepts friendly tokens (for example `button` → `buttons`).
 
 ### Commands
 
@@ -614,6 +654,7 @@ Call the published binary by name after the package (recommended so `npx` does n
 ```bash
 npx @zentauri-ui/zentauri-components init
 npx @zentauri-ui/zentauri-components add buttons inputs
+npx @zentauri-ui/zentauri-components add animations/fade-in
 npx @zentauri-ui/zentauri-components add charts/area charts/line
 npx @zentauri-ui/zentauri-components -h
 ```
@@ -772,10 +813,10 @@ Add or extend the component's `*.test.tsx` to cover the items that apply; see
 
 From this package directory in the monorepo:
 
-- `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, the chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
+- `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 548 test cases in total
-- **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `hooks` + `peerHints`). Run this after adding or renaming UI/chart areas or hook entries so the CLI stays in sync (the script prints counts).
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 591 test cases in total
+- **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).
 
 ## Github Release log
 
