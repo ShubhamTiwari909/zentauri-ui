@@ -28,96 +28,17 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 | Metric     | Result           |
 | ---------- | ---------------- |
 | Test files | 77 passed (77)   |
-| Tests      | 591 passed (591) |
+| Tests      | 597 passed (597) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 46         | 433   |
-| Standalone animations       | 1          | 42    |
+| Components and UI utilities | 46         | 436   |
+| Standalone animations       | 1          | 45    |
 | React hooks                 | 28         | 101   |
 | CLI and import rewriting    | 2          | 15    |
 
-### Per-suite snapshot
-
-| Suite                                                                   | Tests |
-| ----------------------------------------------------------------------- | ----: |
-| `src/ui/dynamic-stepper/dynamic-stepper.test.tsx`                       |     8 |
-| `src/ui/select/select.test.tsx`                                         |    10 |
-| `src/charts/charts.test.tsx`                                            |     6 |
-| `src/ui/modal/modal.test.tsx`                                           |    10 |
-| `src/ui/drawer/drawer.test.tsx`                                         |     7 |
-| `src/ui/peer-isolation.test.ts`                                         |    29 |
-| `cli/cli.integration.test.ts`                                           |    10 |
-| `src/animations/animations.test.tsx`                                    |    42 |
-| `src/ui/buttons/button.test.tsx`                                        |    41 |
-| `src/ui/inputs/input.test.tsx`                                          |    40 |
-| `src/ui/marquee/marquee.test.tsx`                                       |    10 |
-| `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
-| `src/ui/tree-view/tree-view.test.tsx`                                   |    10 |
-| `src/ui/card/card.test.tsx`                                             |     7 |
-| `src/ui/checkbox/checkbox.test.tsx`                                     |     6 |
-| `src/ui/popover/popover.test.tsx`                                       |     4 |
-| `src/ui/command/command.test.tsx`                                       |     7 |
-| `src/ui/context-menu/context-menu.test.tsx`                             |    10 |
-| `src/ui/copy-button/copy-button.test.tsx`                               |     8 |
-| `src/ui/kbd/kbd.test.tsx`                                               |     7 |
-| `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
-| `src/ui/dropdown/dropdown.test.tsx`                                     |     6 |
-| `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
-| `src/ui/progress/progress.test.tsx`                                     |     8 |
-| `src/ui/rating/rating.test.tsx`                                         |    11 |
-| `src/ui/radio-group/radio-group.test.tsx`                               |     5 |
-| `src/ui/scroll-area/scroll-area.test.tsx`                               |     8 |
-| `src/ui/accordion/accordion.test.tsx`                                   |     7 |
-| `src/ui/toast/toast.test.tsx`                                           |     5 |
-| `src/ui/pagination/pagination.test.tsx`                                 |    15 |
-| `src/ui/table/table.test.tsx`                                           |    11 |
-| `src/ui/tabs/tabs.test.tsx`                                             |     3 |
-| `src/ui/stepper/stepper.test.tsx`                                       |    12 |
-| `src/ui/timeline/timeline.test.tsx`                                     |    14 |
-| `src/ui/animated-number/animated-number.test.tsx`                       |     9 |
-| `src/ui/toggle/toggle.test.tsx`                                         |     5 |
-| `src/ui/slider/slider.test.tsx`                                         |     9 |
-| `src/ui/typography/typography.test.tsx`                                 |     7 |
-| `src/ui/skeleton/skeleton.test.tsx`                                     |     8 |
-| `src/ui/divider/divider.test.tsx`                                       |     6 |
-| `src/ui/empty-state/empty-state.test.tsx`                               |     6 |
-| `src/ui/alert/alert.test.tsx`                                           |    11 |
-| `src/ui/badge/badge.test.tsx`                                           |     6 |
-| `src/hooks/useClipboard/useClipboard.test.ts`                           |     6 |
-| `src/hooks/useLocalStorage/useLocalStorage.test.ts`                     |     6 |
-| `src/hooks/useDisclosure/useDisclosure.test.ts`                         |     5 |
-| `src/ui/avatar/avatar.test.tsx`                                         |     4 |
-| `src/ui/file-upload/file-upload.test.tsx`                               |     4 |
-| `src/ui/spinner/animated/spinner.test.tsx`                              |     8 |
-| `src/hooks/useDynamicStepper/useDynamicStepper.test.ts`                 |     7 |
-| `src/hooks/useClickOutside/useClickOutside.test.tsx`                    |     3 |
-| `src/hooks/useControllableState/useControllableState.test.ts`           |     4 |
-| `src/ui/breadcrumb/breadcrumb.test.tsx`                                 |     4 |
-| `src/hooks/useThrottledCallback/useThrottledCallback.test.ts`           |     4 |
-| `src/hooks/useToggle/useToggle.test.ts`                                 |     4 |
-| `src/hooks/usePagination/usePagination.test.ts`                         |    10 |
-| `src/hooks/useTableFilter/useTableFilter.test.ts`                       |     9 |
-| `src/hooks/useTableSort/useTableSort.test.ts`                           |     7 |
-| `src/hooks/useSessionStorage/useSessionStorage.test.ts`                 |     3 |
-| `src/hooks/usePrefersColorScheme/usePrefersColorScheme.test.ts`         |     1 |
-| `src/hooks/useIsMounted/useIsMounted.test.ts`                           |     3 |
-| `src/hooks/useDebouncedValue/useDebouncedValue.test.ts`                 |     4 |
-| `src/hooks/useHover/useHover.test.ts`                                   |     2 |
-| `src/hooks/useIntersectionObserver/useIntersectionObserver.test.ts`     |     2 |
-| `src/hooks/usePageVisibility/usePageVisibility.test.ts`                 |     1 |
-| `src/hooks/useResizeObserver/useResizeObserver.test.ts`                 |     2 |
-| `src/hooks/useNetworkStatus/useNetworkStatus.test.ts`                   |     2 |
-| `src/hooks/useMediaQuery/useMediaQuery.test.ts`                         |     2 |
-| `src/hooks/useDocumentTitle/useDocumentTitle.test.ts`                   |     3 |
-| `src/hooks/usePrefersReducedMotion/usePrefersReducedMotion.test.ts`     |     1 |
-| `src/hooks/useBodyScrollLock/useBodyScrollLock.test.ts`                 |     4 |
-| `src/hooks/useWindowSize/useWindowSize.test.ts`                         |     1 |
-| `src/hooks/useInView/useInView.test.ts`                                 |     1 |
-| `src/hooks/useIsomorphicLayoutEffect/useIsomorphicLayoutEffect.test.ts` |     1 |
-| `cli/rewrite-imports.test.ts`                                           |     5 |
-| `src/ui/search/filter-search-suggestions.test.ts`                       |     6 |
-| `src/ui/search/search-suggestion-utils.test.ts`                         |     1 |
+Run `pnpm --filter @zentauri-ui/zentauri-components test` for the current
+per-suite breakdown.
 
 ## Package exports
 
@@ -815,17 +736,25 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 591 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // covered 597 test cases in total
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).
 
-## Github Release log
+## Release and Contribution
 
-https://github.com/ShubhamTiwari909/zentauri-ui/releases
+This package uses Changesets for npm versioning and changelog entries. Add a
+changeset from the repository root for user-facing package changes:
 
-## NOTE:
+```sh
+pnpm changeset
+```
 
-This package is in initial phase of development and you might see some minor or major breaking changes in the future. If you want to contribute to this project, email me at @shubhmtiwri00@gmail.com or ping me on linkeded https://www.linkedin.com/in/shubham-tiwari-b7544b193/
+Useful links:
+
+- Package changelog: [`CHANGELOG.md`](CHANGELOG.md)
+- Repository contribution guide: [`../../CONTRIBUTING.md`](../../CONTRIBUTING.md)
+- Security policy: [`../../SECURITY.md`](../../SECURITY.md)
+- GitHub releases: <https://github.com/ShubhamTiwari909/zentauri-ui/releases>
 
 ## License
 
-MIT
+MIT. See [`LICENSE`](LICENSE).

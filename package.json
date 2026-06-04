@@ -8,12 +8,21 @@
     "lint:fix": "turbo run lint -- --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish",
     "test:docs": "pnpm --filter component-library test"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.31.0",
     "prettier": "^3.7.4",
     "turbo": "^2.9.5",
     "typescript": "5.9.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "human-id": "4.1.1"
+    }
   },
   "packageManager": "pnpm@9.0.0",
   "engines": {

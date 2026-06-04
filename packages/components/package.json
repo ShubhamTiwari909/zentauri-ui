@@ -2,8 +2,36 @@
   "name": "@zentauri-ui/zentauri-components",
   "version": "1.8.41",
   "description": "React + Tailwind UI kit with charts, ESM/CJS builds, per-entry exports, and a zentauri-components / zentauri-ui CLI to vendor UI or hook source into your app",
+  "keywords": [
+    "react",
+    "tailwindcss",
+    "tailwind",
+    "component-library",
+    "ui-kit",
+    "design-system",
+    "typescript",
+    "nextjs",
+    "charts",
+    "hooks",
+    "animations"
+  ],
+  "homepage": "https://zentauri-ui.vercel.app/",
+  "bugs": {
+    "url": "https://github.com/ShubhamTiwari909/zentauri-ui/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShubhamTiwari909/zentauri-ui.git",
+    "directory": "packages/components"
+  },
+  "author": {
+    "name": "Shubham Tiwari",
+    "url": "https://www.linkedin.com/in/shubham-tiwari-b7544b193/"
+  },
   "license": "MIT",
   "files": [
+    "CHANGELOG.md",
+    "LICENSE",
     "dist",
     "src/ui",
     "src/animations",
@@ -19,7 +47,8 @@
     "zentauri-ui": "cli/index.mjs"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "exports": {
     "./design-system/tokens": {
