@@ -69,7 +69,7 @@ export function createMotionAnimation(
     const resolvedWhileInView =
       whileInView === undefined
         ? undefined
-        : whileInView === true
+        : usesPresetWhileInView
           ? resolvedAnimateTarget
           : isTargetObject(whileInView)
             ? { ...resolvedAnimateTarget, ...whileInView }
