@@ -59,6 +59,7 @@ function runVitestJsonReport() {
     {
       cwd: packageRoot,
       stdio: "inherit",
+      shell: true,
     },
   );
 }
@@ -168,7 +169,7 @@ function updatePackageReadme(health) {
     updatedSection,
   );
   const withDevelopmentLine = withSection.replace(
-    /- `pnpm test` \/ `pnpm test:watch` — \*\*Vitest\*\* and \*\*Testing Library\*\* unit tests \/\/ covered \d+ test cases in total/,
+    /- `pnpm test` \/ `pnpm test:watch` — \*\*Vitest\*\* and \*\*Testing Library\*\* unit tests \/\/ (?:currently )?covered \d+ test cases in total/,
     `- \`pnpm test\` / \`pnpm test:watch\` — **Vitest** and **Testing Library** unit tests // currently covered ${health.tests.total} test cases in total`,
   );
   writeFileSync(packageReadmePath, withDevelopmentLine, "utf8");
