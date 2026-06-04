@@ -1,5 +1,55 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+
+vi.mock("framer-motion", async () => {
+  const React = await import("react");
+
+  function serializeMotionValue(value: unknown) {
+    return value === undefined ? "undefined" : JSON.stringify(value);
+  }
+
+  return {
+    motion: {
+      div: React.forwardRef<HTMLDivElement, Record<string, unknown>>(
+        (
+          {
+            animate,
+            children,
+            exit,
+            initial,
+            layout,
+            transition,
+            viewport,
+            whileHover,
+            whileInView,
+            whileTap,
+            ...props
+          },
+          ref,
+        ) =>
+          React.createElement(
+            "div",
+            {
+              ...props,
+              ref,
+              "data-motion-animate": serializeMotionValue(animate),
+              "data-motion-exit": serializeMotionValue(exit),
+              "data-motion-initial": serializeMotionValue(initial),
+              "data-motion-layout": serializeMotionValue(layout),
+              "data-motion-transition": serializeMotionValue(transition),
+              "data-motion-viewport": serializeMotionValue(viewport),
+              "data-motion-while-hover": serializeMotionValue(whileHover),
+              "data-motion-while-in-view":
+                serializeMotionValue(whileInView),
+              "data-motion-while-tap": serializeMotionValue(whileTap),
+            },
+            children as React.ReactNode,
+          ),
+      ),
+    },
+    useReducedMotion: () => false,
+  };
+});
 
 import { BlurIn } from "./blur-in";
 import { BlurOut } from "./blur-out";
@@ -125,5 +175,25 @@ describe("animation primitives", () => {
     expect(root).not.toHaveAttribute("from");
     expect(root).not.toHaveAttribute("to");
     expect(root).not.toHaveAttribute("exitTo");
+  });
+
+  it("can defer the preset animate target until the element enters the viewport", () => {
+    render(
+      <FadeUp viewport={{ once: true, amount: 0.35 }} whileInView>
+        Viewport gated
+      </FadeUp>,
+    );
+
+    const root = screen.getByText("Viewport gated");
+
+    expect(root).toHaveAttribute("data-motion-animate", "undefined");
+    expect(root).toHaveAttribute(
+      "data-motion-while-in-view",
+      JSON.stringify({ opacity: 1, y: 0 }),
+    );
+    expect(root).toHaveAttribute(
+      "data-motion-viewport",
+      JSON.stringify({ once: true, amount: 0.35 }),
+    );
   });
 });

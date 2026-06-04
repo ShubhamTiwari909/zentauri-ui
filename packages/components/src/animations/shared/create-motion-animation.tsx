@@ -48,6 +48,7 @@ export function createMotionAnimation(
       transition,
       layout,
       whileHover,
+      whileInView,
       whileTap,
       from,
       to,
@@ -55,7 +56,8 @@ export function createMotionAnimation(
       ...rest
     } = props;
     const shouldReduceMotion = useReducedMotion();
-    const resolvedAnimate = animate ?? mergeTargetOverrides(preset.animate, to);
+    const resolvedAnimateTarget = mergeTargetOverrides(preset.animate, to);
+    const resolvedAnimate = animate ?? resolvedAnimateTarget;
     const resolvedInitial =
       initial ??
       (shouldReduceMotion
@@ -65,16 +67,24 @@ export function createMotionAnimation(
     const resolvedTransition = transition
       ? { ...preset.transition, ...transition }
       : preset.transition;
+    const shouldAnimateInView = whileInView !== undefined;
+    const resolvedWhileInView =
+      whileInView === undefined
+        ? undefined
+        : whileInView === true
+          ? resolvedAnimateTarget
+          : whileInView;
 
     return (
       <motion.div
         data-slot={slot}
         className={cn(className)}
         initial={resolvedInitial}
-        animate={resolvedAnimate}
+        animate={shouldAnimateInView ? undefined : resolvedAnimate}
         exit={resolvedExit}
         layout={layout ?? preset.layout}
         whileHover={whileHover ?? preset.whileHover}
+        whileInView={shouldAnimateInView ? resolvedWhileInView : undefined}
         whileTap={whileTap ?? preset.whileTap}
         transition={resolvedTransition}
         {...rest}

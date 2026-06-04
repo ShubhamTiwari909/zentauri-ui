@@ -368,8 +368,8 @@ export function Example() {
 export function Example() {
   return (
     <div className="space-y-3 rounded-xl border border-white/10 bg-white/5 p-4">
-      <SkeletonShimmer className="h-4 w-3/4 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.22),rgba(255,255,255,0.06))] bg-[length:200%_100%]" />
-      <SkeletonShimmer className="h-4 w-1/2 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.22),rgba(255,255,255,0.06))] bg-[length:200%_100%]" />
+      <SkeletonShimmer className="h-4 w-3/4 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.22),rgba(255,255,255,0.06))] bg-size-[200%_100%]" />
+      <SkeletonShimmer className="h-4 w-1/2 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.22),rgba(255,255,255,0.06))] bg-size-[200%_100%]" />
     </div>
   );
 }`;
@@ -421,6 +421,28 @@ export function Example() {
 export function Example() {
   return (
     <${componentName}
+      className="rounded-xl border border-white/10 bg-white/5 p-4"${transitionProp}
+    >
+      ${label}
+    </${componentName}>
+  );
+}`;
+}
+
+export function getAnimationInViewSnippet(slug: AnimationPreviewSlug) {
+  const componentName = componentNames[slug];
+  const label = animationPreviewLabels[slug];
+  const transitionProp = infiniteTransitionSlugs.has(slug)
+    ? "\n      transition={{ repeat: Infinity, repeatDelay: 0.6 }}"
+    : "";
+
+  return `import { ${componentName} } from "@zentauri-ui/zentauri-components/animations/${slug}";
+
+export function InViewExample() {
+  return (
+    <${componentName}
+      whileInView
+      viewport={{ once: true, amount: 0.35 }}
       className="rounded-xl border border-white/10 bg-white/5 p-4"${transitionProp}
     >
       ${label}
@@ -494,7 +516,7 @@ export function OverrideExample() {
 export function OverrideExample() {
   return (
     <SkeletonShimmer
-      className="h-4 w-3/4 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.22),rgba(255,255,255,0.06))] bg-[length:200%_100%]"${formatOverrideProp("from", override.from)}${formatOverrideProp("to", override.to)}${formatOverrideProp("exitTo", override.exitTo)}
+      className="h-4 w-3/4 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.22),rgba(255,255,255,0.06))] bg-size-[200%_100%]"${formatOverrideProp("from", override.from)}${formatOverrideProp("to", override.to)}${formatOverrideProp("exitTo", override.exitTo)}
     />
   );
 }`;

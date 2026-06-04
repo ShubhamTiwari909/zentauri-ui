@@ -59,10 +59,14 @@ type AnimationTargetOverrides = {
   blur?: number | string;
 };
 
-export type AnimationPreviewMotionProps = HTMLMotionProps<"div"> & {
+export type AnimationPreviewMotionProps = Omit<
+  HTMLMotionProps<"div">,
+  "whileInView"
+> & {
   from?: AnimationTargetOverrides;
   to?: AnimationTargetOverrides;
   exitTo?: AnimationTargetOverrides;
+  whileInView?: true | HTMLMotionProps<"div">["whileInView"];
 };
 
 const animationBySlug: Record<
