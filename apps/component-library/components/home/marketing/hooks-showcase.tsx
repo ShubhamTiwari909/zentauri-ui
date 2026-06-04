@@ -24,11 +24,11 @@ export function HomeHooksShowcase() {
       title="Utilities that match the kit"
       lead="Typed helpers for storage, timing, gestures, and layout—each with an interactive preview route."
     >
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-3 md:grid-cols-2">
         {hooks.map((hook) => (
           <Card
             key={hook.slug}
-            className="flex flex-col gap-3 p-5 max-w-full"
+            className="flex max-w-full flex-col gap-3 rounded-lg p-5 shadow-lg shadow-slate-950/20"
             appearance="sky"
           >
             <div className="flex flex-wrap items-start justify-between gap-2">

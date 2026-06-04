@@ -15,7 +15,7 @@ import { HomePatternDemos } from "./marketing/pattern-demos";
 export function HomeMarketing() {
   return (
     <ToastProvider>
-      <div className="flex flex-col gap-16 sm:gap-20 lg:gap-24">
+      <div className="flex flex-col gap-20 sm:gap-24 lg:gap-28">
         <HomeFeatureHighlights />
         <HomeComparisonTable />
         <HomeDxSection />

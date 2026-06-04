@@ -24,8 +24,8 @@ export function HomeInstallSection() {
       title="Add the package in one minute"
       lead="Pick your package manager, copy the command, then follow the full Tailwind v4 setup on the installation page."
     >
-      <div className="space-y-8">
-        <div className="overflow-hidden rounded-2xl border border-white/10">
+      <div className="grid gap-6 lg:grid-cols-[1fr_0.85fr]">
+        <div className="overflow-hidden rounded-lg border border-white/10 bg-slate-950/55 shadow-xl shadow-slate-950/20">
           <Tabs
             value={installPm}
             defaultValue="npm"
@@ -56,12 +56,12 @@ export function HomeInstallSection() {
             </TabsContentAnimated>
           </Tabs>
         </div>
-        <div>
+        <div className="rounded-lg border border-white/10 bg-slate-950/55 p-4 shadow-xl shadow-slate-950/20 sm:p-5">
           <h3 className="text-sm font-semibold text-white">CLI (optional)</h3>
           <p className="mt-1 text-sm text-slate-400">
             Scaffold or add components into your repo with the published CLI.
           </p>
-          <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
+          <div className="mt-4 overflow-hidden rounded-lg border border-white/10">
             <Tabs
               value={cliPm}
               defaultValue="npm"

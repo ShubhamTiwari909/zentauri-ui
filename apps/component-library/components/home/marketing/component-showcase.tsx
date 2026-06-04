@@ -2,18 +2,18 @@
 
 import Link from "next/link";
 import { useRef, useState, type ReactNode } from "react";
-
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@zentauri-ui/zentauri-components/ui/accordion";
 import {
   Button,
   type ButtonSharedStatic,
 } from "@zentauri-ui/zentauri-components/ui/buttons";
-import { ButtonAnimated } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
+import { AnimatedNumberDemo } from "@/components/preview/animated-number/sections/components/demo";
+import { animatedNumberSnippet } from "@/components/preview/animated-number/sections/components/snippets";
+import { MarqueeDemo } from "@/components/preview/marquee/sections/components/demo";
+import { marqueeSnippet } from "@/components/preview/marquee/sections/components/snippets";
+import { RatingDemo } from "@/components/preview/rating/sections/components/demo";
+import { ratingSnippet } from "@/components/preview/rating/sections/components/snippets";
+import { TreeViewDemo } from "@/components/preview/tree-view/sections/components/demo";
+import { treeViewSnippet } from "@/components/preview/tree-view/sections/components/snippets";
 import {
   Modal,
   ModalBody,
@@ -39,18 +39,7 @@ import { FiExternalLink } from "react-icons/fi";
 
 import { PreviewCodeTabs } from "./preview-code-tabs";
 import { SectionShell } from "./section-shell";
-
-const CODE_BUTTON = `<ButtonAnimated className="" appearance="sky" animation="lift" size="sm">Button sky</ButtonAnimated>
-
-<ButtonAnimated className="" appearance="pink" animation="lift" size="sm">Button pink</ButtonAnimated>
-
-<ButtonAnimated className="" appearance="amber" animation="lift" size="sm">Button amber</ButtonAnimated>
-
-<ButtonAnimated className="" appearance="gradient-purple" animation="lift" size="sm">
-  Button gradient-purple
-</ButtonAnimated>
-
-<ButtonAnimated className="" appearance="gradient-red" animation="lift" size="sm">Button gradient-red</ButtonAnimated>`;
+import { cn } from "@/lib/utils";
 
 const CODE_MODAL = `<div className="flex flex-wrap gap-3">
   {
@@ -87,21 +76,6 @@ const CODE_MODAL = `<div className="flex flex-wrap gap-3">
     )
   }
 </div>`;
-
-const CODE_ACCORDION = `<Accordion type="single" defaultValue="a" appearance="sky" size="sm">
-  <AccordionItem value="a">
-    <AccordionTrigger>API keys</AccordionTrigger>
-    <AccordionContent>
-      <p className="text-sm text-slate-900 dark:text-slate-300">Rotate keys from the security tab.</p>
-    </AccordionContent>
-  </AccordionItem>
-  <AccordionItem value="b">
-    <AccordionTrigger>Webhooks</AccordionTrigger>
-    <AccordionContent>
-      <p className="text-sm text-slate-900 dark:text-slate-300">Retry policy and signing secrets.</p>
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>`;
 
 const CODE_TOAST = `const { toast } = useToast();
 
@@ -267,9 +241,18 @@ type ShowcaseRowProps = {
   code: string;
 };
 
-function ShowcaseRow({ title, href, preview, code }: ShowcaseRowProps) {
+function ShowcaseRow({
+  title,
+  href,
+  preview,
+  code,
+}: ShowcaseRowProps) {
   return (
-    <article className="space-y-4">
+    <article
+      className={cn(
+        "border-t border-white/10 pt-5 first:border-t-0 first:pt-0",
+      )}
+    >
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="text-lg font-semibold text-white">
           <Link
@@ -281,7 +264,9 @@ function ShowcaseRow({ title, href, preview, code }: ShowcaseRowProps) {
           </Link>
         </h3>
       </div>
-      <PreviewCodeTabs preview={preview} code={code} />
+      <div className="mt-4">
+        <PreviewCodeTabs preview={preview} code={code} />
+      </div>
     </article>
   );
 }
@@ -293,56 +278,7 @@ export function HomeComponentShowcase() {
       title="Components in context"
       lead="Toggle Preview and Code—snippets mirror real props from the package."
     >
-      <div className="space-y-12">
-        <ShowcaseRow
-          title="Button"
-          href="/preview/components/buttons"
-          code={CODE_BUTTON}
-          preview={
-            <div className="flex flex-wrap gap-3">
-              <ButtonAnimated
-                className=""
-                appearance="sky"
-                animation="lift"
-                size="sm"
-              >
-                Button sky
-              </ButtonAnimated>
-              <ButtonAnimated
-                className=""
-                appearance="pink"
-                animation="lift"
-                size="sm"
-              >
-                Button pink
-              </ButtonAnimated>
-              <ButtonAnimated
-                className=""
-                appearance="amber"
-                animation="lift"
-                size="sm"
-              >
-                Button amber
-              </ButtonAnimated>
-              <ButtonAnimated
-                className=""
-                appearance="gradient-purple"
-                animation="lift"
-                size="sm"
-              >
-                Button gradient-purple
-              </ButtonAnimated>
-              <ButtonAnimated
-                className=""
-                appearance="gradient-red"
-                animation="lift"
-                size="sm"
-              >
-                Button gradient-red
-              </ButtonAnimated>
-            </div>
-          }
-        />
+      <div className="space-y-5">
         <ShowcaseRow
           title="Modal"
           href="/preview/components/modal"
@@ -390,37 +326,6 @@ export function HomeComponentShowcase() {
           }
         />
         <ShowcaseRow
-          title="Accordion"
-          href="/preview/components/accordion"
-          code={CODE_ACCORDION}
-          preview={
-            <Accordion
-              className="space-y-4 bg-white dark:bg-transparent"
-              type="single"
-              defaultValue="a"
-              appearance="sky"
-              size="sm"
-            >
-              <AccordionItem className="" value="a">
-                <AccordionTrigger className="">API keys</AccordionTrigger>
-                <AccordionContent className="">
-                  <p className="text-sm text-slate-900">
-                    Rotate keys from the security tab.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem className="" value="b">
-                <AccordionTrigger className="">Webhooks</AccordionTrigger>
-                <AccordionContent className="">
-                  <p className="text-sm text-slate-900">
-                    Retry policy and signing secrets.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          }
-        />
-        <ShowcaseRow
           title="Toast"
           href="/preview/components/toast"
           code={CODE_TOAST}
@@ -447,6 +352,100 @@ export function HomeComponentShowcase() {
           href="/preview/components/slider"
           code={CODE_SLIDER}
           preview={<SliderDemoPreview />}
+        />
+        <ShowcaseRow
+          title="Animated Number"
+          href="/preview/components/animated-number"
+          code={animatedNumberSnippet({
+            appearance: "gradient-teal",
+            size: "lg",
+            type: "scaleUp",
+          })}
+          preview={
+            <div className="flex items-center justify-center py-6">
+              <AnimatedNumberDemo
+                appearance="gradient-teal"
+                size="lg"
+                type="scaleUp"
+              />
+              <AnimatedNumberDemo
+                appearance="gradient-blue"
+                size="lg"
+                type="scaleDown"
+              />
+              <AnimatedNumberDemo
+                appearance="gradient-purple"
+                size="lg"
+                type="fade"
+              />
+            </div>
+          }
+        />
+        <ShowcaseRow
+          title="Marquee"
+          href="/preview/components/marquee"
+          code={marqueeSnippet({
+            appearance: "gradient-blue",
+            pauseOnHover: true,
+            size: "md",
+            speed: 28,
+          })}
+          preview={
+            <MarqueeDemo
+              appearance="gradient-blue"
+              pauseOnHover
+              size="md"
+              speed={28}
+            />
+          }
+        />
+        <ShowcaseRow
+          title="Rating"
+          href="/preview/components/rating"
+          code={ratingSnippet({
+            allowClear: true,
+            allowHalf: true,
+            appearance: "gradient-yellow",
+            size: "md",
+          })}
+          preview={
+            <RatingDemo
+              allowClear
+              allowHalf
+              appearance="gradient-yellow"
+              size="md"
+            />
+          }
+        />
+        <ShowcaseRow
+          title="Tree view"
+          href="/preview/components/tree-view"
+          code={treeViewSnippet({
+            animated: true,
+            appearance: "card",
+            showGuides: true,
+            size: "sm",
+            transition: "smooth",
+          })}
+         
+          preview={
+            <div className="flex gap-4 min-w-full">
+              <TreeViewDemo
+                animated
+                appearance="card"
+                showGuides
+                size="sm"
+                transition="smooth"
+              />
+              <TreeViewDemo
+                animated
+                appearance="sky"
+                showGuides
+                size="sm"
+                transition="smooth"
+              />
+            </div>
+          }
         />
       </div>
     </SectionShell>

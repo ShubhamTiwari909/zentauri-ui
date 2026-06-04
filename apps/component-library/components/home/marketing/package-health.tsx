@@ -52,7 +52,7 @@ export function HomePackageHealth() {
       lead="The component package is tracked with live npm badges and a current test snapshot across UI primitives, hooks, and CLI behavior."
     >
       <div className="space-y-6">
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3 rounded-lg border border-white/10 bg-slate-950/45 p-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="https://img.shields.io/npm/v/@zentauri-ui/zentauri-components"
@@ -75,14 +75,14 @@ export function HomePackageHealth() {
           />
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {TEST_TOTALS.map(({ label, value, detail, icon: Icon }) => (
             <article
               key={label}
-              className="rounded-2xl border border-white/10 bg-slate-950/60 p-5 shadow-lg shadow-slate-950/25"
+              className="rounded-lg border border-white/10 bg-slate-950/70 p-5 shadow-lg shadow-slate-950/25"
             >
               <div className="flex items-center gap-3">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-200 ring-1 ring-white/10">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-200 ring-1 ring-white/10">
                   <Icon className="h-5 w-5" aria-hidden />
                 </span>
                 <div>
@@ -99,33 +99,35 @@ export function HomePackageHealth() {
           ))}
         </div>
 
-        <Table appearance="sky">
-          <TableHeader>
-            <TableRow className="text-white">
-              <TableHead className="p-5">Area</TableHead>
-              <TableHead className="p-5 text-right">Files</TableHead>
-              <TableHead className="p-5 text-right">Tests</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {TEST_AREAS.map((row) => (
-              <TableRow
-                key={row.area}
-                className="border-b border-white/5 last:border-0"
-              >
-                <TableCell className="p-5 font-medium text-white">
-                  {row.area}
-                </TableCell>
-                <TableCell className="p-5 text-right text-slate-200">
-                  {row.files}
-                </TableCell>
-                <TableCell className="p-5 text-right text-slate-200">
-                  {row.tests}
-                </TableCell>
+        <div className="overflow-x-auto rounded-lg border border-white/10 bg-slate-950/50 shadow-xl shadow-slate-950/20">
+          <Table appearance="sky" className="border-0">
+            <TableHeader>
+              <TableRow className="text-white">
+                <TableHead className="p-5">Area</TableHead>
+                <TableHead className="p-5 text-right">Files</TableHead>
+                <TableHead className="p-5 text-right">Tests</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {TEST_AREAS.map((row) => (
+                <TableRow
+                  key={row.area}
+                  className="border-b border-white/5 last:border-0"
+                >
+                  <TableCell className="p-5 font-medium text-white">
+                    {row.area}
+                  </TableCell>
+                  <TableCell className="p-5 text-right text-slate-200">
+                    {row.files}
+                  </TableCell>
+                  <TableCell className="p-5 text-right text-slate-200">
+                    {row.tests}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </SectionShell>
   );
