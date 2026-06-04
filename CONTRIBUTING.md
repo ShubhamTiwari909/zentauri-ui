@@ -61,5 +61,11 @@ The release flow is:
 3. Merge the version PR after CI passes.
 4. The same workflow publishes to npm with provenance using `NPM_TOKEN`.
 
+The release workflow uses `CHANGESETS_TOKEN` when that secret is configured,
+falling back to `GITHUB_TOKEN`. If GitHub Actions is not allowed to create pull
+requests with the default token, add a fine-grained PAT as `CHANGESETS_TOKEN`
+with repository contents and pull request write access, or enable the repository
+Actions setting that allows GitHub Actions to create pull requests.
+
 For local verification only, maintainers can run `pnpm version-packages` on a
 throwaway branch to preview version and changelog output.

@@ -16,3 +16,8 @@ GitHub release history is available at <https://github.com/ShubhamTiwari909/zent
 Do not run `pnpm release` locally for production publishing. The component
 package has npm provenance enabled, so publishing must happen from the supported
 GitHub Actions workflow with `id-token: write` and `NPM_TOKEN` configured.
+
+If the release workflow cannot create the Changesets version PR with the default
+`GITHUB_TOKEN`, configure a `CHANGESETS_TOKEN` repository secret with contents
+and pull request write access, or enable pull request creation for GitHub Actions
+in the repository settings.
