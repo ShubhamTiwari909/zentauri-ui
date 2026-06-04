@@ -10,10 +10,16 @@ import type { RatingDemoProps } from "./types";
 
 const icons: RatingProps["icon"][] = ["star", "heart", "flame", "thumb"];
 
+const colors: { [key: number] : RatingProps["appearance"]} = {
+  0: "sky",
+  1: "emerald",
+  2: "yellow",
+  3: "indigo"
+}
+
 export function RatingDemo({
   allowClear,
   allowHalf,
-  appearance,
   max,
   readOnly,
   size,
@@ -26,7 +32,7 @@ export function RatingDemo({
             key={index}
             allowClear={allowClear}
             allowHalf={allowHalf}
-            appearance={appearance}
+            appearance={colors[index]}
             defaultValue={allowHalf ? 4.5 : icon === "flame" ? 3 : 4}
             hint={
               allowClear

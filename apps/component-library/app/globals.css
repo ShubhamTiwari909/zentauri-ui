@@ -21,5 +21,7 @@ body {
     system-ui,
     sans-serif;
 }
-
+@theme {
+  --max-w-8xl: 90rem
+}
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

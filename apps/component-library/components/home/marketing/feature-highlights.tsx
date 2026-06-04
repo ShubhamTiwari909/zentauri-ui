@@ -49,13 +49,13 @@ export function HomeFeatureHighlights() {
       title="Built for product engineers"
       lead="Opinionated visuals with escape hatches—fast to scan, fast to ship."
     >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {FEATURES.map(({ icon: Icon, title, body }) => (
           <article
             key={title}
-            className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-slate-950/60 p-5 shadow-lg shadow-slate-950/30 transition hover:-translate-y-0.5 hover:border-cyan-400/20"
+            className="group flex min-h-44 flex-col gap-3 rounded-lg border border-white/10 bg-slate-950/70 p-5 shadow-lg shadow-slate-950/25 transition hover:-translate-y-0.5 hover:border-cyan-300/30 hover:bg-slate-900/80"
           >
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-200 ring-1 ring-white/10">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-200 ring-1 ring-white/10 transition group-hover:bg-cyan-400/15 group-hover:text-white">
               <Icon className="h-5 w-5" aria-hidden />
             </span>
             <h3 className="text-base font-semibold text-white">{title}</h3>

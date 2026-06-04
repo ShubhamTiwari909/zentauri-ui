@@ -7,10 +7,9 @@ import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
 import { Progress } from "@zentauri-ui/zentauri-components/ui/progress";
-import { FiExternalLink } from "react-icons/fi";
+import { FiExternalLink, FiMoon, FiSun } from "react-icons/fi";
 
 import { SectionShell } from "./section-shell";
-import { FiSun, FiMoon } from "react-icons/fi";
 
 function AuthPatternDemo() {
   const [email, setEmail] = useState("");
@@ -84,7 +83,7 @@ function AuthPatternDemo() {
 }
 
 const patternCardClass =
-  "flex flex-col gap-4 rounded-2xl border border-white/10 bg-slate-950/50 p-5 sm:p-6";
+  "flex flex-col gap-4 rounded-lg border border-white/10 bg-slate-950/60 p-5 shadow-lg shadow-slate-950/20 sm:p-6";
 
 export function HomePatternDemos() {
   const [surface, setSurface] = useState<"dark" | "light">("dark");
@@ -123,7 +122,7 @@ export function HomePatternDemos() {
               Badge + progress readout for health or rollout metrics.
             </p>
           </div>
-          <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+          <div className="rounded-lg border border-white/10 bg-white/4 p-4">
             <div className="flex items-center justify-between gap-2">
               <span className="text-sm font-medium text-slate-200">
                 API success rate
@@ -186,7 +185,7 @@ export function HomePatternDemos() {
             </div>
           </div>
           <div
-            className={`rounded-2xl border p-5 transition-colors ${
+            className={`rounded-lg border p-5 transition-colors ${
               surface === "light"
                 ? "border-slate-200 bg-slate-100 text-slate-900 shadow-inner"
                 : "border-white/10 bg-slate-950 text-slate-100 shadow-lg shadow-slate-950/40"

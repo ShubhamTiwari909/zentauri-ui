@@ -40,12 +40,12 @@ export function PreviewCodeTabs({ preview, code }: PreviewCodeTabsProps) {
         </TabsList>
       </div>
       <TabsContentAnimated value="preview" animation="fade" className="m-0">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5">
+        <div className="rounded-lg border border-white/10 bg-slate-100 dark:bg-white/4 p-4 sm:p-5">
           {preview}
         </div>
       </TabsContentAnimated>
       <TabsContentAnimated value="code" animation="fade" className="m-0">
-        <div className="relative rounded-2xl border border-white/10 bg-slate-950/80">
+        <div className="relative overflow-hidden rounded-lg border border-white/10 bg-slate-950/85">
           <CodeHighlight codeString={code} language="typescript" />
         </div>
       </TabsContentAnimated>

@@ -18,7 +18,7 @@ export function HomeLightLinesShell({ children }: HomeLightLinesShellProps) {
       linesOpacity={0.12}
       lightsOpacity={0.65}
       speedMultiplier={1.35}
-      className="flex min-h-[min(100dvh,56rem)] items-center justify-center"
+      className="flex min-h-[min(calc(100svh-8rem),50rem)] items-center justify-center"
     >
       {children}
     </LightLines>
