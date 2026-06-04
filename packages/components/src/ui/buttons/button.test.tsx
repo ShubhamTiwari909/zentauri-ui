@@ -449,6 +449,19 @@ describe("Button (component library)", () => {
         "Link mode must keep the same data-slot contract",
       ).toBe("A");
     });
+
+    it("should style a child anchor without replacing its navigation props", () => {
+      render(
+        <Button asChild appearance="gradient-teal" size="lg">
+          <a href="/preview/installation">Get started</a>
+        </Button>,
+      );
+      const link = screen.getByRole("link", { name: "Get started" });
+
+      expect(link).toBe(getButtonSlot());
+      expect(link).toHaveAttribute("href", "/preview/installation");
+      expect(link.className).toMatch(/gradient-teal/);
+    });
   });
 
   describe("props: animation presets (smoke)", () => {

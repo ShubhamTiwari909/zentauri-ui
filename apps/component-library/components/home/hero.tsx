@@ -1,9 +1,7 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
-import { cn } from "@/lib/utils";
 import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
-import { buttonVariants } from "@zentauri-ui/zentauri-components/ui/buttons";
 import { Progress } from "@zentauri-ui/zentauri-components/ui/progress";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,8 +25,7 @@ const HERO_FEATURES = [
   { icon: FiPackage, label: "CLI install" },
 ] as const;
 
-const heroCtaClassName =
-  "justify-center px-7 py-3 text-base font-medium";
+const heroCtaClassName = "justify-center px-7 py-3 text-base font-medium";
 
 function HeroProductPreview() {
   return (
@@ -157,7 +154,7 @@ export function HomeHero({ seo }: HomeHeroProps) {
   return (
     <section
       aria-labelledby={HOME_HERO_TITLE_ID}
-      className="relative isolate overflow-hidden py-10 sm:py-14 lg:min-h-[calc(100svh_-_8rem)]"
+      className="relative isolate overflow-hidden py-10 sm:py-14 lg:min-h-[calc(100svh-8rem)]"
     >
       <Image
         src="/mountain-space-bg.jpg"
@@ -182,33 +179,30 @@ export function HomeHero({ seo }: HomeHeroProps) {
             ))}
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
-            <Link
-              href="/preview/installation"
-              className={cn(
-                buttonVariants({ appearance: "gradient-teal", size: "lg" }),
-                heroCtaClassName,
-              )}
+            <Button
+              asChild
+              appearance="gradient-teal"
+              size="lg"
+              className={heroCtaClassName}
             >
-              Get started
-            </Link>
-            <Link
-              href="/preview/components"
-              className={cn(
-                buttonVariants({ appearance: "gradient-blue", size: "lg" }),
-                heroCtaClassName,
-              )}
+              <Link href="/preview/installation">Get started</Link>
+            </Button>
+            <Button
+              asChild
+              appearance="gradient-blue"
+              size="lg"
+              className={heroCtaClassName}
             >
-              Browse components
-            </Link>
-            <Link
-              href="/preview/hooks"
-              className={cn(
-                buttonVariants({ appearance: "gradient-purple", size: "lg" }),
-                heroCtaClassName,
-              )}
+              <Link href="/preview/components">Browse components</Link>
+            </Button>
+            <Button
+              asChild
+              appearance="gradient-purple"
+              size="lg"
+              className={heroCtaClassName}
             >
-              Browse hooks
-            </Link>
+              <Link href="/preview/hooks">Browse hooks</Link>
+            </Button>
           </div>
         </div>
 

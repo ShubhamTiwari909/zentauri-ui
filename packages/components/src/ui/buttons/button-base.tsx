@@ -1,11 +1,33 @@
 "use client";
 
+import { cloneElement, isValidElement } from "react";
+
 import { cn } from "../../lib/utils";
 
 import type { ButtonProps } from "./types";
 import { buttonVariants } from "./variants";
 
 export const ButtonBase = (props: ButtonProps) => {
+  if ("asChild" in props && props.asChild) {
+    const { className, appearance, size, children, asChild: _asChild, ...rest } =
+      props;
+
+    if (!isValidElement<{ className?: string }>(children)) {
+      return null;
+    }
+
+    return cloneElement(children, {
+      ...rest,
+      ...children.props,
+      "data-slot": "button",
+      className: cn(
+        buttonVariants({ appearance, size }),
+        children.props.className,
+        className,
+      ),
+    });
+  }
+
   if (props.as === "link") {
     const {
       className,
