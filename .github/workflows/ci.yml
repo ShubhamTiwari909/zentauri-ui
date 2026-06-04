@@ -46,6 +46,15 @@ jobs:
       - name: Docs app tests
         run: pnpm --filter component-library test
 
+      - name: Package health docs are in sync
+        run: |
+          pnpm --filter @zentauri-ui/zentauri-components update:test-health
+          git diff --exit-code \
+            packages/components/README.md \
+            apps/component-library/README.md \
+            apps/component-library/components/home/marketing/package-health-data.ts \
+            || (echo "::error::Package health data is stale. Run 'pnpm update:test-health' and commit." && exit 1)
+
       - name: Build
         run: pnpm exec turbo run build
 

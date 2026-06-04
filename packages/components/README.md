@@ -25,6 +25,8 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 ## Package status and test coverage
 
+Generated from the component package Vitest JSON report via `pnpm --filter @zentauri-ui/zentauri-components update:test-health`.
+
 | Metric     | Result           |
 | ---------- | ---------------- |
 | Test files | 77 passed (77)   |

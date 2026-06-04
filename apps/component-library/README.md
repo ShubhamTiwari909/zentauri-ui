@@ -30,21 +30,19 @@ Supporting pieces include:
 
 ## Package status and test coverage
 
-The home page includes a package health section with live npm badge images and the current Vitest snapshot for `@zentauri-ui/zentauri-components`.
-
-[![@zentauri-ui/zentauri-components npm version](https://img.shields.io/npm/v/@zentauri-ui/zentauri-components)](https://www.npmjs.com/package/@zentauri-ui/zentauri-components)
-[![@zentauri-ui/zentauri-components monthly npm downloads](https://img.shields.io/npm/dm/@zentauri-ui/zentauri-components)](https://www.npmjs.com/package/@zentauri-ui/zentauri-components)
+Generated from the component package Vitest JSON report via `pnpm --filter @zentauri-ui/zentauri-components update:test-health`.
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 75 passed (75)   |
-| Tests      | 507 passed (507) |
+| Test files | 77 passed (77)   |
+| Tests      | 597 passed (597) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 45         | 397   |
+| Components and UI utilities | 46         | 436   |
+| Standalone animations       | 1          | 45    |
 | React hooks                 | 28         | 101   |
-| CLI and import rewriting    | 2          | 9     |
+| CLI and import rewriting    | 2          | 15    |
 
 ## Tech stack
 

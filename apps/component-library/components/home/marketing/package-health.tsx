@@ -6,28 +6,29 @@ import {
   TableHeader,
   TableRow,
 } from "@zentauri-ui/zentauri-components/ui/table";
-import { FiCheckCircle, FiClock, FiFileText, FiPackage } from "react-icons/fi";
+import { FiCheckCircle, FiFileText, FiGrid, FiPackage } from "react-icons/fi";
 
+import { PACKAGE_TEST_HEALTH } from "./package-health-data";
 import { SectionShell } from "./section-shell";
 
 const TEST_TOTALS = [
   {
     label: "Test files",
-    value: "77",
-    detail: "77 passed",
+    value: String(PACKAGE_TEST_HEALTH.files.total),
+    detail: `${PACKAGE_TEST_HEALTH.files.passed} passed`,
     icon: FiFileText,
   },
   {
     label: "Assertions",
-    value: "591",
-    detail: "591 passed",
+    value: String(PACKAGE_TEST_HEALTH.tests.total),
+    detail: `${PACKAGE_TEST_HEALTH.tests.passed} passed`,
     icon: FiCheckCircle,
   },
   {
-    label: "Runtime",
-    value: "16.83s",
-    detail: "Vitest duration",
-    icon: FiClock,
+    label: "Areas",
+    value: String(PACKAGE_TEST_HEALTH.areas.length),
+    detail: "Tracked coverage areas",
+    icon: FiGrid,
   },
   {
     label: "Package",
@@ -37,12 +38,7 @@ const TEST_TOTALS = [
   },
 ] as const;
 
-const TEST_AREAS = [
-  { area: "Components and UI utilities", files: "46", tests: "433" },
-  { area: "Standalone animations", files: "1", tests: "42" },
-  { area: "React hooks", files: "28", tests: "101" },
-  { area: "CLI and import rewriting", files: "2", tests: "15" },
-] as const;
+const TEST_AREAS = PACKAGE_TEST_HEALTH.areas;
 
 export function HomePackageHealth() {
   return (
