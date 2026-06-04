@@ -27,8 +27,16 @@ export type MotionAnimationTargetOverrides = {
   blur?: number | string;
 };
 
-export type MotionAnimationProps = HTMLMotionProps<"div"> & {
+export type MotionAnimationWhileInView =
+  | true
+  | HTMLMotionProps<"div">["whileInView"];
+
+export type MotionAnimationProps = Omit<
+  HTMLMotionProps<"div">,
+  "whileInView"
+> & {
   from?: MotionAnimationTargetOverrides;
   to?: MotionAnimationTargetOverrides;
   exitTo?: MotionAnimationTargetOverrides;
+  whileInView?: MotionAnimationWhileInView;
 };

@@ -362,7 +362,7 @@ export function HomeComponentShowcase() {
             type: "scaleUp",
           })}
           preview={
-            <div className="flex items-center justify-center py-6">
+            <div className="flex flex-wrap gap-4 items-center justify-center py-6">
               <AnimatedNumberDemo
                 appearance="gradient-teal"
                 size="lg"
@@ -429,7 +429,7 @@ export function HomeComponentShowcase() {
           })}
          
           preview={
-            <div className="flex gap-4 min-w-full">
+            <div className="flex flex-wrap gap-4 min-w-full">
               <TreeViewDemo
                 animated
                 appearance="card"

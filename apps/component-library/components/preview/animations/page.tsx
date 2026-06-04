@@ -13,6 +13,7 @@ import { Heading, Text } from "@zentauri-ui/zentauri-components/ui/typography";
 import { AnimationBySlug, type AnimationPreviewMotionProps } from "./by-slug";
 import {
   animationOverrideExamples,
+  getAnimationInViewSnippet,
   getAnimationOverrideSnippet,
   getAnimationSnippet,
 } from "./snippets";
@@ -73,13 +74,13 @@ function SkeletonShimmerPreview() {
     <div className="space-y-3">
       <AnimationBySlug
         slug="skeleton-shimmer"
-        className="h-4 w-3/4 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.22),rgba(255,255,255,0.06))] bg-[length:200%_100%]"
+        className="h-4 w-3/4 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.22),rgba(255,255,255,0.06))] bg-size-[200%_100%]"
       >
         <span className="sr-only">Loading content</span>
       </AnimationBySlug>
       <AnimationBySlug
         slug="skeleton-shimmer"
-        className="h-4 w-1/2 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.22),rgba(255,255,255,0.06))] bg-[length:200%_100%]"
+        className="h-4 w-1/2 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.22),rgba(255,255,255,0.06))] bg-size-[200%_100%]"
       >
         <span className="sr-only">Loading content</span>
       </AnimationBySlug>
@@ -501,11 +502,33 @@ export default function AnimationPreviewPage({
 
       <Section variant="plain">
         <p className="mb-4 text-sm font-medium text-slate-400">
+          Viewport trigger
+        </p>
+        <PreviewCodeShowcase code={getAnimationInViewSnippet(slug)}>
+          <AnimationBySlug
+            slug={slug}
+            transition={docsTransition}
+            viewport={{ once: true, amount: 0.35 }}
+            whileInView
+            className="rounded-2xl border border-white/10 bg-white/5 p-6"
+          >
+            <Heading level={4} tone="primary">
+              {label}
+            </Heading>
+            <Text className="mt-2 text-slate-300" tone="default">
+              Starts when the preview enters the viewport.
+            </Text>
+          </AnimationBySlug>
+        </PreviewCodeShowcase>
+      </Section>
+
+      <Section variant="plain">
+        <p className="mb-4 text-sm font-medium text-slate-400">
           Override values
         </p>
         <PreviewCodeShowcase code={getAnimationOverrideSnippet(slug)}>
           {slug === "spin" ? (
-            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.06] p-6 shadow-lg shadow-cyan-950/20">
+            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/6 p-6 shadow-lg shadow-cyan-950/20">
               <AnimationBySlug
                 slug="spin"
                 {...overrideExample}
@@ -522,7 +545,7 @@ export default function AnimationPreviewPage({
               </Text>
             </div>
           ) : slug === "ping" ? (
-            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.06] p-6 shadow-lg shadow-cyan-950/20">
+            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/6 p-6 shadow-lg shadow-cyan-950/20">
               <span className="relative flex h-8 w-8 items-center justify-center">
                 <AnimationBySlug
                   slug="ping"
@@ -542,7 +565,7 @@ export default function AnimationPreviewPage({
               </Text>
             </div>
           ) : slug === "reorder" ? (
-            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.06] p-6 shadow-lg shadow-cyan-950/20">
+            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/6 p-6 shadow-lg shadow-cyan-950/20">
               <AnimationBySlug
                 slug="reorder"
                 {...overrideExample}
@@ -558,11 +581,11 @@ export default function AnimationPreviewPage({
               </Text>
             </div>
           ) : slug === "skeleton-shimmer" ? (
-            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.06] p-6 shadow-lg shadow-cyan-950/20">
+            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/6 p-6 shadow-lg shadow-cyan-950/20">
               <AnimationBySlug
                 slug="skeleton-shimmer"
                 {...overrideExample}
-                className="h-4 w-3/4 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.22),rgba(255,255,255,0.06))] bg-[length:200%_100%]"
+                className="h-4 w-3/4 rounded-full bg-[linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.22),rgba(255,255,255,0.06))] bg-size-[200%_100%]"
               >
                 <span className="sr-only">Custom loading content</span>
               </AnimationBySlug>
@@ -574,7 +597,7 @@ export default function AnimationPreviewPage({
               </Text>
             </div>
           ) : slug === "progress" ? (
-            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.06] p-6 shadow-lg shadow-cyan-950/20">
+            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/6 p-6 shadow-lg shadow-cyan-950/20">
               <ProgressPreview overrideExample={overrideExample} />
               <Heading className="mt-4" level={4} tone="primary">
                 Custom progress
@@ -584,7 +607,7 @@ export default function AnimationPreviewPage({
               </Text>
             </div>
           ) : slug === "parallax" ? (
-            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.06] p-6 shadow-lg shadow-cyan-950/20">
+            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/6 p-6 shadow-lg shadow-cyan-950/20">
               <ParallaxScrollPreview overrideExample={overrideExample} />
               <Heading className="mt-4" level={4} tone="primary">
                 Custom parallax
@@ -598,7 +621,7 @@ export default function AnimationPreviewPage({
               slug={slug}
               {...overrideExample}
               transition={docsTransition}
-              className="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.06] p-6 shadow-lg shadow-cyan-950/20"
+              className="rounded-2xl border border-cyan-400/20 bg-cyan-400/6 p-6 shadow-lg shadow-cyan-950/20"
             >
               <Heading level={4} tone="primary">
                 Custom {label}

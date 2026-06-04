@@ -1,5 +1,59 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+const motionMockState = vi.hoisted(() => ({
+  shouldReduceMotion: false,
+}));
+
+vi.mock("framer-motion", async () => {
+  const React = await import("react");
+
+  function serializeMotionValue(value: unknown) {
+    return value === undefined ? "undefined" : JSON.stringify(value);
+  }
+
+  return {
+    motion: {
+      div: React.forwardRef<HTMLDivElement, Record<string, unknown>>(
+        (
+          {
+            animate,
+            children,
+            exit,
+            initial,
+            layout,
+            transition,
+            viewport,
+            whileHover,
+            whileInView,
+            whileTap,
+            ...props
+          },
+          ref,
+        ) =>
+          React.createElement(
+            "div",
+            {
+              ...props,
+              ref,
+              "data-motion-animate": serializeMotionValue(animate),
+              "data-motion-exit": serializeMotionValue(exit),
+              "data-motion-initial": serializeMotionValue(initial),
+              "data-motion-layout": serializeMotionValue(layout),
+              "data-motion-transition": serializeMotionValue(transition),
+              "data-motion-viewport": serializeMotionValue(viewport),
+              "data-motion-while-hover": serializeMotionValue(whileHover),
+              "data-motion-while-in-view":
+                serializeMotionValue(whileInView),
+              "data-motion-while-tap": serializeMotionValue(whileTap),
+            },
+            children as React.ReactNode,
+          ),
+      ),
+    },
+    useReducedMotion: () => motionMockState.shouldReduceMotion,
+  };
+});
 
 import { BlurIn } from "./blur-in";
 import { BlurOut } from "./blur-out";
@@ -88,6 +142,10 @@ const animations = [
 ] as const;
 
 describe("animation primitives", () => {
+  beforeEach(() => {
+    motionMockState.shouldReduceMotion = false;
+  });
+
   for (const [displayName, Component, slot] of animations) {
     it(`${displayName} stamps the animation slot and forwards content`, () => {
       render(<Component className="custom-motion">Preview</Component>);
@@ -125,5 +183,59 @@ describe("animation primitives", () => {
     expect(root).not.toHaveAttribute("from");
     expect(root).not.toHaveAttribute("to");
     expect(root).not.toHaveAttribute("exitTo");
+  });
+
+  it("can defer the preset animate target until the element enters the viewport", () => {
+    render(
+      <FadeUp viewport={{ once: true, amount: 0.35 }} whileInView>
+        Viewport gated
+      </FadeUp>,
+    );
+
+    const root = screen.getByText("Viewport gated");
+
+    expect(root).toHaveAttribute("data-motion-animate", "undefined");
+    expect(root).toHaveAttribute(
+      "data-motion-while-in-view",
+      JSON.stringify({ opacity: 1, y: 0 }),
+    );
+    expect(root).toHaveAttribute(
+      "data-motion-viewport",
+      JSON.stringify({ once: true, amount: 0.35 }),
+    );
+  });
+
+  it("keeps the preset animate target when whileInView receives a custom target", () => {
+    render(
+      <FadeUp whileInView={{ scale: 1.05 }}>Custom viewport target</FadeUp>,
+    );
+
+    const root = screen.getByText("Custom viewport target");
+
+    expect(root).toHaveAttribute(
+      "data-motion-animate",
+      JSON.stringify({ opacity: 1, y: 0 }),
+    );
+    expect(root).toHaveAttribute(
+      "data-motion-while-in-view",
+      JSON.stringify({ opacity: 1, y: 0, scale: 1.05 }),
+    );
+  });
+
+  it("renders the effective whileInView target immediately when motion is reduced", () => {
+    motionMockState.shouldReduceMotion = true;
+
+    render(
+      <FadeUp whileInView={{ scale: 1.05 }}>Reduced viewport target</FadeUp>,
+    );
+
+    const root = screen.getByText("Reduced viewport target");
+
+    expect(root).toHaveAttribute(
+      "data-motion-initial",
+      JSON.stringify({ opacity: 1, y: 0, scale: 1.05 }),
+    );
+    expect(root).toHaveAttribute("data-motion-animate", "undefined");
+    expect(root).toHaveAttribute("data-motion-while-in-view", "undefined");
   });
 });

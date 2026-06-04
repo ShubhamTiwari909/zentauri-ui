@@ -33,6 +33,12 @@ function mergeTargetOverrides(
   };
 }
 
+function isTargetObject(
+  target: NonNullable<MotionAnimationProps["whileInView"]>,
+): target is MotionAnimationPreset["animate"] {
+  return target !== null && typeof target === "object" && !Array.isArray(target);
+}
+
 export function createMotionAnimation(
   displayName: string,
   slot: string,
@@ -48,6 +54,7 @@ export function createMotionAnimation(
       transition,
       layout,
       whileHover,
+      whileInView,
       whileTap,
       from,
       to,
@@ -55,26 +62,49 @@ export function createMotionAnimation(
       ...rest
     } = props;
     const shouldReduceMotion = useReducedMotion();
-    const resolvedAnimate = animate ?? mergeTargetOverrides(preset.animate, to);
+    const resolvedAnimateTarget = mergeTargetOverrides(preset.animate, to);
+    const resolvedAnimate = animate ?? resolvedAnimateTarget;
+    const shouldAnimateInView = whileInView !== undefined;
+    const usesPresetWhileInView = whileInView === true;
+    const resolvedWhileInView =
+      whileInView === undefined
+        ? undefined
+        : usesPresetWhileInView
+          ? resolvedAnimateTarget
+          : isTargetObject(whileInView)
+            ? { ...resolvedAnimateTarget, ...whileInView }
+            : whileInView;
+    const reducedMotionTarget = shouldAnimateInView
+      ? resolvedWhileInView
+      : resolvedAnimate;
     const resolvedInitial =
       initial ??
       (shouldReduceMotion
-        ? resolvedAnimate
+        ? reducedMotionTarget
         : mergeTargetOverrides(preset.initial, from));
     const resolvedExit = exit ?? mergeTargetOverrides(preset.exit, exitTo);
     const resolvedTransition = transition
       ? { ...preset.transition, ...transition }
       : preset.transition;
+    const shouldDisableAnimate =
+      usesPresetWhileInView || (shouldReduceMotion && shouldAnimateInView);
 
     return (
       <motion.div
         data-slot={slot}
         className={cn(className)}
         initial={resolvedInitial}
-        animate={resolvedAnimate}
+        animate={shouldDisableAnimate ? undefined : resolvedAnimate}
         exit={resolvedExit}
         layout={layout ?? preset.layout}
         whileHover={whileHover ?? preset.whileHover}
+        whileInView={
+          shouldReduceMotion
+            ? undefined
+            : shouldAnimateInView
+              ? resolvedWhileInView
+              : undefined
+        }
         whileTap={whileTap ?? preset.whileTap}
         transition={resolvedTransition}
         {...rest}
