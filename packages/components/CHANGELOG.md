@@ -1,11 +1,5 @@
 # @zentauri-ui/zentauri-components Changelog
 
-## 1.8.42
-
-### Patch Changes
-
-- Add npm trust metadata, package license/changelog files, and Changesets release infrastructure.
-
 All notable changes to this package will be documented in this file.
 
 This project uses [Changesets](https://github.com/changesets/changesets) for versioning and release notes. Add a changeset with `pnpm changeset` for every user-facing package change.

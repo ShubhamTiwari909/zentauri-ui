@@ -11,7 +11,7 @@ Please do not open a public issue for a suspected vulnerability.
 Report security concerns through one of these private channels:
 
 - Open a private security advisory on GitHub for `ShubhamTiwari909/zentauri-ui`.
-- Email `shubhmtiwri00@gmail.com` with a short description, affected package/version, reproduction steps, and impact.
+- Email `shubhamtiwari00@gmail.com` with a short description, affected package/version, reproduction steps, and impact.
 
 We will acknowledge valid reports as soon as possible and coordinate a fix, release, and disclosure timeline based on severity.
 

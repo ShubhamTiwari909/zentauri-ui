@@ -9,5 +9,10 @@ GitHub release history is available at <https://github.com/ShubhamTiwari909/zent
 
 1. Add a changeset for user-facing package changes with `pnpm changeset`.
 2. Merge changes to `main` after CI passes.
-3. Run `pnpm version-packages` to apply pending changesets to package versions and changelogs.
-4. Run `pnpm release` from `main` to build and publish packages.
+3. The GitHub Actions release workflow opens a Changesets version PR.
+4. Merge the version PR after CI passes.
+5. The release workflow publishes to npm with provenance.
+
+Do not run `pnpm release` locally for production publishing. The component
+package has npm provenance enabled, so publishing must happen from the supported
+GitHub Actions workflow with `id-token: write` and `NPM_TOKEN` configured.

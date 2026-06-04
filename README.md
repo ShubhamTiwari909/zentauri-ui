@@ -173,7 +173,7 @@ You can install [turbo](https://turborepo.dev/docs/getting-started/installation)
 | `pnpm format`           | Prettier write on `**/*.{ts,tsx,md}` from the root (not routed through Turbo) |
 | `pnpm changeset`        | Create a Changesets release note and semver bump                              |
 | `pnpm version-packages` | Apply pending changesets to package versions and changelogs                   |
-| `pnpm release`          | Build and publish packages through Changesets                                 |
+| `pnpm release`          | CI-only publish command used by the GitHub Actions release workflow           |
 | `pnpm test:docs`        | Runs the docs app Vitest suite                                                |
 
 ## Release and Contribution
@@ -189,7 +189,9 @@ Published package changes should include a changeset:
 pnpm changeset
 ```
 
-Maintainers release from `main` with the Changesets version/publish flow.
+Maintainers release from `main` through `.github/workflows/release.yml`. Because
+npm provenance is enabled for the component package, production publishing must
+run in GitHub Actions rather than from a local terminal.
 
 ### Scoped commands with pnpm filters
 
