@@ -10,20 +10,21 @@ import type { RatingDemoProps } from "./types";
 
 const icons: RatingProps["icon"][] = ["star", "heart", "flame", "thumb"];
 
-const colors: { [key: number] : RatingProps["appearance"]} = {
-  0: "sky",
-  1: "emerald",
-  2: "yellow",
-  3: "indigo"
-}
-
 export function RatingDemo({
   allowClear,
   allowHalf,
+  appearance,
   max,
   readOnly,
   size,
 }: RatingDemoProps) {
+  const appearances: NonNullable<RatingProps["appearance"]>[] = [
+    appearance,
+    "emerald",
+    "yellow",
+    "indigo",
+  ];
+
   return (
     <div className="flex flex-wrap gap-4">
       {icons.map((icon, index) => {
@@ -32,7 +33,7 @@ export function RatingDemo({
             key={index}
             allowClear={allowClear}
             allowHalf={allowHalf}
-            appearance={colors[index]}
+            appearance={appearances[index] ?? appearance}
             defaultValue={allowHalf ? 4.5 : icon === "flame" ? 3 : 4}
             hint={
               allowClear

@@ -1,9 +1,12 @@
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
+import { cn } from "@/lib/utils";
 import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+import { buttonVariants } from "@zentauri-ui/zentauri-components/ui/buttons";
 import { Progress } from "@zentauri-ui/zentauri-components/ui/progress";
 import Image from "next/image";
+import Link from "next/link";
 import {
   FiBox,
   FiCheckCircle,
@@ -11,7 +14,6 @@ import {
   FiLayers,
   FiPackage,
 } from "react-icons/fi";
-
 
 const HOME_HERO_TITLE_ID = "home-hero-title";
 
@@ -24,6 +26,9 @@ const HERO_FEATURES = [
   { icon: FiCode, label: "Typed snippets" },
   { icon: FiPackage, label: "CLI install" },
 ] as const;
+
+const heroCtaClassName =
+  "justify-center px-7 py-3 text-base font-medium";
 
 function HeroProductPreview() {
   return (
@@ -152,10 +157,17 @@ export function HomeHero({ seo }: HomeHeroProps) {
   return (
     <section
       aria-labelledby={HOME_HERO_TITLE_ID}
-      className="relative isolate overflow-hidden py-10 sm:py-14 lg:min-h-[calc(100svh-8rem)]"
+      className="relative isolate overflow-hidden py-10 sm:py-14 lg:min-h-[calc(100svh_-_8rem)]"
     >
-      <Image src={"/mountain-space-bg.jpg"} alt="Mountain space background" fill className="-z-20 object-cover" />
-      <div className="absolute inset-0 bg-slate-900/70 -z-10" />
+      <Image
+        src="/mountain-space-bg.jpg"
+        alt="Mountain space background"
+        fill
+        preload
+        sizes="100vw"
+        className="-z-20 object-cover"
+      />
+      <div className="absolute inset-0 -z-10 bg-slate-900/70" />
       <div className="mx-auto grid w-full max-w-(--max-w-8xl) items-center gap-10 px-5 py-10 sm:px-8 sm:py-14 lg:grid-cols-[0.9fr_1.1fr] lg:px-12">
         <div className="max-w-3xl text-left">
           <PreviewHeroSeoBlock seo={seo} headingId={HOME_HERO_TITLE_ID} />
@@ -170,33 +182,33 @@ export function HomeHero({ seo }: HomeHeroProps) {
             ))}
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
-            <Button
-              as="link"
+            <Link
               href="/preview/installation"
-              appearance="gradient-teal"
-              size="lg"
-              className="justify-center px-7 py-3 text-base font-medium"
+              className={cn(
+                buttonVariants({ appearance: "gradient-teal", size: "lg" }),
+                heroCtaClassName,
+              )}
             >
               Get started
-            </Button>
-            <Button
-              as="link"
+            </Link>
+            <Link
               href="/preview/components"
-              appearance="gradient-blue"
-              size="lg"
-              className="justify-center px-7 py-3 text-base font-medium"
+              className={cn(
+                buttonVariants({ appearance: "gradient-blue", size: "lg" }),
+                heroCtaClassName,
+              )}
             >
               Browse components
-            </Button>
-            <Button
-              as="link"
+            </Link>
+            <Link
               href="/preview/hooks"
-              appearance="gradient-purple"
-              size="lg"
-              className="justify-center px-7 py-3 text-base font-medium"
+              className={cn(
+                buttonVariants({ appearance: "gradient-purple", size: "lg" }),
+                heroCtaClassName,
+              )}
             >
               Browse hooks
-            </Button>
+            </Link>
           </div>
         </div>
 
