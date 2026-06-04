@@ -27,96 +27,9 @@ Shared tooling: **TypeScript**, **Prettier**, **Turborepo**, **ESLint** (in the 
 
 ## Package status and test coverage
 
-| Metric     | Result           |
-| ---------- | ---------------- |
-| Test files | 75 passed (75)   |
-| Tests      | 507 passed (507) |
-
-| Area                        | Test files | Tests |
-| --------------------------- | ---------- | ----- |
-| Components and UI utilities | 45         | 397   |
-| React hooks                 | 28         | 101   |
-| CLI and import rewriting    | 2          | 9     |
-
-### Per-suite snapshot
-
-| Suite                                                                   | Tests |
-| ----------------------------------------------------------------------- | ----: |
-| `src/ui/dynamic-stepper/dynamic-stepper.test.tsx`                       |     8 |
-| `src/ui/select/select.test.tsx`                                         |     6 |
-| `src/charts/charts.test.tsx`                                            |     6 |
-| `src/ui/modal/modal.test.tsx`                                           |     9 |
-| `src/ui/drawer/drawer.test.tsx`                                         |     7 |
-| `cli/cli.integration.test.ts`                                           |     4 |
-| `src/ui/buttons/button.test.tsx`                                        |    41 |
-| `src/ui/inputs/input.test.tsx`                                          |    40 |
-| `src/ui/marquee/marquee.test.tsx`                                       |    10 |
-| `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
-| `src/ui/tree-view/tree-view.test.tsx`                                   |    10 |
-| `src/ui/card/card.test.tsx`                                             |     7 |
-| `src/ui/checkbox/checkbox.test.tsx`                                     |     6 |
-| `src/ui/popover/popover.test.tsx`                                       |     4 |
-| `src/ui/command/command.test.tsx`                                       |     7 |
-| `src/ui/context-menu/context-menu.test.tsx`                             |     8 |
-| `src/ui/copy-button/copy-button.test.tsx`                               |     8 |
-| `src/ui/kbd/kbd.test.tsx`                                               |     7 |
-| `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
-| `src/ui/dropdown/dropdown.test.tsx`                                     |     6 |
-| `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
-| `src/ui/progress/progress.test.tsx`                                     |     8 |
-| `src/ui/rating/rating.test.tsx`                                         |    11 |
-| `src/ui/radio-group/radio-group.test.tsx`                               |     5 |
-| `src/ui/scroll-area/scroll-area.test.tsx`                               |     8 |
-| `src/ui/accordion/accordion.test.tsx`                                   |     7 |
-| `src/ui/toast/toast.test.tsx`                                           |     5 |
-| `src/ui/pagination/pagination.test.tsx`                                 |    15 |
-| `src/ui/table/table.test.tsx`                                           |    11 |
-| `src/ui/tabs/tabs.test.tsx`                                             |     3 |
-| `src/ui/stepper/stepper.test.tsx`                                       |    12 |
-| `src/ui/timeline/timeline.test.tsx`                                     |    14 |
-| `src/ui/animated-number/animated-number.test.tsx`                       |     9 |
-| `src/ui/toggle/toggle.test.tsx`                                         |     5 |
-| `src/ui/slider/slider.test.tsx`                                         |     9 |
-| `src/ui/typography/typography.test.tsx`                                 |     7 |
-| `src/ui/skeleton/skeleton.test.tsx`                                     |     8 |
-| `src/ui/divider/divider.test.tsx`                                       |     6 |
-| `src/ui/empty-state/empty-state.test.tsx`                               |     6 |
-| `src/ui/alert/alert.test.tsx`                                           |    11 |
-| `src/ui/badge/badge.test.tsx`                                           |     6 |
-| `src/hooks/useClipboard/useClipboard.test.ts`                           |     6 |
-| `src/hooks/useLocalStorage/useLocalStorage.test.ts`                     |     6 |
-| `src/hooks/useDisclosure/useDisclosure.test.ts`                         |     5 |
-| `src/ui/avatar/avatar.test.tsx`                                         |     4 |
-| `src/ui/file-upload/file-upload.test.tsx`                               |     4 |
-| `src/ui/spinner/animated/spinner.test.tsx`                              |     8 |
-| `src/hooks/useDynamicStepper/useDynamicStepper.test.ts`                 |     7 |
-| `src/hooks/useClickOutside/useClickOutside.test.tsx`                    |     3 |
-| `src/hooks/useControllableState/useControllableState.test.ts`           |     4 |
-| `src/ui/breadcrumb/breadcrumb.test.tsx`                                 |     4 |
-| `src/hooks/useThrottledCallback/useThrottledCallback.test.ts`           |     4 |
-| `src/hooks/useToggle/useToggle.test.ts`                                 |     4 |
-| `src/hooks/usePagination/usePagination.test.ts`                         |    10 |
-| `src/hooks/useTableFilter/useTableFilter.test.ts`                       |     9 |
-| `src/hooks/useTableSort/useTableSort.test.ts`                           |     7 |
-| `src/hooks/useSessionStorage/useSessionStorage.test.ts`                 |     3 |
-| `src/hooks/usePrefersColorScheme/usePrefersColorScheme.test.ts`         |     1 |
-| `src/hooks/useIsMounted/useIsMounted.test.ts`                           |     3 |
-| `src/hooks/useDebouncedValue/useDebouncedValue.test.ts`                 |     4 |
-| `src/hooks/useHover/useHover.test.ts`                                   |     2 |
-| `src/hooks/useIntersectionObserver/useIntersectionObserver.test.ts`     |     2 |
-| `src/hooks/usePageVisibility/usePageVisibility.test.ts`                 |     1 |
-| `src/hooks/useResizeObserver/useResizeObserver.test.ts`                 |     2 |
-| `src/hooks/useNetworkStatus/useNetworkStatus.test.ts`                   |     2 |
-| `src/hooks/useMediaQuery/useMediaQuery.test.ts`                         |     2 |
-| `src/hooks/useDocumentTitle/useDocumentTitle.test.ts`                   |     3 |
-| `src/hooks/usePrefersReducedMotion/usePrefersReducedMotion.test.ts`     |     1 |
-| `src/hooks/useBodyScrollLock/useBodyScrollLock.test.ts`                 |     4 |
-| `src/hooks/useWindowSize/useWindowSize.test.ts`                         |     1 |
-| `src/hooks/useInView/useInView.test.ts`                                 |     1 |
-| `src/hooks/useIsomorphicLayoutEffect/useIsomorphicLayoutEffect.test.ts` |     1 |
-| `cli/rewrite-imports.test.ts`                                           |     5 |
-| `src/ui/search/filter-search-suggestions.test.ts`                       |     6 |
-| `src/ui/search/search-suggestion-utils.test.ts`                         |     1 |
+The component package is covered by Vitest and Testing Library. For the current
+package-level coverage snapshot, see
+[`packages/components/README.md`](packages/components/README.md#package-status-and-test-coverage).
 
 ---
 
@@ -250,15 +163,35 @@ You can install [turbo](https://turborepo.dev/docs/getting-started/installation)
 
 ## Root scripts (cheat sheet)
 
-| Command            | What it does                                                                  |
-| ------------------ | ----------------------------------------------------------------------------- |
-| `pnpm install`     | Install and link all workspaces                                               |
-| `pnpm dev`         | `turbo run dev` — persistent dev tasks (Next + tsup watch)                    |
-| `pnpm build`       | `turbo run build` — builds packages and apps; caches via Turbo                |
-| `pnpm lint`        | `turbo run lint` — ESLint where defined                                       |
-| `pnpm check-types` | `turbo run check-types` — `tsc --noEmit` where defined                        |
-| `pnpm format`      | Prettier write on `**/*.{ts,tsx,md}` from the root (not routed through Turbo) |
-| `pnpm test:docs`   | Runs the docs app Vitest suite                                                |
+| Command                 | What it does                                                                  |
+| ----------------------- | ----------------------------------------------------------------------------- |
+| `pnpm install`          | Install and link all workspaces                                               |
+| `pnpm dev`              | `turbo run dev` — persistent dev tasks (Next + tsup watch)                    |
+| `pnpm build`            | `turbo run build` — builds packages and apps; caches via Turbo                |
+| `pnpm lint`             | `turbo run lint` — ESLint where defined                                       |
+| `pnpm check-types`      | `turbo run check-types` — `tsc --noEmit` where defined                        |
+| `pnpm format`           | Prettier write on `**/*.{ts,tsx,md}` from the root (not routed through Turbo) |
+| `pnpm changeset`        | Create a Changesets release note and semver bump                              |
+| `pnpm version-packages` | Apply pending changesets to package versions and changelogs                   |
+| `pnpm release`          | CI-only publish command used by the GitHub Actions release workflow           |
+| `pnpm test:docs`        | Runs the docs app Vitest suite                                                |
+
+## Release and Contribution
+
+- Contribution guide: [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- Security policy: [`SECURITY.md`](SECURITY.md)
+- Changelog: [`CHANGELOG.md`](CHANGELOG.md)
+- Package changelog: [`packages/components/CHANGELOG.md`](packages/components/CHANGELOG.md)
+
+Published package changes should include a changeset:
+
+```sh
+pnpm changeset
+```
+
+Maintainers release from `main` through `.github/workflows/release.yml`. Because
+npm provenance is enabled for the component package, production publishing must
+run in GitHub Actions rather than from a local terminal.
 
 ### Scoped commands with pnpm filters
 
