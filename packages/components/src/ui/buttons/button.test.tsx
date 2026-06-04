@@ -462,6 +462,33 @@ describe("Button (component library)", () => {
       expect(link).toHaveAttribute("href", "/preview/installation");
       expect(link.className).toMatch(/gradient-teal/);
     });
+
+    it("should make disabled child anchors inert", async () => {
+      const user = userEvent.setup();
+      const onClick = vi.fn();
+      render(
+        <Button asChild disabled onClick={onClick}>
+          <a href="/preview/installation">Get started</a>
+        </Button>,
+      );
+      const link = screen.getByRole("link", { name: "Get started" });
+
+      expect(link).not.toHaveAttribute("disabled");
+      expect(link).toHaveAttribute("aria-disabled", "true");
+      expect(link).toHaveAttribute("tabindex", "-1");
+
+      await user.click(link);
+      expect(onClick).not.toHaveBeenCalled();
+    });
+
+    it("should forward disabled to native button children", () => {
+      render(
+        <Button asChild disabled>
+          <button type="button">Submit</button>
+        </Button>,
+      );
+      expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
+    });
   });
 
   describe("props: animation presets (smoke)", () => {
