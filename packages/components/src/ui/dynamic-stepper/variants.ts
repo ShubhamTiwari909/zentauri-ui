@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import {
   zuiDynamicStepperIndicatorBase,
   zuiDynamicStepperIndicatorSizes,
-  zuiDynamicStepperIndicatorToneClass,
+  zuiDynamicStepperIndicatorToneClasses,
   zuiDynamicStepperItemBase,
   zuiDynamicStepperItemOrientations,
   zuiDynamicStepperMapperBase,
@@ -20,8 +20,12 @@ export type DynamicStepperIndicatorToneAppearance =
 export type DynamicStepperIndicatorSemanticState =
   ZuiDynamicStepperIndicatorSemanticState;
 
-export const dynamicStepperIndicatorToneClass =
-  zuiDynamicStepperIndicatorToneClass;
+export function dynamicStepperIndicatorToneClass(
+  state: DynamicStepperIndicatorSemanticState,
+  tone: DynamicStepperIndicatorToneAppearance,
+) {
+  return zuiDynamicStepperIndicatorToneClasses[tone][state];
+}
 
 export const dynamicStepperRootVariants = cva(zuiDynamicStepperRootBase, {
   variants: {

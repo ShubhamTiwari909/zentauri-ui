@@ -47,8 +47,7 @@
     "zentauri-ui": "cli/index.mjs"
   },
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "exports": {
     "./design-system/tokens": {
@@ -94,9 +93,11 @@
     "build": "npm run build:js && npm run build:types",
     "generate:registry": "node scripts/generate-registry.mjs",
     "update:test-health": "node scripts/update-test-health.mjs",
+    "check:tokens": "node scripts/check-design-tokens.mjs",
     "check:exports": "node scripts/check-exports.mjs",
-    "prepack": "npm run build && node scripts/generate-registry.mjs && node scripts/check-exports.mjs",
+    "prepack": "npm run build && node scripts/generate-registry.mjs && node scripts/check-design-tokens.mjs && node scripts/check-exports.mjs",
     "test": "vitest run",
+    "test:a11y": "vitest run src/ui/accessibility/axe-core.test.tsx",
     "test:watch": "vitest"
   },
   "peerDependencies": {
@@ -122,13 +123,14 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "cross-env": "^7.0.3",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "axe-core": "^4.12.0",
+    "cross-env": "^7.0.3",
     "jsdom": "^26.1.0",
     "tsup": "^8.5.1",
     "typescript": "^5",

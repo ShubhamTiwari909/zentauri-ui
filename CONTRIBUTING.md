@@ -50,16 +50,15 @@ Docs-site-only, CI-only, tests-only, and internal refactor PRs usually do not ne
 
 ## Release Flow
 
-Maintainers release from `main` through the GitHub Actions release workflow.
-Because the npm package is published with provenance enabled, `pnpm release`
-must run in the supported CI environment rather than from a local machine.
+Maintainers can release from `main` locally after authenticating with npm and
+verifying the workspace.
 
 The release flow is:
 
 1. Merge package changes with a changeset.
-2. Let `.github/workflows/release.yml` open the Changesets version PR.
-3. Merge the version PR after CI passes.
-4. The same workflow publishes to npm with provenance using `NPM_TOKEN`.
+2. Run `pnpm version-packages` to apply pending changesets to versions and changelogs.
+3. Review the generated version/changelog diff.
+4. Run `pnpm release` to build and publish through Changesets.
 
-For local verification only, maintainers can run `pnpm version-packages` on a
-throwaway branch to preview version and changelog output.
+The GitHub Actions release workflow remains available for automation, but local
+publishing is supported because npm provenance is not required for this package.

@@ -26,23 +26,23 @@ export const zuiMarqueeAppearances = {
   emerald:
     "border-[color:var(--zui-marquee-emerald-border,oklch(69.6%_0.17_162.48_/_0.28))] [--zui-marquee-bg:oklch(97.9%_0.021_166.113)] [--zui-marquee-fg:oklch(37.8%_0.077_168.94)] dark:border-[color:var(--zui-marquee-emerald-border-dark,oklch(76.5%_0.177_163.223_/_0.32))] dark:[--zui-marquee-bg:oklch(37.8%_0.077_168.94_/_0.28)] dark:[--zui-marquee-fg:oklch(95%_0.052_163.051)]",
   "gradient-blue":
-    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-blue-from,oklch(62.3%_0.214_259.815))] to-[var(--zui-marquee-gradient-blue-to,oklch(54.6%_0.245_262.881))] [--zui-marquee-fg:#ffffff]",
+    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-blue-from,oklch(62.3%_0.214_259.815))] dark:from-[var(--zui-marquee-gradient-blue-from-dark,oklch(42.4%_0.199_265.638))] to-[var(--zui-marquee-gradient-blue-to,oklch(54.6%_0.245_262.881))] dark:to-[var(--zui-marquee-gradient-blue-to-dark,oklch(37.9%_0.146_265.522))] [--zui-marquee-fg:#ffffff] dark:[--zui-marquee-fg:#ffffff]",
   "gradient-green":
-    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-green-from,oklch(72.3%_0.219_149.579))] to-[var(--zui-marquee-gradient-green-to,oklch(62.7%_0.194_149.214))] [--zui-marquee-fg:#ffffff]",
+    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-green-from,oklch(72.3%_0.219_149.579))] dark:from-[var(--zui-marquee-gradient-green-from-dark,oklch(44.8%_0.119_151.328))] to-[var(--zui-marquee-gradient-green-to,oklch(62.7%_0.194_149.214))] dark:to-[var(--zui-marquee-gradient-green-to-dark,oklch(39.3%_0.095_152.535))] [--zui-marquee-fg:#ffffff] dark:[--zui-marquee-fg:#ffffff]",
   "gradient-red":
-    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-red-from,oklch(63.7%_0.237_25.331))] to-[var(--zui-marquee-gradient-red-to,oklch(57.7%_0.245_27.325))] [--zui-marquee-fg:#ffffff]",
+    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-red-from,oklch(63.7%_0.237_25.331))] dark:from-[var(--zui-marquee-gradient-red-from-dark,oklch(44.4%_0.177_26.899))] to-[var(--zui-marquee-gradient-red-to,oklch(57.7%_0.245_27.325))] dark:to-[var(--zui-marquee-gradient-red-to-dark,oklch(39.6%_0.141_25.723))] [--zui-marquee-fg:#ffffff] dark:[--zui-marquee-fg:#ffffff]",
   "gradient-yellow":
-    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-yellow-from,oklch(85.2%_0.199_91.936))] to-[var(--zui-marquee-gradient-yellow-to,oklch(79.5%_0.184_86.047))] [--zui-marquee-fg:oklch(27.9%_0.077_45.635)]",
+    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-yellow-from,oklch(85.2%_0.199_91.936))] dark:from-[var(--zui-marquee-gradient-yellow-from-dark,oklch(47.6%_0.114_61.907))] to-[var(--zui-marquee-gradient-yellow-to,oklch(79.5%_0.184_86.047))] dark:to-[var(--zui-marquee-gradient-yellow-to-dark,oklch(42.1%_0.095_57.708))] [--zui-marquee-fg:oklch(27.9%_0.077_45.635)] dark:[--zui-marquee-fg:#ffffff]",
   "gradient-purple":
-    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-purple-from,oklch(71.4%_0.203_305.504))] to-[var(--zui-marquee-gradient-purple-to,oklch(62.7%_0.265_303.9))] [--zui-marquee-fg:#ffffff]",
+    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-purple-from,oklch(71.4%_0.203_305.504))] dark:from-[var(--zui-marquee-gradient-purple-from-dark,oklch(43.8%_0.218_303.724))] to-[var(--zui-marquee-gradient-purple-to,oklch(62.7%_0.265_303.9))] dark:to-[var(--zui-marquee-gradient-purple-to-dark,oklch(38.1%_0.176_304.987))] [--zui-marquee-fg:#ffffff] dark:[--zui-marquee-fg:#ffffff]",
   "gradient-teal":
-    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-teal-from,oklch(77.7%_0.152_181.912))] to-[var(--zui-marquee-gradient-teal-to,oklch(70.4%_0.14_182.503))] [--zui-marquee-fg:#ffffff]",
+    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-teal-from,oklch(77.7%_0.152_181.912))] dark:from-[var(--zui-marquee-gradient-teal-from-dark,oklch(43.7%_0.078_188.216))] to-[var(--zui-marquee-gradient-teal-to,oklch(70.4%_0.14_182.503))] dark:to-[var(--zui-marquee-gradient-teal-to-dark,oklch(38.6%_0.063_188.416))] [--zui-marquee-fg:#ffffff] dark:[--zui-marquee-fg:#ffffff]",
   "gradient-indigo":
-    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-indigo-from,oklch(67.3%_0.182_276.935))] to-[var(--zui-marquee-gradient-indigo-to,oklch(58.5%_0.233_277.117))] [--zui-marquee-fg:#ffffff]",
+    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-indigo-from,oklch(67.3%_0.182_276.935))] dark:from-[var(--zui-marquee-gradient-indigo-from-dark,oklch(39.8%_0.195_277.366))] to-[var(--zui-marquee-gradient-indigo-to,oklch(58.5%_0.233_277.117))] dark:to-[var(--zui-marquee-gradient-indigo-to-dark,oklch(35.9%_0.144_278.697))] [--zui-marquee-fg:#ffffff] dark:[--zui-marquee-fg:#ffffff]",
   "gradient-pink":
-    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-pink-from,oklch(71.8%_0.202_349.761))] to-[var(--zui-marquee-gradient-pink-to,oklch(65.6%_0.241_354.308))] [--zui-marquee-fg:#ffffff]",
+    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-pink-from,oklch(71.8%_0.202_349.761))] dark:from-[var(--zui-marquee-gradient-pink-from-dark,oklch(45.9%_0.187_3.815))] to-[var(--zui-marquee-gradient-pink-to,oklch(65.6%_0.241_354.308))] dark:to-[var(--zui-marquee-gradient-pink-to-dark,oklch(40.8%_0.153_2.432))] [--zui-marquee-fg:#ffffff] dark:[--zui-marquee-fg:#ffffff]",
   "gradient-orange":
-    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-orange-from,oklch(75%_0.183_55.934))] to-[var(--zui-marquee-gradient-orange-to,oklch(70.5%_0.213_47.604))] [--zui-marquee-fg:#ffffff]",
+    "border-transparent bg-linear-to-r from-[var(--zui-marquee-gradient-orange-from,oklch(75%_0.183_55.934))] dark:from-[var(--zui-marquee-gradient-orange-from-dark,oklch(47%_0.157_37.304))] to-[var(--zui-marquee-gradient-orange-to,oklch(70.5%_0.213_47.604))] dark:to-[var(--zui-marquee-gradient-orange-to-dark,oklch(40.8%_0.123_38.172))] [--zui-marquee-fg:#ffffff] dark:[--zui-marquee-fg:#ffffff]",
 } as const;
 
 export const zuiMarqueeOrientations = {

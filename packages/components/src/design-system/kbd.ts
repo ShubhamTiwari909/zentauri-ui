@@ -71,6 +71,9 @@ export const zuiKbdKeySizes = {
 
 export type ZuiKbdSize = keyof typeof zuiKbdKeySizes;
 
+export const zuiKbdSeparatorBase =
+  "text-[color:var(--zui-kbd-separator-fg,#94a3b8)] dark:text-[color:var(--zui-kbd-separator-fg-dark,#64748b)]";
+
 export const zuiKbdSeparatorSizes = {
   sm: "text-[0.7rem]",
   md: "text-xs",

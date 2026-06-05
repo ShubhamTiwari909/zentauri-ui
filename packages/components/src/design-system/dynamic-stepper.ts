@@ -179,13 +179,6 @@ export const zuiDynamicStepperIndicatorToneClasses: Record<
   },
 };
 
-export function zuiDynamicStepperIndicatorToneClass(
-  state: ZuiDynamicStepperIndicatorSemanticState,
-  tone: ZuiDynamicStepperIndicatorToneAppearance,
-): string {
-  return zuiDynamicStepperIndicatorToneClasses[tone][state];
-}
-
 export const zuiDynamicStepperRootBase = "flex w-full";
 
 export const zuiDynamicStepperRootOrientations = {
