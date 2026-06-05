@@ -61,6 +61,9 @@ jobs:
           git diff --exit-code packages/components/cli/registry.json \
             || (echo "::error::cli/registry.json is stale. Run 'pnpm --filter @zentauri-ui/zentauri-components generate:registry' and commit." && exit 1)
 
+      - name: Design token contract
+        run: pnpm --filter @zentauri-ui/zentauri-components check:tokens
+
       - name: Export smoke test
         run: pnpm --filter @zentauri-ui/zentauri-components check:exports
 

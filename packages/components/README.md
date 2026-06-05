@@ -29,12 +29,12 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 77 passed (77)   |
-| Tests      | 597 passed (597) |
+| Test files | 78 passed (78)   |
+| Tests      | 603 passed (603) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 46         | 436   |
+| Components and UI utilities | 47         | 442   |
 | Standalone animations       | 1          | 45    |
 | React hooks                 | 28         | 101   |
 | CLI and import rewriting    | 2          | 15    |
@@ -81,6 +81,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/charts/charts.test.tsx`                                            |     6 |
 | `src/hooks/useClipboard/useClipboard.test.ts`                           |     6 |
 | `src/hooks/useLocalStorage/useLocalStorage.test.ts`                     |     6 |
+| `src/ui/accessibility/axe-core.test.tsx`                                |     6 |
 | `src/ui/badge/badge.test.tsx`                                           |     6 |
 | `src/ui/checkbox/checkbox.test.tsx`                                     |     6 |
 | `src/ui/divider/divider.test.tsx`                                       |     6 |
@@ -817,7 +818,9 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 597 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 603 test cases in total
+- `pnpm test:a11y` — focused **axe-core** accessibility smoke coverage for package-level UI primitives and compound components
+- `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system and variant files without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).
 
 ## Release and Contribution

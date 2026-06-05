@@ -32,7 +32,9 @@ export const Select = ({
   onChange,
   multiple = true,
 }: SelectProps) => {
-  const listboxId = `${useId()}-listbox`;
+  const baseId = useId();
+  const triggerId = `${baseId}-trigger`;
+  const listboxId = `${baseId}-listbox`;
   const [internal, setInternal] = useState<string[]>(defaultValue);
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState<SelectOption[]>([]);
@@ -98,6 +100,7 @@ export const Select = ({
         registerOption,
         options,
         multiple,
+        triggerId,
         listboxId,
       }}
     >
@@ -110,15 +113,17 @@ export const Select = ({
 
 export const SelectTrigger = ({
   className,
+  id,
   variant,
   size,
   onClick,
   ...props
 }: SelectTriggerProps) => {
-  const { open, setOpen, listboxId } = useSelect();
+  const { open, setOpen, triggerId, listboxId } = useSelect();
 
   return (
     <button
+      id={id ?? triggerId}
       type="button"
       aria-expanded={open}
       aria-haspopup="listbox"
@@ -172,7 +177,7 @@ export const SelectContent = ({
   spacing = "default",
   ...props
 }: SelectContentProps) => {
-  const { open, listboxId, multiple } = useSelect();
+  const { open, triggerId, listboxId, multiple } = useSelect();
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -248,6 +253,7 @@ export const SelectContent = ({
       ref={panelRef}
       id={listboxId}
       role="listbox"
+      aria-labelledby={triggerId}
       aria-multiselectable={multiple}
       tabIndex={-1}
       className={cn(
