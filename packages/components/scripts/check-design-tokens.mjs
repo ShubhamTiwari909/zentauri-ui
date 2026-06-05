@@ -349,16 +349,18 @@ function resolveImportedFile(fileSet, file, specifier) {
  * Build a small static index for resolving design-system token references.
  *
  * The checker does not need full TypeScript type analysis. It only needs enough
- * structure to follow named imports and const declarations when an appearance
- * entry is written as `base`, `tokens.primary`, or `tokens["gradient-blue"]`.
+ * structure to follow named imports, namespace imports, and const declarations
+ * when an appearance entry is written as `base`, `tokens.primary`, or
+ * `tokens["gradient-blue"]`.
  *
  * @param {string[]} files Design-system files included in the audit.
- * @returns {{ sourceByFile: Map<string, ts.SourceFile>, declarationsByFile: Map<string, Map<string, ts.Expression>>, importsByFile: Map<string, Map<string, { file: string, importedName: string }>> }} Reference index for design-system constants.
+ * @returns {{ sourceByFile: Map<string, ts.SourceFile>, declarationsByFile: Map<string, Map<string, ts.Expression>>, importsByFile: Map<string, Map<string, { file: string, importedName: string }>>, namespaceImportsByFile: Map<string, Map<string, string>> }} Reference index for design-system constants.
  */
 function createDesignSystemIndex(files) {
   const sourceByFile = new Map();
   const declarationsByFile = new Map();
   const importsByFile = new Map();
+  const namespaceImportsByFile = new Map();
   const fileSet = new Set(files);
 
   for (const file of files) {
@@ -371,6 +373,7 @@ function createDesignSystemIndex(files) {
     );
     const declarations = new Map();
     const imports = new Map();
+    const namespaceImports = new Map();
 
     for (const statement of source.statements) {
       if (ts.isImportDeclaration(statement)) {
@@ -378,7 +381,6 @@ function createDesignSystemIndex(files) {
         const bindings = statement.importClause?.namedBindings;
         if (
           ts.isStringLiteral(specifier) &&
-          ts.isNamedImports(bindings) &&
           isDesignSystemImport(file, specifier.text)
         ) {
           const importedFile = resolveImportedFile(
@@ -386,13 +388,16 @@ function createDesignSystemIndex(files) {
             file,
             specifier.text,
           );
-          if (importedFile) {
+          if (importedFile && ts.isNamedImports(bindings)) {
             for (const element of bindings.elements) {
               imports.set(element.name.text, {
                 file: importedFile,
                 importedName: element.propertyName?.text ?? element.name.text,
               });
             }
+          }
+          if (importedFile && ts.isNamespaceImport(bindings)) {
+            namespaceImports.set(bindings.name.text, importedFile);
           }
         }
       }
@@ -412,9 +417,15 @@ function createDesignSystemIndex(files) {
     sourceByFile.set(file, source);
     declarationsByFile.set(file, declarations);
     importsByFile.set(file, imports);
+    namespaceImportsByFile.set(file, namespaceImports);
   }
 
-  return { sourceByFile, declarationsByFile, importsByFile };
+  return {
+    sourceByFile,
+    declarationsByFile,
+    importsByFile,
+    namespaceImportsByFile,
+  };
 }
 
 /**
@@ -480,6 +491,85 @@ function objectPropertyInitializer(objectExpression, name, source) {
 }
 
 /**
+ * Read the final property name from property or string element access.
+ *
+ * @param {ts.PropertyAccessExpression | ts.ElementAccessExpression} node Access expression to inspect.
+ * @returns {string | undefined} Property name when the checker can resolve it statically.
+ */
+function accessPropertyName(node) {
+  if (ts.isPropertyAccessExpression(node)) {
+    return node.name.text;
+  }
+  if (
+    ts.isStringLiteral(node.argumentExpression) ||
+    ts.isNoSubstitutionTemplateLiteral(node.argumentExpression)
+  ) {
+    return node.argumentExpression.text;
+  }
+  return undefined;
+}
+
+/**
+ * Resolve an identifier, chained property access, or namespace member access.
+ *
+ * This handles all pure reference shapes allowed by `isPureReference`, including
+ * nested forms such as `tokens.button.primary` and namespace forms such as
+ * `import * as tokens from "./button"; tokens.zuiButtonAppearances.primary`.
+ *
+ * @param {ts.Node} node Reference node to resolve.
+ * @param {ReturnType<typeof createDesignSystemIndex>} index Parsed design-system index.
+ * @param {string} file File that owns the reference.
+ * @returns {{ file: string, initializer: ts.Expression } | undefined} Resolved initializer and owning file.
+ */
+function resolveReferenceNode(node, index, file) {
+  if (ts.isIdentifier(node)) {
+    return resolveIdentifier(node.text, index, file);
+  }
+
+  if (
+    !ts.isPropertyAccessExpression(node) &&
+    !ts.isElementAccessExpression(node)
+  ) {
+    return undefined;
+  }
+
+  const property = accessPropertyName(node);
+  if (!property) {
+    return undefined;
+  }
+
+  const base = node.expression;
+  if (ts.isIdentifier(base)) {
+    const namespaceFile = index.namespaceImportsByFile
+      .get(file)
+      ?.get(base.text);
+    const namespaceInitializer = namespaceFile
+      ? index.declarationsByFile.get(namespaceFile)?.get(property)
+      : undefined;
+    if (namespaceFile && namespaceInitializer) {
+      return { file: namespaceFile, initializer: namespaceInitializer };
+    }
+  }
+
+  const resolvedBase = resolveReferenceNode(base, index, file);
+  if (!resolvedBase) {
+    return undefined;
+  }
+
+  const source = index.sourceByFile.get(resolvedBase.file);
+  const initializer = objectPropertyInitializer(
+    resolvedBase.initializer,
+    property,
+    source,
+  );
+  if (!initializer) {
+    return undefined;
+  }
+
+  return { file: resolvedBase.file, initializer };
+}
+
+/**
  * Follow a pure reference and return the literal text behind it.
  *
  * The `seen` set prevents cycles from recursing forever if two constants point
@@ -493,61 +583,24 @@ function objectPropertyInitializer(objectExpression, name, source) {
  * @returns {string} Literal text found behind the reference, or an empty string.
  */
 function flattenReferenceText(node, index, file, seen) {
-  if (ts.isIdentifier(node)) {
-    const key = `${file}:${node.text}`;
-    if (seen.has(key)) {
-      return "";
-    }
-    const resolved = resolveIdentifier(node.text, index, file);
-    if (!resolved) {
-      return "";
-    }
-    seen.add(key);
-    return flattenExpressionText(
-      resolved.initializer,
-      index,
-      resolved.file,
-      seen,
-    );
+  const source = index.sourceByFile.get(file);
+  const key = `${file}:${node.getText(source)}`;
+  if (seen.has(key)) {
+    return "";
   }
 
-  if (
-    ts.isPropertyAccessExpression(node) ||
-    (ts.isElementAccessExpression(node) &&
-      (ts.isStringLiteral(node.argumentExpression) ||
-        ts.isNoSubstitutionTemplateLiteral(node.argumentExpression)))
-  ) {
-    const base = node.expression;
-    const property = ts.isPropertyAccessExpression(node)
-      ? node.name.text
-      : node.argumentExpression.text;
-    const baseText = base.getText(index.sourceByFile.get(file));
-    const key = `${file}:${baseText}.${property}`;
-    if (seen.has(key)) {
-      return "";
-    }
-
-    const resolvedBase = ts.isIdentifier(base)
-      ? resolveIdentifier(base.text, index, file)
-      : undefined;
-    if (!resolvedBase) {
-      return "";
-    }
-    const source = index.sourceByFile.get(resolvedBase.file);
-    const initializer = objectPropertyInitializer(
-      resolvedBase.initializer,
-      property,
-      source,
-    );
-    if (!initializer) {
-      return "";
-    }
-
-    seen.add(key);
-    return flattenExpressionText(initializer, index, resolvedBase.file, seen);
+  const resolved = resolveReferenceNode(node, index, file);
+  if (!resolved) {
+    return "";
   }
 
-  return "";
+  seen.add(key);
+  return flattenExpressionText(
+    resolved.initializer,
+    index,
+    resolved.file,
+    seen,
+  );
 }
 
 /**

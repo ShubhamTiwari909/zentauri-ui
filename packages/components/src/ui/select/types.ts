@@ -40,9 +40,7 @@ export type SelectContextType = {
   registerOption: (option: SelectOption) => void;
   options: SelectOption[];
   multiple: boolean;
-  generatedTriggerId: string;
   triggerId: string;
-  setTriggerId: (id: string) => void;
   listboxId: string;
 };
 
@@ -51,6 +49,7 @@ export type SelectProps = {
   defaultValue?: string[];
   onChange?: (value: string[]) => void;
   multiple?: boolean;
+  triggerId?: string;
   children: ReactNode;
   className?: string;
 };
