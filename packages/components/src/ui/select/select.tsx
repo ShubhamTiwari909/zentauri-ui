@@ -1,5 +1,14 @@
 "use client";
-import { useState, useEffect, useCallback, useRef, useId } from "react";
+import {
+  Children,
+  isValidElement,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useId,
+} from "react";
+import type { ReactNode } from "react";
 import {
   SelectProps,
   SelectOption,
@@ -25,6 +34,22 @@ export const useSelect = () => {
   return ctx;
 };
 
+const findSelectTriggerId = (children: ReactNode): string | undefined => {
+  for (const child of Children.toArray(children)) {
+    if (!isValidElement<{ id?: unknown; children?: ReactNode }>(child)) {
+      continue;
+    }
+    if (child.type === SelectTrigger && typeof child.props.id === "string") {
+      return child.props.id;
+    }
+    const nestedTriggerId = findSelectTriggerId(child.props.children);
+    if (nestedTriggerId) {
+      return nestedTriggerId;
+    }
+  }
+  return undefined;
+};
+
 export const Select = ({
   children,
   value,
@@ -34,7 +59,8 @@ export const Select = ({
   triggerId: customTriggerId,
 }: SelectProps) => {
   const baseId = useId();
-  const triggerId = customTriggerId ?? `${baseId}-trigger`;
+  const triggerId =
+    customTriggerId ?? findSelectTriggerId(children) ?? `${baseId}-trigger`;
   const listboxId = `${baseId}-listbox`;
   const [internal, setInternal] = useState<string[]>(defaultValue);
   const [open, setOpen] = useState(false);

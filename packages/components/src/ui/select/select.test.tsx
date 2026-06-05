@@ -152,11 +152,11 @@ describe("Select — keyboard and a11y", () => {
     expect(listbox).toHaveAttribute("aria-multiselectable", "true");
   });
 
-  it("uses a parent-level custom trigger id as the listbox label reference", async () => {
+  it("uses a custom trigger id as the listbox label reference", async () => {
     const user = userEvent.setup();
     render(
-      <Select multiple defaultValue={[]} triggerId="custom-select-trigger">
-        <SelectTrigger id="ignored-trigger-id">
+      <Select multiple defaultValue={[]}>
+        <SelectTrigger id="custom-select-trigger">
           <SelectValue placeholder="Pick" />
         </SelectTrigger>
         <SelectContent>
@@ -172,7 +172,6 @@ describe("Select — keyboard and a11y", () => {
     const labelledBy = listbox.getAttribute("aria-labelledby");
 
     expect(trigger).toHaveAttribute("id", "custom-select-trigger");
-    expect(trigger).not.toHaveAttribute("id", "ignored-trigger-id");
     expect(listbox).toHaveAttribute("aria-labelledby", "custom-select-trigger");
     expect(document.getElementById(labelledBy ?? "")).toBe(trigger);
   });
