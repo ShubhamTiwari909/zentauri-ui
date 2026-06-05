@@ -152,6 +152,30 @@ describe("Select — keyboard and a11y", () => {
     expect(listbox).toHaveAttribute("aria-multiselectable", "true");
   });
 
+  it("uses a custom trigger id as the listbox label reference", async () => {
+    const user = userEvent.setup();
+    render(
+      <Select multiple defaultValue={[]}>
+        <SelectTrigger id="custom-select-trigger">
+          <SelectValue placeholder="Pick" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="a">Alpha</SelectItem>
+        </SelectContent>
+      </Select>,
+    );
+
+    const trigger = screen.getByRole("button", { name: /pick/i });
+    await user.click(trigger);
+
+    const listbox = screen.getByRole("listbox");
+    const labelledBy = listbox.getAttribute("aria-labelledby");
+
+    expect(trigger).toHaveAttribute("id", "custom-select-trigger");
+    expect(listbox).toHaveAttribute("aria-labelledby", "custom-select-trigger");
+    expect(document.getElementById(labelledBy ?? "")).toBe(trigger);
+  });
+
   it("moves focus across enabled options with arrow keys", async () => {
     const user = userEvent.setup();
     render(

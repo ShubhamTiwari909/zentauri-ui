@@ -30,11 +30,11 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | Metric     | Result           |
 | ---------- | ---------------- |
 | Test files | 78 passed (78)   |
-| Tests      | 603 passed (603) |
+| Tests      | 604 passed (604) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 47         | 442   |
+| Components and UI utilities | 47         | 443   |
 | Standalone animations       | 1          | 45    |
 | React hooks                 | 28         | 101   |
 | CLI and import rewriting    | 2          | 15    |
@@ -52,6 +52,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/stepper/stepper.test.tsx`                                       |    12 |
 | `src/ui/alert/alert.test.tsx`                                           |    11 |
 | `src/ui/rating/rating.test.tsx`                                         |    11 |
+| `src/ui/select/select.test.tsx`                                         |    11 |
 | `src/ui/table/table.test.tsx`                                           |    11 |
 | `cli/cli.integration.test.ts`                                           |    10 |
 | `src/hooks/usePagination/usePagination.test.ts`                         |    10 |
@@ -59,7 +60,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/marquee/marquee.test.tsx`                                       |    10 |
 | `src/ui/modal/modal.test.tsx`                                           |    10 |
 | `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
-| `src/ui/select/select.test.tsx`                                         |    10 |
 | `src/ui/tree-view/tree-view.test.tsx`                                   |    10 |
 | `src/hooks/useTableFilter/useTableFilter.test.ts`                       |     9 |
 | `src/ui/animated-number/animated-number.test.tsx`                       |     9 |
@@ -818,7 +818,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 603 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 604 test cases in total
 - `pnpm test:a11y` — focused **axe-core** accessibility smoke coverage for package-level UI primitives and compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system and variant files without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).

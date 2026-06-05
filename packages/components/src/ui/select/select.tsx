@@ -33,8 +33,9 @@ export const Select = ({
   multiple = true,
 }: SelectProps) => {
   const baseId = useId();
-  const triggerId = `${baseId}-trigger`;
+  const generatedTriggerId = `${baseId}-trigger`;
   const listboxId = `${baseId}-listbox`;
+  const [triggerId, setTriggerId] = useState(generatedTriggerId);
   const [internal, setInternal] = useState<string[]>(defaultValue);
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState<SelectOption[]>([]);
@@ -100,7 +101,9 @@ export const Select = ({
         registerOption,
         options,
         multiple,
+        generatedTriggerId,
         triggerId,
+        setTriggerId,
         listboxId,
       }}
     >
@@ -119,11 +122,17 @@ export const SelectTrigger = ({
   onClick,
   ...props
 }: SelectTriggerProps) => {
-  const { open, setOpen, triggerId, listboxId } = useSelect();
+  const { open, setOpen, generatedTriggerId, setTriggerId, listboxId } =
+    useSelect();
+  const resolvedTriggerId = id ?? generatedTriggerId;
+
+  useEffect(() => {
+    setTriggerId(resolvedTriggerId);
+  }, [resolvedTriggerId, setTriggerId]);
 
   return (
     <button
-      id={id ?? triggerId}
+      id={resolvedTriggerId}
       type="button"
       aria-expanded={open}
       aria-haspopup="listbox"

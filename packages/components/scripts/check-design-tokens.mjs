@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync } from "node:fs";
-import { dirname, join, relative } from "node:path";
+import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import ts from "typescript";
 
@@ -83,6 +83,42 @@ function relativePath(file) {
 }
 
 /**
+ * Check whether a resolved path remains inside an expected parent directory.
+ *
+ * This is stricter than testing the import string itself. A specifier like
+ * `"./../ui/foo"` starts with `"./"` but resolves outside `src/design-system`,
+ * so the contract must check the final normalized path.
+ *
+ * @param {string} parent Absolute directory that should contain the child.
+ * @param {string} child Absolute path to validate.
+ * @returns {boolean} True when the child path is inside the parent directory.
+ */
+function isInsideDirectory(parent, child) {
+  const childPath = relative(parent, child);
+  return (
+    childPath === "" || (!childPath.startsWith("..") && !isAbsolute(childPath))
+  );
+}
+
+/**
+ * Resolve a design-system import and confirm it stays inside the token layer.
+ *
+ * Design-system modules may compose local token constants, but importing from
+ * UI implementation files, package helpers, or external modules would weaken
+ * the "pure string constants" boundary.
+ *
+ * @param {string} file File that owns the import declaration.
+ * @param {string} specifier Raw module specifier from the import.
+ * @returns {boolean} True when the import is relative and resolves internally.
+ */
+function isDesignSystemImport(file, specifier) {
+  if (!specifier.startsWith(".")) {
+    return false;
+  }
+  return isInsideDirectory(designSystemDir, resolve(dirname(file), specifier));
+}
+
+/**
  * Read direct TypeScript files from a design-system directory.
  *
  * Design tokens live as one file per component under `src/design-system`, so
@@ -129,14 +165,17 @@ function readVariantFiles(dir) {
  *
  * The checker does not need to evaluate JavaScript. It only needs the raw
  * string fragments that might contain `--zui-*`, `dark:`, Tailwind utilities,
- * or CSS color functions. References inside template expressions are skipped
- * because imported constants are audited at their source, while the surrounding
- * literal pieces still tell us whether an appearance entry carries color data.
+ * or CSS color functions. When a design-system index is supplied, references
+ * are followed back to their const declarations so appearance entries cannot
+ * hide raw colors behind identifiers or object property access.
  *
  * @param {ts.Expression | undefined} node Initializer or nested expression.
+ * @param {ReturnType<typeof createDesignSystemIndex> | undefined} index Parsed design-system index used to resolve references.
+ * @param {string | undefined} file File that owns the expression.
+ * @param {Set<string>} [seen] Reference keys already visited while resolving.
  * @returns {string} Concatenated literal text found inside the expression.
  */
-function flattenExpressionText(node) {
+function flattenExpressionText(node, index, file, seen = new Set()) {
   if (!node) return "";
   if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) {
     return node.text;
@@ -144,7 +183,10 @@ function flattenExpressionText(node) {
   if (ts.isTemplateExpression(node)) {
     return [
       node.head.text,
-      ...node.templateSpans.map((span) => span.literal.text),
+      ...node.templateSpans.map(
+        (span) =>
+          `${flattenExpressionText(span.expression, index, file, seen)}${span.literal.text}`,
+      ),
     ].join("");
   }
   if (
@@ -152,18 +194,21 @@ function flattenExpressionText(node) {
     ts.isSatisfiesExpression(node) ||
     ts.isParenthesizedExpression(node)
   ) {
-    return flattenExpressionText(node.expression);
+    return flattenExpressionText(node.expression, index, file, seen);
+  }
+  if (index && file && isPureReference(node)) {
+    return flattenReferenceText(node, index, file, seen);
   }
   if (ts.isArrayLiteralExpression(node)) {
     return node.elements
-      .map((element) => flattenExpressionText(element))
+      .map((element) => flattenExpressionText(element, index, file, seen))
       .join(" ");
   }
   if (ts.isObjectLiteralExpression(node)) {
     return node.properties
       .map((property) => {
         if (ts.isPropertyAssignment(property)) {
-          return flattenExpressionText(property.initializer);
+          return flattenExpressionText(property.initializer, index, file, seen);
         }
         return "";
       })
@@ -242,6 +287,270 @@ function isPureTokenExpression(node) {
 }
 
 /**
+ * Remove TypeScript wrapper expressions that do not affect token data.
+ *
+ * Appearance values often use `as const`, `satisfies`, or parentheses for type
+ * precision. The checker strips those wrappers before inspecting the real data
+ * expression underneath.
+ *
+ * @param {ts.Expression | undefined} node Expression to unwrap.
+ * @returns {ts.Expression | undefined} The underlying expression.
+ */
+function unwrapExpression(node) {
+  let current = node;
+  while (
+    current &&
+    (ts.isAsExpression(current) ||
+      ts.isSatisfiesExpression(current) ||
+      ts.isParenthesizedExpression(current))
+  ) {
+    current = current.expression;
+  }
+  return current;
+}
+
+/**
+ * Return a simple exported declaration name when the declaration is named.
+ *
+ * Design-system files are expected to export named constants. Destructured
+ * declarations are ignored here because they are not part of the public token
+ * constant style and are rejected by the purity audit separately.
+ *
+ * @param {ts.VariableDeclaration} declaration Variable declaration to inspect.
+ * @returns {string | undefined} Identifier name when present.
+ */
+function variableDeclarationName(declaration) {
+  return ts.isIdentifier(declaration.name) ? declaration.name.text : undefined;
+}
+
+/**
+ * Resolve an import specifier to one of the scanned design-system files.
+ *
+ * Imports in this folder normally omit the `.ts` extension. The resolver checks
+ * the exact path, the `.ts` form, and an `index.ts` form against the known file
+ * set instead of touching the filesystem again.
+ *
+ * @param {Set<string>} fileSet Known design-system files.
+ * @param {string} file File that owns the import.
+ * @param {string} specifier Raw module specifier.
+ * @returns {string | undefined} Matched design-system file, when available.
+ */
+function resolveImportedFile(fileSet, file, specifier) {
+  const importedPath = resolve(dirname(file), specifier);
+  const candidates = [
+    importedPath,
+    `${importedPath}.ts`,
+    join(importedPath, "index.ts"),
+  ];
+  return candidates.find((candidate) => fileSet.has(candidate));
+}
+
+/**
+ * Build a small static index for resolving design-system token references.
+ *
+ * The checker does not need full TypeScript type analysis. It only needs enough
+ * structure to follow named imports and const declarations when an appearance
+ * entry is written as `base`, `tokens.primary`, or `tokens["gradient-blue"]`.
+ *
+ * @param {string[]} files Design-system files included in the audit.
+ * @returns {{ sourceByFile: Map<string, ts.SourceFile>, declarationsByFile: Map<string, Map<string, ts.Expression>>, importsByFile: Map<string, Map<string, { file: string, importedName: string }>> }} Reference index for design-system constants.
+ */
+function createDesignSystemIndex(files) {
+  const sourceByFile = new Map();
+  const declarationsByFile = new Map();
+  const importsByFile = new Map();
+  const fileSet = new Set(files);
+
+  for (const file of files) {
+    const source = ts.createSourceFile(
+      file,
+      readFileSync(file, "utf8"),
+      ts.ScriptTarget.Latest,
+      true,
+      ts.ScriptKind.TS,
+    );
+    const declarations = new Map();
+    const imports = new Map();
+
+    for (const statement of source.statements) {
+      if (ts.isImportDeclaration(statement)) {
+        const specifier = statement.moduleSpecifier;
+        const bindings = statement.importClause?.namedBindings;
+        if (
+          ts.isStringLiteral(specifier) &&
+          ts.isNamedImports(bindings) &&
+          isDesignSystemImport(file, specifier.text)
+        ) {
+          const importedFile = resolveImportedFile(
+            fileSet,
+            file,
+            specifier.text,
+          );
+          if (importedFile) {
+            for (const element of bindings.elements) {
+              imports.set(element.name.text, {
+                file: importedFile,
+                importedName: element.propertyName?.text ?? element.name.text,
+              });
+            }
+          }
+        }
+      }
+
+      if (!ts.isVariableStatement(statement)) {
+        continue;
+      }
+
+      for (const declaration of statement.declarationList.declarations) {
+        const name = variableDeclarationName(declaration);
+        if (name && declaration.initializer) {
+          declarations.set(name, declaration.initializer);
+        }
+      }
+    }
+
+    sourceByFile.set(file, source);
+    declarationsByFile.set(file, declarations);
+    importsByFile.set(file, imports);
+  }
+
+  return { sourceByFile, declarationsByFile, importsByFile };
+}
+
+/**
+ * Resolve a referenced identifier to the const initializer it points at.
+ *
+ * Local declarations win first. If the identifier is imported, the named import
+ * map points to the source file and original export name.
+ *
+ * @param {string} name Identifier name to resolve.
+ * @param {ReturnType<typeof createDesignSystemIndex>} index Parsed design-system index.
+ * @param {string} file File that owns the reference.
+ * @returns {{ file: string, initializer: ts.Expression } | undefined} Resolved initializer and owning file.
+ */
+function resolveIdentifier(name, index, file) {
+  const localInitializer = index.declarationsByFile.get(file)?.get(name);
+  if (localInitializer) {
+    return { file, initializer: localInitializer };
+  }
+
+  const imported = index.importsByFile.get(file)?.get(name);
+  const importedInitializer = imported
+    ? index.declarationsByFile.get(imported.file)?.get(imported.importedName)
+    : undefined;
+  if (imported && importedInitializer) {
+    return { file: imported.file, initializer: importedInitializer };
+  }
+
+  return undefined;
+}
+
+/**
+ * Read a property initializer from an object literal by identifier/string key.
+ *
+ * This powers reference resolution for values such as
+ * `zuiDropdownItemVariants.ghost` and
+ * `zuiDropdownItemVariants["gradient-blue"]`.
+ *
+ * @param {ts.Expression | undefined} objectExpression Expression expected to unwrap to an object literal.
+ * @param {string} name Property name to find.
+ * @param {ts.SourceFile} source Source file used to read computed property text.
+ * @returns {ts.Expression | undefined} Property initializer when found.
+ */
+function objectPropertyInitializer(objectExpression, name, source) {
+  if (!source) {
+    return undefined;
+  }
+
+  const object = unwrapExpression(objectExpression);
+  if (!object || !ts.isObjectLiteralExpression(object)) {
+    return undefined;
+  }
+
+  for (const property of object.properties) {
+    if (!ts.isPropertyAssignment(property)) {
+      continue;
+    }
+    if (propertyName(property, source) === name) {
+      return property.initializer;
+    }
+  }
+
+  return undefined;
+}
+
+/**
+ * Follow a pure reference and return the literal text behind it.
+ *
+ * The `seen` set prevents cycles from recursing forever if two constants point
+ * at each other. Cycles are not expected in design-system data, but defensive
+ * resolution keeps this script predictable.
+ *
+ * @param {ts.Node} node Identifier, property access, or element access node.
+ * @param {ReturnType<typeof createDesignSystemIndex>} index Parsed design-system index.
+ * @param {string} file File that owns the reference.
+ * @param {Set<string>} seen Reference keys already visited.
+ * @returns {string} Literal text found behind the reference, or an empty string.
+ */
+function flattenReferenceText(node, index, file, seen) {
+  if (ts.isIdentifier(node)) {
+    const key = `${file}:${node.text}`;
+    if (seen.has(key)) {
+      return "";
+    }
+    const resolved = resolveIdentifier(node.text, index, file);
+    if (!resolved) {
+      return "";
+    }
+    seen.add(key);
+    return flattenExpressionText(
+      resolved.initializer,
+      index,
+      resolved.file,
+      seen,
+    );
+  }
+
+  if (
+    ts.isPropertyAccessExpression(node) ||
+    (ts.isElementAccessExpression(node) &&
+      (ts.isStringLiteral(node.argumentExpression) ||
+        ts.isNoSubstitutionTemplateLiteral(node.argumentExpression)))
+  ) {
+    const base = node.expression;
+    const property = ts.isPropertyAccessExpression(node)
+      ? node.name.text
+      : node.argumentExpression.text;
+    const baseText = base.getText(index.sourceByFile.get(file));
+    const key = `${file}:${baseText}.${property}`;
+    if (seen.has(key)) {
+      return "";
+    }
+
+    const resolvedBase = ts.isIdentifier(base)
+      ? resolveIdentifier(base.text, index, file)
+      : undefined;
+    if (!resolvedBase) {
+      return "";
+    }
+    const source = index.sourceByFile.get(resolvedBase.file);
+    const initializer = objectPropertyInitializer(
+      resolvedBase.initializer,
+      property,
+      source,
+    );
+    if (!initializer) {
+      return "";
+    }
+
+    seen.add(key);
+    return flattenExpressionText(initializer, index, resolvedBase.file, seen);
+  }
+
+  return "";
+}
+
+/**
  * Ensure design-system files stay pure token-definition modules.
  *
  * Allowed top-level statements are deliberately narrow:
@@ -273,7 +582,7 @@ function auditPureDesignSystemFiles(files) {
         const specifier = statement.moduleSpecifier;
         if (
           !ts.isStringLiteral(specifier) ||
-          !specifier.text.startsWith("./")
+          !isDesignSystemImport(file, specifier.text)
         ) {
           errors.push(
             `${relativePath(file)} imports from outside the design-system folder`,
@@ -377,7 +686,7 @@ function extractVarCalls(text) {
 
     if (depth === 0) {
       calls.push(text.slice(start + 4, end));
-      cursor = end + 1;
+      cursor = start + 4;
     } else {
       cursor = start + 4;
     }
@@ -449,9 +758,10 @@ function propertyName(property, source) {
  * a `dark:` class branch or a `-dark` token reference.
  *
  * @param {string[]} files Design-system `.ts` files to audit.
+ * @param {ReturnType<typeof createDesignSystemIndex>} index Parsed design-system index used to resolve referenced constants.
  * @returns {string[]} Human-readable contract violations.
  */
-function auditAppearances(files) {
+function auditAppearances(files, index) {
   const errors = [];
 
   for (const file of files) {
@@ -469,15 +779,7 @@ function auditAppearances(files) {
         const name = declaration.name.getText(source);
         if (!/(Appearances|Tones|Colors)$/.test(name)) continue;
 
-        let initializer = declaration.initializer;
-        while (
-          initializer &&
-          (ts.isAsExpression(initializer) ||
-            ts.isSatisfiesExpression(initializer) ||
-            ts.isParenthesizedExpression(initializer))
-        ) {
-          initializer = initializer.expression;
-        }
+        const initializer = unwrapExpression(declaration.initializer);
 
         if (!initializer || !ts.isObjectLiteralExpression(initializer)) {
           continue;
@@ -486,7 +788,7 @@ function auditAppearances(files) {
         for (const property of initializer.properties) {
           if (!ts.isPropertyAssignment(property)) continue;
           const entryName = propertyName(property, source);
-          const text = flattenExpressionText(property.initializer);
+          const text = flattenExpressionText(property.initializer, index, file);
           const colorBearing =
             text.includes("--zui-") ||
             rawTailwindColorPattern.test(text) ||
@@ -576,11 +878,12 @@ function auditVariantFiles(files) {
  * releases that weaken the design-token contract.
  */
 const designFiles = readTsFiles(designSystemDir);
+const designIndex = createDesignSystemIndex(designFiles);
 const variantFiles = readVariantFiles(uiDir);
 const errors = [
   ...auditPureDesignSystemFiles(designFiles),
   ...auditFallbacks(designFiles),
-  ...auditAppearances(designFiles),
+  ...auditAppearances(designFiles, designIndex),
   ...auditVariantFiles(variantFiles),
 ];
 

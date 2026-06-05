@@ -40,7 +40,9 @@ export type SelectContextType = {
   registerOption: (option: SelectOption) => void;
   options: SelectOption[];
   multiple: boolean;
+  generatedTriggerId: string;
   triggerId: string;
+  setTriggerId: (id: string) => void;
   listboxId: string;
 };
 
