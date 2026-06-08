@@ -169,87 +169,253 @@
     "useWindowSize"
   ],
   "peerHints": {
-    "accordion": ["framer-motion"],
-    "alert": ["react-icons", "framer-motion"],
-    "animated-number": ["framer-motion"],
-    "avatar": ["framer-motion"],
-    "badge": ["react-icons", "framer-motion"],
-    "buttons": ["framer-motion"],
-    "card": ["framer-motion"],
-    "checkbox": ["framer-motion"],
-    "command": ["framer-motion"],
-    "context-menu": ["react-icons"],
-    "copy-button": ["react-icons", "framer-motion"],
-    "divider": ["framer-motion"],
-    "drawer": ["framer-motion"],
-    "dropdown": ["react-icons"],
-    "empty-state": ["framer-motion"],
-    "inputs": ["framer-motion"],
-    "kbd": ["framer-motion"],
-    "modal": ["framer-motion"],
-    "popover": ["framer-motion"],
-    "progress": ["framer-motion"],
-    "radio-group": ["framer-motion"],
-    "rating": ["react-icons"],
-    "skeleton": ["framer-motion"],
-    "table": ["framer-motion"],
-    "tabs": ["framer-motion"],
-    "timeline": ["framer-motion"],
-    "toast": ["framer-motion"],
-    "toggle": ["framer-motion"],
-    "tooltip": ["framer-motion"],
-    "tree-view": ["react-icons", "framer-motion"],
-    "spinner": ["framer-motion"],
-    "animations/blur-in": ["framer-motion"],
-    "animations/blur-out": ["framer-motion"],
-    "animations/bounce": ["framer-motion"],
-    "animations/fade-down": ["framer-motion"],
-    "animations/fade-in": ["framer-motion"],
-    "animations/fade-left": ["framer-motion"],
-    "animations/fade-out": ["framer-motion"],
-    "animations/fade-right": ["framer-motion"],
-    "animations/fade-up": ["framer-motion"],
-    "animations/flip": ["framer-motion"],
-    "animations/flip-in": ["framer-motion"],
-    "animations/float": ["framer-motion"],
-    "animations/hover-lift": ["framer-motion"],
-    "animations/hover-scale": ["framer-motion"],
-    "animations/magnetic": ["framer-motion"],
-    "animations/parallax": ["framer-motion"],
-    "animations/ping": ["framer-motion"],
-    "animations/pop-in": ["framer-motion"],
-    "animations/press": ["framer-motion"],
-    "animations/progress": ["framer-motion"],
-    "animations/pulse": ["framer-motion"],
-    "animations/reorder": ["framer-motion"],
-    "animations/reveal-blur": ["framer-motion"],
-    "animations/reveal-down": ["framer-motion"],
-    "animations/reveal-left": ["framer-motion"],
-    "animations/reveal-right": ["framer-motion"],
-    "animations/reveal-up": ["framer-motion"],
-    "animations/rotate-in": ["framer-motion"],
-    "animations/scale-in": ["framer-motion"],
-    "animations/scale-out": ["framer-motion"],
-    "animations/shake": ["framer-motion"],
-    "animations/skeleton-shimmer": ["framer-motion"],
-    "animations/slide-down": ["framer-motion"],
-    "animations/slide-left": ["framer-motion"],
-    "animations/slide-right": ["framer-motion"],
-    "animations/slide-up": ["framer-motion"],
-    "animations/spin": ["framer-motion"],
-    "animations/text-reveal": ["framer-motion"],
-    "animations/text-shimmer": ["framer-motion"],
-    "animations/tilt": ["framer-motion"],
-    "animations/wiggle": ["framer-motion"],
-    "charts/area": ["recharts"],
-    "charts/bar": ["recharts"],
-    "charts/bubble": ["recharts"],
-    "charts/funnel": ["recharts"],
-    "charts/line": ["recharts"],
-    "charts/pie": ["recharts"],
-    "charts/radar": ["recharts"],
-    "charts/scatter": ["recharts"],
-    "charts/stacked-bar": ["recharts"]
+    "accordion": [
+      "framer-motion"
+    ],
+    "alert": [
+      "react-icons",
+      "framer-motion"
+    ],
+    "animated-number": [
+      "framer-motion"
+    ],
+    "avatar": [
+      "framer-motion"
+    ],
+    "badge": [
+      "react-icons",
+      "framer-motion"
+    ],
+    "buttons": [
+      "framer-motion"
+    ],
+    "card": [
+      "framer-motion"
+    ],
+    "checkbox": [
+      "framer-motion"
+    ],
+    "command": [
+      "framer-motion"
+    ],
+    "context-menu": [
+      "react-icons"
+    ],
+    "copy-button": [
+      "react-icons",
+      "framer-motion"
+    ],
+    "divider": [
+      "framer-motion"
+    ],
+    "drawer": [
+      "framer-motion"
+    ],
+    "dropdown": [
+      "react-icons"
+    ],
+    "empty-state": [
+      "framer-motion"
+    ],
+    "inputs": [
+      "framer-motion"
+    ],
+    "kbd": [
+      "framer-motion"
+    ],
+    "modal": [
+      "framer-motion"
+    ],
+    "popover": [
+      "framer-motion"
+    ],
+    "progress": [
+      "framer-motion"
+    ],
+    "radio-group": [
+      "framer-motion"
+    ],
+    "rating": [
+      "react-icons"
+    ],
+    "skeleton": [
+      "framer-motion"
+    ],
+    "table": [
+      "framer-motion"
+    ],
+    "tabs": [
+      "framer-motion"
+    ],
+    "timeline": [
+      "framer-motion"
+    ],
+    "toast": [
+      "framer-motion"
+    ],
+    "toggle": [
+      "framer-motion"
+    ],
+    "tooltip": [
+      "framer-motion"
+    ],
+    "tree-view": [
+      "react-icons",
+      "framer-motion"
+    ],
+    "spinner": [
+      "framer-motion"
+    ],
+    "animations/blur-in": [
+      "framer-motion"
+    ],
+    "animations/blur-out": [
+      "framer-motion"
+    ],
+    "animations/bounce": [
+      "framer-motion"
+    ],
+    "animations/fade-down": [
+      "framer-motion"
+    ],
+    "animations/fade-in": [
+      "framer-motion"
+    ],
+    "animations/fade-left": [
+      "framer-motion"
+    ],
+    "animations/fade-out": [
+      "framer-motion"
+    ],
+    "animations/fade-right": [
+      "framer-motion"
+    ],
+    "animations/fade-up": [
+      "framer-motion"
+    ],
+    "animations/flip": [
+      "framer-motion"
+    ],
+    "animations/flip-in": [
+      "framer-motion"
+    ],
+    "animations/float": [
+      "framer-motion"
+    ],
+    "animations/hover-lift": [
+      "framer-motion"
+    ],
+    "animations/hover-scale": [
+      "framer-motion"
+    ],
+    "animations/magnetic": [
+      "framer-motion"
+    ],
+    "animations/parallax": [
+      "framer-motion"
+    ],
+    "animations/ping": [
+      "framer-motion"
+    ],
+    "animations/pop-in": [
+      "framer-motion"
+    ],
+    "animations/press": [
+      "framer-motion"
+    ],
+    "animations/progress": [
+      "framer-motion"
+    ],
+    "animations/pulse": [
+      "framer-motion"
+    ],
+    "animations/reorder": [
+      "framer-motion"
+    ],
+    "animations/reveal-blur": [
+      "framer-motion"
+    ],
+    "animations/reveal-down": [
+      "framer-motion"
+    ],
+    "animations/reveal-left": [
+      "framer-motion"
+    ],
+    "animations/reveal-right": [
+      "framer-motion"
+    ],
+    "animations/reveal-up": [
+      "framer-motion"
+    ],
+    "animations/rotate-in": [
+      "framer-motion"
+    ],
+    "animations/scale-in": [
+      "framer-motion"
+    ],
+    "animations/scale-out": [
+      "framer-motion"
+    ],
+    "animations/shake": [
+      "framer-motion"
+    ],
+    "animations/skeleton-shimmer": [
+      "framer-motion"
+    ],
+    "animations/slide-down": [
+      "framer-motion"
+    ],
+    "animations/slide-left": [
+      "framer-motion"
+    ],
+    "animations/slide-right": [
+      "framer-motion"
+    ],
+    "animations/slide-up": [
+      "framer-motion"
+    ],
+    "animations/spin": [
+      "framer-motion"
+    ],
+    "animations/text-reveal": [
+      "framer-motion"
+    ],
+    "animations/text-shimmer": [
+      "framer-motion"
+    ],
+    "animations/tilt": [
+      "framer-motion"
+    ],
+    "animations/wiggle": [
+      "framer-motion"
+    ],
+    "charts/area": [
+      "recharts"
+    ],
+    "charts/bar": [
+      "recharts"
+    ],
+    "charts/bubble": [
+      "recharts"
+    ],
+    "charts/funnel": [
+      "recharts"
+    ],
+    "charts/line": [
+      "recharts"
+    ],
+    "charts/pie": [
+      "recharts"
+    ],
+    "charts/radar": [
+      "recharts"
+    ],
+    "charts/scatter": [
+      "recharts"
+    ],
+    "charts/stacked-bar": [
+      "recharts"
+    ]
   },
   "nameAliases": {
     "button": "buttons",
