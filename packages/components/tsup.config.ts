@@ -201,6 +201,7 @@ const hooksEntries = {
 export default defineConfig({
   entry: {
     "design-system/tokens": "src/design-system/tokens.ts",
+    "design-system/facade": "src/lib/facade.ts",
     ...uiEntries,
     ...chartEntries,
     ...animationEntries,

@@ -58,7 +58,7 @@ export const zuiButtonAppearances = {
   aqua: "bg-[var(--zui-button-aqua-bg,#0f766e)] dark:bg-[var(--zui-button-aqua-bg-dark,#2dd4bf)] text-[color:var(--zui-button-aqua-fg,#ffffff)] dark:text-[color:var(--zui-button-aqua-fg-dark,#042f2e)] hover:bg-[var(--zui-button-aqua-bg-hover,#0f766e)] dark:hover:bg-[var(--zui-button-aqua-bg-hover-dark,#2dd4bf)]",
   plum: "bg-[var(--zui-button-plum-bg,#7e22ce)] dark:bg-[var(--zui-button-plum-bg-dark,#c084fc)] text-[color:var(--zui-button-plum-fg,#ffffff)] dark:text-[color:var(--zui-button-plum-fg-dark,#3b0764)] hover:bg-[var(--zui-button-plum-bg-hover,#7e22ce)] dark:hover:bg-[var(--zui-button-plum-bg-hover-dark,#c084fc)]",
   emerald:
-    "bg-[var(--zui-button-emerald-bg,#10b981)] dark:bg-[var(--zui-button-emerald-bg-dark,#065f46)] text-[color:var(--zui-button-emerald-fg,#064e3b)] dark:text-[color:var(--zui-button-emerald-fg-dark,#064e3b)] hover:bg-[var(--zui-button-emerald-bg-hover,#10b981)] dark:hover:bg-[var(--zui-button-emerald-bg-hover-dark,#064e3b)]",
+    "bg-[var(--zui-button-emerald-bg,#10b981)] dark:bg-[var(--zui-button-emerald-bg-dark,#065f46)] text-[color:var(--zui-button-emerald-fg,#064e3b)] dark:text-[color:var(--zui-button-emerald-fg-dark,#ffffff)] hover:bg-[var(--zui-button-emerald-bg-hover,#10b981)] dark:hover:bg-[var(--zui-button-emerald-bg-hover-dark,#064e3b)]",
   indigo:
     "bg-[var(--zui-button-indigo-bg,#3730a3)] dark:bg-[var(--zui-button-indigo-bg-dark,#4f46e5)] text-[color:var(--zui-button-indigo-fg,#ffffff)] dark:text-[color:var(--zui-button-indigo-fg-dark,#ffffff)] hover:bg-[var(--zui-button-indigo-bg-hover,#3730a3)] dark:hover:bg-[var(--zui-button-indigo-bg-hover-dark,#4f46e5)]",
   purple:
