@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
 
+import type { zuiTooltipVariants } from "../../design-system/tooltip";
+
 export type TooltipPosition = "top" | "bottom" | "left" | "right";
+export type TooltipVariant = keyof typeof zuiTooltipVariants;
 
 export type TooltipContextType = {
   open: boolean;
@@ -29,30 +32,7 @@ export type TooltipTriggerProps = {
 export type TooltipContentProps = {
   children: ReactNode;
   className?: string;
-  variant?:
-    | "default"
-    | "outline"
-    | "ghost"
-    | "glass"
-    | "emerald"
-    | "indigo"
-    | "purple"
-    | "pink"
-    | "rose"
-    | "sky"
-    | "teal"
-    | "yellow"
-    | "orange"
-    | "green"
-    | "gradient-blue"
-    | "gradient-green"
-    | "gradient-red"
-    | "gradient-yellow"
-    | "gradient-purple"
-    | "gradient-teal"
-    | "gradient-indigo"
-    | "gradient-pink"
-    | "gradient-orange";
+  variant?: TooltipVariant;
   size?: "sm" | "md" | "lg";
   width?: "fit" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 };

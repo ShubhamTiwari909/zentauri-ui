@@ -9,6 +9,39 @@ export const zuiAccordionAppearances = {
     "divide-y divide-[var(--zui-accordion-ghost-divider,#0000000d)] dark:divide-[var(--zui-accordion-ghost-divider-dark,#ffffff0d)]",
   card: "space-y-2",
   separated: "space-y-3",
+  blue: "divide-y divide-[var(--zui-accordion-blue-divider,#2563eb)] dark:divide-[var(--zui-accordion-blue-divider-dark,#3b82f6)] rounded-xl border border-[color:var(--zui-accordion-blue-border,#2563eb)] dark:border-[color:var(--zui-accordion-blue-border-dark,#3b82f6)]",
+  cyan: "divide-y divide-[var(--zui-accordion-cyan-divider,#0891b2)] dark:divide-[var(--zui-accordion-cyan-divider-dark,#22d3ee)] rounded-xl border border-[color:var(--zui-accordion-cyan-border,#0891b2)] dark:border-[color:var(--zui-accordion-cyan-border-dark,#22d3ee)]",
+  green:
+    "divide-y divide-[var(--zui-accordion-green-divider,#16a34a)] dark:divide-[var(--zui-accordion-green-divider-dark,#22c55e)] rounded-xl border border-[color:var(--zui-accordion-green-border,#16a34a)] dark:border-[color:var(--zui-accordion-green-border-dark,#22c55e)]",
+  lime: "divide-y divide-[var(--zui-accordion-lime-divider,#65a30d)] dark:divide-[var(--zui-accordion-lime-divider-dark,#a3e635)] rounded-xl border border-[color:var(--zui-accordion-lime-border,#65a30d)] dark:border-[color:var(--zui-accordion-lime-border-dark,#a3e635)]",
+  mint: "divide-y divide-[var(--zui-accordion-mint-divider,#10b981)] dark:divide-[var(--zui-accordion-mint-divider-dark,#6ee7b7)] rounded-xl border border-[color:var(--zui-accordion-mint-border,#10b981)] dark:border-[color:var(--zui-accordion-mint-border-dark,#6ee7b7)]",
+  ocean:
+    "divide-y divide-[var(--zui-accordion-ocean-divider,#0284c7)] dark:divide-[var(--zui-accordion-ocean-divider-dark,#38bdf8)] rounded-xl border border-[color:var(--zui-accordion-ocean-border,#0284c7)] dark:border-[color:var(--zui-accordion-ocean-border-dark,#38bdf8)]",
+  sapphire:
+    "divide-y divide-[var(--zui-accordion-sapphire-divider,#1d4ed8)] dark:divide-[var(--zui-accordion-sapphire-divider-dark,#60a5fa)] rounded-xl border border-[color:var(--zui-accordion-sapphire-border,#1d4ed8)] dark:border-[color:var(--zui-accordion-sapphire-border-dark,#60a5fa)]",
+  lavender:
+    "divide-y divide-[var(--zui-accordion-lavender-divider,#8b5cf6)] dark:divide-[var(--zui-accordion-lavender-divider-dark,#a78bfa)] rounded-xl border border-[color:var(--zui-accordion-lavender-border,#8b5cf6)] dark:border-[color:var(--zui-accordion-lavender-border-dark,#a78bfa)]",
+  ruby: "divide-y divide-[var(--zui-accordion-ruby-divider,#be123c)] dark:divide-[var(--zui-accordion-ruby-divider-dark,#fb7185)] rounded-xl border border-[color:var(--zui-accordion-ruby-border,#be123c)] dark:border-[color:var(--zui-accordion-ruby-border-dark,#fb7185)]",
+  red: "divide-y divide-[var(--zui-accordion-red-divider,#dc2626)] dark:divide-[var(--zui-accordion-red-divider-dark,#ef4444)] rounded-xl border border-[color:var(--zui-accordion-red-border,#dc2626)] dark:border-[color:var(--zui-accordion-red-border-dark,#ef4444)]",
+  slate:
+    "divide-y divide-[var(--zui-accordion-slate-divider,#475569)] dark:divide-[var(--zui-accordion-slate-divider-dark,#64748b)] rounded-xl border border-[color:var(--zui-accordion-slate-border,#475569)] dark:border-[color:var(--zui-accordion-slate-border-dark,#64748b)]",
+  zinc: "divide-y divide-[var(--zui-accordion-zinc-divider,#52525b)] dark:divide-[var(--zui-accordion-zinc-divider-dark,#71717a)] rounded-xl border border-[color:var(--zui-accordion-zinc-border,#52525b)] dark:border-[color:var(--zui-accordion-zinc-border-dark,#71717a)]",
+  stone:
+    "divide-y divide-[var(--zui-accordion-stone-divider,#57534e)] dark:divide-[var(--zui-accordion-stone-divider-dark,#78716c)] rounded-xl border border-[color:var(--zui-accordion-stone-border,#57534e)] dark:border-[color:var(--zui-accordion-stone-border-dark,#78716c)]",
+  royal:
+    "divide-y divide-[var(--zui-accordion-royal-divider,#4338ca)] dark:divide-[var(--zui-accordion-royal-divider-dark,#818cf8)] rounded-xl border border-[color:var(--zui-accordion-royal-border,#4338ca)] dark:border-[color:var(--zui-accordion-royal-border-dark,#818cf8)]",
+  electric:
+    "divide-y divide-[var(--zui-accordion-electric-divider,#0ea5e9)] dark:divide-[var(--zui-accordion-electric-divider-dark,#38bdf8)] rounded-xl border border-[color:var(--zui-accordion-electric-border,#0ea5e9)] dark:border-[color:var(--zui-accordion-electric-border-dark,#38bdf8)]",
+  forest:
+    "divide-y divide-[var(--zui-accordion-forest-divider,#166534)] dark:divide-[var(--zui-accordion-forest-divider-dark,#4ade80)] rounded-xl border border-[color:var(--zui-accordion-forest-border,#166534)] dark:border-[color:var(--zui-accordion-forest-border-dark,#4ade80)]",
+  sunset:
+    "divide-y divide-[var(--zui-accordion-sunset-divider,#ea580c)] dark:divide-[var(--zui-accordion-sunset-divider-dark,#fb923c)] rounded-xl border border-[color:var(--zui-accordion-sunset-border,#ea580c)] dark:border-[color:var(--zui-accordion-sunset-border-dark,#fb923c)]",
+  magenta:
+    "divide-y divide-[var(--zui-accordion-magenta-divider,#c026d3)] dark:divide-[var(--zui-accordion-magenta-divider-dark,#e879f9)] rounded-xl border border-[color:var(--zui-accordion-magenta-border,#c026d3)] dark:border-[color:var(--zui-accordion-magenta-border-dark,#e879f9)]",
+  crimson:
+    "divide-y divide-[var(--zui-accordion-crimson-divider,#b91c1c)] dark:divide-[var(--zui-accordion-crimson-divider-dark,#f87171)] rounded-xl border border-[color:var(--zui-accordion-crimson-border,#b91c1c)] dark:border-[color:var(--zui-accordion-crimson-border-dark,#f87171)]",
+  aqua: "divide-y divide-[var(--zui-accordion-aqua-divider,#0f766e)] dark:divide-[var(--zui-accordion-aqua-divider-dark,#2dd4bf)] rounded-xl border border-[color:var(--zui-accordion-aqua-border,#0f766e)] dark:border-[color:var(--zui-accordion-aqua-border-dark,#2dd4bf)]",
+  plum: "divide-y divide-[var(--zui-accordion-plum-divider,#7e22ce)] dark:divide-[var(--zui-accordion-plum-divider-dark,#c084fc)] rounded-xl border border-[color:var(--zui-accordion-plum-border,#7e22ce)] dark:border-[color:var(--zui-accordion-plum-border-dark,#c084fc)]",
   sky: "divide-y divide-[var(--zui-accordion-sky-divider,oklch(44.3%_0.11_240.79))] dark:divide-[var(--zui-accordion-sky-divider-dark,oklch(58.8%_0.158_241.966))] rounded-xl border border-[color:var(--zui-accordion-sky-border,oklch(44.3%_0.11_240.79))] dark:border-[color:var(--zui-accordion-sky-border-dark,oklch(58.8%_0.158_241.966))]",
   rose: "divide-y divide-[var(--zui-accordion-rose-divider,oklch(45.5%_0.188_13.697))] dark:divide-[var(--zui-accordion-rose-divider-dark,oklch(58.6%_0.253_17.585))] rounded-xl border border-[color:var(--zui-accordion-rose-border,oklch(45.5%_0.188_13.697))] dark:border-[color:var(--zui-accordion-rose-border-dark,oklch(58.6%_0.253_17.585))]",
   purple:
@@ -59,6 +92,39 @@ export const zuiAccordionItemAppearances = {
   card: "rounded-xl border border-[color:var(--zui-accordion-item-card-border,#0000001a)] dark:border-[color:var(--zui-accordion-item-card-border-dark,#ffffff1a)] bg-[var(--zui-accordion-item-card-bg,#0000000d)] dark:bg-[var(--zui-accordion-item-card-bg-dark,#00000099)] p-2",
   separated:
     "rounded-xl border border-[color:var(--zui-accordion-item-separated-border,#0000001a)] dark:border-[color:var(--zui-accordion-item-separated-border-dark,#ffffff1a)] bg-[var(--zui-accordion-item-separated-bg,oklch(98.4%_0.003_247.858_/_0.4))] dark:bg-[var(--zui-accordion-item-separated-bg-dark,oklch(12.9%_0.042_264.695_/_0.4))] p-2",
+  blue: "rounded-xl border border-[color:var(--zui-accordion-item-blue-border,#2563eb)] dark:border-[color:var(--zui-accordion-item-blue-border-dark,#3b82f6)] bg-[var(--zui-accordion-item-blue-bg,#2563eb1a)] dark:bg-[var(--zui-accordion-item-blue-bg-dark,#3b82f626)] p-2",
+  cyan: "rounded-xl border border-[color:var(--zui-accordion-item-cyan-border,#0891b2)] dark:border-[color:var(--zui-accordion-item-cyan-border-dark,#22d3ee)] bg-[var(--zui-accordion-item-cyan-bg,#0891b21a)] dark:bg-[var(--zui-accordion-item-cyan-bg-dark,#22d3ee26)] p-2",
+  green:
+    "rounded-xl border border-[color:var(--zui-accordion-item-green-border,#16a34a)] dark:border-[color:var(--zui-accordion-item-green-border-dark,#22c55e)] bg-[var(--zui-accordion-item-green-bg,#16a34a1a)] dark:bg-[var(--zui-accordion-item-green-bg-dark,#22c55e26)] p-2",
+  lime: "rounded-xl border border-[color:var(--zui-accordion-item-lime-border,#65a30d)] dark:border-[color:var(--zui-accordion-item-lime-border-dark,#a3e635)] bg-[var(--zui-accordion-item-lime-bg,#65a30d1a)] dark:bg-[var(--zui-accordion-item-lime-bg-dark,#a3e63526)] p-2",
+  mint: "rounded-xl border border-[color:var(--zui-accordion-item-mint-border,#10b981)] dark:border-[color:var(--zui-accordion-item-mint-border-dark,#6ee7b7)] bg-[var(--zui-accordion-item-mint-bg,#10b9811a)] dark:bg-[var(--zui-accordion-item-mint-bg-dark,#6ee7b726)] p-2",
+  ocean:
+    "rounded-xl border border-[color:var(--zui-accordion-item-ocean-border,#0284c7)] dark:border-[color:var(--zui-accordion-item-ocean-border-dark,#38bdf8)] bg-[var(--zui-accordion-item-ocean-bg,#0284c71a)] dark:bg-[var(--zui-accordion-item-ocean-bg-dark,#38bdf826)] p-2",
+  sapphire:
+    "rounded-xl border border-[color:var(--zui-accordion-item-sapphire-border,#1d4ed8)] dark:border-[color:var(--zui-accordion-item-sapphire-border-dark,#60a5fa)] bg-[var(--zui-accordion-item-sapphire-bg,#1d4ed81a)] dark:bg-[var(--zui-accordion-item-sapphire-bg-dark,#60a5fa26)] p-2",
+  lavender:
+    "rounded-xl border border-[color:var(--zui-accordion-item-lavender-border,#8b5cf6)] dark:border-[color:var(--zui-accordion-item-lavender-border-dark,#a78bfa)] bg-[var(--zui-accordion-item-lavender-bg,#8b5cf61a)] dark:bg-[var(--zui-accordion-item-lavender-bg-dark,#a78bfa26)] p-2",
+  ruby: "rounded-xl border border-[color:var(--zui-accordion-item-ruby-border,#be123c)] dark:border-[color:var(--zui-accordion-item-ruby-border-dark,#fb7185)] bg-[var(--zui-accordion-item-ruby-bg,#be123c1a)] dark:bg-[var(--zui-accordion-item-ruby-bg-dark,#fb718526)] p-2",
+  red: "rounded-xl border border-[color:var(--zui-accordion-item-red-border,#dc2626)] dark:border-[color:var(--zui-accordion-item-red-border-dark,#ef4444)] bg-[var(--zui-accordion-item-red-bg,#dc26261a)] dark:bg-[var(--zui-accordion-item-red-bg-dark,#ef444426)] p-2",
+  slate:
+    "rounded-xl border border-[color:var(--zui-accordion-item-slate-border,#475569)] dark:border-[color:var(--zui-accordion-item-slate-border-dark,#64748b)] bg-[var(--zui-accordion-item-slate-bg,#4755691a)] dark:bg-[var(--zui-accordion-item-slate-bg-dark,#64748b26)] p-2",
+  zinc: "rounded-xl border border-[color:var(--zui-accordion-item-zinc-border,#52525b)] dark:border-[color:var(--zui-accordion-item-zinc-border-dark,#71717a)] bg-[var(--zui-accordion-item-zinc-bg,#52525b1a)] dark:bg-[var(--zui-accordion-item-zinc-bg-dark,#71717a26)] p-2",
+  stone:
+    "rounded-xl border border-[color:var(--zui-accordion-item-stone-border,#57534e)] dark:border-[color:var(--zui-accordion-item-stone-border-dark,#78716c)] bg-[var(--zui-accordion-item-stone-bg,#57534e1a)] dark:bg-[var(--zui-accordion-item-stone-bg-dark,#78716c26)] p-2",
+  royal:
+    "rounded-xl border border-[color:var(--zui-accordion-item-royal-border,#4338ca)] dark:border-[color:var(--zui-accordion-item-royal-border-dark,#818cf8)] bg-[var(--zui-accordion-item-royal-bg,#4338ca1a)] dark:bg-[var(--zui-accordion-item-royal-bg-dark,#818cf826)] p-2",
+  electric:
+    "rounded-xl border border-[color:var(--zui-accordion-item-electric-border,#0ea5e9)] dark:border-[color:var(--zui-accordion-item-electric-border-dark,#38bdf8)] bg-[var(--zui-accordion-item-electric-bg,#0ea5e91a)] dark:bg-[var(--zui-accordion-item-electric-bg-dark,#38bdf826)] p-2",
+  forest:
+    "rounded-xl border border-[color:var(--zui-accordion-item-forest-border,#166534)] dark:border-[color:var(--zui-accordion-item-forest-border-dark,#4ade80)] bg-[var(--zui-accordion-item-forest-bg,#1665341a)] dark:bg-[var(--zui-accordion-item-forest-bg-dark,#4ade8026)] p-2",
+  sunset:
+    "rounded-xl border border-[color:var(--zui-accordion-item-sunset-border,#ea580c)] dark:border-[color:var(--zui-accordion-item-sunset-border-dark,#fb923c)] bg-[var(--zui-accordion-item-sunset-bg,#ea580c1a)] dark:bg-[var(--zui-accordion-item-sunset-bg-dark,#fb923c26)] p-2",
+  magenta:
+    "rounded-xl border border-[color:var(--zui-accordion-item-magenta-border,#c026d3)] dark:border-[color:var(--zui-accordion-item-magenta-border-dark,#e879f9)] bg-[var(--zui-accordion-item-magenta-bg,#c026d31a)] dark:bg-[var(--zui-accordion-item-magenta-bg-dark,#e879f926)] p-2",
+  crimson:
+    "rounded-xl border border-[color:var(--zui-accordion-item-crimson-border,#b91c1c)] dark:border-[color:var(--zui-accordion-item-crimson-border-dark,#f87171)] bg-[var(--zui-accordion-item-crimson-bg,#b91c1c1a)] dark:bg-[var(--zui-accordion-item-crimson-bg-dark,#f8717126)] p-2",
+  aqua: "rounded-xl border border-[color:var(--zui-accordion-item-aqua-border,#0f766e)] dark:border-[color:var(--zui-accordion-item-aqua-border-dark,#2dd4bf)] bg-[var(--zui-accordion-item-aqua-bg,#0f766e1a)] dark:bg-[var(--zui-accordion-item-aqua-bg-dark,#2dd4bf26)] p-2",
+  plum: "rounded-xl border border-[color:var(--zui-accordion-item-plum-border,#7e22ce)] dark:border-[color:var(--zui-accordion-item-plum-border-dark,#c084fc)] bg-[var(--zui-accordion-item-plum-bg,#7e22ce1a)] dark:bg-[var(--zui-accordion-item-plum-bg-dark,#c084fc26)] p-2",
   sky: "rounded-xl border border-[color:var(--zui-accordion-item-sky-border,oklch(44.3%_0.11_240.79))] dark:border-[color:var(--zui-accordion-item-sky-border-dark,oklch(58.8%_0.158_241.966))] bg-[var(--zui-accordion-item-sky-bg,oklch(95.1%_0.026_236.824_/_0.5))] dark:bg-[var(--zui-accordion-item-sky-bg-dark,oklch(58.8%_0.158_241.966_/_0.03))] p-2",
   rose: "rounded-xl border border-[color:var(--zui-accordion-item-rose-border,oklch(45.5%_0.188_13.697))] dark:border-[color:var(--zui-accordion-item-rose-border-dark,oklch(58.6%_0.253_17.585))] bg-[var(--zui-accordion-item-rose-bg,oklch(94.1%_0.03_12.58_/_0.5))] dark:bg-[var(--zui-accordion-item-rose-bg-dark,oklch(58.6%_0.253_17.585_/_0.03))] p-2",
   purple:

@@ -1,10 +1,11 @@
 import type { VariantProps } from "class-variance-authority";
 import type { ComponentPropsWithRef } from "react";
 
+import type { zuiPaginationListAppearances } from "../../design-system/pagination";
 import type { buttonVariants } from "../buttons/variants";
 
 export type PaginationAppearance = NonNullable<
-  VariantProps<typeof buttonVariants>["appearance"]
+  keyof typeof zuiPaginationListAppearances
 >;
 
 export type PaginationSize = NonNullable<
@@ -37,7 +38,8 @@ export type UsePaginationResult = {
 };
 
 export type PaginationProps = Omit<ComponentPropsWithRef<"nav">, "onChange"> &
-  VariantProps<typeof buttonVariants> & {
+  Omit<VariantProps<typeof buttonVariants>, "appearance"> & {
+    appearance?: PaginationAppearance;
     pageCount: number;
     page?: number;
     defaultPage?: number;

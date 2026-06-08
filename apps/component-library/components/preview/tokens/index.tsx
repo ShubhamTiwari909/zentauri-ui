@@ -26,12 +26,13 @@ const themeLabels: Record<TokenTheme, string> = {
   shared: "Shared",
 };
 
-const allTokenCount =
-  zuiTokenReferences.length + componentTokenReferences.length;
-const darkTokenCount = [
-  ...zuiTokenReferences,
-  ...componentTokenReferences,
-].filter((token) => token.theme === "dark").length;
+const allTokenReferences = [...zuiTokenReferences, ...componentTokenReferences];
+const uniqueTokenNames = new Set(allTokenReferences.map((token) => token.name));
+const uniqueDarkTokenNames = new Set(
+  allTokenReferences
+    .filter((token) => token.theme === "dark")
+    .map((token) => token.name),
+);
 
 function formatCssDeclarations(tokens: readonly ZuiTokenReference[]) {
   return tokens
@@ -172,10 +173,10 @@ export default function TokenReferencePage({
         <div className="grid gap-3 sm:grid-cols-3">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-400">
-              Variables
+              Unique variables
             </p>
             <p className="mt-2 text-3xl font-semibold text-white">
-              {allTokenCount}
+              {uniqueTokenNames.size}
             </p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
@@ -188,10 +189,10 @@ export default function TokenReferencePage({
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-400">
-              Dark tokens
+              Dark variables
             </p>
             <p className="mt-2 text-3xl font-semibold text-white">
-              {darkTokenCount}
+              {uniqueDarkTokenNames.size}
             </p>
           </div>
         </div>

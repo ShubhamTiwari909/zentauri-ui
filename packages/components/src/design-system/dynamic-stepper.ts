@@ -1,30 +1,9 @@
-import type { zuiButtonAppearances } from "./button";
-
-type GradientButtonAppearance =
-  | "gradient-blue"
-  | "gradient-green"
-  | "gradient-red"
-  | "gradient-yellow"
-  | "gradient-purple"
-  | "gradient-teal"
-  | "gradient-indigo"
-  | "gradient-pink"
-  | "gradient-orange";
-
-export type ZuiDynamicStepperIndicatorToneAppearance = Exclude<
-  keyof typeof zuiButtonAppearances,
-  GradientButtonAppearance
->;
-
 export type ZuiDynamicStepperIndicatorSemanticState =
   | "complete"
   | "current"
   | "upcoming";
 
-export const zuiDynamicStepperIndicatorToneClasses: Record<
-  ZuiDynamicStepperIndicatorToneAppearance,
-  Record<ZuiDynamicStepperIndicatorSemanticState, string>
-> = {
+export const zuiDynamicStepperIndicatorToneClasses = {
   default: {
     complete:
       "border-[color:var(--zui-dynamic-stepper-indicator-default-border-complete,oklch(55.4%_0.046_257.417_/_0.55))] dark:border-[color:var(--zui-dynamic-stepper-indicator-default-border-complete-dark,oklch(37.2%_0.044_257.287_/_0.55))] bg-[var(--zui-dynamic-stepper-indicator-default-bg-complete,oklch(55.4%_0.046_257.417_/_0.25))] dark:bg-[var(--zui-dynamic-stepper-indicator-default-bg-complete-dark,oklch(55.4%_0.046_257.417_/_0.25))] text-[color:var(--zui-dynamic-stepper-indicator-default-fg-complete,oklch(20.8%_0.042_265.755))] dark:text-[color:var(--zui-dynamic-stepper-indicator-default-fg-complete-dark,oklch(98.4%_0.003_247.858))] ring-2 ring-[var(--zui-dynamic-stepper-indicator-default-ring-complete,oklch(55.4%_0.046_257.417_/_0.25))] dark:ring-[var(--zui-dynamic-stepper-indicator-default-ring-complete-dark,oklch(70.4%_0.04_256.788_/_0.25))]",
@@ -177,7 +156,13 @@ export const zuiDynamicStepperIndicatorToneClasses: Record<
     upcoming:
       "border-[color:var(--zui-dynamic-stepper-indicator-violet-border-upcoming,#00000026)] dark:border-[color:var(--zui-dynamic-stepper-indicator-violet-border-upcoming-dark,#ffffff26)] bg-[var(--zui-dynamic-stepper-indicator-violet-bg-upcoming,oklch(96.9%_0.016_293.756))] dark:bg-[var(--zui-dynamic-stepper-indicator-violet-bg-upcoming-dark,oklch(28.3%_0.141_291.089_/_0.3))] text-[color:var(--zui-dynamic-stepper-indicator-violet-fg-upcoming,oklch(49.1%_0.27_292.581_/_0.55))] dark:text-[color:var(--zui-dynamic-stepper-indicator-violet-fg-upcoming-dark,oklch(49.1%_0.27_292.581_/_0.55))]",
   },
-};
+} as const satisfies Record<
+  string,
+  Record<ZuiDynamicStepperIndicatorSemanticState, string>
+>;
+
+export type ZuiDynamicStepperIndicatorToneAppearance =
+  keyof typeof zuiDynamicStepperIndicatorToneClasses;
 
 export const zuiDynamicStepperRootBase = "flex w-full";
 

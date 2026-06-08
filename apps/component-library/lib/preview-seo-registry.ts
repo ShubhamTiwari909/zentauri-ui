@@ -38,7 +38,6 @@ import search from "@/content/seo/preview/components/search.json";
 import skeleton from "@/content/seo/preview/components/skeleton.json";
 import slider from "@/content/seo/preview/components/slider.json";
 import spinner from "@/content/seo/preview/components/spinner.json";
-import stepper from "@/content/seo/preview/components/stepper.json";
 import table from "@/content/seo/preview/components/table.json";
 import tabs from "@/content/seo/preview/components/tabs.json";
 import timeline from "@/content/seo/preview/components/timeline.json";
@@ -89,7 +88,6 @@ const previewSeoRegistry = {
   skeleton: skeleton as PreviewSeoDocument,
   slider: slider as PreviewSeoDocument,
   spinner: spinner as PreviewSeoDocument,
-  stepper: stepper as PreviewSeoDocument,
   table: table as PreviewSeoDocument,
   tabs: tabs as PreviewSeoDocument,
   timeline: timeline as PreviewSeoDocument,

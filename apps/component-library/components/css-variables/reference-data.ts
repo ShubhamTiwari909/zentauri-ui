@@ -32,7 +32,6 @@ import { selectCssVariables } from "./data/select";
 import { skeletonCssVariables } from "./data/skeleton";
 import { sliderCssVariables } from "./data/slider";
 import { spinnerCssVariables } from "./data/spinner";
-import { stepperCssVariables } from "./data/stepper";
 import { tableCssVariables } from "./data/table";
 import { tabsCssVariables } from "./data/tabs";
 import { timelineCssVariables } from "./data/timeline";
@@ -79,7 +78,6 @@ export const cssVariableReferences = {
   skeleton: skeletonCssVariables,
   slider: sliderCssVariables,
   spinner: spinnerCssVariables,
-  stepper: stepperCssVariables,
   table: tableCssVariables,
   tabs: tabsCssVariables,
   timeline: timelineCssVariables,

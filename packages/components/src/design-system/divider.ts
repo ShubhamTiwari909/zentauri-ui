@@ -46,6 +46,39 @@ export const zuiDividerAppearances = {
     "text-[color:var(--zui-divider-gradient-pink-fg,oklch(59.2%_0.249_0.584))] dark:text-[color:var(--zui-divider-gradient-pink-fg-dark,oklch(71.8%_0.202_349.761))]",
   "gradient-orange":
     "text-[color:var(--zui-divider-gradient-orange-fg,oklch(64.6%_0.222_41.116))] dark:text-[color:var(--zui-divider-gradient-orange-fg-dark,oklch(75%_0.183_55.934))]",
+  blue: "text-[color:var(--zui-divider-blue-fg,#2563eb)] dark:text-[color:var(--zui-divider-blue-fg-dark,#3b82f6)]",
+  cyan: "text-[color:var(--zui-divider-cyan-fg,#0891b2)] dark:text-[color:var(--zui-divider-cyan-fg-dark,#22d3ee)]",
+  green:
+    "text-[color:var(--zui-divider-green-fg,#16a34a)] dark:text-[color:var(--zui-divider-green-fg-dark,#22c55e)]",
+  lime: "text-[color:var(--zui-divider-lime-fg,#65a30d)] dark:text-[color:var(--zui-divider-lime-fg-dark,#a3e635)]",
+  mint: "text-[color:var(--zui-divider-mint-fg,#10b981)] dark:text-[color:var(--zui-divider-mint-fg-dark,#6ee7b7)]",
+  ocean:
+    "text-[color:var(--zui-divider-ocean-fg,#0284c7)] dark:text-[color:var(--zui-divider-ocean-fg-dark,#38bdf8)]",
+  sapphire:
+    "text-[color:var(--zui-divider-sapphire-fg,#1d4ed8)] dark:text-[color:var(--zui-divider-sapphire-fg-dark,#60a5fa)]",
+  lavender:
+    "text-[color:var(--zui-divider-lavender-fg,#8b5cf6)] dark:text-[color:var(--zui-divider-lavender-fg-dark,#a78bfa)]",
+  ruby: "text-[color:var(--zui-divider-ruby-fg,#be123c)] dark:text-[color:var(--zui-divider-ruby-fg-dark,#fb7185)]",
+  red: "text-[color:var(--zui-divider-red-fg,#dc2626)] dark:text-[color:var(--zui-divider-red-fg-dark,#ef4444)]",
+  slate:
+    "text-[color:var(--zui-divider-slate-fg,#475569)] dark:text-[color:var(--zui-divider-slate-fg-dark,#64748b)]",
+  zinc: "text-[color:var(--zui-divider-zinc-fg,#52525b)] dark:text-[color:var(--zui-divider-zinc-fg-dark,#71717a)]",
+  stone:
+    "text-[color:var(--zui-divider-stone-fg,#57534e)] dark:text-[color:var(--zui-divider-stone-fg-dark,#78716c)]",
+  royal:
+    "text-[color:var(--zui-divider-royal-fg,#4338ca)] dark:text-[color:var(--zui-divider-royal-fg-dark,#818cf8)]",
+  electric:
+    "text-[color:var(--zui-divider-electric-fg,#0ea5e9)] dark:text-[color:var(--zui-divider-electric-fg-dark,#38bdf8)]",
+  forest:
+    "text-[color:var(--zui-divider-forest-fg,#166534)] dark:text-[color:var(--zui-divider-forest-fg-dark,#4ade80)]",
+  sunset:
+    "text-[color:var(--zui-divider-sunset-fg,#ea580c)] dark:text-[color:var(--zui-divider-sunset-fg-dark,#fb923c)]",
+  magenta:
+    "text-[color:var(--zui-divider-magenta-fg,#c026d3)] dark:text-[color:var(--zui-divider-magenta-fg-dark,#e879f9)]",
+  crimson:
+    "text-[color:var(--zui-divider-crimson-fg,#b91c1c)] dark:text-[color:var(--zui-divider-crimson-fg-dark,#f87171)]",
+  aqua: "text-[color:var(--zui-divider-aqua-fg,#0f766e)] dark:text-[color:var(--zui-divider-aqua-fg-dark,#2dd4bf)]",
+  plum: "text-[color:var(--zui-divider-plum-fg,#7e22ce)] dark:text-[color:var(--zui-divider-plum-fg-dark,#c084fc)]",
 } as const;
 
 export const zuiDividerBase = "flex w-full items-center gap-3";

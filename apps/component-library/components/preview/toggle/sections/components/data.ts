@@ -32,6 +32,21 @@ export const TOGGLE_APPEARANCES = [
   "gradient-indigo",
   "gradient-pink",
   "gradient-orange",
+  "blue",
+  "mint",
+  "ocean",
+  "sapphire",
+  "lavender",
+  "ruby",
+  "red",
+  "royal",
+  "electric",
+  "forest",
+  "sunset",
+  "magenta",
+  "crimson",
+  "aqua",
+  "plum",
 ] as const satisfies readonly NonNullable<ToggleProps["appearance"]>[];
 
 export const TOGGLE_SIZES = [

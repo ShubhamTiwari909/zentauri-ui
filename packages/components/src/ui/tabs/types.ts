@@ -1,6 +1,9 @@
 import type { ElementType, HTMLAttributes, ReactNode, RefObject } from "react";
 
+import type { zuiTabsTriggerAppearances } from "../../design-system/tabs";
+
 export type TabsValue = string;
+export type TabsAppearance = keyof typeof zuiTabsTriggerAppearances;
 
 export type TabsProps = {
   value?: TabsValue;
@@ -9,27 +12,7 @@ export type TabsProps = {
   orientation?: "horizontal" | "vertical";
   variant?: "default" | "underline" | "pills";
   size?: "sm" | "md" | "lg";
-  appearance?:
-    | "default"
-    | "sky"
-    | "rose"
-    | "purple"
-    | "pink"
-    | "orange"
-    | "yellow"
-    | "teal"
-    | "indigo"
-    | "emerald"
-    | "gray"
-    | "gradient-blue"
-    | "gradient-green"
-    | "gradient-red"
-    | "gradient-yellow"
-    | "gradient-purple"
-    | "gradient-teal"
-    | "gradient-indigo"
-    | "gradient-pink"
-    | "gradient-orange";
+  appearance?: TabsAppearance;
   children: ReactNode;
   className?: string;
 };
@@ -63,27 +46,7 @@ export type TabsContextType = {
   orientation: "horizontal" | "vertical";
   size?: "sm" | "md" | "lg";
   variant?: "default" | "underline" | "pills";
-  appearance?:
-    | "default"
-    | "sky"
-    | "rose"
-    | "purple"
-    | "pink"
-    | "orange"
-    | "yellow"
-    | "teal"
-    | "indigo"
-    | "emerald"
-    | "gray"
-    | "gradient-blue"
-    | "gradient-green"
-    | "gradient-red"
-    | "gradient-yellow"
-    | "gradient-purple"
-    | "gradient-teal"
-    | "gradient-indigo"
-    | "gradient-pink"
-    | "gradient-orange";
+  appearance?: TabsAppearance;
   tabTriggerId: (value: TabsValue) => string;
   tabPanelId: (value: TabsValue) => string;
 };

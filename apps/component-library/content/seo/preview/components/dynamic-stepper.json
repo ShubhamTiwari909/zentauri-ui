@@ -24,11 +24,7 @@
   "canonicalPath": "/preview/components/dynamic-stepper",
   "headings": {
     "h1": "Dynamic steppers for wizards",
-    "h2": [
-      "Overview",
-      "Common use cases",
-      "FAQ"
-    ]
+    "h2": ["Overview", "Common use cases", "FAQ"]
   },
   "intro": "DynamicStepper renders steps from list data with Button controls. useDynamicStepper holds the same navigation logic for fully custom layouts.",
   "useCases": [
@@ -43,8 +39,8 @@
       "answer": "Each instance exposes stable id suffixes :previous, :next, and :mapper (based on React useId). data-slot attributes dynamic-stepper-previous, dynamic-stepper-next, and dynamic-stepper-mapper are also set."
     },
     {
-      "question": "Is this the same as the Stepper component?",
-      "answer": "No. The compositional Stepper under ui/stepper stays separate. Dynamic Stepper is its own package focused on data-driven navigation."
+      "question": "When should I use Dynamic Stepper?",
+      "answer": "Use Dynamic Stepper when a flow needs real previous and next state, callbacks, and controlled or uncontrolled active-step management."
     },
     {
       "question": "Can I control the active step from the parent?",

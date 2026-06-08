@@ -15,6 +15,39 @@ export const zuiCardAppearances = {
     "border border-[color:var(--zui-card-ghost-border,transparent)] dark:border-[color:var(--zui-card-ghost-border-dark,transparent)] bg-[var(--zui-card-ghost-bg,transparent)] dark:bg-[var(--zui-card-ghost-bg-dark,transparent)]",
   elevated:
     "border border-[color:var(--zui-card-elevated-border,#0000001a)] dark:border-[color:var(--zui-card-elevated-border-dark,#ffffff1a)] bg-[var(--zui-card-elevated-bg,oklch(96.8%_0.007_247.896_/_0.8))] dark:bg-[var(--zui-card-elevated-bg-dark,oklch(20.8%_0.042_265.755_/_0.8))] shadow-[var(--zui-card-elevated-shadow,0_12px_32px_rgba(15,23,42,0.12))] dark:shadow-[var(--zui-card-elevated-shadow-dark,0_24px_64px_rgba(15,23,42,0.45))]",
+  blue: "border border-[color:var(--zui-card-blue-border,#2563eb)] dark:border-[color:var(--zui-card-blue-border-dark,#3b82f6)] bg-[var(--zui-card-blue-bg,#2563eb1a)] dark:bg-[var(--zui-card-blue-bg-dark,#3b82f626)] backdrop-blur-xl",
+  cyan: "border border-[color:var(--zui-card-cyan-border,#0891b2)] dark:border-[color:var(--zui-card-cyan-border-dark,#22d3ee)] bg-[var(--zui-card-cyan-bg,#0891b21a)] dark:bg-[var(--zui-card-cyan-bg-dark,#22d3ee26)] backdrop-blur-xl",
+  green:
+    "border border-[color:var(--zui-card-green-border,#16a34a)] dark:border-[color:var(--zui-card-green-border-dark,#22c55e)] bg-[var(--zui-card-green-bg,#16a34a1a)] dark:bg-[var(--zui-card-green-bg-dark,#22c55e26)] backdrop-blur-xl",
+  lime: "border border-[color:var(--zui-card-lime-border,#65a30d)] dark:border-[color:var(--zui-card-lime-border-dark,#a3e635)] bg-[var(--zui-card-lime-bg,#65a30d1a)] dark:bg-[var(--zui-card-lime-bg-dark,#a3e63526)] backdrop-blur-xl",
+  mint: "border border-[color:var(--zui-card-mint-border,#10b981)] dark:border-[color:var(--zui-card-mint-border-dark,#6ee7b7)] bg-[var(--zui-card-mint-bg,#10b9811a)] dark:bg-[var(--zui-card-mint-bg-dark,#6ee7b726)] backdrop-blur-xl",
+  ocean:
+    "border border-[color:var(--zui-card-ocean-border,#0284c7)] dark:border-[color:var(--zui-card-ocean-border-dark,#38bdf8)] bg-[var(--zui-card-ocean-bg,#0284c71a)] dark:bg-[var(--zui-card-ocean-bg-dark,#38bdf826)] backdrop-blur-xl",
+  sapphire:
+    "border border-[color:var(--zui-card-sapphire-border,#1d4ed8)] dark:border-[color:var(--zui-card-sapphire-border-dark,#60a5fa)] bg-[var(--zui-card-sapphire-bg,#1d4ed81a)] dark:bg-[var(--zui-card-sapphire-bg-dark,#60a5fa26)] backdrop-blur-xl",
+  lavender:
+    "border border-[color:var(--zui-card-lavender-border,#8b5cf6)] dark:border-[color:var(--zui-card-lavender-border-dark,#a78bfa)] bg-[var(--zui-card-lavender-bg,#8b5cf61a)] dark:bg-[var(--zui-card-lavender-bg-dark,#a78bfa26)] backdrop-blur-xl",
+  ruby: "border border-[color:var(--zui-card-ruby-border,#be123c)] dark:border-[color:var(--zui-card-ruby-border-dark,#fb7185)] bg-[var(--zui-card-ruby-bg,#be123c1a)] dark:bg-[var(--zui-card-ruby-bg-dark,#fb718526)] backdrop-blur-xl",
+  red: "border border-[color:var(--zui-card-red-border,#dc2626)] dark:border-[color:var(--zui-card-red-border-dark,#ef4444)] bg-[var(--zui-card-red-bg,#dc26261a)] dark:bg-[var(--zui-card-red-bg-dark,#ef444426)] backdrop-blur-xl",
+  slate:
+    "border border-[color:var(--zui-card-slate-border,#475569)] dark:border-[color:var(--zui-card-slate-border-dark,#64748b)] bg-[var(--zui-card-slate-bg,#4755691a)] dark:bg-[var(--zui-card-slate-bg-dark,#64748b26)] backdrop-blur-xl",
+  zinc: "border border-[color:var(--zui-card-zinc-border,#52525b)] dark:border-[color:var(--zui-card-zinc-border-dark,#71717a)] bg-[var(--zui-card-zinc-bg,#52525b1a)] dark:bg-[var(--zui-card-zinc-bg-dark,#71717a26)] backdrop-blur-xl",
+  stone:
+    "border border-[color:var(--zui-card-stone-border,#57534e)] dark:border-[color:var(--zui-card-stone-border-dark,#78716c)] bg-[var(--zui-card-stone-bg,#57534e1a)] dark:bg-[var(--zui-card-stone-bg-dark,#78716c26)] backdrop-blur-xl",
+  royal:
+    "border border-[color:var(--zui-card-royal-border,#4338ca)] dark:border-[color:var(--zui-card-royal-border-dark,#818cf8)] bg-[var(--zui-card-royal-bg,#4338ca1a)] dark:bg-[var(--zui-card-royal-bg-dark,#818cf826)] backdrop-blur-xl",
+  electric:
+    "border border-[color:var(--zui-card-electric-border,#0ea5e9)] dark:border-[color:var(--zui-card-electric-border-dark,#38bdf8)] bg-[var(--zui-card-electric-bg,#0ea5e91a)] dark:bg-[var(--zui-card-electric-bg-dark,#38bdf826)] backdrop-blur-xl",
+  forest:
+    "border border-[color:var(--zui-card-forest-border,#166534)] dark:border-[color:var(--zui-card-forest-border-dark,#4ade80)] bg-[var(--zui-card-forest-bg,#1665341a)] dark:bg-[var(--zui-card-forest-bg-dark,#4ade8026)] backdrop-blur-xl",
+  sunset:
+    "border border-[color:var(--zui-card-sunset-border,#ea580c)] dark:border-[color:var(--zui-card-sunset-border-dark,#fb923c)] bg-[var(--zui-card-sunset-bg,#ea580c1a)] dark:bg-[var(--zui-card-sunset-bg-dark,#fb923c26)] backdrop-blur-xl",
+  magenta:
+    "border border-[color:var(--zui-card-magenta-border,#c026d3)] dark:border-[color:var(--zui-card-magenta-border-dark,#e879f9)] bg-[var(--zui-card-magenta-bg,#c026d31a)] dark:bg-[var(--zui-card-magenta-bg-dark,#e879f926)] backdrop-blur-xl",
+  crimson:
+    "border border-[color:var(--zui-card-crimson-border,#b91c1c)] dark:border-[color:var(--zui-card-crimson-border-dark,#f87171)] bg-[var(--zui-card-crimson-bg,#b91c1c1a)] dark:bg-[var(--zui-card-crimson-bg-dark,#f8717126)] backdrop-blur-xl",
+  aqua: "border border-[color:var(--zui-card-aqua-border,#0f766e)] dark:border-[color:var(--zui-card-aqua-border-dark,#2dd4bf)] bg-[var(--zui-card-aqua-bg,#0f766e1a)] dark:bg-[var(--zui-card-aqua-bg-dark,#2dd4bf26)] backdrop-blur-xl",
+  plum: "border border-[color:var(--zui-card-plum-border,#7e22ce)] dark:border-[color:var(--zui-card-plum-border-dark,#c084fc)] bg-[var(--zui-card-plum-bg,#7e22ce1a)] dark:bg-[var(--zui-card-plum-bg-dark,#c084fc26)] backdrop-blur-xl",
   sky: "border border-[color:var(--zui-card-sky-border,oklch(44.3%_0.11_240.79))] dark:border-[color:var(--zui-card-sky-border-dark,oklch(58.8%_0.158_241.966))] bg-[var(--zui-card-sky-bg,oklch(97.7%_0.013_236.62))] dark:bg-[var(--zui-card-sky-bg-dark,oklch(29.3%_0.066_243.157_/_0.7))] backdrop-blur-xl",
   rose: "border border-[color:var(--zui-card-rose-border,oklch(45.5%_0.188_13.697))] dark:border-[color:var(--zui-card-rose-border-dark,oklch(58.6%_0.253_17.585))] bg-[var(--zui-card-rose-bg,oklch(96.9%_0.015_12.422))] dark:bg-[var(--zui-card-rose-bg-dark,oklch(27.1%_0.105_12.094_/_0.7))] backdrop-blur-xl",
   purple:

@@ -30,6 +30,111 @@ export const showcaseButtons = [
     animation: "tilt",
   },
   {
+    label: "Blue",
+    appearance: "blue",
+    animation: "bounce",
+  },
+  {
+    label: "Cyan",
+    appearance: "cyan",
+    animation: "bounce",
+  },
+  {
+    label: "Green",
+    appearance: "green",
+    animation: "bounce",
+  },
+  {
+    label: "Lime",
+    appearance: "lime",
+    animation: "bounce",
+  },
+  {
+    label: "Mint",
+    appearance: "mint",
+    animation: "bounce",
+  },
+  {
+    label: "Ocean",
+    appearance: "ocean",
+    animation: "bounce",
+  },
+  {
+    label: "Sapphire",
+    appearance: "sapphire",
+    animation: "bounce",
+  },
+  {
+    label: "Lavender",
+    appearance: "lavender",
+    animation: "bounce",
+  },
+  {
+    label: "Ruby",
+    appearance: "ruby",
+    animation: "bounce",
+  },
+  {
+    label: "Red",
+    appearance: "red",
+    animation: "bounce",
+  },
+  {
+    label: "Slate",
+    appearance: "slate",
+    animation: "bounce",
+  },
+  {
+    label: "Zinc",
+    appearance: "zinc",
+    animation: "bounce",
+  },
+  {
+    label: "Stone",
+    appearance: "stone",
+    animation: "bounce",
+  },
+  {
+    label: "Royal",
+    appearance: "royal",
+    animation: "bounce",
+  },
+  {
+    label: "Electric",
+    appearance: "electric",
+    animation: "bounce",
+  },
+  {
+    label: "Forest",
+    appearance: "forest",
+    animation: "bounce",
+  },
+  {
+    label: "Sunset",
+    appearance: "sunset",
+    animation: "bounce",
+  },
+  {
+    label: "Magenta",
+    appearance: "magenta",
+    animation: "bounce",
+  },
+  {
+    label: "Crimson",
+    appearance: "crimson",
+    animation: "bounce",
+  },
+  {
+    label: "Aqua",
+    appearance: "aqua",
+    animation: "bounce",
+  },
+  {
+    label: "Plum",
+    appearance: "plum",
+    animation: "bounce",
+  },
+  {
     label: "Emerald",
     appearance: "emerald",
     animation: "bounce",

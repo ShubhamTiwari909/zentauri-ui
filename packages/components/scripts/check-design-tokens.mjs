@@ -136,6 +136,34 @@ function readTsFiles(dir) {
 }
 
 /**
+ * Recursively read package source files that can contain token usage.
+ *
+ * Design-system files define most of the public contract, but implementation
+ * files can still consume local custom properties. Marquee is the important
+ * example: the design-system layer defines `--zui-marquee-gap`, while the UI
+ * implementation reads it from keyframes and Tailwind variable utilities. A
+ * non-recursive design-system-only scan would incorrectly mark that token as
+ * unused, so this helper gives unused-token audits visibility across the
+ * package source tree without pulling in generated build output.
+ *
+ * @param {string} dir Absolute directory path to scan recursively.
+ * @returns {string[]} Sorted absolute paths for source files.
+ */
+function readSourceFiles(dir) {
+  const files = [];
+  const entries = readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...readSourceFiles(fullPath));
+    } else if (/\.(mjs|ts|tsx)$/.test(entry.name)) {
+      files.push(fullPath);
+    }
+  }
+  return files.sort();
+}
+
+/**
  * Recursively discover every component `variants.ts` file.
  *
  * UI entries can contain nested folders, including optional animated entries,
@@ -784,6 +812,109 @@ function auditFallbacks(files) {
 }
 
 /**
+ * Collect custom properties that the library defines for its own internal use.
+ *
+ * This intentionally focuses on assignment forms, not every public token read.
+ * A class such as `bg-[var(--zui-button-bg,#fff)]` is already a real use of a
+ * public override point. The values this helper tracks are definitions such as
+ * `[--zui-scroll-area-thumb:#94a3b8]` or style-object entries like
+ * `{ "--zui-marquee-gap": "1rem" }`; those definitions should have a matching
+ * read somewhere in the package.
+ *
+ * @param {string[]} files Files that may define local custom properties.
+ * @returns {Map<string, Set<string>>} Token names mapped to defining files.
+ */
+function collectLocalTokenDefinitions(files) {
+  const definitions = new Map();
+
+  function addDefinition(name, file) {
+    const existing = definitions.get(name) ?? new Set();
+    existing.add(file);
+    definitions.set(name, existing);
+  }
+
+  for (const file of files) {
+    const text = readFileSync(file, "utf8");
+
+    for (const match of text.matchAll(/\[(--zui-[a-z0-9-]+):/g)) {
+      addDefinition(match[1], file);
+    }
+
+    for (const match of text.matchAll(/["'](--zui-[a-z0-9-]+)["']\s*:/g)) {
+      addDefinition(match[1], file);
+    }
+  }
+
+  return definitions;
+}
+
+/**
+ * Collect custom-property names that are read by package source code.
+ *
+ * The scanner recognizes the read forms used in this codebase:
+ * - CSS `var(--zui-token, fallback)` reads
+ * - Tailwind v4 variable utilities such as `gap-(--zui-marquee-gap)`
+ *
+ * Style-object assignments are not counted as reads here because they define a
+ * token value. This distinction lets the checker catch local variables that
+ * are assigned but never consumed by a component.
+ *
+ * @param {string[]} files Package source files to scan.
+ * @returns {Set<string>} Custom-property names read by source code.
+ */
+function collectTokenReads(files) {
+  const reads = new Set();
+
+  for (const file of files) {
+    const text = readFileSync(file, "utf8");
+
+    for (const call of extractVarCalls(text)) {
+      const name = call.trim().match(/^(--zui-[a-z0-9-]+)/)?.[1];
+      if (name) {
+        reads.add(name);
+      }
+    }
+
+    for (const match of text.matchAll(/\b[a-z-]+-\((--zui-[a-z0-9-]+)\)/g)) {
+      reads.add(match[1]);
+    }
+  }
+
+  return reads;
+}
+
+/**
+ * Ensure locally defined custom properties are consumed by package source.
+ *
+ * Public component tokens are allowed to exist only as `var(--zui-...,fallback)`
+ * reads because consumers may override them from outside the package. Local
+ * definitions are different: when the library sets `[--zui-x:value]`, some
+ * component code should read `--zui-x`; otherwise the definition is likely a
+ * stale token that bloats the contract and docs without affecting behavior.
+ *
+ * @param {string[]} designFiles Design-system files that can contain Tailwind custom-property definitions.
+ * @param {string[]} sourceFiles Package source files that can consume those definitions.
+ * @returns {string[]} Human-readable contract violations.
+ */
+function auditUnusedLocalTokenDefinitions(designFiles, sourceFiles) {
+  const errors = [];
+  const definitions = collectLocalTokenDefinitions(designFiles);
+  const reads = collectTokenReads(sourceFiles);
+
+  for (const [name, files] of [...definitions.entries()].sort()) {
+    if (reads.has(name)) {
+      continue;
+    }
+
+    errors.push(
+      `${[...files].map(relativePath).join(", ")} defines ${name} but package source never reads it`,
+    );
+  }
+
+  return errors;
+}
+
+/**
  * Read a stable display name for an object literal property.
  *
  * Appearance maps usually use identifier keys, but string keys are also valid.
@@ -933,9 +1064,11 @@ function auditVariantFiles(files) {
 const designFiles = readTsFiles(designSystemDir);
 const designIndex = createDesignSystemIndex(designFiles);
 const variantFiles = readVariantFiles(uiDir);
+const sourceFiles = readSourceFiles(join(root, "src"));
 const errors = [
   ...auditPureDesignSystemFiles(designFiles),
   ...auditFallbacks(designFiles),
+  ...auditUnusedLocalTokenDefinitions(designFiles, sourceFiles),
   ...auditAppearances(designFiles, designIndex),
   ...auditVariantFiles(variantFiles),
 ];

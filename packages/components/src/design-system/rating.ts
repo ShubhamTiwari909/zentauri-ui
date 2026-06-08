@@ -78,4 +78,37 @@ export const zuiRatingAppearances = {
     "text-[color:var(--zui-rating-gradient-pink-active,oklch(59.2%_0.249_0.584))] drop-shadow-[0_2px_12px_rgba(219,39,119,0.24)] dark:text-[color:var(--zui-rating-gradient-pink-active-dark,oklch(71.8%_0.202_349.761))]",
   "gradient-orange":
     "text-[color:var(--zui-rating-gradient-orange-active,oklch(64.6%_0.222_41.116))] drop-shadow-[0_2px_12px_rgba(234,88,12,0.24)] dark:text-[color:var(--zui-rating-gradient-orange-active-dark,oklch(75%_0.183_55.934))]",
+  blue: "text-[color:var(--zui-rating-blue-fg,#2563eb)] dark:text-[color:var(--zui-rating-blue-fg-dark,#3b82f6)]",
+  cyan: "text-[color:var(--zui-rating-cyan-fg,#0891b2)] dark:text-[color:var(--zui-rating-cyan-fg-dark,#22d3ee)]",
+  green:
+    "text-[color:var(--zui-rating-green-fg,#16a34a)] dark:text-[color:var(--zui-rating-green-fg-dark,#22c55e)]",
+  lime: "text-[color:var(--zui-rating-lime-fg,#65a30d)] dark:text-[color:var(--zui-rating-lime-fg-dark,#a3e635)]",
+  mint: "text-[color:var(--zui-rating-mint-fg,#10b981)] dark:text-[color:var(--zui-rating-mint-fg-dark,#6ee7b7)]",
+  ocean:
+    "text-[color:var(--zui-rating-ocean-fg,#0284c7)] dark:text-[color:var(--zui-rating-ocean-fg-dark,#38bdf8)]",
+  sapphire:
+    "text-[color:var(--zui-rating-sapphire-fg,#1d4ed8)] dark:text-[color:var(--zui-rating-sapphire-fg-dark,#60a5fa)]",
+  lavender:
+    "text-[color:var(--zui-rating-lavender-fg,#8b5cf6)] dark:text-[color:var(--zui-rating-lavender-fg-dark,#a78bfa)]",
+  ruby: "text-[color:var(--zui-rating-ruby-fg,#be123c)] dark:text-[color:var(--zui-rating-ruby-fg-dark,#fb7185)]",
+  red: "text-[color:var(--zui-rating-red-fg,#dc2626)] dark:text-[color:var(--zui-rating-red-fg-dark,#ef4444)]",
+  slate:
+    "text-[color:var(--zui-rating-slate-fg,#475569)] dark:text-[color:var(--zui-rating-slate-fg-dark,#64748b)]",
+  zinc: "text-[color:var(--zui-rating-zinc-fg,#52525b)] dark:text-[color:var(--zui-rating-zinc-fg-dark,#71717a)]",
+  stone:
+    "text-[color:var(--zui-rating-stone-fg,#57534e)] dark:text-[color:var(--zui-rating-stone-fg-dark,#78716c)]",
+  royal:
+    "text-[color:var(--zui-rating-royal-fg,#4338ca)] dark:text-[color:var(--zui-rating-royal-fg-dark,#818cf8)]",
+  electric:
+    "text-[color:var(--zui-rating-electric-fg,#0ea5e9)] dark:text-[color:var(--zui-rating-electric-fg-dark,#38bdf8)]",
+  forest:
+    "text-[color:var(--zui-rating-forest-fg,#166534)] dark:text-[color:var(--zui-rating-forest-fg-dark,#4ade80)]",
+  sunset:
+    "text-[color:var(--zui-rating-sunset-fg,#ea580c)] dark:text-[color:var(--zui-rating-sunset-fg-dark,#fb923c)]",
+  magenta:
+    "text-[color:var(--zui-rating-magenta-fg,#c026d3)] dark:text-[color:var(--zui-rating-magenta-fg-dark,#e879f9)]",
+  crimson:
+    "text-[color:var(--zui-rating-crimson-fg,#b91c1c)] dark:text-[color:var(--zui-rating-crimson-fg-dark,#f87171)]",
+  aqua: "text-[color:var(--zui-rating-aqua-fg,#0f766e)] dark:text-[color:var(--zui-rating-aqua-fg-dark,#2dd4bf)]",
+  plum: "text-[color:var(--zui-rating-plum-fg,#7e22ce)] dark:text-[color:var(--zui-rating-plum-fg-dark,#c084fc)]",
 } as const;

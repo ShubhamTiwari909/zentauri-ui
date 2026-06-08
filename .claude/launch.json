@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "docs",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["exec", "turbo", "run", "dev", "--filter=component-library"],
+      "port": 3001,
+      "autoPort": true
+    }
+  ]
+}

@@ -1,5 +1,11 @@
 # @zentauri-ui/zentauri-components Changelog
 
+## 1.9.0
+
+### Minor Changes
+
+- introduced dark variant checker script and minor codebase changes
+
 ## 1.8.42
 
 ### Patch Changes
