@@ -75,6 +75,101 @@ describe("DesignSystem facade", () => {
     ).toBe(true);
   });
 
+  it("borrows the Input recipe for SearchBar", () => {
+    const search = DesignSystem.getComponent("search");
+    const input = DesignSystem.getComponent("inputs");
+
+    expect(search?.title).toBe("Search");
+
+    const searchVars = search?.variables() ?? [];
+    expect(searchVars.length).toBeGreaterThan(0);
+    // SearchBar has no tokens of its own — every variable is an Input variable.
+    expect(searchVars.every((token) => token.name.startsWith("--zui-input"))).toBe(
+      true,
+    );
+    expect(searchVars.length).toBe(input?.variables().length);
+  });
+
+  it("does not absorb another component's exports via a shared namespace", () => {
+    // ContextMenu reuses Dropdown's `--zui-dropdown-*` namespace, but scoping by
+    // export stem means it only collects its own exports — never Dropdown's
+    // trigger tokens, which ContextMenu has no export for.
+    const contextMenu = DesignSystem.getComponent("context-menu");
+    const dropdown = DesignSystem.getComponent("dropdown");
+
+    const contextMenuNames = (contextMenu?.variables() ?? []).map(
+      (token) => token.name,
+    );
+    const dropdownNames = (dropdown?.variables() ?? []).map((token) => token.name);
+
+    expect(contextMenuNames.length).toBeGreaterThan(0);
+    expect(
+      dropdownNames.some((name) => name.includes("dropdown-trigger")),
+    ).toBe(true);
+    expect(
+      contextMenuNames.some((name) => name.includes("dropdown-trigger")),
+    ).toBe(false);
+  });
+
+  it("ignores shared recipe exports so badge tokens never leak into buttons", () => {
+    // `zuiButtonLikeSolidAppearances` is spread into `zuiBadgeAppearances` and
+    // references `--zui-badge-*`. Its `Button` prefix must not pull it into the
+    // Buttons model, and it must not add a phantom appearance group.
+    const buttons = DesignSystem.getComponent("buttons");
+
+    expect(
+      (buttons?.variables() ?? []).some((token) =>
+        token.name.startsWith("--zui-badge"),
+      ),
+    ).toBe(false);
+    expect(buttons?.appearances()).not.toContain("like-solid");
+    expect(buttons?.slots()).not.toContain("like-solid");
+  });
+
+  it("recognizes the full set of variant-group suffixes", () => {
+    const toastPositions = DesignSystem.getComponent("toast")
+      ?.variants("position", { slot: "viewport" })
+      .map((variant) => variant.key);
+    expect(toastPositions).toEqual(
+      expect.arrayContaining(["top-left", "bottom-right"]),
+    );
+
+    const popoverWidths = DesignSystem.getComponent("popover")
+      ?.variants("width", { slot: "content" })
+      .map((variant) => variant.key);
+    expect(popoverWidths).toEqual(expect.arrayContaining(["sm", "2xl"]));
+
+    const badgeShapes = DesignSystem.getComponent("badge")
+      ?.variants("shape")
+      .map((variant) => variant.key);
+    expect(badgeShapes).toEqual(expect.arrayContaining(["pill", "square"]));
+
+    const drawerSides = DesignSystem.getComponent("drawer")
+      ?.variants("side", { slot: "content" })
+      .map((variant) => variant.key);
+    expect(drawerSides).toEqual(expect.arrayContaining(["left", "right"]));
+  });
+
+  it("leaves dark-only variables unpaired", () => {
+    // A `-dark` reference with no light base must stay unpaired rather than
+    // pointing at a variable that was never parsed.
+    const darkOnly = DesignSystem.parse(
+      "bg-[var(--zui-probe-only-dark,#000)]",
+    );
+    expect(darkOnly).toHaveLength(1);
+    expect(darkOnly[0]?.theme).toBe("dark");
+    expect(darkOnly[0]?.pairName).toBeUndefined();
+
+    const paired = DesignSystem.parse(
+      "a-[var(--zui-probe-bg,#fff)] b-[var(--zui-probe-bg-dark,#000)]",
+    );
+    const light = paired.find((token) => token.name === "--zui-probe-bg");
+    const dark = paired.find((token) => token.name === "--zui-probe-bg-dark");
+    expect(light?.theme).toBe("light");
+    expect(light?.pairName).toBe("--zui-probe-bg-dark");
+    expect(dark?.pairName).toBe("--zui-probe-bg");
+  });
+
   it("returns undefined for unknown slugs and variants", () => {
     expect(DesignSystem.getComponent("not-a-component")).toBeUndefined();
     expect(

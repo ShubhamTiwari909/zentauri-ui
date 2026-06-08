@@ -60,10 +60,15 @@ export type ComponentHandle = {
 type ComponentSpec = {
   slug: string;
   title: string;
-  /** Token-name prefix, i.e. the `<component>` in `--zui-<component>-…`. */
-  tokenPrefix: string;
   /** Identifier stem of the `zui<Stem>…` exports backing this component. */
   exportPrefix: string;
+  /**
+   * Identifier stems whose exports contribute this component's variables.
+   * Defaults to `[exportPrefix]`. Components that reuse another component's
+   * recipe (e.g. SearchBar → Input) or spread their tokens across several
+   * stems (e.g. Typography → Heading/Text/lists) widen this list.
+   */
+  variableStems: string[];
 };
 
 const componentSlugs = [
@@ -96,6 +101,7 @@ const componentSlugs = [
   "radio-group",
   "rating",
   "scroll-area",
+  "search",
   "select",
   "skeleton",
   "slider",
@@ -110,19 +116,33 @@ const componentSlugs = [
   "typography",
 ] as const;
 
-// Slugs whose token prefix or export stem diverges from the slug itself.
+// Shared "recipe" exports that no single component owns. They are spread into a
+// component's own token export (e.g. `zuiButtonLikeSolidAppearances` →
+// `zuiBadgeAppearances`), so the owning component already gets their classes
+// through that spread. The standalone export must be ignored, otherwise its
+// identifier prefix mis-attributes it: `zuiButtonLikeSolidAppearances` starts
+// with the `Button` stem yet references only `--zui-badge-*` variables, which
+// would leak badge tokens into the Buttons model (and add a phantom variant).
+const sharedRecipeExports = new Set(["zuiButtonLikeSolidAppearances"]);
+
+// Slugs whose export stem(s) or title diverge from the slug itself.
 const overrides: Record<
   string,
-  { tokenPrefix?: string; exportPrefix?: string; title?: string }
+  { exportPrefix?: string; title?: string; variableStems?: string[] }
 > = {
-  buttons: { tokenPrefix: "button" },
-  inputs: { tokenPrefix: "input", exportPrefix: "Input" },
-  "otp-input": { tokenPrefix: "otp", exportPrefix: "Otp" },
-  "radio-group": { tokenPrefix: "radio" },
-  "context-menu": { tokenPrefix: "dropdown" },
+  buttons: { exportPrefix: "Button" },
+  inputs: { exportPrefix: "Input" },
+  "otp-input": { exportPrefix: "Otp" },
+  // SearchBar has no tokens of its own — it renders the Input recipe.
+  search: { exportPrefix: "Input", title: "Search" },
+  // Typography spreads its tokens across heading/text/list stems.
+  typography: {
+    variableStems: ["Typography", "Heading", "Text", "Ordered", "Unordered"],
+  },
 };
 
-// Identifier suffix → normalized variant group name.
+// Identifier suffix → normalized variant group name. Plural forms precede the
+// singular so the longer suffix wins when both could match.
 const groupSuffixes: Array<[suffix: string, group: string]> = [
   ["Appearances", "appearance"],
   ["Appearance", "appearance"],
@@ -140,7 +160,23 @@ const groupSuffixes: Array<[suffix: string, group: string]> = [
   ["Variant", "variant"],
   ["Speeds", "speed"],
   ["Speed", "speed"],
+  ["Placements", "placement"],
+  ["Placement", "placement"],
+  ["Positions", "position"],
+  ["Position", "position"],
+  ["Animations", "animation"],
+  ["Animation", "animation"],
+  ["Shapes", "shape"],
+  ["Shape", "shape"],
   ["Shadows", "shadow"],
+  ["Sides", "side"],
+  ["Side", "side"],
+  ["Widths", "width"],
+  ["Width", "width"],
+  ["Colors", "color"],
+  ["Color", "color"],
+  ["Rounded", "rounded"],
+  ["Spacing", "spacing"],
   ["Visibility", "visibility"],
   ["Markers", "marker"],
 ];
@@ -168,14 +204,31 @@ function kebabCase(value: string) {
 
 const specs: ComponentSpec[] = componentSlugs.map((slug) => {
   const override = overrides[slug] ?? {};
+  const exportPrefix = override.exportPrefix ?? pascalCase(slug);
 
   return {
     slug,
     title: override.title ?? titleCase(slug),
-    tokenPrefix: override.tokenPrefix ?? slug,
-    exportPrefix: override.exportPrefix ?? pascalCase(slug),
+    exportPrefix,
+    variableStems: override.variableStems ?? [exportPrefix],
   };
 });
+
+/**
+ * Does `name` belong to the `zui<stem>` export family? Uses the same uppercase
+ * boundary guard as {@link classifyExportName} so stem "Tab" doesn't claim
+ * "zuiTabsBase" (remainder "sBase" starts lowercase).
+ */
+function nameMatchesStem(name: string, stem: string): boolean {
+  const full = `zui${stem}`;
+
+  if (!name.startsWith(full)) {
+    return false;
+  }
+
+  const remainder = name.slice(full.length);
+  return remainder.length === 0 || /^[A-Z]/.test(remainder);
+}
 
 // --- CSS variable parsing -------------------------------------------------
 
@@ -376,12 +429,22 @@ function classifyVariables(raw: RawVariable[]): ZuiVariable[] {
     const darkName = `${baseName}-dark` as `--zui-${string}`;
     const hasDarkPair = names.has(darkName);
 
-    // 5 + 6. Resolve theme and the paired variable name.
+    // 5 + 6. Resolve theme and the paired variable name. A dark var only pairs
+    // back when its light base was actually parsed (dark-only refs stay
+    // unpaired rather than pointing at a non-existent variable).
+    const hasLightBase = names.has(baseName);
+
     return {
       name,
       fallback,
       theme: isDark ? "dark" : hasDarkPair ? "light" : "shared",
-      pairName: isDark ? baseName : hasDarkPair ? darkName : undefined,
+      pairName: isDark
+        ? hasLightBase
+          ? baseName
+          : undefined
+        : hasDarkPair
+          ? darkName
+          : undefined,
     } satisfies ZuiVariable;
   });
 }
@@ -506,14 +569,7 @@ type GroupRecord = {
   entries: Record<string, string>;
 };
 
-function tokenPrefixMatches(prefix: string, variableName: string) {
-  return (
-    variableName === `--zui-${prefix}` ||
-    variableName.startsWith(`--zui-${prefix}-`)
-  );
-}
-
-// --- per-component model (built once) -------------------------------------
+// --- per-component models (built once, lazily) ----------------------------
 
 type ComponentModel = {
   spec: ComponentSpec;
@@ -521,119 +577,113 @@ type ComponentModel = {
   variables: ZuiVariable[];
 };
 
+const models = new Map<string, ComponentModel>();
+let initialized = false;
+
 /**
- * Build the full introspection model for one component by scanning every token
- * export once. The model is the cached backbone behind a {@link ComponentHandle}
- * — it holds the component's variant groups (for `getVariant`/`appearances`)
- * and its deduped variable list (for `variables()`).
+ * Build every component model in a single pass over the design-system exports.
  *
- * Two independent things are derived from each token export, because they use
- * different keys:
- * - **Variables** are matched by their `--zui-<tokenPrefix>` *value* prefix, so
- *   a component picks up every variable it references even from a shared export.
- * - **Groups** are matched by the export's *identifier* via
- *   {@link classifyExportName}, which keys off `zui<ExportPrefix>`.
+ * The earlier design rebuilt one component at a time, and each rebuild walked
+ * *all* token exports running the (relatively heavy) {@link parseRawVariables}
+ * over them — so listing 40+ components re-parsed the same strings 40+ times
+ * (`O(components × exports)`). This pass parses each export's class strings
+ * exactly once and fans the result out to whichever components claim it, which
+ * is `O(exports)` for the expensive parsing.
+ *
+ * Two things are derived per export, keyed differently:
+ * - **Variables** — collected from the exports whose identifier matches one of
+ *   the component's {@link ComponentSpec.variableStems}. Scoping to the
+ *   component's *own* exports (rather than a shared `--zui-*` value prefix)
+ *   keeps ContextMenu from absorbing Dropdown's trigger tokens, and lets
+ *   SearchBar borrow the Input recipe.
+ * - **Groups** — classified from the export *identifier* via
+ *   {@link classifyExportName}, keyed off the primary `exportPrefix`.
  *
  * Step by step:
- * 1. Walk every `[exportName, value]` pair in the design system.
- * 2. Flatten the value to its class strings, parse out every `--zui-*` variable,
- *    and keep those whose name matches this component's `tokenPrefix`.
- * 3. Classify the export *identifier* into `{ group, slot }`; skip if it isn't
- *    one of this component's exports.
- * 4. A `base` classification ⇒ join the class strings into one string and push
- *    a single-entry group (`{ base: className }`).
- * 5. A variant classification whose value is a `{ key: className }` map ⇒ push a
- *    group carrying a shallow copy of that map's entries.
- * 6. Return the spec, the collected groups, and the variables run through
- *    {@link classifyVariables} (dedupe + light/dark pairing).
- *
- * @param spec - The component spec (slug, title, tokenPrefix, exportPrefix).
- * @returns A {@link ComponentModel} ready to back a component handle.
- *
- * @example
- * buildModel({ slug: "accordion", title: "Accordion",
- *              tokenPrefix: "accordion", exportPrefix: "Accordion" });
- *  → {
- *      spec: { … },
- *      groups: [
- *        { group: "base",       slot: "root", entries: { base: "rounded-xl …" } },
- *        { group: "appearance", slot: "root", entries: { default: "…", blue: "…", outline: "…" } },
- *        { group: "size",       slot: "root", entries: { sm: "…", md: "…", lg: "…" } },
- *        { group: "appearance", slot: "item", entries: { blue: "…", … } },
- *      ],
- *      variables: [ { name: "--zui-accordion-blue-divider", theme: "light", … }, … ],
- *    }
+ * 1. Seed an accumulator (groups + raw variables) for every spec.
+ * 2. For each export, flatten its class strings and parse their `--zui-*`
+ *    variables a single time.
+ * 3. For each spec: if the export sits under one of its variable stems, add the
+ *    parsed variables; independently, classify the identifier into a group.
+ * 4. A `base` classification ⇒ a single-entry group of the merged class string;
+ *    a variant-map classification ⇒ a group keyed by variant name.
+ * 5. Freeze each accumulator into a model (variables deduped + light/dark
+ *    paired via {@link classifyVariables}) and cache it.
  */
-function buildModel(spec: ComponentSpec): ComponentModel {
-  const groups: GroupRecord[] = [];
-  const rawVariables: RawVariable[] = [];
+function initializeModels(): void {
+  if (initialized) {
+    return;
+  }
+  initialized = true;
 
-  // 1. Scan every token export in the design system.
+  const accumulators = new Map<
+    string,
+    { groups: GroupRecord[]; rawVariables: RawVariable[] }
+  >();
+
+  // 1. One accumulator per component.
+  for (const spec of specs) {
+    accumulators.set(spec.slug, { groups: [], rawVariables: [] });
+  }
+
+  // 2. Parse each export's class strings exactly once.
   for (const [name, value] of tokenEntries) {
-    // 2. Collect every variable this component references, regardless of how
-    //    the owning export is named (some components reuse another's tokens).
-    for (const className of flattenClassStrings(value)) {
-      for (const variable of parseRawVariables(className)) {
-        if (tokenPrefixMatches(spec.tokenPrefix, variable.name)) {
-          rawVariables.push(variable);
-        }
+    // Shared recipes are already folded into their owner's export — skip the
+    // standalone copy so its prefix doesn't mis-attribute it (see above).
+    if (sharedRecipeExports.has(name)) {
+      continue;
+    }
+
+    const classNames = flattenClassStrings(value);
+    const parsedVariables = classNames.flatMap(parseRawVariables);
+
+    // 3. Distribute the parsed result to whichever components claim it.
+    for (const spec of specs) {
+      const accumulator = accumulators.get(spec.slug)!;
+
+      // Variables: any export under one of the component's stems contributes.
+      if (spec.variableStems.some((stem) => nameMatchesStem(name, stem))) {
+        accumulator.rawVariables.push(...parsedVariables);
+      }
+
+      // Groups: classify the identifier against the primary export prefix.
+      const classification = classifyExportName(spec.exportPrefix, name);
+
+      if (!classification) {
+        continue;
+      }
+
+      // 4. Base export → one merged-string group; variant map → keyed group.
+      if (classification.group === "base") {
+        accumulator.groups.push({
+          group: "base",
+          slot: classification.slot,
+          entries: { base: classNames.join(" ") },
+        });
+      } else if (isVariantMap(value)) {
+        accumulator.groups.push({
+          group: classification.group,
+          slot: classification.slot,
+          entries: { ...value },
+        });
       }
     }
-
-    // 3. Map named exports into variant groups for `getVariant`/`appearances`.
-    const classification = classifyExportName(spec.exportPrefix, name);
-
-    if (!classification) {
-      continue;
-    }
-
-    // 4. Base export → one group holding the merged class string.
-    if (classification.group === "base") {
-      const className = flattenClassStrings(value).join(" ");
-      groups.push({
-        group: "base",
-        slot: classification.slot,
-        entries: { base: className },
-      });
-      continue;
-    }
-
-    // 5. Variant map export → one group keyed by variant name.
-    if (isVariantMap(value)) {
-      groups.push({
-        group: classification.group,
-        slot: classification.slot,
-        entries: { ...value },
-      });
-    }
   }
 
-  // 6. Dedupe/pair variables and return the assembled model.
-  return {
-    spec,
-    groups,
-    variables: classifyVariables(rawVariables),
-  };
+  // 5. Freeze each accumulator into a cached model.
+  for (const spec of specs) {
+    const accumulator = accumulators.get(spec.slug)!;
+    models.set(spec.slug, {
+      spec,
+      groups: accumulator.groups,
+      variables: classifyVariables(accumulator.rawVariables),
+    });
+  }
 }
 
-const models = new Map<string, ComponentModel>();
-
 function getModel(slug: string): ComponentModel | undefined {
-  const cached = models.get(slug);
-
-  if (cached) {
-    return cached;
-  }
-
-  const spec = specs.find((entry) => entry.slug === slug);
-
-  if (!spec) {
-    return undefined;
-  }
-
-  const model = buildModel(spec);
-  models.set(slug, model);
-  return model;
+  initializeModels();
+  return models.get(slug);
 }
 
 // --- public handles -------------------------------------------------------
@@ -671,11 +721,11 @@ function createVariantHandle(group: GroupRecord, key: string): VariantHandle {
  *    - `variants(group, opts)` → handles for every key in that group ([] if none).
  *    - `variables()` → the component's deduped, theme-paired variables.
  *
- * @param model - The component's built model (see {@link buildModel}).
+ * @param model - The component's built model (see {@link initializeModels}).
  * @returns A {@link ComponentHandle} exposing the lazy query methods.
  *
  * @example
- * const accordion = createComponentHandle(buildModel(accordionSpec));
+ * const accordion = DesignSystem.getComponent("accordion")!;
  * accordion.slug;                            // → "accordion"
  * accordion.slots();                         // → ["root", "item", "trigger", "content"]
  * accordion.appearances();                   // → ["default", "blue", "outline"]

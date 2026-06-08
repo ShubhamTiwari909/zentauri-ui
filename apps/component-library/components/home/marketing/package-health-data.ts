@@ -5,8 +5,8 @@ export const PACKAGE_TEST_HEALTH = {
     passed: 78,
   },
   tests: {
-    total: 598,
-    passed: 598,
+    total: 603,
+    passed: 603,
   },
   areas: [
     {
@@ -27,7 +27,7 @@ export const PACKAGE_TEST_HEALTH = {
     {
       area: "Design system facade",
       files: 1,
-      tests: 6,
+      tests: 11,
     },
     {
       area: "CLI and import rewriting",
