@@ -36,7 +36,9 @@ function mergeTargetOverrides(
 function isTargetObject(
   target: NonNullable<MotionAnimationProps["whileInView"]>,
 ): target is MotionAnimationPreset["animate"] {
-  return target !== null && typeof target === "object" && !Array.isArray(target);
+  return (
+    target !== null && typeof target === "object" && !Array.isArray(target)
+  );
 }
 
 export function createMotionAnimation(

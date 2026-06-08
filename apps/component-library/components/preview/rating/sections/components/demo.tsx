@@ -18,7 +18,6 @@ export function RatingDemo({
   readOnly,
   size,
 }: RatingDemoProps) {
-
   return (
     <div className="flex flex-wrap gap-4">
       {icons.map((icon, index) => {

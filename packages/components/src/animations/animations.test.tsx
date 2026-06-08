@@ -43,8 +43,7 @@ vi.mock("framer-motion", async () => {
               "data-motion-transition": serializeMotionValue(transition),
               "data-motion-viewport": serializeMotionValue(viewport),
               "data-motion-while-hover": serializeMotionValue(whileHover),
-              "data-motion-while-in-view":
-                serializeMotionValue(whileInView),
+              "data-motion-while-in-view": serializeMotionValue(whileInView),
               "data-motion-while-tap": serializeMotionValue(whileTap),
             },
             children as React.ReactNode,

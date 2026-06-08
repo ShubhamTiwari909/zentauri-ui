@@ -241,12 +241,7 @@ type ShowcaseRowProps = {
   code: string;
 };
 
-function ShowcaseRow({
-  title,
-  href,
-  preview,
-  code,
-}: ShowcaseRowProps) {
+function ShowcaseRow({ title, href, preview, code }: ShowcaseRowProps) {
   return (
     <article
       className={cn(
@@ -427,7 +422,6 @@ export function HomeComponentShowcase() {
             size: "sm",
             transition: "smooth",
           })}
-         
           preview={
             <div className="flex flex-wrap gap-4 min-w-full">
               <TreeViewDemo

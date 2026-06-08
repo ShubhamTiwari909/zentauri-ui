@@ -48,7 +48,6 @@ function FooterLink({ item }: { item: SiteChromeNavItem }) {
         rel="noopener noreferrer"
       >
         <span>{item.label}</span>
-
       </a>
     );
   }
