@@ -25,5 +25,5 @@ export const contextMenuCssVariables = defineCssVariableReference({
     "ContextMenu shares Dropdown content and item variables, plus label and separator tokens, so menu theming stays aligned across right-click and click-triggered actions.",
   lightVariables: contextMenuLightVariables,
   darkExamples: contextMenuDarkExamples,
-  darkVariableCount: contextMenuDarkExamples.length,
+  darkVariableCount: contextMenuLightVariables.length,
 });

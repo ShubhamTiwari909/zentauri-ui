@@ -88,7 +88,7 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-accent-fg-dark", "oklch(81.1% 0.111 293.571)"],
     ["typography-accent-border-dark", "oklch(81.1% 0.111 293.571 / 0.4)"],
     ["typography-destructive-fg-dark", "oklch(71.2% 0.194 13.428)"],
-    ["typography-destructive-border-dark", "oklch(81% 0.117 11.638 / 0.4)"],
+    ["typography-destructive-border-dark", "oklch(71.2% 0.194 13.428 / 0.4)"],
     ["typography-info-fg-dark", "oklch(82.8% 0.111 230.318)"],
     ["typography-info-border-dark", "oklch(82.8% 0.111 230.318 / 0.4)"],
     ["typography-success-fg-dark", "oklch(84.5% 0.143 164.978)"],
