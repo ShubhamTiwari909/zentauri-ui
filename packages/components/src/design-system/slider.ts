@@ -15,8 +15,7 @@ export const zuiSliderTrackSizes = {
   lg: "h-2.5",
 } as const;
 
-export const zuiSliderRangeBase =
-  "absolute h-full rounded-full bg-linear-to-r from-[var(--zui-slider-range-from,oklch(60.6%_0.25_292.717))] dark:from-[var(--zui-slider-range-from-dark,oklch(60.6%_0.25_292.717))] to-[var(--zui-slider-range-to,oklch(51.1%_0.262_276.966))] dark:to-[var(--zui-slider-range-to-dark,oklch(67.3%_0.182_276.935))]";
+export const zuiSliderRangeBase = "absolute h-full rounded-full bg-linear-to-r";
 
 export const zuiSliderRangeAppearances = {
   default:
@@ -58,6 +57,39 @@ export const zuiSliderRangeAppearances = {
     "from-[var(--zui-slider-range-gradient-pink-from,oklch(65.6%_0.241_354.308))] dark:from-[var(--zui-slider-range-gradient-pink-from-dark,oklch(65.6%_0.241_354.308))] to-[var(--zui-slider-range-gradient-pink-to,oklch(51.1%_0.262_276.966))] dark:to-[var(--zui-slider-range-gradient-pink-to-dark,oklch(67.3%_0.182_276.935))]",
   "gradient-orange":
     "from-[var(--zui-slider-range-gradient-orange-from,oklch(70.5%_0.213_47.604))] dark:from-[var(--zui-slider-range-gradient-orange-from-dark,oklch(70.5%_0.213_47.604))] to-[var(--zui-slider-range-gradient-orange-to,oklch(51.1%_0.262_276.966))] dark:to-[var(--zui-slider-range-gradient-orange-to-dark,oklch(67.3%_0.182_276.935))]",
+  blue: "from-[var(--zui-slider-range-blue-from,#2563eb)] dark:from-[var(--zui-slider-range-blue-from-dark,#3b82f6)] to-[var(--zui-slider-range-blue-to,#2563eb)] dark:to-[var(--zui-slider-range-blue-to-dark,#3b82f6)]",
+  cyan: "from-[var(--zui-slider-range-cyan-from,#0891b2)] dark:from-[var(--zui-slider-range-cyan-from-dark,#22d3ee)] to-[var(--zui-slider-range-cyan-to,#0891b2)] dark:to-[var(--zui-slider-range-cyan-to-dark,#22d3ee)]",
+  green:
+    "from-[var(--zui-slider-range-green-from,#16a34a)] dark:from-[var(--zui-slider-range-green-from-dark,#22c55e)] to-[var(--zui-slider-range-green-to,#16a34a)] dark:to-[var(--zui-slider-range-green-to-dark,#22c55e)]",
+  lime: "from-[var(--zui-slider-range-lime-from,#65a30d)] dark:from-[var(--zui-slider-range-lime-from-dark,#a3e635)] to-[var(--zui-slider-range-lime-to,#65a30d)] dark:to-[var(--zui-slider-range-lime-to-dark,#a3e635)]",
+  mint: "from-[var(--zui-slider-range-mint-from,#10b981)] dark:from-[var(--zui-slider-range-mint-from-dark,#6ee7b7)] to-[var(--zui-slider-range-mint-to,#10b981)] dark:to-[var(--zui-slider-range-mint-to-dark,#6ee7b7)]",
+  ocean:
+    "from-[var(--zui-slider-range-ocean-from,#0284c7)] dark:from-[var(--zui-slider-range-ocean-from-dark,#38bdf8)] to-[var(--zui-slider-range-ocean-to,#0284c7)] dark:to-[var(--zui-slider-range-ocean-to-dark,#38bdf8)]",
+  sapphire:
+    "from-[var(--zui-slider-range-sapphire-from,#1d4ed8)] dark:from-[var(--zui-slider-range-sapphire-from-dark,#60a5fa)] to-[var(--zui-slider-range-sapphire-to,#1d4ed8)] dark:to-[var(--zui-slider-range-sapphire-to-dark,#60a5fa)]",
+  lavender:
+    "from-[var(--zui-slider-range-lavender-from,#8b5cf6)] dark:from-[var(--zui-slider-range-lavender-from-dark,#a78bfa)] to-[var(--zui-slider-range-lavender-to,#8b5cf6)] dark:to-[var(--zui-slider-range-lavender-to-dark,#a78bfa)]",
+  ruby: "from-[var(--zui-slider-range-ruby-from,#be123c)] dark:from-[var(--zui-slider-range-ruby-from-dark,#fb7185)] to-[var(--zui-slider-range-ruby-to,#be123c)] dark:to-[var(--zui-slider-range-ruby-to-dark,#fb7185)]",
+  red: "from-[var(--zui-slider-range-red-from,#dc2626)] dark:from-[var(--zui-slider-range-red-from-dark,#ef4444)] to-[var(--zui-slider-range-red-to,#dc2626)] dark:to-[var(--zui-slider-range-red-to-dark,#ef4444)]",
+  slate:
+    "from-[var(--zui-slider-range-slate-from,#475569)] dark:from-[var(--zui-slider-range-slate-from-dark,#64748b)] to-[var(--zui-slider-range-slate-to,#475569)] dark:to-[var(--zui-slider-range-slate-to-dark,#64748b)]",
+  zinc: "from-[var(--zui-slider-range-zinc-from,#52525b)] dark:from-[var(--zui-slider-range-zinc-from-dark,#71717a)] to-[var(--zui-slider-range-zinc-to,#52525b)] dark:to-[var(--zui-slider-range-zinc-to-dark,#71717a)]",
+  stone:
+    "from-[var(--zui-slider-range-stone-from,#57534e)] dark:from-[var(--zui-slider-range-stone-from-dark,#78716c)] to-[var(--zui-slider-range-stone-to,#57534e)] dark:to-[var(--zui-slider-range-stone-to-dark,#78716c)]",
+  royal:
+    "from-[var(--zui-slider-range-royal-from,#4338ca)] dark:from-[var(--zui-slider-range-royal-from-dark,#818cf8)] to-[var(--zui-slider-range-royal-to,#4338ca)] dark:to-[var(--zui-slider-range-royal-to-dark,#818cf8)]",
+  electric:
+    "from-[var(--zui-slider-range-electric-from,#0ea5e9)] dark:from-[var(--zui-slider-range-electric-from-dark,#38bdf8)] to-[var(--zui-slider-range-electric-to,#0ea5e9)] dark:to-[var(--zui-slider-range-electric-to-dark,#38bdf8)]",
+  forest:
+    "from-[var(--zui-slider-range-forest-from,#166534)] dark:from-[var(--zui-slider-range-forest-from-dark,#4ade80)] to-[var(--zui-slider-range-forest-to,#166534)] dark:to-[var(--zui-slider-range-forest-to-dark,#4ade80)]",
+  sunset:
+    "from-[var(--zui-slider-range-sunset-from,#ea580c)] dark:from-[var(--zui-slider-range-sunset-from-dark,#fb923c)] to-[var(--zui-slider-range-sunset-to,#ea580c)] dark:to-[var(--zui-slider-range-sunset-to-dark,#fb923c)]",
+  magenta:
+    "from-[var(--zui-slider-range-magenta-from,#c026d3)] dark:from-[var(--zui-slider-range-magenta-from-dark,#e879f9)] to-[var(--zui-slider-range-magenta-to,#c026d3)] dark:to-[var(--zui-slider-range-magenta-to-dark,#e879f9)]",
+  crimson:
+    "from-[var(--zui-slider-range-crimson-from,#b91c1c)] dark:from-[var(--zui-slider-range-crimson-from-dark,#f87171)] to-[var(--zui-slider-range-crimson-to,#b91c1c)] dark:to-[var(--zui-slider-range-crimson-to-dark,#f87171)]",
+  aqua: "from-[var(--zui-slider-range-aqua-from,#0f766e)] dark:from-[var(--zui-slider-range-aqua-from-dark,#2dd4bf)] to-[var(--zui-slider-range-aqua-to,#0f766e)] dark:to-[var(--zui-slider-range-aqua-to-dark,#2dd4bf)]",
+  plum: "from-[var(--zui-slider-range-plum-from,#7e22ce)] dark:from-[var(--zui-slider-range-plum-from-dark,#c084fc)] to-[var(--zui-slider-range-plum-to,#7e22ce)] dark:to-[var(--zui-slider-range-plum-to-dark,#c084fc)]",
 } as const;
 
 export const zuiSliderThumbBase =

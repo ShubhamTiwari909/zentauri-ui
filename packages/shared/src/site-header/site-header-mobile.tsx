@@ -15,12 +15,11 @@ import { FiList, FiX } from "react-icons/fi";
 import type { SiteChromeNavItem } from "./navigation";
 import { SiteNavLink } from "./site-link";
 
-const sectionLabels: Record<"build" | "catalog" | "more", readonly string[]> =
-  {
-    build: ["Installation", "Components", "Hooks"],
-    catalog: ["Animations", "Typography", "Charts", "Design tokens"],
-    more: ["Contact", "Demos", "GitHub"],
-  };
+const sectionLabels: Record<"build" | "catalog" | "more", readonly string[]> = {
+  build: ["Installation", "Components", "Hooks"],
+  catalog: ["Animations", "Typography", "Charts", "Design tokens"],
+  more: ["Contact", "Demos", "GitHub"],
+};
 
 const drawerNavLinkClassName =
   "group flex items-center justify-between rounded-lg border border-white/0 bg-white/[0.02] px-3.5 py-3 text-base font-medium text-slate-200 underline-offset-4 transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/20 hover:bg-cyan-300/[0.07] hover:text-cyan-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60";
@@ -30,7 +29,9 @@ function mobileNavSections(navItems: readonly SiteChromeNavItem[]) {
   const groups = [
     {
       title: "Start",
-      items: navItems.filter((item) => sectionLabels.build.includes(item.label)),
+      items: navItems.filter((item) =>
+        sectionLabels.build.includes(item.label),
+      ),
     },
     {
       title: "Library",

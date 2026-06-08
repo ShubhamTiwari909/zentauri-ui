@@ -15,7 +15,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 | Surface             | Count | Import shape                                          |
 | ------------------- | ----: | ----------------------------------------------------- |
-| Static UI entries   |    42 | `@zentauri-ui/zentauri-components/ui/<name>`          |
+| Static UI entries   |    41 | `@zentauri-ui/zentauri-components/ui/<name>`          |
 | Animated UI entries |    27 | `@zentauri-ui/zentauri-components/ui/<name>/animated` |
 | Animation entries   |    41 | `@zentauri-ui/zentauri-components/animations/<name>`  |
 | Chart entries       |     9 | `@zentauri-ui/zentauri-components/charts/<type>`      |
@@ -29,12 +29,12 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 78 passed (78)   |
-| Tests      | 604 passed (604) |
+| Test files | 77 passed (77)   |
+| Tests      | 592 passed (592) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
-| Components and UI utilities | 47         | 443   |
+| Components and UI utilities | 46         | 431   |
 | Standalone animations       | 1          | 45    |
 | React hooks                 | 28         | 101   |
 | CLI and import rewriting    | 2          | 15    |
@@ -49,7 +49,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/peer-isolation.test.ts`                                         |    29 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
 | `src/ui/timeline/timeline.test.tsx`                                     |    14 |
-| `src/ui/stepper/stepper.test.tsx`                                       |    12 |
 | `src/ui/alert/alert.test.tsx`                                           |    11 |
 | `src/ui/rating/rating.test.tsx`                                         |    11 |
 | `src/ui/select/select.test.tsx`                                         |    11 |
@@ -223,7 +222,6 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Skeleton        | `skeleton`        | `skeleton/animated`                |
 | Slider          | `slider`          | —                                  |
 | Spinner         | —                 | `spinner/animated`                 |
-| Stepper         | `stepper`         | —                                  |
 | Table           | `table`           | `table/animated`                   |
 | Tabs            | `tabs`            | `tabs/animated`                    |
 | Timeline        | `timeline`        | `timeline/animated`                |
@@ -337,7 +335,7 @@ export function RevenueChart() {
 
 ## Dynamic Stepper
 
-Import the UI from **`@zentauri-ui/zentauri-components/ui/dynamic-stepper`**. This entry is **static only** (no `/animated` subpath). It is separate from the compositional **Stepper** primitives under `ui/stepper` (for example `Stepper`, `StepperItem`, `StepperIndicator`).
+Import the UI from **`@zentauri-ui/zentauri-components/ui/dynamic-stepper`**. This entry is **static only** (no `/animated` subpath) and is the recommended step-flow primitive for guided navigation.
 
 **Component:** `DynamicStepper` — data-driven steps with Previous / Next controls backed by the **Button** component (`buttonAppearance`, `buttonSize`).
 
@@ -818,9 +816,9 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 604 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 592 test cases in total
 - `pnpm test:a11y` — focused **axe-core** accessibility smoke coverage for package-level UI primitives and compound components
-- `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system and variant files without generating a large checked-in token catalog
+- `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).
 
 ## Release and Contribution

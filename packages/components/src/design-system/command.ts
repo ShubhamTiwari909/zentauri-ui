@@ -77,4 +77,37 @@ export const zuiCommandContentAppearances = {
     "border-[color:var(--zui-command-content-gradient-indigo-border,oklch(39.8%_0.195_277.366))] dark:border-[color:var(--zui-command-content-gradient-indigo-border-dark,oklch(51.1%_0.262_276.966))] bg-linear-to-br from-[var(--zui-command-content-gradient-indigo-from,oklch(96.2%_0.018_272.314))] dark:from-[var(--zui-command-content-gradient-indigo-from-dark,oklch(25.7%_0.09_281.288_/_0.85))] to-[var(--zui-command-content-gradient-indigo-to,oklch(97.7%_0.014_308.299))] dark:to-[var(--zui-command-content-gradient-indigo-to-dark,oklch(29.1%_0.149_302.717_/_0.85))] backdrop-blur-xl",
   "gradient-pink":
     "border-[color:var(--zui-command-content-gradient-pink-border,oklch(45.9%_0.187_3.815))] dark:border-[color:var(--zui-command-content-gradient-pink-border-dark,oklch(59.2%_0.249_0.584))] bg-linear-to-br from-[var(--zui-command-content-gradient-pink-from,oklch(97.1%_0.014_343.198))] dark:from-[var(--zui-command-content-gradient-pink-from-dark,oklch(28.4%_0.109_3.907_/_0.85))] to-[var(--zui-command-content-gradient-pink-to,oklch(96.9%_0.015_12.422))] dark:to-[var(--zui-command-content-gradient-pink-to-dark,oklch(27.1%_0.105_12.094_/_0.85))] backdrop-blur-xl",
+  blue: "border border-[color:var(--zui-command-content-blue-border,#2563eb)] dark:border-[color:var(--zui-command-content-blue-border-dark,#3b82f6)] bg-[var(--zui-command-content-blue-bg,#2563eb14)] dark:bg-[var(--zui-command-content-blue-bg-dark,#3b82f624)] backdrop-blur-xl",
+  cyan: "border border-[color:var(--zui-command-content-cyan-border,#0891b2)] dark:border-[color:var(--zui-command-content-cyan-border-dark,#22d3ee)] bg-[var(--zui-command-content-cyan-bg,#0891b214)] dark:bg-[var(--zui-command-content-cyan-bg-dark,#22d3ee24)] backdrop-blur-xl",
+  green:
+    "border border-[color:var(--zui-command-content-green-border,#16a34a)] dark:border-[color:var(--zui-command-content-green-border-dark,#22c55e)] bg-[var(--zui-command-content-green-bg,#16a34a14)] dark:bg-[var(--zui-command-content-green-bg-dark,#22c55e24)] backdrop-blur-xl",
+  lime: "border border-[color:var(--zui-command-content-lime-border,#65a30d)] dark:border-[color:var(--zui-command-content-lime-border-dark,#a3e635)] bg-[var(--zui-command-content-lime-bg,#65a30d14)] dark:bg-[var(--zui-command-content-lime-bg-dark,#a3e63524)] backdrop-blur-xl",
+  mint: "border border-[color:var(--zui-command-content-mint-border,#10b981)] dark:border-[color:var(--zui-command-content-mint-border-dark,#6ee7b7)] bg-[var(--zui-command-content-mint-bg,#10b98114)] dark:bg-[var(--zui-command-content-mint-bg-dark,#6ee7b724)] backdrop-blur-xl",
+  ocean:
+    "border border-[color:var(--zui-command-content-ocean-border,#0284c7)] dark:border-[color:var(--zui-command-content-ocean-border-dark,#38bdf8)] bg-[var(--zui-command-content-ocean-bg,#0284c714)] dark:bg-[var(--zui-command-content-ocean-bg-dark,#38bdf824)] backdrop-blur-xl",
+  sapphire:
+    "border border-[color:var(--zui-command-content-sapphire-border,#1d4ed8)] dark:border-[color:var(--zui-command-content-sapphire-border-dark,#60a5fa)] bg-[var(--zui-command-content-sapphire-bg,#1d4ed814)] dark:bg-[var(--zui-command-content-sapphire-bg-dark,#60a5fa24)] backdrop-blur-xl",
+  lavender:
+    "border border-[color:var(--zui-command-content-lavender-border,#8b5cf6)] dark:border-[color:var(--zui-command-content-lavender-border-dark,#a78bfa)] bg-[var(--zui-command-content-lavender-bg,#8b5cf614)] dark:bg-[var(--zui-command-content-lavender-bg-dark,#a78bfa24)] backdrop-blur-xl",
+  ruby: "border border-[color:var(--zui-command-content-ruby-border,#be123c)] dark:border-[color:var(--zui-command-content-ruby-border-dark,#fb7185)] bg-[var(--zui-command-content-ruby-bg,#be123c14)] dark:bg-[var(--zui-command-content-ruby-bg-dark,#fb718524)] backdrop-blur-xl",
+  red: "border border-[color:var(--zui-command-content-red-border,#dc2626)] dark:border-[color:var(--zui-command-content-red-border-dark,#ef4444)] bg-[var(--zui-command-content-red-bg,#dc262614)] dark:bg-[var(--zui-command-content-red-bg-dark,#ef444424)] backdrop-blur-xl",
+  slate:
+    "border border-[color:var(--zui-command-content-slate-border,#475569)] dark:border-[color:var(--zui-command-content-slate-border-dark,#64748b)] bg-[var(--zui-command-content-slate-bg,#47556914)] dark:bg-[var(--zui-command-content-slate-bg-dark,#64748b24)] backdrop-blur-xl",
+  zinc: "border border-[color:var(--zui-command-content-zinc-border,#52525b)] dark:border-[color:var(--zui-command-content-zinc-border-dark,#71717a)] bg-[var(--zui-command-content-zinc-bg,#52525b14)] dark:bg-[var(--zui-command-content-zinc-bg-dark,#71717a24)] backdrop-blur-xl",
+  stone:
+    "border border-[color:var(--zui-command-content-stone-border,#57534e)] dark:border-[color:var(--zui-command-content-stone-border-dark,#78716c)] bg-[var(--zui-command-content-stone-bg,#57534e14)] dark:bg-[var(--zui-command-content-stone-bg-dark,#78716c24)] backdrop-blur-xl",
+  royal:
+    "border border-[color:var(--zui-command-content-royal-border,#4338ca)] dark:border-[color:var(--zui-command-content-royal-border-dark,#818cf8)] bg-[var(--zui-command-content-royal-bg,#4338ca14)] dark:bg-[var(--zui-command-content-royal-bg-dark,#818cf824)] backdrop-blur-xl",
+  electric:
+    "border border-[color:var(--zui-command-content-electric-border,#0ea5e9)] dark:border-[color:var(--zui-command-content-electric-border-dark,#38bdf8)] bg-[var(--zui-command-content-electric-bg,#0ea5e914)] dark:bg-[var(--zui-command-content-electric-bg-dark,#38bdf824)] backdrop-blur-xl",
+  forest:
+    "border border-[color:var(--zui-command-content-forest-border,#166534)] dark:border-[color:var(--zui-command-content-forest-border-dark,#4ade80)] bg-[var(--zui-command-content-forest-bg,#16653414)] dark:bg-[var(--zui-command-content-forest-bg-dark,#4ade8024)] backdrop-blur-xl",
+  sunset:
+    "border border-[color:var(--zui-command-content-sunset-border,#ea580c)] dark:border-[color:var(--zui-command-content-sunset-border-dark,#fb923c)] bg-[var(--zui-command-content-sunset-bg,#ea580c14)] dark:bg-[var(--zui-command-content-sunset-bg-dark,#fb923c24)] backdrop-blur-xl",
+  magenta:
+    "border border-[color:var(--zui-command-content-magenta-border,#c026d3)] dark:border-[color:var(--zui-command-content-magenta-border-dark,#e879f9)] bg-[var(--zui-command-content-magenta-bg,#c026d314)] dark:bg-[var(--zui-command-content-magenta-bg-dark,#e879f924)] backdrop-blur-xl",
+  crimson:
+    "border border-[color:var(--zui-command-content-crimson-border,#b91c1c)] dark:border-[color:var(--zui-command-content-crimson-border-dark,#f87171)] bg-[var(--zui-command-content-crimson-bg,#b91c1c14)] dark:bg-[var(--zui-command-content-crimson-bg-dark,#f8717124)] backdrop-blur-xl",
+  aqua: "border border-[color:var(--zui-command-content-aqua-border,#0f766e)] dark:border-[color:var(--zui-command-content-aqua-border-dark,#2dd4bf)] bg-[var(--zui-command-content-aqua-bg,#0f766e14)] dark:bg-[var(--zui-command-content-aqua-bg-dark,#2dd4bf24)] backdrop-blur-xl",
+  plum: "border border-[color:var(--zui-command-content-plum-border,#7e22ce)] dark:border-[color:var(--zui-command-content-plum-border-dark,#c084fc)] bg-[var(--zui-command-content-plum-bg,#7e22ce14)] dark:bg-[var(--zui-command-content-plum-bg-dark,#c084fc24)] backdrop-blur-xl",
 } as const;

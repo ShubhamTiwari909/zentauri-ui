@@ -31,7 +31,6 @@ export * from "./select";
 export * from "./skeleton";
 export * from "./slider";
 export * from "./spinner";
-export * from "./stepper";
 export * from "./table";
 export * from "./tabs";
 export * from "./timeline";

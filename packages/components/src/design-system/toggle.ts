@@ -57,6 +57,30 @@ export const zuiToggleTrackAppearances = {
     "bg-[var(--zui-toggle-track-gradient-pink-bg,oklch(82.3%_0.12_346.018))] dark:bg-[var(--zui-toggle-track-gradient-pink-bg-dark,oklch(82.3%_0.12_346.018))] data-[state=checked]:bg-linear-to-r from-[var(--zui-toggle-track-gradient-pink-from,oklch(45.9%_0.187_3.815))] dark:from-[var(--zui-toggle-track-gradient-pink-from-dark,oklch(59.2%_0.249_0.584))] to-[var(--zui-toggle-track-gradient-pink-to,oklch(45.5%_0.188_13.697))] dark:to-[var(--zui-toggle-track-gradient-pink-to-dark,oklch(58.6%_0.253_17.585))]",
   "gradient-orange":
     "bg-[var(--zui-toggle-track-gradient-orange-bg,oklch(83.7%_0.128_66.29))] dark:bg-[var(--zui-toggle-track-gradient-orange-bg-dark,oklch(83.7%_0.128_66.29))] data-[state=checked]:bg-linear-to-r from-[var(--zui-toggle-track-gradient-orange-from,oklch(47%_0.157_37.304))] dark:from-[var(--zui-toggle-track-gradient-orange-from-dark,oklch(64.6%_0.222_41.116))] to-[var(--zui-toggle-track-gradient-orange-to,oklch(44.4%_0.177_26.899))] dark:to-[var(--zui-toggle-track-gradient-orange-to-dark,oklch(57.7%_0.245_27.325))]",
+  blue: "data-[state=checked]:border-[color:var(--zui-toggle-track-blue-border-checked,#2563eb66)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-blue-border-checked-dark,#3b82f666)] data-[state=checked]:bg-[var(--zui-toggle-track-blue-bg-checked,#2563ebcc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-blue-bg-checked-dark,#3b82f6cc)]",
+  mint: "data-[state=checked]:border-[color:var(--zui-toggle-track-mint-border-checked,#10b98166)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-mint-border-checked-dark,#6ee7b766)] data-[state=checked]:bg-[var(--zui-toggle-track-mint-bg-checked,#10b981cc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-mint-bg-checked-dark,#6ee7b7cc)]",
+  ocean:
+    "data-[state=checked]:border-[color:var(--zui-toggle-track-ocean-border-checked,#0284c766)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-ocean-border-checked-dark,#38bdf866)] data-[state=checked]:bg-[var(--zui-toggle-track-ocean-bg-checked,#0284c7cc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-ocean-bg-checked-dark,#38bdf8cc)]",
+  sapphire:
+    "data-[state=checked]:border-[color:var(--zui-toggle-track-sapphire-border-checked,#1d4ed866)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-sapphire-border-checked-dark,#60a5fa66)] data-[state=checked]:bg-[var(--zui-toggle-track-sapphire-bg-checked,#1d4ed8cc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-sapphire-bg-checked-dark,#60a5facc)]",
+  lavender:
+    "data-[state=checked]:border-[color:var(--zui-toggle-track-lavender-border-checked,#8b5cf666)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-lavender-border-checked-dark,#a78bfa66)] data-[state=checked]:bg-[var(--zui-toggle-track-lavender-bg-checked,#8b5cf6cc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-lavender-bg-checked-dark,#a78bfacc)]",
+  ruby: "data-[state=checked]:border-[color:var(--zui-toggle-track-ruby-border-checked,#be123c66)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-ruby-border-checked-dark,#fb718566)] data-[state=checked]:bg-[var(--zui-toggle-track-ruby-bg-checked,#be123ccc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-ruby-bg-checked-dark,#fb7185cc)]",
+  red: "data-[state=checked]:border-[color:var(--zui-toggle-track-red-border-checked,#dc262666)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-red-border-checked-dark,#ef444466)] data-[state=checked]:bg-[var(--zui-toggle-track-red-bg-checked,#dc2626cc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-red-bg-checked-dark,#ef4444cc)]",
+  royal:
+    "data-[state=checked]:border-[color:var(--zui-toggle-track-royal-border-checked,#4338ca66)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-royal-border-checked-dark,#818cf866)] data-[state=checked]:bg-[var(--zui-toggle-track-royal-bg-checked,#4338cacc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-royal-bg-checked-dark,#818cf8cc)]",
+  electric:
+    "data-[state=checked]:border-[color:var(--zui-toggle-track-electric-border-checked,#0ea5e966)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-electric-border-checked-dark,#38bdf866)] data-[state=checked]:bg-[var(--zui-toggle-track-electric-bg-checked,#0ea5e9cc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-electric-bg-checked-dark,#38bdf8cc)]",
+  forest:
+    "data-[state=checked]:border-[color:var(--zui-toggle-track-forest-border-checked,#16653466)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-forest-border-checked-dark,#4ade8066)] data-[state=checked]:bg-[var(--zui-toggle-track-forest-bg-checked,#166534cc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-forest-bg-checked-dark,#4ade80cc)]",
+  sunset:
+    "data-[state=checked]:border-[color:var(--zui-toggle-track-sunset-border-checked,#ea580c66)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-sunset-border-checked-dark,#fb923c66)] data-[state=checked]:bg-[var(--zui-toggle-track-sunset-bg-checked,#ea580ccc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-sunset-bg-checked-dark,#fb923ccc)]",
+  magenta:
+    "data-[state=checked]:border-[color:var(--zui-toggle-track-magenta-border-checked,#c026d366)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-magenta-border-checked-dark,#e879f966)] data-[state=checked]:bg-[var(--zui-toggle-track-magenta-bg-checked,#c026d3cc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-magenta-bg-checked-dark,#e879f9cc)]",
+  crimson:
+    "data-[state=checked]:border-[color:var(--zui-toggle-track-crimson-border-checked,#b91c1c66)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-crimson-border-checked-dark,#f8717166)] data-[state=checked]:bg-[var(--zui-toggle-track-crimson-bg-checked,#b91c1ccc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-crimson-bg-checked-dark,#f87171cc)]",
+  aqua: "data-[state=checked]:border-[color:var(--zui-toggle-track-aqua-border-checked,#0f766e66)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-aqua-border-checked-dark,#2dd4bf66)] data-[state=checked]:bg-[var(--zui-toggle-track-aqua-bg-checked,#0f766ecc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-aqua-bg-checked-dark,#2dd4bfcc)]",
+  plum: "data-[state=checked]:border-[color:var(--zui-toggle-track-plum-border-checked,#7e22ce66)] dark:data-[state=checked]:border-[color:var(--zui-toggle-track-plum-border-checked-dark,#c084fc66)] data-[state=checked]:bg-[var(--zui-toggle-track-plum-bg-checked,#7e22cecc)] dark:data-[state=checked]:bg-[var(--zui-toggle-track-plum-bg-checked-dark,#c084fccc)]",
 } as const;
 
 export const zuiToggleThumbBase =
@@ -118,4 +142,28 @@ export const zuiToggleThumbColors = {
     "bg-[var(--zui-toggle-thumb-colors-gradient-pink-bg,oklch(65.6%_0.241_354.308))] dark:bg-[var(--zui-toggle-thumb-colors-gradient-pink-bg-dark,oklch(65.6%_0.241_354.308))]",
   "gradient-orange":
     "bg-[var(--zui-toggle-thumb-colors-gradient-orange-bg,oklch(70.5%_0.213_47.604))] dark:bg-[var(--zui-toggle-thumb-colors-gradient-orange-bg-dark,oklch(70.5%_0.213_47.604))]",
+  blue: "bg-[var(--zui-toggle-thumb-colors-blue-bg,#2563eb)] dark:bg-[var(--zui-toggle-thumb-colors-blue-bg-dark,#3b82f6)]",
+  mint: "bg-[var(--zui-toggle-thumb-colors-mint-bg,#10b981)] dark:bg-[var(--zui-toggle-thumb-colors-mint-bg-dark,#6ee7b7)]",
+  ocean:
+    "bg-[var(--zui-toggle-thumb-colors-ocean-bg,#0284c7)] dark:bg-[var(--zui-toggle-thumb-colors-ocean-bg-dark,#38bdf8)]",
+  sapphire:
+    "bg-[var(--zui-toggle-thumb-colors-sapphire-bg,#1d4ed8)] dark:bg-[var(--zui-toggle-thumb-colors-sapphire-bg-dark,#60a5fa)]",
+  lavender:
+    "bg-[var(--zui-toggle-thumb-colors-lavender-bg,#8b5cf6)] dark:bg-[var(--zui-toggle-thumb-colors-lavender-bg-dark,#a78bfa)]",
+  ruby: "bg-[var(--zui-toggle-thumb-colors-ruby-bg,#be123c)] dark:bg-[var(--zui-toggle-thumb-colors-ruby-bg-dark,#fb7185)]",
+  red: "bg-[var(--zui-toggle-thumb-colors-red-bg,#dc2626)] dark:bg-[var(--zui-toggle-thumb-colors-red-bg-dark,#ef4444)]",
+  royal:
+    "bg-[var(--zui-toggle-thumb-colors-royal-bg,#4338ca)] dark:bg-[var(--zui-toggle-thumb-colors-royal-bg-dark,#818cf8)]",
+  electric:
+    "bg-[var(--zui-toggle-thumb-colors-electric-bg,#0ea5e9)] dark:bg-[var(--zui-toggle-thumb-colors-electric-bg-dark,#38bdf8)]",
+  forest:
+    "bg-[var(--zui-toggle-thumb-colors-forest-bg,#166534)] dark:bg-[var(--zui-toggle-thumb-colors-forest-bg-dark,#4ade80)]",
+  sunset:
+    "bg-[var(--zui-toggle-thumb-colors-sunset-bg,#ea580c)] dark:bg-[var(--zui-toggle-thumb-colors-sunset-bg-dark,#fb923c)]",
+  magenta:
+    "bg-[var(--zui-toggle-thumb-colors-magenta-bg,#c026d3)] dark:bg-[var(--zui-toggle-thumb-colors-magenta-bg-dark,#e879f9)]",
+  crimson:
+    "bg-[var(--zui-toggle-thumb-colors-crimson-bg,#b91c1c)] dark:bg-[var(--zui-toggle-thumb-colors-crimson-bg-dark,#f87171)]",
+  aqua: "bg-[var(--zui-toggle-thumb-colors-aqua-bg,#0f766e)] dark:bg-[var(--zui-toggle-thumb-colors-aqua-bg-dark,#2dd4bf)]",
+  plum: "bg-[var(--zui-toggle-thumb-colors-plum-bg,#7e22ce)] dark:bg-[var(--zui-toggle-thumb-colors-plum-bg-dark,#c084fc)]",
 } as const;

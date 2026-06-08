@@ -36,7 +36,6 @@ const uiComponentNames = [
   "select",
   "skeleton",
   "slider",
-  "stepper",
   "table",
   "tabs",
   "timeline",

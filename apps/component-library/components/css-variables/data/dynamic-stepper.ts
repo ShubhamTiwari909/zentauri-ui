@@ -703,6 +703,677 @@ export const dynamicStepperCssVariables = defineCssVariableReference({
       "dynamic-stepper-indicator-default-bg-complete-dark",
       "oklch(55.4% 0.046 257.417 / 0.25)",
     ],
+    [
+      "dynamic-stepper-indicator-default-fg-complete-dark",
+      "oklch(98.4% 0.003 247.858)",
+    ],
+    [
+      "dynamic-stepper-indicator-default-ring-complete-dark",
+      "oklch(70.4% 0.04 256.788 / 0.25)",
+    ],
+    [
+      "dynamic-stepper-indicator-default-border-current-dark",
+      "oklch(86.9% 0.022 252.894)",
+    ],
+    [
+      "dynamic-stepper-indicator-default-bg-current-dark",
+      "oklch(55.4% 0.046 257.417 / 0.35)",
+    ],
+    ["dynamic-stepper-indicator-default-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-default-ring-current-dark",
+      "oklch(86.9% 0.022 252.894 / 0.45)",
+    ],
+    ["dynamic-stepper-indicator-default-border-upcoming-dark", "#ffffff26"],
+    ["dynamic-stepper-indicator-default-bg-upcoming-dark", "#ffffff0d"],
+    [
+      "dynamic-stepper-indicator-default-fg-upcoming-dark",
+      "oklch(70.4% 0.04 256.788)",
+    ],
+    [
+      "dynamic-stepper-indicator-secondary-border-complete-dark",
+      "oklch(44.6% 0.043 257.281)",
+    ],
+    [
+      "dynamic-stepper-indicator-secondary-bg-complete-dark",
+      "oklch(27.9% 0.041 260.031 / 0.7)",
+    ],
+    [
+      "dynamic-stepper-indicator-secondary-fg-complete-dark",
+      "oklch(92.9% 0.013 255.508)",
+    ],
+    [
+      "dynamic-stepper-indicator-secondary-ring-complete-dark",
+      "oklch(44.6% 0.043 257.281 / 0.35)",
+    ],
+    [
+      "dynamic-stepper-indicator-secondary-border-current-dark",
+      "oklch(55.4% 0.046 257.417)",
+    ],
+    [
+      "dynamic-stepper-indicator-secondary-bg-current-dark",
+      "oklch(37.2% 0.044 257.287 / 0.55)",
+    ],
+    ["dynamic-stepper-indicator-secondary-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-secondary-ring-current-dark",
+      "oklch(55.4% 0.046 257.417 / 0.45)",
+    ],
+    ["dynamic-stepper-indicator-secondary-border-upcoming-dark", "#ffffff1a"],
+    [
+      "dynamic-stepper-indicator-secondary-bg-upcoming-dark",
+      "oklch(20.8% 0.042 265.755 / 0.5)",
+    ],
+    [
+      "dynamic-stepper-indicator-secondary-fg-upcoming-dark",
+      "oklch(55.4% 0.046 257.417)",
+    ],
+    [
+      "dynamic-stepper-indicator-destructive-border-complete-dark",
+      "oklch(64.5% 0.246 16.439 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-destructive-bg-complete-dark",
+      "oklch(64.5% 0.246 16.439 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-destructive-fg-complete-dark",
+      "oklch(94.1% 0.03 12.58)",
+    ],
+    [
+      "dynamic-stepper-indicator-destructive-ring-complete-dark",
+      "oklch(71.2% 0.194 13.428 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-destructive-border-current-dark",
+      "oklch(71.2% 0.194 13.428)",
+    ],
+    [
+      "dynamic-stepper-indicator-destructive-bg-current-dark",
+      "oklch(58.6% 0.253 17.585 / 0.35)",
+    ],
+    ["dynamic-stepper-indicator-destructive-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-destructive-ring-current-dark",
+      "oklch(71.2% 0.194 13.428 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-destructive-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-destructive-bg-upcoming-dark",
+      "oklch(27.1% 0.105 12.094 / 0.25)",
+    ],
+    [
+      "dynamic-stepper-indicator-destructive-fg-upcoming-dark",
+      "oklch(70.4% 0.04 256.788)",
+    ],
+    [
+      "dynamic-stepper-indicator-outline-border-complete-dark",
+      "oklch(69.6% 0.17 162.48 / 0.55)",
+    ],
+    ["dynamic-stepper-indicator-outline-bg-complete-dark", "transparent"],
+    [
+      "dynamic-stepper-indicator-outline-fg-complete-dark",
+      "oklch(90.5% 0.093 164.15)",
+    ],
+    [
+      "dynamic-stepper-indicator-outline-ring-complete-dark",
+      "oklch(69.6% 0.17 162.48 / 0.25)",
+    ],
+    ["dynamic-stepper-indicator-outline-border-current-dark", "#ffffff4d"],
+    ["dynamic-stepper-indicator-outline-bg-current-dark", "#ffffff1a"],
+    ["dynamic-stepper-indicator-outline-fg-current-dark", "#ffffff"],
+    ["dynamic-stepper-indicator-outline-ring-current-dark", "#ffffff40"],
+    ["dynamic-stepper-indicator-outline-border-upcoming-dark", "#ffffff26"],
+    ["dynamic-stepper-indicator-outline-bg-upcoming-dark", "#ffffff0d"],
+    [
+      "dynamic-stepper-indicator-outline-fg-upcoming-dark",
+      "oklch(70.4% 0.04 256.788)",
+    ],
+    ["dynamic-stepper-indicator-ghost-border-complete-dark", "transparent"],
+    [
+      "dynamic-stepper-indicator-ghost-bg-complete-dark",
+      "oklch(69.6% 0.17 162.48 / 0.15)",
+    ],
+    [
+      "dynamic-stepper-indicator-ghost-fg-complete-dark",
+      "oklch(90.5% 0.093 164.15)",
+    ],
+    [
+      "dynamic-stepper-indicator-ghost-ring-complete-dark",
+      "oklch(76.5% 0.177 163.223 / 0.2)",
+    ],
+    ["dynamic-stepper-indicator-ghost-border-current-dark", "transparent"],
+    ["dynamic-stepper-indicator-ghost-bg-current-dark", "#ffffff1a"],
+    ["dynamic-stepper-indicator-ghost-fg-current-dark", "#ffffff"],
+    ["dynamic-stepper-indicator-ghost-ring-current-dark", "#ffffff26"],
+    ["dynamic-stepper-indicator-ghost-border-upcoming-dark", "transparent"],
+    ["dynamic-stepper-indicator-ghost-bg-upcoming-dark", "transparent"],
+    [
+      "dynamic-stepper-indicator-ghost-fg-upcoming-dark",
+      "oklch(55.4% 0.046 257.417)",
+    ],
+    [
+      "dynamic-stepper-indicator-link-border-complete-dark",
+      "oklch(71.5% 0.143 215.221 / 0.45)",
+    ],
+    [
+      "dynamic-stepper-indicator-link-bg-complete-dark",
+      "oklch(30.2% 0.056 229.695 / 0.35)",
+    ],
+    [
+      "dynamic-stepper-indicator-link-fg-complete-dark",
+      "oklch(91.7% 0.08 205.041)",
+    ],
+    [
+      "dynamic-stepper-indicator-link-ring-complete-dark",
+      "oklch(78.9% 0.154 211.53 / 0.25)",
+    ],
+    [
+      "dynamic-stepper-indicator-link-border-current-dark",
+      "oklch(78.9% 0.154 211.53)",
+    ],
+    [
+      "dynamic-stepper-indicator-link-bg-current-dark",
+      "oklch(39.8% 0.07 227.392 / 0.45)",
+    ],
+    [
+      "dynamic-stepper-indicator-link-fg-current-dark",
+      "oklch(98.4% 0.019 200.873)",
+    ],
+    [
+      "dynamic-stepper-indicator-link-ring-current-dark",
+      "oklch(78.9% 0.154 211.53 / 0.45)",
+    ],
+    ["dynamic-stepper-indicator-link-border-upcoming-dark", "#ffffff1a"],
+    ["dynamic-stepper-indicator-link-bg-upcoming-dark", "transparent"],
+    [
+      "dynamic-stepper-indicator-link-fg-upcoming-dark",
+      "oklch(55.4% 0.046 257.417)",
+    ],
+    ["dynamic-stepper-indicator-glass-border-complete-dark", "#ffffff40"],
+    ["dynamic-stepper-indicator-glass-bg-complete-dark", "#ffffff1a"],
+    [
+      "dynamic-stepper-indicator-glass-fg-complete-dark",
+      "oklch(95% 0.052 163.051)",
+    ],
+    [
+      "dynamic-stepper-indicator-glass-shadow-complete-dark",
+      "inset 0 1px 0 rgba(255,255,255,0.06)",
+    ],
+    [
+      "dynamic-stepper-indicator-glass-ring-complete-dark",
+      "oklch(76.5% 0.177 163.223 / 0.25)",
+    ],
+    ["dynamic-stepper-indicator-glass-border-current-dark", "#ffffff59"],
+    ["dynamic-stepper-indicator-glass-bg-current-dark", "#ffffff26"],
+    ["dynamic-stepper-indicator-glass-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-glass-shadow-current-dark",
+      "inset 0 1px 0 rgba(255,255,255,0.08)",
+    ],
+    ["dynamic-stepper-indicator-glass-ring-current-dark", "#ffffff4d"],
+    ["dynamic-stepper-indicator-glass-border-upcoming-dark", "#ffffff26"],
+    ["dynamic-stepper-indicator-glass-bg-upcoming-dark", "#ffffff0d"],
+    [
+      "dynamic-stepper-indicator-glass-fg-upcoming-dark",
+      "oklch(70.4% 0.04 256.788)",
+    ],
+    [
+      "dynamic-stepper-indicator-emerald-border-complete-dark",
+      "oklch(69.6% 0.17 162.48 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-emerald-bg-complete-dark",
+      "oklch(69.6% 0.17 162.48 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-emerald-fg-complete-dark",
+      "oklch(95% 0.052 163.051)",
+    ],
+    [
+      "dynamic-stepper-indicator-emerald-ring-complete-dark",
+      "oklch(76.5% 0.177 163.223 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-emerald-border-current-dark",
+      "oklch(76.5% 0.177 163.223)",
+    ],
+    [
+      "dynamic-stepper-indicator-emerald-bg-current-dark",
+      "oklch(69.6% 0.17 162.48 / 0.3)",
+    ],
+    ["dynamic-stepper-indicator-emerald-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-emerald-ring-current-dark",
+      "oklch(76.5% 0.177 163.223 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-emerald-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-emerald-bg-upcoming-dark",
+      "oklch(26.2% 0.051 172.552 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-emerald-fg-upcoming-dark",
+      "oklch(50.8% 0.118 165.612 / 0.55)",
+    ],
+    [
+      "dynamic-stepper-indicator-indigo-border-complete-dark",
+      "oklch(58.5% 0.233 277.117 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-indigo-bg-complete-dark",
+      "oklch(58.5% 0.233 277.117 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-indigo-fg-complete-dark",
+      "oklch(93% 0.034 272.788)",
+    ],
+    [
+      "dynamic-stepper-indicator-indigo-ring-complete-dark",
+      "oklch(67.3% 0.182 276.935 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-indigo-border-current-dark",
+      "oklch(67.3% 0.182 276.935)",
+    ],
+    [
+      "dynamic-stepper-indicator-indigo-bg-current-dark",
+      "oklch(58.5% 0.233 277.117 / 0.3)",
+    ],
+    ["dynamic-stepper-indicator-indigo-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-indigo-ring-current-dark",
+      "oklch(67.3% 0.182 276.935 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-indigo-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-indigo-bg-upcoming-dark",
+      "oklch(25.7% 0.09 281.288 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-indigo-fg-upcoming-dark",
+      "oklch(45.7% 0.24 277.023 / 0.55)",
+    ],
+    [
+      "dynamic-stepper-indicator-purple-border-complete-dark",
+      "oklch(62.7% 0.265 303.9 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-purple-bg-complete-dark",
+      "oklch(62.7% 0.265 303.9 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-purple-fg-complete-dark",
+      "oklch(94.6% 0.033 307.174)",
+    ],
+    [
+      "dynamic-stepper-indicator-purple-ring-complete-dark",
+      "oklch(71.4% 0.203 305.504 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-purple-border-current-dark",
+      "oklch(71.4% 0.203 305.504)",
+    ],
+    [
+      "dynamic-stepper-indicator-purple-bg-current-dark",
+      "oklch(62.7% 0.265 303.9 / 0.3)",
+    ],
+    ["dynamic-stepper-indicator-purple-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-purple-ring-current-dark",
+      "oklch(71.4% 0.203 305.504 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-purple-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-purple-bg-upcoming-dark",
+      "oklch(29.1% 0.149 302.717 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-purple-fg-upcoming-dark",
+      "oklch(49.6% 0.265 301.924 / 0.55)",
+    ],
+    [
+      "dynamic-stepper-indicator-pink-border-complete-dark",
+      "oklch(65.6% 0.241 354.308 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-pink-bg-complete-dark",
+      "oklch(65.6% 0.241 354.308 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-pink-fg-complete-dark",
+      "oklch(94.8% 0.028 342.258)",
+    ],
+    [
+      "dynamic-stepper-indicator-pink-ring-complete-dark",
+      "oklch(71.8% 0.202 349.761 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-pink-border-current-dark",
+      "oklch(71.8% 0.202 349.761)",
+    ],
+    [
+      "dynamic-stepper-indicator-pink-bg-current-dark",
+      "oklch(65.6% 0.241 354.308 / 0.3)",
+    ],
+    ["dynamic-stepper-indicator-pink-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-pink-ring-current-dark",
+      "oklch(71.8% 0.202 349.761 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-pink-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-pink-bg-upcoming-dark",
+      "oklch(28.4% 0.109 3.907 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-pink-fg-upcoming-dark",
+      "oklch(52.5% 0.223 3.958 / 0.55)",
+    ],
+    [
+      "dynamic-stepper-indicator-rose-border-complete-dark",
+      "oklch(64.5% 0.246 16.439 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-rose-bg-complete-dark",
+      "oklch(64.5% 0.246 16.439 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-rose-fg-complete-dark",
+      "oklch(94.1% 0.03 12.58)",
+    ],
+    [
+      "dynamic-stepper-indicator-rose-ring-complete-dark",
+      "oklch(71.2% 0.194 13.428 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-rose-border-current-dark",
+      "oklch(71.2% 0.194 13.428)",
+    ],
+    [
+      "dynamic-stepper-indicator-rose-bg-current-dark",
+      "oklch(64.5% 0.246 16.439 / 0.3)",
+    ],
+    ["dynamic-stepper-indicator-rose-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-rose-ring-current-dark",
+      "oklch(71.2% 0.194 13.428 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-rose-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-rose-bg-upcoming-dark",
+      "oklch(27.1% 0.105 12.094 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-rose-fg-upcoming-dark",
+      "oklch(51.4% 0.222 16.935 / 0.55)",
+    ],
+    [
+      "dynamic-stepper-indicator-sky-border-complete-dark",
+      "oklch(68.5% 0.169 237.323 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-sky-bg-complete-dark",
+      "oklch(68.5% 0.169 237.323 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-sky-fg-complete-dark",
+      "oklch(95.1% 0.026 236.824)",
+    ],
+    [
+      "dynamic-stepper-indicator-sky-ring-complete-dark",
+      "oklch(74.6% 0.16 232.661 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-sky-border-current-dark",
+      "oklch(74.6% 0.16 232.661)",
+    ],
+    [
+      "dynamic-stepper-indicator-sky-bg-current-dark",
+      "oklch(68.5% 0.169 237.323 / 0.3)",
+    ],
+    ["dynamic-stepper-indicator-sky-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-sky-ring-current-dark",
+      "oklch(74.6% 0.16 232.661 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-sky-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-sky-bg-upcoming-dark",
+      "oklch(29.3% 0.066 243.157 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-sky-fg-upcoming-dark",
+      "oklch(50% 0.134 242.749 / 0.55)",
+    ],
+    [
+      "dynamic-stepper-indicator-teal-border-complete-dark",
+      "oklch(70.4% 0.14 182.503 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-teal-bg-complete-dark",
+      "oklch(70.4% 0.14 182.503 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-teal-fg-complete-dark",
+      "oklch(95.3% 0.051 180.801)",
+    ],
+    [
+      "dynamic-stepper-indicator-teal-ring-complete-dark",
+      "oklch(77.7% 0.152 181.912 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-teal-border-current-dark",
+      "oklch(77.7% 0.152 181.912)",
+    ],
+    [
+      "dynamic-stepper-indicator-teal-bg-current-dark",
+      "oklch(70.4% 0.14 182.503 / 0.3)",
+    ],
+    ["dynamic-stepper-indicator-teal-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-teal-ring-current-dark",
+      "oklch(77.7% 0.152 181.912 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-teal-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-teal-bg-upcoming-dark",
+      "oklch(27.7% 0.046 192.524 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-teal-fg-upcoming-dark",
+      "oklch(51.1% 0.096 186.391 / 0.55)",
+    ],
+    [
+      "dynamic-stepper-indicator-yellow-border-complete-dark",
+      "oklch(79.5% 0.184 86.047 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-yellow-bg-complete-dark",
+      "oklch(79.5% 0.184 86.047 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-yellow-fg-complete-dark",
+      "oklch(97.3% 0.071 103.193)",
+    ],
+    [
+      "dynamic-stepper-indicator-yellow-ring-complete-dark",
+      "oklch(85.2% 0.199 91.936 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-yellow-border-current-dark",
+      "oklch(85.2% 0.199 91.936)",
+    ],
+    [
+      "dynamic-stepper-indicator-yellow-bg-current-dark",
+      "oklch(68.1% 0.162 75.834 / 0.35)",
+    ],
+    ["dynamic-stepper-indicator-yellow-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-yellow-ring-current-dark",
+      "oklch(85.2% 0.199 91.936 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-yellow-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-yellow-bg-upcoming-dark",
+      "oklch(28.6% 0.066 53.813 / 0.35)",
+    ],
+    [
+      "dynamic-stepper-indicator-yellow-fg-upcoming-dark",
+      "oklch(55.4% 0.135 66.442 / 0.55)",
+    ],
+    [
+      "dynamic-stepper-indicator-orange-border-complete-dark",
+      "oklch(70.5% 0.213 47.604 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-orange-bg-complete-dark",
+      "oklch(70.5% 0.213 47.604 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-orange-fg-complete-dark",
+      "oklch(95.4% 0.038 75.164)",
+    ],
+    [
+      "dynamic-stepper-indicator-orange-ring-complete-dark",
+      "oklch(75% 0.183 55.934 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-orange-border-current-dark",
+      "oklch(75% 0.183 55.934)",
+    ],
+    [
+      "dynamic-stepper-indicator-orange-bg-current-dark",
+      "oklch(64.6% 0.222 41.116 / 0.35)",
+    ],
+    ["dynamic-stepper-indicator-orange-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-orange-ring-current-dark",
+      "oklch(75% 0.183 55.934 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-orange-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-orange-bg-upcoming-dark",
+      "oklch(26.6% 0.079 36.259 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-orange-fg-upcoming-dark",
+      "oklch(55.3% 0.195 38.402 / 0.55)",
+    ],
+    [
+      "dynamic-stepper-indicator-gray-border-complete-dark",
+      "oklch(55.1% 0.027 264.364 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-gray-bg-complete-dark",
+      "oklch(55.1% 0.027 264.364 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-gray-fg-complete-dark",
+      "oklch(96.7% 0.003 264.542)",
+    ],
+    [
+      "dynamic-stepper-indicator-gray-ring-complete-dark",
+      "oklch(70.7% 0.022 261.325 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-gray-border-current-dark",
+      "oklch(70.7% 0.022 261.325)",
+    ],
+    [
+      "dynamic-stepper-indicator-gray-bg-current-dark",
+      "oklch(44.6% 0.03 256.802 / 0.35)",
+    ],
+    ["dynamic-stepper-indicator-gray-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-gray-ring-current-dark",
+      "oklch(70.7% 0.022 261.325 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-gray-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-gray-bg-upcoming-dark",
+      "oklch(13% 0.028 261.692 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-gray-fg-upcoming-dark",
+      "oklch(87.2% 0.01 258.338 / 0.7)",
+    ],
+    [
+      "dynamic-stepper-indicator-amber-border-complete-dark",
+      "oklch(76.9% 0.188 70.08 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-amber-bg-complete-dark",
+      "oklch(76.9% 0.188 70.08 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-amber-fg-complete-dark",
+      "oklch(96.2% 0.059 95.617)",
+    ],
+    [
+      "dynamic-stepper-indicator-amber-ring-complete-dark",
+      "oklch(82.8% 0.189 84.429 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-amber-border-current-dark",
+      "oklch(82.8% 0.189 84.429)",
+    ],
+    [
+      "dynamic-stepper-indicator-amber-bg-current-dark",
+      "oklch(66.6% 0.179 58.318 / 0.35)",
+    ],
+    ["dynamic-stepper-indicator-amber-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-amber-ring-current-dark",
+      "oklch(82.8% 0.189 84.429 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-amber-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-amber-bg-upcoming-dark",
+      "oklch(27.9% 0.077 45.635 / 0.35)",
+    ],
+    [
+      "dynamic-stepper-indicator-amber-fg-upcoming-dark",
+      "oklch(55.5% 0.163 48.998 / 0.55)",
+    ],
+    [
+      "dynamic-stepper-indicator-violet-border-complete-dark",
+      "oklch(60.6% 0.25 292.717 / 0.6)",
+    ],
+    [
+      "dynamic-stepper-indicator-violet-bg-complete-dark",
+      "oklch(60.6% 0.25 292.717 / 0.2)",
+    ],
+    [
+      "dynamic-stepper-indicator-violet-fg-complete-dark",
+      "oklch(94.3% 0.029 294.588)",
+    ],
+    [
+      "dynamic-stepper-indicator-violet-ring-complete-dark",
+      "oklch(70.2% 0.183 293.541 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-violet-border-current-dark",
+      "oklch(70.2% 0.183 293.541)",
+    ],
+    [
+      "dynamic-stepper-indicator-violet-bg-current-dark",
+      "oklch(60.6% 0.25 292.717 / 0.3)",
+    ],
+    ["dynamic-stepper-indicator-violet-fg-current-dark", "#ffffff"],
+    [
+      "dynamic-stepper-indicator-violet-ring-current-dark",
+      "oklch(70.2% 0.183 293.541 / 0.5)",
+    ],
+    ["dynamic-stepper-indicator-violet-border-upcoming-dark", "#ffffff26"],
+    [
+      "dynamic-stepper-indicator-violet-bg-upcoming-dark",
+      "oklch(28.3% 0.141 291.089 / 0.3)",
+    ],
+    [
+      "dynamic-stepper-indicator-violet-fg-upcoming-dark",
+      "oklch(49.1% 0.27 292.581 / 0.55)",
+    ],
   ],
-  darkVariableCount: 119,
+  darkVariableCount: 211,
 });

@@ -13,6 +13,39 @@ export const zuiAnimatedNumberAppearance = {
   info: "text-[color:var(--zui-animated-number-info-fg,oklch(58.8%_0.158_241.966))] dark:text-[color:var(--zui-animated-number-info-fg-dark,oklch(74.6%_0.16_232.661))]",
   ghost:
     "text-[color:var(--zui-animated-number-ghost-fg,oklch(55.4%_0.046_257.417))] dark:text-[color:var(--zui-animated-number-ghost-fg-dark,oklch(70.4%_0.04_256.788))]",
+  blue: "text-[color:var(--zui-animated-number-blue-fg,#2563eb)] dark:text-[color:var(--zui-animated-number-blue-fg-dark,#3b82f6)]",
+  cyan: "text-[color:var(--zui-animated-number-cyan-fg,#0891b2)] dark:text-[color:var(--zui-animated-number-cyan-fg-dark,#22d3ee)]",
+  green:
+    "text-[color:var(--zui-animated-number-green-fg,#16a34a)] dark:text-[color:var(--zui-animated-number-green-fg-dark,#22c55e)]",
+  lime: "text-[color:var(--zui-animated-number-lime-fg,#65a30d)] dark:text-[color:var(--zui-animated-number-lime-fg-dark,#a3e635)]",
+  mint: "text-[color:var(--zui-animated-number-mint-fg,#10b981)] dark:text-[color:var(--zui-animated-number-mint-fg-dark,#6ee7b7)]",
+  ocean:
+    "text-[color:var(--zui-animated-number-ocean-fg,#0284c7)] dark:text-[color:var(--zui-animated-number-ocean-fg-dark,#38bdf8)]",
+  sapphire:
+    "text-[color:var(--zui-animated-number-sapphire-fg,#1d4ed8)] dark:text-[color:var(--zui-animated-number-sapphire-fg-dark,#60a5fa)]",
+  lavender:
+    "text-[color:var(--zui-animated-number-lavender-fg,#8b5cf6)] dark:text-[color:var(--zui-animated-number-lavender-fg-dark,#a78bfa)]",
+  ruby: "text-[color:var(--zui-animated-number-ruby-fg,#be123c)] dark:text-[color:var(--zui-animated-number-ruby-fg-dark,#fb7185)]",
+  red: "text-[color:var(--zui-animated-number-red-fg,#dc2626)] dark:text-[color:var(--zui-animated-number-red-fg-dark,#ef4444)]",
+  slate:
+    "text-[color:var(--zui-animated-number-slate-fg,#475569)] dark:text-[color:var(--zui-animated-number-slate-fg-dark,#64748b)]",
+  zinc: "text-[color:var(--zui-animated-number-zinc-fg,#52525b)] dark:text-[color:var(--zui-animated-number-zinc-fg-dark,#71717a)]",
+  stone:
+    "text-[color:var(--zui-animated-number-stone-fg,#57534e)] dark:text-[color:var(--zui-animated-number-stone-fg-dark,#78716c)]",
+  royal:
+    "text-[color:var(--zui-animated-number-royal-fg,#4338ca)] dark:text-[color:var(--zui-animated-number-royal-fg-dark,#818cf8)]",
+  electric:
+    "text-[color:var(--zui-animated-number-electric-fg,#0ea5e9)] dark:text-[color:var(--zui-animated-number-electric-fg-dark,#38bdf8)]",
+  forest:
+    "text-[color:var(--zui-animated-number-forest-fg,#166534)] dark:text-[color:var(--zui-animated-number-forest-fg-dark,#4ade80)]",
+  sunset:
+    "text-[color:var(--zui-animated-number-sunset-fg,#ea580c)] dark:text-[color:var(--zui-animated-number-sunset-fg-dark,#fb923c)]",
+  magenta:
+    "text-[color:var(--zui-animated-number-magenta-fg,#c026d3)] dark:text-[color:var(--zui-animated-number-magenta-fg-dark,#e879f9)]",
+  crimson:
+    "text-[color:var(--zui-animated-number-crimson-fg,#b91c1c)] dark:text-[color:var(--zui-animated-number-crimson-fg-dark,#f87171)]",
+  aqua: "text-[color:var(--zui-animated-number-aqua-fg,#0f766e)] dark:text-[color:var(--zui-animated-number-aqua-fg-dark,#2dd4bf)]",
+  plum: "text-[color:var(--zui-animated-number-plum-fg,#7e22ce)] dark:text-[color:var(--zui-animated-number-plum-fg-dark,#c084fc)]",
   purple:
     "text-[color:var(--zui-animated-number-purple-fg,oklch(55.8%_0.288_302.321))] dark:text-[color:var(--zui-animated-number-purple-fg-dark,oklch(71.4%_0.203_305.504))]",
   pink: "text-[color:var(--zui-animated-number-pink-fg,oklch(59.2%_0.249_0.584))] dark:text-[color:var(--zui-animated-number-pink-fg-dark,oklch(71.8%_0.202_349.761))]",

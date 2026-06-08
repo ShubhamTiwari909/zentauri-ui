@@ -46,6 +46,39 @@ export const zuiProgressAppearances = {
     "[--progress-fill:var(--zui-progress-gradient-pink-fill,linear-gradient(90deg,oklch(65.6%_0.241_354.308),oklch(64.5%_0.246_16.439)))] dark:[--progress-fill:var(--zui-progress-gradient-pink-fill-dark,linear-gradient(90deg,oklch(65.6%_0.241_354.308),oklch(64.5%_0.246_16.439)))]",
   "gradient-orange":
     "[--progress-fill:var(--zui-progress-gradient-orange-fill,linear-gradient(90deg,oklch(70.5%_0.213_47.604),oklch(63.7%_0.237_25.331)))] dark:[--progress-fill:var(--zui-progress-gradient-orange-fill-dark,linear-gradient(90deg,oklch(70.5%_0.213_47.604),oklch(63.7%_0.237_25.331)))]",
+  blue: "[--progress-fill:var(--zui-progress-blue-fill,#2563eb)] dark:[--progress-fill:var(--zui-progress-blue-fill-dark,#3b82f6)]",
+  cyan: "[--progress-fill:var(--zui-progress-cyan-fill,#0891b2)] dark:[--progress-fill:var(--zui-progress-cyan-fill-dark,#22d3ee)]",
+  green:
+    "[--progress-fill:var(--zui-progress-green-fill,#16a34a)] dark:[--progress-fill:var(--zui-progress-green-fill-dark,#22c55e)]",
+  lime: "[--progress-fill:var(--zui-progress-lime-fill,#65a30d)] dark:[--progress-fill:var(--zui-progress-lime-fill-dark,#a3e635)]",
+  mint: "[--progress-fill:var(--zui-progress-mint-fill,#10b981)] dark:[--progress-fill:var(--zui-progress-mint-fill-dark,#6ee7b7)]",
+  ocean:
+    "[--progress-fill:var(--zui-progress-ocean-fill,#0284c7)] dark:[--progress-fill:var(--zui-progress-ocean-fill-dark,#38bdf8)]",
+  sapphire:
+    "[--progress-fill:var(--zui-progress-sapphire-fill,#1d4ed8)] dark:[--progress-fill:var(--zui-progress-sapphire-fill-dark,#60a5fa)]",
+  lavender:
+    "[--progress-fill:var(--zui-progress-lavender-fill,#8b5cf6)] dark:[--progress-fill:var(--zui-progress-lavender-fill-dark,#a78bfa)]",
+  ruby: "[--progress-fill:var(--zui-progress-ruby-fill,#be123c)] dark:[--progress-fill:var(--zui-progress-ruby-fill-dark,#fb7185)]",
+  red: "[--progress-fill:var(--zui-progress-red-fill,#dc2626)] dark:[--progress-fill:var(--zui-progress-red-fill-dark,#ef4444)]",
+  slate:
+    "[--progress-fill:var(--zui-progress-slate-fill,#475569)] dark:[--progress-fill:var(--zui-progress-slate-fill-dark,#64748b)]",
+  zinc: "[--progress-fill:var(--zui-progress-zinc-fill,#52525b)] dark:[--progress-fill:var(--zui-progress-zinc-fill-dark,#71717a)]",
+  stone:
+    "[--progress-fill:var(--zui-progress-stone-fill,#57534e)] dark:[--progress-fill:var(--zui-progress-stone-fill-dark,#78716c)]",
+  royal:
+    "[--progress-fill:var(--zui-progress-royal-fill,#4338ca)] dark:[--progress-fill:var(--zui-progress-royal-fill-dark,#818cf8)]",
+  electric:
+    "[--progress-fill:var(--zui-progress-electric-fill,#0ea5e9)] dark:[--progress-fill:var(--zui-progress-electric-fill-dark,#38bdf8)]",
+  forest:
+    "[--progress-fill:var(--zui-progress-forest-fill,#166534)] dark:[--progress-fill:var(--zui-progress-forest-fill-dark,#4ade80)]",
+  sunset:
+    "[--progress-fill:var(--zui-progress-sunset-fill,#ea580c)] dark:[--progress-fill:var(--zui-progress-sunset-fill-dark,#fb923c)]",
+  magenta:
+    "[--progress-fill:var(--zui-progress-magenta-fill,#c026d3)] dark:[--progress-fill:var(--zui-progress-magenta-fill-dark,#e879f9)]",
+  crimson:
+    "[--progress-fill:var(--zui-progress-crimson-fill,#b91c1c)] dark:[--progress-fill:var(--zui-progress-crimson-fill-dark,#f87171)]",
+  aqua: "[--progress-fill:var(--zui-progress-aqua-fill,#0f766e)] dark:[--progress-fill:var(--zui-progress-aqua-fill-dark,#2dd4bf)]",
+  plum: "[--progress-fill:var(--zui-progress-plum-fill,#7e22ce)] dark:[--progress-fill:var(--zui-progress-plum-fill-dark,#c084fc)]",
 } as const;
 
 export const zuiProgressSizes = {

@@ -1,6 +1,7 @@
 import type { VariantProps } from "class-variance-authority";
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
+import type { zuiSelectContentAppearances } from "../../design-system/select";
 import type { selectTriggerVariants } from "./variants";
 
 export type SelectOption = {
@@ -8,29 +9,7 @@ export type SelectOption = {
   value: string;
   disabled?: boolean;
 };
-export type SelectAppearance =
-  | "default"
-  | "glass"
-  | "ghost"
-  | "outline"
-  | "sky"
-  | "rose"
-  | "purple"
-  | "pink"
-  | "orange"
-  | "yellow"
-  | "teal"
-  | "indigo"
-  | "emerald"
-  | "gradient-blue"
-  | "gradient-green"
-  | "gradient-red"
-  | "gradient-yellow"
-  | "gradient-purple"
-  | "gradient-teal"
-  | "gradient-indigo"
-  | "gradient-pink"
-  | "gradient-orange";
+export type SelectAppearance = keyof typeof zuiSelectContentAppearances;
 export type SelectContextType = {
   open: boolean;
   setOpen: (v: boolean) => void;

@@ -1,5 +1,7 @@
 import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
+import type { zuiDropdownTriggerVariants } from "../../design-system/dropdown";
+
 export type DropdownContextType = {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -10,33 +12,7 @@ export type DropdownContextType = {
   menuId: string;
 };
 
-type Variant =
-  | "default"
-  | "outline"
-  | "ghost"
-  | "white"
-  | "black"
-  | "sky"
-  | "rose"
-  | "purple"
-  | "pink"
-  | "orange"
-  | "yellow"
-  | "teal"
-  | "indigo"
-  | "emerald"
-  | "gray"
-  | "amber"
-  | "violet"
-  | "gradient-blue"
-  | "gradient-green"
-  | "gradient-red"
-  | "gradient-yellow"
-  | "gradient-purple"
-  | "gradient-teal"
-  | "gradient-indigo"
-  | "gradient-pink"
-  | "gradient-orange";
+type Variant = keyof typeof zuiDropdownTriggerVariants;
 
 export type DropdownProps = {
   children: ReactNode;

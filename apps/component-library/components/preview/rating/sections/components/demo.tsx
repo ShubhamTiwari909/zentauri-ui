@@ -18,13 +18,6 @@ export function RatingDemo({
   readOnly,
   size,
 }: RatingDemoProps) {
-  const appearances: NonNullable<RatingProps["appearance"]>[] = [
-    appearance,
-    "emerald",
-    "yellow",
-    "indigo",
-  ];
-
   return (
     <div className="flex flex-wrap gap-4">
       {icons.map((icon, index) => {
@@ -33,7 +26,7 @@ export function RatingDemo({
             key={index}
             allowClear={allowClear}
             allowHalf={allowHalf}
-            appearance={appearances[index] ?? appearance}
+            appearance={appearance}
             defaultValue={allowHalf ? 4.5 : icon === "flame" ? 3 : 4}
             hint={
               allowClear

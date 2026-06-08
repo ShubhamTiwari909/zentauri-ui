@@ -1,4 +1,66 @@
-export const showcaseButtons = [
+import type { ButtonSharedStatic } from "@zentauri-ui/zentauri-components/ui/buttons";
+import type { ButtonAnimation } from "@zentauri-ui/zentauri-components/ui/buttons/animated";
+
+type ButtonAppearance = NonNullable<ButtonSharedStatic["appearance"]>;
+
+type ShowcaseButton = {
+  label: string;
+  appearance: ButtonAppearance;
+  animation: ButtonAnimation;
+};
+
+const colorShowcaseAppearances = [
+  "blue",
+  "cyan",
+  "green",
+  "lime",
+  "mint",
+  "ocean",
+  "sapphire",
+  "lavender",
+  "ruby",
+  "red",
+  "slate",
+  "zinc",
+  "stone",
+  "royal",
+  "electric",
+  "forest",
+  "sunset",
+  "magenta",
+  "crimson",
+  "aqua",
+  "plum",
+  "emerald",
+  "indigo",
+  "purple",
+  "pink",
+  "rose",
+  "sky",
+  "teal",
+  "yellow",
+  "orange",
+  "gray",
+  "amber",
+  "violet",
+  "gradient-blue",
+  "gradient-green",
+  "gradient-red",
+  "gradient-yellow",
+  "gradient-purple",
+  "gradient-teal",
+  "gradient-indigo",
+  "gradient-pink",
+  "gradient-orange",
+] as const satisfies readonly ButtonAppearance[];
+
+const toShowcaseLabel = (appearance: string) =>
+  appearance
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+
+export const showcaseButtons: ShowcaseButton[] = [
   {
     label: "Primary",
     appearance: "default",
@@ -29,112 +91,14 @@ export const showcaseButtons = [
     appearance: "glass",
     animation: "tilt",
   },
-  {
-    label: "Emerald",
-    appearance: "emerald",
-    animation: "bounce",
-  },
-  {
-    label: "Indigo",
-    appearance: "indigo",
-    animation: "bounce",
-  },
-  {
-    label: "Purple",
-    appearance: "purple",
-    animation: "bounce",
-  },
-  {
-    label: "Pink",
-    appearance: "pink",
-    animation: "bounce",
-  },
-  {
-    label: "Rose",
-    appearance: "rose",
-    animation: "bounce",
-  },
-  {
-    label: "Sky",
-    appearance: "sky",
-    animation: "bounce",
-  },
-  {
-    label: "Teal",
-    appearance: "teal",
-    animation: "bounce",
-  },
-  {
-    label: "Yellow",
-    appearance: "yellow",
-    animation: "bounce",
-  },
-  {
-    label: "Orange",
-    appearance: "orange",
-    animation: "bounce",
-  },
-  {
-    label: "Gray",
-    appearance: "gray",
-    animation: "bounce",
-  },
-  {
-    label: "Amber",
-    appearance: "amber",
-    animation: "bounce",
-  },
-  {
-    label: "Violet",
-    appearance: "violet",
-    animation: "bounce",
-  },
-  {
-    label: "Gradient Blue",
-    appearance: "gradient-blue",
-    animation: "bounce",
-  },
-  {
-    label: "Gradient Green",
-    appearance: "gradient-green",
-    animation: "bounce",
-  },
-  {
-    label: "Gradient Red",
-    appearance: "gradient-red",
-    animation: "bounce",
-  },
-  {
-    label: "Gradient Yellow",
-    appearance: "gradient-yellow",
-    animation: "bounce",
-  },
-  {
-    label: "Gradient Purple",
-    appearance: "gradient-purple",
-    animation: "bounce",
-  },
-  {
-    label: "Gradient Teal",
-    appearance: "gradient-teal",
-    animation: "bounce",
-  },
-  {
-    label: "Gradient Indigo",
-    appearance: "gradient-indigo",
-    animation: "bounce",
-  },
-  {
-    label: "Gradient Pink",
-    appearance: "gradient-pink",
-    animation: "bounce",
-  },
-  {
-    label: "Gradient Orange",
-    appearance: "gradient-orange",
-    animation: "bounce",
-  },
-] as const;
+  ...colorShowcaseAppearances.map(
+    (appearance): ShowcaseButton => ({
+      label: toShowcaseLabel(appearance),
+      appearance,
+      animation: "bounce",
+    }),
+  ),
+];
 
 export const sizeButtons = [
   { label: "Small", size: "sm" },

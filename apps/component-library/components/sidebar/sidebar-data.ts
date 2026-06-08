@@ -293,10 +293,6 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/spinner",
       },
       {
-        title: "Stepper",
-        href: "/preview/components/stepper",
-      },
-      {
         title: "Table",
         href: "/preview/components/table",
       },

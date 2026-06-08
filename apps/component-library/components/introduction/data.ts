@@ -258,14 +258,6 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Loading",
   },
   {
-    id: "stepper",
-    name: "Stepper",
-    description:
-      "Sequential progress indicators with clickable steps and optional labels.",
-    href: "/preview/components/stepper",
-    badge: "Navigation",
-  },
-  {
     id: "table",
     name: "Table",
     description:
