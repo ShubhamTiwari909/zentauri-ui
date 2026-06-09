@@ -1,6 +1,6 @@
 {
   "name": "@zentauri-ui/zentauri-components",
-  "version": "1.9.0",
+  "version": "1.9.2",
   "description": "React + Tailwind UI kit with charts, ESM/CJS builds, per-entry exports, and a zentauri-components / zentauri-ui CLI to vendor UI or hook source into your app",
   "keywords": [
     "react",
@@ -54,6 +54,11 @@
       "types": "./dist/design-system/tokens.d.ts",
       "import": "./dist/design-system/tokens.mjs",
       "require": "./dist/design-system/tokens.js"
+    },
+    "./design-system/facade": {
+      "types": "./dist/lib/facade.d.ts",
+      "import": "./dist/design-system/facade.mjs",
+      "require": "./dist/design-system/facade.js"
     },
     "./ui/*": {
       "types": "./dist/ui/*/index.d.ts",
@@ -126,7 +131,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
-    "@types/node": "^20",
+    "@types/node": "^20.19.39",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "axe-core": "^4.12.0",

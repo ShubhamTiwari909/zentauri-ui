@@ -40,6 +40,11 @@ const areas = [
     matches: (rel) => rel.startsWith("src/hooks/"),
   },
   {
+    id: "design-system",
+    label: "Design system facade",
+    matches: (rel) => rel.startsWith("src/lib/"),
+  },
+  {
     id: "cli",
     label: "CLI and import rewriting",
     matches: (rel) => rel.startsWith("cli/"),

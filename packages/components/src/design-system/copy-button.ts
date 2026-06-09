@@ -21,7 +21,7 @@ export const zuiCopyButtonAppearances = {
   glass:
     "border border-[color:var(--zui-copy-button-glass-border,#00000026)] dark:border-[color:var(--zui-copy-button-glass-border-dark,#ffffff26)] bg-[var(--zui-copy-button-glass-bg,#0000001a)] dark:bg-[var(--zui-copy-button-glass-bg-dark,#ffffff1a)] text-[color:var(--zui-copy-button-glass-fg,#0f172a)] dark:text-[color:var(--zui-copy-button-glass-fg-dark,#ffffff)] backdrop-blur-md hover:bg-[var(--zui-copy-button-glass-bg-hover,#00000026)] dark:hover:bg-[var(--zui-copy-button-glass-bg-hover-dark,#ffffff26)]",
   emerald:
-    "bg-[var(--zui-copy-button-emerald-bg,#10b981)] dark:bg-[var(--zui-copy-button-emerald-bg-dark,#065f46)] text-[color:var(--zui-copy-button-emerald-fg,#064e3b)] dark:text-[color:var(--zui-copy-button-emerald-fg-dark,#064e3b)] hover:bg-[var(--zui-copy-button-emerald-bg-hover,#10b981)] dark:hover:bg-[var(--zui-copy-button-emerald-bg-hover-dark,#064e3b)]",
+    "bg-[var(--zui-copy-button-emerald-bg,#10b981)] dark:bg-[var(--zui-copy-button-emerald-bg-dark,#065f46)] text-[color:var(--zui-copy-button-emerald-fg,#064e3b)] dark:text-[color:var(--zui-copy-button-emerald-fg-dark,#ffffff)] hover:bg-[var(--zui-copy-button-emerald-bg-hover,#10b981)] dark:hover:bg-[var(--zui-copy-button-emerald-bg-hover-dark,#064e3b)]",
   indigo:
     "bg-[var(--zui-copy-button-indigo-bg,#3730a3)] dark:bg-[var(--zui-copy-button-indigo-bg-dark,#4f46e5)] text-[color:var(--zui-copy-button-indigo-fg,#ffffff)] dark:text-[color:var(--zui-copy-button-indigo-fg-dark,#ffffff)] hover:bg-[var(--zui-copy-button-indigo-bg-hover,#3730a3)] dark:hover:bg-[var(--zui-copy-button-indigo-bg-hover-dark,#4f46e5)]",
   purple:
