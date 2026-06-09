@@ -7,6 +7,7 @@ export * from "./breadcrumb";
 export * from "./button";
 export * from "./card";
 export * from "./checkbox";
+export * from "./combobox";
 export * from "./command";
 export * from "./context-menu";
 export * from "./copy-button";

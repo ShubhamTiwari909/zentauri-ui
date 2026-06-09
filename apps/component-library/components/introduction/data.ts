@@ -74,6 +74,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "combobox",
+    name: "Combobox",
+    description:
+      "Searchable single or multi-select dropdowns with keyboard navigation, filtering, disabled items, and controlled value support.",
+    href: "/preview/components/combobox",
+    badge: "Form",
+  },
+  {
     id: "command",
     name: "Command palette",
     description:

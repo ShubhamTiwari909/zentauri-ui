@@ -1,0 +1,100 @@
+import type {
+  ComboboxContentProps,
+  ComboboxTriggerProps,
+} from "@zentauri-ui/zentauri-components/ui/combobox";
+
+export { PREVIEW_SECTION_CLASS as COMBOBOX_CODE_EXAMPLES_SECTION_CLASS } from "@/components/common/Section";
+
+export const COMBOBOX_TRIGGER_VARIANTS = [
+  "default",
+  "outline",
+  "ghost",
+  "sky",
+  "rose",
+  "purple",
+  "pink",
+  "orange",
+  "yellow",
+  "teal",
+  "indigo",
+  "emerald",
+  "glass",
+  "gradient-blue",
+  "gradient-green",
+  "gradient-red",
+  "gradient-yellow",
+  "gradient-purple",
+  "gradient-teal",
+  "gradient-indigo",
+  "gradient-pink",
+  "gradient-orange",
+  "blue",
+  "cyan",
+  "green",
+  "lime",
+  "mint",
+  "ocean",
+  "sapphire",
+  "lavender",
+  "ruby",
+  "red",
+  "slate",
+  "zinc",
+  "stone",
+  "royal",
+  "electric",
+  "forest",
+  "sunset",
+  "magenta",
+  "crimson",
+  "aqua",
+  "plum",
+] as const satisfies readonly NonNullable<ComboboxTriggerProps["variant"]>[];
+
+export const COMBOBOX_TRIGGER_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly NonNullable<ComboboxTriggerProps["size"]>[];
+
+export const COMBOBOX_CONTENT_APPEARANCES = [
+  "default",
+  "glass",
+  "outline",
+  "ghost",
+  "sky",
+  "rose",
+  "purple",
+  "pink",
+  "orange",
+  "yellow",
+  "teal",
+  "indigo",
+  "emerald",
+  "blue",
+  "red",
+] as const satisfies readonly NonNullable<ComboboxContentProps["appearance"]>[];
+
+export const COMBOBOX_CONTENT_SIZES = [
+  "sm",
+  "md",
+  "lg",
+] as const satisfies readonly NonNullable<ComboboxContentProps["size"]>[];
+
+export const DEMO_FRAMEWORKS = [
+  { value: "react", label: "React" },
+  { value: "vue", label: "Vue" },
+  { value: "svelte", label: "Svelte" },
+  { value: "angular", label: "Angular" },
+  { value: "solid", label: "Solid" },
+  { value: "qwik", label: "Qwik" },
+] as const;
+
+export const DEMO_LANGUAGES = [
+  { value: "typescript", label: "TypeScript" },
+  { value: "javascript", label: "JavaScript" },
+  { value: "python", label: "Python" },
+  { value: "rust", label: "Rust" },
+  { value: "go", label: "Go" },
+  { value: "java", label: "Java" },
+] as const;
