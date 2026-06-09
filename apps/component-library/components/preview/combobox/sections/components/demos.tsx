@@ -10,7 +10,10 @@ import {
 } from "@zentauri-ui/zentauri-components/ui/combobox";
 
 import { DEMO_FRAMEWORKS, DEMO_LANGUAGES } from "./data";
-import type { ComboboxContentDemoProps, ComboboxTriggerDemoProps } from "./types";
+import type {
+  ComboboxContentDemoProps,
+  ComboboxTriggerDemoProps,
+} from "./types";
 
 export function ComboboxTriggerDemo({
   triggerVariant,

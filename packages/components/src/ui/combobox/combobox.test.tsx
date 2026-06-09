@@ -23,7 +23,11 @@ function BasicCombobox({
   onChange?: (v: string[]) => void;
 }) {
   return (
-    <Combobox multiple={multiple} defaultValue={defaultValue} onChange={onChange}>
+    <Combobox
+      multiple={multiple}
+      defaultValue={defaultValue}
+      onChange={onChange}
+    >
       <ComboboxTrigger>
         <ComboboxValue placeholder="Pick a fruit" />
       </ComboboxTrigger>
@@ -72,9 +76,7 @@ describe("Combobox", () => {
       await screen.findByRole("option", { name: /apple/i }),
     ).toBeInTheDocument();
     expect(screen.getByRole("option", { name: /banana/i })).toBeInTheDocument();
-    expect(
-      screen.getByRole("option", { name: /cherry/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: /cherry/i })).toBeInTheDocument();
   });
 
   it("closes the panel on second trigger click", async () => {
@@ -105,9 +107,7 @@ describe("Combobox", () => {
     render(<BasicCombobox multiple />);
     await user.click(screen.getByRole("button", { name: /pick a fruit/i }));
     await user.click(await screen.findByRole("option", { name: /apple/i }));
-    expect(
-      screen.getByRole("option", { name: /banana/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: /banana/i })).toBeInTheDocument();
   });
 
   it("marks selected option with aria-selected=true", async () => {
@@ -132,7 +132,9 @@ describe("Combobox", () => {
   it("deselects a value in multiple mode on second click", async () => {
     const user = userEvent.setup();
     const onChange = vi.fn();
-    render(<BasicCombobox multiple defaultValue={["apple"]} onChange={onChange} />);
+    render(
+      <BasicCombobox multiple defaultValue={["apple"]} onChange={onChange} />,
+    );
     await user.click(screen.getByRole("button"));
     await user.click(await screen.findByRole("option", { name: /apple/i }));
     expect(onChange).toHaveBeenCalledWith([]);
@@ -188,9 +190,7 @@ describe("Combobox — search and filtering", () => {
     await user.click(screen.getByRole("button", { name: /pick a fruit/i }));
     const search = await screen.findByRole("combobox");
     await user.type(search, "xyz");
-    expect(
-      screen.getByText(/no fruit found/i),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/no fruit found/i)).toBeInTheDocument();
   });
 
   it("clears the filter and restores all options after closing and reopening", async () => {
@@ -204,9 +204,7 @@ describe("Combobox — search and filtering", () => {
     expect(
       await screen.findByRole("option", { name: /apple/i }),
     ).toBeInTheDocument();
-    expect(
-      screen.getByRole("option", { name: /banana/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: /banana/i })).toBeInTheDocument();
   });
 });
 

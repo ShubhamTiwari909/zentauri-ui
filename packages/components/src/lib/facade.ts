@@ -439,8 +439,12 @@ function classifyVariables(raw: RawVariable[]): ZuiVariable[] {
       fallback,
       theme: isDark ? "dark" : hasDarkPair ? "light" : "shared",
       pairName: isDark
-        ? (names.has(baseName) ? baseName : undefined)
-        : (hasDarkPair ? darkName : undefined),
+        ? names.has(baseName)
+          ? baseName
+          : undefined
+        : hasDarkPair
+          ? darkName
+          : undefined,
     } satisfies ZuiVariable;
   });
 }

@@ -1,6 +1,9 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 
-import type { ComboboxContentDemoProps, ComboboxTriggerDemoProps } from "./types";
+import type {
+  ComboboxContentDemoProps,
+  ComboboxTriggerDemoProps,
+} from "./types";
 
 export function comboboxTriggerSnippet(opts: ComboboxTriggerDemoProps): string {
   const { triggerVariant, triggerSize } = opts;

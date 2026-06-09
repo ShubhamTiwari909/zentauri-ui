@@ -6,10 +6,7 @@ import {
   zuiRingOffset,
 } from "@zentauri-ui/zentauri-components/design-system/tokens";
 
-import {
-  ComponentTokenReferenceGroup,
-  ZuiTokenReferenceGroup,
-} from "./types";
+import { ComponentTokenReferenceGroup, ZuiTokenReferenceGroup } from "./types";
 
 // All token metadata is derived from the design-system facade
 // (@zentauri-ui/zentauri-components/design-system/facade). The facade reads the
@@ -41,14 +38,11 @@ const globalSources = [
 export const zuiTokenReferenceGroups = globalSources.map((group) => ({
   source: group.source,
   description: group.description,
-  tokens: DesignSystem.parse(group.className).map(
-    (token) =>
-      ({
-        ...token,
-        source: group.source,
-        description: group.description,
-      })
-  ),
+  tokens: DesignSystem.parse(group.className).map((token) => ({
+    ...token,
+    source: group.source,
+    description: group.description,
+  })),
 })) as readonly ZuiTokenReferenceGroup[];
 
 export const zuiTokenReferences = zuiTokenReferenceGroups.flatMap(
@@ -63,14 +57,11 @@ export const componentTokenReferenceGroups = DesignSystem.listComponents().map(
       slug: component.slug,
       title: component.title,
       description,
-      tokens: component.variables().map(
-        (token) =>
-          ({
-            ...token,
-            source: component.title,
-            description,
-          })
-      ),
+      tokens: component.variables().map((token) => ({
+        ...token,
+        source: component.title,
+        description,
+      })),
     };
   },
 ) as readonly ComponentTokenReferenceGroup[];

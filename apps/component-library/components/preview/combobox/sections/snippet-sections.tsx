@@ -29,12 +29,10 @@ export function ComboboxCodeExamplesSection() {
         <code className="text-slate-800 dark:text-white">variant</code> and{" "}
         <code className="text-slate-800 dark:text-white">size</code>; the
         dropdown panel uses{" "}
-        <code className="text-slate-800 dark:text-white">appearance</code>{" "}
-        and <code className="text-slate-800 dark:text-white">size</code> on{" "}
-        <code className="text-slate-800 dark:text-white">
-          ComboboxContent
-        </code>
-        . Each snippet starts with a Variant: lead-in.
+        <code className="text-slate-800 dark:text-white">appearance</code> and{" "}
+        <code className="text-slate-800 dark:text-white">size</code> on{" "}
+        <code className="text-slate-800 dark:text-white">ComboboxContent</code>.
+        Each snippet starts with a Variant: lead-in.
       </p>
       <div className="mt-6 space-y-10 rounded-xl">
         <PreviewCodeShowcase code={comboboxMultiSnippet()}>
