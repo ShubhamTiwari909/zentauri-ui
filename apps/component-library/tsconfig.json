@@ -22,6 +22,9 @@
       "@zentauri-ui/zentauri-components/design-system/tokens": [
         "../../packages/components/src/design-system/tokens"
       ],
+      "@zentauri-ui/zentauri-components/design-system/facade": [
+        "../../packages/components/src/lib/facade"
+      ],
       "@zentauri-ui/zentauri-components/ui/*/animated": [
         "../../packages/components/src/ui/*/animated"
       ],

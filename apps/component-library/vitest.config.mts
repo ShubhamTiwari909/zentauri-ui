@@ -52,6 +52,13 @@ export default defineConfig({
         ),
       },
       {
+        find: "@zentauri-ui/zentauri-components/design-system/facade",
+        replacement: path.resolve(
+          repoRoot,
+          "packages/components/src/lib/facade",
+        ),
+      },
+      {
         find: "@zentauri-ui/shared/site-header",
         replacement: path.resolve(
           repoRoot,
