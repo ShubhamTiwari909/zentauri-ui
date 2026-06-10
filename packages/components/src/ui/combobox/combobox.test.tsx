@@ -212,12 +212,14 @@ describe("Combobox — keyboard navigation", () => {
   it("closes the panel on Escape", async () => {
     const user = userEvent.setup();
     render(<BasicCombobox />);
-    await user.click(screen.getByRole("button", { name: /pick a fruit/i }));
+    const trigger = screen.getByRole("button", { name: /pick a fruit/i });
+    await user.click(trigger);
     await screen.findByRole("combobox");
     await user.keyboard("{Escape}");
     expect(
       screen.queryByRole("option", { name: /apple/i }),
     ).not.toBeInTheDocument();
+    expect(trigger).toHaveFocus();
   });
 
   it("moves highlight through options with ArrowDown/ArrowUp", async () => {
@@ -250,6 +252,27 @@ describe("Combobox — keyboard navigation", () => {
     await user.keyboard("{ArrowDown}");
     await user.keyboard("{Enter}");
     expect(onChange).toHaveBeenCalledWith(["apple"]);
+  });
+
+  it("skips disabled options during keyboard navigation", async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(<BasicCombobox onChange={onChange} />);
+    await user.click(screen.getByRole("button", { name: /pick a fruit/i }));
+    const search = await screen.findByRole("combobox");
+    await waitFor(() => expect(search).toHaveFocus());
+
+    await user.keyboard("{ArrowUp}");
+    expect(screen.getByRole("option", { name: /cherry/i })).toHaveAttribute(
+      "data-active",
+      "true",
+    );
+    expect(screen.getByRole("option", { name: /grape/i })).not.toHaveAttribute(
+      "data-active",
+    );
+
+    await user.keyboard("{Enter}");
+    expect(onChange).toHaveBeenCalledWith(["cherry"]);
   });
 
   it("wires trigger aria attributes to the listbox", async () => {

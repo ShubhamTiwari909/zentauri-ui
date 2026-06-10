@@ -338,6 +338,11 @@ export const ComboboxSearch = ({
     triggerRef,
   } = useCombobox();
 
+  const optionByValue = useMemo(
+    () => new Map(options.map((option) => [option.value, option])),
+    [options],
+  );
+
   const moveActive = (direction: 1 | -1) => {
     if (visibleValues.length === 0) return;
     const currentIndex = activeValue ? visibleValues.indexOf(activeValue) : -1;
@@ -346,9 +351,10 @@ export const ComboboxSearch = ({
       if (nextIndex === -1) {
         nextIndex = direction === 1 ? 0 : visibleValues.length - 1;
       } else {
-        nextIndex = (nextIndex + direction + visibleValues.length) % visibleValues.length;
+        nextIndex =
+          (nextIndex + direction + visibleValues.length) % visibleValues.length;
       }
-      const candidate = options.find((o) => o.value === visibleValues[nextIndex]);
+      const candidate = optionByValue.get(visibleValues[nextIndex] ?? "");
       if (candidate && !candidate.disabled) {
         setActiveValue(visibleValues[nextIndex] ?? null);
         return;
@@ -403,7 +409,7 @@ export const ComboboxSearch = ({
           } else if (event.key === "Enter") {
             event.preventDefault();
             if (activeValue && visibleValues.includes(activeValue)) {
-              const option = options.find((o) => o.value === activeValue);
+              const option = optionByValue.get(activeValue);
               if (option && !option.disabled) {
                 toggleValue(activeValue);
               }
