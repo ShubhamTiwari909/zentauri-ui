@@ -1,5 +1,22 @@
 # @zentauri-ui/zentauri-components Changelog
 
+## 2.0.0
+
+### Major Changes
+
+#### Extender hooks list
+- useEventListener	Fundamental utility — safely attach/remove any DOM event
+- usePrevious	Track previous value across renders — very common pattern
+- useInterval / useTimeout	Safe, cleanup-aware timer hooks
+- useCountdown	Countdown timer with pause/resume
+- useKeyPress / useHotkeys	Keyboard shortcut management
+- useScrollPosition	Track scroll X/Y (differs from useInView)
+- useCookie	Cookie read/write with reactive updates
+- useGeolocation	Browser geolocation with permission state
+- useLongPress	Long-press gesture support
+- useVirtualList	Virtual scrolling for large lists (critical for performance)
+- useIdleTimeout	Detect user inactivity (session management)
+
 ## 1.9.0
 
 ### Minor Changes
