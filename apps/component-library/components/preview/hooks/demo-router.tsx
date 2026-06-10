@@ -4,7 +4,20 @@ import { useBodyScrollLock } from "@zentauri-ui/zentauri-components/hooks/useBod
 import { useClickOutside } from "@zentauri-ui/zentauri-components/hooks/useClickOutside";
 import { useClipboard } from "@zentauri-ui/zentauri-components/hooks/useClipboard";
 import { useControllableState } from "@zentauri-ui/zentauri-components/hooks/useControllableState";
+import { useCookie } from "@zentauri-ui/zentauri-components/hooks/useCookie";
+import { useCountdown } from "@zentauri-ui/zentauri-components/hooks/useCountdown";
 import { useDebouncedValue } from "@zentauri-ui/zentauri-components/hooks/useDebouncedValue";
+import { useEventListener } from "@zentauri-ui/zentauri-components/hooks/useEventListener";
+import { useGeolocation } from "@zentauri-ui/zentauri-components/hooks/useGeolocation";
+import { useHotkeys } from "@zentauri-ui/zentauri-components/hooks/useHotkeys";
+import { useIdleTimeout } from "@zentauri-ui/zentauri-components/hooks/useIdleTimeout";
+import { useInterval } from "@zentauri-ui/zentauri-components/hooks/useInterval";
+import { useKeyPress } from "@zentauri-ui/zentauri-components/hooks/useKeyPress";
+import { useLongPress } from "@zentauri-ui/zentauri-components/hooks/useLongPress";
+import { usePrevious } from "@zentauri-ui/zentauri-components/hooks/usePrevious";
+import { useScrollPosition } from "@zentauri-ui/zentauri-components/hooks/useScrollPosition";
+import { useTimeout } from "@zentauri-ui/zentauri-components/hooks/useTimeout";
+import { useVirtualList } from "@zentauri-ui/zentauri-components/hooks/useVirtualList";
 import { useDisclosure } from "@zentauri-ui/zentauri-components/hooks/useDisclosure";
 import { useDocumentTitle } from "@zentauri-ui/zentauri-components/hooks/useDocumentTitle";
 import { useFocusManagement } from "@zentauri-ui/zentauri-components/hooks/useFocusManagement";
@@ -33,6 +46,7 @@ import { useToggle } from "@zentauri-ui/zentauri-components/hooks/useToggle";
 import { useWindowSize } from "@zentauri-ui/zentauri-components/hooks/useWindowSize";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 import type { HookPreviewSlug } from "@/lib/hook-preview-registry";
+import type { ReactNode } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { HookDemoPanel } from "./demo-panel";
 import { Input } from "@zentauri-ui/zentauri-components/ui/inputs";
@@ -59,8 +73,34 @@ export function HookDemoRouter({ slug }: HookDemoRouterProps) {
       return <ClipboardDemo />;
     case "use-controllable-state":
       return <ControllableStateDemo />;
+    case "use-cookie":
+      return <CookieDemo />;
+    case "use-countdown":
+      return <CountdownDemo />;
     case "use-debounced-value":
       return <DebouncedValueDemo />;
+    case "use-event-listener":
+      return <EventListenerDemo />;
+    case "use-geolocation":
+      return <GeolocationDemo />;
+    case "use-hotkeys":
+      return <HotkeysDemo />;
+    case "use-idle-timeout":
+      return <IdleTimeoutDemo />;
+    case "use-interval":
+      return <IntervalDemo />;
+    case "use-key-press":
+      return <KeyPressDemo />;
+    case "use-long-press":
+      return <LongPressDemo />;
+    case "use-previous":
+      return <PreviousDemo />;
+    case "use-scroll-position":
+      return <ScrollPositionDemo />;
+    case "use-timeout":
+      return <TimeoutDemo />;
+    case "use-virtual-list":
+      return <VirtualListDemo />;
     case "use-disclosure":
       return <DisclosureDemo />;
     case "use-document-title":
@@ -968,6 +1008,385 @@ function WindowSizeDemo() {
         </span>{" "}
         px — resize the browser to update.
       </p>
+    </HookDemoPanel>
+  );
+}
+
+function CookieDemo() {
+  const [value, setCookie, removeCookie] = useCookie(
+    "zentauri-ui.hooks.preview.cookie",
+  );
+  const [draft, setDraft] = useState("");
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Stored cookie value:{" "}
+        <span className="font-mono text-cyan-200">{value ?? "—"}</span>
+      </p>
+      <div className="flex flex-wrap items-center gap-3">
+        <Input
+          aria-label="Cookie value"
+          appearance="info"
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
+          placeholder="Cookie value…"
+        />
+        <Button
+          type="button"
+          onClick={() => setCookie(draft, { maxAgeSeconds: 3600 })}
+        >
+          Save (1h)
+        </Button>
+        <Button type="button" appearance="outline" onClick={() => removeCookie()}>
+          Remove
+        </Button>
+      </div>
+    </HookDemoPanel>
+  );
+}
+
+function CountdownDemo() {
+  const { count, isRunning, isComplete, start, pause, resume, reset } =
+    useCountdown({ countStart: 10 });
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-4xl font-semibold tabular-nums text-white">
+        {count}
+        <span className="ml-3 text-sm font-normal text-slate-500">
+          {isComplete ? "complete" : isRunning ? "running" : "paused"}
+        </span>
+      </p>
+      <div className="flex flex-wrap gap-2">
+        <Button type="button" onClick={start}>
+          Start
+        </Button>
+        <Button type="button" appearance="outline" onClick={pause}>
+          Pause
+        </Button>
+        <Button type="button" appearance="outline" onClick={resume}>
+          Resume
+        </Button>
+        <Button type="button" appearance="outline" onClick={reset}>
+          Reset
+        </Button>
+      </div>
+    </HookDemoPanel>
+  );
+}
+
+function EventListenerDemo() {
+  const [lastKey, setLastKey] = useState<string | null>(null);
+  useEventListener("keydown", (event) => {
+    setLastKey(event.key);
+  });
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="text-sm text-slate-400">
+        A keydown listener on <code className="text-cyan-200">window</code> —
+        press any key. Last key:{" "}
+        <span className="font-mono text-white">{lastKey ?? "—"}</span>
+      </p>
+    </HookDemoPanel>
+  );
+}
+
+function GeolocationDemo() {
+  const [enabled, setEnabled] = useState(false);
+  const { isSupported, loading, permission, position, error } = useGeolocation({
+    enabled,
+  });
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        The position request (and permission prompt) is deferred until you
+        click — <span className="font-mono text-cyan-200">enabled</span> starts
+        false.
+      </p>
+      <Button type="button" onClick={() => setEnabled((v) => !v)}>
+        {enabled ? "Stop watching" : "Request my location"}
+      </Button>
+      <dl className="mt-4 grid gap-1 text-sm sm:grid-cols-2">
+        <dt className="text-slate-500">Supported</dt>
+        <dd className="text-white">{isSupported ? "yes" : "no"}</dd>
+        <dt className="text-slate-500">Permission</dt>
+        <dd className="font-mono text-white">{permission}</dd>
+        <dt className="text-slate-500">Status</dt>
+        <dd className="text-white">
+          {error ? (
+            <span className="text-rose-400">{error.message}</span>
+          ) : loading ? (
+            "locating…"
+          ) : position ? (
+            "fixed"
+          ) : (
+            "idle"
+          )}
+        </dd>
+        <dt className="text-slate-500">Coordinates</dt>
+        <dd className="font-mono text-cyan-200">
+          {position
+            ? `${position.latitude.toFixed(4)}, ${position.longitude.toFixed(4)}`
+            : "—"}
+        </dd>
+      </dl>
+    </HookDemoPanel>
+  );
+}
+
+function HotkeysDemo() {
+  const [count, setCount] = useState(0);
+  useHotkeys({
+    "mod+k": () => setCount((c) => c + 1),
+    escape: () => setCount(0),
+  });
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="text-sm text-slate-400">
+        Press <Kbd>⌘/Ctrl</Kbd> + <Kbd>K</Kbd> to increment,{" "}
+        <Kbd>Esc</Kbd> to reset (ignored while typing in inputs).
+      </p>
+      <p className="mt-4 text-3xl font-semibold tabular-nums text-white">
+        {count}
+      </p>
+    </HookDemoPanel>
+  );
+}
+
+function Kbd({ children }: { children: ReactNode }) {
+  return (
+    <kbd className="rounded border border-white/20 bg-slate-900 px-1.5 py-0.5 font-mono text-xs text-slate-200">
+      {children}
+    </kbd>
+  );
+}
+
+function IdleTimeoutDemo() {
+  const { isIdle, reset } = useIdleTimeout({ timeoutMs: 4000 });
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Stop moving the mouse and touching the keyboard for 4 seconds.
+      </p>
+      <p className="mb-4 text-sm">
+        Status:{" "}
+        <span className={isIdle ? "text-amber-400" : "text-emerald-400"}>
+          {isIdle ? "idle" : "active"}
+        </span>
+      </p>
+      <Button type="button" onClick={reset}>
+        Mark active
+      </Button>
+    </HookDemoPanel>
+  );
+}
+
+function IntervalDemo() {
+  const [running, setRunning] = useState(true);
+  const [ticks, setTicks] = useState(0);
+  useInterval(() => setTicks((t) => t + 1), running ? 500 : null);
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Ticks every 500ms; a <span className="font-mono text-cyan-200">null</span>{" "}
+        delay pauses the interval.
+      </p>
+      <p className="mb-4 text-3xl font-semibold tabular-nums text-white">
+        {ticks}
+      </p>
+      <Button type="button" onClick={() => setRunning((v) => !v)}>
+        {running ? "Pause" : "Resume"}
+      </Button>
+    </HookDemoPanel>
+  );
+}
+
+function KeyPressDemo() {
+  const arrowPressed = useKeyPress(["ArrowUp", "ArrowDown"]);
+  const kPressed = useKeyPress("k");
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Hold the keys and watch the state — it clears on keyup and window blur.
+      </p>
+      <dl className="grid gap-1 text-sm sm:grid-cols-2">
+        <dt className="text-slate-500">Arrow Up / Down held</dt>
+        <dd className={arrowPressed ? "text-emerald-400" : "text-slate-300"}>
+          {arrowPressed ? "true" : "false"}
+        </dd>
+        <dt className="text-slate-500">K held</dt>
+        <dd className={kPressed ? "text-emerald-400" : "text-slate-300"}>
+          {kPressed ? "true" : "false"}
+        </dd>
+      </dl>
+    </HookDemoPanel>
+  );
+}
+
+function LongPressDemo() {
+  const [status, setStatus] = useState("idle");
+  const handlers = useLongPress(() => setStatus("long-pressed!"), {
+    thresholdMs: 600,
+    onStart: () => setStatus("holding…"),
+    onCancel: () => setStatus("cancelled"),
+  });
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Press and hold for 600ms. Releasing early or dragging away cancels.
+      </p>
+      <button
+        type="button"
+        {...handlers}
+        className="select-none rounded-xl border border-cyan-500/40 bg-cyan-950/30 px-8 py-6 text-cyan-100"
+        style={{ touchAction: "none" }}
+      >
+        Hold me
+      </button>
+      <p className="mt-4 text-sm text-slate-400">
+        Status: <span className="font-mono text-white">{status}</span>
+      </p>
+    </HookDemoPanel>
+  );
+}
+
+function PreviousDemo() {
+  const [count, setCount] = useState(0);
+  const previous = usePrevious(count);
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <dl className="mb-4 grid gap-1 text-sm sm:grid-cols-2">
+        <dt className="text-slate-500">Current</dt>
+        <dd className="font-mono text-cyan-200">{count}</dd>
+        <dt className="text-slate-500">Previous render</dt>
+        <dd className="font-mono text-slate-300">{previous ?? "—"}</dd>
+      </dl>
+      <div className="flex flex-wrap gap-2">
+        <Button type="button" onClick={() => setCount((c) => c + 1)}>
+          Increment
+        </Button>
+        <Button
+          type="button"
+          appearance="outline"
+          onClick={() => setCount((c) => c - 1)}
+        >
+          Decrement
+        </Button>
+      </div>
+    </HookDemoPanel>
+  );
+}
+
+function ScrollPositionDemo() {
+  const boxRef = useRef<HTMLDivElement>(null);
+  const { x, y } = useScrollPosition({ target: boxRef });
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Scroll the box — offsets come from a passive scroll listener on the
+        element. Omit <span className="font-mono text-cyan-200">target</span> to
+        track the window instead.
+      </p>
+      <p className="mb-4 font-mono text-sm text-cyan-200">
+        x: {Math.round(x)}px, y: {Math.round(y)}px
+      </p>
+      <div
+        ref={boxRef}
+        className="h-40 overflow-auto rounded-lg border border-white/10 bg-slate-900/40 p-4 text-sm text-slate-500"
+      >
+        <div className="w-240">
+          {Array.from({ length: 30 }, (_, i) => (
+            <p key={i}>Row {i + 1} — keep scrolling in both directions…</p>
+          ))}
+        </div>
+      </div>
+    </HookDemoPanel>
+  );
+}
+
+function TimeoutDemo() {
+  const [fired, setFired] = useState(false);
+  const { clear, reset } = useTimeout(() => setFired(true), 2000);
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        A 2s timeout armed on mount. Reset restarts the delay; clear cancels
+        it.
+      </p>
+      <p className="mb-4 text-sm">
+        Status:{" "}
+        <span className={fired ? "text-emerald-400" : "text-slate-300"}>
+          {fired ? "fired" : "pending"}
+        </span>
+      </p>
+      <div className="flex flex-wrap gap-2">
+        <Button
+          type="button"
+          onClick={() => {
+            setFired(false);
+            reset();
+          }}
+        >
+          Reset
+        </Button>
+        <Button type="button" appearance="outline" onClick={clear}>
+          Clear
+        </Button>
+      </div>
+    </HookDemoPanel>
+  );
+}
+
+function VirtualListDemo() {
+  const itemCount = 10000;
+  const { setContainerRef, virtualItems, totalHeight, scrollToIndex } =
+    useVirtualList({ itemCount, itemHeight: 36 });
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        {itemCount.toLocaleString()} rows, but only{" "}
+        <span className="font-mono text-cyan-200">{virtualItems.length}</span>{" "}
+        are in the DOM.
+      </p>
+      <div className="mb-4 flex flex-wrap gap-2">
+        <Button type="button" size="sm" onClick={() => scrollToIndex(0)}>
+          Top
+        </Button>
+        <Button
+          type="button"
+          size="sm"
+          appearance="outline"
+          onClick={() => scrollToIndex(5000)}
+        >
+          Row 5,000
+        </Button>
+        <Button
+          type="button"
+          size="sm"
+          appearance="outline"
+          onClick={() => scrollToIndex(itemCount - 1)}
+        >
+          Bottom
+        </Button>
+      </div>
+      <div
+        ref={setContainerRef}
+        className="h-60 overflow-y-auto rounded-lg border border-white/10 bg-slate-900/40"
+      >
+        <div className="relative" style={{ height: totalHeight }}>
+          {virtualItems.map((item) => (
+            <div
+              key={item.index}
+              className="absolute inset-x-0 flex items-center border-b border-white/5 px-4 text-sm text-slate-300"
+              style={{
+                height: item.size,
+                transform: `translateY(${item.start}px)`,
+              }}
+            >
+              Row {item.index + 1}
+            </div>
+          ))}
+        </div>
+      </div>
     </HookDemoPanel>
   );
 }

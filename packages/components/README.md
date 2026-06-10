@@ -29,14 +29,14 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 79 passed (79)   |
-| Tests      | 624 passed (624) |
+| Test files | 91 passed (91)   |
+| Tests      | 671 passed (671) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
 | Components and UI utilities | 47         | 452   |
 | Standalone animations       | 1          | 45    |
-| React hooks                 | 28         | 101   |
+| React hooks                 | 41         | 169   |
 | Design system facade        | 1          | 11    |
 | CLI and import rewriting    | 2          | 15    |
 
@@ -73,6 +73,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/skeleton/skeleton.test.tsx`                                     |     8 |
 | `src/ui/spinner/animated/spinner.test.tsx`                              |     8 |
 | `src/hooks/useDynamicStepper/useDynamicStepper.test.ts`                 |     7 |
+| `src/hooks/useHotkeys/useHotkeys.test.ts`                               |     7 |
 | `src/hooks/useTableSort/useTableSort.test.ts`                           |     7 |
 | `src/ui/accordion/accordion.test.tsx`                                   |     7 |
 | `src/ui/card/card.test.tsx`                                             |     7 |
@@ -82,7 +83,12 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/typography/typography.test.tsx`                                 |     7 |
 | `src/charts/charts.test.tsx`                                            |     6 |
 | `src/hooks/useClipboard/useClipboard.test.ts`                           |     6 |
+| `src/hooks/useCountdown/useCountdown.test.ts`                           |     6 |
+| `src/hooks/useGeolocation/useGeolocation.test.ts`                       |     6 |
+| `src/hooks/useIdleTimeout/useIdleTimeout.test.ts`                       |     6 |
+| `src/hooks/useKeyPress/useKeyPress.test.ts`                             |     6 |
 | `src/hooks/useLocalStorage/useLocalStorage.test.ts`                     |     6 |
+| `src/hooks/useVirtualList/useVirtualList.test.ts`                       |     6 |
 | `src/ui/accessibility/axe-core.test.tsx`                                |     6 |
 | `src/ui/badge/badge.test.tsx`                                           |     6 |
 | `src/ui/checkbox/checkbox.test.tsx`                                     |     6 |
@@ -91,13 +97,19 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/empty-state/empty-state.test.tsx`                               |     6 |
 | `src/ui/search/filter-search-suggestions.test.ts`                       |     6 |
 | `cli/rewrite-imports.test.ts`                                           |     5 |
+| `src/hooks/useCookie/useCookie.test.ts`                                 |     5 |
 | `src/hooks/useDisclosure/useDisclosure.test.ts`                         |     5 |
+| `src/hooks/useEventListener/useEventListener.test.ts`                   |     5 |
+| `src/hooks/useLongPress/useLongPress.test.ts`                           |     5 |
+| `src/hooks/useTimeout/useTimeout.test.ts`                               |     5 |
 | `src/ui/radio-group/radio-group.test.tsx`                               |     5 |
 | `src/ui/toast/toast.test.tsx`                                           |     5 |
 | `src/ui/toggle/toggle.test.tsx`                                         |     5 |
 | `src/hooks/useBodyScrollLock/useBodyScrollLock.test.ts`                 |     4 |
 | `src/hooks/useControllableState/useControllableState.test.ts`           |     4 |
 | `src/hooks/useDebouncedValue/useDebouncedValue.test.ts`                 |     4 |
+| `src/hooks/useInterval/useInterval.test.ts`                             |     4 |
+| `src/hooks/useScrollPosition/useScrollPosition.test.ts`                 |     4 |
 | `src/hooks/useThrottledCallback/useThrottledCallback.test.ts`           |     4 |
 | `src/hooks/useToggle/useToggle.test.ts`                                 |     4 |
 | `src/ui/avatar/avatar.test.tsx`                                         |     4 |
@@ -109,6 +121,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useDocumentTitle/useDocumentTitle.test.ts`                   |     3 |
 | `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
 | `src/hooks/useIsMounted/useIsMounted.test.ts`                           |     3 |
+| `src/hooks/usePrevious/usePrevious.test.ts`                             |     3 |
 | `src/hooks/useSessionStorage/useSessionStorage.test.ts`                 |     3 |
 | `src/ui/tabs/tabs.test.tsx`                                             |     3 |
 | `src/hooks/useHover/useHover.test.ts`                                   |     2 |
@@ -400,29 +413,42 @@ Hooks live in `src/hooks/`. Each hook is a separate published entry under `@zent
 | `useClickOutside`           | `useClickOutside`           | `ClickOutsideEventType`, `UseClickOutsideParams`                                          |
 | `useClipboard`              | `useClipboard`              | `UseClipboardResult`                                                                      |
 | `useControllableState`      | `useControllableState`      | `UseControllableStateParams`                                                              |
+| `useCookie`                 | `useCookie`                 | `CookieOptions`, `UseCookieResult`                                                        |
+| `useCountdown`              | `useCountdown`              | `UseCountdownParams`, `UseCountdownResult`                                                |
 | `useDebouncedValue`         | `useDebouncedValue`         | Debounced state from a value                                                              |
 | `useDisclosure`             | `useDisclosure`             | `UseDisclosureParams`, `UseDisclosureResult`                                              |
 | `useDocumentTitle`          | `useDocumentTitle`          | `UseDocumentTitleParams`                                                                  |
 | `useDynamicStepper`         | `useDynamicStepper`         | `UseDynamicStepperParams`, `UseDynamicStepperResult` (types also on `ui/dynamic-stepper`) |
+| `useEventListener`          | `useEventListener`          | `UseEventListenerTarget` — window / document / element / ref targets                      |
 | `useFocusManagement`        | `useFocusManagement`        | Focus trap / focus moves for overlays                                                     |
+| `useGeolocation`            | `useGeolocation`            | `UseGeolocationParams`, `UseGeolocationResult`, permission state                          |
+| `useHotkeys`                | `useHotkeys`                | `HotkeyHandler`, `UseHotkeysOptions` — `mod+k` style combos                               |
 | `useHover`                  | `useHover`                  | Pointer hover state                                                                       |
+| `useIdleTimeout`            | `useIdleTimeout`            | `UseIdleTimeoutParams`, `UseIdleTimeoutResult`                                            |
+| `useInterval`               | `useInterval`               | Declarative `setInterval`; `null` pauses                                                  |
 | `useInView`                 | `useInView`                 | `UseInViewParams`                                                                         |
 | `useIntersectionObserver`   | `useIntersectionObserver`   | `UseIntersectionObserverParams`                                                           |
 | `useIsomorphicLayoutEffect` | `useIsomorphicLayoutEffect` | `useLayoutEffect` safe for SSR                                                            |
 | `useIsMounted`              | `useIsMounted`              | Ref / flag after mount                                                                    |
+| `useKeyPress`               | `useKeyPress`               | Held-key boolean for a key or key list                                                    |
 | `useLocalStorage`           | `useLocalStorage`           | `UseLocalStorageResult`                                                                   |
+| `useLongPress`              | `useLongPress`              | `UseLongPressHandlers`, `UseLongPressOptions`                                             |
 | `useMediaQuery`             | `useMediaQuery`             | Match CSS media queries                                                                   |
 | `useNetworkStatus`          | `useNetworkStatus`          | Online / offline                                                                          |
 | `usePageVisibility`         | `usePageVisibility`         | Document visibility API                                                                   |
 | `usePagination`             | `usePagination`             | `buildPaginationItems`, `BuildPaginationItemsParams`, `PaginationPageItem`                |
 | `usePrefersColorScheme`     | `usePrefersColorScheme`     | `ColorSchemePreference`                                                                   |
 | `usePrefersReducedMotion`   | `usePrefersReducedMotion`   | `prefers-reduced-motion`                                                                  |
+| `usePrevious`               | `usePrevious`               | Value from the previous render                                                            |
 | `useResizeObserver`         | `useResizeObserver`         | `ElementSize`                                                                             |
+| `useScrollPosition`         | `useScrollPosition`         | `ScrollPosition`, `UseScrollPositionParams`                                               |
 | `useSessionStorage`         | `useSessionStorage`         | `UseSessionStorageResult`                                                                 |
 | `useTableFilter`            | `useTableFilter`            | `TableFilterState`, `UseTableFilterResult`                                                |
 | `useTableSort`              | `useTableSort`              | `UseTableSortParams`, `UseTableSortResult`                                                |
 | `useThrottledCallback`      | `useThrottledCallback`      | Throttled callback ref                                                                    |
+| `useTimeout`                | `useTimeout`                | `UseTimeoutResult` — `clear` / `reset` controls                                           |
 | `useToggle`                 | `useToggle`                 | Boolean toggle state                                                                      |
+| `useVirtualList`            | `useVirtualList`            | `UseVirtualListParams`, `UseVirtualListResult`, `VirtualItem`                             |
 | `useWindowSize`             | `useWindowSize`             | `WindowSize`                                                                              |
 | `cn`, `clampPage`, `range`  | `utils`                     | Shared helpers from `src/lib/utils.ts`                                                    |
 
@@ -819,7 +845,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 624 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 671 test cases in total
 - `pnpm test:a11y` — focused **axe-core** accessibility smoke coverage for package-level UI primitives and compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).

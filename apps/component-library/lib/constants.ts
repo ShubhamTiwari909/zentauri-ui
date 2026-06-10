@@ -36,6 +36,24 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Use for primitives that support both fully controlled and uncontrolled usage with one setter.",
   },
   {
+    slug: "use-cookie",
+    module: "useCookie",
+    name: "useCookie",
+    description:
+      "Reads and writes a single cookie with React state kept in sync, including remove with max-age expiry.",
+    intro:
+      "Lightweight preferences, consent flags, or A/B cohorts that must be visible to the server on the next request.",
+  },
+  {
+    slug: "use-countdown",
+    module: "useCountdown",
+    name: "useCountdown",
+    description:
+      "Countdown timer from countStart to countStop with start, pause, resume, reset, and onComplete.",
+    intro:
+      "OTP resend timers, quiz deadlines, and launch counters with explicit pause and resume control.",
+  },
+  {
     slug: "use-debounced-value",
     module: "useDebouncedValue",
     name: "useDebouncedValue",
@@ -72,6 +90,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Headless navigation for wizards; pair with DynamicStepper or build your own step chrome.",
   },
   {
+    slug: "use-event-listener",
+    module: "useEventListener",
+    name: "useEventListener",
+    description:
+      "Attaches any DOM event listener to window, document, an element, or a ref with automatic cleanup.",
+    intro:
+      "The fundamental building block: subscribe once, keep the latest handler, and never leak listeners.",
+  },
+  {
     slug: "use-focus-management",
     module: "useFocusManagement",
     name: "useFocusManagement",
@@ -81,6 +108,24 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Intended for modal-like surfaces together with scroll locking from the same hook.",
   },
   {
+    slug: "use-geolocation",
+    module: "useGeolocation",
+    name: "useGeolocation",
+    description:
+      "Browser geolocation with loading, error, Permissions API state, and one-shot or watch modes.",
+    intro:
+      "Store finders, delivery ETAs, and map centering; defer the permission prompt behind a user gesture with enabled.",
+  },
+  {
+    slug: "use-hotkeys",
+    module: "useHotkeys",
+    name: "useHotkeys",
+    description:
+      "Binds keyboard shortcut combos like mod+k or ctrl+shift+p to handlers, skipping inputs by default.",
+    intro:
+      "Command palettes, save shortcuts, and navigation keys with one declarative binding map.",
+  },
+  {
     slug: "use-hover",
     module: "useHover",
     name: "useHover",
@@ -88,6 +133,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Pointer enter and leave tracking on the element attached via a ref callback.",
     intro:
       "Drives preview cards, tooltip delay logic, or analytics hover regions without manual listeners.",
+  },
+  {
+    slug: "use-idle-timeout",
+    module: "useIdleTimeout",
+    name: "useIdleTimeout",
+    description:
+      "Flags the user idle after a period without pointer, key, wheel, touch, or scroll activity.",
+    intro:
+      "Session expiry warnings, presence indicators, and pausing media or polling while nobody is around.",
   },
   {
     slug: "use-in-view",
@@ -108,6 +162,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Use when you need ratios, bounding rects, or thresholds beyond a simple in-view boolean.",
   },
   {
+    slug: "use-interval",
+    module: "useInterval",
+    name: "useInterval",
+    description:
+      "Declarative setInterval that always calls the latest callback and pauses when the delay is null.",
+    intro:
+      "Polling, tickers, and slideshows without stale closures or hand-rolled cleanup.",
+  },
+  {
     slug: "use-isomorphic-layout-effect",
     module: "useIsomorphicLayoutEffect",
     name: "useIsomorphicLayoutEffect",
@@ -126,6 +189,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Guards async completions and timers so setState does not run after unmount.",
   },
   {
+    slug: "use-key-press",
+    module: "useKeyPress",
+    name: "useKeyPress",
+    description:
+      "Boolean for whether a key (or any of several keys) is held down, cleared on window blur.",
+    intro:
+      "Game controls, drawing modifiers, and press-and-hold UI that needs live key state rather than shortcuts.",
+  },
+  {
     slug: "use-local-storage",
     module: "useLocalStorage",
     name: "useLocalStorage",
@@ -133,6 +205,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "JSON-serialized state mirrored to localStorage with cross-tab storage events.",
     intro:
       "Persists UI preferences, draft forms, or lightweight client caches across sessions.",
+  },
+  {
+    slug: "use-long-press",
+    module: "useLongPress",
+    name: "useLongPress",
+    description:
+      "Long-press gesture via pointer events with threshold, movement tolerance, and lifecycle callbacks.",
+    intro:
+      "Context menus on touch, press-and-hold to delete, and other intent-confirming gestures.",
   },
   {
     slug: "use-media-query",
@@ -206,6 +287,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Disable or simplify motion when users request reduced animation at the system level.",
   },
   {
+    slug: "use-previous",
+    module: "usePrevious",
+    name: "usePrevious",
+    description:
+      "Returns the value from the previous render — undefined on the first one.",
+    intro:
+      "Diff props or state across renders for animation direction, change detection, and transition logic.",
+  },
+  {
     slug: "use-resize-observer",
     module: "useResizeObserver",
     name: "useResizeObserver",
@@ -213,6 +303,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Observes element content box size via ResizeObserver and a ref callback.",
     intro:
       "Charts, virtualized lists, and custom scrollers that must react to element dimensions.",
+  },
+  {
+    slug: "use-scroll-position",
+    module: "useScrollPosition",
+    name: "useScrollPosition",
+    description:
+      "Tracks the scroll x/y offset of the window or a scrollable element via a passive listener.",
+    intro:
+      "Reading progress bars, scroll-linked headers, and back-to-top buttons driven by live offsets.",
   },
   {
     slug: "use-session-storage",
@@ -233,6 +332,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Scroll or resize handlers that should stay smooth without flooding downstream work.",
   },
   {
+    slug: "use-timeout",
+    module: "useTimeout",
+    name: "useTimeout",
+    description:
+      "Declarative setTimeout with automatic cleanup plus imperative clear and reset controls.",
+    intro:
+      "Auto-dismiss toasts, delayed reveals, and deferred actions the user can cancel or restart.",
+  },
+  {
     slug: "use-toggle",
     module: "useToggle",
     name: "useToggle",
@@ -240,6 +348,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Boolean state with toggle and explicit set helpers for simple on-off UI.",
     intro:
       "Feature flags in demos, collapsible panels, and compact binary controls.",
+  },
+  {
+    slug: "use-virtual-list",
+    module: "useVirtualList",
+    name: "useVirtualList",
+    description:
+      "Headless fixed-height list virtualization: renders only visible rows plus overscan with scrollToIndex.",
+    intro:
+      "Logs, tables, and feeds with tens of thousands of rows that must stay smooth without a heavyweight dependency.",
   },
   {
     slug: "use-window-size",
