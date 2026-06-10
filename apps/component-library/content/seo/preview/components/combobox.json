@@ -65,7 +65,7 @@
     },
     {
       "heading": "Common use cases",
-      "body": ""
+      "body": "Comboboxes are ideal for situations where users need to select from a large list of options, such as country selectors, timezone pickers, user assignment dropdowns in project management tools, or multi-select tag and label inputs."
     },
     {
       "heading": "Accessibility",

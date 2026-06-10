@@ -155,9 +155,21 @@ export const Combobox = ({
 
   const registerOption = useCallback((opt: ComboboxOption) => {
     setOptions((prev) => {
-      if (prev.find((o) => o.value === opt.value)) return prev;
+      const existing = prev.find((o) => o.value === opt.value);
+      if (existing) {
+        const labelChanged =
+          (typeof opt.label === "string" || typeof opt.label === "number") &&
+          existing.label !== opt.label;
+        const disabledChanged = existing.disabled !== opt.disabled;
+        if (labelChanged || disabledChanged) {
+          return prev.map((o) => (o.value === opt.value ? opt : o));
+        }
+        return prev;
+      }
       return [...prev, opt];
     });
+    // No cleanup on unmount: options must persist across panel open/close so
+    // ComboboxValue can still display the selected label when the panel is closed.
   }, []);
 
   return (
@@ -322,19 +334,26 @@ export const ComboboxSearch = ({
     setOpen,
     searchRef,
     listboxId,
+    options,
+    triggerRef,
   } = useCombobox();
 
   const moveActive = (direction: 1 | -1) => {
     if (visibleValues.length === 0) return;
     const currentIndex = activeValue ? visibleValues.indexOf(activeValue) : -1;
-    const nextIndex =
-      currentIndex === -1
-        ? direction === 1
-          ? 0
-          : visibleValues.length - 1
-        : (currentIndex + direction + visibleValues.length) %
-          visibleValues.length;
-    setActiveValue(visibleValues[nextIndex] ?? null);
+    let nextIndex = currentIndex;
+    for (let i = 0; i < visibleValues.length; i++) {
+      if (nextIndex === -1) {
+        nextIndex = direction === 1 ? 0 : visibleValues.length - 1;
+      } else {
+        nextIndex = (nextIndex + direction + visibleValues.length) % visibleValues.length;
+      }
+      const candidate = options.find((o) => o.value === visibleValues[nextIndex]);
+      if (candidate && !candidate.disabled) {
+        setActiveValue(visibleValues[nextIndex] ?? null);
+        return;
+      }
+    }
   };
 
   return (
@@ -384,11 +403,15 @@ export const ComboboxSearch = ({
           } else if (event.key === "Enter") {
             event.preventDefault();
             if (activeValue && visibleValues.includes(activeValue)) {
-              toggleValue(activeValue);
+              const option = options.find((o) => o.value === activeValue);
+              if (option && !option.disabled) {
+                toggleValue(activeValue);
+              }
             }
           } else if (event.key === "Escape") {
             event.preventDefault();
             setOpen(false);
+            triggerRef.current?.focus();
           }
         }}
         {...props}
