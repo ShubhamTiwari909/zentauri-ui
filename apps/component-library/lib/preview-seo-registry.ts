@@ -9,6 +9,7 @@ import breadcrumb from "@/content/seo/preview/components/breadcrumb.json";
 import buttons from "@/content/seo/preview/components/buttons.json";
 import card from "@/content/seo/preview/components/card.json";
 import checkbox from "@/content/seo/preview/components/checkbox.json";
+import combobox from "@/content/seo/preview/components/combobox.json";
 import command from "@/content/seo/preview/components/command.json";
 import contextMenu from "@/content/seo/preview/components/context-menu.json";
 import copyButton from "@/content/seo/preview/components/copy-button.json";
@@ -61,6 +62,7 @@ const previewSeoRegistry = {
   buttons: buttons as PreviewSeoDocument,
   card: card as PreviewSeoDocument,
   checkbox: checkbox as PreviewSeoDocument,
+  combobox: combobox as PreviewSeoDocument,
   command: command as PreviewSeoDocument,
   "context-menu": contextMenu as PreviewSeoDocument,
   "copy-button": copyButton as PreviewSeoDocument,

@@ -193,6 +193,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/checkbox",
       },
       {
+        title: "Combobox",
+        href: "/preview/components/combobox",
+      },
+      {
         title: "Command palette",
         href: "/preview/components/command",
       },

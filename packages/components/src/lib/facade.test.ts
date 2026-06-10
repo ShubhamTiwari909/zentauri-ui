@@ -84,9 +84,9 @@ describe("DesignSystem facade", () => {
     const searchVars = search?.variables() ?? [];
     expect(searchVars.length).toBeGreaterThan(0);
     // SearchBar has no tokens of its own — every variable is an Input variable.
-    expect(searchVars.every((token) => token.name.startsWith("--zui-input"))).toBe(
-      true,
-    );
+    expect(
+      searchVars.every((token) => token.name.startsWith("--zui-input")),
+    ).toBe(true);
     expect(searchVars.length).toBe(input?.variables().length);
   });
 
@@ -100,7 +100,9 @@ describe("DesignSystem facade", () => {
     const contextMenuNames = (contextMenu?.variables() ?? []).map(
       (token) => token.name,
     );
-    const dropdownNames = (dropdown?.variables() ?? []).map((token) => token.name);
+    const dropdownNames = (dropdown?.variables() ?? []).map(
+      (token) => token.name,
+    );
 
     expect(contextMenuNames.length).toBeGreaterThan(0);
     expect(
@@ -153,9 +155,7 @@ describe("DesignSystem facade", () => {
   it("leaves dark-only variables unpaired", () => {
     // A `-dark` reference with no light base must stay unpaired rather than
     // pointing at a variable that was never parsed.
-    const darkOnly = DesignSystem.parse(
-      "bg-[var(--zui-probe-only-dark,#000)]",
-    );
+    const darkOnly = DesignSystem.parse("bg-[var(--zui-probe-only-dark,#000)]");
     expect(darkOnly).toHaveLength(1);
     expect(darkOnly[0]?.theme).toBe("dark");
     expect(darkOnly[0]?.pairName).toBeUndefined();

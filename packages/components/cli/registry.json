@@ -61,6 +61,7 @@
     "charts/scatter",
     "charts/stacked-bar",
     "checkbox",
+    "combobox",
     "command",
     "context-menu",
     "copy-button",

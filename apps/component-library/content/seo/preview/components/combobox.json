@@ -1,0 +1,80 @@
+{
+  "category": "Forms",
+  "title": "Combobox component for React forms",
+  "description": "Combobox component for React and Next.js—searchable single and multi-value selection with keyboard navigation, listbox semantics, and Tailwind color variants.",
+  "keywords": [
+    "combobox component",
+    "React",
+    "Next.js",
+    "searchable select",
+    "autocomplete",
+    "forms",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Combobox · Zentauri UI",
+    "description": "Combobox component for React and Next.js—searchable single and multi-value selection with keyboard navigation, listbox semantics, and Tailwind color variants.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Combobox · Zentauri UI",
+    "description": "Combobox component for React and Next.js—searchable single and multi-value selection with keyboard navigation, listbox semantics, and Tailwind color variants.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/combobox",
+  "headings": {
+    "h1": "Combobox for searchable selection",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Combobox combines a trigger button with a searchable dropdown list. Use it when option lists are too long to scan at a glance, or when users need to type to filter before picking.",
+  "useCases": [
+    "Assign owners from long user lists in project management tools.",
+    "Filter and select tags, labels, or categories.",
+    "Country and timezone pickers in onboarding flows.",
+    "Multi-value selection for filter panels and dashboards."
+  ],
+  "faqs": [
+    {
+      "question": "How is Combobox different from Select?",
+      "answer": "Combobox adds a search input inside the dropdown panel so users can type to filter options in real time. Select is a plain listbox with no filtering."
+    },
+    {
+      "question": "Does Combobox support multiple selection?",
+      "answer": "Yes. Set multiple on the root Combobox and the panel stays open after each pick. Deselect by clicking a selected item again."
+    },
+    {
+      "question": "Is Combobox accessible by default?",
+      "answer": "The search input has role combobox, the list has role listbox, and items have role option. Keyboard navigation with ArrowDown/Up, Enter, and Escape is built in."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "A compound component split into trigger, content panel, search input, list, items, and an empty state.\n\nThe search input filters visible items client-side matching on value and label text."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Wrap with Combobox for context. Place ComboboxTrigger (with ComboboxValue) and ComboboxContent (with ComboboxSearch, ComboboxList, and ComboboxItem) as children.\n\nAll sub-components accept className and data-slot for easy slot-level targeting."
+    },
+    {
+      "heading": "Common use cases",
+      "body": "Comboboxes are ideal for situations where users need to select from a large list of options, such as country selectors, timezone pickers, user assignment dropdowns in project management tools, or multi-select tag and label inputs."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The search input carries role combobox and aria-controls pointing to the listbox. Active item is tracked via aria-activedescendant. Disabled items are marked aria-disabled and ignored by keyboard and pointer.\n\nTest with keyboard-only flows and screen readers when integrating."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from the ui/combobox subpath entry. Mark the parent subtree as a Client Component when using onChange or controlled value.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve correctly on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

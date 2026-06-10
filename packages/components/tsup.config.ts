@@ -12,6 +12,7 @@ const uiComponentNames = [
   "buttons",
   "card",
   "checkbox",
+  "combobox",
   "command",
   "context-menu",
   "copy-button",
