@@ -26,7 +26,7 @@ export type UseCountdownResult = {
   start: () => void;
   /** Stop ticking, keeping the current count. */
   pause: () => void;
-  /** Continue ticking from the current count. */
+  /** Continue ticking from the current count. No-op if the countdown is complete. */
   resume: () => void;
   /** Stop ticking and reset the count to `countStart`. */
   reset: () => void;
@@ -59,8 +59,10 @@ export function useCountdown({
 
   const isComplete = count <= countStop;
 
+  // Interval effect: does NOT include `count` in deps so the timer is not recreated on every tick.
+  // Completion is handled by the separate effect below.
   useEffect(() => {
-    if (!isRunning || count <= countStop) {
+    if (!isRunning) {
       return;
     }
     const id = window.setInterval(() => {
@@ -69,7 +71,7 @@ export function useCountdown({
     return () => {
       window.clearInterval(id);
     };
-  }, [count, countStop, intervalMs, isRunning]);
+  }, [countStop, intervalMs, isRunning]);
 
   useEffect(() => {
     if (isRunning && count <= countStop) {
@@ -88,8 +90,12 @@ export function useCountdown({
   }, []);
 
   const resume = useCallback(() => {
+    // No-op when the countdown has already reached countStop to prevent retriggering onComplete.
+    if (isComplete) {
+      return;
+    }
     setIsRunning(true);
-  }, []);
+  }, [isComplete]);
 
   const reset = useCallback(() => {
     setIsRunning(false);

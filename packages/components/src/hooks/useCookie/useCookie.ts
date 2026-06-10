@@ -13,7 +13,7 @@ export type CookieOptions = {
   domain?: string;
   /** Restrict to HTTPS. */
   secure?: boolean;
-  /** SameSite attribute. */
+  /** SameSite attribute. `"none"` automatically forces `secure` per browser requirements. */
   sameSite?: "strict" | "lax" | "none";
 };
 
@@ -34,7 +34,12 @@ function readCookie(name: string): string | null {
   if (!match) {
     return null;
   }
-  return decodeURIComponent(match.slice(prefix.length));
+  try {
+    return decodeURIComponent(match.slice(prefix.length));
+  } catch {
+    // Malformed cookie value — return null rather than crashing.
+    return null;
+  }
 }
 
 function serializeCookie(
@@ -47,9 +52,10 @@ function serializeCookie(
     expires,
     path = "/",
     domain,
-    secure,
     sameSite,
   } = options;
+  // SameSite=None requires Secure; enforce it automatically.
+  const secure = options.secure || sameSite === "none";
   let cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; path=${path}`;
   if (maxAgeSeconds != null) {
     cookie += `; max-age=${maxAgeSeconds}`;
@@ -72,11 +78,13 @@ function serializeCookie(
 /**
  * Reads and writes a single cookie with React state that stays in sync with your updates.
  *
- * - Initial read happens on the client; SSR resolves to `initialValue` (or `null`).
+ * - Initial state is `initialValue` (or `null`) to avoid SSR hydration mismatches; the actual
+ *   cookie value is read on mount via a `useEffect`.
  * - `setCookie` writes `document.cookie` (URI-encoded) and updates state in the same call.
  * - `removeCookie` expires the cookie via `max-age=0`; pass the same `path` / `domain` used when setting.
  * - Reactivity covers writes made through this hook instance; cookies changed elsewhere are
  *   re-read only when `name` changes (the browser offers no cookie change event in wide support).
+ * - `SameSite="none"` automatically forces the `Secure` flag per browser requirements.
  *
  * @param name - Cookie name.
  * @param initialValue - Fallback when the cookie is absent (and during SSR).
@@ -86,9 +94,9 @@ export function useCookie(
   name: string,
   initialValue?: string,
 ): UseCookieResult {
-  const [value, setValueState] = useState<string | null>(
-    () => readCookie(name) ?? initialValue ?? null,
-  );
+  // Initialize to initialValue (not readCookie) to avoid SSR hydration mismatches.
+  // The effect below syncs the actual cookie value after mount.
+  const [value, setValueState] = useState<string | null>(initialValue ?? null);
 
   const setCookie = useCallback(
     (value: string, options: CookieOptions = {}) => {

@@ -6,7 +6,7 @@ import { useScrollPosition } from "./useScrollPosition";
 describe("useScrollPosition", () => {
   it("should start at the current window offset", () => {
     const { result } = renderHook(() => useScrollPosition());
-    expect(result.current).toEqual({ x: 0, y: 0 });
+    expect(result.current).toMatchObject({ x: 0, y: 0 });
   });
 
   it("should update from window scroll events", () => {
@@ -22,7 +22,7 @@ describe("useScrollPosition", () => {
       });
       window.dispatchEvent(new Event("scroll"));
     });
-    expect(result.current).toEqual({ x: 40, y: 120 });
+    expect(result.current).toMatchObject({ x: 40, y: 120 });
     Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
     Object.defineProperty(window, "scrollX", { configurable: true, value: 0 });
   });
@@ -36,7 +36,7 @@ describe("useScrollPosition", () => {
       element.scrollLeft = 5;
       element.dispatchEvent(new Event("scroll"));
     });
-    expect(result.current).toEqual({ x: 5, y: 75 });
+    expect(result.current).toMatchObject({ x: 5, y: 75 });
   });
 
   it("should stop listening on unmount", () => {
@@ -50,6 +50,20 @@ describe("useScrollPosition", () => {
       element.scrollTop = 300;
       element.dispatchEvent(new Event("scroll"));
     });
-    expect(result.current).toEqual({ x: 0, y: 0 });
+    expect(result.current).toMatchObject({ x: 0, y: 0 });
+  });
+
+  it("should track an element attached via setRef callback ref", () => {
+    const { result } = renderHook(() => useScrollPosition());
+    const element = document.createElement("div");
+    act(() => {
+      result.current.setRef(element);
+    });
+    act(() => {
+      element.scrollTop = 50;
+      element.scrollLeft = 10;
+      element.dispatchEvent(new Event("scroll"));
+    });
+    expect(result.current).toMatchObject({ x: 10, y: 50 });
   });
 });

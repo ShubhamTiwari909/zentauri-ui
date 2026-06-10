@@ -1,6 +1,9 @@
 "use client";
 
-import type { PointerEvent as ReactPointerEvent } from "react";
+import type {
+  MouseEvent as ReactMouseEvent,
+  PointerEvent as ReactPointerEvent,
+} from "react";
 import { useCallback, useEffect, useRef } from "react";
 
 export type UseLongPressOptions = {
@@ -21,6 +24,13 @@ export type UseLongPressHandlers = {
   onPointerMove: (event: ReactPointerEvent) => void;
   onPointerUp: (event: ReactPointerEvent) => void;
   onPointerLeave: (event: ReactPointerEvent) => void;
+  /** Handles browser-level pointer cancellation (e.g. system interruption, scroll takeover). */
+  onPointerCancel: (event: ReactPointerEvent) => void;
+  /**
+   * Suppresses the synthetic `click` event that fires after a successful long press.
+   * Spread alongside the other handlers to prevent unintended navigation or button actions.
+   */
+  onClick: (event: ReactMouseEvent) => void;
 };
 
 /**
@@ -30,6 +40,9 @@ export type UseLongPressHandlers = {
  * `thresholdMs` without travelling more than `moveTolerancePx`, `callback` fires once;
  * releasing afterwards calls `onFinish`, while early release / movement / leaving the
  * element calls `onCancel`.
+ *
+ * Only the primary button (button 0 / left click / first touch contact) starts a long press;
+ * right and middle mouse buttons are ignored.
  *
  * Pair with `touch-action` / `select-none` CSS on touch targets to suppress native
  * scrolling or text selection during the hold where needed.
@@ -92,6 +105,11 @@ export function useLongPress(
 
   const onPointerDown = useCallback(
     (event: ReactPointerEvent) => {
+      // Only respond to the primary button (left click / first touch contact).
+      // event.button > 0 catches right (2) and middle (1) mouse buttons.
+      if (event.button > 0) {
+        return;
+      }
       pressingRef.current = true;
       triggeredRef.current = false;
       originRef.current = { x: event.clientX, y: event.clientY };
@@ -139,10 +157,21 @@ export function useLongPress(
     [stopTimer],
   );
 
+  // After a successful long press the browser fires a synthetic `click` event on pointer up.
+  // This handler suppresses it so navigation and button actions aren't triggered unexpectedly.
+  const onClick = useCallback((event: ReactMouseEvent) => {
+    if (triggeredRef.current) {
+      event.preventDefault();
+      triggeredRef.current = false;
+    }
+  }, []);
+
   return {
     onPointerDown,
     onPointerMove,
     onPointerUp,
     onPointerLeave: cancel,
+    onPointerCancel: cancel,
+    onClick,
   };
 }

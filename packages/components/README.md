@@ -29,14 +29,14 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 91 passed (91)   |
-| Tests      | 671 passed (671) |
+| Test files | 92 passed (92)   |
+| Tests      | 697 passed (697) |
 
 | Area                        | Test files | Tests |
 | --------------------------- | ---------- | ----- |
 | Components and UI utilities | 47         | 452   |
 | Standalone animations       | 1          | 45    |
-| React hooks                 | 41         | 169   |
+| React hooks                 | 41         | 174   |
 | Design system facade        | 1          | 11    |
 | CLI and import rewriting    | 2          | 15    |
 
@@ -63,6 +63,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/modal/modal.test.tsx`                                           |    10 |
 | `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
 | `src/ui/tree-view/tree-view.test.tsx`                                   |    10 |
+| `src/hooks/useLongPress/useLongPress.test.ts`                           |     9 |
 | `src/hooks/useTableFilter/useTableFilter.test.ts`                       |     9 |
 | `src/ui/animated-number/animated-number.test.tsx`                       |     9 |
 | `src/ui/slider/slider.test.tsx`                                         |     9 |
@@ -100,7 +101,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useCookie/useCookie.test.ts`                                 |     5 |
 | `src/hooks/useDisclosure/useDisclosure.test.ts`                         |     5 |
 | `src/hooks/useEventListener/useEventListener.test.ts`                   |     5 |
-| `src/hooks/useLongPress/useLongPress.test.ts`                           |     5 |
+| `src/hooks/useScrollPosition/useScrollPosition.test.ts`                 |     5 |
 | `src/hooks/useTimeout/useTimeout.test.ts`                               |     5 |
 | `src/ui/radio-group/radio-group.test.tsx`                               |     5 |
 | `src/ui/toast/toast.test.tsx`                                           |     5 |
@@ -109,7 +110,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useControllableState/useControllableState.test.ts`           |     4 |
 | `src/hooks/useDebouncedValue/useDebouncedValue.test.ts`                 |     4 |
 | `src/hooks/useInterval/useInterval.test.ts`                             |     4 |
-| `src/hooks/useScrollPosition/useScrollPosition.test.ts`                 |     4 |
 | `src/hooks/useThrottledCallback/useThrottledCallback.test.ts`           |     4 |
 | `src/hooks/useToggle/useToggle.test.ts`                                 |     4 |
 | `src/ui/avatar/avatar.test.tsx`                                         |     4 |
@@ -845,7 +845,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 671 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 697 test cases in total
 - `pnpm test:a11y` — focused **axe-core** accessibility smoke coverage for package-level UI primitives and compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).

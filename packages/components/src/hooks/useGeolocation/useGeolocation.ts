@@ -104,10 +104,13 @@ export function useGeolocation(
     navigator.permissions
       .query({ name: "geolocation" })
       .then((result) => {
-        status = result;
-        if (active) {
-          setPermission(result.state);
+        // Guard against the component unmounting before this promise resolves,
+        // which would otherwise attach a listener that can never be cleaned up.
+        if (!active) {
+          return;
         }
+        status = result;
+        setPermission(result.state);
         result.addEventListener("change", onChange);
       })
       .catch(() => {

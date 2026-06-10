@@ -1,11 +1,14 @@
 import { act, renderHook } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { PointerEvent as ReactPointerEvent } from "react";
+import type {
+  MouseEvent as ReactMouseEvent,
+  PointerEvent as ReactPointerEvent,
+} from "react";
 
 import { useLongPress } from "./useLongPress";
 
-function pointerEvent(x = 0, y = 0): ReactPointerEvent {
-  return { clientX: x, clientY: y } as ReactPointerEvent;
+function pointerEvent(x = 0, y = 0, button = 0): ReactPointerEvent {
+  return { clientX: x, clientY: y, button } as ReactPointerEvent;
 }
 
 describe("useLongPress", () => {
@@ -107,5 +110,71 @@ describe("useLongPress", () => {
     });
     expect(callback).not.toHaveBeenCalled();
     expect(onCancel).toHaveBeenCalledTimes(1);
+  });
+
+  it("should cancel when onPointerCancel fires", () => {
+    const callback = vi.fn();
+    const onCancel = vi.fn();
+    const { result } = renderHook(() =>
+      useLongPress(callback, { thresholdMs: 300, onCancel }),
+    );
+    act(() => {
+      result.current.onPointerDown(pointerEvent());
+      vi.advanceTimersByTime(100);
+      result.current.onPointerCancel(pointerEvent());
+      vi.advanceTimersByTime(300);
+    });
+    expect(callback).not.toHaveBeenCalled();
+    expect(onCancel).toHaveBeenCalledTimes(1);
+  });
+
+  it("should ignore non-primary mouse buttons", () => {
+    const callback = vi.fn();
+    const { result } = renderHook(() =>
+      useLongPress(callback, { thresholdMs: 300 }),
+    );
+    act(() => {
+      result.current.onPointerDown(pointerEvent(0, 0, 2)); // right click
+      vi.advanceTimersByTime(400);
+    });
+    expect(callback).not.toHaveBeenCalled();
+  });
+
+  it("should suppress click after a successful long press", () => {
+    const callback = vi.fn();
+    const { result } = renderHook(() =>
+      useLongPress(callback, { thresholdMs: 300 }),
+    );
+    act(() => {
+      result.current.onPointerDown(pointerEvent());
+      vi.advanceTimersByTime(300);
+      result.current.onPointerUp(pointerEvent());
+    });
+    const mockEvent = {
+      preventDefault: vi.fn(),
+    } as unknown as ReactMouseEvent;
+    act(() => {
+      result.current.onClick(mockEvent);
+    });
+    expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1);
+  });
+
+  it("should not suppress click after a short press", () => {
+    const callback = vi.fn();
+    const { result } = renderHook(() =>
+      useLongPress(callback, { thresholdMs: 300 }),
+    );
+    act(() => {
+      result.current.onPointerDown(pointerEvent());
+      vi.advanceTimersByTime(100);
+      result.current.onPointerUp(pointerEvent());
+    });
+    const mockEvent = {
+      preventDefault: vi.fn(),
+    } as unknown as ReactMouseEvent;
+    act(() => {
+      result.current.onClick(mockEvent);
+    });
+    expect(mockEvent.preventDefault).not.toHaveBeenCalled();
   });
 });

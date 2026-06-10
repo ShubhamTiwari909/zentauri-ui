@@ -87,20 +87,26 @@ export function useVirtualList({
     };
   }, [container]);
 
+  const safeItemCount = Math.max(0, Math.floor(itemCount));
   const safeItemHeight = Math.max(1, itemHeight);
-  const totalHeight = itemCount * safeItemHeight;
+  const safeOverscan = Math.max(0, Math.floor(overscan));
+
+  const totalHeight = safeItemCount * safeItemHeight;
   const startIndex =
-    itemCount === 0
+    safeItemCount === 0
       ? 0
-      : Math.max(0, Math.floor(scrollTop / safeItemHeight) - overscan);
+      : Math.max(
+          0,
+          Math.floor(scrollTop / safeItemHeight) - safeOverscan,
+        );
   const endIndex =
-    itemCount === 0
+    safeItemCount === 0
       ? -1
       : Math.min(
-          itemCount - 1,
+          safeItemCount - 1,
           Math.ceil((scrollTop + viewportHeight) / safeItemHeight) -
             1 +
-            overscan,
+            safeOverscan,
         );
 
   const virtualItems = useMemo(() => {
@@ -117,14 +123,14 @@ export function useVirtualList({
 
   const scrollToIndex = useCallback(
     (index: number) => {
-      if (container == null || itemCount === 0) {
+      if (container == null || safeItemCount === 0) {
         return;
       }
-      const clamped = Math.min(Math.max(index, 0), itemCount - 1);
+      const clamped = Math.min(Math.max(index, 0), safeItemCount - 1);
       container.scrollTop = clamped * safeItemHeight;
       setScrollTop(container.scrollTop);
     },
-    [container, itemCount, safeItemHeight],
+    [container, safeItemCount, safeItemHeight],
   );
 
   return {

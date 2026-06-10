@@ -15,7 +15,6 @@
 - useGeolocation	Browser geolocation with permission state
 - useLongPress	Long-press gesture support
 - useVirtualList	Virtual scrolling for large lists (critical for performance)
-- usePrevious	Previous state reference
 - useIdleTimeout	Detect user inactivity (session management)
 
 ## 1.9.0
