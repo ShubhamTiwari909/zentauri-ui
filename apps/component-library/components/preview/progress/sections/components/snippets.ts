@@ -34,5 +34,14 @@ export function progressSnippet(opts: ProgressDemoProps): string {
     striped ? "striped · true" : "striped · false",
     animated ? "animated · true" : "animated · false",
   ].join(", ");
-  return `${variantLeadComment(detail)}<Progress${progressAttrs(opts)} />`;
+
+  if (animated) {
+    return `${variantLeadComment(detail)}import { ProgressAnimated } from "@zentauri-ui/zentauri-components/ui/progress/animated";
+
+<ProgressAnimated${progressAttrs(opts)} />`;
+  }
+
+  return `${variantLeadComment(detail)}import { Progress } from "@zentauri-ui/zentauri-components/ui/progress";
+
+<Progress${progressAttrs(opts)} />`;
 }

@@ -39,7 +39,9 @@ export type UseGeolocationResult = {
   error: GeolocationPositionError | null;
 };
 
-function toSnapshot(position: GeolocationPosition): GeolocationCoordinatesSnapshot {
+function toSnapshot(
+  position: GeolocationPosition,
+): GeolocationCoordinatesSnapshot {
   const { coords } = position;
   return {
     latitude: coords.latitude,

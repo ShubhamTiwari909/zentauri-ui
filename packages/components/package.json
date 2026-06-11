@@ -1,6 +1,6 @@
 {
   "name": "@zentauri-ui/zentauri-components",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "React + Tailwind UI kit with charts, ESM/CJS builds, per-entry exports, and a zentauri-components / zentauri-ui CLI to vendor UI or hook source into your app",
   "keywords": [
     "react",
@@ -102,7 +102,7 @@
     "check:exports": "node scripts/check-exports.mjs",
     "prepack": "npm run build && node scripts/generate-registry.mjs && node scripts/check-design-tokens.mjs && node scripts/check-exports.mjs",
     "test": "vitest run",
-    "test:a11y": "vitest run src/ui/accessibility/axe-core.test.tsx",
+    "test:a11y": "vitest run src/accessibility/axe-core.test.tsx",
     "test:watch": "vitest"
   },
   "peerDependencies": {

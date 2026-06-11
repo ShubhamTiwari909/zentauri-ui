@@ -58,10 +58,7 @@ function matchesHotkey(event: KeyboardEvent, hotkey: ParsedHotkey): boolean {
     if (!event.ctrlKey && !event.metaKey) {
       return false;
     }
-  } else if (
-    hotkey.ctrl !== event.ctrlKey ||
-    hotkey.meta !== event.metaKey
-  ) {
+  } else if (hotkey.ctrl !== event.ctrlKey || hotkey.meta !== event.metaKey) {
     return false;
   }
   return hotkey.alt === event.altKey && hotkey.shift === event.shiftKey;
@@ -96,8 +93,11 @@ export function useHotkeys(
   bindings: Record<string, HotkeyHandler>,
   options: UseHotkeysOptions = {},
 ): void {
-  const { enabled = true, preventDefault = true, allowInInputs = false } =
-    options;
+  const {
+    enabled = true,
+    preventDefault = true,
+    allowInInputs = false,
+  } = options;
   const bindingsRef = useRef(bindings);
 
   useEffect(() => {

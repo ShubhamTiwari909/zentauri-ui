@@ -146,6 +146,7 @@ Usage:
   zentauri-components init [options]              Create components.json with defaults
   zentauri-components add <component> [...]       Copy UI components (and their hooks)
   zentauri-components add hook <hook> [...]       Copy hook source only (plus transitive hook deps)
+  zentauri-components theme <hex>                 Generate compact global --zui-* theme tokens
 
 List of components:
 ${componentsList}
@@ -160,6 +161,9 @@ ${hooksList}
 
 Options:
   --cwd <dir>    Working directory (default: process.cwd())
+  --out <file>   Write theme CSS to a file instead of stdout
+  --selector <s> CSS selector for light tokens (default: :root)
+  --dark <hex>   Explicit dark-mode brand color (default: derived from <hex>)
   -h, --help     Show help
   -v, --version  Show package version
 
@@ -175,6 +179,7 @@ Use hooks from the package without copying (after npm install):
 Published package:
   npx @zentauri-ui/zentauri-components init
   npx @zentauri-ui/zentauri-components add accordion buttons inputs
+  npx @zentauri-ui/zentauri-components theme "#2563eb" --dark "#60a5fa" --out zentauri-theme.css
 
 If npx does not pick the right binary:
   npx --yes --package=@zentauri-ui/zentauri-components zentauri-components init
@@ -389,6 +394,169 @@ function resolveHookName(input, registry) {
   throw new Error(
     `Unknown hook "${input}". Valid hooks include: ${list.join(", ")}`,
   );
+}
+
+const THEME_COLOR_NAMES = [
+  "blue",
+  "cyan",
+  "green",
+  "lime",
+  "mint",
+  "ocean",
+  "sapphire",
+  "lavender",
+  "ruby",
+  "red",
+  "slate",
+  "zinc",
+  "stone",
+  "royal",
+  "electric",
+  "forest",
+  "sunset",
+  "magenta",
+  "crimson",
+  "aqua",
+  "plum",
+  "emerald",
+  "indigo",
+  "purple",
+  "pink",
+  "rose",
+  "sky",
+  "teal",
+  "yellow",
+  "orange",
+  "gray",
+  "amber",
+  "violet",
+];
+
+function normalizeHexColor(input) {
+  const raw = input.trim().replace(/^#/, "");
+  if (/^[0-9a-fA-F]{3}$/.test(raw)) {
+    return `#${raw
+      .split("")
+      .map((ch) => `${ch}${ch}`)
+      .join("")
+      .toLowerCase()}`;
+  }
+  if (/^[0-9a-fA-F]{6}$/.test(raw)) {
+    return `#${raw.toLowerCase()}`;
+  }
+  throw new Error(
+    `Invalid brand color "${input}". Use a 3- or 6-digit hex color, for example "#2563eb".`,
+  );
+}
+
+function hexToRgb(hex) {
+  const normalized = normalizeHexColor(hex).slice(1);
+  return {
+    r: Number.parseInt(normalized.slice(0, 2), 16),
+    g: Number.parseInt(normalized.slice(2, 4), 16),
+    b: Number.parseInt(normalized.slice(4, 6), 16),
+  };
+}
+
+function readableTextColor(hex) {
+  const { r, g, b } = hexToRgb(hex);
+  const linear = [r, g, b].map((value) => {
+    const channel = value / 255;
+    return channel <= 0.03928
+      ? channel / 12.92
+      : ((channel + 0.055) / 1.055) ** 2.4;
+  });
+  const luminance =
+    0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
+  return luminance > 0.56 ? "#0f172a" : "#ffffff";
+}
+
+function buildCompactThemeCss(hex, options = {}) {
+  const brand = normalizeHexColor(hex);
+  const darkBrand = options.dark
+    ? normalizeHexColor(options.dark)
+    : `color-mix(in oklch, ${brand} 72%, #ffffff)`;
+  const brandFg = readableTextColor(brand);
+  const darkBrandFg = options.dark ? readableTextColor(darkBrand) : "#020617";
+  const selector = options.selector || ":root";
+  const lightTokens = [
+    ["--zui-ring-offset", "#f8fafc"],
+    ["--zui-focus-ring", "color-mix(in oklch, var(--zui-brand) 72%, #475569)"],
+    ["--zui-surface-muted", "#e2e8f0"],
+    [
+      "--zui-surface-soft",
+      "color-mix(in oklch, var(--zui-brand) 8%, transparent)",
+    ],
+    [
+      "--zui-surface-hover",
+      "color-mix(in oklch, var(--zui-brand) 14%, transparent)",
+    ],
+    ["--zui-border", "color-mix(in oklch, var(--zui-brand) 24%, transparent)"],
+    ["--zui-fg", "#0f172a"],
+    ["--zui-fg-muted", "#475569"],
+    ["--zui-brand", brand],
+    ["--zui-brand-hover", "color-mix(in oklch, var(--zui-brand) 88%, #000000)"],
+    ["--zui-brand-fg", brandFg],
+    ["--zui-status-success", "#16a34a"],
+    ["--zui-status-warning", "#d97706"],
+    ["--zui-status-error", "#e11d48"],
+    ["--zui-status-info", "#0284c7"],
+    ...THEME_COLOR_NAMES.map((name) => [
+      `--zui-color-${name}`,
+      "var(--zui-brand)",
+    ]),
+  ];
+  const darkTokens = [
+    ["--zui-ring-offset-dark", "#020617"],
+    [
+      "--zui-focus-ring-dark",
+      "color-mix(in oklch, var(--zui-brand-dark) 72%, #cbd5e1)",
+    ],
+    ["--zui-surface-muted-dark", "#1e293b"],
+    [
+      "--zui-surface-soft-dark",
+      "color-mix(in oklch, var(--zui-brand-dark) 12%, transparent)",
+    ],
+    [
+      "--zui-surface-hover-dark",
+      "color-mix(in oklch, var(--zui-brand-dark) 18%, transparent)",
+    ],
+    [
+      "--zui-border-dark",
+      "color-mix(in oklch, var(--zui-brand-dark) 28%, transparent)",
+    ],
+    ["--zui-fg-dark", "#f8fafc"],
+    ["--zui-fg-muted-dark", "#cbd5e1"],
+    ["--zui-brand-dark", darkBrand],
+    [
+      "--zui-brand-hover-dark",
+      "color-mix(in oklch, var(--zui-brand-dark) 88%, #ffffff)",
+    ],
+    ["--zui-brand-fg-dark", darkBrandFg],
+    ["--zui-status-success-dark", "#22c55e"],
+    ["--zui-status-warning-dark", "#f59e0b"],
+    ["--zui-status-error-dark", "#fb7185"],
+    ["--zui-status-info-dark", "#38bdf8"],
+    ...THEME_COLOR_NAMES.map((name) => [
+      `--zui-color-${name}-dark`,
+      "var(--zui-brand-dark)",
+    ]),
+  ];
+
+  const render = (scope, tokens) =>
+    `${scope} {\n${tokens.map(([name, value]) => `  ${name}: ${value};`).join("\n")}\n}`;
+
+  return [
+    "/*",
+    ` * Generated by zentauri-ui theme ${brand}`,
+    ` * Compact global token mode: ${lightTokens.length + darkTokens.length} variables`,
+    " */",
+    "",
+    render(selector, lightTokens),
+    "",
+    render(".dark", darkTokens),
+    "",
+  ].join("\n");
 }
 
 /**
@@ -792,6 +960,29 @@ async function cmdAdd(names, cwd) {
   printAdoptionHints(resolvedNames, registry, config);
 }
 
+async function cmdTheme(hex, options, cwd) {
+  if (!hex) {
+    console.error(
+      'Usage: zentauri-components theme <hex>  (e.g. theme "#2563eb" --dark "#60a5fa" --out zentauri-theme.css)',
+    );
+    process.exitCode = 1;
+    return;
+  }
+
+  const css = buildCompactThemeCss(hex, {
+    dark: options.dark,
+    selector: options.selector,
+  });
+  if (options.out) {
+    const outPath = resolve(cwd, options.out);
+    await mkdir(dirname(outPath), { recursive: true });
+    await writeFile(outPath, css, "utf8");
+    console.log(`Wrote ${outPath}`);
+    return;
+  }
+  console.log(css);
+}
+
 /**
  * Parses `process.argv` with `node:util.parseArgs`, dispatches `init` / `add`,
  * or prints help / version. Sets `process.exitCode` for recoverable CLI errors
@@ -818,6 +1009,9 @@ async function main() {
       help: { type: "boolean", short: "h" },
       version: { type: "boolean", short: "v" },
       cwd: { type: "string" },
+      out: { type: "string" },
+      selector: { type: "string" },
+      dark: { type: "string" },
     },
   });
 
@@ -856,6 +1050,10 @@ async function main() {
       return;
     }
     await cmdAdd(rest, cwd);
+    return;
+  }
+  if (cmd === "theme") {
+    await cmdTheme(rest[0], values, cwd);
     return;
   }
 

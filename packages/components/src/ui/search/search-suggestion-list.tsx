@@ -8,7 +8,7 @@ import { searchSuggestionOptionDomId } from "./search-suggestion-utils";
 import type { SearchSuggestionListProps } from "./types";
 
 const rowClassName =
-  "flex w-full flex-col gap-0.5 rounded-lg px-3 py-2.5 text-left text-sm transition-colors dark:hover:bg-white/5 hover:bg-black/10 focus-visible:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50";
+  "flex w-full flex-col gap-0.5 rounded-[var(--zui-search-suggestion-radius,var(--zui-radius,0.5rem))] px-3 py-2.5 text-left text-sm transition-colors hover:bg-[var(--zui-search-suggestion-bg-hover,var(--zui-surface-hover,#0000001a))] dark:hover:bg-[var(--zui-search-suggestion-bg-hover-dark,var(--zui-surface-hover-dark,#ffffff0d))] focus-visible:bg-[var(--zui-search-suggestion-bg-focus,var(--zui-surface-hover,#ffffff0d))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--zui-search-suggestion-ring-focus,var(--zui-focus-ring,#22d3ee80))]";
 
 export function SearchSuggestionList({
   items,
@@ -25,7 +25,7 @@ export function SearchSuggestionList({
       <div
         data-slot="search-suggestion-list-empty"
         className={cn(
-          "px-1 py-6 text-center text-sm text-slate-900 dark:text-slate-200",
+          "px-1 py-6 text-center text-sm text-[color:var(--zui-search-empty-fg,var(--zui-fg,#0f172a))] dark:text-[color:var(--zui-search-empty-fg-dark,var(--zui-fg-dark,#e2e8f0))]",
           className,
         )}
       >
@@ -78,7 +78,7 @@ export function SearchSuggestionList({
               {showGroup ? (
                 <div
                   role="presentation"
-                  className="sticky rounded-lg top-0 z-1 dark:bg-slate-950/95 bg-slate-50/95 px-2 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-slate-900 dark:text-slate-200 backdrop-blur-sm"
+                  className="sticky top-0 z-1 rounded-[var(--zui-search-group-radius,var(--zui-radius,0.5rem))] bg-[var(--zui-search-group-bg,var(--zui-surface-muted,#f8fafcf2))] px-2 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--zui-search-group-fg,var(--zui-fg,#0f172a))] backdrop-blur-sm dark:bg-[var(--zui-search-group-bg-dark,var(--zui-surface-muted-dark,#020617f2))] dark:text-[color:var(--zui-search-group-fg-dark,var(--zui-fg-dark,#e2e8f0))]"
                 >
                   {item.group}
                 </div>
@@ -89,16 +89,21 @@ export function SearchSuggestionList({
                 role={useListbox ? "option" : undefined}
                 aria-selected={useListbox ? isActive : undefined}
                 data-active={isActive ? "" : undefined}
-                className={cn(rowClassName, isActive ? "bg-white/5" : null)}
+                className={cn(
+                  rowClassName,
+                  isActive
+                    ? "bg-[var(--zui-search-suggestion-bg-active,var(--zui-surface-hover,#ffffff0d))]"
+                    : null,
+                )}
                 onMouseEnter={() => onActiveIdChange?.(item.id)}
                 onFocus={() => onActiveIdChange?.(item.id)}
                 onClick={() => onSelect(item.id)}
               >
-                <span className="font-medium text-slate-900 dark:text-slate-100">
+                <span className="font-medium text-[color:var(--zui-search-suggestion-label-fg,var(--zui-fg,#0f172a))] dark:text-[color:var(--zui-search-suggestion-label-fg-dark,var(--zui-fg-dark,#f1f5f9))]">
                   {item.label}
                 </span>
                 {item.description ? (
-                  <span className="truncate text-xs text-slate-900 dark:text-slate-200">
+                  <span className="truncate text-xs text-[color:var(--zui-search-suggestion-description-fg,var(--zui-fg-muted,#0f172a))] dark:text-[color:var(--zui-search-suggestion-description-fg-dark,var(--zui-fg-muted-dark,#e2e8f0))]">
                     {item.description}
                   </span>
                 ) : null}

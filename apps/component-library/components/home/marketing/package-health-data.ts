@@ -5,14 +5,14 @@ export const PACKAGE_TEST_HEALTH = {
     passed: 92,
   },
   tests: {
-    total: 697,
-    passed: 697,
+    total: 699,
+    passed: 699,
   },
   areas: [
     {
       area: "Components and UI utilities",
-      files: 47,
-      tests: 452,
+      files: 46,
+      tests: 446,
     },
     {
       area: "Standalone animations",
@@ -32,7 +32,12 @@ export const PACKAGE_TEST_HEALTH = {
     {
       area: "CLI and import rewriting",
       files: 2,
-      tests: 15,
+      tests: 17,
+    },
+    {
+      area: "Axe core test cases",
+      files: 1,
+      tests: 6,
     },
   ],
 } as const;

@@ -8,9 +8,6 @@ describe("componentTokenReferenceGroups", () => {
     const searchGroup = componentTokenReferenceGroups.find(
       (group) => group.slug === "search",
     );
-    const inputsGroup = componentTokenReferenceGroups.find(
-      (group) => group.slug === "inputs",
-    );
 
     expect(slugs).toEqual(
       expect.arrayContaining(["scroll-area", "search", "select"]),
@@ -22,11 +19,12 @@ describe("componentTokenReferenceGroups", () => {
 
     expect(searchGroup?.title).toBe("Search");
     expect(searchGroup?.tokens.length).toBeGreaterThan(0);
+    expect(searchGroup?.tokens.length).toBeGreaterThan(0);
     expect(
-      searchGroup?.tokens.every((token) =>
-        token.name.startsWith("--zui-input"),
-      ),
+      searchGroup?.tokens.some((token) => token.name.startsWith("--zui-input")),
     ).toBe(true);
-    expect(searchGroup?.tokens).toHaveLength(inputsGroup?.tokens.length ?? 0);
+    expect(
+      searchGroup?.tokens.some((token) => token.name === "--zui-border"),
+    ).toBe(true);
   });
 });

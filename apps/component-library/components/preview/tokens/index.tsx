@@ -1,24 +1,22 @@
 import CodeHighlight from "@/components/CodeHighlight";
 import { Section } from "@/components/common/Section";
+import { cssVariableReferences } from "@/components/css-variables/reference-data";
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/hero-seo-block";
 import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
+import Link from "next/link";
 
 import {
-  componentTokenReferenceGroups,
-  componentTokenReferences,
   zuiTokenPattern,
   zuiTokenReferenceGroups,
   zuiTokenReferences,
 } from "./token-reference-data";
 import type {
-  ComponentTokenReferenceGroup,
   TokenTheme,
   ZuiTokenReference,
   ZuiTokenReferenceGroup,
 } from "./types";
-import { FaArrowDown } from "react-icons/fa";
 
 const themeLabels: Record<TokenTheme, string> = {
   light: "Light",
@@ -26,13 +24,30 @@ const themeLabels: Record<TokenTheme, string> = {
   shared: "Shared",
 };
 
-const allTokenReferences = [...zuiTokenReferences, ...componentTokenReferences];
-const uniqueTokenNames = new Set(allTokenReferences.map((token) => token.name));
+const componentCssVariableEntries = Object.entries(cssVariableReferences).map(
+  ([slug, reference]) => ({
+    slug,
+    title: reference.title.replace(" CSS variables", ""),
+    href: `/preview/components/${slug}#zui-css-variables-${slug}`,
+    variableCount:
+      reference.lightVariables.length + reference.darkVariableCount,
+  }),
+);
+const uniqueTokenNames = new Set(zuiTokenReferences.map((token) => token.name));
 const uniqueDarkTokenNames = new Set(
-  allTokenReferences
+  zuiTokenReferences
     .filter((token) => token.theme === "dark")
     .map((token) => token.name),
 );
+
+const paletteExample = [
+  { label: "Brand", token: "--zui-brand", value: "#2563eb" },
+  { label: "Hover", token: "--zui-brand-hover", value: "#1d4ed8" },
+  { label: "Success", token: "--zui-status-success", value: "#16a34a" },
+  { label: "Warning", token: "--zui-status-warning", value: "#d97706" },
+  { label: "Error", token: "--zui-status-error", value: "#e11d48" },
+  { label: "Info", token: "--zui-status-info", value: "#0284c7" },
+] as const;
 
 function formatCssDeclarations(tokens: readonly ZuiTokenReference[]) {
   return tokens
@@ -40,18 +55,178 @@ function formatCssDeclarations(tokens: readonly ZuiTokenReference[]) {
     .join("\n");
 }
 
-function getTokenOverrideSnippet() {
-  const lightTokens = zuiTokenReferences.filter(
-    (token) => token.theme !== "dark",
+function uniqueTokensByName(tokens: readonly ZuiTokenReference[]) {
+  return Array.from(
+    new Map(tokens.map((token) => [token.name, token])).values(),
   );
-  const darkTokens = zuiTokenReferences.filter(
-    (token) => token.theme === "dark",
+}
+
+function getPaletteThemeSnippet() {
+  return `:root {
+  --zui-brand: #2563eb;
+  --zui-brand-hover: #1d4ed8;
+  --zui-brand-fg: #ffffff;
+
+  --zui-fg: #0f172a;
+  --zui-fg-muted: #475569;
+  --zui-surface-muted: #e2e8f0;
+  --zui-surface-soft: color-mix(in oklch, var(--zui-brand) 8%, transparent);
+  --zui-surface-hover: color-mix(in oklch, var(--zui-brand) 14%, transparent);
+  --zui-border: color-mix(in oklch, var(--zui-brand) 24%, transparent);
+  --zui-focus-ring: color-mix(in oklch, var(--zui-brand) 72%, #475569);
+
+  --zui-status-success: #16a34a;
+  --zui-status-warning: #d97706;
+  --zui-status-error: #e11d48;
+  --zui-status-info: #0284c7;
+
+  --zui-color-blue: var(--zui-brand);
+  --zui-color-indigo: #4f46e5;
+  --zui-color-purple: #7c3aed;
+  --zui-color-pink: #db2777;
+}
+
+.dark {
+  --zui-brand-dark: #60a5fa;
+  --zui-brand-hover-dark: #93c5fd;
+  --zui-brand-fg-dark: #020617;
+
+  --zui-fg-dark: #f8fafc;
+  --zui-fg-muted-dark: #cbd5e1;
+  --zui-surface-muted-dark: #1e293b;
+  --zui-surface-soft-dark: color-mix(in oklch, var(--zui-brand-dark) 12%, transparent);
+  --zui-surface-hover-dark: color-mix(in oklch, var(--zui-brand-dark) 18%, transparent);
+  --zui-border-dark: color-mix(in oklch, var(--zui-brand-dark) 28%, transparent);
+  --zui-focus-ring-dark: color-mix(in oklch, var(--zui-brand-dark) 72%, #cbd5e1);
+
+  --zui-status-success-dark: #22c55e;
+  --zui-status-warning-dark: #f59e0b;
+  --zui-status-error-dark: #fb7185;
+  --zui-status-info-dark: #38bdf8;
+
+  --zui-color-blue-dark: var(--zui-brand-dark);
+  --zui-color-indigo-dark: #818cf8;
+  --zui-color-purple-dark: #c084fc;
+  --zui-color-pink-dark: #f472b6;
+}`;
+}
+
+function getTokenOverrideSnippet() {
+  const lightTokens = uniqueTokensByName(
+    zuiTokenReferences.filter((token) => token.theme !== "dark"),
+  );
+  const darkTokens = uniqueTokensByName(
+    zuiTokenReferences.filter((token) => token.theme === "dark"),
   );
 
   return [
     `:root {\n${formatCssDeclarations(lightTokens)}\n}`,
     `/* Dark theme tokens use the same contract with -dark appended. */\n.dark {\n${formatCssDeclarations(darkTokens)}\n}`,
   ].join("\n\n");
+}
+
+function PalettePreview() {
+  return (
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {paletteExample.map((color) => (
+        <div
+          key={color.token}
+          className="rounded-xl border border-white/10 bg-white/5 p-3"
+        >
+          <div
+            className="h-16 rounded-lg border border-black/10 dark:border-white/10"
+            style={{ backgroundColor: color.value }}
+          />
+          <div className="mt-3 space-y-1">
+            <p className="text-sm font-semibold text-slate-900 dark:text-white">
+              {color.label}
+            </p>
+            <p className="font-mono text-xs text-slate-700 dark:text-slate-400">
+              {color.token}
+            </p>
+            <p className="font-mono text-xs text-cyan-900 dark:text-cyan-200">
+              {color.value}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function splitTopLevelFallback(value: string) {
+  let depth = 0;
+
+  for (let index = 0; index < value.length; index += 1) {
+    const char = value[index];
+
+    if (char === "(") {
+      depth += 1;
+    } else if (char === ")") {
+      depth -= 1;
+    } else if (char === "," && depth === 0) {
+      return [value.slice(0, index).trim(), value.slice(index + 1).trim()];
+    }
+  }
+
+  return null;
+}
+
+function unwrapColorFallback(value: string): string {
+  const trimmedValue = value.trim();
+
+  if (!trimmedValue.startsWith("var(") || !trimmedValue.endsWith(")")) {
+    return trimmedValue;
+  }
+
+  const innerValue = trimmedValue.slice(4, -1);
+  const parts = splitTopLevelFallback(innerValue);
+
+  if (!parts) {
+    return trimmedValue;
+  }
+
+  return unwrapColorFallback(parts[1]);
+}
+
+function normalizeCssColorValue(value: string) {
+  return value.replaceAll("_", " ");
+}
+
+function getCssColorValue(value: string) {
+  const colorValue = unwrapColorFallback(value);
+  const normalizedColorValue = normalizeCssColorValue(colorValue);
+
+  if (
+    /^#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(
+      normalizedColorValue,
+    ) ||
+    /^(?:oklch|oklab|lch|lab|rgb|rgba|hsl|hsla)\(/i.test(
+      normalizedColorValue,
+    ) ||
+    /^color-mix\(/i.test(normalizedColorValue)
+  ) {
+    return normalizedColorValue;
+  }
+
+  return null;
+}
+
+function TokenColorSwatch({ value }: { value: string }) {
+  const colorValue = getCssColorValue(value);
+
+  if (!colorValue) {
+    return null;
+  }
+
+  return (
+    <span
+      className="inline-flex size-4 shrink-0 rounded border border-black/10 shadow-sm ring-1 ring-white/50 dark:border-white/10 dark:ring-black/30"
+      style={{ backgroundColor: colorValue }}
+      title={colorValue}
+      aria-label={`Color preview for ${colorValue}`}
+    />
+  );
 }
 
 function tokenThemeClassName(theme: TokenTheme) {
@@ -84,8 +259,13 @@ function TokenTable({ tokens }: { tokens: readonly ZuiTokenReference[] }) {
               <td className="px-4 py-3 align-top font-mono text-cyan-900 dark:text-cyan-100">
                 {token.name}
               </td>
-              <td className="px-4 py-3 align-top font-mono text-slate-900 dark:text-slate-200">
-                {token.fallback}
+              <td className="px-4 py-3 align-top">
+                <div className="flex min-w-0 items-center gap-2">
+                  <TokenColorSwatch value={token.fallback} />
+                  <span className="min-w-0 break-all font-mono text-slate-900 dark:text-slate-200">
+                    {token.fallback}
+                  </span>
+                </div>
               </td>
               <td className="px-4 py-3 align-top">
                 <span
@@ -124,39 +304,24 @@ function GlobalTokenGroup({ group }: { group: ZuiTokenReferenceGroup }) {
   );
 }
 
-function ComponentTokenDropdown({
-  group,
-}: {
-  group: ComponentTokenReferenceGroup;
-}) {
-  const darkCount = group.tokens.filter(
-    (token) => token.theme === "dark",
-  ).length;
-
+function ComponentOverrideLinks() {
   return (
-    <details className="group overflow-hidden rounded-2xl border border-white/10 bg-slate-200 dark:bg-slate-950/50">
-      <summary className="flex cursor-pointer list-none flex-col gap-3 bg-slate-50 px-4 py-4 marker:hidden [&::-webkit-details-marker]:hidden dark:bg-white/5 sm:flex-row sm:items-center sm:justify-between">
-        <div className="space-y-1">
-          <h3 className="text-base font-semibold text-slate-900 dark:text-white">
-            {group.title.replace(" CSS variables", "")}
-          </h3>
-          <p className="text-sm leading-6 text-slate-900 dark:text-slate-400">
-            {group.description}
-          </p>
-        </div>
-        <div className="flex shrink-0 items-center gap-2 text-xs font-medium text-slate-300">
-          <span className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-2.5 py-1 text-cyan-900 dark:text-cyan-100">
-            {group.tokens.length} tokens
+    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+      {componentCssVariableEntries.map((component) => (
+        <Link
+          key={component.slug}
+          href={component.href}
+          className="rounded-xl border border-white/10 bg-slate-200 p-4 transition hover:border-cyan-400/40 hover:bg-cyan-50 dark:bg-slate-950/50 dark:hover:bg-cyan-950/20"
+        >
+          <span className="block text-base font-semibold text-slate-900 dark:text-white">
+            {component.title}
           </span>
-          <span className="rounded-full border border-indigo-300/20 bg-indigo-300/10 px-2.5 py-1 text-indigo-900 dark:text-indigo-100">
-            {darkCount} dark
+          <span className="mt-3 inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/10 px-2.5 py-1 text-xs font-medium text-cyan-900 dark:text-cyan-100">
+            {component.variableCount} component variables
           </span>
-          <FaArrowDown className="text-cyan-900 dark:text-cyan-200 transition group-open:rotate-180" />
-        </div>
-      </summary>
-
-      <TokenTable tokens={group.tokens} />
-    </details>
+        </Link>
+      ))}
+    </div>
   );
 }
 
@@ -184,7 +349,7 @@ export default function TokenReferencePage({
               Components
             </p>
             <p className="mt-2 text-3xl font-semibold text-white">
-              {componentTokenReferenceGroups.length}
+              {componentCssVariableEntries.length}
             </p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
@@ -217,6 +382,30 @@ export default function TokenReferencePage({
         <code className="block overflow-x-auto rounded-xl border border-white/10 bg-slate-950/80 px-4 py-3 text-sm text-cyan-100">
           {zuiTokenPattern}
         </code>
+      </Section>
+
+      <Section className="space-y-5">
+        <div className="space-y-2">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-cyan-900 dark:text-cyan-200">
+            Theme palette
+          </p>
+          <h2 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">
+            Override globals first
+          </h2>
+          <p className="max-w-3xl text-sm leading-6 text-slate-900 dark:text-slate-300">
+            Global tokens sit below component variables. A component token such
+            as <code>--zui-button-default-bg</code> still wins when you set it,
+            but if it is not set the component falls through to shared globals
+            like <code>--zui-brand</code>, <code>--zui-border</code>,{" "}
+            <code>--zui-surface-soft</code>, and <code>--zui-color-blue</code>.
+          </p>
+        </div>
+
+        <PalettePreview />
+
+        <div className="overflow-hidden rounded-xl border border-white/10">
+          <CodeHighlight codeString={getPaletteThemeSnippet()} language="css" />
+        </div>
       </Section>
 
       <Section className="space-y-5">
@@ -266,24 +455,20 @@ export default function TokenReferencePage({
       <Section className="space-y-6">
         <div className="space-y-2">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-cyan-900 dark:text-cyan-200">
-            Component tokens
+            Component overrides
           </p>
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">
-            Variables by component
+            Jump to component CSS variables
           </h2>
           <p className="max-w-3xl text-sm leading-6 text-slate-900 dark:text-slate-300">
-            Open a component to see its available <code>--zui-*</code>{" "}
-            variables. The fallback value is shown when the component docs data
-            includes it; inferred dark rows still show the exact variable name
-            to override.
+            Component-level overrides already live on each component preview
+            page. Use these links when you need an exact variable such as{" "}
+            <code>--zui-button-blue-bg</code> or{" "}
+            <code>--zui-alert-success-border</code>.
           </p>
         </div>
 
-        <div className="space-y-4">
-          {componentTokenReferenceGroups.map((group) => (
-            <ComponentTokenDropdown key={group.slug} group={group} />
-          ))}
-        </div>
+        <ComponentOverrideLinks />
       </Section>
 
       <PreviewSeoDoc doc={seo} />
