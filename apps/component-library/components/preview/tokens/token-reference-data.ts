@@ -156,12 +156,34 @@ function getGlobalThemeFallback(token: string) {
   return "set in your theme";
 }
 
+const globalThemeTokenNames = new Set(
+  globalSources
+    .filter(
+      (
+        group,
+      ): group is (typeof globalSources)[number] & {
+        tokens: readonly string[];
+      } => "tokens" in group,
+    )
+    .flatMap((group) => group.tokens),
+);
+
 function getThemePairName(token: string) {
   if (token.endsWith("-dark")) {
-    return token.replace(/-dark$/, "") as `--zui-${string}`;
+    const lightToken = token.replace(/-dark$/, "") as `--zui-${string}`;
+    return globalThemeTokenNames.has(lightToken) ? lightToken : undefined;
   }
 
-  return `${token}-dark` as `--zui-${string}`;
+  const darkToken = `${token}-dark` as `--zui-${string}`;
+  return globalThemeTokenNames.has(darkToken) ? darkToken : undefined;
+}
+
+function getThemeMode(token: string) {
+  if (token.endsWith("-dark")) {
+    return "dark";
+  }
+
+  return getThemePairName(token) ? "light" : "shared";
 }
 
 export const zuiTokenReferenceGroups = globalSources.map((group) => ({
@@ -174,7 +196,7 @@ export const zuiTokenReferenceGroups = globalSources.map((group) => ({
           fallback: getGlobalThemeFallback(token),
           source: group.source,
           description: group.description,
-          theme: token.endsWith("-dark") ? "dark" : "light",
+          theme: getThemeMode(token),
           pairName: getThemePairName(token),
         }))
       : DesignSystem.parse(group.className).map((token) => ({

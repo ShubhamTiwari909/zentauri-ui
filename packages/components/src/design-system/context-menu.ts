@@ -11,7 +11,7 @@ export const zuiContextMenuItemBase = zuiDropdownItemBase;
 
 export const zuiContextMenuItemVariants = {
   ...zuiDropdownItemVariants,
-  ghost: `${zuiDropdownItemVariants.ghost} dark:bg-[var(--zui-dropdown-item-ghost-bg-dark,var(--zui-surface-soft-dark,transparent))]`,
+  ghost: `${zuiDropdownItemVariants.ghost} dark:bg-[var(--zui-dropdown-item-ghost-bg-dark,transparent)]`,
   sky: `${zuiDropdownItemVariants.sky} dark:bg-[var(--zui-dropdown-item-sky-bg-dark,color-mix(in oklch, var(--zui-color-sky-dark,oklch(29.3%_0.066_243.157)) 18%, transparent))] dark:text-[color:var(--zui-dropdown-item-sky-fg-dark,var(--zui-color-sky-dark,oklch(90.1%_0.058_230.902)))] dark:hover:text-[color:var(--zui-dropdown-item-sky-fg-hover-dark,var(--zui-color-sky-dark,oklch(90.1%_0.058_230.902)))]`,
   rose: `${zuiDropdownItemVariants.rose} dark:bg-[var(--zui-dropdown-item-rose-bg-dark,color-mix(in oklch, var(--zui-color-rose-dark,oklch(27.1%_0.105_12.094)) 18%, transparent))] dark:text-[color:var(--zui-dropdown-item-rose-fg-dark,var(--zui-color-rose-dark,oklch(89.2%_0.058_10.001)))] dark:hover:text-[color:var(--zui-dropdown-item-rose-fg-hover-dark,var(--zui-color-rose-dark,oklch(89.2%_0.058_10.001)))]`,
   purple: `${zuiDropdownItemVariants.purple} dark:bg-[var(--zui-dropdown-item-purple-bg-dark,color-mix(in oklch, var(--zui-color-purple-dark,oklch(29.1%_0.149_302.717)) 18%, transparent))] dark:text-[color:var(--zui-dropdown-item-purple-fg-dark,var(--zui-color-purple-dark,oklch(90.2%_0.063_306.703)))] dark:hover:text-[color:var(--zui-dropdown-item-purple-fg-hover-dark,var(--zui-color-purple-dark,oklch(90.2%_0.063_306.703)))]`,

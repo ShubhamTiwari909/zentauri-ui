@@ -52,8 +52,7 @@ const areas = [
   {
     id: "accessibility",
     label: "Axe core test cases",
-    matches: (rel) =>
-      rel.startsWith("accessibility/") || rel.startsWith("src/accessibility/"),
+    matches: (rel) => rel.startsWith("src/accessibility/"),
   },
 ];
 

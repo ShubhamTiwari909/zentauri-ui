@@ -458,6 +458,22 @@ function hexToRgb(hex) {
   };
 }
 
+function rgbToHex({ r, g, b }) {
+  return `#${[r, g, b]
+    .map((value) => Math.round(value).toString(16).padStart(2, "0").slice(0, 2))
+    .join("")}`;
+}
+
+function mixHexColors(hex, mixWithHex, weight) {
+  const base = hexToRgb(hex);
+  const mixWith = hexToRgb(mixWithHex);
+  return rgbToHex({
+    r: base.r * weight + mixWith.r * (1 - weight),
+    g: base.g * weight + mixWith.g * (1 - weight),
+    b: base.b * weight + mixWith.b * (1 - weight),
+  });
+}
+
 function readableTextColor(hex) {
   const { r, g, b } = hexToRgb(hex);
   const linear = [r, g, b].map((value) => {
@@ -477,7 +493,9 @@ function buildCompactThemeCss(hex, options = {}) {
     ? normalizeHexColor(options.dark)
     : `color-mix(in oklch, ${brand} 72%, #ffffff)`;
   const brandFg = readableTextColor(brand);
-  const darkBrandFg = options.dark ? readableTextColor(darkBrand) : "#020617";
+  const darkBrandFg = readableTextColor(
+    options.dark ? darkBrand : mixHexColors(brand, "#ffffff", 0.72),
+  );
   const selector = options.selector || ":root";
   const lightTokens = [
     ["--zui-ring-offset", "#f8fafc"],

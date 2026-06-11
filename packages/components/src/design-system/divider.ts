@@ -8,7 +8,7 @@ export const zuiDividerAppearances = {
   destructive:
     "text-[color:var(--zui-divider-destructive-fg,var(--zui-status-error,oklch(58.6%_0.253_17.585)))] dark:text-[color:var(--zui-divider-destructive-fg-dark,var(--zui-status-error-dark,oklch(71.2%_0.194_13.428)))]",
   ghost:
-    "text-[color:var(--zui-divider-ghost-fg,var(--zui-fg,oklch(70.4%_0.04_256.788)))] dark:text-[color:var(--zui-divider-ghost-fg-dark,var(--zui-fg-dark,oklch(44.6%_0.043_257.281)))]",
+    "text-[color:var(--zui-divider-ghost-fg,var(--zui-fg-muted,oklch(70.4%_0.04_256.788)))] dark:text-[color:var(--zui-divider-ghost-fg-dark,var(--zui-fg-muted-dark,oklch(44.6%_0.043_257.281)))]",
   sky: "text-[color:var(--zui-divider-sky-fg,var(--zui-color-sky,oklch(58.8%_0.158_241.966)))] dark:text-[color:var(--zui-divider-sky-fg-dark,var(--zui-color-sky-dark,oklch(74.6%_0.16_232.661)))]",
   rose: "text-[color:var(--zui-divider-rose-fg,var(--zui-color-rose,oklch(58.6%_0.253_17.585)))] dark:text-[color:var(--zui-divider-rose-fg-dark,var(--zui-color-rose-dark,oklch(71.2%_0.194_13.428)))]",
   purple:

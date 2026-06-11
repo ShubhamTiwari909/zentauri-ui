@@ -19,7 +19,6 @@ describe("componentTokenReferenceGroups", () => {
 
     expect(searchGroup?.title).toBe("Search");
     expect(searchGroup?.tokens.length).toBeGreaterThan(0);
-    expect(searchGroup?.tokens.length).toBeGreaterThan(0);
     expect(
       searchGroup?.tokens.some((token) => token.name.startsWith("--zui-input")),
     ).toBe(true);
