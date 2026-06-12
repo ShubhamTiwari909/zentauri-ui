@@ -257,7 +257,7 @@ export const ComboboxValue = ({
       <span
         data-slot="combobox-placeholder"
         className={cn(
-          "text-[color:var(--zui-combobox-value-placeholder-fg,oklch(55.1%_0.027_264.364))] dark:text-white",
+          "text-[color:var(--zui-combobox-value-placeholder-fg,oklch(55.1%_0.027_264.364))] dark:text-[color:var(--zui-combobox-value-placeholder-fg-dark,#ffffff)]",
           className,
         )}
         {...props}
@@ -456,7 +456,7 @@ export const ComboboxItem = ({
   value,
   children,
   disabled,
-  appearance = "default",
+  appearance,
   className,
   ...props
 }: ComboboxItemProps) => {
@@ -469,6 +469,8 @@ export const ComboboxItem = ({
     setActiveValue,
     listboxId,
   } = useCombobox();
+  const contentAppearance = useContext(ComboboxAppearanceContext);
+  const itemAppearance = appearance ?? contentAppearance;
 
   useEffect(() => {
     registerOption({ label: children, value, disabled });
@@ -500,7 +502,7 @@ export const ComboboxItem = ({
         }
       }}
       className={cn(
-        comboboxItemVariants({ disabled, appearance }),
+        comboboxItemVariants({ disabled, appearance: itemAppearance }),
         "flex justify-between",
         isHighlighted &&
           "bg-[var(--zui-combobox-item-active-bg,oklch(93%_0.006_264.531))] dark:bg-[var(--zui-combobox-item-active-bg-dark,oklch(22%_0.006_264.531))]",

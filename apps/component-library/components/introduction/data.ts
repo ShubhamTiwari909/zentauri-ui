@@ -194,6 +194,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "pagination",
+    name: "Pagination",
+    description:
+      "Page windows, URL-friendly links, and compact controls for navigating large datasets.",
+    href: "/preview/components/pagination",
+    badge: "Navigation",
+  },
+  {
     id: "progress",
     name: "Progress",
     description:
@@ -232,6 +240,14 @@ export const componentsData: ComponentHighlight[] = [
       "Themeable overflow containers with vertical, horizontal, hover, hidden, and always-visible scrollbar variants.",
     href: "/preview/components/scroll-area",
     badge: "Layout",
+  },
+  {
+    id: "search",
+    name: "Search",
+    description:
+      "Controlled search fields and suggestion lists for filters, docs search, and lightweight in-app discovery.",
+    href: "/preview/components/search",
+    badge: "Form",
   },
   {
     id: "select",

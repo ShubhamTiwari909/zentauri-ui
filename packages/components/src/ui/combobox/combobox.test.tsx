@@ -12,6 +12,12 @@ import {
   ComboboxTrigger,
   ComboboxValue,
 } from "./combobox-base";
+import {
+  comboboxContentVariants,
+  comboboxItemVariants,
+  comboboxListVariants,
+  comboboxTriggerVariants,
+} from "./variants";
 
 function BasicCombobox({
   multiple = false,
@@ -288,5 +294,68 @@ describe("Combobox — keyboard navigation", () => {
     const listbox = screen.getByRole("listbox");
     const controls = trigger.getAttribute("aria-controls");
     expect(listbox).toHaveAttribute("id", controls);
+  });
+});
+
+describe("Combobox — appearance variants", () => {
+  it("applies matching tokenized classes for extended and gradient appearances", () => {
+    expect(comboboxTriggerVariants({ variant: "forest" })).toContain(
+      "--zui-combobox-trigger-forest-bg",
+    );
+    expect(comboboxTriggerVariants({ variant: "gradient-blue" })).toContain(
+      "--zui-combobox-trigger-gradient-blue-border",
+    );
+    expect(comboboxTriggerVariants({ variant: "gradient-blue" })).toContain(
+      "--zui-combobox-value-placeholder-fg",
+    );
+
+    expect(comboboxContentVariants({ appearance: "plum" })).toContain(
+      "--zui-combobox-content-plum-bg",
+    );
+    expect(comboboxContentVariants({ appearance: "gradient-green" })).toContain(
+      "--zui-combobox-content-gradient-green-from",
+    );
+
+    expect(comboboxListVariants({ appearance: "mint" })).toContain(
+      "--zui-combobox-list-mint-border",
+    );
+    expect(comboboxItemVariants({ appearance: "forest" })).toContain(
+      "--zui-combobox-item-forest-bg",
+    );
+  });
+
+  it("provides readable child-slot tokens for gradient content", () => {
+    const contentClasses = comboboxContentVariants({
+      appearance: "gradient-red",
+    });
+
+    expect(contentClasses).toContain("--zui-combobox-search-placeholder");
+    expect(contentClasses).toContain("--zui-combobox-empty-fg");
+    expect(contentClasses).toContain("--zui-combobox-item-active-bg");
+  });
+
+  it("inherits content appearance for items when no item appearance is provided", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <Combobox defaultValue={["apple"]}>
+        <ComboboxTrigger>
+          <ComboboxValue placeholder="Pick a fruit" />
+        </ComboboxTrigger>
+        <ComboboxContent appearance="gradient-teal">
+          <ComboboxSearch placeholder="Search fruits..." />
+          <ComboboxList>
+            <ComboboxItem value="apple">Apple</ComboboxItem>
+            <ComboboxEmpty>No fruit found.</ComboboxEmpty>
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>,
+    );
+
+    await user.click(screen.getByRole("button"));
+
+    expect(
+      (await screen.findByRole("option", { name: /apple/i })).className,
+    ).toContain("--zui-combobox-item-gradient-teal-from");
   });
 });

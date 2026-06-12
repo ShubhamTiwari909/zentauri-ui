@@ -13,6 +13,7 @@ import {
   CommandSeparator,
   CommandTrigger,
 } from "./command-base";
+import { commandContentVariants } from "./variants";
 
 function Palette({
   open,
@@ -112,5 +113,19 @@ describe("Command", () => {
     expect(
       document.querySelector('[data-slot="command-separator"]'),
     ).toBeTruthy();
+  });
+});
+
+describe("Command appearance variants", () => {
+  it("uses surface-backed backgrounds for light color appearances", () => {
+    expect(commandContentVariants({ appearance: "sky" })).toContain(
+      "var(--zui-surface-muted,#ffffff)",
+    );
+    expect(commandContentVariants({ appearance: "red" })).toContain(
+      "var(--zui-surface-muted,#ffffff)",
+    );
+    expect(commandContentVariants({ appearance: "red" })).not.toContain(
+      "color-mix",
+    );
   });
 });
