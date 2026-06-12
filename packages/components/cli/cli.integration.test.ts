@@ -17,7 +17,100 @@ function runCli(cwd: string, args: string[]): string {
   });
 }
 
+function runCliError(cwd: string, args: string[]): string {
+  try {
+    runCli(cwd, args);
+    throw new Error("Expected CLI command to fail");
+  } catch (error) {
+    if (error && typeof error === "object" && "stderr" in error) {
+      return Buffer.isBuffer(error.stderr)
+        ? error.stderr.toString("utf8")
+        : String(error.stderr);
+    }
+    throw error;
+  }
+}
+
 describe("zentauri-ui CLI", () => {
+  it("should init with framework-aware Tailwind source guidance", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-init-next-"));
+    try {
+      const packageJsonPath = join(dir, "package.json");
+      execFileSync(
+        process.execPath,
+        [
+          "-e",
+          `require("node:fs").writeFileSync(${JSON.stringify(
+            packageJsonPath,
+          )}, JSON.stringify({ dependencies: { next: "16.0.0" } }))`,
+        ],
+        { cwd: dir },
+      );
+      const out = runCli(dir, ["init"]);
+      expect(out).toContain("Detected framework: Next.js");
+      expect(out).toContain('@source "./src/components/ui";');
+      expect(out).toContain("pnpm add react react-dom");
+      expect(existsSync(join(dir, "components.json"))).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("should list addable UI, chart, animation, and hook entries", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-list-"));
+    try {
+      const out = runCli(dir, ["list"]);
+      expect(out).toContain("UI components");
+      expect(out).toContain("buttons");
+      expect(out).toContain("charts/line");
+      expect(out).toContain("animations/fade-in");
+      expect(out).toContain("Hooks");
+      expect(out).toContain("useWindowSize");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("should print component info with install and import commands", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-info-"));
+    try {
+      const out = runCli(dir, ["info", "button"]);
+      expect(out).toContain("Name: buttons");
+      expect(out).toContain("npx zentauri-ui add button");
+      expect(out).toContain("@zentauri-ui/zentauri-components/ui/buttons");
+      expect(out).toContain("--animated");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("should add an animated component explicitly and report missing peers", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-add-animated-"));
+    try {
+      runCli(dir, ["init"]);
+      const out = runCli(dir, ["add", "--animated", "button"]);
+      expect(
+        existsSync(join(dir, "src/components/ui/buttons/animated/index.ts")),
+      ).toBe(true);
+      expect(out).toContain("Including animated entry for buttons");
+      expect(out).toContain("Missing peer dependencies in this project");
+      expect(out).toContain("framer-motion");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("should reject --animated for components without an animated entry", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-add-static-only-"));
+    try {
+      runCli(dir, ["init"]);
+      const stderr = runCliError(dir, ["add", "--animated", "pagination"]);
+      expect(stderr).toContain('Component "pagination" has no animated entry');
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("should init, add accordion, and rewrite internal imports", () => {
     const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-int-"));
     try {

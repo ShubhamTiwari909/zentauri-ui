@@ -136,7 +136,7 @@ function loadRegistry() {
  */
 function printHelp() {
   const reg = loadRegistry();
-  const componentsList = (reg.components ?? []).join("\n");
+  const componentsList = (reg.uiComponents ?? reg.components ?? []).join("\n");
   const animationsList = (reg.animations ?? []).join("\n");
   const hooksList = (reg.hooks ?? []).join("\n");
 
@@ -145,7 +145,10 @@ function printHelp() {
 Usage:
   zentauri-components init [options]              Create components.json with defaults
   zentauri-components add <component> [...]       Copy UI components (and their hooks)
+  zentauri-components add --animated <component>  Copy and validate an animated UI entry
   zentauri-components add hook <hook> [...]       Copy hook source only (plus transitive hook deps)
+  zentauri-components list                        Show addable components, charts, animations, and hooks
+  zentauri-components info <name>                 Show install/import details for one entry
   zentauri-components theme <hex>                 Generate compact global --zui-* theme tokens
 
 List of components:
@@ -301,6 +304,129 @@ function defaultConfig() {
   };
 }
 
+const CORE_PEERS = [
+  "react",
+  "react-dom",
+  "class-variance-authority",
+  "clsx",
+  "tailwind-merge",
+];
+
+const FRAMEWORKS = [
+  {
+    name: "Next.js",
+    deps: ["next"],
+    files: ["next.config.js", "next.config.mjs", "next.config.ts"],
+    source: '@source "./src/components/ui";',
+    note: "Place the @source line in your global CSS file, often app/globals.css.",
+  },
+  {
+    name: "Vite",
+    deps: ["vite"],
+    files: ["vite.config.js", "vite.config.mjs", "vite.config.ts"],
+    source: '@source "./src/components/ui";',
+    note: "Place the @source line in src/index.css or the CSS file imported by your app entry.",
+  },
+  {
+    name: "Remix",
+    deps: ["@remix-run/react", "@remix-run/node"],
+    files: ["remix.config.js", "remix.config.mjs", "vite.config.ts"],
+    source: '@source "./app/components/ui";',
+    note: "If components.json keeps the default src/ paths, use @source \"./src/components/ui\" instead.",
+  },
+  {
+    name: "Astro",
+    deps: ["astro"],
+    files: ["astro.config.js", "astro.config.mjs", "astro.config.ts"],
+    source: '@source "./src/components/ui";',
+    note: "Use this in the global stylesheet loaded by your Astro React integration.",
+  },
+];
+
+function readProjectPackageJson(cwd) {
+  const packagePath = join(cwd, "package.json");
+  if (!existsSync(packagePath)) {
+    return undefined;
+  }
+  try {
+    return JSON.parse(readFileSync(packagePath, "utf8"));
+  } catch {
+    return undefined;
+  }
+}
+
+function packageDependencyMap(pkg) {
+  return {
+    ...(pkg?.dependencies ?? {}),
+    ...(pkg?.devDependencies ?? {}),
+    ...(pkg?.peerDependencies ?? {}),
+    ...(pkg?.optionalDependencies ?? {}),
+  };
+}
+
+function detectFramework(cwd) {
+  const deps = packageDependencyMap(readProjectPackageJson(cwd));
+  return (
+    FRAMEWORKS.find((framework) =>
+      framework.deps.some((dep) => deps[dep]),
+    ) ??
+    FRAMEWORKS.find((framework) =>
+      framework.files.some((file) => existsSync(join(cwd, file))),
+    )
+  );
+}
+
+function printInitGuidance(cwd) {
+  const framework = detectFramework(cwd);
+  const missingCorePeers = getMissingDependencies(cwd, CORE_PEERS);
+  console.log(
+    `Detected framework: ${framework?.name ?? "React app (framework not detected)"}`,
+  );
+  console.log("\nInstall core peer dependencies:");
+  console.log(`  pnpm add ${CORE_PEERS.join(" ")}`);
+  console.log(`  npm install ${CORE_PEERS.join(" ")}`);
+  if (missingCorePeers.length > 0) {
+    console.log(
+      `  Missing now: ${missingCorePeers.join(", ")}`,
+    );
+  }
+  console.log("\nTailwind v4 source scanning:");
+  console.log(`  ${framework?.source ?? '@source "./src/components/ui";'}`);
+  console.log(
+    `  ${framework?.note ?? "Place the @source line in the global CSS file processed by Tailwind."}`,
+  );
+  console.log("\nOptional peers:");
+  console.log("  framer-motion  # animated UI and animation entries");
+  console.log("  react-icons     # icon-heavy components such as rating");
+  console.log("  recharts        # chart entries");
+}
+
+function findPackageJson(startDir) {
+  let d = startDir;
+  for (;;) {
+    const p = join(d, "package.json");
+    if (existsSync(p)) {
+      return p;
+    }
+    const parent = dirname(d);
+    if (parent === d) {
+      return undefined;
+    }
+    d = parent;
+  }
+}
+
+function getMissingDependencies(cwd, deps) {
+  const packagePath = findPackageJson(cwd);
+  if (!packagePath) {
+    return deps;
+  }
+  const installed = packageDependencyMap(
+    JSON.parse(readFileSync(packagePath, "utf8")),
+  );
+  return deps.filter((dep) => !installed[dep]);
+}
+
 /**
  * Ensures `add` has everything it needs to compute destination paths and rewrite
  * imports. Throws a single clear error if the config is incomplete.
@@ -394,6 +520,78 @@ function resolveHookName(input, registry) {
   throw new Error(
     `Unknown hook "${input}". Valid hooks include: ${list.join(", ")}`,
   );
+}
+
+function resolveAnyRegistryName(input, registry) {
+  try {
+    return { kind: "component", name: resolveComponentName(input, registry) };
+  } catch {
+    try {
+      return { kind: "hook", name: resolveHookName(input, registry) };
+    } catch {
+      throw new Error(
+        `Unknown entry "${input}". Run: zentauri-ui list`,
+      );
+    }
+  }
+}
+
+function isAnimatedComponent(name, registry) {
+  return (registry.animatedComponents ?? []).includes(name);
+}
+
+function printList(registry) {
+  const ui = registry.uiComponents ?? registry.components ?? [];
+  const charts = registry.charts ?? [];
+  const animations = registry.animations ?? [];
+  const hooks = registry.hooks ?? [];
+
+  console.log("UI components:");
+  console.log(ui.join("\n"));
+  console.log("\nCharts:");
+  console.log(charts.join("\n"));
+  console.log("\nAnimations:");
+  console.log(animations.join("\n"));
+  console.log("\nHooks:");
+  console.log(hooks.join("\n"));
+}
+
+function importPathFor(name, kind, registry) {
+  if (kind === "hook") {
+    return `@zentauri-ui/zentauri-components/hooks/${name}`;
+  }
+  if (name.startsWith("charts/")) {
+    return `@zentauri-ui/zentauri-components/${name}`;
+  }
+  if (name.startsWith("animations/")) {
+    return `@zentauri-ui/zentauri-components/${name}`;
+  }
+  if (isAnimatedComponent(name, registry)) {
+    return `@zentauri-ui/zentauri-components/ui/${name}`;
+  }
+  return `@zentauri-ui/zentauri-components/ui/${name}`;
+}
+
+function printInfo(input, registry) {
+  const { kind, name } = resolveAnyRegistryName(input, registry);
+  const peers = kind === "component" ? (registry.peerHints?.[name] ?? []) : [];
+
+  console.log(`Name: ${name}`);
+  console.log(`Type: ${kind === "hook" ? "hook" : "addable entry"}`);
+  console.log(`Add command: npx zentauri-ui add ${input}`);
+  if (kind === "hook") {
+    console.log(`Hook-only command: npx zentauri-ui add hook ${name}`);
+  }
+  console.log(`Import: ${importPathFor(name, kind, registry)}`);
+  if (kind === "component" && isAnimatedComponent(name, registry)) {
+    console.log(
+      `Animated import: @zentauri-ui/zentauri-components/ui/${name}/animated`,
+    );
+    console.log(`Animated vendoring: npx zentauri-ui add --animated ${input}`);
+  }
+  if (peers.length > 0) {
+    console.log(`Peer hints: ${peers.join(", ")}`);
+  }
 }
 
 const THEME_COLOR_NAMES = [
@@ -901,7 +1099,7 @@ const PEER_HINT_REASONS = {
  * @param {object} registry — from `loadRegistry()`
  * @param {object} config — validated `components.json` (for resolvedPaths.ui)
  */
-function printAdoptionHints(resolvedNames, registry, config) {
+function printAdoptionHints(resolvedNames, registry, config, configDir) {
   const peerHints = registry.peerHints ?? {};
   /** @type {Map<string, string[]>} peer -> component names that need it */
   const needed = new Map();
@@ -923,6 +1121,14 @@ function printAdoptionHints(resolvedNames, registry, config) {
       );
     }
     console.log(`  Install with: npm i ${[...needed.keys()].join(" ")}`);
+    const missing = getMissingDependencies(configDir, [...needed.keys()]);
+    if (missing.length > 0) {
+      console.log("\nMissing peer dependencies in this project:");
+      for (const peer of missing) {
+        console.log(`  - ${peer}`);
+      }
+      console.log(`  Install with: pnpm add ${missing.join(" ")}`);
+    }
   }
 
   const uiPath = config?.resolvedPaths?.ui ?? "your components directory";
@@ -962,6 +1168,7 @@ async function cmdInit(cwd) {
   const body = `${JSON.stringify(defaultConfig(), null, 2)}\n`;
   await writeFile(target, body, "utf8");
   console.log(`Wrote ${target}`);
+  printInitGuidance(cwd);
 }
 
 /**
@@ -983,7 +1190,7 @@ async function cmdInit(cwd) {
  * // No components.json in cwd or parents — stderr:
  * // No components.json found. Run: zentauri-components init  (or: zentauri-ui init)
  */
-async function cmdAdd(names, cwd) {
+async function cmdAdd(names, cwd, options = {}) {
   const configPath = await findComponentsJson(cwd);
   if (!configPath) {
     console.error(
@@ -997,6 +1204,7 @@ async function cmdAdd(names, cwd) {
   validateConfig(config);
 
   const registry = loadRegistry();
+  const animated = Boolean(options.animated);
   const hookMode = names.length > 0 && names[0].toLowerCase() === "hook";
   const payload = hookMode ? names.slice(1) : names;
 
@@ -1009,6 +1217,11 @@ async function cmdAdd(names, cwd) {
   }
 
   if (hookMode) {
+    if (animated) {
+      console.error("--animated can only be used with UI component entries.");
+      process.exitCode = 1;
+      return;
+    }
     await ensureUtilsFile(config, configDir, packageRoot);
     const resolvedHooks = payload.map((n) => resolveHookName(n, registry));
     const finalHooks = await collectHookTransitiveClosure(
@@ -1024,6 +1237,15 @@ async function cmdAdd(names, cwd) {
   }
 
   const resolvedNames = payload.map((n) => resolveComponentName(n, registry));
+  if (animated) {
+    for (const name of resolvedNames) {
+      if (!isAnimatedComponent(name, registry)) {
+        console.error(`Component "${name}" has no animated entry.`);
+        process.exitCode = 1;
+        return;
+      }
+    }
+  }
 
   await ensureUtilsFile(config, configDir, packageRoot);
   await copyDesignSystemFolder(config, configDir, packageRoot);
@@ -1031,6 +1253,9 @@ async function cmdAdd(names, cwd) {
   const allHooks = new Set();
   for (const name of resolvedNames) {
     console.log(`Adding ${name}…`);
+    if (animated) {
+      console.log(`Including animated entry for ${name}…`);
+    }
     const uh = await copyUiComponent(name, config, configDir, packageRoot);
     for (const h of uh) {
       allHooks.add(h);
@@ -1047,7 +1272,7 @@ async function cmdAdd(names, cwd) {
   }
 
   console.log("Done.");
-  printAdoptionHints(resolvedNames, registry, config);
+  printAdoptionHints(resolvedNames, registry, config, configDir);
 }
 
 async function cmdTheme(hex, options, cwd) {
@@ -1102,6 +1327,7 @@ async function main() {
       out: { type: "string" },
       selector: { type: "string" },
       dark: { type: "string" },
+      animated: { type: "boolean" },
     },
   });
 
@@ -1131,6 +1357,19 @@ async function main() {
     await cmdInit(cwd);
     return;
   }
+  if (cmd === "list") {
+    printList(loadRegistry());
+    return;
+  }
+  if (cmd === "info") {
+    if (rest.length === 0) {
+      console.error("Usage: zentauri-components info <component|hook>");
+      process.exitCode = 1;
+      return;
+    }
+    printInfo(rest[0], loadRegistry());
+    return;
+  }
   if (cmd === "add") {
     if (rest.length === 0) {
       console.error(
@@ -1139,7 +1378,7 @@ async function main() {
       process.exitCode = 1;
       return;
     }
-    await cmdAdd(rest, cwd);
+    await cmdAdd(rest, cwd, { animated: values.animated });
     return;
   }
   if (cmd === "theme") {
