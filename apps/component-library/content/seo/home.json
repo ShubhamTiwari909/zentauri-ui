@@ -1,10 +1,11 @@
 {
   "category": "Zentauri UI",
-  "title": "Zentauri UI — React component + hooks library with Tailwind CSS & motion",
-  "description": "Zentauri UI is a React component + hooks library with Tailwind CSS v4, Framer Motion, and accessible primitives. Browse docs, interactive previews, and hooks to ship dashboards and marketing sites faster.",
+  "title": "Zentauri UI — React + Tailwind v4 UI kit with token-first theming",
+  "description": "Zentauri UI is a React + Tailwind v4 UI kit with token-first theming, optional Framer Motion entries, and accessible primitives. Browse docs, interactive previews, and hooks to ship dashboards and product interfaces faster.",
   "keywords": [
     "Zentauri UI",
-    "React component + hooks library",
+    "React + Tailwind v4 UI kit",
+    "token-first theming",
     "Tailwind CSS v4",
     "Framer Motion",
     "Next.js components",
@@ -13,18 +14,18 @@
     "React hooks"
   ],
   "og": {
-    "title": "Zentauri UI — React components + hooks for modern apps",
-    "description": "Minimalist React UI with Tailwind-first styling, motion presets, and copy-ready previews for Next.js and Vite.",
+    "title": "Zentauri UI — Token-first React + Tailwind v4 UI kit",
+    "description": "Token-first React UI with Tailwind v4 classes, optional motion entries, and copy-ready previews for Next.js, Vite, Remix, and Astro.",
     "type": "website"
   },
   "twitter": {
-    "title": "Zentauri UI — React components + hooks for modern apps",
-    "description": "Minimalist React UI with Tailwind-first styling, motion presets, and copy-ready previews for Next.js and Vite.",
+    "title": "Zentauri UI — Token-first React + Tailwind v4 UI kit",
+    "description": "Token-first React UI with Tailwind v4 classes, optional motion entries, and copy-ready previews for Next.js, Vite, Remix, and Astro.",
     "card": "summary_large_image"
   },
   "canonicalPath": "/",
   "headings": {
-    "h1": "Beautiful, minimalist React components",
+    "h1": "React + Tailwind v4 UI kit with token-first theming and optional motion",
     "h2": [
       "Why teams pick Zentauri UI",
       "What ships today",
@@ -34,11 +35,11 @@
       "FAQ"
     ]
   },
-  "intro": "A highly customizable component + hooks library built with Tailwind CSS and Framer Motion, focused on subtle interactions and a cohesive dark aesthetic. Use interactive previews and typed hooks to assemble production layouts without reinventing primitives.",
+  "intro": "Build product interfaces with React components that keep Tailwind v4 utility classes, the --zui-* token contract, and optional Framer Motion entries clearly separated. Use interactive previews, copy-ready CLI commands, and typed hooks to assemble production layouts without reinventing primitives.",
   "useCases": [
     "Bootstrap dashboards with tables, navigation, overlays, and feedback components.",
     "Prototype marketing flows with buttons, cards, accordions, and form controls.",
-    "Add motion-rich modals, drawers, tabs, and toasts with consistent animation tokens.",
+    "Add optional motion-rich modals, drawers, tabs, and toasts without forcing framer-motion into static imports.",
     "Document an internal design system with import paths that match published npm exports.",
     "Extend Tailwind v4 themes while keeping class APIs predictable for contributors."
   ],
@@ -59,7 +60,7 @@
   "sections": [
     {
       "heading": "Why teams pick Zentauri UI",
-      "body": "Zentauri UI pairs a tight visual language with practical defaults: glass and solid appearances, motion variants where they matter, and documentation that mirrors real import paths.\n\nInstead of abstract galleries, you get per-component previews with code you can paste into a React or Next.js repo."
+      "body": "Zentauri UI pairs a tight visual language with practical defaults: token-first appearances, Tailwind v4 scanning guidance, optional motion entries, and documentation that mirrors real import paths.\n\nInstead of abstract galleries, you get per-component previews with code you can paste into a React or Next.js repo."
     },
     {
       "heading": "What ships today",
@@ -71,7 +72,7 @@
     },
     {
       "heading": "Stack and compatibility",
-      "body": "Components assume React 18+ and Tailwind CSS v4 with the published preset. Framer Motion backs animated variants; react-icons supplies consistent iconography in examples.\n\nKeep peer installs aligned with the Installation page to avoid duplicate motion or merge conflicts in class composition."
+      "body": "Components assume React 18+ and Tailwind CSS v4 with @source scanning pointed at the package. Framer Motion backs animated variants only when you import animated entries; Recharts powers chart entries.\n\nKeep peer installs aligned with the Installation page to avoid duplicate motion, missing chart peers, or merge conflicts in class composition."
     },
     {
       "heading": "How to explore the library",

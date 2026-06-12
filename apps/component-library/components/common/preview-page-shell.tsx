@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { ComponentDocNotes } from "@/components/preview/component-doc-notes";
 import { PreviewInstallCommandBar } from "@/components/preview/install-command-bar";
 
 const previewPageShellClassName =
@@ -21,6 +22,7 @@ export function PreviewPageShell({
     <div className={previewPageShellClassName}>
       <div className={className || previewMainClassName}>
         <PreviewInstallCommandBar />
+        <ComponentDocNotes />
         {children}
       </div>
     </div>
