@@ -513,5 +513,5 @@ export const comboboxCssVariables = defineCssVariableReference({
     ["combobox-list-red-ring-dark", "#ef4444"],
     ["combobox-empty-fg-dark", "oklch(55.1% 0.027 264.364)"],
   ],
-  darkVariableCount: 222,
+  darkVariableCount: 223,
 });
