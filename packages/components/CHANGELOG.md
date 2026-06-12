@@ -1,5 +1,11 @@
 # @zentauri-ui/zentauri-components Changelog
 
+## 2.2.0
+
+### Minor Changes
+
+- 398393d: Add compact global theme tokens and generated theme CSS support for the Zentauri UI token system.
+
 ## 2.0.0
 
 ### Major Changes
