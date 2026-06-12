@@ -1,5 +1,8 @@
 import type { ReactNode } from "react";
 
+import { ComponentDocNotes } from "@/components/preview/component-doc-notes";
+import { PreviewInstallCommandBar } from "@/components/preview/install-command-bar";
+
 const previewPageShellClassName =
   "flex min-h-0 flex-1 flex-col bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.18),transparent_30%),radial-gradient(circle_at_top_right,rgba(14,165,233,0.16),transparent_25%),linear-gradient(180deg,#020617_0%,#020617_100%)] text-slate-50";
 
@@ -17,7 +20,11 @@ export function PreviewPageShell({
 }: PreviewPageShellProps) {
   return (
     <div className={previewPageShellClassName}>
-      <div className={className || previewMainClassName}>{children}</div>
+      <div className={className || previewMainClassName}>
+        <PreviewInstallCommandBar />
+        <ComponentDocNotes />
+        {children}
+      </div>
     </div>
   );
 }

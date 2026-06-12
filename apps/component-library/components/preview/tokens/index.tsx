@@ -17,6 +17,7 @@ import type {
   ZuiTokenReference,
   ZuiTokenReferenceGroup,
 } from "./types";
+import { TokenPlayground } from "./token-playground";
 
 const themeLabels: Record<TokenTheme, string> = {
   light: "Light",
@@ -325,6 +326,63 @@ function ComponentOverrideLinks() {
   );
 }
 
+function TokenArchitectureSection() {
+  const layers = [
+    {
+      title: "Global layer",
+      label: "--zui-brand",
+      body: "Brand, foreground, surface, border, status, focus, shadow, radius, and palette variables live on :root and .dark.",
+    },
+    {
+      title: "Component layer",
+      label: "--zui-button-default-bg",
+      body: "Each component reads component-scoped variables first, so one product surface can tune a slot without changing the global theme.",
+    },
+    {
+      title: "Fallback layer",
+      label: "var(--zui-brand,#2563eb)",
+      body: "Every Tailwind arbitrary value includes a hardcoded fallback, which keeps components rendered before a consumer writes any overrides.",
+    },
+  ] as const;
+
+  return (
+    <Section className="space-y-5">
+      <div className="space-y-2">
+        <p className="text-xs font-medium uppercase text-cyan-900 dark:text-cyan-200">
+          Architecture
+        </p>
+        <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
+          How the --zui-* contract resolves
+        </h2>
+        <p className="max-w-3xl text-sm leading-6 text-slate-900 dark:text-slate-300">
+          Zentauri UI keeps theme control in CSS variables instead of compiled
+          CSS. Components read the most specific variable first, then fall back
+          to shared globals, then to a literal value in the class string.
+        </p>
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-3">
+        {layers.map((layer) => (
+          <div
+            className="rounded-lg border border-slate-900/10 bg-white p-4 dark:border-white/10 dark:bg-slate-950/60"
+            key={layer.title}
+          >
+            <p className="text-sm font-semibold text-slate-900 dark:text-white">
+              {layer.title}
+            </p>
+            <code className="mt-3 block rounded-lg border border-white/10 bg-slate-950 px-3 py-2 text-xs text-cyan-100">
+              {layer.label}
+            </code>
+            <p className="mt-3 text-sm leading-6 text-slate-700 dark:text-slate-400">
+              {layer.body}
+            </p>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 export default function TokenReferencePage({
   seo,
 }: {
@@ -382,6 +440,26 @@ export default function TokenReferencePage({
         <code className="block overflow-x-auto rounded-xl border border-white/10 bg-slate-950/80 px-4 py-3 text-sm text-cyan-100">
           {zuiTokenPattern}
         </code>
+      </Section>
+
+      <TokenArchitectureSection />
+
+      <Section className="space-y-5">
+        <div className="space-y-2">
+          <p className="text-xs font-medium uppercase text-cyan-900 dark:text-cyan-200">
+            Playground
+          </p>
+          <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
+            Preview appearances and copy variables
+          </h2>
+          <p className="max-w-3xl text-sm leading-6 text-slate-900 dark:text-slate-300">
+            Switch presets to see how global and component-level tokens change
+            multiple UI primitives at once. Copy the generated CSS into your app
+            theme and trim any variables you do not need.
+          </p>
+        </div>
+
+        <TokenPlayground />
       </Section>
 
       <Section className="space-y-5">

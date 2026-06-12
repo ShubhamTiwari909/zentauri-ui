@@ -20,9 +20,9 @@ type HomeHeroProps = {
 };
 
 const HERO_FEATURES = [
-  { icon: FiLayers, label: "Token variants" },
-  { icon: FiCode, label: "Typed snippets" },
-  { icon: FiPackage, label: "CLI install" },
+  { icon: FiLayers, label: "--zui-* token contract" },
+  { icon: FiCode, label: "Tailwind v4 @source" },
+  { icon: FiPackage, label: "Optional motion entries" },
 ] as const;
 
 const heroCtaClassName = "justify-center px-7 py-3 text-base font-medium";
@@ -65,7 +65,8 @@ function HeroProductPreview() {
                       Product surface
                     </p>
                     <p className="mt-1 text-xs leading-5 text-slate-400">
-                      Gradients, glass, motion, and dark mode ready states.
+                      Token-first colors, copy-ready commands, and optional
+                      motion.
                     </p>
                   </div>
                   <FiBox className="h-5 w-5 text-cyan-200" aria-hidden />
@@ -169,10 +170,15 @@ export function HomeHero({ seo }: HomeHeroProps) {
         <div className="max-w-3xl text-left">
           <PreviewHeroSeoBlock seo={seo} headingId={HOME_HERO_TITLE_ID} />
           <div className="mt-8 flex flex-wrap gap-3 text-xs font-medium text-slate-400">
-            {["Tailwind v4", "CVA variants", "Optional motion"].map((item) => (
+            {[
+              "React UI kit",
+              "Tailwind v4",
+              "Token-first theming",
+              "Optional motion",
+            ].map((item) => (
               <span
                 key={item}
-                className="rounded-full border border-white/50 text-white bg-white/4 px-3 py-1"
+                className="rounded-full border border-white/50 bg-white/4 px-3 py-1 text-white"
               >
                 {item}
               </span>

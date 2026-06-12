@@ -95,11 +95,13 @@ npx --yes --package=@zentauri-ui/zentauri-components zentauri-components add but
 const COMPONENTS_JSON_SNIPPET = `{
   "aliases": {
     "ui": "@/components/ui",
+    "animations": "@/components/animations",
     "utils": "@/lib/utils",
     "hooks": "@/hooks"
   },
   "resolvedPaths": {
     "ui": "src/components/ui",
+    "animations": "src/components/animations",
     "utils": "src/lib/utils.ts",
     "hooks": "src/hooks"
   }
@@ -109,6 +111,37 @@ const VENDORED_GLOBALS_CSS_SNIPPET = `@import "tailwindcss";
 /* After add, scan copied sources (paths relative to this CSS file) */
 @source "../src/components/ui";
 @source "../src/hooks";`;
+
+const FRAMEWORK_SOURCE_SNIPPETS = [
+  {
+    label: "Next.js",
+    file: "app/globals.css",
+    code: `@import "tailwindcss";
+@source "../node_modules/@zentauri-ui/zentauri-components";
+@source "../src/components/ui";`,
+  },
+  {
+    label: "Vite",
+    file: "src/index.css",
+    code: `@import "tailwindcss";
+@source "../node_modules/@zentauri-ui/zentauri-components";
+@source "./components/ui";`,
+  },
+  {
+    label: "Remix",
+    file: "app/tailwind.css",
+    code: `@import "tailwindcss";
+@source "../node_modules/@zentauri-ui/zentauri-components";
+@source "./components/ui";`,
+  },
+  {
+    label: "Astro",
+    file: "src/styles/global.css",
+    code: `@import "tailwindcss";
+@source "../../node_modules/@zentauri-ui/zentauri-components";
+@source "../components/ui";`,
+  },
+];
 
 const ADD_NEW_THEMES_COLORS_SNIPPET = `export const customAppearancefuchsia = {
   50: "bg-fuchsia-50 text-fuchsia-950",
@@ -907,6 +940,35 @@ export default function InstallationPreviewPage({
               codeString={VENDORED_GLOBALS_CSS_SNIPPET}
               language="css"
             />
+          </div>
+
+          <h3 className="mt-6 text-sm font-medium dark:text-slate-200 text-slate-900">
+            Framework-aware Tailwind sources
+          </h3>
+          <p className="mt-2 text-sm leading-6 dark:text-slate-400 text-slate-900">
+            The CLI detects common React app frameworks during{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-white text-slate-900">
+              init
+            </code>{" "}
+            and prints the closest{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs dark:text-cyan-200 text-slate-900">
+              @source
+            </code>{" "}
+            path. Use these as starting points and adjust the relative path from
+            the CSS file that imports Tailwind.
+          </p>
+          <div className="mt-4 grid gap-4 lg:grid-cols-2">
+            {FRAMEWORK_SOURCE_SNIPPETS.map((snippet) => (
+              <div
+                className="overflow-hidden rounded-xl border border-white/10"
+                key={snippet.label}
+              >
+                <div className="border-b border-white/10 bg-white/5 px-4 py-2 text-sm font-medium dark:text-slate-200 text-slate-900">
+                  {snippet.label} · {snippet.file}
+                </div>
+                <CodeHighlight codeString={snippet.code} language="css" />
+              </div>
+            ))}
           </div>
         </Section>
 
