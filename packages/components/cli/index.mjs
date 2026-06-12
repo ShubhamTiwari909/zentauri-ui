@@ -458,8 +458,92 @@ function hexToRgb(hex) {
   };
 }
 
-function readableTextColor(hex) {
-  const { r, g, b } = hexToRgb(hex);
+function srgbChannelToLinear(value) {
+  const channel = value / 255;
+  return channel <= 0.04045
+    ? channel / 12.92
+    : ((channel + 0.055) / 1.055) ** 2.4;
+}
+
+function linearChannelToSrgb(value) {
+  const channel =
+    value <= 0.0031308 ? 12.92 * value : 1.055 * value ** (1 / 2.4) - 0.055;
+  return Math.min(255, Math.max(0, Math.round(channel * 255)));
+}
+
+function rgbToOklab({ r, g, b }) {
+  const linearR = srgbChannelToLinear(r);
+  const linearG = srgbChannelToLinear(g);
+  const linearB = srgbChannelToLinear(b);
+
+  const l = Math.cbrt(
+    0.4122214708 * linearR + 0.5363325363 * linearG + 0.0514459929 * linearB,
+  );
+  const m = Math.cbrt(
+    0.2119034982 * linearR + 0.6806995451 * linearG + 0.1073969566 * linearB,
+  );
+  const s = Math.cbrt(
+    0.0883024619 * linearR + 0.2817188376 * linearG + 0.6299787005 * linearB,
+  );
+
+  return {
+    l: 0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s,
+    a: 1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s,
+    b: 0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s,
+  };
+}
+
+function oklabToRgb({ l, a, b }) {
+  const lPrime = l + 0.3963377774 * a + 0.2158037573 * b;
+  const mPrime = l - 0.1055613458 * a - 0.0638541728 * b;
+  const sPrime = l - 0.0894841775 * a - 1.291485548 * b;
+
+  const lCubed = lPrime ** 3;
+  const mCubed = mPrime ** 3;
+  const sCubed = sPrime ** 3;
+
+  return {
+    r: linearChannelToSrgb(
+      4.0767416621 * lCubed - 3.3077115913 * mCubed + 0.2309699292 * sCubed,
+    ),
+    g: linearChannelToSrgb(
+      -1.2684380046 * lCubed + 2.6097574011 * mCubed - 0.3413193965 * sCubed,
+    ),
+    b: linearChannelToSrgb(
+      -0.0041960863 * lCubed - 0.7034186147 * mCubed + 1.707614701 * sCubed,
+    ),
+  };
+}
+
+function rgbToOklch(rgb) {
+  const lab = rgbToOklab(rgb);
+  return {
+    l: lab.l,
+    c: Math.sqrt(lab.a ** 2 + lab.b ** 2),
+    h: Math.atan2(lab.b, lab.a),
+  };
+}
+
+function oklchToRgb({ l, c, h }) {
+  return oklabToRgb({
+    l,
+    a: c * Math.cos(h),
+    b: c * Math.sin(h),
+  });
+}
+
+function mixHexWithWhiteInOklch(hex, weight) {
+  const brand = rgbToOklch(hexToRgb(hex));
+  const white = rgbToOklch({ r: 255, g: 255, b: 255 });
+
+  return oklchToRgb({
+    l: brand.l * weight + white.l * (1 - weight),
+    c: brand.c * weight,
+    h: brand.h,
+  });
+}
+
+function readableTextColorFromRgb({ r, g, b }) {
   const linear = [r, g, b].map((value) => {
     const channel = value / 255;
     return channel <= 0.03928
@@ -471,13 +555,19 @@ function readableTextColor(hex) {
   return luminance > 0.56 ? "#0f172a" : "#ffffff";
 }
 
+function readableTextColor(hex) {
+  return readableTextColorFromRgb(hexToRgb(hex));
+}
+
 function buildCompactThemeCss(hex, options = {}) {
   const brand = normalizeHexColor(hex);
   const darkBrand = options.dark
     ? normalizeHexColor(options.dark)
     : `color-mix(in oklch, ${brand} 72%, #ffffff)`;
   const brandFg = readableTextColor(brand);
-  const darkBrandFg = options.dark ? readableTextColor(darkBrand) : "#020617";
+  const darkBrandFg = options.dark
+    ? readableTextColor(darkBrand)
+    : readableTextColorFromRgb(mixHexWithWhiteInOklch(brand, 0.72));
   const selector = options.selector || ":root";
   const lightTokens = [
     ["--zui-ring-offset", "#f8fafc"],

@@ -15,6 +15,8 @@ Also present: `apps/zentauri-demo-pages` (separate Next app), `apps/zentauri-bac
 
 Run from the repo root unless noted. Use **pnpm 9** (`corepack prepare pnpm@9.0.0 --activate`).
 
+Use `$efficient-repository-analysis` for repository understanding, debugging, reviews, and code changes. Prefer targeted file inspection, static analysis, and small searches before running expensive project-wide commands.
+
 | Command            | What it does                                                             |
 | ------------------ | ------------------------------------------------------------------------ |
 | `pnpm dev`         | `turbo run dev` — Next dev server **and** `tsup --watch` for the library |

@@ -179,6 +179,19 @@ describe("zentauri-ui CLI", () => {
     }
   });
 
+  it("should keep readable dark foreground when default dark brand stays dark", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-theme-dark-"));
+    try {
+      const out = runCli(dir, ["theme", "#020617"]);
+      expect(out).toContain(
+        "--zui-brand-dark: color-mix(in oklch, #020617 72%, #ffffff);",
+      );
+      expect(out).toContain("--zui-brand-fg-dark: #ffffff;");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("should write compact theme CSS with a custom selector", () => {
     const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-theme-out-"));
     try {
