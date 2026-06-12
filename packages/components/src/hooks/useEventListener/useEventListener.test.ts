@@ -44,9 +44,9 @@ describe("useEventListener", () => {
     window.dispatchEvent(new Event("focus"));
     expect(first).not.toHaveBeenCalled();
     expect(second).toHaveBeenCalledTimes(1);
-    expect(
-      addSpy.mock.calls.filter(([type]) => type === "focus").length,
-    ).toBe(subscriptions);
+    expect(addSpy.mock.calls.filter(([type]) => type === "focus").length).toBe(
+      subscriptions,
+    );
     addSpy.mockRestore();
   });
 

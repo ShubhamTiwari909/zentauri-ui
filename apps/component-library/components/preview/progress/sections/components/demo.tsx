@@ -1,4 +1,5 @@
 import { Progress } from "@zentauri-ui/zentauri-components/ui/progress";
+import { ProgressAnimated } from "@zentauri-ui/zentauri-components/ui/progress/animated";
 
 import type { ProgressDemoProps } from "./types";
 
@@ -9,6 +10,8 @@ export function ProgressDemo({
   striped,
   animated,
 }: ProgressDemoProps) {
+  const sharedProps = { appearance, size, shape, striped, animated, value: 42 };
+
   return (
     <div>
       <p className="mb-5 text-xs md:text-sm text-slate-900 dark:text-slate-200">
@@ -20,14 +23,11 @@ export function ProgressDemo({
         Animated:{" "}
         <span className="font-bold">{animated ? "true" : "false"}</span>
       </p>
-      <Progress
-        appearance={appearance}
-        size={size}
-        shape={shape}
-        striped={striped}
-        animated={animated}
-        value={42}
-      />
+      {animated ? (
+        <ProgressAnimated {...sharedProps} />
+      ) : (
+        <Progress {...sharedProps} />
+      )}
     </div>
   );
 }

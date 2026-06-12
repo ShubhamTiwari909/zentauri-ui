@@ -1037,7 +1037,11 @@ function CookieDemo() {
         >
           Save (1h)
         </Button>
-        <Button type="button" appearance="outline" onClick={() => removeCookie()}>
+        <Button
+          type="button"
+          appearance="outline"
+          onClick={() => removeCookie()}
+        >
           Remove
         </Button>
       </div>
@@ -1098,9 +1102,8 @@ function GeolocationDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
-        The position request (and permission prompt) is deferred until you
-        click — <span className="font-mono text-cyan-200">enabled</span> starts
-        false.
+        The position request (and permission prompt) is deferred until you click
+        — <span className="font-mono text-cyan-200">enabled</span> starts false.
       </p>
       <Button type="button" onClick={() => setEnabled((v) => !v)}>
         {enabled ? "Stop watching" : "Request my location"}
@@ -1142,8 +1145,8 @@ function HotkeysDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="text-sm text-slate-400">
-        Press <Kbd>⌘/Ctrl</Kbd> + <Kbd>K</Kbd> to increment,{" "}
-        <Kbd>Esc</Kbd> to reset (ignored while typing in inputs).
+        Press <Kbd>⌘/Ctrl</Kbd> + <Kbd>K</Kbd> to increment, <Kbd>Esc</Kbd> to
+        reset (ignored while typing in inputs).
       </p>
       <p className="mt-4 text-3xl font-semibold tabular-nums text-white">
         {count}
@@ -1187,8 +1190,9 @@ function IntervalDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
-        Ticks every 500ms; a <span className="font-mono text-cyan-200">null</span>{" "}
-        delay pauses the interval.
+        Ticks every 500ms; a{" "}
+        <span className="font-mono text-cyan-200">null</span> delay pauses the
+        interval.
       </p>
       <p className="mb-4 text-3xl font-semibold tabular-nums text-white">
         {ticks}
@@ -1309,8 +1313,7 @@ function TimeoutDemo() {
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
-        A 2s timeout armed on mount. Reset restarts the delay; clear cancels
-        it.
+        A 2s timeout armed on mount. Reset restarts the delay; clear cancels it.
       </p>
       <p className="mb-4 text-sm">
         Status:{" "}

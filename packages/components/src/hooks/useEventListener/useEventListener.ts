@@ -78,7 +78,8 @@ export function useEventListener(
   // passed by callers does not cause the listener to be removed and re-added on every render.
   const capture =
     typeof options === "boolean" ? options : (options?.capture ?? false);
-  const passive = typeof options === "object" ? (options?.passive ?? false) : false;
+  const passive =
+    typeof options === "object" ? (options?.passive ?? false) : false;
   const once = typeof options === "object" ? (options?.once ?? false) : false;
 
   useEffect(() => {

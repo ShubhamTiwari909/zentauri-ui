@@ -95,10 +95,7 @@ export function useVirtualList({
   const startIndex =
     safeItemCount === 0
       ? 0
-      : Math.max(
-          0,
-          Math.floor(scrollTop / safeItemHeight) - safeOverscan,
-        );
+      : Math.max(0, Math.floor(scrollTop / safeItemHeight) - safeOverscan);
   const endIndex =
     safeItemCount === 0
       ? -1

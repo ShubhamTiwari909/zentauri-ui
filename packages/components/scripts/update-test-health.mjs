@@ -49,6 +49,11 @@ const areas = [
     label: "CLI and import rewriting",
     matches: (rel) => rel.startsWith("cli/"),
   },
+  {
+    id: "accessibility",
+    label: "Axe core test cases",
+    matches: (rel) => rel.startsWith("src/accessibility/"),
+  },
 ];
 
 function posixRelative(from, to) {

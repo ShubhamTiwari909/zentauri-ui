@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 
 import { DesignSystem } from "../lib/facade";
+import { zuiGlobalThemeTokens } from "../design-system/tokens";
+
+const globalTokenNames = new Set([
+  ...Object.values(zuiGlobalThemeTokens),
+  ...Object.values(zuiGlobalThemeTokens).map((name) => `${name}-dark`),
+]);
 
 describe("DesignSystem facade", () => {
   it("lists known components", () => {
@@ -65,13 +71,23 @@ describe("DesignSystem facade", () => {
   it("scopes variables to the component token prefix", () => {
     const buttonVars = DesignSystem.getComponent("buttons")?.variables() ?? [];
     expect(buttonVars.length).toBeGreaterThan(0);
+    const componentSpecificButtonVars = buttonVars.filter(
+      (token) => !globalTokenNames.has(token.name),
+    );
     expect(
-      buttonVars.every((token) => token.name.startsWith("--zui-button")),
+      componentSpecificButtonVars.every((token) =>
+        token.name.startsWith("--zui-button"),
+      ),
     ).toBe(true);
 
     const inputVars = DesignSystem.getComponent("inputs")?.variables() ?? [];
+    const componentSpecificInputVars = inputVars.filter(
+      (token) => !globalTokenNames.has(token.name),
+    );
     expect(
-      inputVars.every((token) => token.name.startsWith("--zui-input")),
+      componentSpecificInputVars.every((token) =>
+        token.name.startsWith("--zui-input"),
+      ),
     ).toBe(true);
   });
 
@@ -84,8 +100,13 @@ describe("DesignSystem facade", () => {
     const searchVars = search?.variables() ?? [];
     expect(searchVars.length).toBeGreaterThan(0);
     // SearchBar has no tokens of its own — every variable is an Input variable.
+    const componentSpecificSearchVars = searchVars.filter(
+      (token) => !globalTokenNames.has(token.name),
+    );
     expect(
-      searchVars.every((token) => token.name.startsWith("--zui-input")),
+      componentSpecificSearchVars.every((token) =>
+        token.name.startsWith("--zui-input"),
+      ),
     ).toBe(true);
     expect(searchVars.length).toBe(input?.variables().length);
   });

@@ -58,9 +58,7 @@ describe("useIdleTimeout", () => {
   it("should not fire callbacks on mount", () => {
     const onIdle = vi.fn();
     const onActive = vi.fn();
-    renderHook(() =>
-      useIdleTimeout({ timeoutMs: 500, onIdle, onActive }),
-    );
+    renderHook(() => useIdleTimeout({ timeoutMs: 500, onIdle, onActive }));
     expect(onIdle).not.toHaveBeenCalled();
     expect(onActive).not.toHaveBeenCalled();
   });

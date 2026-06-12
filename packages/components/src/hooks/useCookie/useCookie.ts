@@ -47,13 +47,7 @@ function serializeCookie(
   value: string,
   options: CookieOptions,
 ): string {
-  const {
-    maxAgeSeconds,
-    expires,
-    path = "/",
-    domain,
-    sameSite,
-  } = options;
+  const { maxAgeSeconds, expires, path = "/", domain, sameSite } = options;
   // SameSite=None requires Secure; enforce it automatically.
   const secure = options.secure || sameSite === "none";
   let cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; path=${path}`;

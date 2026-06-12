@@ -9,10 +9,12 @@ type ErrorCallback = (error: GeolocationPositionError) => void;
 function stubGeolocation() {
   const callbacks: { success?: SuccessCallback; error?: ErrorCallback } = {};
   const geolocation = {
-    getCurrentPosition: vi.fn((success: SuccessCallback, error: ErrorCallback) => {
-      callbacks.success = success;
-      callbacks.error = error;
-    }),
+    getCurrentPosition: vi.fn(
+      (success: SuccessCallback, error: ErrorCallback) => {
+        callbacks.success = success;
+        callbacks.error = error;
+      },
+    ),
     watchPosition: vi.fn((success: SuccessCallback, error: ErrorCallback) => {
       callbacks.success = success;
       callbacks.error = error;

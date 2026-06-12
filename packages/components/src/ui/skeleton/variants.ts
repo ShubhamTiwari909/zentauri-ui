@@ -146,6 +146,111 @@ export const skeletonVariants = cva(zuiSkeletonBase, {
       class: skeletonShimmerGradientClasses["gradient-orange"],
     },
     {
+      animation: "shimmer",
+      shimmerTone: "blue",
+      class: skeletonShimmerGradientClasses.blue,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "cyan",
+      class: skeletonShimmerGradientClasses.cyan,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "green",
+      class: skeletonShimmerGradientClasses.green,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "lime",
+      class: skeletonShimmerGradientClasses.lime,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "mint",
+      class: skeletonShimmerGradientClasses.mint,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "ocean",
+      class: skeletonShimmerGradientClasses.ocean,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "sapphire",
+      class: skeletonShimmerGradientClasses.sapphire,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "lavender",
+      class: skeletonShimmerGradientClasses.lavender,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "ruby",
+      class: skeletonShimmerGradientClasses.ruby,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "red",
+      class: skeletonShimmerGradientClasses.red,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "slate",
+      class: skeletonShimmerGradientClasses.slate,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "zinc",
+      class: skeletonShimmerGradientClasses.zinc,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "stone",
+      class: skeletonShimmerGradientClasses.stone,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "royal",
+      class: skeletonShimmerGradientClasses.royal,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "electric",
+      class: skeletonShimmerGradientClasses.electric,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "forest",
+      class: skeletonShimmerGradientClasses.forest,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "sunset",
+      class: skeletonShimmerGradientClasses.sunset,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "magenta",
+      class: skeletonShimmerGradientClasses.magenta,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "crimson",
+      class: skeletonShimmerGradientClasses.crimson,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "aqua",
+      class: skeletonShimmerGradientClasses.aqua,
+    },
+    {
+      animation: "shimmer",
+      shimmerTone: "plum",
+      class: skeletonShimmerGradientClasses.plum,
+    },
+    {
       animation: "pulse",
       class: "",
     },

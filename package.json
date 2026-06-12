@@ -10,7 +10,7 @@
     "check-types": "turbo run check-types",
     "changeset": "changeset",
     "version-packages": "changeset version && pnpm install",
-    "release": "pnpm build && changeset publish",
+    "release": "pnpm build && npm login && changeset publish",
     "check:tokens": "pnpm --filter @zentauri-ui/zentauri-components check:tokens",
     "update:test-health": "pnpm --filter @zentauri-ui/zentauri-components update:test-health",
     "test:docs": "pnpm --filter component-library test"
