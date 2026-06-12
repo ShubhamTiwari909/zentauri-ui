@@ -5,8 +5,8 @@ export const PACKAGE_TEST_HEALTH = {
     passed: 92,
   },
   tests: {
-    total: 707,
-    passed: 707,
+    total: 712,
+    passed: 712,
   },
   areas: [
     {
@@ -32,7 +32,7 @@ export const PACKAGE_TEST_HEALTH = {
     {
       area: "CLI and import rewriting",
       files: 2,
-      tests: 18,
+      tests: 23,
     },
     {
       area: "Axe core test cases",
