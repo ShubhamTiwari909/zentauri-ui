@@ -11,6 +11,7 @@ import {
 import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 import { Checkbox } from "@zentauri-ui/zentauri-components/ui/checkbox";
+import { CopyButton } from "@zentauri-ui/zentauri-components/ui/copy-button";
 import {
   Dropdown,
   DropdownContent,
@@ -433,19 +434,8 @@ export function TokenPlayground() {
   const [activePreset, setActivePreset] = useState<TokenPreset>(
     tokenPresets[0],
   );
-  const [copied, setCopied] = useState(false);
   const cssSnippet = getThemeCss(activePreset);
   const cssLines = cssSnippet.split("\n");
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(cssSnippet);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1600);
-    } catch {
-      setCopied(false);
-    }
-  };
 
   return (
     <div className="grid gap-5 xl:grid-cols-[0.85fr_1.15fr]">
@@ -620,14 +610,15 @@ export function TokenPlayground() {
                 Root and dark-mode overrides for {activePreset.name}.
               </p>
             </div>
-            <Button
+            <CopyButton
               appearance="cyan"
               size="sm"
-              type="button"
-              onClick={handleCopy}
-            >
-              {copied ? "Copied" : "Copy CSS variables"}
-            </Button>
+              iconOnly={false}
+              label="Copy CSS variables"
+              copiedLabel="Copied"
+              timeout={1600}
+              value={cssSnippet}
+            />
           </div>
           <pre className="max-h-136 overflow-auto p-4 text-xs leading-6 text-slate-200">
             <code>

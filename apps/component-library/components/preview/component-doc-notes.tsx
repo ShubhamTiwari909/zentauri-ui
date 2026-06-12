@@ -91,6 +91,9 @@ const staticDependencySlugs = new Set([
 ]);
 
 function getRouteContext(pathname: string): RouteContext | null {
+  if (!pathname) {
+    return null;
+  }
   const parts = pathname.split("/").filter(Boolean);
   const previewIndex = parts.indexOf("preview");
 
@@ -144,11 +147,19 @@ function getComponentNote(slug: string): ComponentDocNote {
   const hasMotionEntry = motionComponentSlugs.has(slug);
   const isStaticOnly = staticDependencySlugs.has(slug) && !hasMotionEntry;
 
-  if (slug === "spinner" || slug === "animated-number") {
+  if (slug === "spinner") {
     return {
       accessibility: getAccessibilityNote(slug),
       dependency:
         "Requires framer-motion because this preview uses the animated entry. Install it before using the component or the zentauri-ui add --animated flow.",
+      dependencyTone: "motion",
+    };
+  }
+  if (slug === "animated-number") {
+    return {
+      accessibility: getAccessibilityNote(slug),
+      dependency:
+        "Requires framer-motion because this component is inherently animated. Install it before using the component.",
       dependencyTone: "motion",
     };
   }

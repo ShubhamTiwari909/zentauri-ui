@@ -312,6 +312,9 @@ const CORE_PEERS = [
   "tailwind-merge",
 ];
 
+// Ordered by specificity: meta-frameworks first, generic Vite last. Vite-era
+// Remix (and other Vite-based setups) also depend on `vite`, so a first-match
+// scan with Vite earlier would misclassify them.
 const FRAMEWORKS = [
   {
     name: "Next.js",
@@ -321,16 +324,9 @@ const FRAMEWORKS = [
     note: "Place the @source line in your global CSS file, often app/globals.css.",
   },
   {
-    name: "Vite",
-    deps: ["vite"],
-    files: ["vite.config.js", "vite.config.mjs", "vite.config.ts"],
-    source: '@source "./src/components/ui";',
-    note: "Place the @source line in src/index.css or the CSS file imported by your app entry.",
-  },
-  {
     name: "Remix",
     deps: ["@remix-run/react", "@remix-run/node"],
-    files: ["remix.config.js", "remix.config.mjs", "vite.config.ts"],
+    files: ["remix.config.js", "remix.config.mjs"],
     source: '@source "./app/components/ui";',
     note: "If components.json keeps the default src/ paths, use @source \"./src/components/ui\" instead.",
   },
@@ -340,6 +336,13 @@ const FRAMEWORKS = [
     files: ["astro.config.js", "astro.config.mjs", "astro.config.ts"],
     source: '@source "./src/components/ui";',
     note: "Use this in the global stylesheet loaded by your Astro React integration.",
+  },
+  {
+    name: "Vite",
+    deps: ["vite"],
+    files: ["vite.config.js", "vite.config.mjs", "vite.config.ts"],
+    source: '@source "./src/components/ui";',
+    note: "Place the @source line in src/index.css or the CSS file imported by your app entry.",
   },
 ];
 
@@ -421,10 +424,14 @@ function getMissingDependencies(cwd, deps) {
   if (!packagePath) {
     return deps;
   }
-  const installed = packageDependencyMap(
-    JSON.parse(readFileSync(packagePath, "utf8")),
-  );
-  return deps.filter((dep) => !installed[dep]);
+  try {
+    const installed = packageDependencyMap(
+      JSON.parse(readFileSync(packagePath, "utf8")),
+    );
+    return deps.filter((dep) => !installed[dep]);
+  } catch {
+    return deps;
+  }
 }
 
 /**
@@ -541,7 +548,14 @@ function isAnimatedComponent(name, registry) {
 }
 
 function printList(registry) {
-  const ui = registry.uiComponents ?? registry.components ?? [];
+  const ui = Array.from(
+    new Set([
+      ...(registry.uiComponents ?? registry.components ?? []),
+      ...(registry.animatedComponents ?? []).filter(
+        (name) => !(registry.uiComponents ?? []).includes(name),
+      ),
+    ]),
+  );
   const charts = registry.charts ?? [];
   const animations = registry.animations ?? [];
   const hooks = registry.hooks ?? [];
@@ -557,6 +571,8 @@ function printList(registry) {
 }
 
 function importPathFor(name, kind, registry) {
+  const uiComponents = registry.uiComponents ?? [];
+
   if (kind === "hook") {
     return `@zentauri-ui/zentauri-components/hooks/${name}`;
   }
@@ -566,8 +582,8 @@ function importPathFor(name, kind, registry) {
   if (name.startsWith("animations/")) {
     return `@zentauri-ui/zentauri-components/${name}`;
   }
-  if (isAnimatedComponent(name, registry)) {
-    return `@zentauri-ui/zentauri-components/ui/${name}`;
+  if (isAnimatedComponent(name, registry) && !uiComponents.includes(name)) {
+    return `@zentauri-ui/zentauri-components/ui/${name}/animated`;
   }
   return `@zentauri-ui/zentauri-components/ui/${name}`;
 }

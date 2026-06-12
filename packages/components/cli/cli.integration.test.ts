@@ -56,6 +56,28 @@ describe("zentauri-ui CLI", () => {
     }
   });
 
+  it("should detect Remix over Vite when both dependencies are present", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-init-remix-"));
+    try {
+      const packageJsonPath = join(dir, "package.json");
+      execFileSync(
+        process.execPath,
+        [
+          "-e",
+          `require("node:fs").writeFileSync(${JSON.stringify(
+            packageJsonPath,
+          )}, JSON.stringify({ dependencies: { "@remix-run/react": "2.0.0" }, devDependencies: { vite: "5.0.0" } }))`,
+        ],
+        { cwd: dir },
+      );
+      const out = runCli(dir, ["init"]);
+      expect(out).toContain("Detected framework: Remix");
+      expect(out).toContain('@source "./app/components/ui";');
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("should list addable UI, chart, animation, and hook entries", () => {
     const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-list-"));
     try {

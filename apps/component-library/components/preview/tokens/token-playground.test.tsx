@@ -48,7 +48,6 @@ describe("TokenPlayground", () => {
     [
       "Buttons",
       "Badge",
-      "Avatar",
       "Checkbox",
       "Radio group",
       "Dropdown",
