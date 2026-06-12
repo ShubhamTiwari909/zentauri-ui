@@ -7,6 +7,7 @@ import { breadcrumbCssVariables } from "./data/breadcrumb";
 import { buttonsCssVariables } from "./data/buttons";
 import { cardCssVariables } from "./data/card";
 import { checkboxCssVariables } from "./data/checkbox";
+import { comboboxCssVariables } from "./data/combobox";
 import { commandCssVariables } from "./data/command";
 import { contextMenuCssVariables } from "./data/context-menu";
 import { copyButtonCssVariables } from "./data/copy-button";
@@ -53,6 +54,7 @@ export const cssVariableReferences = {
   buttons: buttonsCssVariables,
   card: cardCssVariables,
   checkbox: checkboxCssVariables,
+  combobox: comboboxCssVariables,
   command: commandCssVariables,
   "context-menu": contextMenuCssVariables,
   "copy-button": copyButtonCssVariables,

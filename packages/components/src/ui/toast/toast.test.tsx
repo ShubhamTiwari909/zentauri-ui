@@ -6,6 +6,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import type { ToastAnimation } from "./types";
 
 import { ToastProvider, ToastViewport, useToast } from "./toast";
+import { toastRootVariants } from "./variants";
 
 function ToastHarness({
   title,
@@ -99,4 +100,15 @@ describe("Toast", () => {
       { timeout: 2000 },
     );
   }, 5000);
+});
+
+describe("Toast appearance variants", () => {
+  it("uses opaque surface backgrounds for extended color appearances", () => {
+    expect(toastRootVariants({ appearance: "ruby" })).toContain(
+      "--zui-toast-root-ruby-bg,oklch(27.1%_0.105_12.094)",
+    );
+    expect(toastRootVariants({ appearance: "ruby" })).not.toContain(
+      "#be123c14",
+    );
+  });
 });

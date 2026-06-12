@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
+import { popoverContentVariants } from "./variants";
 
 describe("Popover", () => {
   it("should open and close popover content from the trigger", async () => {
@@ -80,5 +81,19 @@ describe("Popover", () => {
     await user.click(screen.getByRole("button", { name: "Controlled" }));
     expect(onOpenChange).toHaveBeenCalledWith(true);
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+});
+
+describe("Popover appearance variants", () => {
+  it("uses opaque surface backgrounds for color variants", () => {
+    expect(popoverContentVariants({ variant: "indigo" })).toContain(
+      "--zui-popover-indigo-bg,var(--zui-surface-muted,#ffffff)",
+    );
+    expect(popoverContentVariants({ variant: "purple" })).toContain(
+      "--zui-popover-purple-bg,var(--zui-surface-muted,#ffffff)",
+    );
+    expect(popoverContentVariants({ variant: "indigo" })).not.toContain(
+      "transparent",
+    );
   });
 });

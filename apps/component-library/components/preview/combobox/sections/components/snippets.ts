@@ -31,9 +31,11 @@ export function comboboxContentSnippet(opts: ComboboxContentDemoProps): string {
   const { contentAppearance, contentSize } = opts;
   const appearanceAttr =
     contentAppearance === "default" ? "" : ` appearance="${contentAppearance}"`;
+  const triggerVariantAttr =
+    contentAppearance === "default" ? "" : ` variant="${contentAppearance}"`;
   const sizeAttr = contentSize === "md" ? "" : ` size="${contentSize}"`;
   return `${variantLeadComment(`ComboboxContent · appearance · ${contentAppearance}, size · ${contentSize}`)}<Combobox defaultValue={["typescript"]} multiple={false}>
-  <ComboboxTrigger variant="ghost" size="sm">
+  <ComboboxTrigger${triggerVariantAttr} size="sm">
     <ComboboxValue placeholder="Select language" />
   </ComboboxTrigger>
   <ComboboxContent${appearanceAttr}${sizeAttr}>

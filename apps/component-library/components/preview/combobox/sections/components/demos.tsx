@@ -56,7 +56,7 @@ export function ComboboxContentDemo({
         <span className="font-bold">{contentSize}</span>
       </p>
       <Combobox defaultValue={["typescript"]} multiple={false}>
-        <ComboboxTrigger variant="ghost" size="sm">
+        <ComboboxTrigger variant={contentAppearance} size="sm">
           <ComboboxValue placeholder="Select language" />
         </ComboboxTrigger>
         <ComboboxContent appearance={contentAppearance} size={contentSize}>

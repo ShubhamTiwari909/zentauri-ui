@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs";
+import { tabsTriggerVariants } from "./variants";
 
 describe("Tabs", () => {
   it("should stamp data-slot on root", () => {
@@ -49,5 +50,19 @@ describe("Tabs", () => {
     await waitFor(() => {
       expect(screen.getByText("Panel B")).toBeInTheDocument();
     });
+  });
+});
+
+describe("Tabs appearance variants", () => {
+  it("uses solid active states for extended color appearances", () => {
+    expect(
+      tabsTriggerVariants({ appearance: "lime", variant: "pills" }),
+    ).toContain("--zui-tabs-trigger-lime-bg-active");
+    expect(
+      tabsTriggerVariants({ appearance: "mint", variant: "pills" }),
+    ).toContain("--zui-tabs-trigger-mint-bg-active");
+    expect(
+      tabsTriggerVariants({ appearance: "lime", variant: "pills" }),
+    ).not.toContain("#65a30d10");
   });
 });
