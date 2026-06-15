@@ -1,6 +1,7 @@
 import { act, renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
+import type { TableFilterState } from "./types";
 import { useTableFilter } from "./useTableFilter";
 
 const rows = [
@@ -8,6 +9,11 @@ const rows = [
   { name: "Beacon", status: "paused", seats: 4 },
   { name: "Comet", status: "active", seats: 8 },
 ] as const;
+
+type RowFilterKey = "name" | "status";
+type ControlledFilterProps = {
+  filters: TableFilterState<RowFilterKey>;
+};
 
 describe("useTableFilter", () => {
   it("should return all rows when no filters are active", () => {
@@ -81,14 +87,18 @@ describe("useTableFilter", () => {
 
   it("should support controlled filters", () => {
     const handleFiltersChange = vi.fn();
+    const initialProps: ControlledFilterProps = {
+      filters: { status: "active" },
+    };
+
     const { result, rerender } = renderHook(
-      ({ filters }: { filters: Record<string, string> }) =>
+      ({ filters }: ControlledFilterProps) =>
         useTableFilter({
           data: rows,
           filters,
           onFiltersChange: handleFiltersChange,
         }),
-      { initialProps: { filters: { status: "active" } } },
+      { initialProps },
     );
 
     expect(result.current.filteredData.length).toBe(2);
@@ -101,7 +111,7 @@ describe("useTableFilter", () => {
     });
     expect(result.current.filters).toEqual({ status: "active" });
 
-    rerender({ filters: { status: "active" } });
+    rerender({ filters: { status: "active", name: "atlas" } });
     expect(result.current.filteredData).toEqual([rows[0]]);
   });
 
