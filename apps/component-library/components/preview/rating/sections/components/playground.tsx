@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type KeyboardEvent } from "react";
+import { useState } from "react";
+import { FaStar } from "react-icons/fa";
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
@@ -10,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@zentauri-ui/zentauri-components/ui/select";
+import { ratingIconVariants } from "@zentauri-ui/zentauri-components/ui/rating";
 import type { RatingProps } from "@zentauri-ui/zentauri-components/ui/rating";
 
 import { RatingDemo } from "./demo";
@@ -78,16 +80,6 @@ type AppearanceGalleryProps = {
   onSelect: (appearance: RatingAppearance) => void;
 };
 
-function handleSwatchKeyDown(
-  event: KeyboardEvent<HTMLDivElement>,
-  onSelect: () => void,
-) {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    onSelect();
-  }
-}
-
 function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
   return (
     <div className="mt-12">
@@ -102,15 +94,11 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
         {RATING_APPEARANCES.map((appearance) => {
           const isActive = appearance === selected;
           return (
-            <div
+            <button
               key={appearance}
-              role="button"
-              tabIndex={0}
+              type="button"
               aria-pressed={isActive}
               onClick={() => onSelect(appearance)}
-              onKeyDown={(event) =>
-                handleSwatchKeyDown(event, () => onSelect(appearance))
-              }
               className={`rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
@@ -123,18 +111,18 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
                 </span>
                 <span className="flex gap-1" aria-hidden="true">
                   {Array.from({ length: 5 }).map((_, index) => (
-                    <span
+                    <FaStar
                       key={index}
                       className={`h-2.5 w-2.5 rounded-full ${
                         index < 4
-                          ? "bg-amber-400 dark:bg-amber-300"
-                          : "bg-slate-200 dark:bg-white/20"
+                          ? ratingIconVariants({ appearance })
+                          : "text-slate-200 dark:text-white/20"
                       }`}
                     />
                   ))}
                 </span>
               </div>
-            </div>
+            </button>
           );
         })}
       </div>

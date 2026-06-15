@@ -13,15 +13,16 @@ export function ratingSnippet(opts: RatingDemoProps): string {
   const clearAttr = allowClear ? " allowClear" : "";
   const readOnlyAttr = readOnly ? " readOnly" : "";
   const maxAttr = max === undefined ? "" : ` max={${max}}`;
-  const defaultValue = allowHalf ? "4.5" : icon === "flame" ? "3" : "4";
-  const ratingProps = `label="${readOnly ? "Average rating" : "Product rating"}"
-  defaultValue={${defaultValue}}${appearanceAttr}${sizeAttr}${iconAttr}${halfAttr}${clearAttr}${readOnlyAttr}${maxAttr}`;
+  const getDefaultValue = (ratingIcon: RatingDemoProps["icon"]) =>
+    allowHalf ? "4.5" : ratingIcon === "flame" ? "3" : "4";
+  const commonProps = `label="${readOnly ? "Average rating" : "Product rating"}"${appearanceAttr}${sizeAttr}${halfAttr}${clearAttr}${readOnlyAttr}${maxAttr}`;
 
   if (icon) {
     return `${variantLeadComment(
       `appearance · ${appearance}, size · ${size}, icon · ${icon}${allowHalf ? ", half" : ""}`,
     )}<Rating
-  ${ratingProps}
+  ${commonProps}
+  defaultValue={${getDefaultValue(icon)}}${iconAttr}
 />
 `;
   }
@@ -31,12 +32,15 @@ export function ratingSnippet(opts: RatingDemoProps): string {
   )}const icons = ["star", "heart", "flame", "thumb"] as const;
 
 <div className="flex flex-wrap gap-4">
-  {icons.map((icon, index) => {
+  {icons.map((icon) => {
+    const defaultValue = ${allowHalf ? "4.5" : 'icon === "flame" ? 3 : 4'};
+
     return (
       <Rating
         key={icon}
         icon={icon}
-        ${ratingProps}
+        ${commonProps}
+        defaultValue={defaultValue}
       />
     );
   })}
