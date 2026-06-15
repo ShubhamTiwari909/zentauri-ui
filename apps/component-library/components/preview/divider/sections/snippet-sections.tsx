@@ -1,80 +1,19 @@
 import { Section } from "@/components/common/Section";
-import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
-import { DividerDemo } from "./components/demo";
-import {
-  DIVIDER_APPEARANCES,
-  DIVIDER_ORIENTATIONS,
-  DIVIDER_SIZES,
-} from "./components/data";
-import { dividerSnippet } from "./components/snippets";
+import { DividerPlayground } from "./components/playground";
 
 export function DividerCodeExamplesSection() {
   return (
     <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
-        Divider variants examples
+        Divider variants playground
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
-        Tone, orientation, thickness, and optional label slot. Each snippet
-        opens with Variant: naming the row.
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
+        Pick an appearance, orientation, size, and label to preview the divider
+        live. Toggle Show output / Show code and the snippet updates to match
+        the selected variant.
       </p>
-      <div className="mt-6 space-y-10 rounded-xl">
-        {DIVIDER_APPEARANCES.map((appearance) => (
-          <PreviewCodeShowcase
-            key={`app-${appearance}`}
-            code={dividerSnippet({
-              appearance,
-              orientation: "horizontal",
-              size: "md",
-              withLabel: true,
-            })}
-          >
-            <DividerDemo
-              appearance={appearance}
-              orientation="horizontal"
-              size="md"
-              withLabel
-            />
-          </PreviewCodeShowcase>
-        ))}
-        {DIVIDER_ORIENTATIONS.map((orientation) => (
-          <PreviewCodeShowcase
-            key={`ori-${orientation}`}
-            code={dividerSnippet({
-              appearance: "muted",
-              orientation,
-              size: "md",
-              withLabel: false,
-            })}
-          >
-            <DividerDemo
-              appearance="muted"
-              orientation={orientation}
-              size="md"
-              withLabel={false}
-            />
-          </PreviewCodeShowcase>
-        ))}
-        {DIVIDER_SIZES.map((size) => (
-          <PreviewCodeShowcase
-            key={`size-${size}`}
-            code={dividerSnippet({
-              appearance: "primary",
-              orientation: "horizontal",
-              size,
-              withLabel: true,
-            })}
-          >
-            <DividerDemo
-              appearance="primary"
-              orientation="horizontal"
-              size={size}
-              withLabel
-            />
-          </PreviewCodeShowcase>
-        ))}
-      </div>
+      <DividerPlayground />
     </Section>
   );
 }

@@ -1,38 +1,19 @@
 import { Section } from "@/components/common/Section";
-import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
-import { AlertDemo } from "./components/demo";
-import { ALERT_APPEARANCES, ALERT_SIZES } from "./components/data";
-import { alertSnippet } from "./components/snippets";
+import { AlertPlayground } from "./components/playground";
 
 export function AlertCodeExamplesSection() {
   return (
     <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
-        Alert variants examples
+        Alert variants playground
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
-        Each row pairs live output with matching JSX; the Variant line states
-        which appearance/size tokens apply.
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
+        Pick an appearance and size to preview the alert live. Toggle Show
+        output / Show code and the snippet updates to match the selected
+        variant.
       </p>
-      <div className="mt-6 space-y-10 rounded-xl">
-        {ALERT_APPEARANCES.map((appearance) => (
-          <PreviewCodeShowcase
-            key={`app-${appearance}`}
-            code={alertSnippet(appearance, "md")}
-          >
-            <AlertDemo appearance={appearance} size="md" />
-          </PreviewCodeShowcase>
-        ))}
-        {ALERT_SIZES.map((size) => (
-          <PreviewCodeShowcase
-            key={`size-${size}`}
-            code={alertSnippet("info", size)}
-          >
-            <AlertDemo appearance="info" size={size} />
-          </PreviewCodeShowcase>
-        ))}
-      </div>
+      <AlertPlayground />
     </Section>
   );
 }

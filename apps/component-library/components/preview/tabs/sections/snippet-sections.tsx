@@ -1,22 +1,17 @@
 import { Section } from "@/components/common/Section";
-import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
-import { TabsDemo } from "./components/demo";
-import {
-  TABS_LIST_APPEARANCES,
-  TABS_LIST_SIZES,
-  TABS_LIST_VARIANTS,
-} from "./components/data";
-import { tabsSnippet } from "./components/snippets";
+import { TabsPlayground } from "./components/playground";
 
 export function TabsCodeExamplesSection() {
   return (
     <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
-        Tabs variants examples
+        Tabs variants playground
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
-        List chrome and density come from{" "}
+        Pick a list variant, size, and appearance to preview the tabs live.
+        Toggle Show output / Show code and the snippet updates to match the
+        selected variant. List chrome and density come from{" "}
         <code className="text-xs text-cyan-700 dark:text-cyan-200">
           tabsListVariants
         </code>{" "}
@@ -28,38 +23,9 @@ export function TabsCodeExamplesSection() {
         <code className="text-xs text-cyan-700 dark:text-cyan-200">
           TabsContent
         </code>
-        . Each snippet starts with Variant: for the row.
+        .
       </p>
-      <div className="mt-6 space-y-10 rounded-xl">
-        {TABS_LIST_VARIANTS.map((variant) => (
-          <PreviewCodeShowcase
-            key={`var-${variant}`}
-            code={tabsSnippet({ variant, size: "md", appearance: "default" })}
-          >
-            <TabsDemo variant={variant} size="md" appearance="default" />
-          </PreviewCodeShowcase>
-        ))}
-        {TABS_LIST_SIZES.map((size) => (
-          <PreviewCodeShowcase
-            key={`size-${size}`}
-            code={tabsSnippet({
-              variant: "pills",
-              size,
-              appearance: "default",
-            })}
-          >
-            <TabsDemo variant="pills" size={size} appearance="default" />
-          </PreviewCodeShowcase>
-        ))}
-        {TABS_LIST_APPEARANCES.map((appearance) => (
-          <PreviewCodeShowcase
-            key={`appearance-${appearance}`}
-            code={tabsSnippet({ variant: "pills", size: "md", appearance })}
-          >
-            <TabsDemo variant="pills" size="md" appearance={appearance} />
-          </PreviewCodeShowcase>
-        ))}
-      </div>
+      <TabsPlayground />
     </Section>
   );
 }

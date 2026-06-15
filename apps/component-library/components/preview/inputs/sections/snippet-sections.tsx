@@ -2,8 +2,6 @@ import { Section } from "@/components/common/Section";
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
 import {
-  InputsAnimationDemo,
-  InputsAppearanceDemo,
   InputsCheckboxDemo,
   InputsDateDemo,
   InputsDisabledDemo,
@@ -14,18 +12,11 @@ import {
   InputsRadioDemo,
   InputsRadioGroupDemo,
   InputsReadOnlyDemo,
-  InputsSizeDemo,
   InputsTextareaDemo,
 } from "./components/demos";
 import { InputsControlledDemo } from "./components/controlled-demo";
+import { InputsPlayground } from "./components/playground";
 import {
-  animationPresets,
-  appearanceInputsExtended,
-  sizeInputs,
-} from "./components/data";
-import {
-  inputAnimationSnippet,
-  inputAppearanceSnippet,
   inputCheckboxSnippet,
   inputControlledSnippet,
   inputDateSnippet,
@@ -37,7 +28,6 @@ import {
   inputRadioGroupSnippet,
   inputRadioSnippet,
   inputReadOnlySnippet,
-  inputSizeSnippet,
   inputTextareaSnippet,
 } from "./components/snippets";
 
@@ -45,52 +35,15 @@ export function InputsCodeExamplesSection() {
   return (
     <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
-        Input variants examples
+        Input variants playground
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
-        Use Show output / Show code on each row to compare the live control with
-        the JSX. Each snippet opens with a Variant line naming the axis and
-        token.
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
+        Pick an appearance, size, animation, and ring to preview the input live.
+        Toggle Show output / Show code and the snippet updates to match the
+        selected variant.
       </p>
-      <div className="mt-6 space-y-10 rounded-xl">
-        {appearanceInputsExtended.map((row) => (
-          <PreviewCodeShowcase
-            key={row.label}
-            code={inputAppearanceSnippet(row)}
-          >
-            <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
-              Appearance:{" "}
-              <span className="font-bold">{row.appearance.toUpperCase()}</span>
-            </p>
-            <InputsAppearanceDemo row={row} />
-          </PreviewCodeShowcase>
-        ))}
-        {animationPresets.map((preset) => {
-          const [label] = preset;
-          return (
-            <PreviewCodeShowcase
-              key={`anim-${label}`}
-              code={inputAnimationSnippet(preset)}
-            >
-              <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
-                Animation:{" "}
-                <span className="font-bold">{preset[1].toUpperCase()}</span>
-              </p>
-              <InputsAnimationDemo preset={preset} />
-            </PreviewCodeShowcase>
-          );
-        })}
-        {sizeInputs.map((row) => (
-          <PreviewCodeShowcase
-            key={`size-${row.label}`}
-            code={inputSizeSnippet(row)}
-          >
-            <p className="mb-5 text-xs font-semibold text-slate-900 dark:text-white">
-              Size: <span className="font-bold">{row.size.toUpperCase()}</span>
-            </p>
-            <InputsSizeDemo row={row} />
-          </PreviewCodeShowcase>
-        ))}
+      <InputsPlayground />
+      <div className="mt-10 space-y-10 rounded-xl">
         <PreviewCodeShowcase
           key="textarea-showcase"
           code={inputTextareaSnippet()}

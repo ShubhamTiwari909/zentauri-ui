@@ -1,75 +1,19 @@
 import { Section } from "@/components/common/Section";
-import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
-import {
-  ButtonAnimationDemo,
-  ButtonAppearanceDemo,
-  ButtonSizeDemo,
-} from "./components/demo";
-import {
-  buttonAnimationPresets,
-  showcaseButtons,
-  sizeButtons,
-} from "./components/data";
-import {
-  buttonAnimationSnippet,
-  buttonAppearanceSnippet,
-  buttonSizeSnippet,
-} from "./components/snippets";
+import { ButtonPlayground } from "./components/playground";
 
 export function ButtonCodeExamplesSection() {
   return (
     <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
-        Button variants examples
+        Button variants playground
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
-        Use Show output / Show code on each row. Snippets start with a Variant
-        line naming the token row.
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
+        Pick an appearance, size, and animation to preview the button live.
+        Toggle Show output / Show code and the snippet updates to match the
+        selected variant.
       </p>
-      <div className="mt-6 space-y-10 rounded-xl">
-        {showcaseButtons.map((button) => (
-          <PreviewCodeShowcase
-            key={button.label}
-            code={buttonAppearanceSnippet(button)}
-          >
-            <p className="mb-5 text-xs md:text-sm font-semibold text-slate-900 dark:text-white">
-              Appearance:{" "}
-              <span className="font-bold">
-                {button.appearance.toUpperCase()}
-              </span>
-            </p>
-            <ButtonAppearanceDemo {...button} />
-          </PreviewCodeShowcase>
-        ))}
-        {buttonAnimationPresets.map((preset) => {
-          const [label] = preset;
-          return (
-            <PreviewCodeShowcase
-              key={label}
-              code={buttonAnimationSnippet(preset)}
-            >
-              <p className="mb-5 text-xs md:text-sm font-semibold text-slate-900 dark:text-white">
-                Animation:{" "}
-                <span className="font-bold">{preset[1].toUpperCase()}</span>
-              </p>
-              <ButtonAnimationDemo preset={preset} />
-            </PreviewCodeShowcase>
-          );
-        })}
-        {sizeButtons.map((button) => (
-          <PreviewCodeShowcase
-            key={button.label}
-            code={buttonSizeSnippet(button)}
-          >
-            <p className="mb-5 text-xs md:text-sm font-semibold text-slate-900 dark:text-white">
-              Size:{" "}
-              <span className="font-bold">{button.size.toUpperCase()}</span>
-            </p>
-            <ButtonSizeDemo {...button} />
-          </PreviewCodeShowcase>
-        ))}
-      </div>
+      <ButtonPlayground />
     </Section>
   );
 }
