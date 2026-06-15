@@ -328,7 +328,7 @@ const FRAMEWORKS = [
     deps: ["@remix-run/react", "@remix-run/node"],
     files: ["remix.config.js", "remix.config.mjs"],
     source: '@source "./app/components/ui";',
-    note: "If components.json keeps the default src/ paths, use @source \"./src/components/ui\" instead.",
+    note: 'If components.json keeps the default src/ paths, use @source "./src/components/ui" instead.',
   },
   {
     name: "Astro",
@@ -370,9 +370,7 @@ function packageDependencyMap(pkg) {
 function detectFramework(cwd) {
   const deps = packageDependencyMap(readProjectPackageJson(cwd));
   return (
-    FRAMEWORKS.find((framework) =>
-      framework.deps.some((dep) => deps[dep]),
-    ) ??
+    FRAMEWORKS.find((framework) => framework.deps.some((dep) => deps[dep])) ??
     FRAMEWORKS.find((framework) =>
       framework.files.some((file) => existsSync(join(cwd, file))),
     )
@@ -389,9 +387,7 @@ function printInitGuidance(cwd) {
   console.log(`  pnpm add ${CORE_PEERS.join(" ")}`);
   console.log(`  npm install ${CORE_PEERS.join(" ")}`);
   if (missingCorePeers.length > 0) {
-    console.log(
-      `  Missing now: ${missingCorePeers.join(", ")}`,
-    );
+    console.log(`  Missing now: ${missingCorePeers.join(", ")}`);
   }
   console.log("\nTailwind v4 source scanning:");
   console.log(`  ${framework?.source ?? '@source "./src/components/ui";'}`);
@@ -536,9 +532,7 @@ function resolveAnyRegistryName(input, registry) {
     try {
       return { kind: "hook", name: resolveHookName(input, registry) };
     } catch {
-      throw new Error(
-        `Unknown entry "${input}". Run: zentauri-ui list`,
-      );
+      throw new Error(`Unknown entry "${input}". Run: zentauri-ui list`);
     }
   }
 }

@@ -2,7 +2,14 @@
   "category": "Typography",
   "title": "CodeBlock component — fenced samples",
   "description": "Pre/code CodeBlock primitive for multi-line samples with monospace styling and optional language hints.",
-  "keywords": ["code block", "pre", "typography", "React", "syntax", "Tailwind CSS"],
+  "keywords": [
+    "code block",
+    "pre",
+    "typography",
+    "React",
+    "syntax",
+    "Tailwind CSS"
+  ],
   "og": {
     "title": "Typography · Code blocks · Zentauri UI",
     "description": "Pre/code CodeBlock primitive for multi-line samples with monospace styling and optional language hints.",

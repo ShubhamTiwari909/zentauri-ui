@@ -1,12 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import {
-  FiCheckCircle,
-  FiEye,
-  FiPackage,
-  FiZap,
-} from "react-icons/fi";
+import { FiCheckCircle, FiEye, FiPackage, FiZap } from "react-icons/fi";
 
 type NotesKind = "component" | "chart";
 

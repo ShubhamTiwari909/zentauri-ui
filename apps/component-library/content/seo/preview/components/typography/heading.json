@@ -2,7 +2,14 @@
   "category": "Typography",
   "title": "Heading component — semantic h1–h6 scale",
   "description": "Heading primitive for React pages — levels map to h1–h6 with optional display scaling and tone variants.",
-  "keywords": ["heading", "typography", "React", "Next.js", "h1", "Tailwind CSS"],
+  "keywords": [
+    "heading",
+    "typography",
+    "React",
+    "Next.js",
+    "h1",
+    "Tailwind CSS"
+  ],
   "og": {
     "title": "Typography · Headings · Zentauri UI",
     "description": "Heading primitive for React pages — levels map to h1–h6 with optional display scaling and tone variants.",

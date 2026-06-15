@@ -2,13 +2,7 @@
   "category": "Forms",
   "title": "File upload dropzone for React",
   "description": "FileUpload dropzone with drag-and-drop states, hidden input wiring, and onFiles callbacks for Next.js admin and settings screens.",
-  "keywords": [
-    "file upload",
-    "dropzone",
-    "React",
-    "Next.js",
-    "Tailwind CSS"
-  ],
+  "keywords": ["file upload", "dropzone", "React", "Next.js", "Tailwind CSS"],
   "og": {
     "title": "File upload · Zentauri UI",
     "description": "Accessible file dropzone with drag-over feedback and click-to-browse via a labeled control.",

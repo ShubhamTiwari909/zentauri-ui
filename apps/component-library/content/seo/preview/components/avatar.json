@@ -2,13 +2,7 @@
   "category": "Display",
   "title": "Avatar and AvatarGroup for React profiles",
   "description": "Avatar, AvatarImage, AvatarFallback, and AvatarGroup for user profiles, comments, and tables—sizes, motion presets, and overflow counts.",
-  "keywords": [
-    "avatar",
-    "React",
-    "Next.js",
-    "profile image",
-    "Tailwind CSS"
-  ],
+  "keywords": ["avatar", "React", "Next.js", "profile image", "Tailwind CSS"],
   "og": {
     "title": "Avatar · Zentauri UI",
     "description": "Avatar primitives with image, fallback, optional motion, and stacked AvatarGroup overflow labels.",

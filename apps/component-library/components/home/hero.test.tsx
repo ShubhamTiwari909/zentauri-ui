@@ -9,15 +9,19 @@ import { HomeHero } from "./hero";
 vi.mock("next/image", () => ({
   default: ({
     alt,
-    fill: _fill,
-    preload: _preload,
     ...props
   }: {
     alt: string;
     fill?: boolean;
     preload?: boolean;
     [key: string]: unknown;
-  }) => <img alt={alt} {...props} />,
+  }) => {
+    const { fill, preload, ...imgProps } = props;
+    void fill;
+    void preload;
+
+    return <img alt={alt} {...imgProps} />;
+  },
 }));
 
 describe("HomeHero", () => {

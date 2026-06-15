@@ -513,7 +513,6 @@ export function TokenPlayground() {
               </div>
             </PlaygroundGroup>
 
-
             <PlaygroundGroup title="Checkbox">
               <Checkbox defaultChecked label="Apply brand tokens" />
             </PlaygroundGroup>

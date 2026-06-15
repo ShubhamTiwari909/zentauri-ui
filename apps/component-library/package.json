@@ -34,6 +34,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
@@ -42,7 +43,6 @@
     "@types/react-dom": "^19",
     "@types/react-syntax-highlighter": "^15.5.13",
     "eslint": "^9",
-    "eslint-config-next": "16.2.3",
     "jsdom": "^26.1.0",
     "prettier": "^3.7.4",
     "typescript": "^5",

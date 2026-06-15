@@ -23,9 +23,7 @@ describe("PreviewInstallCommandBar", () => {
   it("renders the zentauri add command for component preview pages", () => {
     render(<PreviewInstallCommandBar />);
 
-    expect(
-      screen.getByText("npx zentauri-ui add buttons"),
-    ).toBeInTheDocument();
+    expect(screen.getByText("npx zentauri-ui add buttons")).toBeInTheDocument();
   });
 
   it("does not render on the component index route", () => {
