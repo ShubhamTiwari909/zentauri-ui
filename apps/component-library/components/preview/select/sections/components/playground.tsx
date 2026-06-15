@@ -17,6 +17,7 @@ import type {
 } from "@zentauri-ui/zentauri-components/ui/select";
 
 import {
+  SELECT_CONTENT_APPEARANCES,
   SELECT_CONTENT_SIZES,
   SELECT_CONTENT_SPACING,
   SELECT_TRIGGER_SIZES,
@@ -186,7 +187,7 @@ export function SelectPlayground() {
         <VariantSelect
           label="Content appearance"
           value={contentAppearance}
-          options={SELECT_TRIGGER_VARIANTS}
+          options={SELECT_CONTENT_APPEARANCES}
           onChange={setContentAppearance}
         />
         <VariantSelect

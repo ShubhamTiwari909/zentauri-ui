@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import type { KeyboardEvent } from "react";
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Pagination } from "@zentauri-ui/zentauri-components/ui/pagination";
 import {
   Select,
   SelectContent,
@@ -72,6 +72,15 @@ type AppearanceGalleryProps = {
 };
 
 function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
+  const handleKeyDown =
+    (appearance: PaginationAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        onSelect(appearance);
+      }
+    };
+
   return (
     <div className="mt-12">
       <p className="text-sm font-semibold text-slate-900 dark:text-white">
@@ -85,11 +94,13 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
         {PAGINATION_APPEARANCES.map((appearance) => {
           const isActive = appearance === selected;
           return (
-            <button
+            <div
               key={appearance}
-              type="button"
+              role="button"
+              tabIndex={0}
               aria-pressed={isActive}
               onClick={() => onSelect(appearance)}
+              onKeyDown={handleKeyDown(appearance)}
               className={`rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
@@ -99,19 +110,21 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
               <p className="mb-2 text-xs font-medium text-slate-700 dark:text-slate-300">
                 {appearance}
               </p>
-              {/* Visual only — pointer events go to the wrapping button so the
-                  swatch selects rather than paging. */}
-              <div className="pointer-events-none">
-                <Pagination
-                  appearance={appearance}
-                  size="sm"
-                  pageCount={5}
-                  defaultPage={3}
-                  siblingCount={0}
-                  boundaryCount={1}
-                />
+              <div className="flex items-center gap-1" aria-hidden>
+                {["1", "2", "3", "4", "5"].map((page) => (
+                  <span
+                    key={page}
+                    className={`flex h-7 min-w-7 items-center justify-center rounded-md border text-xs ${
+                      page === "3"
+                        ? "border-sky-500 bg-sky-50 text-sky-700 dark:bg-sky-950/40 dark:text-sky-200"
+                        : "border-slate-200 text-slate-500 dark:border-white/10 dark:text-slate-400"
+                    }`}
+                  >
+                    {page}
+                  </span>
+                ))}
               </div>
-            </button>
+            </div>
           );
         })}
       </div>

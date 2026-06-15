@@ -14,16 +14,29 @@ export function ratingSnippet(opts: RatingDemoProps): string {
   const readOnlyAttr = readOnly ? " readOnly" : "";
   const maxAttr = max === undefined ? "" : ` max={${max}}`;
   const defaultValue = allowHalf ? "4.5" : icon === "flame" ? "3" : "4";
+  const ratingProps = `label="${readOnly ? "Average rating" : "Product rating"}"
+  defaultValue={${defaultValue}}${appearanceAttr}${sizeAttr}${iconAttr}${halfAttr}${clearAttr}${readOnlyAttr}${maxAttr}`;
+
+  if (icon) {
+    return `${variantLeadComment(
+      `appearance · ${appearance}, size · ${size}, icon · ${icon}${allowHalf ? ", half" : ""}`,
+    )}<Rating
+  ${ratingProps}
+/>
+`;
+  }
 
   return `${variantLeadComment(
     `appearance · ${appearance}, size · ${size}${allowHalf ? ", half" : ""}`,
-  )}<div className="flex flex-wrap gap-4">
+  )}const icons = ["star", "heart", "flame", "thumb"] as const;
+
+<div className="flex flex-wrap gap-4">
   {icons.map((icon, index) => {
     return (
       <Rating
         key={icon}
-        label="${readOnly ? "Average rating" : "Product rating"}"
-        defaultValue={${defaultValue}}${appearanceAttr}${sizeAttr}${iconAttr}${halfAttr}${clearAttr}${readOnlyAttr}${maxAttr}
+        icon={icon}
+        ${ratingProps}
       />
     );
   })}

@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type KeyboardEvent } from "react";
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { Rating } from "@zentauri-ui/zentauri-components/ui/rating";
 import {
   Select,
   SelectContent,
@@ -79,6 +78,16 @@ type AppearanceGalleryProps = {
   onSelect: (appearance: RatingAppearance) => void;
 };
 
+function handleSwatchKeyDown(
+  event: KeyboardEvent<HTMLDivElement>,
+  onSelect: () => void,
+) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    onSelect();
+  }
+}
+
 function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
   return (
     <div className="mt-12">
@@ -93,29 +102,39 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
         {RATING_APPEARANCES.map((appearance) => {
           const isActive = appearance === selected;
           return (
-            <button
+            <div
               key={appearance}
-              type="button"
+              role="button"
+              tabIndex={0}
               aria-pressed={isActive}
               onClick={() => onSelect(appearance)}
+              onKeyDown={(event) =>
+                handleSwatchKeyDown(event, () => onSelect(appearance))
+              }
               className={`rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
                   : "ring-1 ring-slate-200 hover:ring-slate-300 dark:ring-white/10 dark:hover:ring-white/20"
               }`}
             >
-              {/* Visual only — pointer events go to the wrapping button so the
-                  swatch selects rather than changing the rating value. */}
-              <div className="pointer-events-none">
-                <Rating
-                  appearance={appearance}
-                  defaultValue={4}
-                  label={appearance}
-                  readOnly
-                  size="sm"
-                />
+              <div className="flex items-center justify-between gap-3">
+                <span className="truncate text-xs font-semibold text-slate-900 dark:text-white">
+                  {appearance}
+                </span>
+                <span className="flex gap-1" aria-hidden="true">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <span
+                      key={index}
+                      className={`h-2.5 w-2.5 rounded-full ${
+                        index < 4
+                          ? "bg-amber-400 dark:bg-amber-300"
+                          : "bg-slate-200 dark:bg-white/20"
+                      }`}
+                    />
+                  ))}
+                </span>
               </div>
-            </button>
+            </div>
           );
         })}
       </div>
@@ -126,13 +145,17 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
 export function RatingPlayground() {
   const [appearance, setAppearance] = useState<RatingAppearance>("amber");
   const [size, setSize] = useState<RatingSize>("md");
+  const [icon, setIcon] = useState<RatingIcon>("star");
   const [allowHalf, setAllowHalf] = useState<ToggleOption>("off");
   const [allowClear, setAllowClear] = useState<ToggleOption>("off");
+  const allowClearEnabled = allowClear === "on";
+  const allowHalfEnabled = allowHalf === "on";
 
   const props: RatingDemoProps = {
-    allowClear: allowClear === "on",
-    allowHalf: allowHalf === "on",
+    allowClear: allowClearEnabled,
+    allowHalf: allowHalfEnabled,
     appearance,
+    icon,
     size,
   };
 
@@ -154,6 +177,12 @@ export function RatingPlayground() {
           onChange={setSize}
         />
         <VariantSelect
+          label="Icon"
+          value={icon}
+          options={RATING_ICONS}
+          onChange={setIcon}
+        />
+        <VariantSelect
           label="Allow half"
           value={allowHalf}
           options={TOGGLE_OPTIONS}
@@ -168,9 +197,10 @@ export function RatingPlayground() {
       </div>
       <PreviewCodeShowcase code={code}>
         <RatingDemo
-          allowClear={props.allowClear}
-          allowHalf={props.allowHalf}
+          allowClear={allowClearEnabled}
+          allowHalf={allowHalfEnabled}
           appearance={appearance}
+          icon={icon}
           size={size}
         />
       </PreviewCodeShowcase>

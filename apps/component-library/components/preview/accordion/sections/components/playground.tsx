@@ -1,14 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import type { KeyboardEvent } from "react";
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@zentauri-ui/zentauri-components/ui/accordion";
 import {
   Select,
   SelectContent,
@@ -88,6 +83,15 @@ type AppearanceGalleryProps = {
 };
 
 function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
+  const handleKeyDown =
+    (appearance: AccordionAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        onSelect(appearance);
+      }
+    };
+
   return (
     <div className="mt-12">
       <p className="text-sm font-semibold text-slate-900 dark:text-white">
@@ -101,30 +105,27 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
         {ACCORDION_APPEARANCES.map((appearance) => {
           const isActive = appearance === selected;
           return (
-            <button
+            <div
               key={appearance}
-              type="button"
+              role="button"
+              tabIndex={0}
               aria-pressed={isActive}
               onClick={() => onSelect(appearance)}
+              onKeyDown={handleKeyDown(appearance)}
               className={`rounded-xl p-2 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
                   : "ring-1 ring-slate-200 hover:ring-slate-300 dark:ring-white/10 dark:hover:ring-white/20"
               }`}
             >
-              {/* Visual only — pointer events go to the wrapping button so the
-                  swatch selects rather than expanding the accordion. */}
-              <div className="pointer-events-none">
-                <Accordion type="single" appearance={appearance} size="sm">
-                  <AccordionItem value="a">
-                    <AccordionTrigger>{appearance}</AccordionTrigger>
-                    <AccordionContent>
-                      <p className="text-xs">Sample content.</p>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2 text-xs text-slate-700 dark:border-white/10 dark:text-slate-300">
+                  <span>{appearance}</span>
+                  <span aria-hidden>+</span>
+                </div>
+                <div className="h-1.5 w-2/3 rounded-full bg-slate-200 dark:bg-white/15" />
               </div>
-            </button>
+            </div>
           );
         })}
       </div>

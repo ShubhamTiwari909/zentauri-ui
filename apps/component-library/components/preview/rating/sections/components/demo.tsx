@@ -14,13 +14,16 @@ export function RatingDemo({
   allowClear,
   allowHalf,
   appearance,
+  icon,
   max,
   readOnly,
   size,
 }: RatingDemoProps) {
+  const renderedIcons = icon ? [icon] : icons;
+
   return (
     <div className="flex flex-wrap gap-4">
-      {icons.map((icon, index) => {
+      {renderedIcons.map((icon, index) => {
         return (
           <Rating
             key={index}
