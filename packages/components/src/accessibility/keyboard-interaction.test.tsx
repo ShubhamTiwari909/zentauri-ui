@@ -419,7 +419,10 @@ describe("Menu (Dropdown) keyboard interaction", () => {
     expect(editItem).toHaveAttribute("tabindex", "-1");
     expect(deleteItem).toHaveAttribute("tabindex", "-1");
 
-    editItem.focus();
+    await waitFor(() => {
+      expect(editItem).toHaveFocus();
+    });
+
     await user.keyboard("{ArrowDown}");
     expect(deleteItem).toHaveFocus();
 

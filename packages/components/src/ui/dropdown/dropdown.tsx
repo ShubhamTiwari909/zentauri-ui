@@ -5,6 +5,7 @@ import {
   useContext,
   useState,
   useRef,
+  useEffect,
   useId,
   type KeyboardEvent,
 } from "react";
@@ -135,6 +136,16 @@ export const DropdownContent = ({
 
   // click outside
   useClickOutside({ ref, setOpen });
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    ref.current
+      ?.querySelector<HTMLElement>('[role="menuitem"]')
+      ?.focus();
+  }, [open]);
 
   if (!open) return null;
 

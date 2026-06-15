@@ -64,6 +64,10 @@ describe("ContextMenu", () => {
     expect(screen.getByRole("menu")).toBeVisible();
 
     await user.keyboard("{Escape}");
+    await waitFor(() => {
+      expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+    });
+
     await user.keyboard(" ");
 
     expect(screen.getByRole("menu")).toBeVisible();
