@@ -3,6 +3,7 @@
 import { ToastProvider } from "@zentauri-ui/zentauri-components/ui/toast";
 import { ToastViewportAnimated } from "@zentauri-ui/zentauri-components/ui/toast/animated";
 
+import { HomeAccessibility } from "./marketing/accessibility-section";
 import { HomeComparisonTable } from "./marketing/comparison-table";
 import { HomeComponentShowcase } from "./marketing/component-showcase";
 import { HomeDxSection } from "./marketing/dx-section";
@@ -20,6 +21,7 @@ export function HomeMarketing() {
         <HomeComparisonTable />
         <HomeDxSection />
         <HomePackageHealth />
+        <HomeAccessibility />
         <HomeInstallSection />
         <HomeComponentShowcase />
         <HomeHooksShowcase />

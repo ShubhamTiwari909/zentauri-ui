@@ -102,7 +102,7 @@
     "check:exports": "node scripts/check-exports.mjs",
     "prepack": "npm run build && node scripts/generate-registry.mjs && node scripts/check-design-tokens.mjs && node scripts/check-exports.mjs",
     "test": "vitest run",
-    "test:a11y": "vitest run src/accessibility/axe-core.test.tsx",
+    "test:a11y": "vitest run src/accessibility",
     "test:watch": "vitest",
     "test:all": "pnpm test && pnpm test:a11y"
   },

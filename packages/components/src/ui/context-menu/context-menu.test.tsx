@@ -53,6 +53,44 @@ describe("ContextMenu", () => {
     expect(screen.getByText("Row actions").tagName).toBe("P");
   });
 
+  it("should open a cloned trigger with Enter and Space", async () => {
+    const user = userEvent.setup();
+    renderContextMenu();
+
+    const trigger = screen.getByTestId("surface");
+    trigger.focus();
+    await user.keyboard("{Enter}");
+
+    expect(screen.getByRole("menu")).toBeVisible();
+
+    await user.keyboard("{Escape}");
+    await waitFor(() => {
+      expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+    });
+
+    await user.keyboard(" ");
+
+    expect(screen.getByRole("menu")).toBeVisible();
+  });
+
+  it("should open the fallback trigger with Enter", async () => {
+    const user = userEvent.setup();
+    render(
+      <ContextMenu>
+        <ContextMenuTrigger>Right-click row</ContextMenuTrigger>
+        <ContextMenuContent>
+          <ContextMenuItem>Copy</ContextMenuItem>
+        </ContextMenuContent>
+      </ContextMenu>,
+    );
+
+    const trigger = screen.getByRole("button", { name: "Right-click row" });
+    trigger.focus();
+    await user.keyboard("{Enter}");
+
+    expect(screen.getByRole("menu")).toBeVisible();
+  });
+
   it("should clamp using the rendered menu dimensions", async () => {
     vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({
       bottom: 0,
