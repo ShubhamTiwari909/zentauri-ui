@@ -241,6 +241,7 @@ export const ContextMenuTrigger = ({
       },
       className: cn(className, soleCandidate.props.className),
       tabIndex: soleCandidate.props.tabIndex ?? 0,
+      role: soleCandidate.props.role ?? "button",
       "aria-controls": open ? contentId : undefined,
       "aria-expanded": open,
       "aria-haspopup": "menu",
@@ -251,6 +252,7 @@ export const ContextMenuTrigger = ({
     <span
       ref={triggerRef as Ref<HTMLSpanElement>}
       className={className}
+      role="button"
       tabIndex={0}
       onContextMenu={handleContextMenu}
       aria-controls={open ? contentId : undefined}

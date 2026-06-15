@@ -107,4 +107,5 @@ export type ReactChildSoleCandidate = ReactElement<{
   "aria-controls"?: string;
   "aria-expanded"?: boolean;
   "aria-haspopup"?: string;
+  role?: string
 }>;
