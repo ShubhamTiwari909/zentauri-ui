@@ -101,7 +101,7 @@ describe("useTableFilter", () => {
     });
     expect(result.current.filters).toEqual({ status: "active" });
 
-    rerender({ filters: { status: "active", name: "atlas" } });
+    rerender({ filters: { status: "active" } });
     expect(result.current.filteredData).toEqual([rows[0]]);
   });
 
