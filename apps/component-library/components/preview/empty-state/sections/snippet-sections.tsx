@@ -1,52 +1,19 @@
 import { Section } from "@/components/common/Section";
-import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
-import { EmptyStateDemo } from "./components/demo";
-import {
-  EMPTY_ALIGNS,
-  EMPTY_APPEARANCES,
-  EMPTY_SIZES,
-  EMPTY_STATE_SNIPPET_DEFAULTS,
-} from "./components/data";
-import { emptyStateSnippet } from "./components/snippets";
+import { EmptyStatePlayground } from "./components/playground";
 
 export function EmptyStateCodeExamplesSection() {
-  const defaults = EMPTY_STATE_SNIPPET_DEFAULTS;
   return (
     <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
-        Empty state variants examples
+        Empty State variants playground
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
-        Layout density, surface treatment, and alignment of the stack. Snippets
-        include a leading Variant: line.
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
+        Pick an appearance, size, and alignment to preview the empty state live.
+        Toggle Show output / Show code and the snippet updates to match the
+        selected variant.
       </p>
-      <div className="mt-6 space-y-10 rounded-xl">
-        {EMPTY_APPEARANCES.map((appearance) => (
-          <PreviewCodeShowcase
-            key={`app-${appearance}`}
-            code={emptyStateSnippet({ ...defaults, appearance })}
-          >
-            <EmptyStateDemo {...defaults} appearance={appearance} />
-          </PreviewCodeShowcase>
-        ))}
-        {EMPTY_SIZES.map((size) => (
-          <PreviewCodeShowcase
-            key={`size-${size}`}
-            code={emptyStateSnippet({ ...defaults, appearance: "ghost", size })}
-          >
-            <EmptyStateDemo {...defaults} appearance="ghost" size={size} />
-          </PreviewCodeShowcase>
-        ))}
-        {EMPTY_ALIGNS.map((align) => (
-          <PreviewCodeShowcase
-            key={`align-${align}`}
-            code={emptyStateSnippet({ ...defaults, appearance: "card", align })}
-          >
-            <EmptyStateDemo {...defaults} appearance="card" align={align} />
-          </PreviewCodeShowcase>
-        ))}
-      </div>
+      <EmptyStatePlayground />
     </Section>
   );
 }

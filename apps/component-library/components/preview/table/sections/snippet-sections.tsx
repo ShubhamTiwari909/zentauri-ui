@@ -1,72 +1,19 @@
 import { Section } from "@/components/common/Section";
-import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
-import { TableDemo } from "./components/demo";
-import {
-  TABLE_APPEARANCES,
-  TABLE_SNIPPET_BASE,
-  TABLE_SIZES,
-  TABLE_TEXT_ALIGNS,
-} from "./components/data";
-import { tableSnippet } from "./components/snippets";
+import { TablePlayground } from "./components/playground";
 
 export function TableCodeExamplesSection() {
-  const base = TABLE_SNIPPET_BASE;
   return (
     <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
-        Table variants examples
+        Table variants playground
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
-        Density, row style, and sticky header with scrollable preview. Each code
-        view starts with Variant: naming the row.
+        Pick an appearance, size, text alignment, and sticky header option to
+        preview the table live. Toggle Show output / Show code and the snippet
+        updates to match the selected variant.
       </p>
-      <div className="mt-6 space-y-10 rounded-xl">
-        {TABLE_APPEARANCES.map((appearance) => (
-          <PreviewCodeShowcase
-            key={`app-${appearance}`}
-            code={tableSnippet({ ...base, appearance })}
-          >
-            <TableDemo {...base} appearance={appearance} />
-          </PreviewCodeShowcase>
-        ))}
-        {TABLE_SIZES.map((size) => (
-          <PreviewCodeShowcase
-            key={`size-${size}`}
-            code={tableSnippet({ ...base, appearance: "striped", size })}
-          >
-            <TableDemo {...base} appearance="striped" size={size} />
-          </PreviewCodeShowcase>
-        ))}
-        {TABLE_TEXT_ALIGNS.map((textAlign) => (
-          <PreviewCodeShowcase
-            key={`text-align-${textAlign}`}
-            code={tableSnippet({ ...base, appearance: "striped", textAlign })}
-          >
-            <TableDemo {...base} appearance="striped" textAlign={textAlign} />
-          </PreviewCodeShowcase>
-        ))}
-        <PreviewCodeShowcase
-          key="sticky-on"
-          code={tableSnippet({
-            ...base,
-            appearance: "bordered",
-            stickyHeader: true,
-          })}
-        >
-          <TableDemo {...base} appearance="bordered" stickyHeader />
-        </PreviewCodeShowcase>
-        <PreviewCodeShowcase
-          key="sticky-off"
-          code={tableSnippet({
-            ...base,
-            appearance: "bordered",
-            stickyHeader: false,
-          })}
-        >
-          <TableDemo {...base} appearance="bordered" stickyHeader={false} />
-        </PreviewCodeShowcase>
-      </div>
+      <TablePlayground />
     </Section>
   );
 }

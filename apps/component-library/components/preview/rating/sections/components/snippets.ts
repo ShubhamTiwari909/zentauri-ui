@@ -13,17 +13,34 @@ export function ratingSnippet(opts: RatingDemoProps): string {
   const clearAttr = allowClear ? " allowClear" : "";
   const readOnlyAttr = readOnly ? " readOnly" : "";
   const maxAttr = max === undefined ? "" : ` max={${max}}`;
-  const defaultValue = allowHalf ? "4.5" : icon === "flame" ? "3" : "4";
+  const getDefaultValue = (ratingIcon: RatingDemoProps["icon"]) =>
+    allowHalf ? "4.5" : ratingIcon === "flame" ? "3" : "4";
+  const commonProps = `label="${readOnly ? "Average rating" : "Product rating"}"${appearanceAttr}${sizeAttr}${halfAttr}${clearAttr}${readOnlyAttr}${maxAttr}`;
+
+  if (icon) {
+    return `${variantLeadComment(
+      `appearance · ${appearance}, size · ${size}, icon · ${icon}${allowHalf ? ", half" : ""}`,
+    )}<Rating
+  ${commonProps}
+  defaultValue={${getDefaultValue(icon)}}${iconAttr}
+/>
+`;
+  }
 
   return `${variantLeadComment(
     `appearance · ${appearance}, size · ${size}${allowHalf ? ", half" : ""}`,
-  )}<div className="flex flex-wrap gap-4">
-  {icons.map((icon, index) => {
+  )}const icons = ["star", "heart", "flame", "thumb"] as const;
+
+<div className="flex flex-wrap gap-4">
+  {icons.map((icon) => {
+    const defaultValue = ${allowHalf ? "4.5" : 'icon === "flame" ? 3 : 4'};
+
     return (
       <Rating
         key={icon}
-        label="${readOnly ? "Average rating" : "Product rating"}"
-        defaultValue={${defaultValue}}${appearanceAttr}${sizeAttr}${iconAttr}${halfAttr}${clearAttr}${readOnlyAttr}${maxAttr}
+        icon={icon}
+        ${commonProps}
+        defaultValue={defaultValue}
       />
     );
   })}

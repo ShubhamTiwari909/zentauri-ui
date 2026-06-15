@@ -1,54 +1,19 @@
 import { Section } from "@/components/common/Section";
-import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 
-import { BadgeDemo } from "./components/demo";
-import {
-  BADGE_APPEARANCES,
-  BADGE_SHAPES,
-  BADGE_SIZES,
-} from "./components/data";
-import { badgeSnippet } from "./components/snippets";
+import { BadgePlayground } from "./components/playground";
 
 export function BadgeCodeExamplesSection() {
   return (
     <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
-        Badge variants examples
+        Badge variants playground
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-900 dark:text-slate-400">
-        Appearance tokens (pill, medium), then sizes, then shapes including dot.
-        Each snippet begins with Variant: naming the row.
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
+        Pick an appearance, size, and shape to preview the badge live. Toggle
+        Show output / Show code and the snippet updates to match the selected
+        variant.
       </p>
-      <div className="mt-6 space-y-10 rounded-xl">
-        {BADGE_APPEARANCES.map((appearance) => (
-          <PreviewCodeShowcase
-            key={`app-${appearance}`}
-            code={badgeSnippet({ appearance, size: "md", shape: "pill" })}
-          >
-            <BadgeDemo appearance={appearance} size="md" shape="pill" />
-          </PreviewCodeShowcase>
-        ))}
-        {BADGE_SIZES.map((size) => (
-          <PreviewCodeShowcase
-            key={`size-${size}`}
-            code={badgeSnippet({
-              appearance: "gradient-indigo",
-              size,
-              shape: "pill",
-            })}
-          >
-            <BadgeDemo appearance="gradient-indigo" size={size} shape="pill" />
-          </PreviewCodeShowcase>
-        ))}
-        {BADGE_SHAPES.map((shape) => (
-          <PreviewCodeShowcase
-            key={`shape-${shape}`}
-            code={badgeSnippet({ appearance: "emerald", size: "md", shape })}
-          >
-            <BadgeDemo appearance="emerald" size="md" shape={shape} />
-          </PreviewCodeShowcase>
-        ))}
-      </div>
+      <BadgePlayground />
     </Section>
   );
 }
