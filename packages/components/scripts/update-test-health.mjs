@@ -123,6 +123,18 @@ function readHealthReport() {
 }
 
 function markdownHealthSection(health, { includeSuites }) {
+  const areaColumnWidth = Math.max(
+    "Area".length,
+    ...health.areas.map((area) => area.area.length),
+  );
+  const areaFilesColumnWidth = Math.max(
+    "Test files".length,
+    ...health.areas.map((area) => String(area.files).length),
+  );
+  const areaTestsColumnWidth = Math.max(
+    "Tests".length,
+    ...health.areas.map((area) => String(area.tests).length),
+  );
   const lines = [
     "## Package status and test coverage",
     "",
@@ -133,13 +145,13 @@ function markdownHealthSection(health, { includeSuites }) {
     `| Test files | ${health.files.passed} passed (${health.files.total})   |`,
     `| Tests      | ${health.tests.passed} passed (${health.tests.total}) |`,
     "",
-    "| Area                        | Test files | Tests |",
-    "| --------------------------- | ---------- | ----- |",
+    `| ${"Area".padEnd(areaColumnWidth)} | ${"Test files".padEnd(areaFilesColumnWidth)} | ${"Tests".padEnd(areaTestsColumnWidth)} |`,
+    `| ${"-".repeat(areaColumnWidth)} | ${"-".repeat(areaFilesColumnWidth)} | ${"-".repeat(areaTestsColumnWidth)} |`,
   ];
 
   for (const area of health.areas) {
     lines.push(
-      `| ${area.area.padEnd(27)} | ${String(area.files).padEnd(10)} | ${String(area.tests).padEnd(5)} |`,
+      `| ${area.area.padEnd(areaColumnWidth)} | ${String(area.files).padEnd(areaFilesColumnWidth)} | ${String(area.tests).padEnd(areaTestsColumnWidth)} |`,
     );
   }
 
@@ -148,13 +160,23 @@ function markdownHealthSection(health, { includeSuites }) {
   }
 
   lines.push("", "### Per-suite snapshot", "");
+  const suiteColumnWidth = Math.max(
+    "Suite".length,
+    ...health.suites.map((suite) => `\`${suite.path}\``.length),
+  );
+  const suiteTestsColumnWidth = Math.max(
+    "Tests".length,
+    ...health.suites.map((suite) => String(suite.tests).length),
+  );
   lines.push(
-    "| Suite                                                                   | Tests |",
-    "| ----------------------------------------------------------------------- | ----: |",
+    `| ${"Suite".padEnd(suiteColumnWidth)} | ${"Tests".padEnd(suiteTestsColumnWidth)} |`,
+    `| ${"-".repeat(suiteColumnWidth)} | ${`${"-".repeat(Math.max(suiteTestsColumnWidth - 1, 3))}:`.padStart(suiteTestsColumnWidth)} |`,
   );
   for (const suite of health.suites) {
-    const suiteCell = `\`${suite.path}\``.padEnd(71);
-    lines.push(`| ${suiteCell} | ${String(suite.tests).padStart(5)} |`);
+    const suiteCell = `\`${suite.path}\``.padEnd(suiteColumnWidth);
+    lines.push(
+      `| ${suiteCell} | ${String(suite.tests).padStart(suiteTestsColumnWidth)} |`,
+    );
   }
 
   return `${lines.join("\n")}\n\n`;
