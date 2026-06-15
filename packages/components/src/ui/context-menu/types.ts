@@ -2,6 +2,7 @@ import type { VariantProps } from "class-variance-authority";
 import type {
   ComponentPropsWithRef,
   HTMLAttributes,
+  KeyboardEvent,
   MouseEvent,
   ReactElement,
   ReactNode,
@@ -103,9 +104,10 @@ export type ReactChildSoleCandidate = ReactElement<{
   className?: string;
   ref?: Ref<HTMLElement>;
   onContextMenu?: (event: MouseEvent<HTMLElement>) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
   tabIndex?: number;
   "aria-controls"?: string;
   "aria-expanded"?: boolean;
   "aria-haspopup"?: string;
-  role?: string
+  role?: string;
 }>;

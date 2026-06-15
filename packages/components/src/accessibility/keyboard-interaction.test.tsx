@@ -401,7 +401,7 @@ describe("Menu (Dropdown) keyboard interaction", () => {
     expect(onSelect).toHaveBeenCalledTimes(1);
   });
 
-  it("keeps menu items in the focus order", async () => {
+  it("keeps menu items out of Tab order and navigates them with arrows", async () => {
     const user = userEvent.setup();
     render(
       <Dropdown defaultOpen>
@@ -413,8 +413,17 @@ describe("Menu (Dropdown) keyboard interaction", () => {
       </Dropdown>,
     );
 
-    screen.getByRole("menuitem", { name: "Edit" }).focus();
-    await user.tab();
-    expect(screen.getByRole("menuitem", { name: "Delete" })).toHaveFocus();
+    const editItem = screen.getByRole("menuitem", { name: "Edit" });
+    const deleteItem = screen.getByRole("menuitem", { name: "Delete" });
+
+    expect(editItem).toHaveAttribute("tabindex", "-1");
+    expect(deleteItem).toHaveAttribute("tabindex", "-1");
+
+    editItem.focus();
+    await user.keyboard("{ArrowDown}");
+    expect(deleteItem).toHaveFocus();
+
+    await user.keyboard("{ArrowUp}");
+    expect(editItem).toHaveFocus();
   });
 });

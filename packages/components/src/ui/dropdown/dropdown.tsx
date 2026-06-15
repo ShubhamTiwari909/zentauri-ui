@@ -5,8 +5,8 @@ import {
   useContext,
   useState,
   useRef,
-  useEffect,
   useId,
+  type KeyboardEvent,
 } from "react";
 import { FiCheck } from "react-icons/fi";
 import { cn } from "../../lib/utils";
@@ -163,6 +163,8 @@ export const DropdownItem = ({
   value,
   className,
   variant,
+  onClick,
+  onKeyDown,
   onSelect,
   leftIcon,
   rightIcon,
@@ -176,15 +178,61 @@ export const DropdownItem = ({
     onSelect?.();
   };
 
+  const focusSiblingItem = (
+    event: KeyboardEvent<HTMLDivElement>,
+    direction: "next" | "previous" | "first" | "last",
+  ) => {
+    const menu = event.currentTarget.closest('[role="menu"]');
+    const items = Array.from(
+      menu?.querySelectorAll<HTMLElement>('[role="menuitem"]') ?? [],
+    );
+    const currentIndex = items.indexOf(event.currentTarget);
+
+    if (currentIndex === -1 || items.length === 0) {
+      return;
+    }
+
+    const nextIndex =
+      direction === "first"
+        ? 0
+        : direction === "last"
+          ? items.length - 1
+          : (currentIndex + (direction === "next" ? 1 : -1) + items.length) %
+            items.length;
+
+    items[nextIndex]?.focus();
+  };
+
   return (
     <div
       role="menuitem"
-      tabIndex={0}
-      onClick={handleClick}
+      tabIndex={-1}
+      onClick={(event) => {
+        onClick?.(event);
+        if (!event.defaultPrevented) {
+          handleClick();
+        }
+      }}
       onKeyDown={(e) => {
+        onKeyDown?.(e);
+        if (e.defaultPrevented) {
+          return;
+        }
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           handleClick();
+        } else if (e.key === "ArrowDown") {
+          e.preventDefault();
+          focusSiblingItem(e, "next");
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          focusSiblingItem(e, "previous");
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          focusSiblingItem(e, "first");
+        } else if (e.key === "End") {
+          e.preventDefault();
+          focusSiblingItem(e, "last");
         }
       }}
       className={cn(itemVariants({ variant }), className)}

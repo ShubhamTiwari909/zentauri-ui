@@ -222,6 +222,14 @@ export const ContextMenuTrigger = ({
       openAt({ x: event.clientX, y: event.clientY });
     }
   };
+  const handleKeyboardTrigger = (event: KeyboardEvent<HTMLElement>) => {
+    if (disabled || (event.key !== "Enter" && event.key !== " ")) {
+      return;
+    }
+    event.preventDefault();
+    const rect = event.currentTarget.getBoundingClientRect();
+    openAt({ x: rect.left, y: rect.bottom });
+  };
   const childList = Children.toArray(children).filter(
     (node) => node !== null && node !== undefined && typeof node !== "boolean",
   );
@@ -237,6 +245,12 @@ export const ContextMenuTrigger = ({
         soleCandidate.props.onContextMenu?.(event);
         if (!event.defaultPrevented) {
           handleContextMenu(event);
+        }
+      },
+      onKeyDown: (event) => {
+        soleCandidate.props.onKeyDown?.(event);
+        if (!event.defaultPrevented) {
+          handleKeyboardTrigger(event);
         }
       },
       className: cn(className, soleCandidate.props.className),
@@ -255,6 +269,7 @@ export const ContextMenuTrigger = ({
       role="button"
       tabIndex={0}
       onContextMenu={handleContextMenu}
+      onKeyDown={handleKeyboardTrigger}
       aria-controls={open ? contentId : undefined}
       aria-expanded={open}
       aria-haspopup="menu"
