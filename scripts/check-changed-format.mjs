@@ -18,9 +18,24 @@ const prettierExtensions = new Set([
   ".yml",
 ]);
 
+let baseRef = "HEAD";
+try {
+  execFileSync("git", ["rev-parse", "--verify", "origin/main"], {
+    stdio: "ignore",
+  });
+  baseRef = "origin/main...HEAD";
+} catch {
+  try {
+    execFileSync("git", ["rev-parse", "--verify", "main"], { stdio: "ignore" });
+    baseRef = "main...HEAD";
+  } catch {
+    baseRef = "HEAD";
+  }
+}
+
 const diffOutput = execFileSync(
   "git",
-  ["diff", "--name-only", "--diff-filter=ACMR", "HEAD"],
+  ["diff", "--name-only", "--diff-filter=ACMR", baseRef],
   { encoding: "utf8" },
 );
 

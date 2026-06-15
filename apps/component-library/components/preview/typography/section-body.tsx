@@ -200,7 +200,7 @@ function FormattingSection({ section }: { section: TypographySectionSlug }) {
   if (section === "code-block") {
     return (
       <div className="space-y-4">
-        <CodeBlock language="json">{`{\n  \"name\": \"zentauri-ui\",\n  \"private\": true\n}`}</CodeBlock>
+        <CodeBlock language="json">{`{\n  "name": "zentauri-ui",\n  "private": true\n}`}</CodeBlock>
       </div>
     );
   }
