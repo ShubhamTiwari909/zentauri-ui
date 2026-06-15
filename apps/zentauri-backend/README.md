@@ -16,7 +16,8 @@ Update `MONGODB_URI`, `ALLOWED_ORIGINS`, and `ALLOWED_HOSTS` in `.env` when you 
 
 ### MongoDB Atlas
 
-If you use Atlas instead of local Docker:
+Use Atlas or another hosted MongoDB provider for local development and Vercel
+deployments:
 
 1. In Atlas → **Network Access**, add your current IP (or `0.0.0.0/0` for dev only).
 2. In Atlas → **Database Access**, ensure the user in your URI has read/write on the cluster.
@@ -27,21 +28,13 @@ If you use Atlas instead of local Docker:
 
 ## Run
 
-Start MongoDB locally first:
-
-```sh
-docker compose up -d
-```
-
-Then start the API:
+Start the API after `MONGODB_URI` points at your hosted MongoDB instance:
 
 ```sh
 fastapi dev main.py
 ```
 
 The API will be available at `http://127.0.0.1:8000`.
-
-If you already have MongoDB running elsewhere, skip Docker and update `MONGODB_URI` in `.env`.
 
 ## Endpoints
 

@@ -40,6 +40,9 @@ jobs:
       - name: Type-check
         run: pnpm exec turbo run check-types
 
+      - name: Component package coverage
+        run: pnpm --filter @zentauri-ui/zentauri-components test:coverage
+
       - name: Component package tests and health docs are in sync
         run: |
           pnpm --filter @zentauri-ui/zentauri-components update:test-health

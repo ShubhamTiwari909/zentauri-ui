@@ -101,7 +101,10 @@
     "check:tokens": "node scripts/check-design-tokens.mjs",
     "check:exports": "node scripts/check-exports.mjs",
     "prepack": "npm run build && node scripts/generate-registry.mjs && node scripts/check-design-tokens.mjs && node scripts/check-exports.mjs",
+    "lint": "eslint .",
+    "check-types": "tsc -p tsconfig.check-types.json --noEmit",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage --maxWorkers=2",
     "test:a11y": "vitest run src/accessibility",
     "test:watch": "vitest",
     "test:all": "pnpm test && pnpm test:a11y"
@@ -128,6 +131,7 @@
     }
   },
   "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
@@ -135,8 +139,10 @@
     "@types/node": "^20.19.39",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "4.1.4",
     "axe-core": "^4.12.0",
     "cross-env": "^7.0.3",
+    "eslint": "^9.39.1",
     "jsdom": "^26.1.0",
     "tsup": "^8.5.1",
     "typescript": "^5",

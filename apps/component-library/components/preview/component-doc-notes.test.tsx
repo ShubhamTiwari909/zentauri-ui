@@ -25,7 +25,9 @@ describe("ComponentDocNotes", () => {
       screen.getByRole("heading", { name: "Dependency notes" }),
     ).toBeInTheDocument();
     expect(screen.getByText(/Keyboard accessible/i)).toBeInTheDocument();
-    expect(screen.getByText(/No extra runtime dependency/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/No extra runtime dependency/i),
+    ).toBeInTheDocument();
   });
 
   it("calls out motion dependencies for animated component pages", () => {

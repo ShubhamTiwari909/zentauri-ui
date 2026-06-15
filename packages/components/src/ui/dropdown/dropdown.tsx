@@ -142,9 +142,7 @@ export const DropdownContent = ({
       return;
     }
 
-    ref.current
-      ?.querySelector<HTMLElement>('[role="menuitem"]')
-      ?.focus();
+    ref.current?.querySelector<HTMLElement>('[role="menuitem"]')?.focus();
   }, [open]);
 
   if (!open) return null;
