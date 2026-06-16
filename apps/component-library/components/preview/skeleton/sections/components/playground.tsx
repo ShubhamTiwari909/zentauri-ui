@@ -106,7 +106,7 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
                   : "ring-1 ring-slate-200 hover:ring-slate-300 dark:ring-white/10 dark:hover:ring-white/20"
               }`}
             >
-              <span className="mb-2 block break-words text-xs text-slate-600 dark:text-slate-400">
+              <span className="mb-2 block wrap-break-word text-xs text-slate-600 dark:text-slate-400">
                 {appearance}
               </span>
               <div className="pointer-events-none">

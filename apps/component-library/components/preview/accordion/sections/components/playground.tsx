@@ -118,12 +118,13 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
                   : "ring-1 ring-slate-200 hover:ring-slate-300 dark:ring-white/10 dark:hover:ring-white/20"
               }`}
             >
-              <div className="space-y-2">
-                <div className="flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2 text-xs text-slate-700 dark:border-white/10 dark:text-slate-300">
-                  <span>{appearance}</span>
-                  <span aria-hidden>+</span>
-                </div>
-                <div className="h-1.5 w-2/3 rounded-full bg-slate-200 dark:bg-white/15" />
+              <div className="pointer-events-none">
+                <AccordionDemo
+                  appearance={appearance}
+                  size="sm"
+                  type="single"
+                  transition="default"
+                />
               </div>
             </div>
           );

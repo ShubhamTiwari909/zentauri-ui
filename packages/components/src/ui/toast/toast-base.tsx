@@ -107,11 +107,23 @@ export function ToastViewport({
   className,
 }: ToastViewportProps) {
   const ctx = useContext(ToastStoreContext);
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const target = document.createElement("div");
+    target.setAttribute("data-zui-toast-portal", "");
+    document.body.appendChild(target);
+    setPortalTarget(target);
+
+    return () => {
+      target.remove();
+    };
+  }, []);
+
   if (!ctx) {
     throw new Error("ToastViewport must be used within <ToastProvider>");
   }
 
-  const portalTarget = typeof document !== "undefined" ? document.body : null;
   if (!portalTarget) {
     return null;
   }

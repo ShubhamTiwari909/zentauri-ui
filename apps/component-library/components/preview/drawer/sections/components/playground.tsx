@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { KeyboardEvent } from "react";
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
@@ -69,6 +70,63 @@ function VariantSelect<T extends string>({
   );
 }
 
+type AppearanceGalleryProps = {
+  selected: DrawerDemoAppearance;
+  onSelect: (appearance: DrawerDemoAppearance) => void;
+};
+
+function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
+  const handleKeyDown =
+    (appearance: DrawerDemoAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        onSelect(appearance);
+      }
+    };
+
+  return (
+    <div className="mt-12">
+      <p className="text-sm font-semibold text-slate-900 dark:text-white">
+        All appearances
+      </p>
+      <p className="mt-1 max-w-2xl text-xs leading-5 text-slate-600 dark:text-slate-400">
+        Every shipped appearance token at a glance. Click any swatch to load it
+        into the playground above.
+      </p>
+      <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {DRAWER_APPEARANCES.map((itemAppearance) => {
+          const isActive = itemAppearance === selected;
+          return (
+            <div
+              key={itemAppearance}
+              role="button"
+              tabIndex={0}
+              aria-pressed={isActive}
+              onClick={() => onSelect(itemAppearance)}
+              onKeyDown={handleKeyDown(itemAppearance)}
+              className={`rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
+                isActive
+                  ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
+                  : "ring-1 ring-slate-200 hover:ring-slate-300 dark:ring-white/10 dark:hover:ring-white/20"
+              }`}
+            >
+              <div className="pointer-events-none">
+                <DrawerDemo
+                  side="right"
+                  size="sm"
+                  appearance={itemAppearance}
+                  label={itemAppearance}
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export function DrawerPlayground() {
   const [side, setSide] = useState<DrawerDemoSide>("right");
   const [size, setSize] = useState<DrawerDemoSize>("md");
@@ -107,6 +165,7 @@ export function DrawerPlayground() {
           label={label}
         />
       </PreviewCodeShowcase>
+      <AppearanceGallery selected={appearance} onSelect={setAppearance} />
     </div>
   );
 }

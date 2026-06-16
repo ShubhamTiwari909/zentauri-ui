@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { KeyboardEvent } from "react";
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
@@ -83,6 +84,15 @@ type AppearanceGalleryProps = {
 };
 
 function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
+  const handleKeyDown =
+    (appearance: TabsListAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        onSelect(appearance);
+      }
+    };
+
   return (
     <div className="mt-12">
       <p className="text-sm font-semibold text-slate-900 dark:text-white">
@@ -96,11 +106,13 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
         {TABS_LIST_APPEARANCES.map((appearance) => {
           const isActive = appearance === selected;
           return (
-            <button
+            <div
               key={appearance}
-              type="button"
+              role="button"
+              tabIndex={0}
               aria-pressed={isActive}
               onClick={() => onSelect(appearance)}
+              onKeyDown={handleKeyDown(appearance)}
               className={`rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
@@ -129,7 +141,7 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
                   </TabsContent>
                 </Tabs>
               </div>
-            </button>
+            </div>
           );
         })}
       </div>

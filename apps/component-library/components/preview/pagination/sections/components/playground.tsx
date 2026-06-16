@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { KeyboardEvent } from "react";
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
+import { Pagination } from "@zentauri-ui/zentauri-components/ui/pagination";
 import {
   Select,
   SelectContent,
@@ -110,19 +111,15 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
               <p className="mb-2 text-xs font-medium text-slate-700 dark:text-slate-300">
                 {appearance}
               </p>
-              <div className="flex items-center gap-1" aria-hidden>
-                {["1", "2", "3", "4", "5"].map((page) => (
-                  <span
-                    key={page}
-                    className={`flex h-7 min-w-7 items-center justify-center rounded-md border text-xs ${
-                      page === "3"
-                        ? "border-sky-500 bg-sky-50 text-sky-700 dark:bg-sky-950/40 dark:text-sky-200"
-                        : "border-slate-200 text-slate-500 dark:border-white/10 dark:text-slate-400"
-                    }`}
-                  >
-                    {page}
-                  </span>
-                ))}
+              <div className="pointer-events-none" aria-hidden>
+                <Pagination
+                  appearance={appearance}
+                  size="sm"
+                  pageCount={5}
+                  defaultPage={3}
+                  siblingCount={1}
+                  boundaryCount={1}
+                />
               </div>
             </div>
           );

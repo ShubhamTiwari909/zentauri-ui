@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { KeyboardEvent } from "react";
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
+import { FileUpload } from "@zentauri-ui/zentauri-components/ui/file-upload";
 import {
   Select,
   SelectContent,
@@ -108,19 +109,19 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
                   : "ring-1 ring-slate-200 hover:ring-slate-300 dark:ring-white/10 dark:hover:ring-white/20"
               }`}
             >
-              <div
-                className={`rounded-lg border border-dashed p-4 text-center ${
-                  appearance === "disabled"
-                    ? "opacity-50"
-                    : "border-slate-300 dark:border-white/15"
-                }`}
-              >
-                <span className="block text-xs font-semibold text-slate-900 dark:text-white">
-                  {appearance}
-                </span>
-                <span className="mt-1 block text-xs text-slate-600 dark:text-slate-400">
-                  Drop files here
-                </span>
+              <div className="pointer-events-none">
+                <FileUpload
+                  appearance={appearance === "disabled" ? "idle" : appearance}
+                  disabled={appearance === "disabled"}
+                  className="min-h-24"
+                >
+                  <span className="text-xs font-semibold text-slate-900 dark:text-white">
+                    {appearance}
+                  </span>
+                  <span className="text-xs text-slate-600 dark:text-slate-400">
+                    Drop files here
+                  </span>
+                </FileUpload>
               </div>
             </div>
           );
