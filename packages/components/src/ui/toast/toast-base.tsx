@@ -23,6 +23,7 @@ import type {
   ToastSectionProps,
   ToastViewportProps,
 } from "./types";
+import { useToastPortal } from "./use-toast-portal";
 import { toastRootVariants, toastViewportVariants } from "./variants";
 
 export const ToastStoreContext = createContext<ToastStoreContextValue | null>(
@@ -107,11 +108,12 @@ export function ToastViewport({
   className,
 }: ToastViewportProps) {
   const ctx = useContext(ToastStoreContext);
+  const portalTarget = useToastPortal();
+
   if (!ctx) {
     throw new Error("ToastViewport must be used within <ToastProvider>");
   }
 
-  const portalTarget = typeof document !== "undefined" ? document.body : null;
   if (!portalTarget) {
     return null;
   }

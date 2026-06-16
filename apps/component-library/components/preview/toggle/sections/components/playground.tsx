@@ -4,7 +4,6 @@ import { useState } from "react";
 import type { KeyboardEvent } from "react";
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
-import { CopyButton } from "@zentauri-ui/zentauri-components/ui/copy-button";
 import {
   Select,
   SelectContent,
@@ -13,16 +12,12 @@ import {
   SelectValue,
 } from "@zentauri-ui/zentauri-components/ui/select";
 
-import { CopyButtonDemo } from "./demo";
-import { COPY_BUTTON_APPEARANCES, COPY_BUTTON_SIZES } from "./data";
-import { copyButtonSnippet } from "./snippets";
-import type { CopyButtonDemoProps } from "./types";
+import { TOGGLE_APPEARANCES, TOGGLE_SIZES, TOGGLE_THUMB_COLORS } from "./data";
+import { ToggleDemo } from "./demo";
+import { toggleSnippet } from "./snippets";
+import type { ToggleAppearance, ToggleDemoProps, ToggleSize } from "./types";
 
-type CopyButtonAppearance = CopyButtonDemoProps["appearance"];
-type CopyButtonSize = CopyButtonDemoProps["size"];
-
-const ICON_ONLY_OPTIONS = ["off", "on"] as const;
-type IconOnlyOption = (typeof ICON_ONLY_OPTIONS)[number];
+type ToggleThumbColor = NonNullable<ToggleDemoProps["thumbColor"]>;
 
 type VariantSelectProps<T extends string> = {
   label: string;
@@ -53,8 +48,6 @@ function VariantSelect<T extends string>({
         }}
       >
         <SelectTrigger variant="outline" size="sm" className="w-full">
-          {/* options register lazily on open, so the placeholder doubles as the
-              current value (option label === value) until then. */}
           <SelectValue placeholder={value} />
         </SelectTrigger>
         <SelectContent
@@ -74,15 +67,28 @@ function VariantSelect<T extends string>({
 }
 
 type AppearanceGalleryProps = {
-  selected: CopyButtonAppearance;
-  onSelect: (appearance: CopyButtonAppearance) => void;
+  selected: ToggleAppearance;
+  onSelect: (appearance: ToggleAppearance) => void;
 };
 
 function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
   const handleKeyDown =
-    (appearance: CopyButtonAppearance) =>
+    (appearance: ToggleAppearance) =>
     (event: KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === "Enter" || event.key === " ") {
+      // Enter activates on keydown; Space activates on keyup to match the
+      // native button / WAI-ARIA button pattern (allows cancel-by-move).
+      if (event.key === "Enter") {
+        event.preventDefault();
+        onSelect(appearance);
+      } else if (event.key === " ") {
+        event.preventDefault();
+      }
+    };
+
+  const handleKeyUp =
+    (appearance: ToggleAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === " ") {
         event.preventDefault();
         onSelect(appearance);
       }
@@ -97,32 +103,32 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
         Every shipped appearance token at a glance. Click any swatch to load it
         into the playground above.
       </p>
-      <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {COPY_BUTTON_APPEARANCES.map((appearance) => {
-          const isActive = appearance === selected;
+      <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+        {TOGGLE_APPEARANCES.map((itemAppearance) => {
+          const isActive = itemAppearance === selected;
           return (
             <div
-              key={appearance}
+              key={itemAppearance}
               role="button"
               tabIndex={0}
               aria-pressed={isActive}
-              onClick={() => onSelect(appearance)}
-              onKeyDown={handleKeyDown(appearance)}
-              className={`flex items-center gap-3 rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
+              onClick={() => onSelect(itemAppearance)}
+              onKeyDown={handleKeyDown(itemAppearance)}
+              onKeyUp={handleKeyUp(itemAppearance)}
+              className={`rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
                   : "ring-1 ring-slate-200 hover:ring-slate-300 dark:ring-white/10 dark:hover:ring-white/20"
               }`}
             >
-              {/* Visual only — pointer events go to the wrapping button so the
-                  swatch selects rather than triggering the copy action. */}
-              <div className="pointer-events-none">
-                <CopyButton
-                  appearance={appearance}
-                  iconOnly={false}
-                  label={appearance}
-                  size="sm"
-                  value={`zentauri-${appearance}`}
+              <span className="mb-2 block wrap-break-word text-xs text-slate-600 dark:text-slate-400">
+                {itemAppearance}
+              </span>
+              <div className="pointer-events-none" inert>
+                <ToggleDemo
+                  appearance={itemAppearance}
+                  size="md"
+                  thumbColor="default"
                 />
               </div>
             </div>
@@ -133,13 +139,12 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
   );
 }
 
-export function CopyButtonPlayground() {
-  const [appearance, setAppearance] = useState<CopyButtonAppearance>("default");
-  const [size, setSize] = useState<CopyButtonSize>("md");
-  const [iconOnly, setIconOnly] = useState<IconOnlyOption>("on");
+export function TogglePlayground() {
+  const [appearance, setAppearance] = useState<ToggleAppearance>("default");
+  const [size, setSize] = useState<ToggleSize>("md");
+  const [thumbColor, setThumbColor] = useState<ToggleThumbColor>("default");
 
-  const isIconOnly = iconOnly === "on";
-  const code = copyButtonSnippet({ appearance, size, iconOnly: isIconOnly });
+  const code = toggleSnippet({ appearance, size, thumbColor });
 
   return (
     <div className="mt-6 rounded-xl">
@@ -147,27 +152,27 @@ export function CopyButtonPlayground() {
         <VariantSelect
           label="Appearance"
           value={appearance}
-          options={COPY_BUTTON_APPEARANCES}
+          options={TOGGLE_APPEARANCES}
           onChange={setAppearance}
         />
         <VariantSelect
           label="Size"
           value={size}
-          options={COPY_BUTTON_SIZES}
+          options={TOGGLE_SIZES}
           onChange={setSize}
         />
         <VariantSelect
-          label="Icon only"
-          value={iconOnly}
-          options={ICON_ONLY_OPTIONS}
-          onChange={setIconOnly}
+          label="Thumb color"
+          value={thumbColor}
+          options={TOGGLE_THUMB_COLORS}
+          onChange={setThumbColor}
         />
       </div>
       <PreviewCodeShowcase code={code}>
-        <CopyButtonDemo
+        <ToggleDemo
           appearance={appearance}
           size={size}
-          iconOnly={isIconOnly}
+          thumbColor={thumbColor}
         />
       </PreviewCodeShowcase>
       <AppearanceGallery selected={appearance} onSelect={setAppearance} />

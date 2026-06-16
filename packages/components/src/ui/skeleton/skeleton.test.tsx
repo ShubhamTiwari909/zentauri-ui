@@ -40,6 +40,15 @@ describe("Skeleton", () => {
     ).not.toMatch(/animate-pulse/);
   });
 
+  it("should keep colored static appearances in one Tailwind arbitrary class", () => {
+    const { container } = render(
+      <Skeleton appearance="indigo" animation="none" />,
+    );
+    const root = container.querySelector('[data-slot="skeleton"]');
+    expect(root?.className).toContain("color-mix(in_oklch");
+    expect(root?.className).not.toContain("color-mix(in oklch");
+  });
+
   it("should render the requested number of text lines", () => {
     const { container } = render(<SkeletonText lines={4} />);
     const root = container.querySelector('[data-slot="skeleton-text"]');

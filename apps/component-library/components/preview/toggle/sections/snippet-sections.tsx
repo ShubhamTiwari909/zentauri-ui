@@ -3,6 +3,7 @@ import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase"
 
 import { ToggleDemo } from "./components/demo";
 import { ToggleControlledDemo } from "./components/controlled";
+import { TogglePlayground } from "./components/playground";
 import { TOGGLE_APPEARANCES, TOGGLE_SIZES } from "./components/data";
 import { toggleControlledSnippet, toggleSnippet } from "./components/snippets";
 
@@ -16,6 +17,7 @@ export function ToggleCodeExamplesSection() {
         Track colors by appearance and thumb scale by size. Code uses a Variant:
         lead-in per row.
       </p>
+      <TogglePlayground />
       <div className="mt-6 space-y-10 rounded-xl">
         {TOGGLE_APPEARANCES.map((appearance) => (
           <PreviewCodeShowcase

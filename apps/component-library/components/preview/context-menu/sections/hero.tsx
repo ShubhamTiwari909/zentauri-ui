@@ -25,7 +25,7 @@ export function ContextMenuHeroSection({ seo }: { seo: PreviewSeoDocument }) {
       <PreviewHeroSeoBlock seo={seo} />
 
       <SectionCard variant="panel" className="max-w-xl">
-        <div className="space-y-3">
+        <div className="flex flex-col gap-3">
           {files.map(([name, detail, tag]) => (
             <ContextMenu key={name}>
               <ContextMenuTrigger>

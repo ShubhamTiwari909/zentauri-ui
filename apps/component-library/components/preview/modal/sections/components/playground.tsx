@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { KeyboardEvent } from "react";
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
@@ -75,6 +76,78 @@ function VariantSelect<T extends string>({
   );
 }
 
+type AppearanceGalleryProps = {
+  selected: ModalDemoAppearance;
+  onSelect: (appearance: ModalDemoAppearance) => void;
+};
+
+function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
+  const handleKeyDown =
+    (itemAppearance: ModalDemoAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      // Enter activates on keydown; Space activates on keyup to match the
+      // native button / WAI-ARIA button pattern (allows cancel-by-move).
+      if (event.key === "Enter") {
+        event.preventDefault();
+        onSelect(itemAppearance);
+      } else if (event.key === " ") {
+        event.preventDefault();
+      }
+    };
+
+  const handleKeyUp =
+    (itemAppearance: ModalDemoAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === " ") {
+        event.preventDefault();
+        onSelect(itemAppearance);
+      }
+    };
+
+  return (
+    <div className="mt-12">
+      <p className="text-sm font-semibold text-slate-900 dark:text-white">
+        All appearances
+      </p>
+      <p className="mt-1 max-w-2xl text-xs leading-5 text-slate-600 dark:text-slate-400">
+        Every shipped appearance token at a glance. Click any swatch to load it
+        into the playground above.
+      </p>
+      <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {MODAL_APPEARANCES.map((itemAppearance) => {
+          const isActive = itemAppearance === selected;
+          return (
+            <div
+              key={itemAppearance}
+              role="button"
+              tabIndex={0}
+              aria-pressed={isActive}
+              onClick={() => onSelect(itemAppearance)}
+              onKeyDown={handleKeyDown(itemAppearance)}
+              onKeyUp={handleKeyUp(itemAppearance)}
+              className={`rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
+                isActive
+                  ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
+                  : "ring-1 ring-slate-200 hover:ring-slate-300 dark:ring-white/10 dark:hover:ring-white/20"
+              }`}
+            >
+              <div className="pointer-events-none" inert>
+                <ModalDemo
+                  size="sm"
+                  position="center"
+                  appearance={itemAppearance}
+                  animation="scale"
+                  label={itemAppearance}
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export function ModalPlayground() {
   const [size, setSize] = useState<ModalDemoSize>("md");
   const [position, setPosition] = useState<ModalDemoPosition>("center");
@@ -121,6 +194,7 @@ export function ModalPlayground() {
           label={label}
         />
       </PreviewCodeShowcase>
+      <AppearanceGallery selected={appearance} onSelect={setAppearance} />
     </div>
   );
 }

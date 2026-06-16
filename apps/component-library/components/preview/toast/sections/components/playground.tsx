@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { KeyboardEvent } from "react";
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
 import {
@@ -10,6 +11,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@zentauri-ui/zentauri-components/ui/select";
+import {
+  Toast,
+  ToastDescription,
+  ToastTitle,
+} from "@zentauri-ui/zentauri-components/ui/toast";
 
 import { ToastVariantDemo } from "./demo";
 import { TOAST_APPEARANCES, TOAST_SIZES } from "./data";
@@ -69,6 +75,28 @@ type AppearanceGalleryProps = {
 };
 
 function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
+  const handleKeyDown =
+    (appearance: ToastDemoAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      // Enter activates on keydown; Space activates on keyup to match the
+      // native button / WAI-ARIA button pattern (allows cancel-by-move).
+      if (event.key === "Enter") {
+        event.preventDefault();
+        onSelect(appearance);
+      } else if (event.key === " ") {
+        event.preventDefault();
+      }
+    };
+
+  const handleKeyUp =
+    (appearance: ToastDemoAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === " ") {
+        event.preventDefault();
+        onSelect(appearance);
+      }
+    };
+
   return (
     <div className="mt-12">
       <p className="text-sm font-semibold text-slate-900 dark:text-white">
@@ -82,21 +110,33 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
         {TOAST_APPEARANCES.map((appearance) => {
           const isActive = appearance === selected;
           return (
-            <button
+            <div
               key={appearance}
-              type="button"
+              role="button"
+              tabIndex={0}
               aria-pressed={isActive}
+              aria-label={appearance}
               onClick={() => onSelect(appearance)}
+              onKeyDown={handleKeyDown(appearance)}
+              onKeyUp={handleKeyUp(appearance)}
               className={`rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
                   : "ring-1 ring-slate-200 hover:ring-slate-300 dark:ring-white/10 dark:hover:ring-white/20"
               }`}
             >
-              <span className="block break-words text-xs text-slate-600 dark:text-slate-400">
-                {appearance}
-              </span>
-            </button>
+              <div className="pointer-events-none" inert>
+                <Toast
+                  toastId={`gallery-${appearance}`}
+                  appearance={appearance}
+                  size="sm"
+                  className="min-h-20 w-full space-y-2"
+                >
+                  <ToastTitle>{appearance}</ToastTitle>
+                  <ToastDescription>Sample notification.</ToastDescription>
+                </Toast>
+              </div>
+            </div>
           );
         })}
       </div>

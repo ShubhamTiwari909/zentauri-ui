@@ -8,6 +8,7 @@ import { cn } from "../../../lib/utils";
 
 import { toastAnimationPresets } from "./animations";
 import type { ToastProps, ToastViewportProps } from "../types";
+import { useToastPortal } from "../use-toast-portal";
 import { toastRootVariants, toastViewportVariants } from "../variants";
 import {
   ToastClose,
@@ -21,13 +22,14 @@ export function ToastViewportAnimated({
   className,
 }: ToastViewportProps) {
   const ctx = useContext(ToastStoreContext);
+  const portalTarget = useToastPortal();
+
   if (!ctx) {
     throw new Error(
       "ToastViewportAnimated must be used within <ToastProvider>",
     );
   }
 
-  const portalTarget = typeof document !== "undefined" ? document.body : null;
   if (!portalTarget) {
     return null;
   }

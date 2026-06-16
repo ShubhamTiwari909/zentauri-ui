@@ -62,25 +62,25 @@ export const zuiSkeletonAppearances = {
     "bg-[var(--zui-skeleton-subtle-bg,var(--zui-surface-muted,#00000012))] dark:bg-[var(--zui-skeleton-subtle-bg-dark,var(--zui-surface-muted-dark,#ffffff12))]",
   muted:
     "bg-[var(--zui-skeleton-muted-bg,var(--zui-fg-muted,oklch(92.9%_0.013_255.508_/_0.8)))] dark:bg-[var(--zui-skeleton-muted-bg-dark,var(--zui-fg-muted-dark,oklch(27.9%_0.041_260.031_/_0.8)))]",
-  sky: "bg-[var(--zui-skeleton-sky-bg,color-mix(in oklch, var(--zui-color-sky,oklch(68.5%_0.169_237.323_/_0.1)) 10%, transparent))] dark:bg-[var(--zui-skeleton-sky-bg-dark,color-mix(in oklch, var(--zui-color-sky-dark,oklch(68.5%_0.169_237.323_/_0.1)) 18%, transparent))]",
-  rose: "bg-[var(--zui-skeleton-rose-bg,color-mix(in oklch, var(--zui-color-rose,oklch(64.5%_0.246_16.439_/_0.1)) 10%, transparent))] dark:bg-[var(--zui-skeleton-rose-bg-dark,color-mix(in oklch, var(--zui-color-rose-dark,oklch(64.5%_0.246_16.439_/_0.1)) 18%, transparent))]",
+  sky: "bg-[var(--zui-skeleton-sky-bg,color-mix(in_oklch,var(--zui-color-sky,oklch(68.5%_0.169_237.323))_10%,transparent))] dark:bg-[var(--zui-skeleton-sky-bg-dark,color-mix(in_oklch,var(--zui-color-sky-dark,oklch(68.5%_0.169_237.323))_18%,transparent))]",
+  rose: "bg-[var(--zui-skeleton-rose-bg,color-mix(in_oklch,var(--zui-color-rose,oklch(64.5%_0.246_16.439))_10%,transparent))] dark:bg-[var(--zui-skeleton-rose-bg-dark,color-mix(in_oklch,var(--zui-color-rose-dark,oklch(64.5%_0.246_16.439))_18%,transparent))]",
   purple:
-    "bg-[var(--zui-skeleton-purple-bg,color-mix(in oklch, var(--zui-color-purple,oklch(62.7%_0.265_303.9_/_0.1)) 10%, transparent))] dark:bg-[var(--zui-skeleton-purple-bg-dark,color-mix(in oklch, var(--zui-color-purple-dark,oklch(62.7%_0.265_303.9_/_0.1)) 18%, transparent))]",
-  pink: "bg-[var(--zui-skeleton-pink-bg,color-mix(in oklch, var(--zui-color-pink,oklch(65.6%_0.241_354.308_/_0.1)) 10%, transparent))] dark:bg-[var(--zui-skeleton-pink-bg-dark,color-mix(in oklch, var(--zui-color-pink-dark,oklch(65.6%_0.241_354.308_/_0.1)) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-purple-bg,color-mix(in_oklch,var(--zui-color-purple,oklch(62.7%_0.265_303.9))_10%,transparent))] dark:bg-[var(--zui-skeleton-purple-bg-dark,color-mix(in_oklch,var(--zui-color-purple-dark,oklch(62.7%_0.265_303.9))_18%,transparent))]",
+  pink: "bg-[var(--zui-skeleton-pink-bg,color-mix(in_oklch,var(--zui-color-pink,oklch(65.6%_0.241_354.308))_10%,transparent))] dark:bg-[var(--zui-skeleton-pink-bg-dark,color-mix(in_oklch,var(--zui-color-pink-dark,oklch(65.6%_0.241_354.308))_18%,transparent))]",
   orange:
-    "bg-[var(--zui-skeleton-orange-bg,color-mix(in oklch, var(--zui-color-orange,oklch(70.5%_0.213_47.604_/_0.1)) 10%, transparent))] dark:bg-[var(--zui-skeleton-orange-bg-dark,color-mix(in oklch, var(--zui-color-orange-dark,oklch(70.5%_0.213_47.604_/_0.1)) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-orange-bg,color-mix(in_oklch,var(--zui-color-orange,oklch(70.5%_0.213_47.604))_10%,transparent))] dark:bg-[var(--zui-skeleton-orange-bg-dark,color-mix(in_oklch,var(--zui-color-orange-dark,oklch(70.5%_0.213_47.604))_18%,transparent))]",
   yellow:
-    "bg-[var(--zui-skeleton-yellow-bg,color-mix(in oklch, var(--zui-color-yellow,oklch(79.5%_0.184_86.047_/_0.1)) 10%, transparent))] dark:bg-[var(--zui-skeleton-yellow-bg-dark,color-mix(in oklch, var(--zui-color-yellow-dark,oklch(79.5%_0.184_86.047_/_0.1)) 18%, transparent))]",
-  teal: "bg-[var(--zui-skeleton-teal-bg,color-mix(in oklch, var(--zui-color-teal,oklch(70.4%_0.14_182.503_/_0.1)) 10%, transparent))] dark:bg-[var(--zui-skeleton-teal-bg-dark,color-mix(in oklch, var(--zui-color-teal-dark,oklch(70.4%_0.14_182.503_/_0.1)) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-yellow-bg,color-mix(in_oklch,var(--zui-color-yellow,oklch(79.5%_0.184_86.047))_10%,transparent))] dark:bg-[var(--zui-skeleton-yellow-bg-dark,color-mix(in_oklch,var(--zui-color-yellow-dark,oklch(79.5%_0.184_86.047))_18%,transparent))]",
+  teal: "bg-[var(--zui-skeleton-teal-bg,color-mix(in_oklch,var(--zui-color-teal,oklch(70.4%_0.14_182.503))_10%,transparent))] dark:bg-[var(--zui-skeleton-teal-bg-dark,color-mix(in_oklch,var(--zui-color-teal-dark,oklch(70.4%_0.14_182.503))_18%,transparent))]",
   indigo:
-    "bg-[var(--zui-skeleton-indigo-bg,color-mix(in oklch, var(--zui-color-indigo,oklch(58.5%_0.233_277.117_/_0.1)) 10%, transparent))] dark:bg-[var(--zui-skeleton-indigo-bg-dark,color-mix(in oklch, var(--zui-color-indigo-dark,oklch(58.5%_0.233_277.117_/_0.1)) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-indigo-bg,color-mix(in_oklch,var(--zui-color-indigo,oklch(58.5%_0.233_277.117))_10%,transparent))] dark:bg-[var(--zui-skeleton-indigo-bg-dark,color-mix(in_oklch,var(--zui-color-indigo-dark,oklch(58.5%_0.233_277.117))_18%,transparent))]",
   emerald:
-    "bg-[var(--zui-skeleton-emerald-bg,color-mix(in oklch, var(--zui-color-emerald,oklch(69.6%_0.17_162.48_/_0.1)) 10%, transparent))] dark:bg-[var(--zui-skeleton-emerald-bg-dark,color-mix(in oklch, var(--zui-color-emerald-dark,oklch(69.6%_0.17_162.48_/_0.1)) 18%, transparent))]",
-  gray: "bg-[var(--zui-skeleton-gray-bg,color-mix(in oklch, var(--zui-color-gray,oklch(55.1%_0.027_264.364_/_0.1)) 10%, transparent))] dark:bg-[var(--zui-skeleton-gray-bg-dark,color-mix(in oklch, var(--zui-color-gray-dark,oklch(55.1%_0.027_264.364_/_0.1)) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-emerald-bg,color-mix(in_oklch,var(--zui-color-emerald,oklch(69.6%_0.17_162.48))_10%,transparent))] dark:bg-[var(--zui-skeleton-emerald-bg-dark,color-mix(in_oklch,var(--zui-color-emerald-dark,oklch(69.6%_0.17_162.48))_18%,transparent))]",
+  gray: "bg-[var(--zui-skeleton-gray-bg,color-mix(in_oklch,var(--zui-color-gray,oklch(55.1%_0.027_264.364))_10%,transparent))] dark:bg-[var(--zui-skeleton-gray-bg-dark,color-mix(in_oklch,var(--zui-color-gray-dark,oklch(55.1%_0.027_264.364))_18%,transparent))]",
   amber:
-    "bg-[var(--zui-skeleton-amber-bg,color-mix(in oklch, var(--zui-color-amber,oklch(76.9%_0.188_70.08_/_0.1)) 10%, transparent))] dark:bg-[var(--zui-skeleton-amber-bg-dark,color-mix(in oklch, var(--zui-color-amber-dark,oklch(76.9%_0.188_70.08_/_0.1)) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-amber-bg,color-mix(in_oklch,var(--zui-color-amber,oklch(76.9%_0.188_70.08))_10%,transparent))] dark:bg-[var(--zui-skeleton-amber-bg-dark,color-mix(in_oklch,var(--zui-color-amber-dark,oklch(76.9%_0.188_70.08))_18%,transparent))]",
   violet:
-    "bg-[var(--zui-skeleton-violet-bg,color-mix(in oklch, var(--zui-color-violet,oklch(60.6%_0.25_292.717_/_0.1)) 10%, transparent))] dark:bg-[var(--zui-skeleton-violet-bg-dark,color-mix(in oklch, var(--zui-color-violet-dark,oklch(60.6%_0.25_292.717_/_0.1)) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-violet-bg,color-mix(in_oklch,var(--zui-color-violet,oklch(60.6%_0.25_292.717))_10%,transparent))] dark:bg-[var(--zui-skeleton-violet-bg-dark,color-mix(in_oklch,var(--zui-color-violet-dark,oklch(60.6%_0.25_292.717))_18%,transparent))]",
   "gradient-blue":
     "bg-linear-to-r from-[var(--zui-skeleton-gradient-blue-from,var(--zui-color-blue,oklch(42.4%_0.199_265.638)))] dark:from-[var(--zui-skeleton-gradient-blue-from-dark,var(--zui-color-blue-dark,oklch(54.6%_0.245_262.881)))] to-[var(--zui-skeleton-gradient-blue-to,var(--zui-color-purple,oklch(43.8%_0.218_303.724)))] dark:to-[var(--zui-skeleton-gradient-blue-to-dark,var(--zui-color-purple-dark,oklch(55.8%_0.288_302.321)))]",
   "gradient-green":
@@ -99,39 +99,39 @@ export const zuiSkeletonAppearances = {
     "bg-linear-to-r from-[var(--zui-skeleton-gradient-pink-from,var(--zui-color-pink,oklch(45.9%_0.187_3.815)))] dark:from-[var(--zui-skeleton-gradient-pink-from-dark,var(--zui-color-pink-dark,oklch(59.2%_0.249_0.584)))] to-[var(--zui-skeleton-gradient-pink-to,var(--zui-color-rose,oklch(45.5%_0.188_13.697)))] dark:to-[var(--zui-skeleton-gradient-pink-to-dark,var(--zui-color-rose-dark,oklch(58.6%_0.253_17.585)))]",
   "gradient-orange":
     "bg-linear-to-r from-[var(--zui-skeleton-gradient-orange-from,var(--zui-color-orange,oklch(47%_0.157_37.304)))] dark:from-[var(--zui-skeleton-gradient-orange-from-dark,var(--zui-color-orange-dark,oklch(64.6%_0.222_41.116)))] to-[var(--zui-skeleton-gradient-orange-to,var(--zui-color-red,oklch(44.4%_0.177_26.899)))] dark:to-[var(--zui-skeleton-gradient-orange-to-dark,var(--zui-color-red-dark,oklch(57.7%_0.245_27.325)))]",
-  blue: "bg-[var(--zui-skeleton-blue-bg,color-mix(in oklch, var(--zui-color-blue,#2563eb) 10%, transparent))] dark:bg-[var(--zui-skeleton-blue-bg-dark,color-mix(in oklch, var(--zui-color-blue-dark,#3b82f6) 18%, transparent))]",
-  cyan: "bg-[var(--zui-skeleton-cyan-bg,color-mix(in oklch, var(--zui-color-cyan,#0891b2) 10%, transparent))] dark:bg-[var(--zui-skeleton-cyan-bg-dark,color-mix(in oklch, var(--zui-color-cyan-dark,#22d3ee) 18%, transparent))]",
+  blue: "bg-[var(--zui-skeleton-blue-bg,color-mix(in_oklch,var(--zui-color-blue,#2563eb)_10%,transparent))] dark:bg-[var(--zui-skeleton-blue-bg-dark,color-mix(in_oklch,var(--zui-color-blue-dark,#3b82f6)_18%,transparent))]",
+  cyan: "bg-[var(--zui-skeleton-cyan-bg,color-mix(in_oklch,var(--zui-color-cyan,#0891b2)_10%,transparent))] dark:bg-[var(--zui-skeleton-cyan-bg-dark,color-mix(in_oklch,var(--zui-color-cyan-dark,#22d3ee)_18%,transparent))]",
   green:
-    "bg-[var(--zui-skeleton-green-bg,color-mix(in oklch, var(--zui-color-green,#16a34a) 10%, transparent))] dark:bg-[var(--zui-skeleton-green-bg-dark,color-mix(in oklch, var(--zui-color-green-dark,#22c55e) 18%, transparent))]",
-  lime: "bg-[var(--zui-skeleton-lime-bg,color-mix(in oklch, var(--zui-color-lime,#65a30d) 10%, transparent))] dark:bg-[var(--zui-skeleton-lime-bg-dark,color-mix(in oklch, var(--zui-color-lime-dark,#a3e635) 18%, transparent))]",
-  mint: "bg-[var(--zui-skeleton-mint-bg,color-mix(in oklch, var(--zui-color-mint,#10b981) 10%, transparent))] dark:bg-[var(--zui-skeleton-mint-bg-dark,color-mix(in oklch, var(--zui-color-mint-dark,#6ee7b7) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-green-bg,color-mix(in_oklch,var(--zui-color-green,#16a34a)_10%,transparent))] dark:bg-[var(--zui-skeleton-green-bg-dark,color-mix(in_oklch,var(--zui-color-green-dark,#22c55e)_18%,transparent))]",
+  lime: "bg-[var(--zui-skeleton-lime-bg,color-mix(in_oklch,var(--zui-color-lime,#65a30d)_10%,transparent))] dark:bg-[var(--zui-skeleton-lime-bg-dark,color-mix(in_oklch,var(--zui-color-lime-dark,#a3e635)_18%,transparent))]",
+  mint: "bg-[var(--zui-skeleton-mint-bg,color-mix(in_oklch,var(--zui-color-mint,#10b981)_10%,transparent))] dark:bg-[var(--zui-skeleton-mint-bg-dark,color-mix(in_oklch,var(--zui-color-mint-dark,#6ee7b7)_18%,transparent))]",
   ocean:
-    "bg-[var(--zui-skeleton-ocean-bg,color-mix(in oklch, var(--zui-color-ocean,#0284c7) 10%, transparent))] dark:bg-[var(--zui-skeleton-ocean-bg-dark,color-mix(in oklch, var(--zui-color-ocean-dark,#38bdf8) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-ocean-bg,color-mix(in_oklch,var(--zui-color-ocean,#0284c7)_10%,transparent))] dark:bg-[var(--zui-skeleton-ocean-bg-dark,color-mix(in_oklch,var(--zui-color-ocean-dark,#38bdf8)_18%,transparent))]",
   sapphire:
-    "bg-[var(--zui-skeleton-sapphire-bg,color-mix(in oklch, var(--zui-color-sapphire,#1d4ed8) 10%, transparent))] dark:bg-[var(--zui-skeleton-sapphire-bg-dark,color-mix(in oklch, var(--zui-color-sapphire-dark,#60a5fa) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-sapphire-bg,color-mix(in_oklch,var(--zui-color-sapphire,#1d4ed8)_10%,transparent))] dark:bg-[var(--zui-skeleton-sapphire-bg-dark,color-mix(in_oklch,var(--zui-color-sapphire-dark,#60a5fa)_18%,transparent))]",
   lavender:
-    "bg-[var(--zui-skeleton-lavender-bg,color-mix(in oklch, var(--zui-color-lavender,#8b5cf6) 10%, transparent))] dark:bg-[var(--zui-skeleton-lavender-bg-dark,color-mix(in oklch, var(--zui-color-lavender-dark,#a78bfa) 18%, transparent))]",
-  ruby: "bg-[var(--zui-skeleton-ruby-bg,color-mix(in oklch, var(--zui-color-ruby,#be123c) 10%, transparent))] dark:bg-[var(--zui-skeleton-ruby-bg-dark,color-mix(in oklch, var(--zui-color-ruby-dark,#fb7185) 18%, transparent))]",
-  red: "bg-[var(--zui-skeleton-red-bg,color-mix(in oklch, var(--zui-color-red,#dc2626) 10%, transparent))] dark:bg-[var(--zui-skeleton-red-bg-dark,color-mix(in oklch, var(--zui-color-red-dark,#ef4444) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-lavender-bg,color-mix(in_oklch,var(--zui-color-lavender,#8b5cf6)_10%,transparent))] dark:bg-[var(--zui-skeleton-lavender-bg-dark,color-mix(in_oklch,var(--zui-color-lavender-dark,#a78bfa)_18%,transparent))]",
+  ruby: "bg-[var(--zui-skeleton-ruby-bg,color-mix(in_oklch,var(--zui-color-ruby,#be123c)_10%,transparent))] dark:bg-[var(--zui-skeleton-ruby-bg-dark,color-mix(in_oklch,var(--zui-color-ruby-dark,#fb7185)_18%,transparent))]",
+  red: "bg-[var(--zui-skeleton-red-bg,color-mix(in_oklch,var(--zui-color-red,#dc2626)_10%,transparent))] dark:bg-[var(--zui-skeleton-red-bg-dark,color-mix(in_oklch,var(--zui-color-red-dark,#ef4444)_18%,transparent))]",
   slate:
-    "bg-[var(--zui-skeleton-slate-bg,color-mix(in oklch, var(--zui-color-slate,#475569) 10%, transparent))] dark:bg-[var(--zui-skeleton-slate-bg-dark,color-mix(in oklch, var(--zui-color-slate-dark,#64748b) 18%, transparent))]",
-  zinc: "bg-[var(--zui-skeleton-zinc-bg,color-mix(in oklch, var(--zui-color-zinc,#52525b) 10%, transparent))] dark:bg-[var(--zui-skeleton-zinc-bg-dark,color-mix(in oklch, var(--zui-color-zinc-dark,#71717a) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-slate-bg,color-mix(in_oklch,var(--zui-color-slate,#475569)_10%,transparent))] dark:bg-[var(--zui-skeleton-slate-bg-dark,color-mix(in_oklch,var(--zui-color-slate-dark,#64748b)_18%,transparent))]",
+  zinc: "bg-[var(--zui-skeleton-zinc-bg,color-mix(in_oklch,var(--zui-color-zinc,#52525b)_10%,transparent))] dark:bg-[var(--zui-skeleton-zinc-bg-dark,color-mix(in_oklch,var(--zui-color-zinc-dark,#71717a)_18%,transparent))]",
   stone:
-    "bg-[var(--zui-skeleton-stone-bg,color-mix(in oklch, var(--zui-color-stone,#57534e) 10%, transparent))] dark:bg-[var(--zui-skeleton-stone-bg-dark,color-mix(in oklch, var(--zui-color-stone-dark,#78716c) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-stone-bg,color-mix(in_oklch,var(--zui-color-stone,#57534e)_10%,transparent))] dark:bg-[var(--zui-skeleton-stone-bg-dark,color-mix(in_oklch,var(--zui-color-stone-dark,#78716c)_18%,transparent))]",
   royal:
-    "bg-[var(--zui-skeleton-royal-bg,color-mix(in oklch, var(--zui-color-royal,#4338ca) 10%, transparent))] dark:bg-[var(--zui-skeleton-royal-bg-dark,color-mix(in oklch, var(--zui-color-royal-dark,#818cf8) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-royal-bg,color-mix(in_oklch,var(--zui-color-royal,#4338ca)_10%,transparent))] dark:bg-[var(--zui-skeleton-royal-bg-dark,color-mix(in_oklch,var(--zui-color-royal-dark,#818cf8)_18%,transparent))]",
   electric:
-    "bg-[var(--zui-skeleton-electric-bg,color-mix(in oklch, var(--zui-color-electric,#0ea5e9) 10%, transparent))] dark:bg-[var(--zui-skeleton-electric-bg-dark,color-mix(in oklch, var(--zui-color-electric-dark,#38bdf8) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-electric-bg,color-mix(in_oklch,var(--zui-color-electric,#0ea5e9)_10%,transparent))] dark:bg-[var(--zui-skeleton-electric-bg-dark,color-mix(in_oklch,var(--zui-color-electric-dark,#38bdf8)_18%,transparent))]",
   forest:
-    "bg-[var(--zui-skeleton-forest-bg,color-mix(in oklch, var(--zui-color-forest,#166534) 10%, transparent))] dark:bg-[var(--zui-skeleton-forest-bg-dark,color-mix(in oklch, var(--zui-color-forest-dark,#4ade80) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-forest-bg,color-mix(in_oklch,var(--zui-color-forest,#166534)_10%,transparent))] dark:bg-[var(--zui-skeleton-forest-bg-dark,color-mix(in_oklch,var(--zui-color-forest-dark,#4ade80)_18%,transparent))]",
   sunset:
-    "bg-[var(--zui-skeleton-sunset-bg,color-mix(in oklch, var(--zui-color-sunset,#ea580c) 10%, transparent))] dark:bg-[var(--zui-skeleton-sunset-bg-dark,color-mix(in oklch, var(--zui-color-sunset-dark,#fb923c) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-sunset-bg,color-mix(in_oklch,var(--zui-color-sunset,#ea580c)_10%,transparent))] dark:bg-[var(--zui-skeleton-sunset-bg-dark,color-mix(in_oklch,var(--zui-color-sunset-dark,#fb923c)_18%,transparent))]",
   magenta:
-    "bg-[var(--zui-skeleton-magenta-bg,color-mix(in oklch, var(--zui-color-magenta,#c026d3) 10%, transparent))] dark:bg-[var(--zui-skeleton-magenta-bg-dark,color-mix(in oklch, var(--zui-color-magenta-dark,#e879f9) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-magenta-bg,color-mix(in_oklch,var(--zui-color-magenta,#c026d3)_10%,transparent))] dark:bg-[var(--zui-skeleton-magenta-bg-dark,color-mix(in_oklch,var(--zui-color-magenta-dark,#e879f9)_18%,transparent))]",
   crimson:
-    "bg-[var(--zui-skeleton-crimson-bg,color-mix(in oklch, var(--zui-color-crimson,#b91c1c) 10%, transparent))] dark:bg-[var(--zui-skeleton-crimson-bg-dark,color-mix(in oklch, var(--zui-color-crimson-dark,#f87171) 18%, transparent))]",
-  aqua: "bg-[var(--zui-skeleton-aqua-bg,color-mix(in oklch, var(--zui-color-aqua,#0f766e) 10%, transparent))] dark:bg-[var(--zui-skeleton-aqua-bg-dark,color-mix(in oklch, var(--zui-color-aqua-dark,#2dd4bf) 18%, transparent))]",
-  plum: "bg-[var(--zui-skeleton-plum-bg,color-mix(in oklch, var(--zui-color-plum,#7e22ce) 10%, transparent))] dark:bg-[var(--zui-skeleton-plum-bg-dark,color-mix(in oklch, var(--zui-color-plum-dark,#c084fc) 18%, transparent))]",
+    "bg-[var(--zui-skeleton-crimson-bg,color-mix(in_oklch,var(--zui-color-crimson,#b91c1c)_10%,transparent))] dark:bg-[var(--zui-skeleton-crimson-bg-dark,color-mix(in_oklch,var(--zui-color-crimson-dark,#f87171)_18%,transparent))]",
+  aqua: "bg-[var(--zui-skeleton-aqua-bg,color-mix(in_oklch,var(--zui-color-aqua,#0f766e)_10%,transparent))] dark:bg-[var(--zui-skeleton-aqua-bg-dark,color-mix(in_oklch,var(--zui-color-aqua-dark,#2dd4bf)_18%,transparent))]",
+  plum: "bg-[var(--zui-skeleton-plum-bg,color-mix(in_oklch,var(--zui-color-plum,#7e22ce)_10%,transparent))] dark:bg-[var(--zui-skeleton-plum-bg-dark,color-mix(in_oklch,var(--zui-color-plum-dark,#c084fc)_18%,transparent))]",
 } as const;
 
 export const zuiSkeletonSizes = {

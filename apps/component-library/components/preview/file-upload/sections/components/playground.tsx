@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { KeyboardEvent } from "react";
 
 import PreviewCodeShowcase from "@/components/code-showcase/PreviewCodeShowcase";
+import { FileUpload } from "@zentauri-ui/zentauri-components/ui/file-upload";
 import {
   Select,
   SelectContent,
@@ -76,7 +77,20 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
   const handleKeyDown =
     (appearance: FileUploadAppearance) =>
     (event: KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === "Enter" || event.key === " ") {
+      // Enter activates on keydown; Space activates on keyup to match the
+      // native button / WAI-ARIA button pattern (allows cancel-by-move).
+      if (event.key === "Enter") {
+        event.preventDefault();
+        onSelect(appearance);
+      } else if (event.key === " ") {
+        event.preventDefault();
+      }
+    };
+
+  const handleKeyUp =
+    (appearance: FileUploadAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === " ") {
         event.preventDefault();
         onSelect(appearance);
       }
@@ -102,25 +116,26 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
               aria-pressed={isActive}
               onClick={() => onSelect(appearance)}
               onKeyDown={handleKeyDown(appearance)}
+              onKeyUp={handleKeyUp(appearance)}
               className={`rounded-xl p-2 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
                   : "ring-1 ring-slate-200 hover:ring-slate-300 dark:ring-white/10 dark:hover:ring-white/20"
               }`}
             >
-              <div
-                className={`rounded-lg border border-dashed p-4 text-center ${
-                  appearance === "disabled"
-                    ? "opacity-50"
-                    : "border-slate-300 dark:border-white/15"
-                }`}
-              >
-                <span className="block text-xs font-semibold text-slate-900 dark:text-white">
-                  {appearance}
-                </span>
-                <span className="mt-1 block text-xs text-slate-600 dark:text-slate-400">
-                  Drop files here
-                </span>
+              <div className="pointer-events-none" inert>
+                <FileUpload
+                  appearance={appearance}
+                  disabled={appearance === "disabled"}
+                  className="min-h-24"
+                >
+                  <span className="text-xs font-semibold text-slate-900 dark:text-white">
+                    {appearance}
+                  </span>
+                  <span className="text-xs text-slate-600 dark:text-slate-400">
+                    Drop files here
+                  </span>
+                </FileUpload>
               </div>
             </div>
           );
