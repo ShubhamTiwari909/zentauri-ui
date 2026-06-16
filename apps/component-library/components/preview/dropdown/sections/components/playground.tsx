@@ -137,7 +137,7 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
               role="button"
               tabIndex={0}
               aria-pressed={isActive}
-              aria-label={itemVariant}
+              aria-label={`Select ${itemVariant} trigger appearance`}
               onClick={() => onSelect(itemVariant)}
               onKeyDown={handleKeyDown(itemVariant)}
               onKeyUp={handleKeyUp(itemVariant)}
