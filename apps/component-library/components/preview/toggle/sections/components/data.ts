@@ -3,6 +3,10 @@ import type {
   ToggleThumbVariantProps,
 } from "@zentauri-ui/zentauri-components/ui/toggle";
 
+type ToggleAppearance = NonNullable<ToggleProps["appearance"]>;
+type ToggleThumbColor = NonNullable<ToggleThumbVariantProps["thumbColor"]>;
+type AssertNever<T extends never> = T;
+
 export const TOGGLE_CODE_EXAMPLES_SECTION_CLASS =
   "rounded-3xl border dark:border-white/10 border-slate-900 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
 
@@ -50,7 +54,7 @@ export const TOGGLE_APPEARANCES = [
   "crimson",
   "aqua",
   "plum",
-] as const satisfies readonly NonNullable<ToggleProps["appearance"]>[];
+] as const satisfies readonly ToggleAppearance[];
 
 // Thumb colors are their own `thumbColor` variant set on the toggle, distinct
 // from the track `appearance` tokens above — keep this list independent so the
@@ -99,12 +103,17 @@ export const TOGGLE_THUMB_COLORS = [
   "crimson",
   "aqua",
   "plum",
-] as const satisfies readonly NonNullable<
-  ToggleThumbVariantProps["thumbColor"]
->[];
+] as const satisfies readonly ToggleThumbColor[];
 
 export const TOGGLE_SIZES = [
   "sm",
   "md",
   "lg",
 ] as const satisfies readonly NonNullable<ToggleProps["size"]>[];
+
+type _ToggleAppearanceListIncludesEveryVariant = AssertNever<
+  Exclude<ToggleAppearance, (typeof TOGGLE_APPEARANCES)[number]>
+>;
+type _ToggleThumbColorListIncludesEveryVariant = AssertNever<
+  Exclude<ToggleThumbColor, (typeof TOGGLE_THUMB_COLORS)[number]>
+>;
