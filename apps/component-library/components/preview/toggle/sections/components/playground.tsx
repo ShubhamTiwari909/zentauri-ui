@@ -12,14 +12,12 @@ import {
   SelectValue,
 } from "@zentauri-ui/zentauri-components/ui/select";
 
-import { TOGGLE_APPEARANCES, TOGGLE_SIZES } from "./data";
+import { TOGGLE_APPEARANCES, TOGGLE_SIZES, TOGGLE_THUMB_COLORS } from "./data";
 import { ToggleDemo } from "./demo";
 import { toggleSnippet } from "./snippets";
 import type { ToggleAppearance, ToggleDemoProps, ToggleSize } from "./types";
 
 type ToggleThumbColor = NonNullable<ToggleDemoProps["thumbColor"]>;
-
-const TOGGLE_THUMB_COLORS = TOGGLE_APPEARANCES as readonly ToggleThumbColor[];
 
 type VariantSelectProps<T extends string> = {
   label: string;
@@ -77,7 +75,20 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
   const handleKeyDown =
     (appearance: ToggleAppearance) =>
     (event: KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === "Enter" || event.key === " ") {
+      // Enter activates on keydown; Space activates on keyup to match the
+      // native button / WAI-ARIA button pattern (allows cancel-by-move).
+      if (event.key === "Enter") {
+        event.preventDefault();
+        onSelect(appearance);
+      } else if (event.key === " ") {
+        event.preventDefault();
+      }
+    };
+
+  const handleKeyUp =
+    (appearance: ToggleAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === " ") {
         event.preventDefault();
         onSelect(appearance);
       }
@@ -103,16 +114,17 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
               aria-pressed={isActive}
               onClick={() => onSelect(itemAppearance)}
               onKeyDown={handleKeyDown(itemAppearance)}
+              onKeyUp={handleKeyUp(itemAppearance)}
               className={`rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
                   : "ring-1 ring-slate-200 hover:ring-slate-300 dark:ring-white/10 dark:hover:ring-white/20"
               }`}
             >
-              <span className="mb-2 block break-words text-xs text-slate-600 dark:text-slate-400">
+              <span className="mb-2 block wrap-break-word text-xs text-slate-600 dark:text-slate-400">
                 {itemAppearance}
               </span>
-              <div className="pointer-events-none">
+              <div className="pointer-events-none" inert>
                 <ToggleDemo
                   appearance={itemAppearance}
                   size="md"

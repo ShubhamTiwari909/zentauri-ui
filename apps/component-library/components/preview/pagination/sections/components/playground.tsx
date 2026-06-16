@@ -76,7 +76,20 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
   const handleKeyDown =
     (appearance: PaginationAppearance) =>
     (event: KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === "Enter" || event.key === " ") {
+      // Enter activates on keydown; Space activates on keyup to match the
+      // native button / WAI-ARIA button pattern (allows cancel-by-move).
+      if (event.key === "Enter") {
+        event.preventDefault();
+        onSelect(appearance);
+      } else if (event.key === " ") {
+        event.preventDefault();
+      }
+    };
+
+  const handleKeyUp =
+    (appearance: PaginationAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === " ") {
         event.preventDefault();
         onSelect(appearance);
       }
@@ -102,6 +115,7 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
               aria-pressed={isActive}
               onClick={() => onSelect(appearance)}
               onKeyDown={handleKeyDown(appearance)}
+              onKeyUp={handleKeyUp(appearance)}
               className={`rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
@@ -111,7 +125,7 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
               <p className="mb-2 text-xs font-medium text-slate-700 dark:text-slate-300">
                 {appearance}
               </p>
-              <div className="pointer-events-none" aria-hidden>
+              <div className="pointer-events-none" inert>
                 <Pagination
                   appearance={appearance}
                   size="sm"

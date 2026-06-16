@@ -87,7 +87,20 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
   const handleKeyDown =
     (appearance: TabsListAppearance) =>
     (event: KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === "Enter" || event.key === " ") {
+      // Enter activates on keydown; Space activates on keyup to match the
+      // native button / WAI-ARIA button pattern (allows cancel-by-move).
+      if (event.key === "Enter") {
+        event.preventDefault();
+        onSelect(appearance);
+      } else if (event.key === " ") {
+        event.preventDefault();
+      }
+    };
+
+  const handleKeyUp =
+    (appearance: TabsListAppearance) =>
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === " ") {
         event.preventDefault();
         onSelect(appearance);
       }
@@ -113,6 +126,7 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
               aria-pressed={isActive}
               onClick={() => onSelect(appearance)}
               onKeyDown={handleKeyDown(appearance)}
+              onKeyUp={handleKeyUp(appearance)}
               className={`rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
@@ -122,7 +136,7 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
               <span className="mb-2 block text-xs text-slate-600 dark:text-slate-400">
                 {appearance}
               </span>
-              <div className="pointer-events-none">
+              <div className="pointer-events-none" inert>
                 <Tabs
                   defaultValue="one"
                   appearance={appearance}

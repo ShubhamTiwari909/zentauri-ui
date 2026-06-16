@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @source "../../../packages/shared";
 @source "../node_modules/@zentauri-ui/zentauri-components";
-/* touch: nudge tailwind rescan */
 
 :root {
   color-scheme: dark;

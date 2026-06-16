@@ -1,4 +1,7 @@
-import type { ToggleProps } from "@zentauri-ui/zentauri-components/ui/toggle";
+import type {
+  ToggleProps,
+  ToggleThumbVariantProps,
+} from "@zentauri-ui/zentauri-components/ui/toggle";
 
 export const TOGGLE_CODE_EXAMPLES_SECTION_CLASS =
   "rounded-3xl border dark:border-white/10 border-slate-900 bg-slate-100 dark:bg-slate-950/60 p-6 shadow-xl shadow-slate-950/40";
@@ -48,6 +51,57 @@ export const TOGGLE_APPEARANCES = [
   "aqua",
   "plum",
 ] as const satisfies readonly NonNullable<ToggleProps["appearance"]>[];
+
+// Thumb colors are their own `thumbColor` variant set on the toggle, distinct
+// from the track `appearance` tokens above — keep this list independent so the
+// two can diverge without silently coupling.
+export const TOGGLE_THUMB_COLORS = [
+  "default",
+  "success",
+  "destructive",
+  "neutral",
+  "indigo",
+  "purple",
+  "pink",
+  "orange",
+  "yellow",
+  "green",
+  "teal",
+  "cyan",
+  "lime",
+  "emerald",
+  "rose",
+  "slate",
+  "zinc",
+  "gray",
+  "stone",
+  "gradient-blue",
+  "gradient-green",
+  "gradient-red",
+  "gradient-yellow",
+  "gradient-purple",
+  "gradient-teal",
+  "gradient-indigo",
+  "gradient-pink",
+  "gradient-orange",
+  "blue",
+  "mint",
+  "ocean",
+  "sapphire",
+  "lavender",
+  "ruby",
+  "red",
+  "royal",
+  "electric",
+  "forest",
+  "sunset",
+  "magenta",
+  "crimson",
+  "aqua",
+  "plum",
+] as const satisfies readonly NonNullable<
+  ToggleThumbVariantProps["thumbColor"]
+>[];
 
 export const TOGGLE_SIZES = [
   "sm",

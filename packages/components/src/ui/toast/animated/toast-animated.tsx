@@ -1,13 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { createPortal } from "react-dom";
 
 import { cn } from "../../../lib/utils";
 
 import { toastAnimationPresets } from "./animations";
 import type { ToastProps, ToastViewportProps } from "../types";
+import { useToastPortal } from "../use-toast-portal";
 import { toastRootVariants, toastViewportVariants } from "../variants";
 import {
   ToastClose,
@@ -21,18 +22,7 @@ export function ToastViewportAnimated({
   className,
 }: ToastViewportProps) {
   const ctx = useContext(ToastStoreContext);
-  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const target = document.createElement("div");
-    target.setAttribute("data-zui-toast-portal", "");
-    document.body.appendChild(target);
-    setPortalTarget(target);
-
-    return () => {
-      target.remove();
-    };
-  }, []);
+  const portalTarget = useToastPortal();
 
   if (!ctx) {
     throw new Error(

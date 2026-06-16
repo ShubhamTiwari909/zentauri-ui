@@ -23,6 +23,7 @@ import type {
   ToastSectionProps,
   ToastViewportProps,
 } from "./types";
+import { useToastPortal } from "./use-toast-portal";
 import { toastRootVariants, toastViewportVariants } from "./variants";
 
 export const ToastStoreContext = createContext<ToastStoreContextValue | null>(
@@ -107,18 +108,7 @@ export function ToastViewport({
   className,
 }: ToastViewportProps) {
   const ctx = useContext(ToastStoreContext);
-  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const target = document.createElement("div");
-    target.setAttribute("data-zui-toast-portal", "");
-    document.body.appendChild(target);
-    setPortalTarget(target);
-
-    return () => {
-      target.remove();
-    };
-  }, []);
+  const portalTarget = useToastPortal();
 
   if (!ctx) {
     throw new Error("ToastViewport must be used within <ToastProvider>");

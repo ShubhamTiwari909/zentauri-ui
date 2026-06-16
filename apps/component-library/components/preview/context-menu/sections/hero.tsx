@@ -25,10 +25,10 @@ export function ContextMenuHeroSection({ seo }: { seo: PreviewSeoDocument }) {
       <PreviewHeroSeoBlock seo={seo} />
 
       <SectionCard variant="panel" className="max-w-xl">
-        <div>
+        <div className="flex flex-col gap-3">
           {files.map(([name, detail, tag]) => (
             <ContextMenu key={name}>
-              <ContextMenuTrigger className="mb-3">
+              <ContextMenuTrigger>
                 <article className="cursor-context-menu rounded-2xl border border-white/10 bg-slate-950/70 p-4 text-left shadow-lg transition hover:border-cyan-300/40">
                   <div className="flex items-center justify-between gap-4">
                     <div>
