@@ -103,7 +103,7 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
             >
               <div className="pointer-events-none flex-1" inert>
                 <AudioPlayer
-                  src=""
+                  src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAVFYAAFRWAAABAAgAZGF0YQAAAAA="
                   appearance={itemAppearance}
                   size="sm"
                   shape="rounded"

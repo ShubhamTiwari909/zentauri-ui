@@ -159,26 +159,43 @@ export function AudioPlayerBase(props: AudioPlayerProps) {
   const seek = useCallback((seconds: number) => {
     const audio = audioRef.current;
     if (!audio || !isFinite(audio.duration) || audio.duration <= 0) return;
-    audio.currentTime = Math.max(0, Math.min(seconds, audio.duration));
+    const nextTime = Math.max(0, Math.min(seconds, audio.duration));
+    audio.currentTime = nextTime;
+    setDuration(audio.duration);
+    setCurrentTime(nextTime);
   }, []);
 
   const seekByPercent = useCallback((percent: number) => {
     const audio = audioRef.current;
-    if (!audio || !isFinite(audio.duration) || audio.duration <= 0) return;
+    if (
+      !audio ||
+      !isFinite(percent) ||
+      !isFinite(audio.duration) ||
+      audio.duration <= 0
+    ) {
+      return;
+    }
     const clamped = Math.max(0, Math.min(percent, 100));
-    audio.currentTime = (clamped / 100) * audio.duration;
+    const nextTime = (clamped / 100) * audio.duration;
+    audio.currentTime = nextTime;
+    setDuration(audio.duration);
+    setCurrentTime(nextTime);
   }, []);
 
   const setVolume = useCallback((vol: number) => {
     const audio = audioRef.current;
-    if (!audio) return;
-    audio.volume = Math.max(0, Math.min(vol, 1));
+    if (!audio || !isFinite(vol)) return;
+    const nextVolume = Math.max(0, Math.min(vol, 1));
+    audio.volume = nextVolume;
+    setVolumeState(nextVolume);
   }, []);
 
   const toggleMute = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    audio.muted = !audio.muted;
+    const nextMuted = !audio.muted;
+    audio.muted = nextMuted;
+    setMuted(nextMuted);
   }, []);
 
   const ctx = useMemo<AudioPlayerCtx>(
@@ -277,7 +294,7 @@ export function AudioPlayerProgress({
   const handlePointerDown = useCallback(
     (e: PointerEvent<HTMLDivElement>) => {
       draggingRef.current = true;
-      (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
+      e.currentTarget.setPointerCapture?.(e.pointerId);
       seekByPercent(getPercentFromEvent(e.clientX));
     },
     [getPercentFromEvent, seekByPercent],
@@ -399,7 +416,7 @@ export function AudioPlayerVolume({
   const handlePointerDown = useCallback(
     (e: PointerEvent<HTMLDivElement>) => {
       draggingRef.current = true;
-      (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
+      e.currentTarget.setPointerCapture?.(e.pointerId);
       setVolume(getVolumeFromEvent(e.clientX));
     },
     [getVolumeFromEvent, setVolume],
