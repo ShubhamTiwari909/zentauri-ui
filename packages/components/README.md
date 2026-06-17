@@ -48,6 +48,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/animations/animations.test.tsx`                                    |    45 |
 | `src/ui/buttons/button.test.tsx`                                        |    44 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
+| `src/ui/audio-player/audio-player.test.tsx`                             |    33 |
 | `src/ui/peer-isolation.test.ts`                                         |    29 |
 | `src/accessibility/axe-core.test.tsx`                                   |    24 |
 | `src/ui/combobox/combobox.test.tsx`                                     |    24 |
@@ -69,7 +70,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useLongPress/useLongPress.test.ts`                           |     9 |
 | `src/hooks/useTableFilter/useTableFilter.test.ts`                       |     9 |
 | `src/ui/animated-number/animated-number.test.tsx`                       |     9 |
-| `src/ui/audio-player/audio-player.test.tsx`                             |    33 |
 | `src/ui/skeleton/skeleton.test.tsx`                                     |     9 |
 | `src/ui/slider/slider.test.tsx`                                         |     9 |
 | `src/ui/command/command.test.tsx`                                       |     8 |
