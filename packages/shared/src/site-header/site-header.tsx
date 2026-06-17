@@ -1,3 +1,4 @@
+/// <reference path="../assets.d.ts" />
 "use client";
 
 import { Fragment } from "react";
