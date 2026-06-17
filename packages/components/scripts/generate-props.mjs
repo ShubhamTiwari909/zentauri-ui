@@ -112,20 +112,6 @@ function readCompilerOptions() {
 }
 
 /**
- * Convert a slug or dashed identifier into PascalCase.
- *
- * @param {string} value Dashed, underscored, or space-separated text.
- * @returns {string} PascalCase identifier text.
- */
-function pascalCase(value) {
-  return value
-    .split(/[-_\s]+/)
-    .filter(Boolean)
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join("");
-}
-
-/**
  * Convert a cva variant export name into the corresponding component stem.
  *
  * Examples:
