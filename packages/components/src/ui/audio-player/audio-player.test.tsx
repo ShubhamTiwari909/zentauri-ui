@@ -107,6 +107,10 @@ describe("AudioPlayer", () => {
       '[data-slot="audio-player"]',
     ) as HTMLElement;
     expect(root.className).toMatch(/--audio-fill/);
+    expect(root.className).toContain("p-5");
+    expect(root.className).toContain("text-base");
+    expect(root.className).toContain("gap-4");
+    expect(root.className).toContain("rounded-3xl");
   });
 
   it("forwards ref to the root div", () => {
@@ -255,6 +259,18 @@ describe("AudioPlayer", () => {
       expect(screen.getByRole("button", { name: /mute/i })).toBeTruthy();
     });
 
+    it("responds to ArrowLeft key to decrease volume", async () => {
+      const user = userEvent.setup();
+      render(
+        <AudioPlayerBase src="test.mp3">
+          <AudioPlayerVolume />
+        </AudioPlayerBase>,
+      );
+      const slider = screen.getByRole("slider", { name: "Volume" });
+      await user.type(slider, "{ArrowLeft}");
+      expect(Number(slider.getAttribute("aria-valuenow"))).toBeLessThan(100);
+    });
+
     it("responds to ArrowRight key to increase volume", async () => {
       const user = userEvent.setup();
       render(
@@ -263,9 +279,10 @@ describe("AudioPlayer", () => {
         </AudioPlayerBase>,
       );
       const slider = screen.getByRole("slider", { name: "Volume" });
-      // volume starts at 100; ArrowRight increases by 5 but clamps at 100
-      await user.type(slider, "{ArrowLeft}");
-      expect(Number(slider.getAttribute("aria-valuenow"))).toBeLessThan(100);
+      await user.type(slider, "{Home}");
+      expect(slider.getAttribute("aria-valuenow")).toBe("0");
+      await user.type(slider, "{ArrowRight}");
+      expect(slider.getAttribute("aria-valuenow")).toBe("5");
     });
 
     it("responds to Home and End keys", async () => {
