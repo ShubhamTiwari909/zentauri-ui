@@ -5,6 +5,7 @@ import { defineConfig } from "tsup";
 const uiComponentNames = [
   "accordion",
   "alert",
+  "audio-player",
   "animated-number",
   "avatar",
   "badge",

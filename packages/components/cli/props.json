@@ -848,6 +848,328 @@
         }
       ]
     },
+    "audio-player": {
+      "slug": "audio-player",
+      "subcomponents": [
+        {
+          "name": "static:AudioPlayer",
+          "displayName": "AudioPlayer",
+          "propsType": "AudioPlayerProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "blue",
+                "crimson",
+                "cyan",
+                "default",
+                "destructive",
+                "electric",
+                "emerald",
+                "forest",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-indigo",
+                "gradient-orange",
+                "gradient-pink",
+                "gradient-purple",
+                "gradient-red",
+                "gradient-teal",
+                "gradient-yellow",
+                "green",
+                "indigo",
+                "lavender",
+                "lime",
+                "magenta",
+                "mint",
+                "ocean",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "rose",
+                "royal",
+                "ruby",
+                "sapphire",
+                "secondary",
+                "sky",
+                "slate",
+                "sunset",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "shape",
+              "type": "enum",
+              "required": false,
+              "default": "rounded",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "flat",
+                "pill",
+                "rounded"
+              ],
+              "variantGroup": "shape",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "autoPlay",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "loop",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onEnded",
+              "type": "(ReactEventHandler<HTMLDivElement> & (() => void)) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onPause",
+              "type": "(ReactEventHandler<HTMLDivElement> & (() => void)) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onPlay",
+              "type": "(ReactEventHandler<HTMLDivElement> & (() => void)) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onTimeUpdate",
+              "type": "(ReactEventHandler<HTMLDivElement> & ((currentTime: number, duration: number) => void)) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "src",
+              "type": "string",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:AudioPlayerProgress",
+          "displayName": "AudioPlayerProgress",
+          "propsType": "AudioPlayerProgressProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:AudioPlayerTime",
+          "displayName": "AudioPlayerTime",
+          "propsType": "AudioPlayerTimeProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "format",
+              "type": "((seconds: number) => string) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:AudioPlayerVariant",
+          "displayName": "AudioPlayerVariant",
+          "propsType": "AudioPlayerVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "shape",
+              "type": "'rounded' | 'flat' | 'pill' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:AudioPlayerVolume",
+          "displayName": "AudioPlayerVolume",
+          "propsType": "AudioPlayerVolumeProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "avatar": {
       "slug": "avatar",
       "subcomponents": [
@@ -2033,7 +2355,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'link' | 'gray' | 'violet' | 'amber' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'link' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -4830,7 +5152,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -4874,7 +5196,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -5143,7 +5465,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'destructive' | 'primary' | null | undefined",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'destructive' | 'muted' | 'amber' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -5179,7 +5501,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'destructive' | 'primary' | null | undefined",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'destructive' | 'muted' | 'amber' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -5926,7 +6248,7 @@
             },
             {
               "name": "indicatorCompleteAppearance",
-              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'amber' | 'secondary' | 'destructive' | 'glass' | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | undefined",
               "required": false,
               "default": "emerald",
               "group": "behavior",
@@ -5935,7 +6257,7 @@
             },
             {
               "name": "indicatorCurrentAppearance",
-              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'amber' | 'secondary' | 'destructive' | 'glass' | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | undefined",
               "required": false,
               "default": "violet",
               "group": "behavior",
@@ -5952,7 +6274,7 @@
             },
             {
               "name": "indicatorUpcomingAppearance",
-              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'amber' | 'secondary' | 'destructive' | 'glass' | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | undefined",
               "required": false,
               "default": "outline",
               "group": "behavior",
@@ -6970,7 +7292,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -6999,7 +7321,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -8620,7 +8942,7 @@
             },
             {
               "name": "shape",
-              "type": "'pill' | 'rounded' | 'flat' | null | undefined",
+              "type": "'rounded' | 'flat' | 'pill' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -8705,7 +9027,7 @@
             },
             {
               "name": "shape",
-              "type": "'pill' | 'rounded' | 'flat' | null | undefined",
+              "type": "'rounded' | 'flat' | 'pill' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -8827,7 +9149,7 @@
             },
             {
               "name": "shape",
-              "type": "'pill' | 'rounded' | 'flat' | null | undefined",
+              "type": "'rounded' | 'flat' | 'pill' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -9637,7 +9959,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false

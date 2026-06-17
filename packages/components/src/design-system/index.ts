@@ -1,4 +1,5 @@
 export * from "./accordion";
+export * from "./audio-player";
 export * from "./alert";
 export * from "./animated-number";
 export * from "./avatar";

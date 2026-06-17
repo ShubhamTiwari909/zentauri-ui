@@ -1,0 +1,80 @@
+{
+  "category": "Media",
+  "title": "Audio Player component for React and Next.js",
+  "description": "Accessible, themeable Audio Player component with progress scrubbing, volume control, and exported hook controls for React and Next.js.",
+  "keywords": [
+    "audio player",
+    "React",
+    "Next.js",
+    "media player",
+    "HTML5 audio",
+    "Tailwind CSS",
+    "accessible"
+  ],
+  "og": {
+    "title": "Audio Player · Zentauri UI",
+    "description": "Accessible, themeable Audio Player component with progress scrubbing, volume control, and exported hook controls for React and Next.js.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Audio Player · Zentauri UI",
+    "description": "Accessible, themeable Audio Player component with progress scrubbing, volume control, and exported hook controls for React and Next.js.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/audio-player",
+  "headings": {
+    "h1": "Audio Player for media playback",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the Audio Player when you need inline media playback — podcast episodes, voice memos, music previews. The compound component exposes sub-components for the progress bar, time display, and volume, plus a `useAudioPlayer` hook so you can wire Play/Pause/Reset buttons anywhere in the tree.",
+  "useCases": [
+    "Embed podcast or voice note playback in article pages.",
+    "Add music preview controls to a streaming catalog.",
+    "Build custom waveform players over the hook controls.",
+    "Drive keyboard-accessible scrubbing via the progress bar component."
+  ],
+  "faqs": [
+    {
+      "question": "Can I wire external buttons to the player?",
+      "answer": "Yes — call `useAudioPlayer()` inside any child of `<AudioPlayer>` to get `play`, `pause`, `toggle`, and `reset` actions and attach them to any element."
+    },
+    {
+      "question": "Does it work with Next.js App Router?",
+      "answer": "Yes. The component uses a `\"use client\"` directive internally, so you can import it directly inside server components — Next.js will handle the client boundary automatically."
+    },
+    {
+      "question": "Is the progress bar keyboard-accessible?",
+      "answer": "Yes. `AudioPlayerProgress` carries `role=\"slider\"` with arrow-key scrubbing (1 % per step), Home/End for extremes, and a visible focus ring."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "AudioPlayer wraps an HTML5 `<audio>` element and surfaces its state through React context. Sub-components (`AudioPlayerProgress`, `AudioPlayerTime`, `AudioPlayerVolume`) auto-connect to that context — no prop drilling needed.\n\nThe `useAudioPlayer()` hook lets you attach controls to buttons placed anywhere inside the `<AudioPlayer>` tree."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "All visual variants live in the `appearance` prop. Combine with `size` (sm/md/lg) and `shape` (flat/rounded/pill) to match your layout.\n\nFor headless usage, wrap your custom UI in `<AudioPlayer src=\"...\">` and drive it entirely through `useAudioPlayer()`."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The progress slider carries `role=\"slider\"`, `aria-valuenow`, `aria-valuemin`, and `aria-valuemax`. Arrow keys scrub 1 % per step; Home and End jump to the start and end.\n\nVolume has the same slider semantics. The mute toggle button carries a descriptive `aria-label` that updates with state."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "All sub-components carry `\"use client\"` through the entry point, so they are safe to import from server components. Set `NEXT_PUBLIC_SITE_URL` for correct canonical and OG URLs on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
