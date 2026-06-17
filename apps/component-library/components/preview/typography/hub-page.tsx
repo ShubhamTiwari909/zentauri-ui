@@ -2,6 +2,7 @@ import { Section } from "@/components/common/Section";
 import Link from "next/link";
 
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
+import { PreviewApiSection } from "@/components/preview/api-section";
 import { PreviewHeroSeoBlock } from "@/components/preview/seo/hero-seo-block";
 import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
@@ -52,6 +53,7 @@ export default function TypographyHubPage({
         ))}
       </Section>
 
+      <PreviewApiSection slug="typography" />
       <PreviewSeoDoc doc={seo} />
     </PreviewPageShell>
   );

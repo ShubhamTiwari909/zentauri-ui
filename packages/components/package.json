@@ -1,6 +1,6 @@
 {
   "name": "@zentauri-ui/zentauri-components",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "React + Tailwind UI kit with charts, ESM/CJS builds, per-entry exports, and a zentauri-components / zentauri-ui CLI to vendor UI or hook source into your app",
   "keywords": [
     "react",
@@ -60,6 +60,7 @@
       "import": "./dist/design-system/facade.mjs",
       "require": "./dist/design-system/facade.js"
     },
+    "./props.json": "./cli/props.json",
     "./ui/*": {
       "types": "./dist/ui/*/index.d.ts",
       "import": "./dist/ui/*.mjs",
@@ -97,10 +98,12 @@
     "build:types": "tsc -p tsconfig.emit-types.json",
     "build": "npm run build:js && npm run build:types",
     "generate:registry": "node scripts/generate-registry.mjs",
+    "generate:props": "node scripts/generate-props.mjs",
     "update:test-health": "node scripts/update-test-health.mjs",
     "check:tokens": "node scripts/check-design-tokens.mjs",
+    "check:props": "node scripts/check-props.mjs",
     "check:exports": "node scripts/check-exports.mjs",
-    "prepack": "npm run build && node scripts/generate-registry.mjs && node scripts/check-design-tokens.mjs && node scripts/check-exports.mjs",
+    "prepack": "npm run build && node scripts/generate-registry.mjs && node scripts/generate-props.mjs && node scripts/check-design-tokens.mjs && node scripts/check-props.mjs && node scripts/check-exports.mjs",
     "lint": "eslint .",
     "check-types": "tsc -p tsconfig.check-types.json --noEmit",
     "test": "vitest run",

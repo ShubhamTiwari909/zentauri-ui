@@ -1,5 +1,6 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
+import { PreviewApiSection } from "@/components/preview/api-section";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { PopoverCodeExamplesSection } from "./sections/snippet-sections";
 import { PopoverExamplesSection } from "./sections/component-demo";
@@ -15,6 +16,7 @@ export default function PopoverPreviewPage({
       <PopoverHeroSection seo={seo} />
       <PopoverExamplesSection />
       <PopoverCodeExamplesSection />
+      <PreviewApiSection slug="popover" />
       <PreviewSeoDoc doc={seo} />
     </PreviewPageShell>
   );

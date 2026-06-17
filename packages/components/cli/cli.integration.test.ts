@@ -1,5 +1,12 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
+import {
+  existsSync,
+  mkdtempSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -106,6 +113,35 @@ describe("zentauri-ui CLI", () => {
     }
   });
 
+  it("should not use a monorepo root config when add runs inside a package", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-monorepo-"));
+    try {
+      const appDir = join(dir, "apps/web");
+      execFileSync(process.execPath, [
+        "-e",
+        `require("node:fs").mkdirSync(${JSON.stringify(appDir)}, { recursive: true })`,
+      ]);
+      writeFileSync(
+        join(dir, "package.json"),
+        JSON.stringify({ private: true, workspaces: ["apps/*"] }),
+      );
+      writeFileSync(join(appDir, "package.json"), JSON.stringify({}));
+
+      runCli(dir, ["init"]);
+      const stderr = runCliError(appDir, ["add", "button"]);
+
+      expect(stderr).toContain("No components.json found");
+      expect(
+        existsSync(join(dir, "src/components/ui/buttons/button.tsx")),
+      ).toBe(false);
+      expect(
+        existsSync(join(appDir, "src/components/ui/buttons/button.tsx")),
+      ).toBe(false);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("should add an animated component explicitly and report missing peers", () => {
     const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-add-animated-"));
     try {
@@ -162,11 +198,17 @@ describe("zentauri-ui CLI", () => {
       expect(
         existsSync(join(dir, "src/components/design-system/button.ts")),
       ).toBe(true);
+      expect(
+        existsSync(join(dir, "src/components/design-system/tokens.ts")),
+      ).toBe(true);
+      expect(
+        readdirSync(join(dir, "src/components/design-system")).sort(),
+      ).toEqual(["button.ts", "tokens.ts"]);
       const variants = readFileSync(
         join(dir, "src/components/ui/buttons/variants.ts"),
         "utf8",
       );
-      expect(variants).toContain("../../design-system");
+      expect(variants).toContain("../../design-system/button");
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

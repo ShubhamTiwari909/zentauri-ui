@@ -238,8 +238,9 @@ async function walkFiles(dir) {
 }
 
 /**
- * Walks upward from `startDir` toward the filesystem root until `components.json`
- * exists, or returns `undefined` if none found (e.g. user forgot `init`).
+ * Walks upward from `startDir` until `components.json` exists. If the command
+ * starts inside a package, discovery stops at that package's `package.json`
+ * boundary so monorepo root config cannot capture nested package installs.
  *
  * @param {string} startDir — typically `process.cwd()` or `--cwd` resolved path
  * @returns {string | undefined} — absolute path to `components.json` if found
@@ -253,10 +254,16 @@ async function walkFiles(dir) {
  */
 async function findComponentsJson(startDir) {
   let d = startDir;
+  const packagePath = findPackageJson(startDir);
+  const packageBoundary = packagePath ? dirname(packagePath) : undefined;
+
   for (;;) {
     const p = join(d, "components.json");
     if (existsSync(p)) {
       return p;
+    }
+    if (packageBoundary && d === packageBoundary) {
+      return undefined;
     }
     const parent = dirname(d);
     if (parent === d) {
@@ -957,6 +964,7 @@ async function copyUiComponent(componentName, config, configDir, packageRoot) {
     return true;
   });
   const usedHooks = new Set();
+  const designSystemImportTarget = getDesignSystemEntryName(componentName);
 
   for (const absSrc of files) {
     const rel = relative(srcRoot, absSrc);
@@ -972,10 +980,13 @@ async function copyUiComponent(componentName, config, configDir, packageRoot) {
         hooksAlias: config.aliases.hooks,
         uiAlias: config.aliases.ui,
       });
+      const rewrittenCode = designSystemImportTarget
+        ? rewriteDesignSystemBarrelImports(code, designSystemImportTarget)
+        : code;
       for (const h of uh) {
         usedHooks.add(h);
       }
-      await writeFile(absDest, code, "utf8");
+      await writeFile(absDest, rewrittenCode, "utf8");
     } else {
       await copyFile(absSrc, absDest);
     }
@@ -1022,11 +1033,57 @@ async function copyHookFolder(hookName, config, configDir, packageRoot) {
 }
 
 /**
- * Copies shared component design tokens/variant maps beside the consumer's UI
- * folder so vendored components can keep relative `../../design-system/*`
- * imports without adding a new public alias to `components.json`.
+ * Maps registry component names to their matching design-system token file.
  */
-async function copyDesignSystemFolder(config, configDir, packageRoot) {
+function getDesignSystemEntryName(componentName) {
+  if (
+    componentName.startsWith("charts/") ||
+    componentName.startsWith("animations/")
+  ) {
+    return undefined;
+  }
+  if (componentName === "buttons") {
+    return "button";
+  }
+  return componentName;
+}
+
+/**
+ * Narrows vendored imports from the design-system barrel to the selected token
+ * file. This lets a component like `buttons` vendor `design-system/button.ts`
+ * without also requiring `design-system/index.ts`.
+ */
+function rewriteDesignSystemBarrelImports(source, designSystemEntryName) {
+  return source.replace(
+    /from\s+(["'])((?:\.\.\/)+)design-system\1/g,
+    (_, quote, rel) =>
+      `from ${quote}${rel}design-system/${designSystemEntryName}${quote}`,
+  );
+}
+
+/**
+ * Extracts local design-system dependencies from a design token file.
+ */
+function extractDesignSystemDependencies(source) {
+  const deps = new Set();
+  const re = /from\s+["']\.\/([^"']+)["']/g;
+  let match;
+  while ((match = re.exec(source)) !== null) {
+    deps.add(match[1].replace(/\.(tsx?|jsx?)$/, ""));
+  }
+  return [...deps];
+}
+
+/**
+ * Copies only the design-system token files required by selected components,
+ * plus local token dependencies such as `tokens.ts`.
+ */
+async function copyDesignSystemFiles(
+  componentNames,
+  config,
+  configDir,
+  packageRoot,
+) {
   const srcRoot = join(packageRoot, "src", "design-system");
   if (!existsSync(srcRoot)) {
     return;
@@ -1039,28 +1096,34 @@ async function copyDesignSystemFolder(config, configDir, packageRoot) {
     dirname(config.resolvedPaths.ui),
     "design-system",
   );
-  const files = await walkFiles(srcRoot);
-  for (const absSrc of files) {
-    const rel = relative(srcRoot, absSrc);
-    if (isTestFile(rel)) {
+  const pending = componentNames
+    .map((name) => getDesignSystemEntryName(name))
+    .filter(Boolean);
+  const copied = new Set();
+
+  while (pending.length > 0) {
+    const entryName = pending.shift();
+    if (copied.has(entryName)) {
       continue;
     }
+    const absSrc = join(srcRoot, `${entryName}.ts`);
+    if (!existsSync(absSrc)) {
+      continue;
+    }
+    copied.add(entryName);
+    const rel = relative(srcRoot, absSrc);
     const absDest = join(destRoot, rel);
+    const raw = await readFile(absSrc, "utf8");
+    for (const dep of extractDesignSystemDependencies(raw)) {
+      if (!copied.has(dep)) {
+        pending.push(dep);
+      }
+    }
     if (existsSync(absDest)) {
       continue;
     }
     await mkdir(dirname(absDest), { recursive: true });
-    if (/\.(tsx?|jsx?)$/.test(absSrc)) {
-      const raw = await readFile(absSrc, "utf8");
-      const { code } = rewriteImports(raw, {
-        utilsAlias: config.aliases.utils,
-        hooksAlias: config.aliases.hooks,
-        uiAlias: config.aliases.ui,
-      });
-      await writeFile(absDest, code, "utf8");
-    } else {
-      await copyFile(absSrc, absDest);
-    }
+    await writeFile(absDest, raw, "utf8");
   }
 }
 
@@ -1258,7 +1321,7 @@ async function cmdAdd(names, cwd, options = {}) {
   }
 
   await ensureUtilsFile(config, configDir, packageRoot);
-  await copyDesignSystemFolder(config, configDir, packageRoot);
+  await copyDesignSystemFiles(resolvedNames, config, configDir, packageRoot);
 
   const allHooks = new Set();
   for (const name of resolvedNames) {

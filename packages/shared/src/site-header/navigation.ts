@@ -55,6 +55,5 @@ export function getSiteChromeNavItems(
 export function getSiteHeaderBrand(site: SiteHeaderSite) {
   return {
     href: site === "demos" ? ZENTAURI_LIBRARY_ORIGIN : "/",
-    subtitle: site === "demos" ? "Demos" : "Library",
   };
 }
