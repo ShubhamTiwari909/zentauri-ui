@@ -41,8 +41,6 @@ describe("PageWrapper", () => {
     "/",
     "/preview/animations",
     "/preview/components",
-    "/preview/hooks",
-    "/preview/hooks/use-toggle",
     "/preview/typography",
     "/preview/charts",
     "/contact-us",

@@ -65,7 +65,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-accordion-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -77,7 +76,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-accordion-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -513,7 +511,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-alert-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -525,7 +522,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-alert-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -906,7 +902,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-avatar-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -918,7 +913,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm", "xl"],
-              "tokenRef": "--zui-avatar-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -1267,7 +1261,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-badge-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -1279,7 +1272,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["dot", "pill", "square"],
-              "tokenRef": "--zui-badge-shape-*",
               "variantGroup": "shape",
               "deprecated": false
             },
@@ -1291,7 +1283,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-badge-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -1785,7 +1776,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["md", "sm"],
-              "tokenRef": "--zui-breadcrumb-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -1917,7 +1907,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-buttons-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -1944,7 +1933,6 @@
                 "sm",
                 "xl"
               ],
-              "tokenRef": "--zui-buttons-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -2152,7 +2140,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-card-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -2164,7 +2151,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["full", "lg", "md", "sm"],
-              "tokenRef": "--zui-card-rounded-*",
               "variantGroup": "rounded",
               "deprecated": false
             },
@@ -2176,7 +2162,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-card-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -2495,7 +2480,6 @@
                 "warning",
                 "zinc"
               ],
-              "tokenRef": "--zui-checkbox-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -2507,7 +2491,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-checkbox-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -2903,7 +2886,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-combobox-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -2915,7 +2897,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-combobox-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -2927,7 +2908,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["default", "lg", "md", "none", "sm", "xl"],
-              "tokenRef": "--zui-combobox-spacing-*",
               "variantGroup": "spacing",
               "deprecated": false
             },
@@ -3083,7 +3063,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-combobox-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -3094,7 +3073,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["true"],
-              "tokenRef": "--zui-combobox-disabled-*",
               "variantGroup": "disabled",
               "deprecated": false
             },
@@ -3263,7 +3241,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-combobox-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -3319,7 +3296,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-combobox-variant-*",
               "variantGroup": "variant",
               "deprecated": false
             },
@@ -3539,7 +3515,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-command-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -3551,7 +3526,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-command-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -4044,7 +4018,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["default", "lg", "md", "none", "sm", "xl"],
-              "tokenRef": "--zui-context-menu-spacing-*",
               "variantGroup": "spacing",
               "deprecated": false
             },
@@ -4168,7 +4141,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-context-menu-variant-*",
               "variantGroup": "variant",
               "deprecated": false
             },
@@ -4655,7 +4627,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-copy-button-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -4666,7 +4637,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["false", "true"],
-              "tokenRef": "--zui-copy-button-iconOnly-*",
               "variantGroup": "iconOnly",
               "description": "Render only the icon (default). Pass `false` to show the label text alongside the icon.",
               "deprecated": false
@@ -4679,7 +4649,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-copy-button-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -5010,7 +4979,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-divider-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -5022,7 +4990,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["horizontal", "vertical"],
-              "tokenRef": "--zui-divider-orientation-*",
               "variantGroup": "orientation",
               "deprecated": false
             },
@@ -5034,7 +5001,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-divider-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -5305,7 +5271,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-drawer-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -5317,7 +5282,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["bottom", "left", "right", "top"],
-              "tokenRef": "--zui-drawer-side-*",
               "variantGroup": "side",
               "deprecated": false
             },
@@ -5329,7 +5293,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["full", "lg", "md", "sm", "xl"],
-              "tokenRef": "--zui-drawer-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -5451,7 +5414,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-drawer-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -6012,7 +5974,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["center", "end", "start"],
-              "tokenRef": "--zui-empty-state-align-*",
               "variantGroup": "align",
               "deprecated": false
             },
@@ -6049,7 +6010,6 @@
                 "sunset",
                 "zinc"
               ],
-              "tokenRef": "--zui-empty-state-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -6061,7 +6021,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-empty-state-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -6300,7 +6259,6 @@
                 "warning",
                 "zinc"
               ],
-              "tokenRef": "--zui-file-upload-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -6459,7 +6417,6 @@
                 "warning",
                 "zinc"
               ],
-              "tokenRef": "--zui-inputs-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -6478,7 +6435,6 @@
                 "radio",
                 "textarea"
               ],
-              "tokenRef": "--zui-inputs-as-*",
               "variantGroup": "as",
               "deprecated": false
             },
@@ -6489,7 +6445,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["false", "true"],
-              "tokenRef": "--zui-inputs-ring-*",
               "variantGroup": "ring",
               "deprecated": false
             },
@@ -6501,7 +6456,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-inputs-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -6824,7 +6778,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-kbd-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -6836,7 +6789,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-kbd-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -7075,7 +7027,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-marquee-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -7086,7 +7037,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["false", "true"],
-              "tokenRef": "--zui-marquee-fade-*",
               "variantGroup": "fade",
               "deprecated": false
             },
@@ -7098,7 +7048,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["horizontal", "vertical"],
-              "tokenRef": "--zui-marquee-orientation-*",
               "variantGroup": "orientation",
               "deprecated": false
             },
@@ -7110,7 +7059,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-marquee-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -7336,7 +7284,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-modal-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -7348,7 +7295,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["bottom", "center", "top"],
-              "tokenRef": "--zui-modal-position-*",
               "variantGroup": "position",
               "deprecated": false
             },
@@ -7360,7 +7306,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["full", "lg", "md", "sm", "xl"],
-              "tokenRef": "--zui-modal-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -7482,7 +7427,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-modal-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -7647,7 +7591,6 @@
                 "warning",
                 "zinc"
               ],
-              "tokenRef": "--zui-otp-input-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -7659,7 +7602,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-otp-input-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -7861,7 +7803,6 @@
                 "sm",
                 "xl"
               ],
-              "tokenRef": "--zui-pagination-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -8067,7 +8008,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-popover-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -8123,7 +8063,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-popover-variant-*",
               "variantGroup": "variant",
               "deprecated": false
             },
@@ -8135,7 +8074,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["2xl", "lg", "md", "sm", "xl", "xs"],
-              "tokenRef": "--zui-popover-width-*",
               "variantGroup": "width",
               "deprecated": false
             },
@@ -8329,7 +8267,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["false", "true"],
-              "tokenRef": "--zui-progress-animated-*",
               "variantGroup": "animated",
               "deprecated": false
             },
@@ -8387,7 +8324,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-progress-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -8399,7 +8335,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["flat", "pill", "rounded"],
-              "tokenRef": "--zui-progress-shape-*",
               "variantGroup": "shape",
               "deprecated": false
             },
@@ -8411,7 +8346,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm", "xl", "xs"],
-              "tokenRef": "--zui-progress-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -8422,7 +8356,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["false", "true"],
-              "tokenRef": "--zui-progress-striped-*",
               "variantGroup": "striped",
               "deprecated": false
             },
@@ -8805,7 +8738,6 @@
                 "warning",
                 "zinc"
               ],
-              "tokenRef": "--zui-radio-group-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -8817,7 +8749,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-radio-group-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -8965,7 +8896,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-radio-group-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -9379,7 +9309,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-rating-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -9612,7 +9541,6 @@
                 "violet",
                 "zinc"
               ],
-              "tokenRef": "--zui-scroll-area-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -9624,7 +9552,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["both", "horizontal", "vertical"],
-              "tokenRef": "--zui-scroll-area-orientation-*",
               "variantGroup": "orientation",
               "deprecated": false
             },
@@ -9636,7 +9563,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["always", "auto", "hidden", "hover"],
-              "tokenRef": "--zui-scroll-area-scrollbar-*",
               "variantGroup": "scrollbar",
               "deprecated": false
             },
@@ -9647,7 +9573,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["false", "true"],
-              "tokenRef": "--zui-scroll-area-shadow-*",
               "variantGroup": "shadow",
               "deprecated": false
             },
@@ -9659,7 +9584,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-scroll-area-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -10063,7 +9987,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-select-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -10075,7 +9998,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-select-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -10087,7 +10009,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["default", "lg", "md", "none", "sm", "xl"],
-              "tokenRef": "--zui-select-spacing-*",
               "variantGroup": "spacing",
               "deprecated": false
             },
@@ -10193,7 +10114,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-select-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -10204,7 +10124,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["true"],
-              "tokenRef": "--zui-select-disabled-*",
               "variantGroup": "disabled",
               "deprecated": false
             },
@@ -10273,7 +10192,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-select-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -10329,7 +10247,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-select-variant-*",
               "variantGroup": "variant",
               "deprecated": false
             },
@@ -10453,7 +10370,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["none", "pulse", "shimmer"],
-              "tokenRef": "--zui-skeleton-animation-*",
               "variantGroup": "animation",
               "deprecated": false
             },
@@ -10511,7 +10427,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-skeleton-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -10523,7 +10438,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["full", "lg", "md", "none", "sm"],
-              "tokenRef": "--zui-skeleton-rounded-*",
               "variantGroup": "rounded",
               "deprecated": false
             },
@@ -10581,7 +10495,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-skeleton-shimmerTone-*",
               "variantGroup": "shimmerTone",
               "deprecated": false
             },
@@ -10593,7 +10506,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-skeleton-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -10817,7 +10729,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-skeleton-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -11593,7 +11504,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-slider-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -11755,7 +11665,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-slider-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -11817,7 +11726,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-slider-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -11879,7 +11787,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-slider-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -12054,7 +11961,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-table-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -12066,7 +11972,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-table-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -12077,7 +11982,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["false", "true"],
-              "tokenRef": "--zui-table-stickyHeader-*",
               "variantGroup": "stickyHeader",
               "deprecated": false
             },
@@ -12153,7 +12057,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["center", "left", "right"],
-              "tokenRef": "--zui-table-textAlign-*",
               "variantGroup": "textAlign",
               "deprecated": false
             },
@@ -12392,7 +12295,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["horizontal", "vertical"],
-              "tokenRef": "--zui-tabs-orientation-*",
               "variantGroup": "orientation",
               "deprecated": false
             },
@@ -12404,7 +12306,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-tabs-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -12416,7 +12317,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["default", "pills", "underline"],
-              "tokenRef": "--zui-tabs-variant-*",
               "variantGroup": "variant",
               "deprecated": false
             },
@@ -12656,7 +12556,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-timeline-size-*",
               "variantGroup": "size",
               "description": "Controls indicator size, content spacing, and text scale.",
               "deprecated": false
@@ -12870,7 +12769,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-timeline-appearance-*",
               "variantGroup": "appearance",
               "description": "Override the appearance inherited from the Timeline root.",
               "deprecated": false
@@ -13217,7 +13115,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-toast-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -13229,7 +13126,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-toast-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -13321,7 +13217,6 @@
                 "top-left",
                 "top-right"
               ],
-              "tokenRef": "--zui-toast-position-*",
               "variantGroup": "position",
               "deprecated": false
             },
@@ -13368,7 +13263,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-toggle-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -13424,7 +13318,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-toggle-thumbColor-*",
               "variantGroup": "thumbColor",
               "deprecated": false
             },
@@ -13906,7 +13799,6 @@
                 "yellow",
                 "zinc"
               ],
-              "tokenRef": "--zui-tree-view-appearance-*",
               "variantGroup": "appearance",
               "deprecated": false
             },
@@ -13918,7 +13810,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["lg", "md", "sm"],
-              "tokenRef": "--zui-tree-view-size-*",
               "variantGroup": "size",
               "deprecated": false
             },
@@ -14291,7 +14182,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["1", "2", "3", "4", "5", "6"],
-              "tokenRef": "--zui-typography-level-*",
               "variantGroup": "level",
               "deprecated": false
             },
@@ -14590,7 +14480,6 @@
               "group": "variant",
               "isVariant": true,
               "options": ["base", "lg", "sm"],
-              "tokenRef": "--zui-typography-size-*",
               "variantGroup": "size",
               "deprecated": false
             },

@@ -641,7 +641,6 @@ function readPropsForNode(node, checker, variantDefinition, componentName) {
             group: "variant",
             isVariant: true,
             options: variantOptions,
-            tokenRef: `--zui-${componentName}-${name}-*`,
             variantGroup: name,
           }
         : {

@@ -91,6 +91,7 @@ export function SiteHeader({
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5 sm:gap-6 sm:px-8 sm:py-4 lg:px-10">
         <Link
           href={brand.href}
+          aria-label="Zentauri UI"
           className="group flex shrink-0 relative items-center gap-0.5 rounded-xl py-1 pr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
         >
           <Image
@@ -101,7 +102,7 @@ export function SiteHeader({
             className="rounded-lg border border-indigo-200"
           />
           <span className="flex flex-col items-start gap-0.5">
-            <span className="absolute left-9 top-4.5 z-10 italic bold bg-slate-950 min-w-20 font-semibold leading-none tracking-tight text-indigo-100 transition group-hover:text-indigo-200 text-base">
+            <span className="absolute left-9 top-4.5 z-10 italic bg-slate-950 min-w-20 font-semibold leading-none tracking-tight text-indigo-100 transition group-hover:text-indigo-200 text-base">
               entauri
             </span>
           </span>

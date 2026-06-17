@@ -4,7 +4,8 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { Toggle } from "@zentauri-ui/zentauri-components/ui/toggle";
 
-function shouldShowThemeToggle(pathname: string) {
+function shouldShowThemeToggle(pathname: string | null) {
+  if (!pathname) return false;
   return (
     pathname.startsWith("/preview/components/") ||
     pathname === "/preview/installation" ||
