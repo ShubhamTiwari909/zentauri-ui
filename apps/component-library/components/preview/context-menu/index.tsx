@@ -1,5 +1,6 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
+import { PreviewApiSection } from "@/components/preview/api-section";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
 import { ContextMenuCodeExamplesSection } from "./sections/snippet-sections";
@@ -16,6 +17,7 @@ export default function ContextMenuPreviewPage({
       <ContextMenuHeroSection seo={seo} />
       <ContextMenuExamplesSection />
       <ContextMenuCodeExamplesSection />
+      <PreviewApiSection slug="context-menu" />
       <PreviewSeoDoc doc={seo} />
     </PreviewPageShell>
   );

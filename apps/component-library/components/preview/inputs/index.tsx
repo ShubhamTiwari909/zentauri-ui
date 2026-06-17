@@ -1,5 +1,6 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
+import { PreviewApiSection } from "@/components/preview/api-section";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { InputsAppearanceMotionSection } from "./sections/appearance-motion";
 import { InputsCheckboxSection } from "./sections/checkbox";
@@ -29,6 +30,7 @@ export default function InputsPreviewPage({
       <InputsStatesSection />
       <InputsControlledSection />
       <InputsCodeExamplesSection />
+      <PreviewApiSection slug="inputs" />
       <PreviewSeoDoc doc={seo} />
     </PreviewPageShell>
   );

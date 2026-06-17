@@ -1,5 +1,6 @@
 import { PreviewPageShell } from "@/components/common/preview-page-shell";
 import { PreviewSeoDoc } from "@/components/preview/seo/seo-doc";
+import { PreviewApiSection } from "@/components/preview/api-section";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { ComboboxCodeExamplesSection } from "./sections/snippet-sections";
 import { ComboboxExamplesSection } from "./sections/component-demo";
@@ -15,6 +16,7 @@ export default function ComboboxPreviewPage({
       <ComboboxHeroSection seo={seo} />
       <ComboboxExamplesSection />
       <ComboboxCodeExamplesSection />
+      <PreviewApiSection slug="combobox" />
       <PreviewSeoDoc doc={seo} />
     </PreviewPageShell>
   );
