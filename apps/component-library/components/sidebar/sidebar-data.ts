@@ -169,6 +169,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/animated-number",
       },
       {
+        title: "Audio Player",
+        href: "/preview/components/audio-player",
+      },
+      {
         title: "Avatar",
         href: "/preview/components/avatar",
       },

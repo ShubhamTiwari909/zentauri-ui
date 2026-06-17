@@ -26,6 +26,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Data",
   },
   {
+    id: "audio-player",
+    name: "Audio Player",
+    description:
+      "Compound HTML5 audio player with seekable progress bar, volume control, and a useAudioPlayer hook for wiring external play/pause/reset controls.",
+    href: "/preview/components/audio-player",
+    badge: "Media",
+  },
+  {
     id: "avatar",
     name: "Avatar",
     description:
