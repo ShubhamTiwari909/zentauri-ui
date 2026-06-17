@@ -75,7 +75,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -521,7 +525,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -912,7 +920,12 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm", "xl"],
+              "options": [
+                "lg",
+                "md",
+                "sm",
+                "xl"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -1271,7 +1284,11 @@
               "default": "pill",
               "group": "variant",
               "isVariant": true,
-              "options": ["dot", "pill", "square"],
+              "options": [
+                "dot",
+                "pill",
+                "square"
+              ],
               "variantGroup": "shape",
               "deprecated": false
             },
@@ -1282,7 +1299,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -1775,7 +1796,10 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["md", "sm"],
+              "options": [
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -2150,7 +2174,12 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["full", "lg", "md", "sm"],
+              "options": [
+                "full",
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "rounded",
               "deprecated": false
             },
@@ -2161,7 +2190,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -2490,7 +2523,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -2896,7 +2933,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -2907,7 +2948,14 @@
               "default": "default",
               "group": "variant",
               "isVariant": true,
-              "options": ["default", "lg", "md", "none", "sm", "xl"],
+              "options": [
+                "default",
+                "lg",
+                "md",
+                "none",
+                "sm",
+                "xl"
+              ],
               "variantGroup": "spacing",
               "deprecated": false
             },
@@ -3072,7 +3120,9 @@
               "required": false,
               "group": "variant",
               "isVariant": true,
-              "options": ["true"],
+              "options": [
+                "true"
+              ],
               "variantGroup": "disabled",
               "deprecated": false
             },
@@ -3240,7 +3290,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -3525,7 +3579,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -4017,7 +4075,14 @@
               "default": "default",
               "group": "variant",
               "isVariant": true,
-              "options": ["default", "lg", "md", "none", "sm", "xl"],
+              "options": [
+                "default",
+                "lg",
+                "md",
+                "none",
+                "sm",
+                "xl"
+              ],
               "variantGroup": "spacing",
               "deprecated": false
             },
@@ -4636,7 +4701,10 @@
               "required": false,
               "group": "variant",
               "isVariant": true,
-              "options": ["false", "true"],
+              "options": [
+                "false",
+                "true"
+              ],
               "variantGroup": "iconOnly",
               "description": "Render only the icon (default). Pass `false` to show the label text alongside the icon.",
               "deprecated": false
@@ -4648,7 +4716,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -4989,7 +5061,10 @@
               "default": "horizontal",
               "group": "variant",
               "isVariant": true,
-              "options": ["horizontal", "vertical"],
+              "options": [
+                "horizontal",
+                "vertical"
+              ],
               "variantGroup": "orientation",
               "deprecated": false
             },
@@ -5000,7 +5075,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -5281,7 +5360,12 @@
               "default": "right",
               "group": "variant",
               "isVariant": true,
-              "options": ["bottom", "left", "right", "top"],
+              "options": [
+                "bottom",
+                "left",
+                "right",
+                "top"
+              ],
               "variantGroup": "side",
               "deprecated": false
             },
@@ -5292,7 +5376,13 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["full", "lg", "md", "sm", "xl"],
+              "options": [
+                "full",
+                "lg",
+                "md",
+                "sm",
+                "xl"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -5973,7 +6063,11 @@
               "default": "center",
               "group": "variant",
               "isVariant": true,
-              "options": ["center", "end", "start"],
+              "options": [
+                "center",
+                "end",
+                "start"
+              ],
               "variantGroup": "align",
               "deprecated": false
             },
@@ -6020,7 +6114,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -6444,7 +6542,10 @@
               "required": false,
               "group": "variant",
               "isVariant": true,
-              "options": ["false", "true"],
+              "options": [
+                "false",
+                "true"
+              ],
               "variantGroup": "ring",
               "deprecated": false
             },
@@ -6455,7 +6556,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -6788,7 +6893,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -7036,7 +7145,10 @@
               "required": false,
               "group": "variant",
               "isVariant": true,
-              "options": ["false", "true"],
+              "options": [
+                "false",
+                "true"
+              ],
               "variantGroup": "fade",
               "deprecated": false
             },
@@ -7047,7 +7159,10 @@
               "default": "horizontal",
               "group": "variant",
               "isVariant": true,
-              "options": ["horizontal", "vertical"],
+              "options": [
+                "horizontal",
+                "vertical"
+              ],
               "variantGroup": "orientation",
               "deprecated": false
             },
@@ -7058,7 +7173,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -7294,7 +7413,11 @@
               "default": "center",
               "group": "variant",
               "isVariant": true,
-              "options": ["bottom", "center", "top"],
+              "options": [
+                "bottom",
+                "center",
+                "top"
+              ],
               "variantGroup": "position",
               "deprecated": false
             },
@@ -7305,7 +7428,13 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["full", "lg", "md", "sm", "xl"],
+              "options": [
+                "full",
+                "lg",
+                "md",
+                "sm",
+                "xl"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -7601,7 +7730,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -8007,7 +8140,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -8073,7 +8210,14 @@
               "default": "xs",
               "group": "variant",
               "isVariant": true,
-              "options": ["2xl", "lg", "md", "sm", "xl", "xs"],
+              "options": [
+                "2xl",
+                "lg",
+                "md",
+                "sm",
+                "xl",
+                "xs"
+              ],
               "variantGroup": "width",
               "deprecated": false
             },
@@ -8266,7 +8410,10 @@
               "required": false,
               "group": "variant",
               "isVariant": true,
-              "options": ["false", "true"],
+              "options": [
+                "false",
+                "true"
+              ],
               "variantGroup": "animated",
               "deprecated": false
             },
@@ -8334,7 +8481,11 @@
               "default": "rounded",
               "group": "variant",
               "isVariant": true,
-              "options": ["flat", "pill", "rounded"],
+              "options": [
+                "flat",
+                "pill",
+                "rounded"
+              ],
               "variantGroup": "shape",
               "deprecated": false
             },
@@ -8345,7 +8496,13 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm", "xl", "xs"],
+              "options": [
+                "lg",
+                "md",
+                "sm",
+                "xl",
+                "xs"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -8355,7 +8512,10 @@
               "required": false,
               "group": "variant",
               "isVariant": true,
-              "options": ["false", "true"],
+              "options": [
+                "false",
+                "true"
+              ],
               "variantGroup": "striped",
               "deprecated": false
             },
@@ -8748,7 +8908,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -8895,7 +9059,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -9551,7 +9719,11 @@
               "default": "vertical",
               "group": "variant",
               "isVariant": true,
-              "options": ["both", "horizontal", "vertical"],
+              "options": [
+                "both",
+                "horizontal",
+                "vertical"
+              ],
               "variantGroup": "orientation",
               "deprecated": false
             },
@@ -9562,7 +9734,12 @@
               "default": "auto",
               "group": "variant",
               "isVariant": true,
-              "options": ["always", "auto", "hidden", "hover"],
+              "options": [
+                "always",
+                "auto",
+                "hidden",
+                "hover"
+              ],
               "variantGroup": "scrollbar",
               "deprecated": false
             },
@@ -9572,7 +9749,10 @@
               "required": false,
               "group": "variant",
               "isVariant": true,
-              "options": ["false", "true"],
+              "options": [
+                "false",
+                "true"
+              ],
               "variantGroup": "shadow",
               "deprecated": false
             },
@@ -9583,7 +9763,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -9997,7 +10181,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -10008,7 +10196,14 @@
               "default": "default",
               "group": "variant",
               "isVariant": true,
-              "options": ["default", "lg", "md", "none", "sm", "xl"],
+              "options": [
+                "default",
+                "lg",
+                "md",
+                "none",
+                "sm",
+                "xl"
+              ],
               "variantGroup": "spacing",
               "deprecated": false
             },
@@ -10123,7 +10318,9 @@
               "required": false,
               "group": "variant",
               "isVariant": true,
-              "options": ["true"],
+              "options": [
+                "true"
+              ],
               "variantGroup": "disabled",
               "deprecated": false
             },
@@ -10191,7 +10388,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -10369,7 +10570,11 @@
               "default": "shimmer",
               "group": "variant",
               "isVariant": true,
-              "options": ["none", "pulse", "shimmer"],
+              "options": [
+                "none",
+                "pulse",
+                "shimmer"
+              ],
               "variantGroup": "animation",
               "deprecated": false
             },
@@ -10437,7 +10642,13 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["full", "lg", "md", "none", "sm"],
+              "options": [
+                "full",
+                "lg",
+                "md",
+                "none",
+                "sm"
+              ],
               "variantGroup": "rounded",
               "deprecated": false
             },
@@ -10505,7 +10716,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -10728,7 +10943,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -11725,7 +11944,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -11786,7 +12009,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -11971,7 +12198,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -11981,7 +12212,10 @@
               "required": false,
               "group": "variant",
               "isVariant": true,
-              "options": ["false", "true"],
+              "options": [
+                "false",
+                "true"
+              ],
               "variantGroup": "stickyHeader",
               "deprecated": false
             },
@@ -12056,7 +12290,11 @@
               "required": false,
               "group": "variant",
               "isVariant": true,
-              "options": ["center", "left", "right"],
+              "options": [
+                "center",
+                "left",
+                "right"
+              ],
               "variantGroup": "textAlign",
               "deprecated": false
             },
@@ -12294,7 +12532,10 @@
               "default": "horizontal",
               "group": "variant",
               "isVariant": true,
-              "options": ["horizontal", "vertical"],
+              "options": [
+                "horizontal",
+                "vertical"
+              ],
               "variantGroup": "orientation",
               "deprecated": false
             },
@@ -12305,7 +12546,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -12316,7 +12561,11 @@
               "default": "pills",
               "group": "variant",
               "isVariant": true,
-              "options": ["default", "pills", "underline"],
+              "options": [
+                "default",
+                "pills",
+                "underline"
+              ],
               "variantGroup": "variant",
               "deprecated": false
             },
@@ -12555,7 +12804,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "description": "Controls indicator size, content spacing, and text scale.",
               "deprecated": false
@@ -13125,7 +13378,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -13262,7 +13519,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -13809,7 +14070,11 @@
               "default": "md",
               "group": "variant",
               "isVariant": true,
-              "options": ["lg", "md", "sm"],
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
@@ -14181,7 +14446,14 @@
               "required": true,
               "group": "variant",
               "isVariant": true,
-              "options": ["1", "2", "3", "4", "5", "6"],
+              "options": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
               "variantGroup": "level",
               "deprecated": false
             },
@@ -14479,7 +14751,11 @@
               "default": "base",
               "group": "variant",
               "isVariant": true,
-              "options": ["base", "lg", "sm"],
+              "options": [
+                "base",
+                "lg",
+                "sm"
+              ],
               "variantGroup": "size",
               "deprecated": false
             },
