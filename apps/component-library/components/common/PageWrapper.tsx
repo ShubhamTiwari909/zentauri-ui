@@ -4,14 +4,15 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { Toggle } from "@zentauri-ui/zentauri-components/ui/toggle";
 
-const routesToSkip = [
-  "/",
-  "/preview/components",
-  "/preview/hooks",
-  "/preview/typography",
-  "/preview/charts",
-  "/contact-us",
-];
+function shouldShowThemeToggle(pathname: string) {
+  return (
+    pathname.startsWith("/preview/components/") ||
+    pathname === "/preview/installation" ||
+    pathname === "/preview/tokens" ||
+    pathname.startsWith("/preview/typography/") ||
+    pathname.startsWith("/preview/charts/")
+  );
+}
 
 const PageWrapper = ({
   children,
@@ -28,7 +29,7 @@ const PageWrapper = ({
       data-theme={on ? "dark" : "light"}
       className="flex min-h-dvh flex-col bg-slate-950 text-slate-50"
     >
-      {!routesToSkip.includes(pathname) && (
+      {shouldShowThemeToggle(pathname) && (
         <Toggle
           className="fixed top-20 lg:top-7 right-2 lg:right-4 z-100"
           appearance="gradient-yellow"

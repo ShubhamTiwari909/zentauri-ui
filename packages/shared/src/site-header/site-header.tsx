@@ -8,7 +8,9 @@ import {
   DropdownContent,
   DropdownTrigger,
 } from "@zentauri-ui/zentauri-components/ui/dropdown";
+import Image from "next/image";
 
+import zentauriIcon from "../assets/icon.png";
 import { cn } from "../lib/cn";
 import { getSiteChromeNavItems, getSiteHeaderBrand } from "./navigation";
 import { SiteHeaderMobile } from "./site-header-mobile";
@@ -81,29 +83,25 @@ export function SiteHeader({
     <header
       data-slot="site-header"
       className={cn(
-        "sticky top-0 z-50 border-b border-white/8 bg-slate-950/70 shadow-[0_1px_0_0_rgba(255,255,255,0.04)_inset] backdrop-blur-xl backdrop-saturate-150",
+        "sticky top-0 z-50 border-b border-white/8 bg-slate-950 shadow-[0_1px_0_0_rgba(255,255,255,0.04)_inset] backdrop-blur-xl backdrop-saturate-150",
         className,
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5 sm:gap-6 sm:px-8 sm:py-4 lg:px-10">
         <Link
           href={brand.href}
-          className="group flex shrink-0 items-center gap-2.5 rounded-xl py-1 pr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+          className="group flex shrink-0 relative items-center gap-0.5 rounded-xl py-1 pr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
         >
-          <span
-            className="flex h-9 w-9 items-center justify-center rounded-lg bg-linear-to-br from-cyan-500/15 to-sky-600/10 ring-1 ring-white/10 transition group-hover:from-cyan-400/25 group-hover:ring-cyan-400/25"
-            aria-hidden
-          >
-            <span className="text-sm font-bold tracking-tight text-cyan-100">
-              Z
-            </span>
-          </span>
+          <Image
+            src={zentauriIcon}
+            alt="Brand logo"
+            width={45}
+            height={45}
+            className="rounded-lg border border-indigo-200"
+          />
           <span className="flex flex-col items-start gap-0.5">
-            <span className="text-[0.9375rem] font-semibold leading-none tracking-tight text-white transition group-hover:text-cyan-50 sm:text-base">
-              Zentauri UI
-            </span>
-            <span className="hidden text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-slate-500 sm:block">
-              {brand.subtitle}
+            <span className="absolute left-9 top-4.5 z-10 italic bold bg-slate-950 min-w-20 font-semibold leading-none tracking-tight text-indigo-100 transition group-hover:text-indigo-200 text-base">
+              entauri
             </span>
           </span>
         </Link>

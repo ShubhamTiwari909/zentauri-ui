@@ -20,7 +20,7 @@ export function PreviewHeroSeoBlock({
       <div className="space-y-4">
         <h1
           {...(headingId ? { id: headingId } : {})}
-          className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl"
+          className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl"
         >
           {seo.headings.h1}
         </h1>
