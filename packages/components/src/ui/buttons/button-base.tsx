@@ -14,7 +14,6 @@ export const ButtonBase = (props: ButtonProps) => {
       appearance,
       size,
       children,
-      asChild: _asChild,
       disabled,
       onClick,
       ...rest
