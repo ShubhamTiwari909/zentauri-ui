@@ -71,28 +71,39 @@ export function AudioPlayerBase(props: AudioPlayerProps) {
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
+  const callbacksRef = useRef({ onEnded, onPlay, onPause, onTimeUpdate });
+  useEffect(() => {
+    callbacksRef.current = { onEnded, onPlay, onPause, onTimeUpdate };
+  });
+
+  useEffect(() => {
+    setIsPlaying(false);
+    setCurrentTime(0);
+    setDuration(0);
+  }, [src]);
+
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     const handleTimeUpdate = () => {
       setCurrentTime(audio.currentTime);
-      onTimeUpdate?.(audio.currentTime, audio.duration);
+      callbacksRef.current.onTimeUpdate?.(audio.currentTime, audio.duration);
     };
     const handleDurationChange = () => {
       if (isFinite(audio.duration)) setDuration(audio.duration);
     };
     const handlePlay = () => {
       setIsPlaying(true);
-      onPlay?.();
+      callbacksRef.current.onPlay?.();
     };
     const handlePause = () => {
       setIsPlaying(false);
-      onPause?.();
+      callbacksRef.current.onPause?.();
     };
     const handleEnded = () => {
       setIsPlaying(false);
-      onEnded?.();
+      callbacksRef.current.onEnded?.();
     };
     const handleVolumeChange = () => {
       setVolumeState(audio.volume);
@@ -116,7 +127,7 @@ export function AudioPlayerBase(props: AudioPlayerProps) {
       audio.removeEventListener("ended", handleEnded);
       audio.removeEventListener("volumechange", handleVolumeChange);
     };
-  }, [onEnded, onPause, onPlay, onTimeUpdate]);
+  }, []);
 
   const play = useCallback(() => {
     audioRef.current?.play().catch(() => {});
@@ -147,15 +158,15 @@ export function AudioPlayerBase(props: AudioPlayerProps) {
 
   const seek = useCallback((seconds: number) => {
     const audio = audioRef.current;
-    if (!audio) return;
-    audio.currentTime = Math.max(0, Math.min(seconds, audio.duration || 0));
+    if (!audio || !isFinite(audio.duration) || audio.duration <= 0) return;
+    audio.currentTime = Math.max(0, Math.min(seconds, audio.duration));
   }, []);
 
   const seekByPercent = useCallback((percent: number) => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio || !isFinite(audio.duration) || audio.duration <= 0) return;
     const clamped = Math.max(0, Math.min(percent, 100));
-    audio.currentTime = (clamped / 100) * (audio.duration || 0);
+    audio.currentTime = (clamped / 100) * audio.duration;
   }, []);
 
   const setVolume = useCallback((vol: number) => {
@@ -416,6 +427,25 @@ export function AudioPlayerVolume({
 
   const displayVolume = muted ? 0 : volume;
 
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+        e.preventDefault();
+        setVolume(Math.min(volume + 0.05, 1));
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+        e.preventDefault();
+        setVolume(Math.max(volume - 0.05, 0));
+      } else if (e.key === "Home") {
+        e.preventDefault();
+        setVolume(0);
+      } else if (e.key === "End") {
+        e.preventDefault();
+        setVolume(1);
+      }
+    },
+    [volume, setVolume],
+  );
+
   return (
     <div
       data-slot="audio-player-volume"
@@ -495,6 +525,7 @@ export function AudioPlayerVolume({
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
+        onKeyDown={handleKeyDown}
       >
         <div
           data-slot="audio-player-volume-bar"

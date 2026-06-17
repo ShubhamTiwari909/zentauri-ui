@@ -84,7 +84,7 @@
  *   command, or refused `init` overwrite. Successful runs leave default exit 0.
  */
 
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, realpathSync } from "node:fs";
 import {
   readFile,
   writeFile,
@@ -1464,7 +1464,50 @@ async function main() {
   process.exitCode = 1;
 }
 
-main().catch((err) => {
-  console.error(err instanceof Error ? err.message : err);
-  process.exitCode = 1;
-});
+export {
+  buildCompactThemeCss,
+  cmdAdd,
+  cmdInit,
+  cmdTheme,
+  collectHookTransitiveClosure,
+  copyDesignSystemFiles,
+  copyHookFolder,
+  copyUiComponent,
+  defaultConfig,
+  detectFramework,
+  findComponentsJson,
+  getMissingDependencies,
+  importPathFor,
+  isTestFile,
+  loadRegistry,
+  main,
+  normalizeHexColor,
+  printAdoptionHints,
+  printInfo,
+  printList,
+  resolveComponentName,
+  resolveHookName,
+  validateConfig,
+  walkFiles,
+};
+
+function isDirectCliRun() {
+  if (!process.argv[1]) {
+    return false;
+  }
+  try {
+    return (
+      realpathSync(process.argv[1]) ===
+      realpathSync(fileURLToPath(import.meta.url))
+    );
+  } catch {
+    return resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+  }
+}
+
+if (isDirectCliRun()) {
+  main().catch((err) => {
+    console.error(err instanceof Error ? err.message : err);
+    process.exitCode = 1;
+  });
+}

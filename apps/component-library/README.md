@@ -34,8 +34,8 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 94 passed (94)   |
-| Tests      | 754 passed (754) |
+| Test files | 95 passed (95)   |
+| Tests      | 758 passed (758) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
@@ -43,7 +43,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 41         | 174   |
 | Design system facade           | 1          | 11    |
-| CLI and import rewriting       | 3          | 26    |
+| CLI and import rewriting       | 4          | 30    |
 | Accessibility (axe + keyboard) | 2          | 42    |
 
 ## Tech stack
