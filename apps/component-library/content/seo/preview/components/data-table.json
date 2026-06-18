@@ -1,0 +1,80 @@
+{
+  "category": "Data",
+  "title": "DataTable component for React admin grids",
+  "description": "A typed React DataTable for search, sorting, row selection, column visibility, pagination, loading states, and bulk actions in product dashboards.",
+  "keywords": [
+    "data table component",
+    "React",
+    "Next.js",
+    "admin table",
+    "data grid",
+    "row selection",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "DataTable · Zentauri UI",
+    "description": "A typed React DataTable for search, sorting, row selection, column visibility, pagination, loading states, and bulk actions in product dashboards.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "DataTable · Zentauri UI",
+    "description": "A typed React DataTable for search, sorting, row selection, column visibility, pagination, loading states, and bulk actions in product dashboards.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/data-table",
+  "headings": {
+    "h1": "DataTable for product dashboards",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "DataTable combines Zentauri table primitives with sorting, filtering, pagination, row selection, column visibility, loading states, and bulk actions for admin-grade React interfaces.",
+  "useCases": [
+    "User management screens with bulk invite or archive actions.",
+    "Billing histories with sortable amounts and searchable customers.",
+    "Operations dashboards with optional columns per team role.",
+    "Paginated reports that need empty and loading states by default."
+  ],
+  "faqs": [
+    {
+      "question": "Does DataTable replace the Table primitive?",
+      "answer": "No. DataTable is the composed, batteries-included layer. Use Table when you want full markup control and DataTable when you want typed columns plus common data interactions."
+    },
+    {
+      "question": "Can I control DataTable state from my app?",
+      "answer": "Yes. Sorting, search, pagination, selected row ids, and visible column ids expose controlled and uncontrolled APIs."
+    },
+    {
+      "question": "Does DataTable support bulk actions?",
+      "answer": "Yes. Enable row selection and pass bulkActions. Each action receives the selected row objects."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "DataTable handles common product-table workflows without forcing consumers to manually wire filtering, sorting, selection, pagination, visibility controls, loading states, or empty states.\n\nIt preserves semantic table markup through the lower-level Table primitive."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Define typed columns with accessors, optional custom cell renderers, sort values, filter values, and visibility behavior.\n\nUse getRowId for stable row selection and bulk actions."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Sortable headers use the same keyboard and aria-sort behavior as Table. Selection controls are labeled per row and the toolbar reports selected counts in a polite live region."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Use DataTable inside a client component when users interact with sorting, filtering, column visibility, selection, or pagination. Server components can still prepare the data and column definitions they pass down."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

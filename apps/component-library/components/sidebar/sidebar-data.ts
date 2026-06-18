@@ -213,6 +213,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/copy-button",
       },
       {
+        title: "DataTable",
+        href: "/preview/components/data-table",
+      },
+      {
         title: "Divider",
         href: "/preview/components/divider",
       },
