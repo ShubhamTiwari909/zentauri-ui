@@ -64,6 +64,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/select/select.test.tsx`                                         |    11 |
 | `src/ui/table/table.test.tsx`                                           |    11 |
 | `src/hooks/usePagination/usePagination.test.ts`                         |    10 |
+| `src/ui/data-table/data-table.test.tsx`                                 |    10 |
 | `src/ui/marquee/marquee.test.tsx`                                       |    10 |
 | `src/ui/modal/modal.test.tsx`                                           |    10 |
 | `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
