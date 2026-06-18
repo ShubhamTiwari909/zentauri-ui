@@ -173,6 +173,37 @@ describe("DataTable", () => {
     ]);
   });
 
+  it("should give duplicate rows distinct ids so selection does not collapse", async () => {
+    const user = userEvent.setup();
+    const handleSelectionChange = vi.fn();
+    const dup: Person = {
+      id: "dup",
+      name: "Dup",
+      email: "dup@example.com",
+      role: "Engineer",
+      status: "Active",
+      score: 1,
+    };
+    render(
+      <DataTable
+        aria-label="Duplicates"
+        columns={columns}
+        data={[dup, dup]}
+        enableRowSelection
+        onRowSelectionChange={handleSelectionChange}
+      />,
+    );
+
+    const checkboxes = screen.getAllByRole("checkbox", { name: "Select Dup" });
+    expect(checkboxes).toHaveLength(2);
+
+    await user.click(checkboxes[0]);
+
+    expect(checkboxes[0]).toBeChecked();
+    expect(checkboxes[1]).not.toBeChecked();
+    expect(handleSelectionChange).toHaveBeenLastCalledWith(["0"], [dup]);
+  });
+
   it("should support row selection and bulk actions", async () => {
     const user = userEvent.setup();
     const handleArchive = vi.fn();

@@ -205,13 +205,20 @@ export function DataTableBase<TData, TKey extends string = string>(
   const searchOptions = resolveSearchOptions(search);
   validateSearchOptions(searchOptions);
 
-  const rowIdsMap = useMemo(() => {
-    const map = new Map<TData, string>();
-    data.forEach((row, index) => {
-      map.set(row, getRowId ? getRowId(row, index) : String(index));
-    });
-    return map;
-  }, [data, getRowId]);
+  // Pair every row with a stable id derived from its position in `data` (or the
+  // caller's getRowId). Threading the id alongside each row through the
+  // filter/sort/paginate pipeline keeps it correct even when `data` contains
+  // duplicate references or primitive values — a Map keyed by the row would
+  // collapse those into a single id, breaking React keys and selection.
+  type KeyedRow = { row: TData; id: string };
+  const keyedData = useMemo<KeyedRow[]>(
+    () =>
+      data.map((row, index) => ({
+        row,
+        id: getRowId ? getRowId(row, index) : String(index),
+      })),
+    [data, getRowId],
+  );
 
   const resolvedAppearance = appearance ?? "default";
   const resolvedSize = size ?? "md";
@@ -266,10 +273,10 @@ export function DataTableBase<TData, TKey extends string = string>(
     ? { [globalFilterKey]: searchValue }
     : undefined;
 
-  const { filteredData } = useTableFilter<TData, string>({
-    data,
+  const { filteredData } = useTableFilter<KeyedRow, string>({
+    data: keyedData,
     filters: filterState,
-    filterPredicate: (row, filterValue) => {
+    filterPredicate: ({ row }, filterValue) => {
       const query = filterValue.trim().toLowerCase();
       if (!query) {
         return true;
@@ -308,11 +315,11 @@ export function DataTableBase<TData, TKey extends string = string>(
     const direction = tableSort.sortDirection === "ascending" ? 1 : -1;
     return [...filteredData].sort((left, right) => {
       const leftValue = sortedColumn.sortValue
-        ? sortedColumn.sortValue(left)
-        : (getAccessorValue(left, sortedColumn) as DataTableColumnValue);
+        ? sortedColumn.sortValue(left.row)
+        : (getAccessorValue(left.row, sortedColumn) as DataTableColumnValue);
       const rightValue = sortedColumn.sortValue
-        ? sortedColumn.sortValue(right)
-        : (getAccessorValue(right, sortedColumn) as DataTableColumnValue);
+        ? sortedColumn.sortValue(right.row)
+        : (getAccessorValue(right.row, sortedColumn) as DataTableColumnValue);
 
       return compareValues(leftValue, rightValue) * direction;
     });
@@ -350,30 +357,29 @@ export function DataTableBase<TData, TKey extends string = string>(
   });
   const renderedRows = virtualizationEnabled
     ? virtualList.virtualItems.map((item) => ({
-        row: processedRows[item.index] as TData,
+        entry: processedRows[item.index] as KeyedRow,
         index: item.index,
         start: item.start,
       }))
-    : processedRows.map((row, index) => ({ row, index, start: 0 }));
+    : processedRows.map((entry, index) => ({ entry, index, start: 0 }));
   const virtualOffset = virtualizationEnabled
     ? (virtualList.virtualItems[0]?.start ?? 0)
     : 0;
 
   const selectableRows = useMemo(
     () =>
-      processedRows.map((row) => ({
-        row,
-        id: rowIdsMap.get(row) ?? "",
+      processedRows.map((entry) => ({
+        row: entry.row,
+        id: entry.id,
       })),
-    [processedRows, rowIdsMap],
+    [processedRows],
   );
   const selectedRows = useMemo(
     () =>
-      data.filter((row) => {
-        const id = rowIdsMap.get(row);
-        return id !== undefined && isSelected(selectedIds, id);
-      }),
-    [data, rowIdsMap, selectedIds],
+      keyedData
+        .filter((entry) => isSelected(selectedIds, entry.id))
+        .map((entry) => entry.row),
+    [keyedData, selectedIds],
   );
 
   const allVisibleSelected =
@@ -388,13 +394,12 @@ export function DataTableBase<TData, TKey extends string = string>(
       if (!isSelectionControlled) {
         setInternalSelectedRowIds(nextIds);
       }
-      const nextRows = data.filter((row) => {
-        const id = rowIdsMap.get(row);
-        return id !== undefined && nextIds.includes(id);
-      });
+      const nextRows = keyedData
+        .filter((entry) => nextIds.includes(entry.id))
+        .map((entry) => entry.row);
       onRowSelectionChange?.(nextIds, nextRows);
     },
-    [data, isSelectionControlled, onRowSelectionChange, rowIdsMap],
+    [keyedData, isSelectionControlled, onRowSelectionChange],
   );
 
   const setColumnVisible = useCallback(
@@ -440,8 +445,8 @@ export function DataTableBase<TData, TKey extends string = string>(
     </TableRow>
   );
 
-  const renderRow = (row: TData, rowIndex: number) => {
-    const rowId = rowIdsMap.get(row) ?? String(rowIndex);
+  const renderRow = (entry: KeyedRow, rowIndex: number) => {
+    const { row, id: rowId } = entry;
     const rowSelected = isSelected(selectedIds, rowId);
     const labelColumn = visibleColumns[0] ?? columns[0];
     const rowSelectionLabel = labelColumn
@@ -543,7 +548,7 @@ export function DataTableBase<TData, TKey extends string = string>(
           ? renderStateRow(loadingContent)
           : renderedRows.length === 0
             ? renderStateRow(emptyContent)
-            : renderedRows.map(({ row, index }) => renderRow(row, index))}
+            : renderedRows.map(({ entry, index }) => renderRow(entry, index))}
       </TableBody>
     </Table>
   );
