@@ -197,10 +197,12 @@ describe("DataTable", () => {
     const checkboxes = screen.getAllByRole("checkbox", { name: "Select Dup" });
     expect(checkboxes).toHaveLength(2);
 
-    await user.click(checkboxes[0]);
+    const [firstCheckbox, secondCheckbox] = checkboxes;
 
-    expect(checkboxes[0]).toBeChecked();
-    expect(checkboxes[1]).not.toBeChecked();
+    await user.click(firstCheckbox!);
+
+    expect(firstCheckbox).toBeChecked();
+    expect(secondCheckbox).not.toBeChecked();
     expect(handleSelectionChange).toHaveBeenLastCalledWith(["0"], [dup]);
   });
 
