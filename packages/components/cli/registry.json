@@ -270,6 +270,24 @@
     "useVirtualList",
     "useWindowSize"
   ],
+  "componentDependencies": {
+    "data-table": [
+      "buttons",
+      "checkbox",
+      "inputs",
+      "pagination",
+      "table"
+    ],
+    "dynamic-stepper": [
+      "buttons"
+    ],
+    "pagination": [
+      "buttons"
+    ],
+    "search": [
+      "inputs"
+    ]
+  },
   "peerHints": {
     "accordion": [
       "framer-motion"

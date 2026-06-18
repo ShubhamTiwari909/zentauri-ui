@@ -26,12 +26,17 @@ export function rewriteImports(source, options) {
 
   let code = source;
 
-  if (uiAlias && uiComponentSet.size > 0) {
+  if (uiAlias) {
+    // Single-parent imports (`../<name>`) point at a sibling UI component.
+    // The leading `[^'"./]` excludes deeper relatives like `../../lib/utils`,
+    // which are rewritten by the dedicated blocks below. When a `uiComponents`
+    // allowlist is supplied, only those siblings are rewritten; otherwise every
+    // sibling import is treated as a UI component.
     code = code.replace(
-      /from\s+(["'])\.\.\/([^'"]+)\1/g,
+      /from\s+(["'])\.\.\/([^'"./][^'"]*)\1/g,
       (match, quote, rest) => {
         const componentName = rest.split("/")[0];
-        if (!uiComponentSet.has(componentName)) {
+        if (uiComponentSet.size > 0 && !uiComponentSet.has(componentName)) {
           return match;
         }
         usedUiComponents.add(componentName);
