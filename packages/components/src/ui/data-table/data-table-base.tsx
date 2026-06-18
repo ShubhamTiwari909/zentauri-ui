@@ -106,8 +106,8 @@ function validateSearchOptions<TKey extends string>(
     searchOptions?.filterColumnIds &&
     searchOptions.filterColumnIds.length === 0
   ) {
-    throw new Error(
-      "DataTable search.filterColumnIds must include at least one column id.",
+    console.warn(
+      "DataTable search.filterColumnIds is empty. It should include at least one column id.",
     );
   }
 }
@@ -205,6 +205,14 @@ export function DataTableBase<TData, TKey extends string = string>(
   const searchOptions = resolveSearchOptions(search);
   validateSearchOptions(searchOptions);
 
+  const rowIdsMap = useMemo(() => {
+    const map = new Map<TData, string>();
+    data.forEach((row, index) => {
+      map.set(row, getRowId ? getRowId(row, index) : String(index));
+    });
+    return map;
+  }, [data, getRowId]);
+
   const resolvedAppearance = appearance ?? "default";
   const resolvedSize = size ?? "md";
   const resolvedPaginationAppearance =
@@ -243,8 +251,11 @@ export function DataTableBase<TData, TKey extends string = string>(
 
   const searchableColumns = useMemo(() => {
     const filterColumnIds = searchOptions?.filterColumnIds;
+    const hasFilterColumns = Boolean(
+      filterColumnIds && filterColumnIds.length > 0,
+    );
     return visibleColumns.filter((column) => {
-      if (filterColumnIds && !filterColumnIds.includes(column.id)) {
+      if (hasFilterColumns && !filterColumnIds?.includes(column.id)) {
         return false;
       }
       return column.filterable !== false;
@@ -341,23 +352,28 @@ export function DataTableBase<TData, TKey extends string = string>(
     ? virtualList.virtualItems.map((item) => ({
         row: processedRows[item.index] as TData,
         index: item.index,
+        start: item.start,
       }))
-    : processedRows.map((row, index) => ({ row, index }));
+    : processedRows.map((row, index) => ({ row, index, start: 0 }));
+  const virtualOffset = virtualizationEnabled
+    ? (virtualList.virtualItems[0]?.start ?? 0)
+    : 0;
 
   const selectableRows = useMemo(
     () =>
-      processedRows.map((row, index) => ({
+      processedRows.map((row) => ({
         row,
-        id: getRowId ? getRowId(row, index) : String(index),
+        id: rowIdsMap.get(row) ?? "",
       })),
-    [getRowId, processedRows],
+    [processedRows, rowIdsMap],
   );
   const selectedRows = useMemo(
     () =>
-      selectableRows
-        .filter((item) => isSelected(selectedIds, item.id))
-        .map((item) => item.row),
-    [selectableRows, selectedIds],
+      data.filter((row) => {
+        const id = rowIdsMap.get(row);
+        return id !== undefined && isSelected(selectedIds, id);
+      }),
+    [data, rowIdsMap, selectedIds],
   );
 
   const allVisibleSelected =
@@ -372,12 +388,13 @@ export function DataTableBase<TData, TKey extends string = string>(
       if (!isSelectionControlled) {
         setInternalSelectedRowIds(nextIds);
       }
-      const nextRows = selectableRows
-        .filter((item) => nextIds.includes(item.id))
-        .map((item) => item.row);
+      const nextRows = data.filter((row) => {
+        const id = rowIdsMap.get(row);
+        return id !== undefined && nextIds.includes(id);
+      });
       onRowSelectionChange?.(nextIds, nextRows);
     },
-    [isSelectionControlled, onRowSelectionChange, selectableRows],
+    [data, isSelectionControlled, onRowSelectionChange, rowIdsMap],
   );
 
   const setColumnVisible = useCallback(
@@ -424,7 +441,7 @@ export function DataTableBase<TData, TKey extends string = string>(
   );
 
   const renderRow = (row: TData, rowIndex: number) => {
-    const rowId = getRowId ? getRowId(row, rowIndex) : String(rowIndex);
+    const rowId = rowIdsMap.get(row) ?? String(rowIndex);
     const rowSelected = isSelected(selectedIds, rowId);
     const labelColumn = visibleColumns[0] ?? columns[0];
     const rowSelectionLabel = labelColumn
@@ -636,7 +653,12 @@ export function DataTableBase<TData, TKey extends string = string>(
           style={{ maxHeight: virtualization?.height }}
         >
           <div style={{ minHeight: virtualList.totalHeight }}>
-            {tableElement}
+            <div
+              data-slot="data-table-virtual-offset"
+              style={{ transform: `translateY(${virtualOffset}px)` }}
+            >
+              {tableElement}
+            </div>
           </div>
         </div>
       ) : (

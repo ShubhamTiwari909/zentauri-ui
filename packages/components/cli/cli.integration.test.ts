@@ -295,6 +295,42 @@ describe("zentauri-ui CLI", () => {
     }
   });
 
+  it("should add data-table with vendored sibling UI dependencies", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-data-table-"));
+    try {
+      runCli(dir, ["init"]);
+      const out = runCli(dir, ["add", "data-table"]);
+      expect(
+        existsSync(join(dir, "src/components/ui/data-table/data-table.tsx")),
+      ).toBe(true);
+      expect(
+        existsSync(join(dir, "src/components/ui/buttons/button.tsx")),
+      ).toBe(true);
+      expect(
+        existsSync(join(dir, "src/components/ui/checkbox/checkbox.tsx")),
+      ).toBe(true);
+      expect(existsSync(join(dir, "src/components/ui/inputs/input.tsx"))).toBe(
+        true,
+      );
+      expect(
+        existsSync(join(dir, "src/components/ui/pagination/pagination.tsx")),
+      ).toBe(true);
+      expect(existsSync(join(dir, "src/components/ui/table/table.tsx"))).toBe(
+        true,
+      );
+      const base = readFileSync(
+        join(dir, "src/components/ui/data-table/data-table-base.tsx"),
+        "utf8",
+      );
+      expect(base).toContain('from "@/components/ui/buttons"');
+      expect(base).not.toContain('from "../buttons"');
+      expect(out).toContain("Adding data-table…");
+      expect(out).toContain("Adding buttons…");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("should print react-icons peer hint for components that use icons", () => {
     const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-peer-"));
     try {

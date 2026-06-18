@@ -42,9 +42,44 @@ import { useFocusManagement as u } from "../../../hooks/useFocusManagement";
       utilsAlias: "@/lib/utils",
       hooksAlias: "@/hooks",
       uiAlias: "@/components/ui",
+      uiComponents: ["buttons", "pagination"],
     });
     expect(code).toContain('from "@/components/ui/pagination/types"');
     expect(code).not.toContain("../../ui/");
+  });
+
+  it("should rewrite sibling ui paths when uiAlias is set", () => {
+    const input = `
+import { Button } from "../buttons";
+import type { PaginationAppearance } from "../pagination";
+`;
+    const { code } = rewriteImports(input, {
+      utilsAlias: "@/lib/utils",
+      hooksAlias: "@/hooks",
+      uiAlias: "@/components/ui",
+    });
+    expect(code).toContain('from "@/components/ui/buttons"');
+    expect(code).toContain('from "@/components/ui/pagination"');
+    expect(code).not.toContain("../buttons");
+  });
+
+  it("should collect sibling ui imports", () => {
+    const input = `
+import { Button } from "../buttons";
+import { Checkbox } from "../checkbox";
+import type { PaginationAppearance } from "../pagination";
+`;
+    const { usedUiComponents } = rewriteImports(input, {
+      utilsAlias: "@/lib/utils",
+      hooksAlias: "@/hooks",
+      uiAlias: "@/components/ui",
+      uiComponents: ["buttons", "checkbox", "pagination"],
+    });
+    expect(usedUiComponents.sort()).toEqual([
+      "buttons",
+      "checkbox",
+      "pagination",
+    ]);
   });
 
   it("should preserve single-quote import style", () => {

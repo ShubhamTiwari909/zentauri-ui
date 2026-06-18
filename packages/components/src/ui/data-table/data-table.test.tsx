@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
@@ -128,14 +128,30 @@ describe("DataTable", () => {
     ).toBeNull();
   });
 
-  it("should require at least one filter column when filterColumnIds is provided", () => {
-    expect(() =>
-      renderPeopleTable({
-        search: { filterColumnIds: [], placeholder: "Search people" },
-      }),
-    ).toThrow(
-      "DataTable search.filterColumnIds must include at least one column id.",
+  it("should warn and fall back to all filterable columns when filterColumnIds is empty", async () => {
+    const user = userEvent.setup();
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    renderPeopleTable({
+      search: { filterColumnIds: [], placeholder: "Search people" },
+    });
+
+    await user.type(
+      screen.getByRole("searchbox", { name: "Search table" }),
+      "grace",
     );
+
+    expect(warn).toHaveBeenCalledWith(
+      "DataTable search.filterColumnIds is empty. It should include at least one column id.",
+    );
+    expect(
+      screen.getByRole("rowheader", { name: "Grace Hopper" }),
+    ).toBeVisible();
+    expect(
+      screen.queryByRole("rowheader", { name: "Ada Lovelace" }),
+    ).toBeNull();
+
+    warn.mockRestore();
   });
 
   it("should sort rows when sortable headers are activated", async () => {
@@ -172,6 +188,42 @@ describe("DataTable", () => {
 
     expect(handleArchive).toHaveBeenCalledWith([
       expect.objectContaining({ id: "ada", name: "Ada Lovelace" }),
+    ]);
+  });
+
+  it("should keep row selection stable across paginated fallback row ids", async () => {
+    const user = userEvent.setup();
+    const handleSelectionChange = vi.fn();
+    const handleArchive = vi.fn();
+    render(
+      <DataTable
+        aria-label="People"
+        columns={columns}
+        data={people}
+        enableRowSelection
+        pagination={{ pageSize: 2 }}
+        onRowSelectionChange={handleSelectionChange}
+        bulkActions={[{ label: "Archive selected", onSelect: handleArchive }]}
+      />,
+    );
+
+    await user.click(
+      screen.getByRole("checkbox", { name: "Select Ada Lovelace" }),
+    );
+    await user.click(screen.getByRole("button", { name: "Page 2" }));
+
+    expect(
+      screen.getByRole("checkbox", { name: "Select Katherine Johnson" }),
+    ).not.toBeChecked();
+
+    await user.click(screen.getByRole("button", { name: "Archive selected" }));
+
+    expect(handleSelectionChange).toHaveBeenLastCalledWith(
+      ["0"],
+      [expect.objectContaining({ name: "Ada Lovelace" })],
+    );
+    expect(handleArchive).toHaveBeenCalledWith([
+      expect.objectContaining({ name: "Ada Lovelace" }),
     ]);
   });
 
@@ -213,6 +265,74 @@ describe("DataTable", () => {
 
     expect(screen.queryByText("Showing 2 of 3")).toBeNull();
     expect(screen.getByRole("button", { name: "Page 2" })).toBeVisible();
+  });
+
+  it("should offset virtualized rows while scrolling", () => {
+    const descriptor = Object.getOwnPropertyDescriptor(
+      HTMLElement.prototype,
+      "clientHeight",
+    );
+    Object.defineProperty(HTMLElement.prototype, "clientHeight", {
+      configurable: true,
+      get() {
+        return this.getAttribute("data-slot") === "data-table-virtual-scroll"
+          ? 80
+          : 0;
+      },
+    });
+    const rows = Array.from({ length: 20 }, (_, index) => ({
+      id: `person-${index}`,
+      name: `Person ${index}`,
+      email: `person-${index}@example.com`,
+      role: "Engineer",
+      status: "Active" as const,
+      score: index,
+    }));
+
+    try {
+      render(
+        <DataTable
+          aria-label="People"
+          columns={columns}
+          data={rows}
+          getRowId={(row) => row.id}
+          virtualization={{
+            enabled: true,
+            rowHeight: 40,
+            height: 80,
+            overscan: 0,
+          }}
+        />,
+      );
+      const scrollArea = document.querySelector(
+        '[data-slot="data-table-virtual-scroll"]',
+      );
+      expect(scrollArea).not.toBeNull();
+
+      act(() => {
+        if (scrollArea) {
+          scrollArea.scrollTop = 200;
+          fireEvent.scroll(scrollArea);
+        }
+      });
+
+      const offset = document.querySelector(
+        '[data-slot="data-table-virtual-offset"]',
+      );
+      expect(offset).toHaveStyle({ transform: "translateY(200px)" });
+      expect(screen.getByRole("rowheader", { name: "Person 5" })).toBeVisible();
+    } finally {
+      if (descriptor) {
+        Object.defineProperty(
+          HTMLElement.prototype,
+          "clientHeight",
+          descriptor,
+        );
+      } else {
+        delete (HTMLElement.prototype as { clientHeight?: number })
+          .clientHeight;
+      }
+    }
   });
 
   it("should render loading and empty states", () => {

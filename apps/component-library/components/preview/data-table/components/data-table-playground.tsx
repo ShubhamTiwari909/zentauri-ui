@@ -150,7 +150,7 @@ function dataTableSnippet({
   columns={columns}
   data={members}
   getRowId={(row) => row.id}
-  pagination={{ pageSize: 2 }}
+  pagination={{ pageSize: 5 }}
   search={{ placeholder: "Search members" }}
 />`;
 }

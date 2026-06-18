@@ -548,6 +548,27 @@ function isAnimatedComponent(name, registry) {
   return (registry.animatedComponents ?? []).includes(name);
 }
 
+function expandComponentDependencies(names, registry) {
+  const dependencies = registry.componentDependencies ?? {};
+  const expanded = [];
+  const seen = new Set();
+  const queue = [...names];
+
+  while (queue.length > 0) {
+    const name = queue.shift();
+    if (seen.has(name)) {
+      continue;
+    }
+    seen.add(name);
+    expanded.push(name);
+    for (const dependency of dependencies[name] ?? []) {
+      queue.push(dependency);
+    }
+  }
+
+  return expanded;
+}
+
 function printList(registry) {
   const ui = Array.from(
     new Set([
@@ -922,7 +943,13 @@ async function collectHookTransitiveClosure(packageRoot, seedHooks) {
  * // src/components/ui/buttons/Button.tsx
  * // with imports pointing at @/lib/utils, @/hooks/useX, etc.
  */
-async function copyUiComponent(componentName, config, configDir, packageRoot) {
+async function copyUiComponent(
+  componentName,
+  config,
+  configDir,
+  packageRoot,
+  registry,
+) {
   const isChartEntry = componentName.startsWith("charts/");
   const isAnimationEntry = componentName.startsWith("animations/");
   const animationName = componentName.slice("animations/".length);
@@ -979,6 +1006,7 @@ async function copyUiComponent(componentName, config, configDir, packageRoot) {
         utilsAlias: config.aliases.utils,
         hooksAlias: config.aliases.hooks,
         uiAlias: config.aliases.ui,
+        uiComponents: registry.uiComponents ?? [],
       });
       const rewrittenCode = designSystemImportTarget
         ? rewriteDesignSystemBarrelImports(code, designSystemImportTarget)
@@ -1310,8 +1338,9 @@ async function cmdAdd(names, cwd, options = {}) {
   }
 
   const resolvedNames = payload.map((n) => resolveComponentName(n, registry));
+  const requestedNames = [...resolvedNames];
   if (animated) {
-    for (const name of resolvedNames) {
+    for (const name of requestedNames) {
       if (!isAnimatedComponent(name, registry)) {
         console.error(`Component "${name}" has no animated entry.`);
         process.exitCode = 1;
@@ -1319,17 +1348,24 @@ async function cmdAdd(names, cwd, options = {}) {
       }
     }
   }
+  const namesToCopy = expandComponentDependencies(requestedNames, registry);
 
   await ensureUtilsFile(config, configDir, packageRoot);
-  await copyDesignSystemFiles(resolvedNames, config, configDir, packageRoot);
+  await copyDesignSystemFiles(namesToCopy, config, configDir, packageRoot);
 
   const allHooks = new Set();
-  for (const name of resolvedNames) {
+  for (const name of namesToCopy) {
     console.log(`Adding ${name}…`);
-    if (animated) {
+    if (animated && requestedNames.includes(name)) {
       console.log(`Including animated entry for ${name}…`);
     }
-    const uh = await copyUiComponent(name, config, configDir, packageRoot);
+    const uh = await copyUiComponent(
+      name,
+      config,
+      configDir,
+      packageRoot,
+      registry,
+    );
     for (const h of uh) {
       allHooks.add(h);
     }
@@ -1345,7 +1381,7 @@ async function cmdAdd(names, cwd, options = {}) {
   }
 
   console.log("Done.");
-  printAdoptionHints(resolvedNames, registry, config, configDir);
+  printAdoptionHints(namesToCopy, registry, config, configDir);
 }
 
 async function cmdTheme(hex, options, cwd) {
