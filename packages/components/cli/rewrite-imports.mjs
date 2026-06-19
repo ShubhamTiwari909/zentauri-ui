@@ -2,12 +2,14 @@
  * Rewrites internal package-relative imports to app aliases.
  *
  * @param {string} source
- * @param {{ utilsAlias: string; hooksAlias: string; uiAlias?: string }} options
- * @returns {{ code: string; usedHooks: string[] }}
+ * @param {{ utilsAlias: string; hooksAlias: string; uiAlias?: string; uiComponents?: string[] }} options
+ * @returns {{ code: string; usedHooks: string[]; usedUiComponents: string[] }}
  */
 export function rewriteImports(source, options) {
-  const { utilsAlias, hooksAlias, uiAlias } = options;
+  const { utilsAlias, hooksAlias, uiAlias, uiComponents = [] } = options;
   const usedHooks = new Set();
+  const usedUiComponents = new Set();
+  const uiComponentSet = new Set(uiComponents);
 
   const collectHooks = (text) => {
     const re = /from\s+(["'])((?:\.\.\/)+)hooks\/([^'"]+)\1/g;
@@ -23,6 +25,25 @@ export function rewriteImports(source, options) {
   collectHooks(source);
 
   let code = source;
+
+  if (uiAlias) {
+    // Single-parent imports (`../<name>`) point at a sibling UI component.
+    // The leading `[^'"./]` excludes deeper relatives like `../../lib/utils`,
+    // which are rewritten by the dedicated blocks below. When a `uiComponents`
+    // allowlist is supplied, only those siblings are rewritten; otherwise every
+    // sibling import is treated as a UI component.
+    code = code.replace(
+      /from\s+(["'])\.\.\/([^'"./][^'"]*)\1/g,
+      (match, quote, rest) => {
+        const componentName = rest.split("/")[0];
+        if (uiComponentSet.size > 0 && !uiComponentSet.has(componentName)) {
+          return match;
+        }
+        usedUiComponents.add(componentName);
+        return `from ${quote}${uiAlias}/${rest}${quote}`;
+      },
+    );
+  }
 
   code = code.replace(
     /from\s+(["'])((?:\.\.\/)+)lib\/utils\1/g,
@@ -47,7 +68,11 @@ export function rewriteImports(source, options) {
     );
   }
 
-  return { code, usedHooks: [...usedHooks] };
+  return {
+    code,
+    usedHooks: [...usedHooks],
+    usedUiComponents: [...usedUiComponents],
+  };
 }
 
 /**

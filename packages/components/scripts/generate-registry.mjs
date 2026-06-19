@@ -46,6 +46,24 @@ function detectUiPeerHints(componentName) {
   return hints;
 }
 
+function detectUiComponentDependencies(componentName, uiComponentNames) {
+  const dir = join(root, "src", "ui", componentName);
+  const text = readTreeText(dir);
+  const knownNames = new Set(uiComponentNames);
+  const dependencies = new Set();
+  const re = /from\s+["']\.\.\/([^"']+)["']/g;
+  let match;
+
+  while ((match = re.exec(text)) !== null) {
+    const dependency = match[1].split("/")[0];
+    if (dependency !== componentName && knownNames.has(dependency)) {
+      dependencies.add(dependency);
+    }
+  }
+
+  return [...dependencies].sort();
+}
+
 const text = readFileSync(tsupPath, "utf8");
 
 function extractQuotedNames(block) {
@@ -117,6 +135,14 @@ for (const chart of charts) {
   peerHints[chart] = ["recharts"];
 }
 
+const componentDependencies = {};
+for (const name of ui) {
+  const dependencies = detectUiComponentDependencies(name, ui);
+  if (dependencies.length > 0) {
+    componentDependencies[name] = dependencies;
+  }
+}
+
 const registry = {
   $schema: "https://json-schema.org/draft/2020-12/schema",
   description:
@@ -129,6 +155,7 @@ const registry = {
   ].sort(),
   animations,
   hooks,
+  componentDependencies,
   peerHints,
   nameAliases: {
     button: "buttons",

@@ -17,6 +17,7 @@ const uiComponentNames = [
   "command",
   "context-menu",
   "copy-button",
+  "data-table",
   "divider",
   "drawer",
   "dropdown",

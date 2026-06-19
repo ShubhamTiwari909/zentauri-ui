@@ -114,6 +114,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Actions",
   },
   {
+    id: "data-table",
+    name: "DataTable",
+    description:
+      "Typed data grids with search, sorting, selection, column visibility, pagination, loading states, and bulk actions.",
+    href: "/preview/components/data-table",
+    badge: "Data",
+  },
+  {
     id: "divider",
     name: "Divider",
     description:

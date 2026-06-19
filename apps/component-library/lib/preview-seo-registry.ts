@@ -14,6 +14,7 @@ import combobox from "@/content/seo/preview/components/combobox.json";
 import command from "@/content/seo/preview/components/command.json";
 import contextMenu from "@/content/seo/preview/components/context-menu.json";
 import copyButton from "@/content/seo/preview/components/copy-button.json";
+import dataTable from "@/content/seo/preview/components/data-table.json";
 import charts from "@/content/seo/preview/charts.json";
 import divider from "@/content/seo/preview/components/divider.json";
 import drawer from "@/content/seo/preview/components/drawer.json";
@@ -68,6 +69,7 @@ const previewSeoRegistry = {
   command: command as PreviewSeoDocument,
   "context-menu": contextMenu as PreviewSeoDocument,
   "copy-button": copyButton as PreviewSeoDocument,
+  "data-table": dataTable as PreviewSeoDocument,
   charts: charts as PreviewSeoDocument,
   divider: divider as PreviewSeoDocument,
   drawer: drawer as PreviewSeoDocument,

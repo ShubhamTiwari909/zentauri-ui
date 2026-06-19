@@ -12,6 +12,7 @@ export * from "./combobox";
 export * from "./command";
 export * from "./context-menu";
 export * from "./copy-button";
+export * from "./data-table";
 export * from "./divider";
 export * from "./drawer";
 export * from "./dropdown";
