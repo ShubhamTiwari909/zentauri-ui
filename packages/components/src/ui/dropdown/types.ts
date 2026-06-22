@@ -14,7 +14,7 @@ export type DropdownContextType = {
 
 type Variant = keyof typeof zuiDropdownTriggerVariants;
 
-export type DropdownProps = {
+export type DropdownProps = HTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
   defaultOpen?: boolean;
   open?: boolean;
@@ -37,7 +37,7 @@ export type DropdownContentProps = HTMLAttributes<HTMLDivElement> & {
 
 export type DropdownItemProps = HTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
-  value: string;
+  value?: string;
   onSelect?: () => void;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;

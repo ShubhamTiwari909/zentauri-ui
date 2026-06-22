@@ -1,0 +1,80 @@
+{
+  "category": "Actions",
+  "title": "Split button component for React primary and secondary actions",
+  "description": "Split button component for React and Next.js that pairs one primary button action with a dropdown trigger for secondary actions, loading and disabled states, icons, full-width layout, controlled open state, and Zentauri button appearances.",
+  "keywords": [
+    "Split button component",
+    "React split button",
+    "Next.js",
+    "dropdown button",
+    "compound button",
+    "button menu",
+    "secondary actions"
+  ],
+  "og": {
+    "title": "Split button · Zentauri UI",
+    "description": "Primary action button with a paired dropdown trigger for secondary actions.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Split button · Zentauri UI",
+    "description": "Primary action button with a paired dropdown trigger for secondary actions.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/split-button",
+  "headings": {
+    "h1": "Split button for primary and secondary actions",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Split button combines a primary action button with an adjacent menu trigger. Use it when one action should stay immediate while adjacent options such as Save As, Export, Duplicate, Schedule, or Archive remain available from the dropdown.",
+  "useCases": [
+    "Save, export, duplicate, archive, and publish actions in document editors.",
+    "Dashboard row actions where the default action should remain one click away.",
+    "Command surfaces that need loading, disabled, and controlled menu states.",
+    "Full-width form footers where the same control carries primary and alternate submit paths."
+  ],
+  "faqs": [
+    {
+      "question": "Can the menu open state be controlled?",
+      "answer": "Yes. Pass open and onOpenChange to control the dropdown trigger state from parent state."
+    },
+    {
+      "question": "Can menu items include icons?",
+      "answer": "Yes. Add an icon to any item. The item label remains the accessible menu item name."
+    },
+    {
+      "question": "How do variant aliases map to Button appearances?",
+      "answer": "The variant prop supports primary, secondary, outline, ghost, danger, and success. These map to the existing Button appearance system, and the appearance prop can be used directly for the full tokenized palette."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Split button renders two adjacent real button controls: the primary side fires onClick, while the trigger side opens a menu of secondary items. Disabled and loading states disable both halves and prevent the dropdown from opening."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Import SplitButton from the split-button entrypoint. Provide label, items, and optional onClick. Items use id, label, icon, disabled, and onSelect. The component also accepts appearance, variant aliases, size, startIcon, fullWidth, open, defaultOpen, and onOpenChange."
+    },
+    {
+      "heading": "Common use cases",
+      "body": "Reach for Split button when a default action has nearby alternatives: Save with Save As and Export, Publish with Schedule and Preview, Send with Save draft and Send copy, or Archive with Duplicate and Move."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Both halves are native buttons. The menu trigger exposes aria-haspopup, aria-expanded, and an accessible label. Menu focus movement, Escape handling, Home, End, ArrowUp, and ArrowDown behavior are delegated to the shared Dropdown primitive."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Split button is a client component because it uses interactive dropdown state. Render it in client components or inside interactive islands in App Router pages."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

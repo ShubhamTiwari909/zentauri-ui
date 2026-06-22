@@ -37,10 +37,12 @@ const useDropdown = () => {
 ========================= */
 export const Dropdown = ({
   children,
+  className,
   defaultOpen = false,
   open: controlledOpen,
   onOpenChange,
   multiSelect = false,
+  ...props
 }: DropdownProps) => {
   const menuId = `${useId()}-menu`;
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
@@ -82,7 +84,9 @@ export const Dropdown = ({
         menuId,
       }}
     >
-      <div className="relative inline-block">{children}</div>
+      <div className={cn("relative inline-block", className)} {...props}>
+        {children}
+      </div>
     </DropdownContext.Provider>
   );
 };
@@ -180,10 +184,10 @@ export const DropdownItem = ({
   ...props
 }: DropdownItemProps) => {
   const { toggleSelect, selectedValues } = useDropdown();
-  const isSelected = selectedValues.includes(value);
+  const isSelected = value !== undefined && selectedValues.includes(value);
 
   const handleClick = () => {
-    toggleSelect(value);
+    if (value !== undefined) toggleSelect(value);
     onSelect?.();
   };
 

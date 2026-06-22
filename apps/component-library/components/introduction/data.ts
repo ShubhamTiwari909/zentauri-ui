@@ -282,6 +282,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Loading",
   },
   {
+    id: "split-button",
+    name: "Split button",
+    description:
+      "Primary action button paired with a dropdown trigger for secondary actions, loading states, and full-width layouts.",
+    href: "/preview/components/split-button",
+    badge: "Actions",
+  },
+  {
     id: "slider",
     name: "Slider",
     description:

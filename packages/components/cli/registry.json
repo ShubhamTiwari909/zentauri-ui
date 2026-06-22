@@ -38,6 +38,7 @@
     "select",
     "skeleton",
     "slider",
+    "split-button",
     "table",
     "tabs",
     "timeline",
@@ -175,6 +176,7 @@
     "skeleton",
     "slider",
     "spinner",
+    "split-button",
     "table",
     "tabs",
     "timeline",
@@ -286,6 +288,10 @@
     ],
     "search": [
       "inputs"
+    ],
+    "split-button": [
+      "buttons",
+      "dropdown"
     ]
   },
   "peerHints": {
@@ -360,6 +366,9 @@
     ],
     "skeleton": [
       "framer-motion"
+    ],
+    "split-button": [
+      "react-icons"
     ],
     "table": [
       "framer-motion"

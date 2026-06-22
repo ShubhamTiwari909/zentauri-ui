@@ -39,6 +39,7 @@ import scrollArea from "@/content/seo/preview/components/scroll-area.json";
 import select from "@/content/seo/preview/components/select.json";
 import search from "@/content/seo/preview/components/search.json";
 import skeleton from "@/content/seo/preview/components/skeleton.json";
+import splitButton from "@/content/seo/preview/components/split-button.json";
 import slider from "@/content/seo/preview/components/slider.json";
 import spinner from "@/content/seo/preview/components/spinner.json";
 import table from "@/content/seo/preview/components/table.json";
@@ -92,6 +93,7 @@ const previewSeoRegistry = {
   select: select as PreviewSeoDocument,
   search: search as PreviewSeoDocument,
   skeleton: skeleton as PreviewSeoDocument,
+  "split-button": splitButton as PreviewSeoDocument,
   slider: slider as PreviewSeoDocument,
   spinner: spinner as PreviewSeoDocument,
   table: table as PreviewSeoDocument,

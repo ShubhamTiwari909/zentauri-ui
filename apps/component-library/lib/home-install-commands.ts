@@ -37,9 +37,9 @@ export const CLI_INIT_COMMANDS = {
 } as const;
 
 export const CLI_ADD_COMMANDS = {
-  npm: "npx @zentauri-ui/zentauri-components add accordion buttons",
-  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add accordion buttons",
-  yarn: "yarn dlx @zentauri-ui/zentauri-components add accordion buttons",
+  npm: "npx @zentauri-ui/zentauri-components add accordion buttons split-button",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add accordion buttons split-button",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components add accordion buttons split-button",
 } as const;
 
 export const CLI_ADD_HOOK_COMMANDS = {
