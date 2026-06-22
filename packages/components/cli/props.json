@@ -12869,6 +12869,13 @@
               "deprecated": false
             },
             {
+              "name": "triggerOn",
+              "type": "'hover' | 'click' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
               "name": "variant",
               "type": "SplitButtonVariant | undefined",
               "required": false,
