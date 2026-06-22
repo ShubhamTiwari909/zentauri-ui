@@ -6252,7 +6252,7 @@
             {
               "name": "children",
               "type": "ReactNode",
-              "required": true,
+              "required": false,
               "group": "content",
               "deprecated": false
             },
@@ -6372,8 +6372,8 @@
           "props": [
             {
               "name": "value",
-              "type": "string",
-              "required": true,
+              "type": "string | undefined",
+              "required": false,
               "group": "controlled",
               "deprecated": false
             },
