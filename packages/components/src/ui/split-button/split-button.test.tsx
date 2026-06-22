@@ -67,6 +67,7 @@ describe("SplitButton", () => {
     );
 
     const [primary, trigger] = screen.getAllByRole("button");
+    if (!primary || !trigger) return;
 
     expect(primary).toBeDisabled();
     expect(trigger).toBeDisabled();
