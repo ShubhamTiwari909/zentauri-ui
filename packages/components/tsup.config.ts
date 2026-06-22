@@ -38,6 +38,7 @@ const uiComponentNames = [
   "search",
   "select",
   "skeleton",
+  "split-button",
   "slider",
   "table",
   "tabs",

@@ -297,6 +297,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/skeleton",
       },
       {
+        title: "Split button",
+        href: "/preview/components/split-button",
+      },
+      {
         title: "Slider",
         href: "/preview/components/slider",
       },

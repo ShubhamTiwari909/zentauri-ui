@@ -37,10 +37,12 @@ const useDropdown = () => {
 ========================= */
 export const Dropdown = ({
   children,
+  className,
   defaultOpen = false,
   open: controlledOpen,
   onOpenChange,
   multiSelect = false,
+  ...props
 }: DropdownProps) => {
   const menuId = `${useId()}-menu`;
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
@@ -82,7 +84,9 @@ export const Dropdown = ({
         menuId,
       }}
     >
-      <div className="relative inline-block">{children}</div>
+      <div className={cn("relative inline-block", className)} {...props}>
+        {children}
+      </div>
     </DropdownContext.Provider>
   );
 };

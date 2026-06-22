@@ -6252,8 +6252,43 @@
             {
               "name": "children",
               "type": "ReactNode",
-              "required": true,
+              "required": false,
               "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
               "deprecated": false
             }
           ]
@@ -12715,6 +12750,150 @@
               "required": false,
               "group": "dom",
               "description": "\nThe React DOM `style` prop, enhanced with support for `MotionValue`s and separate `transform` values.\n\n```jsx\nexport const MyComponent = () => {\n  const x = useMotionValue(0)\n\n  return <motion.div style={{ x, opacity: 1, scale: 0.5 }} />\n}\n```",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
+    "split-button": {
+      "slug": "split-button",
+      "subcomponents": [
+        {
+          "name": "static:SplitButton",
+          "displayName": "SplitButton",
+          "propsType": "SplitButtonProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "fullWidth",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "true"
+              ],
+              "variantGroup": "fullWidth",
+              "deprecated": false
+            },
+            {
+              "name": "defaultOpen",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenChange",
+              "type": "((open: boolean) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "open",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'link' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "items",
+              "type": "SplitButtonItem[]",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "string",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "loading",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "SplitButtonSize | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "startIcon",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "triggerLabel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "variant",
+              "type": "SplitButtonVariant | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
               "deprecated": false
             },
             {
