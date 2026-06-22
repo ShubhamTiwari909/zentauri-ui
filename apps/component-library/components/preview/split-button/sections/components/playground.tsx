@@ -120,12 +120,19 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
         {SPLIT_BUTTON_APPEARANCES.map((itemAppearance) => {
           const isActive = itemAppearance === selected;
           return (
-            <button
+            <div
               key={itemAppearance}
-              type="button"
+              role="button"
+              tabIndex={0}
               aria-pressed={isActive}
               onClick={() => onSelect(itemAppearance)}
-              className={`flex items-center justify-between gap-3 rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onSelect(itemAppearance);
+                }
+              }}
+              className={`flex cursor-pointer items-center justify-between gap-3 rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
                   : "ring-1 ring-slate-200 hover:ring-slate-300 dark:ring-white/10 dark:hover:ring-white/20"
@@ -145,7 +152,7 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
                   ]}
                 />
               </div>
-            </button>
+            </div>
           );
         })}
       </div>

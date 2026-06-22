@@ -184,10 +184,10 @@ export const DropdownItem = ({
   ...props
 }: DropdownItemProps) => {
   const { toggleSelect, selectedValues } = useDropdown();
-  const isSelected = selectedValues.includes(value);
+  const isSelected = value !== undefined && selectedValues.includes(value);
 
   const handleClick = () => {
-    toggleSelect(value);
+    if (value !== undefined) toggleSelect(value);
     onSelect?.();
   };
 

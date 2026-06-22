@@ -15,7 +15,7 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 | Surface             | Count | Import shape                                          |
 | ------------------- | ----: | ----------------------------------------------------- |
-| Static UI entries   |    42 | `@zentauri-ui/zentauri-components/ui/<name>`          |
+| Static UI entries   |    43 | `@zentauri-ui/zentauri-components/ui/<name>`          |
 | Animated UI entries |    27 | `@zentauri-ui/zentauri-components/ui/<name>/animated` |
 | Animation entries   |    41 | `@zentauri-ui/zentauri-components/animations/<name>`  |
 | Chart entries       |     9 | `@zentauri-ui/zentauri-components/charts/<type>`      |
@@ -243,10 +243,10 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | Scroll area     | `scroll-area`     | —                                  |
 | Search          | `search`          | —                                  |
 | Select          | `select`          | —                                  |
-| Split button    | `split-button`    | —                                  |
 | Skeleton        | `skeleton`        | `skeleton/animated`                |
 | Slider          | `slider`          | —                                  |
 | Spinner         | —                 | `spinner/animated`                 |
+| Split button    | `split-button`    | —                                  |
 | Table           | `table`           | `table/animated`                   |
 | Tabs            | `tabs`            | `tabs/animated`                    |
 | Timeline        | `timeline`        | `timeline/animated`                |

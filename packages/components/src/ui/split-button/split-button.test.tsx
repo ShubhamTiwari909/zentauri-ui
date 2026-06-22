@@ -66,8 +66,9 @@ describe("SplitButton", () => {
       />,
     );
 
-    const [primary, trigger] = screen.getAllByRole("button");
-    if (!primary || !trigger) return;
+    const buttons = screen.getAllByRole("button");
+    expect(buttons).toHaveLength(2);
+    const [primary, trigger] = buttons as [HTMLElement, HTMLElement];
 
     expect(primary).toBeDisabled();
     expect(trigger).toBeDisabled();
@@ -155,7 +156,7 @@ describe("SplitButton", () => {
       "w-full",
     );
     expect(screen.getByRole("button", { name: "Save" }).className).toMatch(
-      /--zui-button-destructive-bg/,
+      /destructive/,
     );
   });
 

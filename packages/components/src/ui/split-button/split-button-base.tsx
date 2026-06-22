@@ -95,6 +95,7 @@ export function SplitButtonBase({
   const hoverCloseRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const scheduleClose = () => {
+    cancelClose();
     hoverCloseRef.current = setTimeout(() => setOpen(false), 120);
   };
 
@@ -106,6 +107,13 @@ export function SplitButtonBase({
   };
 
   useEffect(() => cancelClose, []);
+
+  useEffect(() => {
+    if (isUnavailable && !isControlled) {
+      setUncontrolledOpen(false);
+      onOpenChange?.(false);
+    }
+  }, [isUnavailable, onOpenChange, isControlled]);
 
   const dropdownHoverHandlers =
     triggerOn === "hover"
@@ -190,7 +198,6 @@ export function SplitButtonBase({
           {items.map((item) => (
             <DropdownItem
               key={item.id}
-              value={item.id}
               leftIcon={item.icon}
               aria-disabled={item.disabled ? "true" : undefined}
               className={
@@ -208,7 +215,10 @@ export function SplitButtonBase({
                   event.stopPropagation();
                 }
               }}
-              onSelect={item.onSelect}
+              onSelect={() => {
+                setOpen(false);
+                item.onSelect?.();
+              }}
             >
               {item.label}
             </DropdownItem>

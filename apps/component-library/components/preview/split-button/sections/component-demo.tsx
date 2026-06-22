@@ -216,12 +216,14 @@ export function SplitButtonExamplesSection() {
         </PreviewCodeShowcase>
 
         <PreviewCodeShowcase
-          code={`${variantLeadComment("full width")}<SplitButton
-  fullWidth
-  appearance="secondary"
-  label="Save document changes"
-  items={items}
-/>`}
+          code={`${variantLeadComment("full width")}<div className="max-w-xl">
+  <SplitButton
+    fullWidth
+    appearance="secondary"
+    label="Save document changes"
+    items={items}
+  />
+</div>`}
         >
           <div className="max-w-xl">
             <SplitButton

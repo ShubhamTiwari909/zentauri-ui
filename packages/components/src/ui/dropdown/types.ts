@@ -37,7 +37,7 @@ export type DropdownContentProps = HTMLAttributes<HTMLDivElement> & {
 
 export type DropdownItemProps = HTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
-  value: string;
+  value?: string;
   onSelect?: () => void;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;

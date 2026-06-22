@@ -2,7 +2,7 @@ import { Section } from "@/components/common/Section";
 
 import { SplitButtonPlayground } from "./components/playground";
 
-export function SplitButtonPlaygroundSection() {
+export function SplitButtonCodeExamplesSection() {
   return (
     <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">

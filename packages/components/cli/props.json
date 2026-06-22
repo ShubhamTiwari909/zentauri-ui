@@ -6252,7 +6252,7 @@
             {
               "name": "children",
               "type": "ReactNode",
-              "required": false,
+              "required": true,
               "group": "content",
               "deprecated": false
             },

@@ -5,7 +5,7 @@ import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
 import { SplitButtonExamplesSection } from "./sections/component-demo";
 import { SplitButtonHeroSection } from "./sections/hero";
-import { SplitButtonPlaygroundSection } from "./sections/snippet-sections";
+import { SplitButtonCodeExamplesSection } from "./sections/snippet-sections";
 
 export default function SplitButtonPreviewPage({
   seo,
@@ -15,7 +15,7 @@ export default function SplitButtonPreviewPage({
   return (
     <PreviewPageShell>
       <SplitButtonHeroSection seo={seo} />
-      <SplitButtonPlaygroundSection />
+      <SplitButtonCodeExamplesSection />
       <SplitButtonExamplesSection />
       <PreviewApiSection slug="split-button" />
       <PreviewSeoDoc doc={seo} />
