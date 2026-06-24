@@ -301,8 +301,8 @@ export type Goal = {
 export const goals: Goal[] = [
   { id: "mrr", label: "MRR target", value: 78, hint: "$482K / $620K" },
   { id: "signups", label: "New signups", value: 64, hint: "6.4K / 10K" },
-  { id: "retention", label: "Net retention", value: 92, hint: "92% / 95%" },
-  { id: "nps", label: "NPS goal", value: 48, hint: "48 / 60" },
+  { id: "retention", label: "Net retention", value: 97, hint: "92% / 95%" },
+  { id: "nps", label: "NPS goal", value: 80, hint: "48 / 60" },
 ];
 
 export type Activity = {

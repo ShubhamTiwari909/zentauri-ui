@@ -2,9 +2,11 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -61,8 +63,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => setHydrated(true), []);
 
   const activeThemeId = hydrated ? themeId : DEFAULT_THEME_ID;
-  const activeMode = hydrated ? mode : DEFAULT_MODE;
+  // Guard against invalid persisted values (e.g. manual localStorage edits).
+  const activeMode: ThemeMode =
+    hydrated && (mode === "light" || mode === "dark") ? mode : DEFAULT_MODE;
   const theme = getTheme(activeThemeId);
+
+  // Ref keeps toggleMode's closure fresh without adding activeMode to its deps,
+  // so rapid repeated calls before a rerender always read the latest value.
+  const activeModeRef = useRef<ThemeMode>(activeMode);
+  activeModeRef.current = activeMode;
+
+  const toggleMode = useCallback(
+    () => setMode(activeModeRef.current === "dark" ? "light" : "dark"),
+    [setMode],
+  );
 
   const value = useMemo<ThemeContextValue>(
     () => ({
@@ -71,12 +85,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       setThemeId,
       mode: activeMode,
       setMode,
-      toggleMode: () => setMode(activeMode === "dark" ? "light" : "dark"),
+      toggleMode,
       accentChart: theme.accentChart,
       chartAppearance: chartAppearanceForMode(activeMode),
       themes: THEMES,
     }),
-    [theme, activeThemeId, activeMode, setThemeId, setMode],
+    [theme, activeThemeId, activeMode, setThemeId, setMode, toggleMode],
   );
 
   return (

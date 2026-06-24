@@ -24,6 +24,11 @@ function cutoffForRange(range: DateRange): Date {
       return d;
     case "ytd":
       return new Date(d.getFullYear(), 0, 1);
+    default:
+      // compile-time exhaustiveness check — adding a new DateRange without a
+      // case here becomes a type error rather than a silent empty result set.
+      range satisfies never;
+      throw new Error(`Unhandled DateRange: ${String(range)}`);
   }
 }
 

@@ -16,10 +16,14 @@ export function CodeHighlight({
 }: CodeHighlightProps) {
   const [copySuccess, setCopySuccess] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(codeString);
-    setCopySuccess(true);
-    setTimeout(() => setCopySuccess(false), 2000);
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(codeString);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000);
+    } catch {
+      // clipboard write failed — don't show false success
+    }
   };
 
   return (

@@ -4,7 +4,9 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -32,11 +34,21 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
   const [dateRange, setDateRange] = useState<DateRange>("30d");
   const [isRefreshing, setIsRefreshing] = useState(false);
 
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const refresh = useCallback(() => {
     if (isRefreshing) return;
     setIsRefreshing(true);
-    window.setTimeout(() => setIsRefreshing(false), 900);
+    timeoutRef.current = setTimeout(() => setIsRefreshing(false), 900);
   }, [isRefreshing]);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const value = useMemo(
     () => ({ dateRange, setDateRange, isRefreshing, refresh }),

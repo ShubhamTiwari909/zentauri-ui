@@ -31,7 +31,7 @@ export function ThemeSwitcher() {
       <div className="w-44">
         <Select
           multiple={false}
-          value={[themeId]}
+          value={[theme.id]}
           onChange={(values) => {
             const next = values[0];
             if (next) setThemeId(next);
