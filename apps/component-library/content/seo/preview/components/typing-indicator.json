@@ -1,0 +1,80 @@
+{
+  "category": "Feedback",
+  "title": "Typing indicator component for React & Next.js chat UIs",
+  "description": "Animated typing indicator dots component for React and Next.js: bouncing dot animations for chat apps, messaging interfaces, and loading states.",
+  "keywords": [
+    "typing indicator component",
+    "React",
+    "Next.js",
+    "chat UI",
+    "loading dots",
+    "messaging",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Typing Indicator · Zentauri UI",
+    "description": "Animated typing indicator dots component for React and Next.js: bouncing dot animations for chat apps.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Typing Indicator · Zentauri UI",
+    "description": "Animated typing indicator dots component for React and Next.js: bouncing dot animations for chat apps.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/typing-indicator",
+  "headings": {
+    "h1": "Typing indicator for chat and messaging",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the typing indicator component to show when another user or assistant is composing a message. The three animated dots provide familiar real-time feedback for chat interfaces, comment sections, and AI response streams.",
+  "useCases": [
+    "Show active typing status in direct messaging interfaces.",
+    "Indicate AI assistant response generation in chat applications.",
+    "Display comment composition in social platforms.",
+    "Signal background processing in collaborative editing tools."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Typing Indicator component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; keep interactive subtrees in client components when you need hooks or browser APIs, and leave static structure in server components where possible."
+    },
+    {
+      "question": "Can I customize the typing indicator with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
+    },
+    {
+      "question": "Is this Typing Indicator implementation accessible by default?",
+      "answer": "Primitives follow sensible defaults, but accessibility depends on how you label controls, manage focus, and wire keyboard handlers in your app. Validate critical flows with keyboard-only use and screen readers."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "The typing indicator renders a series of animated dots that signal active composition. The default static variant uses CSS keyframe animations (bounce) while the animated variant offers framer-motion powered transitions including bounce, pulse, and wave.\n\nCombine with a label displayed before or after the dots for additional context like \"Typing...\" or \"is typing\"."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Choose the number of dots (3-5), pick an appearance from the full color palette, and optionally attach a label. The component ships two variants: the default static entry uses pure CSS animations with zero JavaScript runtime cost, while the animated entry (imported from the /animated subpath) provides framer-motion enhanced transitions."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keyboard order, focus rings, and ARIA attributes should match production usage. Test with your supported browsers and assistive technologies when semantics are non-trivial.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive overlays into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

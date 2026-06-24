@@ -48,6 +48,7 @@ const uiComponentNames = [
   "toggle",
   "tooltip",
   "tree-view",
+  "typing-indicator",
   "typography",
 ] as const;
 
@@ -135,6 +136,7 @@ const uiAnimatedComponentNames = [
   "toggle",
   "tooltip",
   "tree-view",
+  "typing-indicator",
 ] as const;
 
 const hooksEntryNames = [

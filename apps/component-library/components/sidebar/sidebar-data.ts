@@ -340,6 +340,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "Tree view",
         href: "/preview/components/tree-view",
       },
+      {
+        title: "Typing indicator",
+        href: "/preview/components/typing-indicator",
+      },
     ],
   },
 ];
