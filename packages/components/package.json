@@ -1,6 +1,6 @@
 {
   "name": "@zentauri-ui/zentauri-components",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "React + Tailwind UI kit with charts, ESM/CJS builds, per-entry exports, and a zentauri-components / zentauri-ui CLI to vendor UI or hook source into your app",
   "keywords": [
     "react",
@@ -139,6 +139,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/diff": "^8.0.0",
     "@types/node": "^20.19.39",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -150,5 +151,8 @@
     "tsup": "^8.5.1",
     "typescript": "^5",
     "vitest": "^4.1.4"
+  },
+  "dependencies": {
+    "diff": "^9.0.0"
   }
 }

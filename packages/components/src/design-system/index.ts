@@ -7,6 +7,7 @@ export * from "./badge";
 export * from "./breadcrumb";
 export * from "./button";
 export * from "./card";
+export * from "./code-diff";
 export * from "./checkbox";
 export * from "./combobox";
 export * from "./command";
