@@ -42,6 +42,7 @@ export * from "./timeline";
 export * from "./toast";
 export * from "./tokens";
 export * from "./toggle";
+export * from "./typing-indicator";
 export * from "./tooltip";
 export * from "./tree-view";
 export * from "./typography";

@@ -47,6 +47,7 @@
     "toggle",
     "tooltip",
     "tree-view",
+    "typing-indicator",
     "typography"
   ],
   "animatedComponents": [
@@ -76,7 +77,8 @@
     "toast",
     "toggle",
     "tooltip",
-    "tree-view"
+    "tree-view",
+    "typing-indicator"
   ],
   "charts": [
     "charts/area",
@@ -186,6 +188,7 @@
     "toggle",
     "tooltip",
     "tree-view",
+    "typing-indicator",
     "typography"
   ],
   "animations": [
@@ -392,6 +395,9 @@
     ],
     "tree-view": [
       "react-icons",
+      "framer-motion"
+    ],
+    "typing-indicator": [
       "framer-motion"
     ],
     "spinner": [

@@ -52,7 +52,7 @@ Provide reusable building blocks commonly recreated by frontend developers.
 
 ### Components
 
-- [ ] Code Diff Viewer
+- [x] Code Diff Viewer
 - [ ] JSON Viewer
 - [ ] JSON Editor
 - [ ] Terminal Emulator
@@ -88,7 +88,7 @@ Provide primitives for AI-powered applications.
 - [ ] Prompt Input
 - [ ] Streaming Text
 - [ ] Streaming Markdown Renderer
-- [ ] Typing Indicator
+- [x] Typing Indicator
 - [ ] Token Counter
 - [ ] Token Usage Card
 - [ ] AI Avatar
@@ -408,17 +408,17 @@ Create a unique category that no major library currently offers.
 
 ## Tier 2
 
-6. Productivity Components
-7. Accessibility Components
-8. Data Visualization Components
+1. Productivity Components
+2. Accessibility Components
+3. Data Visualization Components
 
 ## Tier 3
 
-9. Ecommerce Components
-10. Finance Components
-11. Gamification Components
-12. Web3 Components
-13. Documentation Components
+1. Ecommerce Components
+2. Finance Components
+3. Gamification Components
+4. Web3 Components
+5. Documentation Components
 
 ---
 

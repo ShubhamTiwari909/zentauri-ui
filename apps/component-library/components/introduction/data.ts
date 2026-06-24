@@ -369,4 +369,12 @@ export const componentsData: ComponentHighlight[] = [
     href: "/preview/components/tree-view",
     badge: "Data",
   },
+  {
+    id: "typing-indicator",
+    name: "Typing indicator",
+    description:
+      "Animated dots for chat and messaging UIs with CSS bounce and framer-motion spring, pulse, and wave animations.",
+    href: "/preview/components/typing-indicator",
+    badge: "Feedback",
+  },
 ];
