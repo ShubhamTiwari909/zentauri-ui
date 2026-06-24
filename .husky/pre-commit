@@ -1,5 +1,6 @@
 #!/bin/sh
-export PATH="$HOME/.local/share/pnpm:$PATH"
+export PNPM_HOME="$HOME/Library/pnpm"
+export PATH="$PNPM_HOME:$HOME/.nvm/versions/node/v22.14.0/bin:$PATH"
 . "$(dirname "$0")/_/husky.sh"
 
 pnpm lint-staged
