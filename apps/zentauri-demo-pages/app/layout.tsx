@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="dark" className="h-full antialiased">
+    <html lang="en" className="h-full antialiased">
       <body className="min-h-full">
         <SiteSearchProvider>
           <SiteHeader />
