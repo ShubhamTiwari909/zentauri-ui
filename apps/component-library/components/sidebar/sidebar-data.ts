@@ -197,6 +197,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/checkbox",
       },
       {
+        title: "Code Diff",
+        href: "/preview/components/code-diff",
+      },
+      {
         title: "Combobox",
         href: "/preview/components/combobox",
       },

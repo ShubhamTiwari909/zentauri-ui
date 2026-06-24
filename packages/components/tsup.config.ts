@@ -9,6 +9,7 @@ const uiComponentNames = [
   "animated-number",
   "avatar",
   "badge",
+  "code-diff",
   "breadcrumb",
   "buttons",
   "card",

@@ -82,6 +82,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "code-diff",
+    name: "Code Diff",
+    description:
+      "Unified and split views for comparing old and new code with line numbers and gutter markers.",
+    href: "/preview/components/code-diff",
+    badge: "Utility",
+  },
+  {
     id: "combobox",
     name: "Combobox",
     description:

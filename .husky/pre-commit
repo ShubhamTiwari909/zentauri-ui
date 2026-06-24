@@ -1,1 +1,14 @@
+#!/usr/bin/env sh
+set -e
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# fallback safety
+if [ -f .nvmrc ]; then
+  nvm use || nvm install
+else
+  echo "No .nvmrc found, skipping nvm use"
+fi
+
 pnpm lint-staged

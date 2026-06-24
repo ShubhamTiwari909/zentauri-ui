@@ -1,0 +1,79 @@
+{
+  "category": "Utility",
+  "title": "Code Diff component for comparing code in React",
+  "description": "Code Diff component for React and Next.js: unified and split views with line numbers and gutter markers for comparing old and new code.",
+  "keywords": [
+    "code diff component",
+    "React",
+    "Next.js",
+    "diff viewer",
+    "code comparison",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Code Diff · Zentauri UI",
+    "description": "Code Diff component for React and Next.js: unified and split views with line numbers and gutter markers for comparing old and new code.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Code Diff · Zentauri UI",
+    "description": "Code Diff component for React and Next.js: unified and split views with line numbers and gutter markers for comparing old and new code.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/code-diff",
+  "headings": {
+    "h1": "Code Diff for inline comparisons",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the Code Diff component when you need to show what changed between two versions of code — pull request reviews, changelogs, migration guides, or live editor comparisons.",
+  "useCases": [
+    "Display pull request diffs in documentation.",
+    "Show migration paths for API or configuration changes.",
+    "Compare user input against expected values in playgrounds.",
+    "Highlight edits inline in changelog entries."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Code Diff component animate?",
+      "answer": "The base component is static (no framer-motion dependency). For animated transitions, wrap the component or use CSS transitions on the container."
+    },
+    {
+      "question": "Can I customize colors?",
+      "answer": "Yes. Every color is driven by CSS variables (--zui-code-diff-added-bg, --zui-code-diff-removed-bg, etc.) with sensible fallbacks. Override them in your Tailwind theme or global CSS."
+    },
+    {
+      "question": "What diff algorithm is used?",
+      "answer": "The component uses the battle-tested `diff` npm package under the hood. It provides word-level or line-level diffs — currently line-level with `diffLines`."
+    },
+    {
+      "question": "Does it work with large files?",
+      "answer": "Diff computation runs synchronously on render. For very large files, consider limiting the input size or computing the diff server-side."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "The Code Diff component takes two strings of code and computes a line-by-line diff using the `diff` library.\n\nIt renders additions in green, deletions in red, and leaves unchanged lines unstyled. A sticky header shows the total additions and deletions at a glance."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "The component accepts `oldCode` and `newCode` as required string props, and optional props for `viewType` (unified or split), `showLineNumbers`, `showGutterMarkers`, `oldTitle`, `newTitle`, `appearance`, and `size`.\n\nUse the static entry from `@zentauri-ui/zentauri-components/ui/code-diff`. The component does not require framer-motion."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Diffs are rendered as HTML tables so screen readers navigate line by line with column headers. Added/removed lines use color and gutter markers (+/-) together — never rely on color alone.\n\nThe header announces the count of additions and deletions for quick scanning."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import from `@zentauri-ui/zentauri-components/ui/code-diff`. The component is a client component but can be imported in server components as long as the actual rendering happens on the client.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
