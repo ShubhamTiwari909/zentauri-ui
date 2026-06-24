@@ -22,14 +22,14 @@ export default function DemoIndexPage() {
           <Heading
             level={1}
             displayLevel={1}
-            className="max-w-4xl text-4xl sm:text-5xl lg:text-7xl"
+            className="text-4xl sm:text-5xl lg:text-7xl text-white"
           >
-            Eight distinct Zentauri UI landing layouts with switchable themes.
+            Distinct Zentauri UI landing layout with switchable themes.
           </Heading>
           <Text
             size="lg"
             tone="muted"
-            className="max-w-2xl leading-7 sm:leading-8"
+            className="leading-7 sm:leading-8 text-slate-100"
           >
             Choose a layout route, then use the theme tabs inside the page to
             preview the same content across visual styles.
@@ -37,8 +37,13 @@ export default function DemoIndexPage() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {layoutRoutes.map((route) => (
-            <Card key={route.slug} appearance="outline" rounded="lg" size="lg">
+          {layoutRoutes.map((route, index) => (
+            <Card
+              key={route.slug}
+              appearance={index === 0 ? "gradient-pink" : "gradient-teal"}
+              rounded="lg"
+              size="lg"
+            >
               <CardHeader className="">
                 <CardTitle as="h2" className="" ref={undefined}>
                   {route.label}
@@ -54,7 +59,7 @@ export default function DemoIndexPage() {
                 <Button
                   as="link"
                   href={`/demo/${route.slug}`}
-                  appearance="gradient-teal"
+                  appearance={index === 0 ? "gradient-purple" : "gradient-teal"}
                   className="w-full sm:w-auto"
                 >
                   Open layout
