@@ -52,6 +52,36 @@ export function Counter() {
   );
 }`;
 
+function ToggleControl({
+  label,
+  pressed,
+  onChange,
+}: {
+  label: string;
+  pressed: boolean;
+  onChange: (v: boolean) => void;
+}) {
+  return (
+    <label className="flex flex-col gap-1.5">
+      <span className="text-xs font-semibold text-slate-900 dark:text-white">
+        {label}
+      </span>
+      <button
+        type="button"
+        aria-pressed={pressed}
+        onClick={() => onChange(!pressed)}
+        className={`rounded-xl border px-4 py-2 text-sm transition-colors ${
+          pressed
+            ? "border-sky-500 bg-sky-500/10 text-sky-300"
+            : "border-slate-700 bg-slate-800 text-slate-400 hover:border-slate-600"
+        }`}
+      >
+        {pressed ? "On" : "Off"}
+      </button>
+    </label>
+  );
+}
+
 type VariantSelectProps<T extends string> = {
   label: string;
   value: T;
@@ -129,40 +159,16 @@ export function CodeDiffPlayground() {
           options={CODE_DIFF_SIZES}
           onChange={setSize}
         />
-        <label className="flex flex-col gap-1.5">
-          <span className="text-xs font-semibold text-slate-900 dark:text-white">
-            Line numbers
-          </span>
-          <button
-            type="button"
-            aria-pressed={showLineNumbers}
-            onClick={() => setShowLineNumbers((v) => !v)}
-            className={`rounded-xl border px-4 py-2 text-sm transition-colors ${
-              showLineNumbers
-                ? "border-sky-500 bg-sky-500/10 text-sky-300"
-                : "border-slate-700 bg-slate-800 text-slate-400 hover:border-slate-600"
-            }`}
-          >
-            {showLineNumbers ? "On" : "Off"}
-          </button>
-        </label>
-        <label className="flex flex-col gap-1.5">
-          <span className="text-xs font-semibold text-slate-900 dark:text-white">
-            Gutter markers
-          </span>
-          <button
-            type="button"
-            aria-pressed={showGutterMarkers}
-            onClick={() => setShowGutterMarkers((v) => !v)}
-            className={`rounded-xl border px-4 py-2 text-sm transition-colors ${
-              showGutterMarkers
-                ? "border-sky-500 bg-sky-500/10 text-sky-300"
-                : "border-slate-700 bg-slate-800 text-slate-400 hover:border-slate-600"
-            }`}
-          >
-            {showGutterMarkers ? "On" : "Off"}
-          </button>
-        </label>
+        <ToggleControl
+          label="Line numbers"
+          pressed={showLineNumbers}
+          onChange={setShowLineNumbers}
+        />
+        <ToggleControl
+          label="Gutter markers"
+          pressed={showGutterMarkers}
+          onChange={setShowGutterMarkers}
+        />
       </div>
       <PreviewCodeShowcase code={code}>
         <CodeDiffDemo

@@ -1,6 +1,7 @@
 "use client";
 
 import { diffLines } from "diff";
+import { useMemo } from "react";
 
 import { cn } from "../../lib/utils";
 
@@ -236,7 +237,10 @@ export function CodeDiffBase({
   as: Wrapper = "div",
   ...rest
 }: CodeDiffBaseProps) {
-  const lines = computeDiff(oldCode, newCode);
+  const lines = useMemo(
+    () => computeDiff(oldCode ?? "", newCode ?? ""),
+    [oldCode, newCode],
+  );
   const hasChanges = lines.some(
     (l) => l.type === "added" || l.type === "removed",
   );
