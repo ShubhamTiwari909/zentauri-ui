@@ -34,12 +34,12 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 100 passed (100)   |
-| Tests      | 836 passed (836) |
+| Test files | 101 passed (101)   |
+| Tests      | 848 passed (848) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 51         | 531   |
+| Components and UI utilities    | 52         | 543   |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 41         | 174   |
 | Design system facade           | 1          | 11    |
