@@ -274,6 +274,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Layout",
   },
   {
+    id: "secret-reveal",
+    name: "Secret reveal",
+    description:
+      "Toggle visibility of sensitive values like API keys, passwords, and tokens with masked defaults and reveal animations.",
+    href: "/preview/components/secret-reveal",
+    badge: "Security",
+  },
+  {
     id: "search",
     name: "Search",
     description:

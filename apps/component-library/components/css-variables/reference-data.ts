@@ -30,6 +30,7 @@ import { progressCssVariables } from "./data/progress";
 import { radioGroupCssVariables } from "./data/radio-group";
 import { ratingCssVariables } from "./data/rating";
 import { scrollAreaCssVariables } from "./data/scroll-area";
+import { secretRevealCssVariables } from "./data/secret-reveal";
 import { searchCssVariables } from "./data/search";
 import { selectCssVariables } from "./data/select";
 import { skeletonCssVariables } from "./data/skeleton";
@@ -80,6 +81,7 @@ export const cssVariableReferences = {
   "radio-group": radioGroupCssVariables,
   rating: ratingCssVariables,
   "scroll-area": scrollAreaCssVariables,
+  "secret-reveal": secretRevealCssVariables,
   search: searchCssVariables,
   select: selectCssVariables,
   skeleton: skeletonCssVariables,

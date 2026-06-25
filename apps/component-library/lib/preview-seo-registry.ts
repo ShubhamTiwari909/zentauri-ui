@@ -38,6 +38,7 @@ import progress from "@/content/seo/preview/components/progress.json";
 import rating from "@/content/seo/preview/components/rating.json";
 import radioGroup from "@/content/seo/preview/components/radio-group.json";
 import scrollArea from "@/content/seo/preview/components/scroll-area.json";
+import secretReveal from "@/content/seo/preview/components/secret-reveal.json";
 import select from "@/content/seo/preview/components/select.json";
 import search from "@/content/seo/preview/components/search.json";
 import skeleton from "@/content/seo/preview/components/skeleton.json";
@@ -95,6 +96,7 @@ const previewSeoRegistry = {
   rating: rating as PreviewSeoDocument,
   "radio-group": radioGroup as PreviewSeoDocument,
   "scroll-area": scrollArea as PreviewSeoDocument,
+  "secret-reveal": secretReveal as PreviewSeoDocument,
   select: select as PreviewSeoDocument,
   search: search as PreviewSeoDocument,
   skeleton: skeleton as PreviewSeoDocument,

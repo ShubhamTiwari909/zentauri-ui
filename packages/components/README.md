@@ -66,7 +66,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/split-button/split-button.test.tsx`                             |    11 |
 | `src/ui/table/table.test.tsx`                                           |    11 |
 | `src/hooks/usePagination/usePagination.test.ts`                         |    10 |
-| `src/ui/data-table/data-table.test.tsx`                                 |    10 |
 | `src/ui/marquee/marquee.test.tsx`                                       |    10 |
 | `src/ui/modal/modal.test.tsx`                                           |    10 |
 | `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
@@ -74,6 +73,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useLongPress/useLongPress.test.ts`                           |     9 |
 | `src/hooks/useTableFilter/useTableFilter.test.ts`                       |     9 |
 | `src/ui/animated-number/animated-number.test.tsx`                       |     9 |
+| `src/ui/secret-reveal/secret-reveal.test.tsx`                           |     9 |
 | `src/ui/skeleton/skeleton.test.tsx`                                     |     9 |
 | `src/ui/slider/slider.test.tsx`                                         |     9 |
 | `src/ui/typing-indicator/typing-indicator.test.tsx`                     |     9 |

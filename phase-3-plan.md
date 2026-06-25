@@ -118,7 +118,7 @@ Become one of the first component libraries with built-in security tooling.
 - [ ] Password Generator
 - [ ] OTP Input
 - [ ] PIN Input
-- [ ] Secret Reveal
+- [x] Secret Reveal
 - [ ] API Key Viewer
 - [ ] API Key Masking
 - [ ] JWT Decoder
