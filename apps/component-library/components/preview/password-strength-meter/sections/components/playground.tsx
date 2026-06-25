@@ -184,9 +184,7 @@ export function PasswordStrengthMeterPlayground() {
         <p className="mt-1 mb-4 max-w-2xl text-xs leading-5 text-slate-600 dark:text-slate-400">
           Type a password to see the strength meter update in real time.
         </p>
-        <PreviewCodeShowcase
-          code={passwordStrengthMeterSnippet({ ...props, animated: true })}
-        >
+        <PreviewCodeShowcase code={passwordStrengthMeterSnippet(props)}>
           <PasswordStrengthMeterControlledDemo {...props} />
         </PreviewCodeShowcase>
       </div>

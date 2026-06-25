@@ -43,7 +43,7 @@ export function passwordStrengthMeterSnippet(
   if (animated) {
     return `${variantLeadComment(detail)}import { PasswordStrengthMeterAnimated } from "@zentauri-ui/zentauri-components/ui/password-strength-meter/animated";
 
-<PasswordStrengthMeterAnimated${passwordStrengthMeterAttrs(opts)} />`;
+<PasswordStrengthMeterAnimated${passwordStrengthMeterAttrs(opts)} animation="shimmer" />`;
   }
 
   return `${variantLeadComment(detail)}import { PasswordStrengthMeter } from "@zentauri-ui/zentauri-components/ui/password-strength-meter";

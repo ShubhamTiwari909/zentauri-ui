@@ -37,6 +37,7 @@ export function PasswordStrengthMeterControlledDemo({
     <div className="space-y-3">
       <input
         type="password"
+        aria-label="Password"
         value={password}
         onChange={handleChange}
         placeholder="Type a password..."

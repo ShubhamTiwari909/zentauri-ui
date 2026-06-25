@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useId,
-  useRef,
-  useState,
-} from "react";
+import { createContext, useContext, useMemo, useId } from "react";
 
 import { cn, clamp } from "../../lib/utils";
 
@@ -78,31 +70,14 @@ export function PasswordStrengthMeterBase(props: PasswordStrengthMeterProps) {
   const clamped = clamp(value, min, max);
   const percent = max === min ? 0 : ((clamped - min) / (max - min)) * 100;
   const labelSlotId = `${useId()}-password-strength-meter-label`;
-  const labelSlotCountRef = useRef(0);
-  const [labelSlotMounted, setLabelSlotMounted] = useState(false);
-  const registerLabel = useCallback(() => {
-    labelSlotCountRef.current += 1;
-    if (labelSlotCountRef.current === 1) {
-      setLabelSlotMounted(true);
-    }
-    return () => {
-      labelSlotCountRef.current -= 1;
-      if (labelSlotCountRef.current === 0) {
-        setLabelSlotMounted(false);
-      }
-    };
-  }, []);
   const hasInlineLabelProp = Boolean(label?.trim().length);
 
   const labelingProps = useMemo(() => {
     if (hasInlineLabelProp) {
       return { "aria-label": label?.trim() ?? "Password strength" };
     }
-    if (labelSlotMounted) {
-      return { "aria-labelledby": labelSlotId };
-    }
-    return { "aria-label": `Password strength: ${getStrengthLabel(percent)}` };
-  }, [hasInlineLabelProp, label, labelSlotId, labelSlotMounted, percent]);
+    return { "aria-labelledby": labelSlotId };
+  }, [hasInlineLabelProp, label, labelSlotId]);
 
   const ctx = useMemo(
     () => ({
@@ -115,7 +90,6 @@ export function PasswordStrengthMeterBase(props: PasswordStrengthMeterProps) {
       segmented: Boolean(segmented),
       appearance: appearance ?? "default",
       labelSlotId,
-      registerLabel,
     }),
     [
       animated,
@@ -124,7 +98,6 @@ export function PasswordStrengthMeterBase(props: PasswordStrengthMeterProps) {
       labelSlotId,
       max,
       min,
-      registerLabel,
       shape,
       size,
       segmented,
@@ -140,6 +113,7 @@ export function PasswordStrengthMeterBase(props: PasswordStrengthMeterProps) {
         aria-valuemin={min}
         aria-valuemax={max}
         aria-valuenow={clamped}
+        aria-valuetext={getStrengthLabel(percent)}
         {...labelingProps}
         className={cn(
           passwordStrengthMeterVariants({ appearance, size, shape }),
@@ -149,27 +123,30 @@ export function PasswordStrengthMeterBase(props: PasswordStrengthMeterProps) {
       >
         {children ?? (
           <>
-            <div className="flex items-center justify-between mb-1.5">
-              {label && (
-                <span
-                  data-slot="password-strength-meter-label"
-                  className="text-xs font-medium"
-                >
-                  {label}
-                </span>
-              )}
-              {showScoreLabel && (
-                <span
-                  data-slot="password-strength-meter-score-label"
-                  className={cn(
-                    "text-xs font-semibold",
-                    getStrengthColor(percent),
-                  )}
-                >
-                  {scoreLabel ?? getStrengthLabel(percent)}
-                </span>
-              )}
-            </div>
+            {(label || showScoreLabel) && (
+              <div className="flex items-center justify-between mb-1.5">
+                {label && (
+                  <span
+                    id={labelSlotId}
+                    data-slot="password-strength-meter-label"
+                    className="text-xs font-medium"
+                  >
+                    {label}
+                  </span>
+                )}
+                {showScoreLabel && (
+                  <span
+                    data-slot="password-strength-meter-score-label"
+                    className={cn(
+                      "text-xs font-semibold",
+                      getStrengthColor(percent),
+                    )}
+                  >
+                    {scoreLabel ?? getStrengthLabel(percent)}
+                  </span>
+                )}
+              </div>
+            )}
             <PasswordStrengthMeterBar
               style={{ transform: `scaleX(${percent / 100})` }}
             />

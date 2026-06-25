@@ -19,7 +19,6 @@ export type PasswordStrengthMeterProps = PasswordStrengthMeterVariantProps &
     segmented?: boolean;
     children?: ReactNode;
     as?: ElementType;
-    zxcvbnScore?: number;
   });
 
 export type PasswordStrengthMeterSectionProps = {
@@ -38,5 +37,4 @@ export type PasswordStrengthMeterCtx = {
   segmented: boolean;
   appearance: NonNullable<PasswordStrengthMeterProps["appearance"]>;
   labelSlotId: string;
-  registerLabel: () => () => void;
 };
