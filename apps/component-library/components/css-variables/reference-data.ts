@@ -41,6 +41,7 @@ import { toastCssVariables } from "./data/toast";
 import { toggleCssVariables } from "./data/toggle";
 import { tooltipCssVariables } from "./data/tooltip";
 import { treeViewCssVariables } from "./data/tree-view";
+import { typingIndicatorCssVariables } from "./data/typing-indicator";
 import { typographyCssVariables } from "./data/typography";
 
 import type { CssVariableReference } from "./reference-types";
@@ -89,6 +90,7 @@ export const cssVariableReferences = {
   toggle: toggleCssVariables,
   tooltip: tooltipCssVariables,
   "tree-view": treeViewCssVariables,
+  "typing-indicator": typingIndicatorCssVariables,
   typography: typographyCssVariables,
 } as const satisfies Record<string, CssVariableReference>;
 

@@ -15227,6 +15227,198 @@
         }
       ]
     },
+    "typing-indicator": {
+      "slug": "typing-indicator",
+      "subcomponents": [
+        {
+          "name": "static:TypingIndicator",
+          "displayName": "TypingIndicator",
+          "propsType": "TypingIndicatorProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "dots",
+              "type": "TypingIndicatorDots | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "labelPosition",
+              "type": "'before' | 'after' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:TypingIndicatorVariant",
+          "displayName": "TypingIndicatorVariant",
+          "propsType": "TypingIndicatorVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:TypingIndicatorAnimated",
+          "displayName": "TypingIndicatorAnimated",
+          "propsType": "TypingIndicatorAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "animation",
+              "type": "TypingIndicatorAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "dots",
+              "type": "TypingIndicatorDots | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "labelPosition",
+              "type": "'before' | 'after' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "typography": {
       "slug": "typography",
       "subcomponents": [
