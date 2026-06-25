@@ -126,5 +126,5 @@ export const secretRevealCssVariables = defineCssVariableReference({
     ["secret-reveal-gradient-orange-to-dark", "oklch(57.7% 0.245 27.325)"],
     ["secret-reveal-fg-dark", "oklch(98.4% 0.003 247.858)"],
   ],
-  darkVariableCount: 58,
+  darkVariableCount: 59,
 });

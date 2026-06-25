@@ -32,12 +32,10 @@ export function SecretRevealAnimated({
   const [revealed, setRevealed] = useState(initiallyRevealed);
 
   const toggle = useCallback(() => {
-    setRevealed((prev) => {
-      const next = !prev;
-      onVisibilityChange?.(next);
-      return next;
-    });
-  }, [onVisibilityChange]);
+    const next = !revealed;
+    setRevealed(next);
+    onVisibilityChange?.(next);
+  }, [onVisibilityChange, revealed]);
 
   const preset = secretRevealAnimationPresets[animation];
   const displayText = value ?? (typeof children === "string" ? children : "");
@@ -81,7 +79,7 @@ export function SecretRevealAnimated({
               className="inline-block"
             >
               {revealed
-                ? displayText
+                ? (value ?? children)
                 : muteChar.repeat(displayText.length || 8)}
             </motion.span>
           </AnimatePresence>
@@ -92,7 +90,6 @@ export function SecretRevealAnimated({
           className={secretRevealToggleVariants({ size, appearance })}
           onClick={toggle}
           aria-label={revealed ? "Hide secret" : "Reveal secret"}
-          aria-pressed={revealed}
         >
           {revealed ? (
             <svg

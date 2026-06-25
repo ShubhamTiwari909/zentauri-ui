@@ -29,12 +29,10 @@ export function SecretRevealBase({
   const [revealed, setRevealed] = useState(initiallyRevealed);
 
   const toggle = useCallback(() => {
-    setRevealed((prev) => {
-      const next = !prev;
-      onVisibilityChange?.(next);
-      return next;
-    });
-  }, [onVisibilityChange]);
+    const next = !revealed;
+    setRevealed(next);
+    onVisibilityChange?.(next);
+  }, [onVisibilityChange, revealed]);
 
   const displayText = value ?? (typeof children === "string" ? children : "");
 
@@ -66,7 +64,9 @@ export function SecretRevealBase({
           data-slot="secret-reveal-value"
           className={cn(secretRevealValueVariants({ size }), "flex-1 truncate")}
         >
-          {revealed ? displayText : muteChar.repeat(displayText.length || 8)}
+          {revealed
+            ? (value ?? children)
+            : muteChar.repeat(displayText.length || 8)}
         </span>
         <button
           type="button"
@@ -74,7 +74,6 @@ export function SecretRevealBase({
           className={secretRevealToggleVariants({ size, appearance })}
           onClick={toggle}
           aria-label={revealed ? "Hide secret" : "Reveal secret"}
-          aria-pressed={revealed}
         >
           {revealed ? (
             <svg
