@@ -26,6 +26,7 @@ export * from "./marquee";
 export * from "./modal";
 export * from "./otp-input";
 export * from "./pagination";
+export * from "./password-strength-meter";
 export * from "./popover";
 export * from "./progress";
 export * from "./rating";

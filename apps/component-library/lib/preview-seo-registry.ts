@@ -32,6 +32,7 @@ import marquee from "@/content/seo/preview/components/marquee.json";
 import modal from "@/content/seo/preview/components/modal.json";
 import otpInput from "@/content/seo/preview/components/otp-input.json";
 import pagination from "@/content/seo/preview/components/pagination.json";
+import passwordStrengthMeter from "@/content/seo/preview/components/password-strength-meter.json";
 import popover from "@/content/seo/preview/components/popover.json";
 import progress from "@/content/seo/preview/components/progress.json";
 import rating from "@/content/seo/preview/components/rating.json";
@@ -88,6 +89,7 @@ const previewSeoRegistry = {
   modal: modal as PreviewSeoDocument,
   "otp-input": otpInput as PreviewSeoDocument,
   pagination: pagination as PreviewSeoDocument,
+  "password-strength-meter": passwordStrengthMeter as PreviewSeoDocument,
   popover: popover as PreviewSeoDocument,
   progress: progress as PreviewSeoDocument,
   rating: rating as PreviewSeoDocument,
