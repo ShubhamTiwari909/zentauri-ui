@@ -8,3 +8,5 @@ pnpm-lock.yaml
 apps/zentauri-backend/.venv
 packages/components/cli/registry.json
 packages/components/cli/props.json
+packages/components/README.md
+apps/component-library/README.md
