@@ -1,5 +1,5 @@
 import type { VariantProps } from "class-variance-authority";
-import type { ComponentPropsWithRef, ReactNode, Ref } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import type { typingIndicatorDotVariants } from "./variants";
 
@@ -9,14 +9,12 @@ export type TypingIndicatorVariantProps = VariantProps<
 
 export type TypingIndicatorDots = 3 | 4 | 5;
 
-export type TypingIndicatorBaseProps = TypingIndicatorVariantProps & {
-  dots?: TypingIndicatorDots;
-  label?: ReactNode;
-  labelPosition?: "before" | "after";
-  className?: string;
-  children?: ReactNode;
-  ref?: Ref<HTMLSpanElement>;
-};
+export type TypingIndicatorBaseProps = TypingIndicatorVariantProps &
+  ComponentPropsWithRef<"span"> & {
+    dots?: TypingIndicatorDots;
+    label?: ReactNode;
+    labelPosition?: "before" | "after";
+    children?: ReactNode;
+  };
 
-export type TypingIndicatorProps = TypingIndicatorBaseProps &
-  ComponentPropsWithRef<"span">;
+export type TypingIndicatorProps = TypingIndicatorBaseProps;
