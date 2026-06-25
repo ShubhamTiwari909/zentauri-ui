@@ -19,6 +19,7 @@ import {
   TYPING_INDICATOR_SIZES,
 } from "./data";
 import { typingIndicatorSnippet } from "./snippets";
+import type { TypingIndicatorAnimation } from "@zentauri-ui/zentauri-components/ui/typing-indicator/animated";
 import type {
   TypingIndicatorAppearance,
   TypingIndicatorDemoProps,
@@ -122,14 +123,14 @@ export function TypingIndicatorPlayground() {
   const [size, setSize] = useState<TypingIndicatorSize>("md");
   const [dots, setDots] = useState<3 | 4 | 5>(3);
   const [label, setLabel] = useState<string>("");
-  const [animation, setAnimation] = useState<string>("none");
+  const [animation, setAnimation] = useState<TypingIndicatorAnimation>("none");
 
   const demoProps: TypingIndicatorDemoProps = {
     appearance,
     size,
     dots,
     label: label || undefined,
-    animation: animation as TypingIndicatorDemoProps["animation"],
+    animation,
   };
 
   const code = typingIndicatorSnippet(demoProps);

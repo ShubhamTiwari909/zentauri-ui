@@ -67,5 +67,5 @@ export const typingIndicatorCssVariables = defineCssVariableReference({
     ["typing-indicator-gradient-purple-to-dark", "oklch(59.2% 0.249 0.584)"],
     ["typing-indicator-label-fg-dark", "oklch(86.9% 0.022 252.894)"],
   ],
-  darkVariableCount: 27,
+  darkVariableCount: 28,
 });

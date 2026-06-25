@@ -6,15 +6,14 @@ import { useMemo } from "react";
 import { cn } from "../../../lib/utils";
 
 import {
-  typingIndicatorDotDelays,
   typingIndicatorDotVariants,
   typingIndicatorDotsVariants,
-  typingIndicatorLabelVariants,
   typingIndicatorVariants,
 } from "../variants";
 
 import { typingIndicatorAnimationPresets } from "./animations";
 import type { TypingIndicatorAnimatedProps } from "./types";
+import { TypingIndicatorLabel } from "../typing-indicator-base";
 
 export function TypingIndicatorAnimated({
   appearance,
@@ -33,11 +32,12 @@ export function TypingIndicatorAnimated({
     () =>
       Array.from({ length: dots }).map((_, i) => ({
         delay: i * 0.12,
-        repeat: Infinity,
-        repeatType: "reverse" as const,
+        ...(animation !== "none"
+          ? { repeat: Infinity, repeatType: "reverse" as const }
+          : {}),
         ...preset.transition,
       })),
-    [dots, preset.transition],
+    [dots, animation, preset.transition],
   );
 
   return (
@@ -48,12 +48,7 @@ export function TypingIndicatorAnimated({
       {...rest}
     >
       {label && labelPosition === "before" && (
-        <span
-          data-slot="typing-indicator-label"
-          className={typingIndicatorLabelVariants({ size })}
-        >
-          {label}
-        </span>
+        <TypingIndicatorLabel size={size}>{label}</TypingIndicatorLabel>
       )}
       <span
         data-slot="typing-indicator-dots"
@@ -65,7 +60,7 @@ export function TypingIndicatorAnimated({
             data-slot="typing-indicator-dot"
             className={cn(
               typingIndicatorDotVariants({ appearance, size }),
-              typingIndicatorDotDelays[i % typingIndicatorDotDelays.length],
+              "animate-none",
             )}
             initial="initial"
             animate="animate"
@@ -75,12 +70,7 @@ export function TypingIndicatorAnimated({
         ))}
       </span>
       {label && labelPosition === "after" && (
-        <span
-          data-slot="typing-indicator-label"
-          className={typingIndicatorLabelVariants({ size })}
-        >
-          {label}
-        </span>
+        <TypingIndicatorLabel size={size}>{label}</TypingIndicatorLabel>
       )}
     </span>
   );

@@ -55,7 +55,7 @@ export function TypingIndicatorBase({
 
 TypingIndicatorBase.displayName = "TypingIndicator";
 
-function TypingIndicatorLabel({
+export function TypingIndicatorLabel({
   size,
   children,
 }: {

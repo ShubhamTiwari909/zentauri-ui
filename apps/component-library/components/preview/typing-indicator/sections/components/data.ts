@@ -1,4 +1,5 @@
 import type { TypingIndicatorProps } from "@zentauri-ui/zentauri-components/ui/typing-indicator";
+import type { TypingIndicatorAnimation } from "@zentauri-ui/zentauri-components/ui/typing-indicator/animated";
 
 export const TYPING_INDICATOR_APPEARANCES = [
   "default",
@@ -38,4 +39,4 @@ export const TYPING_INDICATOR_ANIMATIONS = [
   "bounce",
   "pulse",
   "wave",
-] as const;
+] as const satisfies readonly TypingIndicatorAnimation[];
