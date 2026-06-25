@@ -277,6 +277,7 @@ pnpm exec turbo link
 - Cursor (Composer 2.0 and 2.5)
 - Chatgpt Codex (GPT 5.5)
 - Claude code (Opus 4.7 and 4.8)
+- Opencode (Deepseek)
 - Gemini AI code assist (code review)
 - Chatgpt codex connector (code review)
 - Cubic AI (code review)
