@@ -15,8 +15,8 @@ Published artifacts live under `dist/`. Imports use **per-entry subpaths**: `@ze
 
 | Surface             | Count | Import shape                                          |
 | ------------------- | ----: | ----------------------------------------------------- |
-| Static UI entries   |    43 | `@zentauri-ui/zentauri-components/ui/<name>`          |
-| Animated UI entries |    27 | `@zentauri-ui/zentauri-components/ui/<name>/animated` |
+| Static UI entries   |    44 | `@zentauri-ui/zentauri-components/ui/<name>`          |
+| Animated UI entries |    28 | `@zentauri-ui/zentauri-components/ui/<name>/animated` |
 | Animation entries   |    41 | `@zentauri-ui/zentauri-components/animations/<name>`  |
 | Chart entries       |     9 | `@zentauri-ui/zentauri-components/charts/<type>`      |
 | Hook entries        |    28 | `@zentauri-ui/zentauri-components/hooks/<entry>`      |
