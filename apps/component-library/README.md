@@ -34,7 +34,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 100 passed (100) |
+| Test files | 100 passed (100)   |
 | Tests      | 836 passed (836) |
 
 | Area                           | Test files | Tests |
