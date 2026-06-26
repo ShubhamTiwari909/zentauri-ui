@@ -126,9 +126,9 @@ Become one of the first component libraries with built-in security tooling.
 - [ ] JWT Expiration Badge
 - [ ] Base64 Encoder
 - [ ] Base64 Decoder
-- [ ] Hash Generator
-- [ ] SHA256 Generator
-- [ ] MD5 Generator
+- [x] Hash Generator
+- [x] SHA256 Generator
+- [x] MD5 Generator
 - [ ] AES Encryptor
 - [ ] AES Decryptor
 - [ ] RSA Playground

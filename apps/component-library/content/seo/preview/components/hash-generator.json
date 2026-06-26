@@ -1,0 +1,86 @@
+{
+  "category": "Utilities",
+  "title": "Hash generator component for React & Next.js",
+  "description": "Real-time hash generation component supporting SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 algorithms using the Web Crypto API for React and Next.js.",
+  "keywords": [
+    "hash generator component",
+    "React",
+    "Next.js",
+    "SHA-256",
+    "SHA-512",
+    "hash",
+    "crypto",
+    "Web Crypto API",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Hash Generator · Zentauri UI",
+    "description": "Real-time hash generation component supporting SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 using the Web Crypto API.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Hash Generator · Zentauri UI",
+    "description": "Real-time hash generation component supporting SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 using the Web Crypto API.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/hash-generator",
+  "headings": {
+    "h1": "Hash generator for cryptographic hashing",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the hash generator component to compute cryptographic hashes in real time. Type or paste text and see the hash output update instantly using the Web Crypto API.",
+  "useCases": [
+    "Compute SHA-256 checksums for file verification in developer tools.",
+    "Generate password hashes for secure storage demonstrations.",
+    "Hash API keys and tokens for consistent identifier generation.",
+    "Compare hash outputs across different algorithms in security panels."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Hash Generator component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; the component uses client-side state and the Web Crypto API and works seamlessly with server components when used as a client boundary."
+    },
+    {
+      "question": "Can I customize the hash generator with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants and slots so you can extend styles with Tailwind utilities without fighting inline styles."
+    },
+    {
+      "question": "What algorithms are supported?",
+      "answer": "The component supports SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 via the Web Crypto API. MD5 is not supported as it is not part of the Web Crypto specification and is considered cryptographically broken."
+    },
+    {
+      "question": "Is the input data sent to a server?",
+      "answer": "No. All hashing is performed client-side using the browser's built-in Web Crypto API. No data is transmitted to any server."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "The hash generator component provides a text input area where users can type or paste content. The hash is computed in real time using the browser's built-in Web Crypto API and displayed in the output area below. A copy button in the header lets users quickly copy the hash to their clipboard.\n\nThe algorithm selector allows switching between SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 variants."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Pass the algorithm via the algorithm prop (default sha256). The component supports controlled mode via value and onValueChange props, as well as uncontrolled usage with internal state. The readOnly prop disables editing, and showCopyButton controls the visibility of the copy button."
+    },
+    {
+      "heading": "Common use cases",
+      "body": "The hash generator is ideal for developer tooling panels, security dashboards, password management interfaces, and educational tools where users need to compute cryptographic hashes without leaving the browser."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The component uses semantic HTML elements including textarea for input and proper labels. The copy button provides clear visual feedback when the hash is copied. Keyboard order and focus management should match production usage.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive components into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

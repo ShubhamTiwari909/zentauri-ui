@@ -18,6 +18,7 @@ import { dropdownCssVariables } from "./data/dropdown";
 import { dynamicStepperCssVariables } from "./data/dynamic-stepper";
 import { emptyStateCssVariables } from "./data/empty-state";
 import { fileUploadCssVariables } from "./data/file-upload";
+import { hashGeneratorCssVariables } from "./data/hash-generator";
 import { inputsCssVariables } from "./data/inputs";
 import { kbdCssVariables } from "./data/kbd";
 import { marqueeCssVariables } from "./data/marquee";
@@ -69,6 +70,7 @@ export const cssVariableReferences = {
   "dynamic-stepper": dynamicStepperCssVariables,
   "empty-state": emptyStateCssVariables,
   "file-upload": fileUploadCssVariables,
+  "hash-generator": hashGeneratorCssVariables,
   inputs: inputsCssVariables,
   kbd: kbdCssVariables,
   marquee: marqueeCssVariables,

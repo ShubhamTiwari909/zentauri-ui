@@ -126,6 +126,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Command palettes, save shortcuts, and navigation keys with one declarative binding map.",
   },
   {
+    slug: "use-hash",
+    module: "useHash",
+    name: "useHash",
+    description:
+      "Computes SHA-1/SHA-224/SHA-256/SHA-384/SHA-512 hashes via the Web Crypto API, returning hash/isHashing/error/recompute.",
+    intro:
+      "Hash text client-side for security tooling, checksum generation, or educational demos without sending data to a server.",
+  },
+  {
     slug: "use-hover",
     module: "useHover",
     name: "useHover",
