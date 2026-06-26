@@ -24,6 +24,7 @@ import { marqueeCssVariables } from "./data/marquee";
 import { modalCssVariables } from "./data/modal";
 import { otpInputCssVariables } from "./data/otp-input";
 import { paginationCssVariables } from "./data/pagination";
+import { passwordStrengthMeterCssVariables } from "./data/password-strength-meter";
 import { popoverCssVariables } from "./data/popover";
 import { progressCssVariables } from "./data/progress";
 import { radioGroupCssVariables } from "./data/radio-group";
@@ -73,6 +74,7 @@ export const cssVariableReferences = {
   modal: modalCssVariables,
   "otp-input": otpInputCssVariables,
   pagination: paginationCssVariables,
+  "password-strength-meter": passwordStrengthMeterCssVariables,
   popover: popoverCssVariables,
   progress: progressCssVariables,
   "radio-group": radioGroupCssVariables,

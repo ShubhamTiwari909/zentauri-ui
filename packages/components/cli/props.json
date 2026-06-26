@@ -8865,6 +8865,406 @@
         }
       ]
     },
+    "password-strength-meter": {
+      "slug": "password-strength-meter",
+      "subcomponents": [
+        {
+          "name": "static:PasswordStrengthMeter",
+          "displayName": "PasswordStrengthMeter",
+          "propsType": "PasswordStrengthMeterProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "aqua",
+                "blue",
+                "crimson",
+                "cyan",
+                "default",
+                "destructive",
+                "electric",
+                "emerald",
+                "forest",
+                "ghost",
+                "glass",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-indigo",
+                "gradient-orange",
+                "gradient-pink",
+                "gradient-purple",
+                "gradient-red",
+                "gradient-teal",
+                "gradient-yellow",
+                "green",
+                "indigo",
+                "lavender",
+                "lime",
+                "magenta",
+                "mint",
+                "ocean",
+                "orange",
+                "outline",
+                "pink",
+                "plum",
+                "purple",
+                "red",
+                "rose",
+                "royal",
+                "ruby",
+                "sapphire",
+                "secondary",
+                "sky",
+                "slate",
+                "stone",
+                "sunset",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "shape",
+              "type": "enum",
+              "required": false,
+              "default": "rounded",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "flat",
+                "pill",
+                "rounded"
+              ],
+              "variantGroup": "shape",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm",
+                "xl",
+                "xs"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "number",
+              "required": true,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "animated",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "as",
+              "type": "ElementType | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "max",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "min",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "scoreLabel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "segmented",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "showScoreLabel",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:PasswordStrengthMeterVariant",
+          "displayName": "PasswordStrengthMeterVariant",
+          "propsType": "PasswordStrengthMeterVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "shape",
+              "type": "'rounded' | 'flat' | 'pill' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | 'xl' | 'xs' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:PasswordStrengthMeterAnimated",
+          "displayName": "PasswordStrengthMeterAnimated",
+          "propsType": "PasswordStrengthMeterAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "value",
+              "type": "number",
+              "required": true,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "animated",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "animation",
+              "type": "PasswordStrengthMeterAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "max",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "min",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "scoreLabel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "segmented",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "shape",
+              "type": "'rounded' | 'flat' | 'pill' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "showScoreLabel",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | 'xl' | 'xs' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "MotionStyle | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "\nThe React DOM `style` prop, enhanced with support for `MotionValue`s and separate `transform` values.\n\n```jsx\nexport const MyComponent = () => {\n  const x = useMotionValue(0)\n\n  return <motion.div style={{ x, opacity: 1, scale: 0.5 }} />\n}\n```",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:PasswordStrengthMeterVariant",
+          "displayName": "PasswordStrengthMeterVariant",
+          "propsType": "PasswordStrengthMeterVariantProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "shape",
+              "type": "'rounded' | 'flat' | 'pill' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | 'xl' | 'xs' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "popover": {
       "slug": "popover",
       "subcomponents": [
@@ -15280,14 +15680,6 @@
               "deprecated": false
             },
             {
-              "name": "ref",
-              "type": "Ref<HTMLSpanElement> | undefined",
-              "required": false,
-              "group": "behavior",
-              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
-              "deprecated": false
-            },
-            {
               "name": "children",
               "type": "ReactNode",
               "required": false,
@@ -15395,6 +15787,14 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
               "name": "size",
               "type": "'md' | 'sm' | 'lg' | null | undefined",
               "required": false,
@@ -15410,6 +15810,34 @@
             },
             {
               "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
               "type": "string | undefined",
               "required": false,
               "group": "dom",

@@ -114,7 +114,7 @@ Become one of the first component libraries with built-in security tooling.
 
 ### Components
 
-- [ ] Password Strength Meter
+- [x] Password Strength Meter
 - [ ] Password Generator
 - [ ] OTP Input
 - [ ] PIN Input

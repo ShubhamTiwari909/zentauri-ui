@@ -226,6 +226,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Navigation",
   },
   {
+    id: "password-strength-meter",
+    name: "Password Strength Meter",
+    description:
+      "Visual strength indicator for passwords with color-coded levels, labels, and animated transitions.",
+    href: "/preview/components/password-strength-meter",
+    badge: "Feedback",
+  },
+  {
     id: "progress",
     name: "Progress",
     description:

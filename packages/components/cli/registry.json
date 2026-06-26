@@ -30,6 +30,7 @@
     "modal",
     "otp-input",
     "pagination",
+    "password-strength-meter",
     "popover",
     "progress",
     "radio-group",
@@ -66,6 +67,7 @@
     "inputs",
     "kbd",
     "modal",
+    "password-strength-meter",
     "popover",
     "progress",
     "radio-group",
@@ -170,6 +172,7 @@
     "modal",
     "otp-input",
     "pagination",
+    "password-strength-meter",
     "popover",
     "progress",
     "radio-group",
@@ -355,6 +358,9 @@
       "framer-motion"
     ],
     "modal": [
+      "framer-motion"
+    ],
+    "password-strength-meter": [
       "framer-motion"
     ],
     "popover": [
