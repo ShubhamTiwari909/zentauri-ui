@@ -50,8 +50,8 @@ export function PasswordStrengthMeterAnimated({
     if (hasInlineLabelProp) {
       return { "aria-label": label?.trim() ?? "Password strength" };
     }
-    return { "aria-labelledby": labelSlotId };
-  }, [hasInlineLabelProp, label, labelSlotId]);
+    return { "aria-label": "Password strength" };
+  }, [hasInlineLabelProp, label]);
 
   const ctx = useMemo<PasswordStrengthMeterCtx>(
     () => ({
