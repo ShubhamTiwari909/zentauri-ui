@@ -21,6 +21,7 @@ import { useVirtualList } from "@zentauri-ui/zentauri-components/hooks/useVirtua
 import { useDisclosure } from "@zentauri-ui/zentauri-components/hooks/useDisclosure";
 import { useDocumentTitle } from "@zentauri-ui/zentauri-components/hooks/useDocumentTitle";
 import { useFocusManagement } from "@zentauri-ui/zentauri-components/hooks/useFocusManagement";
+import { useHash } from "@zentauri-ui/zentauri-components/hooks/useHash";
 import { useHover } from "@zentauri-ui/zentauri-components/hooks/useHover";
 import { useInView } from "@zentauri-ui/zentauri-components/hooks/useInView";
 import { useIntersectionObserver } from "@zentauri-ui/zentauri-components/hooks/useIntersectionObserver";
@@ -107,6 +108,8 @@ export function HookDemoRouter({ slug }: HookDemoRouterProps) {
       return <DocumentTitleDemo />;
     case "use-focus-management":
       return <FocusManagementDemo />;
+    case "use-hash":
+      return <HashDemo />;
     case "use-hover":
       return <HoverDemo />;
     case "use-in-view":
@@ -396,6 +399,41 @@ function FocusManagementDemo() {
           </div>
         </div>
       ) : null}
+    </HookDemoPanel>
+  );
+}
+
+function HashDemo() {
+  const [input, setInput] = useState("");
+  const { hash, isHashing, error } = useHash(input, "sha256");
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Type text and see the SHA-256 hash update in real time — all computation
+        happens client-side via the Web Crypto API.
+      </p>
+      <textarea
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        rows={2}
+        className="mb-4 w-full rounded-lg border border-white/15 bg-slate-900/80 p-3 text-sm text-white outline-none focus:border-cyan-500/50"
+        placeholder="Enter text to hash…"
+        aria-label="Input text to hash using SHA-256"
+      />
+      {error ? (
+        <p className="text-sm text-red-400">Error: {error.message}</p>
+      ) : (
+        <p className="text-sm text-slate-400">
+          Hash:{" "}
+          {isHashing ? (
+            <span className="text-slate-500">computing…</span>
+          ) : (
+            <span className="break-all font-mono text-cyan-200">
+              {hash || "—"}
+            </span>
+          )}
+        </p>
+      )}
     </HookDemoPanel>
   );
 }

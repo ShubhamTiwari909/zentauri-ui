@@ -54,6 +54,12 @@ export {
 } from "./useDocumentTitle";
 export { useHover } from "./useHover";
 export {
+  useHash,
+  type HashGeneratorAlgorithm,
+  type UseHashResult,
+  ALGORITHM_LABELS,
+} from "./useHash";
+export {
   useIdleTimeout,
   type UseIdleTimeoutParams,
   type UseIdleTimeoutResult,

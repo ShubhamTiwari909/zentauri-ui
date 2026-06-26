@@ -117,6 +117,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Store finders, delivery ETAs, and map centering; defer the permission prompt behind a user gesture with enabled.",
   },
   {
+    slug: "use-hash",
+    module: "useHash",
+    name: "useHash",
+    description:
+      "Computes SHA-1/SHA-256/SHA-384/SHA-512 hashes via the Web Crypto API, returning hash/isHashing/error/recompute.",
+    intro:
+      "Hash text client-side for security tooling, checksum generation, or educational demos without sending data to a server.",
+  },
+  {
     slug: "use-hotkeys",
     module: "useHotkeys",
     name: "useHotkeys",

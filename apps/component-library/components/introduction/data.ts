@@ -178,6 +178,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "hash-generator",
+    name: "Hash generator",
+    description:
+      "Real-time hash generation with SHA-1, SHA-256, SHA-384, SHA-512 using the Web Crypto API.",
+    href: "/preview/components/hash-generator",
+    badge: "Utility",
+  },
+  {
     id: "inputs",
     name: "Inputs",
     description:
