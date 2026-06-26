@@ -297,6 +297,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/search",
       },
       {
+        title: "Secret reveal",
+        href: "/preview/components/secret-reveal",
+      },
+      {
         title: "Select",
         href: "/preview/components/select",
       },

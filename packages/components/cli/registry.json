@@ -37,6 +37,7 @@
     "rating",
     "scroll-area",
     "search",
+    "secret-reveal",
     "select",
     "skeleton",
     "slider",
@@ -71,6 +72,7 @@
     "popover",
     "progress",
     "radio-group",
+    "secret-reveal",
     "skeleton",
     "spinner",
     "table",
@@ -179,6 +181,7 @@
     "rating",
     "scroll-area",
     "search",
+    "secret-reveal",
     "select",
     "skeleton",
     "slider",
@@ -374,6 +377,9 @@
     ],
     "rating": [
       "react-icons"
+    ],
+    "secret-reveal": [
+      "framer-motion"
     ],
     "skeleton": [
       "framer-motion"

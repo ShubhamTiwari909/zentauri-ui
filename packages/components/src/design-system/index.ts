@@ -32,6 +32,7 @@ export * from "./progress";
 export * from "./rating";
 export * from "./radio-group";
 export * from "./scroll-area";
+export * from "./secret-reveal";
 export * from "./select";
 export * from "./skeleton";
 export * from "./split-button";
