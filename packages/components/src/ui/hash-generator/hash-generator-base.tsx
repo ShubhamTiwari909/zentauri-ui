@@ -85,6 +85,7 @@ export function HashGeneratorBase({
       />
       <div className={hashGeneratorOutputVariants()}>
         <span
+          role="status"
           data-slot="hash-generator-output"
           className={cn(
             hashGeneratorOutputTextVariants(),
