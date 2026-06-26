@@ -28,6 +28,8 @@ import { paginationCssVariables } from "./data/pagination";
 import { passwordStrengthMeterCssVariables } from "./data/password-strength-meter";
 import { popoverCssVariables } from "./data/popover";
 import { progressCssVariables } from "./data/progress";
+import { qrCodeCssVariables } from "./data/qr-code";
+import { qrScannerCssVariables } from "./data/qr-scanner";
 import { radioGroupCssVariables } from "./data/radio-group";
 import { ratingCssVariables } from "./data/rating";
 import { scrollAreaCssVariables } from "./data/scroll-area";
@@ -80,6 +82,8 @@ export const cssVariableReferences = {
   "password-strength-meter": passwordStrengthMeterCssVariables,
   popover: popoverCssVariables,
   progress: progressCssVariables,
+  "qr-code": qrCodeCssVariables,
+  "qr-scanner": qrScannerCssVariables,
   "radio-group": radioGroupCssVariables,
   rating: ratingCssVariables,
   "scroll-area": scrollAreaCssVariables,

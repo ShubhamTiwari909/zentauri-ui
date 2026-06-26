@@ -36,6 +36,8 @@ import pagination from "@/content/seo/preview/components/pagination.json";
 import passwordStrengthMeter from "@/content/seo/preview/components/password-strength-meter.json";
 import popover from "@/content/seo/preview/components/popover.json";
 import progress from "@/content/seo/preview/components/progress.json";
+import qrCode from "@/content/seo/preview/components/qr-code.json";
+import qrScanner from "@/content/seo/preview/components/qr-scanner.json";
 import rating from "@/content/seo/preview/components/rating.json";
 import radioGroup from "@/content/seo/preview/components/radio-group.json";
 import scrollArea from "@/content/seo/preview/components/scroll-area.json";
@@ -95,6 +97,8 @@ const previewSeoRegistry = {
   "password-strength-meter": passwordStrengthMeter as PreviewSeoDocument,
   popover: popover as PreviewSeoDocument,
   progress: progress as PreviewSeoDocument,
+  "qr-code": qrCode as PreviewSeoDocument,
+  "qr-scanner": qrScanner as PreviewSeoDocument,
   rating: rating as PreviewSeoDocument,
   "radio-group": radioGroup as PreviewSeoDocument,
   "scroll-area": scrollArea as PreviewSeoDocument,

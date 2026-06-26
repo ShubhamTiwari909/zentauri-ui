@@ -1,0 +1,86 @@
+{
+  "category": "Utilities",
+  "title": "QR code scanner component for React & Next.js",
+  "description": "QR code scanner component for React and Next.js. Scan QR codes using the device camera or upload images with real-time decoding.",
+  "keywords": [
+    "QR code scanner",
+    "React",
+    "Next.js",
+    "QR code reader",
+    "barcode scanner",
+    "camera",
+    "jsQR",
+    "Tailwind CSS",
+    "Zentauri UI"
+  ],
+  "og": {
+    "title": "QR Code Scanner · Zentauri UI",
+    "description": "Scan QR codes using the device camera or upload images with real-time decoding.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "QR Code Scanner · Zentauri UI",
+    "description": "Scan QR codes using the device camera or upload images with real-time decoding.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/qr-scanner",
+  "headings": {
+    "h1": "QR code scanner for real-time decoding",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the QR code scanner component to decode QR codes in real time using the device camera or from uploaded images. The component uses jsQR for pure JavaScript QR decoding and supports both user and environment facing cameras.",
+  "useCases": [
+    "Scan QR codes for authentication and login flows.",
+    "Read product barcodes and QR codes in inventory management.",
+    "Decode QR-based payment confirmations and tickets.",
+    "Scan Wi-Fi credential QR codes for automated network configuration."
+  ],
+  "faqs": [
+    {
+      "question": "Does the QR Scanner component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; the scanner uses client-side camera access and canvas processing and works seamlessly as a client boundary."
+    },
+    {
+      "question": "What camera permissions are needed?",
+      "answer": "The component uses navigator.mediaDevices.getUserMedia which requires camera permission. The user will be prompted to allow camera access on first use."
+    },
+    {
+      "question": "Can I scan from an image file?",
+      "answer": "Yes. The component exposes a scanImage method via its imperative handle that accepts a File object and returns the decoded data or null."
+    },
+    {
+      "question": "What happens if no camera is available?",
+      "answer": "The component gracefully falls back to a 'Camera not available' state with a customizable fallback message. It also works in environments where camera access is denied."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "The QR code scanner component accesses the device camera and continuously captures frames to decode QR codes using jsQR, a pure JavaScript QR decoder. The viewfinder overlay helps users frame the QR code correctly.\n\nThe component supports both automatic continuous scanning and single-scan mode. It also exposes a scanImage method for decoding QR codes from uploaded image files."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Use the required onResult callback to receive decoded data. Configure the camera with facingMode (user/environment) and additional constraints. The scanDelay prop controls the interval between frame decodes. The continuous prop determines whether scanning stops after the first result. The component exposes start, stop, and scanImage methods via ref."
+    },
+    {
+      "heading": "Common use cases",
+      "body": "QR code scanning is essential for mobile-friendly authentication flows, event check-ins, inventory tracking, payment verification, and any application that needs to bridge physical and digital experiences."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The component provides status announcements for camera state changes. The viewfinder overlay helps visually indicate the scan area. Error states provide clear feedback when camera access fails."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive components into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

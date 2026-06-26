@@ -1,0 +1,85 @@
+{
+  "category": "Utilities",
+  "title": "QR code generator component for React & Next.js",
+  "description": "QR code generator component for React and Next.js. Generate QR codes from text, URLs, or data with configurable size, error correction level, and colors.",
+  "keywords": [
+    "QR code generator",
+    "React",
+    "Next.js",
+    "QR code component",
+    "barcode",
+    "scanner",
+    "Tailwind CSS",
+    "Zentauri UI"
+  ],
+  "og": {
+    "title": "QR Code Generator · Zentauri UI",
+    "description": "Generate QR codes from text, URLs, or data with configurable size, error correction level, and colors.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "QR Code Generator · Zentauri UI",
+    "description": "Generate QR codes from text, URLs, or data with configurable size, error correction level, and colors.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/qr-code",
+  "headings": {
+    "h1": "QR code generator for encoding data",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the QR code generator component to create QR codes from any text or data. Configure error correction level, size, colors, and optional captions. The component renders to canvas for crisp output at any resolution.",
+  "useCases": [
+    "Generate QR codes for URLs and deep links in marketing pages.",
+    "Create Wi-Fi credential QR codes for guest network access.",
+    "Embed contact information (vCard) QR codes in digital business cards.",
+    "Generate payment QR codes for checkout flows and donation pages."
+  ],
+  "faqs": [
+    {
+      "question": "Does the QR Code component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; the component uses client-side rendering with canvas and works seamlessly with server components when used as a client boundary."
+    },
+    {
+      "question": "Can I customize QR code colors?",
+      "answer": "Yes. Use the bgColor and fgColor props to customize the background and foreground colors. The component supports any valid CSS color value."
+    },
+    {
+      "question": "What error correction levels are available?",
+      "answer": "The component supports L (7%), M (15%), Q (25%), and H (30%) error correction levels. Higher levels allow more damage before the code becomes unreadable but reduce data capacity."
+    },
+    {
+      "question": "Is there a maximum data size?",
+      "answer": "Yes, QR codes have a maximum data capacity depending on the error correction level and version. For level M, a Version 40 QR code can hold up to 4,296 alphanumeric characters."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "The QR code generator component takes a value (text, URL, or any data) and renders it as a QR code using a canvas element. You can configure the error correction level, pixel size, colors, and margin. An optional caption can be displayed below the QR code.\n\nThe component supports an animated variant with entrance animations like fade-in, zoom-in, slide-up, and rotate-in when using framer-motion."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Pass the data to encode via the required value prop. Configure the appearance with size (sm/md/lg) and appearance variants. Use canvasSize to control the pixel dimensions of the generated QR code. The level prop sets error correction, and bgColor/fgColor control colors."
+    },
+    {
+      "heading": "Common use cases",
+      "body": "QR codes are widely used for URL sharing, Wi-Fi credentials, contact information, payment links, and product identification. The generator is ideal for marketing pages, admin dashboards, event ticketing systems, and any application that needs to encode data for mobile scanning."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The canvas element includes an aria-label describing the encoded value. The component uses semantic HTML structure and data-slot attributes for styling targets. The animated variant respects reduced motion preferences."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive components into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

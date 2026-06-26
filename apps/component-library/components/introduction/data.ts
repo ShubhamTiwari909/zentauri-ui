@@ -250,6 +250,22 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Feedback",
   },
   {
+    id: "qr-code",
+    name: "QR code generator",
+    description:
+      "Generate QR codes from text, URLs, or data with configurable error correction, colors, and animated entry presets.",
+    href: "/preview/components/qr-code",
+    badge: "Utility",
+  },
+  {
+    id: "qr-scanner",
+    name: "QR code scanner",
+    description:
+      "Scan QR codes in real time using the device camera or decode from uploaded images with pure JavaScript QR decoding.",
+    href: "/preview/components/qr-scanner",
+    badge: "Utility",
+  },
+  {
     id: "popover",
     name: "Popover",
     description:

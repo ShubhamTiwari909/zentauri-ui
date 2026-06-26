@@ -285,6 +285,14 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/progress",
       },
       {
+        title: "QR code generator",
+        href: "/preview/components/qr-code",
+      },
+      {
+        title: "QR code scanner",
+        href: "/preview/components/qr-scanner",
+      },
+      {
         title: "Rating",
         href: "/preview/components/rating",
       },

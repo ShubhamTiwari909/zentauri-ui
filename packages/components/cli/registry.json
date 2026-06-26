@@ -34,6 +34,8 @@
     "password-strength-meter",
     "popover",
     "progress",
+    "qr-code",
+    "qr-scanner",
     "radio-group",
     "rating",
     "scroll-area",
@@ -72,6 +74,7 @@
     "password-strength-meter",
     "popover",
     "progress",
+    "qr-code",
     "radio-group",
     "secret-reveal",
     "skeleton",
@@ -179,6 +182,8 @@
     "password-strength-meter",
     "popover",
     "progress",
+    "qr-code",
+    "qr-scanner",
     "radio-group",
     "rating",
     "scroll-area",
@@ -373,6 +378,9 @@
       "framer-motion"
     ],
     "progress": [
+      "framer-motion"
+    ],
+    "qr-code": [
       "framer-motion"
     ],
     "radio-group": [

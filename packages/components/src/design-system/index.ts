@@ -30,6 +30,8 @@ export * from "./pagination";
 export * from "./password-strength-meter";
 export * from "./popover";
 export * from "./progress";
+export * from "./qr-code";
+export * from "./qr-scanner";
 export * from "./rating";
 export * from "./radio-group";
 export * from "./scroll-area";
