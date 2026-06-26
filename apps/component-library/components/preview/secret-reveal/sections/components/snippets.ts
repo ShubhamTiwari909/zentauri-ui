@@ -14,9 +14,10 @@ export function secretRevealSnippet(opts: SecretRevealDemoProps): string {
   const appearanceAttr =
     appearance === "default" ? "" : ` appearance="${appearance}"`;
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
-  const labelAttr = label ? ` label="${label}"` : "";
+  const escapeAttr = (v: string) => v.replace(/"/g, "&quot;");
+  const labelAttr = label ? ` label="${escapeAttr(label)}"` : "";
   const initiallyRevealedAttr = initiallyRevealed ? " initiallyRevealed" : "";
-  const valueAttr = ` value="${value}"`;
+  const valueAttr = ` value="${escapeAttr(value)}"`;
   const lead = variantLeadComment(
     `appearance · ${appearance}, size · ${size}${label ? `, label · ${label}` : ""}`,
   );
