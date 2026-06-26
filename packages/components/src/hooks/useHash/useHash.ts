@@ -2,16 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export type HashGeneratorAlgorithm =
-  | "sha1"
-  | "sha224"
-  | "sha256"
-  | "sha384"
-  | "sha512";
+export type HashGeneratorAlgorithm = "sha1" | "sha256" | "sha384" | "sha512";
 
 export const ALGORITHM_LABELS: Record<HashGeneratorAlgorithm, string> = {
   sha1: "SHA-1",
-  sha224: "SHA-224",
   sha256: "SHA-256",
   sha384: "SHA-384",
   sha512: "SHA-512",
@@ -21,6 +15,9 @@ async function computeHash(
   algorithm: HashGeneratorAlgorithm,
   input: string,
 ): Promise<string> {
+  if (typeof crypto === "undefined" || !crypto.subtle) {
+    throw new Error("Web Crypto API is not supported in this environment.");
+  }
   const encoder = new TextEncoder();
   const data = encoder.encode(input);
   const hashBuffer = await crypto.subtle.digest(
@@ -55,6 +52,7 @@ export function useHash(
   const [hash, setHash] = useState("");
   const [isHashing, setIsHashing] = useState(false);
   const [error, setError] = useState<Error | undefined>(undefined);
+  const [trigger, setTrigger] = useState(0);
   const nonceRef = useRef(0);
 
   useEffect(() => {
@@ -81,28 +79,11 @@ export function useHash(
         }
       },
     );
-  }, [algorithm, input]);
+  }, [algorithm, input, trigger]);
 
   const recompute = useCallback(() => {
-    nonceRef.current += 1;
-    const nonce = nonceRef.current;
-    setIsHashing(true);
-    setError(undefined);
-    computeHash(algorithm, input).then(
-      (result) => {
-        if (nonce === nonceRef.current) {
-          setHash(result);
-          setIsHashing(false);
-        }
-      },
-      (err) => {
-        if (nonce === nonceRef.current) {
-          setError(err instanceof Error ? err : new Error(String(err)));
-          setIsHashing(false);
-        }
-      },
-    );
-  }, [algorithm, input]);
+    setTrigger((prev) => prev + 1);
+  }, []);
 
   return { hash, isHashing, error, recompute };
 }

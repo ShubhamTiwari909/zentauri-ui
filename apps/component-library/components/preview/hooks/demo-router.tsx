@@ -405,7 +405,7 @@ function FocusManagementDemo() {
 
 function HashDemo() {
   const [input, setInput] = useState("");
-  const { hash, isHashing } = useHash(input, "sha256");
+  const { hash, isHashing, error } = useHash(input, "sha256");
   return (
     <HookDemoPanel title="Interactive demo">
       <p className="mb-4 text-sm text-slate-400">
@@ -418,17 +418,22 @@ function HashDemo() {
         rows={2}
         className="mb-4 w-full rounded-lg border border-white/15 bg-slate-900/80 p-3 text-sm text-white outline-none focus:border-cyan-500/50"
         placeholder="Enter text to hash…"
+        aria-label="Input text to hash using SHA-256"
       />
-      <p className="text-sm text-slate-400">
-        Hash:{" "}
-        {isHashing ? (
-          <span className="text-slate-500">computing…</span>
-        ) : (
-          <span className="break-all font-mono text-cyan-200">
-            {hash || "—"}
-          </span>
-        )}
-      </p>
+      {error ? (
+        <p className="text-sm text-red-400">Error: {error.message}</p>
+      ) : (
+        <p className="text-sm text-slate-400">
+          Hash:{" "}
+          {isHashing ? (
+            <span className="text-slate-500">computing…</span>
+          ) : (
+            <span className="break-all font-mono text-cyan-200">
+              {hash || "—"}
+            </span>
+          )}
+        </p>
+      )}
     </HookDemoPanel>
   );
 }

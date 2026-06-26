@@ -3,8 +3,9 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { cn } from "../../lib/utils";
+import { useHash } from "../../hooks/useHash";
 
-import type { HashGeneratorAlgorithm, HashGeneratorBaseProps } from "./types";
+import type { HashGeneratorBaseProps } from "./types";
 import { ALGORITHM_LABELS } from "./types";
 import {
   hashGeneratorHeaderVariants,
@@ -14,20 +15,6 @@ import {
   hashGeneratorOutputVariants,
   hashGeneratorVariants,
 } from "./variants";
-
-async function computeHash(
-  algorithm: HashGeneratorAlgorithm,
-  input: string,
-): Promise<string> {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(input);
-  const hashBuffer = await crypto.subtle.digest(
-    algorithm.toUpperCase().replace("SHA", "SHA-") as AlgorithmIdentifier,
-    data,
-  );
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
-}
 
 export function HashGeneratorBase({
   className,
@@ -42,34 +29,24 @@ export function HashGeneratorBase({
   ...rest
 }: HashGeneratorBaseProps) {
   const [internalValue, setInternalValue] = useState("");
-  const [hash, setHash] = useState("");
   const [copied, setCopied] = useState(false);
 
   const inputValue = value ?? internalValue;
   const handleChange = onValueChange ?? setInternalValue;
 
+  const { hash, error } = useHash(inputValue, algorithm);
+
   useEffect(() => {
-    if (!inputValue) {
-      setHash("");
-      return;
-    }
-    let cancelled = false;
-    computeHash(algorithm, inputValue).then((result) => {
-      if (!cancelled) {
-        setHash(result);
-      }
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [algorithm, inputValue]);
+    if (!copied) return;
+    const timeout = setTimeout(() => setCopied(false), 2000);
+    return () => clearTimeout(timeout);
+  }, [copied]);
 
   const handleCopy = useCallback(async () => {
     if (!hash) return;
     try {
       await navigator.clipboard.writeText(hash);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
     } catch {
       // Clipboard API not available
     }
@@ -103,6 +80,7 @@ export function HashGeneratorBase({
         readOnly={readOnly}
         placeholder="Enter text to hash..."
         rows={3}
+        aria-label={`Input text to hash using ${ALGORITHM_LABELS[algorithm]}`}
         className={cn(hashGeneratorInputVariants(), "resize-y min-h-[5rem]")}
       />
       <div className={hashGeneratorOutputVariants()}>
@@ -110,10 +88,14 @@ export function HashGeneratorBase({
           data-slot="hash-generator-output"
           className={cn(
             hashGeneratorOutputTextVariants(),
-            !hash && "opacity-40",
+            !hash && !error && "opacity-40",
           )}
         >
-          {hash || "Hash output"}
+          {error ? (
+            <span className="text-red-500">{error.message}</span>
+          ) : (
+            hash || "Hash output"
+          )}
         </span>
       </div>
     </div>

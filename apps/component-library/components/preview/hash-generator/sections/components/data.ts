@@ -2,7 +2,6 @@ import type { HashGeneratorProps } from "@zentauri-ui/zentauri-components/ui/has
 
 export const HASH_GENERATOR_ALGORITHMS = [
   "sha1",
-  "sha224",
   "sha256",
   "sha384",
   "sha512",

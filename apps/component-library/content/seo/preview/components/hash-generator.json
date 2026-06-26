@@ -1,7 +1,7 @@
 {
   "category": "Utilities",
   "title": "Hash generator component for React & Next.js",
-  "description": "Real-time hash generation component supporting SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 algorithms using the Web Crypto API for React and Next.js.",
+  "description": "Real-time hash generation component supporting SHA-1, SHA-256, SHA-384, and SHA-512 algorithms using the Web Crypto API for React and Next.js.",
   "keywords": [
     "hash generator component",
     "React",
@@ -15,12 +15,12 @@
   ],
   "og": {
     "title": "Hash Generator · Zentauri UI",
-    "description": "Real-time hash generation component supporting SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 using the Web Crypto API.",
+    "description": "Real-time hash generation component supporting SHA-1, SHA-256, SHA-384, and SHA-512 using the Web Crypto API.",
     "type": "website"
   },
   "twitter": {
     "title": "Hash Generator · Zentauri UI",
-    "description": "Real-time hash generation component supporting SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 using the Web Crypto API.",
+    "description": "Real-time hash generation component supporting SHA-1, SHA-256, SHA-384, and SHA-512 using the Web Crypto API.",
     "card": "summary_large_image"
   },
   "canonicalPath": "/preview/components/hash-generator",
@@ -53,7 +53,7 @@
     },
     {
       "question": "What algorithms are supported?",
-      "answer": "The component supports SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 via the Web Crypto API. MD5 is not supported as it is not part of the Web Crypto specification and is considered cryptographically broken."
+      "answer": "The component supports SHA-1, SHA-256, SHA-384, and SHA-512 via the Web Crypto API. MD5 is not supported as it is not part of the Web Crypto specification and is considered cryptographically broken."
     },
     {
       "question": "Is the input data sent to a server?",
@@ -63,7 +63,7 @@
   "sections": [
     {
       "heading": "What it does",
-      "body": "The hash generator component provides a text input area where users can type or paste content. The hash is computed in real time using the browser's built-in Web Crypto API and displayed in the output area below. A copy button in the header lets users quickly copy the hash to their clipboard.\n\nThe algorithm selector allows switching between SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 variants."
+      "body": "The hash generator component provides a text input area where users can type or paste content. The hash is computed in real time using the browser's built-in Web Crypto API and displayed in the output area below. A copy button in the header lets users quickly copy the hash to their clipboard.\n\nThe algorithm selector allows switching between SHA-1, SHA-256, SHA-384, and SHA-512 variants."
     },
     {
       "heading": "Composition and API",
