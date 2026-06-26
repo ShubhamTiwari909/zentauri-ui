@@ -9027,13 +9027,6 @@
               "deprecated": false
             },
             {
-              "name": "zxcvbnScore",
-              "type": "number | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
               "name": "children",
               "type": "ReactNode",
               "required": false,
