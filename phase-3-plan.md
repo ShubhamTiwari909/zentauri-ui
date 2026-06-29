@@ -156,8 +156,8 @@ Expose browser APIs through reusable UI components.
 - [ ] Current Location Viewer
 - [ ] Voice Recorder
 - [ ] Audio Recorder
-- [ ] Speech Recognition
-- [ ] Speech Synthesizer
+- [x] Speech Recognition
+- [x] Speech Synthesizer
 - [ ] File Dropzone
 - [ ] Drag Upload
 - [ ] Screen Recorder

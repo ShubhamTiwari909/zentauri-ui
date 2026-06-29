@@ -1,0 +1,73 @@
+{
+  "category": "Media",
+  "title": "Speech Synthesizer component for React & Next.js",
+  "description": "Text-to-speech component for React and Next.js using the Web Speech API: play, pause, resume, stop controls with configurable rate, pitch, and volume.",
+  "keywords": [
+    "speech synthesizer",
+    "text to speech",
+    "React",
+    "Next.js",
+    "TTS",
+    "voice output",
+    "Web Speech API",
+    "browser speech"
+  ],
+  "og": {
+    "title": "Speech Synthesizer · Zentauri UI",
+    "description": "Text-to-speech component for React and Next.js using the Web Speech API with full playback controls.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Speech Synthesizer · Zentauri UI",
+    "description": "Text-to-speech component for React and Next.js using the Web Speech API with full playback controls.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/speech-synthesizer",
+  "headings": {
+    "h1": "Speech Synthesizer for text-to-speech",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the speech synthesizer component to convert text to spoken audio in the browser. Built on the Web Speech API, it provides play, pause, resume, and stop controls with configurable rate, pitch, and volume settings.",
+  "useCases": [
+    "Reading aloud articles, documentation, or user-generated content.",
+    "Accessibility tooling for visually impaired users.",
+    "Voice feedback for form validation, notifications, and onboarding flows.",
+    "Language learning applications with pronunciation playback."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "The Speech Synthesizer component wraps the browser's SpeechSynthesis API. It exposes speak, pause, resume, and stop methods via an imperative ref handle. The component provides onStart, onEnd, onError, and onStateChange callbacks for integrating speech synthesis into your application state."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The control buttons use aria-labels for screen readers. The component announces state changes via the onStateChange callback. Ensure you provide visual alternatives for speech output, and respect user preferences for reduced motion."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The Web Speech API is browser-only. Import the component via dynamic import with ssr: false to avoid server-side errors. The component handles SSR safety internally with a typeof window guard, but dynamic import is recommended for Next.js apps."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Which browsers support speech synthesis?",
+      "answer": "The SpeechSynthesis API is widely supported across Chrome, Firefox, Safari, and Edge. Voice availability varies by browser and operating system."
+    },
+    {
+      "question": "How do I change the voice?",
+      "answer": "Use the lang prop to set the language. The browser selects the default voice for the given locale. Custom voice selection is available via the underlying SpeechSynthesis API."
+    },
+    {
+      "question": "Can I control speed and pitch?",
+      "answer": "Yes. Use the rate prop (0.1 to 10, default 1) and pitch prop (0 to 2, default 1) to adjust speech characteristics."
+    }
+  ]
+}

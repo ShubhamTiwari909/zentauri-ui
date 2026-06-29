@@ -44,6 +44,8 @@
     "select",
     "skeleton",
     "slider",
+    "speech-recognition",
+    "speech-synthesizer",
     "split-button",
     "table",
     "tabs",
@@ -78,6 +80,8 @@
     "radio-group",
     "secret-reveal",
     "skeleton",
+    "speech-recognition",
+    "speech-synthesizer",
     "spinner",
     "table",
     "tabs",
@@ -192,6 +196,8 @@
     "select",
     "skeleton",
     "slider",
+    "speech-recognition",
+    "speech-synthesizer",
     "spinner",
     "split-button",
     "table",
@@ -393,6 +399,12 @@
       "framer-motion"
     ],
     "skeleton": [
+      "framer-motion"
+    ],
+    "speech-recognition": [
+      "framer-motion"
+    ],
+    "speech-synthesizer": [
       "framer-motion"
     ],
     "split-button": [

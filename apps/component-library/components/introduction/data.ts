@@ -330,6 +330,22 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Loading",
   },
   {
+    id: "speech-recognition",
+    name: "Speech Recognition",
+    description:
+      "Real-time speech-to-text using the Web Speech API with microphone toggle, interim results, and configurable language.",
+    href: "/preview/components/speech-recognition",
+    badge: "Media",
+  },
+  {
+    id: "speech-synthesizer",
+    name: "Speech Synthesizer",
+    description:
+      "Text-to-speech component with play, pause, resume, and stop controls using the Web Speech API.",
+    href: "/preview/components/speech-synthesizer",
+    badge: "Media",
+  },
+  {
     id: "split-button",
     name: "Split button",
     description:

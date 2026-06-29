@@ -38,6 +38,8 @@ import { searchCssVariables } from "./data/search";
 import { selectCssVariables } from "./data/select";
 import { skeletonCssVariables } from "./data/skeleton";
 import { sliderCssVariables } from "./data/slider";
+import { speechRecognitionCssVariables } from "./data/speech-recognition";
+import { speechSynthesizerCssVariables } from "./data/speech-synthesizer";
 import { spinnerCssVariables } from "./data/spinner";
 import { tableCssVariables } from "./data/table";
 import { tabsCssVariables } from "./data/tabs";
@@ -92,6 +94,8 @@ export const cssVariableReferences = {
   select: selectCssVariables,
   skeleton: skeletonCssVariables,
   slider: sliderCssVariables,
+  "speech-recognition": speechRecognitionCssVariables,
+  "speech-synthesizer": speechSynthesizerCssVariables,
   spinner: spinnerCssVariables,
   table: tableCssVariables,
   tabs: tabsCssVariables,
