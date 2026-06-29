@@ -11,7 +11,6 @@ import {
   networkStatusSemanticStatus,
   useNetworkStatusInfo,
 } from "../network-status-base";
-import type { NetworkConnectionQuality, NetworkStatusState } from "../types";
 import {
   networkStatusDetailVariants,
   networkStatusDotVariants,
@@ -45,14 +44,7 @@ export function NetworkStatusAnimated({
 
   const onStatusChangeRef = useRef(onStatusChange);
   onStatusChangeRef.current = onStatusChange;
-  const status = useRef<NetworkStatusState | null>(null);
-  const quality = useRef<NetworkConnectionQuality | null>(null);
   useEffect(() => {
-    if (status.current === info.status && quality.current === info.quality) {
-      return;
-    }
-    status.current = info.status;
-    quality.current = info.quality;
     onStatusChangeRef.current?.(info);
   }, [info]);
 

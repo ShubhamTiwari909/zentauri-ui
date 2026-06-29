@@ -49,8 +49,14 @@ export const networkStatusAnimationPresets: NetworkStatusAnimationPresets = {
       ease: "easeInOut",
     },
     variants: {
-      initial: { boxShadow: "0 0 0px rgba(34,197,94,0)" },
-      animate: { boxShadow: "0 0 12px rgba(34,197,94,0.7)" },
+      initial: {
+        boxShadow:
+          "0 0 0px var(--zui-network-status-glow-color, rgba(34,197,94,0))",
+      },
+      animate: {
+        boxShadow:
+          "0 0 12px var(--zui-network-status-glow-color, rgba(34,197,94,0.7))",
+      },
     },
   },
 };

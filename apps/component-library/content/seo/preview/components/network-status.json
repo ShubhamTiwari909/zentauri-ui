@@ -44,8 +44,16 @@
   "useCasesSectionHeading": "Common use cases",
   "sections": [
     {
+      "heading": "What it does",
+      "body": "NetworkStatus renders a colored status dot with an optional pulsing ring and text label that reflect the browser's live connectivity. It subscribes to the window online and offline events via the shared useNetworkStatus hook and reads connection-quality metrics (effectiveType, downlink, rtt) from the Network Information API, bucketing them into fast, moderate, slow, or unknown. The dot and ring color derive from the live status by default, shifting automatically between online (green), slow (amber), and offline (red). Every value is also available through the onStatusChange callback and the render prop for fully custom UI."
+    },
+    {
       "heading": "Composition and API",
       "body": "The Network Status component subscribes to the window online and offline events and to the Network Information API change event, re-rendering whenever connectivity changes. It exposes an onStatusChange callback with a full snapshot (online, status, quality, effectiveType, downlink, rtt, saveData), a render prop for fully custom output, and a controlled online prop for SSR, demos, and tests. Color is derived from the live status by default but can be overridden with any appearance token."
+    },
+    {
+      "heading": "Common use cases",
+      "body": "Show a persistent online/offline badge in an app header or status bar so users always know their connectivity at a glance. Warn users on a slow connection (3G or below) before they start a large upload or download. Disable or queue network-dependent actions while the user is offline and resume them automatically when connectivity is restored. Surface effective connection type and downlink speed in diagnostics dashboards or developer tooling to help debug performance issues in low-bandwidth environments."
     },
     {
       "heading": "Accessibility",

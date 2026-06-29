@@ -10,8 +10,8 @@ export function networkStatusSnippet(opts: NetworkStatusDemoProps): string {
       : state === "offline"
         ? " online={false}"
         : "";
-  // In `auto` state the appearance is derived from the live connection, so we
-  // only emit an explicit appearance when the user simulates `slow`.
+  // Omit appearance when it's the default ("online"); force appearance="slow"
+  // in the slow state; otherwise emit the user's chosen palette appearance.
   const appearanceAttr =
     state === "slow"
       ? ` appearance="slow"`

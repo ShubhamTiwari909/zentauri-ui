@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { cn } from "../../lib/utils";
 import { useNetworkStatus as useOnlineStatus } from "../../hooks/useNetworkStatus/useNetworkStatus";
@@ -10,7 +10,6 @@ import type {
   NetworkStatusBaseProps,
   NetworkStatusInfo,
   NetworkStatusLabels,
-  NetworkStatusState,
   NetworkStatusVariantProps,
 } from "./types";
 import {
@@ -152,17 +151,26 @@ export function useNetworkStatusInfo(
   const metrics = useConnectionMetrics();
   const online = controlledOnline ?? liveOnline;
 
-  return {
-    online,
-    status: online ? "online" : "offline",
-    quality: online
-      ? bucketConnectionQuality(metrics.effectiveType)
-      : "unknown",
-    effectiveType: metrics.effectiveType,
-    downlink: metrics.downlink,
-    rtt: metrics.rtt,
-    saveData: metrics.saveData,
-  };
+  return useMemo(
+    () => ({
+      online,
+      status: online ? ("online" as const) : ("offline" as const),
+      quality: online
+        ? bucketConnectionQuality(metrics.effectiveType)
+        : ("unknown" as const),
+      effectiveType: metrics.effectiveType,
+      downlink: metrics.downlink,
+      rtt: metrics.rtt,
+      saveData: metrics.saveData,
+    }),
+    [
+      online,
+      metrics.effectiveType,
+      metrics.downlink,
+      metrics.rtt,
+      metrics.saveData,
+    ],
+  );
 }
 
 export function NetworkStatusBase({
@@ -184,14 +192,7 @@ export function NetworkStatusBase({
 
   const onStatusChangeRef = useRef(onStatusChange);
   onStatusChangeRef.current = onStatusChange;
-  const status = useRef<NetworkStatusState | null>(null);
-  const quality = useRef<NetworkConnectionQuality | null>(null);
   useEffect(() => {
-    if (status.current === info.status && quality.current === info.quality) {
-      return;
-    }
-    status.current = info.status;
-    quality.current = info.quality;
     onStatusChangeRef.current?.(info);
   }, [info]);
 
