@@ -8600,6 +8600,296 @@
         }
       ]
     },
+    "network-status": {
+      "slug": "network-status",
+      "subcomponents": [
+        {
+          "name": "static:NetworkStatus",
+          "displayName": "NetworkStatus",
+          "propsType": "NetworkStatusProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'gray' | 'muted' | 'subtle' | 'primary' | 'online' | 'offline' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "labels",
+              "type": "NetworkStatusLabels | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override the default status copy.",
+              "deprecated": false
+            },
+            {
+              "name": "online",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled connectivity. When provided, live `navigator.onLine` detection\nis disabled and this value drives the status — useful for SSR, demos, and tests.",
+              "deprecated": false
+            },
+            {
+              "name": "onStatusChange",
+              "type": "((info: NetworkStatusInfo) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Called whenever the connectivity snapshot changes.",
+              "deprecated": false
+            },
+            {
+              "name": "pulse",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Render a pulsing ring behind the dot while online.",
+              "deprecated": false
+            },
+            {
+              "name": "render",
+              "type": "((info: NetworkStatusInfo) => ReactNode) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Fully replace the rendered content with a custom node.",
+              "deprecated": false
+            },
+            {
+              "name": "showDetail",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the connection-quality detail (effective type / downlink).",
+              "deprecated": false
+            },
+            {
+              "name": "showLabel",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the text label next to the dot.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:NetworkStatusVariant",
+          "displayName": "NetworkStatusVariant",
+          "propsType": "NetworkStatusVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'gray' | 'muted' | 'subtle' | 'primary' | 'online' | 'offline' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:NetworkStatusAnimated",
+          "displayName": "NetworkStatusAnimated",
+          "propsType": "NetworkStatusAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "animation",
+              "type": "NetworkStatusAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'gray' | 'muted' | 'subtle' | 'primary' | 'online' | 'offline' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "labels",
+              "type": "NetworkStatusLabels | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override the default status copy.",
+              "deprecated": false
+            },
+            {
+              "name": "online",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled connectivity. When provided, live `navigator.onLine` detection\nis disabled and this value drives the status — useful for SSR, demos, and tests.",
+              "deprecated": false
+            },
+            {
+              "name": "onStatusChange",
+              "type": "((info: NetworkStatusInfo) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Called whenever the connectivity snapshot changes.",
+              "deprecated": false
+            },
+            {
+              "name": "pulse",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Render a pulsing ring behind the dot while online.",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "render",
+              "type": "((info: NetworkStatusInfo) => ReactNode) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Fully replace the rendered content with a custom node.",
+              "deprecated": false
+            },
+            {
+              "name": "showDetail",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the connection-quality detail (effective type / downlink).",
+              "deprecated": false
+            },
+            {
+              "name": "showLabel",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the text label next to the dot.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "otp-input": {
       "slug": "otp-input",
       "subcomponents": [
@@ -12763,7 +13053,7 @@
           "props": [
             {
               "name": "animation",
-              "type": "'none' | 'shimmer' | 'pulse' | undefined",
+              "type": "'none' | 'pulse' | 'shimmer' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -12829,7 +13119,7 @@
           "props": [
             {
               "name": "animation",
-              "type": "'none' | 'shimmer' | 'pulse' | undefined",
+              "type": "'none' | 'pulse' | 'shimmer' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -12894,7 +13184,7 @@
           "props": [
             {
               "name": "animation",
-              "type": "'none' | 'shimmer' | 'pulse' | undefined",
+              "type": "'none' | 'pulse' | 'shimmer' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -12967,7 +13257,7 @@
             },
             {
               "name": "animation",
-              "type": "'none' | 'shimmer' | 'pulse' | undefined",
+              "type": "'none' | 'pulse' | 'shimmer' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13025,7 +13315,7 @@
           "props": [
             {
               "name": "animation",
-              "type": "'none' | 'shimmer' | 'pulse' | null | undefined",
+              "type": "'none' | 'pulse' | 'shimmer' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13068,7 +13358,7 @@
           "props": [
             {
               "name": "animation",
-              "type": "'none' | 'shimmer' | 'pulse' | undefined",
+              "type": "'none' | 'pulse' | 'shimmer' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13161,7 +13451,7 @@
           "props": [
             {
               "name": "animation",
-              "type": "'none' | 'shimmer' | 'pulse' | undefined",
+              "type": "'none' | 'pulse' | 'shimmer' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13254,7 +13544,7 @@
           "props": [
             {
               "name": "animation",
-              "type": "'none' | 'shimmer' | 'pulse' | undefined",
+              "type": "'none' | 'pulse' | 'shimmer' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13347,7 +13637,7 @@
           "props": [
             {
               "name": "animation",
-              "type": "'none' | 'shimmer' | 'pulse' | undefined",
+              "type": "'none' | 'pulse' | 'shimmer' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13440,7 +13730,7 @@
           "props": [
             {
               "name": "animation",
-              "type": "'none' | 'shimmer' | 'pulse' | undefined",
+              "type": "'none' | 'pulse' | 'shimmer' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13533,7 +13823,7 @@
           "props": [
             {
               "name": "animation",
-              "type": "'none' | 'shimmer' | 'pulse' | null | undefined",
+              "type": "'none' | 'pulse' | 'shimmer' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false

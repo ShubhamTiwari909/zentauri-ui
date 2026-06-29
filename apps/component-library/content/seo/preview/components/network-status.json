@@ -1,0 +1,73 @@
+{
+  "category": "Feedback",
+  "title": "Network Status component for React & Next.js",
+  "description": "Live online/offline indicator for React and Next.js using navigator.onLine and the Network Information API: connection quality, slow-connection detection, and a pulsing status dot.",
+  "keywords": [
+    "network status",
+    "online offline indicator",
+    "React",
+    "Next.js",
+    "navigator.onLine",
+    "Network Information API",
+    "connection quality",
+    "offline detection"
+  ],
+  "og": {
+    "title": "Network Status · Zentauri UI",
+    "description": "Live online/offline indicator for React and Next.js with connection-quality detection.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Network Status · Zentauri UI",
+    "description": "Live online/offline indicator for React and Next.js with connection-quality detection.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/network-status",
+  "headings": {
+    "h1": "Network Status for connectivity feedback",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the network status component to surface live connectivity in the browser. Built on navigator.onLine and the Network Information API, it tracks online/offline transitions and connection quality, auto-coloring a status dot (green online, red offline, amber for a slow connection) with an optional pulsing ring and detail readout.",
+  "useCases": [
+    "Show a persistent online/offline badge in an app header or status bar.",
+    "Warn users on a slow connection before they start a large upload or download.",
+    "Disable or queue network actions while the user is offline.",
+    "Surface effective connection type and downlink speed for diagnostics dashboards."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "The Network Status component subscribes to the window online and offline events and to the Network Information API change event, re-rendering whenever connectivity changes. It exposes an onStatusChange callback with a full snapshot (online, status, quality, effectiveType, downlink, rtt, saveData), a render prop for fully custom output, and a controlled online prop for SSR, demos, and tests. Color is derived from the live status by default but can be overridden with any appearance token."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The root carries data-status and data-quality attributes for styling and assistive context, and a text label communicates the state to screen readers. The pulsing ring is purely decorative (aria-hidden) and respects prefers-reduced-motion. Avoid relying on color alone — keep the label visible so the state is conveyed without depending on the dot color."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "navigator.onLine and the Network Information API are browser-only. The component is SSR-safe: it renders optimistically as online on the server and during the first client render, then syncs to the real connection inside an effect to avoid hydration mismatches. The Network Information API (effectiveType, downlink) is Chromium-only, so connection-quality detail degrades gracefully where it is unavailable."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Which browsers support connection-quality detection?",
+      "answer": "Online/offline detection via navigator.onLine works everywhere. The richer connection quality (effectiveType, downlink, rtt) comes from the Network Information API, which is currently Chromium-only. When it is unavailable the component still reports online/offline and simply omits the quality detail."
+    },
+    {
+      "question": "How do I render a fixed state for SSR or testing?",
+      "answer": "Pass the controlled online prop (online or online={false}). When set, live detection is disabled and the component renders that state deterministically, which is ideal for server rendering, Storybook, and unit tests."
+    },
+    {
+      "question": "Can I customize the colors and labels?",
+      "answer": "Yes. Override the label copy with the labels prop ({ online, offline, slow }), force any palette with the appearance prop, and theme the dot via the --zui-network-status-* CSS variables. By default the appearance is derived from the live status."
+    }
+  ]
+}

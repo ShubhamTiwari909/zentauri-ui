@@ -25,6 +25,7 @@ export * from "./inputs";
 export * from "./kbd";
 export * from "./marquee";
 export * from "./modal";
+export * from "./network-status";
 export * from "./otp-input";
 export * from "./pagination";
 export * from "./password-strength-meter";

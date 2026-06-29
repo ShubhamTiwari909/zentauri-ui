@@ -29,6 +29,7 @@
     "kbd",
     "marquee",
     "modal",
+    "network-status",
     "otp-input",
     "pagination",
     "password-strength-meter",
@@ -73,6 +74,7 @@
     "inputs",
     "kbd",
     "modal",
+    "network-status",
     "password-strength-meter",
     "popover",
     "progress",
@@ -181,6 +183,7 @@
     "kbd",
     "marquee",
     "modal",
+    "network-status",
     "otp-input",
     "pagination",
     "password-strength-meter",
@@ -375,6 +378,9 @@
       "framer-motion"
     ],
     "modal": [
+      "framer-motion"
+    ],
+    "network-status": [
       "framer-motion"
     ],
     "password-strength-meter": [
