@@ -163,7 +163,7 @@ Expose browser APIs through reusable UI components.
 - [ ] Screen Recorder
 - [ ] Screen Share Preview
 - [ ] Battery Status
-- [ ] Network Status
+- [x] Network Status
 - [ ] Device Information
 - [ ] Browser Information
 - [ ] Permission Manager

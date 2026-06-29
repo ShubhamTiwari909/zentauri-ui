@@ -23,6 +23,7 @@ import { inputsCssVariables } from "./data/inputs";
 import { kbdCssVariables } from "./data/kbd";
 import { marqueeCssVariables } from "./data/marquee";
 import { modalCssVariables } from "./data/modal";
+import { networkStatusCssVariables } from "./data/network-status";
 import { otpInputCssVariables } from "./data/otp-input";
 import { paginationCssVariables } from "./data/pagination";
 import { passwordStrengthMeterCssVariables } from "./data/password-strength-meter";
@@ -79,6 +80,7 @@ export const cssVariableReferences = {
   kbd: kbdCssVariables,
   marquee: marqueeCssVariables,
   modal: modalCssVariables,
+  "network-status": networkStatusCssVariables,
   "otp-input": otpInputCssVariables,
   pagination: paginationCssVariables,
   "password-strength-meter": passwordStrengthMeterCssVariables,

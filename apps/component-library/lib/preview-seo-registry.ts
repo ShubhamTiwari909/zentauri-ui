@@ -31,6 +31,7 @@ import installation from "@/content/seo/preview/components/installation.json";
 import kbd from "@/content/seo/preview/components/kbd.json";
 import marquee from "@/content/seo/preview/components/marquee.json";
 import modal from "@/content/seo/preview/components/modal.json";
+import networkStatus from "@/content/seo/preview/components/network-status.json";
 import otpInput from "@/content/seo/preview/components/otp-input.json";
 import pagination from "@/content/seo/preview/components/pagination.json";
 import passwordStrengthMeter from "@/content/seo/preview/components/password-strength-meter.json";
@@ -94,6 +95,7 @@ const previewSeoRegistry = {
   kbd: kbd as PreviewSeoDocument,
   marquee: marquee as PreviewSeoDocument,
   modal: modal as PreviewSeoDocument,
+  "network-status": networkStatus as PreviewSeoDocument,
   "otp-input": otpInput as PreviewSeoDocument,
   pagination: pagination as PreviewSeoDocument,
   "password-strength-meter": passwordStrengthMeter as PreviewSeoDocument,

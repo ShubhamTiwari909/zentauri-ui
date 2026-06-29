@@ -218,6 +218,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Overlay",
   },
   {
+    id: "network-status",
+    name: "Network Status",
+    description:
+      "Live online/offline indicator using navigator.onLine and the Network Information API, with connection-quality detection and a pulsing status dot.",
+    href: "/preview/components/network-status",
+    badge: "Feedback",
+  },
+  {
     id: "otp-input",
     name: "OTP input",
     description:

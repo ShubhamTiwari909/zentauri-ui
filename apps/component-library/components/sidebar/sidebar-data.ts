@@ -265,6 +265,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/modal",
       },
       {
+        title: "Network Status",
+        href: "/preview/components/network-status",
+      },
+      {
         title: "OTP input",
         href: "/preview/components/otp-input",
       },
