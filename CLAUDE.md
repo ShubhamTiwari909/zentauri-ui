@@ -9,7 +9,7 @@ pnpm + Turborepo monorepo. Two things matter most:
 - `packages/components` (`@zentauri-ui/zentauri-components`) — the publishable React UI kit. Built with **tsup** into `dist/` (ESM + CJS + types). This is where primitives, hooks, charts, design tokens, and the vendoring CLI live.
 - `apps/component-library` (`component-library`) — the Next.js 16 docs/preview site that demos every component. Consumes the library via `workspace:*`.
 
-Also present: `apps/zentauri-demo-pages` (separate Next app), `apps/zentauri-backend`, and the shared config packages `packages/eslint-config` (`@repo/eslint-config`) + `packages/typescript-config` (`@repo/typescript-config`).
+Also present: `apps/zentauri-demo-pages` (separate Next app), `apps/zentauri-backend`, `packages/shared` (`@zentauri-ui/shared`), and the shared config packages `packages/eslint-config` (`@repo/eslint-config`) + `packages/typescript-config` (`@repo/typescript-config`).
 
 ## Commands
 
@@ -35,6 +35,8 @@ pnpm --filter @zentauri-ui/zentauri-components test:watch
 # single file / single test:
 pnpm --filter @zentauri-ui/zentauri-components exec vitest run src/ui/accordion/accordion.test.tsx
 pnpm --filter @zentauri-ui/zentauri-components exec vitest run -t "renders"
+pnpm --filter @zentauri-ui/zentauri-components test:a11y    # accessibility suite (src/accessibility)
+pnpm --filter @zentauri-ui/zentauri-components test:all     # test + test:a11y
 ```
 
 The docs app has a `vitest.config.mts` and a few tests (e.g. `components/sidebar/*.test.tsx`). Run them with `pnpm --filter component-library test`.
@@ -55,7 +57,7 @@ Each UI component in `src/ui/<name>/` follows a fixed layering. Read it bottom-u
 3. **`types.ts`** — props, usually `VariantProps<typeof …Variants>` plus component-specific fields.
 4. **`<name>-base.tsx`** — the real implementation. Compound components (Accordion, Tabs, Modal, Drawer) use a React context + `data-slot` attributes and sub-component exports.
 5. **`<name>.tsx`** — the **static** entry: re-exports the base with **no framer-motion**.
-6. **`animated/`** (optional) — a **separate** entry (`animations.ts` for transition presets/types, plus `<name>-animated.tsx`). Framer Motion is an optional peer dep, so motion must never leak into the static entry.
+6. **`animated/`** (optional) — a **separate** entry (`animations.ts` for transition presets/types, plus `<name>-animated.tsx`). Framer Motion is an optional peer dep, so motion must never leak into the static entry. A few components are animated-only (e.g. `spinner`): they have a design-system file and an `animated/` entry but **no static `<name>.tsx`**, so they appear in `uiAnimatedComponentNames` but not `uiComponentNames`.
 7. **`index.ts`** — starts with `"use client"`, re-exports component + types + variants.
 
 **Adding/removing a UI component touches these files together** (easy to miss one):
@@ -87,15 +89,14 @@ Next.js **16** / App Router. Component preview pages assemble from `components/p
 
 - `app/preview/components/<slug>/page.tsx` — route; imports the preview page and `getPreviewSeo(slug)`.
 - `content/seo/preview/components/<slug>.json` — SEO document, **and** import + register it in `lib/preview-seo-registry.ts`.
-- `components/sidebar/sidebar-data.ts` — navigation entry.
-- `lib/site-search-entries.ts` — in-site search index.
-- `lib/home-install-commands.ts` — if it should appear in homepage install lists.
+- `components/sidebar/sidebar-data.ts` — navigation entry. **This also feeds the in-site search index**: `lib/site-search-entries.ts` derives its entries from the `sidebar*Data` arrays, so you do not edit it separately.
+- `lib/home-install-commands.ts` — only if it should appear in homepage install lists (not every component is; the `CLI_ADD_COMMANDS` list is curated).
 
 SEO is data-driven: JSON in `content/seo/preview/**` → `previewSeoDocumentToMetadata()` in `lib/preview-seo.ts`. `metadataBase`/canonical come from `NEXT_PUBLIC_SITE_URL` (falls back to `http://localhost:3000`).
 
-### Test-count surfaces are maintained by hand
+### Test-count surfaces are generated
 
-When you add/remove tests, update both the coverage table in `packages/components/README.md` (incl. the per-suite snapshot) and the hardcoded totals in `apps/component-library/components/home/marketing/home-package-health.tsx`. These are not auto-generated.
+Test-count/coverage surfaces are **not** hand-edited. After changing tests, run `pnpm --filter @zentauri-ui/zentauri-components update:test-health` (`scripts/update-test-health.mjs`). It runs the suites and rewrites all four surfaces: the marked section in `packages/components/README.md`, the same section in `apps/component-library/README.md`, and `apps/component-library/components/home/marketing/package-health-data.ts` (consumed by `package-health.tsx`). Edit the script/markers, not the generated numbers.
 
 ## Next.js 16 caveat
 

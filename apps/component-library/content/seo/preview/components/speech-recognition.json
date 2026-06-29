@@ -1,0 +1,73 @@
+{
+  "category": "Media",
+  "title": "Speech Recognition component for React & Next.js",
+  "description": "Real-time speech-to-text component for React and Next.js using the Web Speech API: microphone input, interim results, and browser voice recognition.",
+  "keywords": [
+    "speech recognition",
+    "React",
+    "Next.js",
+    "voice input",
+    "speech to text",
+    "microphone",
+    "Web Speech API",
+    "browser speech"
+  ],
+  "og": {
+    "title": "Speech Recognition · Zentauri UI",
+    "description": "Real-time speech-to-text component for React and Next.js using the Web Speech API.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Speech Recognition · Zentauri UI",
+    "description": "Real-time speech-to-text component for React and Next.js using the Web Speech API.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/speech-recognition",
+  "headings": {
+    "h1": "Speech Recognition for voice input",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the speech recognition component to capture voice input in the browser. Built on the Web Speech API, it provides real-time transcription with interim and final results, configurable language, and a toggleable microphone button.",
+  "useCases": [
+    "Voice search and command input in web applications.",
+    "Real-time dictation for note-taking and form filling.",
+    "Accessibility tooling for users who prefer voice over keyboard input.",
+    "Conversational AI and chatbot interfaces with voice input."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "The Speech Recognition component wraps the browser's SpeechRecognition API (webkitSpeechRecognition on Chromium). It exposes start, stop, and abort methods via an imperative ref handle. The component provides onResult, onError, and onStateChange callbacks for integrating speech results into your application state."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The microphone toggle button uses aria-label and aria-pressed attributes to convey listening state. Status text updates in real time. Ensure you provide visible labels and fallback input methods for users who cannot or choose not to use voice input."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The Web Speech API is browser-only. Import the component via dynamic import with ssr: false to avoid server-side errors. The component handles SSR safety internally with a typeof window guard, but dynamic import is recommended for Next.js apps."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Which browsers support speech recognition?",
+      "answer": "The Web Speech API is supported in Chromium-based browsers (Chrome, Edge, Brave). Firefox and Safari have limited or no support. Always provide a fallback for unsupported browsers."
+    },
+    {
+      "question": "Does the component require a microphone permission?",
+      "answer": "Yes. The browser will prompt the user for microphone access when speech recognition starts. The component handles permission errors via the onError callback."
+    },
+    {
+      "question": "Can I use multiple languages?",
+      "answer": "Yes. Set the lang prop to any BCP 47 language tag (e.g., 'en-US', 'es-ES', 'fr-FR'). The browser will use the language for recognition."
+    }
+  ]
+}

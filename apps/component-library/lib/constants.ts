@@ -117,15 +117,6 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Store finders, delivery ETAs, and map centering; defer the permission prompt behind a user gesture with enabled.",
   },
   {
-    slug: "use-hash",
-    module: "useHash",
-    name: "useHash",
-    description:
-      "Computes SHA-1/SHA-256/SHA-384/SHA-512 hashes via the Web Crypto API, returning hash/isHashing/error/recompute.",
-    intro:
-      "Hash text client-side for security tooling, checksum generation, or educational demos without sending data to a server.",
-  },
-  {
     slug: "use-hotkeys",
     module: "useHotkeys",
     name: "useHotkeys",
@@ -133,6 +124,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Binds keyboard shortcut combos like mod+k or ctrl+shift+p to handlers, skipping inputs by default.",
     intro:
       "Command palettes, save shortcuts, and navigation keys with one declarative binding map.",
+  },
+  {
+    slug: "use-hash",
+    module: "useHash",
+    name: "useHash",
+    description:
+      "Computes SHA-1/SHA-224/SHA-256/SHA-384/SHA-512 hashes via the Web Crypto API, returning hash/isHashing/error/recompute.",
+    intro:
+      "Hash text client-side for security tooling, checksum generation, or educational demos without sending data to a server.",
   },
   {
     slug: "use-hover",

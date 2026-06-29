@@ -321,6 +321,14 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/skeleton",
       },
       {
+        title: "Speech Recognition",
+        href: "/preview/components/speech-recognition",
+      },
+      {
+        title: "Speech Synthesizer",
+        href: "/preview/components/speech-synthesizer",
+      },
+      {
         title: "Split button",
         href: "/preview/components/split-button",
       },

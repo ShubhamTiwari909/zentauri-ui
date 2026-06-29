@@ -45,6 +45,8 @@ import secretReveal from "@/content/seo/preview/components/secret-reveal.json";
 import select from "@/content/seo/preview/components/select.json";
 import search from "@/content/seo/preview/components/search.json";
 import skeleton from "@/content/seo/preview/components/skeleton.json";
+import speechRecognition from "@/content/seo/preview/components/speech-recognition.json";
+import speechSynthesizer from "@/content/seo/preview/components/speech-synthesizer.json";
 import splitButton from "@/content/seo/preview/components/split-button.json";
 import slider from "@/content/seo/preview/components/slider.json";
 import spinner from "@/content/seo/preview/components/spinner.json";
@@ -106,6 +108,8 @@ const previewSeoRegistry = {
   select: select as PreviewSeoDocument,
   search: search as PreviewSeoDocument,
   skeleton: skeleton as PreviewSeoDocument,
+  "speech-recognition": speechRecognition as PreviewSeoDocument,
+  "speech-synthesizer": speechSynthesizer as PreviewSeoDocument,
   "split-button": splitButton as PreviewSeoDocument,
   slider: slider as PreviewSeoDocument,
   spinner: spinner as PreviewSeoDocument,
