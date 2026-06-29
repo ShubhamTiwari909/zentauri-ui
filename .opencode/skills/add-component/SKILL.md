@@ -1,3 +1,8 @@
+---
+name: add-component
+description: Use when the user asks to add a new UI component to Zentauri UI. Provides step-by-step instructions from design tokens through docs app registration. Use ONLY for adding new components, not for modifying existing ones.
+---
+
 # New Component Plan (reusable)
 
 A copy-paste, end-to-end plan for adding a new UI component to Zentauri UI. Derived
