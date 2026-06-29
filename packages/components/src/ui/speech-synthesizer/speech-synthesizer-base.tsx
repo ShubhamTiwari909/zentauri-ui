@@ -69,12 +69,14 @@ export function SpeechSynthesizerBase({
   showProgress = false,
   className,
   children,
+  ref,
   ...rest
 }: SpeechSynthesizerBaseProps) {
   const [state, setState] = useState<SpeechSynthesizerState>("idle");
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const stateRef = useRef<SpeechSynthesizerState>("idle");
   const localRef = useRef<HTMLDivElement>(null);
+  const autoStartedRef = useRef(false);
 
   const setStateSafe = useCallback(
     (newState: SpeechSynthesizerState) => {
@@ -86,7 +88,8 @@ export function SpeechSynthesizerBase({
   );
 
   const speak = useCallback(() => {
-    if (!text || typeof window === "undefined") return;
+    if (!text || typeof window === "undefined" || !window.speechSynthesis)
+      return;
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
@@ -115,13 +118,13 @@ export function SpeechSynthesizerBase({
   }, [text, lang, rate, pitch, volume, onStart, onEnd, onError, setStateSafe]);
 
   const pause = useCallback(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && window.speechSynthesis) {
       window.speechSynthesis.pause();
     }
   }, []);
 
   const resume = useCallback(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && window.speechSynthesis) {
       window.speechSynthesis.resume();
     }
   }, []);
@@ -143,7 +146,7 @@ export function SpeechSynthesizerBase({
     },
   };
 
-  useImperativeHandle((rest as any).ref, () => imperativeHandle, [
+  useImperativeHandle(ref as any, () => imperativeHandle, [
     speak,
     pause,
     resume,
@@ -151,13 +154,18 @@ export function SpeechSynthesizerBase({
   ]);
 
   useEffect(() => {
-    if (autoSpeak && text) speak();
+    if (autoSpeak && text && !autoStartedRef.current) {
+      autoStartedRef.current = true;
+      speak();
+    }
     return () => {
       if (typeof window !== "undefined" && window.speechSynthesis) {
-        window.speechSynthesis.cancel();
+        if (stateRef.current === "speaking" || stateRef.current === "paused") {
+          window.speechSynthesis.cancel();
+        }
       }
     };
-  }, []);
+  }, [autoSpeak, text, speak]);
 
   const isSpeaking = state === "speaking";
   const isPaused = state === "paused";

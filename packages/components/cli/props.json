@@ -14138,7 +14138,7 @@
             },
             {
               "name": "onError",
-              "type": "(ReactEventHandler<HTMLDivElement> & ((error: string) => void)) | undefined",
+              "type": "((error: string) => void) | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14280,7 +14280,7 @@
             },
             {
               "name": "onError",
-              "type": "(ReactEventHandler<HTMLDivElement> & ((error: string) => void)) | undefined",
+              "type": "((error: string) => void) | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14421,7 +14421,7 @@
             },
             {
               "name": "onError",
-              "type": "(ReactEventHandler<HTMLDivElement> & ((error: string) => void)) | undefined",
+              "type": "((error: string) => void) | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14605,7 +14605,7 @@
             },
             {
               "name": "onError",
-              "type": "(ReactEventHandler<HTMLDivElement> & ((error: string) => void)) | undefined",
+              "type": "((error: string) => void) | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false

@@ -81,6 +81,7 @@ export function SpeechRecognitionAnimated({
   const [interimText, setInterimText] = useState("");
   const recognitionRef = useRef<any>(null);
   const stateRef = useRef<SpeechRecognitionState>("idle");
+  const autoStartedRef = useRef(false);
   const preset = speechRecognitionAnimationPresets[animation];
 
   const setStateSafe = useCallback(
@@ -101,8 +102,13 @@ export function SpeechRecognitionAnimated({
     }
 
     if (recognitionRef.current) {
+      const old = recognitionRef.current;
+      old.onstart = null;
+      old.onresult = null;
+      old.onerror = null;
+      old.onend = null;
       try {
-        recognitionRef.current.abort();
+        old.abort();
       } catch {}
     }
 
@@ -140,7 +146,10 @@ export function SpeechRecognitionAnimated({
       onError?.(event.error);
     };
     recognition.onend = () => {
-      if (stateRef.current === "listening") {
+      if (
+        stateRef.current === "listening" ||
+        stateRef.current === "processing"
+      ) {
         setStateSafe("idle");
       }
     };
@@ -190,7 +199,10 @@ export function SpeechRecognitionAnimated({
   ]);
 
   useEffect(() => {
-    if (autoStart) start();
+    if (autoStart && !autoStartedRef.current) {
+      autoStartedRef.current = true;
+      start();
+    }
     return () => {
       if (recognitionRef.current) {
         try {
@@ -198,7 +210,7 @@ export function SpeechRecognitionAnimated({
         } catch {}
       }
     };
-  }, []);
+  }, [autoStart, start]);
 
   const isListening = state === "listening";
   const toggleListening = useCallback(() => {

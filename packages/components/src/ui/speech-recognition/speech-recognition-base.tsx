@@ -73,6 +73,7 @@ export function SpeechRecognitionBase({
   renderMic,
   className,
   children,
+  ref,
   ...rest
 }: SpeechRecognitionBaseProps) {
   const [state, setState] = useState<SpeechRecognitionState>("idle");
@@ -81,6 +82,7 @@ export function SpeechRecognitionBase({
   const recognitionRef = useRef<any>(null);
   const stateRef = useRef<SpeechRecognitionState>("idle");
   const localRef = useRef<HTMLDivElement>(null);
+  const autoStartedRef = useRef(false);
 
   const setStateSafe = useCallback(
     (newState: SpeechRecognitionState) => {
@@ -144,7 +146,10 @@ export function SpeechRecognitionBase({
     };
 
     recognition.onend = () => {
-      if (stateRef.current === "listening") {
+      if (
+        stateRef.current === "listening" ||
+        stateRef.current === "processing"
+      ) {
         setStateSafe("idle");
       }
     };
@@ -188,24 +193,26 @@ export function SpeechRecognitionBase({
     },
   };
 
-  useImperativeHandle((rest as any).ref, () => imperativeHandle, [
-    start,
-    stop,
-    abort,
-  ]);
+  useImperativeHandle(ref as any, () => imperativeHandle, [start, stop, abort]);
 
   useEffect(() => {
-    if (autoStart) {
+    if (autoStart && !autoStartedRef.current) {
+      autoStartedRef.current = true;
       start();
     }
     return () => {
       if (recognitionRef.current) {
+        const old = recognitionRef.current;
+        old.onstart = null;
+        old.onresult = null;
+        old.onerror = null;
+        old.onend = null;
         try {
-          recognitionRef.current.abort();
+          old.abort();
         } catch {}
       }
     };
-  }, []);
+  }, [autoStart, start]);
 
   const isListening = state === "listening";
 

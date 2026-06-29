@@ -16,7 +16,7 @@ export type SpeechSynthesizerBaseProps = VariantProps<
   typeof speechSynthesizerVariants
 > &
   VariantProps<typeof speechSynthesizerBtnVariants> &
-  ComponentPropsWithRef<"div"> & {
+  Omit<ComponentPropsWithRef<"div">, "onError"> & {
     text?: string;
     lang?: string;
     rate?: number;

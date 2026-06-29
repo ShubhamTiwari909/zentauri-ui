@@ -70,5 +70,5 @@ export const speechSynthesizerCssVariables = defineCssVariableReference({
     ["speech-synthesizer-active-ring-dark", "#22c55e"],
     ["speech-synthesizer-track-bg-dark", "#ffffff1a"],
   ],
-  darkVariableCount: 27,
+  darkVariableCount: 25,
 });

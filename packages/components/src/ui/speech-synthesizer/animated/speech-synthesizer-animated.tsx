@@ -75,6 +75,7 @@ export function SpeechSynthesizerAnimated({
   const [state, setState] = useState<SpeechSynthesizerState>("idle");
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const stateRef = useRef<SpeechSynthesizerState>("idle");
+  const autoStartedRef = useRef(false);
   const preset = speechSynthesizerAnimationPresets[animation];
 
   const setStateSafe = useCallback(
@@ -87,7 +88,8 @@ export function SpeechSynthesizerAnimated({
   );
 
   const speak = useCallback(() => {
-    if (!text || typeof window === "undefined") return;
+    if (!text || typeof window === "undefined" || !window.speechSynthesis)
+      return;
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
@@ -116,15 +118,18 @@ export function SpeechSynthesizerAnimated({
   }, [text, lang, rate, pitch, volume, onStart, onEnd, onError, setStateSafe]);
 
   const pauseFn = useCallback(() => {
-    if (typeof window !== "undefined") window.speechSynthesis.pause();
+    if (typeof window !== "undefined" && window.speechSynthesis)
+      window.speechSynthesis.pause();
   }, []);
 
   const resumeFn = useCallback(() => {
-    if (typeof window !== "undefined") window.speechSynthesis.resume();
+    if (typeof window !== "undefined" && window.speechSynthesis)
+      window.speechSynthesis.resume();
   }, []);
 
   const stop = useCallback(() => {
-    if (typeof window !== "undefined") window.speechSynthesis.cancel();
+    if (typeof window !== "undefined" && window.speechSynthesis)
+      window.speechSynthesis.cancel();
     setStateSafe("idle");
   }, [setStateSafe]);
 
@@ -146,11 +151,18 @@ export function SpeechSynthesizerAnimated({
   ]);
 
   useEffect(() => {
-    if (autoSpeak && text) speak();
+    if (autoSpeak && text && !autoStartedRef.current) {
+      autoStartedRef.current = true;
+      speak();
+    }
     return () => {
-      if (typeof window !== "undefined") window.speechSynthesis.cancel();
+      if (typeof window !== "undefined" && window.speechSynthesis) {
+        if (stateRef.current === "speaking" || stateRef.current === "paused") {
+          window.speechSynthesis.cancel();
+        }
+      }
     };
-  }, []);
+  }, [autoSpeak, text, speak]);
 
   const isSpeaking = state === "speaking";
   const isPaused = state === "paused";
@@ -176,13 +188,9 @@ export function SpeechSynthesizerAnimated({
         </motion.p>
       )}
       {showProgress && isSpeaking && (
-        <motion.div
+        <div
           data-slot="speech-synthesizer-progress"
           className={speechSynthesizerProgressClasses}
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.3 }}
-          style={{ originX: 0 }}
         >
           <div
             data-slot="speech-synthesizer-progress-bar"
@@ -191,7 +199,7 @@ export function SpeechSynthesizerAnimated({
               "w-full animate-pulse",
             )}
           />
-        </motion.div>
+        </div>
       )}
       <motion.div
         data-slot="speech-synthesizer-controls"

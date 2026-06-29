@@ -58,5 +58,5 @@ export const speechRecognitionCssVariables = defineCssVariableReference({
     ["speech-recognition-transcript-fg-dark", "oklch(98.4% 0.003 247.858)"],
     ["speech-recognition-active-ring-dark", "#ef4444"],
   ],
-  darkVariableCount: 27,
+  darkVariableCount: 25,
 });

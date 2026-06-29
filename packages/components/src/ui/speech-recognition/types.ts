@@ -25,7 +25,7 @@ export type SpeechRecognitionBaseProps = VariantProps<
   typeof speechRecognitionVariants
 > &
   VariantProps<typeof speechRecognitionBtnVariants> &
-  ComponentPropsWithRef<"div"> & {
+  Omit<ComponentPropsWithRef<"div">, "onError"> & {
     lang?: string;
     continuous?: boolean;
     interimResults?: boolean;
