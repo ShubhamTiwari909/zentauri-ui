@@ -57,6 +57,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/json-viewer/json-viewer.test.tsx`                               |    16 |
 | `src/ui/network-status/network-status.test.tsx`                         |    16 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
+| `src/ui/json-viewer/json-viewer.test.tsx`                               |    14 |
 | `src/ui/timeline/timeline.test.tsx`                                     |    14 |
 | `src/ui/data-table/data-table.test.tsx`                                 |    13 |
 | `src/ui/context-menu/context-menu.test.tsx`                             |    12 |
