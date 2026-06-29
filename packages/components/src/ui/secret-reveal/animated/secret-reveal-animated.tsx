@@ -66,7 +66,10 @@ export function SecretRevealAnimated({
         )}
         <span
           data-slot="secret-reveal-value"
-          className={cn(secretRevealValueVariants({ size }), "flex-1 truncate")}
+          className={cn(
+            secretRevealValueVariants({ size }),
+            "flex-1 min-w-0 truncate",
+          )}
         >
           <AnimatePresence mode="wait">
             <motion.span

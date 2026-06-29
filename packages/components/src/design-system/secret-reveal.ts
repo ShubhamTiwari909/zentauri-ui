@@ -1,5 +1,5 @@
 export const zuiSecretRevealContainerBase =
-  "inline-flex items-center gap-2 rounded-xl border px-3 py-2";
+  "inline-flex items-center gap-2 rounded-xl border px-3 py-2 max-w-full min-w-0";
 
 export const zuiSecretRevealLabelBase = "font-medium";
 
