@@ -160,9 +160,7 @@ export function SpeechSynthesizerBase({
     }
     return () => {
       if (typeof window !== "undefined" && window.speechSynthesis) {
-        if (stateRef.current === "speaking" || stateRef.current === "paused") {
-          window.speechSynthesis.cancel();
-        }
+        window.speechSynthesis.cancel();
       }
     };
   }, [autoSpeak, text, speak]);

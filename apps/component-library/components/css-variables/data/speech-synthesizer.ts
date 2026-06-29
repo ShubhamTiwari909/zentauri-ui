@@ -53,18 +53,6 @@ export const speechSynthesizerCssVariables = defineCssVariableReference({
     ["speech-synthesizer-slate-btn-bg-dark", "#64748b"],
     ["speech-synthesizer-gray-btn-bg-dark", "oklch(55.1% 0.027 264.364)"],
     ["speech-synthesizer-zinc-btn-bg-dark", "#71717a"],
-    [
-      "speech-synthesizer-gradient-blue-btn-bg-dark",
-      "linear-gradient(90deg, oklch(54.6% 0.245 262.881), oklch(55.8% 0.288 302.321))",
-    ],
-    [
-      "speech-synthesizer-gradient-green-btn-bg-dark",
-      "linear-gradient(90deg, oklch(62.7% 0.194 149.214), oklch(64.8% 0.2 131.684))",
-    ],
-    [
-      "speech-synthesizer-gradient-purple-btn-bg-dark",
-      "linear-gradient(90deg, oklch(55.8% 0.288 302.321), oklch(59.2% 0.249 0.584))",
-    ],
     ["speech-synthesizer-btn-fg-dark", "#0f172a"],
     ["speech-synthesizer-text-fg-dark", "oklch(98.4% 0.003 247.858)"],
     ["speech-synthesizer-active-ring-dark", "#22c55e"],
