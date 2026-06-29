@@ -28,7 +28,15 @@ export function QrCodeBase({
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas || !value) return;
+    if (!canvas) return;
+
+    if (!value) {
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      return;
+    }
 
     QRCode.toCanvas(
       canvas,

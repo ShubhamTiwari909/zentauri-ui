@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import QRCode from "qrcode";
 
 import { cn } from "../../../lib/utils";
 import { qrCodeAnimationPresets } from "./animations";
@@ -19,6 +21,40 @@ export function QrCodeAnimated({
   className,
   ...props
 }: QrCodeAnimatedProps) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || animation === "none") return;
+
+    if (!value) {
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      return;
+    }
+
+    QRCode.toCanvas(
+      canvas,
+      value,
+      {
+        width: canvasSize,
+        margin,
+        color: {
+          dark: fgColor,
+          light: bgColor,
+        },
+        errorCorrectionLevel: level,
+      },
+      (error) => {
+        if (error) {
+          console.error("QR Code generation error:", error);
+        }
+      },
+    );
+  }, [value, canvasSize, level, bgColor, fgColor, margin, animation]);
+
   if (animation === "none") {
     return (
       <QrCodeBase
@@ -52,6 +88,9 @@ export function QrCodeAnimated({
     >
       <div className="overflow-hidden rounded-xl bg-[var(--zui-qr-code-canvas-bg,var(--zui-surface-muted,oklch(92.9%_0.013_255.508)))] dark:bg-[var(--zui-qr-code-canvas-bg-dark,var(--zui-surface-muted-dark,oklch(27.9%_0.041_260.031)))]">
         <canvas
+          ref={canvasRef}
+          width={canvasSize}
+          height={canvasSize}
           data-slot="qr-code-canvas"
           className="block h-auto max-w-full"
           aria-label={`QR code for ${value}`}

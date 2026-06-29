@@ -20,6 +20,16 @@ import {
   qrScannerViewfinderVariants,
 } from "./variants";
 
+let cachedJsQR: any = null;
+
+async function getJsqr() {
+  if (!cachedJsQR) {
+    const { default: m } = await import("jsqr");
+    cachedJsQR = m;
+  }
+  return cachedJsQR;
+}
+
 export function QrScannerBase({
   onResult,
   onError,
@@ -47,9 +57,6 @@ export function QrScannerBase({
   const mountedRef = useRef(true);
   const playPromiseRef = useRef<Promise<void> | null>(null);
 
-  // Callback refs so that scanFrame/startCamera/stopCamera don't need to list
-  // the callbacks as deps — prevents the useEffect from restarting the camera
-  // every time the parent renders with a new inline function reference.
   const onResultRef = useRef(onResult);
   const onErrorRef = useRef(onError);
   const onStartRef = useRef(onStart);
@@ -78,13 +85,17 @@ export function QrScannerBase({
     setStatus("idle");
     cancelAnimationFrame(rafRef.current);
 
+    const streamToStop = streamRef.current;
+
     const doStop = () => {
-      if (videoRef.current) {
+      if (videoRef.current && videoRef.current.srcObject === streamToStop) {
         videoRef.current.pause();
         videoRef.current.srcObject = null;
       }
-      if (streamRef.current) {
-        streamRef.current.getTracks().forEach((track) => track.stop());
+      if (streamToStop) {
+        streamToStop.getTracks().forEach((track) => track.stop());
+      }
+      if (streamRef.current === streamToStop) {
         streamRef.current = null;
       }
       onStopRef.current?.();
@@ -96,7 +107,7 @@ export function QrScannerBase({
     } else {
       doStop();
     }
-  }, []); // stable — uses onStopRef instead of onStop directly
+  }, []);
 
   const scanFrame = useCallback(async () => {
     if (!scanningRef.current || !mountedRef.current) return;
@@ -125,7 +136,7 @@ export function QrScannerBase({
     ctx.drawImage(video, 0, 0);
 
     try {
-      const { default: jsqr } = await import("jsqr");
+      const jsqr = await getJsqr();
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const code = jsqr(imageData.data, imageData.width, imageData.height);
 
@@ -145,10 +156,18 @@ export function QrScannerBase({
     if (mountedRef.current) {
       rafRef.current = requestAnimationFrame(scanFrame);
     }
-  }, [scanDelay, continuous, stopCamera]); // onResult removed — accessed via ref
+  }, [scanDelay, continuous, stopCamera]);
 
   const startCamera = useCallback(async () => {
     if (!mountedRef.current) return;
+
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setStatus("no-camera");
+      setError("Camera API not available in this context");
+      onErrorRef.current?.(new Error("getUserMedia is not available"));
+      return;
+    }
+
     setStatus("starting");
     setError(null);
 
@@ -185,7 +204,6 @@ export function QrScannerBase({
       rafRef.current = requestAnimationFrame(scanFrame);
     } catch (err) {
       if (!mountedRef.current) return;
-      // AbortError means play() was interrupted by unmount/cleanup — not a user-visible error
       if (err instanceof DOMException && err.name === "AbortError") return;
 
       const isNoCamera =
@@ -198,7 +216,7 @@ export function QrScannerBase({
       setError(err instanceof Error ? err.message : String(err));
       onErrorRef.current?.(err);
     }
-  }, [facingMode, constraints, scanFrame, stopCamera]); // onStart/onError removed — accessed via refs
+  }, [facingMode, constraints, scanFrame, stopCamera]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -209,19 +227,19 @@ export function QrScannerBase({
       scanningRef.current = false;
       cancelAnimationFrame(rafRef.current);
 
+      const streamToStop = streamRef.current;
+
       const doCleanup = () => {
-        if (video) {
+        if (video && video.srcObject === streamToStop) {
           video.pause();
           video.srcObject = null;
         }
-        if (streamRef.current) {
-          streamRef.current.getTracks().forEach((track) => track.stop());
+        if (streamToStop) {
+          streamToStop.getTracks().forEach((track) => track.stop());
         }
       };
 
       if (playPromiseRef.current) {
-        // Wait for play() to settle before pausing — prevents the browser warning:
-        // "The play() request was interrupted because the media was removed from the document"
         playPromiseRef.current.then(doCleanup, doCleanup);
         playPromiseRef.current = null;
       } else {
@@ -236,21 +254,28 @@ export function QrScannerBase({
       start: startCamera,
       stop: stopCamera,
       scanImage: async (file: File): Promise<string | null> => {
+        let bitmap: ImageBitmap | null = null;
         try {
-          const bitmap = await createImageBitmap(file);
-          const canvas = document.createElement("canvas");
-          canvas.width = bitmap.width;
-          canvas.height = bitmap.height;
-          const ctx = canvas.getContext("2d");
+          bitmap = await createImageBitmap(file);
+          const tempCanvas = document.createElement("canvas");
+          tempCanvas.width = bitmap.width;
+          tempCanvas.height = bitmap.height;
+          const ctx = tempCanvas.getContext("2d");
           if (!ctx) return null;
           ctx.drawImage(bitmap, 0, 0);
-          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-          const { default: jsqr } = await import("jsqr");
+          const imageData = ctx.getImageData(
+            0,
+            0,
+            tempCanvas.width,
+            tempCanvas.height,
+          );
+          const jsqr = await getJsqr();
           const code = jsqr(imageData.data, imageData.width, imageData.height);
-          bitmap.close();
           return code?.data ?? null;
         } catch {
           return null;
+        } finally {
+          bitmap?.close();
         }
       },
       isScanning: scanning,
