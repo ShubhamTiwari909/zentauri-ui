@@ -149,8 +149,8 @@ Expose browser APIs through reusable UI components.
 - [ ] Clipboard History
 - [ ] Webcam Capture
 - [ ] Camera Preview
-- [ ] QR Code Scanner
-- [ ] QR Code Generator
+- [x] QR Code Scanner
+- [x] QR Code Generator
 - [ ] Barcode Scanner
 - [ ] Geolocation Picker
 - [ ] Current Location Viewer
