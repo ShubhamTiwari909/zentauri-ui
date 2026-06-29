@@ -9,8 +9,8 @@ export function QrCodeCodeExamplesSection() {
         QR code generator variants playground
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
-        Pick an appearance, size, and animation to preview the QR code generator
-        component live. Toggle Show output / Show code and the snippet updates
+        Enter a value and pick an error correction level to preview the QR code
+        generator live. Toggle Show output / Show code and the snippet updates
         to match the selected variant.
       </p>
       <QrCodePlayground />

@@ -159,6 +159,24 @@ function getComponentNote(slug: string): ComponentDocNote {
     };
   }
 
+  if (slug === "qr-code") {
+    return {
+      accessibility:
+        "Canvas-based QR code with an aria-label describing the encoded value. Pair with a visible caption or off-screen text for non-visual access.",
+      dependency:
+        "Requires the qrcode npm package. Install it alongside Zentauri UI: pnpm add qrcode.",
+    };
+  }
+
+  if (slug === "qr-scanner") {
+    return {
+      accessibility:
+        "Camera access via getUserMedia requires a secure context (HTTPS or localhost) and a user gesture. The component shows fallback UI when camera is unavailable.",
+      dependency:
+        "Requires the jsqr npm package. Install it alongside Zentauri UI: pnpm add jsqr.",
+    };
+  }
+
   if (hasMotionEntry) {
     return {
       accessibility: getAccessibilityNote(slug),
