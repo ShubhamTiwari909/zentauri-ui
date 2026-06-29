@@ -3,16 +3,13 @@
   "configurations": [
     {
       "name": "docs",
-      "runtimeExecutable": "pnpm",
+      "runtimeExecutable": "bash",
       "runtimeArgs": [
-        "exec",
-        "turbo",
-        "run",
-        "dev",
-        "--filter=component-library"
+        "-lc",
+        "export PATH=\"$HOME/.nvm/versions/node/v20.13.1/bin:$PATH\" && exec pnpm exec turbo run dev --filter=component-library -- --port 3000"
       ],
-      "port": 3001,
-      "autoPort": true
+      "port": 3000,
+      "autoPort": false
     }
   ]
 }

@@ -22,6 +22,7 @@ export * from "./dynamic-stepper";
 export * from "./empty-state";
 export * from "./file-upload";
 export * from "./inputs";
+export * from "./json-viewer";
 export * from "./kbd";
 export * from "./marquee";
 export * from "./modal";

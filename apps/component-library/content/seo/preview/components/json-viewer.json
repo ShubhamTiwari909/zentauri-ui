@@ -1,0 +1,77 @@
+{
+  "category": "Data display",
+  "title": "JSON Viewer component for React & Next.js",
+  "description": "Interactive, collapsible JSON tree viewer for React and Next.js: syntax-colored keys and values, expand/collapse-all, copy-to-clipboard, themeable --zui-* tokens, and an optional animated entry.",
+  "keywords": [
+    "json viewer",
+    "json tree",
+    "collapsible json",
+    "React",
+    "Next.js",
+    "syntax highlighting",
+    "pretty print json",
+    "api response viewer"
+  ],
+  "og": {
+    "title": "JSON Viewer · Zentauri UI",
+    "description": "Interactive collapsible JSON tree viewer for React and Next.js with syntax colors and copy support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "JSON Viewer · Zentauri UI",
+    "description": "Interactive collapsible JSON tree viewer for React and Next.js with syntax colors and copy support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/json-viewer",
+  "headings": {
+    "h1": "JSON Viewer for inspecting structured data",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the JSON viewer to render any JSON-serializable value as an interactive, collapsible tree. Objects and arrays expand and collapse with a disclosure toggle, primitives are syntax-colored by type (strings, numbers, booleans, null), and an optional toolbar adds expand-all, collapse-all, and copy-to-clipboard controls.",
+  "useCases": [
+    "Inspect API responses and request bodies in a debugging or admin panel.",
+    "Show configuration, feature flags, or environment payloads in a dashboard.",
+    "Render webhook events and logs as a readable, foldable tree.",
+    "Embed a live, copyable JSON preview in docs and developer tooling."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "Pass any JSON-serializable value through the data prop. The viewer walks the structure recursively, rendering objects and arrays as collapsible nodes and primitives with per-type syntax colors. defaultExpandedDepth seeds how deep the tree starts open (0 collapses everything but the root), showToolbar toggles the expand/collapse/copy controls, enableClipboard controls the copy button, showItemCount appends key/item counts to collapsed nodes, and quoteStrings controls whether string values are quoted. The separate animated entry adds collapse and fade motion presets for the expand/collapse transition."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Each container's disclosure control is a real button with aria-expanded reflecting its open state, so keyboard and screen-reader users can fold and unfold nodes. The root and every node carry data-slot attributes for styling and testing, and value spans expose a data-kind attribute. The rotating caret is decorative (aria-hidden), and the animated entry's motion is short and easing-based; pair it with prefers-reduced-motion handling in your app where needed."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The static JsonViewer entry ships no framer-motion and is safe in any Server or Client Component tree (it is a Client Component because it manages expansion state). The animated JsonViewerAnimated entry imports framer-motion, which is an optional peer dependency — install it only if you use the animated entry. Both render deterministically from the same data, so server and client output match and there is no hydration mismatch."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can it render any JSON value, including arrays and nested objects?",
+      "answer": "Yes. Pass any JSON-serializable value to the data prop — objects, arrays, strings, numbers, booleans, or null. Containers render as collapsible nodes and primitives are colored by type. A primitive passed directly (for example a string) renders as a single colored value."
+    },
+    {
+      "question": "How do I control how much of the tree is expanded initially?",
+      "answer": "Use defaultExpandedDepth. Leave it unset to expand everything, set it to 1 to show only the top level expanded, or 0 to collapse everything but the root. The toolbar's Expand all / Collapse all buttons override it at runtime."
+    },
+    {
+      "question": "Do I need framer-motion?",
+      "answer": "Only for the animated entry. The default import from @zentauri-ui/zentauri-components/ui/json-viewer is framer-motion-free. Import JsonViewerAnimated from the /animated subpath when you want collapse or fade transitions, and install framer-motion as a peer dependency."
+    },
+    {
+      "question": "How do I theme the syntax colors?",
+      "answer": "Override the --zui-json-viewer-* CSS variables (key, string, number, boolean, null, punctuation, border, bg, and more) on :root, a theme selector, or a wrapper. Each variable ships a light fallback and a paired -dark variant for dark mode."
+    }
+  ]
+}
