@@ -41,7 +41,7 @@ import {
  *   2. If `value` is empty, clears the canvas with `ctx.clearRect` so a stale
  *      QR code doesn't persist.
  *   3. Otherwise calls `QRCode.toCanvas()` which draws the QR pattern
- *      synchronously onto the canvas element.
+ *       asynchronously (via callback) onto the canvas element.
  *
  * The outer `<div>` uses design-system variants (`qrCodeVariants`) for
  * consistent theming and carries `data-slot="qr-code"` for scoped styling and

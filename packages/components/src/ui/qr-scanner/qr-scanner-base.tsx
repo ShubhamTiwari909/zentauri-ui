@@ -54,7 +54,7 @@ async function getJsqr() {
  * The component has three main async loops:
  *
  *  1. **Camera startup** (`startCamera`) — calls `getUserMedia`, attaches
- *     the stream to a hidden `<video>` element, calls `video.play()`, then
+ *     the stream to a `<video>` element, calls `video.play()`, then
  *     kicks off the scan loop via `requestAnimationFrame`.
  *
  *  2. **Scan loop** (`scanFrame`) — scheduled with `requestAnimationFrame`.
@@ -120,7 +120,7 @@ export function QrScannerBase({
 }: QrScannerBaseProps) {
   // ---- Refs ----
 
-  /** The hidden `<video>` element that plays the camera stream. */
+  /** The `<video>` element that plays the camera stream. */
   const videoRef = useRef<HTMLVideoElement>(null);
 
   /** The hidden `<canvas>` used to grab frames for jsQR decoding. */
@@ -136,9 +136,9 @@ export function QrScannerBase({
   const scanningRef = useRef(false);
 
   /**
-   * Timestamp (ms) of the last successful frame decode. Used to implement
-   * `scanDelay` — frames are skipped if they arrive before the delay
-   * elapses.
+   * Timestamp (ms) of the last attempted frame scan. Used to implement
+   * `scanDelay` — frame processing is skipped if frames arrive before the
+   * delay elapses, regardless of whether jsQR finds a code.
    */
   const lastScanRef = useRef(0);
 
