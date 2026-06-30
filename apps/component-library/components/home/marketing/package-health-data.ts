@@ -11,8 +11,8 @@ export const PACKAGE_TEST_HEALTH = {
   areas: [
     {
       area: "Components and UI utilities",
-      files: 60,
-      tests: 627,
+      files: 65,
+      tests: 689,
     },
     {
       area: "Standalone animations",

@@ -45,7 +45,7 @@
   "sections": [
     {
       "heading": "What it does",
-      "body": "Use the HTTP status badge to render any HTTP status code as a compact, color-coded label. The tone is derived from the status class — 1xx is informational, 2xx success, 3xx redirect, 4xx client error, 5xx server error — and the code is paired with a known reason phrase. Choose between solid, soft, and outline fill styles and three sizes."
+      "body": "The component maps each status code to a semantic tone by extracting the hundreds-class of the number — 1xx resolves to info, 2xx to success, 3xx to redirect, 4xx to client error, 5xx to server error, and anything outside 100–599 to neutral. The tone drives the badge's background, text, and border colors across solid, soft, and outline fill variants. A built-in lookup table pairs the code with its standard reason phrase, with an override via the statusText prop for custom or uncommon codes. The component renders a single span that composes inline with other text, spreading any extra props onto the DOM element for styling or testing hooks."
     },
     {
       "heading": "Common use cases",

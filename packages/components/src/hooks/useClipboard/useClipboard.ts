@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export type UseClipboardResult = {
   /** `true` after a successful `copy` until the reset delay elapses or `reset` is called. */
@@ -63,6 +63,14 @@ export function useClipboard(resetDelay = 2000): UseClipboardResult {
     },
     [reset, resetDelay],
   );
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   return { copied, error, copy, reset };
 }

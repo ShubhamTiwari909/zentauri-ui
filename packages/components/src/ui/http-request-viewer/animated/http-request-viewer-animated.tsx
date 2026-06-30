@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useState } from "react";
+import { useCallback, useId, useState } from "react";
 
 import { cn } from "../../../lib/utils";
 
@@ -48,6 +48,8 @@ export function HttpRequestViewerAnimated({
   ref,
   ...rest
 }: HttpRequestViewerAnimatedProps) {
+  const baseId = useId();
+  const panelId = `${baseId}-panel`;
   const mergedLabels = { ...DEFAULT_LABELS, ...labels };
   const [tab, setTab] = useState<HttpRequestViewerTab>(defaultTab);
   const preset = httpRequestViewerAnimationPresets[animation];
@@ -94,8 +96,13 @@ export function HttpRequestViewerAnimated({
         tab={tab}
         labels={mergedLabels}
         onSelect={setTab}
+        panelId={panelId}
+        baseId={baseId}
       />
       <div
+        id={panelId}
+        role="tabpanel"
+        aria-labelledby={`${baseId}-tab-${tab}`}
         data-slot="http-request-viewer-panel"
         className={zuiHttpRequestViewerPanelBase}
       >

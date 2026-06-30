@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useId, useRef, useState } from "react";
 
 import { cn } from "../../lib/utils";
 import { useClipboard } from "../../hooks/useClipboard";
@@ -128,14 +128,55 @@ export function HttpRequestViewerTabs({
   tab,
   labels,
   onSelect,
+  panelId,
+  baseId,
 }: {
   tab: HttpRequestViewerTab;
   labels: Required<HttpRequestViewerLabels>;
   onSelect: (tab: HttpRequestViewerTab) => void;
+  panelId: string;
+  baseId: string;
 }) {
+  const tablistRef = useRef<HTMLDivElement>(null);
+
+  const onKeyDown = useCallback((e: React.KeyboardEvent) => {
+    const tabs =
+      tablistRef.current?.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+    if (!tabs || tabs.length === 0) return;
+    const currentIndex = Array.from(tabs).findIndex(
+      (t) => t.getAttribute("data-active") === "true",
+    );
+    if (currentIndex === -1) return;
+    let nextIndex = currentIndex;
+    switch (e.key) {
+      case "ArrowLeft":
+        e.preventDefault();
+        nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        break;
+      case "ArrowRight":
+        e.preventDefault();
+        nextIndex = (currentIndex + 1) % tabs.length;
+        break;
+      case "Home":
+        e.preventDefault();
+        nextIndex = 0;
+        break;
+      case "End":
+        e.preventDefault();
+        nextIndex = tabs.length - 1;
+        break;
+      default:
+        return;
+    }
+    tabs[nextIndex]?.focus();
+    tabs[nextIndex]?.click();
+  }, []);
+
   return (
     <div
       role="tablist"
+      onKeyDown={onKeyDown}
+      ref={tablistRef}
       data-slot="http-request-viewer-tabs"
       className={httpRequestViewerTabsVariants()}
     >
@@ -144,11 +185,14 @@ export function HttpRequestViewerTabs({
         return (
           <button
             key={value}
+            id={`${baseId}-tab-${value}`}
             role="tab"
             type="button"
             data-slot="http-request-viewer-tab"
             data-active={active}
             aria-selected={active}
+            aria-controls={panelId}
+            tabIndex={active ? 0 : -1}
             className={httpRequestViewerTabVariants({
               state: active ? "active" : "inactive",
             })}
@@ -227,6 +271,8 @@ export function HttpRequestViewerBase({
   ref,
   ...rest
 }: HttpRequestViewerBaseProps) {
+  const baseId = useId();
+  const panelId = `${baseId}-panel`;
   const mergedLabels = { ...DEFAULT_LABELS, ...labels };
   const [tab, setTab] = useState<HttpRequestViewerTab>(defaultTab);
 
@@ -272,8 +318,13 @@ export function HttpRequestViewerBase({
         tab={tab}
         labels={mergedLabels}
         onSelect={setTab}
+        panelId={panelId}
+        baseId={baseId}
       />
       <div
+        id={panelId}
+        role="tabpanel"
+        aria-labelledby={`${baseId}-tab-${tab}`}
         data-slot="http-request-viewer-panel"
         className={zuiHttpRequestViewerPanelBase}
       >
