@@ -2,6 +2,14 @@ import { ComponentHighlight } from "./types";
 
 export const componentsData: ComponentHighlight[] = [
   {
+    id: "json-viewer",
+    name: "JSON Viewer",
+    description:
+      "Interactive, collapsible JSON tree with syntax-colored values, expand/collapse-all, and copy-to-clipboard.",
+    href: "/preview/components/json-viewer",
+    badge: "Data",
+  },
+  {
     id: "accordion",
     name: "Accordion",
     description:

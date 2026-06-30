@@ -28,6 +28,7 @@ import hashGenerator from "@/content/seo/preview/components/hash-generator.json"
 import index from "@/content/seo/preview/components/index.json";
 import inputs from "@/content/seo/preview/components/inputs.json";
 import installation from "@/content/seo/preview/components/installation.json";
+import jsonViewer from "@/content/seo/preview/components/json-viewer.json";
 import kbd from "@/content/seo/preview/components/kbd.json";
 import marquee from "@/content/seo/preview/components/marquee.json";
 import modal from "@/content/seo/preview/components/modal.json";
@@ -92,6 +93,7 @@ const previewSeoRegistry = {
   "file-upload": fileUpload as PreviewSeoDocument,
   "hash-generator": hashGenerator as PreviewSeoDocument,
   inputs: inputs as PreviewSeoDocument,
+  "json-viewer": jsonViewer as PreviewSeoDocument,
   kbd: kbd as PreviewSeoDocument,
   marquee: marquee as PreviewSeoDocument,
   modal: modal as PreviewSeoDocument,

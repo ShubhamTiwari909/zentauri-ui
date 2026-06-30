@@ -11,7 +11,6 @@
         "dev",
         "--filter=component-library"
       ],
-      "port": 3001,
       "autoPort": true
     }
   ]

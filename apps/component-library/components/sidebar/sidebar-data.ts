@@ -253,6 +253,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/inputs",
       },
       {
+        title: "JSON Viewer",
+        href: "/preview/components/json-viewer",
+      },
+      {
         title: "Kbd",
         href: "/preview/components/kbd",
       },

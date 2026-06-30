@@ -53,22 +53,22 @@ Provide reusable building blocks commonly recreated by frontend developers.
 ### Components
 
 - [x] Code Diff Viewer
-- [ ] JSON Viewer
+- [x] JSON Viewer
 - [ ] JSON Editor
-- [ ] Terminal Emulator
+- [x] Terminal Emulator
 - [ ] File Tree Explorer
-- [ ] API Response Viewer
-- [ ] HTTP Request Viewer
-- [ ] HTTP Status Badge
-- [ ] Request Timeline Viewer
-- [ ] Log Viewer
-- [ ] Console Viewer
-- [ ] Environment Variable Viewer
-- [ ] Package Install Command
-- [ ] Code Block with Copy
-- [ ] Multi Language Code Tabs
+- [x] API Response Viewer
+- [x] HTTP Request Viewer
+- [x] HTTP Status Badge
+- [x] Request Timeline Viewer
+- [x] Log Viewer
+- [x] Console Viewer
+- [x] Environment Variable Viewer
+- [x] Package Install Command
+- [x] Code Block with Copy
+- [x] Multi Language Code Tabs
 - [ ] Stack Trace Viewer
-- [ ] API Endpoint Card
+- [x] API Endpoint Card
 - [ ] OpenAPI Renderer
 - [ ] Schema Viewer
 - [ ] SQL Result Table

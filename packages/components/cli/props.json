@@ -7748,6 +7748,292 @@
         }
       ]
     },
+    "json-viewer": {
+      "slug": "json-viewer",
+      "subcomponents": [
+        {
+          "name": "static:JsonViewer",
+          "displayName": "JsonViewer",
+          "propsType": "JsonViewerProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "contrast",
+                "default",
+                "glass",
+                "subtle"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "data",
+              "type": "unknown",
+              "required": true,
+              "group": "behavior",
+              "description": "The JSON-serializable value to render.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultExpandedDepth",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Expand containers whose depth is below this value. Higher values show more nested content, lower values collapse more. Defaults to expanding everything.",
+              "deprecated": false
+            },
+            {
+              "name": "enableClipboard",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show a copy button that copies the pretty-printed JSON.",
+              "deprecated": false
+            },
+            {
+              "name": "labels",
+              "type": "JsonViewerLabels | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override default toolbar copy.",
+              "deprecated": false
+            },
+            {
+              "name": "quoteStrings",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Render quotes around string values (and stringify-escape them).",
+              "deprecated": false
+            },
+            {
+              "name": "showItemCount",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the count of keys / items next to a container's preview.",
+              "deprecated": false
+            },
+            {
+              "name": "showToolbar",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the toolbar with expand-all / collapse-all / copy controls.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:JsonViewerVariant",
+          "displayName": "JsonViewerVariant",
+          "propsType": "JsonViewerVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'subtle' | 'glass' | 'contrast' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:JsonViewerAnimated",
+          "displayName": "JsonViewerAnimated",
+          "propsType": "JsonViewerAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "animation",
+              "type": "JsonViewerAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Expand/collapse motion preset for container nodes.",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'subtle' | 'glass' | 'contrast' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "data",
+              "type": "unknown",
+              "required": true,
+              "group": "behavior",
+              "description": "The JSON-serializable value to render.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultExpandedDepth",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Expand containers whose depth is below this value. Higher values show more nested content, lower values collapse more. Defaults to expanding everything.",
+              "deprecated": false
+            },
+            {
+              "name": "enableClipboard",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show a copy button that copies the pretty-printed JSON.",
+              "deprecated": false
+            },
+            {
+              "name": "labels",
+              "type": "JsonViewerLabels | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override default toolbar copy.",
+              "deprecated": false
+            },
+            {
+              "name": "quoteStrings",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Render quotes around string values (and stringify-escape them).",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "showItemCount",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the count of keys / items next to a container's preview.",
+              "deprecated": false
+            },
+            {
+              "name": "showToolbar",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the toolbar with expand-all / collapse-all / copy controls.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "kbd": {
       "slug": "kbd",
       "subcomponents": [

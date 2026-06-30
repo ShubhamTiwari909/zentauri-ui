@@ -20,6 +20,7 @@ import { emptyStateCssVariables } from "./data/empty-state";
 import { fileUploadCssVariables } from "./data/file-upload";
 import { hashGeneratorCssVariables } from "./data/hash-generator";
 import { inputsCssVariables } from "./data/inputs";
+import { jsonViewerCssVariables } from "./data/json-viewer";
 import { kbdCssVariables } from "./data/kbd";
 import { marqueeCssVariables } from "./data/marquee";
 import { modalCssVariables } from "./data/modal";
@@ -77,6 +78,7 @@ export const cssVariableReferences = {
   "file-upload": fileUploadCssVariables,
   "hash-generator": hashGeneratorCssVariables,
   inputs: inputsCssVariables,
+  "json-viewer": jsonViewerCssVariables,
   kbd: kbdCssVariables,
   marquee: marqueeCssVariables,
   modal: modalCssVariables,
