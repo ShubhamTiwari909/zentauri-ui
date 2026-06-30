@@ -7839,10 +7839,10 @@
             },
             {
               "name": "query",
-              "type": "Record<string, string> | undefined",
+              "type": "Record<string, string | string[]> | undefined",
               "required": false,
               "group": "behavior",
-              "description": "Query parameters, rendered as key:value rows.",
+              "description": "Query parameters, rendered as key:value rows. Supports multi-value params (e.g. ?id=1&id=2).",
               "deprecated": false
             },
             {
@@ -7983,10 +7983,10 @@
             },
             {
               "name": "query",
-              "type": "Record<string, string> | undefined",
+              "type": "Record<string, string | string[]> | undefined",
               "required": false,
               "group": "behavior",
-              "description": "Query parameters, rendered as key:value rows.",
+              "description": "Query parameters, rendered as key:value rows. Supports multi-value params (e.g. ?id=1&id=2).",
               "deprecated": false
             },
             {
