@@ -324,6 +324,7 @@ export function HttpRequestViewerBase({
       <div
         id={panelId}
         role="tabpanel"
+        tabIndex={0}
         aria-labelledby={`${baseId}-tab-${tab}`}
         data-slot="http-request-viewer-panel"
         className={zuiHttpRequestViewerPanelBase}
