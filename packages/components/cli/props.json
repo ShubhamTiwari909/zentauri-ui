@@ -7801,7 +7801,7 @@
               "type": "number | undefined",
               "required": false,
               "group": "behavior",
-              "description": "Expand containers whose depth is below this value (0 = collapse all but root). Defaults to expanding everything.",
+              "description": "Expand containers whose depth is below this value. Higher values show more nested content, lower values collapse more. Defaults to expanding everything.",
               "deprecated": false
             },
             {
@@ -7937,7 +7937,7 @@
               "type": "number | undefined",
               "required": false,
               "group": "behavior",
-              "description": "Expand containers whose depth is below this value (0 = collapse all but root). Defaults to expanding everything.",
+              "description": "Expand containers whose depth is below this value. Higher values show more nested content, lower values collapse more. Defaults to expanding everything.",
               "deprecated": false
             },
             {

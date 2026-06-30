@@ -136,7 +136,7 @@ function AnimatedJsonNode(props: NodeProps) {
           data-slot="json-viewer-toggle"
           aria-expanded={open}
           aria-label={
-            name
+            name !== undefined
               ? `${open ? "Collapse" : "Expand"} ${name}`
               : open
                 ? "Collapse"
