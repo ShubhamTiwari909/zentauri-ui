@@ -27,7 +27,6 @@ const DEFAULT_LABELS: Required<JsonViewerLabels> = {
   collapseAll: "Collapse all",
   copy: "Copy",
   copied: "Copied",
-  root: "root",
 };
 
 /** Classify a value into a coarse JSON kind used for color and rendering. */
@@ -83,13 +82,23 @@ export function collectExpandablePaths(
   path = "$",
   depth = 0,
   acc: PathDepth[] = [],
+  ancestors = new Set<unknown>(),
 ): PathDepth[] {
   if (!isJsonContainer(value)) return acc;
+  if (ancestors.has(value)) return acc;
+  ancestors.add(value);
   acc.push({ path, depth });
   const entries = jsonEntries(value);
   for (const [key, child] of entries) {
-    collectExpandablePaths(child, `${path}/${key}`, depth + 1, acc);
+    collectExpandablePaths(
+      child,
+      `${path}/${encodeURIComponent(key)}`,
+      depth + 1,
+      acc,
+      ancestors,
+    );
   }
+  ancestors.delete(value);
   return acc;
 }
 
@@ -156,6 +165,7 @@ type JsonNodeProps = {
   expansion: Expansion;
   quoteStrings: boolean;
   showItemCount: boolean;
+  ancestors?: Set<unknown>;
 };
 
 function NodeKey({
@@ -219,12 +229,29 @@ function ContainerNode(props: JsonNodeProps) {
     expansion,
     quoteStrings,
     showItemCount,
+    ancestors = new Set<unknown>(),
   } = props;
+
+  if (ancestors.has(value)) {
+    return (
+      <div
+        data-slot="json-viewer-node"
+        className="whitespace-pre-wrap break-words"
+      >
+        <NodeKey name={name} isArrayItem={isArrayItem} />
+        <span className={zuiJsonViewerPreview}>[Circular]</span>
+        {!isLast && <span className={zuiJsonViewerPunctuation}>,</span>}
+      </div>
+    );
+  }
+
   const open = expansion.isOpen(path);
   const entries = jsonEntries(value);
   const [openBracket, closeBracket] = Array.isArray(value)
     ? ["[", "]"]
     : ["{", "}"];
+
+  const nextAncestors = new Set(ancestors).add(value);
 
   return (
     <div data-slot="json-viewer-node">
@@ -233,6 +260,13 @@ function ContainerNode(props: JsonNodeProps) {
           type="button"
           data-slot="json-viewer-toggle"
           aria-expanded={open}
+          aria-label={
+            name
+              ? `${open ? "Collapse" : "Expand"} ${name}`
+              : open
+                ? "Collapse"
+                : "Expand"
+          }
           className={zuiJsonViewerToggleBase}
           onClick={() => expansion.toggle(path)}
         >
@@ -272,13 +306,14 @@ function ContainerNode(props: JsonNodeProps) {
                     key={key}
                     name={key}
                     value={child}
-                    path={`${path}/${key}`}
+                    path={`${path}/${encodeURIComponent(key)}`}
                     isRoot={false}
                     isLast={index === entries.length - 1}
                     isArrayItem={Array.isArray(value)}
                     expansion={expansion}
                     quoteStrings={quoteStrings}
                     showItemCount={showItemCount}
+                    ancestors={nextAncestors}
                   />
                 ))}
               </div>

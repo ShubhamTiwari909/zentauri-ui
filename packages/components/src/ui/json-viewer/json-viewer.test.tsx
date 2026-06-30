@@ -115,6 +115,13 @@ describe("JsonViewer", () => {
     const value = container.querySelector('[data-slot="json-viewer-value"]');
     expect(value?.textContent).toBe('"hello"');
   });
+
+  it("should handle circular references gracefully without crashing", () => {
+    const circular: Record<string, unknown> = { name: "circular" };
+    circular.self = circular;
+    const { container } = render(<JsonViewer data={circular} />);
+    expect(container.textContent).toContain("[Circular]");
+  });
 });
 
 describe("json-viewer helpers", () => {
@@ -143,5 +150,11 @@ describe("json-viewer helpers", () => {
     const paths = collectExpandablePaths(SAMPLE);
     expect(paths[0]).toEqual({ path: "$", depth: 0 });
     expect(paths.some((p) => p.depth === 1)).toBe(true);
+  });
+
+  it("collectExpandablePaths does not overflow on circular data", () => {
+    const circular: Record<string, unknown> = { a: 1 };
+    circular.self = circular;
+    expect(() => collectExpandablePaths(circular)).not.toThrow();
   });
 });

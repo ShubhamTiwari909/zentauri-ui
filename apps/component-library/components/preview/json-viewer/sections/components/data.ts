@@ -47,8 +47,6 @@ export const JSON_VIEWER_DATASETS = {
   Array: [1, "two", false, null, { nested: true }, [10, 20, 30]],
 } as const;
 
-export const JSON_VIEWER_DATASET_KEYS = [
-  "API response",
-  "Config",
-  "Array",
-] as const;
+export const JSON_VIEWER_DATASET_KEYS = Object.keys(
+  JSON_VIEWER_DATASETS,
+) as readonly (keyof typeof JSON_VIEWER_DATASETS)[];

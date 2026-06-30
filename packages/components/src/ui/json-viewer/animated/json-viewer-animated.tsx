@@ -34,7 +34,6 @@ const DEFAULT_LABELS: Required<JsonViewerLabels> = {
   collapseAll: "Collapse all",
   copy: "Copy",
   copied: "Copied",
-  root: "root",
 };
 
 type Expansion = ReturnType<typeof useJsonExpansion>;
@@ -51,6 +50,7 @@ type NodeProps = {
   quoteStrings: boolean;
   showItemCount: boolean;
   preset: Preset;
+  ancestors?: Set<unknown>;
 };
 
 function NodeKey({
@@ -82,7 +82,21 @@ function AnimatedJsonNode(props: NodeProps) {
     quoteStrings,
     showItemCount,
     preset,
+    ancestors = new Set<unknown>(),
   } = props;
+
+  if (isJsonContainer(value) && ancestors.has(value)) {
+    return (
+      <div
+        data-slot="json-viewer-node"
+        className="whitespace-pre-wrap break-words"
+      >
+        <NodeKey name={name} isArrayItem={isArrayItem} />
+        <span className={zuiJsonViewerPreview}>[Circular]</span>
+        {!isLast && <span className={zuiJsonViewerPunctuation}>,</span>}
+      </div>
+    );
+  }
 
   if (!isJsonContainer(value)) {
     const kind = jsonValueKind(value);
@@ -112,6 +126,8 @@ function AnimatedJsonNode(props: NodeProps) {
     ? ["[", "]"]
     : ["{", "}"];
 
+  const nextAncestors = new Set(ancestors).add(value);
+
   return (
     <div data-slot="json-viewer-node">
       <div className="flex items-start">
@@ -119,6 +135,13 @@ function AnimatedJsonNode(props: NodeProps) {
           type="button"
           data-slot="json-viewer-toggle"
           aria-expanded={open}
+          aria-label={
+            name
+              ? `${open ? "Collapse" : "Expand"} ${name}`
+              : open
+                ? "Collapse"
+                : "Expand"
+          }
           className={zuiJsonViewerToggleBase}
           onClick={() => expansion.toggle(path)}
         >
@@ -167,13 +190,14 @@ function AnimatedJsonNode(props: NodeProps) {
                       key={key}
                       name={key}
                       value={child}
-                      path={`${path}/${key}`}
+                      path={`${path}/${encodeURIComponent(key)}`}
                       isLast={index === entries.length - 1}
                       isArrayItem={Array.isArray(value)}
                       expansion={expansion}
                       quoteStrings={quoteStrings}
                       showItemCount={showItemCount}
                       preset={preset}
+                      ancestors={nextAncestors}
                     />
                   ))}
                 </div>

@@ -14,20 +14,19 @@ export type JsonValueKind =
   | "object"
   | "array";
 
-/** Override the toolbar / empty copy. */
+/** Override the toolbar labels. */
 export interface JsonViewerLabels {
   expandAll?: ReactNode;
   collapseAll?: ReactNode;
   copy?: ReactNode;
   copied?: ReactNode;
-  root?: ReactNode;
 }
 
 export type JsonViewerBaseProps = VariantProps<typeof jsonViewerVariants> &
   Omit<ComponentPropsWithRef<"div">, "children"> & {
     /** The JSON-serializable value to render. */
     data: unknown;
-    /** Expand containers whose depth is below this value (0 = collapse all but root). Defaults to expanding everything. */
+    /** Expand containers whose depth is below this value. Higher values show more nested content, lower values collapse more. Defaults to expanding everything. */
     defaultExpandedDepth?: number;
     /** Show the toolbar with expand-all / collapse-all / copy controls. */
     showToolbar?: boolean;

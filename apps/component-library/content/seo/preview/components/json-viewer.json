@@ -44,6 +44,10 @@
   "useCasesSectionHeading": "Common use cases",
   "sections": [
     {
+      "heading": "What it does",
+      "body": "Use the JSON viewer to render any JSON-serializable value as an interactive, collapsible tree. Objects and arrays expand and collapse with a disclosure toggle, primitives are syntax-colored by type (strings, numbers, booleans, null), and an optional toolbar adds expand-all, collapse-all, and copy-to-clipboard controls."
+    },
+    {
       "heading": "Composition and API",
       "body": "Pass any JSON-serializable value through the data prop. The viewer walks the structure recursively, rendering objects and arrays as collapsible nodes and primitives with per-type syntax colors. defaultExpandedDepth seeds how deep the tree starts open (0 collapses everything but the root), showToolbar toggles the expand/collapse/copy controls, enableClipboard controls the copy button, showItemCount appends key/item counts to collapsed nodes, and quoteStrings controls whether string values are quoted. The separate animated entry adds collapse and fade motion presets for the expand/collapse transition."
     },
