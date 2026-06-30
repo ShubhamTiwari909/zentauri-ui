@@ -92,18 +92,11 @@ function AppearanceGallery({
         {API_RESPONSE_VIEWER_APPEARANCES.map((appearance) => {
           const isActive = appearance === selected;
           return (
-            <div
+            <button
               key={appearance}
-              role="button"
-              tabIndex={0}
+              type="button"
               aria-pressed={isActive}
               onClick={() => onSelect(appearance)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  onSelect(appearance);
-                }
-              }}
               className={`flex cursor-pointer flex-col gap-2 rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
@@ -113,14 +106,14 @@ function AppearanceGallery({
               <span className="text-xs text-slate-600 dark:text-slate-400">
                 {appearance}
               </span>
-              <div className="pointer-events-none">
+              <div aria-hidden="true" className="pointer-events-none">
                 <ApiResponseViewer
                   {...API_RESPONSE_VIEWER_DATASETS["200 OK"]}
                   appearance={appearance}
                   size="sm"
                 />
               </div>
-            </div>
+            </button>
           );
         })}
       </div>

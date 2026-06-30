@@ -51,8 +51,6 @@ export const TERMINAL_EMULATOR_DATASETS = {
   ],
 } as const satisfies Record<string, readonly TerminalLine[]>;
 
-export const TERMINAL_EMULATOR_DATASET_KEYS = [
-  "Install",
-  "Git",
-  "Build",
-] as const;
+export const TERMINAL_EMULATOR_DATASET_KEYS = Object.keys(
+  TERMINAL_EMULATOR_DATASETS,
+) as readonly (keyof typeof TERMINAL_EMULATOR_DATASETS)[];

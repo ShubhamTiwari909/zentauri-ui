@@ -16,8 +16,8 @@ export function jsonViewerSnippet(opts: JsonViewerDemoProps): string {
   );
 
   if (animation !== "none") {
-    return `import { JsonViewerAnimated } from "@zentauri-ui/zentauri-components/ui/json-viewer/animated";\n\n${lead}<JsonViewerAnimated\n  data={data}${appearanceAttr}${sizeAttr}${toolbarAttr}\n  animation="${animation}"\n/>`;
+    return `${lead}import { JsonViewerAnimated } from "@zentauri-ui/zentauri-components/ui/json-viewer/animated";\n\n<JsonViewerAnimated\n  data={data}${appearanceAttr}${sizeAttr}${toolbarAttr}\n  animation="${animation}"\n/>`;
   }
 
-  return `import { JsonViewer } from "@zentauri-ui/zentauri-components/ui/json-viewer";\n\n${lead}<JsonViewer data={data}${appearanceAttr}${sizeAttr}${toolbarAttr} />`;
+  return `${lead}import { JsonViewer } from "@zentauri-ui/zentauri-components/ui/json-viewer";\n\n<JsonViewer data={data}${appearanceAttr}${sizeAttr}${toolbarAttr} />`;
 }

@@ -5,8 +5,8 @@ export const PACKAGE_TEST_HEALTH = {
     passed: 115,
   },
   tests: {
-    total: 938,
-    passed: 938,
+    total: 1000,
+    passed: 1000,
   },
   areas: [
     {

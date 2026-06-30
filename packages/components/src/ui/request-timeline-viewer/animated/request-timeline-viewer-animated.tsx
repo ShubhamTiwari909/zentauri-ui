@@ -32,7 +32,7 @@ const DEFAULT_LABELS: Required<RequestTimelineViewerLabels> = {
 };
 
 export function RequestTimelineViewerAnimated({
-  phases,
+  phases = [],
   total,
   unit = "ms",
   showLegend = true,

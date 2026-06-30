@@ -28,7 +28,7 @@ const DEFAULT_LABELS: Required<TerminalEmulatorLabels> = {
 };
 
 export function TerminalEmulatorAnimated({
-  lines,
+  lines = [],
   appearance,
   size,
   prompt = "$",

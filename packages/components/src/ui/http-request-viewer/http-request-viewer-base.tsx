@@ -1,8 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { cn } from "../../lib/utils";
+import { useClipboard } from "../../hooks/useClipboard";
 import { zuiHttpRequestViewerMethodTones } from "../../design-system/http-request-viewer";
 
 import type {
@@ -66,7 +67,7 @@ function KeyValuePanel({
   emptyLabel,
 }: {
   slot: string;
-  record: Record<string, string> | undefined;
+  record: Record<string, string | string[]> | undefined;
   emptyLabel: string;
 }) {
   const entries = record ? Object.entries(record) : [];
@@ -89,7 +90,9 @@ function KeyValuePanel({
           className={zuiHttpRequestViewerRowBase}
         >
           <span className={zuiHttpRequestViewerRowKey}>{key}:</span>
-          <span className={zuiHttpRequestViewerRowValue}>{value}</span>
+          <span className={zuiHttpRequestViewerRowValue}>
+            {Array.isArray(value) ? value.join(", ") : value}
+          </span>
         </div>
       ))}
     </div>
@@ -103,25 +106,11 @@ export function HttpRequestViewerCopyButton({
   labels: Required<HttpRequestViewerLabels>;
   getCopyText: () => string;
 }) {
-  const [copied, setCopied] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  useEffect(
-    () => () => {
-      if (timer.current) clearTimeout(timer.current);
-    },
-    [],
-  );
+  const { copied, copy } = useClipboard(2000);
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(getCopyText());
-      setCopied(true);
-      if (timer.current) clearTimeout(timer.current);
-      timer.current = setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setCopied(false);
-    }
-  };
+  const handleCopy = useCallback(async () => {
+    await copy(getCopyText());
+  }, [copy, getCopyText]);
 
   return (
     <button
@@ -146,6 +135,7 @@ export function HttpRequestViewerTabs({
 }) {
   return (
     <div
+      role="tablist"
       data-slot="http-request-viewer-tabs"
       className={httpRequestViewerTabsVariants()}
     >
@@ -154,6 +144,7 @@ export function HttpRequestViewerTabs({
         return (
           <button
             key={value}
+            role="tab"
             type="button"
             data-slot="http-request-viewer-tab"
             data-active={active}
@@ -177,13 +168,11 @@ export function HttpRequestViewerPanelContent({
   headers,
   query,
   body,
-  labels,
 }: {
   tab: HttpRequestViewerTab;
   headers?: Record<string, string>;
-  query?: Record<string, string>;
+  query?: Record<string, string | string[]>;
   body?: unknown;
-  labels: Required<HttpRequestViewerLabels>;
 }) {
   if (tab === "headers") {
     return (
@@ -293,7 +282,6 @@ export function HttpRequestViewerBase({
           headers={headers}
           query={query}
           body={body}
-          labels={mergedLabels}
         />
       </div>
     </div>

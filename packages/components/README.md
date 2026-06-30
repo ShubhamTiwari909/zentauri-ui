@@ -30,7 +30,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | Metric     | Result           |
 | ---------- | ---------------- |
 | Test files | 110 passed (110)   |
-| Tests      | 938 passed (938) |
+| Tests      | 1000 passed (1000) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
@@ -57,7 +57,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/json-viewer/json-viewer.test.tsx`                               |    16 |
 | `src/ui/network-status/network-status.test.tsx`                         |    16 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
-| `src/ui/json-viewer/json-viewer.test.tsx`                               |    14 |
 | `src/ui/timeline/timeline.test.tsx`                                     |    14 |
 | `src/ui/api-response-viewer/api-response-viewer.test.tsx`               |    13 |
 | `src/ui/data-table/data-table.test.tsx`                                 |    13 |

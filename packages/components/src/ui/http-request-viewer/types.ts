@@ -29,8 +29,8 @@ export type HttpRequestViewerBaseProps = VariantProps<
     url: string;
     /** Request headers, rendered as key:value rows. */
     headers?: Record<string, string>;
-    /** Query parameters, rendered as key:value rows. */
-    query?: Record<string, string>;
+    /** Query parameters, rendered as key:value rows. Supports multi-value params (e.g. ?id=1&id=2). */
+    query?: Record<string, string | string[]>;
     /** Request body — pretty-printed as JSON in a code block. */
     body?: unknown;
     /** Which detail panel is open on first render. */

@@ -66,7 +66,7 @@ export function phaseToneAt(
 }
 
 export function RequestTimelineViewerBase({
-  phases,
+  phases = [],
   total,
   unit = "ms",
   showLegend = true,

@@ -53,8 +53,6 @@ export const REQUEST_TIMELINE_VIEWER_DATASETS = {
   ],
 } as const satisfies Record<string, TimelinePhase[]>;
 
-export const REQUEST_TIMELINE_VIEWER_DATASET_KEYS = [
-  "Fast",
-  "Slow API",
-  "Cached",
-] as const;
+export const REQUEST_TIMELINE_VIEWER_DATASET_KEYS = Object.keys(
+  REQUEST_TIMELINE_VIEWER_DATASETS,
+) as readonly (keyof typeof REQUEST_TIMELINE_VIEWER_DATASETS)[];

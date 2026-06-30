@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback } from "react";
 
 import { cn } from "../../lib/utils";
+import { useClipboard } from "../../hooks/useClipboard";
 
 import type {
   TerminalEmulatorBaseProps,
@@ -51,25 +52,11 @@ export function TerminalEmulatorHeader({
   labels: Required<TerminalEmulatorLabels>;
   getCopyText: () => string;
 }) {
-  const [copied, setCopied] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  useEffect(
-    () => () => {
-      if (timer.current) clearTimeout(timer.current);
-    },
-    [],
-  );
+  const { copied, copy } = useClipboard(2000);
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(getCopyText());
-      setCopied(true);
-      if (timer.current) clearTimeout(timer.current);
-      timer.current = setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setCopied(false);
-    }
-  };
+  const handleCopy = useCallback(async () => {
+    await copy(getCopyText());
+  }, [copy, getCopyText]);
 
   return (
     <div
@@ -140,7 +127,7 @@ export function TerminalEmulatorLine({
 }
 
 export function TerminalEmulatorBase({
-  lines,
+  lines = [],
   appearance,
   size,
   prompt = "$",

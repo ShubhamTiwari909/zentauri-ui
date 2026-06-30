@@ -105,7 +105,8 @@ export function apiResponseReasonPhrase(
 export function formatApiResponseBody(body: unknown): string {
   if (body === undefined) return "";
   try {
-    return JSON.stringify(body, null, 2);
+    const result = JSON.stringify(body, null, 2);
+    return result ?? String(body);
   } catch {
     return String(body);
   }

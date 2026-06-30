@@ -71,7 +71,7 @@
     },
     {
       "question": "How do I theme the phase colors?",
-      "answer": "Override the --zui-request-timeline-viewer-* CSS variables (blocked, dns, connect, tls, send, wait, receive, plus surface, border, label, duration, and track tokens) on :root, a theme selector, or a wrapper. Each variable ships a light fallback and a paired -dark variant for dark mode."
+      "answer": "Override the --zui-request-timeline-viewer-* CSS variables (blocked, dns, connect, tls, send, wait, receive, plus bg, border, label, duration, and track tokens) on :root, a theme selector, or a wrapper. Each variable ships a light fallback and a paired -dark variant for dark mode."
     }
   ]
 }

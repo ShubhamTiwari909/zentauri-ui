@@ -121,16 +121,22 @@ export function jsonEntries(value: unknown): [string, unknown][] {
 export function useJsonExpansion(data: unknown, defaultExpandedDepth: number) {
   const paths = useMemo(() => collectExpandablePaths(data), [data]);
 
+  const effectiveDepth = defaultExpandedDepth <= 0 ? 1 : defaultExpandedDepth;
+
   const seed = useMemo(() => {
     const collapsed = new Set<string>();
     for (const { path, depth } of paths) {
-      if (depth >= defaultExpandedDepth) collapsed.add(path);
+      if (depth >= effectiveDepth) collapsed.add(path);
     }
     return collapsed;
-  }, [paths, defaultExpandedDepth]);
+  }, [paths, effectiveDepth]);
 
   const [collapsed, setCollapsed] = useState<Set<string>>(seed);
-  useEffect(() => setCollapsed(seed), [seed]);
+  const [prevSeed, setPrevSeed] = useState(seed);
+  if (seed !== prevSeed) {
+    setCollapsed(seed);
+    setPrevSeed(seed);
+  }
 
   const isOpen = useCallback(
     (path: string) => !collapsed.has(path),

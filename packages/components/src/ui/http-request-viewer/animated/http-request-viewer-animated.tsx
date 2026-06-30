@@ -113,7 +113,6 @@ export function HttpRequestViewerAnimated({
               headers={headers}
               query={query}
               body={body}
-              labels={mergedLabels}
             />
           </motion.div>
         </AnimatePresence>

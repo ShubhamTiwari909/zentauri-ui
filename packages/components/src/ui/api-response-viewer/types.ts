@@ -19,7 +19,7 @@ export type ApiResponseStatusTone =
 /** Which panel is shown. */
 export type ApiResponseViewerTab = "body" | "headers";
 
-/** Override the tab / copy copy. */
+/** Override the tab / copy labels. */
 export interface ApiResponseViewerLabels {
   copy?: ReactNode;
   copied?: ReactNode;
