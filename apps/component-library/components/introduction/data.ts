@@ -2,14 +2,6 @@ import { ComponentHighlight } from "./types";
 
 export const componentsData: ComponentHighlight[] = [
   {
-    id: "json-viewer",
-    name: "JSON Viewer",
-    description:
-      "Interactive, collapsible JSON tree with syntax-colored values, expand/collapse-all, and copy-to-clipboard.",
-    href: "/preview/components/json-viewer",
-    badge: "Data",
-  },
-  {
     id: "accordion",
     name: "Accordion",
     description:
@@ -31,6 +23,14 @@ export const componentsData: ComponentHighlight[] = [
     description:
       "Digit-by-digit number entrances and a count-up counter with themeable appearances and motion presets.",
     href: "/preview/components/animated-number",
+    badge: "Data",
+  },
+  {
+    id: "api-response-viewer",
+    name: "API Response Viewer",
+    description:
+      "HTTP response panel with a status pill, timing/size meta, and tabbed JSON body and headers views.",
+    href: "/preview/components/api-response-viewer",
     badge: "Data",
   },
   {
@@ -194,6 +194,22 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Utility",
   },
   {
+    id: "http-request-viewer",
+    name: "HTTP Request Viewer",
+    description:
+      "HTTP request panel with a method badge, URL, and tabbed headers, query, and JSON body views.",
+    href: "/preview/components/http-request-viewer",
+    badge: "Data",
+  },
+  {
+    id: "http-status-badge",
+    name: "HTTP Status Badge",
+    description:
+      "Status-code badge that maps 1xx–5xx to semantic tones with solid, soft, and outline appearances.",
+    href: "/preview/components/http-status-badge",
+    badge: "Data",
+  },
+  {
     id: "inputs",
     name: "Inputs",
     description:
@@ -208,6 +224,14 @@ export const componentsData: ComponentHighlight[] = [
       "Semantic keyboard shortcut keycaps for single keys or chords, with configurable separators and an optional animated key press.",
     href: "/preview/components/kbd",
     badge: "Display",
+  },
+  {
+    id: "json-viewer",
+    name: "JSON Viewer",
+    description:
+      "Interactive, collapsible JSON tree with syntax-colored values, expand/collapse-all, and copy-to-clipboard.",
+    href: "/preview/components/json-viewer",
+    badge: "Data",
   },
   {
     id: "marquee",
@@ -306,6 +330,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "request-timeline-viewer",
+    name: "Request Timeline Viewer",
+    description:
+      "Request timing waterfall with proportional, color-coded phase bars, durations, legend, and total.",
+    href: "/preview/components/request-timeline-viewer",
+    badge: "Data",
+  },
+  {
     id: "scroll-area",
     name: "Scroll area",
     description:
@@ -400,6 +432,14 @@ export const componentsData: ComponentHighlight[] = [
       "Tab lists and animated panels for switching related content without navigation.",
     href: "/preview/components/tabs",
     badge: "Navigation",
+  },
+  {
+    id: "terminal-emulator",
+    name: "Terminal Emulator",
+    description:
+      "Terminal window with a title bar, prompt-prefixed commands, color-coded output, and copy-to-clipboard.",
+    href: "/preview/components/terminal-emulator",
+    badge: "Data",
   },
   {
     id: "timeline",

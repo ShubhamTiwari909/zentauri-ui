@@ -1,0 +1,81 @@
+{
+  "category": "Data display",
+  "title": "HTTP Status Badge component for React & Next.js",
+  "description": "Inline HTTP status code badge for React and Next.js: maps any status code to a semantic tone color, solid / soft / outline fill styles, sizes, themeable --zui-* tokens, and a framer-motion-free static entry.",
+  "keywords": [
+    "http status badge",
+    "status code",
+    "http status",
+    "React",
+    "Next.js",
+    "api response",
+    "status indicator",
+    "badge"
+  ],
+  "og": {
+    "title": "HTTP Status Badge · Zentauri UI",
+    "description": "Inline HTTP status code badge for React and Next.js that maps status codes to semantic tone colors.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "HTTP Status Badge · Zentauri UI",
+    "description": "Inline HTTP status code badge for React and Next.js that maps status codes to semantic tone colors.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/http-status-badge",
+  "headings": {
+    "h1": "HTTP Status Badge for surfacing response codes",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the HTTP status badge to render any HTTP status code as a compact, color-coded label. The tone is derived from the status class — 1xx is informational, 2xx success, 3xx redirect, 4xx client error, 5xx server error — and the code is paired with a known reason phrase. Choose between solid, soft, and outline fill styles and three sizes.",
+  "useCases": [
+    "Annotate API responses and request logs in a debugging or admin panel.",
+    "Show endpoint health and last-response codes in a dashboard.",
+    "Render webhook delivery and retry status in an activity feed.",
+    "Document expected status codes in API reference tables and developer tooling."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "Pass a status code through the status prop. The badge derives a semantic tone from the status class and renders the code alongside a reason phrase resolved from a built-in table of common codes (200 OK, 404 Not Found, 503 Service Unavailable, and more). statusText overrides the phrase for uncommon or custom codes, showText hides the phrase to render the code on its own, appearance selects the solid, soft, or outline fill style, and size scales the padding and text. The component renders a single span and spreads any remaining props onto it, so it composes inline anywhere text or other badges live. It exports httpStatusTone and httpStatusText helpers for deriving the same tone and phrase outside the component."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The badge renders as a plain span carrying a data-slot attribute for styling and testing and a data-tone attribute reflecting the resolved status class, so color is never the only signal — the numeric code and reason phrase are always part of the accessible text. Because color encodes meaning, keep showText enabled (or provide your own adjacent label) wherever the tone alone would be ambiguous. Tone palettes ship light and dark variants tuned for contrast."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "HttpStatusBadge ships no framer-motion and has no animated entry — it is a static, presentational component safe to render in any Server or Client Component tree. It renders deterministically from the status prop, so server and client output match and there is no hydration mismatch. Import it from @zentauri-ui/zentauri-components/ui/http-status-badge."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How is the tone color chosen?",
+      "answer": "The tone is derived from the status class: 1xx resolves to info, 2xx to success, 3xx to redirect, 4xx to client error, 5xx to server error, and anything outside 100–599 to neutral. You never set the color directly — pass the status code and the badge maps it for you."
+    },
+    {
+      "question": "Can I show a custom or unknown status code?",
+      "answer": "Yes. Any number works. Codes in the built-in table render their standard reason phrase; unknown codes fall back to the tone's human label (for example Client Error). Pass statusText to override the phrase with your own."
+    },
+    {
+      "question": "Can I render just the code without the reason phrase?",
+      "answer": "Set showText={false} to render only the numeric code. The tone color and data-tone attribute still apply."
+    },
+    {
+      "question": "Does it need framer-motion?",
+      "answer": "No. The HTTP status badge is static and presentational with no animated entry, so it ships zero framer-motion and adds no motion dependency to your bundle."
+    },
+    {
+      "question": "How do I theme the colors?",
+      "answer": "Override the --zui-http-status-badge-* CSS variables (per tone and fill style) on :root, a theme selector, or a wrapper. Each variable ships a light fallback and a paired -dark variant for dark mode."
+    }
+  ]
+}

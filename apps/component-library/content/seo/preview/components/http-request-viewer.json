@@ -1,0 +1,77 @@
+{
+  "category": "Data display",
+  "title": "HTTP Request Viewer component for React & Next.js",
+  "description": "Readable HTTP request inspector for React and Next.js: a colored method badge, the request URL, and tabbed Headers / Query / Body panels with pretty-printed JSON, copy-to-clipboard, themeable --zui-* tokens, and an optional animated entry.",
+  "keywords": [
+    "http request viewer",
+    "request inspector",
+    "api request preview",
+    "React",
+    "Next.js",
+    "http method badge",
+    "headers query body",
+    "pretty print json"
+  ],
+  "og": {
+    "title": "HTTP Request Viewer · Zentauri UI",
+    "description": "Readable HTTP request inspector for React and Next.js with a method badge and tabbed headers, query, and body panels.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "HTTP Request Viewer · Zentauri UI",
+    "description": "Readable HTTP request inspector for React and Next.js with a method badge and tabbed headers, query, and body panels.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/http-request-viewer",
+  "headings": {
+    "h1": "HTTP Request Viewer for inspecting API calls",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the HTTP request viewer to render an outgoing or captured HTTP request as a compact, readable card. A colored method badge and the request URL sit in the header, and the Headers, Query, and Body details split into tabbed panels — request bodies are pretty-printed as JSON, and a copy button puts the body (or a request summary) on the clipboard.",
+  "useCases": [
+    "Show the exact request a button or form will send in API docs and developer tooling.",
+    "Inspect captured requests in a debugging panel, logs viewer, or admin dashboard.",
+    "Document webhook deliveries and integration calls with their headers and payloads.",
+    "Preview generated requests in an API explorer or request builder."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "Pass the method and url, plus optional headers and query records and a body value. The header renders a method badge colored by HTTP verb (GET, POST, PUT, PATCH, DELETE, with a neutral fallback) next to the monospace URL. The Headers, Query, and Body tabs switch the panel below; key:value records render as rows and the body is pretty-printed with JSON.stringify. defaultTab chooses which panel opens first, enableClipboard toggles the copy button, and labels overrides the tab and copy text. The separate animated entry adds fade and slide motion presets for the panel transition."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Each tab is a real button with aria-selected reflecting the active panel, so keyboard and screen-reader users can move between Headers, Query, and Body. The root and every region carry data-slot attributes for styling and testing, and the method badge exposes a data-method attribute with the uppercased verb. The animated entry's panel transition is short and easing-based; pair it with prefers-reduced-motion handling in your app where needed."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The static HttpRequestViewer entry ships no framer-motion and is safe in any Server or Client Component tree (it is a Client Component because it tracks the active tab). The animated HttpRequestViewerAnimated entry imports framer-motion, which is an optional peer dependency — install it only if you use the animated entry. Both render deterministically from the same props, so server and client output match and there is no hydration mismatch."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What request parts can it display?",
+      "answer": "The method and url in the header, plus optional headers and query records as key:value rows and a body value pretty-printed as JSON. Sections with no data show a muted empty-state line such as No headers."
+    },
+    {
+      "question": "How is the method badge colored?",
+      "answer": "The badge color is chosen from the uppercased method: GET, POST, PUT, PATCH, and DELETE each have a tone, and any other verb falls back to a neutral tone. Every tone is a themeable --zui-http-request-viewer-method-* token with a light fallback and a paired dark variant."
+    },
+    {
+      "question": "Do I need framer-motion?",
+      "answer": "Only for the animated entry. The default import from @zentauri-ui/zentauri-components/ui/http-request-viewer is framer-motion-free. Import HttpRequestViewerAnimated from the /animated subpath when you want fade or slide transitions between tabs, and install framer-motion as a peer dependency."
+    },
+    {
+      "question": "How do I theme the colors?",
+      "answer": "Override the --zui-http-request-viewer-* CSS variables (border, bg, fg, the per-method badge tones, tab, key, value, body, and more) on :root, a theme selector, or a wrapper. Each variable ships a light fallback and a paired -dark variant for dark mode."
+    }
+  ]
+}

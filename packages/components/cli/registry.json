@@ -5,6 +5,7 @@
     "accordion",
     "alert",
     "animated-number",
+    "api-response-viewer",
     "audio-player",
     "avatar",
     "badge",
@@ -25,6 +26,8 @@
     "empty-state",
     "file-upload",
     "hash-generator",
+    "http-request-viewer",
+    "http-status-badge",
     "inputs",
     "json-viewer",
     "kbd",
@@ -40,6 +43,7 @@
     "qr-scanner",
     "radio-group",
     "rating",
+    "request-timeline-viewer",
     "scroll-area",
     "search",
     "secret-reveal",
@@ -51,6 +55,7 @@
     "split-button",
     "table",
     "tabs",
+    "terminal-emulator",
     "timeline",
     "toast",
     "toggle",
@@ -62,6 +67,7 @@
   "animatedComponents": [
     "accordion",
     "alert",
+    "api-response-viewer",
     "avatar",
     "badge",
     "buttons",
@@ -72,6 +78,7 @@
     "divider",
     "drawer",
     "empty-state",
+    "http-request-viewer",
     "inputs",
     "json-viewer",
     "kbd",
@@ -82,6 +89,7 @@
     "progress",
     "qr-code",
     "radio-group",
+    "request-timeline-viewer",
     "secret-reveal",
     "skeleton",
     "speech-recognition",
@@ -89,6 +97,7 @@
     "spinner",
     "table",
     "tabs",
+    "terminal-emulator",
     "timeline",
     "toast",
     "toggle",
@@ -152,6 +161,7 @@
     "animations/text-shimmer",
     "animations/tilt",
     "animations/wiggle",
+    "api-response-viewer",
     "audio-player",
     "avatar",
     "badge",
@@ -181,6 +191,8 @@
     "empty-state",
     "file-upload",
     "hash-generator",
+    "http-request-viewer",
+    "http-status-badge",
     "inputs",
     "json-viewer",
     "kbd",
@@ -196,6 +208,7 @@
     "qr-scanner",
     "radio-group",
     "rating",
+    "request-timeline-viewer",
     "scroll-area",
     "search",
     "secret-reveal",
@@ -208,6 +221,7 @@
     "split-button",
     "table",
     "tabs",
+    "terminal-emulator",
     "timeline",
     "toast",
     "toggle",
@@ -336,6 +350,9 @@
     "animated-number": [
       "framer-motion"
     ],
+    "api-response-viewer": [
+      "framer-motion"
+    ],
     "avatar": [
       "framer-motion"
     ],
@@ -374,6 +391,9 @@
     "empty-state": [
       "framer-motion"
     ],
+    "http-request-viewer": [
+      "framer-motion"
+    ],
     "inputs": [
       "framer-motion"
     ],
@@ -407,6 +427,9 @@
     "rating": [
       "react-icons"
     ],
+    "request-timeline-viewer": [
+      "framer-motion"
+    ],
     "secret-reveal": [
       "framer-motion"
     ],
@@ -426,6 +449,9 @@
       "framer-motion"
     ],
     "tabs": [
+      "framer-motion"
+    ],
+    "terminal-emulator": [
       "framer-motion"
     ],
     "timeline": [

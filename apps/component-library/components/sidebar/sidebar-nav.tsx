@@ -2,6 +2,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import type { SidebarNavProps } from "./types";
+import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
 
 export function SidebarNav({ onLinkClick, sidebarRouteData }: SidebarNavProps) {
   const pathname = usePathname();
@@ -11,7 +12,10 @@ export function SidebarNav({ onLinkClick, sidebarRouteData }: SidebarNavProps) {
       {sidebarRouteData.map((group, index) => (
         <div key={index} className="pb-8">
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold tracking-tight text-white">
-            {group.title}
+            {group.title}{" "}
+            {group.showCount ? (
+              <Badge appearance="gradient-teal">{group.items.length}</Badge>
+            ) : null}
           </h4>
           {group.items?.length ? (
             <div className="grid grid-flow-row auto-rows-max text-sm">

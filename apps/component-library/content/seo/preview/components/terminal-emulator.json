@@ -1,0 +1,77 @@
+{
+  "category": "Data display",
+  "title": "Terminal Emulator component for React & Next.js",
+  "description": "Static terminal/console UI for React and Next.js: a window header with traffic-light dots and title, prompt-prefixed command lines, color-coded output/error/comment lines, copy-to-clipboard, themeable --zui-* tokens, and an optional animated entry.",
+  "keywords": [
+    "terminal emulator",
+    "terminal ui",
+    "console output",
+    "command line",
+    "React",
+    "Next.js",
+    "shell preview",
+    "code block terminal"
+  ],
+  "og": {
+    "title": "Terminal Emulator · Zentauri UI",
+    "description": "Static terminal/console UI for React and Next.js with a window header, color-coded lines, and copy support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Terminal Emulator · Zentauri UI",
+    "description": "Static terminal/console UI for React and Next.js with a window header, color-coded lines, and copy support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/terminal-emulator",
+  "headings": {
+    "h1": "Terminal Emulator for displaying console sessions",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the terminal emulator to render a console session as a styled, read-only window. Pass an array of typed lines — command, output, error, or comment — and each renders with the right color: commands are prefixed with a configurable prompt, output is muted, errors are red, and comments are green and italic. An optional window header adds traffic-light dots, a centered title, and a copy-to-clipboard control.",
+  "useCases": [
+    "Show install, build, or deploy commands with their output in docs and onboarding.",
+    "Render CLI usage examples and recorded sessions in a developer-tools landing page.",
+    "Display logs, error traces, or git workflows as a readable console block.",
+    "Embed a live, copyable terminal preview alongside code samples in documentation."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "Pass the session through the lines prop as an array of { type, text } entries, where type is command, output, error, or comment. The prompt prop sets the symbol shown before each command line (defaults to $). showHeader toggles the window header bar; within it, showTrafficLights toggles the decorative dots, title sets the centered window label, and enableClipboard toggles the copy button, which copies every line joined by newlines (commands prefixed with the prompt). appearance switches between default, subtle, contrast, and glass chrome, and size controls the monospace text scale. The separate animated entry adds stagger and fade reveal presets for the body."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The copy control is a real button, and the traffic-light dots are decorative (aria-hidden) so they are skipped by assistive technology. The root and every line carry data-slot attributes for styling and testing, and each line exposes a data-type attribute reflecting its kind. Line colors ship light and dark pairs that meet contrast on their surfaces; the animated entry's motion is short and easing-based, so pair it with prefers-reduced-motion handling in your app where needed."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The static TerminalEmulator entry ships no framer-motion and is safe in any Server or Client Component tree (it is a Client Component because the copy button manages local state). The animated TerminalEmulatorAnimated entry imports framer-motion, which is an optional peer dependency — install it only if you use the animated entry. Both render deterministically from the same lines, so server and client output match and there is no hydration mismatch."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How do I distinguish commands from their output?",
+      "answer": "Set the type field on each line. command lines are prefixed with the prompt symbol and use the command color, output lines are muted, error lines are red, and comment lines are green and italic. The component never executes anything — it is a presentational view of a session you supply."
+    },
+    {
+      "question": "Can I change the prompt symbol?",
+      "answer": "Yes. Use the prompt prop, which defaults to \"$\". It is rendered before every command line and is also used when building the copy text, so a copied command reads exactly as it appears."
+    },
+    {
+      "question": "Do I need framer-motion?",
+      "answer": "Only for the animated entry. The default import from @zentauri-ui/zentauri-components/ui/terminal-emulator is framer-motion-free. Import TerminalEmulatorAnimated from the /animated subpath when you want the stagger or fade reveal, and install framer-motion as a peer dependency."
+    },
+    {
+      "question": "How do I theme the line colors?",
+      "answer": "Override the --zui-terminal-emulator-* CSS variables (bg, fg, border, header, prompt, command, output, error, comment, and more) on :root, a theme selector, or a wrapper. Each variable ships a light fallback and a paired -dark variant for dark mode."
+    }
+  ]
+}

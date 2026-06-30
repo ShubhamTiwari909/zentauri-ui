@@ -15,6 +15,7 @@ const hookSidebarItems = [...HOOK_PREVIEW_REGISTRY]
 const sidebarRouteDataShared = [
   {
     title: "Getting Started",
+    showCount: false,
     items: [
       {
         title: "Installation",
@@ -80,6 +81,7 @@ export const sidebarTypographyData: SidebarNavGroup[] = [
   {
     title: "Typography",
     items: [...typographySidebarItems],
+    showCount: true,
   },
 ];
 
@@ -88,6 +90,7 @@ export const sidebarHooksData: SidebarNavGroup[] = [
   {
     title: "Hooks",
     items: [...hookSidebarItems],
+    showCount: true,
   },
 ];
 
@@ -101,6 +104,7 @@ export const sidebarAnimationsData: SidebarNavGroup[] = [
   {
     title: "Animations",
     items: [...animationsSidebarItems],
+    showCount: true,
   },
 ];
 
@@ -148,6 +152,7 @@ export const sidebarChartsData: SidebarNavGroup[] = [
   {
     title: "Charts",
     items: [...chartsSidebarItems],
+    showCount: true,
   },
 ];
 
@@ -155,6 +160,7 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
   ...sidebarRouteDataShared,
   {
     title: "Components",
+    showCount: true,
     items: [
       {
         title: "Accordion",
@@ -167,6 +173,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
       {
         title: "Animated Number",
         href: "/preview/components/animated-number",
+      },
+      {
+        title: "API Response Viewer",
+        href: "/preview/components/api-response-viewer",
       },
       {
         title: "Audio Player",
@@ -249,6 +259,14 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/hash-generator",
       },
       {
+        title: "HTTP Request Viewer",
+        href: "/preview/components/http-request-viewer",
+      },
+      {
+        title: "HTTP Status Badge",
+        href: "/preview/components/http-status-badge",
+      },
+      {
         title: "Inputs",
         href: "/preview/components/inputs",
       },
@@ -301,12 +319,16 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/qr-scanner",
       },
       {
+        title: "Radio group",
+        href: "/preview/components/radio-group",
+      },
+      {
         title: "Rating",
         href: "/preview/components/rating",
       },
       {
-        title: "Radio group",
-        href: "/preview/components/radio-group",
+        title: "Request Timeline Viewer",
+        href: "/preview/components/request-timeline-viewer",
       },
       {
         title: "Scroll area",
@@ -355,6 +377,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
       {
         title: "Tabs",
         href: "/preview/components/tabs",
+      },
+      {
+        title: "Terminal Emulator",
+        href: "/preview/components/terminal-emulator",
       },
       {
         title: "Timeline",
