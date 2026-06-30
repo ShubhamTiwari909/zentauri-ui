@@ -29,6 +29,11 @@ import index from "@/content/seo/preview/components/index.json";
 import inputs from "@/content/seo/preview/components/inputs.json";
 import installation from "@/content/seo/preview/components/installation.json";
 import jsonViewer from "@/content/seo/preview/components/json-viewer.json";
+import terminalEmulator from "@/content/seo/preview/components/terminal-emulator.json";
+import apiResponseViewer from "@/content/seo/preview/components/api-response-viewer.json";
+import httpRequestViewer from "@/content/seo/preview/components/http-request-viewer.json";
+import httpStatusBadge from "@/content/seo/preview/components/http-status-badge.json";
+import requestTimelineViewer from "@/content/seo/preview/components/request-timeline-viewer.json";
 import kbd from "@/content/seo/preview/components/kbd.json";
 import marquee from "@/content/seo/preview/components/marquee.json";
 import modal from "@/content/seo/preview/components/modal.json";
@@ -94,6 +99,11 @@ const previewSeoRegistry = {
   "hash-generator": hashGenerator as PreviewSeoDocument,
   inputs: inputs as PreviewSeoDocument,
   "json-viewer": jsonViewer as PreviewSeoDocument,
+  "terminal-emulator": terminalEmulator as PreviewSeoDocument,
+  "api-response-viewer": apiResponseViewer as PreviewSeoDocument,
+  "http-request-viewer": httpRequestViewer as PreviewSeoDocument,
+  "http-status-badge": httpStatusBadge as PreviewSeoDocument,
+  "request-timeline-viewer": requestTimelineViewer as PreviewSeoDocument,
   kbd: kbd as PreviewSeoDocument,
   marquee: marquee as PreviewSeoDocument,
   modal: modal as PreviewSeoDocument,

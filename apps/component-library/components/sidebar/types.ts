@@ -8,6 +8,7 @@ export type SidebarNavItem = {
 export type SidebarNavGroup = {
   title: string;
   items: SidebarNavItem[];
+  showCount?: boolean;
 };
 
 export type SidebarNavProps = {

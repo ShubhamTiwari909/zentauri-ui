@@ -1,0 +1,77 @@
+{
+  "category": "Data display",
+  "title": "API Response Viewer component for React & Next.js",
+  "description": "Display HTTP API responses in React and Next.js: a status pill colored by status class, method and URL, timing and size meta, switchable Body and Headers tabs, copy-to-clipboard, themeable --zui-* tokens, and an optional animated entry.",
+  "keywords": [
+    "api response viewer",
+    "http response viewer",
+    "status code badge",
+    "React",
+    "Next.js",
+    "request inspector",
+    "response headers viewer",
+    "json response"
+  ],
+  "og": {
+    "title": "API Response Viewer · Zentauri UI",
+    "description": "Display HTTP API responses for React and Next.js with a status pill, Body/Headers tabs, and copy support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "API Response Viewer · Zentauri UI",
+    "description": "Display HTTP API responses for React and Next.js with a status pill, Body/Headers tabs, and copy support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/api-response-viewer",
+  "headings": {
+    "h1": "API Response Viewer for inspecting HTTP responses",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the API response viewer to present an HTTP response as a compact, readable surface. A status pill colors itself by status class (1xx informational, 2xx success, 3xx redirect, 4xx client error, 5xx server error), the header strip shows the request method, URL, round-trip time, and payload size, and Body / Headers tabs switch between a pretty-printed JSON body and a key/value list of response headers — with a copy-to-clipboard control for the body.",
+  "useCases": [
+    "Show API responses in an admin panel, internal tool, or API playground.",
+    "Inspect request results while debugging integrations or webhooks.",
+    "Document example responses in developer docs with a live, copyable preview.",
+    "Render the outcome of a fetch in a dashboard with status, timing, and size at a glance."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "Pass the response details as props: status drives the status pill and its tone, statusText overrides the derived reason phrase, and method and url populate the header strip alongside time (ms) and responseSize. The body prop is pretty-printed as JSON in the Body tab, while headers renders as a key/value list in the Headers tab. defaultTab picks which tab opens first, enableClipboard toggles the copy button, and labels overrides the tab and copy copy. appearance and size control the chrome. The separate animated entry adds fade and slide motion presets for the tab-switch transition."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The Body and Headers tabs are real buttons with aria-selected reflecting the active tab, so keyboard and screen-reader users can switch panels. The root and every region carry data-slot attributes for styling and testing, and the status pill exposes a data-tone attribute describing its status class. The animated entry's motion is short and easing-based; pair it with prefers-reduced-motion handling in your app where needed."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The static ApiResponseViewer entry ships no framer-motion and is safe in any Server or Client Component tree (it is a Client Component because it manages the active tab and copy state). The animated ApiResponseViewerAnimated entry imports framer-motion, which is an optional peer dependency — install it only if you use the animated entry. Both render deterministically from the same props, so server and client output match and there is no hydration mismatch."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How is the status pill color chosen?",
+      "answer": "From the status class: 1xx is info, 2xx is success, 3xx is redirect, 4xx is a client error, 5xx is a server error, and anything else is neutral. The apiResponseStatusTone helper exposes this mapping, and each tone routes through its own --zui-api-response-viewer-* tokens with light and dark values."
+    },
+    {
+      "question": "Do I have to pass statusText?",
+      "answer": "No. When statusText is omitted the viewer derives a reason phrase from a built-in map of common HTTP codes (for example 404 becomes Not Found), and falls back to the status class label (such as Client Error) for unknown codes."
+    },
+    {
+      "question": "Do I need framer-motion?",
+      "answer": "Only for the animated entry. The default import from @zentauri-ui/zentauri-components/ui/api-response-viewer is framer-motion-free. Import ApiResponseViewerAnimated from the /animated subpath when you want fade or slide tab transitions, and install framer-motion as a peer dependency."
+    },
+    {
+      "question": "How do I theme the colors?",
+      "answer": "Override the --zui-api-response-viewer-* CSS variables (border, bg, fg, the per-tone status colors, tab, method, header key/value, and body) on :root, a theme selector, or a wrapper. Each variable ships a light fallback and a paired -dark variant for dark mode."
+    }
+  ]
+}

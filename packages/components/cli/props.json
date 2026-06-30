@@ -848,6 +848,358 @@
         }
       ]
     },
+    "api-response-viewer": {
+      "slug": "api-response-viewer",
+      "subcomponents": [
+        {
+          "name": "static:ApiResponseViewer",
+          "displayName": "ApiResponseViewer",
+          "propsType": "ApiResponseViewerProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "contrast",
+                "default",
+                "glass",
+                "subtle"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "description": "Visual scale of the viewer chrome (sm | md | lg). Named `size` to mirror\nthe library's other display components.",
+              "deprecated": false
+            },
+            {
+              "name": "body",
+              "type": "unknown",
+              "required": false,
+              "group": "behavior",
+              "description": "Response body, pretty-printed as JSON in the Body tab.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultTab",
+              "type": "ApiResponseViewerTab | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Which tab is active initially.",
+              "deprecated": false
+            },
+            {
+              "name": "enableClipboard",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show a copy button that copies the pretty-printed JSON body.",
+              "deprecated": false
+            },
+            {
+              "name": "headers",
+              "type": "Record<string, string> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Response headers rendered in the Headers tab.",
+              "deprecated": false
+            },
+            {
+              "name": "labels",
+              "type": "ApiResponseViewerLabels | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override default tab / copy copy.",
+              "deprecated": false
+            },
+            {
+              "name": "method",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Request method, e.g. \"GET\".",
+              "deprecated": false
+            },
+            {
+              "name": "responseSize",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Human-readable response payload size, e.g. \"2.4 KB\".",
+              "deprecated": false
+            },
+            {
+              "name": "status",
+              "type": "number",
+              "required": true,
+              "group": "behavior",
+              "description": "HTTP status code, e.g. 200, 404, 500.",
+              "deprecated": false
+            },
+            {
+              "name": "statusText",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Reason phrase. Derived from a common-codes map (then the status class) when omitted.",
+              "deprecated": false
+            },
+            {
+              "name": "time",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Round-trip time in milliseconds.",
+              "deprecated": false
+            },
+            {
+              "name": "url",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Request URL (truncated in the header).",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ApiResponseViewerVariant",
+          "displayName": "ApiResponseViewerVariant",
+          "propsType": "ApiResponseViewerVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'subtle' | 'contrast' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:ApiResponseViewerAnimated",
+          "displayName": "ApiResponseViewerAnimated",
+          "propsType": "ApiResponseViewerAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "animation",
+              "type": "ApiResponseViewerAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Transition preset for the panel content when switching tabs.",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'subtle' | 'contrast' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "body",
+              "type": "unknown",
+              "required": false,
+              "group": "behavior",
+              "description": "Response body, pretty-printed as JSON in the Body tab.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultTab",
+              "type": "ApiResponseViewerTab | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Which tab is active initially.",
+              "deprecated": false
+            },
+            {
+              "name": "enableClipboard",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show a copy button that copies the pretty-printed JSON body.",
+              "deprecated": false
+            },
+            {
+              "name": "headers",
+              "type": "Record<string, string> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Response headers rendered in the Headers tab.",
+              "deprecated": false
+            },
+            {
+              "name": "labels",
+              "type": "ApiResponseViewerLabels | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override default tab / copy copy.",
+              "deprecated": false
+            },
+            {
+              "name": "method",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Request method, e.g. \"GET\".",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "responseSize",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Human-readable response payload size, e.g. \"2.4 KB\".",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "NonNullable<'md' | 'sm' | 'lg' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Visual scale of the viewer chrome (sm | md | lg). Named `size` to mirror\nthe library's other display components.",
+              "deprecated": false
+            },
+            {
+              "name": "status",
+              "type": "number",
+              "required": true,
+              "group": "behavior",
+              "description": "HTTP status code, e.g. 200, 404, 500.",
+              "deprecated": false
+            },
+            {
+              "name": "statusText",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Reason phrase. Derived from a common-codes map (then the status class) when omitted.",
+              "deprecated": false
+            },
+            {
+              "name": "time",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Round-trip time in milliseconds.",
+              "deprecated": false
+            },
+            {
+              "name": "url",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Request URL (truncated in the header).",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "audio-player": {
       "slug": "audio-player",
       "subcomponents": [
@@ -1709,7 +2061,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -1745,7 +2097,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -2355,7 +2707,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'link' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'link' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -2686,7 +3038,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'glass' | 'elevated' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | 'elevated' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -2722,7 +3074,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'glass' | 'elevated' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | 'elevated' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -4108,7 +4460,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gray' | 'violet' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -4265,7 +4617,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gray' | 'violet' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -4448,7 +4800,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gray' | 'violet' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -5313,7 +5665,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -5357,7 +5709,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -6180,7 +6532,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -6322,7 +6674,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -6717,7 +7069,7 @@
             },
             {
               "name": "indicatorCompleteAppearance",
-              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | undefined",
               "required": false,
               "default": "emerald",
               "group": "behavior",
@@ -6726,7 +7078,7 @@
             },
             {
               "name": "indicatorCurrentAppearance",
-              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | undefined",
               "required": false,
               "default": "violet",
               "group": "behavior",
@@ -6743,7 +7095,7 @@
             },
             {
               "name": "indicatorUpcomingAppearance",
-              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | undefined",
               "required": false,
               "default": "outline",
               "group": "behavior",
@@ -7397,6 +7749,432 @@
         }
       ]
     },
+    "http-request-viewer": {
+      "slug": "http-request-viewer",
+      "subcomponents": [
+        {
+          "name": "static:HttpRequestViewer",
+          "displayName": "HttpRequestViewer",
+          "propsType": "HttpRequestViewerProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "contrast",
+                "default",
+                "glass",
+                "subtle"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "body",
+              "type": "unknown",
+              "required": false,
+              "group": "behavior",
+              "description": "Request body — pretty-printed as JSON in a code block.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultTab",
+              "type": "HttpRequestViewerTab | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Which detail panel is open on first render.",
+              "deprecated": false
+            },
+            {
+              "name": "enableClipboard",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show a copy button that copies the body JSON (or a request summary).",
+              "deprecated": false
+            },
+            {
+              "name": "headers",
+              "type": "Record<string, string> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Request headers, rendered as key:value rows.",
+              "deprecated": false
+            },
+            {
+              "name": "labels",
+              "type": "HttpRequestViewerLabels | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override default tab / copy copy.",
+              "deprecated": false
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "required": true,
+              "group": "behavior",
+              "description": "HTTP method, e.g. GET / POST / PUT / PATCH / DELETE.",
+              "deprecated": false
+            },
+            {
+              "name": "query",
+              "type": "Record<string, string | string[]> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Query parameters, rendered as key:value rows. Supports multi-value params (e.g. ?id=1&id=2).",
+              "deprecated": false
+            },
+            {
+              "name": "url",
+              "type": "string",
+              "required": true,
+              "group": "behavior",
+              "description": "Request URL (may include the query string).",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:HttpRequestViewerVariant",
+          "displayName": "HttpRequestViewerVariant",
+          "propsType": "HttpRequestViewerVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'subtle' | 'contrast' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:HttpRequestViewerAnimated",
+          "displayName": "HttpRequestViewerAnimated",
+          "propsType": "HttpRequestViewerAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "animation",
+              "type": "HttpRequestViewerAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Panel-switch motion preset applied when the active tab changes.",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'subtle' | 'contrast' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "body",
+              "type": "unknown",
+              "required": false,
+              "group": "behavior",
+              "description": "Request body — pretty-printed as JSON in a code block.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultTab",
+              "type": "HttpRequestViewerTab | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Which detail panel is open on first render.",
+              "deprecated": false
+            },
+            {
+              "name": "enableClipboard",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show a copy button that copies the body JSON (or a request summary).",
+              "deprecated": false
+            },
+            {
+              "name": "headers",
+              "type": "Record<string, string> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Request headers, rendered as key:value rows.",
+              "deprecated": false
+            },
+            {
+              "name": "labels",
+              "type": "HttpRequestViewerLabels | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override default tab / copy copy.",
+              "deprecated": false
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "required": true,
+              "group": "behavior",
+              "description": "HTTP method, e.g. GET / POST / PUT / PATCH / DELETE.",
+              "deprecated": false
+            },
+            {
+              "name": "query",
+              "type": "Record<string, string | string[]> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Query parameters, rendered as key:value rows. Supports multi-value params (e.g. ?id=1&id=2).",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "url",
+              "type": "string",
+              "required": true,
+              "group": "behavior",
+              "description": "Request URL (may include the query string).",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
+    "http-status-badge": {
+      "slug": "http-status-badge",
+      "subcomponents": [
+        {
+          "name": "static:HttpStatusBadge",
+          "displayName": "HttpStatusBadge",
+          "propsType": "HttpStatusBadgeProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "soft",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "outline",
+                "soft",
+                "solid"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "showText",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the reason phrase next to the code. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "status",
+              "type": "number",
+              "required": true,
+              "group": "behavior",
+              "description": "The HTTP status code to render (e.g. 200, 404, 503).",
+              "deprecated": false
+            },
+            {
+              "name": "statusText",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override the reason phrase. Defaults to a known phrase for the code, or the tone label.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:HttpStatusBadgeVariant",
+          "displayName": "HttpStatusBadgeVariant",
+          "propsType": "HttpStatusBadgeVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'outline' | 'solid' | 'soft' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "inputs": {
       "slug": "inputs",
       "subcomponents": [
@@ -7889,7 +8667,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'subtle' | 'glass' | 'contrast' | null | undefined",
+              "type": "'default' | 'subtle' | 'contrast' | 'glass' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -7919,7 +8697,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'subtle' | 'glass' | 'contrast' | null | undefined",
+              "type": "'default' | 'subtle' | 'contrast' | 'glass' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -8187,7 +8965,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -8216,7 +8994,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -8693,7 +9471,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -8835,7 +9613,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -8912,7 +9690,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'gray' | 'muted' | 'subtle' | 'primary' | 'online' | 'offline' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'gray' | 'subtle' | 'muted' | 'primary' | 'online' | 'offline' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -9025,7 +9803,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'gray' | 'muted' | 'subtle' | 'primary' | 'online' | 'offline' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'gray' | 'subtle' | 'muted' | 'primary' | 'online' | 'offline' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -9054,7 +9832,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'gray' | 'muted' | 'subtle' | 'primary' | 'online' | 'offline' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'gray' | 'subtle' | 'muted' | 'primary' | 'online' | 'offline' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -9395,7 +10173,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'orange' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'orange' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'glass' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -9794,7 +10572,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -9844,7 +10622,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -9958,7 +10736,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -10520,7 +11298,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -10577,7 +11355,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -10727,7 +11505,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -11930,7 +12708,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -11948,6 +12726,276 @@
               "type": "'md' | 'sm' | 'lg' | null | undefined",
               "required": false,
               "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
+    "request-timeline-viewer": {
+      "slug": "request-timeline-viewer",
+      "subcomponents": [
+        {
+          "name": "static:RequestTimelineViewer",
+          "displayName": "RequestTimelineViewer",
+          "propsType": "RequestTimelineViewerProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "contrast",
+                "default",
+                "glass",
+                "subtle"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "labels",
+              "type": "RequestTimelineViewerLabels | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override default copy.",
+              "deprecated": false
+            },
+            {
+              "name": "phases",
+              "type": "TimelinePhase[]",
+              "required": true,
+              "group": "behavior",
+              "description": "The ordered request phases to render as a waterfall.",
+              "deprecated": false
+            },
+            {
+              "name": "showLegend",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the legend mapping each tone to its label and color.",
+              "deprecated": false
+            },
+            {
+              "name": "showTotal",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the total-duration summary row.",
+              "deprecated": false
+            },
+            {
+              "name": "total",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Denominator for bar widths; defaults to the sum of phase durations.",
+              "deprecated": false
+            },
+            {
+              "name": "unit",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Unit suffix appended to each duration.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:RequestTimelineViewerVariant",
+          "displayName": "RequestTimelineViewerVariant",
+          "propsType": "RequestTimelineViewerVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'subtle' | 'contrast' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:RequestTimelineViewerAnimated",
+          "displayName": "RequestTimelineViewerAnimated",
+          "propsType": "RequestTimelineViewerAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "animation",
+              "type": "RequestTimelineViewerAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Enter-motion preset for the bars and rows.",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'subtle' | 'contrast' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "labels",
+              "type": "RequestTimelineViewerLabels | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override default copy.",
+              "deprecated": false
+            },
+            {
+              "name": "phases",
+              "type": "TimelinePhase[]",
+              "required": true,
+              "group": "behavior",
+              "description": "The ordered request phases to render as a waterfall.",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "showLegend",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the legend mapping each tone to its label and color.",
+              "deprecated": false
+            },
+            {
+              "name": "showTotal",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the total-duration summary row.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "total",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Denominator for bar widths; defaults to the sum of phase durations.",
+              "deprecated": false
+            },
+            {
+              "name": "unit",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Unit suffix appended to each duration.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
               "deprecated": false
             }
           ]
@@ -12123,7 +13171,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'emerald' | 'violet' | 'muted' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'emerald' | 'violet' | 'glass' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -12506,7 +13554,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -12542,7 +13590,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13346,7 +14394,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13376,7 +14424,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13412,7 +14460,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13441,7 +14489,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13477,7 +14525,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13499,7 +14547,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13550,7 +14598,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13579,7 +14627,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13608,7 +14656,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13622,7 +14670,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13651,7 +14699,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13672,7 +14720,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13744,7 +14792,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13772,7 +14820,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13837,7 +14885,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13865,7 +14913,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13930,7 +14978,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -13951,7 +14999,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14023,7 +15071,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14051,7 +15099,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14116,7 +15164,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14130,7 +15178,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | 'subtle' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14679,7 +15727,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14792,7 +15840,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14821,7 +15869,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14969,7 +16017,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -15124,7 +16172,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -15153,7 +16201,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -15431,7 +16479,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'link' | 'gray' | 'violet' | 'secondary' | 'destructive' | 'amber' | 'glass' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'link' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -16185,6 +17233,278 @@
             {
               "name": "title",
               "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
+    "terminal-emulator": {
+      "slug": "terminal-emulator",
+      "subcomponents": [
+        {
+          "name": "static:TerminalEmulator",
+          "displayName": "TerminalEmulator",
+          "propsType": "TerminalEmulatorProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "contrast",
+                "default",
+                "glass",
+                "subtle"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "enableClipboard",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show a copy button that copies all line text.",
+              "deprecated": false
+            },
+            {
+              "name": "labels",
+              "type": "TerminalEmulatorLabels | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override default header copy.",
+              "deprecated": false
+            },
+            {
+              "name": "lines",
+              "type": "TerminalLine[]",
+              "required": true,
+              "group": "behavior",
+              "description": "The lines that make up the terminal session.",
+              "deprecated": false
+            },
+            {
+              "name": "prompt",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Prompt symbol shown before each `command` line.",
+              "deprecated": false
+            },
+            {
+              "name": "showHeader",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the window header bar with traffic-light dots and title.",
+              "deprecated": false
+            },
+            {
+              "name": "showTrafficLights",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the decorative traffic-light dots in the header.",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Window title shown centered in the header bar.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:TerminalEmulatorVariant",
+          "displayName": "TerminalEmulatorVariant",
+          "propsType": "TerminalEmulatorVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'subtle' | 'contrast' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:TerminalEmulatorAnimated",
+          "displayName": "TerminalEmulatorAnimated",
+          "propsType": "TerminalEmulatorAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "animation",
+              "type": "TerminalEmulatorAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Reveal motion preset for the terminal body.",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'subtle' | 'contrast' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "enableClipboard",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show a copy button that copies all line text.",
+              "deprecated": false
+            },
+            {
+              "name": "labels",
+              "type": "TerminalEmulatorLabels | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override default header copy.",
+              "deprecated": false
+            },
+            {
+              "name": "lines",
+              "type": "TerminalLine[]",
+              "required": true,
+              "group": "behavior",
+              "description": "The lines that make up the terminal session.",
+              "deprecated": false
+            },
+            {
+              "name": "prompt",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Prompt symbol shown before each `command` line.",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "showHeader",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the window header bar with traffic-light dots and title.",
+              "deprecated": false
+            },
+            {
+              "name": "showTrafficLights",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show the decorative traffic-light dots in the header.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Window title shown centered in the header bar.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -17716,7 +19036,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -17794,7 +19114,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -17823,7 +19143,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'muted' | 'subtle' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false

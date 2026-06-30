@@ -21,6 +21,11 @@ import { fileUploadCssVariables } from "./data/file-upload";
 import { hashGeneratorCssVariables } from "./data/hash-generator";
 import { inputsCssVariables } from "./data/inputs";
 import { jsonViewerCssVariables } from "./data/json-viewer";
+import { terminalEmulatorCssVariables } from "./data/terminal-emulator";
+import { apiResponseViewerCssVariables } from "./data/api-response-viewer";
+import { httpRequestViewerCssVariables } from "./data/http-request-viewer";
+import { httpStatusBadgeCssVariables } from "./data/http-status-badge";
+import { requestTimelineViewerCssVariables } from "./data/request-timeline-viewer";
 import { kbdCssVariables } from "./data/kbd";
 import { marqueeCssVariables } from "./data/marquee";
 import { modalCssVariables } from "./data/modal";
@@ -79,6 +84,11 @@ export const cssVariableReferences = {
   "hash-generator": hashGeneratorCssVariables,
   inputs: inputsCssVariables,
   "json-viewer": jsonViewerCssVariables,
+  "terminal-emulator": terminalEmulatorCssVariables,
+  "api-response-viewer": apiResponseViewerCssVariables,
+  "http-request-viewer": httpRequestViewerCssVariables,
+  "http-status-badge": httpStatusBadgeCssVariables,
+  "request-timeline-viewer": requestTimelineViewerCssVariables,
   kbd: kbdCssVariables,
   marquee: marqueeCssVariables,
   modal: modalCssVariables,

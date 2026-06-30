@@ -1,0 +1,77 @@
+{
+  "category": "Data display",
+  "title": "Request Timeline Viewer component for React & Next.js",
+  "description": "Request timing waterfall viewer for React and Next.js: labeled, color-coded proportional bars for each network phase (blocked, DNS, connect, TLS, send, wait, receive), a legend and total summary, themeable --zui-* tokens, and an optional animated entry.",
+  "keywords": [
+    "request timeline",
+    "network waterfall",
+    "request timing",
+    "performance breakdown",
+    "React",
+    "Next.js",
+    "ttfb",
+    "latency visualization"
+  ],
+  "og": {
+    "title": "Request Timeline Viewer · Zentauri UI",
+    "description": "Network request timing waterfall for React and Next.js with color-coded phase bars, legend, and total.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Request Timeline Viewer · Zentauri UI",
+    "description": "Network request timing waterfall for React and Next.js with color-coded phase bars, legend, and total.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/request-timeline-viewer",
+  "headings": {
+    "h1": "Request Timeline Viewer for visualizing request timing",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the request timeline viewer to render a browser-style network waterfall. Each request phase becomes a labeled, color-coded bar whose width is proportional to its duration, with the elapsed time shown alongside, an optional legend mapping each phase color, and a total-duration summary.",
+  "useCases": [
+    "Visualize a request's blocked, DNS, connect, TLS, send, wait, and receive timing in a debugging panel.",
+    "Show backend span breakdowns or latency budgets in an observability dashboard.",
+    "Render per-request performance traces in admin or developer tooling.",
+    "Embed a compact, themeable timing waterfall in docs and status pages."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "Pass an ordered phases array, where each entry has a label, a numeric duration, and an optional tone (blocked, dns, connect, tls, send, wait, or receive). Bar widths are proportional to total — the sum of every duration by default, or a value you supply to compare against a fixed budget. unit sets the duration suffix (ms by default). When a phase omits its tone the viewer cycles through the tone list by index. showLegend toggles the tone legend and showTotal toggles the summary row. The separate animated entry adds grow (bars expand from zero with a small stagger) and fade (rows fade in) enter presets."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The root and every row, label, bar, legend, and total carry data-slot attributes for styling and testing, and each bar exposes a data-tone attribute identifying its phase. Color is paired with a text label and duration so the timing is never conveyed by color alone, and the legend swatches are decorative (aria-hidden). The animated entry's motion is short and easing-based; pair it with prefers-reduced-motion handling in your app where needed."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The static RequestTimelineViewer entry ships no framer-motion and is safe in any Server or Client Component tree. The animated RequestTimelineViewerAnimated entry imports framer-motion, which is an optional peer dependency — install it only if you use the animated entry. Both render deterministically from the same phases, so server and client output match and there is no hydration mismatch."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How are the bar widths calculated?",
+      "answer": "Each bar's width is its duration divided by the total, expressed as a percentage. By default total is the sum of all phase durations, so the bars fill the track. Pass a fixed total to size every timeline against the same budget for side-by-side comparison."
+    },
+    {
+      "question": "What if I don't set a tone on a phase?",
+      "answer": "The viewer cycles through the built-in tone list (blocked, dns, connect, tls, send, wait, receive) by index, so phases stay visually distinct even without explicit tones. Set tone explicitly to map a phase to a specific color."
+    },
+    {
+      "question": "Do I need framer-motion?",
+      "answer": "Only for the animated entry. The default import from @zentauri-ui/zentauri-components/ui/request-timeline-viewer is framer-motion-free. Import RequestTimelineViewerAnimated from the /animated subpath when you want grow or fade transitions, and install framer-motion as a peer dependency."
+    },
+    {
+      "question": "How do I theme the phase colors?",
+      "answer": "Override the --zui-request-timeline-viewer-* CSS variables (blocked, dns, connect, tls, send, wait, receive, plus bg, border, label, duration, and track tokens) on :root, a theme selector, or a wrapper. Each variable ships a light fallback and a paired -dark variant for dark mode."
+    }
+  ]
+}
