@@ -4,11 +4,12 @@ Complete reference for access control patterns across collections, fields, and g
 
 ## At a Glance
 
-| Feature               | Scope                                                     | Returns                | Use Case                           |
-| --------------------- | --------------------------------------------------------- | ---------------------- | ---------------------------------- |
-| **Collection Access** | create, read, update, delete, admin, unlock, readVersions | boolean \| Where query | Document-level permissions         |
-| **Field Access**      | create, read, update                                      | boolean only           | Field-level visibility/editability |
-| **Global Access**     | read, update, readVersions                                | boolean \| Where query | Global document permissions        |
+| Feature               | Scope                              | Returns                | Use Case                           |
+| --------------------- | ---------------------------------- | ---------------------- | ---------------------------------- |
+| **Collection Access** | read, update, delete, readVersions | boolean \| Where query | Document-level permissions         |
+| **Collection Access** | create, admin, unlock              | boolean only           | Document-level permissions         |
+| **Field Access**      | create, read, update               | boolean only           | Field-level visibility/editability |
+| **Global Access**     | read, update, readVersions         | boolean \| Where query | Global document permissions        |
 
 ## Three Layers of Access Control
 

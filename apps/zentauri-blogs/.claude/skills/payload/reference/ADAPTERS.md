@@ -236,12 +236,14 @@ export default buildConfig({
 
 ### Cloudflare R2
 
+`@payloadcms/storage-r2` is for Cloudflare Workers environments using native R2 bucket bindings and does not accept S3-style credentials/config. For a Node.js server connecting to R2 via its S3-compatible API, use `@payloadcms/storage-s3` pointed at the R2 endpoint instead:
+
 ```ts
-import { r2Storage } from "@payloadcms/storage-r2";
+import { s3Storage } from "@payloadcms/storage-s3";
 
 export default buildConfig({
   plugins: [
-    r2Storage({
+    s3Storage({
       collections: {
         media: true,
       },

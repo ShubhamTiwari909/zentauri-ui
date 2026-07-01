@@ -69,6 +69,9 @@ Restrict access from specific IP addresses (requires middleware/proxy headers).
 ```ts
 import type { Access } from "payload";
 
+// Exact-match allowlist. For CIDR ranges (e.g. "192.168.1.0/24"), use a
+// subnet-matching library (e.g. `ip-cidr` or `netmask`) instead of `includes()`,
+// since string comparison never matches an individual client IP against a range.
 export const restrictedIpAccess = (allowedIps: string[]): Access => {
   return ({ req: { headers } }) => {
     const ip = headers?.get("x-forwarded-for") || headers?.get("x-real-ip");
@@ -77,7 +80,7 @@ export const restrictedIpAccess = (allowedIps: string[]): Access => {
 };
 
 // Usage
-const internalIps = ["192.168.1.0/24", "10.0.0.5"];
+const internalIps = ["192.168.1.50", "10.0.0.5"];
 
 export const InternalDocs: CollectionConfig = {
   slug: "internal-docs",

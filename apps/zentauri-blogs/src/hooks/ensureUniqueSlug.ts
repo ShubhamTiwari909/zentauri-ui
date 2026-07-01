@@ -7,29 +7,31 @@ export const ensureUniqueSlug: FieldHook = async ({
   req,
   value,
 }) => {
-  if (originalDoc.slug === value) {
-    return value;
+  const normalizedValue = value?.trim();
+
+  if (originalDoc?.slug === normalizedValue) {
+    return normalizedValue;
   }
 
-  if (value?.startsWith("/")) {
+  if (normalizedValue?.startsWith("/")) {
     throw new ValidationError({
       errors: [
         {
-          message: `Do not include a / prefix for your slug ${value}.`,
+          message: `Do not include a / prefix for your slug ${normalizedValue}.`,
           path: "slug",
         },
       ],
     });
   }
 
-  const where: Where = { slug: { equals: value } };
+  const where: Where = { slug: { equals: normalizedValue } };
 
   const dupes = await req.payload.find({ collection: "pages", where });
 
-  if (dupes.docs.length > 0 && req.user) {
-    const message = `A page with the slug ${value} already exists. Slug must be unique per tenant.`;
+  if (dupes.docs.length > 0) {
+    const message = `A page with the slug ${normalizedValue} already exists. Slug must be unique.`;
     throw new ValidationError({ errors: [{ message, path: "slug" }] });
   }
 
-  return value?.trim() ?? value;
+  return normalizedValue;
 };

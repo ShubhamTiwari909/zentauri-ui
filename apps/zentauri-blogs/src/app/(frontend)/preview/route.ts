@@ -15,7 +15,10 @@ export async function GET(request: NextRequest): Promise<Response> {
   const path = searchParams.get("path");
   const previewSecret = searchParams.get("previewSecret");
 
-  if (previewSecret !== process.env.PREVIEW_SECRET) {
+  if (
+    !process.env.NEXT_PUBLIC_PREVIEW_SECRET ||
+    previewSecret !== process.env.NEXT_PUBLIC_PREVIEW_SECRET
+  ) {
     return new Response("You are not allowed to preview this page", {
       status: 403,
     });
@@ -35,10 +38,10 @@ export async function GET(request: NextRequest): Promise<Response> {
   let user;
 
   try {
-    user = await payload.auth({
+    ({ user } = await payload.auth({
       req: request as unknown as PayloadRequest,
       headers: request.headers,
-    });
+    }));
   } catch (error) {
     payload.logger.error(
       { err: error },

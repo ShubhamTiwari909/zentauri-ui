@@ -256,11 +256,12 @@ export const Posts: CollectionConfig = {
 
 ### Document Status
 
-The `_status` field is auto-injected when drafts are enabled:
+The `_status` field is auto-injected when drafts are enabled and stores one of:
 
 - `draft` - Never published
-- `published` - Published with no newer drafts
-- `changed` - Published but has newer unpublished drafts
+- `published` - Published (may have newer unpublished drafts)
+
+The Admin UI additionally shows a computed "Changed" state for published documents with newer unpublished drafts, but this is not a value stored in `_status` itself.
 
 ## Globals
 

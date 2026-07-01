@@ -50,7 +50,8 @@ const customStrategy: Strategy = {
     if (!token) return { user: null };
 
     const user = await verifyToken(token);
-    return { user };
+    // Payload 3.x requires the returned user to include `collection`
+    return { user: user ? { ...user, collection: "users" } : null };
   },
 };
 
@@ -134,8 +135,8 @@ Multi-step jobs that run in sequence:
 {
   slug: 'onboardUser',
   inputSchema: [{ name: 'userId', type: 'text' }],
-  handler: async ({ job, req }) => {
-    const results = await job.runInlineTask({
+  handler: async ({ job, req, inlineTask }) => {
+    const results = await inlineTask('send-welcome-email', {
       task: async ({ input }) => {
         // Step 1: Send welcome email
         await sendEmail(input.userId)
@@ -143,7 +144,7 @@ Multi-step jobs that run in sequence:
       },
     })
 
-    await job.runInlineTask({
+    await inlineTask('create-onboarding-tasks', {
       task: async () => {
         // Step 2: Create onboarding tasks
         await createTasks()

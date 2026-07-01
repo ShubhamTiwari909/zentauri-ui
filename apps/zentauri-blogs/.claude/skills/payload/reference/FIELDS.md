@@ -430,7 +430,12 @@ const pathVirtualField: TextField = {
 ## Conditional Fields
 
 ```ts
-import type { UploadField, CheckboxField } from "payload";
+import type {
+  UploadField,
+  CheckboxField,
+  TextField,
+  SelectField,
+} from "payload";
 
 // Simple boolean condition
 const enableFeatureField: CheckboxField = {
@@ -595,9 +600,10 @@ Create composable field patterns that can be customized with overrides.
 ```ts
 import type { Field, GroupField } from "payload";
 
-// Utility for deep merging
-const deepMerge = <T>(target: T, source: Partial<T>): T => {
-  // Implementation would deeply merge objects
+// Shallow merge helper — does not recurse into nested objects/arrays.
+// Use a real deep-merge utility (e.g. `deepmerge`) if overrides need to
+// merge nested keys like `admin` or `fields` rather than replace them.
+const shallowMerge = <T>(target: T, source: Partial<T>): T => {
   return { ...target, ...source };
 };
 
@@ -691,7 +697,7 @@ export const link: LinkType = ({
     });
   }
 
-  return deepMerge(linkField, overrides) as GroupField;
+  return shallowMerge(linkField, overrides) as GroupField;
 };
 
 // Usage

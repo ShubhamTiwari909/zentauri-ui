@@ -456,7 +456,7 @@ From `packages/plugin-search`:
 
 ```ts
 export const reindexEndpoint = (pluginConfig) => ({
-  path: "/reindex",
+  path: "/reindex/:collection",
   method: "post",
   handler: async (req) => {
     if (!req.user) {

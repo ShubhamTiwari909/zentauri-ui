@@ -16,22 +16,24 @@ export const Pages: CollectionConfig = {
     livePreview: {
       url: ({ data }) => {
         const { slug } = data ?? {};
+        const safeSlug = typeof slug === "string" ? slug : "";
         const encodedParams = new URLSearchParams({
-          slug: typeof slug === "string" ? slug : "",
+          slug: safeSlug,
           collection: "pages",
-          path: `/${slug}`,
-          previewSecret: process.env.PREVIEW_SECRET || "",
+          path: `/${safeSlug}`,
+          previewSecret: process.env.NEXT_PUBLIC_PREVIEW_SECRET || "",
         });
 
         return `/preview?${encodedParams.toString()}`;
       },
     },
     preview: ({ slug }) => {
+      const safeSlug = typeof slug === "string" ? slug : "";
       const encodedParams = new URLSearchParams({
-        slug: typeof slug === "string" ? slug : "",
+        slug: safeSlug,
         collection: "pages",
-        path: `/${slug}`,
-        previewSecret: process.env.PREVIEW_SECRET || "",
+        path: `/${safeSlug}`,
+        previewSecret: process.env.NEXT_PUBLIC_PREVIEW_SECRET || "",
       });
 
       return `/preview?${encodedParams.toString()}`;

@@ -9,7 +9,7 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug = "home" } = await params;
+  const { slug } = await params;
 
   const { isEnabled: isDraftMode } = await draftMode();
 
@@ -30,7 +30,7 @@ export default async function Page({
     })
     ?.then(({ docs }) => docs?.[0]);
 
-  if (page === null) {
+  if (!page) {
     return notFound();
   }
 
