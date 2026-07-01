@@ -171,6 +171,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/alert",
       },
       {
+        title: "API Endpoint Card",
+        href: "/preview/components/api-endpoint-card",
+      },
+      {
         title: "Animated Number",
         href: "/preview/components/animated-number",
       },
@@ -207,6 +211,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/checkbox",
       },
       {
+        title: "Code Block",
+        href: "/preview/components/code-block",
+      },
+      {
         title: "Code Diff",
         href: "/preview/components/code-diff",
       },
@@ -217,6 +225,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
       {
         title: "Command palette",
         href: "/preview/components/command",
+      },
+      {
+        title: "Console Viewer",
+        href: "/preview/components/console-viewer",
       },
       {
         title: "Context menu",
@@ -279,6 +291,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/kbd",
       },
       {
+        title: "Log Viewer",
+        href: "/preview/components/log-viewer",
+      },
+      {
         title: "Marquee",
         href: "/preview/components/marquee",
       },
@@ -293,6 +309,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
       {
         title: "OTP input",
         href: "/preview/components/otp-input",
+      },
+      {
+        title: "Package Install Command",
+        href: "/preview/components/package-install-command",
       },
       {
         title: "Pagination",

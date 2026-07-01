@@ -1,0 +1,78 @@
+{
+  "category": "Utilities",
+  "title": "Package Install Command component for React & Next.js",
+  "description": "A copyable install-command UI for React and Next.js with package-manager tabs (npm, pnpm, yarn), themeable --zui-* tokens, and an optional animated entry.",
+  "keywords": [
+    "package install command",
+    "npm install",
+    "pnpm add",
+    "yarn add",
+    "copy command",
+    "package manager",
+    "React",
+    "Next.js",
+    "CLI installer"
+  ],
+  "og": {
+    "title": "Package Install Command · Zentauri UI",
+    "description": "A copyable install-command UI with package-manager tabs, themeable tokens, and an optional animated entry.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Package Install Command · Zentauri UI",
+    "description": "A copyable install-command UI with package-manager tabs, themeable tokens, and an optional animated entry.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/package-install-command",
+  "headings": {
+    "h1": "Package Install Command for displaying copyable install snippets",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the package install command component to show a copyable install command with tabs for npm, pnpm, yarn, and bun. Pass a package name via the packageName prop; the component builds the command for each package manager. defaultManager sets the initial tab, enableClipboard toggles the copy button, and appearance/size control chrome and text scale. The separate animated entry adds a fade-in preset via framer-motion.",
+  "useCases": [
+    "Show install commands in component documentation and onboarding guides.",
+    "Let users copy the right command for their package manager without manual conversion.",
+    "Display CLI init or add commands in a developer-tools landing page.",
+    "Embed copyable install snippets in blog posts and README files."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "Pass a package name through the packageName prop (e.g. \"react\" or \"@zentauri-ui/zentauri-components\"). The component builds the install command for each package manager and renders tabs for npm, pnpm, yarn, and bun. defaultManager sets the initial active tab, enableClipboard toggles the copy button, and appearance/size control chrome and text scale. The separate animated entry adds a fade preset for the command block."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The copy control is a real button with accessible labeling. The package-manager tabs use proper aria roles and keyboard navigation. Each state change (copied, tab selected) is communicated to assistive technology. The animated entry's motion is short and easing-based, so pair it with prefers-reduced-motion handling in your app where needed."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The static PackageInstallCommand entry ships no framer-motion and is safe in any Server or Client Component tree (it is a Client Component because the copy button manages local state). The animated PackageInstallCommandAnimated entry imports framer-motion, which is an optional peer dependency — install it only if you use the animated entry. Both render deterministically from the same command, so server and client output match and there is no hydration mismatch."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How do I change the package manager that is selected by default?",
+      "answer": "Use the defaultManager prop to set the initial active tab. It accepts \"npm\", \"pnpm\", \"yarn\", or \"bun\"."
+    },
+    {
+      "question": "Can I hide the package-manager tabs?",
+      "answer": "The tabs are always shown. There is no built-in prop to hide them. If you need a standalone copyable install command without tabs, compose the PackageInstallCommandTabs sub-component separately."
+    },
+    {
+      "question": "Do I need framer-motion?",
+      "answer": "Only for the animated entry. The default import from @zentauri-ui/zentauri-components/ui/package-install-command is framer-motion-free. Import PackageInstallCommandAnimated from the /animated subpath when you want the fade preset, and install framer-motion as a peer dependency."
+    },
+    {
+      "question": "How do I theme the command colors?",
+      "answer": "Override the --zui-package-install-command-* CSS variables (bg, fg, border, tab, copy-icon, and more) on :root, a theme selector, or a wrapper. Each variable ships a light fallback and a paired -dark variant for dark mode."
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { accordionCssVariables } from "./data/accordion";
+import { apiEndpointCardCssVariables } from "./data/api-endpoint-card";
 import { alertCssVariables } from "./data/alert";
 import { animatedNumberCssVariables } from "./data/animated-number";
 import { avatarCssVariables } from "./data/avatar";
@@ -7,7 +8,9 @@ import { breadcrumbCssVariables } from "./data/breadcrumb";
 import { buttonsCssVariables } from "./data/buttons";
 import { cardCssVariables } from "./data/card";
 import { checkboxCssVariables } from "./data/checkbox";
+import { codeBlockCssVariables } from "./data/code-block";
 import { codeDiffCssVariables } from "./data/code-diff";
+import { consoleViewerCssVariables } from "./data/console-viewer";
 import { comboboxCssVariables } from "./data/combobox";
 import { commandCssVariables } from "./data/command";
 import { contextMenuCssVariables } from "./data/context-menu";
@@ -27,10 +30,12 @@ import { httpRequestViewerCssVariables } from "./data/http-request-viewer";
 import { httpStatusBadgeCssVariables } from "./data/http-status-badge";
 import { requestTimelineViewerCssVariables } from "./data/request-timeline-viewer";
 import { kbdCssVariables } from "./data/kbd";
+import { logViewerCssVariables } from "./data/log-viewer";
 import { marqueeCssVariables } from "./data/marquee";
 import { modalCssVariables } from "./data/modal";
 import { networkStatusCssVariables } from "./data/network-status";
 import { otpInputCssVariables } from "./data/otp-input";
+import { packageInstallCommandCssVariables } from "./data/package-install-command";
 import { paginationCssVariables } from "./data/pagination";
 import { passwordStrengthMeterCssVariables } from "./data/password-strength-meter";
 import { popoverCssVariables } from "./data/popover";
@@ -70,7 +75,9 @@ export const cssVariableReferences = {
   buttons: buttonsCssVariables,
   card: cardCssVariables,
   checkbox: checkboxCssVariables,
+  "code-block": codeBlockCssVariables,
   "code-diff": codeDiffCssVariables,
+  "console-viewer": consoleViewerCssVariables,
   combobox: comboboxCssVariables,
   command: commandCssVariables,
   "context-menu": contextMenuCssVariables,
@@ -85,15 +92,18 @@ export const cssVariableReferences = {
   inputs: inputsCssVariables,
   "json-viewer": jsonViewerCssVariables,
   "terminal-emulator": terminalEmulatorCssVariables,
+  "api-endpoint-card": apiEndpointCardCssVariables,
   "api-response-viewer": apiResponseViewerCssVariables,
   "http-request-viewer": httpRequestViewerCssVariables,
   "http-status-badge": httpStatusBadgeCssVariables,
   "request-timeline-viewer": requestTimelineViewerCssVariables,
   kbd: kbdCssVariables,
+  "log-viewer": logViewerCssVariables,
   marquee: marqueeCssVariables,
   modal: modalCssVariables,
   "network-status": networkStatusCssVariables,
   "otp-input": otpInputCssVariables,
+  "package-install-command": packageInstallCommandCssVariables,
   pagination: paginationCssVariables,
   "password-strength-meter": passwordStrengthMeterCssVariables,
   popover: popoverCssVariables,

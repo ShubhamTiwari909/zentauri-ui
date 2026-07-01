@@ -5,6 +5,7 @@
     "accordion",
     "alert",
     "animated-number",
+    "api-endpoint-card",
     "api-response-viewer",
     "audio-player",
     "avatar",
@@ -13,9 +14,11 @@
     "buttons",
     "card",
     "checkbox",
+    "code-block",
     "code-diff",
     "combobox",
     "command",
+    "console-viewer",
     "context-menu",
     "copy-button",
     "data-table",
@@ -31,10 +34,12 @@
     "inputs",
     "json-viewer",
     "kbd",
+    "log-viewer",
     "marquee",
     "modal",
     "network-status",
     "otp-input",
+    "package-install-command",
     "pagination",
     "password-strength-meter",
     "popover",
@@ -67,13 +72,16 @@
   "animatedComponents": [
     "accordion",
     "alert",
+    "api-endpoint-card",
     "api-response-viewer",
     "avatar",
     "badge",
     "buttons",
     "card",
     "checkbox",
+    "code-block",
     "command",
+    "console-viewer",
     "copy-button",
     "divider",
     "drawer",
@@ -82,8 +90,10 @@
     "inputs",
     "json-viewer",
     "kbd",
+    "log-viewer",
     "modal",
     "network-status",
+    "package-install-command",
     "password-strength-meter",
     "popover",
     "progress",
@@ -161,6 +171,7 @@
     "animations/text-shimmer",
     "animations/tilt",
     "animations/wiggle",
+    "api-endpoint-card",
     "api-response-viewer",
     "audio-player",
     "avatar",
@@ -178,9 +189,11 @@
     "charts/scatter",
     "charts/stacked-bar",
     "checkbox",
+    "code-block",
     "code-diff",
     "combobox",
     "command",
+    "console-viewer",
     "context-menu",
     "copy-button",
     "data-table",
@@ -196,10 +209,12 @@
     "inputs",
     "json-viewer",
     "kbd",
+    "log-viewer",
     "marquee",
     "modal",
     "network-status",
     "otp-input",
+    "package-install-command",
     "pagination",
     "password-strength-meter",
     "popover",
@@ -350,6 +365,9 @@
     "animated-number": [
       "framer-motion"
     ],
+    "api-endpoint-card": [
+      "framer-motion"
+    ],
     "api-response-viewer": [
       "framer-motion"
     ],
@@ -369,7 +387,13 @@
     "checkbox": [
       "framer-motion"
     ],
+    "code-block": [
+      "framer-motion"
+    ],
     "command": [
+      "framer-motion"
+    ],
+    "console-viewer": [
       "framer-motion"
     ],
     "context-menu": [
@@ -403,10 +427,16 @@
     "kbd": [
       "framer-motion"
     ],
+    "log-viewer": [
+      "framer-motion"
+    ],
     "modal": [
       "framer-motion"
     ],
     "network-status": [
+      "framer-motion"
+    ],
+    "package-install-command": [
       "framer-motion"
     ],
     "password-strength-meter": [

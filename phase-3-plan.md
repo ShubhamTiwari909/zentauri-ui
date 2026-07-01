@@ -63,10 +63,10 @@ Provide reusable building blocks commonly recreated by frontend developers.
 - [x] Request Timeline Viewer
 - [x] Log Viewer
 - [x] Console Viewer
-- [x] Environment Variable Viewer
+- [ ] Environment Variable Viewer
 - [x] Package Install Command
 - [x] Code Block with Copy
-- [x] Multi Language Code Tabs
+- [ ] Multi Language Code Tabs
 - [ ] Stack Trace Viewer
 - [x] API Endpoint Card
 - [ ] OpenAPI Renderer

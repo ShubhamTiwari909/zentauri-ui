@@ -1,0 +1,77 @@
+{
+  "category": "Feedback",
+  "title": "Console Viewer component for React & Next.js",
+  "description": "Browser-style console output viewer for React and Next.js: filterable, collapsible log entries (log, info, warn, error, debug, dir, table, group) with grouped output, copy-to-clipboard, clear controls, themeable --zui-* tokens, and an optional animated entry.",
+  "keywords": [
+    "console viewer",
+    "console output",
+    "log viewer",
+    "browser console",
+    "React",
+    "Next.js",
+    "debug output",
+    "devtools console"
+  ],
+  "og": {
+    "title": "Console Viewer · Zentauri UI",
+    "description": "Browser-style console output viewer for React and Next.js with filtering, grouping, and copy support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Console Viewer · Zentauri UI",
+    "description": "Browser-style console output viewer for React and Next.js with filtering, grouping, and copy support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/console-viewer",
+  "headings": {
+    "h1": "Console Viewer for displaying browser-style console output",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the console viewer to render browser-style console output as a filterable, interactive widget. Pass an array of typed entries — log, info, warn, error, debug, dir, table, or group — and each renders with the appropriate icon and colour. Grouped entries can be collapsed/expanded. An optional toolbar lets users filter by entry type, clear the output, collapse all groups, or copy the full log to the clipboard.",
+  "useCases": [
+    "Display API response logs or error traces in developer documentation and debugging tools.",
+    "Render test runner output with pass/fail counts and expandable failure details.",
+    "Embed a live console preview in a code playground or interactive tutorial.",
+    "Show browser DevTools-style logging in onboarding wizards and admin dashboards."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "Pass the session through the entries prop as an array of { type, message, stack?, count?, children? } entries, where type is log, info, warn, error, debug, dir, table, group, groupCollapsed, or groupEnd. The toolbar provides filter toggles for each type, a Clear button, a Collapse/Expand all toggle, and a Copy button. appearance switches between default, subtle, contrast, and glass chrome, and size controls the monospace text scale. The separate animated entry adds stagger and fade reveal presets for the body."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The toolbar controls are real buttons with aria-pressed for filter toggles and aria-expanded for group toggles. Group collapse/expand buttons are exposed as interactive controls. The root and every entry carry data-slot attributes for styling and testing, and each entry exposes a data-type attribute reflecting its kind. Colours ship light and dark pairs that meet contrast on their surfaces; the animated entry's motion is short and easing-based, so pair it with prefers-reduced-motion handling in your app where needed."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The static ConsoleViewer entry ships no framer-motion and is safe in any Client Component tree (it manages local filter/clear state). The animated ConsoleViewerAnimated entry imports framer-motion, which is an optional peer dependency — install it only if you use the animated entry. Both render deterministically from the same entries, so server and client output match and there is no hydration mismatch."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How do I add grouped console output?",
+      "answer": "Use group or groupCollapsed entries with a children array containing the nested entries. End the group with a groupEnd entry. The viewer renders a toggle arrow and indents children; groupCollapsed starts closed by default."
+    },
+    {
+      "question": "Can I disable the toolbar controls?",
+      "answer": "Yes. Each toolbar feature has a boolean prop: enableFilter, enableClear, enableCollapseAll, and enableClipboard. Set any to false to hide the corresponding control from the toolbar."
+    },
+    {
+      "question": "Do I need framer-motion?",
+      "answer": "Only for the animated entry. The default import from @zentauri-ui/zentauri-components/ui/console-viewer is framer-motion-free. Import ConsoleViewerAnimated from the /animated subpath when you want the stagger or fade reveal, and install framer-motion as a peer dependency."
+    },
+    {
+      "question": "How do I theme the entry colours?",
+      "answer": "Override the --zui-console-viewer-* CSS variables (bg, fg, border, toolbar-bg, log-fg, info-fg, warn-fg, error-fg, debug-fg, dir-fg, table-fg, group-fg, group-end-fg, message-fg, meta-fg, group-line, empty-fg, count-fg, count-bg, and more) on :root, a theme selector, or a wrapper. Each variable ships a light fallback and a paired -dark variant for dark mode."
+    }
+  ]
+}

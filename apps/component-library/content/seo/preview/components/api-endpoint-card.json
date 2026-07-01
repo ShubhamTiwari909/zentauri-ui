@@ -1,0 +1,76 @@
+{
+  "category": "API",
+  "title": "API Endpoint Card component for React & Next.js",
+  "description": "Display API endpoint details in React and Next.js: an HTTP method badge, path, description, authentication indicator, and themeable --zui-* tokens.",
+  "keywords": [
+    "api endpoint card",
+    "http method",
+    "endpoint",
+    "React",
+    "Next.js",
+    "api documentation",
+    "route display"
+  ],
+  "og": {
+    "title": "API Endpoint Card · Zentauri UI",
+    "description": "Display API endpoint details for React and Next.js with an HTTP method badge, path, and authentication indicator.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "API Endpoint Card · Zentauri UI",
+    "description": "Display API endpoint details for React and Next.js with an HTTP method badge, path, and authentication indicator.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/api-endpoint-card",
+  "headings": {
+    "h1": "API Endpoint Card for documenting routes",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the API endpoint card to present an HTTP endpoint as a compact, scannable surface. A colored method badge identifies the HTTP verb, the path shows the route pattern with path parameters, an optional description explains the endpoint's purpose, and an authentication badge signals whether the endpoint requires auth.",
+  "useCases": [
+    "Document API routes in developer portals, internal tooling, and API reference docs.",
+    "List available endpoints in an API playground or interactive console.",
+    "Show route metadata in admin panels and back-office UIs.",
+    "Render endpoint summaries in generated API documentation sites."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "Pass the endpoint details as props: method drives the HTTP method badge color, path displays the route pattern, description provides context, and authenticated toggles an authentication badge. The method prop accepts GET, POST, PUT, PATCH, DELETE, HEAD, and OPTIONS."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The card renders with semantic markup and data-slot attributes for styling and testing. The method badge carries a data-method attribute reflecting the HTTP verb, and the authentication badge uses a data-authenticated attribute. Color is never the only signal — text labels accompany every visual indicator."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The static ApiEndpointCard entry ships no framer-motion and is safe in any Server or Client Component tree. It renders deterministically from the given props, so server and client output match and there is no hydration mismatch. Import it from @zentauri-ui/zentauri-components/ui/api-endpoint-card."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How is the method badge color chosen?",
+      "answer": "Each HTTP method maps to a distinct semantic color: GET is green, POST is blue, PUT is orange, PATCH is purple, DELETE is red, HEAD is cyan, and OPTIONS is slate. These colors route through the --zui-api-endpoint-card-* tokens with light and dark values."
+    },
+    {
+      "question": "Can I add an authentication indicator?",
+      "answer": "The component does not include a built-in authenticated prop. Add a description or tags to indicate auth requirements, or wrap the card with your own authentication badge."
+    },
+    {
+      "question": "Can I customize the path and description styles?",
+      "answer": "Yes. Override the --zui-api-endpoint-card-* CSS variables (path-fg, description-fg, and the per-method badge colors) on :root, a theme selector, or a wrapper. Each variable ships a light fallback and a paired -dark variant for dark mode."
+    },
+    {
+      "question": "Does it need framer-motion?",
+      "answer": "No. The API endpoint card is static and presentational with no animated entry, so it ships zero framer-motion and adds no motion dependency to your bundle."
+    }
+  ]
+}

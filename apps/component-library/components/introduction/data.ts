@@ -34,6 +34,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Data",
   },
   {
+    id: "api-endpoint-card",
+    name: "API Endpoint Card",
+    description:
+      "Display API endpoint details with method badges, path, description, tags, and expandable request/response examples.",
+    href: "/preview/components/api-endpoint-card",
+    badge: "Data",
+  },
+  {
     id: "audio-player",
     name: "Audio Player",
     description:
@@ -90,6 +98,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "code-block",
+    name: "Code Block",
+    description:
+      "A formatted code display with language label, optional line numbers, and a copy-to-clipboard button.",
+    href: "/preview/components/code-block",
+    badge: "Utility",
+  },
+  {
     id: "code-diff",
     name: "Code Diff",
     description:
@@ -104,6 +120,14 @@ export const componentsData: ComponentHighlight[] = [
       "Searchable single or multi-select dropdowns with keyboard navigation, filtering, disabled items, and controlled value support.",
     href: "/preview/components/combobox",
     badge: "Form",
+  },
+  {
+    id: "console-viewer",
+    name: "Console Viewer",
+    description:
+      "Browser DevTools-style console output with type icons, filter controls, group toggling, and count badges.",
+    href: "/preview/components/console-viewer",
+    badge: "Feedback",
   },
   {
     id: "command",
@@ -218,6 +242,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "log-viewer",
+    name: "Log Viewer",
+    description:
+      "Structured log viewer with level-filter toggles, search, timestamped entries, and a summary bar.",
+    href: "/preview/components/log-viewer",
+    badge: "Feedback",
+  },
+  {
     id: "kbd",
     name: "Kbd",
     description:
@@ -264,6 +296,14 @@ export const componentsData: ComponentHighlight[] = [
       "Segmented one-time code fields with paste fill, auto-advance, completion callbacks, and validation state.",
     href: "/preview/components/otp-input",
     badge: "Form",
+  },
+  {
+    id: "package-install-command",
+    name: "Package Install Command",
+    description:
+      "Copyable install-command UI with package-manager tabs, themeable appearances, and an optional animated entry.",
+    href: "/preview/components/package-install-command",
+    badge: "Utilities",
   },
   {
     id: "pagination",
