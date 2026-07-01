@@ -14,3 +14,18 @@ export const CODE_BLOCK_SIZES = [
   "md",
   "lg",
 ] as const satisfies readonly NonNullable<CodeBlockProps["size"]>[];
+
+export const CODE_BLOCK_SNIPPET = `import { useState } from "react";
+
+export function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </div>
+  );
+}`;

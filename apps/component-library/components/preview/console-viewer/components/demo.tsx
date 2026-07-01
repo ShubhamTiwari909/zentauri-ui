@@ -19,6 +19,7 @@ export function ConsoleViewerDemo(props: ConsoleViewerDemoProps) {
   if (animation === "none") {
     return (
       <ConsoleViewer
+        key={dataset}
         entries={entries}
         appearance={appearance}
         size={size}
@@ -31,6 +32,7 @@ export function ConsoleViewerDemo(props: ConsoleViewerDemoProps) {
   }
   return (
     <ConsoleViewerAnimated
+      key={dataset}
       entries={entries}
       appearance={appearance}
       size={size}

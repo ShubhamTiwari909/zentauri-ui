@@ -148,6 +148,10 @@ describe("log-viewer helpers", () => {
   it("formatLogTimestamp returns a formatted string", () => {
     const formatted = formatLogTimestamp("2025-06-01T10:00:00Z");
     expect(typeof formatted).toBe("string");
-    expect(formatted.length).toBeGreaterThan(0);
+    expect(formatted).toMatch(/^\w{3} \d{2}, \d{2}:\d{2}:\d{2}$/);
+    expect(formatted).toContain("Jun");
+    expect(formatted).toContain("01");
+    const timePart = formatted.split(", ")[1];
+    expect(timePart).toMatch(/^\d{2}:\d{2}:\d{2}$/);
   });
 });

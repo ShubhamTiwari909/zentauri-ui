@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { cn } from "../../../lib/utils";
@@ -40,10 +40,14 @@ export function PackageInstallCommandAnimated({
 }: PackageInstallCommandAnimatedProps) {
   const [manager, setManager] = useState<PackageManager>(defaultManager);
   const mergedLabels = { ...DEFAULT_LABELS, ...labels };
-  const { copied, copy } = useClipboard(2000);
+  const { copied, copy, reset } = useClipboard(2000);
   const preset = packageInstallCommandAnimationPresets[animation];
 
   const command = buildInstallCommand(packageName, manager);
+
+  useEffect(() => {
+    reset();
+  }, [command, reset]);
 
   const handleCopy = useCallback(async () => {
     await copy(command);

@@ -119,7 +119,7 @@ export function LogViewerAnimated({
         ) : (
           filteredEntries.map((entry, index) => (
             <motion.div
-              key={index}
+              key={`${String(entry.timestamp)}-${entry.level}-${entry.message}-${index}`}
               variants={isStagger ? logViewerEntryChildVariants : undefined}
               transition={preset.transition}
             >

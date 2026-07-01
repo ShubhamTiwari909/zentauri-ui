@@ -157,7 +157,11 @@ export function LogViewerHeader({
               type="text"
               data-slot="log-viewer-search-input"
               className={logViewerSearchInputVariants()}
-              placeholder={String(labels.searchPlaceholder)}
+              placeholder={
+                typeof labels.searchPlaceholder === "string"
+                  ? labels.searchPlaceholder
+                  : "Search logs\u2026"
+              }
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
             />

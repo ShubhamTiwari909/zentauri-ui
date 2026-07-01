@@ -61,8 +61,8 @@
       "answer": "Each HTTP method maps to a distinct semantic color: GET is green, POST is blue, PUT is orange, PATCH is purple, DELETE is red, HEAD is cyan, and OPTIONS is slate. These colors route through the --zui-api-endpoint-card-* tokens with light and dark values."
     },
     {
-      "question": "What is the authenticated prop for?",
-      "answer": "When authenticated is true, the card shows a small lock badge indicating the endpoint requires authentication. Set it to false to show an unlocked icon for public endpoints. The default is true."
+      "question": "Can I add an authentication indicator?",
+      "answer": "The component does not include a built-in authenticated prop. Add a description or tags to indicate auth requirements, or wrap the card with your own authentication badge."
     },
     {
       "question": "Can I customize the path and description styles?",

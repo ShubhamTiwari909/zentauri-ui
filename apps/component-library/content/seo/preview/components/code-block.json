@@ -1,12 +1,12 @@
 {
   "category": "Utilities",
   "title": "Code Block UI for React & Next.js apps",
-  "description": "Use the Code Block component in React and Next.js for syntax-highlighted code snippets with line numbers, language labels, and a clipboard copy button.",
+  "description": "Use the Code Block component in React and Next.js for displaying code snippets with line numbers, language labels, and a clipboard copy button.",
   "keywords": [
     "code block component",
     "React",
     "Next.js",
-    "syntax highlighting",
+    "code display",
     "code snippet",
     "clipboard",
     "Tailwind CSS",
@@ -14,12 +14,12 @@
   ],
   "og": {
     "title": "Code Block · Zentauri UI",
-    "description": "Use the Code Block component in React and Next.js for syntax-highlighted code snippets with line numbers, language labels, and a clipboard copy button.",
+    "description": "Use the Code Block component in React and Next.js for displaying code snippets with line numbers, language labels, and a clipboard copy button.",
     "type": "website"
   },
   "twitter": {
     "title": "Code Block · Zentauri UI",
-    "description": "Use the Code Block component in React and Next.js for syntax-highlighted code snippets with line numbers, language labels, and a clipboard copy button.",
+    "description": "Use the Code Block component in React and Next.js for displaying code snippets with line numbers, language labels, and a clipboard copy button.",
     "card": "summary_large_image"
   },
   "canonicalPath": "/preview/components/code-block",

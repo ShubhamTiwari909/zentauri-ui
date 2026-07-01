@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { cn } from "../../lib/utils";
 import { useClipboard } from "../../hooks/useClipboard";
@@ -59,10 +59,9 @@ export function PackageInstallCommandTabs({
           <button
             key={pm.name}
             type="button"
-            role="tab"
             data-slot="package-install-command-tab"
             data-active={active}
-            aria-selected={active}
+            aria-pressed={active}
             className={packageInstallCommandTabVariants({
               state: active ? "active" : "inactive",
             })}
@@ -100,9 +99,13 @@ export function PackageInstallCommandBase({
 }: PackageInstallCommandBaseProps) {
   const [manager, setManager] = useState<PackageManager>(defaultManager);
   const mergedLabels = { ...DEFAULT_LABELS, ...labels };
-  const { copied, copy } = useClipboard(2000);
+  const { copied, copy, reset } = useClipboard(2000);
 
   const command = buildInstallCommand(packageName, manager);
+
+  useEffect(() => {
+    reset();
+  }, [command, reset]);
 
   const handleCopy = useCallback(async () => {
     await copy(command);

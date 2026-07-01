@@ -229,7 +229,7 @@ export function ApiEndpointCardBase({
         examples &&
         examples.map((example, idx) => (
           <ApiEndpointCardExample
-            key={idx}
+            key={example.title ?? idx}
             example={example}
             labels={mergedLabels}
           />

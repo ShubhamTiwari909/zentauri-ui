@@ -186,7 +186,7 @@ export function ConsoleViewerAnimated({
         ) : (
           filteredEntries.map((entry, index) => (
             <motion.div
-              key={index}
+              key={`${entry.type}-${String(entry.message).slice(0, 40)}-${index}`}
               variants={isStagger ? consoleViewerEntryChildVariants : undefined}
               transition={preset.transition}
             >

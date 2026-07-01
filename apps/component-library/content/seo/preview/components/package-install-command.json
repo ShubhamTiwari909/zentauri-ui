@@ -35,7 +35,7 @@
       "FAQ"
     ]
   },
-  "intro": "Use the package install command component to show a copyable install command with tabs for npm, pnpm, and yarn. Pass the command string and toggle the package-manager tabs or the copy button with props. An appearance prop switches between default, subtle, contrast, and glass chrome, and size controls the text and spacing scale. The separate animated entry adds a fade-in preset via framer-motion.",
+  "intro": "Use the package install command component to show a copyable install command with tabs for npm, pnpm, yarn, and bun. Pass a package name via the packageName prop; the component builds the command for each package manager. defaultManager sets the initial tab, enableClipboard toggles the copy button, and appearance/size control chrome and text scale. The separate animated entry adds a fade-in preset via framer-motion.",
   "useCases": [
     "Show install commands in component documentation and onboarding guides.",
     "Let users copy the right command for their package manager without manual conversion.",
@@ -46,7 +46,7 @@
   "sections": [
     {
       "heading": "Composition and API",
-      "body": "Pass the command string through the command prop. The component renders it as a styled inline code block with an optional copy button and tabs for npm, pnpm, and yarn. The tabs prop toggles the package-manager row, and showCopy toggles the clipboard button. The appearance prop switches between default, subtle, contrast, and glass chrome, and size controls the monospace text scale. The separate animated entry adds a fade preset for the command block."
+      "body": "Pass a package name through the packageName prop (e.g. \"react\" or \"@zentauri-ui/zentauri-components\"). The component builds the install command for each package manager and renders tabs for npm, pnpm, yarn, and bun. defaultManager sets the initial active tab, enableClipboard toggles the copy button, and appearance/size control chrome and text scale. The separate animated entry adds a fade preset for the command block."
     },
     {
       "heading": "Accessibility",
@@ -60,11 +60,11 @@
   "faqs": [
     {
       "question": "How do I change the package manager that is selected by default?",
-      "answer": "Use the defaultPackageManager prop to set the initial active tab. It accepts \"npm\", \"pnpm\", or \"yarn\"."
+      "answer": "Use the defaultManager prop to set the initial active tab. It accepts \"npm\", \"pnpm\", \"yarn\", or \"bun\"."
     },
     {
       "question": "Can I hide the package-manager tabs?",
-      "answer": "Yes. Set showTabs={false} to render only the command and copy button without the tab row."
+      "answer": "The tabs are always shown. There is no built-in prop to hide them. If you need a standalone copyable install command without tabs, compose the PackageInstallCommandTabs sub-component separately."
     },
     {
       "question": "Do I need framer-motion?",

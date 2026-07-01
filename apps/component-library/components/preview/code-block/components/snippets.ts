@@ -1,21 +1,7 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 
 import type { CodeBlockAppearance, CodeBlockSize } from "./types";
-
-const CODE = `import { useState } from "react";
-
-export function Counter() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
-    </div>
-  );
-}`;
+import { CODE_BLOCK_SNIPPET as CODE } from "./data";
 
 export function codeBlockSnippet(
   appearance: CodeBlockAppearance,
