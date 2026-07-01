@@ -1,6 +1,7 @@
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import accordion from "@/content/seo/preview/components/accordion.json";
 import alert from "@/content/seo/preview/components/alert.json";
+import apiEndpointCard from "@/content/seo/preview/components/api-endpoint-card.json";
 import audioPlayer from "@/content/seo/preview/components/audio-player.json";
 import animations from "@/content/seo/preview/animations.json";
 import animatedNumber from "@/content/seo/preview/components/animated-number.json";
@@ -10,6 +11,7 @@ import breadcrumb from "@/content/seo/preview/components/breadcrumb.json";
 import buttons from "@/content/seo/preview/components/buttons.json";
 import card from "@/content/seo/preview/components/card.json";
 import checkbox from "@/content/seo/preview/components/checkbox.json";
+import codeBlock from "@/content/seo/preview/components/code-block.json";
 import codeDiff from "@/content/seo/preview/components/code-diff.json";
 import combobox from "@/content/seo/preview/components/combobox.json";
 import command from "@/content/seo/preview/components/command.json";
@@ -29,15 +31,18 @@ import index from "@/content/seo/preview/components/index.json";
 import inputs from "@/content/seo/preview/components/inputs.json";
 import installation from "@/content/seo/preview/components/installation.json";
 import jsonViewer from "@/content/seo/preview/components/json-viewer.json";
+import consoleViewer from "@/content/seo/preview/components/console-viewer.json";
 import terminalEmulator from "@/content/seo/preview/components/terminal-emulator.json";
 import apiResponseViewer from "@/content/seo/preview/components/api-response-viewer.json";
 import httpRequestViewer from "@/content/seo/preview/components/http-request-viewer.json";
 import httpStatusBadge from "@/content/seo/preview/components/http-status-badge.json";
 import requestTimelineViewer from "@/content/seo/preview/components/request-timeline-viewer.json";
+import logViewer from "@/content/seo/preview/components/log-viewer.json";
 import kbd from "@/content/seo/preview/components/kbd.json";
 import marquee from "@/content/seo/preview/components/marquee.json";
 import modal from "@/content/seo/preview/components/modal.json";
 import networkStatus from "@/content/seo/preview/components/network-status.json";
+import packageInstallCommand from "@/content/seo/preview/components/package-install-command.json";
 import otpInput from "@/content/seo/preview/components/otp-input.json";
 import pagination from "@/content/seo/preview/components/pagination.json";
 import passwordStrengthMeter from "@/content/seo/preview/components/password-strength-meter.json";
@@ -82,6 +87,7 @@ const previewSeoRegistry = {
   buttons: buttons as PreviewSeoDocument,
   card: card as PreviewSeoDocument,
   checkbox: checkbox as PreviewSeoDocument,
+  "code-block": codeBlock as PreviewSeoDocument,
   "code-diff": codeDiff as PreviewSeoDocument,
   combobox: combobox as PreviewSeoDocument,
   command: command as PreviewSeoDocument,
@@ -99,16 +105,20 @@ const previewSeoRegistry = {
   "hash-generator": hashGenerator as PreviewSeoDocument,
   inputs: inputs as PreviewSeoDocument,
   "json-viewer": jsonViewer as PreviewSeoDocument,
+  "console-viewer": consoleViewer as PreviewSeoDocument,
   "terminal-emulator": terminalEmulator as PreviewSeoDocument,
+  "api-endpoint-card": apiEndpointCard as PreviewSeoDocument,
   "api-response-viewer": apiResponseViewer as PreviewSeoDocument,
   "http-request-viewer": httpRequestViewer as PreviewSeoDocument,
   "http-status-badge": httpStatusBadge as PreviewSeoDocument,
   "request-timeline-viewer": requestTimelineViewer as PreviewSeoDocument,
+  "log-viewer": logViewer as PreviewSeoDocument,
   kbd: kbd as PreviewSeoDocument,
   marquee: marquee as PreviewSeoDocument,
   modal: modal as PreviewSeoDocument,
   "network-status": networkStatus as PreviewSeoDocument,
   "otp-input": otpInput as PreviewSeoDocument,
+  "package-install-command": packageInstallCommand as PreviewSeoDocument,
   pagination: pagination as PreviewSeoDocument,
   "password-strength-meter": passwordStrengthMeter as PreviewSeoDocument,
   popover: popover as PreviewSeoDocument,

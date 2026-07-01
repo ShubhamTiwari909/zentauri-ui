@@ -48,4 +48,34 @@ export const CLI_ADD_HOOK_COMMANDS = {
   yarn: "yarn dlx @zentauri-ui/zentauri-components add hook useWindowSize",
 } as const;
 
+export const CLI_ADD_PACKAGE_INSTALL_COMMAND_COMMANDS = {
+  npm: "npx @zentauri-ui/zentauri-components add package-install-command",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add package-install-command",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components add package-install-command",
+} as const;
+
+export const CLI_ADD_LOG_VIEWER_COMMANDS = {
+  npm: "npx @zentauri-ui/zentauri-components add log-viewer",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add log-viewer",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components add log-viewer",
+} as const;
+
+export const CLI_ADD_CONSOLE_VIEWER_COMMANDS = {
+  npm: "npx @zentauri-ui/zentauri-components add console-viewer",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add console-viewer",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components add console-viewer",
+} as const;
+
+export const CLI_ADD_CODE_BLOCK_COMMANDS = {
+  npm: "npx @zentauri-ui/zentauri-components add code-block",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add code-block",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components add code-block",
+} as const;
+
+export const CLI_ADD_API_ENDPOINT_CARD_COMMANDS = {
+  npm: "npx @zentauri-ui/zentauri-components add api-endpoint-card",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add api-endpoint-card",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components add api-endpoint-card",
+} as const;
+
 export type PackageManager = keyof typeof INSTALL_COMMANDS;

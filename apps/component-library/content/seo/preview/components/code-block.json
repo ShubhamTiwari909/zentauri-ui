@@ -1,0 +1,81 @@
+{
+  "category": "Utilities",
+  "title": "Code Block UI for React & Next.js apps",
+  "description": "Use the Code Block component in React and Next.js for syntax-highlighted code snippets with line numbers, language labels, and a clipboard copy button.",
+  "keywords": [
+    "code block component",
+    "React",
+    "Next.js",
+    "syntax highlighting",
+    "code snippet",
+    "clipboard",
+    "Tailwind CSS",
+    "design system"
+  ],
+  "og": {
+    "title": "Code Block · Zentauri UI",
+    "description": "Use the Code Block component in React and Next.js for syntax-highlighted code snippets with line numbers, language labels, and a clipboard copy button.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Code Block · Zentauri UI",
+    "description": "Use the Code Block component in React and Next.js for syntax-highlighted code snippets with line numbers, language labels, and a clipboard copy button.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/code-block",
+  "headings": {
+    "h1": "Code Block for inline code display",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "The Code Block component renders a code surface with a language badge, optional line numbers, and a built-in copy-to-clipboard button. Use it in docs, blogs, and anywhere you display source code.",
+  "useCases": [
+    "Documentation sites showing code samples with language labels.",
+    "Blog posts that embed syntax-highlighted snippets.",
+    "API response viewers that display JSON or XML payloads.",
+    "CLI output panels in web-based terminal emulators."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Code Block component work with Next.js App Router?",
+      "answer": "Yes. Import it like any other React component; it is a client component that uses hooks for clipboard functionality, so keep it in client boundaries."
+    },
+    {
+      "question": "Can I customize the code block appearance with Tailwind CSS?",
+      "answer": "Zentauri UI exposes appearance variants (default, subtle, contrast, glass) and size options. You can further extend styles with className or override the underlying --zui-code-block-* CSS variables."
+    },
+    {
+      "question": "Does the Code Block component include syntax highlighting?",
+      "answer": "The component displays raw code text without a syntax highlighter. Pair it with a library like Prism or Shiki for tokenized highlighting in your application."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Each Code Block renders a bordered surface with a header that shows an optional language label and a copy button, followed by a scrollable <pre> block.\n\nUse the showHeader and showLang props to toggle visibility of the header bar and the language badge independently."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Pass code as a string prop. Toggle line numbers with showLineNumbers and control clipboard behavior with enableClipboard.\n\nForward refs where you attach measurements or analytics. The component stamps data-slot attributes on every child element for easy custom styling."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The copy button is a native <button> with accessible labels. Line numbers are rendered as spans inside the <pre> element for screen reader compatibility.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and avoid pulling interactive overlays into unexpected server layouts.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

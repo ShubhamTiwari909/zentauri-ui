@@ -1,0 +1,79 @@
+{
+  "category": "Feedback",
+  "title": "Log Viewer component for React & Next.js",
+  "description": "Structured-log display surface for React and Next.js: level-filterable log stream with per-level color-coded badges, timestamp prefix, optional search and copy support, themeable --zui-* tokens, and an optional animated entry with fade/stagger presets.",
+  "keywords": [
+    "log viewer",
+    "log stream",
+    "structured logging",
+    "console logs",
+    "log level",
+    "React",
+    "Next.js",
+    "debug output",
+    "error logs",
+    "filterable logs"
+  ],
+  "og": {
+    "title": "Log Viewer · Zentauri UI",
+    "description": "Structured-log display surface for React and Next.js with level filters, search, and copy support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Log Viewer · Zentauri UI",
+    "description": "Structured-log display surface for React and Next.js with level filters, search, and copy support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/log-viewer",
+  "headings": {
+    "h1": "Log Viewer for displaying structured log streams",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the log viewer to display a structured, filterable stream of log entries. Pass an array of typed entries — each with a level, timestamp, message, optional meta, and optional stack trace — and the component renders each with the correct color-coded badge, formatted timestamp, and message. An optional header bar provides per-level filter toggles, a text search input, and a copy-to-clipboard button. A summary footer shows the filtered vs. total count.",
+  "useCases": [
+    "Show realtime or historical application logs in a developer dashboard or admin panel.",
+    "Render structured output from backend jobs, cron tasks, or CI pipelines.",
+    "Embed a filterable, searchable log stream in a monitoring or observability UI.",
+    "Display error traces with collapsible stack frames alongside contextual log entries."
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "Pass log entries through the entries prop as an array of { level, timestamp, message, meta?, stack? } objects, where level is error, warn, info, debug, verbose, or silly. Each level renders with its own color-coded badge background and foreground. The showHeader prop toggles the filter bar; within it, enableClipboard toggles the copy button and enableSearch toggles the text search input. showSummary toggles the footer count. appearance switches between default, subtle, contrast, and glass chrome, and size controls the font scale. The separate animated entry adds fade and stagger reveal presets for the body."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The filter buttons, copy control, and search input are real interactive elements. The timestamp and level badge are presentational text with no interactive role. Every element carries data-slot attributes for styling and testing, and each entry exposes a data-level attribute reflecting its severity. Color pairs meet contrast on their surfaces; the animated entry's motion is short and easing-based, so pair it with prefers-reduced-motion handling in your app where needed."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The static LogViewer entry ships no framer-motion and is safe in any Server or Client Component tree (it is a Client Component because the filter/search/copy controls manage local state). The animated LogViewerAnimated entry imports framer-motion, which is an optional peer dependency. Both render deterministically from the same entries, so server and client output match and there is no hydration mismatch."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How do I distinguish log levels visually?",
+      "answer": "Each entry carries a level badge rendered with its own color palette: error is red, warn is yellow, info is blue, debug is slate, verbose is purple, and silly is pink. All colors are driven by --zui-log-viewer-* CSS variables you can override."
+    },
+    {
+      "question": "Can I filter to show only certain levels?",
+      "answer": "Yes. The header bar renders a toggle button for each level. Click a button to hide that level from the list; at least one level must remain active. You can also set defaultActiveLevels to control the initial filter set."
+    },
+    {
+      "question": "Do I need framer-motion?",
+      "answer": "Only for the animated entry. The default import from @zentauri-ui/zentauri-components/ui/log-viewer is framer-motion-free. Import LogViewerAnimated from the /animated subpath when you want the fade or stagger reveal, and install framer-motion as a peer dependency."
+    },
+    {
+      "question": "How do I theme the log level colors?",
+      "answer": "Override the --zui-log-viewer-* CSS variables (bg, fg, border, header, filter colors, search colors, per-level badge colors, and more) on :root, a theme selector, or a wrapper. Each variable ships a light fallback and a paired -dark variant for dark mode."
+    }
+  ]
+}
