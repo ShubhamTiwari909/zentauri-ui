@@ -25,7 +25,7 @@ export type PackageInstallCommandBaseProps = VariantProps<
 > &
   Omit<ComponentPropsWithRef<"div">, "children"> & {
     /** Package name(s) to install, e.g. "react" or "react react-dom". */
-    package: string;
+    packageName: string;
     /** Currently selected package manager. */
     defaultManager?: PackageManager;
     /** Show a copy button that copies the install command. */

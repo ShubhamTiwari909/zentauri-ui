@@ -87,5 +87,5 @@ export const consoleViewerCssVariables = defineCssVariableReference({
     ["console-viewer-count-fg-dark", "#ffffff"],
     ["console-viewer-count-bg-dark", "#3b82f6"],
   ],
-  darkVariableCount: 27,
+  darkVariableCount: 26,
 });

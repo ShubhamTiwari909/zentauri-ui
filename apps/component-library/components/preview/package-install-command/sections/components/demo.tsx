@@ -18,7 +18,7 @@ export function PackageInstallCommandDemo(
   if (animation === "none") {
     return (
       <PackageInstallCommand
-        package={pkg}
+        packageName={pkg}
         appearance={appearance}
         size={size}
         enableClipboard={enableClipboard}
@@ -28,7 +28,7 @@ export function PackageInstallCommandDemo(
 
   return (
     <PackageInstallCommandAnimated
-      package={pkg}
+      packageName={pkg}
       appearance={appearance}
       size={size}
       enableClipboard={enableClipboard}

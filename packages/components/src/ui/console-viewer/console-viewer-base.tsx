@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { cn } from "../../lib/utils";
 import { useClipboard } from "../../hooks/useClipboard";
@@ -165,27 +165,38 @@ export function ConsoleViewerToolbar({
               {TYPE_ICONS[type]} {type}
             </button>
           ))}
-          {(activeFilters.has("group") ||
-            activeFilters.has("groupCollapsed") ||
-            activeFilters.has("groupEnd")) && (
-            <button
-              type="button"
-              data-slot="console-viewer-filter-btn"
-              data-type="group"
-              data-active={true}
-              className={cn(
-                consoleViewerActionVariants(),
+          <button
+            type="button"
+            data-slot="console-viewer-filter-btn"
+            data-type="group"
+            data-active={
+              activeFilters.has("group") ||
+              activeFilters.has("groupCollapsed") ||
+              activeFilters.has("groupEnd")
+            }
+            className={cn(
+              consoleViewerActionVariants(),
+              (activeFilters.has("group") ||
+                activeFilters.has("groupCollapsed") ||
+                activeFilters.has("groupEnd")) &&
                 zuiConsoleViewerActionActive,
-              )}
-              onClick={() => {
-                ["group", "groupCollapsed", "groupEnd"].forEach((t) => {
-                  onToggleFilter(t as ConsoleEntryType);
-                });
-              }}
-            >
-              {"\u25B6\uFE0F"} group
-            </button>
-          )}
+            )}
+            onClick={() => {
+              const isGroupActive = activeFilters.has("group");
+              (["group", "groupCollapsed", "groupEnd"] as const).forEach(
+                (t) => {
+                  const hasT = activeFilters.has(t);
+                  if (isGroupActive && hasT) {
+                    onToggleFilter(t);
+                  } else if (!isGroupActive && !hasT) {
+                    onToggleFilter(t);
+                  }
+                },
+              );
+            }}
+          >
+            {"\u25B6\uFE0F"} group
+          </button>
         </div>
       )}
       <div className="ml-auto flex items-center gap-1">
@@ -258,6 +269,10 @@ export function ConsoleViewerEntry({
   const startCollapsed =
     defaultCollapsed === true || entry.type === "groupCollapsed";
   const [expanded, setExpanded] = useState(!startCollapsed);
+
+  useEffect(() => {
+    setExpanded(!startCollapsed);
+  }, [startCollapsed]);
 
   const indentStyle =
     depth > 0

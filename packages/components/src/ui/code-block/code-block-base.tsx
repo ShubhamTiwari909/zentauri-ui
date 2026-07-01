@@ -79,7 +79,7 @@ export function CodeBlockCode({
   return (
     <code data-slot="code-block-code">
       {lines.map((line, index) => (
-        <div key={index} data-slot="code-block-line" className="flex">
+        <span key={index} data-slot="code-block-line" className="flex">
           <span
             data-slot="code-block-line-number"
             className={zuiCodeBlockLineNumber}
@@ -89,7 +89,7 @@ export function CodeBlockCode({
           <span data-slot="code-block-line-content" className="pl-3">
             {line || "\u00A0"}
           </span>
-        </div>
+        </span>
       ))}
     </code>
   );

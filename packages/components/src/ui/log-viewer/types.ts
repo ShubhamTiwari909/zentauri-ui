@@ -18,7 +18,6 @@ export type LogEntry = {
 export interface LogViewerLabels {
   copy?: ReactNode;
   copied?: ReactNode;
-  filterLabel?: ReactNode;
   noLogs?: ReactNode;
   searchPlaceholder?: ReactNode;
   showing?: ReactNode;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 
 import { cn } from "../../../lib/utils";
@@ -107,6 +107,10 @@ export function ConsoleViewerAnimated({
   });
   const [localEntries, setLocalEntries] = useState<ConsoleEntry[]>(entries);
   const [allCollapsed, setAllCollapsed] = useState(initiallyCollapsed ?? false);
+
+  useEffect(() => {
+    setLocalEntries(entries);
+  }, [entries]);
 
   const getCopyText = useCallback(
     () => collectAllMessages(localEntries),

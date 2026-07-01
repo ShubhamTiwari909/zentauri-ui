@@ -59,8 +59,10 @@ export function PackageInstallCommandTabs({
           <button
             key={pm.name}
             type="button"
+            role="tab"
             data-slot="package-install-command-tab"
             data-active={active}
+            aria-selected={active}
             className={packageInstallCommandTabVariants({
               state: active ? "active" : "inactive",
             })}
@@ -86,7 +88,7 @@ export function PackageInstallCommandCode({ command }: { command: string }) {
 }
 
 export function PackageInstallCommandBase({
-  package: pkg,
+  packageName,
   appearance,
   size,
   defaultManager = "npm",
@@ -100,7 +102,7 @@ export function PackageInstallCommandBase({
   const mergedLabels = { ...DEFAULT_LABELS, ...labels };
   const { copied, copy } = useClipboard(2000);
 
-  const command = buildInstallCommand(pkg, manager);
+  const command = buildInstallCommand(packageName, manager);
 
   const handleCopy = useCallback(async () => {
     await copy(command);

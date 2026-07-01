@@ -27,7 +27,7 @@ const DEFAULT_LABELS: Required<PackageInstallCommandLabels> = {
 };
 
 export function PackageInstallCommandAnimated({
-  package: pkg,
+  packageName,
   appearance,
   size,
   defaultManager = "npm",
@@ -43,7 +43,7 @@ export function PackageInstallCommandAnimated({
   const { copied, copy } = useClipboard(2000);
   const preset = packageInstallCommandAnimationPresets[animation];
 
-  const command = buildInstallCommand(pkg, manager);
+  const command = buildInstallCommand(packageName, manager);
 
   const handleCopy = useCallback(async () => {
     await copy(command);

@@ -49,7 +49,7 @@ export const zuiLogViewerSearchBase =
   "flex items-center gap-1 rounded-md border px-2 py-1 border-[color:var(--zui-log-viewer-search-border,var(--zui-border,#0000001a))] dark:border-[color:var(--zui-log-viewer-search-border-dark,var(--zui-border-dark,#ffffff1a))] bg-[var(--zui-log-viewer-search-bg,var(--zui-surface,oklch(98.4%_0.003_247.858)))] dark:bg-[var(--zui-log-viewer-search-bg-dark,var(--zui-surface-dark,oklch(12.9%_0.042_264.695)))]";
 
 export const zuiLogViewerSearchInput =
-  "w-full sm:w-32 border-none bg-transparent p-0 text-xs outline-none text-[color:var(--zui-log-viewer-search-fg,var(--zui-fg,oklch(20.8%_0.042_265.755)))] dark:text-[color:var(--zui-log-viewer-search-fg-dark,var(--zui-fg-dark,oklch(98.4%_0.003_247.858)))] placeholder:text-[color:var(--zui-log-viewer-search-placeholder,#94a3b8)] dark:placeholder:text-[color:var(--zui-log-viewer-search-placeholder-dark,#64748b)]";
+  "w-full sm:w-32 border-none bg-transparent p-0 text-xs outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--zui-log-viewer-action-fg,var(--zui-fg-muted,oklch(44.6%_0.043_257.281)))] dark:focus-visible:ring-[color:var(--zui-log-viewer-action-fg-dark,var(--zui-fg-muted-dark,oklch(86.9%_0.022_252.894)))] text-[color:var(--zui-log-viewer-search-fg,var(--zui-fg,oklch(20.8%_0.042_265.755)))] dark:text-[color:var(--zui-log-viewer-search-fg-dark,var(--zui-fg-dark,oklch(98.4%_0.003_247.858)))] placeholder:text-[color:var(--zui-log-viewer-search-placeholder,#94a3b8)] dark:placeholder:text-[color:var(--zui-log-viewer-search-placeholder-dark,#64748b)]";
 
 /** Copy action button. */
 export const zuiLogViewerActionBase =

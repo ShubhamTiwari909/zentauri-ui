@@ -47,7 +47,7 @@
   "sections": [
     {
       "heading": "Composition and API",
-      "body": "Pass log entries through the entries prop as an array of { level, timestamp, message, meta?, stack? } objects, where level is error, warn, info, debug, verbose, or silly. Each level renders with its own color-coded badge background and foreground. The showHeader prop toggles the filter bar; within it, enableClipboard toggles the copy button and enableSearch toggles the text search input. showSummary toggles the footer count. appearance switches between default, subtle, contrast, and glass chrome, and size controls the font scale. The separate animated entry adds fade and stagger reveal presets for the body."
+      "body": "Pass log entries through the entries prop as an array of { level, timestamp, message, meta?, stack? } objects, where level is error, warn, info, debug, or verbose. Each level renders with its own color-coded badge background and foreground. The showHeader prop toggles the filter bar; within it, enableClipboard toggles the copy button and enableSearch toggles the text search input. showSummary toggles the footer count. appearance switches between default, subtle, contrast, and glass chrome, and size controls the font scale. The separate animated entry adds fade and stagger reveal presets for the body."
     },
     {
       "heading": "Accessibility",
@@ -61,7 +61,7 @@
   "faqs": [
     {
       "question": "How do I distinguish log levels visually?",
-      "answer": "Each entry carries a level badge rendered with its own color palette: error is red, warn is yellow, info is blue, debug is slate, verbose is purple, and silly is pink. All colors are driven by --zui-log-viewer-* CSS variables you can override."
+      "answer": "Each entry carries a level badge rendered with its own color palette: error is red, warn is yellow, info is blue, debug is slate, and verbose is purple. All colors are driven by --zui-log-viewer-* CSS variables you can override."
     },
     {
       "question": "Can I filter to show only certain levels?",

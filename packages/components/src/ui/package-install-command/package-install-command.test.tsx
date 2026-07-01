@@ -11,7 +11,7 @@ describe("PackageInstallCommand", () => {
   });
 
   it("should stamp data-slot on the root container", () => {
-    const { container } = render(<PackageInstallCommand package="react" />);
+    const { container } = render(<PackageInstallCommand packageName="react" />);
     expect(
       container.querySelector('[data-slot="package-install-command"]'),
     ).toBeTruthy();
@@ -27,7 +27,7 @@ describe("PackageInstallCommand", () => {
   });
 
   it("should render the npm install command by default", () => {
-    const { container } = render(<PackageInstallCommand package="react" />);
+    const { container } = render(<PackageInstallCommand packageName="react" />);
     const code = container.querySelector(
       '[data-slot="package-install-command-code"]',
     );
@@ -35,7 +35,7 @@ describe("PackageInstallCommand", () => {
   });
 
   it("should render pnpm command when switching to pnpm tab", () => {
-    const { container } = render(<PackageInstallCommand package="react" />);
+    const { container } = render(<PackageInstallCommand packageName="react" />);
     const pnpmTab = [
       ...container.querySelectorAll(
         '[data-slot="package-install-command-tab"]',
@@ -49,7 +49,7 @@ describe("PackageInstallCommand", () => {
   });
 
   it("should render yarn command when switching to yarn tab", () => {
-    const { container } = render(<PackageInstallCommand package="react" />);
+    const { container } = render(<PackageInstallCommand packageName="react" />);
     const yarnTab = [
       ...container.querySelectorAll(
         '[data-slot="package-install-command-tab"]',
@@ -63,7 +63,7 @@ describe("PackageInstallCommand", () => {
   });
 
   it("should render bun command when switching to bun tab", () => {
-    const { container } = render(<PackageInstallCommand package="react" />);
+    const { container } = render(<PackageInstallCommand packageName="react" />);
     const bunTab = [
       ...container.querySelectorAll(
         '[data-slot="package-install-command-tab"]',
@@ -77,7 +77,7 @@ describe("PackageInstallCommand", () => {
   });
 
   it("should set the active tab data-active attribute", () => {
-    const { container } = render(<PackageInstallCommand package="react" />);
+    const { container } = render(<PackageInstallCommand packageName="react" />);
     const npmTab = [
       ...container.querySelectorAll(
         '[data-slot="package-install-command-tab"]',
@@ -88,7 +88,7 @@ describe("PackageInstallCommand", () => {
 
   it("should render with a custom defaultManager", () => {
     const { container } = render(
-      <PackageInstallCommand package="react" defaultManager="pnpm" />,
+      <PackageInstallCommand packageName="react" defaultManager="pnpm" />,
     );
     const pnpmTab = [
       ...container.querySelectorAll(
@@ -104,7 +104,7 @@ describe("PackageInstallCommand", () => {
 
   it("should handle multiple packages", () => {
     const { container } = render(
-      <PackageInstallCommand package="react react-dom" />,
+      <PackageInstallCommand packageName="react react-dom" />,
     );
     const code = container.querySelector(
       '[data-slot="package-install-command-code"]',
@@ -113,7 +113,7 @@ describe("PackageInstallCommand", () => {
   });
 
   it("should show the copy button by default", () => {
-    const { container } = render(<PackageInstallCommand package="react" />);
+    const { container } = render(<PackageInstallCommand packageName="react" />);
     expect(
       container.querySelector('[data-slot="package-install-command-copy"]'),
     ).toBeTruthy();
@@ -121,7 +121,7 @@ describe("PackageInstallCommand", () => {
 
   it("should hide the copy button when enableClipboard is false", () => {
     const { container } = render(
-      <PackageInstallCommand package="react" enableClipboard={false} />,
+      <PackageInstallCommand packageName="react" enableClipboard={false} />,
     );
     expect(
       container.querySelector('[data-slot="package-install-command-copy"]'),
@@ -130,7 +130,7 @@ describe("PackageInstallCommand", () => {
 
   it("should forward refs to the root element", () => {
     const ref = createRef<HTMLDivElement>();
-    render(<PackageInstallCommand package="react" ref={ref} />);
+    render(<PackageInstallCommand packageName="react" ref={ref} />);
     expect(ref.current).toBeInstanceOf(HTMLElement);
     expect(ref.current?.getAttribute("data-slot")).toBe(
       "package-install-command",
@@ -139,7 +139,7 @@ describe("PackageInstallCommand", () => {
 
   it("should apply custom className", () => {
     const { container } = render(
-      <PackageInstallCommand package="react" className="custom-class" />,
+      <PackageInstallCommand packageName="react" className="custom-class" />,
     );
     const root = container.querySelector(
       '[data-slot="package-install-command"]',

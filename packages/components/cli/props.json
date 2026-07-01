@@ -11366,7 +11366,7 @@
               "deprecated": false
             },
             {
-              "name": "package",
+              "name": "packageName",
               "type": "string",
               "required": true,
               "group": "behavior",
@@ -11477,7 +11477,7 @@
               "deprecated": false
             },
             {
-              "name": "package",
+              "name": "packageName",
               "type": "string",
               "required": true,
               "group": "behavior",

@@ -54,5 +54,5 @@ export const apiEndpointCardCssVariables = defineCssVariableReference({
     ["api-endpoint-card-method-options-fg-dark", "#cbd5e1"],
     ["api-endpoint-card-method-options-bg-dark", "#1e293b4d"],
   ],
-  darkVariableCount: 22,
+  darkVariableCount: 23,
 });

@@ -35,9 +35,9 @@ export const API_METHODS: readonly ApiEndpointMethod[] = [
 type MethodTone = keyof typeof zuiApiEndpointCardMethodTones;
 
 export function apiMethodTone(method: string): MethodTone {
-  const upper = String(method).toUpperCase() as MethodTone;
+  const upper = String(method).toUpperCase();
   if (upper in zuiApiEndpointCardMethodTones) {
-    return upper;
+    return upper as MethodTone;
   }
   return "neutral";
 }

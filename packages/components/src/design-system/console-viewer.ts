@@ -39,7 +39,7 @@ export const zuiConsoleViewerToolbarBase =
 
 /** Toolbar action button. */
 export const zuiConsoleViewerActionBase =
-  "inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium transition-colors cursor-pointer text-[color:var(--zui-console-viewer-action-fg,var(--zui-fg-muted,oklch(44.6%_0.043_257.281)))] dark:text-[color:var(--zui-console-viewer-action-fg-dark,var(--zui-fg-muted-dark,oklch(86.9%_0.022_252.894)))] hover:bg-[var(--zui-console-viewer-action-hover-bg,#0000000d)] dark:hover:bg-[var(--zui-console-viewer-action-hover-bg-dark,#ffffff14)] focus-visible:outline-none focus-visible:ring-2";
+  "inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium transition-colors cursor-pointer text-[color:var(--zui-console-viewer-action-fg,var(--zui-fg-muted,oklch(44.6%_0.043_257.281)))] dark:text-[color:var(--zui-console-viewer-action-fg-dark,var(--zui-fg-muted-dark,oklch(86.9%_0.022_252.894)))] hover:bg-[var(--zui-console-viewer-action-hover-bg,#0000000d)] dark:hover:bg-[var(--zui-console-viewer-action-hover-bg-dark,#ffffff14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--zui-console-viewer-action-fg,var(--zui-fg-muted,oklch(44.6%_0.043_257.281)))] dark:focus-visible:ring-[color:var(--zui-console-viewer-action-fg-dark,var(--zui-fg-muted-dark,oklch(86.9%_0.022_252.894)))]";
 
 export const zuiConsoleViewerActionActive =
   "bg-[var(--zui-console-viewer-action-active-bg,#0000000d)] dark:bg-[var(--zui-console-viewer-action-active-bg-dark,#ffffff14)]";

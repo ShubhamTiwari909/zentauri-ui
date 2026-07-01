@@ -35,7 +35,6 @@ const ALL_LEVELS: LogLevel[] = ["error", "warn", "info", "debug", "verbose"];
 const DEFAULT_LABELS: Required<LogViewerLabels> = {
   copy: "Copy",
   copied: "Copied",
-  filterLabel: "Level",
   noLogs: "No log entries",
   searchPlaceholder: "Search logs\u2026",
   showing: "Showing",
