@@ -12,6 +12,12 @@
         "--filter=component-library"
       ],
       "autoPort": true
+    },
+    {
+      "name": "zentauri-blogs",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter=zentauri-blogs", "dev"],
+      "autoPort": true
     }
   ]
 }
