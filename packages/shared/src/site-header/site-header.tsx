@@ -137,7 +137,9 @@ export function SiteHeader({
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:ml-0">
-          <SearchOpenButton className={iconButtonClassName} />
+          {SearchOpenButton ? (
+            <SearchOpenButton className={iconButtonClassName} />
+          ) : null}
           <div className="sm:hidden">
             <SiteHeaderMobile navItems={navItems} />
           </div>

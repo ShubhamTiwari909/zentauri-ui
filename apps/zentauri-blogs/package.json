@@ -24,6 +24,7 @@
     "@payloadcms/storage-uploadthing": "^3.85.1",
     "@payloadcms/ui": "3.85.1",
     "@tailwindcss/postcss": "^4.2.2",
+    "@zentauri-ui/shared": "workspace:*",
     "@zentauri-ui/zentauri-components": "workspace:*",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",

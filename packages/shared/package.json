@@ -8,7 +8,8 @@
   },
   "exports": {
     ".": "./src/index.ts",
-    "./site-header": "./src/site-header/index.ts"
+    "./site-header": "./src/site-header/index.ts",
+    "./site-footer": "./src/site-footer/index.ts"
   },
   "dependencies": {
     "@zentauri-ui/zentauri-components": "workspace:*",

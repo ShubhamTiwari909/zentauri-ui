@@ -18,7 +18,7 @@ export function BlockRenderer({ blocks }: { blocks: Page["layout"] }) {
           <section
             key={section.id ?? index}
             id={section.sectionId ?? undefined}
-            className="mx-auto w-full max-w-3xl px-4 py-8 text-white"
+            className="mx-auto w-full max-w-5xl px-4 py-8 text-white"
           >
             <RichTextRenderer content={section.content} />
           </section>

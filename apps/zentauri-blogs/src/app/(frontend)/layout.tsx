@@ -1,4 +1,6 @@
 import React from "react";
+import { SiteFooter } from "./components/common/site-footer";
+import { SiteHeader } from "./components/common/site-header";
 import "./styles.css";
 
 export const metadata = {
@@ -11,7 +13,11 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en" data-theme="dark">
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
