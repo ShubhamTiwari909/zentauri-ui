@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+/* Scan the component library so its utility classes (light + dark: pairs)
+   are generated. Required because the package ships class strings, not CSS. */
+@source "../../../node_modules/@zentauri-ui/zentauri-components";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

@@ -9,6 +9,7 @@ import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
 import { Pages } from "./collections/Pages";
+import { allBlocks } from "./blocks";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -21,6 +22,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Pages],
+  blocks: allBlocks,
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

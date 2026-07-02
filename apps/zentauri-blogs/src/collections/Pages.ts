@@ -63,6 +63,15 @@ export const Pages: CollectionConfig = {
       },
       index: true,
     },
+    {
+      name: "layout",
+      type: "blocks",
+      blockReferences: ["section"],
+      blocks: [],
+      admin: {
+        description: "Page content is composed of Section blocks",
+      },
+    },
   ],
   versions: {
     drafts: true,

@@ -3,6 +3,7 @@ import { getPayload } from "payload";
 import config from "@payload-config";
 import { notFound } from "next/navigation";
 import { RefreshRouteOnSave } from "@/app/components/RefreshRouteOnSave";
+import { BlockRenderer } from "../components/blocks/BlockRenderer";
 
 export default async function Page({
   params,
@@ -18,7 +19,7 @@ export default async function Page({
   const page = await payload
     .find({
       collection: "pages",
-      depth: 0,
+      depth: 2,
       draft: isDraftMode,
       limit: 1,
       overrideAccess: isDraftMode,
@@ -35,9 +36,13 @@ export default async function Page({
   }
 
   return (
-    <main>
+    <main className="bg-slate-900">
       <RefreshRouteOnSave />
-      <h1>{page?.title}</h1>
+      {page.layout?.length ? (
+        <BlockRenderer blocks={page.layout} />
+      ) : (
+        <h1>{page.title}</h1>
+      )}
     </main>
   );
 }

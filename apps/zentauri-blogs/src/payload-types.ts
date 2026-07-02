@@ -65,7 +65,19 @@ export interface Config {
   auth: {
     users: UserAuthOperations;
   };
-  blocks: {};
+  blocks: {
+    section: SectionBlock;
+    text: TextBlock;
+    spacer: SpacerBlock;
+    code: CodeBlock;
+    row: RowBlock;
+    accordion: AccordionBlock;
+    button: ButtonBlock;
+    alert: AlertBlock;
+    badge: BadgeBlock;
+    card: CardBlock;
+    divider: DividerBlock;
+  };
   collections: {
     users: User;
     media: Media;
@@ -127,6 +139,625 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionBlock".
+ */
+export interface SectionBlock {
+  /**
+   * Optional anchor id for in-page links (lowercase letters, numbers, and hyphens only)
+   */
+  sectionId?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "section";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextBlock".
+ */
+export interface TextBlock {
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "text";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SpacerBlock".
+ */
+export interface SpacerBlock {
+  height:
+    | "0"
+    | "4"
+    | "8"
+    | "12"
+    | "16"
+    | "20"
+    | "24"
+    | "32"
+    | "40"
+    | "48"
+    | "60"
+    | "64"
+    | "80"
+    | "90"
+    | "100"
+    | "120"
+    | "140"
+    | "160"
+    | "180"
+    | "200";
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "spacer";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CodeBlock".
+ */
+export interface CodeBlock {
+  language:
+    | "typescript"
+    | "tsx"
+    | "javascript"
+    | "jsx"
+    | "css"
+    | "html"
+    | "json"
+    | "bash"
+    | "markdown"
+    | "plaintext";
+  code: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "code";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RowBlock".
+ */
+export interface RowBlock {
+  /**
+   * Each item is a flex child of the row
+   */
+  items: (
+    | TextBlock
+    | SpacerBlock
+    | CodeBlock
+    | AccordionBlock
+    | ButtonBlock
+    | AlertBlock
+    | BadgeBlock
+    | CardBlock
+    | DividerBlock
+  )[];
+  gap:
+    | "0"
+    | "4"
+    | "8"
+    | "12"
+    | "16"
+    | "20"
+    | "24"
+    | "32"
+    | "40"
+    | "48"
+    | "60"
+    | "64"
+    | "80"
+    | "90"
+    | "100";
+  /**
+   * justify-content
+   */
+  horizontalAlign?:
+    | (
+        | "flex-start"
+        | "center"
+        | "flex-end"
+        | "space-between"
+        | "space-around"
+        | "space-evenly"
+      )
+    | null;
+  /**
+   * align-items
+   */
+  verticalAlign?:
+    | ("stretch" | "flex-start" | "center" | "flex-end" | "baseline")
+    | null;
+  /**
+   * Render as a column on mobile viewports
+   */
+  stackOnMobile?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "row";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AccordionBlock".
+ */
+export interface AccordionBlock {
+  accordions?:
+    | {
+        appearance?:
+          | (
+              | "default"
+              | "outline"
+              | "ghost"
+              | "card"
+              | "separated"
+              | "blue"
+              | "cyan"
+              | "green"
+              | "lime"
+              | "mint"
+              | "ocean"
+              | "sapphire"
+              | "lavender"
+              | "ruby"
+              | "red"
+              | "slate"
+              | "zinc"
+              | "stone"
+              | "royal"
+              | "electric"
+              | "forest"
+              | "sunset"
+              | "magenta"
+              | "crimson"
+              | "aqua"
+              | "plum"
+              | "sky"
+              | "rose"
+              | "purple"
+              | "pink"
+              | "orange"
+              | "yellow"
+              | "teal"
+              | "indigo"
+              | "emerald"
+              | "gradient-blue"
+              | "gradient-green"
+              | "gradient-red"
+              | "gradient-yellow"
+              | "gradient-purple"
+              | "gradient-teal"
+              | "gradient-indigo"
+              | "gradient-pink"
+              | "gradient-orange"
+            )
+          | null;
+        size?: ("sm" | "md" | "lg") | null;
+        items: {
+          /**
+           * Trigger text
+           */
+          label: string;
+          content: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ("ltr" | "rtl") | null;
+              format:
+                | "left"
+                | "start"
+                | "center"
+                | "right"
+                | "end"
+                | "justify"
+                | "";
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
+          id?: string | null;
+        }[];
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "accordion";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ButtonBlock".
+ */
+export interface ButtonBlock {
+  label: string;
+  appearance?:
+    | (
+        | "default"
+        | "secondary"
+        | "destructive"
+        | "outline"
+        | "ghost"
+        | "link"
+        | "glass"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+        | "emerald"
+        | "indigo"
+        | "purple"
+        | "pink"
+        | "rose"
+        | "sky"
+        | "teal"
+        | "yellow"
+        | "orange"
+        | "gray"
+        | "amber"
+        | "violet"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+      )
+    | null;
+  size?:
+    | (
+        | "sm"
+        | "md"
+        | "lg"
+        | "xl"
+        | "2xl"
+        | "3xl"
+        | "4xl"
+        | "5xl"
+        | "6xl"
+        | "7xl"
+        | "8xl"
+        | "9xl"
+        | "10xl"
+        | "icon"
+      )
+    | null;
+  as: "button" | "link";
+  href?: string | null;
+  target?: ("_self" | "_blank") | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "button";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AlertBlock".
+ */
+export interface AlertBlock {
+  appearance?:
+    | (
+        | "default"
+        | "success"
+        | "warning"
+        | "error"
+        | "info"
+        | "ghost"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "gray"
+        | "violet"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+      )
+    | null;
+  size?: ("sm" | "md" | "lg") | null;
+  closable?: boolean | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "alert";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BadgeBlock".
+ */
+export interface BadgeBlock {
+  label: string;
+  appearance?:
+    | (
+        | "default"
+        | "secondary"
+        | "destructive"
+        | "outline"
+        | "ghost"
+        | "glass"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+        | "emerald"
+        | "indigo"
+        | "purple"
+        | "pink"
+        | "rose"
+        | "sky"
+        | "teal"
+        | "yellow"
+        | "orange"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+      )
+    | null;
+  size?: ("sm" | "md" | "lg") | null;
+  shape?: ("pill" | "square" | "dot") | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "badge";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardBlock".
+ */
+export interface CardBlock {
+  appearance?:
+    | (
+        | "default"
+        | "glass"
+        | "outline"
+        | "ghost"
+        | "elevated"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+        | "sky"
+        | "rose"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "emerald"
+        | "gray"
+        | "amber"
+        | "violet"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+      )
+    | null;
+  size?: ("sm" | "md" | "lg") | null;
+  rounded?: ("sm" | "md" | "lg" | "full") | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "card";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DividerBlock".
+ */
+export interface DividerBlock {
+  appearance?:
+    | (
+        | "default"
+        | "muted"
+        | "primary"
+        | "destructive"
+        | "ghost"
+        | "sky"
+        | "rose"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "emerald"
+        | "gray"
+        | "amber"
+        | "violet"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+      )
+    | null;
+  size?: ("sm" | "md" | "lg") | null;
+  orientation?: ("horizontal" | "vertical") | null;
+  /**
+   * Optional label between divider lines
+   */
+  label?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "divider";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -170,6 +801,26 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      _key?: string | null;
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    card?: {
+      _key?: string | null;
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -182,6 +833,10 @@ export interface Page {
    * The URL slug for this page
    */
   slug: string;
+  /**
+   * Page content is composed of Section blocks
+   */
+  layout?: SectionBlock[] | null;
   updatedAt: string;
   createdAt: string;
   _status?: ("draft" | "published") | null;
@@ -305,6 +960,32 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              _key?: T;
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        card?:
+          | T
+          | {
+              _key?: T;
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -313,6 +994,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  layout?: T | {};
   updatedAt?: T;
   createdAt?: T;
   _status?: T;

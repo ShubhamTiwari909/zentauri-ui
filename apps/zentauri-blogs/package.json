@@ -24,6 +24,8 @@
     "@payloadcms/storage-uploadthing": "^3.85.1",
     "@payloadcms/ui": "3.85.1",
     "@tailwindcss/postcss": "^4.2.2",
+    "@zentauri-ui/zentauri-components": "workspace:*",
+    "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
     "dotenv": "16.4.7",
     "graphql": "^16.8.1",
@@ -32,7 +34,9 @@
     "postcss": "^8.5.9",
     "react": "19.2.6",
     "react-dom": "19.2.6",
+    "react-syntax-highlighter": "^16.1.1",
     "sharp": "0.34.2",
+    "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
@@ -41,6 +45,7 @@
     "@types/node": "22.19.9",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "@vitejs/plugin-react": "4.5.2",
     "eslint": "^9.16.0",
     "eslint-config-next": "16.2.6",
