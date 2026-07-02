@@ -19,6 +19,18 @@ import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 import { Card, CardBody } from "@zentauri-ui/zentauri-components/ui/card";
 import { Divider } from "@zentauri-ui/zentauri-components/ui/divider";
+import {
+  Blockquote,
+  Heading,
+  InlineCode,
+  List,
+  ListItem,
+  Text as Typography,
+} from "@zentauri-ui/zentauri-components/ui/typography";
+import type {
+  HeadingLevel,
+  TypographyTone,
+} from "@zentauri-ui/zentauri-components/ui/typography";
 
 import type {
   AccordionBlock,
@@ -56,97 +68,127 @@ type AnyBlock =
 // Typography
 // ---------------------------------------------------------------------------
 
-const headingClasses: Record<string, string> = {
-  h1: "text-4xl md:text-5xl font-bold tracking-tight",
-  h2: "text-3xl md:text-4xl font-bold tracking-tight",
-  h3: "text-2xl md:text-3xl font-semibold",
-  h4: "text-xl md:text-2xl font-semibold",
-  h5: "text-lg md:text-xl font-semibold",
-  h6: "text-base md:text-lg font-semibold uppercase tracking-wide",
-};
-
-// Container styles for elements left to the default converters (lists, quotes,
-// links, inline code, rules) so typography stays consistent.
+// Container styles for elements left to the default converters (links,
+// horizontal rules) — headings, paragraphs, lists, quotes, and inline code are
+// rendered through the typography components instead of raw HTML + classes.
 const proseClassName = [
-  "[&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-4",
-  "[&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:my-4",
-  "[&_li]:my-1",
-  "[&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 dark:[&_blockquote]:border-gray-600 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:my-4 [&_blockquote]:text-gray-600 dark:[&_blockquote]:text-gray-300",
   "[&_a]:text-blue-600 dark:[&_a]:text-blue-400 [&_a]:underline [&_a]:underline-offset-2",
   "[&_hr]:my-8 [&_hr]:border-gray-200 dark:[&_hr]:border-gray-700",
-  "[&_:not(pre)>code]:rounded [&_:not(pre)>code]:bg-gray-100 dark:[&_:not(pre)>code]:bg-gray-800 [&_:not(pre)>code]:px-1.5 [&_:not(pre)>code]:py-0.5 [&_:not(pre)>code]:text-[0.9em]",
 ].join(" ");
 
 type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
+const HEADING_LEVELS: Record<HeadingTag, HeadingLevel> = {
+  h1: 1,
+  h2: 2,
+  h3: 3,
+  h4: 4,
+  h5: 5,
+  h6: 6,
+};
+
+// Lexical text-node format bitmask (see NodeFormat in
+// @payloadcms/richtext-lexical) — reproduced here so inline code can render
+// through the typography InlineCode component instead of a plain `<code>`.
+const TEXT_FORMAT = {
+  bold: 1,
+  italic: 1 << 1,
+  strikethrough: 1 << 2,
+  underline: 1 << 3,
+  code: 1 << 4,
+  subscript: 1 << 5,
+  superscript: 1 << 6,
+} as const;
+
+function renderFormattedText(
+  node: { text: string; format?: number },
+  tone: TypographyTone | undefined,
+): ReactNode {
+  const format = node.format ?? 0;
+  let content: ReactNode = node.text;
+
+  if (format & TEXT_FORMAT.bold) content = <strong>{content}</strong>;
+  if (format & TEXT_FORMAT.italic) content = <em>{content}</em>;
+  if (format & TEXT_FORMAT.strikethrough) content = <s>{content}</s>;
+  if (format & TEXT_FORMAT.underline) content = <u>{content}</u>;
+  if (format & TEXT_FORMAT.code)
+    content = <InlineCode tone={tone}>{content}</InlineCode>;
+  if (format & TEXT_FORMAT.subscript) content = <sub>{content}</sub>;
+  if (format & TEXT_FORMAT.superscript) content = <sup>{content}</sup>;
+
+  return content;
+}
 
 // Route every embedded block node through the shared renderer.
 const block = ({ node }: { node: { fields: { id?: string | null } } }) =>
   renderBlock(node.fields as unknown as AnyBlock, node.fields?.id ?? undefined);
 
-export const blogConverters: JSXConvertersFunction = ({
-  defaultConverters,
-}) => {
-  const converters: JSXConverters = {
-    ...defaultConverters,
-    heading: ({ node, nodesToJSX }) => {
-      const Tag = (node.tag as HeadingTag) ?? "h2";
-      return (
-        <Tag className={headingClasses[Tag] ?? headingClasses.h2}>
-          {nodesToJSX({ nodes: node.children })}
-        </Tag>
-      );
-    },
-    paragraph: ({ node, nodesToJSX }) => {
-      if (node.children.length === 0) return <br />;
-      return (
-        <p className="leading-7">{nodesToJSX({ nodes: node.children })}</p>
-      );
-    },
+type TypographyOverrides = {
+  tone?: TypographyTone;
+};
 
-    list: ({ node, nodesToJSX }) => {
-      // @aw-fe-primitive
-      const Tag = node.tag ?? "ul";
+const createBlogConverters =
+  ({ tone }: TypographyOverrides = {}): JSXConvertersFunction =>
+  ({ defaultConverters }) => {
+    const converters: JSXConverters = {
+      ...defaultConverters,
+      heading: ({ node, nodesToJSX }) => {
+        const level = HEADING_LEVELS[node.tag as HeadingTag] ?? 2;
+        return (
+          <Heading level={level} tone={tone}>
+            {nodesToJSX({ nodes: node.children })}
+          </Heading>
+        );
+      },
+      paragraph: ({ node, nodesToJSX }) => {
+        if (node.children.length === 0) return <br />;
+        return (
+          <Typography as="p" tone={tone}>
+            {nodesToJSX({ nodes: node.children })}
+          </Typography>
+        );
+      },
+      list: ({ node, nodesToJSX }) => {
+        const children = nodesToJSX({ nodes: node.children });
+        if (node.tag === "ol") {
+          return (
+            <List ordered tone={tone}>
+              {children}
+            </List>
+          );
+        }
+        return <List tone={tone}>{children}</List>;
+      },
+      listitem: ({ node, nodesToJSX }) => (
+        <ListItem>{nodesToJSX({ nodes: node.children })}</ListItem>
+      ),
+      quote: ({ node, nodesToJSX }) => {
+        if (node.children.length === 0) return null;
+        return (
+          <Blockquote tone={tone}>
+            {nodesToJSX({ nodes: node.children })}
+          </Blockquote>
+        );
+      },
+      text: ({ node }) => renderFormattedText(node, tone),
+      blocks: {
+        text: block,
+        spacer: block,
+        code: block,
+        row: block,
+        accordion: block,
+        button: block,
+        alert: block,
+        badge: block,
+        card: block,
+        divider: block,
+      },
+    };
 
-      const listClassNames = cn(
-        Tag === "ol" ? "list-decimal" : "list-disc",
-        {
-          "[&>li:has(ul,ol)]:list-none":
-            node.listType === "bullet" || node.listType === "number",
-        },
-        "[&>li:has(ul,ol)]:mb-2 font-proxima-regular text-body-md",
-        "pl-6 my-4",
-      );
-
-      return (
-        <Tag className={listClassNames}>
-          {nodesToJSX({ nodes: node.children })}
-        </Tag>
-      );
-    },
-    quote: ({ node, nodesToJSX }) => {
-      if (node.children.length === 0) return null;
-      return (
-        <blockquote className="pl-3 border-l border-solid border-l-gray-300">
-          {nodesToJSX({ nodes: node.children })}
-        </blockquote>
-      );
-    },
-    blocks: {
-      text: block,
-      spacer: block,
-      code: block,
-      row: block,
-      accordion: block,
-      button: block,
-      alert: block,
-      badge: block,
-      card: block,
-      divider: block,
-    },
+    return converters;
   };
 
-  return converters;
-};
+export const blogConverters = createBlogConverters();
 
 // ---------------------------------------------------------------------------
 // Rich text renderer
@@ -156,16 +198,17 @@ export const blogConverters: JSXConvertersFunction = ({
 export function RichTextRenderer({
   content,
   className,
+  tone,
 }: {
   content: RichTextContent;
   className?: string;
-}) {
+} & TypographyOverrides) {
   if (!content?.root?.children?.length) return null;
   return (
     <RichText
       // Generated content type is structurally the lexical editor state.
       data={content as never}
-      converters={blogConverters}
+      converters={tone ? createBlogConverters({ tone }) : blogConverters}
       disableContainer
       className={cn(proseClassName, className)}
     />
@@ -228,7 +271,14 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
 
   switch (block.blockType) {
     case "text":
-      return <RichTextRenderer key={key} content={block.content} />;
+      return (
+        <div key={key}>
+          <RichTextRenderer
+            content={block.content}
+            tone={(block.appearance as TypographyTone) ?? undefined}
+          />
+        </div>
+      );
 
     case "spacer":
       return (
