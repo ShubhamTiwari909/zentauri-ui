@@ -161,6 +161,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.2.2
         version: 4.2.2
+      '@zentauri-ui/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@zentauri-ui/zentauri-components':
         specifier: workspace:*
         version: link:../../packages/components

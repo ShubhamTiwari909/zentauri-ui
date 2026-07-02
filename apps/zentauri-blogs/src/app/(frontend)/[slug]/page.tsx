@@ -36,7 +36,7 @@ export default async function Page({
   }
 
   return (
-    <main className="bg-slate-900">
+    <main className="bg-slate-900 min-h-screen">
       <RefreshRouteOnSave />
       {page.layout?.length ? (
         <BlockRenderer blocks={page.layout} />

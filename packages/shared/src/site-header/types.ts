@@ -9,7 +9,7 @@ export type SiteSearchOpenButtonComponent = ComponentType<{
 export type SiteHeaderProps = {
   className?: string;
   site: SiteHeaderSite;
-  SearchOpenButton: SiteSearchOpenButtonComponent;
+  SearchOpenButton?: SiteSearchOpenButtonComponent;
   showMenuToggle?: boolean;
   isMenuOpen?: boolean;
   onMenuToggle?: () => void;

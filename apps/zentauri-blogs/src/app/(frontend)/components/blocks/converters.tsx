@@ -302,14 +302,13 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
             target={block.target ?? undefined}
             appearance={appearance}
             size={size}
-            className="block"
           >
             {block.label}
           </Button>
         );
       }
       return (
-        <Button key={key} appearance={appearance} size={size} className="block">
+        <Button key={key} appearance={appearance} size={size}>
           {block.label}
         </Button>
       );
@@ -326,12 +325,7 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
         );
       }
       return (
-        <Alert
-          key={key}
-          appearance={appearance}
-          size={size}
-          className={cn("block")}
-        >
+        <Alert key={key} appearance={appearance} size={size}>
           <AlertDescription>{renderContent(block.content)}</AlertDescription>
         </Alert>
       );

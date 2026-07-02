@@ -18,6 +18,12 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["--filter=zentauri-blogs", "dev"],
       "autoPort": true
+    },
+    {
+      "name": "zentauri-demo-pages",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter=zentauri-demo-pages", "dev"],
+      "autoPort": true
     }
   ]
 }
