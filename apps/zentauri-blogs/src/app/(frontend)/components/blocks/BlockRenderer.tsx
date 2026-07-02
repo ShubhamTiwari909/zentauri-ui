@@ -12,15 +12,18 @@ export function BlockRenderer({ blocks }: { blocks: Page["layout"] }) {
 
   return (
     <>
-      {blocks.map((section, index) => (
-        <section
-          key={section.id ?? index}
-          id={section.sectionId ?? undefined}
-          className="mx-auto w-full max-w-3xl px-4 py-8 text-white"
-        >
-          <RichTextRenderer content={section.content} />
-        </section>
-      ))}
+      {blocks.map((section, index) => {
+        if (!section) return null;
+        return (
+          <section
+            key={section.id ?? index}
+            id={section.sectionId ?? undefined}
+            className="mx-auto w-full max-w-3xl px-4 py-8 text-white"
+          >
+            <RichTextRenderer content={section.content} />
+          </section>
+        );
+      })}
     </>
   );
 }

@@ -36,6 +36,16 @@ export const CONTENT_BLOCK_SLUGS: BlockSlug[] = [
   "divider",
 ];
 
+/**
+ * Same set, minus `row` — used by the Row block's own `items` field so a row
+ * can't nest another row (see row.ts), while staying derived from the single
+ * list above instead of a second hand-maintained allowlist.
+ */
+export const ROW_ITEM_BLOCK_SLUGS: BlockSlug[] = [
+  "text",
+  ...CONTENT_BLOCK_SLUGS.filter((slug) => slug !== "row"),
+];
+
 const typographyFeatures = () => [
   ParagraphFeature(),
   HeadingFeature({

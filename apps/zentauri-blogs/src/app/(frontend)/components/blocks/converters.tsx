@@ -105,7 +105,7 @@ export const blogConverters: JSXConvertersFunction = ({
 
     list: ({ node, nodesToJSX }) => {
       // @aw-fe-primitive
-      const Tag = node.tag;
+      const Tag = node.tag ?? "ul";
 
       const listClassNames = cn(
         Tag === "ol" ? "list-decimal" : "list-disc",
@@ -198,10 +198,37 @@ const alignClass: Record<string, string> = {
   baseline: "items-baseline",
 };
 
+const SAFE_URL_PROTOCOLS = new Set(["http:", "https:", "mailto:", "tel:"]);
+
+/**
+ * Rejects CMS-authored hrefs using unsafe schemes (javascript:, data:, etc).
+ * Relative paths and fragments pass through untouched; absolute URLs must
+ * use an allowed protocol.
+ */
+function sanitizeHref(href: string): string | null {
+  const trimmed = href.trim();
+  if (!trimmed) return null;
+  if (
+    trimmed.startsWith("/") ||
+    trimmed.startsWith("#") ||
+    trimmed.startsWith("?")
+  ) {
+    return trimmed;
+  }
+  try {
+    const url = new URL(trimmed, "https://placeholder.invalid");
+    return SAFE_URL_PROTOCOLS.has(url.protocol) ? trimmed : null;
+  } catch {
+    return null;
+  }
+}
+
 export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
+  if (!block) return null;
+
   switch (block.blockType) {
     case "text":
-      return renderContent(block.content);
+      return <RichTextRenderer key={key} content={block.content} />;
 
     case "spacer":
       return (
@@ -229,7 +256,7 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
           style={{ gap: `${block.gap}px` }}
         >
           {block.items?.map((item, index) =>
-            renderBlock(item as AnyBlock, item.id ?? index),
+            item ? renderBlock(item as AnyBlock, item.id ?? index) : null,
           )}
         </div>
       );
@@ -246,6 +273,7 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
               size={group.size ?? undefined}
             >
               {group.items?.map((item, index) => {
+                if (!item) return null;
                 const value = item.id ?? `item-${index}`;
                 return (
                   <AccordionItem key={value} value={value}>
@@ -264,12 +292,13 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
     case "button": {
       const appearance = block.appearance ?? undefined;
       const size = block.size ?? undefined;
-      if (block.as === "link" && block.href) {
+      const safeHref = block.href ? sanitizeHref(block.href) : null;
+      if (block.as === "link" && safeHref) {
         return (
           <Button
             key={key}
             as="link"
-            href={block.href}
+            href={safeHref}
             target={block.target ?? undefined}
             appearance={appearance}
             size={size}

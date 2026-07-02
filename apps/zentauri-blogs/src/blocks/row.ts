@@ -1,6 +1,7 @@
 import type { Block } from "payload";
 
 import { GAP_SIZES, pxOptions } from "./options";
+import { ROW_ITEM_BLOCK_SLUGS } from "./richText";
 
 /**
  * Row children are a plain blocks field so each flex child is a discrete
@@ -17,17 +18,7 @@ export const Row: Block = {
       type: "blocks",
       required: true,
       minRows: 1,
-      blockReferences: [
-        "text",
-        "spacer",
-        "code",
-        "accordion",
-        "button",
-        "alert",
-        "badge",
-        "card",
-        "divider",
-      ],
+      blockReferences: ROW_ITEM_BLOCK_SLUGS,
       blocks: [],
       admin: {
         description: "Each item is a flex child of the row",

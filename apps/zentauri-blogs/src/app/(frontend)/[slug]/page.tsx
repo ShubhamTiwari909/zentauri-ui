@@ -38,7 +38,11 @@ export default async function Page({
   return (
     <main className="bg-slate-900">
       <RefreshRouteOnSave />
-      <BlockRenderer blocks={page.layout} />
+      {page.layout?.length ? (
+        <BlockRenderer blocks={page.layout} />
+      ) : (
+        <h1>{page.title}</h1>
+      )}
     </main>
   );
 }

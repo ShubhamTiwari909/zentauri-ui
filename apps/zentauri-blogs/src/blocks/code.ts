@@ -23,13 +23,13 @@ export const Code: Block = {
       ],
     },
     {
+      // Payload's code field only supports a static `admin.language` (no
+      // binding to a sibling field), so we leave editor highlighting at its
+      // default rather than mislabeling non-TS snippets as TypeScript. The
+      // frontend renderer highlights correctly using the `language` field.
       name: "code",
       type: "code",
       required: true,
-      admin: {
-        // Editor highlighting only; the frontend reads the `language` field.
-        language: "typescript",
-      },
     },
   ],
 };

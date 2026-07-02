@@ -143,7 +143,7 @@ export interface UserAuthOperations {
  */
 export interface SectionBlock {
   /**
-   * Optional anchor id for in-page links
+   * Optional anchor id for in-page links (lowercase letters, numbers, and hyphens only)
    */
   sectionId?: string | null;
   content: {
