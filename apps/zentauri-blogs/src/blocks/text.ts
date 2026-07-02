@@ -7,7 +7,7 @@ import { basicRichTextEditor } from "./richText";
  * Typography-only rich text as a block, for use inside Row items where each
  * flex child is a discrete block.
  *
- * `appearance`/`size` map onto the typography component's `tone`/`size`
+ * `appearance` map onto the typography component's `tone`
  * props (see `@zentauri-ui/zentauri-components/ui/typography`) and are
  * applied to every heading/paragraph/list/quote/inline-code rendered from
  * `content` by the blog converters.

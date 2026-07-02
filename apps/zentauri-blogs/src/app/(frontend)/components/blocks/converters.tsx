@@ -109,10 +109,8 @@ function renderFormattedText(
 
   if (format & TEXT_FORMAT.bold) content = <strong>{content}</strong>;
   if (format & TEXT_FORMAT.italic) content = <em>{content}</em>;
-  if (format & TEXT_FORMAT.strikethrough)
-    content = <span style={{ textDecoration: "line-through" }}>{content}</span>;
-  if (format & TEXT_FORMAT.underline)
-    content = <span style={{ textDecoration: "underline" }}>{content}</span>;
+  if (format & TEXT_FORMAT.strikethrough) content = <s>{content}</s>;
+  if (format & TEXT_FORMAT.underline) content = <u>{content}</u>;
   if (format & TEXT_FORMAT.code)
     content = <InlineCode tone={tone}>{content}</InlineCode>;
   if (format & TEXT_FORMAT.subscript) content = <sub>{content}</sub>;
@@ -135,7 +133,7 @@ const createBlogConverters =
     const converters: JSXConverters = {
       ...defaultConverters,
       heading: ({ node, nodesToJSX }) => {
-        const level = HEADING_LEVELS[(node.tag as HeadingTag) ?? "h2"];
+        const level = HEADING_LEVELS[node.tag as HeadingTag] ?? 2;
         return (
           <Heading level={level} tone={tone}>
             {nodesToJSX({ nodes: node.children })}
