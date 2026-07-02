@@ -170,6 +170,28 @@ export interface SectionBlock {
  * via the `definition` "TextBlock".
  */
 export interface TextBlock {
+  appearance?:
+    | (
+        | "default"
+        | "muted"
+        | "primary"
+        | "secondary"
+        | "accent"
+        | "destructive"
+        | "info"
+        | "success"
+        | "warning"
+        | "error"
+        | "gradient-pink-violet"
+        | "gradient-cyan-violet"
+        | "gradient-cyan-blue"
+        | "gradient-cyan-green"
+        | "gradient-cyan-orange"
+        | "gradient-cyan-red"
+        | "gradient-cyan-purple"
+        | "gradient-cyan-pink"
+      )
+    | null;
   content: {
     root: {
       type: string;
