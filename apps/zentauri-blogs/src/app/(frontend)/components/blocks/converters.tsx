@@ -1,8 +1,10 @@
 import { RichText } from "@payloadcms/richtext-lexical/react";
+import JSON5 from "json5";
 import type {
   JSXConverters,
   JSXConvertersFunction,
 } from "@payloadcms/richtext-lexical/react";
+import { Fragment } from "react";
 import type { ReactNode } from "react";
 
 import {
@@ -16,9 +18,64 @@ import {
   AlertDescription,
 } from "@zentauri-ui/zentauri-components/ui/alert";
 import { Badge } from "@zentauri-ui/zentauri-components/ui/badge";
+import {
+  Breadcrumb as BreadcrumbRoot,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@zentauri-ui/zentauri-components/ui/breadcrumb";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 import { Card, CardBody } from "@zentauri-ui/zentauri-components/ui/card";
 import { Divider } from "@zentauri-ui/zentauri-components/ui/divider";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@zentauri-ui/zentauri-components/ui/drawer";
+import { JsonViewer } from "@zentauri-ui/zentauri-components/ui/json-viewer";
+import { Kbd } from "@zentauri-ui/zentauri-components/ui/kbd";
+import {
+  Modal,
+  ModalBody,
+  ModalClose,
+  ModalContent,
+  ModalHeader,
+  ModalTitle,
+  ModalTrigger,
+} from "@zentauri-ui/zentauri-components/ui/modal";
+import { PackageInstallCommand } from "@zentauri-ui/zentauri-components/ui/package-install-command";
+import { QrCode } from "@zentauri-ui/zentauri-components/ui/qr-code";
+import { SecretReveal } from "@zentauri-ui/zentauri-components/ui/secret-reveal";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@zentauri-ui/zentauri-components/ui/tabs";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@zentauri-ui/zentauri-components/ui/table";
+import {
+  Timeline,
+  TimelineContent,
+  TimelineDescription,
+  TimelineIndicator,
+  TimelineItem,
+  TimelineTitle,
+} from "@zentauri-ui/zentauri-components/ui/timeline";
+import { TreeView } from "@zentauri-ui/zentauri-components/ui/tree-view";
+import type { TreeNode } from "@zentauri-ui/zentauri-components/ui/tree-view";
 import {
   Blockquote,
   Heading,
@@ -36,13 +93,25 @@ import type {
   AccordionBlock,
   AlertBlock,
   BadgeBlock,
+  BreadcrumbBlock,
   ButtonBlock,
   CardBlock,
   CodeBlock,
   DividerBlock,
+  DrawerBlock,
+  JsonViewerBlock,
+  KbdBlock,
+  ModalBlock,
+  PackageInstallCommandBlock,
+  QrCodeBlock,
   RowBlock,
+  SecretRevealBlock,
   SpacerBlock,
+  TableBlock,
+  TabsBlock,
   TextBlock,
+  TimelineBlock,
+  TreeViewBlock,
 } from "@/payload-types";
 
 import { Code } from "./CodeBlock";
@@ -62,7 +131,19 @@ type AnyBlock =
   | BadgeBlock
   | CardBlock
   | DividerBlock
-  | RowBlock;
+  | RowBlock
+  | TableBlock
+  | BreadcrumbBlock
+  | DrawerBlock
+  | JsonViewerBlock
+  | KbdBlock
+  | ModalBlock
+  | PackageInstallCommandBlock
+  | QrCodeBlock
+  | SecretRevealBlock
+  | TabsBlock
+  | TimelineBlock
+  | TreeViewBlock;
 
 // ---------------------------------------------------------------------------
 // Typography
@@ -182,6 +263,18 @@ const createBlogConverters =
         badge: block,
         card: block,
         divider: block,
+        table: block,
+        breadcrumb: block,
+        drawer: block,
+        "json-viewer": block,
+        kbd: block,
+        modal: block,
+        "package-install-command": block,
+        "qr-code": block,
+        "secret-reveal": block,
+        tabs: block,
+        timeline: block,
+        "tree-view": block,
       },
     };
 
@@ -264,6 +357,21 @@ function sanitizeHref(href: string): string | null {
   } catch {
     return null;
   }
+}
+
+type TreeViewNodeInput = {
+  id?: string | null;
+  label: string;
+  children?: TreeViewNodeInput[] | null;
+};
+
+/** Recursively maps a TreeViewBlock's 4-level-deep node shape into TreeView's TreeNode[]. */
+function toTreeNodes(nodes: TreeViewNodeInput[]): TreeNode[] {
+  return nodes.map((node, index) => ({
+    id: node.id ?? `node-${index}`,
+    label: node.label,
+    children: node.children?.length ? toTreeNodes(node.children) : undefined,
+  }));
 }
 
 export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
@@ -413,6 +521,250 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
           size={block.size ?? undefined}
           orientation={block.orientation ?? undefined}
           label={block.label ?? undefined}
+        />
+      );
+
+    case "table":
+      return (
+        <Table
+          key={key}
+          appearance={block.appearance ?? undefined}
+          size={block.size ?? undefined}
+          textAlign={block.textAlign ?? undefined}
+          stickyHeader={block.stickyHeader ?? undefined}
+          // Table's own wrapper already scrolls (`overflow-auto`), but its
+          // `<table>` is forced to `min-w-0` — which lets narrow viewports
+          // squeeze columns instead of scrolling. `min-w-max` restores the
+          // table's natural content width so it overflows and scrolls
+          // horizontally on mobile instead of clipping cell content.
+          className="min-w-max"
+        >
+          <TableHeader>
+            <TableRow>
+              {block.columns.map((column, index) => (
+                <TableHead key={column.id ?? index}>{column.label}</TableHead>
+              ))}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {block.rows.map((row, rowIndex) => (
+              <TableRow key={row.id ?? rowIndex}>
+                {row.cells.map((cell, cellIndex) => (
+                  <TableCell key={cell.id ?? cellIndex}>{cell.value}</TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      );
+
+    case "breadcrumb": {
+      const appearance = block.appearance ?? undefined;
+      const items = block.items;
+      return (
+        <BreadcrumbRoot key={key}>
+          <BreadcrumbList>
+            {items.map((item, index) => {
+              const isLast = index === items.length - 1;
+              const safeHref = item.href ? sanitizeHref(item.href) : null;
+              return (
+                <Fragment key={item.id ?? index}>
+                  <BreadcrumbItem>
+                    {safeHref && !isLast ? (
+                      <BreadcrumbLink href={safeHref} appearance={appearance}>
+                        {item.label}
+                      </BreadcrumbLink>
+                    ) : (
+                      <BreadcrumbPage appearance={appearance}>
+                        {item.label}
+                      </BreadcrumbPage>
+                    )}
+                  </BreadcrumbItem>
+                  {!isLast && <BreadcrumbSeparator />}
+                </Fragment>
+              );
+            })}
+          </BreadcrumbList>
+        </BreadcrumbRoot>
+      );
+    }
+
+    case "drawer":
+      return (
+        <Drawer key={key}>
+          <DrawerTrigger appearance={block.triggerAppearance ?? undefined}>
+            {block.triggerLabel}
+          </DrawerTrigger>
+          <DrawerContent
+            side={block.side ?? undefined}
+            size={block.size ?? undefined}
+            appearance={block.contentAppearance ?? undefined}
+          >
+            <DrawerClose />
+            {block.title ? (
+              <DrawerHeader>
+                <DrawerTitle>{block.title}</DrawerTitle>
+              </DrawerHeader>
+            ) : null}
+            <DrawerBody>{renderContent(block.content)}</DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      );
+
+    case "json-viewer": {
+      const parsed = JSON5.parse(block?.data);
+      return (
+        <JsonViewer
+          key={key}
+          data={parsed}
+          appearance={block.appearance ?? undefined}
+          size={block.size ?? undefined}
+          defaultExpandedDepth={block.defaultExpandedDepth ?? undefined}
+          showToolbar={block.showToolbar ?? undefined}
+          enableClipboard={block.enableClipboard ?? undefined}
+          showItemCount={block.showItemCount ?? undefined}
+          quoteStrings={block.quoteStrings ?? undefined}
+        />
+      );
+    }
+
+    case "kbd":
+      return (
+        <Kbd
+          key={key}
+          appearance={block.appearance ?? undefined}
+          size={block.size ?? undefined}
+          separator={block.separator ?? undefined}
+          keys={block.keys.map((item) => item.key)}
+        />
+      );
+
+    case "modal":
+      return (
+        <Modal key={key}>
+          <ModalTrigger
+            appearance={block.triggerAppearance ?? undefined}
+            className="px-5 py-3"
+          >
+            {block.triggerLabel}
+          </ModalTrigger>
+          <ModalContent
+            size={block.size ?? undefined}
+            position={block.position ?? undefined}
+            appearance={block.contentAppearance ?? undefined}
+          >
+            <ModalClose className="">×</ModalClose>
+            {block.title ? (
+              <ModalHeader>
+                <ModalTitle>{block.title}</ModalTitle>
+              </ModalHeader>
+            ) : null}
+            <ModalBody>{renderContent(block.content)}</ModalBody>
+          </ModalContent>
+        </Modal>
+      );
+
+    case "package-install-command":
+      return (
+        <PackageInstallCommand
+          key={key}
+          packageName={block.packageName}
+          defaultManager={block.defaultManager ?? undefined}
+          appearance={block.appearance ?? undefined}
+          size={block.size ?? undefined}
+          enableClipboard={block.enableClipboard ?? undefined}
+        />
+      );
+
+    case "qr-code":
+      return (
+        <QrCode
+          key={key}
+          value={block.value}
+          canvasSize={block.canvasSize ?? undefined}
+          level={block.level ?? undefined}
+          margin={block.margin ?? undefined}
+          bgColor={block.bgColor ?? undefined}
+          fgColor={block.fgColor ?? undefined}
+          caption={block.caption ?? undefined}
+        />
+      );
+
+    case "secret-reveal":
+      return (
+        <SecretReveal
+          key={key}
+          value={block.value}
+          appearance={block.appearance ?? undefined}
+          size={block.size ?? undefined}
+          label={block.label ?? undefined}
+          labelPosition={block.labelPosition ?? undefined}
+          muteChar={block.muteChar ?? undefined}
+          initiallyRevealed={block.initiallyRevealed ?? undefined}
+        />
+      );
+
+    case "tabs":
+      return (
+        <Tabs
+          key={key}
+          appearance={block.appearance ?? undefined}
+          variant={block.variant ?? undefined}
+          size={block.size ?? undefined}
+          orientation={block.orientation ?? undefined}
+          defaultValue={block.tabs[0]?.id ?? "tab-0"}
+        >
+          <TabsList>
+            {block.tabs.map((tab, index) => (
+              <TabsTrigger
+                key={tab.id ?? index}
+                value={tab.id ?? `tab-${index}`}
+              >
+                {tab.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          {block.tabs.map((tab, index) => (
+            <TabsContent
+              key={tab.id ?? index}
+              value={tab.id ?? `tab-${index}`}
+              className="pl-4"
+            >
+              {renderContent(tab.content)}
+            </TabsContent>
+          ))}
+        </Tabs>
+      );
+
+    case "timeline":
+      return (
+        <Timeline
+          key={key}
+          appearance={block.appearance ?? undefined}
+          size={block.size ?? undefined}
+        >
+          {block.items.map((item, index) => (
+            <TimelineItem key={item.id ?? index}>
+              <TimelineIndicator appearance={item.appearance ?? undefined} />
+              <TimelineContent>
+                <TimelineTitle>{item.title}</TimelineTitle>
+                {item.description ? (
+                  <TimelineDescription>{item.description}</TimelineDescription>
+                ) : null}
+              </TimelineContent>
+            </TimelineItem>
+          ))}
+        </Timeline>
+      );
+
+    case "tree-view":
+      return (
+        <TreeView
+          key={key}
+          data={toTreeNodes(block.nodes)}
+          appearance={block.appearance ?? undefined}
+          size={block.size ?? undefined}
+          showGuides={block.showGuides ?? undefined}
         />
       );
 
