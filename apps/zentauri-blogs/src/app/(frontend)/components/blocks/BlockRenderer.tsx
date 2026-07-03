@@ -13,6 +13,16 @@ const bgColorMap: Record<string, string> = {
   fuchsia: "bg-fuchsia-600",
 };
 
+const textColorMap: Record<string, string> = {
+  white: "text-slate-900",
+  "dark-slate": "text-white",
+  blue: "text-white",
+  emerald: "text-white",
+  teal: "text-white",
+  indigo: "text-white",
+  fuchsia: "text-white",
+};
+
 const spacingValueMap: Record<string, string> = {
   "0": "0",
   "20": "5",
@@ -60,6 +70,7 @@ export function BlockRenderer({ blocks }: { blocks: Page["layout"] }) {
       {blocks.map((section, index) => {
         if (!section) return null;
         const bgClass = bgColorMap[section.bgColor] ?? "bg-white";
+        const textClass = textColorMap[section.bgColor] ?? "text-white";
         const spacingClasses = getSpacingClasses(section.verticalSpacing);
         const isFullScreenHeight = section.fullHeight ? "min-h-screen" : "";
         return (
@@ -67,7 +78,7 @@ export function BlockRenderer({ blocks }: { blocks: Page["layout"] }) {
             key={section.id ?? index}
             id={section.sectionId ?? undefined}
             className={cn(
-              "text-white",
+              textClass,
               bgClass,
               spacingClasses,
               isFullScreenHeight,
