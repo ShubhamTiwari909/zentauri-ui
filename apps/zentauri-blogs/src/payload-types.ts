@@ -77,6 +77,18 @@ export interface Config {
     badge: BadgeBlock;
     card: CardBlock;
     divider: DividerBlock;
+    table: TableBlock;
+    breadcrumb: BreadcrumbBlock;
+    drawer: DrawerBlock;
+    "json-viewer": JsonViewerBlock;
+    kbd: KbdBlock;
+    modal: ModalBlock;
+    "package-install-command": PackageInstallCommandBlock;
+    "qr-code": QrCodeBlock;
+    "secret-reveal": SecretRevealBlock;
+    tabs: TabsBlock;
+    timeline: TimelineBlock;
+    "tree-view": TreeViewBlock;
   };
   collections: {
     users: User;
@@ -271,7 +283,6 @@ export interface RowBlock {
    * Each item is a flex child of the row
    */
   items: (
-    | TextBlock
     | SpacerBlock
     | CodeBlock
     | AccordionBlock
@@ -280,6 +291,19 @@ export interface RowBlock {
     | BadgeBlock
     | CardBlock
     | DividerBlock
+    | TextBlock
+    | TableBlock
+    | BreadcrumbBlock
+    | DrawerBlock
+    | JsonViewerBlock
+    | KbdBlock
+    | ModalBlock
+    | PackageInstallCommandBlock
+    | QrCodeBlock
+    | SecretRevealBlock
+    | TabsBlock
+    | TimelineBlock
+    | TreeViewBlock
   )[];
   gap:
     | "0"
@@ -777,6 +801,834 @@ export interface DividerBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: "divider";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TableBlock".
+ */
+export interface TableBlock {
+  appearance?:
+    | (
+        | "default"
+        | "striped"
+        | "bordered"
+        | "ghost"
+        | "sky"
+        | "rose"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "emerald"
+        | "gray"
+        | "amber"
+        | "violet"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+      )
+    | null;
+  size?: ("sm" | "md" | "lg") | null;
+  textAlign?: ("left" | "center" | "right") | null;
+  stickyHeader?: boolean | null;
+  columns: {
+    label: string;
+    id?: string | null;
+  }[];
+  rows: {
+    cells: {
+      value: string;
+      id?: string | null;
+    }[];
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "table";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BreadcrumbBlock".
+ */
+export interface BreadcrumbBlock {
+  appearance?:
+    | (
+        | "default"
+        | "muted"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+        | "sky"
+        | "rose"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "emerald"
+        | "gray"
+        | "amber"
+        | "violet"
+      )
+    | null;
+  items: {
+    label: string;
+    /**
+     * Leave empty to render as the current (non-linked) page
+     */
+    href?: string | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "breadcrumb";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DrawerBlock".
+ */
+export interface DrawerBlock {
+  triggerLabel: string;
+  triggerAppearance?:
+    | (
+        | "default"
+        | "glass"
+        | "sky"
+        | "rose"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "emerald"
+        | "gray"
+        | "amber"
+        | "violet"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+      )
+    | null;
+  side?: ("left" | "right" | "top" | "bottom") | null;
+  size?: ("sm" | "md" | "lg" | "xl" | "full") | null;
+  contentAppearance?:
+    | (
+        | "default"
+        | "glass"
+        | "sky"
+        | "rose"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "emerald"
+        | "gray"
+        | "amber"
+        | "violet"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+      )
+    | null;
+  /**
+   * Optional drawer header title
+   */
+  title?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "drawer";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "JsonViewerBlock".
+ */
+export interface JsonViewerBlock {
+  appearance?: ("default" | "subtle" | "contrast" | "glass") | null;
+  size?: ("sm" | "md" | "lg") | null;
+  /**
+   * Leave empty to expand everything
+   */
+  defaultExpandedDepth?: number | null;
+  showToolbar?: boolean | null;
+  enableClipboard?: boolean | null;
+  showItemCount?: boolean | null;
+  quoteStrings?: boolean | null;
+  data: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "json-viewer";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "KbdBlock".
+ */
+export interface KbdBlock {
+  appearance?:
+    | (
+        | "default"
+        | "secondary"
+        | "destructive"
+        | "outline"
+        | "ghost"
+        | "glass"
+        | "emerald"
+        | "indigo"
+        | "purple"
+        | "pink"
+        | "rose"
+        | "sky"
+        | "teal"
+        | "yellow"
+        | "orange"
+        | "gray"
+        | "amber"
+        | "violet"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+      )
+    | null;
+  size?: ("sm" | "md" | "lg") | null;
+  /**
+   * Rendered between keycaps, e.g. "+"
+   */
+  separator?: string | null;
+  keys: {
+    /**
+     * e.g. "⌘" or "K"
+     */
+    key: string;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "kbd";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ModalBlock".
+ */
+export interface ModalBlock {
+  triggerLabel: string;
+  triggerAppearance?:
+    | (
+        | "default"
+        | "glass"
+        | "sky"
+        | "rose"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "emerald"
+        | "gray"
+        | "amber"
+        | "violet"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+      )
+    | null;
+  size?: ("sm" | "md" | "lg" | "xl" | "full") | null;
+  position?: ("center" | "top" | "bottom") | null;
+  contentAppearance?:
+    | (
+        | "default"
+        | "glass"
+        | "sky"
+        | "rose"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "emerald"
+        | "gray"
+        | "amber"
+        | "violet"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+      )
+    | null;
+  /**
+   * Optional modal header title
+   */
+  title?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "modal";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PackageInstallCommandBlock".
+ */
+export interface PackageInstallCommandBlock {
+  /**
+   * e.g. "react" or "react react-dom"
+   */
+  packageName: string;
+  defaultManager?: ("npm" | "pnpm" | "yarn" | "bun") | null;
+  appearance?: ("default" | "subtle" | "contrast" | "glass") | null;
+  size?: ("sm" | "md" | "lg") | null;
+  enableClipboard?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "package-install-command";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "QrCodeBlock".
+ */
+export interface QrCodeBlock {
+  /**
+   * The URL or text to encode
+   */
+  value: string;
+  canvasSize?: number | null;
+  level?: ("L" | "M" | "Q" | "H") | null;
+  margin?: number | null;
+  /**
+   * Background color (hex)
+   */
+  bgColor?: string | null;
+  /**
+   * Foreground color (hex)
+   */
+  fgColor?: string | null;
+  caption?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "qr-code";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SecretRevealBlock".
+ */
+export interface SecretRevealBlock {
+  value: string;
+  appearance?:
+    | (
+        | "default"
+        | "subtle"
+        | "muted"
+        | "primary"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "emerald"
+        | "indigo"
+        | "purple"
+        | "pink"
+        | "rose"
+        | "sky"
+        | "teal"
+        | "yellow"
+        | "orange"
+        | "red"
+        | "slate"
+        | "gray"
+        | "zinc"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+      )
+    | null;
+  size?: ("sm" | "md" | "lg") | null;
+  label?: string | null;
+  labelPosition?: ("top" | "side") | null;
+  /**
+   * Mask character, e.g. "•"
+   */
+  muteChar?: string | null;
+  initiallyRevealed?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "secret-reveal";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TabsBlock".
+ */
+export interface TabsBlock {
+  appearance?:
+    | (
+        | "default"
+        | "sky"
+        | "rose"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "emerald"
+        | "gray"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+      )
+    | null;
+  variant?: ("default" | "underline" | "pills") | null;
+  size?: ("sm" | "md" | "lg") | null;
+  orientation?: ("horizontal" | "vertical") | null;
+  tabs: {
+    label: string;
+    content: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ("ltr" | "rtl") | null;
+        format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "tabs";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TimelineBlock".
+ */
+export interface TimelineBlock {
+  appearance?:
+    | (
+        | "default"
+        | "sky"
+        | "rose"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "emerald"
+        | "gray"
+        | "violet"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+      )
+    | null;
+  size?: ("sm" | "md" | "lg") | null;
+  items: {
+    title: string;
+    /**
+     * Overrides the timeline's default indicator color
+     */
+    appearance?:
+      | (
+          | "default"
+          | "sky"
+          | "rose"
+          | "purple"
+          | "pink"
+          | "orange"
+          | "yellow"
+          | "teal"
+          | "indigo"
+          | "emerald"
+          | "gray"
+          | "violet"
+          | "gradient-blue"
+          | "gradient-green"
+          | "gradient-red"
+          | "gradient-yellow"
+          | "gradient-purple"
+          | "gradient-teal"
+          | "gradient-indigo"
+          | "gradient-pink"
+          | "gradient-orange"
+          | "blue"
+          | "cyan"
+          | "green"
+          | "lime"
+          | "mint"
+          | "ocean"
+          | "sapphire"
+          | "lavender"
+          | "ruby"
+          | "red"
+          | "slate"
+          | "zinc"
+          | "stone"
+          | "royal"
+          | "electric"
+          | "forest"
+          | "sunset"
+          | "magenta"
+          | "crimson"
+          | "aqua"
+          | "plum"
+        )
+      | null;
+    description?: string | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "timeline";
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TreeViewBlock".
+ */
+export interface TreeViewBlock {
+  appearance?:
+    | (
+        | "default"
+        | "outline"
+        | "ghost"
+        | "card"
+        | "separated"
+        | "sky"
+        | "rose"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "emerald"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+      )
+    | null;
+  size?: ("sm" | "md" | "lg") | null;
+  showGuides?: boolean | null;
+  nodes: {
+    label: string;
+    children?:
+      | {
+          label: string;
+          children?:
+            | {
+                label: string;
+                children?:
+                  | {
+                      label: string;
+                      id?: string | null;
+                    }[]
+                  | null;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: "tree-view";
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

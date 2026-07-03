@@ -34,6 +34,19 @@ export const CONTENT_BLOCK_SLUGS: BlockSlug[] = [
   "badge",
   "card",
   "divider",
+  "text",
+  "table",
+  "breadcrumb",
+  "drawer",
+  "json-viewer",
+  "kbd",
+  "modal",
+  "package-install-command",
+  "qr-code",
+  "secret-reveal",
+  "tabs",
+  "timeline",
+  "tree-view",
 ];
 
 /**
@@ -42,7 +55,6 @@ export const CONTENT_BLOCK_SLUGS: BlockSlug[] = [
  * list above instead of a second hand-maintained allowlist.
  */
 export const ROW_ITEM_BLOCK_SLUGS: BlockSlug[] = [
-  "text",
   ...CONTENT_BLOCK_SLUGS.filter((slug) => slug !== "row"),
 ];
 

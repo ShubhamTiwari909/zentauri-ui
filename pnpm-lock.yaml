@@ -179,6 +179,9 @@ importers:
       graphql:
         specifier: ^16.8.1
         version: 16.14.2
+      json5:
+        specifier: ^2.2.3
+        version: 2.2.3
       next:
         specifier: 16.2.6
         version: 16.2.6(@babel/core@7.29.7)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.77.4)

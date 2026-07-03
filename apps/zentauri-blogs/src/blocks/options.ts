@@ -12,19 +12,28 @@ const getComponent = (slug: string) => {
   return component;
 };
 
-/** Appearance select options derived from the component's design-system tokens. */
-export const appearanceOptions = (slug: string): Option[] =>
-  toOptions(getComponent(slug).appearances());
+/**
+ * Appearance select options derived from the component's design-system
+ * tokens. Pass `slot` for components whose appearance tokens live on a
+ * sub-slot rather than the root (e.g. Drawer/Modal's "trigger"/"content",
+ * Kbd's "key", Timeline's "indicator").
+ */
+export const appearanceOptions = (slug: string, slot?: string): Option[] =>
+  toOptions(getComponent(slug).appearances(slot));
 
 /** Size select options derived from the component's design-system tokens. */
-export const sizeOptions = (slug: string): Option[] =>
-  toOptions(getComponent(slug).sizes());
+export const sizeOptions = (slug: string, slot?: string): Option[] =>
+  toOptions(getComponent(slug).sizes(slot));
 
 /** Options for any other variant group (e.g. "shape", "rounded", "orientation"). */
-export const variantOptions = (slug: string, group: string): Option[] =>
+export const variantOptions = (
+  slug: string,
+  group: string,
+  slot?: string,
+): Option[] =>
   toOptions(
     getComponent(slug)
-      .variants(group)
+      .variants(group, slot ? { slot } : undefined)
       .map((variant) => variant.key),
   );
 

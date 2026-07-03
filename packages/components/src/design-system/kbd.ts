@@ -17,7 +17,7 @@ export const zuiKbdKeyAppearances = {
   glass:
     "border border-[color:var(--zui-kbd-glass-border,var(--zui-border,#00000026))] dark:border-[color:var(--zui-kbd-glass-border-dark,var(--zui-border-dark,#ffffff26))] bg-[var(--zui-kbd-glass-bg,var(--zui-surface-soft,#0000001a))] dark:bg-[var(--zui-kbd-glass-bg-dark,var(--zui-surface-soft-dark,#ffffff1a))] text-[color:var(--zui-kbd-glass-fg,var(--zui-fg,#0f172a))] dark:text-[color:var(--zui-kbd-glass-fg-dark,var(--zui-fg-dark,#ffffff))] backdrop-blur-md",
   emerald:
-    "bg-[var(--zui-kbd-emerald-bg,var(--zui-color-emerald,#10b981))] dark:bg-[var(--zui-kbd-emerald-bg-dark,var(--zui-color-emerald-dark,#065f46))] text-[color:var(--zui-kbd-emerald-fg,var(--zui-brand-fg,#064e3b))] dark:text-[color:var(--zui-kbd-emerald-fg-dark,var(--zui-brand-fg-dark,#064e3b))]",
+    "bg-[var(--zui-kbd-emerald-bg,var(--zui-color-emerald,#10b981))] dark:bg-[var(--zui-kbd-emerald-bg-dark,var(--zui-color-emerald-dark,#065f46))] text-[color:var(--zui-kbd-emerald-fg,var(--zui-brand-fg,#ffffff))] dark:text-[color:var(--zui-kbd-emerald-fg-dark,var(--zui-brand-fg-dark,#ffffff))]",
   indigo:
     "bg-[var(--zui-kbd-indigo-bg,var(--zui-color-indigo,#3730a3))] dark:bg-[var(--zui-kbd-indigo-bg-dark,var(--zui-color-indigo-dark,#4f46e5))] text-[color:var(--zui-kbd-indigo-fg,var(--zui-brand-fg,#ffffff))] dark:text-[color:var(--zui-kbd-indigo-fg-dark,var(--zui-brand-fg-dark,#ffffff))]",
   purple:
