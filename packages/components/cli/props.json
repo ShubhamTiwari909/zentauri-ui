@@ -3071,7 +3071,6 @@
               "name": "appearance",
               "type": "enum",
               "required": false,
-              "default": "default",
               "group": "variant",
               "isVariant": true,
               "options": [
@@ -3124,6 +3123,54 @@
                 "zinc"
               ],
               "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "bg",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "amber",
+                "aqua",
+                "blue",
+                "crimson",
+                "cyan",
+                "default",
+                "electric",
+                "elevated",
+                "emerald",
+                "forest",
+                "ghost",
+                "glass",
+                "gray",
+                "green",
+                "indigo",
+                "lavender",
+                "lime",
+                "magenta",
+                "mint",
+                "ocean",
+                "orange",
+                "pink",
+                "plum",
+                "purple",
+                "red",
+                "rose",
+                "royal",
+                "ruby",
+                "sapphire",
+                "sky",
+                "slate",
+                "stone",
+                "sunset",
+                "teal",
+                "violet",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "bg",
               "deprecated": false
             },
             {
@@ -3329,6 +3376,13 @@
               "deprecated": false
             },
             {
+              "name": "bg",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'violet' | 'glass' | 'amber' | 'elevated' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
               "name": "rounded",
               "type": "'md' | 'sm' | 'lg' | 'full' | null | undefined",
               "required": false,
@@ -3360,6 +3414,13 @@
             {
               "name": "appearance",
               "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | 'elevated' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "bg",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'violet' | 'glass' | 'amber' | 'elevated' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false

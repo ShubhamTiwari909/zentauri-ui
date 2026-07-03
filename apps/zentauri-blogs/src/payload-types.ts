@@ -158,6 +158,39 @@ export interface SectionBlock {
    * Optional anchor id for in-page links (lowercase letters, numbers, and hyphens only)
    */
   sectionId?: string | null;
+  bgColor:
+    | "white"
+    | "dark-slate"
+    | "blue"
+    | "emerald"
+    | "teal"
+    | "indigo"
+    | "fuchsia";
+  verticalSpacing?: {
+    top?: {
+      desktop?:
+        | ("0" | "20" | "40" | "60" | "80" | "120" | "140" | "160" | "200")
+        | null;
+      tablet?:
+        | ("0" | "20" | "40" | "60" | "80" | "120" | "140" | "160" | "200")
+        | null;
+      mobile?:
+        | ("0" | "20" | "40" | "60" | "80" | "120" | "140" | "160" | "200")
+        | null;
+    };
+    bottom?: {
+      desktop?:
+        | ("0" | "20" | "40" | "60" | "80" | "120" | "140" | "160" | "200")
+        | null;
+      tablet?:
+        | ("0" | "20" | "40" | "60" | "80" | "120" | "140" | "160" | "200")
+        | null;
+      mobile?:
+        | ("0" | "20" | "40" | "60" | "80" | "120" | "140" | "160" | "200")
+        | null;
+    };
+  };
+  fullHeight: boolean;
   content: {
     root: {
       type: string;
@@ -665,6 +698,57 @@ export interface BadgeBlock {
  */
 export interface CardBlock {
   appearance?:
+    | (
+        | "default"
+        | "glass"
+        | "outline"
+        | "ghost"
+        | "elevated"
+        | "blue"
+        | "cyan"
+        | "green"
+        | "lime"
+        | "mint"
+        | "ocean"
+        | "sapphire"
+        | "lavender"
+        | "ruby"
+        | "red"
+        | "slate"
+        | "zinc"
+        | "stone"
+        | "royal"
+        | "electric"
+        | "forest"
+        | "sunset"
+        | "magenta"
+        | "crimson"
+        | "aqua"
+        | "plum"
+        | "sky"
+        | "rose"
+        | "purple"
+        | "pink"
+        | "orange"
+        | "yellow"
+        | "teal"
+        | "indigo"
+        | "emerald"
+        | "gray"
+        | "amber"
+        | "violet"
+        | "gradient-blue"
+        | "gradient-green"
+        | "gradient-red"
+        | "gradient-yellow"
+        | "gradient-purple"
+        | "gradient-teal"
+        | "gradient-indigo"
+        | "gradient-pink"
+        | "gradient-orange"
+      )
+    | null;
+  bg?:
     | (
         | "default"
         | "glass"

@@ -4,5 +4,6 @@
    are generated. Required because the package ships class strings, not CSS. */
 @source "../../../node_modules/@zentauri-ui/zentauri-components";
 @source "../../../node_modules/@zentauri-ui/shared";
+@source inline("{md:,lg:,}{pt,pb}-{0,5,10,15,20,30,35,40,50}");
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

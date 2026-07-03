@@ -19,9 +19,19 @@ import {
 } from "@zentauri-ui/zentauri-components/ui/select";
 
 import { CardDemo } from "./demo";
-import { CARD_APPEARANCES, CARD_ROUNDED, CARD_SIZES } from "./data";
+import {
+  CARD_APPEARANCES,
+  CARD_BG_APPEARANCES,
+  CARD_ROUNDED,
+  CARD_SIZES,
+} from "./data";
 import { cardSnippet } from "./snippets";
-import type { CardAppearance, CardRounded, CardSize } from "./types";
+import type {
+  CardAppearance,
+  CardBgAppearance,
+  CardRounded,
+  CardSize,
+} from "./types";
 
 type VariantSelectProps<T extends string> = {
   label: string;
@@ -126,19 +136,26 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
 
 export function CardPlayground() {
   const [appearance, setAppearance] = useState<CardAppearance>("default");
+  const [bg, setBg] = useState<CardBgAppearance | undefined>(undefined);
   const [size, setSize] = useState<CardSize>("md");
   const [rounded, setRounded] = useState<CardRounded>("md");
 
-  const code = cardSnippet({ appearance, size, rounded });
+  const code = cardSnippet({ appearance, bg, size, rounded });
 
   return (
     <div className="mt-6 rounded-xl">
-      <div className="mb-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
+      <div className="mb-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
         <VariantSelect
           label="Appearance"
           value={appearance}
           options={CARD_APPEARANCES}
           onChange={setAppearance}
+        />
+        <VariantSelect
+          label="Background"
+          value={bg ?? "none"}
+          options={CARD_BG_APPEARANCES}
+          onChange={(v) => setBg(v === "none" ? undefined : v)}
         />
         <VariantSelect
           label="Size"
@@ -154,7 +171,12 @@ export function CardPlayground() {
         />
       </div>
       <PreviewCodeShowcase code={code}>
-        <CardDemo appearance={appearance} size={size} rounded={rounded} />
+        <CardDemo
+          appearance={appearance}
+          bg={bg}
+          size={size}
+          rounded={rounded}
+        />
       </PreviewCodeShowcase>
       <AppearanceGallery selected={appearance} onSelect={setAppearance} />
     </div>

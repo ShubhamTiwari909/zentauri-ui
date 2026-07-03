@@ -29,6 +29,7 @@ export function CardBase({
   className,
   appearance,
   size = "md",
+  bg,
   rounded,
   children,
   ref,
@@ -42,7 +43,10 @@ export function CardBase({
       <Wrapper
         ref={ref}
         data-slot="card"
-        className={cn(cardVariants({ appearance, size, rounded }), className)}
+        className={cn(
+          cardVariants({ appearance, bg, size, rounded }),
+          className,
+        )}
         {...rest}
       >
         {children}

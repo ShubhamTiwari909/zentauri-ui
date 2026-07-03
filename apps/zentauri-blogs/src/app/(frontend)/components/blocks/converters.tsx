@@ -510,17 +510,19 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
         </Badge>
       );
 
-    case "card":
+    case "card": {
       return (
         <Card
           key={key}
           appearance={block.appearance ?? undefined}
           size={block.size ?? undefined}
+          bg={block.bg ?? undefined}
           rounded={block.rounded ?? undefined}
         >
           <CardBody>{renderContent(block.content)}</CardBody>
         </Card>
       );
+    }
 
     case "divider":
       return (

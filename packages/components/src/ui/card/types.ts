@@ -13,6 +13,7 @@ export type CardVariantProps = VariantProps<typeof cardVariants>;
 
 export interface CardBaseProps extends ComponentPropsWithRef<"article"> {
   appearance?: CardVariantProps["appearance"];
+  bg?: CardVariantProps["bg"];
   size?: CardVariantProps["size"];
   rounded?: CardVariantProps["rounded"];
   as?: ElementType;

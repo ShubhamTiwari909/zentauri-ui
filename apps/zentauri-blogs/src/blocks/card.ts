@@ -17,6 +17,12 @@ export const Card: Block = {
           options: appearanceOptions("card"),
         },
         {
+          name: "bg",
+          type: "select",
+          defaultValue: "default",
+          options: appearanceOptions("card"),
+        },
+        {
           name: "size",
           type: "select",
           defaultValue: "md",
