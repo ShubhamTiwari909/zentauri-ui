@@ -366,12 +366,21 @@ type TreeViewNodeInput = {
 };
 
 /** Recursively maps a TreeViewBlock's 4-level-deep node shape into TreeView's TreeNode[]. */
-function toTreeNodes(nodes: TreeViewNodeInput[]): TreeNode[] {
-  return nodes.map((node, index) => ({
-    id: node.id ?? `node-${index}`,
-    label: node.label,
-    children: node.children?.length ? toTreeNodes(node.children) : undefined,
-  }));
+function toTreeNodes(
+  nodes: TreeViewNodeInput[] | null | undefined,
+  parentPath = "",
+): TreeNode[] {
+  if (!nodes) return [];
+  return nodes.map((node, index) => {
+    const path = parentPath ? `${parentPath}-${index}` : `node-${index}`;
+    return {
+      id: node.id ?? path,
+      label: node.label,
+      children: node.children?.length
+        ? toTreeNodes(node.children, path)
+        : undefined,
+    };
+  });
 }
 
 export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
@@ -541,15 +550,15 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
         >
           <TableHeader>
             <TableRow>
-              {block.columns.map((column, index) => (
+              {block.columns?.map((column, index) => (
                 <TableHead key={column.id ?? index}>{column.label}</TableHead>
               ))}
             </TableRow>
           </TableHeader>
           <TableBody>
-            {block.rows.map((row, rowIndex) => (
+            {block.rows?.map((row, rowIndex) => (
               <TableRow key={row.id ?? rowIndex}>
-                {row.cells.map((cell, cellIndex) => (
+                {row.cells?.map((cell, cellIndex) => (
                   <TableCell key={cell.id ?? cellIndex}>{cell.value}</TableCell>
                 ))}
               </TableRow>
@@ -560,7 +569,7 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
 
     case "breadcrumb": {
       const appearance = block.appearance ?? undefined;
-      const items = block.items;
+      const items = block.items ?? [];
       return (
         <BreadcrumbRoot key={key}>
           <BreadcrumbList>
@@ -612,7 +621,20 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
       );
 
     case "json-viewer": {
-      const parsed = JSON5.parse(block?.data);
+      let parsed: unknown = null;
+      try {
+        parsed = block.data ? JSON5.parse(block.data) : null;
+      } catch (error) {
+        return (
+          <div
+            key={key}
+            className="border-red-500 bg-red-50 text-red-500 rounded border p-4 text-sm"
+          >
+            Failed to parse JSON5 data:{" "}
+            {error instanceof Error ? error.message : String(error)}
+          </div>
+        );
+      }
       return (
         <JsonViewer
           key={key}
@@ -635,7 +657,7 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
           appearance={block.appearance ?? undefined}
           size={block.size ?? undefined}
           separator={block.separator ?? undefined}
-          keys={block.keys.map((item) => item.key)}
+          keys={block.keys?.map((item) => item.key) ?? []}
         />
       );
 
@@ -712,10 +734,10 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
           variant={block.variant ?? undefined}
           size={block.size ?? undefined}
           orientation={block.orientation ?? undefined}
-          defaultValue={block.tabs[0]?.id ?? "tab-0"}
+          defaultValue={block.tabs?.[0]?.id ?? "tab-0"}
         >
           <TabsList>
-            {block.tabs.map((tab, index) => (
+            {block.tabs?.map((tab, index) => (
               <TabsTrigger
                 key={tab.id ?? index}
                 value={tab.id ?? `tab-${index}`}
@@ -724,7 +746,7 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
               </TabsTrigger>
             ))}
           </TabsList>
-          {block.tabs.map((tab, index) => (
+          {block.tabs?.map((tab, index) => (
             <TabsContent
               key={tab.id ?? index}
               value={tab.id ?? `tab-${index}`}
@@ -743,7 +765,7 @@ export function renderBlock(block: AnyBlock, key?: React.Key): ReactNode {
           appearance={block.appearance ?? undefined}
           size={block.size ?? undefined}
         >
-          {block.items.map((item, index) => (
+          {block.items?.map((item, index) => (
             <TimelineItem key={item.id ?? index}>
               <TimelineIndicator appearance={item.appearance ?? undefined} />
               <TimelineContent>

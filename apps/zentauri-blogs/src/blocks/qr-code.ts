@@ -1,5 +1,15 @@
 import type { Block } from "payload";
 
+const hexColorRegex = /^#[0-9a-fA-F]{6}$/;
+
+const hexColorValidate = (value: string | null | undefined) => {
+  if (!value) return true;
+  if (!hexColorRegex.test(value)) {
+    return "Must be a valid hex color (e.g. #ffffff)";
+  }
+  return true;
+};
+
 export const QrCode: Block = {
   slug: "qr-code",
   interfaceName: "QrCodeBlock",
@@ -50,6 +60,7 @@ export const QrCode: Block = {
           admin: {
             description: "Background color (hex)",
           },
+          validate: hexColorValidate,
         },
         {
           name: "fgColor",
@@ -58,6 +69,7 @@ export const QrCode: Block = {
           admin: {
             description: "Foreground color (hex)",
           },
+          validate: hexColorValidate,
         },
       ],
     },

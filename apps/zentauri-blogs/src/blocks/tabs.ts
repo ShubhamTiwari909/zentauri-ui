@@ -1,6 +1,6 @@
 import type { Block } from "payload";
 
-import { appearanceOptions, variantOptions } from "./options";
+import { appearanceOptions, sizeOptions, variantOptions } from "./options";
 import { basicRichTextEditor } from "./richText";
 
 export const Tabs: Block = {
@@ -26,7 +26,7 @@ export const Tabs: Block = {
           name: "size",
           type: "select",
           defaultValue: "md",
-          options: ["sm", "md", "lg"],
+          options: sizeOptions("tabs", "trigger"),
         },
         {
           name: "orientation",

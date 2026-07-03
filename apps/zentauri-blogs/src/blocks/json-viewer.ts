@@ -1,3 +1,4 @@
+import JSON5 from "json5";
 import type { Block } from "payload";
 
 // Not part of the shared design-system facade (see options.ts) — its
@@ -62,6 +63,18 @@ export const JsonViewer: Block = {
       name: "data",
       type: "code",
       required: true,
+      admin: {
+        language: "json",
+      },
+      validate: (value: string | null | undefined) => {
+        if (!value) return "Data is required";
+        try {
+          JSON5.parse(value);
+          return true;
+        } catch {
+          return "Invalid JSON5 data. Please check your syntax.";
+        }
+      },
     },
   ],
 };
