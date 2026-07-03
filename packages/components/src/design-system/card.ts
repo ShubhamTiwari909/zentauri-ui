@@ -87,6 +87,89 @@ export const zuiCardAppearances = {
     "border border-[color:var(--zui-card-gradient-orange-border,var(--zui-color-orange,oklch(47%_0.157_37.304)))] dark:border-[color:var(--zui-card-gradient-orange-border-dark,var(--zui-color-orange-dark,oklch(64.6%_0.222_41.116)))] bg-linear-to-r from-[var(--zui-card-gradient-orange-from,var(--zui-color-orange,oklch(98%_0.016_73.684)))] dark:from-[var(--zui-card-gradient-orange-from-dark,var(--zui-color-orange-dark,oklch(26.6%_0.079_36.259_/_0.7)))] to-[var(--zui-card-gradient-orange-to,var(--zui-color-red,oklch(97.1%_0.013_17.38)))] dark:to-[var(--zui-card-gradient-orange-to-dark,var(--zui-color-red-dark,oklch(25.8%_0.092_26.042_/_0.7)))] backdrop-blur-xl",
 } as const;
 
+export const zuiCardBgAppearances = {
+  default:
+    "bg-[color:var(--zui-card-default-bg,var(--zui-bg,#0000001a))] dark:bg-[color:var(--zui-card-default-bg-dark,var(--zui-bg-dark,#ffffff1a))] shadow-[var(--zui-card-default-shadow,var(--zui-shadow,0_1px_2px_rgba(15,23,42,0.08)))] dark:shadow-[var(--zui-card-default-shadow-dark,var(--zui-shadow-dark,0_1px_2px_rgba(15,23,42,0.12)))]",
+  outline:
+    "border bg-transparent border-[color:var(--zui-card-outline-border,var(--zui-border,#00000026))] dark:border-[color:var(--zui-card-outline-border-dark,var(--zui-border-dark,#ffffff26))]",
+  glass:
+    "bg-[color:var(--zui-card-glass-bg,var(--zui-bg,#00000026))] dark:bg-[color:var(--zui-card-glass-bg-dark,var(--zui-bg-dark,#ffffff26))] backdrop-blur-md shadow-[var(--zui-card-glass-shadow,var(--zui-shadow,0_8px_24px_rgba(15,23,42,0.12)))] dark:shadow-[var(--zui-card-glass-shadow-dark,var(--zui-shadow-dark,0_18px_48px_rgba(15,23,42,0.35)))]",
+  ghost:
+    "bg-[color:var(--zui-card-ghost-bg,var(--zui-bg,transparent))] dark:bg-[color:var(--zui-card-ghost-bg-dark,var(--zui-bg-dark,transparent))]",
+  elevated:
+    "bg-[color:var(--zui-card-elevated-bg,var(--zui-bg,#0000001a))] dark:bg-[color:var(--zui-card-elevated-bg-dark,var(--zui-bg-dark,#ffffff1a))] shadow-[var(--zui-card-elevated-shadow,var(--zui-shadow,0_12px_32px_rgba(15,23,42,0.12)))] dark:shadow-[var(--zui-card-elevated-shadow-dark,var(--zui-shadow-dark,0_24px_64px_rgba(15,23,42,0.45)))]",
+  blue: "bg-[color:var(--zui-card-blue-bg,var(--zui-color-blue,#2563eb))] dark:bg-[color:var(--zui-card-blue-bg-dark,var(--zui-color-blue-dark,#3b82f6))] backdrop-blur-xl",
+  cyan: "bg-[color:var(--zui-card-cyan-bg,var(--zui-color-cyan,#0891b2))] dark:bg-[color:var(--zui-card-cyan-bg-dark,var(--zui-color-cyan-dark,#22d3ee))] backdrop-blur-xl",
+  green:
+    "bg-[color:var(--zui-card-green-bg,var(--zui-color-green,#16a34a))] dark:bg-[color:var(--zui-card-green-bg-dark,var(--zui-color-green-dark,#22c55e))] backdrop-blur-xl",
+  lime: "bg-[color:var(--zui-card-lime-bg,var(--zui-color-lime,#65a30d))] dark:bg-[color:var(--zui-card-lime-bg-dark,var(--zui-color-lime-dark,#a3e635))] backdrop-blur-xl",
+  mint: "bg-[color:var(--zui-card-mint-bg,var(--zui-color-mint,#10b981))] dark:bg-[color:var(--zui-card-mint-bg-dark,var(--zui-color-mint-dark,#6ee7b7))] backdrop-blur-xl",
+  ocean:
+    "bg-[color:var(--zui-card-ocean-bg,var(--zui-color-ocean,#0284c7))] dark:bg-[color:var(--zui-card-ocean-bg-dark,var(--zui-color-ocean-dark,#38bdf8))] backdrop-blur-xl",
+  sapphire:
+    "bg-[color:var(--zui-card-sapphire-bg,var(--zui-color-sapphire,#1d4ed8))] dark:bg-[color:var(--zui-card-sapphire-bg-dark,var(--zui-color-sapphire-dark,#60a5fa))] backdrop-blur-xl",
+  lavender:
+    "bg-[color:var(--zui-card-lavender-bg,var(--zui-color-lavender,#8b5cf6))] dark:bg-[color:var(--zui-card-lavender-bg-dark,var(--zui-color-lavender-dark,#a78bfa))] backdrop-blur-xl",
+  ruby: "bg-[color:var(--zui-card-ruby-bg,var(--zui-color-ruby,#be123c))] dark:bg-[color:var(--zui-card-ruby-bg-dark,var(--zui-color-ruby-dark,#fb7185))] backdrop-blur-xl",
+  red: "bg-[color:var(--zui-card-red-bg,var(--zui-color-red,#dc2626))] dark:bg-[color:var(--zui-card-red-bg-dark,var(--zui-color-red-dark,#ef4444))] backdrop-blur-xl",
+  slate:
+    "bg-[color:var(--zui-card-slate-bg,var(--zui-color-slate,#475569))] dark:bg-[color:var(--zui-card-slate-bg-dark,var(--zui-color-slate-dark,#64748b))] backdrop-blur-xl",
+  zinc: "bg-[color:var(--zui-card-zinc-bg,var(--zui-color-zinc,#52525b))] dark:bg-[color:var(--zui-card-zinc-bg-dark,var(--zui-color-zinc-dark,#71717a))] backdrop-blur-xl",
+  stone:
+    "bg-[color:var(--zui-card-stone-bg,var(--zui-color-stone,#57534e))] dark:bg-[color:var(--zui-card-stone-bg-dark,var(--zui-color-stone-dark,#78716c))] backdrop-blur-xl",
+  royal:
+    "bg-[color:var(--zui-card-royal-bg,var(--zui-color-royal,#4338ca))] dark:bg-[color:var(--zui-card-royal-bg-dark,var(--zui-color-royal-dark,#818cf8))] backdrop-blur-xl",
+  electric:
+    "bg-[color:var(--zui-card-electric-bg,var(--zui-color-electric,#0ea5e9))] dark:bg-[color:var(--zui-card-electric-bg-dark,var(--zui-color-electric-dark,#38bdf8))] backdrop-blur-xl",
+  forest:
+    "bg-[color:var(--zui-card-forest-bg,var(--zui-color-forest,#166534))] dark:bg-[color:var(--zui-card-forest-bg-dark,var(--zui-color-forest-dark,#4ade80))] backdrop-blur-xl",
+  sunset:
+    "bg-[color:var(--zui-card-sunset-bg,var(--zui-color-sunset,#ea580c))] dark:bg-[color:var(--zui-card-sunset-bg-dark,var(--zui-color-sunset-dark,#fb923c))] backdrop-blur-xl",
+  magenta:
+    "bg-[color:var(--zui-card-magenta-bg,var(--zui-color-magenta,#c026d3))] dark:bg-[color:var(--zui-card-magenta-bg-dark,var(--zui-color-magenta-dark,#e879f9))] backdrop-blur-xl",
+  crimson:
+    "bg-[color:var(--zui-card-crimson-bg,var(--zui-color-crimson,#b91c1c))] dark:bg-[color:var(--zui-card-crimson-bg-dark,var(--zui-color-crimson-dark,#f87171))] backdrop-blur-xl",
+  aqua: "bg-[color:var(--zui-card-aqua-bg,var(--zui-color-aqua,#0f766e))] dark:bg-[color:var(--zui-card-aqua-bg-dark,var(--zui-color-aqua-dark,#2dd4bf))] backdrop-blur-xl",
+  plum: "bg-[color:var(--zui-card-plum-bg,var(--zui-color-plum,#7e22ce))] dark:bg-[color:var(--zui-card-plum-bg-dark,var(--zui-color-plum-dark,#c084fc))] backdrop-blur-xl",
+  sky: "bg-[color:var(--zui-card-sky-bg,var(--zui-color-sky,oklch(44.3%_0.11_240.79)))] dark:bg-[color:var(--zui-card-sky-bg-dark,var(--zui-color-sky-dark,oklch(58.8%_0.158_241.966)))] backdrop-blur-xl",
+  rose: "bg-[color:var(--zui-card-rose-bg,var(--zui-color-rose,oklch(45.5%_0.188_13.697)))] dark:bg-[color:var(--zui-card-rose-bg-dark,var(--zui-color-rose-dark,oklch(58.6%_0.253_17.585)))] backdrop-blur-xl",
+  purple:
+    "bg-[color:var(--zui-card-purple-bg,var(--zui-color-purple,oklch(43.8%_0.218_303.724)))] dark:bg-[color:var(--zui-card-purple-bg-dark,var(--zui-color-purple-dark,oklch(55.8%_0.288_302.321)))] backdrop-blur-xl",
+  pink: "bg-[color:var(--zui-card-pink-bg,var(--zui-color-pink,oklch(45.9%_0.187_3.815)))] dark:bg-[color:var(--zui-card-pink-bg-dark,var(--zui-color-pink-dark,oklch(59.2%_0.249_0.584)))] backdrop-blur-xl",
+  orange:
+    "bg-[color:var(--zui-card-orange-bg,var(--zui-color-orange,oklch(47%_0.157_37.304)))] dark:bg-[color:var(--zui-card-orange-bg-dark,var(--zui-color-orange-dark,oklch(64.6%_0.222_41.116)))] backdrop-blur-xl",
+  yellow:
+    "bg-[color:var(--zui-card-yellow-bg,var(--zui-color-yellow,oklch(47.6%_0.114_61.907)))] dark:bg-[color:var(--zui-card-yellow-bg-dark,var(--zui-color-yellow-dark,oklch(68.1%_0.162_75.834)))] backdrop-blur-xl",
+  teal: "bg-[color:var(--zui-card-teal-bg,var(--zui-color-teal,oklch(43.7%_0.078_188.216)))] dark:bg-[color:var(--zui-card-teal-bg-dark,var(--zui-color-teal-dark,oklch(60%_0.118_184.704)))] backdrop-blur-xl",
+  indigo:
+    "bg-[color:var(--zui-card-indigo-bg,var(--zui-color-indigo,oklch(39.8%_0.195_277.366)))] dark:bg-[color:var(--zui-card-indigo-bg-dark,var(--zui-color-indigo-dark,oklch(51.1%_0.262_276.966)))] backdrop-blur-xl",
+  emerald:
+    "bg-[color:var(--zui-card-emerald-bg,var(--zui-color-emerald,oklch(43.2%_0.095_166.913)))] dark:bg-[color:var(--zui-card-emerald-bg-dark,var(--zui-color-emerald-dark,oklch(59.6%_0.145_163.225)))] backdrop-blur-xl",
+  gray: "bg-[color:var(--zui-card-gray-bg,var(--zui-color-gray,oklch(27.8%_0.033_256.848)))] dark:bg-[color:var(--zui-card-gray-bg-dark,var(--zui-color-gray-dark,oklch(44.6%_0.03_256.802)))] backdrop-blur-xl",
+  amber:
+    "bg-[color:var(--zui-card-amber-bg,var(--zui-color-amber,oklch(47.3%_0.137_46.201)))] dark:bg-[color:var(--zui-card-amber-bg-dark,var(--zui-color-amber-dark,oklch(66.6%_0.179_58.318)))] backdrop-blur-xl",
+  violet:
+    "bg-[color:var(--zui-card-violet-bg,var(--zui-color-violet,oklch(43.2%_0.232_292.759)))] dark:bg-[color:var(--zui-card-violet-bg-dark,var(--zui-color-violet-dark,oklch(54.1%_0.281_293.009)))] backdrop-blur-xl",
+  "gradient-blue":
+    "bg-linear-to-r from-[var(--zui-card-gradient-blue-from,var(--zui-color-blue,#1e40af))] dark:from-[var(--zui-card-gradient-blue-from-dark,var(--zui-color-blue-dark,#2563eb))] to-[var(--zui-card-gradient-blue-to,var(--zui-color-purple,#6b21a8))] dark:to-[var(--zui-card-gradient-blue-to-dark,var(--zui-color-purple-dark,#9333ea))] text-[color:var(--zui-card-gradient-blue-fg,var(--zui-brand-fg,#ffffff))] dark:text-[color:var(--zui-card-gradient-blue-fg-dark,var(--zui-brand-fg-dark,#ffffff))]",
+  "gradient-green":
+    "bg-linear-to-r from-[var(--zui-card-gradient-green-from,var(--zui-color-green,#166534))] dark:from-[var(--zui-card-gradient-green-from-dark,var(--zui-color-green-dark,#16a34a))] to-[var(--zui-card-gradient-green-to,var(--zui-color-lime,#3f6212))] dark:to-[var(--zui-card-gradient-green-to-dark,var(--zui-color-lime-dark,#65a30d))] text-[color:var(--zui-card-gradient-green-fg,var(--zui-brand-fg,#ffffff))] dark:text-[color:var(--zui-card-gradient-green-fg-dark,var(--zui-brand-fg-dark,#ffffff))]",
+  "gradient-red":
+    "bg-linear-to-r from-[var(--zui-card-gradient-red-from,var(--zui-color-red,#991b1b))] dark:from-[var(--zui-card-gradient-red-from-dark,var(--zui-color-red-dark,#dc2626))] to-[var(--zui-card-gradient-red-to,var(--zui-color-pink,#9d174d))] dark:to-[var(--zui-card-gradient-red-to-dark,var(--zui-color-pink-dark,#db2777))] text-[color:var(--zui-card-gradient-red-fg,var(--zui-brand-fg,#ffffff))] dark:text-[color:var(--zui-card-gradient-red-fg-dark,var(--zui-brand-fg-dark,#ffffff))]",
+  "gradient-yellow":
+    "bg-linear-to-r from-[var(--zui-card-gradient-yellow-from,var(--zui-color-yellow,#854d0e))] dark:from-[var(--zui-card-gradient-yellow-from-dark,var(--zui-color-yellow-dark,#ca8a04))] to-[var(--zui-card-gradient-yellow-to,var(--zui-color-orange,#9a3412))] dark:to-[var(--zui-card-gradient-yellow-to-dark,var(--zui-color-orange-dark,#ea580c))] text-[color:var(--zui-card-gradient-yellow-fg,var(--zui-brand-fg,#ffffff))] dark:text-[color:var(--zui-card-gradient-yellow-fg-dark,var(--zui-brand-fg-dark,#ffffff))]",
+  "gradient-purple":
+    "bg-linear-to-r from-[var(--zui-card-gradient-purple-from,var(--zui-color-purple,#6b21a8))] dark:from-[var(--zui-card-gradient-purple-from-dark,var(--zui-color-purple-dark,#9333ea))] to-[var(--zui-card-gradient-purple-to,var(--zui-color-pink,#9d174d))] dark:to-[var(--zui-card-gradient-purple-to-dark,var(--zui-color-pink-dark,#db2777))] text-[color:var(--zui-card-gradient-purple-fg,var(--zui-brand-fg,#ffffff))] dark:text-[color:var(--zui-card-gradient-purple-fg-dark,var(--zui-brand-fg-dark,#ffffff))]",
+  "gradient-teal":
+    "bg-linear-to-r from-[var(--zui-card-gradient-teal-from,var(--zui-color-teal,#115e59))] dark:from-[var(--zui-card-gradient-teal-from-dark,var(--zui-color-teal-dark,#0d9488))] to-[var(--zui-card-gradient-teal-to,var(--zui-color-cyan,#155e75))] dark:to-[var(--zui-card-gradient-teal-to-dark,var(--zui-color-cyan-dark,#0891b2))] text-[color:var(--zui-card-gradient-teal-fg,var(--zui-brand-fg,#ffffff))] dark:text-[color:var(--zui-card-gradient-teal-fg-dark,var(--zui-brand-fg-dark,#ffffff))]",
+  "gradient-indigo":
+    "bg-linear-to-r from-[var(--zui-card-gradient-indigo-from,var(--zui-color-indigo,#3730a3))] dark:from-[var(--zui-card-gradient-indigo-from-dark,var(--zui-color-indigo-dark,#4f46e5))] to-[var(--zui-card-gradient-indigo-to,var(--zui-color-purple,#6b21a8))] dark:to-[var(--zui-card-gradient-indigo-to-dark,var(--zui-color-purple-dark,#9333ea))] text-[color:var(--zui-card-gradient-indigo-fg,var(--zui-brand-fg,#ffffff))] dark:text-[color:var(--zui-card-gradient-indigo-fg-dark,var(--zui-brand-fg-dark,#ffffff))]",
+  "gradient-pink":
+    "bg-linear-to-r from-[var(--zui-card-gradient-pink-from,var(--zui-color-pink,#9d174d))] dark:from-[var(--zui-card-gradient-pink-from-dark,var(--zui-color-pink-dark,#db2777))] to-[var(--zui-card-gradient-pink-to,var(--zui-color-rose,#9f1239))] dark:to-[var(--zui-card-gradient-pink-to-dark,var(--zui-color-rose-dark,#e11d48))] text-[color:var(--zui-card-gradient-pink-fg,var(--zui-brand-fg,#ffffff))] dark:text-[color:var(--zui-card-gradient-pink-fg-dark,var(--zui-brand-fg-dark,#ffffff))]",
+  "gradient-orange":
+    "bg-linear-to-r from-[var(--zui-card-gradient-orange-from,var(--zui-color-orange,#9a3412))] dark:from-[var(--zui-card-gradient-orange-from-dark,var(--zui-color-orange-dark,#ea580c))] to-[var(--zui-card-gradient-orange-to,var(--zui-color-red,#991b1b))] dark:to-[var(--zui-card-gradient-orange-to-dark,var(--zui-color-red-dark,#dc2626))] text-[color:var(--zui-card-gradient-orange-fg,var(--zui-brand-fg,#ffffff))] dark:text-[color:var(--zui-card-gradient-orange-fg-dark,var(--zui-brand-fg-dark,#ffffff))]",
+} as const;
+
 export const zuiCardSizes = {
   sm: "gap-2 p-3 text-sm",
   md: "gap-3 p-4 text-sm",

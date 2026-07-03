@@ -17,6 +17,15 @@ export const Card: Block = {
           options: appearanceOptions("card"),
         },
         {
+          name: "bg",
+          type: "select",
+          // No default: `bg` classes are applied after `appearance` in
+          // cardVariants, so any value here (even "default") would always
+          // win the background and silently override the chosen appearance
+          // (e.g. "glass" or "gradient-blue") unless explicitly opted into.
+          options: appearanceOptions("card", "bg"),
+        },
+        {
           name: "size",
           type: "select",
           defaultValue: "md",

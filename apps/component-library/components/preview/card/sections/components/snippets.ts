@@ -3,12 +3,13 @@ import { variantLeadComment } from "@/components/common/variant-code-prefix";
 import type { CardDemoProps } from "./types";
 
 export function cardSnippet(opts: CardDemoProps): string {
-  const { appearance, size, rounded } = opts;
+  const { appearance, bg, size, rounded } = opts;
   const appearanceAttr =
     appearance === "default" ? "" : ` appearance="${appearance}"`;
+  const bgAttr = bg ? ` bg="${bg}"` : "";
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
   const roundedAttr = rounded === "md" ? "" : ` rounded="${rounded}"`;
-  return `${variantLeadComment(`appearance · ${appearance}, size · ${size}, rounded · ${rounded}`)}<Card${appearanceAttr}${sizeAttr}${roundedAttr}>
+  return `${variantLeadComment(`appearance · ${appearance}${bg ? `, bg · ${bg}` : ""}, size · ${size}, rounded · ${rounded}`)}<Card${appearanceAttr}${bgAttr}${sizeAttr}${roundedAttr}>
   <CardHeader>
     <CardTitle className="text-sm">
       Appearance:{" "}

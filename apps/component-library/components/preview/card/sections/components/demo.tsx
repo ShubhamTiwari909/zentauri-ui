@@ -8,9 +8,9 @@ import {
 
 import type { CardDemoProps } from "./types";
 
-export function CardDemo({ appearance, size, rounded }: CardDemoProps) {
+export function CardDemo({ appearance, bg, size, rounded }: CardDemoProps) {
   return (
-    <Card appearance={appearance} size={size} rounded={rounded}>
+    <Card appearance={appearance} bg={bg} size={size} rounded={rounded}>
       <CardHeader>
         <CardTitle className="text-sm">
           Appearance:{" "}

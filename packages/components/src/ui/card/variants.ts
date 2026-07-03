@@ -2,6 +2,7 @@ import { cva } from "class-variance-authority";
 
 import {
   zuiCardAppearances,
+  zuiCardBgAppearances,
   zuiCardBase,
   zuiCardDescriptionBase,
   zuiCardDescriptionSizes,
@@ -18,6 +19,7 @@ import {
 export const cardVariants = cva(zuiCardBase, {
   variants: {
     appearance: zuiCardAppearances,
+    bg: zuiCardBgAppearances,
     size: zuiCardSizes,
     rounded: zuiCardRounded,
   },
