@@ -87,7 +87,7 @@ export const zuiCardAppearances = {
     "border border-[color:var(--zui-card-gradient-orange-border,var(--zui-color-orange,oklch(47%_0.157_37.304)))] dark:border-[color:var(--zui-card-gradient-orange-border-dark,var(--zui-color-orange-dark,oklch(64.6%_0.222_41.116)))] bg-linear-to-r from-[var(--zui-card-gradient-orange-from,var(--zui-color-orange,oklch(98%_0.016_73.684)))] dark:from-[var(--zui-card-gradient-orange-from-dark,var(--zui-color-orange-dark,oklch(26.6%_0.079_36.259_/_0.7)))] to-[var(--zui-card-gradient-orange-to,var(--zui-color-red,oklch(97.1%_0.013_17.38)))] dark:to-[var(--zui-card-gradient-orange-to-dark,var(--zui-color-red-dark,oklch(25.8%_0.092_26.042_/_0.7)))] backdrop-blur-xl",
 } as const;
 
-export const zuiCardAppearancesWithBg = {
+export const zuiCardBgAppearances = {
   default:
     "bg-[color:var(--zui-card-default-bg,var(--zui-bg,#0000001a))] dark:bg-[color:var(--zui-card-default-bg-dark,var(--zui-bg-dark,#ffffff1a))] shadow-[var(--zui-card-default-shadow,var(--zui-shadow,0_1px_2px_rgba(15,23,42,0.08)))] dark:shadow-[var(--zui-card-default-shadow-dark,var(--zui-shadow-dark,0_1px_2px_rgba(15,23,42,0.12)))]",
   outline:
