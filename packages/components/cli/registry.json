@@ -48,6 +48,7 @@
     "qr-scanner",
     "radio-group",
     "rating",
+    "relative-time",
     "request-timeline-viewer",
     "scroll-area",
     "search",
@@ -62,12 +63,14 @@
     "tabs",
     "terminal-emulator",
     "timeline",
+    "timezone-select",
     "toast",
     "toggle",
     "tooltip",
     "tree-view",
     "typing-indicator",
-    "typography"
+    "typography",
+    "world-clock"
   ],
   "animatedComponents": [
     "accordion",
@@ -99,6 +102,7 @@
     "progress",
     "qr-code",
     "radio-group",
+    "relative-time",
     "request-timeline-viewer",
     "secret-reveal",
     "skeleton",
@@ -113,7 +117,8 @@
     "toggle",
     "tooltip",
     "tree-view",
-    "typing-indicator"
+    "typing-indicator",
+    "world-clock"
   ],
   "charts": [
     "charts/area",
@@ -223,6 +228,7 @@
     "qr-scanner",
     "radio-group",
     "rating",
+    "relative-time",
     "request-timeline-viewer",
     "scroll-area",
     "search",
@@ -238,12 +244,14 @@
     "tabs",
     "terminal-emulator",
     "timeline",
+    "timezone-select",
     "toast",
     "toggle",
     "tooltip",
     "tree-view",
     "typing-indicator",
-    "typography"
+    "typography",
+    "world-clock"
   ],
   "animations": [
     "animations/blur-in",
@@ -295,9 +303,11 @@
     "useControllableState",
     "useCookie",
     "useCountdown",
+    "useDateTimeFormat",
     "useDebouncedValue",
     "useDisclosure",
     "useDocumentTitle",
+    "useDurationFormat",
     "useDynamicStepper",
     "useEventListener",
     "useFocusManagement",
@@ -321,6 +331,7 @@
     "usePrefersColorScheme",
     "usePrefersReducedMotion",
     "usePrevious",
+    "useRelativeTime",
     "useResizeObserver",
     "useScrollPosition",
     "useSessionStorage",
@@ -328,6 +339,7 @@
     "useTableSort",
     "useThrottledCallback",
     "useTimeout",
+    "useTimezone",
     "useToggle",
     "useVirtualList",
     "useWindowSize"
@@ -457,6 +469,9 @@
     "rating": [
       "react-icons"
     ],
+    "relative-time": [
+      "framer-motion"
+    ],
     "request-timeline-viewer": [
       "framer-motion"
     ],
@@ -501,6 +516,9 @@
       "framer-motion"
     ],
     "typing-indicator": [
+      "framer-motion"
+    ],
+    "world-clock": [
       "framer-motion"
     ],
     "spinner": [

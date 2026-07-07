@@ -37,9 +37,9 @@ export const CLI_INIT_COMMANDS = {
 } as const;
 
 export const CLI_ADD_COMMANDS = {
-  npm: "npx @zentauri-ui/zentauri-components add accordion buttons network-status speech-recognition speech-synthesizer split-button qr-code qr-scanner",
-  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add accordion buttons network-status speech-recognition speech-synthesizer split-button qr-code qr-scanner",
-  yarn: "yarn dlx @zentauri-ui/zentauri-components add accordion buttons network-status speech-recognition speech-synthesizer split-button qr-code qr-scanner",
+  npm: "npx @zentauri-ui/zentauri-components add accordion buttons network-status speech-recognition speech-synthesizer split-button qr-code qr-scanner relative-time timezone-select world-clock",
+  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add accordion buttons network-status speech-recognition speech-synthesizer split-button qr-code qr-scanner relative-time timezone-select world-clock",
+  yarn: "yarn dlx @zentauri-ui/zentauri-components add accordion buttons network-status speech-recognition speech-synthesizer split-button qr-code qr-scanner relative-time timezone-select world-clock",
 } as const;
 
 export const CLI_ADD_HOOK_COMMANDS = {

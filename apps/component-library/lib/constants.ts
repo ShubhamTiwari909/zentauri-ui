@@ -54,6 +54,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "OTP resend timers, quiz deadlines, and launch counters with explicit pause and resume control.",
   },
   {
+    slug: "use-date-time-format",
+    module: "useDateTimeFormat",
+    name: "useDateTimeFormat",
+    description:
+      "Memoized Intl.DateTimeFormat with a formatter cache; format, formatRange, and formatToParts.",
+    intro:
+      "Format dates in any locale without pulling in a date library — the platform Intl API is the dependency.",
+  },
+  {
     slug: "use-debounced-value",
     module: "useDebouncedValue",
     name: "useDebouncedValue",
@@ -79,6 +88,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Syncs document.title from React and optionally restores the prior title on unmount.",
     intro:
       "Use for wizard steps, live counters in the tab label, or transient status without leaving the tree.",
+  },
+  {
+    slug: "use-duration-format",
+    module: "useDurationFormat",
+    name: "useDurationFormat",
+    description:
+      "Humanize milliseconds into localized duration strings via Intl.NumberFormat unit style.",
+    intro:
+      'Replace manual arithmetic for time spans — localized "1h 24m 30s" output from any millisecond value.',
   },
   {
     slug: "use-dynamic-stepper",
@@ -305,6 +323,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Diff props or state across renders for animation direction, change detection, and transition logic.",
   },
   {
+    slug: "use-relative-time",
+    module: "useRelativeTime",
+    name: "useRelativeTime",
+    description:
+      "Live-updating relative time with automatic unit selection and adaptive tick scheduling via Intl.RelativeTimeFormat.",
+    intro:
+      'Render "3 minutes ago", "in 2 hours", or "just now" with locale-aware formatting — no heavy date library needed.',
+  },
+  {
     slug: "use-resize-observer",
     module: "useResizeObserver",
     name: "useResizeObserver",
@@ -348,6 +375,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Declarative setTimeout with automatic cleanup plus imperative clear and reset controls.",
     intro:
       "Auto-dismiss toasts, delayed reveals, and deferred actions the user can cancel or restart.",
+  },
+  {
+    slug: "use-timezone",
+    module: "useTimezone",
+    name: "useTimezone",
+    description:
+      "Detect the user's zone, enumerate all IANA zones via Intl.supportedValuesOf, and get wall-clock time + GMT offset in any zone.",
+    intro:
+      "Build timezone pickers, world clocks, and meeting planners without a third-party timezone database.",
   },
   {
     slug: "use-toggle",

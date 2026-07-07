@@ -1,0 +1,74 @@
+{
+  "category": "Intl & Time",
+  "title": "Relative Time component for React & Next.js · Zentauri UI",
+  "description": "Live-updating semantic <time> element with relative timestamps — '3 minutes ago' — using the native Intl.RelativeTimeFormat API.",
+  "keywords": [
+    "relative time",
+    "React",
+    "Next.js",
+    "Intl",
+    "timeago",
+    "timestamp"
+  ],
+  "og": {
+    "title": "Relative Time component for React & Next.js · Zentauri UI",
+    "description": "Live-updating semantic <time> element with relative timestamps — '3 minutes ago' — using the native Intl.RelativeTimeFormat API.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Relative Time component for React & Next.js · Zentauri UI",
+    "description": "Live-updating semantic <time> element with relative timestamps — '3 minutes ago' — using the native Intl.RelativeTimeFormat API.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/relative-time",
+  "headings": {
+    "h1": "Relative Time",
+    "h2": [
+      "What it does",
+      "API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Display human-readable relative timestamps that update automatically in real time. Works with any Date, number, or ISO string input.",
+  "useCases": [
+    "Showing comment timestamps on posts and discussions",
+    "Displaying \"last seen\" indicators for user presence",
+    "Activity feeds and audit logs with human-readable times"
+  ],
+  "faqs": [
+    {
+      "question": "How often does the component update?",
+      "answer": "The component re-renders on a smart schedule — every second for \"just now\" intervals, then backs off to minute, hour, and day granularity as the timestamp ages."
+    },
+    {
+      "question": "Does it work with server-side rendering?",
+      "answer": "Yes. The initial timestamp is rendered on the server and the live update kicks in after hydration on the client."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "RelativeTime renders a semantic <time> element that displays a timestamp as a human-friendly relative string — \"3 minutes ago\", \"in 2 hours\", \"last week\" — using Intl.RelativeTimeFormat. It automatically re-computes on a dynamic interval so the displayed value always stays current."
+    },
+    {
+      "heading": "API",
+      "body": "Accepts a datetime prop (Date, number, or ISO 8601 string) and an optional locale. Renders a native <time> with the correct datetime attribute for machine readability."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The component uses a native <time> element with a proper datetime attribute, ensuring screen readers and SEO crawlers always have access to the absolute machine-readable timestamp."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Works out of the box with both Pages Router and App Router. Use a dynamic import with ssr: true (default) for best SEO, or ssr: false for purely client-side timestamps."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

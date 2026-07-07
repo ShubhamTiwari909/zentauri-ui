@@ -1,0 +1,74 @@
+{
+  "category": "Intl & Time",
+  "title": "World Clock component for React & Next.js · Zentauri UI",
+  "description": "Grid of live world clocks with day/night indicators, offset badges, and real-time ticking across timezones.",
+  "keywords": [
+    "world clock",
+    "React",
+    "Next.js",
+    "timezone",
+    "Intl",
+    "international"
+  ],
+  "og": {
+    "title": "World Clock component for React & Next.js · Zentauri UI",
+    "description": "Grid of live world clocks with day/night indicators, offset badges, and real-time ticking across timezones.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "World Clock component for React & Next.js · Zentauri UI",
+    "description": "Grid of live world clocks with day/night indicators, offset badges, and real-time ticking across timezones.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/world-clock",
+  "headings": {
+    "h1": "World Clock",
+    "h2": [
+      "What it does",
+      "API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Display multiple timezones as live clock cards with automatic ticking, day/night indicators, and local offset labels.",
+  "useCases": [
+    "Remote team dashboards showing every member's local time",
+    "Travel planning pages with destination time previews",
+    "Global event schedules with real-time countdowns"
+  ],
+  "faqs": [
+    {
+      "question": "How many clocks can I display at once?",
+      "answer": "There is no hard limit. The component uses a single shared timer for efficient re-renders across all clock cards. Performance is smooth even with 20+ zones."
+    },
+    {
+      "question": "Do clocks sync with the user's system time?",
+      "answer": "Yes. Each card computes its displayed time from the browser's local time offset against the target IANA zone, so clocks stay in sync with the system clock automatically."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "WorldClock renders a responsive grid of clock cards, one per timezone. Each card displays the current time with ticking seconds, a day/night indicator (sun/moon icon), the timezone abbreviation, and the UTC offset."
+    },
+    {
+      "heading": "API",
+      "body": "Accepts a zones array of IANA timezone strings, and optional props for 12/24 hour format, showSeconds, custom card renderers, and grid layout configuration."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Each clock card is a live region (aria-live='polite') so screen readers announce time updates. The time, offset, and day/night status are exposed as accessible text labels."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import the client component via a dynamic wrapper. The grid layout works perfectly with responsive Tailwind breakpoints and can be nested inside Server Component pages."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

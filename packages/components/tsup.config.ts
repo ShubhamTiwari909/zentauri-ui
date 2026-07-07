@@ -49,6 +49,7 @@ const uiComponentNames = [
   "qr-scanner",
   "rating",
   "radio-group",
+  "relative-time",
   "request-timeline-viewer",
   "scroll-area",
   "search",
@@ -62,6 +63,7 @@ const uiComponentNames = [
   "table",
   "tabs",
   "terminal-emulator",
+  "timezone-select",
   "timeline",
   "toast",
   "toggle",
@@ -69,6 +71,7 @@ const uiComponentNames = [
   "tree-view",
   "typing-indicator",
   "typography",
+  "world-clock",
 ] as const;
 
 const chartEntryNames = [
@@ -157,6 +160,7 @@ const uiAnimatedComponentNames = [
   "progress",
   "qr-code",
   "radio-group",
+  "relative-time",
   "request-timeline-viewer",
   "secret-reveal",
   "skeleton",
@@ -172,6 +176,7 @@ const uiAnimatedComponentNames = [
   "tooltip",
   "tree-view",
   "typing-indicator",
+  "world-clock",
 ] as const;
 
 const hooksEntryNames = [
@@ -181,9 +186,11 @@ const hooksEntryNames = [
   "useControllableState",
   "useCookie",
   "useCountdown",
+  "useDateTimeFormat",
   "useDebouncedValue",
   "useDisclosure",
   "useDocumentTitle",
+  "useDurationFormat",
   "useDynamicStepper",
   "useEventListener",
   "useFocusManagement",
@@ -207,6 +214,7 @@ const hooksEntryNames = [
   "usePrefersColorScheme",
   "usePrefersReducedMotion",
   "usePrevious",
+  "useRelativeTime",
   "useResizeObserver",
   "useScrollPosition",
   "useSessionStorage",
@@ -214,6 +222,7 @@ const hooksEntryNames = [
   "useTableSort",
   "useThrottledCallback",
   "useTimeout",
+  "useTimezone",
   "useToggle",
   "useVirtualList",
   "useWindowSize",

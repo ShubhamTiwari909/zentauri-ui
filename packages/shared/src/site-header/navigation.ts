@@ -58,8 +58,13 @@ export function getSiteChromeNavItems(
 }
 
 export function getSiteHeaderBrand(site: SiteHeaderSite) {
+  const domain = {
+    demos: ZENTAURI_LIBRARY_ORIGIN,
+    blogs: ZENTAURI_BLOGS_ORIGIN,
+    library: "/",
+  };
   return {
-    href: site === "demos" ? ZENTAURI_LIBRARY_ORIGIN : "/",
+    href: domain[site],
   };
 }
 
