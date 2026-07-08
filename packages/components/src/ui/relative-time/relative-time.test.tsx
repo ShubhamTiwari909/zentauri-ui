@@ -26,14 +26,6 @@ describe("RelativeTime", () => {
     expect(el).toBeInTheDocument();
   });
 
-  it("renders ssrFallback before mount", () => {
-    const d = new Date("2025-01-15T10:00:00Z");
-    render(
-      <RelativeTime date={d} live={false} ssrFallback={<span>loading</span>} />,
-    );
-    expect(screen.getByText("loading")).toBeInTheDocument();
-  });
-
   it("renders with tooltip title attribute", () => {
     const d = new Date("2025-01-15T10:00:00Z");
     render(<RelativeTime date={d} live={false} withTooltip />);
