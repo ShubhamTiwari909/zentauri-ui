@@ -1463,7 +1463,7 @@ function DateTimeFormatDemo() {
         rerendering when inputs change.
       </p>
       <p className="text-sm text-slate-300">{format(new Date())}</p>
-      </HookDemoPanel>
+    </HookDemoPanel>
   );
 }
 function UndoRedoDemo() {
@@ -1583,8 +1583,9 @@ function TimezoneHookDemo() {
           timeStyle: "short",
         })}
       </p>
-      </HookDemoPanel>
+    </HookDemoPanel>
   );
+}
 function FullscreenDemo() {
   const fullscreenTargetRef = useRef<HTMLDivElement>(null);
   const { isFullscreen, isSupported, toggle } =
