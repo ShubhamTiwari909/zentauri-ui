@@ -56,7 +56,7 @@ export interface UseUndoRedoReturn<T> {
    */
   jumpTo: (index: number) => void;
   /** Reset history. With an argument, also resets the present value. */
-  clear: (initialValue?: T) => void;
+  clear: (...args: [] | [T]) => void;
   canUndo: boolean;
   canRedo: boolean;
   /** Read-only view of the timeline (for history panels / debug UIs). */
@@ -151,7 +151,13 @@ function reducer<T>(
     }
     case "jump": {
       const timeline = [...state.past, state.present, ...state.future];
-      const clamped = Math.min(Math.max(action.index, 0), timeline.length - 1);
+      const requestedIndex = Number.isFinite(action.index)
+        ? Math.trunc(action.index)
+        : 0;
+      const clamped = Math.min(
+        Math.max(requestedIndex, 0),
+        timeline.length - 1,
+      );
       return {
         past: capPast(timeline.slice(0, clamped), action.maxHistory),
         present: timeline[clamped] as T,
@@ -223,6 +229,8 @@ export function useUndoRedo<T>(
   optionsRef.current = { maxHistory, isEqual, groupWithinMs };
   const onChangeRef = useRef(onChange);
   onChangeRef.current = onChange;
+  const presentRef = useRef(state.present);
+  presentRef.current = state.present;
 
   const lastSetAtRef = useRef<number | null>(null);
   const lastActionWasSetRef = useRef(false);
@@ -242,6 +250,13 @@ export function useUndoRedo<T>(
 
   const set = useCallback((value: T | ((prev: T) => T)) => {
     const { groupWithinMs, isEqual, maxHistory } = optionsRef.current;
+    const resolved = resolveValue(value, presentRef.current);
+    if (isEqual(presentRef.current, resolved)) {
+      // No-op: skip the grouping bookkeeping below, so a later real edit
+      // still opens a fresh history entry instead of merging into one that
+      // this call never created.
+      return;
+    }
     const now = performance.now();
     const withinWindow =
       groupWithinMs > 0 &&
@@ -250,6 +265,7 @@ export function useUndoRedo<T>(
     const grouped = withinWindow && lastActionWasSetRef.current;
     lastSetAtRef.current = now;
     lastActionWasSetRef.current = true;
+    presentRef.current = resolved;
     pendingActionRef.current = "set";
     dispatch(
       grouped
@@ -259,6 +275,7 @@ export function useUndoRedo<T>(
   }, []);
 
   const replace = useCallback((value: T | ((prev: T) => T)) => {
+    presentRef.current = resolveValue(value, presentRef.current);
     lastActionWasSetRef.current = false;
     pendingActionRef.current = "replace";
     dispatch({ type: "replace", value });
@@ -286,15 +303,15 @@ export function useUndoRedo<T>(
     });
   }, []);
 
-  // A plain `function` (not an arrow) so `arguments.length` distinguishes
-  // `clear()` from `clear(undefined)`.
-  const clear = useCallback(function clear(initialValue?: T) {
+  // Rest params (rather than an `initialValue?: T` parameter) so `args.length`
+  // distinguishes `clear()` from `clear(undefined)`.
+  const clear = useCallback((...args: [] | [T]) => {
     lastActionWasSetRef.current = false;
     pendingActionRef.current = "clear";
     dispatch({
       type: "clear",
-      value: initialValue as T,
-      hasValue: arguments.length > 0,
+      value: args[0] as T,
+      hasValue: args.length > 0,
     });
   }, []);
 

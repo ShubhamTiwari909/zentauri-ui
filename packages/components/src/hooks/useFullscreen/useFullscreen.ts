@@ -98,13 +98,16 @@ function resolveTarget<T extends HTMLElement>(
   if (typeof document === "undefined") {
     return null;
   }
-  if (target == null) {
+  if (target === undefined || target === null) {
     return document.documentElement;
   }
   if (typeof HTMLElement !== "undefined" && target instanceof HTMLElement) {
     return target;
   }
-  return (target as RefObject<T | null>).current ?? document.documentElement;
+  // A ref whose element hasn't mounted (or has unmounted) resolves to `null`
+  // rather than falling back to the whole page — the caller asked for a
+  // specific element, not "whatever's available."
+  return (target as RefObject<T | null>).current;
 }
 
 function toError(value: unknown): Error {
@@ -165,7 +168,14 @@ export function useFullscreen<T extends HTMLElement = HTMLElement>(
     });
   }, []);
 
+  // Guards against `onError` firing twice for one failure: the browser fires
+  // `fullscreenerror` for the same failure that rejects the request/exit
+  // promise. Armed right before calling the browser API; whichever of the
+  // event or the promise rejection is observed first reports and disarms it.
+  const pendingErrorRef = useRef(false);
+
   const handleError = useCallback(() => {
+    pendingErrorRef.current = false;
     optionsRef.current.onError?.(new Error("Fullscreen request failed."));
   }, []);
 
@@ -190,20 +200,31 @@ export function useFullscreen<T extends HTMLElement = HTMLElement>(
   );
 
   const enter = useCallback((): Promise<void> => {
-    const element = resolveTarget<T>(
-      targetRef.current,
-    ) as ElementWithWebkit | null;
-    if (!isFullscreenEnabled() || !element) {
+    if (!isFullscreenEnabled()) {
       const error = new Error(UNSUPPORTED_ERROR_MESSAGE);
       optionsRef.current.onError?.(error);
       return Promise.reject(error);
     }
+    const element = resolveTarget<T>(
+      targetRef.current,
+    ) as ElementWithWebkit | null;
+    if (!element) {
+      const error = new Error("Target element is not mounted.");
+      optionsRef.current.onError?.(error);
+      return Promise.reject(error);
+    }
+    pendingErrorRef.current = true;
     return requestFullscreenOn(
       element,
       optionsRef.current.requestOptions ?? { navigationUI: "auto" },
     ).catch((cause: unknown) => {
       const error = toError(cause);
-      optionsRef.current.onError?.(error);
+      // Only report here if `handleError` hasn't already reported this same
+      // failure via the `fullscreenerror` event.
+      if (pendingErrorRef.current) {
+        pendingErrorRef.current = false;
+        optionsRef.current.onError?.(error);
+      }
       throw error;
     });
   }, []);
@@ -214,10 +235,17 @@ export function useFullscreen<T extends HTMLElement = HTMLElement>(
       optionsRef.current.onError?.(error);
       return Promise.reject(error);
     }
+    if (getFullscreenElement() === null) {
+      return Promise.resolve();
+    }
+    pendingErrorRef.current = true;
     return exitFullscreenOn(document as DocumentWithWebkit).catch(
       (cause: unknown) => {
         const error = toError(cause);
-        optionsRef.current.onError?.(error);
+        if (pendingErrorRef.current) {
+          pendingErrorRef.current = false;
+          optionsRef.current.onError?.(error);
+        }
         throw error;
       },
     );
