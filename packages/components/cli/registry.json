@@ -311,6 +311,7 @@
     "useDynamicStepper",
     "useEventListener",
     "useFocusManagement",
+    "useFullscreen",
     "useGeolocation",
     "useHash",
     "useHotkeys",
@@ -341,6 +342,7 @@
     "useTimeout",
     "useTimezone",
     "useToggle",
+    "useUndoRedo",
     "useVirtualList",
     "useWindowSize"
   ],

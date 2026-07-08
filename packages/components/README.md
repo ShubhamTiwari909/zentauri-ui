@@ -56,6 +56,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/accessibility/keyboard-interaction.test.tsx`                       |    18 |
 | `src/ui/json-viewer/json-viewer.test.tsx`                               |    16 |
 | `src/ui/network-status/network-status.test.tsx`                         |    16 |
+| `src/hooks/useUndoRedo/useUndoRedo.test.ts`                             |    15 |
 | `src/ui/package-install-command/package-install-command.test.tsx`       |    15 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
 | `src/ui/timeline/timeline.test.tsx`                                     |    14 |
