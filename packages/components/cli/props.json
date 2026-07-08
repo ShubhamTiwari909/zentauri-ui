@@ -14262,13 +14262,6 @@
               "deprecated": false
             },
             {
-              "name": "children",
-              "type": "ReactNode",
-              "required": false,
-              "group": "dom",
-              "deprecated": false
-            },
-            {
               "name": "className",
               "type": "string | undefined",
               "required": false,
@@ -14415,13 +14408,6 @@
               "type": "boolean | undefined",
               "required": false,
               "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "children",
-              "type": "ReactNode",
-              "required": false,
-              "group": "dom",
               "deprecated": false
             },
             {
