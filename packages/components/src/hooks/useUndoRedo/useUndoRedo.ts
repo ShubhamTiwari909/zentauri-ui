@@ -231,6 +231,10 @@ export function useUndoRedo<T>(
   onChangeRef.current = onChange;
   const presentRef = useRef(state.present);
   presentRef.current = state.present;
+  const pastLengthRef = useRef(state.past.length);
+  pastLengthRef.current = state.past.length;
+  const futureLengthRef = useRef(state.future.length);
+  futureLengthRef.current = state.future.length;
 
   const lastSetAtRef = useRef<number | null>(null);
   const lastActionWasSetRef = useRef(false);
@@ -289,12 +293,22 @@ export function useUndoRedo<T>(
   }, []);
 
   const undo = useCallback(() => {
+    if (pastLengthRef.current === 0) {
+      // No-op in the reducer (it bails out and returns the same state
+      // reference, so the effect below never flushes this queue entry) —
+      // skip queuing so it can't attach to a later, unrelated onChange call.
+      return;
+    }
     lastActionWasSetRef.current = false;
     pendingActionsRef.current.push("undo");
     dispatch({ type: "undo" });
   }, []);
 
   const redo = useCallback(() => {
+    if (futureLengthRef.current === 0) {
+      // Same reasoning as `undo()` above.
+      return;
+    }
     lastActionWasSetRef.current = false;
     pendingActionsRef.current.push("redo");
     dispatch({ type: "redo" });
