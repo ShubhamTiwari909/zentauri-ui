@@ -194,6 +194,7 @@ const hooksEntryNames = [
   "useDynamicStepper",
   "useEventListener",
   "useFocusManagement",
+  "useFullscreen",
   "useGeolocation",
   "useHotkeys",
   "useHash",
@@ -224,6 +225,7 @@ const hooksEntryNames = [
   "useTimeout",
   "useTimezone",
   "useToggle",
+  "useUndoRedo",
   "useVirtualList",
   "useWindowSize",
 ] as const;

@@ -24,6 +24,7 @@ import { useVirtualList } from "@zentauri-ui/zentauri-components/hooks/useVirtua
 import { useDisclosure } from "@zentauri-ui/zentauri-components/hooks/useDisclosure";
 import { useDocumentTitle } from "@zentauri-ui/zentauri-components/hooks/useDocumentTitle";
 import { useFocusManagement } from "@zentauri-ui/zentauri-components/hooks/useFocusManagement";
+import { useFullscreen } from "@zentauri-ui/zentauri-components/hooks/useFullscreen";
 import { useHash } from "@zentauri-ui/zentauri-components/hooks/useHash";
 import { useHover } from "@zentauri-ui/zentauri-components/hooks/useHover";
 import { useInView } from "@zentauri-ui/zentauri-components/hooks/useInView";
@@ -48,6 +49,7 @@ import { useTableSort } from "@zentauri-ui/zentauri-components/hooks/useTableSor
 import { useThrottledCallback } from "@zentauri-ui/zentauri-components/hooks/useThrottledCallback";
 import { useTimezone } from "@zentauri-ui/zentauri-components/hooks/useTimezone";
 import { useToggle } from "@zentauri-ui/zentauri-components/hooks/useToggle";
+import { useUndoRedo } from "@zentauri-ui/zentauri-components/hooks/useUndoRedo";
 import { useWindowSize } from "@zentauri-ui/zentauri-components/hooks/useWindowSize";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
 import type { HookPreviewSlug } from "@/lib/hook-preview-registry";
@@ -162,6 +164,10 @@ export function HookDemoRouter({ slug }: HookDemoRouterProps) {
       return <ToggleDemo />;
     case "use-window-size":
       return <WindowSizeDemo />;
+    case "use-fullscreen":
+      return <FullscreenDemo />;
+    case "use-undo-redo":
+      return <UndoRedoDemo />;
     default:
       return null;
   }
@@ -1460,6 +1466,72 @@ function DateTimeFormatDemo() {
     </HookDemoPanel>
   );
 }
+function UndoRedoDemo() {
+  const { state, set, undo, redo, jumpTo, canUndo, canRedo, history } =
+    useUndoRedo("", { groupWithinMs: 500 });
+  useHotkeys(
+    {
+      "mod+z": () => undo(),
+      "mod+shift+z": () => redo(),
+    },
+    { allowInInputs: true },
+  );
+  const timeline = [...history.past, history.present, ...history.future];
+  const presentIndex = history.past.length;
+
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Type below — keystrokes within 500ms group into one undo step. Try{" "}
+        <Kbd>⌘/Ctrl</Kbd> + <Kbd>Z</Kbd> and <Kbd>⌘/Ctrl</Kbd> +{" "}
+        <Kbd>Shift</Kbd> + <Kbd>Z</Kbd>, or the buttons below.
+      </p>
+      <Input
+        value={state}
+        onChange={(event) => set(event.target.value)}
+        placeholder="Start typing…"
+        className="mb-4"
+      />
+      <div className="mb-4 flex flex-wrap gap-2">
+        <Button
+          type="button"
+          appearance="outline"
+          disabled={!canUndo}
+          onClick={undo}
+        >
+          Undo
+        </Button>
+        <Button
+          type="button"
+          appearance="outline"
+          disabled={!canRedo}
+          onClick={redo}
+        >
+          Redo
+        </Button>
+      </div>
+      <p className="mb-2 text-xs uppercase tracking-wider text-slate-500">
+        History timeline (click a dot to jump)
+      </p>
+      <div className="flex flex-wrap items-center gap-2">
+        {timeline.map((snapshot, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={() => jumpTo(index)}
+            title={snapshot === "" ? "(empty)" : snapshot}
+            aria-label={`Jump to step ${index + 1}`}
+            className={`h-2.5 w-2.5 rounded-full transition-colors ${
+              index === presentIndex
+                ? "bg-cyan-400"
+                : "bg-white/20 hover:bg-white/40"
+            }`}
+          />
+        ))}
+      </div>
+    </HookDemoPanel>
+  );
+}
 
 function DurationFormatDemo() {
   const { format } = useDurationFormat({ style: "narrow" });
@@ -1511,6 +1583,34 @@ function TimezoneHookDemo() {
           timeStyle: "short",
         })}
       </p>
+    </HookDemoPanel>
+  );
+}
+function FullscreenDemo() {
+  const fullscreenTargetRef = useRef<HTMLDivElement>(null);
+  const { isFullscreen, isSupported, toggle } =
+    useFullscreen(fullscreenTargetRef);
+
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        {isSupported
+          ? "Expand the panel below to fullscreen — pressing Esc exits and the state below stays correct."
+          : "The Fullscreen API is not available in this browser (e.g. iOS Safari only supports fullscreen video)."}
+      </p>
+      <div
+        ref={fullscreenTargetRef}
+        className="mt-4 flex h-48 flex-col items-center justify-center gap-3 rounded-lg border border-white/10 bg-slate-900/50 text-slate-300"
+      >
+        <p className="text-sm">
+          {isFullscreen
+            ? "You are viewing this panel in fullscreen."
+            : "This panel goes fullscreen — not the whole page."}
+        </p>
+        <Button type="button" onClick={() => toggle()} disabled={!isSupported}>
+          {isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+        </Button>
+      </div>
     </HookDemoPanel>
   );
 }

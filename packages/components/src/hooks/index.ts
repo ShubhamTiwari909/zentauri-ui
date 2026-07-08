@@ -11,6 +11,12 @@ export {
 } from "./useEventListener";
 export { useFocusManagement } from "./useFocusManagement";
 export {
+  useFullscreen,
+  type UseFullscreenOptions,
+  type UseFullscreenReturn,
+  type UseFullscreenTarget,
+} from "./useFullscreen";
+export {
   useGeolocation,
   type GeolocationCoordinatesSnapshot,
   type UseGeolocationParams,
@@ -136,6 +142,13 @@ export {
   type UseTimezoneReturn,
 } from "./useTimezone";
 export { useToggle } from "./useToggle";
+export {
+  useUndoRedo,
+  type UndoRedoAction,
+  type UndoRedoSnapshot,
+  type UseUndoRedoOptions,
+  type UseUndoRedoReturn,
+} from "./useUndoRedo";
 export {
   useVirtualList,
   type UseVirtualListParams,

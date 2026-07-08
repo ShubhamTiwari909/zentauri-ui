@@ -126,6 +126,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Intended for modal-like surfaces together with scroll locking from the same hook.",
   },
   {
+    slug: "use-fullscreen",
+    module: "useFullscreen",
+    name: "useFullscreen",
+    description:
+      "Cross-browser Fullscreen API wrapper with WebKit prefixes, event-driven state, and promise-based enter, exit, and toggle.",
+    intro:
+      "Media viewers, charts, code panels, and kiosk views that expand to fullscreen and track Esc-key exits correctly.",
+  },
+  {
     slug: "use-geolocation",
     module: "useGeolocation",
     name: "useGeolocation",
@@ -393,6 +402,15 @@ export const HOOK_PREVIEW_REGISTRY = [
       "Boolean state with toggle and explicit set helpers for simple on-off UI.",
     intro:
       "Feature flags in demos, collapsible panels, and compact binary controls.",
+  },
+  {
+    slug: "use-undo-redo",
+    module: "useUndoRedo",
+    name: "useUndoRedo",
+    description:
+      "Undo/redo state history with bounded depth, transaction grouping, replace-without-commit, and jump-to-index.",
+    intro:
+      "Editors, canvas tools, and form builders where every change must be reversible with ⌘Z.",
   },
   {
     slug: "use-virtual-list",
