@@ -428,4 +428,22 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
       },
     ],
   },
+  {
+    title: "Intl & Time",
+    showCount: true,
+    items: [
+      {
+        title: "Relative Time",
+        href: "/preview/components/relative-time",
+      },
+      {
+        title: "Timezone Select",
+        href: "/preview/components/timezone-select",
+      },
+      {
+        title: "World Clock",
+        href: "/preview/components/world-clock",
+      },
+    ],
+  },
 ];

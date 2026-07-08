@@ -52,6 +52,7 @@ import qrCode from "@/content/seo/preview/components/qr-code.json";
 import qrScanner from "@/content/seo/preview/components/qr-scanner.json";
 import rating from "@/content/seo/preview/components/rating.json";
 import radioGroup from "@/content/seo/preview/components/radio-group.json";
+import relativeTime from "@/content/seo/preview/components/relative-time.json";
 import scrollArea from "@/content/seo/preview/components/scroll-area.json";
 import secretReveal from "@/content/seo/preview/components/secret-reveal.json";
 import select from "@/content/seo/preview/components/select.json";
@@ -64,6 +65,7 @@ import slider from "@/content/seo/preview/components/slider.json";
 import spinner from "@/content/seo/preview/components/spinner.json";
 import table from "@/content/seo/preview/components/table.json";
 import tabs from "@/content/seo/preview/components/tabs.json";
+import timezoneSelect from "@/content/seo/preview/components/timezone-select.json";
 import timeline from "@/content/seo/preview/components/timeline.json";
 import toast from "@/content/seo/preview/components/toast.json";
 import toggle from "@/content/seo/preview/components/toggle.json";
@@ -72,6 +74,7 @@ import tooltip from "@/content/seo/preview/components/tooltip.json";
 import treeView from "@/content/seo/preview/components/tree-view.json";
 import typingIndicator from "@/content/seo/preview/components/typing-indicator.json";
 import typography from "@/content/seo/preview/components/typography.json";
+import worldClock from "@/content/seo/preview/components/world-clock.json";
 
 const previewSeoRegistry = {
   index: index as PreviewSeoDocument,
@@ -107,6 +110,7 @@ const previewSeoRegistry = {
   "json-viewer": jsonViewer as PreviewSeoDocument,
   "console-viewer": consoleViewer as PreviewSeoDocument,
   "terminal-emulator": terminalEmulator as PreviewSeoDocument,
+  "timezone-select": timezoneSelect as PreviewSeoDocument,
   "api-endpoint-card": apiEndpointCard as PreviewSeoDocument,
   "api-response-viewer": apiResponseViewer as PreviewSeoDocument,
   "http-request-viewer": httpRequestViewer as PreviewSeoDocument,
@@ -127,6 +131,7 @@ const previewSeoRegistry = {
   "qr-scanner": qrScanner as PreviewSeoDocument,
   rating: rating as PreviewSeoDocument,
   "radio-group": radioGroup as PreviewSeoDocument,
+  "relative-time": relativeTime as PreviewSeoDocument,
   "scroll-area": scrollArea as PreviewSeoDocument,
   "secret-reveal": secretReveal as PreviewSeoDocument,
   select: select as PreviewSeoDocument,
@@ -147,6 +152,7 @@ const previewSeoRegistry = {
   "tree-view": treeView as PreviewSeoDocument,
   "typing-indicator": typingIndicator as PreviewSeoDocument,
   typography: typography as PreviewSeoDocument,
+  "world-clock": worldClock as PreviewSeoDocument,
 } as const;
 
 export type PreviewSeoSlug = keyof typeof previewSeoRegistry;

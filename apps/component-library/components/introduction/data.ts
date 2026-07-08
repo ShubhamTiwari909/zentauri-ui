@@ -370,6 +370,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "relative-time",
+    name: "Relative Time",
+    description:
+      'Human-readable relative timestamps ("3 minutes ago") with auto-updating, tooltip fallback, and animated text transitions.',
+    href: "/preview/components/relative-time",
+    badge: "Display",
+  },
+  {
     id: "request-timeline-viewer",
     name: "Request Timeline Viewer",
     description:
@@ -490,6 +498,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Data",
   },
   {
+    id: "timezone-select",
+    name: "Timezone Select",
+    description:
+      "Searchable timezone picker with grouped regions, current-time preview, and configurable offset display.",
+    href: "/preview/components/timezone-select",
+    badge: "Form",
+  },
+  {
     id: "toast",
     name: "Toast",
     description:
@@ -528,5 +544,13 @@ export const componentsData: ComponentHighlight[] = [
       "Animated dots for chat and messaging UIs with CSS bounce and framer-motion spring, pulse, and wave animations.",
     href: "/preview/components/typing-indicator",
     badge: "Feedback",
+  },
+  {
+    id: "world-clock",
+    name: "World Clock",
+    description:
+      "Multi-zone clock display with live-ticking times, date labels, day/night indicators, and configurable card appearances.",
+    href: "/preview/components/world-clock",
+    badge: "Display",
   },
 ];

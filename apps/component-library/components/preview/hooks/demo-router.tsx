@@ -7,6 +7,8 @@ import { useControllableState } from "@zentauri-ui/zentauri-components/hooks/use
 import { useCookie } from "@zentauri-ui/zentauri-components/hooks/useCookie";
 import { useCountdown } from "@zentauri-ui/zentauri-components/hooks/useCountdown";
 import { useDebouncedValue } from "@zentauri-ui/zentauri-components/hooks/useDebouncedValue";
+import { useDateTimeFormat } from "@zentauri-ui/zentauri-components/hooks/useDateTimeFormat";
+import { useDurationFormat } from "@zentauri-ui/zentauri-components/hooks/useDurationFormat";
 import { useEventListener } from "@zentauri-ui/zentauri-components/hooks/useEventListener";
 import { useGeolocation } from "@zentauri-ui/zentauri-components/hooks/useGeolocation";
 import { useHotkeys } from "@zentauri-ui/zentauri-components/hooks/useHotkeys";
@@ -15,6 +17,7 @@ import { useInterval } from "@zentauri-ui/zentauri-components/hooks/useInterval"
 import { useKeyPress } from "@zentauri-ui/zentauri-components/hooks/useKeyPress";
 import { useLongPress } from "@zentauri-ui/zentauri-components/hooks/useLongPress";
 import { usePrevious } from "@zentauri-ui/zentauri-components/hooks/usePrevious";
+import { useRelativeTime } from "@zentauri-ui/zentauri-components/hooks/useRelativeTime";
 import { useScrollPosition } from "@zentauri-ui/zentauri-components/hooks/useScrollPosition";
 import { useTimeout } from "@zentauri-ui/zentauri-components/hooks/useTimeout";
 import { useVirtualList } from "@zentauri-ui/zentauri-components/hooks/useVirtualList";
@@ -43,6 +46,7 @@ import { useSessionStorage } from "@zentauri-ui/zentauri-components/hooks/useSes
 import { useTableFilter } from "@zentauri-ui/zentauri-components/hooks/useTableFilter";
 import { useTableSort } from "@zentauri-ui/zentauri-components/hooks/useTableSort";
 import { useThrottledCallback } from "@zentauri-ui/zentauri-components/hooks/useThrottledCallback";
+import { useTimezone } from "@zentauri-ui/zentauri-components/hooks/useTimezone";
 import { useToggle } from "@zentauri-ui/zentauri-components/hooks/useToggle";
 import { useWindowSize } from "@zentauri-ui/zentauri-components/hooks/useWindowSize";
 import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
@@ -78,6 +82,8 @@ export function HookDemoRouter({ slug }: HookDemoRouterProps) {
       return <CookieDemo />;
     case "use-countdown":
       return <CountdownDemo />;
+    case "use-date-time-format":
+      return <DateTimeFormatDemo />;
     case "use-debounced-value":
       return <DebouncedValueDemo />;
     case "use-event-listener":
@@ -96,6 +102,8 @@ export function HookDemoRouter({ slug }: HookDemoRouterProps) {
       return <LongPressDemo />;
     case "use-previous":
       return <PreviousDemo />;
+    case "use-relative-time":
+      return <RelativeTimeHookDemo />;
     case "use-scroll-position":
       return <ScrollPositionDemo />;
     case "use-timeout":
@@ -106,6 +114,8 @@ export function HookDemoRouter({ slug }: HookDemoRouterProps) {
       return <DisclosureDemo />;
     case "use-document-title":
       return <DocumentTitleDemo />;
+    case "use-duration-format":
+      return <DurationFormatDemo />;
     case "use-focus-management":
       return <FocusManagementDemo />;
     case "use-hash":
@@ -146,6 +156,8 @@ export function HookDemoRouter({ slug }: HookDemoRouterProps) {
       return <SessionStorageDemo />;
     case "use-throttled-callback":
       return <ThrottledCallbackDemo />;
+    case "use-timezone":
+      return <TimezoneHookDemo />;
     case "use-toggle":
       return <ToggleDemo />;
     case "use-window-size":
@@ -1428,6 +1440,77 @@ function VirtualListDemo() {
           ))}
         </div>
       </div>
+    </HookDemoPanel>
+  );
+}
+
+function DateTimeFormatDemo() {
+  const { format } = useDateTimeFormat({
+    locale: "en-US",
+    dateStyle: "full",
+    timeStyle: "long",
+  });
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Formats a date according to the specified locale and style options,
+        rerendering when inputs change.
+      </p>
+      <p className="text-sm text-slate-300">{format(new Date())}</p>
+    </HookDemoPanel>
+  );
+}
+
+function DurationFormatDemo() {
+  const { format } = useDurationFormat({ style: "narrow" });
+  const [ms] = useState(3723000);
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Formats a millisecond duration as a human-readable string using
+        Intl.DurationFormat.
+      </p>
+      <p className="text-sm text-slate-300">
+        {ms.toLocaleString()}ms = {format(ms)}
+      </p>
+    </HookDemoPanel>
+  );
+}
+
+function RelativeTimeHookDemo() {
+  const target = useMemo(() => Date.now() - 120000, []);
+  const { text, unit } = useRelativeTime(target, {
+    locale: "en-US",
+    numeric: "auto",
+  });
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Displays a relative time label computed from the given date, updating
+        live with the adaptive time unit.
+      </p>
+      <p className="text-sm text-slate-300">
+        {text} <span className="text-xs text-slate-500">({unit})</span>
+      </p>
+    </HookDemoPanel>
+  );
+}
+
+function TimezoneHookDemo() {
+  const { localTimezone, formatInZone } = useTimezone({ locale: "en-US" });
+  return (
+    <HookDemoPanel title="Interactive demo">
+      <p className="mb-4 text-sm text-slate-400">
+        Detects the local timezone and provides a helper to format dates in any
+        IANA timezone.
+      </p>
+      <p className="text-sm text-slate-300">Local: {localTimezone}</p>
+      <p className="text-sm text-slate-300">
+        UTC time:{" "}
+        {formatInZone(new Date(), "UTC", {
+          timeStyle: "short",
+        })}
+      </p>
     </HookDemoPanel>
   );
 }

@@ -1,0 +1,74 @@
+{
+  "category": "Intl & Time",
+  "title": "Timezone Select component for React & Next.js · Zentauri UI",
+  "description": "Searchable, region-grouped timezone picker with live local time and GMT offset display using Intl.supportedValuesOf.",
+  "keywords": [
+    "timezone picker",
+    "React",
+    "Next.js",
+    "Intl",
+    "IANA timezone",
+    "select"
+  ],
+  "og": {
+    "title": "Timezone Select component for React & Next.js · Zentauri UI",
+    "description": "Searchable, region-grouped timezone picker with live local time and GMT offset display using Intl.supportedValuesOf.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Timezone Select component for React & Next.js · Zentauri UI",
+    "description": "Searchable, region-grouped timezone picker with live local time and GMT offset display using Intl.supportedValuesOf.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/timezone-select",
+  "headings": {
+    "h1": "Timezone Select",
+    "h2": [
+      "What it does",
+      "API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Pick from the full IANA timezone database with search-by-city, region grouping, and live wall-clock previews per zone.",
+  "useCases": [
+    "Meeting planners with multi-timezone participant selection",
+    "User timezone settings in profile and account forms",
+    "Event scheduling forms with live offset preview"
+  ],
+  "faqs": [
+    {
+      "question": "How are timezones sourced?",
+      "answer": "The component uses Intl.supportedValuesOf('timeZone') to enumerate the IANA timezone database natively supported by the browser — no static list to maintain."
+    },
+    {
+      "question": "Can I filter by region?",
+      "answer": "Yes. Timezones are automatically grouped by region (Americas, Europe, Asia, etc.) with expandable group headers. You can also search by city or offset."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "TimezoneSelect renders a searchable dropdown of every IANA timezone, grouped by geographic region. Each option shows the zone name, the current UTC offset, and optionally a live preview of the current time in that zone."
+    },
+    {
+      "heading": "API",
+      "body": "Accepts value/onChange controlled props, an optional placeholder, and region grouping configuration. Returns the IANA timezone string (e.g. 'America/New_York'). Supports multi-select and single-select modes."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The component follows the ARIA combobox pattern with listbox role, live region announcements for search results, and full keyboard navigation including type-ahead and arrow keys."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Use a dynamic import with ssr: false since Intl enumeration APIs run on the client. The component is fully compatible with React Server Components when wrapped in a client boundary."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
