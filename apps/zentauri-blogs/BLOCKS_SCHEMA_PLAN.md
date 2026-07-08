@@ -152,6 +152,9 @@ card…). Populate internal links with `depth` ≥ 1 or a `select` on slug only.
 export const mediaField = ({
   name = "image",
   required = true,
+  // No dedicated `image`/`media` component exists yet, so this borrows
+  // `card`'s `rounded` tokens by default — pass a different slug once one does.
+  roundedVariantsFrom = "card",
 } = {}): Field => ({
   type: "group",
   name,
@@ -171,7 +174,7 @@ export const mediaField = ({
           name: "rounded",
           type: "select",
           defaultValue: "md",
-          options: variantOptions("card", "rounded"),
+          options: variantOptions(roundedVariantsFrom, "rounded"),
         },
         {
           name: "priority",
@@ -311,6 +314,7 @@ export const Grid: Block = {
       type: "blocks",
       required: true,
       minRows: 1,
+      maxRows: 24,
       blockReferences: GRID_ITEM_BLOCK_SLUGS /* = CONTENT minus row/grid */,
       blocks: [],
     },

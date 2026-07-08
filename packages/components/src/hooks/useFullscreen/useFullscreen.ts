@@ -154,19 +154,25 @@ export function useFullscreen<T extends HTMLElement = HTMLElement>(
     const fsElement = getFullscreenElement();
     setFullscreenElement(fsElement);
     const resolved = resolveTarget(targetRef.current);
-    const nowFullscreen = fsElement !== null && fsElement === resolved;
-    setIsFullscreen((previous) => {
-      if (previous === nowFullscreen) {
-        return previous;
-      }
-      if (nowFullscreen) {
-        optionsRef.current.onEnter?.(fsElement as Element);
-      } else {
-        optionsRef.current.onExit?.();
-      }
-      return nowFullscreen;
-    });
+    setIsFullscreen(fsElement !== null && fsElement === resolved);
   }, []);
+
+  // `onEnter`/`onExit` are fired here, not from inside the `setIsFullscreen`
+  // updater above — state updater functions can be invoked more than once per
+  // commit (React Strict Mode), which would double-fire a side effect placed
+  // there. This effect only reacts to the state actually committing.
+  const previousIsFullscreenRef = useRef(isFullscreen);
+  useEffect(() => {
+    if (previousIsFullscreenRef.current === isFullscreen) {
+      return;
+    }
+    previousIsFullscreenRef.current = isFullscreen;
+    if (isFullscreen) {
+      optionsRef.current.onEnter?.(fullscreenElement as Element);
+    } else {
+      optionsRef.current.onExit?.();
+    }
+  }, [isFullscreen, fullscreenElement]);
 
   // Guards against `onError` firing twice for one failure: the browser fires
   // `fullscreenerror` for the same failure that rejects the request/exit
@@ -217,16 +223,21 @@ export function useFullscreen<T extends HTMLElement = HTMLElement>(
     return requestFullscreenOn(
       element,
       optionsRef.current.requestOptions ?? { navigationUI: "auto" },
-    ).catch((cause: unknown) => {
-      const error = toError(cause);
-      // Only report here if `handleError` hasn't already reported this same
-      // failure via the `fullscreenerror` event.
-      if (pendingErrorRef.current) {
+    ).then(
+      () => {
         pendingErrorRef.current = false;
-        optionsRef.current.onError?.(error);
-      }
-      throw error;
-    });
+      },
+      (cause: unknown) => {
+        const error = toError(cause);
+        // Only report here if `handleError` hasn't already reported this
+        // same failure via the `fullscreenerror` event.
+        if (pendingErrorRef.current) {
+          pendingErrorRef.current = false;
+          optionsRef.current.onError?.(error);
+        }
+        throw error;
+      },
+    );
   }, []);
 
   const exit = useCallback((): Promise<void> => {
@@ -239,7 +250,10 @@ export function useFullscreen<T extends HTMLElement = HTMLElement>(
       return Promise.resolve();
     }
     pendingErrorRef.current = true;
-    return exitFullscreenOn(document as DocumentWithWebkit).catch(
+    return exitFullscreenOn(document as DocumentWithWebkit).then(
+      () => {
+        pendingErrorRef.current = false;
+      },
       (cause: unknown) => {
         const error = toError(cause);
         if (pendingErrorRef.current) {

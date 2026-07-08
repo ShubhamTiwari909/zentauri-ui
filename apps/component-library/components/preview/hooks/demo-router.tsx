@@ -1598,18 +1598,18 @@ function FullscreenDemo() {
           ? "Expand the panel below to fullscreen — pressing Esc exits and the state below stays correct."
           : "The Fullscreen API is not available in this browser (e.g. iOS Safari only supports fullscreen video)."}
       </p>
-      <Button type="button" onClick={() => toggle()} disabled={!isSupported}>
-        {isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
-      </Button>
       <div
         ref={fullscreenTargetRef}
-        className="mt-4 flex h-48 items-center justify-center rounded-lg border border-white/10 bg-slate-900/50 text-slate-300"
+        className="mt-4 flex h-48 flex-col items-center justify-center gap-3 rounded-lg border border-white/10 bg-slate-900/50 text-slate-300"
       >
         <p className="text-sm">
           {isFullscreen
             ? "You are viewing this panel in fullscreen."
             : "This panel goes fullscreen — not the whole page."}
         </p>
+        <Button type="button" onClick={() => toggle()} disabled={!isSupported}>
+          {isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+        </Button>
       </div>
     </HookDemoPanel>
   );

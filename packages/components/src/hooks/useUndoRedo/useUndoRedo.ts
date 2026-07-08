@@ -234,18 +234,25 @@ export function useUndoRedo<T>(
 
   const lastSetAtRef = useRef<number | null>(null);
   const lastActionWasSetRef = useRef(false);
-  const pendingActionRef = useRef<UndoRedoAction | null>(null);
+  // A queue, not a single slot: React can batch several dispatches (e.g.
+  // `set(a); undo();`) into one commit, and a single ref would drop all but
+  // the last action's `onChange` notification.
+  const pendingActionsRef = useRef<UndoRedoAction[]>([]);
 
   useEffect(() => {
-    const action = pendingActionRef.current;
-    if (action === null) {
+    if (pendingActionsRef.current.length === 0) {
       return;
     }
-    pendingActionRef.current = null;
-    onChangeRef.current?.(
-      { past: state.past, present: state.present, future: state.future },
-      action,
-    );
+    const actions = pendingActionsRef.current;
+    pendingActionsRef.current = [];
+    const snapshot = {
+      past: state.past,
+      present: state.present,
+      future: state.future,
+    };
+    for (const action of actions) {
+      onChangeRef.current?.(snapshot, action);
+    }
   }, [state]);
 
   const set = useCallback((value: T | ((prev: T) => T)) => {
@@ -266,7 +273,7 @@ export function useUndoRedo<T>(
     lastSetAtRef.current = now;
     lastActionWasSetRef.current = true;
     presentRef.current = resolved;
-    pendingActionRef.current = "set";
+    pendingActionsRef.current.push("set");
     dispatch(
       grouped
         ? { type: "set-grouped", value, isEqual }
@@ -277,25 +284,25 @@ export function useUndoRedo<T>(
   const replace = useCallback((value: T | ((prev: T) => T)) => {
     presentRef.current = resolveValue(value, presentRef.current);
     lastActionWasSetRef.current = false;
-    pendingActionRef.current = "replace";
+    pendingActionsRef.current.push("replace");
     dispatch({ type: "replace", value });
   }, []);
 
   const undo = useCallback(() => {
     lastActionWasSetRef.current = false;
-    pendingActionRef.current = "undo";
+    pendingActionsRef.current.push("undo");
     dispatch({ type: "undo" });
   }, []);
 
   const redo = useCallback(() => {
     lastActionWasSetRef.current = false;
-    pendingActionRef.current = "redo";
+    pendingActionsRef.current.push("redo");
     dispatch({ type: "redo" });
   }, []);
 
   const jumpTo = useCallback((index: number) => {
     lastActionWasSetRef.current = false;
-    pendingActionRef.current = "jump";
+    pendingActionsRef.current.push("jump");
     dispatch({
       type: "jump",
       index,
@@ -307,7 +314,7 @@ export function useUndoRedo<T>(
   // distinguishes `clear()` from `clear(undefined)`.
   const clear = useCallback((...args: [] | [T]) => {
     lastActionWasSetRef.current = false;
-    pendingActionRef.current = "clear";
+    pendingActionsRef.current.push("clear");
     dispatch({
       type: "clear",
       value: args[0] as T,
