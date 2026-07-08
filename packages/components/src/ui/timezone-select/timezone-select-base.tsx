@@ -310,7 +310,34 @@ export function TimezoneSelectBase({
                 setActiveIndex(-1);
               }}
               className={cn(timezoneSelectSearchVariants())}
-              onKeyDown={(e) => e.stopPropagation()}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+                  e.preventDefault();
+                  const container = containerRef.current;
+                  if (container) {
+                    container.dispatchEvent(
+                      new KeyboardEvent(e.type, {
+                        key: e.key,
+                        bubbles: true,
+                        cancelable: true,
+                      }),
+                    );
+                  }
+                  return;
+                }
+                if (e.key === "Escape") {
+                  e.preventDefault();
+                  setOpen(false);
+                  return;
+                }
+                if (e.key === "Enter" && activeIndex >= 0) {
+                  e.preventDefault();
+                  if (flatFiltered[activeIndex]) {
+                    handleSelect(flatFiltered[activeIndex]);
+                  }
+                  return;
+                }
+              }}
             />
           </div>
           {filtered.map((group) => (

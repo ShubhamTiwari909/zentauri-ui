@@ -78,7 +78,7 @@ function buildTimezoneInfo(
       hour: "numeric",
       minute: "numeric",
     });
-    const parts_fmt = fmt.formatToParts(now());
+    const parts_fmt = fmt.formatToParts(instant);
     const tzPart = parts_fmt.find((p) => p.type === "timeZoneName");
     offsetLabel = tzPart?.value ?? "";
   } catch {

@@ -31,7 +31,7 @@ export function RelativeTimeAnimated({
 
   return (
     <AnimatePresence mode="wait">
-      <motion.time
+      <motion.span
         key={text}
         data-slot="relative-time-animated"
         variants={variants}
@@ -41,7 +41,7 @@ export function RelativeTimeAnimated({
         transition={relativeTimeTransition}
       >
         <RelativeTimeBase {...baseProps} />
-      </motion.time>
+      </motion.span>
     </AnimatePresence>
   );
 }

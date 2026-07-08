@@ -29,6 +29,12 @@ const UNIT_MS: Record<string, number> = {
   millisecond: 1,
 };
 
+const DEFAULT_UNITS: NonNullable<UseDurationFormatOptions["units"]> = [
+  "hour",
+  "minute",
+  "second",
+];
+
 function breakDownDuration(
   durationMs: number,
   units: Array<"day" | "hour" | "minute" | "second" | "millisecond">,
@@ -53,10 +59,12 @@ export function useDurationFormat(
   const {
     locale: localeProp,
     style = "narrow",
-    units = ["hour", "minute", "second"],
+    units: unitsOption,
     maxUnits,
     showZeroUnits = false,
   } = options;
+
+  const units = unitsOption ?? DEFAULT_UNITS;
 
   const locale =
     localeProp ??
@@ -133,6 +141,22 @@ export function useDurationFormat(
       const filtered = showZeroUnits ? parts : parts.filter((p) => p.value > 0);
 
       const limited = maxUnits ? filtered.slice(0, maxUnits) : filtered;
+
+      if (limited.length === 0) {
+        const smallestUnit = units[units.length - 1] ?? "second";
+        let text: string;
+        try {
+          const nf = new Intl.NumberFormat(locale, {
+            style: "unit",
+            unit: smallestUnit as string,
+            unitDisplay: style,
+          });
+          text = nf.format(0);
+        } catch {
+          text = `0 ${smallestUnit}`;
+        }
+        return [{ unit: smallestUnit, value: 0, text }];
+      }
 
       return limited.map(({ unit, value }) => {
         let text: string;

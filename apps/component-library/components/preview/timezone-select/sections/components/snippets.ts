@@ -9,7 +9,7 @@ export function timezoneSelectSnippet(opts: TimezoneSelectDemoProps): string {
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
   const showTimeAttr = showTime ? "" : " showTime={false}";
   const showOffsetAttr = showOffset ? "" : " showOffset={false}";
-  const groupAttr = groupByRegion ? " groupByRegion" : "";
+  const groupAttr = groupByRegion ? "" : " groupByRegion={false}";
   const lead = variantLeadComment(`appearance · ${appearance}, size · ${size}`);
   return `${lead}<TimezoneSelect${appearanceAttr}${sizeAttr}${showTimeAttr}${showOffsetAttr}${groupAttr}
   placeholder="Pick a timezone…"

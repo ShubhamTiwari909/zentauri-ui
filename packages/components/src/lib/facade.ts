@@ -99,6 +99,7 @@ const componentSlugs = [
   "popover",
   "progress",
   "radio-group",
+  "relative-time",
   "rating",
   "scroll-area",
   "search",
@@ -109,8 +110,10 @@ const componentSlugs = [
   "table",
   "tabs",
   "timeline",
+  "timezone-select",
   "toast",
   "toggle",
+  "world-clock",
   "tooltip",
   "tree-view",
   "typography",
@@ -428,11 +431,6 @@ function classifyVariables(raw: RawVariable[]): ZuiVariable[] {
     // 4. Does the dark counterpart exist?
     const darkName = `${baseName}-dark` as `--zui-${string}`;
     const hasDarkPair = names.has(darkName);
-
-    // 5 + 6. Resolve theme and the paired variable name. A dark var only pairs
-    // back when its light base was actually parsed (dark-only refs stay
-    // unpaired rather than pointing at a non-existent variable).
-    const hasLightBase = names.has(baseName);
 
     return {
       name,

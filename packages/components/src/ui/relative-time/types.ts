@@ -11,7 +11,7 @@ export type RelativeTimeVariantProps = VariantProps<
 export interface RelativeTimeBaseProps
   extends
     RelativeTimeVariantProps,
-    Omit<ComponentPropsWithRef<"time">, "dateTime"> {
+    Omit<ComponentPropsWithRef<"time">, "dateTime" | "children"> {
   date: Date | number | string;
   locale?: string | string[];
   formatStyle?: Intl.RelativeTimeFormatStyle;

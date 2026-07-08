@@ -3,7 +3,6 @@
 import { useMemo, useRef } from "react";
 import { cn } from "../../lib/utils";
 import { useRelativeTime } from "../../hooks/useRelativeTime";
-import { useIsMounted } from "../../hooks/useIsMounted";
 
 import type { RelativeTimeBaseProps } from "./types";
 import { relativeTimeVariants } from "./variants";
@@ -17,15 +16,14 @@ export function RelativeTimeBase({
   absoluteAfter,
   withTooltip = true,
   tooltipFormatOptions,
-  ssrFallback,
   appearance,
   size,
   className,
   ref,
   ...rest
 }: RelativeTimeBaseProps) {
-  const isMounted = useIsMounted();
   const dateRef = useRef(new Date(date));
+  dateRef.current = new Date(date);
 
   const timeData = useRelativeTime(date, {
     locale,
@@ -49,9 +47,7 @@ export function RelativeTimeBase({
     }
   }, [withTooltip, locale, tooltipFormatOptions]);
 
-  const content = isMounted()
-    ? timeData.text
-    : (ssrFallback ?? dateRef.current.toLocaleDateString());
+  const content = timeData.text;
 
   return (
     <time

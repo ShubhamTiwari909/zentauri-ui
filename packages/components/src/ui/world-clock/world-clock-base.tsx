@@ -21,13 +21,20 @@ function normalizeZones(
   return zones.map((z) => (typeof z === "string" ? { timeZone: z } : z));
 }
 
+const daytimeFormatterCache = new Map<string, Intl.DateTimeFormat>();
+
 function isDaytime(timeZone: string, now: number): boolean {
   try {
-    const parts = new Intl.DateTimeFormat("en-US", {
-      timeZone,
-      hour: "numeric",
-      hour12: false,
-    }).formatToParts(now);
+    let fmt = daytimeFormatterCache.get(timeZone);
+    if (!fmt) {
+      fmt = new Intl.DateTimeFormat("en-US", {
+        timeZone,
+        hour: "numeric",
+        hour12: false,
+      });
+      daytimeFormatterCache.set(timeZone, fmt);
+    }
+    const parts = fmt.formatToParts(now);
     const hourPart = parts.find((p) => p.type === "hour");
     if (!hourPart) return true;
     const hour = parseInt(hourPart.value, 10);
@@ -88,8 +95,7 @@ export function WorldClockBase({
       hour: "2-digit",
       minute: "2-digit",
       second: showSeconds ? "2-digit" : undefined,
-      hour12: hourCycle !== "h23",
-      hourCycle: hourCycle,
+      ...(hourCycle ? { hourCycle, hour12: hourCycle === "h12" } : {}),
     }),
     [showSeconds, hourCycle],
   );
@@ -181,11 +187,10 @@ function WorldClockCard({
     if (!showOffsetFromLocal) return null;
     const diff = offsetFromLocal(zone.timeZone);
     const sign = diff >= 0 ? "+" : "";
-    const hours = Math.abs(diff) / 60;
-    const label = Number.isInteger(hours)
-      ? `${sign}${hours}h`
-      : `${sign}${hours.toFixed(1).replace(".0", "")}h`;
-    return label;
+    const absMins = Math.abs(diff);
+    const h = Math.floor(absMins / 60);
+    const m = absMins % 60;
+    return m > 0 ? `${sign}${h}:${String(m).padStart(2, "0")}` : `${sign}${h}h`;
   }, [showOffsetFromLocal, offsetFromLocal, zone.timeZone]);
 
   const isoString = useMemo(() => new Date(now).toISOString(), [now]);

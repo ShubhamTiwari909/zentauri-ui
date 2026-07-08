@@ -91,16 +91,24 @@ export function useRelativeTime(
   const locale =
     localeProp ??
     (typeof navigator !== "undefined" ? navigator.language : "en-US");
-  const targetDate = useMemo(() => new Date(date), [date]);
+
+  const raw = useMemo(() => new Date(date), [date]);
+  const isValid = !isNaN(raw.getTime());
+  const targetDate = useMemo(
+    () => (isValid ? raw : new Date(0)),
+    [isValid, raw],
+  );
+
   const visibility = usePageVisibility();
   const [now, setNow] = useState(() => Date.now());
-  const refreshKey = useRef(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const scheduleNext = useCallback(() => {
     const diff = targetDate.getTime() - Date.now();
     const { unit } = computeUnit(diff);
-    const delay = Math.min(getDelayMs(unit), 3_600_000);
+    const delayMs = getDelayMs(unit);
+    const remainder = delayMs - (Math.abs(diff) % delayMs);
+    const delay = Math.max(remainder, 1000);
 
     timerRef.current = setTimeout(() => {
       setNow(Date.now());
@@ -122,7 +130,6 @@ export function useRelativeTime(
 
   const refresh = useCallback(() => {
     setNow(Date.now());
-    refreshKey.current += 1;
   }, []);
 
   const result = useMemo<UseRelativeTimeReturn>(() => {

@@ -33,6 +33,10 @@ describe("TimezoneSelect", () => {
     render(<TimezoneSelect disabled />);
     const root = document.querySelector("[data-slot='timezone-select']");
     expect(root).toHaveAttribute("tabindex", "-1");
+    const trigger = document.querySelector(
+      "[data-slot='timezone-select-trigger']",
+    );
+    expect(trigger).toBeDisabled();
   });
 
   it("has data-slot attribute", () => {

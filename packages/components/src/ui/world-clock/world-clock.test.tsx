@@ -41,7 +41,7 @@ describe("WorldClock", () => {
     expect(root?.className).toContain("custom-class");
   });
 
-  it("renders WorldClockZone with displayName", () => {
+  it("has displayName on the root WorldClock component", () => {
     expect(WorldClock.displayName).toBe("WorldClock");
   });
 

@@ -1478,8 +1478,8 @@ function DurationFormatDemo() {
 }
 
 function RelativeTimeHookDemo() {
-  const now = Date.now();
-  const { text, unit } = useRelativeTime(now - 120000, {
+  const target = useMemo(() => Date.now() - 120000, []);
+  const { text, unit } = useRelativeTime(target, {
     locale: "en-US",
     numeric: "auto",
   });

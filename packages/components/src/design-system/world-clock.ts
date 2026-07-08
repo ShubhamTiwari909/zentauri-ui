@@ -41,25 +41,27 @@ export const zuiWorldClockCardSizes = {
 
 export const zuiWorldClockLabelBase = [
   "font-medium",
-  "text-[color:var(--zui-world-clock-label-fg,var(--zui-fg,oklch(20.8%_0.042_265.755)))] dark:text-[color:var(--zui-world-clock-label-fg-dark,var(--zui-fg-dark,oklch(98.4%_0.003_247.858)))]",
+  "text-[color:var(--zui-world-clock-label-fg,currentColor)] dark:text-[color:var(--zui-world-clock-label-fg-dark,currentColor)]",
 ] as const;
 
 export const zuiWorldClockTimeBase = [
   "tabular-nums font-semibold tracking-tight",
-  "text-[color:var(--zui-world-clock-time-fg,var(--zui-brand,oklch(20.8%_0.042_265.755)))] dark:text-[color:var(--zui-world-clock-time-fg-dark,var(--zui-brand-dark,oklch(98.4%_0.003_247.858)))]",
+  "text-[color:var(--zui-world-clock-time-fg,currentColor)] dark:text-[color:var(--zui-world-clock-time-fg-dark,currentColor)]",
 ] as const;
 
 export const zuiWorldClockDateBase = [
   "text-xs",
-  "text-[color:var(--zui-world-clock-date-fg,var(--zui-fg-muted,oklch(44.6%_0.043_257.281)))] dark:text-[color:var(--zui-world-clock-date-fg-dark,var(--zui-fg-muted-dark,oklch(86.9%_0.022_252.894)))]",
+  "text-[color:var(--zui-world-clock-date-fg,currentColor)] dark:text-[color:var(--zui-world-clock-date-fg-dark,currentColor)]",
+  "opacity-70",
 ] as const;
 
 export const zuiWorldClockOffsetBase = [
   "inline-flex items-center rounded-md px-1.5 py-0.5 text-[0.6rem] font-medium tabular-nums",
-  "bg-[var(--zui-world-clock-offset-bg,var(--zui-surface-muted,oklch(92.9%_0.013_255.508)))] dark:bg-[var(--zui-world-clock-offset-bg-dark,var(--zui-surface-muted-dark,oklch(27.9%_0.041_260.031)))]",
-  "text-[color:var(--zui-world-clock-offset-fg,var(--zui-fg-muted,oklch(44.6%_0.043_257.281)))] dark:text-[color:var(--zui-world-clock-offset-fg-dark,var(--zui-fg-muted-dark,oklch(86.9%_0.022_252.894)))]",
+  "bg-[var(--zui-world-clock-offset-bg,rgba(0,0,0,0.06))] dark:bg-[var(--zui-world-clock-offset-bg-dark,rgba(255,255,255,0.1))]",
+  "text-[color:var(--zui-world-clock-offset-fg,currentColor)] dark:text-[color:var(--zui-world-clock-offset-fg-dark,currentColor)]",
 ] as const;
 
 export const zuiWorldClockDaynightBase = [
   "inline-flex size-6 items-center justify-center rounded-full text-xs",
+  "opacity-60",
 ] as const;
