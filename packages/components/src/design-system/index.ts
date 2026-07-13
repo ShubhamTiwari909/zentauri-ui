@@ -6,6 +6,7 @@ export * from "./api-response-viewer";
 export * from "./audio-player";
 export * from "./avatar";
 export * from "./badge";
+export * from "./bento-grid";
 export * from "./breadcrumb";
 export * from "./button";
 export * from "./card";

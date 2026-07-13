@@ -1,0 +1,85 @@
+{
+  "category": "Layout",
+  "title": "Bento grid component for React & Next.js dashboards",
+  "description": "Animated bento grid component for React and Next.js: real CSS Grid layout with reflow, hover-expand, and morph-to-detail animations — accessible, with DOM order always matching visual order.",
+  "keywords": [
+    "bento grid component",
+    "React",
+    "Next.js",
+    "CSS grid",
+    "animated grid",
+    "dashboard layout",
+    "masonry alternative",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Bento Grid · Zentauri UI",
+    "description": "Animated bento grid for React and Next.js: real CSS Grid with reflow, hover-expand, and morph-to-detail animations.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Bento Grid · Zentauri UI",
+    "description": "Animated bento grid for React and Next.js: real CSS Grid with reflow, hover-expand, and morph-to-detail animations.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/bento-grid",
+  "headings": {
+    "h1": "Bento grid for dashboards and galleries",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the bento grid component to build dashboard, gallery, and portfolio layouts from real CSS Grid — no absolute positioning. Three optional, cumulative animation layers add smooth reflow on filter and sort, hover-expanding bento items, and a shared-element morph into a detail view.",
+  "useCases": [
+    "Build analytics dashboards with featured metric tiles that expand on hover.",
+    "Lay out image galleries and portfolio sections with mixed tile spans.",
+    "Compose admin panels where filtering and sorting reflow items smoothly.",
+    "Create marketing bento sections that morph tiles into detail panels on click."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Bento Grid component work without framer-motion?",
+      "answer": "Yes. The default static entry has zero framer-motion dependency: spans and appearances render fully, hover-expand still resizes items (it snaps via CSS instead of animating), and the detail view still opens and closes as a plain overlay. Import from the /animated subpath only when you want smooth reflow, FLIP-based expand, and the shared-element morph — framer-motion is an optional peer dependency."
+    },
+    {
+      "question": "Is the bento grid accessible for screen readers and keyboards?",
+      "answer": "Yes, by design. Items live in real CSS Grid, so DOM order always equals visual and reading order — unlike absolutely-positioned masonry libraries. Bento expand triggers on focus as well as hover, the detail view traps focus while open and returns focus to the triggering item on close, and prefers-reduced-motion automatically disables all motion with no opt-in required."
+    },
+    {
+      "question": "Does the Bento Grid support drag-to-reorder?",
+      "answer": "Not in v1. Drag-to-reorder is a candidate for a future dnd-kit-based add-on; keeping it out of v1 keeps the component dependency-light. Filtering, sorting, inserting, and removing items all animate via the reflow layer today."
+    },
+    {
+      "question": "Does the Bento Grid component work with Next.js App Router?",
+      "answer": "Yes. Both entries are client components; render them anywhere in the App Router and pass tile content (including the detail panel) as children or props from server components."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "The bento grid renders items in a real CSS Grid with configurable columns (or container-driven auto-fit via minItemWidth), gaps, and dense auto-flow so small tiles backfill gaps left by larger spans. Items pick a span (1x1 through featured 3x2) and an appearance from the full palette, including gradients and glass.\n\nThree cumulative animation layers are opt-in via the animation prop: reflow animates items to new positions on filter/sort/insert/remove, bento grows an item's span on hover or focus while neighbors reflow live, and morph shared-element-transitions a clicked item into an expanded detail view and back."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Compose BentoGrid with BentoGrid.Item children, each with a required stable id. The static entry (ui/bento-grid) needs no framer-motion; the animated entry (ui/bento-grid/animated) layers spring-driven motion on top with default, gentle, and snappy transition presets.\n\nItems accept expandable + expandedSpan for the bento layer and a detail ReactNode for the morph layer, with onOpenDetail/onCloseDetail callbacks. Only one detail view can be open per grid — it's coordinated by grid-level context."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The core constraint is structural: DOM order always equals visual order, so tab order matches what sighted users see. Expansion has keyboard parity (focus triggers it, not just hover), items with a detail view are reachable and operable with Enter or Space, and the detail dialog traps focus, closes on Escape, and returns focus to its trigger.\n\nprefers-reduced-motion is honored automatically in the animated entry: items snap to their new state instantly instead of animating."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Colocate examples under the App Router, keep server and client boundaries explicit, and pass detail-panel content as serializable JSX from server components.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

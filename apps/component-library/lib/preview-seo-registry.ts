@@ -7,6 +7,7 @@ import animations from "@/content/seo/preview/animations.json";
 import animatedNumber from "@/content/seo/preview/components/animated-number.json";
 import avatar from "@/content/seo/preview/components/avatar.json";
 import badge from "@/content/seo/preview/components/badge.json";
+import bentoGrid from "@/content/seo/preview/components/bento-grid.json";
 import breadcrumb from "@/content/seo/preview/components/breadcrumb.json";
 import buttons from "@/content/seo/preview/components/buttons.json";
 import card from "@/content/seo/preview/components/card.json";
@@ -86,6 +87,7 @@ const previewSeoRegistry = {
   "audio-player": audioPlayer as PreviewSeoDocument,
   avatar: avatar as PreviewSeoDocument,
   badge: badge as PreviewSeoDocument,
+  "bento-grid": bentoGrid as PreviewSeoDocument,
   breadcrumb: breadcrumb as PreviewSeoDocument,
   buttons: buttons as PreviewSeoDocument,
   card: card as PreviewSeoDocument,

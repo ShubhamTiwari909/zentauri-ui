@@ -195,6 +195,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/badge",
       },
       {
+        title: "Bento Grid",
+        href: "/preview/components/bento-grid",
+      },
+      {
         title: "Breadcrumb",
         href: "/preview/components/breadcrumb",
       },
