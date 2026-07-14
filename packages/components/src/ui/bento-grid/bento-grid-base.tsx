@@ -2,9 +2,7 @@
 
 import {
   createContext,
-  useCallback,
   useContext,
-  useEffect,
   useMemo,
   useRef,
   useState,
@@ -13,9 +11,11 @@ import {
   type MutableRefObject,
   type ReactNode,
   type Ref,
+  type RefObject,
 } from "react";
 
 import { cn } from "../../lib/utils";
+import { useFocusManagement } from "../../hooks/useFocusManagement";
 
 import type {
   BentoGridBaseProps,
@@ -64,67 +64,61 @@ export function bentoGridTemplateColumns(
     : `repeat(${cols}, minmax(0, 1fr))`;
 }
 
-const FOCUSABLE_SELECTOR =
-  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+const NESTED_INTERACTIVE_SELECTOR =
+  'a[href], button, input, select, textarea, [role="button"], [role="link"], [contenteditable="true"]';
 
 /**
- * Focus management for the detail view: moves focus into the panel on mount,
- * traps Tab/Shift+Tab inside it, and closes on Escape. Focus return to the
- * triggering item is handled by the item's close handler.
+ * A detail-enabled item acts as a button, but interactive content nested
+ * inside it must stay independently usable — a click/Enter on a nested link
+ * or button must not also open the detail view.
  */
-export function useBentoGridDetailFocusTrap(onClose: () => void) {
+export function isNestedInteractiveTarget(
+  target: EventTarget | null,
+  item: HTMLElement | null,
+): boolean {
+  if (!(target instanceof Element) || !item) return false;
+  const interactive = target.closest(NESTED_INTERACTIVE_SELECTOR);
+  return interactive !== null && interactive !== item;
+}
+
+/**
+ * Modal behavior for an open detail panel: body scroll lock, focus containment,
+ * Escape to close, and focus restore to the triggering item — reuses the
+ * library-wide useFocusManagement hook (same as Modal/Drawer). The panel is
+ * mounted only while open, so `open` is always true for its lifetime.
+ */
+export function useBentoGridDetailFocus(
+  onClose: () => void,
+  triggerRef?: RefObject<HTMLElement | null>,
+) {
   const panelRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    panelRef.current?.focus();
-  }, []);
-
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === "Escape") {
-        event.stopPropagation();
-        onClose();
-        return;
-      }
-      if (event.key !== "Tab") return;
-      const panel = panelRef.current;
-      if (!panel) return;
-      const focusables = Array.from(
-        panel.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
-      );
-      const first = focusables[0];
-      const last = focusables[focusables.length - 1];
-      if (!first || !last) {
-        event.preventDefault();
-        return;
-      }
-      const active = document.activeElement;
-      if (event.shiftKey && (active === first || active === panel)) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && active === last) {
-        event.preventDefault();
-        first.focus();
-      }
+  useFocusManagement({
+    open: true,
+    setOpen: (next) => {
+      if (!next) onClose();
     },
-    [onClose],
-  );
+    contentRef: panelRef,
+    triggerRef,
+  });
 
-  return { panelRef, handleKeyDown };
+  return panelRef;
 }
 
 /**
  * Static detail view: plain conditional overlay (no portal, no morph). The
- * animated entry ships its own motion-based panel and reuses the focus trap.
+ * animated entry ships its own motion-based panel and reuses the focus hook.
  */
 export function BentoGridDetailPanelBase({
   onClose,
+  triggerRef,
   children,
 }: {
   onClose: () => void;
+  triggerRef?: RefObject<HTMLElement | null>;
   children: ReactNode;
 }) {
-  const { panelRef, handleKeyDown } = useBentoGridDetailFocusTrap(onClose);
+  const panelRef = useBentoGridDetailFocus(onClose, triggerRef);
 
   return (
     <div
@@ -142,7 +136,6 @@ export function BentoGridDetailPanelBase({
         tabIndex={-1}
         data-slot="bento-grid-detail"
         className={zuiBentoGridDetailBase}
-        onKeyDown={handleKeyDown}
       >
         <button
           type="button"
@@ -240,21 +233,24 @@ export function BentoGridItemBase({
     onOpenDetail?.();
   };
 
+  // Focus return to the item is handled by the detail panel's focus
+  // management on unmount (via triggerRef).
   const closeDetail = () => {
     setOpenId(null);
     onCloseDetail?.();
-    itemRef.current?.focus();
   };
 
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
     if (!detailEnabled || event.defaultPrevented) return;
+    if (isNestedInteractiveTarget(event.target, itemRef.current)) return;
     openDetail();
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(event);
     if (!detailEnabled || event.defaultPrevented) return;
+    if (isNestedInteractiveTarget(event.target, itemRef.current)) return;
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       openDetail();
@@ -290,7 +286,7 @@ export function BentoGridItemBase({
       {/* Sibling, not child: keeps the dialog out of the role="button" subtree
           and out of the grid flow (the overlay is position:fixed). */}
       {open && (
-        <BentoGridDetailPanelBase onClose={closeDetail}>
+        <BentoGridDetailPanelBase onClose={closeDetail} triggerRef={itemRef}>
           {detail}
         </BentoGridDetailPanelBase>
       )}

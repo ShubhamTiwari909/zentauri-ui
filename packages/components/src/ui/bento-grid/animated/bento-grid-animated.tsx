@@ -30,8 +30,9 @@ import {
   BentoGridContext,
   bentoGridTemplateColumns,
   composeRefs,
+  isNestedInteractiveTarget,
   useBentoGrid,
-  useBentoGridDetailFocusTrap,
+  useBentoGridDetailFocus,
 } from "../bento-grid-base";
 import type { BentoGridContextValue } from "../types";
 import { bentoGridItemVariants, bentoGridVariants } from "../variants";
@@ -164,14 +165,16 @@ function BentoGridDetailOverlayAnimated({
 function BentoGridDetailDialogAnimated({
   layoutId,
   onClose,
+  triggerRef,
   children,
 }: {
   layoutId: string | undefined;
   onClose: () => void;
+  triggerRef?: React.RefObject<HTMLElement | null>;
   children: React.ReactNode;
 }) {
   const { transition } = useBentoGridAnimated();
-  const { panelRef, handleKeyDown } = useBentoGridDetailFocusTrap(onClose);
+  const panelRef = useBentoGridDetailFocus(onClose, triggerRef);
 
   return (
     <div
@@ -189,7 +192,6 @@ function BentoGridDetailDialogAnimated({
         layoutId={layoutId}
         className={cn(zuiBentoGridDetailBase, "pointer-events-auto")}
         transition={transition}
-        onKeyDown={handleKeyDown}
       >
         <button
           type="button"
@@ -256,21 +258,24 @@ export function BentoGridItemAnimated({
     onOpenDetail?.();
   };
 
+  // Focus return to the item is handled by the detail dialog's focus
+  // management on unmount (via triggerRef).
   const closeDetail = () => {
     setOpenId(null);
     onCloseDetail?.();
-    itemRef.current?.focus();
   };
 
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
     if (!detailEnabled || event.defaultPrevented) return;
+    if (isNestedInteractiveTarget(event.target, itemRef.current)) return;
     openDetail();
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(event);
     if (!detailEnabled || event.defaultPrevented) return;
+    if (isNestedInteractiveTarget(event.target, itemRef.current)) return;
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       openDetail();
@@ -293,9 +298,11 @@ export function BentoGridItemAnimated({
         data-expanded={expandEnabled && expanded ? "" : undefined}
         layout={reflowEnabled}
         transition={transition}
-        initial={{ opacity: 0, scale: 0.92 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.92 }}
+        // animation="none" must render without motion, including for items
+        // that are dynamically inserted or removed.
+        initial={animation === "none" ? false : { opacity: 0, scale: 0.92 }}
+        animate={animation === "none" ? undefined : { opacity: 1, scale: 1 }}
+        exit={animation === "none" ? undefined : { opacity: 0, scale: 0.92 }}
         className={cn(
           bentoGridItemVariants({
             span: expandEnabled && expanded ? expandedSpan : span,
@@ -320,7 +327,14 @@ export function BentoGridItemAnimated({
         }}
         onMouseLeave={(event) => {
           onMouseLeave?.(event);
-          if (expandEnabled) setExpanded(false);
+          // Keyboard parity: a focused item stays expanded when the mouse
+          // leaves, so keyboard users don't lose their expanded state.
+          if (
+            expandEnabled &&
+            !event.currentTarget.contains(document.activeElement)
+          ) {
+            setExpanded(false);
+          }
         }}
         onFocus={(event) => {
           onFocus?.(event);
@@ -353,6 +367,7 @@ export function BentoGridItemAnimated({
               <BentoGridDetailDialogAnimated
                 layoutId={layoutId}
                 onClose={closeDetail}
+                triggerRef={itemRef}
               >
                 {detail}
               </BentoGridDetailDialogAnimated>

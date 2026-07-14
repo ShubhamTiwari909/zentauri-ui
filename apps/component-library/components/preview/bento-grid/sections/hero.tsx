@@ -6,18 +6,7 @@ import {
   BentoGridItemAnimated,
 } from "@zentauri-ui/zentauri-components/ui/bento-grid/animated";
 
-function HeroCard({ title, body }: { title: string; body: string }) {
-  return (
-    <div className="flex h-full flex-col justify-end gap-1 p-4">
-      <p className="text-sm font-semibold text-slate-900 dark:text-white">
-        {title}
-      </p>
-      <p className="text-xs leading-5 text-slate-600 dark:text-slate-400">
-        {body}
-      </p>
-    </div>
-  );
-}
+import { Tile } from "./components/tile";
 
 export function BentoGridHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
@@ -44,13 +33,13 @@ export function BentoGridHeroSection({ seo }: { seo: PreviewSeoDocument }) {
               </div>
             }
           >
-            <HeroCard
+            <Tile
               title="Revenue overview"
               body="Featured 2x2 card — hover to expand, click for the morph-to-detail view."
             />
           </BentoGridItemAnimated>
           <BentoGridItemAnimated key="users" id="users" appearance="emerald">
-            <HeroCard title="Active users" body="1x1 tile." />
+            <Tile title="Active users" body="1x1 tile." />
           </BentoGridItemAnimated>
           <BentoGridItemAnimated
             key="uptime"
@@ -59,7 +48,7 @@ export function BentoGridHeroSection({ seo }: { seo: PreviewSeoDocument }) {
             expandable
             expandedSpan="2x1"
           >
-            <HeroCard title="Uptime" body="Hover me — I grow to 2x1." />
+            <Tile title="Uptime" body="Hover me — I grow to 2x1." />
           </BentoGridItemAnimated>
           <BentoGridItemAnimated
             key="latency"
@@ -67,10 +56,10 @@ export function BentoGridHeroSection({ seo }: { seo: PreviewSeoDocument }) {
             span="1x2"
             appearance="sky"
           >
-            <HeroCard title="Latency" body="Tall 1x2 tile." />
+            <Tile title="Latency" body="Tall 1x2 tile." />
           </BentoGridItemAnimated>
           <BentoGridItemAnimated key="errors" id="errors" appearance="rose">
-            <HeroCard title="Errors" body="1x1 tile." />
+            <Tile title="Errors" body="1x1 tile." />
           </BentoGridItemAnimated>
           <BentoGridItemAnimated
             key="deploys"
@@ -89,13 +78,10 @@ export function BentoGridHeroSection({ seo }: { seo: PreviewSeoDocument }) {
               </div>
             }
           >
-            <HeroCard
-              title="Deploys"
-              body="Wide glass tile — click for details."
-            />
+            <Tile title="Deploys" body="Wide glass tile — click for details." />
           </BentoGridItemAnimated>
           <BentoGridItemAnimated key="alerts" id="alerts" appearance="orange">
-            <HeroCard title="Alerts" body="Dense flow backfills gaps." />
+            <Tile title="Alerts" body="Dense flow backfills gaps." />
           </BentoGridItemAnimated>
         </BentoGridAnimated>
       </div>

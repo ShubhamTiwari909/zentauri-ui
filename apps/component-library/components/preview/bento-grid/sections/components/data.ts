@@ -52,3 +52,17 @@ export const BENTO_GRID_ANIMATIONS = [
 ] as const satisfies readonly BentoGridAnimation[];
 
 export const BENTO_GRID_COLS = ["3", "4", "5"] as const;
+
+/** Single source of truth for the demo grid's filler tiles — the live demo and
+ * the generated code snippet both render from this list. */
+export const BENTO_GRID_FILLER_ITEMS = [
+  { id: "b", title: "Sessions", appearance: "default" },
+  { id: "c", title: "Conversion", appearance: "glass" },
+  { id: "d", title: "Churn", appearance: "default" },
+  { id: "e", title: "Signups", appearance: "glass" },
+  { id: "f", title: "NPS", appearance: "default" },
+] as const satisfies readonly {
+  id: string;
+  title: string;
+  appearance: NonNullable<BentoGridItemProps["appearance"]>;
+}[];

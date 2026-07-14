@@ -28,14 +28,14 @@ Static entry (no `framer-motion`) must be fully usable on its own: spans/appeara
 
 ### 3.1 `<BentoGrid>`
 
-| Prop                           | Type                                       | Default     | Notes                                                                                                                                                                |
-| ------------------------------ | ------------------------------------------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cols`                         | `number`                                   | `4`         | Explicit column count.                                                                                                                                               |
-| `minItemWidth`                 | `number` (px)                              | `undefined` | If set, overrides `cols` with `repeat(auto-fit, minmax(minItemWidth, 1fr))` — container-query driven, not viewport media queries.                                    |
-| `gap`                          | `"sm" \| "md" \| "lg"`                     | `"md"`      | Maps to `--zui-bento-grid-gap-*` tokens.                                                                                                                             |
-| `autoFlow`                     | `"row" \| "dense"`                         | `"dense"`   | `dense` lets smaller items backfill gaps left by larger spans.                                                                                                       |
-| `animation`                    | `"none" \| "reflow" \| "bento" \| "morph"` | `"none"`    | Cumulative: `bento` includes reflow; `morph` includes both. Only the animated entry reads this meaningfully — static entry treats anything non-`"none"` as `"none"`. |
-| `className`, `children`, `ref` | standard                                   | —           | `ref` forwards to the root `div`.                                                                                                                                    |
+| Prop                           | Type                                       | Default     | Notes                                                                                                                                                                                                                                              |
+| ------------------------------ | ------------------------------------------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cols`                         | `number`                                   | `4`         | Explicit column count.                                                                                                                                                                                                                             |
+| `minItemWidth`                 | `number` (px)                              | `undefined` | If set, overrides `cols` with `repeat(auto-fit, minmax(minItemWidth, 1fr))` — container-query driven, not viewport media queries.                                                                                                                  |
+| `gap`                          | `"sm" \| "md" \| "lg"`                     | `"md"`      | Maps to `--zui-bento-grid-gap-*` tokens.                                                                                                                                                                                                           |
+| `autoFlow`                     | `"row" \| "dense"`                         | `"dense"`   | `dense` lets smaller items backfill gaps left by larger spans.                                                                                                                                                                                     |
+| `animation`                    | `"none" \| "reflow" \| "bento" \| "morph"` | `"none"`    | Cumulative: `bento` includes reflow; `morph` includes both. The static entry never animates transitions but still gates behavior by level: `bento`+ enables the CSS hover/focus expand (snaps), `morph` enables the detail view (plain show/hide). |
+| `className`, `children`, `ref` | standard                                   | —           | `ref` forwards to the root `div`.                                                                                                                                                                                                                  |
 
 ### 3.2 `<BentoGrid.Item>`
 
@@ -191,7 +191,7 @@ Also export `BentoGridVariantProps` and the context value type (`animation`, `co
 - [ ] `css-variables/data/bento-grid.ts` + `css-variables/reference-data.ts` — every `--zui-bento-grid-*` token, `darkVariableCount` must match actual dark entries
 - [ ] `sidebar/sidebar-data.ts` — add under `Layout` group
 - [ ] `introduction/data.ts` — badge `"Layout"`
-- [ ] ⚠️ `lib/site-search-entries.ts` — add search entry (skipped in PR #109 — don't repeat)
+- [ ] `lib/site-search-entries.ts` — **no edit needed**: it auto-derives from the `sidebar*Data` arrays (per CLAUDE.md), so the sidebar registration above populates the search index automatically
 - [ ] ⚠️ `lib/home-install-commands.ts` — decide consciously; recommend **yes**, this is a flagship differentiator worth surfacing on the homepage
 
 ## 11. Definition of done

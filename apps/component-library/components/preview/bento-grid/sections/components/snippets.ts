@@ -1,15 +1,7 @@
 import { variantLeadComment } from "@/components/common/variant-code-prefix";
 
+import { BENTO_GRID_FILLER_ITEMS } from "./data";
 import type { BentoGridDemoProps } from "./types";
-
-// Mirrors FILLER_ITEMS in demo.tsx so the snippet matches the live output.
-const FILLER_ITEMS = [
-  { id: "b", title: "Sessions", appearance: "default" },
-  { id: "c", title: "Conversion", appearance: "glass" },
-  { id: "d", title: "Churn", appearance: "default" },
-  { id: "e", title: "Signups", appearance: "glass" },
-  { id: "f", title: "NPS", appearance: "default" },
-] as const;
 
 export function bentoGridSnippet(opts: BentoGridDemoProps): string {
   const { cols, gap, animation, span, appearance } = opts;
@@ -18,7 +10,15 @@ export function bentoGridSnippet(opts: BentoGridDemoProps): string {
   );
 
   if (animation !== "none") {
-    const fillers = FILLER_ITEMS.map(
+    // Same conditional body text as the live demo's featured tile.
+    const featuredBody =
+      animation === "morph"
+        ? "Hover to expand · click for detail"
+        : animation === "bento"
+          ? "Hover to expand"
+          : `span ${span}`;
+
+    const fillers = BENTO_GRID_FILLER_ITEMS.map(
       (
         item,
       ) => `  <BentoGridAnimated.Item key="${item.id}" id="${item.id}" appearance="${item.appearance}">
@@ -37,13 +37,13 @@ ${lead}<BentoGridAnimated cols={${cols}} gap="${gap}" animation="${animation}">
     expandable
     detail={<FeaturedDetail />}
   >
-    <Tile title="Featured" />
+    <Tile title="Featured" body="${featuredBody}" />
   </BentoGridAnimated.Item>
 ${fillers}
 </BentoGridAnimated>`;
   }
 
-  const fillers = FILLER_ITEMS.map(
+  const fillers = BENTO_GRID_FILLER_ITEMS.map(
     (
       item,
     ) => `  <BentoGrid.Item key="${item.id}" id="${item.id}" appearance="${item.appearance}">
@@ -55,7 +55,7 @@ ${fillers}
 
 ${lead}<BentoGrid cols={${cols}} gap="${gap}">
   <BentoGrid.Item id="a" span="${span}" appearance="${appearance}">
-    <Tile title="Featured" />
+    <Tile title="Featured" body="span ${span}" />
   </BentoGrid.Item>
 ${fillers}
 </BentoGrid>`;

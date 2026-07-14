@@ -194,7 +194,8 @@ describe("BentoGrid", () => {
     );
     expect(dialog).toBeTruthy();
     expect(dialog?.getAttribute("aria-modal")).toBe("true");
-    expect(document.activeElement).toBe(dialog);
+    // useFocusManagement moves focus to the first focusable (the close button).
+    expect(dialog?.contains(document.activeElement)).toBe(true);
 
     fireEvent.keyDown(dialog!, { key: "Escape" });
     expect(onCloseDetail).toHaveBeenCalledTimes(1);
@@ -234,6 +235,39 @@ describe("BentoGrid", () => {
       '[data-slot="bento-grid-item"]',
     );
     fireEvent.keyDown(item!, { key: "Enter" });
+    expect(
+      container.querySelector('[data-slot="bento-grid-detail"]'),
+    ).toBeTruthy();
+  });
+
+  it("should not open the detail from nested interactive content", () => {
+    const onInnerClick = vi.fn();
+    const { container, getByText } = render(
+      <BentoGrid animation="morph">
+        <BentoGrid.Item id="a" detail={<p>Detail body</p>}>
+          <button type="button" onClick={onInnerClick}>
+            Inner action
+          </button>
+        </BentoGrid.Item>
+      </BentoGrid>,
+    );
+    const inner = getByText("Inner action");
+
+    fireEvent.click(inner);
+    expect(onInnerClick).toHaveBeenCalledTimes(1);
+    expect(
+      container.querySelector('[data-slot="bento-grid-detail"]'),
+    ).toBeFalsy();
+    fireEvent.keyDown(inner, { key: "Enter" });
+    expect(
+      container.querySelector('[data-slot="bento-grid-detail"]'),
+    ).toBeFalsy();
+
+    // Clicking the item itself (outside the nested control) still opens it.
+    const item = container.querySelector<HTMLElement>(
+      '[data-slot="bento-grid-item"]',
+    );
+    fireEvent.click(item!);
     expect(
       container.querySelector('[data-slot="bento-grid-detail"]'),
     ).toBeTruthy();
@@ -295,7 +329,42 @@ describe("BentoGridAnimated", () => {
     );
     expect(dialog).toBeTruthy();
     expect(dialog?.getAttribute("data-layout-id")).toBe("bento-detail-a");
-    expect(document.activeElement).toBe(dialog);
+    // useFocusManagement moves focus to the first focusable (the close button).
+    expect(dialog?.contains(document.activeElement)).toBe(true);
+  });
+
+  it("should keep a focused item expanded when the mouse leaves", () => {
+    const { container, getByText } = render(
+      <BentoGridAnimated animation="bento">
+        <BentoGridAnimated.Item key="a" id="a" expandable expandedSpan="2x2">
+          <button type="button">Inner control</button>
+        </BentoGridAnimated.Item>
+      </BentoGridAnimated>,
+    );
+    const item = container.querySelector<HTMLElement>(
+      '[data-slot="bento-grid-item"]',
+    );
+    const inner = getByText("Inner control");
+
+    // element.focus() sets document.activeElement; fireEvent.focus makes sure
+    // React's delegated onFocus fires in jsdom.
+    inner.focus();
+    fireEvent.focus(inner);
+    expect(item?.hasAttribute("data-expanded")).toBe(true);
+
+    // Mouse leaves while focus stays inside: expansion must persist.
+    fireEvent.mouseLeave(item!);
+    expect(item?.hasAttribute("data-expanded")).toBe(true);
+
+    inner.blur();
+    fireEvent.blur(inner);
+    expect(item?.hasAttribute("data-expanded")).toBe(false);
+
+    // Without focus inside, mouse leave collapses as usual.
+    fireEvent.mouseEnter(item!);
+    expect(item?.hasAttribute("data-expanded")).toBe(true);
+    fireEvent.mouseLeave(item!);
+    expect(item?.hasAttribute("data-expanded")).toBe(false);
   });
 
   it("should expand on focus and collapse on blur (keyboard parity)", () => {

@@ -3,8 +3,9 @@
 export { BentoGrid, BentoGridItem } from "./bento-grid";
 export {
   BentoGridDetailPanelBase,
+  isNestedInteractiveTarget,
   useBentoGrid,
-  useBentoGridDetailFocusTrap,
+  useBentoGridDetailFocus,
 } from "./bento-grid-base";
 export type {
   BentoGridAnimation,

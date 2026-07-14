@@ -5,34 +5,9 @@ import { useState } from "react";
 import { BentoGrid } from "@zentauri-ui/zentauri-components/ui/bento-grid";
 import { BentoGridAnimated } from "@zentauri-ui/zentauri-components/ui/bento-grid/animated";
 
-import type { BentoGridAppearance, BentoGridDemoProps } from "./types";
-
-const FILLER_ITEMS: {
-  id: string;
-  title: string;
-  appearance: BentoGridAppearance;
-}[] = [
-  { id: "b", title: "Sessions", appearance: "default" },
-  { id: "c", title: "Conversion", appearance: "glass" },
-  { id: "d", title: "Churn", appearance: "default" },
-  { id: "e", title: "Signups", appearance: "glass" },
-  { id: "f", title: "NPS", appearance: "default" },
-];
-
-function Tile({ title, body }: { title: string; body?: string }) {
-  return (
-    <div className="flex h-full flex-col justify-end gap-1 p-4">
-      <p className="text-sm font-semibold text-slate-900 dark:text-white">
-        {title}
-      </p>
-      {body && (
-        <p className="text-xs leading-5 text-slate-600 dark:text-slate-400">
-          {body}
-        </p>
-      )}
-    </div>
-  );
-}
+import { BENTO_GRID_FILLER_ITEMS } from "./data";
+import { Tile } from "./tile";
+import type { BentoGridDemoProps } from "./types";
 
 const featuredDetail = (
   <div className="space-y-2 pr-8">
@@ -56,7 +31,9 @@ export function BentoGridDemo({
   // Lets the reflow layer be seen live: removing/restoring items makes
   // neighbors animate to their new grid positions.
   const [hidden, setHidden] = useState<Set<string>>(new Set());
-  const visibleFillers = FILLER_ITEMS.filter((item) => !hidden.has(item.id));
+  const visibleFillers = BENTO_GRID_FILLER_ITEMS.filter(
+    (item) => !hidden.has(item.id),
+  );
 
   const toggleButton = animation !== "none" && (
     <button
@@ -77,7 +54,7 @@ export function BentoGridDemo({
           <BentoGrid.Item id="a" span={span} appearance={appearance}>
             <Tile title="Featured" body={`span ${span}`} />
           </BentoGrid.Item>
-          {FILLER_ITEMS.map((item) => (
+          {BENTO_GRID_FILLER_ITEMS.map((item) => (
             <BentoGrid.Item
               key={item.id}
               id={item.id}
