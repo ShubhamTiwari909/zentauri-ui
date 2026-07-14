@@ -66,6 +66,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Display",
   },
   {
+    id: "bento-grid",
+    name: "Bento Grid",
+    description:
+      "CSS-Grid-native bento layouts with animated reflow, hover-expand, and morph-to-detail views.",
+    href: "/preview/components/bento-grid",
+    badge: "Layout",
+  },
+  {
     id: "breadcrumb",
     name: "Breadcrumb",
     description:

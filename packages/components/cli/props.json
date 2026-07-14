@@ -2475,6 +2475,494 @@
         }
       ]
     },
+    "bento-grid": {
+      "slug": "bento-grid",
+      "subcomponents": [
+        {
+          "name": "static:BentoGrid",
+          "displayName": "BentoGrid",
+          "propsType": "BentoGridProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "autoFlow",
+              "type": "enum",
+              "required": false,
+              "default": "dense",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "dense",
+                "row"
+              ],
+              "variantGroup": "autoFlow",
+              "deprecated": false
+            },
+            {
+              "name": "gap",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "gap",
+              "deprecated": false
+            },
+            {
+              "name": "animation",
+              "type": "BentoGridAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "cols",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "minItemWidth",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Overrides `cols` with `repeat(auto-fit, minmax(minItemWidth, 1fr))`.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:BentoGridItem",
+          "displayName": "BentoGridItem",
+          "propsType": "BentoGridItemProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "blue",
+                "cyan",
+                "default",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-purple",
+                "gray",
+                "green",
+                "indigo",
+                "lime",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "rose",
+                "sky",
+                "slate",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "span",
+              "type": "enum",
+              "required": false,
+              "default": "1x1",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "1x1",
+                "1x2",
+                "2x1",
+                "2x2",
+                "featured"
+              ],
+              "variantGroup": "span",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenDetail",
+              "type": "(() => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "detail",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "expandable",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "expandedSpan",
+              "type": "BentoGridSpan | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onCloseDetail",
+              "type": "(() => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string",
+              "required": false,
+              "group": "dom",
+              "description": "Stability key for reflow/morph animations. Must be unique within a grid.",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:BentoGridVariant",
+          "displayName": "BentoGridVariant",
+          "propsType": "BentoGridVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "autoFlow",
+              "type": "'dense' | 'row' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "gap",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "span",
+              "type": "'1x1' | '2x1' | '1x2' | '2x2' | 'featured' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:BentoGridAnimated",
+          "displayName": "BentoGridAnimated",
+          "propsType": "BentoGridAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "animation",
+              "type": "BentoGridAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "autoFlow",
+              "type": "'dense' | 'row' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "cols",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "gap",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "minItemWidth",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Overrides `cols` with `repeat(auto-fit, minmax(minItemWidth, 1fr))`.",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "transitionPreset",
+              "type": "BentoGridTransitionPreset | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:BentoGridItemAnimated",
+          "displayName": "BentoGridItemAnimated",
+          "propsType": "BentoGridItemAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "onOpenDetail",
+              "type": "(() => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "detail",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "expandable",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "expandedSpan",
+              "type": "BentoGridSpan | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onCloseDetail",
+              "type": "(() => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "span",
+              "type": "'1x1' | '2x1' | '1x2' | '2x2' | 'featured' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string",
+              "required": false,
+              "group": "dom",
+              "description": "Stability key for reflow/morph animations. Must be unique within a grid.",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "breadcrumb": {
       "slug": "breadcrumb",
       "subcomponents": [
@@ -21854,7 +22342,7 @@
           "props": [
             {
               "name": "layout",
-              "type": "'grid' | 'list' | 'row' | null | undefined",
+              "type": "'grid' | 'row' | 'list' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21897,7 +22385,7 @@
             },
             {
               "name": "layout",
-              "type": "'grid' | 'list' | 'row' | null | undefined",
+              "type": "'grid' | 'row' | 'list' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false

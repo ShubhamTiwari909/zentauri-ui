@@ -4,6 +4,7 @@ import { alertCssVariables } from "./data/alert";
 import { animatedNumberCssVariables } from "./data/animated-number";
 import { avatarCssVariables } from "./data/avatar";
 import { badgeCssVariables } from "./data/badge";
+import { bentoGridCssVariables } from "./data/bento-grid";
 import { breadcrumbCssVariables } from "./data/breadcrumb";
 import { buttonsCssVariables } from "./data/buttons";
 import { cardCssVariables } from "./data/card";
@@ -71,6 +72,7 @@ export const cssVariableReferences = {
   "animated-number": animatedNumberCssVariables,
   avatar: avatarCssVariables,
   badge: badgeCssVariables,
+  "bento-grid": bentoGridCssVariables,
   breadcrumb: breadcrumbCssVariables,
   buttons: buttonsCssVariables,
   card: cardCssVariables,
