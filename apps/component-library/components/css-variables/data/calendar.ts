@@ -55,5 +55,5 @@ export const calendarCssVariables = defineCssVariableReference({
       "color-mix(in oklch, #3b82f6 28%, transparent)",
     ],
   ],
-  darkVariableCount: 15,
+  darkVariableCount: 23,
 });

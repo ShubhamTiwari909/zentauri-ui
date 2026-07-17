@@ -31,7 +31,9 @@ import {
   isBetween,
   isSameDay,
   isSameMonth,
+  makeDate,
   matchesDate,
+  selectionMonthAnchor,
   startOfDay,
   startOfMonth,
   toIsoDateString,
@@ -63,13 +65,6 @@ function resolveLocale(locale?: string): string {
     return navigator.language;
   }
   return "en-US";
-}
-
-function selectionMonthAnchor(value: CalendarSelectionValue): Date | undefined {
-  if (value instanceof Date) return value;
-  if (Array.isArray(value)) return value[0];
-  if (value && value.from instanceof Date) return value.from;
-  return undefined;
 }
 
 function ChevronIcon({ direction }: { direction: "left" | "right" }) {
@@ -180,11 +175,16 @@ export const CalendarBase = (props: CalendarBaseProps) => {
       getCachedDateTimeFormat(resolvedLocale, {
         month: "long",
         year: "numeric",
+        calendar: "gregory",
       }),
     [resolvedLocale],
   );
   const dayLabelFormatter = useMemo(
-    () => getCachedDateTimeFormat(resolvedLocale, { dateStyle: "full" }),
+    () =>
+      getCachedDateTimeFormat(resolvedLocale, {
+        dateStyle: "full",
+        calendar: "gregory",
+      }),
     [resolvedLocale],
   );
   const weekdayNames = useMemo(
@@ -233,7 +233,9 @@ export const CalendarBase = (props: CalendarBaseProps) => {
     (multipleValue?.length ?? 0) >= max,
   );
 
-  // While a range's second date is pending, hovering paints a preview.
+  // While a range's second date is pending, hovering paints a preview — but
+  // never for a day that couldn't actually be selected (disabled, out of
+  // bounds, or outside the min/max range-span window).
   const previewRange = useMemo((): DateRange | undefined => {
     if (mode !== "range") return undefined;
     if (range?.from && range.to) return range;
@@ -241,22 +243,24 @@ export const CalendarBase = (props: CalendarBaseProps) => {
       range?.from &&
       hoverDate &&
       !isSameDay(hoverDate, range.from) &&
-      !rangePendingHoverDisabled(hoverDate)
+      !isDayDisabled(hoverDate)
     ) {
       return isBefore(hoverDate, range.from)
         ? { from: hoverDate, to: range.from }
         : { from: range.from, to: hoverDate };
     }
     return range;
-  }, [mode, range, hoverDate, minRangeDays, maxRangeDays]);
-
-  function rangePendingHoverDisabled(day: Date): boolean {
-    if (!range?.from || !(minRangeDays || maxRangeDays)) return false;
-    const span = Math.abs(differenceInDays(day, range.from)) + 1;
-    if (minRangeDays && span < minRangeDays) return true;
-    if (maxRangeDays && span > maxRangeDays) return true;
-    return false;
-  }
+  }, [
+    mode,
+    range,
+    hoverDate,
+    minDate,
+    maxDate,
+    disabled,
+    rangePending,
+    minRangeDays,
+    maxRangeDays,
+  ]);
 
   const getDayState = (day: Date, monthDate: Date): CalendarDayState => {
     const isOutside = !isSameMonth(day, monthDate);
@@ -323,7 +327,13 @@ export const CalendarBase = (props: CalendarBaseProps) => {
         setValue([...current, day]);
       }
     } else {
-      if (!range?.from || range.to) {
+      const isCompletedEndpoint =
+        range?.from &&
+        range.to &&
+        (isSameDay(day, range.from) || isSameDay(day, range.to));
+      if (!required && isCompletedEndpoint) {
+        setValue(undefined);
+      } else if (!range?.from || range.to) {
         setValue({ from: day, to: undefined });
       } else {
         let from = range.from;
@@ -353,9 +363,18 @@ export const CalendarBase = (props: CalendarBaseProps) => {
   const goToMonth = (next: Date | ((prev: Date) => Date)) => {
     // Resolve eagerly: nesting setFocusDate inside a state updater would run
     // it during render if the updater were ever deferred to React.
-    const target = startOfMonth(
+    const proposed = startOfMonth(
       typeof next === "function" ? next(visibleMonth) : next,
     );
+    // Dropdown navigation (unlike the prev/next buttons, which are simply
+    // disabled at the bound) must reject out-of-bounds targets itself.
+    let target = proposed;
+    if (minDate && isBefore(target, startOfMonth(minDate))) {
+      target = startOfMonth(minDate);
+    }
+    if (maxDate && isAfter(target, startOfMonth(maxDate))) {
+      target = startOfMonth(maxDate);
+    }
     setVisibleMonth(target);
     if (
       !isBetween(focusDate, target, addDays(addMonths(target, monthCount), -1))
@@ -428,18 +447,39 @@ export const CalendarBase = (props: CalendarBaseProps) => {
     moveFocus(next);
   };
 
-  // Exactly one day button keeps tabIndex=0 (roving tabindex).
+  // Exactly one day button keeps tabIndex=0 (roving tabindex). A hidden day
+  // renders no button at all, so it can never be the target — fall through
+  // to the next candidate, and ultimately scan for the first visible day.
   const focusTarget = useMemo(() => {
     const windowStart = startOfMonth(firstVisible);
     const windowEnd = addDays(addMonths(windowStart, monthCount), -1);
-    if (isBetween(focusDate, windowStart, windowEnd)) return focusDate;
+    if (
+      isBetween(focusDate, windowStart, windowEnd) &&
+      !isDayHidden(focusDate)
+    ) {
+      return focusDate;
+    }
     const anchor = selectionMonthAnchor(value);
-    if (anchor && isBetween(anchor, windowStart, windowEnd)) {
+    if (
+      anchor &&
+      isBetween(anchor, windowStart, windowEnd) &&
+      !isDayHidden(anchor)
+    ) {
       return startOfDay(anchor);
     }
-    if (isBetween(resolvedToday, windowStart, windowEnd)) return resolvedToday;
+    if (
+      isBetween(resolvedToday, windowStart, windowEnd) &&
+      !isDayHidden(resolvedToday)
+    ) {
+      return resolvedToday;
+    }
+    let day = windowStart;
+    while (!isAfter(day, windowEnd)) {
+      if (!isDayHidden(day)) return day;
+      day = addDays(day, 1);
+    }
     return windowStart;
-  }, [focusDate, firstVisible, monthCount, value, resolvedToday]);
+  }, [focusDate, firstVisible, monthCount, value, resolvedToday, hidden]);
 
   const prevDisabled = Boolean(
     minDate && !isAfter(startOfMonth(firstVisible), startOfMonth(minDate)),
@@ -462,7 +502,7 @@ export const CalendarBase = (props: CalendarBaseProps) => {
       labels.push(
         getMonthName(
           resolvedLocale,
-          new Date(resolvedToday.getFullYear(), m, 1),
+          makeDate(resolvedToday.getFullYear(), m, 1),
         ),
       );
     }
@@ -480,9 +520,8 @@ export const CalendarBase = (props: CalendarBaseProps) => {
             className={calendarDropdownVariants()}
             value={monthDate.getMonth()}
             onChange={(event) =>
-              goToMonth(
-                (prev) =>
-                  new Date(prev.getFullYear(), Number(event.target.value), 1),
+              goToMonth((prev) =>
+                makeDate(prev.getFullYear(), Number(event.target.value), 1),
               )
             }
           >
@@ -498,15 +537,14 @@ export const CalendarBase = (props: CalendarBaseProps) => {
             className={calendarDropdownVariants()}
             value={monthDate.getFullYear()}
             onChange={(event) =>
-              goToMonth(
-                (prev) =>
-                  new Date(Number(event.target.value), prev.getMonth(), 1),
+              goToMonth((prev) =>
+                makeDate(Number(event.target.value), prev.getMonth(), 1),
               )
             }
           >
             {dropdownYears.map((year) => (
               <option key={year} value={year}>
-                {getYearLabel(resolvedLocale, new Date(year, 0, 1))}
+                {getYearLabel(resolvedLocale, makeDate(year, 0, 1))}
               </option>
             ))}
           </select>
@@ -675,8 +713,7 @@ export const CalendarBase = (props: CalendarBaseProps) => {
                               type="button"
                               data-slot="calendar-day-button"
                               ref={(node) => {
-                                if (state.isOutside) return;
-                                if (node) {
+                                if (node && !state.isOutside) {
                                   dayRefs.current.set(dayKey, node);
                                 } else {
                                   dayRefs.current.delete(dayKey);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useRef, type ComponentType } from "react";
 
 import { CalendarAnimated } from "../../calendar/animated/calendar-animated";
 import type { CalendarBaseProps } from "../../calendar/types";
@@ -15,14 +15,31 @@ export const DatePickerAnimated = ({
   animation = "slide",
   ...props
 }: DatePickerAnimatedProps) => {
-  const AnimatedCalendar = useCallback(
-    (calendarProps: CalendarBaseProps) => (
-      <CalendarAnimated {...calendarProps} animation={animation} />
-    ),
-    [animation],
-  );
+  // `calendarComponent` selects the React component type DatePickerBase
+  // renders — its IDENTITY must stay stable across renders, or DatePickerBase
+  // unmounts/remounts the whole calendar (losing month/selection state) every
+  // time `animation` changes. A ref-created, once-only component reads the
+  // latest `animation` through a ref instead of closing over the prop value.
+  const animationRef = useRef(animation);
+  animationRef.current = animation;
 
-  return <DatePickerBase {...props} calendarComponent={AnimatedCalendar} />;
+  const calendarComponentRef =
+    useRef<ComponentType<CalendarBaseProps>>(undefined);
+  if (!calendarComponentRef.current) {
+    function AnimatedCalendarSlot(calendarProps: CalendarBaseProps) {
+      return (
+        <CalendarAnimated {...calendarProps} animation={animationRef.current} />
+      );
+    }
+    calendarComponentRef.current = AnimatedCalendarSlot;
+  }
+
+  return (
+    <DatePickerBase
+      {...props}
+      calendarComponent={calendarComponentRef.current}
+    />
+  );
 };
 
 DatePickerAnimated.displayName = "DatePickerAnimated";

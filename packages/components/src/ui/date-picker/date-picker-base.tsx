@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useRef, type KeyboardEvent } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type KeyboardEvent,
+} from "react";
 
 import { getCachedDateTimeFormat } from "../../hooks/useDateTimeFormat";
 import { useControllableState } from "../../hooks/useControllableState";
@@ -12,7 +18,12 @@ import {
   PopoverTrigger,
 } from "../popover/popover-base";
 import { CalendarBase } from "../calendar/calendar-base";
-import { startOfDay, toIsoDateString } from "../calendar/date-utils";
+import {
+  isSameMonth,
+  startOfDay,
+  startOfMonth,
+  toIsoDateString,
+} from "../calendar/date-utils";
 import type { DateRange } from "../calendar/date-utils";
 import type { DatePickerBaseProps, DatePickerSelectionValue } from "./types";
 import {
@@ -28,6 +39,21 @@ function resolveLocale(locale?: string): string {
     return navigator.language;
   }
   return "en-US";
+}
+
+/**
+ * Grid math is always Gregorian, so the trigger's formatted text must match
+ * it — otherwise a locale whose default calendar system is non-Gregorian
+ * would show a different month/year/day than what the grid displayed for
+ * the exact same `Date`. Callers can still opt into another `calendar` via
+ * an explicit `formatOptions.calendar`.
+ */
+function resolveFormatOptions(
+  formatOptions: Intl.DateTimeFormatOptions | undefined,
+): Intl.DateTimeFormatOptions {
+  return formatOptions
+    ? { calendar: "gregory", ...formatOptions }
+    : { calendar: "gregory", dateStyle: "medium" };
 }
 
 function CalendarGlyph() {
@@ -119,7 +145,7 @@ export const DatePickerBase = (props: DatePickerBaseProps) => {
     () =>
       getCachedDateTimeFormat(
         resolvedLocale,
-        formatOptions ?? { dateStyle: "medium" },
+        resolveFormatOptions(formatOptions),
       ),
     [resolvedLocale, formatOptions],
   );
@@ -132,6 +158,23 @@ export const DatePickerBase = (props: DatePickerBaseProps) => {
       : undefined;
 
   const isEmpty = mode === "single" ? !singleValue : !rangeValue?.from;
+  const anchorMonth = mode === "range" ? rangeValue?.from : singleValue;
+
+  const [calendarMonth, setCalendarMonth] = useState<Date | undefined>(() =>
+    anchorMonth ? startOfMonth(anchorMonth) : undefined,
+  );
+
+  // Keep the calendar's visible month in sync when the picker is CONTROLLED
+  // and the consumer updates `value` while the popover stays open — without
+  // this, the calendar (only unmounted/remounted on open/close, not on every
+  // value change) would keep showing whatever month it last displayed.
+  useEffect(() => {
+    if (valueProp === undefined || !anchorMonth) return;
+    setCalendarMonth((prev) =>
+      prev && isSameMonth(prev, anchorMonth) ? prev : startOfMonth(anchorMonth),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [valueProp, anchorMonth?.getTime()]);
 
   const displayValue = useMemo(() => {
     if (singleValue) {
@@ -190,60 +233,62 @@ export const DatePickerBase = (props: DatePickerBaseProps) => {
 
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
-      <PopoverTrigger>
-        <button
-          type="button"
-          ref={(node) => {
-            triggerRef.current = node;
-            if (typeof ref === "function") {
-              ref(node);
-            } else if (ref) {
-              (ref as { current: HTMLButtonElement | null }).current = node;
-            }
-          }}
-          data-slot="date-picker-trigger"
-          data-state={isOpen ? "open" : "closed"}
-          data-empty={isEmpty ? "true" : undefined}
-          disabled={disabled}
-          className={cn(
-            datePickerTriggerVariants({ appearance, size }),
-            showClear && "pr-8",
-            className,
-          )}
-          onKeyDown={handleTriggerKeyDown}
-          {...rest}
-        >
-          <span data-slot="date-picker-value" className="truncate">
-            {displayValue}
-          </span>
-          <CalendarGlyph />
-        </button>
-      </PopoverTrigger>
-
-      {showClear ? (
-        <button
-          type="button"
-          data-slot="date-picker-clear"
-          aria-label="Clear date"
-          className={cn(
-            datePickerClearButtonVariants(),
-            "absolute right-8 top-1/2 z-10 -translate-y-1/2",
-          )}
-          onClick={clear}
-        >
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            className="size-3"
+      <div className="relative w-full">
+        <PopoverTrigger>
+          <button
+            type="button"
+            ref={(node) => {
+              triggerRef.current = node;
+              if (typeof ref === "function") {
+                ref(node);
+              } else if (ref) {
+                (ref as { current: HTMLButtonElement | null }).current = node;
+              }
+            }}
+            data-slot="date-picker-trigger"
+            data-state={isOpen ? "open" : "closed"}
+            data-empty={isEmpty ? "true" : undefined}
+            disabled={disabled}
+            className={cn(
+              datePickerTriggerVariants({ appearance, size }),
+              showClear && "pr-8",
+              className,
+            )}
+            onKeyDown={handleTriggerKeyDown}
+            {...rest}
           >
-            <path d="M4 4l8 8M12 4l-8 8" />
-          </svg>
-        </button>
-      ) : null}
+            <span data-slot="date-picker-value" className="truncate">
+              {displayValue}
+            </span>
+            <CalendarGlyph />
+          </button>
+        </PopoverTrigger>
+
+        {showClear ? (
+          <button
+            type="button"
+            data-slot="date-picker-clear"
+            aria-label="Clear date"
+            className={cn(
+              datePickerClearButtonVariants(),
+              "absolute right-8 top-1/2 z-10 -translate-y-1/2",
+            )}
+            onClick={clear}
+          >
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              className="size-3"
+            >
+              <path d="M4 4l8 8M12 4l-8 8" />
+            </svg>
+          </button>
+        ) : null}
+      </div>
 
       {name ? (
         mode === "range" ? (
@@ -297,6 +342,8 @@ export const DatePickerBase = (props: DatePickerBaseProps) => {
               toYear={toYear}
               weekdayFormat={weekdayFormat}
               defaultMonth={rangeValue?.from}
+              month={calendarMonth}
+              onMonthChange={setCalendarMonth}
             />
           ) : (
             <CalendarComponent
@@ -318,6 +365,8 @@ export const DatePickerBase = (props: DatePickerBaseProps) => {
               toYear={toYear}
               weekdayFormat={weekdayFormat}
               defaultMonth={singleValue}
+              month={calendarMonth}
+              onMonthChange={setCalendarMonth}
             />
           )}
         </div>
@@ -336,7 +385,7 @@ export function formatDatePickerValue(
 ): string {
   const formatter = getCachedDateTimeFormat(
     resolveLocale(locale),
-    formatOptions ?? { dateStyle: "medium" },
+    resolveFormatOptions(formatOptions),
   );
   if (value instanceof Date) return formatter.format(startOfDay(value));
   if (value?.from && value.to) {

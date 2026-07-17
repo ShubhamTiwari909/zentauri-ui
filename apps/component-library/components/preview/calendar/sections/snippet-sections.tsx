@@ -2,6 +2,7 @@ import { Section } from "@/components/common/Section";
 import { Calendar } from "@zentauri-ui/zentauri-components/ui/calendar";
 
 import { CalendarPlayground } from "./components/playground";
+import { DEMO_MONTH, DEMO_TODAY } from "./components/demo-dates";
 
 const LOCALES = [
   { locale: "en-US", label: "English (US)" },
@@ -9,9 +10,6 @@ const LOCALES = [
   { locale: "ar-EG", label: "العربية (مصر)" },
   { locale: "ja-JP", label: "日本語" },
 ] as const;
-
-const DEMO_MONTH = new Date(2026, 6, 1);
-const DEMO_TODAY = new Date(2026, 6, 7);
 
 export function CalendarCodeExamplesSection() {
   return (

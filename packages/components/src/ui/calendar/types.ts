@@ -3,12 +3,18 @@ import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import type {
   CalendarSelectionMode,
+  CalendarSelectionValue,
   DateMatcher,
   DateRange,
 } from "./date-utils";
 import type { calendarDayVariants } from "./variants";
 
-export type { CalendarSelectionMode, DateMatcher, DateRange };
+export type {
+  CalendarSelectionMode,
+  CalendarSelectionValue,
+  DateMatcher,
+  DateRange,
+};
 
 export type CalendarVariantProps = VariantProps<typeof calendarDayVariants>;
 
@@ -29,9 +35,6 @@ export interface CalendarDayState {
   isHidden: boolean;
   isFocused: boolean;
 }
-
-/** Any selection value the calendar can hold, across all modes. */
-export type CalendarSelectionValue = Date | Date[] | DateRange | undefined;
 
 type CalendarSingleSelectionProps = {
   /** Selection mode. Default `"single"`. Discriminates the `value` types. */
@@ -79,7 +82,11 @@ export interface CalendarCommonProps
       ComponentPropsWithRef<"div">,
       "defaultValue" | "onSelect" | "children" | "hidden"
     > {
-  /** When false (default), clicking the selected day deselects it. */
+  /**
+   * When false (default), clicking a selected day deselects it. In `range`
+   * mode this applies to a *completed* range: clicking either endpoint
+   * clears the whole range; clicking any other day always starts a new one.
+   */
   required?: boolean;
 
   /** Controlled visible month (any day within it). */

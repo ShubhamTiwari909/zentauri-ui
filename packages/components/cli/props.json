@@ -3746,7 +3746,7 @@
               "type": "boolean | undefined",
               "required": false,
               "group": "behavior",
-              "description": "When false (default), clicking the selected day deselects it.",
+              "description": "When false (default), clicking a selected day deselects it. In `range`\nmode this applies to a *completed* range: clicking either endpoint\nclears the whole range; clicking any other day always starts a new one.",
               "deprecated": false
             },
             {
@@ -3955,7 +3955,7 @@
               "type": "boolean | undefined",
               "required": false,
               "group": "behavior",
-              "description": "When false (default), clicking the selected day deselects it.",
+              "description": "When false (default), clicking a selected day deselects it. In `range`\nmode this applies to a *completed* range: clicking either endpoint\nclears the whole range; clicking any other day always starts a new one.",
               "deprecated": false
             },
             {
@@ -4322,7 +4322,7 @@
               "type": "boolean | undefined",
               "required": false,
               "group": "behavior",
-              "description": "When false (default), clicking the selected day deselects it.",
+              "description": "When false (default), clicking a selected day deselects it. In `range`\nmode this applies to a *completed* range: clicking either endpoint\nclears the whole range; clicking any other day always starts a new one.",
               "deprecated": false
             },
             {

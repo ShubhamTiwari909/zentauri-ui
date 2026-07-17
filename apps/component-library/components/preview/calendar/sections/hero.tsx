@@ -3,9 +3,7 @@ import { PreviewHeroSeoBlock } from "@/components/preview/seo/hero-seo-block";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { Calendar } from "@zentauri-ui/zentauri-components/ui/calendar";
 
-// Fixed dates keep the server-rendered grid deterministic (no hydration drift).
-const DEMO_MONTH = new Date(2026, 6, 1);
-const DEMO_TODAY = new Date(2026, 6, 7);
+import { DEMO_MONTH, DEMO_TODAY } from "./components/demo-dates";
 
 export function CalendarHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (

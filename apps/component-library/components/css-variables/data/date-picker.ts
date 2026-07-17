@@ -39,5 +39,5 @@ export const datePickerCssVariables = defineCssVariableReference({
       "color-mix(in oklch, #3b82f6 14%, transparent)",
     ],
   ],
-  darkVariableCount: 10,
+  darkVariableCount: 15,
 });
