@@ -1,0 +1,80 @@
+{
+  "category": "Forms",
+  "title": "Calendar component for React & Next.js with zero date dependencies",
+  "description": "Locale-aware React calendar component: single, multiple, and range selection, full ARIA grid keyboard navigation, Intl-driven month names and digits, and zero date-library dependencies.",
+  "keywords": [
+    "calendar component",
+    "React",
+    "Next.js",
+    "date range",
+    "Intl",
+    "keyboard navigation",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Calendar · Zentauri UI",
+    "description": "Locale-aware React calendar with single, multiple, and range selection — zero date-library dependencies.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Calendar · Zentauri UI",
+    "description": "Locale-aware React calendar with single, multiple, and range selection — zero date-library dependencies.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/calendar",
+  "headings": {
+    "h1": "Calendar with locale-aware month grids",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the calendar component for inline date selection: booking flows, availability views, and scheduling UIs. Month names, weekday headers, first-day-of-week, and even digits all come from the platform's Intl APIs, so a single locale prop localizes the whole grid with no date library.",
+  "useCases": [
+    "Inline booking calendars with disabled and price-annotated days.",
+    "Date range selection for reports, analytics filters, and stays.",
+    "Multi-date selection for shift planning and event scheduling.",
+    "Localized calendars that follow the user's language and numbering system."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Calendar component need date-fns or dayjs?",
+      "answer": "No. All date math is plain Date arithmetic and all localization comes from Intl.DateTimeFormat and Intl.Locale — the component adds zero dependencies."
+    },
+    {
+      "question": "Is the Calendar keyboard accessible?",
+      "answer": "Yes. It implements the ARIA grid pattern with a roving tabindex: arrow keys move by day and week, Home/End jump within the week, PageUp/PageDown move months, and Shift+PageUp/PageDown move years."
+    },
+    {
+      "question": "Can I customize the calendar with Tailwind CSS?",
+      "answer": "Zentauri UI exposes class-friendly variants, data-state attributes, and --zui-calendar-* CSS variables so you can extend styles with Tailwind utilities without fighting inline styles."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "The calendar renders one or more month grids with single, multiple, or range selection. Range mode paints hover previews between the endpoints, supports minimum and maximum spans, and swaps endpoints automatically when the second pick is earlier than the first.\n\nEvery label — weekday headers, month captions, and day digits — is produced by Intl.DateTimeFormat, so ar-EG renders Arabic-Indic digits and de-DE starts weeks on Monday without configuration."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Selection and the visible month are both controllable. Constrain interaction with minDate/maxDate bounds and disabled matchers (dates, ranges, weekdays, or predicates), render custom day content with renderDay, and switch the caption to month/year dropdowns for birthday-style jumps. The animated entry (imported from the /animated subpath) adds framer-motion month transitions."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The grid uses table semantics with role=\"grid\", column headers with long-form abbreviations, aria-selected day cells, and aria-current on today. Disabled days stay focusable but not selectable, matching the ARIA date-grid guidance.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Pass explicit today and locale props in SSR-critical paths so server and client render the same grid. Keep interactive calendars in client components.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

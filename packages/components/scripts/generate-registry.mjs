@@ -168,6 +168,7 @@ const registry = {
     "chart-radar": "charts/radar",
     "chart-scatter": "charts/scatter",
     "chart-stacked-bar": "charts/stacked-bar",
+    datepicker: "date-picker",
     input: "inputs",
   },
 };

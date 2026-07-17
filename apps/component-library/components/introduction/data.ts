@@ -90,6 +90,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Interactive",
   },
   {
+    id: "calendar",
+    name: "Calendar",
+    description:
+      "Locale-aware month grid with single, multiple, and range selection, full ARIA grid keyboard navigation, and zero date-library dependencies.",
+    href: "/preview/components/calendar",
+    badge: "Forms",
+  },
+  {
     id: "card",
     name: "Card",
     description:
@@ -168,6 +176,14 @@ export const componentsData: ComponentHighlight[] = [
       "Typed data grids with search, sorting, selection, column visibility, pagination, loading states, and bulk actions.",
     href: "/preview/components/data-table",
     badge: "Data",
+  },
+  {
+    id: "date-picker",
+    name: "Date picker",
+    description:
+      "Input-and-popover date selection with single and range modes, Intl-formatted trigger text, and hidden inputs for form posts.",
+    href: "/preview/components/date-picker",
+    badge: "Forms",
   },
   {
     id: "divider",

@@ -3546,6 +3546,871 @@
         }
       ]
     },
+    "calendar": {
+      "slug": "calendar",
+      "subcomponents": [
+        {
+          "name": "static:Calendar",
+          "displayName": "Calendar",
+          "propsType": "CalendarProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "defaultValue",
+              "type": "Date | Date[] | DateRange | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onValueChange",
+              "type": "((value: Date | undefined) => void) | ((value: Date[]) => void) | ((value: DateRange | undefined) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "Date | Date[] | DateRange | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | 'secondary' | 'destructive' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "captionLayout",
+              "type": "'label' | 'dropdowns' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Month/year title vs select dropdowns. Default `\"label\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultMonth",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Default visible month: the selected value's month, else today.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "DateMatcher | DateMatcher[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Disabled days (distinct from min/max): focusable but not selectable.",
+              "deprecated": false
+            },
+            {
+              "name": "firstDayOfWeek",
+              "type": "0 | 1 | 4 | 6 | 2 | 3 | 5 | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "0 = Sunday … 6 = Saturday. Default: locale's `Intl` week info.",
+              "deprecated": false
+            },
+            {
+              "name": "fixedWeeks",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Always 6 rows for stable height across months. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "fromYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range lower bound. Default: today's year - 100.",
+              "deprecated": false
+            },
+            {
+              "name": "hidden",
+              "type": "DateMatcher | DateMatcher[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Days rendered blank.",
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "BCP 47 locale tag. Default: runtime locale.",
+              "deprecated": false
+            },
+            {
+              "name": "max",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Maximum number of selected days; further clicks no-op.",
+              "deprecated": false
+            },
+            {
+              "name": "maxDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection upper bound.",
+              "deprecated": false
+            },
+            {
+              "name": "maxRangeDays",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Maximum range span in days (inclusive of both ends).",
+              "deprecated": false
+            },
+            {
+              "name": "minDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection lower bound.",
+              "deprecated": false
+            },
+            {
+              "name": "minRangeDays",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Minimum range span in days (inclusive of both ends).",
+              "deprecated": false
+            },
+            {
+              "name": "mode",
+              "type": "'single' | 'multiple' | 'range' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Selection mode. Default `\"single\"`. Discriminates the `value` types.",
+              "deprecated": false
+            },
+            {
+              "name": "month",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled visible month (any day within it).",
+              "deprecated": false
+            },
+            {
+              "name": "numberOfMonths",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Months rendered side by side. Default 1, capped at 3.",
+              "deprecated": false
+            },
+            {
+              "name": "onMonthChange",
+              "type": "((month: Date) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "renderDay",
+              "type": "((day: Date, state: CalendarDayState) => ReactNode) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Per-day custom render (dots, prices, tooltips).",
+              "deprecated": false
+            },
+            {
+              "name": "required",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "When false (default), clicking a selected day deselects it. In `range`\nmode this applies to a *completed* range: clicking either endpoint\nclears the whole range; clicking any other day always starts a new one.",
+              "deprecated": false
+            },
+            {
+              "name": "showOutsideDays",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show trailing/leading days of adjacent months. Default true.",
+              "deprecated": false
+            },
+            {
+              "name": "showWeekNumbers",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show an ISO week number column. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "today",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Today's date override — required for deterministic tests/SSR snapshots.\nDefault: `new Date()` computed once on mount.",
+              "deprecated": false
+            },
+            {
+              "name": "toYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range upper bound. Default: today's year + 100.",
+              "deprecated": false
+            },
+            {
+              "name": "weekdayFormat",
+              "type": "'long' | 'short' | 'narrow' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Weekday header label format. Default `\"short\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CalendarCommon",
+          "displayName": "CalendarCommon",
+          "propsType": "CalendarCommonProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | 'secondary' | 'destructive' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "captionLayout",
+              "type": "'label' | 'dropdowns' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Month/year title vs select dropdowns. Default `\"label\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultMonth",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Default visible month: the selected value's month, else today.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "DateMatcher | DateMatcher[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Disabled days (distinct from min/max): focusable but not selectable.",
+              "deprecated": false
+            },
+            {
+              "name": "firstDayOfWeek",
+              "type": "0 | 1 | 4 | 6 | 2 | 3 | 5 | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "0 = Sunday … 6 = Saturday. Default: locale's `Intl` week info.",
+              "deprecated": false
+            },
+            {
+              "name": "fixedWeeks",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Always 6 rows for stable height across months. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "fromYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range lower bound. Default: today's year - 100.",
+              "deprecated": false
+            },
+            {
+              "name": "hidden",
+              "type": "DateMatcher | DateMatcher[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Days rendered blank.",
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "BCP 47 locale tag. Default: runtime locale.",
+              "deprecated": false
+            },
+            {
+              "name": "maxDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection upper bound.",
+              "deprecated": false
+            },
+            {
+              "name": "minDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection lower bound.",
+              "deprecated": false
+            },
+            {
+              "name": "month",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled visible month (any day within it).",
+              "deprecated": false
+            },
+            {
+              "name": "numberOfMonths",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Months rendered side by side. Default 1, capped at 3.",
+              "deprecated": false
+            },
+            {
+              "name": "onMonthChange",
+              "type": "((month: Date) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "renderDay",
+              "type": "((day: Date, state: CalendarDayState) => ReactNode) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Per-day custom render (dots, prices, tooltips).",
+              "deprecated": false
+            },
+            {
+              "name": "required",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "When false (default), clicking a selected day deselects it. In `range`\nmode this applies to a *completed* range: clicking either endpoint\nclears the whole range; clicking any other day always starts a new one.",
+              "deprecated": false
+            },
+            {
+              "name": "showOutsideDays",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show trailing/leading days of adjacent months. Default true.",
+              "deprecated": false
+            },
+            {
+              "name": "showWeekNumbers",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show an ISO week number column. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "today",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Today's date override — required for deterministic tests/SSR snapshots.\nDefault: `new Date()` computed once on mount.",
+              "deprecated": false
+            },
+            {
+              "name": "toYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range upper bound. Default: today's year + 100.",
+              "deprecated": false
+            },
+            {
+              "name": "weekdayFormat",
+              "type": "'long' | 'short' | 'narrow' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Weekday header label format. Default `\"short\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CalendarSelection",
+          "displayName": "CalendarSelection",
+          "propsType": "CalendarSelectionProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "defaultValue",
+              "type": "Date | Date[] | DateRange | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onValueChange",
+              "type": "((value: Date | undefined) => void) | ((value: Date[]) => void) | ((value: DateRange | undefined) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "Date | Date[] | DateRange | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "max",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Maximum number of selected days; further clicks no-op.",
+              "deprecated": false
+            },
+            {
+              "name": "maxRangeDays",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Maximum range span in days (inclusive of both ends).",
+              "deprecated": false
+            },
+            {
+              "name": "minRangeDays",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Minimum range span in days (inclusive of both ends).",
+              "deprecated": false
+            },
+            {
+              "name": "mode",
+              "type": "'single' | 'multiple' | 'range' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Selection mode. Default `\"single\"`. Discriminates the `value` types.",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CalendarVariant",
+          "displayName": "CalendarVariant",
+          "propsType": "CalendarVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | 'secondary' | 'destructive' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:CalendarAnimated",
+          "displayName": "CalendarAnimated",
+          "propsType": "CalendarAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "defaultValue",
+              "type": "Date | Date[] | DateRange | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onValueChange",
+              "type": "((value: Date | undefined) => void) | ((value: Date[]) => void) | ((value: DateRange | undefined) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "Date | Date[] | DateRange | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "animation",
+              "type": "CalendarAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | 'secondary' | 'destructive' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "captionLayout",
+              "type": "'label' | 'dropdowns' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Month/year title vs select dropdowns. Default `\"label\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultMonth",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Default visible month: the selected value's month, else today.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "DateMatcher | DateMatcher[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Disabled days (distinct from min/max): focusable but not selectable.",
+              "deprecated": false
+            },
+            {
+              "name": "firstDayOfWeek",
+              "type": "0 | 1 | 4 | 6 | 2 | 3 | 5 | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "0 = Sunday … 6 = Saturday. Default: locale's `Intl` week info.",
+              "deprecated": false
+            },
+            {
+              "name": "fixedWeeks",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Always 6 rows for stable height across months. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "fromYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range lower bound. Default: today's year - 100.",
+              "deprecated": false
+            },
+            {
+              "name": "hidden",
+              "type": "DateMatcher | DateMatcher[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Days rendered blank.",
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "BCP 47 locale tag. Default: runtime locale.",
+              "deprecated": false
+            },
+            {
+              "name": "max",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Maximum number of selected days; further clicks no-op.",
+              "deprecated": false
+            },
+            {
+              "name": "maxDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection upper bound.",
+              "deprecated": false
+            },
+            {
+              "name": "maxRangeDays",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Maximum range span in days (inclusive of both ends).",
+              "deprecated": false
+            },
+            {
+              "name": "minDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection lower bound.",
+              "deprecated": false
+            },
+            {
+              "name": "minRangeDays",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Minimum range span in days (inclusive of both ends).",
+              "deprecated": false
+            },
+            {
+              "name": "mode",
+              "type": "'single' | 'multiple' | 'range' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Selection mode. Default `\"single\"`. Discriminates the `value` types.",
+              "deprecated": false
+            },
+            {
+              "name": "month",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled visible month (any day within it).",
+              "deprecated": false
+            },
+            {
+              "name": "numberOfMonths",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Months rendered side by side. Default 1, capped at 3.",
+              "deprecated": false
+            },
+            {
+              "name": "onMonthChange",
+              "type": "((month: Date) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "renderDay",
+              "type": "((day: Date, state: CalendarDayState) => ReactNode) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Per-day custom render (dots, prices, tooltips).",
+              "deprecated": false
+            },
+            {
+              "name": "required",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "When false (default), clicking a selected day deselects it. In `range`\nmode this applies to a *completed* range: clicking either endpoint\nclears the whole range; clicking any other day always starts a new one.",
+              "deprecated": false
+            },
+            {
+              "name": "showOutsideDays",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show trailing/leading days of adjacent months. Default true.",
+              "deprecated": false
+            },
+            {
+              "name": "showWeekNumbers",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show an ISO week number column. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "today",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Today's date override — required for deterministic tests/SSR snapshots.\nDefault: `new Date()` computed once on mount.",
+              "deprecated": false
+            },
+            {
+              "name": "toYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range upper bound. Default: today's year + 100.",
+              "deprecated": false
+            },
+            {
+              "name": "weekdayFormat",
+              "type": "'long' | 'short' | 'narrow' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Weekday header label format. Default `\"short\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "card": {
       "slug": "card",
       "subcomponents": [
@@ -7473,6 +8338,1015 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
+    "date-picker": {
+      "slug": "date-picker",
+      "subcomponents": [
+        {
+          "name": "static:DatePicker",
+          "displayName": "DatePicker",
+          "propsType": "DatePickerProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "aqua",
+                "blue",
+                "crimson",
+                "cyan",
+                "default",
+                "electric",
+                "emerald",
+                "forest",
+                "ghost",
+                "glass",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-indigo",
+                "gradient-orange",
+                "gradient-pink",
+                "gradient-purple",
+                "gradient-red",
+                "gradient-teal",
+                "gradient-yellow",
+                "green",
+                "indigo",
+                "lavender",
+                "lime",
+                "magenta",
+                "mint",
+                "ocean",
+                "orange",
+                "outline",
+                "pink",
+                "plum",
+                "purple",
+                "red",
+                "rose",
+                "royal",
+                "ruby",
+                "sapphire",
+                "sky",
+                "slate",
+                "stone",
+                "sunset",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "defaultOpen",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "defaultValue",
+              "type": "Date | DateRange | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenChange",
+              "type": "((open: boolean) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onValueChange",
+              "type": "((value: Date | undefined) => void) | ((value: DateRange | undefined) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "open",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "Date | DateRange | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "calendarComponent",
+              "type": "ComponentType<CalendarBaseProps> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "captionLayout",
+              "type": "'label' | 'dropdowns' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Month/year title vs select dropdowns. Default `\"label\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "clearable",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show a clear affordance in the trigger. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "closeOnSelect",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Close the popover on selection. Default true: single closes on pick,\nrange closes once `to` is set.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Whole-control disabled (the calendar day matcher is `disabledDates`).",
+              "deprecated": false
+            },
+            {
+              "name": "disabledDates",
+              "type": "DateMatcher | DateMatcher[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Day matcher threaded to the calendar's `disabled` prop.",
+              "deprecated": false
+            },
+            {
+              "name": "firstDayOfWeek",
+              "type": "0 | 1 | 4 | 6 | 2 | 3 | 5 | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "0 = Sunday … 6 = Saturday. Default: locale's `Intl` week info.",
+              "deprecated": false
+            },
+            {
+              "name": "fixedWeeks",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Always 6 rows for stable height across months. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "formatOptions",
+              "type": "Intl.DateTimeFormatOptions | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Intl options for the trigger text. Default `{ dateStyle: \"medium\" }`.",
+              "deprecated": false
+            },
+            {
+              "name": "fromYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range lower bound. Default: today's year - 100.",
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "BCP 47 locale tag. Default: runtime locale.",
+              "deprecated": false
+            },
+            {
+              "name": "maxDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection upper bound.",
+              "deprecated": false
+            },
+            {
+              "name": "minDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection lower bound.",
+              "deprecated": false
+            },
+            {
+              "name": "mode",
+              "type": "'single' | 'range' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Selection mode (no \"multiple\" — the calendar covers it inline).",
+              "deprecated": false
+            },
+            {
+              "name": "name",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Renders hidden input(s) with local `yyyy-MM-dd` value(s) for form posts.",
+              "deprecated": false
+            },
+            {
+              "name": "numberOfMonths",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Months rendered side by side. Default 1, capped at 3.",
+              "deprecated": false
+            },
+            {
+              "name": "placeholder",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Trigger text when nothing is selected.",
+              "deprecated": false
+            },
+            {
+              "name": "showOutsideDays",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show trailing/leading days of adjacent months. Default true.",
+              "deprecated": false
+            },
+            {
+              "name": "today",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Today's date override — required for deterministic tests/SSR snapshots.\nDefault: `new Date()` computed once on mount.",
+              "deprecated": false
+            },
+            {
+              "name": "toYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range upper bound. Default: today's year + 100.",
+              "deprecated": false
+            },
+            {
+              "name": "weekdayFormat",
+              "type": "'long' | 'short' | 'narrow' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Weekday header label format. Default `\"short\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:DatePickerCalendar",
+          "displayName": "DatePickerCalendar",
+          "propsType": "DatePickerCalendarProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "captionLayout",
+              "type": "'label' | 'dropdowns' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Month/year title vs select dropdowns. Default `\"label\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "firstDayOfWeek",
+              "type": "0 | 1 | 4 | 6 | 2 | 3 | 5 | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "0 = Sunday … 6 = Saturday. Default: locale's `Intl` week info.",
+              "deprecated": false
+            },
+            {
+              "name": "fixedWeeks",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Always 6 rows for stable height across months. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "fromYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range lower bound. Default: today's year - 100.",
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "BCP 47 locale tag. Default: runtime locale.",
+              "deprecated": false
+            },
+            {
+              "name": "maxDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection upper bound.",
+              "deprecated": false
+            },
+            {
+              "name": "minDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection lower bound.",
+              "deprecated": false
+            },
+            {
+              "name": "numberOfMonths",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Months rendered side by side. Default 1, capped at 3.",
+              "deprecated": false
+            },
+            {
+              "name": "showOutsideDays",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show trailing/leading days of adjacent months. Default true.",
+              "deprecated": false
+            },
+            {
+              "name": "today",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Today's date override — required for deterministic tests/SSR snapshots.\nDefault: `new Date()` computed once on mount.",
+              "deprecated": false
+            },
+            {
+              "name": "toYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range upper bound. Default: today's year + 100.",
+              "deprecated": false
+            },
+            {
+              "name": "weekdayFormat",
+              "type": "'long' | 'short' | 'narrow' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Weekday header label format. Default `\"short\"`.",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:DatePickerCommon",
+          "displayName": "DatePickerCommon",
+          "propsType": "DatePickerCommonProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "defaultOpen",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenChange",
+              "type": "((open: boolean) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "open",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "calendarComponent",
+              "type": "ComponentType<CalendarBaseProps> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "captionLayout",
+              "type": "'label' | 'dropdowns' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Month/year title vs select dropdowns. Default `\"label\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "clearable",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show a clear affordance in the trigger. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "closeOnSelect",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Close the popover on selection. Default true: single closes on pick,\nrange closes once `to` is set.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Whole-control disabled (the calendar day matcher is `disabledDates`).",
+              "deprecated": false
+            },
+            {
+              "name": "disabledDates",
+              "type": "DateMatcher | DateMatcher[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Day matcher threaded to the calendar's `disabled` prop.",
+              "deprecated": false
+            },
+            {
+              "name": "firstDayOfWeek",
+              "type": "0 | 1 | 4 | 6 | 2 | 3 | 5 | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "0 = Sunday … 6 = Saturday. Default: locale's `Intl` week info.",
+              "deprecated": false
+            },
+            {
+              "name": "fixedWeeks",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Always 6 rows for stable height across months. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "formatOptions",
+              "type": "Intl.DateTimeFormatOptions | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Intl options for the trigger text. Default `{ dateStyle: \"medium\" }`.",
+              "deprecated": false
+            },
+            {
+              "name": "fromYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range lower bound. Default: today's year - 100.",
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "BCP 47 locale tag. Default: runtime locale.",
+              "deprecated": false
+            },
+            {
+              "name": "maxDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection upper bound.",
+              "deprecated": false
+            },
+            {
+              "name": "minDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection lower bound.",
+              "deprecated": false
+            },
+            {
+              "name": "name",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Renders hidden input(s) with local `yyyy-MM-dd` value(s) for form posts.",
+              "deprecated": false
+            },
+            {
+              "name": "numberOfMonths",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Months rendered side by side. Default 1, capped at 3.",
+              "deprecated": false
+            },
+            {
+              "name": "placeholder",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Trigger text when nothing is selected.",
+              "deprecated": false
+            },
+            {
+              "name": "showOutsideDays",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show trailing/leading days of adjacent months. Default true.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "today",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Today's date override — required for deterministic tests/SSR snapshots.\nDefault: `new Date()` computed once on mount.",
+              "deprecated": false
+            },
+            {
+              "name": "toYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range upper bound. Default: today's year + 100.",
+              "deprecated": false
+            },
+            {
+              "name": "weekdayFormat",
+              "type": "'long' | 'short' | 'narrow' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Weekday header label format. Default `\"short\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:DatePickerSelection",
+          "displayName": "DatePickerSelection",
+          "propsType": "DatePickerSelectionProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "defaultValue",
+              "type": "Date | DateRange | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onValueChange",
+              "type": "((value: Date | undefined) => void) | ((value: DateRange | undefined) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "Date | DateRange | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "mode",
+              "type": "'single' | 'range' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Selection mode (no \"multiple\" — the calendar covers it inline).",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:DatePickerVariant",
+          "displayName": "DatePickerVariant",
+          "propsType": "DatePickerVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:DatePickerAnimated",
+          "displayName": "DatePickerAnimated",
+          "propsType": "DatePickerAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "defaultOpen",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "defaultValue",
+              "type": "Date | DateRange | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenChange",
+              "type": "((open: boolean) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onValueChange",
+              "type": "((value: Date | undefined) => void) | ((value: DateRange | undefined) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "open",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "Date | DateRange | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "animation",
+              "type": "DatePickerAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Month-navigation animation for the embedded calendar.",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "calendarComponent",
+              "type": "ComponentType<CalendarBaseProps> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "captionLayout",
+              "type": "'label' | 'dropdowns' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Month/year title vs select dropdowns. Default `\"label\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "clearable",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show a clear affordance in the trigger. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "closeOnSelect",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Close the popover on selection. Default true: single closes on pick,\nrange closes once `to` is set.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Whole-control disabled (the calendar day matcher is `disabledDates`).",
+              "deprecated": false
+            },
+            {
+              "name": "disabledDates",
+              "type": "DateMatcher | DateMatcher[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Day matcher threaded to the calendar's `disabled` prop.",
+              "deprecated": false
+            },
+            {
+              "name": "firstDayOfWeek",
+              "type": "0 | 1 | 4 | 6 | 2 | 3 | 5 | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "0 = Sunday … 6 = Saturday. Default: locale's `Intl` week info.",
+              "deprecated": false
+            },
+            {
+              "name": "fixedWeeks",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Always 6 rows for stable height across months. Default false.",
+              "deprecated": false
+            },
+            {
+              "name": "formatOptions",
+              "type": "Intl.DateTimeFormatOptions | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Intl options for the trigger text. Default `{ dateStyle: \"medium\" }`.",
+              "deprecated": false
+            },
+            {
+              "name": "fromYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range lower bound. Default: today's year - 100.",
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "BCP 47 locale tag. Default: runtime locale.",
+              "deprecated": false
+            },
+            {
+              "name": "maxDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection upper bound.",
+              "deprecated": false
+            },
+            {
+              "name": "minDate",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Navigation + selection lower bound.",
+              "deprecated": false
+            },
+            {
+              "name": "mode",
+              "type": "'single' | 'range' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Selection mode (no \"multiple\" — the calendar covers it inline).",
+              "deprecated": false
+            },
+            {
+              "name": "name",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Renders hidden input(s) with local `yyyy-MM-dd` value(s) for form posts.",
+              "deprecated": false
+            },
+            {
+              "name": "numberOfMonths",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Months rendered side by side. Default 1, capped at 3.",
+              "deprecated": false
+            },
+            {
+              "name": "placeholder",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Trigger text when nothing is selected.",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLButtonElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "showOutsideDays",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show trailing/leading days of adjacent months. Default true.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "today",
+              "type": "Date | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Today's date override — required for deterministic tests/SSR snapshots.\nDefault: `new Date()` computed once on mount.",
+              "deprecated": false
+            },
+            {
+              "name": "toYear",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Dropdown year range upper bound. Default: today's year + 100.",
+              "deprecated": false
+            },
+            {
+              "name": "weekdayFormat",
+              "type": "'long' | 'short' | 'narrow' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Weekday header label format. Default `\"short\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement> | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false

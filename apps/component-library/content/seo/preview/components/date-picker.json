@@ -1,0 +1,80 @@
+{
+  "category": "Forms",
+  "title": "Date picker component for React & Next.js forms",
+  "description": "Accessible React date picker: trigger input plus popover calendar with single and range modes, Intl-formatted display values, hidden inputs for form posts, and zero date-library dependencies.",
+  "keywords": [
+    "date picker component",
+    "React",
+    "Next.js",
+    "date range picker",
+    "popover calendar",
+    "forms",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Date Picker · Zentauri UI",
+    "description": "Accessible React date picker with single and range modes, Intl-formatted values, and zero date-library dependencies.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Date Picker · Zentauri UI",
+    "description": "Accessible React date picker with single and range modes, Intl-formatted values, and zero date-library dependencies.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/date-picker",
+  "headings": {
+    "h1": "Date picker with popover calendar",
+    "h2": [
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the date picker for form-friendly date selection: a trigger button opens a popover calendar, the chosen date renders as Intl-formatted text, and hidden inputs post local yyyy-MM-dd values with plain HTML forms.",
+  "useCases": [
+    "Booking and reservation forms with check-in/check-out ranges.",
+    "Deadline and due-date fields in dashboards and task managers.",
+    "Birthday fields using the dropdown caption for fast year jumps.",
+    "Report filters where a formatted range reads back at a glance."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Date Picker component work with plain HTML forms?",
+      "answer": "Yes. Pass a name prop and it renders hidden inputs with local-date yyyy-MM-dd values (name and name-end for ranges), built with local getters so values never shift across timezones."
+    },
+    {
+      "question": "How is the trigger text formatted?",
+      "answer": "Through Intl.DateTimeFormat with your formatOptions (default { dateStyle: \"medium\" }). Complete ranges use formatRange when the runtime supports it, with a join fallback."
+    },
+    {
+      "question": "Is the Date Picker keyboard accessible?",
+      "answer": "Yes. The trigger opens with click or ArrowDown, focus moves into the calendar grid, Escape closes and returns focus to the trigger, and the embedded calendar implements the full ARIA grid keyboard pattern."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "The date picker composes the popover and calendar components into an input-like control. Single mode closes on pick; range mode stays open until the end date is set. The selected value renders as locale-formatted text on the trigger, with an optional clear affordance.\n\nThe calendar day matcher is exposed as disabledDates, while the picker's own disabled prop is the standard whole-control boolean."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Value and open state are both controllable. Calendar options — locale, firstDayOfWeek, min/max bounds, numberOfMonths, caption dropdowns — thread straight through, and the picker's appearance colors both the trigger and the embedded calendar so they always match. The animated entry adds framer-motion month transitions inside the popover."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The trigger sets aria-haspopup=\"dialog\" and aria-expanded; the popover is a labeled dialog containing the ARIA-grid calendar. Focus moves into the grid on open and returns to the trigger on close.\n\nThis preview page exposes a single h1 in the hero for a clean outline."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Keep the picker in a client component and pass explicit today and locale props in SSR-critical paths for deterministic markup.\n\nSet NEXT_PUBLIC_SITE_URL so canonical and Open Graph URLs resolve on deploy."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

@@ -207,6 +207,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/buttons",
       },
       {
+        title: "Calendar",
+        href: "/preview/components/calendar",
+      },
+      {
         title: "Card",
         href: "/preview/components/card",
       },
@@ -245,6 +249,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
       {
         title: "DataTable",
         href: "/preview/components/data-table",
+      },
+      {
+        title: "Date picker",
+        href: "/preview/components/date-picker",
       },
       {
         title: "Divider",

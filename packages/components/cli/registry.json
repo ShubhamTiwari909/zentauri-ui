@@ -13,6 +13,7 @@
     "bento-grid",
     "breadcrumb",
     "buttons",
+    "calendar",
     "card",
     "checkbox",
     "code-block",
@@ -23,6 +24,7 @@
     "context-menu",
     "copy-button",
     "data-table",
+    "date-picker",
     "divider",
     "drawer",
     "dropdown",
@@ -82,12 +84,14 @@
     "badge",
     "bento-grid",
     "buttons",
+    "calendar",
     "card",
     "checkbox",
     "code-block",
     "command",
     "console-viewer",
     "copy-button",
+    "date-picker",
     "divider",
     "drawer",
     "empty-state",
@@ -186,6 +190,7 @@
     "bento-grid",
     "breadcrumb",
     "buttons",
+    "calendar",
     "card",
     "charts/area",
     "charts/bar",
@@ -205,6 +210,7 @@
     "context-menu",
     "copy-button",
     "data-table",
+    "date-picker",
     "divider",
     "drawer",
     "dropdown",
@@ -357,6 +363,10 @@
       "pagination",
       "table"
     ],
+    "date-picker": [
+      "calendar",
+      "popover"
+    ],
     "dynamic-stepper": [
       "buttons"
     ],
@@ -399,6 +409,9 @@
       "framer-motion"
     ],
     "buttons": [
+      "framer-motion"
+    ],
+    "calendar": [
       "framer-motion"
     ],
     "card": [
@@ -694,6 +707,7 @@
     "chart-radar": "charts/radar",
     "chart-scatter": "charts/scatter",
     "chart-stacked-bar": "charts/stacked-bar",
+    "datepicker": "date-picker",
     "input": "inputs"
   }
 }
