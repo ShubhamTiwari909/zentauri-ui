@@ -64,6 +64,7 @@ add(
   "design-system/tokens.js",
   "design-system/tokens.d.ts",
 );
+add("permission.mjs", "permission.js", "permission/index.d.ts");
 
 if (!existsSync(dist)) {
   console.error(

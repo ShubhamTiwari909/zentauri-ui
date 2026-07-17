@@ -271,6 +271,10 @@ const hooksEntries = {
   ),
 };
 
+const permissionEntries = {
+  permission: "src/permission/index.ts",
+};
+
 export default defineConfig({
   entry: {
     "design-system/tokens": "src/design-system/tokens.ts",
@@ -280,6 +284,7 @@ export default defineConfig({
     ...animationEntries,
     ...uiAnimatedEntries,
     ...hooksEntries,
+    ...permissionEntries,
   },
   format: ["esm", "cjs"],
   dts: false,

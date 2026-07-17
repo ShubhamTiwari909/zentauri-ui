@@ -1,0 +1,82 @@
+{
+  "category": "Utilities",
+  "title": "Permission system for React & Next.js authorization",
+  "description": "Declarative permission and role-based access control for React: PermissionProvider, Can, Cannot, RouteGuard, usePermission, useRole, and useCan hooks.",
+  "keywords": [
+    "permission system",
+    "React",
+    "Next.js",
+    "authorization",
+    "RBAC",
+    "access control",
+    "role-based",
+    "route guard",
+    "CASL"
+  ],
+  "og": {
+    "title": "Permission System · Zentauri UI",
+    "description": "Declarative permission and role-based access control for React applications.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Permission System · Zentauri UI",
+    "description": "Declarative permission and role-based access control for React applications.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/permission",
+  "headings": {
+    "h1": "Permission system for access control",
+    "h2": [
+      "What it does",
+      "Common use cases",
+      "API reference",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Use the permission system to declaratively protect components, routes, buttons, pages, menu items, and actions. Instead of manually checking roles or permissions throughout your application, wrap content with <Can>, check permissions with usePermission, and guard routes with RouteGuard.",
+  "useCases": [
+    "Protect UI elements like buttons, links, and menu items based on user permissions.",
+    "Guard entire route segments with RouteGuard and redirect unauthorized users.",
+    "Show or hide page sections based on roles using the Role component.",
+    "Provide loading and fallback states while permissions are being fetched asynchronously.",
+    "Build admin panels where only users with specific roles can access management features."
+  ],
+  "faqs": [
+    {
+      "question": "Does the Permission System work with Next.js App Router?",
+      "answer": "Yes. Wrap your layout or app with PermissionProvider, then use RouteGuard in server components for route protection. Components like Can and Cannot work in client components. The system is framework-agnostic under React."
+    },
+    {
+      "question": "How do I load permissions from an API?",
+      "answer": "Use the loadPermissions prop on PermissionProvider with an async function. The provider will show the fallback UI while permissions are loading."
+    },
+    {
+      "question": "Can I use wildcards in permissions?",
+      "answer": "Yes. The permission system supports wildcards like users.*, billing.*, and *. This allows you to define broad permission sets and check granular permissions."
+    },
+    {
+      "question": "What's the difference between Can and RouteGuard?",
+      "answer": "Can conditionally renders its children based on permissions or roles. RouteGuard additionally supports a redirectTo prop that navigates away when unauthorized, making it suitable for route-level protection."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "The permission system provides a complete authorization layer for React applications. At its core is the PermissionProvider context that stores the current user's permissions and roles. From there, you can use declarative components like Can, Cannot, and Role to conditionally render UI, hooks like usePermission and useCan for programmatic checks, and RouteGuard for route-level protection.\n\nThe system supports role-based access control (RBAC), permission-based access control (PBAC), wildcards, async permission loading, and both \"all\" and \"any\" matching modes."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "API reference",
+      "body": "The permission system ships with five components, five hooks, and five utility functions. Import everything from @zentauri-ui/zentauri-components/permission.\n\nComponents: PermissionProvider (context provider), Can (render if authorized), Cannot (inverse of Can), Role (render if role matches), RouteGuard (route-level protection with redirect), PermissionBoundary (loading/fallback boundary).\n\nHooks: usePermission (check single permission), usePermissions (get all permissions), useRole (check role), useRoles (get all roles), useCan (detailed multi-permission check with missing list).\n\nUtilities: hasPermission, hasAnyPermission, hasAllPermissions, hasRole, matchWildcard."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Keep PermissionProvider in a client component wrapper around your layout or app. Use RouteGuard for route-level protection. Components like Can and Cannot run in client components and respect the provider context."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

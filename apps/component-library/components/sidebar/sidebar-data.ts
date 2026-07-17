@@ -331,6 +331,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/pagination",
       },
       {
+        title: "Permission system",
+        href: "/preview/components/permission",
+      },
+      {
         title: "Password strength meter",
         href: "/preview/components/password-strength-meter",
       },

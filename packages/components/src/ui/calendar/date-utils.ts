@@ -158,7 +158,7 @@ export function buildMonthGrid(params: {
   return weeks;
 }
 
-function resolveLocale(locale: string | undefined): string {
+export function resolveLocale(locale: string | undefined): string {
   if (locale) return locale;
   if (typeof navigator !== "undefined" && navigator.language) {
     return navigator.language;

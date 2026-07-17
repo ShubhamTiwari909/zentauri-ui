@@ -54,6 +54,11 @@ const areas = [
     label: "Accessibility (axe + keyboard)",
     matches: (rel) => rel.startsWith("src/accessibility/"),
   },
+  {
+    id: "permission",
+    label: "Permission system",
+    matches: (rel) => rel.startsWith("src/permission/"),
+  },
 ];
 
 function posixRelative(from, to) {

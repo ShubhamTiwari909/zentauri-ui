@@ -346,6 +346,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Feedback",
   },
   {
+    id: "permission",
+    name: "Permission System",
+    description:
+      "Declarative permission and role-based access control with components, hooks, and route guards.",
+    href: "/preview/components/permission",
+    badge: "Security",
+  },
+  {
     id: "progress",
     name: "Progress",
     description:
