@@ -1,12 +1,27 @@
 export function matchWildcard(pattern: string, permission: string): boolean {
   if (pattern === "*") return true;
 
-  const regexStr = pattern
-    .split("*")
-    .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
-    .join(".*");
+  const parts = pattern.split("*");
 
-  return new RegExp(`^${regexStr}$`).test(permission);
+  if (parts.length === 1) return pattern === permission;
+
+  const first = parts[0];
+  const last = parts[parts.length - 1];
+  if (first === undefined || last === undefined) return false;
+
+  if (!permission.startsWith(first)) return false;
+  if (!permission.endsWith(last)) return false;
+
+  let pos = first.length;
+  for (let i = 1; i < parts.length - 1; i++) {
+    const part = parts[i];
+    if (part === undefined) return false;
+    const found = permission.indexOf(part, pos);
+    if (found === -1) return false;
+    pos = found + part.length;
+  }
+
+  return true;
 }
 
 export function hasWildcard(permission: string): boolean {

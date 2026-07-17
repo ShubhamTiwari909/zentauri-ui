@@ -17,14 +17,14 @@ export interface CheckAccessResult {
 
 export function checkAccess(
   params: CheckAccessParams,
-  ctx: Pick<PermissionContextValue, "permissions" | "roles">,
+  ctx: Pick<PermissionContextValue, "permissions" | "roles" | "mode">,
 ): CheckAccessResult {
   const {
     permission,
     permissions: multiplePermissions,
     role,
     roles: multipleRoles,
-    mode = "all",
+    mode = ctx.mode ?? "all",
   } = params;
 
   const permsToCheck = multiplePermissions ?? (permission ? [permission] : []);

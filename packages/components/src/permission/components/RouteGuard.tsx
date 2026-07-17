@@ -21,15 +21,31 @@ export function RouteGuard({
     ctx,
   );
 
+  const granted = permissionCheck && roleCheck;
+
   useEffect(() => {
-    if (!permissionCheck || !roleCheck) {
+    if (permission) {
+      if (granted) {
+        ctx.onPermissionGranted?.({ permission });
+      } else {
+        ctx.onPermissionDenied?.({ permission });
+      }
+    }
+
+    if (!granted) {
       if (redirectTo && typeof window !== "undefined") {
         window.location.href = redirectTo;
       }
     }
-  }, [permissionCheck, roleCheck, redirectTo]);
+  }, [
+    permission,
+    granted,
+    redirectTo,
+    ctx.onPermissionGranted,
+    ctx.onPermissionDenied,
+  ]);
 
-  if (permissionCheck && roleCheck) {
+  if (granted) {
     return <>{children}</>;
   }
 

@@ -1,5 +1,3 @@
-"use client";
-
 export { PermissionProvider } from "./provider/PermissionProvider";
 export { usePermissionContext } from "./provider/PermissionProvider";
 

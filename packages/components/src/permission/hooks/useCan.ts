@@ -2,7 +2,6 @@
 
 import { useMemo } from "react";
 import { usePermissionContext } from "../provider/PermissionProvider";
-import { hasPermission } from "../utils/hasPermission";
 import { getMissingPermissions } from "../utils/mergePermissions";
 import type { UseCanParams, UseCanResult } from "../types";
 
@@ -19,20 +18,12 @@ export function useCan({
       return { allowed: true, missingPermissions: [] };
     }
 
-    if (mode === "any") {
-      const anyMatch = required.some((p) => hasPermission(p, ctx.permissions));
-      return {
-        allowed: anyMatch,
-        reason: anyMatch
-          ? undefined
-          : "None of the required permissions are granted",
-        missingPermissions: anyMatch ? [] : required,
-      };
-    }
-
     return {
       allowed: false,
-      reason: `Missing permissions: ${missing.join(", ")}`,
+      reason:
+        mode === "any"
+          ? "None of the required permissions are granted"
+          : `Missing permissions: ${missing.join(", ")}`,
       missingPermissions: missing,
     };
   }, [required, mode, ctx.permissions]);

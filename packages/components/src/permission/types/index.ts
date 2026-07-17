@@ -21,6 +21,8 @@ export interface PermissionContextValue {
   refresh: () => void;
   attributes: Record<string, unknown>;
   mode: "all" | "any";
+  onPermissionDenied?: (details: { permission: string }) => void;
+  onPermissionGranted?: (details: { permission: string }) => void;
 }
 
 export type PermissionMode = "all" | "any";

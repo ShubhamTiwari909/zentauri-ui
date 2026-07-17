@@ -154,6 +154,7 @@ export function PermissionPlayground() {
                 key={p}
                 type="button"
                 onClick={() => togglePermission(p)}
+                aria-pressed={selectedPermissions.has(p)}
                 className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                   selectedPermissions.has(p)
                     ? "bg-cyan-600 text-white"
@@ -177,6 +178,7 @@ export function PermissionPlayground() {
                 key={r}
                 type="button"
                 onClick={() => toggleRole(r)}
+                aria-pressed={selectedRoles.has(r)}
                 className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                   selectedRoles.has(r)
                     ? "bg-violet-600 text-white"

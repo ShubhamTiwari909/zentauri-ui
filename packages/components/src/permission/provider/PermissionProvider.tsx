@@ -6,6 +6,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import type { PermissionContextValue, PermissionProviderProps } from "../types";
@@ -42,33 +43,46 @@ export function PermissionProvider({
   const [isLoaded, setIsLoaded] = useState(!loadPermissions && !loadRoles);
 
   useEffect(() => {
-    setUserPermissions(permissions);
-  }, [permissions]);
+    if (!loadPermissions) {
+      setUserPermissions(permissions);
+    }
+  }, [permissions, loadPermissions]);
 
   useEffect(() => {
-    setUserRoles(roles);
-  }, [roles]);
+    if (!loadRoles) {
+      setUserRoles(roles);
+    }
+  }, [roles, loadRoles]);
+
+  const loadIdRef = useRef(0);
 
   useEffect(() => {
+    const loadId = ++loadIdRef.current;
     let mounted = true;
 
     async function load() {
       setIsLoaded(false);
 
-      if (loadPermissions) {
-        const result = await loadPermissions();
-        if (!mounted) return;
-        setUserPermissions(result);
-        onPermissionLoaded?.(result);
+      try {
+        if (loadPermissions) {
+          const result = await loadPermissions();
+          if (!mounted || loadId !== loadIdRef.current) return;
+          setUserPermissions(result);
+          onPermissionLoaded?.(result);
+        }
+
+        if (loadRoles) {
+          const result = await loadRoles();
+          if (!mounted || loadId !== loadIdRef.current) return;
+          setUserRoles(result);
+        }
+      } catch {
+        // loader rejection — mark as loaded so the UI isn't stuck loading
       }
 
-      if (loadRoles) {
-        const result = await loadRoles();
-        if (!mounted) return;
-        setUserRoles(result);
+      if (mounted && loadId === loadIdRef.current) {
+        setIsLoaded(true);
       }
-
-      if (mounted) setIsLoaded(true);
     }
 
     if (loadPermissions || loadRoles) {
@@ -80,17 +94,47 @@ export function PermissionProvider({
     };
   }, [loadPermissions, loadRoles, onPermissionLoaded]);
 
+  const refreshIdRef = useRef(0);
+
   const refresh = useCallback(() => {
+    refreshIdRef.current += 1;
+    const current = refreshIdRef.current;
+
     if (loadPermissions) {
-      loadPermissions().then((result) => {
-        setUserPermissions(result);
-        onPermissionLoaded?.(result);
-      });
+      loadPermissions()
+        .then((result) => {
+          if (current === refreshIdRef.current) {
+            setUserPermissions(result);
+            onPermissionLoaded?.(result);
+          }
+        })
+        .catch(() => {});
     }
+
     if (loadRoles) {
-      loadRoles().then(setUserRoles);
+      loadRoles()
+        .then((result) => {
+          if (current === refreshIdRef.current) {
+            setUserRoles(result);
+          }
+        })
+        .catch(() => {});
     }
   }, [loadPermissions, loadRoles, onPermissionLoaded]);
+
+  const wrappedOnPermissionDenied = useCallback(
+    (details: { permission: string }) => {
+      onPermissionDenied?.(details);
+    },
+    [onPermissionDenied],
+  );
+
+  const wrappedOnPermissionGranted = useCallback(
+    (details: { permission: string }) => {
+      onPermissionGranted?.(details);
+    },
+    [onPermissionGranted],
+  );
 
   const value = useMemo<PermissionContextValue>(
     () => ({
@@ -100,8 +144,19 @@ export function PermissionProvider({
       refresh,
       attributes,
       mode,
+      onPermissionDenied: wrappedOnPermissionDenied,
+      onPermissionGranted: wrappedOnPermissionGranted,
     }),
-    [userPermissions, userRoles, isLoaded, refresh, attributes, mode],
+    [
+      userPermissions,
+      userRoles,
+      isLoaded,
+      refresh,
+      attributes,
+      mode,
+      wrappedOnPermissionDenied,
+      wrappedOnPermissionGranted,
+    ],
   );
 
   if (!isLoaded && (loadPermissions || loadRoles)) {

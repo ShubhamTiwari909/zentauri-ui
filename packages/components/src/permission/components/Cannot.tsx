@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { usePermissionContext } from "../provider/PermissionProvider";
 import { checkAccess } from "../utils/checkAccess";
 import type { CanProps } from "../types";
@@ -19,7 +20,19 @@ export function Cannot({
     ctx,
   );
 
-  if (!permissionCheck || !roleCheck) {
+  const denied = !permissionCheck || !roleCheck;
+
+  useEffect(() => {
+    if (permission) {
+      if (denied) {
+        ctx.onPermissionDenied?.({ permission });
+      } else {
+        ctx.onPermissionGranted?.({ permission });
+      }
+    }
+  }, [permission, denied, ctx.onPermissionDenied, ctx.onPermissionGranted]);
+
+  if (denied) {
     return <>{children}</>;
   }
 

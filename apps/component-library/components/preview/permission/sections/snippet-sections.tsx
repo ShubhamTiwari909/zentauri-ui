@@ -70,7 +70,7 @@ function DeleteButton() {
   const isAdmin = useRole("admin");
 
   const { allowed, missingPermissions } = useCan({
-    permissions: ["users.delete", "admin"],
+    permissions: ["users.delete", "users.create"],
     mode: "any",
   });
 

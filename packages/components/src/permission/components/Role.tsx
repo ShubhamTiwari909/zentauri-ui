@@ -1,13 +1,14 @@
 "use client";
 
 import { usePermissionContext } from "../provider/PermissionProvider";
+import { hasRole } from "../utils/mergePermissions";
 import type { RoleProps } from "../types";
 
 export function Role({ name, fallback, children }: RoleProps) {
   const ctx = usePermissionContext();
-  const hasRole = ctx.roles.includes(name);
+  const allowed = hasRole(name, ctx.roles);
 
-  if (hasRole) {
+  if (allowed) {
     return <>{children}</>;
   }
 
