@@ -72,10 +72,17 @@ export const CalendarAnimated = ({
   // `value`/`onValueChange` are re-typed generically above (mirroring the
   // same discriminated-union cast `CalendarBase` and `DatePickerBase` use
   // internally) so this component doesn't need one branch per `mode`.
+  //
+  // `defaultValue` is deliberately NOT forwarded: this component now owns
+  // the canonical selection state, so `CalendarBase` must always treat
+  // `value` as controlled. If `defaultValue` were passed through, it would
+  // seed `CalendarBase`'s own internal uncontrolled fallback at mount —
+  // frozen and unused while controlled, then resurfacing (re-selecting the
+  // original default) the moment `value` next becomes `undefined`, e.g.
+  // right after the user clears the selection.
   const calendarProps = {
     ...props,
     value,
-    defaultValue,
     onValueChange: setValue,
     month: visibleMonth,
     onMonthChange: setVisibleMonth,

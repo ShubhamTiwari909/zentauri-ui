@@ -368,12 +368,18 @@ export const CalendarBase = (props: CalendarBaseProps) => {
     );
     // Dropdown navigation (unlike the prev/next buttons, which are simply
     // disabled at the bound) must reject out-of-bounds targets itself.
+    // `target` is only the FIRST of `monthCount` visible panels, so the
+    // upper bound must leave room for the trailing panels too — otherwise
+    // picking the max month as the start month pushes later panels past it.
     let target = proposed;
     if (minDate && isBefore(target, startOfMonth(minDate))) {
       target = startOfMonth(minDate);
     }
-    if (maxDate && isAfter(target, startOfMonth(maxDate))) {
-      target = startOfMonth(maxDate);
+    if (maxDate) {
+      const maxStart = addMonths(startOfMonth(maxDate), -(monthCount - 1));
+      if (isAfter(target, maxStart)) {
+        target = maxStart;
+      }
     }
     setVisibleMonth(target);
     if (
