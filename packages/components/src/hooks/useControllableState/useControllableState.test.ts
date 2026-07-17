@@ -56,4 +56,15 @@ describe("useControllableState", () => {
     });
     expect(result.current[0]).toBe(6);
   });
+
+  it("should chain batched functional updaters in uncontrolled mode", () => {
+    const { result } = renderHook(() =>
+      useControllableState({ defaultValue: 1 }),
+    );
+    act(() => {
+      result.current[1]((previous) => previous + 1);
+      result.current[1]((previous) => previous * 10);
+    });
+    expect(result.current[0]).toBe(20);
+  });
 });

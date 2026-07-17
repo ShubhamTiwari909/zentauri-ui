@@ -10,6 +10,7 @@ import badge from "@/content/seo/preview/components/badge.json";
 import bentoGrid from "@/content/seo/preview/components/bento-grid.json";
 import breadcrumb from "@/content/seo/preview/components/breadcrumb.json";
 import buttons from "@/content/seo/preview/components/buttons.json";
+import calendar from "@/content/seo/preview/components/calendar.json";
 import card from "@/content/seo/preview/components/card.json";
 import checkbox from "@/content/seo/preview/components/checkbox.json";
 import codeBlock from "@/content/seo/preview/components/code-block.json";
@@ -19,6 +20,7 @@ import command from "@/content/seo/preview/components/command.json";
 import contextMenu from "@/content/seo/preview/components/context-menu.json";
 import copyButton from "@/content/seo/preview/components/copy-button.json";
 import dataTable from "@/content/seo/preview/components/data-table.json";
+import datePicker from "@/content/seo/preview/components/date-picker.json";
 import charts from "@/content/seo/preview/charts.json";
 import divider from "@/content/seo/preview/components/divider.json";
 import drawer from "@/content/seo/preview/components/drawer.json";
@@ -90,6 +92,7 @@ const previewSeoRegistry = {
   "bento-grid": bentoGrid as PreviewSeoDocument,
   breadcrumb: breadcrumb as PreviewSeoDocument,
   buttons: buttons as PreviewSeoDocument,
+  calendar: calendar as PreviewSeoDocument,
   card: card as PreviewSeoDocument,
   checkbox: checkbox as PreviewSeoDocument,
   "code-block": codeBlock as PreviewSeoDocument,
@@ -99,6 +102,7 @@ const previewSeoRegistry = {
   "context-menu": contextMenu as PreviewSeoDocument,
   "copy-button": copyButton as PreviewSeoDocument,
   "data-table": dataTable as PreviewSeoDocument,
+  "date-picker": datePicker as PreviewSeoDocument,
   charts: charts as PreviewSeoDocument,
   divider: divider as PreviewSeoDocument,
   drawer: drawer as PreviewSeoDocument,

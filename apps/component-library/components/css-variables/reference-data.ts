@@ -7,6 +7,7 @@ import { badgeCssVariables } from "./data/badge";
 import { bentoGridCssVariables } from "./data/bento-grid";
 import { breadcrumbCssVariables } from "./data/breadcrumb";
 import { buttonsCssVariables } from "./data/buttons";
+import { calendarCssVariables } from "./data/calendar";
 import { cardCssVariables } from "./data/card";
 import { checkboxCssVariables } from "./data/checkbox";
 import { codeBlockCssVariables } from "./data/code-block";
@@ -16,6 +17,7 @@ import { comboboxCssVariables } from "./data/combobox";
 import { commandCssVariables } from "./data/command";
 import { contextMenuCssVariables } from "./data/context-menu";
 import { copyButtonCssVariables } from "./data/copy-button";
+import { datePickerCssVariables } from "./data/date-picker";
 import { dividerCssVariables } from "./data/divider";
 import { drawerCssVariables } from "./data/drawer";
 import { dropdownCssVariables } from "./data/dropdown";
@@ -75,6 +77,7 @@ export const cssVariableReferences = {
   "bento-grid": bentoGridCssVariables,
   breadcrumb: breadcrumbCssVariables,
   buttons: buttonsCssVariables,
+  calendar: calendarCssVariables,
   card: cardCssVariables,
   checkbox: checkboxCssVariables,
   "code-block": codeBlockCssVariables,
@@ -84,6 +87,7 @@ export const cssVariableReferences = {
   command: commandCssVariables,
   "context-menu": contextMenuCssVariables,
   "copy-button": copyButtonCssVariables,
+  "date-picker": datePickerCssVariables,
   divider: dividerCssVariables,
   drawer: drawerCssVariables,
   dropdown: dropdownCssVariables,

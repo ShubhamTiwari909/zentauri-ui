@@ -32,17 +32,27 @@ export function useControllableState<T>({
   const value = isControlled ? valueProp : uncontrolled;
   const onChangeRef = useRef(onChange);
   onChangeRef.current = onChange;
+  // Latest resolved value so batched functional updaters chain within one
+  // event handler. Resolution must stay OUT of the React state updater:
+  // updaters run during render and must be pure, so calling onChange there
+  // updates the parent while this component renders (and StrictMode would
+  // fire onChange twice).
+  const latestValueRef = useRef(value);
+  latestValueRef.current = value;
 
   const setValue = useCallback(
     (next: T | ((prev: T) => T)) => {
       const resolved =
-        typeof next === "function" ? (next as (prev: T) => T)(value) : next;
+        typeof next === "function"
+          ? (next as (prev: T) => T)(latestValueRef.current)
+          : next;
       if (!isControlled) {
+        latestValueRef.current = resolved;
         setUncontrolled(resolved);
       }
       onChangeRef.current?.(resolved);
     },
-    [isControlled, value],
+    [isControlled],
   );
 
   return [value, setValue];

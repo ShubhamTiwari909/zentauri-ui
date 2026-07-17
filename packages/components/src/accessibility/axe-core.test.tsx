@@ -18,6 +18,7 @@ import {
   BreadcrumbSeparator,
 } from "../ui/breadcrumb";
 import { Button } from "../ui/buttons/button";
+import { Calendar } from "../ui/calendar";
 import { Checkbox } from "../ui/checkbox";
 import {
   Combobox,
@@ -59,6 +60,7 @@ import {
   DropdownItem,
   DropdownTrigger,
 } from "../ui/dropdown";
+import { DatePicker } from "../ui/date-picker";
 import { DynamicStepper } from "../ui/dynamic-stepper";
 import { FileUpload } from "../ui/file-upload";
 import { Input } from "../ui/inputs/input";
@@ -468,6 +470,63 @@ describe("axe-core accessibility coverage", () => {
       await user.click(screen.getByRole("button", { name: /pick a fruit/i }));
       await screen.findByRole("listbox");
 
+      await assertNoAxeViolations(document.body);
+    });
+  });
+
+  describe("date components", () => {
+    const calendarProps = {
+      defaultMonth: new Date(2026, 6, 1),
+      today: new Date(2026, 6, 7),
+      locale: "en-US",
+    } as const;
+
+    it("passes axe checks for the calendar in single mode", async () => {
+      const { container } = render(
+        <Calendar {...calendarProps} defaultValue={new Date(2026, 6, 7)} />,
+      );
+
+      await assertNoAxeViolations(container);
+    });
+
+    it("passes axe checks for the calendar in multiple mode", async () => {
+      const { container } = render(
+        <Calendar
+          {...calendarProps}
+          mode="multiple"
+          defaultValue={[new Date(2026, 6, 7), new Date(2026, 6, 9)]}
+        />,
+      );
+
+      await assertNoAxeViolations(container);
+    });
+
+    it("passes axe checks for the calendar in range mode", async () => {
+      const { container } = render(
+        <Calendar
+          {...calendarProps}
+          mode="range"
+          defaultValue={{
+            from: new Date(2026, 6, 7),
+            to: new Date(2026, 6, 12),
+          }}
+        />,
+      );
+
+      await assertNoAxeViolations(container);
+    });
+
+    it("passes axe checks for the open date picker dialog and grid", async () => {
+      render(
+        <DatePicker
+          today={new Date(2026, 6, 7)}
+          locale="en-US"
+          defaultValue={new Date(2026, 6, 7)}
+          defaultOpen
+        />,
+      );
+
+      await screen.findByRole("dialog", { name: "Choose date" });
       await assertNoAxeViolations(document.body);
     });
   });
