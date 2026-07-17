@@ -55,44 +55,57 @@ export function PermissionProvider({
   }, [roles, loadRoles]);
 
   const loadIdRef = useRef(0);
+  const onPermissionLoadedRef = useRef(onPermissionLoaded);
+  onPermissionLoadedRef.current = onPermissionLoaded;
 
   useEffect(() => {
     const loadId = ++loadIdRef.current;
     let mounted = true;
+    let resolvedCount = 0;
+    let total = 0;
+
+    if (loadPermissions) total++;
+    if (loadRoles) total++;
 
     async function load() {
       setIsLoaded(false);
 
-      try {
-        if (loadPermissions) {
+      if (loadPermissions) {
+        try {
           const result = await loadPermissions();
           if (!mounted || loadId !== loadIdRef.current) return;
           setUserPermissions(result);
-          onPermissionLoaded?.(result);
+          onPermissionLoadedRef.current?.(result);
+        } catch {
+          // individual loader rejection — other loader can still proceed
         }
+        if (mounted && loadId === loadIdRef.current) resolvedCount++;
+      }
 
-        if (loadRoles) {
+      if (loadRoles) {
+        try {
           const result = await loadRoles();
           if (!mounted || loadId !== loadIdRef.current) return;
           setUserRoles(result);
+        } catch {
+          // individual loader rejection
         }
-      } catch {
-        // loader rejection — mark as loaded so the UI isn't stuck loading
+        if (mounted && loadId === loadIdRef.current) resolvedCount++;
       }
 
-      if (mounted && loadId === loadIdRef.current) {
+      if (mounted && loadId === loadIdRef.current && resolvedCount >= total) {
         setIsLoaded(true);
       }
     }
 
-    if (loadPermissions || loadRoles) {
+    if (total > 0) {
       load();
     }
 
     return () => {
       mounted = false;
     };
-  }, [loadPermissions, loadRoles, onPermissionLoaded]);
+  }, [loadPermissions, loadRoles]);
 
   const refreshIdRef = useRef(0);
 
@@ -105,7 +118,7 @@ export function PermissionProvider({
         .then((result) => {
           if (current === refreshIdRef.current) {
             setUserPermissions(result);
-            onPermissionLoaded?.(result);
+            onPermissionLoadedRef.current?.(result);
           }
         })
         .catch(() => {});
@@ -120,20 +133,25 @@ export function PermissionProvider({
         })
         .catch(() => {});
     }
-  }, [loadPermissions, loadRoles, onPermissionLoaded]);
+  }, [loadPermissions, loadRoles]);
+
+  const onPermissionDeniedRef = useRef(onPermissionDenied);
+  onPermissionDeniedRef.current = onPermissionDenied;
+  const onPermissionGrantedRef = useRef(onPermissionGranted);
+  onPermissionGrantedRef.current = onPermissionGranted;
 
   const wrappedOnPermissionDenied = useCallback(
     (details: { permission: string }) => {
-      onPermissionDenied?.(details);
+      onPermissionDeniedRef.current?.(details);
     },
-    [onPermissionDenied],
+    [],
   );
 
   const wrappedOnPermissionGranted = useCallback(
     (details: { permission: string }) => {
-      onPermissionGranted?.(details);
+      onPermissionGrantedRef.current?.(details);
     },
-    [onPermissionGranted],
+    [],
   );
 
   const value = useMemo<PermissionContextValue>(
@@ -147,16 +165,7 @@ export function PermissionProvider({
       onPermissionDenied: wrappedOnPermissionDenied,
       onPermissionGranted: wrappedOnPermissionGranted,
     }),
-    [
-      userPermissions,
-      userRoles,
-      isLoaded,
-      refresh,
-      attributes,
-      mode,
-      wrappedOnPermissionDenied,
-      wrappedOnPermissionGranted,
-    ],
+    [userPermissions, userRoles, isLoaded, refresh, attributes, mode],
   );
 
   if (!isLoaded && (loadPermissions || loadRoles)) {

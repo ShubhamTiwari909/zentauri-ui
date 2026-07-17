@@ -461,7 +461,6 @@ describe("PermissionBoundary", () => {
       <PermissionProvider permissions={[]} roles={[]}>
         <PermissionBoundary
           fallback={<div data-testid="fallback">No Access</div>}
-          loading={<div data-testid="loading">Loading...</div>}
         >
           <div data-testid="boundary-child">Content</div>
         </PermissionBoundary>

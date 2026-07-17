@@ -60,7 +60,6 @@ export interface RouteGuardProps {
 }
 
 export interface PermissionBoundaryProps {
-  loading?: ReactNode;
   fallback?: ReactNode;
   children: ReactNode;
 }

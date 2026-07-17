@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePermissionContext } from "../provider/PermissionProvider";
 import { checkAccess } from "../utils/checkAccess";
 import type { CanProps } from "../types";
@@ -22,15 +22,20 @@ export function Can({
 
   const granted = permissionCheck && roleCheck;
 
+  const onGrantedRef = useRef(ctx.onPermissionGranted);
+  onGrantedRef.current = ctx.onPermissionGranted;
+  const onDeniedRef = useRef(ctx.onPermissionDenied);
+  onDeniedRef.current = ctx.onPermissionDenied;
+
   useEffect(() => {
-    if (permission) {
-      if (granted) {
-        ctx.onPermissionGranted?.({ permission });
-      } else {
-        ctx.onPermissionDenied?.({ permission });
-      }
+    const target = permission ?? permissions?.[0] ?? role ?? roles?.[0];
+    if (!target) return;
+    if (granted) {
+      onGrantedRef.current?.({ permission: target });
+    } else {
+      onDeniedRef.current?.({ permission: target });
     }
-  }, [permission, granted, ctx.onPermissionGranted, ctx.onPermissionDenied]);
+  }, [permission, permissions, role, roles, granted]);
 
   if (granted) {
     return <>{children}</>;

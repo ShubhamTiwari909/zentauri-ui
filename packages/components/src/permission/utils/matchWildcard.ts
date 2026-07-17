@@ -9,6 +9,8 @@ export function matchWildcard(pattern: string, permission: string): boolean {
   const last = parts[parts.length - 1];
   if (first === undefined || last === undefined) return false;
 
+  if (first.length + last.length > permission.length) return false;
+
   if (!permission.startsWith(first)) return false;
   if (!permission.endsWith(last)) return false;
 
@@ -21,7 +23,7 @@ export function matchWildcard(pattern: string, permission: string): boolean {
     pos = found + part.length;
   }
 
-  return true;
+  return pos <= permission.length - last.length;
 }
 
 export function hasWildcard(permission: string): boolean {
