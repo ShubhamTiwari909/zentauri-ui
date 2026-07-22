@@ -47,3 +47,4 @@ async function prependDirectiveToDistDir(distDir) {
 await prependDirectiveToDistDir(join(packageRoot, "dist", "ui"));
 await prependDirectiveToDistDir(join(packageRoot, "dist", "charts"));
 await prependDirectiveToDistDir(join(packageRoot, "dist", "hooks"));
+await prependDirectiveToDistDir(join(packageRoot, "dist", "permission"));

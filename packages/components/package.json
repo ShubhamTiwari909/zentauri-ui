@@ -1,6 +1,6 @@
 {
   "name": "@zentauri-ui/zentauri-components",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "description": "React + Tailwind UI kit with charts, ESM/CJS builds, per-entry exports, and a zentauri-components / zentauri-ui CLI to vendor UI or hook source into your app",
   "keywords": [
     "react",
@@ -90,6 +90,11 @@
       "types": "./dist/hooks/*/index.d.ts",
       "import": "./dist/hooks/*.mjs",
       "require": "./dist/hooks/*.js"
+    },
+    "./permission": {
+      "types": "./dist/permission/index.d.ts",
+      "import": "./dist/permission.mjs",
+      "require": "./dist/permission.js"
     }
   },
   "scripts": {

@@ -37,6 +37,7 @@ import {
   startOfDay,
   startOfMonth,
   toIsoDateString,
+  resolveLocale,
   type DateRange,
 } from "./date-utils";
 import type {
@@ -58,14 +59,6 @@ import {
   calendarWeekNumberVariants,
   calendarWeekdayVariants,
 } from "./variants";
-
-function resolveLocale(locale?: string): string {
-  if (locale) return locale;
-  if (typeof navigator !== "undefined" && navigator.language) {
-    return navigator.language;
-  }
-  return "en-US";
-}
 
 function ChevronIcon({ direction }: { direction: "left" | "right" }) {
   return (

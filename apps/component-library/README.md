@@ -34,8 +34,8 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 134 passed (134)   |
-| Tests      | 1240 passed (1240) |
+| Test files | 135 passed (135)   |
+| Tests      | 1287 passed (1287) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
@@ -45,6 +45,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | Design system facade           | 1          | 11    |
 | CLI and import rewriting       | 4          | 33    |
 | Accessibility (axe + keyboard) | 2          | 46    |
+| Permission system              | 1          | 47    |
 
 ## Tech stack
 

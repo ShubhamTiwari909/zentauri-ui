@@ -78,6 +78,7 @@ import treeView from "@/content/seo/preview/components/tree-view.json";
 import typingIndicator from "@/content/seo/preview/components/typing-indicator.json";
 import typography from "@/content/seo/preview/components/typography.json";
 import worldClock from "@/content/seo/preview/components/world-clock.json";
+import permission from "@/content/seo/preview/components/permission.json";
 
 const previewSeoRegistry = {
   index: index as PreviewSeoDocument,
@@ -159,6 +160,7 @@ const previewSeoRegistry = {
   "typing-indicator": typingIndicator as PreviewSeoDocument,
   typography: typography as PreviewSeoDocument,
   "world-clock": worldClock as PreviewSeoDocument,
+  permission: permission as PreviewSeoDocument,
 } as const;
 
 export type PreviewSeoSlug = keyof typeof previewSeoRegistry;
