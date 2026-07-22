@@ -71,7 +71,7 @@
     },
     {
       "heading": "API reference",
-      "body": "Import everything from @zentauri-ui/zentauri-components/permission.\n\nComponents: PermissionProvider (context provider), Can (render if authorized), Cannot (inverse of Can), Role (render if role matches), RouteGuard (route-level protection with redirect), PermissionBoundary (empty-permission fallback boundary).\n\nHooks: usePermission (check single permission), usePermissions (get all permissions), usePermissionsRefresh (get refresh function), useRole (check role), useRoles (get all roles), useCan (detailed multi-permission check with missing list).\n\nUtilities: hasPermission, hasAnyPermission, hasAllPermissions, hasRole, mergePermissions, getMissingPermissions, matchWildcard, hasWildcard."
+      "body": "Import everything from @zentauri-ui/zentauri-components/permission.\n\nComponents: PermissionProvider (context provider), Can (render if authorized), Cannot (inverse of Can), Role (render if role matches), RouteGuard (route-level protection with redirect), PermissionBoundary (empty-permission fallback boundary).\n\nHooks: usePermission (check single permission), usePermissions (get all permissions), usePermissionsRefresh (get refresh function), useRole (check role), useRoles (get all roles), useCan (detailed multi-permission check with missing list), usePermissionContext (raw context access).\n\nUtilities: hasPermission, hasAnyPermission, hasAllPermissions, hasRole, mergePermissions, getMissingPermissions, matchWildcard, hasWildcard."
     },
     {
       "heading": "Next.js integration notes",

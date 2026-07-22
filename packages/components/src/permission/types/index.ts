@@ -28,7 +28,7 @@ export interface PermissionContextValue {
 export type PermissionMode = "all" | "any";
 
 export interface PermissionCheckEvent {
-  permission: string;
+  permission?: string;
   permissions?: string[];
   role?: string;
   roles?: string[];
