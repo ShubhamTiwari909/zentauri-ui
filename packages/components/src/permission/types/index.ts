@@ -9,8 +9,8 @@ export interface PermissionProviderProps {
   mode?: "all" | "any";
   loadPermissions?: () => Promise<string[]>;
   loadRoles?: () => Promise<string[]>;
-  onPermissionDenied?: (details: { permission: string }) => void;
-  onPermissionGranted?: (details: { permission: string }) => void;
+  onPermissionDenied?: (details: PermissionCheckEvent) => void;
+  onPermissionGranted?: (details: PermissionCheckEvent) => void;
   onPermissionLoaded?: (permissions: string[]) => void;
 }
 
@@ -21,11 +21,19 @@ export interface PermissionContextValue {
   refresh: () => void;
   attributes: Record<string, unknown>;
   mode: "all" | "any";
-  onPermissionDenied?: (details: { permission: string }) => void;
-  onPermissionGranted?: (details: { permission: string }) => void;
+  onPermissionDenied?: (details: PermissionCheckEvent) => void;
+  onPermissionGranted?: (details: PermissionCheckEvent) => void;
 }
 
 export type PermissionMode = "all" | "any";
+
+export interface PermissionCheckEvent {
+  permission: string;
+  permissions?: string[];
+  role?: string;
+  roles?: string[];
+  mode?: PermissionMode;
+}
 
 export interface CanProps {
   permission?: string;

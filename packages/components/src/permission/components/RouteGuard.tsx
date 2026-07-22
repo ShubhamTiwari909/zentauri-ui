@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { usePermissionContext } from "../provider/PermissionProvider";
 import { checkAccess } from "../utils/checkAccess";
-import type { RouteGuardProps } from "../types";
+import type { PermissionCheckEvent, RouteGuardProps } from "../types";
 
 export function RouteGuard({
   permission,
@@ -31,10 +31,18 @@ export function RouteGuard({
   useEffect(() => {
     const target = permission ?? permissions?.[0] ?? role ?? roles?.[0];
     if (target) {
+      const event: PermissionCheckEvent = {
+        permission: target,
+        permissions,
+        role,
+        roles,
+        mode: mode ?? ctx.mode,
+      };
+
       if (granted) {
-        onGrantedRef.current?.({ permission: target });
+        onGrantedRef.current?.(event);
       } else {
-        onDeniedRef.current?.({ permission: target });
+        onDeniedRef.current?.(event);
       }
     }
 
@@ -43,7 +51,16 @@ export function RouteGuard({
         window.location.href = redirectTo;
       }
     }
-  }, [permission, permissions, role, roles, granted, redirectTo]);
+  }, [
+    permission,
+    permissions,
+    role,
+    roles,
+    mode,
+    granted,
+    redirectTo,
+    ctx.mode,
+  ]);
 
   if (granted) {
     return <>{children}</>;

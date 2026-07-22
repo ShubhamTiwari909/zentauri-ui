@@ -29,6 +29,7 @@ export type {
   PermissionProviderProps,
   PermissionContextValue,
   PermissionMode,
+  PermissionCheckEvent,
   CanProps,
   UseCanParams,
   UseCanResult,

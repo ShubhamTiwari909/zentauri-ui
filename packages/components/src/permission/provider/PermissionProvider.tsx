@@ -9,7 +9,11 @@ import {
   useRef,
   useState,
 } from "react";
-import type { PermissionContextValue, PermissionProviderProps } from "../types";
+import type {
+  PermissionCheckEvent,
+  PermissionContextValue,
+  PermissionProviderProps,
+} from "../types";
 
 export const PermissionContext = createContext<PermissionContextValue | null>(
   null,
@@ -141,14 +145,14 @@ export function PermissionProvider({
   onPermissionGrantedRef.current = onPermissionGranted;
 
   const wrappedOnPermissionDenied = useCallback(
-    (details: { permission: string }) => {
+    (details: PermissionCheckEvent) => {
       onPermissionDeniedRef.current?.(details);
     },
     [],
   );
 
   const wrappedOnPermissionGranted = useCallback(
-    (details: { permission: string }) => {
+    (details: PermissionCheckEvent) => {
       onPermissionGrantedRef.current?.(details);
     },
     [],

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { usePermissionContext } from "../provider/PermissionProvider";
 import { checkAccess } from "../utils/checkAccess";
-import type { CanProps } from "../types";
+import type { CanProps, PermissionCheckEvent } from "../types";
 
 export function Can({
   permission,
@@ -30,12 +30,21 @@ export function Can({
   useEffect(() => {
     const target = permission ?? permissions?.[0] ?? role ?? roles?.[0];
     if (!target) return;
+
+    const event: PermissionCheckEvent = {
+      permission: target,
+      permissions,
+      role,
+      roles,
+      mode: mode ?? ctx.mode,
+    };
+
     if (granted) {
-      onGrantedRef.current?.({ permission: target });
+      onGrantedRef.current?.(event);
     } else {
-      onDeniedRef.current?.({ permission: target });
+      onDeniedRef.current?.(event);
     }
-  }, [permission, permissions, role, roles, granted]);
+  }, [permission, permissions, role, roles, mode, granted, ctx.mode]);
 
   if (granted) {
     return <>{children}</>;

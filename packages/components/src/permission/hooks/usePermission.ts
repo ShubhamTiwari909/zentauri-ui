@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { usePermissionContext } from "../provider/PermissionProvider";
 import { hasPermission } from "../utils/hasPermission";
+import type { PermissionCheckEvent } from "../types";
 
 export function usePermission(permission: string): boolean {
   const ctx = usePermissionContext();
@@ -14,12 +15,17 @@ export function usePermission(permission: string): boolean {
   onDeniedRef.current = ctx.onPermissionDenied;
 
   useEffect(() => {
+    const event: PermissionCheckEvent = {
+      permission,
+      mode: ctx.mode,
+    };
+
     if (granted) {
-      onGrantedRef.current?.({ permission });
+      onGrantedRef.current?.(event);
     } else {
-      onDeniedRef.current?.({ permission });
+      onDeniedRef.current?.(event);
     }
-  }, [permission, granted]);
+  }, [permission, granted, ctx.mode]);
 
   return granted;
 }
