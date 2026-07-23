@@ -69,6 +69,7 @@ const uiComponentNames = [
   "timezone-select",
   "timeline",
   "toast",
+  "wizard",
   "toggle",
   "tooltip",
   "tree-view",
@@ -182,6 +183,7 @@ const uiAnimatedComponentNames = [
   "tooltip",
   "tree-view",
   "typing-indicator",
+  "wizard",
   "world-clock",
 ] as const;
 

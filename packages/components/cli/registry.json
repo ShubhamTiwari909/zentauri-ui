@@ -73,6 +73,7 @@
     "tree-view",
     "typing-indicator",
     "typography",
+    "wizard",
     "world-clock"
   ],
   "animatedComponents": [
@@ -124,6 +125,7 @@
     "tooltip",
     "tree-view",
     "typing-indicator",
+    "wizard",
     "world-clock"
   ],
   "charts": [
@@ -260,6 +262,7 @@
     "tree-view",
     "typing-indicator",
     "typography",
+    "wizard",
     "world-clock"
   ],
   "animations": [
@@ -537,6 +540,9 @@
       "framer-motion"
     ],
     "typing-indicator": [
+      "framer-motion"
+    ],
+    "wizard": [
       "framer-motion"
     ],
     "world-clock": [

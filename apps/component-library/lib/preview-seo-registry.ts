@@ -77,6 +77,7 @@ import tooltip from "@/content/seo/preview/components/tooltip.json";
 import treeView from "@/content/seo/preview/components/tree-view.json";
 import typingIndicator from "@/content/seo/preview/components/typing-indicator.json";
 import typography from "@/content/seo/preview/components/typography.json";
+import wizard from "@/content/seo/preview/components/wizard.json";
 import worldClock from "@/content/seo/preview/components/world-clock.json";
 import permission from "@/content/seo/preview/components/permission.json";
 
@@ -159,6 +160,7 @@ const previewSeoRegistry = {
   "tree-view": treeView as PreviewSeoDocument,
   "typing-indicator": typingIndicator as PreviewSeoDocument,
   typography: typography as PreviewSeoDocument,
+  wizard: wizard as PreviewSeoDocument,
   "world-clock": worldClock as PreviewSeoDocument,
   permission: permission as PreviewSeoDocument,
 } as const;

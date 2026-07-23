@@ -29,12 +29,12 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 135 passed (135)   |
-| Tests      | 1287 passed (1287) |
+| Test files | 136 passed (136)   |
+| Tests      | 1310 passed (1310) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 78         | 863   |
+| Components and UI utilities    | 79         | 886   |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 48         | 242   |
 | Design system facade           | 1          | 11    |
@@ -46,7 +46,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Suite                                                                   | Tests |
 | ----------------------------------------------------------------------- | ----: |
-| `src/ui/peer-isolation.test.ts`                                         |    51 |
+| `src/ui/peer-isolation.test.ts`                                         |    52 |
 | `src/permission/permission.test.tsx`                                    |    47 |
 | `src/animations/animations.test.tsx`                                    |    45 |
 | `src/ui/buttons/button.test.tsx`                                        |    44 |
@@ -56,6 +56,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/calendar/date-utils.test.ts`                                    |    28 |
 | `src/ui/bento-grid/bento-grid.test.tsx`                                 |    26 |
 | `src/ui/combobox/combobox.test.tsx`                                     |    24 |
+| `src/ui/wizard/wizard.test.tsx`                                         |    22 |
 | `cli/cli.integration.test.ts`                                           |    21 |
 | `src/accessibility/keyboard-interaction.test.tsx`                       |    18 |
 | `src/ui/calendar/calendar.test.tsx`                                     |    16 |
@@ -892,7 +893,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1287 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1310 test cases in total
 - `pnpm test:a11y` — focused accessibility coverage for package-level UI primitives and compound components: **axe-core** audits for every interactive component plus **keyboard-interaction** tests (focus order, arrow-key nav, Home/End, Escape/Enter) for the compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).
