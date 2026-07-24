@@ -46,7 +46,7 @@ export function wizardCustomFooterSnippet(): string {
   <WizardStep id="one" title="Step 1">Content</WizardStep>
   <WizardStep id="two" title="Step 2">Content</WizardStep>
   <WizardFooter className="flex justify-between">
-    <span className="text-xs text-slate-500">
+    <span className="text-xs text-slate-500 dark:text-slate-400">
       Need help?
     </span>
     <WizardNavigation />

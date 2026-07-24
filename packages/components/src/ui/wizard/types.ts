@@ -16,13 +16,7 @@ type WizardNavigationVariantProps = VariantProps<
 >;
 type WizardContentVariantProps = VariantProps<typeof wizardContentVariants>;
 
-export type WizardProgressVariant =
-  | "bar"
-  | "dots"
-  | "circle"
-  | "numbers"
-  | "breadcrumb"
-  | "timeline";
+export type WizardProgressVariant = "bar" | "dots" | "numbers";
 
 export type WizardStepProps = {
   id: string;
@@ -32,7 +26,6 @@ export type WizardStepProps = {
   disabled?: boolean;
   hidden?: boolean;
   icon?: ReactNode;
-  validationSchema?: unknown;
   children?: ReactNode;
 };
 

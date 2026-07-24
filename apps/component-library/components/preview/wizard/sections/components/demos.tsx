@@ -57,44 +57,6 @@ export function WizardSidebarDemo() {
   );
 }
 
-export function WizardProgressVariantsDemo() {
-  return (
-    <div className="space-y-6">
-      <div>
-        <p className="mb-2 text-sm font-medium text-slate-900 dark:text-white">
-          Bar
-        </p>
-        <Wizard>
-          <WizardStep id="a" title="Step A">
-            Content A
-          </WizardStep>
-          <WizardStep id="b" title="Step B">
-            Content B
-          </WizardStep>
-          <WizardStep id="c" title="Step C">
-            Content C
-          </WizardStep>
-          <WizardProgress variant="bar" />
-        </Wizard>
-      </div>
-      <div>
-        <p className="mb-2 text-sm font-medium text-slate-900 dark:text-white">
-          Numbers
-        </p>
-        <Wizard>
-          <WizardStep id="x" title="Step X">
-            Content X
-          </WizardStep>
-          <WizardStep id="y" title="Step Y">
-            Content Y
-          </WizardStep>
-          <WizardProgress variant="numbers" />
-        </Wizard>
-      </div>
-    </div>
-  );
-}
-
 export function WizardCustomFooterDemo() {
   return (
     <Wizard>

@@ -14,6 +14,23 @@ import {
 
 import { cn } from "../../lib/utils";
 
+import {
+  zuiWizardFooterBase,
+  zuiWizardProgressBarBase,
+  zuiWizardProgressBase,
+  zuiWizardProgressDotsBase,
+  zuiWizardProgressDotBase,
+  zuiWizardProgressDotActiveBase,
+  zuiWizardProgressDotCompletedBase,
+  zuiWizardProgressFillBase,
+  zuiWizardSidebarBase,
+  zuiWizardSidebarStepActiveBase,
+  zuiWizardSidebarStepBase,
+  zuiWizardSidebarStepCompletedBase,
+  zuiWizardStepIndicatorBase,
+  zuiWizardStepIndicatorStates,
+} from "../../design-system/wizard";
+
 import type {
   WizardBaseProps,
   WizardContentProps,
@@ -43,6 +60,27 @@ function useWizardContext(component: string): WizardCtx {
     throw new Error(`${component} must be used within <Wizard>`);
   }
   return ctx;
+}
+
+function isValidStoredState(
+  data: unknown,
+  maxStep: number,
+): data is { currentStep: number; completedSteps: string[] } {
+  if (!data || typeof data !== "object") return false;
+  const d = data as Record<string, unknown>;
+  if (
+    typeof d.currentStep !== "number" ||
+    !Number.isInteger(d.currentStep) ||
+    d.currentStep < 0 ||
+    d.currentStep > maxStep
+  )
+    return false;
+  if (
+    !Array.isArray(d.completedSteps) ||
+    !d.completedSteps.every((s) => typeof s === "string")
+  )
+    return false;
+  return true;
 }
 
 function readStorage(key: string): Record<string, unknown> | null {
@@ -90,7 +128,7 @@ export function WizardBase({
   const [currentStep, setCurrentStep] = useState(() => {
     if (persist && storageKey) {
       const saved = readStorage(`zui-wizard-${storageKey}`);
-      if (saved?.currentStep != null) {
+      if (saved && isValidStoredState(saved, Infinity)) {
         return saved.currentStep as number;
       }
     }
@@ -99,7 +137,7 @@ export function WizardBase({
   const [completedSteps, setCompletedSteps] = useState<Set<string>>(() => {
     if (persist && storageKey) {
       const saved = readStorage(`zui-wizard-${storageKey}`);
-      if (saved?.completedSteps) {
+      if (saved && isValidStoredState(saved, Infinity)) {
         return new Set(saved.completedSteps as string[]);
       }
     }
@@ -107,7 +145,12 @@ export function WizardBase({
   });
 
   const registerStep = useCallback((props: WizardStepProps): (() => void) => {
-    stepsRef.current = [...stepsRef.current, props];
+    const idx = stepsRef.current.findIndex((s) => s.id === props.id);
+    if (idx >= 0) {
+      stepsRef.current[idx] = props;
+    } else {
+      stepsRef.current = [...stepsRef.current, props];
+    }
     setRegistrationVersion((v) => v + 1);
     return () => {
       stepsRef.current = stepsRef.current.filter((s) => s.id !== props.id);
@@ -169,11 +212,32 @@ export function WizardBase({
 
   const goTo = useCallback(
     (index: number) => {
+      const target = visibleSteps[index];
+      if (!target) return;
+      if (target.disabled) return;
+      if (linear) {
+        const currentStepId = visibleIndexToStepId.get(effectiveIndex);
+        const allPrevCompleted = visibleSteps
+          .slice(0, index)
+          .every(
+            (s, i) =>
+              s.id === currentStepId || completedSteps.has(s.id) || s.optional,
+          );
+        if (!allPrevCompleted) return;
+      }
       const clamped = Math.max(0, Math.min(index, totalSteps - 1));
       setCurrentStep(clamped);
       onStepChange?.(clamped);
     },
-    [totalSteps, onStepChange],
+    [
+      totalSteps,
+      visibleSteps,
+      visibleIndexToStepId,
+      effectiveIndex,
+      completedSteps,
+      linear,
+      onStepChange,
+    ],
   );
 
   const next = useCallback(() => {
@@ -327,7 +391,7 @@ export function WizardStep({
       children,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, title, description, optional, disabled, hidden]);
+  }, [id, title, description, optional, disabled, hidden, icon]);
 
   if (hidden) return null;
 
@@ -491,10 +555,13 @@ export function WizardProgress({
     const percentage =
       stepStates.length > 0 ? (completed / stepStates.length) * 100 : 0;
     return (
-      <div data-slot="wizard-progress" className={cn("w-full", className)}>
-        <div className="h-2 overflow-hidden rounded-full bg-[var(--zui-wizard-progress-track-bg,var(--zui-surface-muted,oklch(55.4%_0.046_257.417_/_0.25)))] dark:bg-[var(--zui-wizard-progress-track-bg-dark,var(--zui-surface-muted-dark,oklch(55.4%_0.046_257.417_/_0.25)))]">
+      <div
+        data-slot="wizard-progress"
+        className={cn(zuiWizardProgressBase, className)}
+      >
+        <div className={zuiWizardProgressBarBase}>
           <div
-            className="h-full rounded-full bg-[var(--zui-wizard-progress-fill-bg,var(--zui-color-blue,#2563eb))] dark:bg-[var(--zui-wizard-progress-fill-bg-dark,var(--zui-color-blue-dark,#3b82f6))] transition-all duration-300"
+            className={zuiWizardProgressFillBase}
             style={{ width: `${percentage}%` }}
           />
         </div>
@@ -506,19 +573,15 @@ export function WizardProgress({
     return (
       <div
         data-slot="wizard-progress"
-        className={cn("flex items-center gap-2", className)}
+        className={cn(zuiWizardProgressDotsBase, className)}
       >
         {stepStates.map((state, index) => (
           <div
             key={index}
             className={cn(
-              "size-2.5 rounded-full transition-colors",
-              state === "completed" &&
-                "bg-[var(--zui-wizard-progress-dot-completed-bg,var(--zui-color-emerald,#059669))] dark:bg-[var(--zui-wizard-progress-dot-completed-bg-dark,var(--zui-color-emerald-dark,#34d399))]",
-              state === "current" &&
-                "bg-[var(--zui-wizard-progress-dot-active-bg,var(--zui-color-blue,#2563eb))] dark:bg-[var(--zui-wizard-progress-dot-active-bg-dark,var(--zui-color-blue-dark,#3b82f6))]",
-              state === "upcoming" &&
-                "bg-[var(--zui-wizard-progress-dot-bg,var(--zui-surface-muted,oklch(55.4%_0.046_257.417_/_0.25)))] dark:bg-[var(--zui-wizard-progress-dot-bg-dark,var(--zui-surface-muted-dark,oklch(55.4%_0.046_257.417_/_0.25)))]",
+              zuiWizardProgressDotBase,
+              state === "completed" && zuiWizardProgressDotCompletedBase,
+              state === "current" && zuiWizardProgressDotActiveBase,
             )}
           />
         ))}
@@ -567,10 +630,7 @@ export function WizardFooter({
     <div
       ref={ref}
       data-slot="wizard-footer"
-      className={cn(
-        "border-t border-[color:var(--zui-wizard-footer-border,var(--zui-border,#0000001a))] dark:border-[color:var(--zui-wizard-footer-border-dark,var(--zui-border-dark,#ffffff1a))] pt-6",
-        className,
-      )}
+      className={cn(zuiWizardFooterBase, className)}
       {...rest}
     >
       {children}
@@ -589,10 +649,7 @@ export function WizardSidebar({ className }: WizardSidebarProps) {
   return (
     <div
       data-slot="wizard-sidebar"
-      className={cn(
-        "flex flex-col gap-1 border-r border-[color:var(--zui-wizard-sidebar-border,var(--zui-border,#0000001a))] dark:border-[color:var(--zui-wizard-sidebar-border-dark,var(--zui-border-dark,#ffffff1a))] pr-6",
-        className,
-      )}
+      className={cn(zuiWizardSidebarBase, className)}
     >
       {visibleSteps.map((step, index) => {
         const state = getStepState(index);
@@ -608,25 +665,18 @@ export function WizardSidebar({ className }: WizardSidebarProps) {
             disabled={!canNavigate && !isCurrent}
             onClick={() => goTo(index)}
             className={cn(
-              "flex items-center gap-3 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors",
-              "text-[color:var(--zui-wizard-sidebar-step-fg,var(--zui-fg-muted,oklch(55.4%_0.046_257.417)))] dark:text-[color:var(--zui-wizard-sidebar-step-fg-dark,var(--zui-fg-muted-dark,oklch(70.4%_0.04_256.788)))]",
-              "hover:bg-[var(--zui-wizard-sidebar-step-bg-hover,var(--zui-surface-hover,oklch(55.4%_0.046_257.417_/_0.1)))] dark:hover:bg-[var(--zui-wizard-sidebar-step-bg-hover-dark,var(--zui-surface-hover-dark,oklch(55.4%_0.046_257.417_/_0.1)))]",
-              isCurrent &&
-                "bg-[var(--zui-wizard-sidebar-step-active-bg,oklch(55.4%_0.046_257.417_/_0.1))] dark:bg-[var(--zui-wizard-sidebar-step-active-bg-dark,oklch(55.4%_0.046_257.417_/_0.15))] text-[color:var(--zui-wizard-sidebar-step-active-fg,var(--zui-color-blue,#2563eb))] dark:text-[color:var(--zui-wizard-sidebar-step-active-fg-dark,var(--zui-color-blue-dark,#60a5fa))]",
-              state === "completed" &&
-                "text-[color:var(--zui-wizard-sidebar-step-completed-fg,var(--zui-color-emerald,#059669))] dark:text-[color:var(--zui-wizard-sidebar-step-completed-fg-dark,var(--zui-color-emerald-dark,#34d399))]",
+              zuiWizardSidebarStepBase,
+              isCurrent && zuiWizardSidebarStepActiveBase,
+              state === "completed" && zuiWizardSidebarStepCompletedBase,
               !canNavigate && !isCurrent && "cursor-not-allowed opacity-50",
             )}
           >
             <div
               className={cn(
-                "grid size-8 shrink-0 place-items-center rounded-full border text-xs font-semibold",
-                state === "completed" &&
-                  "border-[color:var(--zui-wizard-step-indicator-completed-border,var(--zui-color-emerald,#059669))] dark:border-[color:var(--zui-wizard-step-indicator-completed-border-dark,var(--zui-color-emerald-dark,#34d399))] bg-[var(--zui-wizard-step-indicator-completed-bg,var(--zui-color-emerald,#059669))] dark:bg-[var(--zui-wizard-step-indicator-completed-bg-dark,var(--zui-color-emerald-dark,#34d399))] text-white",
-                state === "current" &&
-                  "border-[color:var(--zui-wizard-step-indicator-current-border,var(--zui-color-blue,#2563eb))] dark:border-[color:var(--zui-wizard-step-indicator-current-border-dark,var(--zui-color-blue-dark,#3b82f6))] bg-[var(--zui-wizard-step-indicator-current-bg,var(--zui-color-blue,#2563eb))] dark:bg-[var(--zui-wizard-step-indicator-current-bg-dark,var(--zui-color-blue-dark,#3b82f6))] text-white",
-                state === "upcoming" &&
-                  "border-[color:var(--zui-wizard-step-indicator-upcoming-border,var(--zui-border,#00000026))] dark:border-[color:var(--zui-wizard-step-indicator-upcoming-border-dark,var(--zui-border-dark,#ffffff26))] bg-transparent text-[color:var(--zui-wizard-step-indicator-upcoming-fg,var(--zui-fg-muted,oklch(55.4%_0.046_257.417)))] dark:text-[color:var(--zui-wizard-step-indicator-upcoming-fg-dark,var(--zui-fg-muted-dark,oklch(70.4%_0.04_256.788)))]",
+                zuiWizardStepIndicatorBase,
+                state === "completed" && zuiWizardStepIndicatorStates.completed,
+                state === "current" && zuiWizardStepIndicatorStates.current,
+                state === "upcoming" && zuiWizardStepIndicatorStates.upcoming,
               )}
             >
               {step.icon ?? index + 1}

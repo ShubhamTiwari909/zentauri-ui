@@ -11,6 +11,10 @@ export {
   WizardStep,
 } from "./wizard";
 export type {
+  StorageAdapter,
+  UseWizardProgressResult,
+  UseWizardResult,
+  UseWizardStepResult,
   WizardBaseProps,
   WizardContentProps,
   WizardCtx,
