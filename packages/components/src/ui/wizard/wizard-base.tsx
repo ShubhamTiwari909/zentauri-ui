@@ -9,7 +9,6 @@ import {
   useMemo,
   useRef,
   useState,
-  type ReactNode,
 } from "react";
 
 import { cn } from "../../lib/utils";
@@ -220,7 +219,7 @@ export function WizardBase({
         const allPrevCompleted = visibleSteps
           .slice(0, index)
           .every(
-            (s, i) =>
+            (s) =>
               s.id === currentStepId || completedSteps.has(s.id) || s.optional,
           );
         if (!allPrevCompleted) return;
@@ -373,7 +372,6 @@ export function WizardStep({
   disabled,
   hidden,
   icon,
-  validationSchema,
   children,
 }: WizardStepProps) {
   const ctx = useWizardContext("WizardStep");
@@ -387,7 +385,6 @@ export function WizardStep({
       disabled,
       hidden,
       icon,
-      validationSchema,
       children,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -548,7 +545,7 @@ export function WizardProgress({
   variant = "bar",
   className,
 }: WizardProgressProps) {
-  const { totalSteps, stepStates } = useWizardContext("WizardProgress");
+  const { stepStates } = useWizardContext("WizardProgress");
 
   if (variant === "bar") {
     const completed = stepStates.filter((s) => s === "completed").length;
