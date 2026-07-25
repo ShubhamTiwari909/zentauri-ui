@@ -24537,13 +24537,6 @@
               "deprecated": false
             },
             {
-              "name": "validationSchema",
-              "type": "unknown",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
               "name": "children",
               "type": "ReactNode",
               "required": false,

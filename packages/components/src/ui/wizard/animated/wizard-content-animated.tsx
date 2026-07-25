@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
 
 import { cn } from "../../../lib/utils";
@@ -21,12 +21,17 @@ export function WizardContentAnimated({
   ...rest
 }: WizardContentAnimatedProps) {
   const { currentStep } = useWizard();
+  const prefersReducedMotion = useReducedMotion();
+
+  const effectiveAnimation: WizardAnimation = prefersReducedMotion
+    ? "none"
+    : animation;
 
   const presets = useMemo(
-    () => wizardContentAnimationPresets[animation],
-    [animation],
+    () => wizardContentAnimationPresets[effectiveAnimation],
+    [effectiveAnimation],
   );
-  const motionless = animation === "none";
+  const motionless = effectiveAnimation === "none";
 
   return (
     <div

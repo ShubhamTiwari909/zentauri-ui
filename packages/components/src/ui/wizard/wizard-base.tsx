@@ -124,24 +124,21 @@ export function WizardBase({
 }: WizardBaseProps) {
   const stepsRef = useRef<WizardStepProps[]>([]);
   const [registrationVersion, setRegistrationVersion] = useState(0);
-  const [currentStep, setCurrentStep] = useState(() => {
-    if (persist && storageKey) {
-      const saved = readStorage(`zui-wizard-${storageKey}`);
-      if (saved && isValidStoredState(saved, Infinity)) {
-        return saved.currentStep as number;
-      }
+  const [currentStep, setCurrentStep] = useState(defaultStep);
+  const [completedSteps, setCompletedSteps] = useState<Set<string>>(
+    () => new Set<string>(),
+  );
+
+  const hydrated = useRef(false);
+  useEffect(() => {
+    if (hydrated.current || !persist || !storageKey) return;
+    hydrated.current = true;
+    const saved = readStorage(`zui-wizard-${storageKey}`);
+    if (saved && isValidStoredState(saved, Infinity)) {
+      setCurrentStep(saved.currentStep as number);
+      setCompletedSteps(new Set(saved.completedSteps as string[]));
     }
-    return defaultStep;
-  });
-  const [completedSteps, setCompletedSteps] = useState<Set<string>>(() => {
-    if (persist && storageKey) {
-      const saved = readStorage(`zui-wizard-${storageKey}`);
-      if (saved && isValidStoredState(saved, Infinity)) {
-        return new Set(saved.completedSteps as string[]);
-      }
-    }
-    return new Set<string>();
-  });
+  }, [persist, storageKey]);
 
   const registerStep = useCallback((props: WizardStepProps): (() => void) => {
     const idx = stepsRef.current.findIndex((s) => s.id === props.id);
