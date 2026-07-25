@@ -578,6 +578,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Feedback",
   },
   {
+    id: "wizard",
+    name: "Wizard",
+    description:
+      "Declarative multi-step workflows with headers, progress indicators, navigation, sidebars, and footers.",
+    href: "/preview/components/wizard",
+    badge: "Form",
+  },
+  {
     id: "world-clock",
     name: "World Clock",
     description:

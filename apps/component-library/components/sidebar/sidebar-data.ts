@@ -442,6 +442,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "Typing indicator",
         href: "/preview/components/typing-indicator",
       },
+      {
+        title: "Wizard",
+        href: "/preview/components/wizard",
+      },
     ],
   },
   {

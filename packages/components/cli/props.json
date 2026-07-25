@@ -24055,6 +24055,661 @@
         }
       ]
     },
+    "wizard": {
+      "slug": "wizard",
+      "subcomponents": [
+        {
+          "name": "static:Wizard",
+          "displayName": "Wizard",
+          "propsType": "WizardProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "aqua",
+                "blue",
+                "card",
+                "crimson",
+                "cyan",
+                "default",
+                "electric",
+                "emerald",
+                "forest",
+                "ghost",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-indigo",
+                "gradient-orange",
+                "gradient-pink",
+                "gradient-purple",
+                "gradient-red",
+                "gradient-teal",
+                "gradient-yellow",
+                "green",
+                "indigo",
+                "lavender",
+                "lime",
+                "magenta",
+                "mint",
+                "ocean",
+                "orange",
+                "outline",
+                "pink",
+                "plum",
+                "purple",
+                "red",
+                "rose",
+                "royal",
+                "ruby",
+                "sapphire",
+                "separated",
+                "sky",
+                "slate",
+                "stone",
+                "sunset",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "defaultStep",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "linear",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onCancel",
+              "type": "(() => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onFinish",
+              "type": "(() => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onReset",
+              "type": "(() => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onStepChange",
+              "type": "((step: number) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onStepComplete",
+              "type": "((stepId: string) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "persist",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "storageKey",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:WizardContent",
+          "displayName": "WizardContent",
+          "propsType": "WizardContentProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:WizardFooter",
+          "displayName": "WizardFooter",
+          "propsType": "WizardFooterProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:WizardHeader",
+          "displayName": "WizardHeader",
+          "propsType": "WizardHeaderProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:WizardNavigation",
+          "displayName": "WizardNavigation",
+          "propsType": "WizardNavigationProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "backLabel",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "cancelLabel",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "finishLabel",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "nextLabel",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "showCancel",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:WizardProgress",
+          "displayName": "WizardProgress",
+          "propsType": "WizardProgressProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "variant",
+              "type": "WizardProgressVariant | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:WizardSidebar",
+          "displayName": "WizardSidebar",
+          "propsType": "WizardSidebarProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:WizardStep",
+          "displayName": "WizardStep",
+          "propsType": "WizardStepProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "description",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "hidden",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "icon",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "optional",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string",
+              "required": true,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:WizardAnimated",
+          "displayName": "WizardAnimated",
+          "propsType": "WizardAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'card' | 'separated' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "defaultStep",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "linear",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onCancel",
+              "type": "(() => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onFinish",
+              "type": "(() => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onReset",
+              "type": "(() => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onStepChange",
+              "type": "((step: number) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onStepComplete",
+              "type": "((stepId: string) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "persist",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "storageKey",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:WizardContentAnimated",
+          "displayName": "WizardContentAnimated",
+          "propsType": "WizardContentAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "animation",
+              "type": "WizardAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "world-clock": {
       "slug": "world-clock",
       "subcomponents": [

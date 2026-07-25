@@ -1,0 +1,64 @@
+{
+  "category": "Form",
+  "title": "Wizard for multi-step workflows",
+  "description": "Declarative multi-step Wizard with compound sub-components for headers, progress indicators, navigation controls, sidebars, footers, and animated content transitions.",
+  "keywords": [
+    "wizard",
+    "multi-step",
+    "form",
+    "React",
+    "Next.js",
+    "checkout",
+    "onboarding",
+    "step wizard",
+    "zentauri-ui"
+  ],
+  "og": {
+    "title": "Wizard · Zentauri UI",
+    "description": "Multi-step wizard with progress, navigation, sidebar, and animated content.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Wizard · Zentauri UI",
+    "description": "Multi-step wizard with progress, navigation, sidebar, and animated content.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/wizard",
+  "headings": {
+    "h1": "Wizard multi-step forms",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "Wizard is a compound component for building multi-step workflows with headers, progress indicators, navigation controls, sidebars, and footers — all declaratively composed.",
+  "useCases": [
+    "Checkout and payment flows.",
+    "Multi-page registration and signup forms.",
+    "Onboarding wizards with sidebar navigation.",
+    "Survey and questionnaire interfaces."
+  ],
+  "faqs": [
+    {
+      "question": "Can I control the current step from outside?",
+      "answer": "The Wizard is uncontrolled by default. Use the useWizard hook inside the Wizard to access currentStep, next, previous, goTo, reset, and other controls. For fully controlled state, the wizard accepts defaultStep and onStepChange."
+    },
+    {
+      "question": "How do I skip certain steps conditionally?",
+      "answer": "Set the hidden prop on Wizard.Step to conditionally hide steps. Hidden steps are automatically excluded from navigation and progress calculations."
+    },
+    {
+      "question": "Can I persist the wizard state across page reloads?",
+      "answer": "Yes. Set persist and storageKey on the Wizard component to save the current step and completed steps to localStorage."
+    },
+    {
+      "question": "How do I add animations between steps?",
+      "answer": "Import from the animated entry: @zentauri-ui/zentauri-components/ui/wizard/animated. Use WizardContentAnimated with the animation prop (slide, fade, scale, flip)."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Wizard is a compound component that provides a complete multi-step workflow solution without boilerplate. Compose WizardStep children inside a Wizard parent, then add optional sub-components like WizardHeader for step indication, WizardProgress for visual progress (bar, dots, or numbers), WizardNavigation for built-in back/next/finish buttons, WizardSidebar for a step list, and WizardFooter for custom footer layouts."
+    },
+    { "heading": "Common use cases", "body": "" }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
