@@ -44,6 +44,27 @@ function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
 }
 
+function getThumbInsetPx(
+  thumbEl: HTMLElement,
+  direction: "ltr" | "rtl",
+): number {
+  const style = window.getComputedStyle(thumbEl);
+  const raw = direction === "rtl" ? style.right : style.left;
+  return parseFloat(raw) || 0;
+}
+
+function getDragBounds(
+  trackEl: HTMLElement,
+  thumbEl: HTMLElement,
+  direction: "ltr" | "rtl",
+) {
+  const trackRect = trackEl.getBoundingClientRect();
+  const thumbRect = thumbEl.getBoundingClientRect();
+  const insetPx = getThumbInsetPx(thumbEl, direction);
+  const maxX = Math.max(trackRect.width - thumbRect.width - insetPx * 2, 0);
+  return { trackRect, thumbRect, maxX };
+}
+
 function composeRefs<T>(
   ...refs: (Ref<T> | undefined)[]
 ): (node: T | null) => void {
@@ -94,6 +115,7 @@ export function SlideToCompleteRoot({
   onDragStart,
   onReset,
   className,
+  style,
   children,
   ref,
   ...rest
@@ -139,13 +161,8 @@ export function SlideToCompleteRoot({
     const trackEl = trackRef.current;
     const thumbEl = thumbRef.current;
     if (!trackEl || !thumbEl) return;
-    const trackRect = trackEl.getBoundingClientRect();
-    const thumbRect = thumbEl.getBoundingClientRect();
-    const insetPx = parseFloat(window.getComputedStyle(thumbEl).left) || 0;
-    setMaxDragDistance(
-      Math.max(trackRect.width - thumbRect.width - insetPx * 2, 0),
-    );
-  }, []);
+    setMaxDragDistance(getDragBounds(trackEl, thumbEl, direction).maxX);
+  }, [direction]);
 
   useEffect(() => {
     const trackEl = trackRef.current;
@@ -168,6 +185,16 @@ export function SlideToCompleteRoot({
       setPhase("idle");
     }
   }, [disabled, phase]);
+
+  useEffect(() => {
+    if (isControlled && !value) {
+      completingRef.current = false;
+      activePointerIdRef.current = null;
+      setPhase("idle");
+      setInternalProgress(0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isControlled, value]);
 
   const registerLabel = useCallback(() => {
     setLabelCount((count) => count + 1);
@@ -206,6 +233,11 @@ export function SlideToCompleteRoot({
         () => finishComplete(),
         () => {
           completingRef.current = false;
+          if (!isControlled) {
+            setPhase("idle");
+            setInternalProgress(0);
+            onProgressChange?.(0);
+          }
         },
       );
       return;
@@ -213,6 +245,7 @@ export function SlideToCompleteRoot({
     finishComplete();
   }, [
     disabled,
+    isControlled,
     isCompleted,
     loading,
     onComplete,
@@ -262,15 +295,14 @@ export function SlideToCompleteRoot({
       const thumbEl = thumbRef.current;
       if (!trackEl || !thumbEl) return;
 
-      const trackRect = trackEl.getBoundingClientRect();
-      const thumbRect = thumbEl.getBoundingClientRect();
-      const maxX = Math.max(trackRect.width - thumbRect.width, 0);
+      const { trackRect, maxX } = getDragBounds(trackEl, thumbEl, direction);
       const rawX = event.clientX - trackRect.left - dragOffsetRef.current;
       const clampedX = clamp(rawX, 0, maxX);
       const rawProgress = maxX === 0 ? 0 : clampedX / maxX;
       const nextProgress = direction === "rtl" ? 1 - rawProgress : rawProgress;
 
       setInternalProgress(nextProgress);
+      setMaxDragDistance(maxX);
       onProgressChange?.(nextProgress);
 
       if (nextProgress >= clampedThreshold) {
@@ -292,12 +324,13 @@ export function SlideToCompleteRoot({
         onProgressChange?.(0);
         resetTimeoutRef.current = setTimeout(() => {
           setPhase("idle");
+          onReset?.();
         }, RESET_TRANSITION_MS);
       } else {
         setPhase("idle");
       }
     },
-    [onProgressChange, phase, resetOnRelease],
+    [onProgressChange, onReset, phase, resetOnRelease],
   );
 
   const cancelDrag = useCallback(
@@ -316,27 +349,21 @@ export function SlideToCompleteRoot({
           event.preventDefault();
           complete();
           break;
-        case "ArrowRight": {
-          event.preventDefault();
-          const next = clamp(
-            (isDragging ? internalProgress : progress) + KEYBOARD_STEP,
-            0,
-            1,
-          );
-          setInternalProgress(next);
-          onProgressChange?.(next);
-          if (next >= clampedThreshold) complete();
-          break;
-        }
+        case "ArrowRight":
         case "ArrowLeft": {
           event.preventDefault();
+          const physicalDelta =
+            event.key === "ArrowRight" ? KEYBOARD_STEP : -KEYBOARD_STEP;
+          const logicalDelta =
+            direction === "rtl" ? -physicalDelta : physicalDelta;
           const next = clamp(
-            (isDragging ? internalProgress : progress) - KEYBOARD_STEP,
+            (isDragging ? internalProgress : progress) + logicalDelta,
             0,
             1,
           );
           setInternalProgress(next);
           onProgressChange?.(next);
+          if (logicalDelta > 0 && next >= clampedThreshold) complete();
           break;
         }
         case "Home":
@@ -355,6 +382,7 @@ export function SlideToCompleteRoot({
     [
       clampedThreshold,
       complete,
+      direction,
       disabled,
       internalProgress,
       isCompleted,
@@ -444,12 +472,17 @@ export function SlideToCompleteRoot({
         data-completed={isCompleted || undefined}
         data-disabled={disabled || undefined}
         data-success={success || undefined}
-        className={cn(slideToCompleteVariants({ size }), className)}
+        className={cn(
+          "group/slide-to-complete",
+          slideToCompleteVariants({ size }),
+          className,
+        )}
         style={
           {
             "--slide-progress": progress,
             "--slide-threshold": clampedThreshold,
             "--slide-thumb-position": `${translate}px`,
+            ...style,
           } as React.CSSProperties
         }
         {...rest}
@@ -542,6 +575,11 @@ export function SlideToCompleteThumb({
   className,
   children,
   style,
+  onPointerDown,
+  onPointerMove,
+  onPointerUp,
+  onPointerCancel,
+  onKeyDown,
   ref,
   ...rest
 }: SlideToCompleteThumbProps) {
@@ -590,11 +628,26 @@ export function SlideToCompleteThumb({
         transform: `translate3d(${translate}px, 0, 0)`,
         ...style,
       }}
-      onPointerDown={startDrag}
-      onPointerMove={updateDrag}
-      onPointerUp={endDrag}
-      onPointerCancel={cancelDrag}
-      onKeyDown={handleKeyDown}
+      onPointerDown={(event) => {
+        onPointerDown?.(event);
+        if (!event.defaultPrevented) startDrag(event);
+      }}
+      onPointerMove={(event) => {
+        onPointerMove?.(event);
+        if (!event.defaultPrevented) updateDrag(event);
+      }}
+      onPointerUp={(event) => {
+        onPointerUp?.(event);
+        if (!event.defaultPrevented) endDrag(event);
+      }}
+      onPointerCancel={(event) => {
+        onPointerCancel?.(event);
+        if (!event.defaultPrevented) cancelDrag(event);
+      }}
+      onKeyDown={(event) => {
+        onKeyDown?.(event);
+        if (!event.defaultPrevented) handleKeyDown(event);
+      }}
       {...rest}
     >
       {children}

@@ -144,7 +144,10 @@ function AppearanceGallery({ selected, onSelect }: AppearanceGalleryProps) {
               <span className="text-xs text-slate-600 dark:text-slate-400">
                 {appearance}
               </span>
-              <div className="pointer-events-none">
+              {/* inert removes the nested thumb button from the tab order and
+                  click/keyboard handling entirely, so only the tile itself
+                  (not the live SlideToComplete it previews) is interactive. */}
+              <div className="pointer-events-none" inert>
                 <SlideToComplete appearance={appearance} size="sm" />
               </div>
             </div>

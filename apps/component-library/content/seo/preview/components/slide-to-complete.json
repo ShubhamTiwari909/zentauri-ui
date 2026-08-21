@@ -74,7 +74,7 @@
     },
     {
       "heading": "State variants",
-      "body": "The component supports idle, dragging, completing, completed, resetting, and disabled states. Visual styling can be customized via data attributes (data-state, data-appearance, data-size) and CSS variables."
+      "body": "The component supports idle, dragging, resetting, completed, disabled, loading, and error states. Visual styling can be customized via data attributes (data-state, data-appearance, data-size) and CSS variables."
     }
   ],
   "useCasesSectionHeading": "Common use cases"

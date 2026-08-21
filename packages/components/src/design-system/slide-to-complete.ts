@@ -5,13 +5,13 @@ export const zuiSlideToCompleteTrackBase =
   "relative isolate flex w-full select-none items-center overflow-hidden rounded-full border p-1 shadow-sm transition-colors [height:var(--zui-slide-to-complete-track-height,3.5rem)] [touch-action:none] motion-reduce:transition-none";
 
 export const zuiSlideToCompleteProgressBase =
-  "pointer-events-none absolute inset-y-1 left-1 right-1 z-0 origin-left rounded-full transition-transform duration-300 ease-out motion-reduce:transition-none";
+  "pointer-events-none absolute inset-y-1 left-1 right-1 z-0 origin-left rtl:origin-right rounded-full transition-transform duration-300 ease-out motion-reduce:transition-none";
 
 export const zuiSlideToCompleteLabelBase =
   "pointer-events-none relative z-10 mx-auto select-none truncate px-[calc(var(--zui-slide-to-complete-thumb-size,2.75rem)+0.5rem)] text-center font-medium transition-opacity duration-200 group-data-[completed=true]/slide-to-complete:opacity-0 motion-reduce:transition-none";
 
 export const zuiSlideToCompleteThumbBase =
-  "absolute left-1 z-20 inline-flex shrink-0 items-center justify-center rounded-full border shadow-sm outline-none transition-[background-color,border-color,color,box-shadow,transform] duration-300 ease-out [height:var(--zui-slide-to-complete-thumb-size,2.75rem)] [touch-action:none] [width:var(--zui-slide-to-complete-thumb-size,2.75rem)] focus-visible:ring-2 focus-visible:ring-[var(--zui-slide-to-complete-focus-ring,var(--zui-color-blue,#2563eb))] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--zui-slide-to-complete-track-bg,var(--zui-color-zinc-100,#f3f4f6))] disabled:cursor-not-allowed disabled:opacity-60 data-[dragging=true]:cursor-grabbing data-[dragging=true]:transition-none motion-reduce:transition-none";
+  "absolute left-1 rtl:left-auto rtl:right-1 z-20 inline-flex shrink-0 items-center justify-center rounded-full border shadow-sm outline-none transition-[background-color,border-color,color,box-shadow,transform] duration-300 ease-out [height:var(--zui-slide-to-complete-thumb-size,2.75rem)] [touch-action:none] [width:var(--zui-slide-to-complete-thumb-size,2.75rem)] focus-visible:ring-2 focus-visible:ring-[var(--zui-slide-to-complete-focus-ring,var(--zui-color-blue,#2563eb))] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--zui-slide-to-complete-track-bg,var(--zui-color-zinc-100,#f3f4f6))] disabled:cursor-not-allowed disabled:opacity-60 data-[dragging=true]:cursor-grabbing data-[dragging=true]:transition-none motion-reduce:transition-none";
 
 export const zuiSlideToCompleteIconBase =
   "inline-flex items-center justify-center text-base transition-transform duration-200 group-data-[completed=true]/slide-to-complete:scale-110 motion-reduce:transition-none";

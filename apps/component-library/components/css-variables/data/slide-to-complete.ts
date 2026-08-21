@@ -283,5 +283,5 @@ export const slideToCompleteCssVariables = defineCssVariableReference({
     ["slide-to-complete-zinc-track-bg-dark", "#18181b"],
     ["slide-to-complete-zinc-track-border-dark", "#3f3f46"],
   ],
-  darkVariableCount: 135,
+  darkVariableCount: 140,
 });

@@ -16,7 +16,10 @@ export function slideToCompleteSnippet(opts: SlideToCompleteDemoProps): string {
     appearance === "default" ? "" : ` appearance="${appearance}"`;
   const sizeAttr = size === "md" ? "" : ` size="${size}"`;
   const thresholdAttr = threshold === 0.9 ? "" : ` threshold={${threshold}}`;
-  const labelAttr = ` label="${label}"`;
+  // Emit the label as a JS string expression rather than a raw quoted JSX
+  // attribute, so a label containing a `"` still produces compilable code.
+  const escapedLabel = label.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+  const labelAttr = ` label={"${escapedLabel}"}`;
   const disabledAttr = disabled ? " disabled" : "";
   const loadingAttr = loading ? " loading" : "";
   const lead = variantLeadComment(
