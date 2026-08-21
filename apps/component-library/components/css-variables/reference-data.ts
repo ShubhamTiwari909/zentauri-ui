@@ -52,6 +52,7 @@ import { secretRevealCssVariables } from "./data/secret-reveal";
 import { searchCssVariables } from "./data/search";
 import { selectCssVariables } from "./data/select";
 import { skeletonCssVariables } from "./data/skeleton";
+import { slideToCompleteCssVariables } from "./data/slide-to-complete";
 import { sliderCssVariables } from "./data/slider";
 import { speechRecognitionCssVariables } from "./data/speech-recognition";
 import { speechSynthesizerCssVariables } from "./data/speech-synthesizer";
@@ -123,6 +124,7 @@ export const cssVariableReferences = {
   search: searchCssVariables,
   select: selectCssVariables,
   skeleton: skeletonCssVariables,
+  "slide-to-complete": slideToCompleteCssVariables,
   slider: sliderCssVariables,
   "speech-recognition": speechRecognitionCssVariables,
   "speech-synthesizer": speechSynthesizerCssVariables,

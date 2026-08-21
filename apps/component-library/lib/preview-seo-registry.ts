@@ -80,6 +80,7 @@ import typography from "@/content/seo/preview/components/typography.json";
 import wizard from "@/content/seo/preview/components/wizard.json";
 import worldClock from "@/content/seo/preview/components/world-clock.json";
 import permission from "@/content/seo/preview/components/permission.json";
+import slideToComplete from "@/content/seo/preview/components/slide-to-complete.json";
 
 const previewSeoRegistry = {
   index: index as PreviewSeoDocument,
@@ -163,6 +164,7 @@ const previewSeoRegistry = {
   wizard: wizard as PreviewSeoDocument,
   "world-clock": worldClock as PreviewSeoDocument,
   permission: permission as PreviewSeoDocument,
+  "slide-to-complete": slideToComplete as PreviewSeoDocument,
 } as const;
 
 export type PreviewSeoSlug = keyof typeof previewSeoRegistry;

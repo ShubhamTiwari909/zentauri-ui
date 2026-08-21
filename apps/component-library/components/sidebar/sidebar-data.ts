@@ -387,6 +387,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/skeleton",
       },
       {
+        title: "Slide to Complete",
+        href: "/preview/components/slide-to-complete",
+      },
+      {
         title: "Speech Recognition",
         href: "/preview/components/speech-recognition",
       },

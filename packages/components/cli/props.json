@@ -19273,6 +19273,626 @@
         }
       ]
     },
+    "slide-to-complete": {
+      "slug": "slide-to-complete",
+      "subcomponents": [
+        {
+          "name": "static:SlideToComplete",
+          "displayName": "SlideToComplete",
+          "propsType": "SlideToCompleteProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "defaultValue",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onValueChange",
+              "type": "((completed: boolean) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-emerald' | 'gradient-rose' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "direction",
+              "type": "SlideToCompleteDirection | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "error",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "loading",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onComplete",
+              "type": "(() => void | Promise<void>) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onDragStart",
+              "type": "(DragEventHandler<HTMLDivElement> & (() => void)) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onProgressChange",
+              "type": "((progress: number) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onReset",
+              "type": "(ReactEventHandler<HTMLDivElement> & (() => void)) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "resetOnRelease",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Snap the thumb back to the start when released before the threshold. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "success",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "threshold",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Normalized 0-1 point at which dragging auto-completes. Defaults to 0.9.",
+              "deprecated": false
+            },
+            {
+              "name": "thumbIcon",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:SlideToCompleteIcon",
+          "displayName": "SlideToCompleteIcon",
+          "propsType": "SlideToCompleteIconProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:SlideToCompleteLabel",
+          "displayName": "SlideToCompleteLabel",
+          "propsType": "SlideToCompleteLabelProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:SlideToCompleteProgress",
+          "displayName": "SlideToCompleteProgress",
+          "propsType": "SlideToCompleteProgressProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:SlideToCompleteRoot",
+          "displayName": "SlideToCompleteRoot",
+          "propsType": "SlideToCompleteRootProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "defaultValue",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onValueChange",
+              "type": "((completed: boolean) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-emerald' | 'gradient-rose' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "direction",
+              "type": "SlideToCompleteDirection | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "error",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "loading",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onComplete",
+              "type": "(() => void | Promise<void>) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onDragStart",
+              "type": "(DragEventHandler<HTMLDivElement> & (() => void)) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onProgressChange",
+              "type": "((progress: number) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onReset",
+              "type": "(ReactEventHandler<HTMLDivElement> & (() => void)) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "resetOnRelease",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Snap the thumb back to the start when released before the threshold. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "SlideToCompleteSize | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "success",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "threshold",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Normalized 0-1 point at which dragging auto-completes. Defaults to 0.9.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:SlideToCompleteThumb",
+          "displayName": "SlideToCompleteThumb",
+          "propsType": "SlideToCompleteThumbProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:SlideToCompleteTrack",
+          "displayName": "SlideToCompleteTrack",
+          "propsType": "SlideToCompleteTrackProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:SlideToCompleteVariant",
+          "displayName": "SlideToCompleteVariant",
+          "propsType": "SlideToCompleteVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "slider": {
       "slug": "slider",
       "subcomponents": [
