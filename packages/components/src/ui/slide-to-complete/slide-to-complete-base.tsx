@@ -189,6 +189,7 @@ export function SlideToCompleteRoot({
 
   useEffect(() => {
     if (isControlled && !value) {
+      completionGenerationRef.current += 1;
       completingRef.current = false;
       activePointerIdRef.current = null;
       setPhase("idle");
