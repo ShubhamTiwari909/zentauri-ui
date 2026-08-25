@@ -13,7 +13,7 @@ import {
 } from "react";
 import type {
   KeyboardEvent,
-  MutableRefObject,
+  RefObject,
   PointerEvent as ReactPointerEvent,
   Ref,
 } from "react";
@@ -72,7 +72,7 @@ function composeRefs<T>(
     for (const ref of refs) {
       if (!ref) continue;
       if (typeof ref === "function") ref(node);
-      else (ref as MutableRefObject<T | null>).current = node;
+      else (ref as RefObject<T | null>).current = node;
     }
   };
 }
