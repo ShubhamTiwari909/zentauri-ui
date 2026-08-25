@@ -136,6 +136,7 @@ export function SlideToCompleteRoot({
   const dragOffsetRef = useRef(0);
   const completingRef = useRef(false);
   const resetTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const completionGenerationRef = useRef(0);
 
   const baseId = useId();
   const labelId = `${baseId}-label`;
@@ -193,7 +194,6 @@ export function SlideToCompleteRoot({
       setPhase("idle");
       setInternalProgress(0);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isControlled, value]);
 
   const registerLabel = useCallback(() => {
@@ -220,6 +220,7 @@ export function SlideToCompleteRoot({
     if (disabled || loading) return;
     if (completingRef.current || isCompleted) return;
     completingRef.current = true;
+    const generation = ++completionGenerationRef.current;
     if (resetTimeoutRef.current) {
       clearTimeout(resetTimeoutRef.current);
       resetTimeoutRef.current = null;
@@ -230,8 +231,12 @@ export function SlideToCompleteRoot({
     const result = onComplete?.();
     if (result && typeof (result as Promise<void>).then === "function") {
       (result as Promise<void>).then(
-        () => finishComplete(),
         () => {
+          if (completionGenerationRef.current !== generation) return;
+          finishComplete();
+        },
+        () => {
+          if (completionGenerationRef.current !== generation) return;
           completingRef.current = false;
           if (!isControlled) {
             setPhase("idle");
@@ -254,6 +259,7 @@ export function SlideToCompleteRoot({
   ]);
 
   const reset = useCallback(() => {
+    completionGenerationRef.current += 1;
     activePointerIdRef.current = null;
     completingRef.current = false;
     if (resetTimeoutRef.current) {
