@@ -1,0 +1,81 @@
+{
+  "category": "Feedback",
+  "title": "Slide to Complete component for React & Next.js",
+  "description": "Slide to Complete interaction component for React and Next.js: drag a handle from start to end of a track to confirm actions like payments, approvals, and unlocks.",
+  "keywords": [
+    "slide to complete component",
+    "React",
+    "Next.js",
+    "drag interaction",
+    "confirmation",
+    "payment approval",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Slide to Complete · Zentauri UI",
+    "description": "Slide to Complete interaction component for React and Next.js: drag a handle from start to end of a track to confirm actions.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Slide to Complete · Zentauri UI",
+    "description": "Slide to Complete interaction component for React and Next.js: drag a handle from start to end of a track to confirm actions.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/slide-to-complete",
+  "headings": {
+    "h1": "Slide to Complete",
+    "h2": [
+      "How it works",
+      "Compound API",
+      "Keyboard interaction",
+      "Accessibility",
+      "State variants",
+      "FAQ"
+    ]
+  },
+  "intro": "The Slide to Complete component requires users to drag a handle from the start position to the end of a track before the action is considered complete. It supports configurable thresholds, disabled/loading states, and keyboard completion.",
+  "useCases": [
+    "Payment approval flows",
+    "Transaction confirmation",
+    "Unlocking or revealing an action",
+    "Destructive-action confirmation",
+    "Slide to submit forms"
+  ],
+  "faqs": [
+    {
+      "question": "Does the Slide to Complete work with keyboard navigation?",
+      "answer": "Yes. The thumb can be focused via Tab key and completed using Space or Enter. Arrow keys can also adjust progress."
+    },
+    {
+      "question": "Can I customize the appearance of the slider?",
+      "answer": "Yes. The component ships 17+ appearance tokens (default, primary, secondary, success, destructive, warning, info, several accent colors, gradients, and a glass variant) plus sm/md/lg size variants, all overridable through CSS variables."
+    },
+    {
+      "question": "What happens if the user releases before reaching the threshold?",
+      "answer": "By default, the thumb snaps back to the start position. This behavior can be changed with the resetOnRelease prop."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "How it works",
+      "body": "The component uses a drag interaction model where the user slides a thumb along a track. Progress is normalized between 0 and 1. When the threshold (default 0.9) is crossed, the component triggers the onComplete callback and animates the thumb to the end position."
+    },
+    {
+      "heading": "Compound API",
+      "body": "Users can compose the component from primitives: <SlideToComplete.Root>, <SlideToComplete.Track>, <SlideToComplete.Progress>, <SlideToComplete.Label>, <SlideToComplete.Thumb>, and <SlideToComplete.Icon>. The root owns all interaction state and context, while children consume it."
+    },
+    {
+      "heading": "Keyboard interaction",
+      "body": "Tab to focus the thumb, then use Space or Enter to complete the action. Arrow keys (←/→) can adjust progress. The component supports disabled and loading states that prevent keyboard completion."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The thumb is a semantic button element. Accessible label comes from the label prop or aria-label. Keyboard focus is managed, and reduced motion preferences are respected. Test with screen readers for your specific use case."
+    },
+    {
+      "heading": "State variants",
+      "body": "The component supports idle, dragging, resetting, completed, disabled, loading, and error states. Visual styling can be customized via data attributes (data-state, data-appearance, data-size) and CSS variables."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

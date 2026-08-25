@@ -55,3 +55,37 @@ Object.defineProperty(globalThis, "IntersectionObserver", {
   configurable: true,
   value: MockIntersectionObserver,
 });
+
+// jsdom does not implement PointerEvent, so pointer-driven components (e.g.
+// slide-to-complete) need a small polyfill for pointer interaction tests.
+if (typeof window.PointerEvent === "undefined") {
+  class PointerEventPolyfill extends MouseEvent {
+    pointerId: number;
+    pointerType: string;
+    isPrimary: boolean;
+    width: number;
+    height: number;
+    pressure: number;
+
+    constructor(type: string, params: PointerEventInit = {}) {
+      super(type, params);
+      this.pointerId = params.pointerId ?? 0;
+      this.pointerType = params.pointerType ?? "mouse";
+      this.isPrimary = params.isPrimary ?? true;
+      this.width = params.width ?? 1;
+      this.height = params.height ?? 1;
+      this.pressure = params.pressure ?? 0;
+    }
+  }
+
+  Object.defineProperty(window, "PointerEvent", {
+    writable: true,
+    configurable: true,
+    value: PointerEventPolyfill,
+  });
+  Object.defineProperty(globalThis, "PointerEvent", {
+    writable: true,
+    configurable: true,
+    value: PointerEventPolyfill,
+  });
+}

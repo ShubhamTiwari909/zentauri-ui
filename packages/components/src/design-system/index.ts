@@ -55,6 +55,7 @@ export * from "./select";
 export * from "./skeleton";
 export * from "./speech-recognition";
 export * from "./speech-synthesizer";
+export * from "./slide-to-complete";
 export * from "./split-button";
 export * from "./slider";
 export * from "./spinner";

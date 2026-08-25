@@ -62,6 +62,7 @@ const uiComponentNames = [
   "slider",
   "speech-recognition",
   "speech-synthesizer",
+  "slide-to-complete",
   "split-button",
   "table",
   "tabs",

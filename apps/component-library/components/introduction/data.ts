@@ -482,6 +482,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Actions",
   },
   {
+    id: "slide-to-complete",
+    name: "Slide to Complete",
+    description:
+      "Drag-to-confirm interaction for payment approvals, transaction confirmation, and destructive-action prompts, with keyboard and threshold support.",
+    href: "/preview/components/slide-to-complete",
+    badge: "Feedback",
+  },
+  {
     id: "slider",
     name: "Slider",
     description:
