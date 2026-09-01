@@ -12,6 +12,7 @@ export * from "./button";
 export * from "./calendar";
 export * from "./card";
 export * from "./checkbox";
+export * from "./circular-menu";
 export * from "./code-block";
 export * from "./code-diff";
 export * from "./combobox";
