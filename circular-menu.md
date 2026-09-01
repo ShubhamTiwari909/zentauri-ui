@@ -128,7 +128,7 @@ Extends `Omit<ComponentPropsWithRef<"div">, "children" | "onSelect">`.
 | `spinPauseOnHover` | `boolean`                                             | `true`        |                                                                        |
 | `itemRotation`     | `"upright" \| "follow"`                               | `"upright"`   | `upright` counter-rotates items while spinning                         |
 | `showSpokes`       | `boolean`                                             | `false`       | Renders a line from center to each item                                |
-| `labelPlacement`   | `"inside" \| "outside" \| "tooltip" \| "none"`        | `"inside"`    | Where `ItemLabel` sits relative to the item disc                       |
+| `labelPlacement`   | `"tooltip" \| "outside" \| "inside" \| "none"`        | `"tooltip"`   | Where `ItemLabel` sits. `tooltip` reveals it on hover and focus        |
 | `label`            | `ReactNode`                                           | `"Menu"`      | Trigger content + accessible name for the menu                         |
 | `items`            | `CircularMenuItemData[]`                              | —             | Shorthand only; ignored when composing children                        |
 | `onSelect`         | `(item: CircularMenuItemData, index: number) => void` | —             | Fires after the item's own `onSelect`                                  |
@@ -167,28 +167,42 @@ type CircularMenuContextValue = {
   state: "open" | "closed";
   appearance: CircularMenuAppearance;
   size: CircularMenuSize;
-  itemCount: number;
-  positions: CircularMenuPosition[];
+  triggerMode: CircularMenuTriggerMode;
   activeIndex: number;
   spin: boolean;
+  counterSpin: boolean;
+  spinDuration: number;
+  spinPauseOnHover: boolean;
   itemRotation: CircularMenuItemRotation;
   labelPlacement: CircularMenuLabelPlacement;
   showSpokes: boolean;
   triggerId: string;
   listId: string;
-  labelId: string;
+  triggerRef: RefObject<HTMLButtonElement | null>;
   open: () => void;
   close: () => void;
   toggle: () => void;
   setActiveIndex: (index: number) => void;
   registerItem: (index: number, node: HTMLElement | null) => void;
-  selectItem: (index: number) => void;
+  focusItem: (index: number) => void;
+  selectItem: (index: number, itemOnSelect?: () => void) => void;
   handleListKeyDown: (event: KeyboardEvent<HTMLElement>) => void;
   handleTriggerKeyDown: (event: KeyboardEvent<HTMLButtonElement>) => void;
 };
 ```
 
-Plus `CircularMenuItemIndexContext` (a `number`) that `List` provides per child.
+Item count and solved positions are **not** on this context. Ring geometry is
+owned by a second, layout context (`CircularMenuLayoutContextValue`: `radius`,
+`startAngle`, `sweep`, `direction`, `itemSize`) that `CircularMenu.List` reads
+to solve one position per child — so the count always matches what was actually
+rendered, in both the shorthand and composed cases. `List` publishes each slot
+through `CircularMenuItemSlot`, which is why `CircularMenu.Item` never takes an
+index prop. Both `useCircularMenuContext` and `useCircularMenuLayout` are
+exported for consumers building a custom ring body.
+
+`selectItem` runs the item's own `onSelect`, then the root `onSelect`, then
+closes when `closeOnSelect` is set. Composed items (no `items` array) are
+reported to the root callback as `{ id: String(index) }`.
 
 ---
 
@@ -243,6 +257,13 @@ export function getCircularMenuBoxSize(radius: number, itemSize: number) {
   return Math.ceil(2 * (radius + itemSize / 2));
 }
 ```
+
+> **Hydration:** `angle`, `x`, and `y` are rounded to four decimals. `Math.sin`
+> may differ in its last bits between Node and the browser, and an unrounded
+> offset then serializes differently on the server and the client, which trips
+> React's hydration check. Four decimals is far below one device pixel. For the
+> same reason `--zui-circular-menu-item-index` is written as a string: React
+> serializes numeric custom properties differently across the two passes.
 
 > **Prototype fix:** the sketch used `y = Math.cos(angle) * radius`, which puts
 > item 0 at **6 o'clock** and makes the ring run counterclockwise. Negating `y`
@@ -312,6 +333,13 @@ The static entry must not import motion. Continuous rotation is CSS:
 > duration/direction. Writing the whole thing as an arbitrary property
 > (`[animation:spin_12s_linear_infinite]`) does not guarantee Tailwind emits the
 > `spin` keyframes, so the ring silently won't move in a consumer app.
+
+> **Tailwind v4 gotcha (transitions):** v4 moved `scale`, `translate`, and
+> `rotate` off `transform` and onto their own CSS properties. An explicit
+> transition list that names only `transform` therefore never animates a
+> `scale-*` or `translate-*` utility — the item positioner transitions
+> `[translate,opacity]` and the discs and trigger name `scale` alongside
+> `transform`.
 
 > **Prototype fix:** the sketch drove rotation through `setRotation()` inside
 > `requestAnimationFrame`, i.e. a React re-render every frame, and its
@@ -561,10 +589,13 @@ export { CircularMenu } from "./circular-menu-base";
     | "pop"
     | "spiral";
 
-  export type CircularMenuAnimationPresets = Record<
-    CircularMenuAnimation,
-    { transition: Transition; variants: Variants }
-  >;
+  export type CircularMenuAnimationPreset = {
+    transition: Transition;
+    // Resolved targets rather than variant labels: the ring body is itself a
+    // motion component, so concrete targets keep each disc's reveal
+    // independent of framer-motion's variant propagation.
+    states: Record<"closed" | "open", TargetAndTransition>;
+  };
 
   export const circularMenuItemAnimationPresets: CircularMenuAnimationPresets =
     {
