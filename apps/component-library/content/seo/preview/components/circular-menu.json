@@ -1,0 +1,92 @@
+{
+  "category": "Navigation",
+  "title": "Circular Menu component for React & Next.js",
+  "description": "Circular (radial) menu component for React and Next.js: fan actions out around a center trigger on a full ring or an open arc, with configurable radius, start angle, sweep, continuous rotation, and full keyboard navigation.",
+  "keywords": [
+    "circular menu component",
+    "radial menu",
+    "React",
+    "Next.js",
+    "arc menu",
+    "floating action button",
+    "radial navigation",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Circular Menu · Zentauri UI",
+    "description": "Radial menu component for React and Next.js: fan actions out around a center trigger on a ring or an arc, with keyboard navigation and optional rotation.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Circular Menu · Zentauri UI",
+    "description": "Radial menu component for React and Next.js: fan actions out around a center trigger on a ring or an arc, with keyboard navigation and optional rotation.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/circular-menu",
+  "headings": {
+    "h1": "Circular Menu",
+    "h2": [
+      "How it works",
+      "Rings and arcs",
+      "Compound API",
+      "Rotation",
+      "Keyboard interaction",
+      "Accessibility",
+      "FAQ"
+    ]
+  },
+  "intro": "The Circular Menu component arranges its items on a circle around a center trigger. Item count, radius, start angle, arc sweep, direction, item size, and continuous rotation are all props, so the same component covers a radial action launcher, a floating action button that fans out, and a decorative spinning orbit.",
+  "useCases": [
+    "Radial quick-action launcher for creative tools",
+    "Floating action button that fans out into actions",
+    "Game or canvas context wheel",
+    "Dashboard hub navigation",
+    "Share, react, or emoji pickers",
+    "Decorative always-open orbit rings"
+  ],
+  "faqs": [
+    {
+      "question": "Can the circular menu render a half circle or a quarter arc instead of a full ring?",
+      "answer": "Yes. Set sweep to the arc you want in degrees and startAngle to aim it. A sweep of 360 divides the circle by the item count so the first and last item do not collide; any smaller sweep divides by count - 1 so both endpoints land exactly on the arc ends."
+    },
+    {
+      "question": "Does the circular menu work with a keyboard?",
+      "answer": "Yes. The center trigger is a real button with aria-haspopup and aria-expanded, and the ring is a role=\"menu\" with roving tabindex. Arrow keys move around the ring and wrap, Home and End jump to the first and last item, Enter or Space selects, and Escape closes and returns focus to the trigger. The closed ring is inert, so it never takes focus."
+    },
+    {
+      "question": "How does the continuous rotation work without framer-motion?",
+      "answer": "The static entry rotates the ring with a CSS animation and counter-rotates each icon and label in the opposite direction, so glyphs stay upright. Hovering pauses it and prefers-reduced-motion stops it. The animated entry does the same with a framer-motion motion value, so a spinning ring never re-renders React."
+    },
+    {
+      "question": "Can I customize the appearance?",
+      "answer": "Yes. The component ships 18 appearance palettes (default, primary, secondary, success, destructive, warning, info, several accent colors, three gradients, and glass) across the trigger, item discs, and spokes, plus sm/md/lg sizes. Every color is a --zui-circular-menu-* CSS variable you can override, and layout values like radius and item size are both props and custom properties."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "How it works",
+      "body": "A square box owns the ring's coordinate space. The center trigger sits at its middle, and each item is placed at a solved polar offset: 0 degrees points at 12 o'clock and positive angles run clockwise. Offsets are written as CSS custom properties, so items fan out from the center when the ring opens and collapse back into it when it closes. When boxSize is omitted it is derived as 2 * (radius + itemSize / 2), which is the smallest square that fits the ring plus one disc of overhang."
+    },
+    {
+      "heading": "Rings and arcs",
+      "body": "sweep controls how much of the circle the items cover and direction controls which way they run. A closed ring spaces items evenly all the way around; an open arc places the first item at startAngle and the last one exactly at the end of the arc. Combined with radius and itemSize, this covers everything from a tight six-item wheel to a wide quarter-circle fan anchored in a corner."
+    },
+    {
+      "heading": "Compound API",
+      "body": "Use the items prop for the shorthand, or compose the parts: CircularMenu.Root, CircularMenu.Trigger, CircularMenu.List, CircularMenu.Item, CircularMenu.ItemIcon, CircularMenu.ItemLabel, and CircularMenu.Spoke. The root owns open state, geometry, and keyboard handling; the list solves one position per child and publishes it to that item, so items never take an index prop. Items with an href render as anchors."
+    },
+    {
+      "heading": "Rotation",
+      "body": "spin rotates the whole ring as one rigid body, spinDuration sets the seconds per revolution, and spinPauseOnHover pauses it while the pointer is over the menu. itemRotation decides whether items counter-rotate to stay upright or follow the ring around. trigger=\"always\" keeps the ring open, which turns the component into a decorative orbit."
+    },
+    {
+      "heading": "Keyboard interaction",
+      "body": "Tab to the trigger, then press Enter, Space, or an arrow key to open. Arrow Right and Down move to the next item, Arrow Left and Up to the previous one, and both wrap around the ring. Home and End jump to the first and last item. Escape closes the ring and returns focus to the trigger, and tabbing away closes it too."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The trigger is a semantic button and the ring uses menu and menuitem roles with a roving tabindex, so only one item is in the tab order at a time. A closed ring is inert and aria-hidden. trigger=\"hover\" also opens on click and on focus, because hover alone is not operable by keyboard or touch. Labels can be revealed on hover and focus, placed outside the disc, or hidden visually while still naming the item. Reduced-motion preferences are respected throughout."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

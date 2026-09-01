@@ -114,6 +114,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "circular-menu",
+    name: "Circular Menu",
+    description:
+      "Radial menu that fans items out around a center trigger on a full ring or an open arc, with configurable radius, sweep, optional rotation, and keyboard navigation.",
+    href: "/preview/components/circular-menu",
+    badge: "Navigation",
+  },
+  {
     id: "code-block",
     name: "Code Block",
     description:

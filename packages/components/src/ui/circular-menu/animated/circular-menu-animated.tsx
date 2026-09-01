@@ -156,14 +156,13 @@ export function CircularMenuListAnimated({
                   "--zui-circular-menu-item-x": `${position.x}px`,
                   "--zui-circular-menu-item-y": `${position.y}px`,
                   "--zui-circular-menu-item-angle": `${position.angle}deg`,
-                  "--zui-circular-menu-item-index": index,
+                  "--zui-circular-menu-item-index": String(index),
                 } as CircularMenuCssProperties
               }
             >
               <motion.div
                 initial={false}
-                animate={state}
-                variants={preset.variants}
+                animate={preset.states[state]}
                 transition={{
                   ...preset.transition,
                   delay: isOpen ? index * stagger : 0,

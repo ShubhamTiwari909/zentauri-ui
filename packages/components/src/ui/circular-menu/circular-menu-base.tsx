@@ -615,7 +615,7 @@ export function CircularMenuList({
                   "--zui-circular-menu-item-x": `${position.x}px`,
                   "--zui-circular-menu-item-y": `${position.y}px`,
                   "--zui-circular-menu-item-angle": `${position.angle}deg`,
-                  "--zui-circular-menu-item-index": index,
+                  "--zui-circular-menu-item-index": String(index),
                 } as CircularMenuCssProperties
               }
             >

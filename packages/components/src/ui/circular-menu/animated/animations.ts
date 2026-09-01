@@ -1,4 +1,4 @@
-import type { Transition, Variants } from "framer-motion";
+import type { TargetAndTransition, Transition } from "framer-motion";
 
 /** Radial open/close effects applied to each item disc. */
 export type CircularMenuAnimation =
@@ -8,9 +8,19 @@ export type CircularMenuAnimation =
   | "pop"
   | "spiral";
 
+export type CircularMenuAnimationPreset = {
+  transition: Transition;
+  /**
+   * Resolved targets rather than framer-motion variant labels: the ring body is
+   * itself a motion component, and passing concrete targets keeps each item's
+   * reveal independent of variant propagation.
+   */
+  states: Record<"closed" | "open", TargetAndTransition>;
+};
+
 export type CircularMenuAnimationPresets = Record<
   CircularMenuAnimation,
-  { transition: Transition; variants: Variants }
+  CircularMenuAnimationPreset
 >;
 
 const defaultEasing: [number, number, number, number] = [0.4, 0, 0.2, 1];
@@ -25,35 +35,35 @@ const defaultEasing: [number, number, number, number] = [0.4, 0, 0.2, 1];
 export const circularMenuItemAnimationPresets: CircularMenuAnimationPresets = {
   none: {
     transition: { duration: 0 },
-    variants: {
+    states: {
       closed: { opacity: 1, scale: 1, rotate: 0 },
       open: { opacity: 1, scale: 1, rotate: 0 },
     },
   },
   fade: {
     transition: { duration: 0.2, ease: defaultEasing },
-    variants: {
+    states: {
       closed: { opacity: 0, scale: 1, rotate: 0 },
       open: { opacity: 1, scale: 1, rotate: 0 },
     },
   },
   scale: {
     transition: { duration: 0.22, ease: defaultEasing },
-    variants: {
+    states: {
       closed: { opacity: 0, scale: 0.6, rotate: 0 },
       open: { opacity: 1, scale: 1, rotate: 0 },
     },
   },
   pop: {
     transition: { type: "spring", stiffness: 420, damping: 24, mass: 0.7 },
-    variants: {
+    states: {
       closed: { opacity: 0, scale: 0.3, rotate: 0 },
       open: { opacity: 1, scale: 1, rotate: 0 },
     },
   },
   spiral: {
     transition: { duration: 0.35, ease: defaultEasing },
-    variants: {
+    states: {
       closed: { opacity: 0, scale: 0.2, rotate: -180 },
       open: { opacity: 1, scale: 1, rotate: 0 },
     },

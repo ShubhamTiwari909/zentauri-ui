@@ -60,7 +60,7 @@ export type CircularMenuCssProperties = CSSProperties & {
   "--zui-circular-menu-item-x"?: string;
   "--zui-circular-menu-item-y"?: string;
   "--zui-circular-menu-item-angle"?: string;
-  "--zui-circular-menu-item-index"?: number;
+  "--zui-circular-menu-item-index"?: string;
 };
 
 export type CircularMenuRootProps = Omit<

@@ -219,6 +219,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/checkbox",
       },
       {
+        title: "Circular Menu",
+        href: "/preview/components/circular-menu",
+      },
+      {
         title: "Code Block",
         href: "/preview/components/code-block",
       },

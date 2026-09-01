@@ -9,6 +9,20 @@
 /** Degrees per radian conversion factor. */
 const DEG_TO_RAD = Math.PI / 180;
 
+/**
+ * Sub-pixel precision kept in solved offsets.
+ *
+ * `Math.sin` is allowed to differ in its last bits between engines, so an
+ * unrounded offset can serialize differently on the server and in the browser
+ * and trip React's hydration check. Four decimals is far below one device pixel
+ * and is stable across engines.
+ */
+const PRECISION = 10_000;
+
+function round(value: number) {
+  return Math.round(value * PRECISION) / PRECISION;
+}
+
 export type CircularMenuDirection = "clockwise" | "counterclockwise";
 
 export type CircularMenuPosition = {
@@ -77,14 +91,14 @@ export function getCircularMenuPositions({
   const sign = direction === "counterclockwise" ? -1 : 1;
 
   return Array.from({ length: count }, (_, index) => {
-    const angle = startAngle + sign * step * index;
+    const angle = round(startAngle + sign * step * index);
     const radians = angle * DEG_TO_RAD;
     return {
       index,
       angle,
-      x: Math.sin(radians) * radius,
+      x: round(Math.sin(radians) * radius),
       // Screen y grows downward, so negate to keep 0deg at 12 o'clock.
-      y: -Math.cos(radians) * radius,
+      y: round(-Math.cos(radians) * radius),
     };
   });
 }
