@@ -16,6 +16,7 @@
     "calendar",
     "card",
     "checkbox",
+    "circular-menu",
     "code-block",
     "code-diff",
     "combobox",
@@ -89,6 +90,7 @@
     "calendar",
     "card",
     "checkbox",
+    "circular-menu",
     "code-block",
     "command",
     "console-viewer",
@@ -205,6 +207,7 @@
     "charts/scatter",
     "charts/stacked-bar",
     "checkbox",
+    "circular-menu",
     "code-block",
     "code-diff",
     "combobox",
@@ -423,6 +426,9 @@
       "framer-motion"
     ],
     "checkbox": [
+      "framer-motion"
+    ],
+    "circular-menu": [
       "framer-motion"
     ],
     "code-block": [
