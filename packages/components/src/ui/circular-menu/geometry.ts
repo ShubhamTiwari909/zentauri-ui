@@ -86,7 +86,7 @@ export function getCircularMenuPositions({
   }
 
   const closed = Math.abs(sweep) >= 360;
-  const span = closed ? 360 : sweep;
+  const span = closed ? 360 : Math.abs(sweep);
   const step = count === 1 ? 0 : closed ? span / count : span / (count - 1);
   const sign = direction === "counterclockwise" ? -1 : 1;
 

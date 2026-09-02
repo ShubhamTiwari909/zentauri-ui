@@ -17,9 +17,11 @@ import {
   CircularMenuItemIcon,
   CircularMenuItemLabel,
   CircularMenuItemSlot,
+  CircularMenuMotionContext,
   CircularMenuRoot,
   CircularMenuSpoke,
   CircularMenuTrigger,
+  shorthandItemAriaLabel,
   useCircularMenuContext,
   useCircularMenuLayout,
 } from "../circular-menu-base";
@@ -87,9 +89,14 @@ export function CircularMenuListAnimated({
     if (previous === null) return;
     // Reading :hover beats tracking hover in state: the frame loop already runs
     // every frame, and a hover state update would re-render the whole ring.
+    // Use closest() rather than parentElement: a compound `CircularMenu.List`
+    // can be nested inside a consumer wrapper, which would otherwise be the
+    // element whose :hover state gets read instead of the menu root.
     const paused =
       spinPauseOnHover &&
-      listRef.current?.parentElement?.matches(":hover") === true;
+      listRef.current
+        ?.closest('[data-slot="circular-menu"]')
+        ?.matches(":hover") === true;
     if (paused) return;
     elapsedRef.current += time - previous;
     const revolutionMs = Math.max(spinDuration, 0.001) * 1000;
@@ -130,54 +137,62 @@ export function CircularMenuListAnimated({
       }}
       {...rest}
     >
-      {showSpokes &&
-        positions.map((position) => (
-          <CircularMenuItemSlot
-            key={`spoke-${position.index}`}
-            index={position.index}
-            position={position}
-          >
-            <CircularMenuSpoke appearance={appearance} />
-          </CircularMenuItemSlot>
-        ))}
-      {slots.map((slot, index) => {
-        const position = positions[index] ?? { index, angle: 0, x: 0, y: 0 };
-        const key = (slot as ReactElement).key ?? index;
-
-        return (
-          <CircularMenuItemSlot key={key} index={index} position={position}>
-            <div
-              data-slot="circular-menu-item-positioner"
-              data-index={index}
-              data-angle={position.angle}
-              className={cn(circularMenuItemPositionerVariants())}
-              style={
-                {
-                  "--zui-circular-menu-item-x": `${position.x}px`,
-                  "--zui-circular-menu-item-y": `${position.y}px`,
-                  "--zui-circular-menu-item-angle": `${position.angle}deg`,
-                  "--zui-circular-menu-item-index": String(index),
-                } as CircularMenuCssProperties
-              }
+      {/* Framer already drives the reveal and the counter-rotation here, so
+          the shared item/icon/label components must stand down their static
+          CSS equivalents (closed-state fade/scale, CSS counter-spin) — both
+          running at once is what causes the drift this context prevents. */}
+      <CircularMenuMotionContext.Provider value={true}>
+        {showSpokes &&
+          positions.map((position) => (
+            <CircularMenuItemSlot
+              key={`spoke-${position.index}`}
+              index={position.index}
+              position={position}
             >
-              <motion.div
-                initial={false}
-                animate={preset.states[state]}
-                transition={{
-                  ...preset.transition,
-                  delay: isOpen ? index * stagger : 0,
-                }}
+              <CircularMenuSpoke appearance={appearance} />
+            </CircularMenuItemSlot>
+          ))}
+        {slots.map((slot, index) => {
+          const position = positions[index] ?? { index, angle: 0, x: 0, y: 0 };
+          const key = (slot as ReactElement).key ?? index;
+
+          return (
+            <CircularMenuItemSlot key={key} index={index} position={position}>
+              <div
+                data-slot="circular-menu-item-positioner"
+                data-index={index}
+                data-angle={position.angle}
+                className={cn(circularMenuItemPositionerVariants())}
+                style={
+                  {
+                    "--zui-circular-menu-item-x": `${position.x}px`,
+                    "--zui-circular-menu-item-y": `${position.y}px`,
+                    "--zui-circular-menu-item-angle": `${position.angle}deg`,
+                    "--zui-circular-menu-item-index": String(index),
+                  } as CircularMenuCssProperties
+                }
               >
                 <motion.div
-                  style={counterSpin ? { rotate: counterRotation } : undefined}
+                  initial={false}
+                  animate={preset.states[state]}
+                  transition={{
+                    ...preset.transition,
+                    delay: isOpen ? index * stagger : 0,
+                  }}
                 >
-                  {slot}
+                  <motion.div
+                    style={
+                      counterSpin ? { rotate: counterRotation } : undefined
+                    }
+                  >
+                    {slot}
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            </div>
-          </CircularMenuItemSlot>
-        );
-      })}
+              </div>
+            </CircularMenuItemSlot>
+          );
+        })}
+      </CircularMenuMotionContext.Provider>
     </motion.div>
   );
 }
@@ -210,7 +225,7 @@ function CircularMenuAnimatedImpl({
 }: CircularMenuAnimatedProps) {
   return (
     <CircularMenuRoot items={items} {...rest}>
-      <CircularMenuTrigger>
+      <CircularMenuTrigger aria-label={label === null ? "Menu" : undefined}>
         {label ?? <DefaultTriggerIcon />}
       </CircularMenuTrigger>
       <CircularMenuListAnimated animation={animation} stagger={stagger}>
@@ -223,6 +238,7 @@ function CircularMenuAnimatedImpl({
               href={item.href}
               target={item.target}
               onSelect={item.onSelect}
+              aria-label={shorthandItemAriaLabel(item)}
             >
               {item.icon != null && (
                 <CircularMenuItemIcon>{item.icon}</CircularMenuItemIcon>

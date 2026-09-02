@@ -1,6 +1,29 @@
 import { render } from "@testing-library/react";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
+// motion-dom's frame loop reads `requestAnimationFrame` once, at module
+// evaluation time, so the mock has to be in place before framer-motion (a
+// transitive import of the animated entry below) is first imported —
+// `vi.hoisted` runs this ahead of every import in the file, not just this one.
+const { rafCallbacks } = vi.hoisted(() => {
+  const callbacks: FrameRequestCallback[] = [];
+  let nextId = 1;
+  Object.defineProperty(globalThis, "requestAnimationFrame", {
+    writable: true,
+    configurable: true,
+    value: (callback: FrameRequestCallback) => {
+      callbacks.push(callback);
+      return nextId++;
+    },
+  });
+  Object.defineProperty(globalThis, "cancelAnimationFrame", {
+    writable: true,
+    configurable: true,
+    value: () => {},
+  });
+  return { rafCallbacks: callbacks };
+});
+
 import { CircularMenu } from "./animated/circular-menu-animated";
 import type { CircularMenuItemData } from "./types";
 
@@ -45,8 +68,23 @@ describe("CircularMenu (animated, reduced motion)", () => {
     const { container } = render(
       <CircularMenu items={items} trigger="always" spin />,
     );
+
+    // Drive framer-motion's frame loop by hand: `useAnimationFrame` never
+    // advances `rotation` on its own inside a synchronous render, so without
+    // pumping frames this assertion would pass whether or not the
+    // `prefersReducedMotion` bail actually exists.
+    expect(rafCallbacks.length).toBeGreaterThan(0);
+    let time = 0;
+    for (let frame = 0; frame < 5; frame += 1) {
+      time += 16;
+      const callback = rafCallbacks.shift();
+      callback?.(time);
+    }
+
     const list = container.querySelector('[data-slot="circular-menu-list"]');
     // The frame loop bails out before touching the rotation motion value.
-    expect(list?.getAttribute("style") ?? "").not.toMatch(/rotate\((?!0)/);
+    expect(list?.getAttribute("style") ?? "").not.toMatch(
+      /rotate\(-?(?:[1-9]\d*|0?\.\d+)(?:deg)?\)/,
+    );
   });
 });

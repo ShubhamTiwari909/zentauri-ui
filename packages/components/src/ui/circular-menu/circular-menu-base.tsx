@@ -85,6 +85,16 @@ type CircularMenuItemContextValue = {
 const CircularMenuItemContext =
   createContext<CircularMenuItemContextValue | null>(null);
 
+/**
+ * `true` inside the animated entry's list.
+ *
+ * The animated list already counter-rotates items and drives their reveal
+ * with Framer Motion, so the static CSS counter-spin and closed-state
+ * fade/scale (meant for the pure-CSS static entry) must stand down there —
+ * otherwise both mechanisms run at once and the ring drifts.
+ */
+const CircularMenuMotionContext = createContext(false);
+
 function useCircularMenuContext(component: string) {
   const ctx = useContext(CircularMenuContext);
   if (!ctx) {
@@ -356,9 +366,9 @@ export function CircularMenuRoot({
   );
 
   const handleOutsidePress = useCallback(() => {
-    if (!closeOnOutside) return;
+    if (!closeOnOutside || !isOpen) return;
     close();
-  }, [close, closeOnOutside]);
+  }, [close, closeOnOutside, isOpen]);
 
   useClickOutside({
     ref: rootRef,
@@ -503,7 +513,7 @@ export function CircularMenuTrigger({
     triggerRef,
     handleTriggerKeyDown,
   } = useCircularMenuContext("CircularMenu.Trigger");
-  const isTriggerDisabled = disabledProp ?? isDisabled;
+  const isTriggerDisabled = isDisabled || (disabledProp ?? false);
 
   return (
     <button
@@ -640,6 +650,7 @@ export function CircularMenuItem({
   onSelect,
   onClick,
   onFocus,
+  onKeyDown,
   ref,
   ...rest
 }: CircularMenuItemProps) {
@@ -652,7 +663,8 @@ export function CircularMenuItem({
     setActiveIndex,
   } = useCircularMenuContext("CircularMenu.Item");
   const { index } = useCircularMenuItemContext();
-  const isItemDisabled = disabledProp ?? isDisabled;
+  const isMotionControlled = useContext(CircularMenuMotionContext);
+  const isItemDisabled = isDisabled || (disabledProp ?? false);
 
   const register = useCallback(
     (node: HTMLElement | null) => registerItem(index, node),
@@ -674,6 +686,17 @@ export function CircularMenuItem({
     selectItem(index, onSelect);
   };
 
+  // Anchors only activate on Enter natively; Space needs to be wired up by
+  // hand so `href` items match the button items' key support.
+  const handleKeyDown = (event: ReactKeyboardEvent<HTMLElement>) => {
+    onKeyDown?.(event as ReactKeyboardEvent<HTMLButtonElement>);
+    if (event.defaultPrevented || isItemDisabled) return;
+    if (href && event.key === " ") {
+      event.preventDefault();
+      selectItem(index, onSelect);
+    }
+  };
+
   const shared = {
     role: "menuitem" as const,
     tabIndex: activeIndex === index ? 0 : -1,
@@ -684,6 +707,8 @@ export function CircularMenuItem({
     "aria-disabled": isItemDisabled || undefined,
     className: cn(
       circularMenuItemVariants({ appearance: appearanceProp ?? appearance }),
+      isMotionControlled &&
+        "group-data-[state=closed]/circular-menu:scale-100 group-data-[state=closed]/circular-menu:opacity-100",
       className,
     ),
   };
@@ -694,8 +719,10 @@ export function CircularMenuItem({
         ref={composeRefs(ref as Ref<HTMLElement>, register)}
         href={isItemDisabled ? undefined : href}
         target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : undefined}
         onFocus={handleFocus}
         onClick={handleClick}
+        onKeyDown={handleKeyDown}
         {...shared}
         {...(rest as unknown as ComponentPropsWithRef<"a">)}
       >
@@ -708,8 +735,10 @@ export function CircularMenuItem({
     <button
       ref={composeRefs(ref as Ref<HTMLElement>, register)}
       type="button"
+      disabled={isItemDisabled}
       onFocus={handleFocus}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       {...shared}
       {...rest}
     >
@@ -729,13 +758,14 @@ export function CircularMenuItemIcon({
   const { counterSpin, spin, spinPauseOnHover } = useCircularMenuContext(
     "CircularMenu.ItemIcon",
   );
+  const isMotionControlled = useContext(CircularMenuMotionContext);
 
   return (
     <span
       ref={ref}
       aria-hidden="true"
       data-slot="circular-menu-item-icon"
-      data-counter-spin={counterSpin || undefined}
+      data-counter-spin={(counterSpin && !isMotionControlled) || undefined}
       data-pause-on-hover={(spin && spinPauseOnHover) || undefined}
       className={cn(circularMenuItemIconVariants(), className)}
       {...rest}
@@ -756,6 +786,7 @@ export function CircularMenuItemLabel({
 }: CircularMenuItemLabelProps) {
   const { counterSpin, labelPlacement, spin, spinPauseOnHover } =
     useCircularMenuContext("CircularMenu.ItemLabel");
+  const isMotionControlled = useContext(CircularMenuMotionContext);
   const resolvedPlacement = placement ?? labelPlacement;
 
   return (
@@ -763,7 +794,7 @@ export function CircularMenuItemLabel({
       ref={ref}
       data-slot="circular-menu-item-label"
       data-placement={resolvedPlacement}
-      data-counter-spin={counterSpin || undefined}
+      data-counter-spin={(counterSpin && !isMotionControlled) || undefined}
       data-pause-on-hover={(spin && spinPauseOnHover) || undefined}
       className={cn(
         circularMenuItemLabelVariants({ placement: resolvedPlacement }),
@@ -825,6 +856,16 @@ function DefaultTriggerIcon() {
   );
 }
 
+/**
+ * Fallback accessible name for shorthand items.
+ *
+ * `ItemIcon` is always `aria-hidden`, so an item with an icon and no `label`
+ * would otherwise render with no accessible name at all.
+ */
+function shorthandItemAriaLabel(item: CircularMenuItemData) {
+  return item.icon != null && item.label == null ? item.id : undefined;
+}
+
 function CircularMenuImpl({
   items,
   label = "Menu",
@@ -833,7 +874,7 @@ function CircularMenuImpl({
 }: CircularMenuProps) {
   return (
     <CircularMenuRoot items={items} {...rest}>
-      <CircularMenuTrigger>
+      <CircularMenuTrigger aria-label={label === null ? "Menu" : undefined}>
         {label ?? <DefaultTriggerIcon />}
       </CircularMenuTrigger>
       <CircularMenuList>
@@ -846,6 +887,7 @@ function CircularMenuImpl({
               href={item.href}
               target={item.target}
               onSelect={item.onSelect}
+              aria-label={shorthandItemAriaLabel(item)}
             >
               {item.icon != null && (
                 <CircularMenuItemIcon>{item.icon}</CircularMenuItemIcon>
@@ -872,4 +914,10 @@ export const CircularMenu = Object.assign(CircularMenuImpl, {
   Spoke: CircularMenuSpoke,
 });
 
-export { CircularMenuItemSlot, useCircularMenuContext, useCircularMenuLayout };
+export {
+  CircularMenuItemSlot,
+  CircularMenuMotionContext,
+  shorthandItemAriaLabel,
+  useCircularMenuContext,
+  useCircularMenuLayout,
+};

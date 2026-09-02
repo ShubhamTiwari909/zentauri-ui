@@ -189,8 +189,75 @@ describe("CircularMenu", () => {
     );
     const item = screen.getByRole("menuitem");
     expect(item).toHaveAttribute("aria-disabled", "true");
+    expect(item).toBeDisabled();
     fireEvent.click(item);
     expect(onSelect).not.toHaveBeenCalled();
+  });
+
+  it("should keep every item disabled when the root is disabled, even if an item opts out", () => {
+    // A disabled root never opens (see `isOpen` in CircularMenuRoot), so the
+    // item stays inert — query the DOM directly instead of through role,
+    // which only sees the accessibility tree of an open ring.
+    const { container } = render(
+      <CircularMenu
+        disabled
+        items={[{ id: "trash", label: "Delete", disabled: false }]}
+      />,
+    );
+    expect(screen.getByRole("button", { name: "Menu" })).toBeDisabled();
+    const item = container.querySelector('[data-slot="circular-menu-item"]');
+    expect(item).toHaveAttribute("aria-disabled", "true");
+    expect(item).toBeDisabled();
+  });
+
+  it("should not close-and-notify again when an outside press lands on an already-closed menu", () => {
+    const onOpenChange = vi.fn();
+    render(
+      <CircularMenu items={items} open={false} onOpenChange={onOpenChange} />,
+    );
+    fireEvent.mouseDown(document.body);
+    expect(onOpenChange).not.toHaveBeenCalled();
+  });
+
+  it("should give the trigger an accessible name when label is explicitly null", () => {
+    render(<CircularMenu label={null} items={items} />);
+    expect(screen.getByRole("button", { name: "Menu" })).toBeTruthy();
+  });
+
+  it("should give an icon-only shorthand item a fallback accessible name", () => {
+    render(
+      <CircularMenu defaultOpen items={[{ id: "copy", icon: "C" }]} />,
+    );
+    expect(screen.getByRole("menuitem", { name: "copy" })).toBeTruthy();
+  });
+
+  it("should add rel=noopener noreferrer to items that open in a new tab", () => {
+    render(
+      <CircularMenu
+        defaultOpen
+        items={[{ id: "docs", href: "/docs", target: "_blank" }]}
+      />,
+    );
+    expect(screen.getByRole("menuitem")).toHaveAttribute(
+      "rel",
+      "noopener noreferrer",
+    );
+  });
+
+  it("should select an anchor item on Space, matching button items", () => {
+    const onSelect = vi.fn();
+    render(
+      <CircularMenu
+        defaultOpen
+        onSelect={onSelect}
+        items={[{ id: "docs", label: "Docs", href: "/docs" }]}
+      />,
+    );
+    fireEvent.keyDown(screen.getByRole("menuitem"), { key: " " });
+    expect(onSelect).toHaveBeenCalledWith(
+      expect.objectContaining({ id: "docs" }),
+      0,
+    );
   });
 
   it("should keep the ring open and spinning in always mode", () => {
@@ -274,6 +341,34 @@ describe("CircularMenu", () => {
     expect(screen.getAllByRole("menuitem")).toHaveLength(items.length);
     expect(CircularMenuAnimated.displayName).toBe("CircularMenu");
   });
+
+  it("should let the animated entry's own reveal control item visibility instead of the static closed-state CSS", () => {
+    const { container } = render(
+      <CircularMenuAnimated items={items} defaultOpen />,
+    );
+    const item = container.querySelector('[data-slot="circular-menu-item"]');
+    // The static entry's closed-state fade/scale would otherwise double up
+    // with the animated preset's own reveal; the animated list neutralizes it.
+    expect(item?.className).toMatch(
+      /group-data-\[state=closed\]\/circular-menu:scale-100/,
+    );
+    expect(item?.className).toMatch(
+      /group-data-\[state=closed\]\/circular-menu:opacity-100/,
+    );
+  });
+
+  it("should let Motion own counter-rotation in the animated entry instead of the static CSS keyframe", () => {
+    const { container } = render(
+      <CircularMenuAnimated items={items} trigger="always" spin />,
+    );
+    const icon = container.querySelector(
+      '[data-slot="circular-menu-item-icon"]',
+    );
+    // Contrast with the static entry's own test above, which asserts
+    // data-counter-spin="true": doubling up both mechanisms is what caused
+    // icons to drift.
+    expect(icon).not.toHaveAttribute("data-counter-spin", "true");
+  });
 });
 
 describe("getCircularMenuPositions", () => {
@@ -310,6 +405,16 @@ describe("getCircularMenuPositions", () => {
       radius: 50,
       startAngle: -90,
       sweep: 180,
+    });
+    expect(positions.map((position) => position.angle)).toEqual([-90, 0, 90]);
+  });
+
+  it("should treat a negative sweep as a magnitude instead of reversing direction", () => {
+    const positions = getCircularMenuPositions({
+      count: 3,
+      radius: 50,
+      startAngle: -90,
+      sweep: -180,
     });
     expect(positions.map((position) => position.angle)).toEqual([-90, 0, 90]);
   });

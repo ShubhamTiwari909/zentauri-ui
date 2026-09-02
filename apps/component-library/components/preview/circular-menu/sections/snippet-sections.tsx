@@ -26,9 +26,9 @@ export function CircularMenuCodeExamplesSection() {
       <CircularMenuPlayground />
       <div className="mt-10 space-y-10 rounded-xl">
         <div>
-          <p className="mb-3 text-sm font-semibold text-slate-900 dark:text-white">
+          <h3 className="mb-3 text-sm font-semibold text-slate-900 dark:text-white">
             Quarter arc
-          </p>
+          </h3>
           <p className="mb-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
             Set <code>sweep</code> below <code>360</code> and the items spread
             across an arc instead of a closed ring, with the first and last item
@@ -41,9 +41,9 @@ export function CircularMenuCodeExamplesSection() {
           </PreviewCodeShowcase>
         </div>
         <div>
-          <p className="mb-3 text-sm font-semibold text-slate-900 dark:text-white">
+          <h3 className="mb-3 text-sm font-semibold text-slate-900 dark:text-white">
             Orbit
-          </p>
+          </h3>
           <p className="mb-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
             <code>trigger=&quot;always&quot;</code> keeps the ring open, and{" "}
             <code>spin</code> rotates it continuously. The static entry does
@@ -56,9 +56,9 @@ export function CircularMenuCodeExamplesSection() {
           </PreviewCodeShowcase>
         </div>
         <div>
-          <p className="mb-3 text-sm font-semibold text-slate-900 dark:text-white">
+          <h3 className="mb-3 text-sm font-semibold text-slate-900 dark:text-white">
             Controlled state
-          </p>
+          </h3>
           <p className="mb-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
             Drive the ring from your own state with <code>open</code> /{" "}
             <code>onOpenChange</code>. Here <code>closeOnSelect</code> is off,

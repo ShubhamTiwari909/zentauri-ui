@@ -217,5 +217,5 @@ export const circularMenuCssVariables = defineCssVariableReference({
     ["circular-menu-blue-item-border-dark", "#1e40af"],
     ["circular-menu-blue-item-fg-dark", "#dbeafe"],
   ],
-  darkVariableCount: 182,
+  darkVariableCount: 195,
 });
