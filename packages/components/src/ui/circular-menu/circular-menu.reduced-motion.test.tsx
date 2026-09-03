@@ -83,8 +83,11 @@ describe("CircularMenu (animated, reduced motion)", () => {
 
     const list = container.querySelector('[data-slot="circular-menu-list"]');
     // The frame loop bails out before touching the rotation motion value.
+    // Reject anything that ISN'T a zero-equivalent angle (`0`, `-0`, `0.00`,
+    // `0deg`, ...) rather than enumerating non-zero shapes: the previous
+    // enumeration missed non-zero values with an integer part, like `1.92deg`.
     expect(list?.getAttribute("style") ?? "").not.toMatch(
-      /rotate\(-?(?:[1-9]\d*|0?\.\d+)(?:deg)?\)/,
+      /rotate\((?!-?0(?:\.0*)?(?:\.?deg)?\))/,
     );
   });
 });

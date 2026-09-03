@@ -189,7 +189,10 @@ describe("CircularMenu", () => {
     );
     const item = screen.getByRole("menuitem");
     expect(item).toHaveAttribute("aria-disabled", "true");
-    expect(item).toBeDisabled();
+    // Not a native `disabled` button: roving tabIndex still moves the
+    // highlight onto it via `.focus()`, which a real `disabled` button would
+    // ignore. Activation is blocked in the click/keydown handlers instead.
+    expect(item).not.toBeDisabled();
     fireEvent.click(item);
     expect(onSelect).not.toHaveBeenCalled();
   });
@@ -207,7 +210,7 @@ describe("CircularMenu", () => {
     expect(screen.getByRole("button", { name: "Menu" })).toBeDisabled();
     const item = container.querySelector('[data-slot="circular-menu-item"]');
     expect(item).toHaveAttribute("aria-disabled", "true");
-    expect(item).toBeDisabled();
+    expect(item).toHaveAttribute("data-disabled", "true");
   });
 
   it("should not close-and-notify again when an outside press lands on an already-closed menu", () => {
@@ -228,6 +231,11 @@ describe("CircularMenu", () => {
     render(
       <CircularMenu defaultOpen items={[{ id: "copy", icon: "C" }]} />,
     );
+    expect(screen.getByRole("menuitem", { name: "copy" })).toBeTruthy();
+  });
+
+  it("should give a shorthand item with neither icon nor label a fallback accessible name", () => {
+    render(<CircularMenu defaultOpen items={[{ id: "copy" }]} />);
     expect(screen.getByRole("menuitem", { name: "copy" })).toBeTruthy();
   });
 

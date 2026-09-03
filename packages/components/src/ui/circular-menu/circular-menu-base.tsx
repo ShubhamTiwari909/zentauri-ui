@@ -735,7 +735,6 @@ export function CircularMenuItem({
     <button
       ref={composeRefs(ref as Ref<HTMLElement>, register)}
       type="button"
-      disabled={isItemDisabled}
       onFocus={handleFocus}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
@@ -859,11 +858,12 @@ function DefaultTriggerIcon() {
 /**
  * Fallback accessible name for shorthand items.
  *
- * `ItemIcon` is always `aria-hidden`, so an item with an icon and no `label`
- * would otherwise render with no accessible name at all.
+ * `ItemIcon` is always `aria-hidden`, so an item without a `label` — whether
+ * or not it has an icon — would otherwise render with no accessible name at
+ * all.
  */
 function shorthandItemAriaLabel(item: CircularMenuItemData) {
-  return item.icon != null && item.label == null ? item.id : undefined;
+  return item.label == null ? item.id : undefined;
 }
 
 function CircularMenuImpl({

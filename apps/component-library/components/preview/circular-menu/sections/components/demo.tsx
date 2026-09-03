@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import {
   FiBell,
   FiBookmark,
@@ -19,22 +20,32 @@ import { CircularMenu } from "@zentauri-ui/zentauri-components/ui/circular-menu"
 import type { CircularMenuItemData } from "@zentauri-ui/zentauri-components/ui/circular-menu";
 import { CircularMenu as CircularMenuAnimated } from "@zentauri-ui/zentauri-components/ui/circular-menu/animated";
 
+import { CIRCULAR_MENU_ITEM_POOL_DATA } from "./item-pool-data";
 import type { CircularMenuDemoProps } from "./types";
 
-const ITEM_POOL: CircularMenuItemData[] = [
-  { id: "copy", label: "Copy", icon: <FiCopy /> },
-  { id: "share", label: "Share", icon: <FiShare2 /> },
-  { id: "edit", label: "Edit", icon: <FiEdit2 /> },
-  { id: "save", label: "Save", icon: <FiSave /> },
-  { id: "download", label: "Download", icon: <FiDownload /> },
-  { id: "link", label: "Copy link", icon: <FiLink /> },
-  { id: "star", label: "Star", icon: <FiStar /> },
-  { id: "bookmark", label: "Bookmark", icon: <FiBookmark /> },
-  { id: "like", label: "Like", icon: <FiHeart /> },
-  { id: "notify", label: "Notify", icon: <FiBell /> },
-  { id: "send", label: "Send", icon: <FiSend /> },
-  { id: "delete", label: "Delete", icon: <FiTrash2 /> },
-];
+/** Resolves an icon name from `CIRCULAR_MENU_ITEM_POOL_DATA` to its element. */
+const ICONS: Record<string, ReactNode> = {
+  FiCopy: <FiCopy />,
+  FiShare2: <FiShare2 />,
+  FiEdit2: <FiEdit2 />,
+  FiSave: <FiSave />,
+  FiDownload: <FiDownload />,
+  FiLink: <FiLink />,
+  FiStar: <FiStar />,
+  FiBookmark: <FiBookmark />,
+  FiHeart: <FiHeart />,
+  FiBell: <FiBell />,
+  FiSend: <FiSend />,
+  FiTrash2: <FiTrash2 />,
+};
+
+const ITEM_POOL: CircularMenuItemData[] = CIRCULAR_MENU_ITEM_POOL_DATA.map(
+  (entry) => ({
+    id: entry.id,
+    label: entry.label,
+    icon: ICONS[entry.icon],
+  }),
+);
 
 /** Repeats the pool when a demo asks for more items than it holds. */
 export function buildCircularMenuItems(count: number): CircularMenuItemData[] {
