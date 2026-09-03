@@ -5196,6 +5196,1266 @@
         }
       ]
     },
+    "circular-menu": {
+      "slug": "circular-menu",
+      "subcomponents": [
+        {
+          "name": "static:CircularMenu",
+          "displayName": "CircularMenu",
+          "propsType": "CircularMenuProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "defaultOpen",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenChange",
+              "type": "((open: boolean) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "open",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-violet' | 'gradient-rose' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "boxSize",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Square box edge in pixels. Defaults to `2 * (radius + itemSize / 2)`.",
+              "deprecated": false
+            },
+            {
+              "name": "closeOnEscape",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "closeOnOutside",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "closeOnSelect",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "direction",
+              "type": "CircularMenuDirection | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "itemRotation",
+              "type": "CircularMenuItemRotation | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `\"upright\"`, which counter-rotates icons and labels.",
+              "deprecated": false
+            },
+            {
+              "name": "items",
+              "type": "CircularMenuItemData[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Shorthand data API. Ignored when the root is composed from children.",
+              "deprecated": false
+            },
+            {
+              "name": "itemSize",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Item diameter in pixels. Defaults to the size variant's item size.",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "description": "Trigger content, and the accessible name of the menu.",
+              "deprecated": false
+            },
+            {
+              "name": "labelPlacement",
+              "type": "'none' | 'tooltip' | 'inside' | 'outside' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `\"tooltip\"`, which reveals the label on hover and focus.",
+              "deprecated": false
+            },
+            {
+              "name": "onSelect",
+              "type": "((item: CircularMenuItemData, index: number) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Runs after the selected item's own `onSelect`.",
+              "deprecated": false
+            },
+            {
+              "name": "radius",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Ring radius in pixels. Defaults to the size variant's radius.",
+              "deprecated": false
+            },
+            {
+              "name": "showSpokes",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Draw a line from the center to each item.",
+              "deprecated": false
+            },
+            {
+              "name": "spin",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Rotate the whole ring continuously.",
+              "deprecated": false
+            },
+            {
+              "name": "spinDuration",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Seconds per revolution. Defaults to `12`.",
+              "deprecated": false
+            },
+            {
+              "name": "spinPauseOnHover",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "stagger",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Per-item open/close delay in milliseconds. Defaults to `40`.",
+              "deprecated": false
+            },
+            {
+              "name": "startAngle",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Angle of the first item in degrees. `0` = 12 o'clock, positive = clockwise.",
+              "deprecated": false
+            },
+            {
+              "name": "sweep",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Arc covered by the items in degrees. `360` closes the ring.",
+              "deprecated": false
+            },
+            {
+              "name": "trigger",
+              "type": "CircularMenuTriggerMode | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `\"click\"`. `\"hover\"` still opens on click and on focus.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CircularMenuItem",
+          "displayName": "CircularMenuItem",
+          "propsType": "CircularMenuItemProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "amber",
+                "blue",
+                "default",
+                "destructive",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-rose",
+                "gradient-violet",
+                "info",
+                "primary",
+                "rose",
+                "secondary",
+                "slate",
+                "success",
+                "violet",
+                "warning",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "href",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Renders the item as an anchor instead of a button.",
+              "deprecated": false
+            },
+            {
+              "name": "onSelect",
+              "type": "(() => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "target",
+              "type": "HTMLAttributeAnchorTarget | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CircularMenuItemIcon",
+          "displayName": "CircularMenuItemIcon",
+          "propsType": "CircularMenuItemIconProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CircularMenuItemLabel",
+          "displayName": "CircularMenuItemLabel",
+          "propsType": "CircularMenuItemLabelProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "placement",
+              "type": "enum",
+              "required": false,
+              "default": "tooltip",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "inside",
+                "none",
+                "outside",
+                "tooltip"
+              ],
+              "variantGroup": "placement",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CircularMenuList",
+          "displayName": "CircularMenuList",
+          "propsType": "CircularMenuListProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CircularMenuRoot",
+          "displayName": "CircularMenuRoot",
+          "propsType": "CircularMenuRootProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "defaultOpen",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenChange",
+              "type": "((open: boolean) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "open",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-violet' | 'gradient-rose' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "boxSize",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Square box edge in pixels. Defaults to `2 * (radius + itemSize / 2)`.",
+              "deprecated": false
+            },
+            {
+              "name": "closeOnEscape",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "closeOnOutside",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "closeOnSelect",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "direction",
+              "type": "CircularMenuDirection | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "itemRotation",
+              "type": "CircularMenuItemRotation | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `\"upright\"`, which counter-rotates icons and labels.",
+              "deprecated": false
+            },
+            {
+              "name": "items",
+              "type": "CircularMenuItemData[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Shorthand data API. Ignored when the root is composed from children.",
+              "deprecated": false
+            },
+            {
+              "name": "itemSize",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Item diameter in pixels. Defaults to the size variant's item size.",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "description": "Trigger content, and the accessible name of the menu.",
+              "deprecated": false
+            },
+            {
+              "name": "labelPlacement",
+              "type": "'none' | 'tooltip' | 'inside' | 'outside' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `\"tooltip\"`, which reveals the label on hover and focus.",
+              "deprecated": false
+            },
+            {
+              "name": "onSelect",
+              "type": "((item: CircularMenuItemData, index: number) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Runs after the selected item's own `onSelect`.",
+              "deprecated": false
+            },
+            {
+              "name": "radius",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Ring radius in pixels. Defaults to the size variant's radius.",
+              "deprecated": false
+            },
+            {
+              "name": "showSpokes",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Draw a line from the center to each item.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "CircularMenuSize | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "spin",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Rotate the whole ring continuously.",
+              "deprecated": false
+            },
+            {
+              "name": "spinDuration",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Seconds per revolution. Defaults to `12`.",
+              "deprecated": false
+            },
+            {
+              "name": "spinPauseOnHover",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "stagger",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Per-item open/close delay in milliseconds. Defaults to `40`.",
+              "deprecated": false
+            },
+            {
+              "name": "startAngle",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Angle of the first item in degrees. `0` = 12 o'clock, positive = clockwise.",
+              "deprecated": false
+            },
+            {
+              "name": "sweep",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Arc covered by the items in degrees. `360` closes the ring.",
+              "deprecated": false
+            },
+            {
+              "name": "trigger",
+              "type": "CircularMenuTriggerMode | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `\"click\"`. `\"hover\"` still opens on click and on focus.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CircularMenuSpoke",
+          "displayName": "CircularMenuSpoke",
+          "propsType": "CircularMenuSpokeProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "amber",
+                "blue",
+                "default",
+                "destructive",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-rose",
+                "gradient-violet",
+                "info",
+                "primary",
+                "rose",
+                "secondary",
+                "slate",
+                "success",
+                "violet",
+                "warning",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CircularMenuTrigger",
+          "displayName": "CircularMenuTrigger",
+          "propsType": "CircularMenuTriggerProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CircularMenuVariant",
+          "displayName": "CircularMenuVariant",
+          "propsType": "CircularMenuVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:CircularMenuAnimated",
+          "displayName": "CircularMenuAnimated",
+          "propsType": "CircularMenuAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "defaultOpen",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenChange",
+              "type": "((open: boolean) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "open",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "animation",
+              "type": "CircularMenuAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `\"pop\"`. Forced to `\"none\"` under `prefers-reduced-motion`.",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-violet' | 'gradient-rose' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "boxSize",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Square box edge in pixels. Defaults to `2 * (radius + itemSize / 2)`.",
+              "deprecated": false
+            },
+            {
+              "name": "closeOnEscape",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "closeOnOutside",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "closeOnSelect",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "direction",
+              "type": "CircularMenuDirection | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "itemRotation",
+              "type": "CircularMenuItemRotation | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `\"upright\"`, which counter-rotates icons and labels.",
+              "deprecated": false
+            },
+            {
+              "name": "items",
+              "type": "CircularMenuItemData[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Shorthand data API. Ignored when the root is composed from children.",
+              "deprecated": false
+            },
+            {
+              "name": "itemSize",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Item diameter in pixels. Defaults to the size variant's item size.",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "description": "Trigger content, and the accessible name of the menu.",
+              "deprecated": false
+            },
+            {
+              "name": "labelPlacement",
+              "type": "'none' | 'tooltip' | 'inside' | 'outside' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `\"tooltip\"`, which reveals the label on hover and focus.",
+              "deprecated": false
+            },
+            {
+              "name": "onSelect",
+              "type": "((item: CircularMenuItemData, index: number) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Runs after the selected item's own `onSelect`.",
+              "deprecated": false
+            },
+            {
+              "name": "radius",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Ring radius in pixels. Defaults to the size variant's radius.",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "showSpokes",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Draw a line from the center to each item.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "CircularMenuSize | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "spin",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Rotate the whole ring continuously.",
+              "deprecated": false
+            },
+            {
+              "name": "spinDuration",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Seconds per revolution. Defaults to `12`.",
+              "deprecated": false
+            },
+            {
+              "name": "spinPauseOnHover",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "stagger",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Per-item delay in **seconds** (the static entry's `stagger` is in ms).",
+              "deprecated": false
+            },
+            {
+              "name": "startAngle",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Angle of the first item in degrees. `0` = 12 o'clock, positive = clockwise.",
+              "deprecated": false
+            },
+            {
+              "name": "sweep",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Arc covered by the items in degrees. `360` closes the ring.",
+              "deprecated": false
+            },
+            {
+              "name": "trigger",
+              "type": "CircularMenuTriggerMode | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `\"click\"`. `\"hover\"` still opens on click and on focus.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:CircularMenuListAnimated",
+          "displayName": "CircularMenuListAnimated",
+          "propsType": "CircularMenuListAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "animation",
+              "type": "CircularMenuAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "stagger",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Per-item delay in seconds.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "code-block": {
       "slug": "code-block",
       "subcomponents": [
@@ -17264,7 +18524,7 @@
             },
             {
               "name": "scrollbar",
-              "type": "'hidden' | 'auto' | 'always' | 'hover' | null | undefined",
+              "type": "'hidden' | 'auto' | 'hover' | 'always' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -19320,7 +20580,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-emerald' | 'gradient-rose' | undefined",
+              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-rose' | 'gradient-emerald' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -19641,7 +20901,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-emerald' | 'gradient-rose' | undefined",
+              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-rose' | 'gradient-emerald' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false

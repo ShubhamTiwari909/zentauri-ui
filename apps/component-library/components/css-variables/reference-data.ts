@@ -10,6 +10,7 @@ import { buttonsCssVariables } from "./data/buttons";
 import { calendarCssVariables } from "./data/calendar";
 import { cardCssVariables } from "./data/card";
 import { checkboxCssVariables } from "./data/checkbox";
+import { circularMenuCssVariables } from "./data/circular-menu";
 import { codeBlockCssVariables } from "./data/code-block";
 import { codeDiffCssVariables } from "./data/code-diff";
 import { consoleViewerCssVariables } from "./data/console-viewer";
@@ -81,6 +82,7 @@ export const cssVariableReferences = {
   calendar: calendarCssVariables,
   card: cardCssVariables,
   checkbox: checkboxCssVariables,
+  "circular-menu": circularMenuCssVariables,
   "code-block": codeBlockCssVariables,
   "code-diff": codeDiffCssVariables,
   "console-viewer": consoleViewerCssVariables,
