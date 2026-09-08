@@ -13,6 +13,7 @@ import buttons from "@/content/seo/preview/components/buttons.json";
 import calendar from "@/content/seo/preview/components/calendar.json";
 import card from "@/content/seo/preview/components/card.json";
 import checkbox from "@/content/seo/preview/components/checkbox.json";
+import carousel from "@/content/seo/preview/components/carousel.json";
 import circularMenu from "@/content/seo/preview/components/circular-menu.json";
 import codeBlock from "@/content/seo/preview/components/code-block.json";
 import codeDiff from "@/content/seo/preview/components/code-diff.json";
@@ -99,6 +100,7 @@ const previewSeoRegistry = {
   calendar: calendar as PreviewSeoDocument,
   card: card as PreviewSeoDocument,
   checkbox: checkbox as PreviewSeoDocument,
+  carousel: carousel as PreviewSeoDocument,
   "circular-menu": circularMenu as PreviewSeoDocument,
   "code-block": codeBlock as PreviewSeoDocument,
   "code-diff": codeDiff as PreviewSeoDocument,

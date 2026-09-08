@@ -215,6 +215,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/card",
       },
       {
+        title: "Carousel",
+        href: "/preview/components/carousel",
+      },
+      {
         title: "Checkbox",
         href: "/preview/components/checkbox",
       },

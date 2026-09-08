@@ -15,6 +15,7 @@
     "buttons",
     "calendar",
     "card",
+    "carousel",
     "checkbox",
     "circular-menu",
     "code-block",
@@ -89,6 +90,7 @@
     "buttons",
     "calendar",
     "card",
+    "carousel",
     "checkbox",
     "circular-menu",
     "code-block",
@@ -197,6 +199,7 @@
     "buttons",
     "calendar",
     "card",
+    "carousel",
     "charts/area",
     "charts/bar",
     "charts/bubble",
@@ -423,6 +426,9 @@
       "framer-motion"
     ],
     "card": [
+      "framer-motion"
+    ],
+    "carousel": [
       "framer-motion"
     ],
     "checkbox": [

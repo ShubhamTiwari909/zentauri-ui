@@ -19,6 +19,7 @@ import {
 } from "../ui/breadcrumb";
 import { Button } from "../ui/buttons/button";
 import { Calendar } from "../ui/calendar";
+import { Carousel } from "../ui/carousel";
 import { Checkbox } from "../ui/checkbox";
 import {
   Combobox,
@@ -211,6 +212,35 @@ describe("axe-core accessibility coverage", () => {
     it("passes axe checks for pagination controls", async () => {
       const { container } = render(
         <Pagination pageCount={5} defaultPage={2} />,
+      );
+
+      await assertNoAxeViolations(container);
+    });
+
+    it("passes axe checks for carousel region and slide markup", async () => {
+      const { container } = render(
+        <Carousel aria-label="Featured releases" counter progress>
+          <img alt="Release one" src="one.png" />
+          <img alt="Release two" src="two.png" />
+          <img alt="Release three" src="three.png" />
+        </Carousel>,
+      );
+
+      await assertNoAxeViolations(container);
+    });
+
+    it("passes axe checks for a multi-slide vertical carousel", async () => {
+      const { container } = render(
+        <Carousel
+          aria-label="Changelog"
+          orientation="vertical"
+          slidesPerView={2}
+          arrows="outside"
+        >
+          <p>Version 3</p>
+          <p>Version 2</p>
+          <p>Version 1</p>
+        </Carousel>,
       );
 
       await assertNoAxeViolations(container);
