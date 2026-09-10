@@ -71,6 +71,27 @@ export const CarouselItemIndexContext = createContext<number | null>(null);
 
 export const CAROUSEL_GAP_FALLBACK = "0.75rem";
 
+/**
+ * Controls a drag must never start from.
+ *
+ * The viewport captures the pointer to track a drag, and pointer capture
+ * retargets the follow-up `click` to the capturing element — which would
+ * swallow every click on the arrows overlaid inside the viewport, and on any
+ * link or button a consumer puts inside a slide.
+ */
+const CAROUSEL_INTERACTIVE_SELECTOR = [
+  "button",
+  "a[href]",
+  "input",
+  "select",
+  "textarea",
+  "label",
+  '[role="button"]',
+  '[role="link"]',
+  '[contenteditable=""]',
+  '[contenteditable="true"]',
+].join(",");
+
 function composeRefs<T>(
   ...refs: (Ref<T> | undefined)[]
 ): (node: T | null) => void {
@@ -251,6 +272,9 @@ export function CarouselRoot({
     (event: ReactPointerEvent<HTMLDivElement>) => {
       if (!draggable || disabled || !isScrollable) return;
       if (event.pointerType === "mouse" && event.button !== 0) return;
+      // Let controls have their own click; see CAROUSEL_INTERACTIVE_SELECTOR.
+      const origin = event.target as Element | null;
+      if (origin?.closest?.(CAROUSEL_INTERACTIVE_SELECTOR)) return;
       event.currentTarget.setPointerCapture?.(event.pointerId);
       const gesture: DragState = {
         pointerId: event.pointerId,

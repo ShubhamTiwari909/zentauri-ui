@@ -336,6 +336,82 @@ describe("Carousel", () => {
     expect(cssVar(root, "--carousel-offset")).toContain("-1 *");
   });
 
+  it("should not capture the pointer when a gesture starts on a control", () => {
+    // The viewport captures the pointer to track a drag, and pointer capture
+    // retargets the follow-up `click` to the capturing element. If the viewport
+    // captured here, every click on an arrow overlaid inside it would be
+    // swallowed before reaching the button.
+    const capture = vi.fn();
+    HTMLElement.prototype.setPointerCapture = capture;
+
+    const { container } = render(<Carousel>{renderSlides(3)}</Carousel>);
+    const viewport = container.querySelector(
+      '[data-slot="carousel-viewport"]',
+    ) as HTMLElement;
+    const arrow = container.querySelector(
+      '[data-slot="carousel-next"]',
+    ) as HTMLElement;
+    // The default `arrows="inside"` places the control inside the viewport, so
+    // its pointerdown reaches the viewport's drag handler by bubbling.
+    expect(viewport.contains(arrow)).toBe(true);
+    mockViewportSize(viewport, 300);
+
+    fireEvent.pointerDown(arrow, { clientX: 250, pointerId: 1 });
+
+    expect(capture).not.toHaveBeenCalled();
+    expect(container.querySelector('[data-slot="carousel"]')).toHaveAttribute(
+      "data-dragging",
+      "false",
+    );
+  });
+
+  it("should advance when an arrow inside the viewport is clicked", () => {
+    const { container } = render(<Carousel>{renderSlides(3)}</Carousel>);
+    const viewport = container.querySelector(
+      '[data-slot="carousel-viewport"]',
+    ) as HTMLElement;
+    const arrow = screen.getByRole("button", { name: "Next slide" });
+    mockViewportSize(viewport, 300);
+
+    // Full sequence a real pointer produces, not a bare `.click()`.
+    fireEvent.pointerDown(arrow, { clientX: 250, pointerId: 1 });
+    fireEvent.pointerUp(arrow, { clientX: 250, pointerId: 1 });
+    fireEvent.click(arrow);
+
+    expect(
+      cssVar(
+        container.querySelector('[data-slot="carousel"]'),
+        "--carousel-offset",
+      ),
+    ).toContain("-1 *");
+  });
+
+  it("should still capture the pointer for a drag starting on a slide", () => {
+    const capture = vi.fn();
+    HTMLElement.prototype.setPointerCapture = capture;
+
+    const { container } = render(<Carousel>{renderSlides(3)}</Carousel>);
+    const viewport = container.querySelector(
+      '[data-slot="carousel-viewport"]',
+    ) as HTMLElement;
+    const slide = container.querySelector(
+      '[data-slot="carousel-item"]',
+    ) as HTMLElement;
+    mockViewportSize(viewport, 300);
+
+    fireEvent.pointerDown(slide, { clientX: 250, pointerId: 1 });
+    fireEvent.pointerMove(slide, { clientX: 100, pointerId: 1 });
+    fireEvent.pointerUp(slide, { clientX: 100, pointerId: 1 });
+
+    expect(capture).toHaveBeenCalledWith(1);
+    expect(
+      cssVar(
+        container.querySelector('[data-slot="carousel"]'),
+        "--carousel-offset",
+      ),
+    ).toContain("-1 *");
+  });
+
   it("should snap back after a drag that falls short of the threshold", () => {
     const { container } = render(<Carousel>{renderSlides(3)}</Carousel>);
     const viewport = container.querySelector(
