@@ -154,8 +154,10 @@ export const zuiCarouselItemBase = [
 
 export const zuiCarouselDragModes = {
   none: "",
-  horizontal: "touch-pan-y select-none data-[dragging=true]:cursor-grabbing",
-  vertical: "touch-pan-x select-none data-[dragging=true]:cursor-grabbing",
+  horizontal:
+    "cursor-grab touch-pan-y select-none data-[dragging=true]:cursor-grabbing",
+  vertical:
+    "cursor-grab touch-pan-x select-none data-[dragging=true]:cursor-grabbing",
 } as const;
 
 export const zuiCarouselControlsBase =

@@ -92,6 +92,26 @@ const CAROUSEL_INTERACTIVE_SELECTOR = [
   '[contenteditable="true"]',
 ].join(",");
 
+/**
+ * Run the caller's handler first, then ours unless they called
+ * `preventDefault()`.
+ *
+ * Every internal listener the carousel needs is composed this way, so passing
+ * an ordinary `onPointerDown` or `onPointerEnter` cannot silently disable
+ * dragging or the auto-play pauses.
+ */
+function chainHandler<E extends { defaultPrevented: boolean }>(
+  consumer: ((event: E) => void) | undefined,
+  internal: ((event: E) => void) | undefined,
+): ((event: E) => void) | undefined {
+  if (!internal) return consumer;
+  if (!consumer) return internal;
+  return (event: E) => {
+    consumer(event);
+    if (!event.defaultPrevented) internal(event);
+  };
+}
+
 function composeRefs<T>(
   ...refs: (Ref<T> | undefined)[]
 ): (node: T | null) => void {
@@ -148,6 +168,10 @@ export function CarouselRoot({
   className,
   style,
   children,
+  onPointerEnter,
+  onPointerLeave,
+  onFocusCapture,
+  onBlurCapture,
   ref,
   ...rest
 }: CarouselRootProps) {
@@ -166,9 +190,16 @@ export function CarouselRoot({
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const slideCount = slideCountProp ?? reportedCount;
-  const slidesPerViewResolved = Math.max(1, Math.floor(slidesPerView));
+  // Asking for more slides than exist would leave each one at a fraction of
+  // the viewport with empty space beside it, so the request is capped.
+  const slidesPerViewResolved = Math.min(
+    Math.max(1, Math.floor(slidesPerView)),
+    Math.max(1, slideCount),
+  );
   const maxIndex = Math.max(0, slideCount - slidesPerViewResolved);
-  const pageCount = maxIndex + 1;
+  // An empty carousel has no rest positions at all — otherwise it would render
+  // a lone dot and report "1 / 1" with nothing to show.
+  const pageCount = slideCount === 0 ? 0 : maxIndex + 1;
 
   const isControlled = index !== undefined;
   const activeIndex = clamp(isControlled ? index : internalIndex, 0, maxIndex);
@@ -227,7 +258,9 @@ export function CarouselRoot({
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
-      if (disabled) return;
+      // Only when the viewport itself holds focus: a slide can contain an
+      // input, textarea, or anything else that owns the arrow keys.
+      if (disabled || event.target !== event.currentTarget) return;
       const previousKey = orientation === "vertical" ? "ArrowUp" : "ArrowLeft";
       const nextKey = orientation === "vertical" ? "ArrowDown" : "ArrowRight";
 
@@ -260,12 +293,26 @@ export function CarouselRoot({
     [orientation],
   );
 
-  /** Main-axis distance between two rest positions, in pixels. */
+  /**
+   * Main-axis distance between two rest positions, in pixels.
+   *
+   * Measured on the track rather than the viewport so a framed viewport's
+   * padding and border are already excluded, and the gap is added back because
+   * one step is a slide *plus* the gap that follows it — the same arithmetic
+   * the CSS offset uses.
+   */
   const stepSize = useCallback(() => {
-    const rect = viewportRef.current?.getBoundingClientRect();
-    if (!rect) return 0;
-    const axisSize = orientation === "vertical" ? rect.height : rect.width;
-    return axisSize > 0 ? axisSize / slidesPerViewResolved : 0;
+    const track = viewportRef.current?.querySelector<HTMLElement>(
+      '[data-slot="carousel-content"]',
+    );
+    if (!track) return 0;
+    const rect = track.getBoundingClientRect();
+    const vertical = orientation === "vertical";
+    const axisSize = vertical ? rect.height : rect.width;
+    if (axisSize <= 0) return 0;
+    const styles = getComputedStyle(track);
+    const gap = parseFloat(vertical ? styles.rowGap : styles.columnGap) || 0;
+    return (axisSize + gap) / slidesPerViewResolved;
   }, [orientation, slidesPerViewResolved]);
 
   const startDrag = useCallback(
@@ -428,7 +475,10 @@ export function CarouselRoot({
     "--carousel-slides": slidesPerViewResolved,
     "--carousel-item-size": slideSizeExpression(slidesPerViewResolved),
     "--carousel-offset": trackOffsetExpression(activeIndex, dragOffset),
-    "--carousel-progress": `${(Math.min(activeIndex + 1, pageCount) / pageCount) * 100}%`,
+    "--carousel-progress":
+      pageCount === 0
+        ? "0%"
+        : `${(Math.min(activeIndex + 1, pageCount) / pageCount) * 100}%`,
   };
 
   const hasLabel =
@@ -447,18 +497,28 @@ export function CarouselRoot({
         aria-label={hasLabel ? undefined : "Carousel"}
         className={cn(carouselVariants({ appearance, size }), className)}
         style={{ ...cssVariables, ...style }}
-        onPointerEnter={pauseOnHover ? () => setIsHovered(true) : undefined}
-        onPointerLeave={pauseOnHover ? () => setIsHovered(false) : undefined}
-        onFocusCapture={pauseOnFocus ? () => setIsFocusWithin(true) : undefined}
-        onBlurCapture={
+        onPointerEnter={chainHandler(
+          onPointerEnter,
+          pauseOnHover ? () => setIsHovered(true) : undefined,
+        )}
+        onPointerLeave={chainHandler(
+          onPointerLeave,
+          pauseOnHover ? () => setIsHovered(false) : undefined,
+        )}
+        onFocusCapture={chainHandler(
+          onFocusCapture,
+          pauseOnFocus ? () => setIsFocusWithin(true) : undefined,
+        )}
+        onBlurCapture={chainHandler(
+          onBlurCapture,
           pauseOnFocus
             ? (event: ReactFocusEvent<HTMLDivElement>) => {
                 if (!event.currentTarget.contains(event.relatedTarget)) {
                   setIsFocusWithin(false);
                 }
               }
-            : undefined
-        }
+            : undefined,
+        )}
         {...rest}
       >
         {children}
@@ -474,6 +534,10 @@ export function CarouselViewport({
   frame,
   children,
   onKeyDown,
+  onPointerDown,
+  onPointerMove,
+  onPointerUp,
+  onPointerCancel,
   ref,
   ...rest
 }: CarouselViewportProps) {
@@ -505,14 +569,20 @@ export function CarouselViewport({
         }),
         className,
       )}
-      onKeyDown={(event) => {
-        onKeyDown?.(event);
-        if (!event.defaultPrevented) handleKeyDown(event);
-      }}
-      onPointerDown={draggable ? startDrag : undefined}
-      onPointerMove={draggable ? updateDrag : undefined}
-      onPointerUp={draggable ? endDrag : undefined}
-      onPointerCancel={draggable ? cancelDrag : undefined}
+      onKeyDown={chainHandler(onKeyDown, handleKeyDown)}
+      onPointerDown={chainHandler(
+        onPointerDown,
+        draggable ? startDrag : undefined,
+      )}
+      onPointerMove={chainHandler(
+        onPointerMove,
+        draggable ? updateDrag : undefined,
+      )}
+      onPointerUp={chainHandler(onPointerUp, draggable ? endDrag : undefined)}
+      onPointerCancel={chainHandler(
+        onPointerCancel,
+        draggable ? cancelDrag : undefined,
+      )}
       {...rest}
     >
       {children}
@@ -525,6 +595,7 @@ CarouselViewport.displayName = "CarouselViewport";
 export function CarouselContent({
   className,
   children,
+  onFocusCapture,
   ref,
   ...rest
 }: CarouselContentProps) {
@@ -553,15 +624,16 @@ export function CarouselContent({
       // are reserved for user-driven moves.
       aria-live={isAutoPlaying ? "off" : "polite"}
       className={cn(carouselTrackVariants({ orientation }), className)}
-      onFocusCapture={(event) => {
-        // Tabbing into an off-screen slide brings it into view, so focus never
-        // lands somewhere the viewport is clipping.
+      onFocusCapture={chainHandler(onFocusCapture, (event) => {
+        // Programmatic focus on a clipped slide brings it into view, so focus
+        // never lands somewhere the viewport is hiding. Tabbing cannot reach
+        // one — off-screen slides are `inert`.
         const slide = (event.target as HTMLElement).closest?.(
           '[data-slot="carousel-item"]',
         );
         const slideIndex = Number(slide?.getAttribute("data-index"));
         if (Number.isInteger(slideIndex)) scrollTo(slideIndex);
-      }}
+      })}
       {...rest}
     >
       {slides.map((slide, position) => (
@@ -600,6 +672,11 @@ export function CarouselItem({
       aria-roledescription="slide"
       aria-label={`${position + 1} of ${Math.max(slideCount, position + 1)}`}
       aria-hidden={isVisible ? undefined : true}
+      // Paired with `aria-hidden` so a clipped slide's links and controls
+      // leave the tab order too, the way Marquee and CircularMenu do it.
+      // Without it, keyboard users can focus what assistive tech is told
+      // does not exist (`aria-hidden-focus`).
+      inert={!isVisible}
       className={cn(carouselItemVariants(), className)}
       {...rest}
     >
@@ -801,7 +878,7 @@ export function CarouselCounter({
   ...rest
 }: CarouselCounterProps) {
   const { index, pageCount } = useCarouselContext();
-  const current = Math.min(index + 1, pageCount);
+  const current = pageCount === 0 ? 0 : Math.min(index + 1, pageCount);
 
   return (
     <div
@@ -824,6 +901,9 @@ export function CarouselProgress({
   ...rest
 }: CarouselProgressProps) {
   const { index, pageCount } = useCarouselContext();
+  // An empty carousel reports a coherent 0..0 rather than an inverted 1..0.
+  const isEmpty = pageCount === 0;
+  const current = isEmpty ? 0 : Math.min(index + 1, pageCount);
 
   return (
     <div
@@ -831,9 +911,9 @@ export function CarouselProgress({
       data-slot="carousel-progress"
       role="progressbar"
       aria-label={rest["aria-label"] ?? "Carousel progress"}
-      aria-valuemin={1}
+      aria-valuemin={isEmpty ? 0 : 1}
       aria-valuemax={pageCount}
-      aria-valuenow={Math.min(index + 1, pageCount)}
+      aria-valuenow={current}
       className={cn(carouselProgressVariants(), className)}
       {...rest}
     >

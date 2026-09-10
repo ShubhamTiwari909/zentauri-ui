@@ -15,8 +15,13 @@ function cssVar(element: Element | null, name: string) {
   return (element as HTMLElement | null)?.style.getPropertyValue(name) ?? "";
 }
 
+/**
+ * jsdom lays nothing out, so the drag step has to be faked. The step is
+ * measured on the track (so a framed viewport's padding is already excluded),
+ * hence both elements get a rect.
+ */
 function mockViewportSize(viewport: Element, size: number) {
-  viewport.getBoundingClientRect = vi.fn(() => ({
+  const rect = () => ({
     x: 0,
     y: 0,
     top: 0,
@@ -26,7 +31,10 @@ function mockViewportSize(viewport: Element, size: number) {
     width: size,
     height: size,
     toJSON: () => ({}),
-  }));
+  });
+  viewport.getBoundingClientRect = vi.fn(rect);
+  const track = viewport.querySelector('[data-slot="carousel-content"]');
+  if (track) track.getBoundingClientRect = vi.fn(rect);
 }
 
 describe("Carousel", () => {
@@ -533,6 +541,127 @@ describe("Carousel", () => {
     } finally {
       vi.useRealTimers();
     }
+  });
+
+  it("should keep inactive slides out of the tab order", () => {
+    const { container } = render(<Carousel>{renderSlides(3)}</Carousel>);
+    const items = container.querySelectorAll('[data-slot="carousel-item"]');
+    // aria-hidden without inert leaves focusable descendants reachable, which
+    // is an aria-hidden-focus violation.
+    expect(items[0]).not.toHaveAttribute("inert");
+    expect(items[1]).toHaveAttribute("aria-hidden", "true");
+    expect(items[1]).toHaveAttribute("inert");
+  });
+
+  it("should compose consumer pointer handlers with the drag lifecycle", () => {
+    const onPointerDown = vi.fn();
+    const { container } = render(
+      <Carousel.Root slideCount={3}>
+        <Carousel.Viewport onPointerDown={onPointerDown}>
+          <Carousel.Content>
+            <Carousel.Item>One</Carousel.Item>
+            <Carousel.Item>Two</Carousel.Item>
+            <Carousel.Item>Three</Carousel.Item>
+          </Carousel.Content>
+        </Carousel.Viewport>
+      </Carousel.Root>,
+    );
+    const viewport = container.querySelector(
+      '[data-slot="carousel-viewport"]',
+    ) as HTMLElement;
+    const slide = container.querySelector(
+      '[data-slot="carousel-item"]',
+    ) as HTMLElement;
+    mockViewportSize(viewport, 300);
+
+    fireEvent.pointerDown(slide, { clientX: 250, pointerId: 1 });
+    fireEvent.pointerMove(slide, { clientX: 100, pointerId: 1 });
+    fireEvent.pointerUp(slide, { clientX: 100, pointerId: 1 });
+
+    // The consumer's handler runs, and dragging still works.
+    expect(onPointerDown).toHaveBeenCalledTimes(1);
+    expect(
+      cssVar(
+        container.querySelector('[data-slot="carousel"]'),
+        "--carousel-offset",
+      ),
+    ).toContain("-1 *");
+  });
+
+  it("should compose consumer focus handlers with the auto-play pause", () => {
+    const onPointerEnter = vi.fn();
+    const { container } = render(
+      <Carousel onPointerEnter={onPointerEnter}>{renderSlides(3)}</Carousel>,
+    );
+    const root = container.querySelector(
+      '[data-slot="carousel"]',
+    ) as HTMLElement;
+
+    fireEvent.pointerEnter(root);
+
+    expect(onPointerEnter).toHaveBeenCalledTimes(1);
+    // Still navigable, i.e. the root did not lose its internal wiring.
+    fireEvent.click(screen.getByRole("button", { name: "Next slide" }));
+    expect(cssVar(root, "--carousel-offset")).toContain("-1 *");
+  });
+
+  it("should leave the arrow keys alone inside a slide's own controls", () => {
+    const { container } = render(
+      <Carousel>
+        <input aria-label="Search" />
+        <div>Second</div>
+      </Carousel>,
+    );
+    const viewport = container.querySelector(
+      '[data-slot="carousel-viewport"]',
+    ) as HTMLElement;
+    const input = screen.getByLabelText("Search");
+
+    // Bubbles to the viewport, but the caret owns this key — not the track.
+    fireEvent.keyDown(input, { key: "ArrowRight" });
+    expect(
+      cssVar(
+        container.querySelector('[data-slot="carousel"]'),
+        "--carousel-offset",
+      ),
+    ).toContain("0 *");
+
+    fireEvent.keyDown(viewport, { key: "ArrowRight" });
+    expect(
+      cssVar(
+        container.querySelector('[data-slot="carousel"]'),
+        "--carousel-offset",
+      ),
+    ).toContain("-1 *");
+  });
+
+  it("should cap slidesPerView at the number of slides rendered", () => {
+    const { container } = render(
+      <Carousel slidesPerView={4}>{renderSlides(2)}</Carousel>,
+    );
+    const root = container.querySelector('[data-slot="carousel"]');
+    // Otherwise each slide would take a quarter of the viewport and leave half
+    // of it empty.
+    expect(cssVar(root, "--carousel-slides")).toBe("2");
+    expect(
+      container.querySelectorAll('[data-slot="carousel-dot"]'),
+    ).toHaveLength(1);
+  });
+
+  it("should report no rest positions when there are no slides", () => {
+    const { container } = render(
+      <Carousel counter progress>
+        {[]}
+      </Carousel>,
+    );
+    expect(
+      container.querySelectorAll('[data-slot="carousel-dot"]'),
+    ).toHaveLength(0);
+    expect(screen.getByText("0 / 0")).toBeTruthy();
+    const progress = screen.getByRole("progressbar");
+    expect(progress).toHaveAttribute("aria-valuemin", "0");
+    expect(progress).toHaveAttribute("aria-valuemax", "0");
+    expect(progress).toHaveAttribute("aria-valuenow", "0");
   });
 
   it("should expose compound primitives", () => {

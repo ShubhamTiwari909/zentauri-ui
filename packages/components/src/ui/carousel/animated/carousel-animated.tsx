@@ -63,6 +63,8 @@ export function CarouselContentAnimated({
   className,
   children,
   animation = "glide",
+  style,
+  onFocusCapture,
   ref,
   ...rest
 }: CarouselContentAnimatedProps) {
@@ -111,8 +113,11 @@ export function CarouselContentAnimated({
   }, [reportSlideCount, slides.length]);
 
   // Custom properties are outside `CSSProperties`, so the motion-value style
-  // has to be asserted rather than inferred.
+  // has to be asserted rather than inferred. A caller's `style` merges in
+  // underneath: the transform and motion variables stay authoritative, or the
+  // track would silently stop following the spring.
   const trackStyle = {
+    ...style,
     "--carousel-motion-index": negativeIndex,
     "--carousel-motion-drag": drag,
     transform: MOTION_TRANSFORMS[orientation],
@@ -134,6 +139,8 @@ export function CarouselContentAnimated({
       )}
       style={trackStyle}
       onFocusCapture={(event) => {
+        onFocusCapture?.(event);
+        if (event.defaultPrevented) return;
         const slide = (event.target as HTMLElement).closest?.(
           '[data-slot="carousel-item"]',
         );
@@ -183,10 +190,12 @@ export function CarouselItemAnimated({
       aria-roledescription="slide"
       aria-label={`${position + 1} of ${Math.max(slideCount, position + 1)}`}
       aria-hidden={isVisible ? undefined : true}
+      // Matches the static item: a clipped slide leaves the tab order too.
+      inert={!isVisible}
       className={cn(carouselItemVariants(), className)}
+      {...rest}
       animate={preset.states[isVisible ? "active" : "inactive"]}
       transition={preset.transition}
-      {...rest}
     >
       {children}
     </motion.div>

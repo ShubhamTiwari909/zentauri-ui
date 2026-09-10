@@ -37,8 +37,11 @@ export const CLI_INIT_COMMANDS = {
 } as const;
 
 /**
- * Every UI component the CLI can vendor, mirroring the UI entries of
- * `packages/components/cli/registry.json`.
+ * Every UI component the CLI can vendor.
+ *
+ * This is registry.json's `uiComponents` plus `spinner`, which is animated-only
+ * and so appears in `animatedComponents` rather than `uiComponents` — it is
+ * still `add`-able, so it belongs here.
  *
  * One list feeds all three package-manager commands below so they cannot drift
  * apart. `animations/*` and `charts/*` are documented separately on the

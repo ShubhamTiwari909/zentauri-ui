@@ -45,9 +45,15 @@ export function CarouselDemo({
     arrows: arrows === "off" ? (false as const) : arrows,
   };
 
+  // A vertical track showing several slides at once leaves each one ~90px
+  // tall, which the 56px top-and-bottom arrow clearance would swallow whole.
+  // Those panels go compact and skip the clearance instead of being clipped.
+  const isTightVertical = orientation === "vertical" && slidesPerView > 1;
   const slides = buildCarouselSlides(slideCount, {
     height: orientation === "vertical" ? "h-full" : "h-52",
-    clearArrows: arrows === "inside" ? orientation : undefined,
+    compact: isTightVertical,
+    clearArrows:
+      arrows === "inside" && !isTightVertical ? orientation : undefined,
   });
 
   if (animation === "none" && reveal === "none") {

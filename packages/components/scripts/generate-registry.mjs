@@ -2,8 +2,9 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { readTsupList } from "./tsup-entries.mjs";
+
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const tsupPath = join(root, "tsup.config.ts");
 const outPath = join(root, "cli", "registry.json");
 
 /**
@@ -64,61 +65,13 @@ function detectUiComponentDependencies(componentName, uiComponentNames) {
   return [...dependencies].sort();
 }
 
-const text = readFileSync(tsupPath, "utf8");
-
-function extractQuotedNames(block) {
-  const names = [];
-  const re = /["']([^"']+)["']/g;
-  let m;
-  while ((m = re.exec(block)) !== null) {
-    names.push(m[1]);
-  }
-  return names;
-}
-
-const uiMatch = text.match(/const uiComponentNames = \[([\s\S]*?)\] as const/);
-if (!uiMatch) {
-  throw new Error("Could not parse uiComponentNames from tsup.config.ts");
-}
-const ui = extractQuotedNames(uiMatch[1]).sort();
-
-const animatedMatch = text.match(
-  /const uiAnimatedComponentNames = \[([\s\S]*?)\] as const/,
+const ui = readTsupList("uiComponentNames");
+const animated = readTsupList("uiAnimatedComponentNames");
+const charts = readTsupList("chartEntryNames").map((name) => `charts/${name}`);
+const animations = readTsupList("animationEntryNames").map(
+  (name) => `animations/${name}`,
 );
-if (!animatedMatch) {
-  throw new Error(
-    "Could not parse uiAnimatedComponentNames from tsup.config.ts",
-  );
-}
-const animated = extractQuotedNames(animatedMatch[1]).sort();
-
-const chartsMatch = text.match(
-  /const chartEntryNames = \[([\s\S]*?)\] as const/,
-);
-if (!chartsMatch) {
-  throw new Error("Could not parse chartEntryNames from tsup.config.ts");
-}
-const charts = extractQuotedNames(chartsMatch[1]).map(
-  (name) => `charts/${name}`,
-);
-
-const animationsMatch = text.match(
-  /const animationEntryNames = \[([\s\S]*?)\] as const/,
-);
-if (!animationsMatch) {
-  throw new Error("Could not parse animationEntryNames from tsup.config.ts");
-}
-const animations = extractQuotedNames(animationsMatch[1])
-  .map((name) => `animations/${name}`)
-  .sort();
-
-const hooksMatch = text.match(
-  /const hooksEntryNames = \[([\s\S]*?)\] as const/,
-);
-if (!hooksMatch) {
-  throw new Error("Could not parse hooksEntryNames from tsup.config.ts");
-}
-const hooks = extractQuotedNames(hooksMatch[1]).sort();
+const hooks = readTsupList("hooksEntryNames");
 
 // Optional peer dependencies, keyed by canonical component/chart name. Only
 // entries with at least one optional peer are included. Consumed by the CLI to

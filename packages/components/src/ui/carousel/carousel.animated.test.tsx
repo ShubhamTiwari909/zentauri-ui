@@ -55,6 +55,18 @@ function motionIndex(container: HTMLElement) {
 }
 
 describe("Carousel (animated)", () => {
+  it("should run the instant path, so index assertions are deterministic", () => {
+    // The shared setup answers every media query with `matches: true`, so
+    // `usePrefersReducedMotion()` is true here and the track takes the
+    // `negativeIndex.set()` branch instead of the spring. That is what makes
+    // the exact `-1` / `-3` assertions below safe rather than mid-flight
+    // samples of a spring. If the setup ever stops matching, this fails first
+    // and explains the rest.
+    expect(window.matchMedia("(prefers-reduced-motion: reduce)").matches).toBe(
+      true,
+    );
+  });
+
   it("should set displayName", () => {
     expect(Carousel.displayName).toBe("Carousel");
   });
@@ -91,6 +103,8 @@ describe("Carousel (animated)", () => {
     expect(motionIndex(container)).toBe("0");
 
     fireEvent.click(screen.getByRole("button", { name: "Next slide" }));
+    // Frames are pumped only so Motion flushes the value to the DOM; the value
+    // itself was set synchronously (see the reduced-motion test above).
     pumpFrames();
 
     expect(motionIndex(container)).toBe("-1");

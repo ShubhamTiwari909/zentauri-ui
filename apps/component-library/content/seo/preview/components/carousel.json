@@ -34,6 +34,7 @@
       "Compound API",
       "Animated entry",
       "Keyboard interaction",
+      "Common use cases",
       "Accessibility",
       "FAQ"
     ]
@@ -105,6 +106,10 @@
     {
       "heading": "Keyboard interaction",
       "body": "Tab to the viewport, then use ArrowLeft and ArrowRight (ArrowUp and ArrowDown when vertical) to step, PageUp and PageDown to do the same, and Home and End to jump to the first and last rest position. The arrows and dots are ordinary buttons, so they are reachable in sequence, and focusing anything inside a clipped slide brings that slide into view first."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
     },
     {
       "heading": "Accessibility",

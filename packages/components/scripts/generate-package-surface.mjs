@@ -184,6 +184,11 @@ function main() {
   );
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+// `process.argv[1]` is undefined under a scriptless `node -e` / `--import`,
+// where pathToFileURL would throw before this module could be imported.
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main();
 }

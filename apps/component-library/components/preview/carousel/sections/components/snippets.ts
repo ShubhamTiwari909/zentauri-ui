@@ -58,7 +58,7 @@ export function carouselSnippet(opts: CarouselDemoProps): string {
   ].join("");
 
   const lead = variantLeadComment(
-    `appearance · ${appearance}, size · ${size}, orientation · ${orientation}, slides · ${slideCount}, per view · ${slidesPerView}, animation · ${animation}`,
+    `appearance · ${appearance}, size · ${size}, orientation · ${orientation}, slides · ${slideCount}, per view · ${slidesPerView}, animation · ${animation}, reveal · ${reveal}`,
   );
 
   return `import { Carousel } from "${importPath}";
