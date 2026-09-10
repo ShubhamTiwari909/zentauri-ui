@@ -22963,6 +22963,307 @@
         }
       ]
     },
+    "sortable-list": {
+      "slug": "sortable-list",
+      "subcomponents": [
+        {
+          "name": "static:SortableList",
+          "displayName": "SortableList",
+          "propsType": "SortableListProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "amber",
+                "blue",
+                "card",
+                "cyan",
+                "default",
+                "emerald",
+                "ghost",
+                "glass",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-purple",
+                "green",
+                "orange",
+                "outline",
+                "pink",
+                "primary",
+                "purple",
+                "red",
+                "separated",
+                "slate",
+                "subtle"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "defaultItems",
+              "type": "readonly T[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "getItemId",
+              "type": "(item: T, index: number) => string",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "items",
+              "type": "readonly T[]",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onItemsChange",
+              "type": "((items: T[]) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "renderItem",
+              "type": "SortableListRenderItem<T>",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "showMoveButtons",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLUListElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:SortableListItem",
+          "displayName": "SortableListItem",
+          "propsType": "SortableListItemProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "amber",
+                "blue",
+                "card",
+                "cyan",
+                "default",
+                "emerald",
+                "ghost",
+                "glass",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-purple",
+                "green",
+                "orange",
+                "outline",
+                "pink",
+                "primary",
+                "purple",
+                "red",
+                "separated",
+                "slate",
+                "subtle"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "dragging",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLLIElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:SortableListItemVariant",
+          "displayName": "SortableListItemVariant",
+          "propsType": "SortableListItemVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'card' | 'separated' | 'blue' | 'cyan' | 'green' | 'red' | 'slate' | 'purple' | 'pink' | 'orange' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'subtle' | 'glass' | 'amber' | 'primary' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:SortableListVariant",
+          "displayName": "SortableListVariant",
+          "propsType": "SortableListVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'outline' | 'ghost' | 'card' | 'separated' | 'blue' | 'cyan' | 'green' | 'red' | 'slate' | 'purple' | 'pink' | 'orange' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'subtle' | 'glass' | 'amber' | 'primary' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "speech-recognition": {
       "slug": "speech-recognition",
       "subcomponents": [

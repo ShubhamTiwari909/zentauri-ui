@@ -1,0 +1,59 @@
+{
+  "category": "Data",
+  "title": "Sortable list component for React and Next.js",
+  "description": "A dependency-free sortable list for drag-to-reorder interactions with controlled state and keyboard-friendly move buttons.",
+  "keywords": [
+    "sortable list",
+    "drag and drop",
+    "reorder list",
+    "React",
+    "Next.js"
+  ],
+  "og": {
+    "title": "Sortable List · Zentauri UI",
+    "description": "Drag-to-reorder list primitive for React and Next.js.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Sortable List · Zentauri UI",
+    "description": "Drag-to-reorder list primitive for React and Next.js.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/sortable-list",
+  "headings": {
+    "h1": "Sortable list for drag-to-reorder interfaces",
+    "h2": ["What it does", "Accessibility", "Common use cases", "FAQ"]
+  },
+  "intro": "SortableList provides a small, dependency-free primitive for reordering application data with native drag events and accessible move controls.",
+  "useCases": [
+    "Prioritize tasks",
+    "Reorder navigation items",
+    "Arrange playlist tracks",
+    "Manage workflow steps"
+  ],
+  "faqs": [
+    {
+      "question": "Can I control the order externally?",
+      "answer": "Yes. Pass items and update them from onItemsChange to keep the list controlled."
+    },
+    {
+      "question": "Does it support keyboard users?",
+      "answer": "The up and down move buttons provide an accessible keyboard alternative to dragging."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Rows use native HTML5 drag events and call onItemsChange whenever an item changes position."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Provide a meaningful label and keep the move buttons enabled for users who do not drag."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

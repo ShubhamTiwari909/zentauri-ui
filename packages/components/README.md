@@ -176,6 +176,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useIsMounted/useIsMounted.test.ts`                           |     3 |
 | `src/hooks/usePrevious/usePrevious.test.ts`                             |     3 |
 | `src/hooks/useSessionStorage/useSessionStorage.test.ts`                 |     3 |
+| `src/ui/sortable-list/sortable-list.test.tsx`                           |     3 |
 | `src/hooks/useHover/useHover.test.ts`                                   |     2 |
 | `src/hooks/useIntersectionObserver/useIntersectionObserver.test.ts`     |     2 |
 | `src/hooks/useMediaQuery/useMediaQuery.test.ts`                         |     2 |

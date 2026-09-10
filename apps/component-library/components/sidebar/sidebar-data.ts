@@ -399,6 +399,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/slide-to-complete",
       },
       {
+        title: "Sortable list",
+        href: "/preview/components/sortable-list",
+      },
+      {
         title: "Speech Recognition",
         href: "/preview/components/speech-recognition",
       },

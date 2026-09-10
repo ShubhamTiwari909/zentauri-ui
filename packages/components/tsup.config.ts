@@ -67,6 +67,7 @@ const uiComponentNames = [
   "slide-to-complete",
   "split-button",
   "table",
+  "sortable-list",
   "tabs",
   "terminal-emulator",
   "timezone-select",
