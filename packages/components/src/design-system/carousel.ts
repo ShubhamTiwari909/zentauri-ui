@@ -98,6 +98,13 @@ export const zuiCarouselSizes = {
 
 export const zuiCarouselViewportBase = [
   "relative w-full overflow-hidden",
+  // Slides are sized with a percentage `flex-basis`, which intrinsic sizing
+  // resolves against content — so without containment every slide's width sums
+  // into the carousel's min-content width, and any ancestor that sizes to
+  // content (a one-column grid on a phone, say) inherits that demand and
+  // overflows the screen. `min-width: 0` cannot fix this; size containment can.
+  // Only the inline axis is contained, so height still comes from the slides.
+  "[contain:inline-size]",
   "rounded-[var(--zui-carousel-radius,var(--zui-radius,0.75rem))]",
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
   "focus-visible:ring-[var(--zui-carousel-focus-ring,var(--zui-focus-ring,#475569))] dark:focus-visible:ring-[var(--zui-carousel-focus-ring-dark,var(--zui-focus-ring-dark,#dbe3ec))]",

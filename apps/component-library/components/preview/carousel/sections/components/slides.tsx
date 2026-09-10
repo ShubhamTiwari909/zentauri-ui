@@ -1,13 +1,25 @@
 import { CAROUSEL_SLIDE_DATA } from "./slide-data";
 
-export type CarouselSlideProps = {
-  label: string;
-  body: string;
-  tint: string;
+export type CarouselSlideOptions = {
   /** Taller panels make the vertical and multi-slide demos read better. */
   height?: string;
   /** Drops the body copy and tightens the padding for short panels. */
   compact?: boolean;
+  /**
+   * Pad clear of arrows overlaid inside the viewport, along the axis they sit on.
+   *
+   * An inside arrow is 36px at its 12px inset, so text starting at the usual
+   * 20px padding sits underneath it. A horizontal carousel puts its arrows at
+   * the left and right edges; a vertical one puts them top and bottom, where
+   * they collide with the panel's bottom-aligned text instead.
+   */
+  clearArrows?: "horizontal" | "vertical";
+};
+
+export type CarouselSlideProps = CarouselSlideOptions & {
+  label: string;
+  body: string;
+  tint: string;
 };
 
 export function CarouselSlide({
@@ -16,12 +28,18 @@ export function CarouselSlide({
   tint,
   height = "h-52",
   compact = false,
+  clearArrows,
 }: CarouselSlideProps) {
+  const inlinePadding =
+    clearArrows === "horizontal" ? "px-14" : compact ? "px-3" : "px-5";
+  const blockPadding =
+    clearArrows === "vertical" ? "py-14" : compact ? "py-3" : "py-5";
+
   return (
     <div
       className={`flex ${height} flex-col justify-end overflow-hidden rounded-2xl bg-gradient-to-br ${tint} text-white ${
-        compact ? "gap-0 p-3" : "gap-1 p-5"
-      }`}
+        compact ? "gap-0" : "gap-1"
+      } ${inlinePadding} ${blockPadding}`}
     >
       <p
         className={compact ? "text-sm font-semibold" : "text-lg font-semibold"}
@@ -38,8 +56,7 @@ export function CarouselSlide({
 /** The first `count` demo panels, cycling the pool when more are asked for. */
 export function buildCarouselSlides(
   count: number,
-  height?: string,
-  compact?: boolean,
+  options: CarouselSlideOptions = {},
 ) {
   return Array.from({ length: count }, (_, index) => {
     const slide = CAROUSEL_SLIDE_DATA[index % CAROUSEL_SLIDE_DATA.length];
@@ -49,8 +66,7 @@ export function buildCarouselSlides(
         label={slide.label}
         body={slide.body}
         tint={slide.tint}
-        height={height}
-        compact={compact}
+        {...options}
       />
     );
   });

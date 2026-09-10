@@ -45,10 +45,10 @@ export function CarouselDemo({
     arrows: arrows === "off" ? (false as const) : arrows,
   };
 
-  const slides = buildCarouselSlides(
-    slideCount,
-    orientation === "vertical" ? "h-full" : "h-52",
-  );
+  const slides = buildCarouselSlides(slideCount, {
+    height: orientation === "vertical" ? "h-full" : "h-52",
+    clearArrows: arrows === "inside" ? orientation : undefined,
+  });
 
   if (animation === "none" && reveal === "none") {
     return <Carousel {...shared}>{slides}</Carousel>;

@@ -44,6 +44,19 @@ describe("Carousel", () => {
     expect(container.querySelector('[data-slot="carousel"]')).toBeTruthy();
   });
 
+  it("should contain the viewport's inline size", () => {
+    // Slides use a percentage `flex-basis`, which intrinsic sizing resolves
+    // against content, so without this every slide's width sums into the
+    // carousel's min-content width (512px for five slides) and any ancestor
+    // that sizes to content drags that onto a phone screen. jsdom does no
+    // layout, so the class itself is what can be asserted here.
+    const { container } = render(<Carousel>{renderSlides(5)}</Carousel>);
+    const viewport = container.querySelector(
+      '[data-slot="carousel-viewport"]',
+    ) as HTMLElement;
+    expect(viewport.className).toContain("[contain:inline-size]");
+  });
+
   it("should render the viewport, track, and one item per child", () => {
     const { container } = render(<Carousel>{renderSlides(3)}</Carousel>);
     expect(

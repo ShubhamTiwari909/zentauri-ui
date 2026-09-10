@@ -9,7 +9,7 @@ import { buildCarouselSlides } from "./slides";
 export function CarouselMultiSlideDemo() {
   return (
     <Carousel aria-label="Product areas" slidesPerView={3} loop counter>
-      {buildCarouselSlides(6, "h-40")}
+      {buildCarouselSlides(6, { height: "h-40", clearArrows: "horizontal" })}
     </Carousel>
   );
 }
@@ -23,7 +23,7 @@ export function CarouselVerticalDemo() {
       frame="bordered"
       counter
     >
-      {buildCarouselSlides(4, "h-full")}
+      {buildCarouselSlides(4, { height: "h-full", clearArrows: "vertical" })}
     </Carousel>
   );
 }
@@ -38,13 +38,16 @@ export function CarouselAutoPlayDemo() {
       progress
       loop
     >
-      {buildCarouselSlides(4, "h-40")}
+      {buildCarouselSlides(4, { height: "h-40", clearArrows: "horizontal" })}
     </Carousel>
   );
 }
 
 export function CarouselCompoundDemo() {
-  const slides = buildCarouselSlides(4, "h-40");
+  const slides = buildCarouselSlides(4, {
+    height: "h-40",
+    clearArrows: "horizontal",
+  });
 
   return (
     <Carousel.Root
@@ -85,7 +88,7 @@ export function CarouselControlledDemo() {
         arrows={false}
         dots={false}
       >
-        {buildCarouselSlides(4, "h-40")}
+        {buildCarouselSlides(4, { height: "h-40" })}
       </Carousel>
 
       <div className="flex flex-wrap items-center gap-2">

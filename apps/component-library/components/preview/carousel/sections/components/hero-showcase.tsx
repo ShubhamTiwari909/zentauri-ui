@@ -20,7 +20,7 @@ export function CarouselHeroShowcase() {
         counter
         loop
       >
-        {buildCarouselSlides(4, "h-36")}
+        {buildCarouselSlides(4, { height: "h-36", clearArrows: "horizontal" })}
       </CarouselAnimated>
 
       <Carousel
@@ -32,7 +32,7 @@ export function CarouselHeroShowcase() {
         progress
         loop
       >
-        {buildCarouselSlides(5, "h-24", true)}
+        {buildCarouselSlides(5, { height: "h-24", compact: true })}
       </Carousel>
     </div>
   );
