@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo } from "react";
 
-import { useControllableState } from "../useControllableState/useControllableState";
+import { useControllableState } from "../useControllableState";
 
 import type {
   UseDynamicStepperParams,

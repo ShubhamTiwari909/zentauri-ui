@@ -16,6 +16,15 @@ export default defineConfig({
   resolve: {
     alias: [
       {
+        // `react-syntax-highlighter` has no `exports` map, so its CJS `main`
+        // wins resolution — and that build `require()`s ESM-only `refractor@5`,
+        // which throws at import time. Point the bare specifier at the ESM
+        // build the app's bundler already picks via `module`. Anchored so the
+        // explicit `/dist/esm/styles/*` imports keep resolving themselves.
+        find: /^react-syntax-highlighter$/,
+        replacement: "react-syntax-highlighter/dist/esm/index.js",
+      },
+      {
         find: /^@zentauri-ui\/zentauri-components\/ui\/([^/]+)\/animated$/,
         replacement: path.resolve(
           repoRoot,

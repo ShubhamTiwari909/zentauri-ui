@@ -64,8 +64,9 @@ Each UI component in `src/ui/<name>/` follows a fixed layering. Read it bottom-u
 
 - `src/ui/<name>/…` (the folder above, including a `.test.tsx`)
 - `src/design-system/<name>.ts` **and** add `export * from "./<name>"` to `src/design-system/index.ts`
-- `tsup.config.ts`: add the name to `uiComponentNames` (and `uiAnimatedComponentNames` if it has an `animated/` entry). This single list drives both the build entries and the generated CLI registry.
+- `tsup.config.ts`: add the name to `uiComponentNames` (and `uiAnimatedComponentNames` if it has an `animated/` entry). This single list drives the build entries, the generated CLI registry, and the README surface table.
 - `package.json` `exports` use wildcards (`./ui/*`, `./ui/*/animated`), so no per-component export edit is needed.
+- then run the generators: `generate:registry`, `generate:props`, `generate:surface`, `update:test-health` (see **Generated README surfaces**).
 
 Imports are per-entry subpaths: `…/ui/<name>`, `…/ui/<name>/animated`, `…/charts/<type>`, `…/hooks/<entry>`. Charts (`src/charts/*`) are thin Recharts wrappers. Hooks live one-per-folder in `src/hooks/`.
 
@@ -94,9 +95,14 @@ Next.js **16** / App Router. Component preview pages assemble from `components/p
 
 SEO is data-driven: JSON in `content/seo/preview/**` → `previewSeoDocumentToMetadata()` in `lib/preview-seo.ts`. `metadataBase`/canonical come from `NEXT_PUBLIC_SITE_URL` (falls back to `http://localhost:3000`).
 
-### Test-count surfaces are generated
+### Generated README surfaces
 
-Test-count/coverage surfaces are **not** hand-edited. After changing tests, run `pnpm --filter @zentauri-ui/zentauri-components update:test-health` (`scripts/update-test-health.mjs`). It runs the suites and rewrites all four surfaces: the marked section in `packages/components/README.md`, the same section in `apps/component-library/README.md`, and `apps/component-library/components/home/marketing/package-health-data.ts` (consumed by `package-health.tsx`). Edit the script/markers, not the generated numbers.
+Two README sections are machine-written. **Edit the script/markers, never the numbers.**
+
+- **Test counts.** After changing tests, run `pnpm --filter @zentauri-ui/zentauri-components update:test-health` (`scripts/update-test-health.mjs`). It runs the suites and rewrites all four surfaces: the marked section in `packages/components/README.md`, the same section in `apps/component-library/README.md`, and `apps/component-library/components/home/marketing/package-health-data.ts` (consumed by `package-health.tsx`).
+- **Entry counts.** The "Current package surface" table in `packages/components/README.md` (including the trailing animated-only sentence) comes from `scripts/generate-package-surface.mjs`, which counts the `as const` lists in `tsup.config.ts`. Run `generate:surface` after adding or removing an entry. `check:surface` fails if it drifts, and `prepack` runs both.
+
+Both READMEs are in `.prettierignore`, so a generator's output is the final formatting — nothing reflows it afterwards.
 
 ## Next.js 16 caveat
 

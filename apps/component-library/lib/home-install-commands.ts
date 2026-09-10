@@ -36,10 +36,103 @@ export const CLI_INIT_COMMANDS = {
   yarn: "yarn dlx @zentauri-ui/zentauri-components init",
 } as const;
 
+/**
+ * Every UI component the CLI can vendor.
+ *
+ * This is registry.json's `uiComponents` plus `spinner`, which is animated-only
+ * and so appears in `animatedComponents` rather than `uiComponents` — it is
+ * still `add`-able, so it belongs here.
+ *
+ * One list feeds all three package-manager commands below so they cannot drift
+ * apart. `animations/*` and `charts/*` are documented separately on the
+ * installation page, and hooks have their own command.
+ */
+export const CLI_ADD_COMPONENTS = [
+  "accordion",
+  "alert",
+  "animated-number",
+  "api-endpoint-card",
+  "api-response-viewer",
+  "audio-player",
+  "avatar",
+  "badge",
+  "bento-grid",
+  "breadcrumb",
+  "buttons",
+  "calendar",
+  "card",
+  "carousel",
+  "checkbox",
+  "circular-menu",
+  "code-block",
+  "code-diff",
+  "combobox",
+  "command",
+  "console-viewer",
+  "context-menu",
+  "copy-button",
+  "data-table",
+  "date-picker",
+  "divider",
+  "drawer",
+  "dropdown",
+  "dynamic-stepper",
+  "empty-state",
+  "file-upload",
+  "hash-generator",
+  "http-request-viewer",
+  "http-status-badge",
+  "inputs",
+  "json-viewer",
+  "kbd",
+  "log-viewer",
+  "marquee",
+  "modal",
+  "network-status",
+  "otp-input",
+  "package-install-command",
+  "pagination",
+  "password-strength-meter",
+  "popover",
+  "progress",
+  "qr-code",
+  "qr-scanner",
+  "radio-group",
+  "rating",
+  "relative-time",
+  "request-timeline-viewer",
+  "scroll-area",
+  "search",
+  "secret-reveal",
+  "select",
+  "skeleton",
+  "slide-to-complete",
+  "slider",
+  "speech-recognition",
+  "speech-synthesizer",
+  "spinner",
+  "split-button",
+  "table",
+  "tabs",
+  "terminal-emulator",
+  "timeline",
+  "timezone-select",
+  "toast",
+  "toggle",
+  "tooltip",
+  "tree-view",
+  "typing-indicator",
+  "typography",
+  "wizard",
+  "world-clock",
+] as const;
+
+const cliAddArguments = CLI_ADD_COMPONENTS.join(" ");
+
 export const CLI_ADD_COMMANDS = {
-  npm: "npx @zentauri-ui/zentauri-components add accordion bento-grid buttons calendar date-picker network-status speech-recognition speech-synthesizer split-button qr-code qr-scanner relative-time timezone-select world-clock",
-  pnpm: "pnpm dlx @zentauri-ui/zentauri-components add accordion bento-grid buttons calendar date-picker network-status speech-recognition speech-synthesizer split-button qr-code qr-scanner relative-time timezone-select world-clock",
-  yarn: "yarn dlx @zentauri-ui/zentauri-components add accordion bento-grid buttons calendar date-picker network-status speech-recognition speech-synthesizer split-button qr-code qr-scanner relative-time timezone-select world-clock",
+  npm: `npx @zentauri-ui/zentauri-components add ${cliAddArguments}`,
+  pnpm: `pnpm dlx @zentauri-ui/zentauri-components add ${cliAddArguments}`,
+  yarn: `yarn dlx @zentauri-ui/zentauri-components add ${cliAddArguments}`,
 } as const;
 
 export const CLI_ADD_HOOK_COMMANDS = {

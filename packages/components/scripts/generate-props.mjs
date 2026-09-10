@@ -1,11 +1,12 @@
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, writeFileSync } from "node:fs";
 import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import ts from "typescript";
 
+import { readTsupList } from "./tsup-entries.mjs";
+
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const tsupPath = join(root, "tsup.config.ts");
 const outPath = join(root, "cli", "props.json");
 const srcDir = join(root, "src");
 
@@ -21,49 +22,6 @@ const domAllowlist = new Set([
 const typeFormatFlags =
   ts.TypeFormatFlags.NoTruncation |
   ts.TypeFormatFlags.UseSingleQuotesForStringLiteralType;
-
-/**
- * Extract string literal entries from a TypeScript array initializer body.
- *
- * This is intentionally tiny and matches the established registry generator
- * approach: `tsup.config.ts` owns simple `as const` string arrays, so a full AST
- * parse would add ceremony without improving correctness for this file shape.
- *
- * @param {string} block Text between `[` and `]` for one tsup list.
- * @returns {string[]} String literal values in source order.
- */
-function extractQuotedNames(block) {
-  const names = [];
-  const re = /["']([^"']+)["']/g;
-  let m;
-  while ((m = re.exec(block)) !== null) {
-    names.push(m[1]);
-  }
-  return names;
-}
-
-/**
- * Read one canonical entry list from `packages/components/tsup.config.ts`.
- *
- * The props manifest must follow the same component universe as the package
- * build, so this function reads `uiComponentNames` and
- * `uiAnimatedComponentNames` from the build config instead of maintaining a
- * second hand-written list.
- *
- * @param {string} name Variable name to parse from `tsup.config.ts`.
- * @returns {string[]} Sorted component or entry names from the requested list.
- * @throws {Error} When the expected `const <name> = [...] as const` block is missing.
- */
-function readTsupList(name) {
-  const text = readFileSync(tsupPath, "utf8");
-  const match = text.match(
-    new RegExp(`const ${name} = \\[([\\s\\S]*?)\\] as const`),
-  );
-  if (!match) {
-    throw new Error(`Could not parse ${name} from tsup.config.ts`);
-  }
-  return extractQuotedNames(match[1]).sort();
-}
 
 /**
  * Load package TypeScript compiler options and source file names.
@@ -822,6 +780,11 @@ function main() {
   );
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+// `process.argv[1]` is undefined under a scriptless `node -e` / `--import`,
+// where pathToFileURL would throw before this module could be imported.
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main();
 }

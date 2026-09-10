@@ -4849,6 +4849,1309 @@
         }
       ]
     },
+    "carousel": {
+      "slug": "carousel",
+      "subcomponents": [
+        {
+          "name": "static:Carousel",
+          "displayName": "Carousel",
+          "propsType": "CarouselProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "blue",
+                "crimson",
+                "cyan",
+                "default",
+                "destructive",
+                "electric",
+                "emerald",
+                "forest",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-indigo",
+                "gradient-orange",
+                "gradient-pink",
+                "gradient-purple",
+                "gradient-red",
+                "gradient-teal",
+                "gradient-yellow",
+                "green",
+                "indigo",
+                "lavender",
+                "lime",
+                "magenta",
+                "mint",
+                "ocean",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "rose",
+                "royal",
+                "ruby",
+                "sapphire",
+                "secondary",
+                "sky",
+                "slate",
+                "sunset",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "arrows",
+              "type": "false | CarouselControlPlacement | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Previous/next buttons, and where they sit. Defaults to `\"inside\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "autoPlay",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Advance on a timer. Suppressed under `prefers-reduced-motion`.",
+              "deprecated": false
+            },
+            {
+              "name": "autoPlayInterval",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Milliseconds between auto-advances. Defaults to 4000.",
+              "deprecated": false
+            },
+            {
+              "name": "counter",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Render the `current / total` counter. Defaults to false.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultIndex",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Initial rest position when uncontrolled. Defaults to 0.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Block navigation from every source and dim the controls.",
+              "deprecated": false
+            },
+            {
+              "name": "dots",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Render the indicator dots. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "draggable",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Enable pointer dragging on the viewport. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "dragThreshold",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Fraction of one slide step a drag must cover to advance on release.\nDefaults to 0.2.",
+              "deprecated": false
+            },
+            {
+              "name": "frame",
+              "type": "CarouselFrame | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Surface treatment applied to the viewport. Defaults to `\"none\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "index",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled rest position, clamped to `0 … slideCount - slidesPerView`.",
+              "deprecated": false
+            },
+            {
+              "name": "loop",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Wrap around at both ends instead of stopping. Defaults to false.",
+              "deprecated": false
+            },
+            {
+              "name": "nextLabel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Accessible name for the next button. Defaults to `\"Next slide\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "onIndexChange",
+              "type": "((index: number) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "orientation",
+              "type": "CarouselOrientation | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "pauseOnFocus",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Pause auto-play while focus is inside the carousel. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "pauseOnHover",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Pause auto-play while the pointer is over the carousel. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "previousLabel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Accessible name for the previous button. Defaults to `\"Previous slide\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "progress",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Render the progress bar. Defaults to false.",
+              "deprecated": false
+            },
+            {
+              "name": "slideCount",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Slide count override.\n\n`Carousel.Content` reports the number of children it renders, so this is\nonly needed when slides are rendered outside of a `Carousel.Content`.",
+              "deprecated": false
+            },
+            {
+              "name": "slidesPerView",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Number of slides visible at one rest position. Defaults to 1.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "description": "Slides. Children that are not already a `Carousel.Item` are wrapped in one.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CarouselContent",
+          "displayName": "CarouselContent",
+          "propsType": "CarouselContentProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CarouselControl",
+          "displayName": "CarouselControl",
+          "propsType": "CarouselControlProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "placement",
+              "type": "CarouselControlPlacement | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CarouselControls",
+          "displayName": "CarouselControls",
+          "propsType": "CarouselControlsProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CarouselCounter",
+          "displayName": "CarouselCounter",
+          "propsType": "CarouselCounterProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "format",
+              "type": "((current: number, total: number) => string) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Defaults to `{current} / {total}`.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CarouselDots",
+          "displayName": "CarouselDots",
+          "propsType": "CarouselDotsProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "dotLabel",
+              "type": "((position: number, total: number) => string) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Accessible name for a single dot. Defaults to `Go to slide {n}`.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CarouselItem",
+          "displayName": "CarouselItem",
+          "propsType": "CarouselItemProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "index",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Position override. Normally supplied by `Carousel.Content`.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CarouselProgress",
+          "displayName": "CarouselProgress",
+          "propsType": "CarouselProgressProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CarouselRoot",
+          "displayName": "CarouselRoot",
+          "propsType": "CarouselRootProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "autoPlay",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Advance on a timer. Suppressed under `prefers-reduced-motion`.",
+              "deprecated": false
+            },
+            {
+              "name": "autoPlayInterval",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Milliseconds between auto-advances. Defaults to 4000.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultIndex",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Initial rest position when uncontrolled. Defaults to 0.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Block navigation from every source and dim the controls.",
+              "deprecated": false
+            },
+            {
+              "name": "draggable",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Enable pointer dragging on the viewport. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "dragThreshold",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Fraction of one slide step a drag must cover to advance on release.\nDefaults to 0.2.",
+              "deprecated": false
+            },
+            {
+              "name": "index",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled rest position, clamped to `0 … slideCount - slidesPerView`.",
+              "deprecated": false
+            },
+            {
+              "name": "loop",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Wrap around at both ends instead of stopping. Defaults to false.",
+              "deprecated": false
+            },
+            {
+              "name": "onIndexChange",
+              "type": "((index: number) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "orientation",
+              "type": "CarouselOrientation | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "pauseOnFocus",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Pause auto-play while focus is inside the carousel. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "pauseOnHover",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Pause auto-play while the pointer is over the carousel. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "CarouselSize | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "slideCount",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Slide count override.\n\n`Carousel.Content` reports the number of children it renders, so this is\nonly needed when slides are rendered outside of a `Carousel.Content`.",
+              "deprecated": false
+            },
+            {
+              "name": "slidesPerView",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Number of slides visible at one rest position. Defaults to 1.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CarouselVariant",
+          "displayName": "CarouselVariant",
+          "propsType": "CarouselVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:CarouselViewport",
+          "displayName": "CarouselViewport",
+          "propsType": "CarouselViewportProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "frame",
+              "type": "enum",
+              "required": false,
+              "default": "none",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "bordered",
+                "card",
+                "glass",
+                "none"
+              ],
+              "variantGroup": "frame",
+              "deprecated": false
+            },
+            {
+              "name": "onKeyDown",
+              "type": "((event: KeyboardEvent<HTMLDivElement>) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:CarouselAnimated",
+          "displayName": "CarouselAnimated",
+          "propsType": "CarouselAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "animation",
+              "type": "CarouselAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Track settle physics. Defaults to `\"glide\"`. Ignored under `prefers-reduced-motion`.",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'secondary' | 'destructive' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "arrows",
+              "type": "false | CarouselControlPlacement | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Previous/next buttons, and where they sit. Defaults to `\"inside\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "autoPlay",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Advance on a timer. Suppressed under `prefers-reduced-motion`.",
+              "deprecated": false
+            },
+            {
+              "name": "autoPlayInterval",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Milliseconds between auto-advances. Defaults to 4000.",
+              "deprecated": false
+            },
+            {
+              "name": "counter",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Render the `current / total` counter. Defaults to false.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultIndex",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Initial rest position when uncontrolled. Defaults to 0.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Block navigation from every source and dim the controls.",
+              "deprecated": false
+            },
+            {
+              "name": "dots",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Render the indicator dots. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "draggable",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Enable pointer dragging on the viewport. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "dragThreshold",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Fraction of one slide step a drag must cover to advance on release.\nDefaults to 0.2.",
+              "deprecated": false
+            },
+            {
+              "name": "frame",
+              "type": "CarouselFrame | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Surface treatment applied to the viewport. Defaults to `\"none\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "index",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled rest position, clamped to `0 … slideCount - slidesPerView`.",
+              "deprecated": false
+            },
+            {
+              "name": "loop",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Wrap around at both ends instead of stopping. Defaults to false.",
+              "deprecated": false
+            },
+            {
+              "name": "nextLabel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Accessible name for the next button. Defaults to `\"Next slide\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "onIndexChange",
+              "type": "((index: number) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "orientation",
+              "type": "CarouselOrientation | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "pauseOnFocus",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Pause auto-play while focus is inside the carousel. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "pauseOnHover",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Pause auto-play while the pointer is over the carousel. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "previousLabel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Accessible name for the previous button. Defaults to `\"Previous slide\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "progress",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Render the progress bar. Defaults to false.",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "reveal",
+              "type": "CarouselReveal | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "How inactive slides are de-emphasised. Defaults to `\"none\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "CarouselSize | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "slideCount",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Slide count override.\n\n`Carousel.Content` reports the number of children it renders, so this is\nonly needed when slides are rendered outside of a `Carousel.Content`.",
+              "deprecated": false
+            },
+            {
+              "name": "slidesPerView",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Number of slides visible at one rest position. Defaults to 1.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "description": "Slides. Children that are not already a `Carousel.Item` are wrapped in one.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:CarouselContentAnimated",
+          "displayName": "CarouselContentAnimated",
+          "propsType": "CarouselContentAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "animation",
+              "type": "CarouselAnimation | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Track settle physics. Defaults to `\"glide\"`.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "animated:CarouselItemAnimated",
+          "displayName": "CarouselItemAnimated",
+          "propsType": "CarouselItemAnimatedProps",
+          "source": "animated",
+          "props": [
+            {
+              "name": "index",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Position override. Normally supplied by `Carousel.Content`.",
+              "deprecated": false
+            },
+            {
+              "name": "reveal",
+              "type": "CarouselReveal | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "How this slide looks while it sits outside the active window.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "checkbox": {
       "slug": "checkbox",
       "subcomponents": [
@@ -9358,7 +10661,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'violet' | 'amber' | 'striped' | 'bordered' | null | undefined",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'violet' | 'amber' | 'bordered' | 'striped' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -22841,7 +24144,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'violet' | 'amber' | 'striped' | 'bordered' | null | undefined",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'violet' | 'amber' | 'bordered' | 'striped' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false

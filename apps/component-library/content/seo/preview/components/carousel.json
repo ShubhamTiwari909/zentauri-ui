@@ -1,0 +1,120 @@
+{
+  "category": "Data display",
+  "title": "Carousel component for React & Next.js",
+  "description": "Accessible carousel and slider component for React and Next.js: multiple slides per view, vertical tracks, looping, pointer dragging, auto-play that respects reduced motion, keyboard navigation, and an optional framer-motion spring entry.",
+  "keywords": [
+    "carousel component",
+    "React carousel",
+    "Next.js slider",
+    "image carousel",
+    "slides per view",
+    "vertical carousel",
+    "accessible carousel",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Carousel · Zentauri UI",
+    "description": "Accessible carousel component for React and Next.js: multi-slide views, vertical tracks, drag, looping, auto-play, and keyboard navigation.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Carousel · Zentauri UI",
+    "description": "Accessible carousel component for React and Next.js: multi-slide views, vertical tracks, drag, looping, auto-play, and keyboard navigation.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/carousel",
+  "headings": {
+    "h1": "Carousel",
+    "h2": [
+      "How it works",
+      "Slides per view",
+      "Orientation",
+      "Dragging",
+      "Auto-play",
+      "Compound API",
+      "Animated entry",
+      "Keyboard interaction",
+      "Common use cases",
+      "Accessibility",
+      "FAQ"
+    ]
+  },
+  "intro": "The Carousel component moves a flex track across a clipped viewport. Slide width and track offset are derived from one shared piece of CSS arithmetic, so every rest position lands exactly on a slide boundary no matter how many slides are visible or how wide the gap is. Slides per view, orientation, looping, pointer dragging, auto-play, arrows, dots, a counter, and a progress bar are all props.",
+  "useCases": [
+    "Image and media galleries",
+    "Product or pricing card rows",
+    "Onboarding and feature tours",
+    "Testimonial and logo rotators",
+    "Dashboard panels that page horizontally",
+    "Vertical changelog and release feeds"
+  ],
+  "faqs": [
+    {
+      "question": "How does the carousel show more than one slide at a time?",
+      "answer": "Set slidesPerView. Each slide takes calc((100% - (slidesPerView - 1) * gap) / slidesPerView) of the viewport, subtracting only the gaps that sit between visible slides, and the track offset multiplies that same width plus one gap. Because both expressions share the arithmetic there is no rounding drift, and the number of rest positions becomes slideCount - slidesPerView + 1, which is what the dots and the counter report."
+    },
+    {
+      "question": "Does the carousel work with a keyboard?",
+      "answer": "Yes. The viewport is focusable and handles the axis arrow keys, PageUp and PageDown, and Home and End. Arrows, dots, and the counter are real buttons with accessible names, the arrows disable themselves at the ends when loop is off, and tabbing into a slide that is currently clipped scrolls it into view so focus never lands somewhere invisible."
+    },
+    {
+      "question": "Is dragging available without framer-motion?",
+      "answer": "Yes. The static entry drags with plain pointer events and settles with a CSS transition, so pointer dragging costs no extra dependency. Releasing past dragThreshold (a fifth of a slide by default) advances, a longer flick advances by more than one, and anything shorter snaps back. Non-looping ends rubber-band instead of tracking the pointer into empty space."
+    },
+    {
+      "question": "What does the animated entry add?",
+      "answer": "Spring physics on the track. It writes two CSS custom properties that the browser folds into the same calc() the static entry uses, so a springing track and a resting one agree on where every slide starts. Pick a preset with animation (glide, smooth, snappy, bouncy) and optionally de-emphasise off-screen slides with reveal (fade, scale, blur). Import it from @zentauri-ui/zentauri-components/ui/carousel/animated; the static entry never pulls framer-motion in."
+    },
+    {
+      "question": "Does auto-play respect reduced motion?",
+      "answer": "Yes. Auto-play never starts when prefers-reduced-motion is set, and while running it pauses on hover, on focus within the carousel, and during a drag. It wraps at the end regardless of loop, since a timer that stops after one pass is not useful. The track is a polite live region for user-driven moves and drops to aria-live=\"off\" while auto-rotating, so a screen reader is not interrupted by a timer."
+    },
+    {
+      "question": "Can I customize the appearance?",
+      "answer": "Yes. The component ships 39 appearance palettes — 30 solid colors plus nine gradients — and each publishes a single --zui-carousel-<appearance>-accent that the active dot and the progress bar read as a background, which is why gradients work exactly like solids. Every other surface (controls, dots, frames, counter, focus rings) is its own --zui-carousel-* variable with a light and a dark value, and the viewport takes none, bordered, card, or glass frames across sm/md/lg sizes."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "How it works",
+      "body": "A clipped viewport holds a flex track whose children are the slides. The root writes --carousel-item-size and --carousel-offset as inline styles: the first is the exact slide width for the current slidesPerView, the second multiplies that width plus one gap by the active index and adds any live drag distance. Percentages in both resolve against the track, whose main-axis size equals the viewport's, so the two expressions can never disagree about where a slide begins."
+    },
+    {
+      "heading": "Slides per view",
+      "body": "slidesPerView sets how many slides sit at one rest position. The maximum index becomes slideCount - slidesPerView, so a six-slide carousel three at a time has four rest positions rather than six, and the dots, the counter, and the progress bar all follow that number. Every slide inside the active window is marked data-active, so peeking layouts can style the visible group rather than a single slide."
+    },
+    {
+      "heading": "Orientation",
+      "body": "orientation=\"vertical\" turns the track into a column, translates on the block axis, stacks the dots, moves inside arrows to the top and bottom edges, and rebinds the keyboard to ArrowUp and ArrowDown. A column's percentage slide sizes resolve against height, which needs a definite value, so the vertical viewport ships a default height through --zui-carousel-vertical-height that a token or a className can replace."
+    },
+    {
+      "heading": "Dragging",
+      "body": "Dragging uses pointer events on the viewport, so it works for mouse, touch, and pen without a motion library. dragThreshold is a fraction of one slide step and defaults to 0.2; travel beyond it commits, and a longer flick commits proportionally more steps. While a drag is in flight the track drops its CSS transition and carries data-dragging, and at a non-looping boundary the offset is damped so the end of the list is felt rather than crossed."
+    },
+    {
+      "heading": "Auto-play",
+      "body": "autoPlay advances on a timer set by autoPlayInterval, wrapping at the end so the rotation continues past the last slide. pauseOnHover and pauseOnFocus are on by default, a drag suspends the timer, and prefers-reduced-motion suppresses it entirely. Auto-play is a convenience, not a substitute for controls: the arrows, dots, and keyboard all stay live while it runs, which is what satisfies the pause requirement for moving content."
+    },
+    {
+      "heading": "Compound API",
+      "body": "Use the shorthand and pass slides as children, or compose Carousel.Root, Carousel.Viewport, Carousel.Content, Carousel.Item, Carousel.Controls, Carousel.Previous, Carousel.Next, Carousel.Dots, Carousel.Counter, and Carousel.Progress. The root owns index state, geometry, keyboard handling, and the drag gesture; Carousel.Content counts its children and hands each one its position, so items never take an index prop. Pass slideCount on the root when slides live outside a Carousel.Content, or to keep the dots correct on the first server render."
+    },
+    {
+      "heading": "Animated entry",
+      "body": "The animated entry keeps placement in CSS and springs only the slide index, writing --carousel-motion-index and --carousel-motion-drag for the browser to fold into the shared calc(). That keeps static and animated tracks pixel-identical at rest while letting a spring overshoot on the way. animation selects the physics preset and reveal fades, scales, or blurs slides outside the active window; both collapse to no motion under prefers-reduced-motion."
+    },
+    {
+      "heading": "Keyboard interaction",
+      "body": "Tab to the viewport, then use ArrowLeft and ArrowRight (ArrowUp and ArrowDown when vertical) to step, PageUp and PageDown to do the same, and Home and End to jump to the first and last rest position. The arrows and dots are ordinary buttons, so they are reachable in sequence, and focusing anything inside a clipped slide brings that slide into view first."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The root is a region with aria-roledescription=\"carousel\" and a default accessible name that a caller-supplied aria-label or aria-labelledby replaces. Each slide is a group with aria-roledescription=\"slide\" and an \"n of total\" label, and slides outside the active window are aria-hidden. The track announces user-driven moves politely and goes silent while auto-rotating. Arrows carry Previous slide and Next slide names and disable at the ends, dots expose aria-current, and the progress bar is a named progressbar with real min, max, and now values."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

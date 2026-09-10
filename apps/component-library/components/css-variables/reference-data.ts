@@ -9,6 +9,7 @@ import { breadcrumbCssVariables } from "./data/breadcrumb";
 import { buttonsCssVariables } from "./data/buttons";
 import { calendarCssVariables } from "./data/calendar";
 import { cardCssVariables } from "./data/card";
+import { carouselCssVariables } from "./data/carousel";
 import { checkboxCssVariables } from "./data/checkbox";
 import { circularMenuCssVariables } from "./data/circular-menu";
 import { codeBlockCssVariables } from "./data/code-block";
@@ -81,6 +82,7 @@ export const cssVariableReferences = {
   buttons: buttonsCssVariables,
   calendar: calendarCssVariables,
   card: cardCssVariables,
+  carousel: carouselCssVariables,
   checkbox: checkboxCssVariables,
   "circular-menu": circularMenuCssVariables,
   "code-block": codeBlockCssVariables,

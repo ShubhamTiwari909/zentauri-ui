@@ -106,6 +106,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Layout",
   },
   {
+    id: "carousel",
+    name: "Carousel",
+    description:
+      "Sliding track with multiple slides per view, vertical orientation, pointer dragging, looping, reduced-motion-aware auto-play, and an optional spring entry.",
+    href: "/preview/components/carousel",
+    badge: "Display",
+  },
+  {
     id: "checkbox",
     name: "Checkbox",
     description:
