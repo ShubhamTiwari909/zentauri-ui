@@ -78,6 +78,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Rating } from "../ui/rating";
 import { SearchBar } from "../ui/search";
+import { SortableList } from "../ui/sortable-list";
 import {
   Select,
   SelectContent,
@@ -204,6 +205,33 @@ describe("axe-core accessibility coverage", () => {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>,
+      );
+
+      await assertNoAxeViolations(container);
+    });
+
+    it("passes axe checks for a sortable list", async () => {
+      const { container } = render(
+        <SortableList
+          items={["Draft", "Review", "Ship"]}
+          getItemId={(item) => item}
+          renderItem={(item) => item}
+          label="Release checklist"
+        />,
+      );
+
+      await assertNoAxeViolations(container);
+    });
+
+    it("passes axe checks for a sortable list without move buttons", async () => {
+      const { container } = render(
+        <SortableList
+          items={["Draft", "Review", "Ship"]}
+          getItemId={(item) => item}
+          renderItem={(item) => item}
+          label="Release checklist"
+          showMoveButtons={false}
+        />,
       );
 
       await assertNoAxeViolations(container);

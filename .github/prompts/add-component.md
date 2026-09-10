@@ -111,9 +111,13 @@ Add `"<name>"` to **`uiComponentNames`**, and to **`uiAnimatedComponentNames`** 
 (`package.json` `exports` use wildcards `./ui/*` and `./ui/*/animated` — **no per-component
 export edit needed**.)
 
-### A11. Version bump — `packages/components/package.json` (EDIT)
+### A11. Changeset — `.changeset/<slug>.md` (NEW)
 
-Bump `version` (typing indicator: `2.1.9` → `2.2.0`, i.e. a new component = minor bump).
+Run `pnpm changeset` and pick **minor** for a new component. Do **not** hand-edit
+`version` in `packages/components/package.json`: Changesets owns the version bump and
+the changelog, and `pnpm version-packages` applies pending changesets at release time.
+See CONTRIBUTING.md — a public package change without a changeset fails the PR
+checklist.
 
 ---
 
@@ -183,8 +187,15 @@ Imports the preview page + `getPreviewSeo("<name>")`, exports
 ### C6. CSS-variable reference (if the component adds `--zui-*` tokens)
 
 - `components/css-variables/data/<name>.ts` (NEW) — `defineCssVariableReference({...})`
-  with `lightVariables`, `darkExamples`, and `darkVariableCount` (must equal the number
-  of dark entries).
+  with `lightVariables`, `darkExamples`, and `darkVariableCount`.
+  `darkVariableCount` is the **total** number of `-dark` variables the component
+  defines, not the length of `darkExamples`: the page renders
+  `lightVariables.length + darkVariableCount` as the total and
+  `darkVariableCount - darkExamples.length` as the "and N more" line, so setting it to
+  `darkExamples.length` undercounts. It is not `lightVariables.length` either —
+  non-colour tokens (radius, gaps, insets) usually have no dark counterpart, so the
+  dark count is normally lower. Derive all three from the design-system file rather
+  than counting by hand.
 - `components/css-variables/reference-data.ts` (EDIT) — import + add to
   `cssVariableReferences`.
 

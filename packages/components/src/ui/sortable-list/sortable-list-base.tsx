@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { KeyboardEvent as ReactKeyboardEvent } from "react";
 import { cn } from "../../lib/utils";
 import type { SortableListItemProps, SortableListProps } from "./types";
 import { zuiSortableListGradientHandle } from "../../design-system/sortable-list";
@@ -35,20 +36,37 @@ export function SortableList<T>({
   }, [defaultItems, items]);
 
   const moveItem = (from: number, to: number) => {
-    if (
-      disabled ||
-      from === to ||
-      from < 0 ||
-      to < 0 ||
-      to >= orderedItems.length
-    )
-      return;
+    if (disabled || from === to) return;
+    // Both ends are range-checked here rather than inferring failure from the
+    // spliced value: an item may legitimately *be* `undefined`, and using it
+    // as the sentinel would silently refuse to move it.
+    const count = orderedItems.length;
+    if (from < 0 || from >= count || to < 0 || to >= count) return;
+
     const next = [...orderedItems];
-    const [moved] = next.splice(from, 1);
-    if (moved === undefined) return;
+    const [moved] = next.splice(from, 1) as [T];
     next.splice(to, 0, moved);
     setOrderedItems(next);
     onItemsChange?.(next);
+  };
+
+  /**
+   * Reorder from the keyboard with a modifier plus an arrow.
+   *
+   * Native HTML5 drag-and-drop is pointer-only, so without this the list is
+   * unreorderable by keyboard whenever `showMoveButtons` is off.
+   */
+  const handleItemKeyDown = (
+    event: ReactKeyboardEvent<HTMLLIElement>,
+    index: number,
+  ) => {
+    if (disabled) return;
+    if (!event.altKey && !event.ctrlKey && !event.metaKey) return;
+    const delta =
+      event.key === "ArrowUp" ? -1 : event.key === "ArrowDown" ? 1 : 0;
+    if (delta === 0) return;
+    event.preventDefault();
+    moveItem(index, index + delta);
   };
 
   return (
@@ -68,6 +86,9 @@ export function SortableList<T>({
             appearance={appearance}
             dragging={draggingId === id}
             draggable={!disabled}
+            tabIndex={disabled ? -1 : 0}
+            aria-keyshortcuts="Alt+ArrowUp Alt+ArrowDown"
+            onKeyDown={(event) => handleItemKeyDown(event, index)}
             onDragStart={() => {
               dragIndex.current = index;
               setDraggingId(id);
