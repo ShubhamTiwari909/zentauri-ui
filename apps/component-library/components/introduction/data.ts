@@ -602,6 +602,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Feedback",
   },
   {
+    id: "sortable-list",
+    name: "Sortable list",
+    description:
+      "Dependency-free drag-to-reorder lists with controlled state and keyboard-friendly move controls.",
+    href: "/preview/components/sortable-list",
+    badge: "Data",
+  },
+  {
     id: "wizard",
     name: "Wizard",
     description:

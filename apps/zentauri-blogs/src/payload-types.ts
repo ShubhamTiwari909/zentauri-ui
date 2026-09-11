@@ -751,8 +751,8 @@ export interface CardBlock {
   bg?:
     | (
         | "default"
-        | "glass"
         | "outline"
+        | "glass"
         | "ghost"
         | "elevated"
         | "blue"

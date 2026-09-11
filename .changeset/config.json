@@ -10,6 +10,7 @@
   "ignore": [
     "component-library",
     "zentauri-demo-pages",
+    "zentauri-blogs",
     "@zentauri-ui/shared",
     "@repo/eslint-config",
     "@repo/typescript-config"

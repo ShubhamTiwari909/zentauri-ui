@@ -411,20 +411,26 @@ function classifyProp(name, isDom) {
 /**
  * Determine whether a prop is optional in the public API table.
  *
- * Optionality can appear either as a question token on the declaration or as
- * `undefined` in the resolved type string after intersections/unions are
- * expanded. Checking both keeps aliases and inherited props represented
- * accurately enough for documentation.
+ * Uses TypeScript's own optionality flag rather than looking for `undefined`
+ * in the resolved type string: a required prop can legitimately accept
+ * `undefined` as a *value* — `children: ReactNode` is the common case — and
+ * the old string test reported every one of those as optional.
+ *
+ * Question tokens are still consulted as a fallback for symbols synthesised
+ * from an intersection that do not carry the flag — but *every* declaration
+ * has to be optional. An intersection of React's `children?: ReactNode` with a
+ * local required `children: ReactNode` is required, and testing `some()` there
+ * would let the inherited optional declaration win.
  *
  * @param {ts.Symbol} symbol Prop symbol.
- * @param {string} typeString Resolved prop type string.
  * @returns {boolean} True when the prop should be displayed as optional.
  */
-function isOptionalProperty(symbol, typeString) {
+function isOptionalProperty(symbol) {
+  if ((symbol.flags & ts.SymbolFlags.Optional) !== 0) return true;
   const declarations = symbol.getDeclarations() ?? [];
   return (
-    declarations.some((declaration) => Boolean(declaration.questionToken)) ||
-    /\bundefined\b/.test(typeString)
+    declarations.length > 0 &&
+    declarations.every((declaration) => Boolean(declaration.questionToken))
   );
 }
 
@@ -592,7 +598,7 @@ function readPropsForNode(node, checker, variantDefinition, componentName) {
     props.push({
       name,
       type: variantOptions ? "enum" : typeString,
-      required: !isOptionalProperty(symbol, typeString),
+      required: !isOptionalProperty(symbol),
       ...(variantOptions
         ? {
             default: variantDefinition.defaults[name],

@@ -1,0 +1,110 @@
+import { defineCssVariableReference } from "../reference-types";
+
+export const sortableListCssVariables = defineCssVariableReference({
+  title: "Sortable List CSS variables",
+  description:
+    "Override these sortable-list variables on :root, a theme selector, or a component wrapper. Each appearance publishes its own border and background pair, the gradients add from/to stops plus a foreground so text on them stays themeable, and the drag handle has its own colour.",
+  lightVariables: [
+    [
+      "sortable-list-amber-bg",
+      "color-mix(in oklch,var(--zui-color-amber,#d97706) 8%,transparent)",
+    ],
+    ["sortable-list-amber-border", "#d97706"],
+    ["sortable-list-bg", "white"],
+    [
+      "sortable-list-blue-bg",
+      "color-mix(in oklch,var(--zui-color-blue,#2563eb) 8%,transparent)",
+    ],
+    ["sortable-list-blue-border", "#2563eb"],
+    ["sortable-list-border", "oklch(92.9% 0.013 255.508)"],
+    ["sortable-list-card-shadow", "0 1px 3px 0 rgb(0 0 0 / 0.1)"],
+    [
+      "sortable-list-cyan-bg",
+      "color-mix(in oklch,var(--zui-color-cyan,#0891b2) 8%,transparent)",
+    ],
+    ["sortable-list-cyan-border", "#0891b2"],
+    ["sortable-list-default-hover", "oklch(96.8% 0.007 247.896)"],
+    [
+      "sortable-list-emerald-bg",
+      "color-mix(in oklch,var(--zui-color-emerald,#059669) 8%,transparent)",
+    ],
+    ["sortable-list-emerald-border", "#059669"],
+    ["sortable-list-ghost-hover", "oklch(96.8% 0.007 247.896)"],
+    ["sortable-list-glass-bg", "rgba(255,255,255,0.6)"],
+    ["sortable-list-glass-hover", "rgba(255,255,255,0.8)"],
+    ["sortable-list-gradient-blue-fg", "#ffffff"],
+    ["sortable-list-gradient-blue-from", "#2563eb"],
+    ["sortable-list-gradient-blue-to", "#0891b2"],
+    ["sortable-list-gradient-green-fg", "#ffffff"],
+    ["sortable-list-gradient-green-from", "#16a34a"],
+    ["sortable-list-gradient-green-to", "#65a30d"],
+    ["sortable-list-gradient-handle", "#ffffff"],
+    ["sortable-list-gradient-purple-fg", "#ffffff"],
+    ["sortable-list-gradient-purple-from", "#9333ea"],
+    ["sortable-list-gradient-purple-to", "#db2777"],
+    [
+      "sortable-list-green-bg",
+      "color-mix(in oklch,var(--zui-color-green,#16a34a) 8%,transparent)",
+    ],
+    ["sortable-list-green-border", "#16a34a"],
+    ["sortable-list-handle", "oklch(55.6% 0.043 257.417)"],
+    ["sortable-list-item-border", "oklch(92.9% 0.013 255.508)"],
+    [
+      "sortable-list-orange-bg",
+      "color-mix(in oklch,var(--zui-color-orange,#ea580c) 8%,transparent)",
+    ],
+    ["sortable-list-orange-border", "#ea580c"],
+    ["sortable-list-outline-hover", "oklch(96.8% 0.007 247.896)"],
+    [
+      "sortable-list-pink-bg",
+      "color-mix(in oklch,var(--zui-color-pink,#db2777) 8%,transparent)",
+    ],
+    ["sortable-list-pink-border", "#db2777"],
+    ["sortable-list-primary-hover", "#eff6ff"],
+    [
+      "sortable-list-purple-bg",
+      "color-mix(in oklch,var(--zui-color-purple,#9333ea) 8%,transparent)",
+    ],
+    ["sortable-list-purple-border", "#9333ea"],
+    [
+      "sortable-list-red-bg",
+      "color-mix(in oklch,var(--zui-color-red,#dc2626) 8%,transparent)",
+    ],
+    ["sortable-list-red-border", "#dc2626"],
+    [
+      "sortable-list-slate-bg",
+      "color-mix(in oklch,var(--zui-color-slate,#475569) 8%,transparent)",
+    ],
+    ["sortable-list-slate-border", "#475569"],
+    ["sortable-list-subtle-bg", "oklch(96.8% 0.007 247.896)"],
+  ],
+  darkExamples: [
+    [
+      "sortable-list-amber-bg-dark",
+      "color-mix(in oklch,var(--zui-color-amber-dark,#fbbf24) 15%,transparent)",
+    ],
+    ["sortable-list-amber-border-dark", "#fbbf24"],
+    ["sortable-list-bg-dark", "oklch(20.8% 0.042 265.755)"],
+    [
+      "sortable-list-blue-bg-dark",
+      "color-mix(in oklch,var(--zui-color-blue-dark,#3b82f6) 15%,transparent)",
+    ],
+    ["sortable-list-blue-border-dark", "#3b82f6"],
+    ["sortable-list-border-dark", "oklch(27.9% 0.041 260.031)"],
+    ["sortable-list-card-shadow-dark", "0 1px 3px 0 rgb(0 0 0 / 0.3)"],
+    [
+      "sortable-list-cyan-bg-dark",
+      "color-mix(in oklch,var(--zui-color-cyan-dark,#22d3ee) 15%,transparent)",
+    ],
+    ["sortable-list-cyan-border-dark", "#22d3ee"],
+    ["sortable-list-default-hover-dark", "oklch(27.9% 0.041 260.031)"],
+    [
+      "sortable-list-emerald-bg-dark",
+      "color-mix(in oklch,var(--zui-color-emerald-dark,#34d399) 15%,transparent)",
+    ],
+    ["sortable-list-emerald-border-dark", "#34d399"],
+    ["sortable-list-ghost-hover-dark", "oklch(27.9% 0.041 260.031)"],
+    ["sortable-list-glass-bg-dark", "rgba(255,255,255,0.05)"],
+  ],
+  darkVariableCount: 42,
+});

@@ -56,6 +56,7 @@ import { selectCssVariables } from "./data/select";
 import { skeletonCssVariables } from "./data/skeleton";
 import { slideToCompleteCssVariables } from "./data/slide-to-complete";
 import { sliderCssVariables } from "./data/slider";
+import { sortableListCssVariables } from "./data/sortable-list";
 import { speechRecognitionCssVariables } from "./data/speech-recognition";
 import { speechSynthesizerCssVariables } from "./data/speech-synthesizer";
 import { spinnerCssVariables } from "./data/spinner";
@@ -130,6 +131,7 @@ export const cssVariableReferences = {
   skeleton: skeletonCssVariables,
   "slide-to-complete": slideToCompleteCssVariables,
   slider: sliderCssVariables,
+  "sortable-list": sortableListCssVariables,
   "speech-recognition": speechRecognitionCssVariables,
   "speech-synthesizer": speechSynthesizerCssVariables,
   spinner: spinnerCssVariables,
