@@ -250,6 +250,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "gauge",
+    name: "Gauge",
+    description:
+      "Accessible radial progress rings and open dials with custom ranges, value formatting, and tokenized appearances.",
+    href: "/preview/components/gauge",
+    badge: "Feedback",
+  },
+  {
     id: "hash-generator",
     name: "Hash generator",
     description:

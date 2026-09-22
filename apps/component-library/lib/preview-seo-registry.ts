@@ -31,6 +31,7 @@ import dynamicStepper from "@/content/seo/preview/components/dynamic-stepper.jso
 import emptyState from "@/content/seo/preview/components/empty-state.json";
 import hooks from "@/content/seo/preview/hooks/hooks.json";
 import fileUpload from "@/content/seo/preview/components/file-upload.json";
+import gauge from "@/content/seo/preview/components/gauge.json";
 import hashGenerator from "@/content/seo/preview/components/hash-generator.json";
 import index from "@/content/seo/preview/components/index.json";
 import inputs from "@/content/seo/preview/components/inputs.json";
@@ -119,6 +120,7 @@ const previewSeoRegistry = {
   "empty-state": emptyState as PreviewSeoDocument,
   hooks: hooks as PreviewSeoDocument,
   "file-upload": fileUpload as PreviewSeoDocument,
+  gauge: gauge as PreviewSeoDocument,
   "hash-generator": hashGenerator as PreviewSeoDocument,
   inputs: inputs as PreviewSeoDocument,
   "json-viewer": jsonViewer as PreviewSeoDocument,

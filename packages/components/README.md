@@ -19,7 +19,7 @@ Counted from the entry lists in `tsup.config.ts`. Refresh with `pnpm --filter @z
 
 | Surface             | Count | Import shape                                          |
 | ------------------- | ----: | ----------------------------------------------------- |
-| Static UI entries   |    77 | `@zentauri-ui/zentauri-components/ui/<name>`          |
+| Static UI entries   |    78 | `@zentauri-ui/zentauri-components/ui/<name>`          |
 | Animated UI entries |    52 | `@zentauri-ui/zentauri-components/ui/<name>/animated` |
 | Animation entries   |    41 | `@zentauri-ui/zentauri-components/animations/<name>`  |
 | Chart entries       |     9 | `@zentauri-ui/zentauri-components/charts/<type>`      |
@@ -33,12 +33,12 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 142 passed (142)   |
-| Tests      | 1423 passed (1423) |
+| Test files | 143 passed (143)   |
+| Tests      | 1433 passed (1433) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 85         | 995   |
+| Components and UI utilities    | 86         | 1005  |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 48         | 242   |
 | Design system facade           | 1          | 11    |
@@ -95,6 +95,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/terminal-emulator/terminal-emulator.test.tsx`                   |    11 |
 | `src/hooks/usePagination/usePagination.test.ts`                         |    10 |
 | `src/ui/date-picker/date-picker.test.tsx`                               |    10 |
+| `src/ui/gauge/gauge.test.tsx`                                           |    10 |
 | `src/ui/log-viewer/log-viewer.test.tsx`                                 |    10 |
 | `src/ui/marquee/marquee.test.tsx`                                       |    10 |
 | `src/ui/modal/modal.test.tsx`                                           |    10 |
@@ -903,7 +904,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1423 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1433 test cases in total
 - `pnpm test:a11y` — focused accessibility coverage for package-level UI primitives and compound components: **axe-core** audits for every interactive component plus **keyboard-interaction** tests (focus order, arrow-key nav, Home/End, Escape/Enter) for the compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).

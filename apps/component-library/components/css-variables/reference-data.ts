@@ -26,6 +26,7 @@ import { dropdownCssVariables } from "./data/dropdown";
 import { dynamicStepperCssVariables } from "./data/dynamic-stepper";
 import { emptyStateCssVariables } from "./data/empty-state";
 import { fileUploadCssVariables } from "./data/file-upload";
+import { gaugeCssVariables } from "./data/gauge";
 import { hashGeneratorCssVariables } from "./data/hash-generator";
 import { inputsCssVariables } from "./data/inputs";
 import { jsonViewerCssVariables } from "./data/json-viewer";
@@ -100,6 +101,7 @@ export const cssVariableReferences = {
   "dynamic-stepper": dynamicStepperCssVariables,
   "empty-state": emptyStateCssVariables,
   "file-upload": fileUploadCssVariables,
+  gauge: gaugeCssVariables,
   "hash-generator": hashGeneratorCssVariables,
   inputs: inputsCssVariables,
   "json-viewer": jsonViewerCssVariables,
