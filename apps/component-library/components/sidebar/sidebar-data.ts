@@ -303,6 +303,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/http-status-badge",
       },
       {
+        title: "Image compare",
+        href: "/preview/components/image-compare",
+      },
+      {
         title: "Inputs",
         href: "/preview/components/inputs",
       },

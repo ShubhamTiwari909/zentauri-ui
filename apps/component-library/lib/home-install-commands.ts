@@ -83,6 +83,7 @@ export const CLI_ADD_COMPONENTS = [
   "hash-generator",
   "http-request-viewer",
   "http-status-badge",
+  "image-compare",
   "inputs",
   "json-viewer",
   "kbd",

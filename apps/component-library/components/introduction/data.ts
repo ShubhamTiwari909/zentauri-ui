@@ -282,6 +282,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Data",
   },
   {
+    id: "image-compare",
+    name: "Image compare",
+    description:
+      "Accessible before-and-after media comparison with a draggable, clickable, and keyboard-operated divider.",
+    href: "/preview/components/image-compare",
+    badge: "Media",
+  },
+  {
     id: "inputs",
     name: "Inputs",
     description:

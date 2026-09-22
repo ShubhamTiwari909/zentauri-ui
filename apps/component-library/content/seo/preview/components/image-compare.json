@@ -1,0 +1,86 @@
+{
+  "category": "Media",
+  "title": "Image compare slider for React & Next.js",
+  "description": "An accessible before-and-after image comparison slider with pointer dragging, keyboard controls, controlled state, labels, and themeable variants.",
+  "keywords": [
+    "image compare component",
+    "before after slider",
+    "React",
+    "Next.js",
+    "image comparison",
+    "drag divider",
+    "accessible slider",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Image Compare · Zentauri UI",
+    "description": "Compare before-and-after media with an accessible draggable divider for React and Next.js.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Image Compare · Zentauri UI",
+    "description": "Compare before-and-after media with an accessible draggable divider for React and Next.js.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/image-compare",
+  "headings": {
+    "h1": "Image compare slider with a draggable divider",
+    "h2": [
+      "Image compare variants playground",
+      "What it does",
+      "Composition and API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Reveal the difference between two aligned images by dragging a divider, clicking a position, or using the keyboard. Use it for edits, renovations, maps, product states, and visual QA.",
+  "useCases": [
+    "Show photo retouching and color-grading results.",
+    "Compare renovation, restoration, or landscaping progress.",
+    "Reveal map layers, scans, renders, or product configurations.",
+    "Review visual regressions and design implementation changes."
+  ],
+  "faqs": [
+    {
+      "question": "Can Image Compare be controlled from application state?",
+      "answer": "Yes. Pass position with onPositionChange for controlled usage, or defaultPosition for internal state. Values are clamped from 0 to 100."
+    },
+    {
+      "question": "Does the divider support keyboard controls?",
+      "answer": "Yes. Focus the divider and use Arrow keys for one step, Page Up or Page Down for ten steps, and Home or End for the limits."
+    },
+    {
+      "question": "Must the before and after content be img elements?",
+      "answer": "No. Both props accept React nodes, so they can contain responsive images, Next.js Image components, illustrations, maps, or any aligned visual content."
+    },
+    {
+      "question": "How do I customize its colors and dimensions?",
+      "answer": "Choose appearance, size, and radius variants, add a className for layout, or override the documented --zui-image-compare-* CSS variables."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Image Compare stacks two pieces of media and clips the before layer at a percentage-based divider. Pointer dragging and click-to-position update the reveal continuously without adding an animation dependency."
+    },
+    {
+      "heading": "Composition and API",
+      "body": "Pass React nodes to before and after. Use defaultPosition for uncontrolled state or position and onPositionChange for controlled state. Configure step, labels, appearance, size, radius, and disabled behavior through typed props."
+    },
+    {
+      "heading": "Common use cases",
+      "body": "Use the component for photography edits, property transformations, medical or satellite imagery, rendering comparisons, theme previews, and visual regression review."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The divider exposes slider semantics with its current value, range, label, and disabled state. Arrow, Page, Home, and End keys provide precise operation without a pointer, while visible focus styling identifies the active control."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "The static component is a client entry because it manages pointer and keyboard interaction. It accepts Next.js Image components as before and after nodes, while the route can remain a Server Component and export static metadata."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

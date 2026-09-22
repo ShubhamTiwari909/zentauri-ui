@@ -14221,6 +14221,228 @@
         }
       ]
     },
+    "image-compare": {
+      "slug": "image-compare",
+      "subcomponents": [
+        {
+          "name": "static:ImageCompare",
+          "displayName": "ImageCompare",
+          "propsType": "ImageCompareProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "blue",
+                "cyan",
+                "default",
+                "emerald",
+                "gradient-blue",
+                "gradient-sunset",
+                "green",
+                "indigo",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "rose",
+                "sky",
+                "slate",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "false",
+                "true"
+              ],
+              "variantGroup": "disabled",
+              "deprecated": false
+            },
+            {
+              "name": "radius",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "full",
+                "lg",
+                "md",
+                "none",
+                "sm"
+              ],
+              "variantGroup": "radius",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "after",
+              "type": "ReactNode",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "afterLabel",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "before",
+              "type": "ReactNode",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "beforeLabel",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "defaultPosition",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onPositionChange",
+              "type": "((position: number) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "position",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "separatorLabel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "step",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ImageCompareVariant",
+          "displayName": "ImageCompareVariant",
+          "propsType": "ImageCompareVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-sunset' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "radius",
+              "type": "'md' | 'sm' | 'lg' | 'none' | 'full' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "inputs": {
       "slug": "inputs",
       "subcomponents": [

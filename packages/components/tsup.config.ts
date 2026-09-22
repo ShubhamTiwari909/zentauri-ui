@@ -38,6 +38,7 @@ const uiComponentNames = [
   "hash-generator",
   "http-request-viewer",
   "http-status-badge",
+  "image-compare",
   "inputs",
   "json-viewer",
   "kbd",

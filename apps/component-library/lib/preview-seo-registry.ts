@@ -42,6 +42,7 @@ import terminalEmulator from "@/content/seo/preview/components/terminal-emulator
 import apiResponseViewer from "@/content/seo/preview/components/api-response-viewer.json";
 import httpRequestViewer from "@/content/seo/preview/components/http-request-viewer.json";
 import httpStatusBadge from "@/content/seo/preview/components/http-status-badge.json";
+import imageCompare from "@/content/seo/preview/components/image-compare.json";
 import requestTimelineViewer from "@/content/seo/preview/components/request-timeline-viewer.json";
 import logViewer from "@/content/seo/preview/components/log-viewer.json";
 import kbd from "@/content/seo/preview/components/kbd.json";
@@ -131,6 +132,7 @@ const previewSeoRegistry = {
   "api-response-viewer": apiResponseViewer as PreviewSeoDocument,
   "http-request-viewer": httpRequestViewer as PreviewSeoDocument,
   "http-status-badge": httpStatusBadge as PreviewSeoDocument,
+  "image-compare": imageCompare as PreviewSeoDocument,
   "request-timeline-viewer": requestTimelineViewer as PreviewSeoDocument,
   "log-viewer": logViewer as PreviewSeoDocument,
   kbd: kbd as PreviewSeoDocument,

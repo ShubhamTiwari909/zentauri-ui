@@ -96,6 +96,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/usePagination/usePagination.test.ts`                         |    10 |
 | `src/ui/date-picker/date-picker.test.tsx`                               |    10 |
 | `src/ui/gauge/gauge.test.tsx`                                           |    10 |
+| `src/ui/image-compare/image-compare.test.tsx`                           |    10 |
 | `src/ui/log-viewer/log-viewer.test.tsx`                                 |    10 |
 | `src/ui/marquee/marquee.test.tsx`                                       |    10 |
 | `src/ui/modal/modal.test.tsx`                                           |    10 |
