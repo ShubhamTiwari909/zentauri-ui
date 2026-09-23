@@ -4,6 +4,7 @@ import { defineConfig } from "tsup";
 
 const uiComponentNames = [
   "accordion",
+  "activity-feed",
   "alert",
   "animated-number",
   "api-endpoint-card",

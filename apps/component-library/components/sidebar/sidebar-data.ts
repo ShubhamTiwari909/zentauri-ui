@@ -167,6 +167,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/accordion",
       },
       {
+        title: "Activity Feed",
+        href: "/preview/components/activity-feed",
+      },
+      {
         title: "Alert",
         href: "/preview/components/alert",
       },

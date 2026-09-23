@@ -1,0 +1,52 @@
+{
+  "category": "Data display",
+  "title": "Activity feed component for grouped events",
+  "description": "A data-driven React activity feed that groups consecutive actor, verb, and object events into compact, themeable summaries.",
+  "keywords": [
+    "activity feed",
+    "audit log",
+    "event history",
+    "React",
+    "Next.js",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Activity Feed · Zentauri UI",
+    "description": "Grouped actor, verb, and object events for application activity feeds.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Activity Feed · Zentauri UI",
+    "description": "A compact data-driven activity feed with automatic grouping.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/activity-feed",
+  "headings": {
+    "h1": "Grouped activity feeds",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "ActivityFeed accepts structured actor, verb, and object events, then groups adjacent matching actions without requiring consumers to compose timeline items manually.",
+  "useCases": [
+    "Project and collaboration history.",
+    "Audit trails for workspace actions.",
+    "Comment, review, and approval summaries."
+  ],
+  "faqs": [
+    {
+      "question": "What events are grouped?",
+      "answer": "By default, adjacent events are grouped when their actor id, verb, and object id match. The original display order is preserved."
+    },
+    {
+      "question": "Can I show every event?",
+      "answer": "Yes. Set grouping to none to render every supplied event as an individual feed row."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Use ActivityFeed for structured activity data. Each event contains an actor, verb, object, and optional timestamp; groups display their event count and latest timestamp."
+    },
+    { "heading": "Common use cases", "body": "" }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

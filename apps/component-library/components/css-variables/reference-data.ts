@@ -1,4 +1,5 @@
 import { accordionCssVariables } from "./data/accordion";
+import { activityFeedCssVariables } from "./data/activity-feed";
 import { apiEndpointCardCssVariables } from "./data/api-endpoint-card";
 import { alertCssVariables } from "./data/alert";
 import { animatedNumberCssVariables } from "./data/animated-number";
@@ -76,6 +77,7 @@ import type { CssVariableReference } from "./reference-types";
 
 export const cssVariableReferences = {
   accordion: accordionCssVariables,
+  "activity-feed": activityFeedCssVariables,
   alert: alertCssVariables,
   "animated-number": animatedNumberCssVariables,
   avatar: avatarCssVariables,
