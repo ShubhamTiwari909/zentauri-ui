@@ -28,7 +28,7 @@ function initials(name: string): string {
     .split(/\s+/)
     .filter(Boolean)
     .slice(0, 2)
-    .map((part) => part[0])
+    .map((part) => Array.from(part)[0])
     .join("")
     .toUpperCase();
 }
@@ -97,9 +97,12 @@ export function ActivityFeedBase({
       {...rest}
     >
       {groups.length === 0 ? (
-        <p data-slot="activity-feed-empty" className={zuiActivityFeedEmptyBase}>
+        <div
+          data-slot="activity-feed-empty"
+          className={zuiActivityFeedEmptyBase}
+        >
           {emptyState}
-        </p>
+        </div>
       ) : (
         <ul data-slot="activity-feed-list" className={zuiActivityFeedListBase}>
           {groups.map((group) => {

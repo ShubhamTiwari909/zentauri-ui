@@ -81,11 +81,18 @@ function AppearanceGallery({
         {ACTIVITY_FEED_APPEARANCES.map((appearance) => {
           const isActive = appearance === selected;
           return (
-            <button
+            <div
               key={appearance}
-              type="button"
+              role="button"
+              tabIndex={0}
               aria-pressed={isActive}
               onClick={() => onSelect(appearance)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  onSelect(appearance);
+                }
+              }}
               className={`rounded-xl p-3 text-left transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ${
                 isActive
                   ? "ring-2 ring-sky-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
@@ -102,7 +109,7 @@ function AppearanceGallery({
                   grouping="consecutive"
                 />
               </span>
-            </button>
+            </div>
           );
         })}
       </div>
