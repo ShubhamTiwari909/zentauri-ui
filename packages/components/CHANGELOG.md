@@ -1,5 +1,12 @@
 # @zentauri-ui/zentauri-components Changelog
 
+## 2.15.0
+
+### Minor Changes
+
+- 22c9191: Add the accessible Gauge component with radial and dial variants, custom ranges and value formatting, tokenized appearances, and documentation.
+- e68b87e: Add an accessible Image Compare component with pointer and keyboard controls, controlled and uncontrolled positions, tokenized appearances, and documentation.
+
 ## 2.14.0
 
 ### Minor Changes
