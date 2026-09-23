@@ -1,5 +1,6 @@
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import accordion from "@/content/seo/preview/components/accordion.json";
+import activityFeed from "@/content/seo/preview/components/activity-feed.json";
 import alert from "@/content/seo/preview/components/alert.json";
 import apiEndpointCard from "@/content/seo/preview/components/api-endpoint-card.json";
 import audioPlayer from "@/content/seo/preview/components/audio-player.json";
@@ -91,6 +92,7 @@ const previewSeoRegistry = {
   index: index as PreviewSeoDocument,
   installation: installation as PreviewSeoDocument,
   accordion: accordion as PreviewSeoDocument,
+  "activity-feed": activityFeed as PreviewSeoDocument,
   alert: alert as PreviewSeoDocument,
   animations: animations as PreviewSeoDocument,
   "animated-number": animatedNumber as PreviewSeoDocument,

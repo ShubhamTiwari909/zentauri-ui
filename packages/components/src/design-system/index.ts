@@ -1,4 +1,5 @@
 export * from "./accordion";
+export * from "./activity-feed";
 export * from "./alert";
 export * from "./animated-number";
 export * from "./api-endpoint-card";

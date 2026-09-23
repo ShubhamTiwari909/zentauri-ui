@@ -221,7 +221,7 @@ Provide components commonly used in SaaS products.
 - [ ] Keyboard Shortcut Viewer
 - [ ] Spotlight Search
 - [ ] Workspace Switcher
-- [ ] Activity Feed
+- [x] Activity Feed
 - [ ] Notifications Center
 
 ---

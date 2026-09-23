@@ -10,6 +10,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Navigation",
   },
   {
+    id: "activity-feed",
+    name: "Activity Feed",
+    description:
+      "Data-driven actor, verb, and object events with automatic grouping of consecutive matching activity.",
+    href: "/preview/components/activity-feed",
+    badge: "Data",
+  },
+  {
     id: "alert",
     name: "Alert",
     description:

@@ -126,6 +126,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useHotkeys/useHotkeys.test.ts`                               |     7 |
 | `src/hooks/useTableSort/useTableSort.test.ts`                           |     7 |
 | `src/ui/accordion/accordion.test.tsx`                                   |     7 |
+| `src/ui/activity-feed/activity-feed.test.tsx`                           |     7 |
 | `src/ui/card/card.test.tsx`                                             |     7 |
 | `src/ui/code-diff/code-diff.test.tsx`                                   |     7 |
 | `src/ui/drawer/drawer.test.tsx`                                         |     7 |

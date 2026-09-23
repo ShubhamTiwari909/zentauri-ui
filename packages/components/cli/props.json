@@ -453,6 +453,142 @@
         }
       ]
     },
+    "activity-feed": {
+      "slug": "activity-feed",
+      "subcomponents": [
+        {
+          "name": "static:ActivityFeed",
+          "displayName": "ActivityFeed",
+          "propsType": "ActivityFeedProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "amber",
+                "blue",
+                "contrast",
+                "cyan",
+                "default",
+                "emerald",
+                "glass",
+                "lime",
+                "orange",
+                "pink",
+                "purple",
+                "rose",
+                "subtle",
+                "teal",
+                "violet"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "emptyState",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "description": "Content shown when there are no events.",
+              "deprecated": false
+            },
+            {
+              "name": "events",
+              "type": "readonly ActivityFeedEvent[]",
+              "required": true,
+              "group": "behavior",
+              "description": "Events to display, ordered from most to least recent.",
+              "deprecated": false
+            },
+            {
+              "name": "grouping",
+              "type": "ActivityFeedGrouping | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Collapse adjacent events with the same actor, verb, and object.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ActivityFeedVariant",
+          "displayName": "ActivityFeedVariant",
+          "propsType": "ActivityFeedVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'lime' | 'rose' | 'purple' | 'pink' | 'orange' | 'teal' | 'emerald' | 'violet' | 'amber' | 'subtle' | 'contrast' | 'glass' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "alert": {
       "slug": "alert",
       "subcomponents": [
@@ -620,7 +756,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'success' | 'warning' | 'error' | 'info' | 'gray' | 'violet' | null | undefined",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'success' | 'warning' | 'error' | 'info' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -717,7 +853,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'success' | 'warning' | 'error' | 'info' | 'gray' | 'violet' | null | undefined",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'success' | 'warning' | 'error' | 'info' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -796,7 +932,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'success' | 'warning' | 'error' | 'info' | 'gray' | 'violet' | null | undefined",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'success' | 'warning' | 'error' | 'info' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -2112,7 +2248,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -2724,7 +2860,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'glass' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'glass' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -2868,7 +3004,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'glass' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'glass' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -3480,7 +3616,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'link' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'link' | 'gray' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -4734,14 +4870,14 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | 'elevated' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | 'elevated' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
             },
             {
               "name": "bg",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | 'elevated' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | 'elevated' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -4777,14 +4913,14 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | 'elevated' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | 'elevated' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
             },
             {
               "name": "bg",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | 'elevated' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | 'elevated' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -6326,7 +6462,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'indigo' | 'violet' | 'amber' | 'success' | 'warning' | 'error' | 'info' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -6406,7 +6542,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'indigo' | 'violet' | 'amber' | 'success' | 'warning' | 'error' | 'info' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -6546,7 +6682,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-violet' | 'gradient-rose' | undefined",
+              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'violet' | 'amber' | 'glass' | 'success' | 'warning' | 'info' | 'secondary' | 'destructive' | 'primary' | 'gradient-violet' | 'gradient-rose' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -7058,7 +7194,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-violet' | 'gradient-rose' | undefined",
+              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'violet' | 'amber' | 'glass' | 'success' | 'warning' | 'info' | 'secondary' | 'destructive' | 'primary' | 'gradient-violet' | 'gradient-rose' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -7462,7 +7598,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-violet' | 'gradient-rose' | undefined",
+              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'violet' | 'amber' | 'glass' | 'success' | 'warning' | 'info' | 'secondary' | 'destructive' | 'primary' | 'gradient-violet' | 'gradient-rose' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -9004,7 +9140,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'violet' | 'amber' | 'glass' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -9161,7 +9297,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'violet' | 'amber' | 'glass' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -9344,7 +9480,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'violet' | 'amber' | 'glass' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -10174,7 +10310,7 @@
             },
             {
               "name": "variant",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'white' | 'black' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'gray' | 'white' | 'black' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -10494,7 +10630,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -10538,7 +10674,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -10661,7 +10797,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'violet' | 'amber' | 'bordered' | 'striped' | null | undefined",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'violet' | 'amber' | 'gray' | 'bordered' | 'striped' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -12089,7 +12225,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'destructive' | 'muted' | 'amber' | 'primary' | null | undefined",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'gray' | 'destructive' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -12125,7 +12261,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'destructive' | 'muted' | 'amber' | 'primary' | null | undefined",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'gray' | 'destructive' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -12370,7 +12506,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -12512,7 +12648,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -12751,7 +12887,7 @@
             },
             {
               "name": "variant",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'white' | 'black' | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'gray' | 'white' | 'black' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -12815,7 +12951,7 @@
             },
             {
               "name": "variant",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | 'white' | 'black' | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'gray' | 'white' | 'black' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -12907,7 +13043,7 @@
             },
             {
               "name": "indicatorCompleteAppearance",
-              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'violet' | 'amber' | 'glass' | 'link' | 'gray' | 'secondary' | 'destructive' | undefined",
               "required": false,
               "default": "emerald",
               "group": "behavior",
@@ -12916,7 +13052,7 @@
             },
             {
               "name": "indicatorCurrentAppearance",
-              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'violet' | 'amber' | 'glass' | 'link' | 'gray' | 'secondary' | 'destructive' | undefined",
               "required": false,
               "default": "violet",
               "group": "behavior",
@@ -12933,7 +13069,7 @@
             },
             {
               "name": "indicatorUpcomingAppearance",
-              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'link' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'violet' | 'amber' | 'glass' | 'link' | 'gray' | 'secondary' | 'destructive' | undefined",
               "required": false,
               "default": "outline",
               "group": "behavior",
@@ -13438,7 +13574,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'purple' | 'pink' | 'orange' | 'teal' | 'indigo' | 'emerald' | 'success' | 'warning' | 'error' | 'info' | 'amber' | 'disabled' | 'idle' | 'active' | 'neutral' | null | undefined",
+              "type": "'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'purple' | 'pink' | 'orange' | 'teal' | 'indigo' | 'emerald' | 'amber' | 'success' | 'warning' | 'error' | 'info' | 'disabled' | 'idle' | 'active' | 'neutral' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14614,7 +14750,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'orange' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'orange' | 'indigo' | 'violet' | 'amber' | 'success' | 'warning' | 'error' | 'info' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14671,7 +14807,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'orange' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'orange' | 'indigo' | 'violet' | 'amber' | 'success' | 'warning' | 'error' | 'info' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -14764,7 +14900,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'orange' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'orange' | 'indigo' | 'violet' | 'amber' | 'success' | 'warning' | 'error' | 'info' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -15233,7 +15369,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -15262,7 +15398,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -16010,7 +16146,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -16152,7 +16288,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -16229,7 +16365,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'gray' | 'subtle' | 'muted' | 'primary' | 'online' | 'offline' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'subtle' | 'gray' | 'muted' | 'primary' | 'online' | 'offline' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -16342,7 +16478,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'gray' | 'subtle' | 'muted' | 'primary' | 'online' | 'offline' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'subtle' | 'gray' | 'muted' | 'primary' | 'online' | 'offline' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -16371,7 +16507,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'gray' | 'subtle' | 'muted' | 'primary' | 'online' | 'offline' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'slow' | 'subtle' | 'gray' | 'muted' | 'primary' | 'online' | 'offline' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -16712,7 +16848,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'orange' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'glass' | 'amber' | null | undefined",
+              "type": "'default' | 'outline' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'orange' | 'indigo' | 'violet' | 'amber' | 'glass' | 'success' | 'warning' | 'error' | 'info' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -18864,7 +19000,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'indigo' | 'violet' | 'amber' | 'success' | 'warning' | 'error' | 'info' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -18923,7 +19059,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'indigo' | 'violet' | 'amber' | 'success' | 'warning' | 'error' | 'info' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -19066,7 +19202,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'indigo' | 'violet' | 'amber' | 'success' | 'warning' | 'error' | 'info' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -19172,7 +19308,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'indigo' | 'violet' | 'amber' | 'success' | 'warning' | 'error' | 'info' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -19484,7 +19620,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'gray' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -20243,7 +20379,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'emerald' | 'violet' | 'glass' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'outline' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'emerald' | 'violet' | 'amber' | 'glass' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -20305,7 +20441,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'orange' | 'indigo' | 'success' | 'warning' | 'error' | 'info' | 'violet' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'pink' | 'orange' | 'indigo' | 'violet' | 'amber' | 'success' | 'warning' | 'error' | 'info' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -20626,7 +20762,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'subtle' | 'gray' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -20662,7 +20798,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'subtle' | 'gray' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21466,7 +21602,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21496,7 +21632,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21532,7 +21668,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21561,7 +21697,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21597,7 +21733,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21619,7 +21755,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21670,7 +21806,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21699,7 +21835,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21728,7 +21864,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21742,7 +21878,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21771,7 +21907,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21792,7 +21928,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21864,7 +22000,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21892,7 +22028,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21957,7 +22093,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -21985,7 +22121,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -22050,7 +22186,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -22071,7 +22207,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -22143,7 +22279,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -22171,7 +22307,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -22236,7 +22372,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -22250,7 +22386,7 @@
             },
             {
               "name": "shimmerTone",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'subtle' | 'muted' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'subtle' | 'gray' | 'muted' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -22313,7 +22449,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-rose' | 'gradient-emerald' | undefined",
+              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'violet' | 'amber' | 'glass' | 'success' | 'warning' | 'info' | 'secondary' | 'destructive' | 'primary' | 'gradient-rose' | 'gradient-emerald' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -22634,7 +22770,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'primary' | 'gradient-rose' | 'gradient-emerald' | undefined",
+              "type": "'default' | 'blue' | 'slate' | 'zinc' | 'rose' | 'emerald' | 'gradient-blue' | 'violet' | 'amber' | 'glass' | 'success' | 'warning' | 'info' | 'secondary' | 'destructive' | 'primary' | 'gradient-rose' | 'gradient-emerald' | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -22918,7 +23054,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'gray' | 'violet' | 'amber' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -23656,7 +23792,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'card' | 'separated' | 'blue' | 'cyan' | 'green' | 'red' | 'slate' | 'purple' | 'pink' | 'orange' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'subtle' | 'glass' | 'amber' | 'primary' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'card' | 'separated' | 'blue' | 'cyan' | 'green' | 'red' | 'slate' | 'purple' | 'pink' | 'orange' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'amber' | 'subtle' | 'glass' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -23678,7 +23814,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'card' | 'separated' | 'blue' | 'cyan' | 'green' | 'red' | 'slate' | 'purple' | 'pink' | 'orange' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'subtle' | 'glass' | 'amber' | 'primary' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'card' | 'separated' | 'blue' | 'cyan' | 'green' | 'red' | 'slate' | 'purple' | 'pink' | 'orange' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'amber' | 'subtle' | 'glass' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -23720,7 +23856,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'subtle' | 'gray' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -23833,7 +23969,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'subtle' | 'gray' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -23862,7 +23998,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'subtle' | 'gray' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -24010,7 +24146,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'subtle' | 'gray' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -24165,7 +24301,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'subtle' | 'gray' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -24194,7 +24330,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'subtle' | 'gray' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -24472,7 +24608,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'link' | 'gray' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | null | undefined",
+              "type": "'default' | 'outline' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'glass' | 'link' | 'gray' | 'secondary' | 'destructive' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -24875,7 +25011,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gray' | 'violet' | 'amber' | 'bordered' | 'striped' | null | undefined",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'violet' | 'amber' | 'gray' | 'bordered' | 'striped' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -26334,7 +26470,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'success' | 'warning' | 'error' | 'info' | 'gray' | 'violet' | 'amber' | null | undefined",
+              "type": "'default' | 'ghost' | 'blue' | 'cyan' | 'green' | 'lime' | 'mint' | 'ocean' | 'sapphire' | 'lavender' | 'ruby' | 'red' | 'slate' | 'zinc' | 'stone' | 'royal' | 'electric' | 'forest' | 'sunset' | 'magenta' | 'crimson' | 'aqua' | 'plum' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-red' | 'gradient-yellow' | 'gradient-purple' | 'gradient-teal' | 'gradient-indigo' | 'gradient-pink' | 'gradient-orange' | 'violet' | 'amber' | 'success' | 'warning' | 'error' | 'info' | 'gray' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -27206,7 +27342,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'subtle' | 'gray' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -27284,7 +27420,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'subtle' | 'gray' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -27313,7 +27449,7 @@
             },
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'gray' | 'subtle' | 'muted' | 'primary' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'green' | 'lime' | 'red' | 'slate' | 'zinc' | 'sky' | 'rose' | 'purple' | 'pink' | 'orange' | 'yellow' | 'teal' | 'indigo' | 'emerald' | 'gradient-blue' | 'gradient-green' | 'gradient-purple' | 'subtle' | 'gray' | 'muted' | 'primary' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false

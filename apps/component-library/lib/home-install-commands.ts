@@ -49,6 +49,7 @@ export const CLI_INIT_COMMANDS = {
  */
 export const CLI_ADD_COMPONENTS = [
   "accordion",
+  "activity-feed",
   "alert",
   "animated-number",
   "api-endpoint-card",
