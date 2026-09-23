@@ -60,4 +60,4 @@ export const zuiGaugeIndicator =
   "fill-none [stroke-width:var(--gauge-stroke-width)] transition-[stroke-dasharray] duration-500 ease-out motion-reduce:transition-none";
 
 export const zuiGaugeLabel =
-  "mt-0.5 max-w-full truncate text-[0.55em] font-medium leading-tight text-[color:var(--zui-gauge-label-fg,var(--zui-fg-muted,#64748b))] dark:text-[color:var(--zui-gauge-label-fg-dark,var(--zui-fg-muted-dark,#94a3b8)))]";
+  "mt-0.5 max-w-full truncate text-[0.55em] font-medium leading-tight text-[color:var(--zui-gauge-label-fg,var(--zui-fg-muted,#64748b))] dark:text-[color:var(--zui-gauge-label-fg-dark,var(--zui-fg-muted-dark,#94a3b8))]";

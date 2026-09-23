@@ -92,7 +92,7 @@ export function GaugeBase({
           cy={CENTER}
           r={RADIUS}
           pathLength={CIRCUMFERENCE}
-          stroke={`url(#${gradientId})`}
+          stroke={progressLength > 0 ? `url(#${gradientId})` : "none"}
           strokeDasharray={`${progressLength} ${CIRCUMFERENCE - progressLength}`}
           strokeLinecap={strokeLinecap}
           transform={`rotate(${startAngle} ${CENTER} ${CENTER})`}
