@@ -26,7 +26,6 @@
   "headings": {
     "h1": "Image compare slider with a draggable divider",
     "h2": [
-      "Image compare variants playground",
       "What it does",
       "Composition and API",
       "Common use cases",
@@ -71,7 +70,7 @@
     },
     {
       "heading": "Common use cases",
-      "body": "Use the component for photography edits, property transformations, medical or satellite imagery, rendering comparisons, theme previews, and visual regression review."
+      "body": ""
     },
     {
       "heading": "Accessibility",

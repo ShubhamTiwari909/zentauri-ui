@@ -45,6 +45,7 @@ export function ImageCompareBase({
     clampPosition(defaultPosition),
   );
   const activePointer = useRef<number | null>(null);
+  const dividerRef = useRef<HTMLDivElement>(null);
   const controlled = position !== undefined;
   const currentPosition = clampPosition(
     controlled ? position : uncontrolledPosition,
@@ -73,7 +74,10 @@ export function ImageCompareBase({
     onPointerDown?.(event);
     if (event.defaultPrevented || disabled) return;
     if (event.pointerType === "mouse" && event.button !== 0) return;
+    if (activePointer.current !== null) return;
+    event.preventDefault();
     activePointer.current = event.pointerId;
+    dividerRef.current?.focus({ preventScroll: true });
     event.currentTarget.setPointerCapture?.(event.pointerId);
     updateFromPointer(event);
   };
@@ -162,7 +166,9 @@ export function ImageCompareBase({
       <div
         data-slot="image-compare-before"
         className={imageCompareLayerVariants({ side: "before" })}
-        style={{ clipPath: `inset(0 ${100 - currentPosition}% 0 0)` }}
+        style={{
+          clipPath: "inset(0 calc(100% - var(--image-compare-position)) 0 0)",
+        }}
       >
         {before}
       </div>
@@ -185,17 +191,18 @@ export function ImageCompareBase({
       ) : null}
 
       <div
+        ref={dividerRef}
         data-slot="image-compare-divider"
         role="slider"
         tabIndex={disabled ? -1 : 0}
         aria-label={separatorLabel}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-valuenow={Math.round(currentPosition)}
-        aria-valuetext={`${Math.round(currentPosition)}% before`}
+        aria-valuenow={currentPosition}
+        aria-valuetext={`${currentPosition}% before`}
         aria-disabled={disabled || undefined}
         className={imageCompareDividerVariants()}
-        style={{ left: `${currentPosition}%` }}
+        style={{ left: "var(--image-compare-position)" }}
         onKeyDown={handleKeyDown}
       >
         <span

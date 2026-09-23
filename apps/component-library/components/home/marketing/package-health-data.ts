@@ -5,14 +5,14 @@ export const PACKAGE_TEST_HEALTH = {
     passed: 143,
   },
   tests: {
-    total: 1433,
-    passed: 1433,
+    total: 1435,
+    passed: 1435,
   },
   areas: [
     {
       area: "Components and UI utilities",
       files: 86,
-      tests: 1005,
+      tests: 1007,
     },
     {
       area: "Standalone animations",

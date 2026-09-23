@@ -53,7 +53,7 @@ export const zuiImageCompareLayerBase =
   "absolute inset-0 overflow-hidden [&>*]:size-full [&>*]:object-cover";
 
 export const zuiImageCompareDividerBase = [
-  "absolute inset-y-0 z-20 -translate-x-1/2 cursor-ew-resize outline-none",
+  "absolute inset-y-0 z-20 -translate-x-1/2 outline-none",
   "w-[var(--image-compare-divider,3px)] [background:var(--image-compare-accent,#0f172a)]",
   "focus-visible:[filter:drop-shadow(0_0_4px_var(--zui-image-compare-focus-ring,var(--zui-focus-ring,#2563eb)))] dark:focus-visible:[filter:drop-shadow(0_0_4px_var(--zui-image-compare-focus-ring-dark,var(--zui-focus-ring-dark,#60a5fa)))]",
 ] as const;
