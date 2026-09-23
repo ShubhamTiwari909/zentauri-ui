@@ -1,0 +1,81 @@
+{
+  "category": "Feedback",
+  "title": "Gauge component for radial progress and dials",
+  "description": "Accessible Gauge component for React and Next.js with full radial progress rings, open dials, custom ranges, formatting, sizes, thicknesses, and color appearances.",
+  "keywords": [
+    "gauge component",
+    "radial progress",
+    "circular progress",
+    "dial meter",
+    "React",
+    "Next.js",
+    "Tailwind CSS",
+    "accessibility"
+  ],
+  "og": {
+    "title": "Gauge · Zentauri UI",
+    "description": "Accessible radial progress rings and open dials for React and Next.js dashboards.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Gauge · Zentauri UI",
+    "description": "Accessible radial progress rings and open dials for React and Next.js dashboards.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/gauge",
+  "headings": {
+    "h1": "Gauge for radial progress and dial metrics",
+    "h2": [
+      "What it does",
+      "Radial and dial variants",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "Gauge turns determinate values into a compact circular visualization. Choose a complete radial ring or an open dial while retaining real meter semantics, explicit ranges, labels, and readable values.",
+  "useCases": [
+    "Dashboard KPIs such as capacity, utilization, and health scores.",
+    "Storage, quota, and resource-consumption summaries.",
+    "Performance, speed, and quality dials.",
+    "Compact completion indicators where a linear bar does not fit."
+  ],
+  "faqs": [
+    {
+      "question": "How is Gauge different from Progress?",
+      "answer": "Gauge presents a determinate value as a circular ring or open dial and uses meter semantics. Progress remains the linear progress-bar primitive for task completion."
+    },
+    {
+      "question": "Can Gauge use a custom range and value format?",
+      "answer": "Yes. Set min and max for the range and use formatValue to render units, scores, storage values, or another readable string. The same text is exposed to assistive technology."
+    },
+    {
+      "question": "Is the Gauge component accessible?",
+      "answer": "The root uses role='meter' with minimum, maximum, current, and textual values. Supply a concise label that describes the measured quantity."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Gauge maps a value within a configurable range onto an SVG arc. Values outside that range are clamped so the graphic and accessible meter state remain aligned."
+    },
+    {
+      "heading": "Radial and dial variants",
+      "body": "Use the default radial variant for a complete 360-degree ring. Choose the dial variant for a rounded 270-degree arc with an open lower edge, which reads naturally for performance and capacity metrics."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The visible percentage is not the only source of meaning. Gauge exposes meter semantics, the numeric range, current value, a readable value string, and an accessible label on the root."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Gauge is exported from its own client entry and has no Framer Motion dependency. Import it from @zentauri-ui/zentauri-components/ui/gauge in an App Router client subtree or render it through a server component boundary."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

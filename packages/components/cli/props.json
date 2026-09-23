@@ -13447,6 +13447,214 @@
         }
       ]
     },
+    "gauge": {
+      "slug": "gauge",
+      "subcomponents": [
+        {
+          "name": "static:Gauge",
+          "displayName": "Gauge",
+          "propsType": "GaugeProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "amber",
+                "blue",
+                "cyan",
+                "default",
+                "destructive",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-emerald",
+                "gradient-rose",
+                "info",
+                "rose",
+                "secondary",
+                "slate",
+                "success",
+                "violet",
+                "warning"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm",
+                "xl",
+                "xs"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "thickness",
+              "type": "enum",
+              "required": false,
+              "default": "medium",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "medium",
+                "thick",
+                "thin"
+              ],
+              "variantGroup": "thickness",
+              "deprecated": false
+            },
+            {
+              "name": "variant",
+              "type": "enum",
+              "required": false,
+              "default": "radial",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "dial",
+                "radial"
+              ],
+              "variantGroup": "variant",
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "number | undefined",
+              "required": false,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "formatValue",
+              "type": "((value: number, percentage: number) => string) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "max",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "min",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "showValue",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:GaugeVariant",
+          "displayName": "GaugeVariant",
+          "propsType": "GaugeVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'slate' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'gradient-rose' | 'gradient-emerald' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | 'xl' | 'xs' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "thickness",
+              "type": "'medium' | 'thin' | 'thick' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "variant",
+              "type": "'radial' | 'dial' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "hash-generator": {
       "slug": "hash-generator",
       "subcomponents": [

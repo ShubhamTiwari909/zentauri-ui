@@ -34,6 +34,7 @@ const uiComponentNames = [
   "dynamic-stepper",
   "empty-state",
   "file-upload",
+  "gauge",
   "hash-generator",
   "http-request-viewer",
   "http-status-badge",

@@ -79,6 +79,7 @@ export const CLI_ADD_COMPONENTS = [
   "dynamic-stepper",
   "empty-state",
   "file-upload",
+  "gauge",
   "hash-generator",
   "http-request-viewer",
   "http-status-badge",

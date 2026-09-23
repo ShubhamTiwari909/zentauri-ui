@@ -287,6 +287,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/file-upload",
       },
       {
+        title: "Gauge",
+        href: "/preview/components/gauge",
+      },
+      {
         title: "Hash generator",
         href: "/preview/components/hash-generator",
       },
