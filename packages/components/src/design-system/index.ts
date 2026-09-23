@@ -33,6 +33,7 @@ export * from "./gauge";
 export * from "./hash-generator";
 export * from "./http-request-viewer";
 export * from "./http-status-badge";
+export * from "./image-compare";
 export * from "./inputs";
 export * from "./json-viewer";
 export * from "./kbd";

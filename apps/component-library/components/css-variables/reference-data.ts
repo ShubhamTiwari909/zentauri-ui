@@ -34,6 +34,7 @@ import { terminalEmulatorCssVariables } from "./data/terminal-emulator";
 import { apiResponseViewerCssVariables } from "./data/api-response-viewer";
 import { httpRequestViewerCssVariables } from "./data/http-request-viewer";
 import { httpStatusBadgeCssVariables } from "./data/http-status-badge";
+import { imageCompareCssVariables } from "./data/image-compare";
 import { requestTimelineViewerCssVariables } from "./data/request-timeline-viewer";
 import { kbdCssVariables } from "./data/kbd";
 import { logViewerCssVariables } from "./data/log-viewer";
@@ -110,6 +111,7 @@ export const cssVariableReferences = {
   "api-response-viewer": apiResponseViewerCssVariables,
   "http-request-viewer": httpRequestViewerCssVariables,
   "http-status-badge": httpStatusBadgeCssVariables,
+  "image-compare": imageCompareCssVariables,
   "request-timeline-viewer": requestTimelineViewerCssVariables,
   kbd: kbdCssVariables,
   "log-viewer": logViewerCssVariables,
