@@ -57,6 +57,15 @@ describe("ActivityFeed", () => {
     ).toHaveLength(3);
   });
 
+  it("renders a numeric zero timestamp", () => {
+    const { container } = render(
+      <ActivityFeed events={[{ ...EVENTS[0]!, timestamp: 0 }]} />,
+    );
+    expect(
+      container.querySelector('[data-slot="activity-feed-meta"]')?.textContent,
+    ).toContain("0");
+  });
+
   it("supports colored appearances", () => {
     const { container } = render(
       <ActivityFeed events={EVENTS} appearance="emerald" />,

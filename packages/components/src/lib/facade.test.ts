@@ -12,6 +12,7 @@ describe("DesignSystem facade", () => {
   it("lists known components", () => {
     const slugs = DesignSystem.components();
     expect(slugs).toContain("accordion");
+    expect(slugs).toContain("activity-feed");
     expect(slugs).toContain("buttons");
     expect(slugs).toContain("inputs");
     expect(slugs.length).toBe(DesignSystem.listComponents().length);
@@ -31,6 +32,18 @@ describe("DesignSystem facade", () => {
     );
     expect(accordion?.groups()).toEqual(
       expect.arrayContaining(["appearance", "size"]),
+    );
+  });
+
+  it("exposes Activity Feed token variants", () => {
+    const activityFeed = DesignSystem.getComponent("activity-feed");
+    expect(activityFeed?.appearances()).toEqual(
+      expect.arrayContaining(["default", "emerald", "glass"]),
+    );
+    expect(activityFeed?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: "--zui-activity-feed-emerald-bg" }),
+      ]),
     );
   });
 

@@ -105,6 +105,7 @@ export function ActivityFeedBase({
           {groups.map((group) => {
             const count = group.events.length;
             const latestEvent = group.events[0];
+            const hasTimestamp = latestEvent?.timestamp != null;
             return (
               <li
                 key={group.events[0]?.id}
@@ -154,7 +155,7 @@ export function ActivityFeedBase({
                       {group.object.label}
                     </span>
                   </p>
-                  {count > 1 || latestEvent?.timestamp ? (
+                  {count > 1 || hasTimestamp ? (
                     <div
                       data-slot="activity-feed-meta"
                       className={zuiActivityFeedMetaBase}
@@ -167,7 +168,7 @@ export function ActivityFeedBase({
                           {count} events
                         </span>
                       ) : null}
-                      {latestEvent?.timestamp ? (
+                      {hasTimestamp ? (
                         <span data-slot="activity-feed-timestamp">
                           {latestEvent.timestamp}
                         </span>

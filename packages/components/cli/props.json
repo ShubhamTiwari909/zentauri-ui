@@ -13761,7 +13761,7 @@
           "props": [
             {
               "name": "appearance",
-              "type": "'default' | 'blue' | 'cyan' | 'slate' | 'rose' | 'emerald' | 'gradient-blue' | 'success' | 'warning' | 'info' | 'violet' | 'glass' | 'secondary' | 'destructive' | 'amber' | 'gradient-rose' | 'gradient-emerald' | null | undefined",
+              "type": "'default' | 'blue' | 'cyan' | 'slate' | 'rose' | 'emerald' | 'gradient-blue' | 'violet' | 'amber' | 'glass' | 'success' | 'warning' | 'info' | 'secondary' | 'destructive' | 'gradient-rose' | 'gradient-emerald' | null | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false

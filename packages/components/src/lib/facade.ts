@@ -73,6 +73,7 @@ type ComponentSpec = {
 
 const componentSlugs = [
   "accordion",
+  "activity-feed",
   "alert",
   "animated-number",
   "avatar",
