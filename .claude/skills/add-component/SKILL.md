@@ -1,256 +1,152 @@
 ---
 name: add-component
-description: Use when adding a brand-new UI component to the Zentauri UI library (@zentauri-ui/zentauri-components) and its docs app — including phrasings like "add/create/scaffold a new component/primitive", "wire up a new component end-to-end", or naming a specific new component to build. Provides the full ordered file-by-file plan from design tokens (--zui-* contract) and variants through static/animated entries, tests, generated registry/props, and every docs-app registration surface (route, SEO, sidebar, search, install commands). Use this whenever a new component is being introduced even if the user does not say the word "skill" or list the files. Do NOT use for modifying, fixing, or restyling existing components.
+description: Add a complete component to the Zentauri UI package and component-library docs, including tokens, discovery, generated metadata, release notes, tests, and an interactive preview.
 ---
 
-# New Component Plan (reusable)
+# Add a Zentauri UI Component
 
-A copy-paste, end-to-end plan for adding a new UI component to Zentauri UI. Derived
-from [PR #109 — Typing Indicator](https://github.com/ShubhamTiwari909/zentauri-ui/pull/109),
-which is the canonical "add a component" change. Follow the steps in order; every file
-touched in that PR is represented here so **nothing is missed**.
+Use this workflow whenever a new public component is added to `packages/components`.
+Its goal is a shippable component, not merely a rendered demo. Read
+[`AGENTS.md`](../../../AGENTS.md), [`CONTRIBUTING.md`](../../../CONTRIBUTING.md), and
+[`docs/component-creation-guide.md`](../../../docs/component-creation-guide.md) before
+starting. That guide is the concise, user-facing companion to this checklist.
 
-## How to use this doc
+## Non-negotiables
 
-Replace these placeholders throughout, then work top to bottom:
+- Treat every `--zui-*` value as public API: give it a fallback and paired dark token
+  in the design-system string, then document it in the CSS-variable reference.
+- Register the component in both `src/design-system/index.ts` **and**
+  `src/lib/facade.ts`'s `componentSlugs`; the latter powers token discovery, the theme
+  editor, and CLI validation.
+- Add a **minor Changeset** for a new public component. Never hand-edit the component
+  package version, changelog, `cli/registry.json`, generated props metadata, or package
+  health totals.
+- Static entries must never import Framer Motion. Animated support belongs in the
+  separate `animated/` entry only.
+- A preview playground needs controls and an appearance gallery. Make selectable cards
+  keyboard accessible; never put interactive controls inside a native `<button>`.
 
-| Placeholder      | Meaning                               | Typing-indicator example |
-| ---------------- | ------------------------------------- | ------------------------ |
-| `<name>`         | folder / kebab slug                   | `typing-indicator`       |
-| `<Name>`         | PascalCase component name             | `TypingIndicator`        |
-| `<Title>`        | human title (sidebar, SEO)            | `Typing indicator`       |
-| `<camelName>`    | camelCase token prefix (`zui<Name>`)  | `typingIndicator`        |
-| `<Category>`     | docs badge / SEO category             | `Feedback`               |
-| `<has-animated>` | does it ship a framer-motion variant? | yes                      |
+## 1. Decide the public API first
 
-> **Architecture recap (read bottom-up):** `design-system/<name>.ts` (pure token
-> strings) → `variants.ts` (cva, no raw Tailwind) → `types.ts` → `<name>-base.tsx`
-> (real impl) → `<name>.tsx` (static entry, **no framer-motion**) → optional
-> `animated/` entry → `index.ts` (`"use client"` + re-exports). Motion must never
-> leak into the static entry.
+Before creating files, choose:
 
----
+1. The static component API, slots, variants, defaults, and whether it is compound.
+2. Whether an optional animated entry is useful. If yes, define transitions separately.
+3. The supported appearances, sizes, and every themeable token. Include default,
+   `subtle`, `contrast`, gradient, and glass tokens whenever the implementation uses
+   them.
 
-## Phase A — Library package (`packages/components`)
+Set the placeholders throughout this workflow:
 
-Create the component folder `src/ui/<name>/` with this fixed layering.
+```text
+<name>          kebab-case: activity-feed
+<Name>          PascalCase: ActivityFeed
+<NAME>          camel case: activityFeed
+<has-animated>  yes | no
+```
 
-### A1. Design tokens — `src/design-system/<name>.ts` (NEW)
+## 2. Build the package surface
 
-Pure string constants only. Export `zui<Name>...` consts. **Every themeable value is a
-CSS variable with a hardcoded fallback and a paired `dark:` class in the same string.**
-Pattern: `--zui-<name>-<role>` with a fallback chain to a shared token, e.g.
+Create `packages/components/src/design-system/<name>.ts` first. Keep it pure string
+constants and pair every themeable utility with light/dark CSS variables and fallbacks,
+for example:
 
 ```ts
-// bg-[var(--zui-<name>-blue-dot-bg,var(--zui-color-blue,#2563eb))]
-//   dark:bg-[var(--zui-<name>-blue-dot-bg-dark,var(--zui-color-blue-dark,#3b82f6))]
+"text-[color:var(--zui-<name>-fg,#111827)] dark:text-[color:var(--zui-<name>-fg-dark,#f9fafb)]";
 ```
 
-House style: ~15+ color "appearance" palettes plus `gradient-*` (and `glass` where it
-fits). Also export base/size/label string maps as needed
-(`zui<Name>Base`, `zui<Name>Sizes`, `zui<Name>Appearances`, …).
+Then add the component in this order:
 
-### A2. Register the token file — `src/design-system/index.ts` (EDIT)
+1. Export the token file from `src/design-system/index.ts`.
+2. Add `"<name>"` to `componentSlugs` in `src/lib/facade.ts` in its established order,
+   and extend `src/lib/facade.test.ts` to prove `components()` and `getComponent()` find
+   it.
+3. Create `src/ui/<name>/variants.ts` with `cva()` maps that only import the
+   design-system strings. Do not write raw Tailwind palettes here.
+4. Create `types.ts`. Base public props on `VariantProps<typeof <name>Variants>` and
+   retain valid `ReactNode` values: use `value != null` when deciding whether to render
+   optional node content, never a truthiness guard that drops `0` or an empty metadata
+   row.
+5. Create `<name>-base.tsx`: semantic markup, stable `data-slot` attributes, forwarded
+   refs where appropriate, `cn()` class composition, useful empty states, and no
+   animation dependency.
+6. Create `<name>.tsx` as a static re-export of the base. Add `animated/` only when
+   needed, keeping Framer Motion there and using its `useReducedMotion` support.
+7. Create `index.ts`, starting with `"use client"`, and export component, types, and
+   variants (plus animated exports from the dedicated path).
+8. Add `<name>.test.tsx`. Cover defaults, every public variant/appearance, className
+   merging, callbacks, empty data, and meaningful edge inputs such as `timestamp={0}`.
+   Test nested/compound slot behavior where relevant.
+9. Add `<name>` to `uiComponentNames` in `tsup.config.ts`; add it to
+   `uiAnimatedComponentNames` only when an animated entry exists.
+10. Run `pnpm changeset` and select a **minor** release for
+    `@zentauri-ui/zentauri-components`.
 
-Add `export * from "./<name>";` (keep the existing — slightly inconsistent —
-alphabetical-ish ordering).
+## 3. Regenerate derived package metadata
 
-### A3. Variants — `src/ui/<name>/variants.ts` (NEW)
+Run these from the repository root after source and test files exist:
 
-Wire the token strings into `cva()` maps. **No raw Tailwind here** — import only from
-`../../design-system/<name>`. Export each `...Variants` (and re-export any constant the
-base/animated files need, e.g. dot-delay arrays).
-
-### A4. Types — `src/ui/<name>/types.ts` (NEW)
-
-`VariantProps<typeof ...Variants>` + component-specific fields. Prefer
-`ComponentPropsWithRef<"span">` (or the right element) over a hand-rolled `ref`. Export
-`<Name>BaseProps`, `<Name>Props`, `<Name>VariantProps`, plus any value types.
-
-### A5. Base implementation — `src/ui/<name>/<name>-base.tsx` (NEW)
-
-Starts with `"use client"`. The real impl. Stamp `data-slot="<name>"` on the root and
-on sub-parts (`<name>-dots`, `<name>-label`, …). Compound components use a React context
-
-- `data-slot` + sub-component exports. Set `displayName`. Forward `ref`. No framer-motion.
-
-### A6. Static entry — `src/ui/<name>/<name>.tsx` (NEW)
-
-Two lines — re-export the base, nothing else:
-
-```ts
-// <name>.tsx — default static entry (no framer-motion)
-export { <Name>Base as <Name> } from "./<name>-base";
+```bash
+pnpm --filter @zentauri-ui/zentauri-components generate:registry
+pnpm --filter @zentauri-ui/zentauri-components generate:props
+pnpm --filter @zentauri-ui/zentauri-components update:test-health
 ```
 
-### A7. Animated entry (only if `<has-animated>`) — `src/ui/<name>/animated/` (NEW)
+The last command owns the package README test row/count and the component-library
+package-health data. Inspect the generated diff, but do not hand-edit these outputs.
 
-- `animations.ts` — transition presets + the animation union type
-  (`export type <Name>Animation = "none" | ...`).
-- `types.ts` — `<Name>AnimatedProps = <Name>BaseProps & { animation?: ...; ref?: ... }`.
-- `<name>-animated.tsx` — `"use client"`, `import { motion } from "framer-motion"`,
-  reuses the base's variants and any shared sub-components (e.g. the Label). Set
-  `displayName`.
-- `index.ts` — `"use client"` + re-export component, prop types, animation type, presets.
+## 4. Add the component-library preview
 
-### A8. Barrel — `src/ui/<name>/index.ts` (NEW)
+Create the route, preview shell, and focused sections under
+`apps/component-library`:
 
-Starts with `"use client"`. Re-export the component, its prop/variant types, and the
-variant utilities.
+1. `app/preview/components/<name>/page.tsx` using `getPreviewSeo("<name>")`.
+2. `components/preview/<name>/index.tsx` and sections for hero, examples, props,
+   installation, and CSS variables as appropriate.
+3. A live-demo/data/snippets trio for code showcases. Code-example labels are `<p>`
+   elements above `PreviewCodeShowcase`, matching existing pages.
+4. A playground with typed appearance/options data, controls such as `Select`, and a
+   preview that updates from the chosen state. Show every supported appearance in a
+   selectable gallery—not just one rendered sample. Cards acting as selectors need
+   `role="button"`, `tabIndex={0}`, and Enter/Space support (or an equivalent semantic
+   control); avoid nesting buttons, links, or selects in a button card.
+5. `content/seo/preview/components/<name>.json` and registration in
+   `lib/preview-seo-registry.ts`.
+6. A CSS-variable reference data file plus its registration in
+   `components/css-variables/reference-data.ts`. Inventory every light token actually
+   read by the design-system source, including foreground and appearance-specific
+   tokens. For a new, manageable reference, list every paired dark token too; if an
+   established reference intentionally uses representative `darkExamples`, ensure it
+   still exposes the new dark tokens and set `darkVariableCount` to the exact supported
+   total, not merely the number of examples shown.
+7. Sidebar navigation, the introduction grid, and homepage install commands when this
+   component belongs in each surface. Site search is generated from the sidebar and
+   needs no manual entry.
 
-### A9. Test — `src/ui/<name>/<name>.test.tsx` (NEW)
+## 5. Review before declaring it complete
 
-Vitest + Testing Library (jsdom). Cover at minimum: `displayName`, root `data-slot`,
-default render, key props (counts/labels/positions), `ref` forwarding, `className`
-passthrough. (Typing indicator shipped 9 tests + 1 peer-isolation assertion.)
+Use targeted checks first; source all supported Node settings with `nvm use`:
 
-### A10. Build/registry wiring — `tsup.config.ts` (EDIT)
-
-Add `"<name>"` to **`uiComponentNames`**, and to **`uiAnimatedComponentNames`** if
-`<has-animated>`. This one list drives both build entries and the generated CLI registry.
-(`package.json` `exports` use wildcards `./ui/*` and `./ui/*/animated` — **no per-component
-export edit needed**.)
-
-### A11. Version bump — `packages/components/package.json` (EDIT)
-
-Bump `version` (typing indicator: `2.1.9` → `2.2.0`, i.e. a new component = minor bump).
-
----
-
-## Phase B — Generated artifacts (run scripts, do NOT hand-edit)
-
-These files are machine-generated. Run the scripts; commit the output. **Never edit by
-hand:** `cli/registry.json`, `cli/props.json`, `package-health-data.ts`, and the test
-tables in both `README.md` files (they carry "Do not edit by hand" headers and live in
-`.prettierignore`).
-
-```sh
-# from packages/components
-pnpm --filter @zentauri-ui/zentauri-components run generate:registry   # cli/registry.json (+ peerHints, e.g. framer-motion)
-pnpm --filter @zentauri-ui/zentauri-components exec node scripts/generate-props.mjs   # cli/props.json
-pnpm --filter @zentauri-ui/zentauri-components run update:test-health  # runs vitest --reporter=json, rewrites package-health-data.ts + both README test tables
+```bash
+nvm use
+pnpm --filter @zentauri-ui/zentauri-components exec vitest run \
+  src/ui/<name>/<name>.test.tsx src/lib/facade.test.ts
+pnpm --filter @zentauri-ui/zentauri-components check:tokens
+pnpm --filter @zentauri-ui/zentauri-components check:props
+pnpm --filter @zentauri-ui/zentauri-components build
+pnpm --filter component-library check-types
 ```
 
-> `prepack` also runs `generate-registry` + `generate-props` + the `check-*` guards, so
-> the registry/props will be regenerated at publish time — but generate locally so the
-> diff is reviewable. `prepend-use-client.mjs` runs inside `tsup` `onSuccess`; nothing to
-> do by hand.
+Run broader repository commands only when required by the change or the normal PR
+workflow. Visually inspect the preview in light/dark mode and every appearance,
+especially `subtle`, `contrast`, and glass. Compare all `--zui-<name>-*` references in
+the design-system file with the CSS-variable reference to catch omissions.
 
-Verify the generated registry picked up the component (and `framer-motion` under
-`peerHints` if animated), and that test counts moved.
+Finish with `git diff --check` and review the diff for these common misses:
 
----
-
-## Phase C — Docs app (`apps/component-library`)
-
-### C1. Route — `app/preview/components/<name>/page.tsx` (NEW)
-
-Imports the preview page + `getPreviewSeo("<name>")`, exports
-`metadata = previewSeoDocumentToMetadata(seo)`, renders `<<Name>PreviewPage seo={seo} />`.
-
-### C2. Preview page shell — `components/preview/<name>/index.tsx` (NEW)
-
-`PreviewPageShell` wrapping `<<Name>HeroSection>`, the code-examples section,
-`<PreviewApiSection slug="<name>" />`, and `<PreviewSeoDoc doc={seo} />`.
-
-### C3. Sections — `components/preview/<name>/sections/` (NEW)
-
-- `hero.tsx` — `Section variant="hero"` + `PreviewHeroSeoBlock` + a few live examples.
-- `snippet-sections.tsx` — `Section` with an `<h2>`, intro `<p>`, and the playground.
-- `components/data.ts` — appearance/size/animation arrays typed
-  `as const satisfies readonly NonNullable<<Name>Props["appearance"]>[]`.
-- `components/types.ts` — local demo prop types derived from the library types.
-- `components/demo.tsx` — renders static vs animated based on the `animation` prop.
-- `components/snippets.ts` — `<name>Snippet(opts)` builds the code string (uses
-  `variantLeadComment`; omits default-valued attrs).
-- `components/playground.tsx` — `"use client"`; `Select`-driven controls +
-  `PreviewCodeShowcase` (Show output / Show code) + appearance gallery.
-
-> Code-example section labels use `<p>` tags above each showcase row — see
-> `components/preview/accordion/sections/accordion-code-examples-section.tsx`.
-
-### C4. SEO document — `content/seo/preview/components/<name>.json` (NEW)
-
-`category`, `title`, `description`, `keywords`, `og`, `twitter`, `canonicalPath`,
-`headings` (single `h1` + `h2[]`), `intro`, `useCases`, `faqs`, `sections`,
-`useCasesSectionHeading`. Keep exactly one `h1` (in the hero).
-
-### C5. SEO registry — `lib/preview-seo-registry.ts` (EDIT)
-
-`import <camelName> from "@/content/seo/preview/components/<name>.json";` and add
-`"<name>": <camelName> as PreviewSeoDocument,` to `previewSeoRegistry`.
-
-### C6. CSS-variable reference (if the component adds `--zui-*` tokens)
-
-- `components/css-variables/data/<name>.ts` (NEW) — `defineCssVariableReference({...})`
-  with `lightVariables`, `darkExamples`, and `darkVariableCount` (must equal the number
-  of dark entries).
-- `components/css-variables/reference-data.ts` (EDIT) — import + add to
-  `cssVariableReferences`.
-
-### C7. Sidebar nav — `components/sidebar/sidebar-data.ts` (EDIT)
-
-Add `{ title: "<Title>", href: "/preview/components/<name>" }` to the right group.
-
-### C8. Introduction grid — `components/introduction/data.ts` (EDIT)
-
-Append `{ id, name, description, href, badge: "<Category>" }` to `componentsData`.
-
-### C9. In-site search — `lib/site-search-entries.ts` (NO EDIT)
-
-**Do not edit this file.** It auto-derives its entries from the `sidebar*Data`
-arrays (see `buildSiteSearchEntries()`), so the sidebar entry you added in C7 is
-all that's needed — CLAUDE.md: "so you do not edit it separately."
-
-### C10. ⚠️ Homepage install commands — `lib/home-install-commands.ts` (EDIT)
-
-Add an install entry **if** the component should appear in homepage install lists.
-**PR #109 forgot this too** — decide consciously rather than by omission.
-
----
-
-## Phase D — Verify
-
-```sh
-pnpm --filter @zentauri-ui/zentauri-components test          # new test file passes
-pnpm --filter @zentauri-ui/zentauri-components build         # tsup builds the new entries
-pnpm check-types                                             # tsc --noEmit across the repo
-pnpm lint
-pnpm format                                                  # not routed through Turbo
-```
-
-Then run the docs app and eyeball the preview (`/preview/components/<name>`) in **light
-and dark**, toggle Show output / Show code, and confirm the sidebar link, search entry,
-and CSS-variable reference render. Use the `verify` skill / preview tools rather than
-asking the user to check manually.
-
-> Node quirk: the default shell Node is v14 — use nvm v20.13.1 for pnpm/turbo/vitest.
-
----
-
-## Phase E — Maintenance surfaces (track-list)
-
-- `phase-3-plan.md` — flip the component's checkbox from `[ ]` to `[x]`.
-- Re-confirm Phase B generated files are committed (registry, props, health, READMEs).
-
-## Quick file checklist
-
-**Package (hand-written):**
-`design-system/<name>.ts` · `design-system/index.ts` · `ui/<name>/variants.ts` ·
-`types.ts` · `<name>-base.tsx` · `<name>.tsx` · `<name>.test.tsx` · `index.ts` ·
-(`animated/animations.ts` · `animated/types.ts` · `animated/<name>-animated.tsx` ·
-`animated/index.ts`) · `tsup.config.ts` · `package.json`
-
-**Package (generated — run scripts):**
-`cli/registry.json` · `cli/props.json` · `package-health-data.ts` ·
-`packages/components/README.md` · `apps/component-library/README.md`
-
-**Docs app (hand-written):**
-`app/preview/components/<name>/page.tsx` · `preview/<name>/index.tsx` +
-`sections/**` · `content/seo/preview/components/<name>.json` ·
-`lib/preview-seo-registry.ts` · `css-variables/data/<name>.ts` +
-`css-variables/reference-data.ts` · `sidebar/sidebar-data.ts` ·
-`introduction/data.ts` · **`lib/home-install-commands.ts`**
-
-**Docs app (auto-derived — do NOT edit):**
-`lib/site-search-entries.ts` (derives from `sidebar*Data`)
+- Missing facade slug or facade test.
+- A manual package-version/changelog update instead of a Changeset.
+- Tokens used by a shipped appearance but absent from the docs inventory.
+- Truthiness checks around `ReactNode` fields that discard valid numeric content.
+- A playground that exposes only a single appearance or inaccessible selector cards.
+- A static entry that accidentally imports animation code.
