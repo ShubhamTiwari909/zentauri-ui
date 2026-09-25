@@ -13791,6 +13791,268 @@
         }
       ]
     },
+    "glass-card": {
+      "slug": "glass-card",
+      "subcomponents": [
+        {
+          "name": "static:GlassCard",
+          "displayName": "GlassCard",
+          "propsType": "GlassCardProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "contrast",
+                "cyan",
+                "default",
+                "glass",
+                "gradient-blue",
+                "subtle",
+                "violet"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "variant",
+              "type": "enum",
+              "required": false,
+              "default": "glass",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "crystal",
+                "frosted",
+                "glass"
+              ],
+              "variantGroup": "variant",
+              "deprecated": false
+            },
+            {
+              "name": "depth",
+              "type": "number | undefined",
+              "required": false,
+              "default": "20",
+              "group": "behavior",
+              "description": "Content lift in pixels. Clamped to 0–60.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "description": "Disable effects that move; child controls remain usable.",
+              "deprecated": false
+            },
+            {
+              "name": "floating",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "description": "Opt into gentle floating while visible on a fine-pointer device.",
+              "deprecated": false
+            },
+            {
+              "name": "glare",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "true",
+              "group": "behavior",
+              "description": "Show the pointer-following light.",
+              "deprecated": false
+            },
+            {
+              "name": "glareIntensity",
+              "type": "number | undefined",
+              "required": false,
+              "default": "0.15",
+              "group": "behavior",
+              "description": "Glare opacity, from 0 to 1.",
+              "deprecated": false
+            },
+            {
+              "name": "glow",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "description": "Show a soft ambient glow behind the surface.",
+              "deprecated": false
+            },
+            {
+              "name": "glowIntensity",
+              "type": "number | undefined",
+              "required": false,
+              "default": "0.2",
+              "group": "behavior",
+              "description": "Glow opacity, from 0 to 1.",
+              "deprecated": false
+            },
+            {
+              "name": "intensity",
+              "type": "number | undefined",
+              "required": false,
+              "default": "12",
+              "group": "behavior",
+              "description": "Maximum tilt in degrees. Clamped to 0–30.",
+              "deprecated": false
+            },
+            {
+              "name": "interactive",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "true",
+              "group": "behavior",
+              "description": "Enable pointer tilt and floating.",
+              "deprecated": false
+            },
+            {
+              "name": "perspective",
+              "type": "number | undefined",
+              "required": false,
+              "default": "1000",
+              "group": "behavior",
+              "description": "Perspective distance in pixels. Clamped to 200–3000.",
+              "deprecated": false
+            },
+            {
+              "name": "reducedMotion",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "description": "Force motion off. OS reduced-motion preferences always take precedence.",
+              "deprecated": false
+            },
+            {
+              "name": "scale",
+              "type": "number | undefined",
+              "required": false,
+              "default": "1.02",
+              "group": "behavior",
+              "description": "Scale while hovered. Clamped to 1–1.15.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:GlassCardContent",
+          "displayName": "GlassCardContent",
+          "propsType": "GlassCardContentProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "hash-generator": {
       "slug": "hash-generator",
       "subcomponents": [

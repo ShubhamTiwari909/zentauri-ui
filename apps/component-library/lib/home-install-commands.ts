@@ -62,6 +62,7 @@ export const CLI_ADD_COMPONENTS = [
   "buttons",
   "calendar",
   "card",
+  "glass-card",
   "carousel",
   "checkbox",
   "circular-menu",

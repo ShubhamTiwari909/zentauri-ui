@@ -114,6 +114,13 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Layout",
   },
   {
+    id: "glass-card",
+    name: "Glass Card",
+    description: "CSS-based glass, crystal, and frosted surfaces with pointer tilt, dynamic lighting, and accessible motion controls.",
+    href: "/preview/components/glass-card",
+    badge: "Layout",
+  },
+  {
     id: "carousel",
     name: "Carousel",
     description:
