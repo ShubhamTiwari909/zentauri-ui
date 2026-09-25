@@ -1,6 +1,6 @@
 // Public material tokens; --_gc-* properties are private runtime values.
 export const zuiGlassCardBase =
-  "relative isolate rounded-3xl text-[var(--zui-glass-card-fg,#0f172a)] dark:text-[var(--zui-glass-card-fg-dark,#f1f5f9)] [--_gc-edge:var(--zui-glass-card-border,#ffffffb3)] dark:[--_gc-edge:var(--zui-glass-card-border-dark,#ffffff38)] [--_gc-highlight:var(--zui-glass-card-highlight,#ffffffb3)] dark:[--_gc-highlight:var(--zui-glass-card-highlight-dark,#ffffff45)] [--_gc-shadow:var(--zui-glass-card-shadow,0_20px_50px_-18px_#0f172a45)] dark:[--_gc-shadow:var(--zui-glass-card-shadow-dark,0_24px_60px_-16px_#00000099)] [--_gc-glow-color:var(--zui-glass-card-glow,#0891b2)] dark:[--_gc-glow-color:var(--zui-glass-card-glow-dark,#22d3ee)] [--_gc-glare-color:var(--zui-glass-card-glare,#ffffff)] dark:[--_gc-glare-color:var(--zui-glass-card-glare-dark,#ffffff)]";
+  "relative isolate rounded-3xl text-[color:var(--zui-glass-card-fg,#0f172a)] dark:text-[color:var(--zui-glass-card-fg-dark,#f1f5f9)] [--_gc-edge:var(--zui-glass-card-border,#ffffffb3)] dark:[--_gc-edge:var(--zui-glass-card-border-dark,#ffffff38)] [--_gc-highlight:var(--zui-glass-card-highlight,#ffffffb3)] dark:[--_gc-highlight:var(--zui-glass-card-highlight-dark,#ffffff45)] [--_gc-shadow:var(--zui-glass-card-shadow,0_20px_50px_-18px_#0f172a45)] dark:[--_gc-shadow:var(--zui-glass-card-shadow-dark,0_24px_60px_-16px_#00000099)] [--_gc-glow-color:var(--zui-glass-card-glow,#0891b2)] dark:[--_gc-glow-color:var(--zui-glass-card-glow-dark,#22d3ee)] [--_gc-glare-color:var(--zui-glass-card-glare,#ffffff)] dark:[--_gc-glare-color:var(--zui-glass-card-glare-dark,#ffffff)]";
 
 export const zuiGlassCardAppearances = {
   default:
@@ -28,7 +28,7 @@ export const zuiGlassCardMaterials = {
 } as const;
 
 export const zuiGlassCardSurface =
-  "relative h-full rounded-[inherit] [--_gc-rx:0deg] [--_gc-ry:0deg] [--_gc-scale:1] [--_gc-px:50%] [--_gc-py:50%] [--_gc-glare:0] [transform-style:preserve-3d] [transform:rotateX(var(--_gc-rx,0deg))_rotateY(var(--_gc-ry,0deg))_scale(var(--_gc-scale,1))] motion-reduce:!transform-none motion-reduce:![translate:none]";
+  "relative h-full rounded-[inherit] [--_gc-rx:0deg] [--_gc-ry:0deg] [--_gc-scale:1] [--_gc-px:50%] [--_gc-py:50%] [--_gc-glare:0] [transform-style:preserve-3d] [transform:rotateX(var(--_gc-rx,0deg))_rotateY(var(--_gc-ry,0deg))_scale(var(--_gc-scale,1))] motion-reduce:transform-none! motion-reduce:[translate:none]!";
 
 export const zuiGlassCardMaterial =
   "pointer-events-none absolute inset-0 rounded-[inherit] [background:var(--_gc-bg)] [border:var(--_gc-edge-width)_solid_var(--_gc-edge)] [box-shadow:var(--_gc-shadow),inset_0_1px_0_var(--_gc-highlight)] [backdrop-filter:blur(var(--_gc-blur))] [-webkit-backdrop-filter:blur(var(--_gc-blur))]";
@@ -37,13 +37,13 @@ export const zuiGlassCardReflection =
   "pointer-events-none absolute inset-0 rounded-[inherit] [background:linear-gradient(135deg,var(--_gc-highlight),transparent_35%,transparent_65%,var(--_gc-highlight))] [opacity:var(--_gc-reflection)]";
 
 export const zuiGlassCardGlare =
-  "pointer-events-none absolute inset-0 rounded-[inherit] [background:radial-gradient(circle_at_var(--_gc-px,50%)_var(--_gc-py,50%),var(--_gc-glare-color),transparent_55%)] [opacity:var(--_gc-glare,0)] motion-reduce:!opacity-0";
+  "pointer-events-none absolute inset-0 rounded-[inherit] [background:radial-gradient(circle_at_var(--_gc-px,50%)_var(--_gc-py,50%),var(--_gc-glare-color),transparent_55%)] [opacity:var(--_gc-glare,0)] motion-reduce:opacity-0!";
 
 export const zuiGlassCardGlow =
   "pointer-events-none absolute -inset-3 -z-10 rounded-[inherit] blur-xl [background:radial-gradient(ellipse_at_center,var(--_gc-glow-color),transparent_70%)] [opacity:var(--_gc-glow,0.2)]";
 
 export const zuiGlassCardContentBase =
-  "relative rounded-[inherit] [transform:translateZ(var(--_gc-depth,20px))] motion-reduce:!transform-none";
+  "relative rounded-[inherit] [transform:translateZ(var(--_gc-depth,20px))] motion-reduce:transform-none!";
 
 export const zuiGlassCardSizes = {
   sm: "[--_gc-padding:1rem]",

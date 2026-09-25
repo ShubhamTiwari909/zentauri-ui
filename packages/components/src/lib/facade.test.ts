@@ -52,6 +52,24 @@ describe("DesignSystem facade", () => {
     const card = DesignSystem.getComponent("glass-card");
     expect(card?.title).toBe("Glass Card");
     expect(card?.appearances()).toContain("cyan");
+    expect(card?.groups()).toContain("variant");
+    expect(card?.variants("variant").map(({ key }) => key)).toEqual([
+      "glass",
+      "crystal",
+      "frosted",
+    ]);
+    expect(card?.getVariant("variant", "crystal")?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-glass-card-crystal-blur",
+          fallback: "8px",
+        }),
+        expect.objectContaining({
+          name: "--zui-glass-card-crystal-blur-dark",
+          fallback: "8px",
+        }),
+      ]),
+    );
     expect(card?.variables()).toEqual(
       expect.arrayContaining([
         expect.objectContaining({

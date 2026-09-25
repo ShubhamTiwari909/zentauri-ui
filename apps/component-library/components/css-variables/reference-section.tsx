@@ -53,12 +53,15 @@ function formatDarkCssVariableBlock(reference: CssVariableReference) {
     return "";
   }
 
-  const declarations = reference.darkExamples
-    .slice(0, DARK_VARIABLE_EXAMPLE_LIMIT)
+  const visibleExamples = reference.darkExamples.slice(
+    0,
+    DARK_VARIABLE_EXAMPLE_LIMIT,
+  );
+  const declarations = visibleExamples
     .map(([name, value]) => `  ${ZUI_CSS_VARIABLE_PREFIX}${name}: ${value};`)
     .join("\n");
   const hiddenDarkVariableCount =
-    reference.darkVariableCount - reference.darkExamples.length;
+    reference.darkVariableCount - visibleExamples.length;
   const ellipsis =
     hiddenDarkVariableCount > 0
       ? "\n  /* ...same variables with -dark at the end */"

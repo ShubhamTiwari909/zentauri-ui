@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { createRef, Profiler } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ZuiGlassCard } from "./index";
+import { GlassCardBase, GlassCardContent } from "./glass-card-base";
 import {
   zuiGlassCardAppearances,
   zuiGlassCardMaterials,
@@ -90,6 +91,10 @@ afterEach(() => {
 
 describe("ZuiGlassCard", () => {
   it("renders a normal div with content, defaults, HTML props, style and refs", () => {
+    expect(ZuiGlassCard).not.toBe(GlassCardBase);
+    expect(Object.hasOwn(GlassCardBase, "Content")).toBe(false);
+    expect(ZuiGlassCard.displayName).toBe("ZuiGlassCard");
+    expect(ZuiGlassCard.Content).toBe(GlassCardContent);
     const ref = createRef<HTMLDivElement>();
     const contentRef = createRef<HTMLDivElement>();
     render(

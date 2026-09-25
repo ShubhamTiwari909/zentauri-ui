@@ -161,6 +161,8 @@ const groupSuffixes: Array<[suffix: string, group: string]> = [
   ["Level", "level"],
   ["Tones", "tone"],
   ["Tone", "tone"],
+  ["Materials", "variant"],
+  ["Material", "variant"],
   ["Variants", "variant"],
   ["Variant", "variant"],
   ["Speeds", "speed"],
