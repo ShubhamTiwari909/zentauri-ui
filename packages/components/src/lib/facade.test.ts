@@ -13,6 +13,7 @@ describe("DesignSystem facade", () => {
     const slugs = DesignSystem.components();
     expect(slugs).toContain("accordion");
     expect(slugs).toContain("activity-feed");
+    expect(slugs).toContain("glass-card");
     expect(slugs).toContain("buttons");
     expect(slugs).toContain("inputs");
     expect(slugs.length).toBe(DesignSystem.listComponents().length);
@@ -43,6 +44,38 @@ describe("DesignSystem facade", () => {
     expect(activityFeed?.variables()).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ name: "--zui-activity-feed-emerald-bg" }),
+      ]),
+    );
+  });
+
+  it("discovers Glass Card appearances and paired material tokens", () => {
+    const card = DesignSystem.getComponent("glass-card");
+    expect(card?.title).toBe("Glass Card");
+    expect(card?.appearances()).toContain("cyan");
+    expect(card?.groups()).toContain("variant");
+    expect(card?.variants("variant").map(({ key }) => key)).toEqual([
+      "glass",
+      "crystal",
+      "frosted",
+    ]);
+    expect(card?.getVariant("variant", "crystal")?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-glass-card-crystal-blur",
+          fallback: "8px",
+        }),
+        expect.objectContaining({
+          name: "--zui-glass-card-crystal-blur-dark",
+          fallback: "8px",
+        }),
+      ]),
+    );
+    expect(card?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-glass-card-crystal-blur",
+          pairName: "--zui-glass-card-crystal-blur-dark",
+        }),
       ]),
     );
   });

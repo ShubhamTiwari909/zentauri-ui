@@ -295,6 +295,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/gauge",
       },
       {
+        title: "Glass Card",
+        href: "/preview/components/glass-card",
+      },
+      {
         title: "Hash generator",
         href: "/preview/components/hash-generator",
       },

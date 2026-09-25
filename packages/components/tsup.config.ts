@@ -17,6 +17,7 @@ const uiComponentNames = [
   "buttons",
   "calendar",
   "card",
+  "glass-card",
   "carousel",
   "checkbox",
   "circular-menu",

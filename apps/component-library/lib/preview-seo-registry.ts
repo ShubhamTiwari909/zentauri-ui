@@ -1,3 +1,4 @@
+import glassCard from "@/content/seo/preview/components/glass-card.json";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import accordion from "@/content/seo/preview/components/accordion.json";
 import activityFeed from "@/content/seo/preview/components/activity-feed.json";
@@ -104,6 +105,7 @@ const previewSeoRegistry = {
   buttons: buttons as PreviewSeoDocument,
   calendar: calendar as PreviewSeoDocument,
   card: card as PreviewSeoDocument,
+  "glass-card": glassCard as PreviewSeoDocument,
   checkbox: checkbox as PreviewSeoDocument,
   carousel: carousel as PreviewSeoDocument,
   "circular-menu": circularMenu as PreviewSeoDocument,

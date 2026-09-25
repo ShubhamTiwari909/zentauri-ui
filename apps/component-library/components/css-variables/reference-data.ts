@@ -1,3 +1,4 @@
+import { glassCardCssVariables } from "./data/glass-card";
 import { accordionCssVariables } from "./data/accordion";
 import { activityFeedCssVariables } from "./data/activity-feed";
 import { apiEndpointCardCssVariables } from "./data/api-endpoint-card";
@@ -87,6 +88,7 @@ export const cssVariableReferences = {
   buttons: buttonsCssVariables,
   calendar: calendarCssVariables,
   card: cardCssVariables,
+  "glass-card": glassCardCssVariables,
   carousel: carouselCssVariables,
   checkbox: checkboxCssVariables,
   "circular-menu": circularMenuCssVariables,

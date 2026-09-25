@@ -1,0 +1,63 @@
+{
+  "category": "Surfaces & interaction",
+  "title": "3D Glass Card component for React",
+  "description": "Composable glass, crystal, and frosted React cards with pointer tilt, dynamic glare, depth, and reduced-motion support.",
+  "keywords": [
+    "glass card",
+    "crystal card",
+    "3D card",
+    "React",
+    "CSS perspective",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Glass Card \u00b7 Zentauri UI",
+    "description": "Composable glass, crystal, and frosted React cards with pointer tilt, dynamic glare, depth, and reduced-motion support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Glass Card \u00b7 Zentauri UI",
+    "description": "Composable glass, crystal, and frosted React cards with pointer tilt, dynamic glare, depth, and reduced-motion support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/glass-card",
+  "headings": {
+    "h1": "Glass with a different dimension.",
+    "h2": [
+      "Overview",
+      "Common use cases",
+      "FAQ"
+    ]
+  },
+  "intro": "A translucent surface that responds to your perspective. Compose your content, choose a material, and let light do the rest.",
+  "useCases": [
+    "Feature and product highlights.",
+    "Membership and profile surfaces.",
+    "Interactive dashboards and portfolio cards."
+  ],
+  "faqs": [
+    {
+      "question": "Does Glass Card require Framer Motion or WebGL?",
+      "answer": "No. It uses CSS transforms and gradients with frame-rate independent interpolation. It adds no animation dependency."
+    },
+    {
+      "question": "How does it behave on touch devices?",
+      "answer": "Touch pointers do not tilt the card. The glass appearance and all child controls remain available."
+    },
+    {
+      "question": "Can reduced motion be overridden?",
+      "answer": "No. OS reduced-motion preferences always take precedence. You can also set reducedMotion to true to force movement off."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Import ZuiGlassCard from the glass-card entry and compose ZuiGlassCard.Content inside it. The root forwards div attributes and refs. Material variant, color appearance, and size can be chosen independently.\n\nThe defaults are intensity 12, perspective 1000, scale 1.02, glare true, glareIntensity 0.15, glow false, glowIntensity 0.2, depth 20, floating false, disabled false, and interactive true. Glare follows the cursor; glow is ambient. Floating requires a visible card and a fine hover pointer.\n\nConsumers using Tailwind v4 must include the package in their @source scan so both light and dark token classes are generated. The static entry is safe to server-render, and all browser interaction is initialized after mounting.\n\nUse the compound ZuiGlassCard.Content API inside a client component. In a Next.js Server Component, import the named GlassCardContent export instead; the server can compose the two client boundaries without accessing a client component property."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
