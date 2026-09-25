@@ -4,6 +4,13 @@
 
 ### Minor Changes
 
+- 5603eb1: Add a data-driven Activity Feed component with grouped actor, verb, and object events, themeable appearances, and preview documentation.
+- c9c7934: Add ZuiGlassCard with glass, crystal, and frosted materials, pointer tilt, dynamic glare, composable content, motion preferences, and preview documentation.
+
+## 2.15.0
+
+### Minor Changes
+
 - 22c9191: Add the accessible Gauge component with radial and dial variants, custom ranges and value formatting, tokenized appearances, and documentation.
 - e68b87e: Add an accessible Image Compare component with pointer and keyboard controls, controlled and uncontrolled positions, tokenized appearances, and documentation.
 
