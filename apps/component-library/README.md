@@ -42,8 +42,8 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | Components and UI utilities    | 91         | 1064  |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 48         | 242   |
-| Design system facade           | 1          | 14    |
-| CLI and import rewriting       | 4          | 33    |
+| Design system facade           | 1          | 15    |
+| CLI and import rewriting       | 4          | 34    |
 | Accessibility (axe + keyboard) | 2          | 50    |
 | Permission system              | 1          | 47    |
 

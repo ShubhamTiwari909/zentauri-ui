@@ -257,6 +257,19 @@ describe("zentauri-ui CLI", () => {
     }
   });
 
+  it("should vendor Product 3D and hint both renderer peers", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-product-3d-"));
+    try {
+      runCli(dir, ["init"]);
+      const out = runCli(dir, ["add", "product-3d"]);
+      expect(existsSync(join(dir, "src/components/ui/product-3d/index.ts"))).toBe(true);
+      expect(out).toContain("@google/model-viewer");
+      expect(out).toContain("three");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("should add an animation entry under animations/ and hint framer-motion", () => {
     const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-animation-"));
     try {

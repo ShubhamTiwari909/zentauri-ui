@@ -120,6 +120,7 @@
     "test:all": "pnpm test && pnpm test:a11y"
   },
   "peerDependencies": {
+    "@google/model-viewer": "^4.3.1",
     "class-variance-authority": "*",
     "clsx": "*",
     "framer-motion": "*",
@@ -127,9 +128,13 @@
     "react-dom": ">18",
     "react-icons": "*",
     "recharts": "*",
-    "tailwind-merge": "*"
+    "tailwind-merge": "*",
+    "three": "^0.183.0"
   },
   "peerDependenciesMeta": {
+    "@google/model-viewer": {
+      "optional": true
+    },
     "framer-motion": {
       "optional": true
     },
@@ -138,9 +143,13 @@
     },
     "recharts": {
       "optional": true
+    },
+    "three": {
+      "optional": true
     }
   },
   "devDependencies": {
+    "@google/model-viewer": "4.3.1",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@testing-library/jest-dom": "^6.9.1",
@@ -155,6 +164,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^9.39.1",
     "jsdom": "^26.1.0",
+    "three": "0.183.0",
     "tsup": "^8.5.1",
     "typescript": "^5",
     "vitest": "^4.1.4"

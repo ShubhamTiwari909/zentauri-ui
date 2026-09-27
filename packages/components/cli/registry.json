@@ -53,6 +53,7 @@
     "pagination",
     "password-strength-meter",
     "popover",
+    "product-3d",
     "progress",
     "qr-code",
     "qr-scanner",
@@ -252,6 +253,7 @@
     "pagination",
     "password-strength-meter",
     "popover",
+    "product-3d",
     "progress",
     "qr-code",
     "qr-scanner",
@@ -506,6 +508,10 @@
     ],
     "popover": [
       "framer-motion"
+    ],
+    "product-3d": [
+      "@google/model-viewer",
+      "three"
     ],
     "progress": [
       "framer-motion"

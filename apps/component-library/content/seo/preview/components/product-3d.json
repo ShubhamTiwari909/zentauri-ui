@@ -1,0 +1,84 @@
+{
+  "category": "Media",
+  "title": "3D Product Showcase component for React",
+  "description": "Display GLB and glTF products with orbit controls, auto rotation, lighting presets, environment maps, hotspots, fullscreen, loading, and poster fallback.",
+  "keywords": [
+    "3D product showcase",
+    "GLB viewer",
+    "glTF viewer",
+    "React product viewer",
+    "e-commerce 3D",
+    "model-viewer"
+  ],
+  "og": {
+    "title": "Product 3D \u00b7 Zentauri UI",
+    "description": "Interactive GLB and glTF product displays with annotations and lighting controls.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Product 3D \u00b7 Zentauri UI",
+    "description": "A React 3D product viewer for storefronts and landing pages.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/product-3d",
+  "headings": {
+    "h1": "3D Product Showcase for every angle",
+    "h2": [
+      "What it does",
+      "Models, posters, and loading",
+      "Lighting and environments",
+      "Hotspots and camera controls",
+      "Common use cases",
+      "Accessibility and integration",
+      "FAQ"
+    ]
+  },
+  "intro": "Give customers and visitors a closer look at a product. Load a GLB or glTF model, orbit and zoom around it, annotate details, and carry a poster image through loading or failure states.",
+  "useCases": [
+    "E-commerce product detail pages and configurators.",
+    "SaaS hardware and device landing pages.",
+    "Portfolio case studies and interactive exhibits.",
+    "Automotive and furniture presentations."
+  ],
+  "faqs": [
+    {
+      "question": "Which 3D formats are supported?",
+      "answer": "The renderer supports GLB and glTF. A GLB is self-contained; a glTF may reference separate textures and buffers that must remain reachable."
+    },
+    {
+      "question": "How do I use a custom environment map?",
+      "answer": "Pass environmentImage as the URL of an HDR, UltraHDR, or equirectangular image. Optional skyboxImage displays an environment in the background as well."
+    },
+    {
+      "question": "What dependencies are needed?",
+      "answer": "Install @google/model-viewer and its matching three peer dependency alongside the Zentauri component package. The 3D renderer is loaded only when this viewer mounts in the browser."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Product 3D wraps the model-viewer web component in a tokenized React surface. It exposes orbit controls, zoom, auto rotation, fullscreen, and loading callbacks."
+    },
+    {
+      "heading": "Models, posters, and loading",
+      "body": "Pass a GLB or glTF URL with a descriptive alt label. A poster remains visible while the model loads, and fallback content appears if loading fails. Progress is available through onProgress."
+    },
+    {
+      "heading": "Lighting and environments",
+      "body": "Choose studio, soft, dramatic, neutral, or legacy lighting. Studio, soft, and neutral use built-in lighting with distinct exposure and shadow settings; environmentImage overrides the built-in environment with your own map."
+    },
+    {
+      "heading": "Hotspots and camera controls",
+      "body": "Position hotspots in model coordinates and attach short annotations. Hotspots are buttons, support controlled selection, and remain readable as the camera moves. Native orbit gestures work alongside reset, zoom, and fullscreen controls."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility and integration",
+      "body": "Provide meaningful alt text and hotspot labels. Loading and error states are announced. The client entry loads the optional renderer in an effect, keeping server rendering safe in Next.js App Router."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

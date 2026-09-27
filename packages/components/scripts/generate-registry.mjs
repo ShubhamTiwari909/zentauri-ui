@@ -44,6 +44,9 @@ function detectUiPeerHints(componentName) {
   if (/from\s+["']react-icons/.test(text)) hints.push("react-icons");
   if (/from\s+["']framer-motion/.test(text)) hints.push("framer-motion");
   if (/from\s+["']recharts/.test(text)) hints.push("recharts");
+  if (/import\s*\(["']@google\/model-viewer["']\)/.test(text)) {
+    hints.push("@google/model-viewer", "three");
+  }
   return hints;
 }
 

@@ -58,6 +58,7 @@ import pagination from "@/content/seo/preview/components/pagination.json";
 import passwordStrengthMeter from "@/content/seo/preview/components/password-strength-meter.json";
 import popover from "@/content/seo/preview/components/popover.json";
 import progress from "@/content/seo/preview/components/progress.json";
+import product3D from "@/content/seo/preview/components/product-3d.json";
 import qrCode from "@/content/seo/preview/components/qr-code.json";
 import qrScanner from "@/content/seo/preview/components/qr-scanner.json";
 import rating from "@/content/seo/preview/components/rating.json";
@@ -151,6 +152,7 @@ const previewSeoRegistry = {
   "password-strength-meter": passwordStrengthMeter as PreviewSeoDocument,
   popover: popover as PreviewSeoDocument,
   progress: progress as PreviewSeoDocument,
+  "product-3d": product3D as PreviewSeoDocument,
   "qr-code": qrCode as PreviewSeoDocument,
   "qr-scanner": qrScanner as PreviewSeoDocument,
   rating: rating as PreviewSeoDocument,

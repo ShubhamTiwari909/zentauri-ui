@@ -13,6 +13,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@google/model-viewer": "4.3.1",
     "@hookform/resolvers": "^5.4.0",
     "@tailwindcss/postcss": "^4.2.2",
     "@vercel/analytics": "^2.0.1",
@@ -31,6 +32,7 @@
     "recharts": "^3.8.1",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.2",
+    "three": "0.183.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {

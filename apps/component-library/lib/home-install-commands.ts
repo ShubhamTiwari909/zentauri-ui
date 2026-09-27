@@ -100,6 +100,7 @@ export const CLI_ADD_COMPONENTS = [
   "password-strength-meter",
   "popover",
   "progress",
+  "product-3d",
   "qr-code",
   "qr-scanner",
   "radio-group",

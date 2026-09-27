@@ -1189,6 +1189,8 @@ const PEER_HINT_REASONS = {
   "framer-motion": "only if you use animated UI or animation entries",
   "react-icons": "icons used by this component",
   recharts: "required to render charts",
+  "@google/model-viewer": "required to render 3D product models",
+  three: "peer dependency of @google/model-viewer",
 };
 
 /**

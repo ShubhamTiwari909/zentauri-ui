@@ -50,6 +50,7 @@ export * from "./pagination";
 export * from "./password-strength-meter";
 export * from "./popover";
 export * from "./progress";
+export * from "./product-3d";
 export * from "./qr-code";
 export * from "./qr-scanner";
 export * from "./rating";

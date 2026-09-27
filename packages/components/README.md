@@ -41,8 +41,8 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | Components and UI utilities    | 91         | 1064  |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 48         | 242   |
-| Design system facade           | 1          | 14    |
-| CLI and import rewriting       | 4          | 33    |
+| Design system facade           | 1          | 15    |
+| CLI and import rewriting       | 4          | 34    |
 | Accessibility (axe + keyboard) | 2          | 50    |
 | Permission system              | 1          | 47    |
 
@@ -63,16 +63,16 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/calendar/date-utils.test.ts`                                    |    28 |
 | `src/ui/bento-grid/bento-grid.test.tsx`                                 |    26 |
 | `src/ui/combobox/combobox.test.tsx`                                     |    24 |
+| `cli/cli.integration.test.ts`                                           |    22 |
 | `src/ui/wizard/wizard.test.tsx`                                         |    22 |
-| `cli/cli.integration.test.ts`                                           |    21 |
 | `src/accessibility/keyboard-interaction.test.tsx`                       |    18 |
 | `src/ui/calendar/calendar.test.tsx`                                     |    16 |
 | `src/ui/json-viewer/json-viewer.test.tsx`                               |    16 |
 | `src/ui/network-status/network-status.test.tsx`                         |    16 |
 | `src/hooks/useUndoRedo/useUndoRedo.test.ts`                             |    15 |
+| `src/lib/facade.test.ts`                                                |    15 |
 | `src/ui/package-install-command/package-install-command.test.tsx`       |    15 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
-| `src/lib/facade.test.ts`                                                |    14 |
 | `src/ui/timeline/timeline.test.tsx`                                     |    14 |
 | `src/ui/api-response-viewer/api-response-viewer.test.tsx`               |    13 |
 | `src/ui/code-block/code-block.test.tsx`                                 |    13 |
@@ -109,6 +109,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useTableFilter/useTableFilter.test.ts`                       |     9 |
 | `src/ui/animated-number/animated-number.test.tsx`                       |     9 |
 | `src/ui/hash-generator/hash-generator.test.tsx`                         |     9 |
+| `src/ui/product-3d/product-3d.test.tsx`                                 |     9 |
 | `src/ui/secret-reveal/secret-reveal.test.tsx`                           |     9 |
 | `src/ui/skeleton/skeleton.test.tsx`                                     |     9 |
 | `src/ui/slider/slider.test.tsx`                                         |     9 |
