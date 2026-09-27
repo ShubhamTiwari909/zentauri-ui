@@ -161,6 +161,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useEventListener/useEventListener.test.ts`                   |     5 |
 | `src/hooks/useScrollPosition/useScrollPosition.test.ts`                 |     5 |
 | `src/hooks/useTimeout/useTimeout.test.ts`                               |     5 |
+| `src/ui/neural-graph/neural-graph.test.tsx`                             |     5 |
 | `src/ui/popover/popover.test.tsx`                                       |     5 |
 | `src/ui/qr-scanner/qr-scanner.test.tsx`                                 |     5 |
 | `src/ui/radio-group/radio-group.test.tsx`                               |     5 |
