@@ -52,9 +52,14 @@ describe("DesignSystem facade", () => {
   it("discovers Neural Graph appearances and paired canvas tokens", () => {
     const graph = DesignSystem.getComponent("neural-graph");
     expect(graph?.appearances()).toContain("gradient-blue");
-    expect(graph?.variables()).toEqual(expect.arrayContaining([
-      expect.objectContaining({ name: "--zui-neural-graph-edge", pairName: "--zui-neural-graph-edge-dark" }),
-    ]));
+    expect(graph?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-neural-graph-edge",
+          pairName: "--zui-neural-graph-edge-dark",
+        }),
+      ]),
+    );
   });
 
   it("discovers Glass Card appearances and paired material tokens", () => {

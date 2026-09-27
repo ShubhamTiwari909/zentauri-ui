@@ -291,10 +291,6 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/file-upload",
       },
       {
-        title: "Neural Graph",
-        href: "/preview/components/neural-graph",
-      },
-      {
         title: "Gauge",
         href: "/preview/components/gauge",
       },
@@ -345,6 +341,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
       {
         title: "Network Status",
         href: "/preview/components/network-status",
+      },
+      {
+        title: "Neural Graph",
+        href: "/preview/components/neural-graph",
       },
       {
         title: "OTP input",
