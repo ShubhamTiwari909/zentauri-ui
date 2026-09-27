@@ -13,53 +13,53 @@
  * via the `definition` "supportedTimezones".
  */
 export type SupportedTimezones =
-  | "Pacific/Midway"
-  | "Pacific/Niue"
-  | "Pacific/Honolulu"
-  | "Pacific/Rarotonga"
-  | "America/Anchorage"
-  | "Pacific/Gambier"
-  | "America/Los_Angeles"
-  | "America/Tijuana"
-  | "America/Denver"
-  | "America/Phoenix"
-  | "America/Chicago"
-  | "America/Guatemala"
-  | "America/New_York"
-  | "America/Bogota"
-  | "America/Caracas"
-  | "America/Santiago"
-  | "America/Buenos_Aires"
-  | "America/Sao_Paulo"
-  | "Atlantic/South_Georgia"
-  | "Atlantic/Azores"
-  | "Atlantic/Cape_Verde"
-  | "Europe/London"
-  | "Europe/Berlin"
-  | "Africa/Lagos"
-  | "Europe/Athens"
-  | "Africa/Cairo"
-  | "Europe/Moscow"
-  | "Asia/Riyadh"
-  | "Asia/Dubai"
-  | "Asia/Baku"
-  | "Asia/Karachi"
-  | "Asia/Tashkent"
-  | "Asia/Calcutta"
-  | "Asia/Dhaka"
-  | "Asia/Almaty"
-  | "Asia/Jakarta"
-  | "Asia/Bangkok"
-  | "Asia/Shanghai"
-  | "Asia/Singapore"
-  | "Asia/Tokyo"
-  | "Asia/Seoul"
-  | "Australia/Brisbane"
-  | "Australia/Sydney"
-  | "Pacific/Guam"
-  | "Pacific/Noumea"
-  | "Pacific/Auckland"
-  | "Pacific/Fiji";
+  | 'Pacific/Midway'
+  | 'Pacific/Niue'
+  | 'Pacific/Honolulu'
+  | 'Pacific/Rarotonga'
+  | 'America/Anchorage'
+  | 'Pacific/Gambier'
+  | 'America/Los_Angeles'
+  | 'America/Tijuana'
+  | 'America/Denver'
+  | 'America/Phoenix'
+  | 'America/Chicago'
+  | 'America/Guatemala'
+  | 'America/New_York'
+  | 'America/Bogota'
+  | 'America/Caracas'
+  | 'America/Santiago'
+  | 'America/Buenos_Aires'
+  | 'America/Sao_Paulo'
+  | 'Atlantic/South_Georgia'
+  | 'Atlantic/Azores'
+  | 'Atlantic/Cape_Verde'
+  | 'Europe/London'
+  | 'Europe/Berlin'
+  | 'Africa/Lagos'
+  | 'Europe/Athens'
+  | 'Africa/Cairo'
+  | 'Europe/Moscow'
+  | 'Asia/Riyadh'
+  | 'Asia/Dubai'
+  | 'Asia/Baku'
+  | 'Asia/Karachi'
+  | 'Asia/Tashkent'
+  | 'Asia/Calcutta'
+  | 'Asia/Dhaka'
+  | 'Asia/Almaty'
+  | 'Asia/Jakarta'
+  | 'Asia/Bangkok'
+  | 'Asia/Shanghai'
+  | 'Asia/Singapore'
+  | 'Asia/Tokyo'
+  | 'Asia/Seoul'
+  | 'Australia/Brisbane'
+  | 'Australia/Sydney'
+  | 'Pacific/Guam'
+  | 'Pacific/Noumea'
+  | 'Pacific/Auckland'
+  | 'Pacific/Fiji';
 
 export interface Config {
   auth: {
@@ -80,40 +80,34 @@ export interface Config {
     table: TableBlock;
     breadcrumb: BreadcrumbBlock;
     drawer: DrawerBlock;
-    "json-viewer": JsonViewerBlock;
+    'json-viewer': JsonViewerBlock;
     kbd: KbdBlock;
     modal: ModalBlock;
-    "package-install-command": PackageInstallCommandBlock;
-    "qr-code": QrCodeBlock;
-    "secret-reveal": SecretRevealBlock;
+    'package-install-command': PackageInstallCommandBlock;
+    'qr-code': QrCodeBlock;
+    'secret-reveal': SecretRevealBlock;
     tabs: TabsBlock;
     timeline: TimelineBlock;
-    "tree-view": TreeViewBlock;
+    'tree-view': TreeViewBlock;
   };
   collections: {
     users: User;
     media: Media;
     pages: Page;
-    "payload-kv": PayloadKv;
-    "payload-locked-documents": PayloadLockedDocument;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    'payload-kv': PayloadKv;
+    'payload-locked-documents': PayloadLockedDocument;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
-    "payload-kv": PayloadKvSelect<false> | PayloadKvSelect<true>;
-    "payload-locked-documents":
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>;
-    "payload-preferences":
-      | PayloadPreferencesSelect<false>
-      | PayloadPreferencesSelect<true>;
-    "payload-migrations":
-      | PayloadMigrationsSelect<false>
-      | PayloadMigrationsSelect<true>;
+    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: string;
@@ -158,36 +152,17 @@ export interface SectionBlock {
    * Optional anchor id for in-page links (lowercase letters, numbers, and hyphens only)
    */
   sectionId?: string | null;
-  bgColor:
-    | "white"
-    | "dark-slate"
-    | "blue"
-    | "emerald"
-    | "teal"
-    | "indigo"
-    | "fuchsia";
+  bgColor: 'white' | 'dark-slate' | 'blue' | 'emerald' | 'teal' | 'indigo' | 'fuchsia';
   verticalSpacing?: {
     top?: {
-      desktop?:
-        | ("0" | "20" | "40" | "60" | "80" | "120" | "140" | "160" | "200")
-        | null;
-      tablet?:
-        | ("0" | "20" | "40" | "60" | "80" | "120" | "140" | "160" | "200")
-        | null;
-      mobile?:
-        | ("0" | "20" | "40" | "60" | "80" | "120" | "140" | "160" | "200")
-        | null;
+      desktop?: ('0' | '20' | '40' | '60' | '80' | '120' | '140' | '160' | '200') | null;
+      tablet?: ('0' | '20' | '40' | '60' | '80' | '120' | '140' | '160' | '200') | null;
+      mobile?: ('0' | '20' | '40' | '60' | '80' | '120' | '140' | '160' | '200') | null;
     };
     bottom?: {
-      desktop?:
-        | ("0" | "20" | "40" | "60" | "80" | "120" | "140" | "160" | "200")
-        | null;
-      tablet?:
-        | ("0" | "20" | "40" | "60" | "80" | "120" | "140" | "160" | "200")
-        | null;
-      mobile?:
-        | ("0" | "20" | "40" | "60" | "80" | "120" | "140" | "160" | "200")
-        | null;
+      desktop?: ('0' | '20' | '40' | '60' | '80' | '120' | '140' | '160' | '200') | null;
+      tablet?: ('0' | '20' | '40' | '60' | '80' | '120' | '140' | '160' | '200') | null;
+      mobile?: ('0' | '20' | '40' | '60' | '80' | '120' | '140' | '160' | '200') | null;
     };
   };
   fullHeight: boolean;
@@ -199,8 +174,8 @@ export interface SectionBlock {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -208,7 +183,7 @@ export interface SectionBlock {
   };
   id?: string | null;
   blockName?: string | null;
-  blockType: "section";
+  blockType: 'section';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -217,24 +192,24 @@ export interface SectionBlock {
 export interface TextBlock {
   appearance?:
     | (
-        | "default"
-        | "muted"
-        | "primary"
-        | "secondary"
-        | "accent"
-        | "destructive"
-        | "info"
-        | "success"
-        | "warning"
-        | "error"
-        | "gradient-pink-violet"
-        | "gradient-cyan-violet"
-        | "gradient-cyan-blue"
-        | "gradient-cyan-green"
-        | "gradient-cyan-orange"
-        | "gradient-cyan-red"
-        | "gradient-cyan-purple"
-        | "gradient-cyan-pink"
+        | 'default'
+        | 'muted'
+        | 'primary'
+        | 'secondary'
+        | 'accent'
+        | 'destructive'
+        | 'info'
+        | 'success'
+        | 'warning'
+        | 'error'
+        | 'gradient-pink-violet'
+        | 'gradient-cyan-violet'
+        | 'gradient-cyan-blue'
+        | 'gradient-cyan-green'
+        | 'gradient-cyan-orange'
+        | 'gradient-cyan-red'
+        | 'gradient-cyan-purple'
+        | 'gradient-cyan-pink'
       )
     | null;
   content: {
@@ -245,8 +220,8 @@ export interface TextBlock {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -254,7 +229,7 @@ export interface TextBlock {
   };
   id?: string | null;
   blockName?: string | null;
-  blockType: "text";
+  blockType: 'text';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -262,50 +237,40 @@ export interface TextBlock {
  */
 export interface SpacerBlock {
   height:
-    | "0"
-    | "4"
-    | "8"
-    | "12"
-    | "16"
-    | "20"
-    | "24"
-    | "32"
-    | "40"
-    | "48"
-    | "60"
-    | "64"
-    | "80"
-    | "90"
-    | "100"
-    | "120"
-    | "140"
-    | "160"
-    | "180"
-    | "200";
+    | '0'
+    | '4'
+    | '8'
+    | '12'
+    | '16'
+    | '20'
+    | '24'
+    | '32'
+    | '40'
+    | '48'
+    | '60'
+    | '64'
+    | '80'
+    | '90'
+    | '100'
+    | '120'
+    | '140'
+    | '160'
+    | '180'
+    | '200';
   id?: string | null;
   blockName?: string | null;
-  blockType: "spacer";
+  blockType: 'spacer';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CodeBlock".
  */
 export interface CodeBlock {
-  language:
-    | "typescript"
-    | "tsx"
-    | "javascript"
-    | "jsx"
-    | "css"
-    | "html"
-    | "json"
-    | "bash"
-    | "markdown"
-    | "plaintext";
+  language: 'typescript' | 'tsx' | 'javascript' | 'jsx' | 'css' | 'html' | 'json' | 'bash' | 'markdown' | 'plaintext';
   code: string;
   id?: string | null;
   blockName?: string | null;
-  blockType: "code";
+  blockType: 'code';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -338,48 +303,22 @@ export interface RowBlock {
     | TimelineBlock
     | TreeViewBlock
   )[];
-  gap:
-    | "0"
-    | "4"
-    | "8"
-    | "12"
-    | "16"
-    | "20"
-    | "24"
-    | "32"
-    | "40"
-    | "48"
-    | "60"
-    | "64"
-    | "80"
-    | "90"
-    | "100";
+  gap: '0' | '4' | '8' | '12' | '16' | '20' | '24' | '32' | '40' | '48' | '60' | '64' | '80' | '90' | '100';
   /**
    * justify-content
    */
-  horizontalAlign?:
-    | (
-        | "flex-start"
-        | "center"
-        | "flex-end"
-        | "space-between"
-        | "space-around"
-        | "space-evenly"
-      )
-    | null;
+  horizontalAlign?: ('flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly') | null;
   /**
    * align-items
    */
-  verticalAlign?:
-    | ("stretch" | "flex-start" | "center" | "flex-end" | "baseline")
-    | null;
+  verticalAlign?: ('stretch' | 'flex-start' | 'center' | 'flex-end' | 'baseline') | null;
   /**
    * Render as a column on mobile viewports
    */
   stackOnMobile?: boolean | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "row";
+  blockType: 'row';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -390,53 +329,53 @@ export interface AccordionBlock {
     | {
         appearance?:
           | (
-              | "default"
-              | "outline"
-              | "ghost"
-              | "card"
-              | "separated"
-              | "blue"
-              | "cyan"
-              | "green"
-              | "lime"
-              | "mint"
-              | "ocean"
-              | "sapphire"
-              | "lavender"
-              | "ruby"
-              | "red"
-              | "slate"
-              | "zinc"
-              | "stone"
-              | "royal"
-              | "electric"
-              | "forest"
-              | "sunset"
-              | "magenta"
-              | "crimson"
-              | "aqua"
-              | "plum"
-              | "sky"
-              | "rose"
-              | "purple"
-              | "pink"
-              | "orange"
-              | "yellow"
-              | "teal"
-              | "indigo"
-              | "emerald"
-              | "gradient-blue"
-              | "gradient-green"
-              | "gradient-red"
-              | "gradient-yellow"
-              | "gradient-purple"
-              | "gradient-teal"
-              | "gradient-indigo"
-              | "gradient-pink"
-              | "gradient-orange"
+              | 'default'
+              | 'outline'
+              | 'ghost'
+              | 'card'
+              | 'separated'
+              | 'blue'
+              | 'cyan'
+              | 'green'
+              | 'lime'
+              | 'mint'
+              | 'ocean'
+              | 'sapphire'
+              | 'lavender'
+              | 'ruby'
+              | 'red'
+              | 'slate'
+              | 'zinc'
+              | 'stone'
+              | 'royal'
+              | 'electric'
+              | 'forest'
+              | 'sunset'
+              | 'magenta'
+              | 'crimson'
+              | 'aqua'
+              | 'plum'
+              | 'sky'
+              | 'rose'
+              | 'purple'
+              | 'pink'
+              | 'orange'
+              | 'yellow'
+              | 'teal'
+              | 'indigo'
+              | 'emerald'
+              | 'gradient-blue'
+              | 'gradient-green'
+              | 'gradient-red'
+              | 'gradient-yellow'
+              | 'gradient-purple'
+              | 'gradient-teal'
+              | 'gradient-indigo'
+              | 'gradient-pink'
+              | 'gradient-orange'
             )
           | null;
-        size?: ("sm" | "md" | "lg") | null;
+        size?: ('sm' | 'md' | 'lg') | null;
         items: {
           /**
            * Trigger text
@@ -450,15 +389,8 @@ export interface AccordionBlock {
                 version: number;
                 [k: string]: unknown;
               }[];
-              direction: ("ltr" | "rtl") | null;
-              format:
-                | "left"
-                | "start"
-                | "center"
-                | "right"
-                | "end"
-                | "justify"
-                | "";
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
               indent: number;
               version: number;
             };
@@ -471,7 +403,7 @@ export interface AccordionBlock {
     | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "accordion";
+  blockType: 'accordion';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -481,81 +413,66 @@ export interface ButtonBlock {
   label: string;
   appearance?:
     | (
-        | "default"
-        | "secondary"
-        | "destructive"
-        | "outline"
-        | "ghost"
-        | "link"
-        | "glass"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
-        | "emerald"
-        | "indigo"
-        | "purple"
-        | "pink"
-        | "rose"
-        | "sky"
-        | "teal"
-        | "yellow"
-        | "orange"
-        | "gray"
-        | "amber"
-        | "violet"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
+        | 'default'
+        | 'secondary'
+        | 'destructive'
+        | 'outline'
+        | 'ghost'
+        | 'link'
+        | 'glass'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
+        | 'emerald'
+        | 'indigo'
+        | 'purple'
+        | 'pink'
+        | 'rose'
+        | 'sky'
+        | 'teal'
+        | 'yellow'
+        | 'orange'
+        | 'gray'
+        | 'amber'
+        | 'violet'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
       )
     | null;
   size?:
-    | (
-        | "sm"
-        | "md"
-        | "lg"
-        | "xl"
-        | "2xl"
-        | "3xl"
-        | "4xl"
-        | "5xl"
-        | "6xl"
-        | "7xl"
-        | "8xl"
-        | "9xl"
-        | "10xl"
-        | "icon"
-      )
+    | ('sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl' | '10xl' | 'icon')
     | null;
-  as: "button" | "link";
+  as: 'button' | 'link';
   href?: string | null;
-  target?: ("_self" | "_blank") | null;
+  target?: ('_self' | '_blank') | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "button";
+  blockType: 'button';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -564,53 +481,53 @@ export interface ButtonBlock {
 export interface AlertBlock {
   appearance?:
     | (
-        | "default"
-        | "success"
-        | "warning"
-        | "error"
-        | "info"
-        | "ghost"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "gray"
-        | "violet"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
+        | 'default'
+        | 'success'
+        | 'warning'
+        | 'error'
+        | 'info'
+        | 'ghost'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'gray'
+        | 'violet'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
       )
     | null;
-  size?: ("sm" | "md" | "lg") | null;
+  size?: ('sm' | 'md' | 'lg') | null;
   closable?: boolean | null;
   content: {
     root: {
@@ -620,8 +537,8 @@ export interface AlertBlock {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -629,7 +546,7 @@ export interface AlertBlock {
   };
   id?: string | null;
   blockName?: string | null;
-  blockType: "alert";
+  blockType: 'alert';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -639,58 +556,58 @@ export interface BadgeBlock {
   label: string;
   appearance?:
     | (
-        | "default"
-        | "secondary"
-        | "destructive"
-        | "outline"
-        | "ghost"
-        | "glass"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
-        | "emerald"
-        | "indigo"
-        | "purple"
-        | "pink"
-        | "rose"
-        | "sky"
-        | "teal"
-        | "yellow"
-        | "orange"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
+        | 'default'
+        | 'secondary'
+        | 'destructive'
+        | 'outline'
+        | 'ghost'
+        | 'glass'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
+        | 'emerald'
+        | 'indigo'
+        | 'purple'
+        | 'pink'
+        | 'rose'
+        | 'sky'
+        | 'teal'
+        | 'yellow'
+        | 'orange'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
       )
     | null;
-  size?: ("sm" | "md" | "lg") | null;
-  shape?: ("pill" | "square" | "dot") | null;
+  size?: ('sm' | 'md' | 'lg') | null;
+  shape?: ('pill' | 'square' | 'dot') | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "badge";
+  blockType: 'badge';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -699,108 +616,108 @@ export interface BadgeBlock {
 export interface CardBlock {
   appearance?:
     | (
-        | "default"
-        | "glass"
-        | "outline"
-        | "ghost"
-        | "elevated"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
-        | "sky"
-        | "rose"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "emerald"
-        | "gray"
-        | "amber"
-        | "violet"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
+        | 'default'
+        | 'glass'
+        | 'outline'
+        | 'ghost'
+        | 'elevated'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
+        | 'sky'
+        | 'rose'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'emerald'
+        | 'gray'
+        | 'amber'
+        | 'violet'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
       )
     | null;
   bg?:
     | (
-        | "default"
-        | "outline"
-        | "glass"
-        | "ghost"
-        | "elevated"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
-        | "sky"
-        | "rose"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "emerald"
-        | "gray"
-        | "amber"
-        | "violet"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
+        | 'default'
+        | 'outline'
+        | 'glass'
+        | 'ghost'
+        | 'elevated'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
+        | 'sky'
+        | 'rose'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'emerald'
+        | 'gray'
+        | 'amber'
+        | 'violet'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
       )
     | null;
-  size?: ("sm" | "md" | "lg") | null;
-  rounded?: ("sm" | "md" | "lg" | "full") | null;
+  size?: ('sm' | 'md' | 'lg') | null;
+  rounded?: ('sm' | 'md' | 'lg' | 'full') | null;
   content: {
     root: {
       type: string;
@@ -809,8 +726,8 @@ export interface CardBlock {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -818,7 +735,7 @@ export interface CardBlock {
   };
   id?: string | null;
   blockName?: string | null;
-  blockType: "card";
+  blockType: 'card';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -827,64 +744,64 @@ export interface CardBlock {
 export interface DividerBlock {
   appearance?:
     | (
-        | "default"
-        | "muted"
-        | "primary"
-        | "destructive"
-        | "ghost"
-        | "sky"
-        | "rose"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "emerald"
-        | "gray"
-        | "amber"
-        | "violet"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
+        | 'default'
+        | 'muted'
+        | 'primary'
+        | 'destructive'
+        | 'ghost'
+        | 'sky'
+        | 'rose'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'emerald'
+        | 'gray'
+        | 'amber'
+        | 'violet'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
       )
     | null;
-  size?: ("sm" | "md" | "lg") | null;
-  orientation?: ("horizontal" | "vertical") | null;
+  size?: ('sm' | 'md' | 'lg') | null;
+  orientation?: ('horizontal' | 'vertical') | null;
   /**
    * Optional label between divider lines
    */
   label?: string | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "divider";
+  blockType: 'divider';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -893,47 +810,47 @@ export interface DividerBlock {
 export interface TableBlock {
   appearance?:
     | (
-        | "default"
-        | "striped"
-        | "bordered"
-        | "ghost"
-        | "sky"
-        | "rose"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "emerald"
-        | "gray"
-        | "amber"
-        | "violet"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
+        | 'default'
+        | 'striped'
+        | 'bordered'
+        | 'ghost'
+        | 'sky'
+        | 'rose'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'emerald'
+        | 'gray'
+        | 'amber'
+        | 'violet'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
       )
     | null;
-  size?: ("sm" | "md" | "lg") | null;
-  textAlign?: ("left" | "center" | "right") | null;
+  size?: ('sm' | 'md' | 'lg') | null;
+  textAlign?: ('left' | 'center' | 'right') | null;
   stickyHeader?: boolean | null;
   columns: {
     label: string;
@@ -948,7 +865,7 @@ export interface TableBlock {
   }[];
   id?: string | null;
   blockName?: string | null;
-  blockType: "table";
+  blockType: 'table';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -957,41 +874,41 @@ export interface TableBlock {
 export interface BreadcrumbBlock {
   appearance?:
     | (
-        | "default"
-        | "muted"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
-        | "sky"
-        | "rose"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "emerald"
-        | "gray"
-        | "amber"
-        | "violet"
+        | 'default'
+        | 'muted'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
+        | 'sky'
+        | 'rose'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'emerald'
+        | 'gray'
+        | 'amber'
+        | 'violet'
       )
     | null;
   items: {
@@ -1004,7 +921,7 @@ export interface BreadcrumbBlock {
   }[];
   id?: string | null;
   blockName?: string | null;
-  blockType: "breadcrumb";
+  blockType: 'breadcrumb';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1014,100 +931,100 @@ export interface DrawerBlock {
   triggerLabel: string;
   triggerAppearance?:
     | (
-        | "default"
-        | "glass"
-        | "sky"
-        | "rose"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "emerald"
-        | "gray"
-        | "amber"
-        | "violet"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
+        | 'default'
+        | 'glass'
+        | 'sky'
+        | 'rose'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'emerald'
+        | 'gray'
+        | 'amber'
+        | 'violet'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
       )
     | null;
-  side?: ("left" | "right" | "top" | "bottom") | null;
-  size?: ("sm" | "md" | "lg" | "xl" | "full") | null;
+  side?: ('left' | 'right' | 'top' | 'bottom') | null;
+  size?: ('sm' | 'md' | 'lg' | 'xl' | 'full') | null;
   contentAppearance?:
     | (
-        | "default"
-        | "glass"
-        | "sky"
-        | "rose"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "emerald"
-        | "gray"
-        | "amber"
-        | "violet"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
+        | 'default'
+        | 'glass'
+        | 'sky'
+        | 'rose'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'emerald'
+        | 'gray'
+        | 'amber'
+        | 'violet'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
       )
     | null;
   /**
@@ -1122,8 +1039,8 @@ export interface DrawerBlock {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -1131,15 +1048,15 @@ export interface DrawerBlock {
   };
   id?: string | null;
   blockName?: string | null;
-  blockType: "drawer";
+  blockType: 'drawer';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "JsonViewerBlock".
  */
 export interface JsonViewerBlock {
-  appearance?: ("default" | "subtle" | "contrast" | "glass") | null;
-  size?: ("sm" | "md" | "lg") | null;
+  appearance?: ('default' | 'subtle' | 'contrast' | 'glass') | null;
+  size?: ('sm' | 'md' | 'lg') | null;
   /**
    * Leave empty to expand everything
    */
@@ -1151,7 +1068,7 @@ export interface JsonViewerBlock {
   data: string;
   id?: string | null;
   blockName?: string | null;
-  blockType: "json-viewer";
+  blockType: 'json-viewer';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1160,57 +1077,57 @@ export interface JsonViewerBlock {
 export interface KbdBlock {
   appearance?:
     | (
-        | "default"
-        | "secondary"
-        | "destructive"
-        | "outline"
-        | "ghost"
-        | "glass"
-        | "emerald"
-        | "indigo"
-        | "purple"
-        | "pink"
-        | "rose"
-        | "sky"
-        | "teal"
-        | "yellow"
-        | "orange"
-        | "gray"
-        | "amber"
-        | "violet"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
+        | 'default'
+        | 'secondary'
+        | 'destructive'
+        | 'outline'
+        | 'ghost'
+        | 'glass'
+        | 'emerald'
+        | 'indigo'
+        | 'purple'
+        | 'pink'
+        | 'rose'
+        | 'sky'
+        | 'teal'
+        | 'yellow'
+        | 'orange'
+        | 'gray'
+        | 'amber'
+        | 'violet'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
       )
     | null;
-  size?: ("sm" | "md" | "lg") | null;
+  size?: ('sm' | 'md' | 'lg') | null;
   /**
    * Rendered between keycaps, e.g. "+"
    */
@@ -1224,7 +1141,7 @@ export interface KbdBlock {
   }[];
   id?: string | null;
   blockName?: string | null;
-  blockType: "kbd";
+  blockType: 'kbd';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1234,100 +1151,100 @@ export interface ModalBlock {
   triggerLabel: string;
   triggerAppearance?:
     | (
-        | "default"
-        | "glass"
-        | "sky"
-        | "rose"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "emerald"
-        | "gray"
-        | "amber"
-        | "violet"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
+        | 'default'
+        | 'glass'
+        | 'sky'
+        | 'rose'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'emerald'
+        | 'gray'
+        | 'amber'
+        | 'violet'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
       )
     | null;
-  size?: ("sm" | "md" | "lg" | "xl" | "full") | null;
-  position?: ("center" | "top" | "bottom") | null;
+  size?: ('sm' | 'md' | 'lg' | 'xl' | 'full') | null;
+  position?: ('center' | 'top' | 'bottom') | null;
   contentAppearance?:
     | (
-        | "default"
-        | "glass"
-        | "sky"
-        | "rose"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "emerald"
-        | "gray"
-        | "amber"
-        | "violet"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
+        | 'default'
+        | 'glass'
+        | 'sky'
+        | 'rose'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'emerald'
+        | 'gray'
+        | 'amber'
+        | 'violet'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
       )
     | null;
   /**
@@ -1342,8 +1259,8 @@ export interface ModalBlock {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -1351,7 +1268,7 @@ export interface ModalBlock {
   };
   id?: string | null;
   blockName?: string | null;
-  blockType: "modal";
+  blockType: 'modal';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1362,13 +1279,13 @@ export interface PackageInstallCommandBlock {
    * e.g. "react" or "react react-dom"
    */
   packageName: string;
-  defaultManager?: ("npm" | "pnpm" | "yarn" | "bun") | null;
-  appearance?: ("default" | "subtle" | "contrast" | "glass") | null;
-  size?: ("sm" | "md" | "lg") | null;
+  defaultManager?: ('npm' | 'pnpm' | 'yarn' | 'bun') | null;
+  appearance?: ('default' | 'subtle' | 'contrast' | 'glass') | null;
+  size?: ('sm' | 'md' | 'lg') | null;
   enableClipboard?: boolean | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "package-install-command";
+  blockType: 'package-install-command';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1380,7 +1297,7 @@ export interface QrCodeBlock {
    */
   value: string;
   canvasSize?: number | null;
-  level?: ("L" | "M" | "Q" | "H") | null;
+  level?: ('L' | 'M' | 'Q' | 'H') | null;
   margin?: number | null;
   /**
    * Background color (hex)
@@ -1393,7 +1310,7 @@ export interface QrCodeBlock {
   caption?: string | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "qr-code";
+  blockType: 'qr-code';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1403,41 +1320,41 @@ export interface SecretRevealBlock {
   value: string;
   appearance?:
     | (
-        | "default"
-        | "subtle"
-        | "muted"
-        | "primary"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "emerald"
-        | "indigo"
-        | "purple"
-        | "pink"
-        | "rose"
-        | "sky"
-        | "teal"
-        | "yellow"
-        | "orange"
-        | "red"
-        | "slate"
-        | "gray"
-        | "zinc"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
+        | 'default'
+        | 'subtle'
+        | 'muted'
+        | 'primary'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'emerald'
+        | 'indigo'
+        | 'purple'
+        | 'pink'
+        | 'rose'
+        | 'sky'
+        | 'teal'
+        | 'yellow'
+        | 'orange'
+        | 'red'
+        | 'slate'
+        | 'gray'
+        | 'zinc'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
       )
     | null;
-  size?: ("sm" | "md" | "lg") | null;
+  size?: ('sm' | 'md' | 'lg') | null;
   label?: string | null;
-  labelPosition?: ("top" | "side") | null;
+  labelPosition?: ('top' | 'side') | null;
   /**
    * Mask character, e.g. "•"
    */
@@ -1445,7 +1362,7 @@ export interface SecretRevealBlock {
   initiallyRevealed?: boolean | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "secret-reveal";
+  blockType: 'secret-reveal';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1454,52 +1371,52 @@ export interface SecretRevealBlock {
 export interface TabsBlock {
   appearance?:
     | (
-        | "default"
-        | "sky"
-        | "rose"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "emerald"
-        | "gray"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
+        | 'default'
+        | 'sky'
+        | 'rose'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'emerald'
+        | 'gray'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
       )
     | null;
-  variant?: ("default" | "underline" | "pills") | null;
-  size?: ("sm" | "md" | "lg") | null;
-  orientation?: ("horizontal" | "vertical") | null;
+  variant?: ('default' | 'underline' | 'pills') | null;
+  size?: ('sm' | 'md' | 'lg') | null;
+  orientation?: ('horizontal' | 'vertical') | null;
   tabs: {
     label: string;
     content: {
@@ -1510,8 +1427,8 @@ export interface TabsBlock {
           version: number;
           [k: string]: unknown;
         }[];
-        direction: ("ltr" | "rtl") | null;
-        format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
         indent: number;
         version: number;
       };
@@ -1521,7 +1438,7 @@ export interface TabsBlock {
   }[];
   id?: string | null;
   blockName?: string | null;
-  blockType: "tabs";
+  blockType: 'tabs';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1530,51 +1447,51 @@ export interface TabsBlock {
 export interface TimelineBlock {
   appearance?:
     | (
-        | "default"
-        | "sky"
-        | "rose"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "emerald"
-        | "gray"
-        | "violet"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
+        | 'default'
+        | 'sky'
+        | 'rose'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'emerald'
+        | 'gray'
+        | 'violet'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
       )
     | null;
-  size?: ("sm" | "md" | "lg") | null;
+  size?: ('sm' | 'md' | 'lg') | null;
   items: {
     title: string;
     /**
@@ -1582,48 +1499,48 @@ export interface TimelineBlock {
      */
     appearance?:
       | (
-          | "default"
-          | "sky"
-          | "rose"
-          | "purple"
-          | "pink"
-          | "orange"
-          | "yellow"
-          | "teal"
-          | "indigo"
-          | "emerald"
-          | "gray"
-          | "violet"
-          | "gradient-blue"
-          | "gradient-green"
-          | "gradient-red"
-          | "gradient-yellow"
-          | "gradient-purple"
-          | "gradient-teal"
-          | "gradient-indigo"
-          | "gradient-pink"
-          | "gradient-orange"
-          | "blue"
-          | "cyan"
-          | "green"
-          | "lime"
-          | "mint"
-          | "ocean"
-          | "sapphire"
-          | "lavender"
-          | "ruby"
-          | "red"
-          | "slate"
-          | "zinc"
-          | "stone"
-          | "royal"
-          | "electric"
-          | "forest"
-          | "sunset"
-          | "magenta"
-          | "crimson"
-          | "aqua"
-          | "plum"
+          | 'default'
+          | 'sky'
+          | 'rose'
+          | 'purple'
+          | 'pink'
+          | 'orange'
+          | 'yellow'
+          | 'teal'
+          | 'indigo'
+          | 'emerald'
+          | 'gray'
+          | 'violet'
+          | 'gradient-blue'
+          | 'gradient-green'
+          | 'gradient-red'
+          | 'gradient-yellow'
+          | 'gradient-purple'
+          | 'gradient-teal'
+          | 'gradient-indigo'
+          | 'gradient-pink'
+          | 'gradient-orange'
+          | 'blue'
+          | 'cyan'
+          | 'green'
+          | 'lime'
+          | 'mint'
+          | 'ocean'
+          | 'sapphire'
+          | 'lavender'
+          | 'ruby'
+          | 'red'
+          | 'slate'
+          | 'zinc'
+          | 'stone'
+          | 'royal'
+          | 'electric'
+          | 'forest'
+          | 'sunset'
+          | 'magenta'
+          | 'crimson'
+          | 'aqua'
+          | 'plum'
         )
       | null;
     description?: string | null;
@@ -1631,7 +1548,7 @@ export interface TimelineBlock {
   }[];
   id?: string | null;
   blockName?: string | null;
-  blockType: "timeline";
+  blockType: 'timeline';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1640,53 +1557,53 @@ export interface TimelineBlock {
 export interface TreeViewBlock {
   appearance?:
     | (
-        | "default"
-        | "outline"
-        | "ghost"
-        | "card"
-        | "separated"
-        | "sky"
-        | "rose"
-        | "purple"
-        | "pink"
-        | "orange"
-        | "yellow"
-        | "teal"
-        | "indigo"
-        | "emerald"
-        | "gradient-blue"
-        | "gradient-green"
-        | "gradient-red"
-        | "gradient-yellow"
-        | "gradient-purple"
-        | "gradient-teal"
-        | "gradient-indigo"
-        | "gradient-pink"
-        | "gradient-orange"
-        | "blue"
-        | "cyan"
-        | "green"
-        | "lime"
-        | "mint"
-        | "ocean"
-        | "sapphire"
-        | "lavender"
-        | "ruby"
-        | "red"
-        | "slate"
-        | "zinc"
-        | "stone"
-        | "royal"
-        | "electric"
-        | "forest"
-        | "sunset"
-        | "magenta"
-        | "crimson"
-        | "aqua"
-        | "plum"
+        | 'default'
+        | 'outline'
+        | 'ghost'
+        | 'card'
+        | 'separated'
+        | 'sky'
+        | 'rose'
+        | 'purple'
+        | 'pink'
+        | 'orange'
+        | 'yellow'
+        | 'teal'
+        | 'indigo'
+        | 'emerald'
+        | 'gradient-blue'
+        | 'gradient-green'
+        | 'gradient-red'
+        | 'gradient-yellow'
+        | 'gradient-purple'
+        | 'gradient-teal'
+        | 'gradient-indigo'
+        | 'gradient-pink'
+        | 'gradient-orange'
+        | 'blue'
+        | 'cyan'
+        | 'green'
+        | 'lime'
+        | 'mint'
+        | 'ocean'
+        | 'sapphire'
+        | 'lavender'
+        | 'ruby'
+        | 'red'
+        | 'slate'
+        | 'zinc'
+        | 'stone'
+        | 'royal'
+        | 'electric'
+        | 'forest'
+        | 'sunset'
+        | 'magenta'
+        | 'crimson'
+        | 'aqua'
+        | 'plum'
       )
     | null;
-  size?: ("sm" | "md" | "lg") | null;
+  size?: ('sm' | 'md' | 'lg') | null;
   showGuides?: boolean | null;
   nodes: {
     label: string;
@@ -1712,7 +1629,7 @@ export interface TreeViewBlock {
   }[];
   id?: string | null;
   blockName?: string | null;
-  blockType: "tree-view";
+  blockType: 'tree-view';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1737,7 +1654,7 @@ export interface User {
       }[]
     | null;
   password?: string | null;
-  collection: "users";
+  collection: 'users';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1797,7 +1714,7 @@ export interface Page {
   layout?: SectionBlock[] | null;
   updatedAt: string;
   createdAt: string;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1824,20 +1741,20 @@ export interface PayloadLockedDocument {
   id: string;
   document?:
     | ({
-        relationTo: "users";
+        relationTo: 'users';
         value: string | User;
       } | null)
     | ({
-        relationTo: "media";
+        relationTo: 'media';
         value: string | Media;
       } | null)
     | ({
-        relationTo: "pages";
+        relationTo: 'pages';
         value: string | Page;
       } | null);
   globalSlug?: string | null;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   updatedAt: string;
@@ -1850,7 +1767,7 @@ export interface PayloadLockedDocument {
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   key?: string | null;
@@ -2005,7 +1922,7 @@ export interface CollectionsWidget {
   data?: {
     [k: string]: unknown;
   };
-  width: "full";
+  width: 'full';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2015,6 +1932,7 @@ export interface Auth {
   [k: string]: unknown;
 }
 
-declare module "payload" {
+
+declare module 'payload' {
   export interface GeneratedTypes extends Config {}
 }

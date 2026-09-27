@@ -291,6 +291,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/file-upload",
       },
       {
+        title: "Neural Graph",
+        href: "/preview/components/neural-graph",
+      },
+      {
         title: "Gauge",
         href: "/preview/components/gauge",
       },

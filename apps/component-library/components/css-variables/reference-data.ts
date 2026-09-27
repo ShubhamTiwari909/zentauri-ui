@@ -43,6 +43,7 @@ import { logViewerCssVariables } from "./data/log-viewer";
 import { marqueeCssVariables } from "./data/marquee";
 import { modalCssVariables } from "./data/modal";
 import { networkStatusCssVariables } from "./data/network-status";
+import { neuralGraphCssVariables } from "./data/neural-graph";
 import { otpInputCssVariables } from "./data/otp-input";
 import { packageInstallCommandCssVariables } from "./data/package-install-command";
 import { paginationCssVariables } from "./data/pagination";
@@ -122,6 +123,7 @@ export const cssVariableReferences = {
   marquee: marqueeCssVariables,
   modal: modalCssVariables,
   "network-status": networkStatusCssVariables,
+  "neural-graph": neuralGraphCssVariables,
   "otp-input": otpInputCssVariables,
   "package-install-command": packageInstallCommandCssVariables,
   pagination: paginationCssVariables,

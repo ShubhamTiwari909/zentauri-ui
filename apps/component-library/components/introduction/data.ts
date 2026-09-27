@@ -265,6 +265,13 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "neural-graph",
+    name: "Neural Graph",
+    description: "Perspective node networks with clusters, data flow, selection, and camera controls.",
+    href: "/preview/components/neural-graph",
+    badge: "Data visualization",
+  },
+  {
     id: "gauge",
     name: "Gauge",
     description:

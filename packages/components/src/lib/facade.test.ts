@@ -14,6 +14,7 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("accordion");
     expect(slugs).toContain("activity-feed");
     expect(slugs).toContain("glass-card");
+    expect(slugs).toContain("neural-graph");
     expect(slugs).toContain("buttons");
     expect(slugs).toContain("inputs");
     expect(slugs.length).toBe(DesignSystem.listComponents().length);
@@ -46,6 +47,14 @@ describe("DesignSystem facade", () => {
         expect.objectContaining({ name: "--zui-activity-feed-emerald-bg" }),
       ]),
     );
+  });
+
+  it("discovers Neural Graph appearances and paired canvas tokens", () => {
+    const graph = DesignSystem.getComponent("neural-graph");
+    expect(graph?.appearances()).toContain("gradient-blue");
+    expect(graph?.variables()).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: "--zui-neural-graph-edge", pairName: "--zui-neural-graph-edge-dark" }),
+    ]));
   });
 
   it("discovers Glass Card appearances and paired material tokens", () => {
