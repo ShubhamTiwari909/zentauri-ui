@@ -4,6 +4,16 @@
 
 ### Minor Changes
 
+- 5603eb1: Add a data-driven Activity Feed component with grouped actor, verb, and object events, themeable appearances, and preview documentation.
+- bd5d9c4: Add Product 3D with GLB and glTF viewing, lighting presets, hotspots, camera controls, fullscreen, and poster fallback.
+- 86205a5: Add the interactive Orbit System compound component with layered orbital rings, camera controls, selection, and themeable appearances.
+- c9c7934: Add ZuiGlassCard with glass, crystal, and frosted materials, pointer tilt, dynamic glare, composable content, motion preferences, and preview documentation.
+- f2c0482: Add an interactive Neural Graph component with 3D projection, clustering, selection, camera controls, and animated data flow.
+
+## 2.15.0
+
+### Minor Changes
+
 - 22c9191: Add the accessible Gauge component with radial and dial variants, custom ranges and value formatting, tokenized appearances, and documentation.
 - e68b87e: Add an accessible Image Compare component with pointer and keyboard controls, controlled and uncontrolled positions, tokenized appearances, and documentation.
 
