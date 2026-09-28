@@ -1,0 +1,73 @@
+{
+  "category": "Data visualization",
+  "title": "3D Orbit System component for React",
+  "description": "Interactive orbital visualization for skills, technologies, teams, and product features with animated rings, selection, and camera controls.",
+  "keywords": [
+    "React orbital system",
+    "3D orbit visualization",
+    "skills visualization",
+    "technology orbit",
+    "interactive portfolio"
+  ],
+  "og": {
+    "title": "3D Orbit System · Zentauri UI",
+    "description": "Present connected topics on interactive, animated orbital rings.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "3D Orbit System · Zentauri UI",
+    "description": "A space-inspired orbital diagram for products and portfolios.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/orbit-system",
+  "headings": {
+    "h1": "3D Orbit System for connected ideas",
+    "h2": [
+      "What it does",
+      "Camera and selection",
+      "Motion and accessibility",
+      "Common use cases",
+      "FAQ"
+    ]
+  },
+  "intro": "Arrange skills, technologies, team members, or product features on layered orbital rings. Each ring can set its own radius, speed, direction, and label while the scene provides camera and selection controls.",
+  "useCases": [
+    "Show the technologies behind a product.",
+    "Map a team's skills or responsibilities.",
+    "Explore features in a product landing page.",
+    "Build a portfolio or organization visualization."
+  ],
+  "faqs": [
+    {
+      "question": "Does Orbit System need a 3D renderer?",
+      "answer": "No. It projects orbital coordinates into a responsive DOM scene, so no WebGL or extra rendering package is required."
+    },
+    {
+      "question": "Can users control the camera and select items?",
+      "answer": "Yes. Drag to rotate and tilt, scroll or use the controls to zoom, and click an item to select it. The scene also supports arrow keys and plus or minus for keyboard camera control."
+    },
+    {
+      "question": "Does animation respect reduced motion?",
+      "answer": "Yes. Automatic orbital motion stops when the user prefers reduced motion, and it can also be disabled with autoRotate or paused."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "ZuiOrbitSystem renders one or more labeled ZuiOrbit rings. ZuiOrbitItem distributes items evenly or uses a custom angle, with depth scaling and responsive ring sizing."
+    },
+    {
+      "heading": "Camera and selection",
+      "body": "Drag to change the viewing angle, zoom with the mouse wheel or toolbar, and select items with controlled or uncontrolled state."
+    },
+    {
+      "heading": "Motion and accessibility",
+      "body": "Native buttons keep items keyboard accessible. The orbital scene is focusable and supports arrow keys for angle and tilt, plus or minus for zoom. Motion respects reduced-motion settings."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

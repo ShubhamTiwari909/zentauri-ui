@@ -347,6 +347,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/neural-graph",
       },
       {
+        title: "Orbit System",
+        href: "/preview/components/orbit-system",
+      },
+      {
         title: "OTP input",
         href: "/preview/components/otp-input",
       },

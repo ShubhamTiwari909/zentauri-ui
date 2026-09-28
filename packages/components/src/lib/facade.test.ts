@@ -16,6 +16,7 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("glass-card");
     expect(slugs).toContain("product-3d");
     expect(slugs).toContain("neural-graph");
+    expect(slugs).toContain("orbit-system");
     expect(slugs).toContain("buttons");
     expect(slugs).toContain("inputs");
     expect(slugs.length).toBe(DesignSystem.listComponents().length);
@@ -58,6 +59,19 @@ describe("DesignSystem facade", () => {
         expect.objectContaining({
           name: "--zui-neural-graph-edge",
           pairName: "--zui-neural-graph-edge-dark",
+        }),
+      ]),
+    );
+  });
+
+  it("discovers Orbit System appearances and paired scene tokens", () => {
+    const orbit = DesignSystem.getComponent("orbit-system");
+    expect(orbit?.appearances()).toContain("gradient-blue");
+    expect(orbit?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-orbit-system-ring",
+          pairName: "--zui-orbit-system-ring-dark",
         }),
       ]),
     );
