@@ -99,6 +99,7 @@ export const CLI_ADD_COMPONENTS = [
   "pagination",
   "password-strength-meter",
   "popover",
+  "product-3d",
   "progress",
   "qr-code",
   "qr-scanner",

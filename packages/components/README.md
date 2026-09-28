@@ -33,16 +33,16 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 148 passed (148)   |
-| Tests      | 1495 passed (1495) |
+| Test files | 149 passed (149)   |
+| Tests      | 1507 passed (1507) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 91         | 1064  |
+| Components and UI utilities    | 92         | 1074  |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 48         | 242   |
-| Design system facade           | 1          | 14    |
-| CLI and import rewriting       | 4          | 33    |
+| Design system facade           | 1          | 15    |
+| CLI and import rewriting       | 4          | 34    |
 | Accessibility (axe + keyboard) | 2          | 50    |
 | Permission system              | 1          | 47    |
 
@@ -63,16 +63,16 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/calendar/date-utils.test.ts`                                    |    28 |
 | `src/ui/bento-grid/bento-grid.test.tsx`                                 |    26 |
 | `src/ui/combobox/combobox.test.tsx`                                     |    24 |
+| `cli/cli.integration.test.ts`                                           |    22 |
 | `src/ui/wizard/wizard.test.tsx`                                         |    22 |
-| `cli/cli.integration.test.ts`                                           |    21 |
 | `src/accessibility/keyboard-interaction.test.tsx`                       |    18 |
 | `src/ui/calendar/calendar.test.tsx`                                     |    16 |
 | `src/ui/json-viewer/json-viewer.test.tsx`                               |    16 |
 | `src/ui/network-status/network-status.test.tsx`                         |    16 |
 | `src/hooks/useUndoRedo/useUndoRedo.test.ts`                             |    15 |
+| `src/lib/facade.test.ts`                                                |    15 |
 | `src/ui/package-install-command/package-install-command.test.tsx`       |    15 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
-| `src/lib/facade.test.ts`                                                |    14 |
 | `src/ui/timeline/timeline.test.tsx`                                     |    14 |
 | `src/ui/api-response-viewer/api-response-viewer.test.tsx`               |    13 |
 | `src/ui/code-block/code-block.test.tsx`                                 |    13 |
@@ -102,6 +102,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/marquee/marquee.test.tsx`                                       |    10 |
 | `src/ui/modal/modal.test.tsx`                                           |    10 |
 | `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
+| `src/ui/product-3d/product-3d.test.tsx`                                 |    10 |
 | `src/ui/tree-view/tree-view.test.tsx`                                   |    10 |
 | `src/hooks/useDateTimeFormat/useDateTimeFormat.test.ts`                 |     9 |
 | `src/hooks/useDurationFormat/useDurationFormat.test.ts`                 |     9 |
@@ -293,6 +294,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | OTP input       | `otp-input`       | —                                  |
 | Pagination      | `pagination`      | —                                  |
 | Popover         | `popover`         | `popover/animated`                 |
+| Product 3D      | `product-3d`      | —                                  |
 | Progress        | `progress`        | `progress/animated`                |
 | Rating          | `rating`          | —                                  |
 | Radio group     | `radio-group`     | `radio-group/animated`             |
@@ -910,7 +912,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1495 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1507 test cases in total
 - `pnpm test:a11y` — focused accessibility coverage for package-level UI primitives and compound components: **axe-core** audits for every interactive component plus **keyboard-interaction** tests (focus order, arrow-key nav, Home/End, Escape/Enter) for the compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).

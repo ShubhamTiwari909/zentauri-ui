@@ -101,6 +101,7 @@ const componentSlugs = [
   "pagination",
   "popover",
   "progress",
+  "product-3d",
   "radio-group",
   "relative-time",
   "rating",
@@ -139,6 +140,7 @@ const overrides: Record<
   buttons: { exportPrefix: "Button" },
   inputs: { exportPrefix: "Input" },
   "otp-input": { exportPrefix: "Otp" },
+  "product-3d": { exportPrefix: "Product3D", title: "Product 3D" },
   // SearchBar has no tokens of its own — it renders the Input recipe.
   search: { exportPrefix: "Input", title: "Search" },
   // Typography spreads its tokens across heading/text/list stems.

@@ -14,6 +14,7 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("accordion");
     expect(slugs).toContain("activity-feed");
     expect(slugs).toContain("glass-card");
+    expect(slugs).toContain("product-3d");
     expect(slugs).toContain("neural-graph");
     expect(slugs).toContain("buttons");
     expect(slugs).toContain("inputs");
@@ -57,6 +58,19 @@ describe("DesignSystem facade", () => {
         expect.objectContaining({
           name: "--zui-neural-graph-edge",
           pairName: "--zui-neural-graph-edge-dark",
+        }),
+      ]),
+    );
+  });
+
+  it("discovers Product 3D appearances and paired tokens", () => {
+    const product = DesignSystem.getComponent("product-3d");
+    expect(product?.appearances()).toContain("gradient-blue");
+    expect(product?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-product-3d-control-bg",
+          pairName: "--zui-product-3d-control-bg-dark",
         }),
       ]),
     );

@@ -1,9 +1,11 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 import { defineConfig } from "vitest/config";
 
 const appDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(appDir, "../..");
+const require = createRequire(import.meta.url);
 
 export default defineConfig({
   test: {
@@ -14,7 +16,28 @@ export default defineConfig({
     css: true,
   },
   resolve: {
+    // Component sources are aliased into this app for tests. Dedupe React so
+    // hooks in those workspace files share the renderer's dispatcher.
+    dedupe: ["react", "react-dom"],
     alias: [
+      { find: /^react$/, replacement: require.resolve("react") },
+      {
+        find: /^react\/jsx-runtime$/,
+        replacement: require.resolve("react/jsx-runtime"),
+      },
+      {
+        find: /^react\/jsx-dev-runtime$/,
+        replacement: require.resolve("react/jsx-dev-runtime"),
+      },
+      { find: /^react-dom$/, replacement: require.resolve("react-dom") },
+      {
+        find: /^react-dom\/client$/,
+        replacement: require.resolve("react-dom/client"),
+      },
+      {
+        find: /^framer-motion$/,
+        replacement: require.resolve("framer-motion"),
+      },
       {
         // `react-syntax-highlighter` has no `exports` map, so its CJS `main`
         // wins resolution — and that build `require()`s ESM-only `refractor@5`,

@@ -23,11 +23,7 @@
   "canonicalPath": "/preview/components/glass-card",
   "headings": {
     "h1": "Glass with a different dimension.",
-    "h2": [
-      "Overview",
-      "Common use cases",
-      "FAQ"
-    ]
+    "h2": ["Overview", "Common use cases", "FAQ"]
   },
   "intro": "A translucent surface that responds to your perspective. Compose your content, choose a material, and let light do the rest.",
   "useCases": [
