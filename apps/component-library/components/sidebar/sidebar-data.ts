@@ -343,6 +343,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/network-status",
       },
       {
+        title: "Neural Graph",
+        href: "/preview/components/neural-graph",
+      },
+      {
         title: "OTP input",
         href: "/preview/components/otp-input",
       },

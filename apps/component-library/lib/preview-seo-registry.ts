@@ -51,6 +51,7 @@ import kbd from "@/content/seo/preview/components/kbd.json";
 import marquee from "@/content/seo/preview/components/marquee.json";
 import modal from "@/content/seo/preview/components/modal.json";
 import networkStatus from "@/content/seo/preview/components/network-status.json";
+import neuralGraph from "@/content/seo/preview/components/neural-graph.json";
 import packageInstallCommand from "@/content/seo/preview/components/package-install-command.json";
 import otpInput from "@/content/seo/preview/components/otp-input.json";
 import pagination from "@/content/seo/preview/components/pagination.json";
@@ -143,6 +144,7 @@ const previewSeoRegistry = {
   marquee: marquee as PreviewSeoDocument,
   modal: modal as PreviewSeoDocument,
   "network-status": networkStatus as PreviewSeoDocument,
+  "neural-graph": neuralGraph as PreviewSeoDocument,
   "otp-input": otpInput as PreviewSeoDocument,
   "package-install-command": packageInstallCommand as PreviewSeoDocument,
   pagination: pagination as PreviewSeoDocument,

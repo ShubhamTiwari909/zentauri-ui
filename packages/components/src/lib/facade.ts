@@ -96,6 +96,7 @@ const componentSlugs = [
   "kbd",
   "marquee",
   "modal",
+  "neural-graph",
   "otp-input",
   "pagination",
   "popover",

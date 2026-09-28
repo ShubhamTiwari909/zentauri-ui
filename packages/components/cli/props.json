@@ -16891,6 +16891,322 @@
         }
       ]
     },
+    "neural-graph": {
+      "slug": "neural-graph",
+      "subcomponents": [
+        {
+          "name": "static:NeuralGraph",
+          "displayName": "NeuralGraph",
+          "propsType": "NeuralGraphProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "amber",
+                "blue",
+                "cyan",
+                "default",
+                "destructive",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-emerald",
+                "gradient-rose",
+                "info",
+                "primary",
+                "rose",
+                "secondary",
+                "slate",
+                "success",
+                "violet",
+                "warning"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "animate",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "clusters",
+              "type": "readonly NeuralClusterData[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "defaultSelectedId",
+              "type": "string | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "edges",
+              "type": "readonly NeuralEdgeData[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "interactive",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "nodes",
+              "type": "readonly NeuralNodeData[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Data form avoids creating thousands of React elements.",
+              "deprecated": false
+            },
+            {
+              "name": "onNodeHover",
+              "type": "((id: string | null) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onSelectionChange",
+              "type": "((id: string | null) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "pixelRatio",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Canvas pixels are capped at 2× device pixel ratio.",
+              "deprecated": false
+            },
+            {
+              "name": "selectedId",
+              "type": "string | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "showControls",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "showLabels",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "showStatus",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:NeuralGraphVariant",
+          "displayName": "NeuralGraphVariant",
+          "propsType": "NeuralGraphVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'slate' | 'rose' | 'emerald' | 'gradient-blue' | 'violet' | 'amber' | 'glass' | 'success' | 'warning' | 'info' | 'secondary' | 'destructive' | 'primary' | 'gradient-rose' | 'gradient-emerald' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ZuiCluster",
+          "displayName": "ZuiCluster",
+          "propsType": "ZuiClusterProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "label",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string",
+              "required": true,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ZuiEdge",
+          "displayName": "ZuiEdge",
+          "propsType": "ZuiEdgeProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "animated",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "from",
+              "type": "string",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "to",
+              "type": "string",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ZuiNode",
+          "displayName": "ZuiNode",
+          "propsType": "ZuiNodeProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "cluster",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "position",
+              "type": "NeuralPosition",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "radius",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string",
+              "required": true,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "otp-input": {
       "slug": "otp-input",
       "subcomponents": [

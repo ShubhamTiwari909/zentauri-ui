@@ -93,6 +93,7 @@ export const CLI_ADD_COMPONENTS = [
   "marquee",
   "modal",
   "network-status",
+  "neural-graph",
   "otp-input",
   "package-install-command",
   "pagination",

@@ -1,0 +1,79 @@
+{
+  "category": "Data visualization",
+  "title": "3D Neural Graph component for React",
+  "description": "Interactive perspective node graph with connected 3D positions, animated data flow, clusters, selection, and camera controls.",
+  "keywords": [
+    "3D node graph",
+    "neural network visualization",
+    "dependency graph",
+    "React canvas graph",
+    "network topology",
+    "knowledge graph"
+  ],
+  "og": {
+    "title": "3D Neural Graph \u00b7 Zentauri UI",
+    "description": "Explore connected nodes with orbit, pan, zoom, clustering, and animated flow.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "3D Neural Graph \u00b7 Zentauri UI",
+    "description": "Interactive node graph for AI and developer tools.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/neural-graph",
+  "headings": {
+    "h1": "3D Neural Graph for connected systems",
+    "h2": [
+      "What it does",
+      "Camera and selection",
+      "Data and clustering",
+      "Common use cases",
+      "Accessibility and motion",
+      "FAQ"
+    ]
+  },
+  "intro": "Visualize AI systems, dependencies, and knowledge networks as nodes in three-dimensional space. Connections, clusters, and data-flow pulses make structure and direction easy to explore.",
+  "useCases": [
+    "AI model and pipeline visualization.",
+    "Architecture and dependency maps.",
+    "Network topology and infrastructure views.",
+    "Knowledge graphs and relationship exploration."
+  ],
+  "faqs": [
+    {
+      "question": "Does Neural Graph need a 3D runtime?",
+      "answer": "No. It projects 3D node coordinates onto a canvas, so orbit, pan, and zoom work without an extra peer dependency."
+    },
+    {
+      "question": "How can I supply a large graph?",
+      "answer": "Pass nodes, edges, and clusters as arrays to avoid creating thousands of React child elements. Canvas drawing keeps the DOM small; performance depends on graph density and device hardware."
+    },
+    {
+      "question": "Can users navigate without a pointer?",
+      "answer": "Yes. Focus the graph, use arrow keys to select nodes, plus or minus to zoom, and Escape to clear selection. Reduced-motion preferences disable data-flow animation."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Neural Graph renders nodes and connections on a canvas using perspective projection of x, y, and z coordinates. Nodes have spherical shading and depth ordering."
+    },
+    {
+      "heading": "Camera and selection",
+      "body": "Drag to orbit, Shift-drag to pan, and scroll or use the toolbar to zoom. Hover and selection highlight connected edges; selection supports controlled and uncontrolled state."
+    },
+    {
+      "heading": "Data and clustering",
+      "body": "Use ZuiNode, ZuiEdge, and ZuiCluster as declarative children or pass nodes, edges, and clusters arrays for larger data sets. Edges with unknown endpoints are ignored."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility and motion",
+      "body": "The graph has a keyboard-focusable region and a live selection status. Arrow keys step through nodes. Animated edge pulses respect reduced-motion preferences."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
