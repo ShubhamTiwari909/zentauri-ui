@@ -1,9 +1,19 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { act, fireEvent, render, screen } from "@testing-library/react";
+import { renderToString } from "react-dom/server";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { zuiOrbitSystemAppearances } from "../../design-system/orbit-system";
 import { ZuiOrbit, ZuiOrbitItem, ZuiOrbitSystem } from "./orbit-system";
 
-afterEach(() => vi.restoreAllMocks());
+beforeEach(() => {
+  vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({
+    width: 400,
+    height: 300,
+  } as DOMRect);
+});
+afterEach(() => {
+  vi.restoreAllMocks();
+  vi.unstubAllGlobals();
+});
 
 function mockMotionPreference(matches: boolean) {
   vi.spyOn(window, "matchMedia").mockImplementation((query) => ({
@@ -44,6 +54,106 @@ describe("ZuiOrbitSystem", () => {
     expect(screen.getByRole("button", { name: "One" }).style.left).not.toBe(
       screen.getByRole("button", { name: "Two" }).style.left,
     );
+    expect(screen.getByRole("button", { name: "One" }).style.left).toBe(
+      "300px",
+    );
+    expect(screen.getByRole("button", { name: "One" }).style.top).toBe("150px");
+    expect(screen.getByRole("button", { name: "One" }).className).not.toMatch(
+      /-translate-[xy]-1\/2/,
+    );
+  });
+
+  it("distributes items nested in fragments across the ring", () => {
+    render(
+      <ZuiOrbitSystem autoRotate={false}>
+        <ZuiOrbit radius={80}>
+          <>
+            <ZuiOrbitItem id="a">A</ZuiOrbitItem>
+            <>
+              <ZuiOrbitItem id="b">B</ZuiOrbitItem>
+            </>
+          </>
+          <ZuiOrbitItem id="c">C</ZuiOrbitItem>
+        </ZuiOrbit>
+      </ZuiOrbitSystem>,
+    );
+    expect(
+      screen.getByRole("group", { name: "Orbit with 3 items" }),
+    ).toBeInTheDocument();
+    const positions = ["A", "B", "C"].map((name) => {
+      const style = screen.getByRole("button", { name }).style;
+      return `${style.left},${style.top}`;
+    });
+    expect(new Set(positions).size).toBe(3);
+  });
+
+  it("measures the container when ResizeObserver is unavailable", () => {
+    vi.stubGlobal("ResizeObserver", undefined);
+    const bounds = vi.mocked(HTMLElement.prototype.getBoundingClientRect);
+    const { container } = render(
+      <ZuiOrbitSystem autoRotate={false}>
+        <ZuiOrbit radius={80}>
+          <ZuiOrbitItem>A</ZuiOrbitItem>
+        </ZuiOrbit>
+      </ZuiOrbitSystem>,
+    );
+    expect(screen.getByRole("button", { name: "A" }).style.left).toBe("280px");
+    bounds.mockReturnValue({ width: 500, height: 350 } as DOMRect);
+    act(() => window.dispatchEvent(new Event("resize")));
+    expect(screen.getByRole("button", { name: "A" }).style.left).toBe("330px");
+    expect(container.querySelector('[data-slot="orbit"]')).toBeVisible();
+  });
+
+  it("keeps unmeasured server geometry hidden", () => {
+    const markup = renderToString(
+      <ZuiOrbitSystem autoRotate={false}>
+        <ZuiOrbit radius={80}>
+          <ZuiOrbitItem>A</ZuiOrbitItem>
+        </ZuiOrbit>
+      </ZuiOrbitSystem>,
+    );
+    expect(markup).toContain("visibility:hidden");
+  });
+
+  it("renders without matchMedia and names noninteractive scenes accurately", () => {
+    vi.stubGlobal("matchMedia", undefined);
+    render(
+      <ZuiOrbitSystem interactive={false} autoRotate={false}>
+        <ZuiOrbit radius={80}>
+          <ZuiOrbitItem>A</ZuiOrbitItem>
+        </ZuiOrbit>
+      </ZuiOrbitSystem>,
+    );
+    expect(
+      screen.getByRole("region", { name: "Orbital system" }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "A" })).toBeDisabled();
+  });
+
+  it("reports mouse hover pause without letting touch pause the scene", () => {
+    mockMotionPreference(false);
+    const { container } = render(
+      <ZuiOrbitSystem>
+        <ZuiOrbit radius={80}>
+          <ZuiOrbitItem>A</ZuiOrbitItem>
+        </ZuiOrbit>
+      </ZuiOrbitSystem>,
+    );
+    const region = screen.getByRole("region");
+    fireEvent.pointerEnter(region, { pointerType: "touch" });
+    expect(region).toHaveAttribute("data-paused", "false");
+    fireEvent.pointerEnter(region, { pointerType: "mouse" });
+    expect(region).toHaveAttribute("data-paused", "true");
+    expect(
+      screen.getByRole("button", { name: "Orbits paused on hover" }),
+    ).toBeInTheDocument();
+    fireEvent.pointerEnter(
+      container.querySelector('[data-slot="orbit-system-controls"]')!,
+      { pointerType: "mouse" },
+    );
+    expect(region).toHaveAttribute("data-paused", "false");
+    fireEvent.pointerLeave(region, { pointerType: "mouse" });
+    expect(region).toHaveAttribute("data-paused", "false");
   });
 
   it("supports controlled and uncontrolled selection", () => {

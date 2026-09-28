@@ -17434,14 +17434,6 @@
               "deprecated": false
             },
             {
-              "name": "center",
-              "type": "ReactNode",
-              "required": false,
-              "group": "behavior",
-              "description": "Content rendered at the center of the orbital plane.",
-              "deprecated": false
-            },
-            {
               "name": "defaultSelectedId",
               "type": "string | null | undefined",
               "required": false,
@@ -17502,6 +17494,14 @@
               "required": false,
               "group": "behavior",
               "description": "Initial camera magnification, clamped to 0.5–2. Defaults to 1.",
+              "deprecated": false
+            },
+            {
+              "name": "center",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "description": "Content rendered at the center of the orbital plane.",
               "deprecated": false
             },
             {

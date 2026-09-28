@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMediaQuery } from "@zentauri-ui/zentauri-components/hooks/useMediaQuery";
 import {
   ZuiOrbit,
   ZuiOrbitItem,
@@ -14,14 +14,7 @@ export function OrbitSystemDemo(
     "appearance" | "size" | "autoRotate" | "interactive"
   >,
 ) {
-  const [compact, setCompact] = useState(false);
-  useEffect(() => {
-    const query = window.matchMedia("(max-width: 639px)");
-    const update = () => setCompact(query.matches);
-    update();
-    query.addEventListener("change", update);
-    return () => query.removeEventListener("change", update);
-  }, []);
+  const compact = useMediaQuery("(max-width: 639px)");
 
   return (
     <ZuiOrbitSystem
@@ -31,7 +24,11 @@ export function OrbitSystemDemo(
           {compact ? "✦" : "YOUR STACK"}
         </span>
       }
-      aria-label="Interactive technology orbits"
+      aria-label={
+        props.interactive === false
+          ? "Technology orbits"
+          : "Interactive technology orbits"
+      }
     >
       <ZuiOrbit radius={95} duration={18} label="Core technologies">
         <ZuiOrbitItem id="react">⚛ React</ZuiOrbitItem>

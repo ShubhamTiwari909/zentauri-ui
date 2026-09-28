@@ -95,19 +95,12 @@ export function OrbitSystemCodeExamplesSection() {
       </p>
       <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {orbitSystemAppearances.map((value) => (
-          <div
+          <button
             key={value}
-            role="button"
-            tabIndex={0}
+            type="button"
             aria-label={`${value} orbit appearance`}
             aria-pressed={value === appearance}
             onClick={() => setAppearance(value)}
-            onKeyDown={(event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                setAppearance(value);
-              }
-            }}
             className={cn(
               orbitSystemVariants({ appearance: value, size: "sm" }),
               "h-36 cursor-pointer focus-visible:outline-2 focus-visible:outline-sky-500",
@@ -120,7 +113,7 @@ export function OrbitSystemCodeExamplesSection() {
             <span className="absolute bottom-3 left-4 text-xs font-semibold">
               {value}
             </span>
-          </div>
+          </button>
         ))}
       </div>
     </Section>

@@ -2,6 +2,7 @@
 
 import {
   Children,
+  Fragment,
   createContext,
   isValidElement,
   useCallback,
@@ -9,11 +10,16 @@ import {
   useEffect,
   useId,
   useImperativeHandle,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
 } from "react";
-import type { CSSProperties, PointerEvent as ReactPointerEvent } from "react";
+import type {
+  CSSProperties,
+  PointerEvent as ReactPointerEvent,
+  ReactNode,
+} from "react";
 import {
   zuiOrbitSystemControl,
   zuiOrbitSystemCore,
@@ -22,6 +28,9 @@ import {
   zuiOrbitSystemRing,
 } from "../../design-system/orbit-system";
 import { cn } from "../../lib/utils";
+import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
+import { useResizeObserver } from "../../hooks/useResizeObserver";
+import type { ElementSize } from "../../hooks/useResizeObserver";
 import type { OrbitItemProps, OrbitProps, OrbitSystemProps } from "./types";
 import { orbitSystemVariants } from "./variants";
 
@@ -48,6 +57,15 @@ type PositionContextValue = { index: number; count: number };
 const SceneContext = createContext<SceneContextValue | null>(null);
 const RingContext = createContext<RingContextValue | null>(null);
 const PositionContext = createContext<PositionContextValue | null>(null);
+const unmeasuredBounds: ElementSize = { width: 0, height: 0 };
+
+function flattenOrbitChildren(children: ReactNode): ReactNode[] {
+  return Children.toArray(children).flatMap((child) =>
+    isValidElement<{ children?: ReactNode }>(child) && child.type === Fragment
+      ? flattenOrbitChildren(child.props.children)
+      : [child],
+  );
+}
 
 function clamp(value: number, min: number, max: number) {
   return Number.isFinite(value) ? Math.min(max, Math.max(min, value)) : min;
@@ -85,48 +103,52 @@ export function ZuiOrbitSystem({
   ...props
 }: OrbitSystemProps) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const [observeRoot, observedBounds] = useResizeObserver<HTMLDivElement>();
+  const setRootRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      rootRef.current = node;
+      observeRoot(node);
+    },
+    [observeRoot],
+  );
   useImperativeHandle(ref, () => rootRef.current as HTMLDivElement);
-  const [bounds, setBounds] = useState({ width: 640, height: 384 });
+  const [fallbackBounds, setFallbackBounds] = useState<ElementSize>();
+  const bounds = observedBounds ?? fallbackBounds ?? unmeasuredBounds;
   const [yaw, setYaw] = useState(0);
   const [cameraTilt, setCameraTilt] = useState(() => clamp(tilt, 15, 75));
   const [cameraZoom, setCameraZoom] = useState(() => clamp(zoom, 0.5, 2));
   const [elapsed, setElapsed] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const reducedMotion = usePrefersReducedMotion();
   const [internalSelectedId, setInternalSelectedId] =
     useState(defaultSelectedId);
   const dragRef = useRef<{ x: number; y: number } | null>(null);
-  const maximumRadius = Children.toArray(children).reduce<number>(
-    (maximum, child) => {
-      if (!isValidElement<OrbitProps>(child) || child.type !== ZuiOrbit)
-        return maximum;
-      return Math.max(maximum, Math.max(0, child.props.radius));
-    },
-    0,
+  const orbitChildren = useMemo(
+    () => flattenOrbitChildren(children),
+    [children],
   );
+  const maximumRadius = orbitChildren.reduce<number>((maximum, child) => {
+    if (!isValidElement<OrbitProps>(child) || child.type !== ZuiOrbit)
+      return maximum;
+    return Math.max(maximum, Math.max(0, child.props.radius));
+  }, 0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = rootRef.current;
-    if (!element || typeof ResizeObserver === "undefined") return;
-    const observer = new ResizeObserver(([entry]) => {
-      if (entry) {
-        setBounds({
-          width: entry.contentRect.width,
-          height: entry.contentRect.height,
-        });
-      }
-    });
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReducedMotion(query.matches);
-    update();
-    query.addEventListener("change", update);
-    return () => query.removeEventListener("change", update);
+    if (!element) return;
+    const measure = () => {
+      const { width, height } = element.getBoundingClientRect();
+      setFallbackBounds((current) =>
+        current?.width === width && current.height === height
+          ? current
+          : { width, height },
+      );
+    };
+    measure();
+    if (typeof ResizeObserver !== "undefined") return;
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
   }, []);
 
   useEffect(() => {
@@ -229,17 +251,24 @@ export function ZuiOrbitSystem({
     <SceneContext.Provider value={scene}>
       <div
         {...props}
-        ref={rootRef}
+        ref={setRootRef}
         data-slot="orbit-system"
         data-appearance={appearance}
-        data-paused={paused || userPaused || reducedMotion}
+        data-paused={paused || userPaused || hovered || reducedMotion}
         role="region"
-        aria-label={props["aria-label"] ?? "Interactive orbital system"}
+        aria-label={
+          props["aria-label"] ??
+          (interactive ? "Interactive orbital system" : "Orbital system")
+        }
         tabIndex={interactive ? (props.tabIndex ?? 0) : props.tabIndex}
         className={cn(orbitSystemVariants({ appearance, size }), className)}
         onPointerEnter={(event) => {
           onPointerEnter?.(event);
-          if (!event.defaultPrevented) setHovered(true);
+          if (
+            !event.defaultPrevented &&
+            (event.pointerType === "mouse" || event.pointerType === "pen")
+          )
+            setHovered(true);
         }}
         onPointerLeave={(event) => {
           onPointerLeave?.(event);
@@ -294,7 +323,7 @@ export function ZuiOrbitSystem({
             {center}
           </div>
         )}
-        {Children.count(children) === 0 && (
+        {orbitChildren.length === 0 && (
           <p
             data-slot="orbit-system-empty"
             className="absolute inset-0 flex items-center justify-center text-sm opacity-70"
@@ -307,6 +336,14 @@ export function ZuiOrbitSystem({
           <div
             data-slot="orbit-system-controls"
             className="absolute bottom-3 right-3 z-40 flex gap-1.5"
+            onPointerEnter={(event) => {
+              if (event.pointerType === "mouse" || event.pointerType === "pen")
+                setHovered(false);
+            }}
+            onPointerLeave={(event) => {
+              if (event.pointerType === "mouse" || event.pointerType === "pen")
+                setHovered(true);
+            }}
           >
             {autoRotate && (
               <button
@@ -315,18 +352,22 @@ export function ZuiOrbitSystem({
                 aria-label={
                   paused || reducedMotion
                     ? "Motion paused"
-                    : userPaused
-                      ? "Play orbits"
-                      : "Pause orbits"
+                    : hovered && !userPaused
+                      ? "Orbits paused on hover"
+                      : userPaused
+                        ? "Play orbits"
+                        : "Pause orbits"
                 }
                 disabled={paused || reducedMotion}
                 onClick={() => setUserPaused((value) => !value)}
               >
                 {paused || reducedMotion
                   ? "Paused"
-                  : userPaused
-                    ? "Play"
-                    : "Pause"}
+                  : hovered && !userPaused
+                    ? "Hover pause"
+                    : userPaused
+                      ? "Play"
+                      : "Pause"}
               </button>
             )}
             <button
@@ -374,7 +415,7 @@ export function ZuiOrbit({
     scene.scale *
     scene.zoom;
   const ellipseHeight = orbitRadius * Math.sin((scene.tilt * Math.PI) / 180);
-  const items = Children.toArray(children);
+  const items = useMemo(() => flattenOrbitChildren(children), [children]);
   const ring = useMemo<RingContextValue>(
     () => ({
       radius: orbitRadius,
@@ -393,7 +434,11 @@ export function ZuiOrbit({
         role="group"
         aria-label={label ?? `Orbit with ${items.length} items`}
         className={cn("absolute inset-0", className)}
-        style={style}
+        style={{
+          ...style,
+          visibility:
+            scene.width > 0 && scene.height > 0 ? style?.visibility : "hidden",
+        }}
       >
         <div
           data-slot="orbit-ring"
@@ -410,7 +455,7 @@ export function ZuiOrbit({
         />
         {items.map((child, index) => (
           <PositionContext.Provider
-            key={isValidElement(child) ? (child.key ?? index) : index}
+            key={`${index}:${isValidElement(child) ? (child.key ?? "") : ""}`}
             value={{ index, count: items.length }}
           >
             {child}

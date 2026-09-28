@@ -403,7 +403,7 @@ function classifyProp(name, isDom) {
   ) {
     return "controlled";
   }
-  if (name === "children") return "content";
+  if (name === "children" || name === "center") return "content";
   if (name === "className" || name === "style" || name === "id") return "dom";
   return "behavior";
 }
