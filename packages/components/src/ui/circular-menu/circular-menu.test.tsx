@@ -228,9 +228,7 @@ describe("CircularMenu", () => {
   });
 
   it("should give an icon-only shorthand item a fallback accessible name", () => {
-    render(
-      <CircularMenu defaultOpen items={[{ id: "copy", icon: "C" }]} />,
-    );
+    render(<CircularMenu defaultOpen items={[{ id: "copy", icon: "C" }]} />);
     expect(screen.getByRole("menuitem", { name: "copy" })).toBeTruthy();
   });
 
