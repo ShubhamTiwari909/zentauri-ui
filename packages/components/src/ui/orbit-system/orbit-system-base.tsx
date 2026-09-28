@@ -59,12 +59,20 @@ const RingContext = createContext<RingContextValue | null>(null);
 const PositionContext = createContext<PositionContextValue | null>(null);
 const unmeasuredBounds: ElementSize = { width: 0, height: 0 };
 
-function flattenOrbitChildren(children: ReactNode): ReactNode[] {
-  return Children.toArray(children).flatMap((child) =>
-    isValidElement<{ children?: ReactNode }>(child) && child.type === Fragment
-      ? flattenOrbitChildren(child.props.children)
-      : [child],
-  );
+type OrbitChild = { node: ReactNode; key: string };
+
+function flattenOrbitChildren(
+  children: ReactNode,
+  parentKey = "",
+): OrbitChild[] {
+  return Children.toArray(children).flatMap((child, index) => {
+    const localKey = isValidElement(child) ? (child.key ?? index) : index;
+    const key = `${parentKey}/${localKey}`;
+    return isValidElement<{ children?: ReactNode }>(child) &&
+      child.type === Fragment
+      ? flattenOrbitChildren(child.props.children, key)
+      : [{ node: child, key }];
+  });
 }
 
 function clamp(value: number, min: number, max: number) {
@@ -129,9 +137,9 @@ export function ZuiOrbitSystem({
     [children],
   );
   const maximumRadius = orbitChildren.reduce<number>((maximum, child) => {
-    if (!isValidElement<OrbitProps>(child) || child.type !== ZuiOrbit)
+    if (!isValidElement<OrbitProps>(child.node) || child.node.type !== ZuiOrbit)
       return maximum;
-    return Math.max(maximum, Math.max(0, child.props.radius));
+    return Math.max(maximum, Math.max(0, child.node.props.radius));
   }, 0);
 
   useLayoutEffect(() => {
@@ -147,8 +155,17 @@ export function ZuiOrbitSystem({
     };
     measure();
     if (typeof ResizeObserver !== "undefined") return;
+    let frame = 0;
+    const watchSize = () => {
+      measure();
+      frame = requestAnimationFrame(watchSize);
+    };
+    frame = requestAnimationFrame(watchSize);
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", measure);
+    };
   }, []);
 
   useEffect(() => {
@@ -453,12 +470,12 @@ export function ZuiOrbit({
             } as CSSProperties
           }
         />
-        {items.map((child, index) => (
+        {items.map(({ node, key }, index) => (
           <PositionContext.Provider
-            key={`${index}:${isValidElement(child) ? (child.key ?? "") : ""}`}
+            key={key}
             value={{ index, count: items.length }}
           >
-            {child}
+            {node}
           </PositionContext.Provider>
         ))}
       </div>

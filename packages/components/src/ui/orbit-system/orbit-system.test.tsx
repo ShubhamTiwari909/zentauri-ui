@@ -1,4 +1,5 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
+import { Fragment, useState } from "react";
 import { renderToString } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { zuiOrbitSystemAppearances } from "../../design-system/orbit-system";
@@ -87,8 +88,49 @@ describe("ZuiOrbitSystem", () => {
     expect(new Set(positions).size).toBe(3);
   });
 
-  it("measures the container when ResizeObserver is unavailable", () => {
+  it("preserves keyed fragment items and focus when order changes", () => {
+    let mounts = 0;
+    function StatefulItem({ name }: { name: string }) {
+      const [instance] = useState(() => ++mounts);
+      return <ZuiOrbitItem id={name}>{`${name}-${instance}`}</ZuiOrbitItem>;
+    }
+    const orbit = (reverse: boolean) => (
+      <ZuiOrbitSystem autoRotate={false}>
+        <ZuiOrbit radius={80}>
+          <Fragment key="group">
+            {reverse ? (
+              <>
+                <StatefulItem key="b" name="B" />
+                <StatefulItem key="a" name="A" />
+              </>
+            ) : (
+              <>
+                <StatefulItem key="a" name="A" />
+                <StatefulItem key="b" name="B" />
+              </>
+            )}
+          </Fragment>
+        </ZuiOrbit>
+      </ZuiOrbitSystem>
+    );
+    const { rerender } = render(orbit(false));
+    const a = screen.getByRole("button", { name: "A-1" });
+    a.focus();
+    rerender(orbit(true));
+    expect(screen.getByRole("button", { name: "A-1" })).toBe(a);
+    expect(a).toHaveFocus();
+    expect(screen.getByRole("button", { name: "B-2" })).toBeInTheDocument();
+    expect(mounts).toBe(2);
+  });
+
+  it("remeasures layout changes when ResizeObserver is unavailable", () => {
     vi.stubGlobal("ResizeObserver", undefined);
+    let nextFrame: FrameRequestCallback | undefined;
+    vi.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => {
+      nextFrame = callback;
+      return 1;
+    });
+    vi.spyOn(window, "cancelAnimationFrame").mockImplementation(() => {});
     const bounds = vi.mocked(HTMLElement.prototype.getBoundingClientRect);
     const { container } = render(
       <ZuiOrbitSystem autoRotate={false}>
@@ -99,7 +141,7 @@ describe("ZuiOrbitSystem", () => {
     );
     expect(screen.getByRole("button", { name: "A" }).style.left).toBe("280px");
     bounds.mockReturnValue({ width: 500, height: 350 } as DOMRect);
-    act(() => window.dispatchEvent(new Event("resize")));
+    act(() => nextFrame?.(120));
     expect(screen.getByRole("button", { name: "A" }).style.left).toBe("330px");
     expect(container.querySelector('[data-slot="orbit"]')).toBeVisible();
   });
