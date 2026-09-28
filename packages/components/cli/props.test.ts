@@ -30,6 +30,18 @@ function readManifest() {
 }
 
 describe("props manifest", () => {
+  it("classifies Orbit System center content correctly", () => {
+    const orbit = readManifest().components["orbit-system"];
+    const root = orbit?.subcomponents.find(
+      (subcomponent) => subcomponent.propsType === "OrbitSystemProps",
+    );
+    expect(root?.props).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: "center", group: "content" }),
+      ]),
+    );
+  });
+
   it("documents accordion variants and compound props without dumping raw DOM props", () => {
     const manifest = readManifest();
     const accordion = manifest.components.accordion;

@@ -49,6 +49,7 @@ const uiComponentNames = [
   "modal",
   "network-status",
   "neural-graph",
+  "orbit-system",
   "otp-input",
   "package-install-command",
   "pagination",

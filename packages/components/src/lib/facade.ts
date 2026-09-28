@@ -97,6 +97,7 @@ const componentSlugs = [
   "marquee",
   "modal",
   "neural-graph",
+  "orbit-system",
   "otp-input",
   "pagination",
   "popover",

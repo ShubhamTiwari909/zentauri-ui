@@ -17207,6 +17207,371 @@
         }
       ]
     },
+    "orbit-system": {
+      "slug": "orbit-system",
+      "subcomponents": [
+        {
+          "name": "static:Orbit",
+          "displayName": "Orbit",
+          "propsType": "OrbitProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "direction",
+              "type": "'clockwise' | 'counterclockwise' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Motion direction. Defaults to clockwise.",
+              "deprecated": false
+            },
+            {
+              "name": "duration",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Seconds per revolution. Defaults to 28.",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Accessible ring label.",
+              "deprecated": false
+            },
+            {
+              "name": "phase",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Rotational offset in degrees.",
+              "deprecated": false
+            },
+            {
+              "name": "radius",
+              "type": "number",
+              "required": true,
+              "group": "behavior",
+              "description": "Radius of the ring in pixels.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:OrbitItem",
+          "displayName": "OrbitItem",
+          "propsType": "OrbitItemProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "angle",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Position around the ring in degrees. Evenly spaced when omitted.",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Spoken item label when content is not text.",
+              "deprecated": false
+            },
+            {
+              "name": "onSelect",
+              "type": "((id: string) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Stable id used for controlled selection. Defaults to a generated id.",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:OrbitSystem",
+          "displayName": "OrbitSystem",
+          "propsType": "OrbitSystemProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "amber",
+                "blue",
+                "cyan",
+                "default",
+                "destructive",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-emerald",
+                "gradient-rose",
+                "info",
+                "primary",
+                "rose",
+                "secondary",
+                "slate",
+                "success",
+                "violet",
+                "warning"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "autoRotate",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Continuously advance the items. Defaults to true; respects reduced motion.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultSelectedId",
+              "type": "string | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Initial selected item id.",
+              "deprecated": false
+            },
+            {
+              "name": "interactive",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Enable dragging, zooming and item selection. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "onSelectionChange",
+              "type": "((id: string | null) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "paused",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Suspend orbital motion.",
+              "deprecated": false
+            },
+            {
+              "name": "selectedId",
+              "type": "string | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled selected item id.",
+              "deprecated": false
+            },
+            {
+              "name": "showControls",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Show pause and zoom buttons. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "tilt",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Initial camera tilt in degrees, clamped to 15–75. Defaults to 55.",
+              "deprecated": false
+            },
+            {
+              "name": "zoom",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Initial camera magnification, clamped to 0.5–2. Defaults to 1.",
+              "deprecated": false
+            },
+            {
+              "name": "center",
+              "type": "ReactNode",
+              "required": false,
+              "group": "content",
+              "description": "Content rendered at the center of the orbital plane.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:OrbitSystemVariant",
+          "displayName": "OrbitSystemVariant",
+          "propsType": "OrbitSystemVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "'default' | 'blue' | 'cyan' | 'slate' | 'rose' | 'emerald' | 'gradient-blue' | 'violet' | 'amber' | 'glass' | 'success' | 'warning' | 'info' | 'secondary' | 'destructive' | 'primary' | 'gradient-rose' | 'gradient-emerald' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "otp-input": {
       "slug": "otp-input",
       "subcomponents": [

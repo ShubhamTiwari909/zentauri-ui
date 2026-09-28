@@ -94,6 +94,7 @@ export const CLI_ADD_COMPONENTS = [
   "modal",
   "network-status",
   "neural-graph",
+  "orbit-system",
   "otp-input",
   "package-install-command",
   "pagination",

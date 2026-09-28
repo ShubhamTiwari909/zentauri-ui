@@ -274,6 +274,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Data visualization",
   },
   {
+    id: "orbit-system",
+    name: "Orbit System",
+    description:
+      "Layered orbital rings for skills and features with camera controls and selection.",
+    href: "/preview/components/orbit-system",
+    badge: "Data visualization",
+  },
+  {
     id: "gauge",
     name: "Gauge",
     description:
