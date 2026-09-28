@@ -102,6 +102,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/marquee/marquee.test.tsx`                                       |    10 |
 | `src/ui/modal/modal.test.tsx`                                           |    10 |
 | `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
+| `src/ui/product-3d/product-3d.test.tsx`                                 |    10 |
 | `src/ui/tree-view/tree-view.test.tsx`                                   |    10 |
 | `src/hooks/useDateTimeFormat/useDateTimeFormat.test.ts`                 |     9 |
 | `src/hooks/useDurationFormat/useDurationFormat.test.ts`                 |     9 |
@@ -109,7 +110,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useTableFilter/useTableFilter.test.ts`                       |     9 |
 | `src/ui/animated-number/animated-number.test.tsx`                       |     9 |
 | `src/ui/hash-generator/hash-generator.test.tsx`                         |     9 |
-| `src/ui/product-3d/product-3d.test.tsx`                                 |     9 |
 | `src/ui/secret-reveal/secret-reveal.test.tsx`                           |     9 |
 | `src/ui/skeleton/skeleton.test.tsx`                                     |     9 |
 | `src/ui/slider/slider.test.tsx`                                         |     9 |
@@ -162,7 +162,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useEventListener/useEventListener.test.ts`                   |     5 |
 | `src/hooks/useScrollPosition/useScrollPosition.test.ts`                 |     5 |
 | `src/hooks/useTimeout/useTimeout.test.ts`                               |     5 |
-| `src/ui/neural-graph/neural-graph.test.tsx`                             |     5 |
 | `src/ui/popover/popover.test.tsx`                                       |     5 |
 | `src/ui/qr-scanner/qr-scanner.test.tsx`                                 |     5 |
 | `src/ui/radio-group/radio-group.test.tsx`                               |     5 |
@@ -295,6 +294,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 | OTP input       | `otp-input`       | —                                  |
 | Pagination      | `pagination`      | —                                  |
 | Popover         | `popover`         | `popover/animated`                 |
+| Product 3D      | `product-3d`      | —                                  |
 | Progress        | `progress`        | `progress/animated`                |
 | Rating          | `rating`          | —                                  |
 | Radio group     | `radio-group`     | `radio-group/animated`             |

@@ -262,9 +262,13 @@ describe("zentauri-ui CLI", () => {
     try {
       runCli(dir, ["init"]);
       const out = runCli(dir, ["add", "product-3d"]);
-      expect(existsSync(join(dir, "src/components/ui/product-3d/index.ts"))).toBe(true);
+      expect(
+        existsSync(join(dir, "src/components/ui/product-3d/index.ts")),
+      ).toBe(true);
       expect(out).toContain("@google/model-viewer");
-      expect(out).toContain("three");
+      expect(out).toContain(
+        "- three (peer dependency of @google/model-viewer)",
+      );
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

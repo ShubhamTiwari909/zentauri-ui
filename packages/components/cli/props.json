@@ -18740,7 +18740,7 @@
             },
             {
               "name": "onProgress",
-              "type": "(ReactEventHandler<HTMLDivElement> & ((progress: number) => void)) | undefined",
+              "type": "((progress: number) => void) | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false

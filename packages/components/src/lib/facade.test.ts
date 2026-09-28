@@ -66,9 +66,14 @@ describe("DesignSystem facade", () => {
   it("discovers Product 3D appearances and paired tokens", () => {
     const product = DesignSystem.getComponent("product-3d");
     expect(product?.appearances()).toContain("gradient-blue");
-    expect(product?.variables()).toEqual(expect.arrayContaining([
-      expect.objectContaining({ name: "--zui-product-3d-control-bg", pairName: "--zui-product-3d-control-bg-dark" }),
-    ]));
+    expect(product?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-product-3d-control-bg",
+          pairName: "--zui-product-3d-control-bg-dark",
+        }),
+      ]),
+    );
   });
 
   it("discovers Glass Card appearances and paired material tokens", () => {

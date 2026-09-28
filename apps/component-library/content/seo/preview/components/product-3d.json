@@ -77,7 +77,7 @@
     },
     {
       "heading": "Accessibility and integration",
-      "body": "Provide meaningful alt text and hotspot labels. Loading and error states are announced. The client entry loads the optional renderer in an effect, keeping server rendering safe in Next.js App Router."
+      "body": "Provide meaningful alt text and hotspot labels. Loading progress and fallback content are announced. The client entry loads the optional renderer in an effect, keeping server rendering safe in Next.js App Router."
     }
   ],
   "useCasesSectionHeading": "Common use cases"

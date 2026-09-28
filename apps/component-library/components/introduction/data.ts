@@ -412,7 +412,8 @@ export const componentsData: ComponentHighlight[] = [
   {
     id: "product-3d",
     name: "Product 3D",
-    description: "GLB and glTF product showcases with orbit controls, lighting presets, hotspots, and poster fallback.",
+    description:
+      "GLB and glTF product showcases with orbit controls, lighting presets, hotspots, and poster fallback.",
     href: "/preview/components/product-3d",
     badge: "Media",
   },

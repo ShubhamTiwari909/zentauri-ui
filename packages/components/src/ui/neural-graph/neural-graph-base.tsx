@@ -162,6 +162,7 @@ export function NeuralGraphBase({
   const activeId = selectedId === undefined ? internalSelectedId : selectedId;
   const activeNode = graph.nodes.find((node) => node.id === activeId);
 
+
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
