@@ -1,1 +1,6 @@
-export { NeuralGraphBase as ZuiNeuralGraph, ZuiNode, ZuiEdge, ZuiCluster } from "./neural-graph-base";
+export {
+  NeuralGraphBase as ZuiNeuralGraph,
+  ZuiNode,
+  ZuiEdge,
+  ZuiCluster,
+} from "./neural-graph-base";

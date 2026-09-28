@@ -5,11 +5,17 @@ import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import { NeuralGraphHeroSection } from "./sections/hero";
 import { NeuralGraphCodeExamplesSection } from "./sections/code-examples";
 
-export default function NeuralGraphPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
-  return <PreviewPageShell>
-    <NeuralGraphHeroSection seo={seo} />
-    <NeuralGraphCodeExamplesSection />
-    <PreviewApiSection slug="neural-graph" />
-    <PreviewSeoDoc doc={seo} />
-  </PreviewPageShell>;
+export default function NeuralGraphPreviewPage({
+  seo,
+}: {
+  seo: PreviewSeoDocument;
+}) {
+  return (
+    <PreviewPageShell>
+      <NeuralGraphHeroSection seo={seo} />
+      <NeuralGraphCodeExamplesSection />
+      <PreviewApiSection slug="neural-graph" />
+      <PreviewSeoDoc doc={seo} />
+    </PreviewPageShell>
+  );
 }

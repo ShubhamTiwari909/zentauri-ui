@@ -116,7 +116,8 @@ export const componentsData: ComponentHighlight[] = [
   {
     id: "glass-card",
     name: "Glass Card",
-    description: "CSS-based glass, crystal, and frosted surfaces with pointer tilt, dynamic lighting, and accessible motion controls.",
+    description:
+      "CSS-based glass, crystal, and frosted surfaces with pointer tilt, dynamic lighting, and accessible motion controls.",
     href: "/preview/components/glass-card",
     badge: "Layout",
   },
@@ -267,7 +268,8 @@ export const componentsData: ComponentHighlight[] = [
   {
     id: "neural-graph",
     name: "Neural Graph",
-    description: "Perspective node networks with clusters, data flow, selection, and camera controls.",
+    description:
+      "Perspective node networks with clusters, data flow, selection, and camera controls.",
     href: "/preview/components/neural-graph",
     badge: "Data visualization",
   },

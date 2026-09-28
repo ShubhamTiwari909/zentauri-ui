@@ -1,6 +1,10 @@
 import type { NeuralGraphProps } from "@zentauri-ui/zentauri-components/ui/neural-graph";
 
-export function neuralGraphSnippet(appearance: NonNullable<NeuralGraphProps["appearance"]>, animate: boolean, showLabels: boolean): string {
+export function neuralGraphSnippet(
+  appearance: NonNullable<NeuralGraphProps["appearance"]>,
+  animate: boolean,
+  showLabels: boolean,
+): string {
   return `import { ZuiNeuralGraph, ZuiNode, ZuiEdge, ZuiCluster } from "@zentauri-ui/zentauri-components/ui/neural-graph";
 
 <ZuiNeuralGraph appearance="${appearance}" animate={${animate}} showLabels={${showLabels}}>

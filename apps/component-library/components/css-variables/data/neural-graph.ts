@@ -2,7 +2,8 @@ import { defineCssVariableReference } from "../reference-types";
 
 export const neuralGraphCssVariables = defineCssVariableReference({
   title: "Neural Graph CSS variables",
-  description: "Theme the canvas surface, nodes, edges, highlights, and cluster regions.",
+  description:
+    "Theme the canvas surface, nodes, edges, highlights, and cluster regions.",
   lightVariables: [
     ["neural-graph-bg", "#f8fafc"],
     ["neural-graph-border", "#cbd5e1"],
