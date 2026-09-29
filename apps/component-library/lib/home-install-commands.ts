@@ -48,6 +48,11 @@ export const CLI_INIT_COMMANDS = {
  * installation page, and hooks have their own command.
  */
 export const CLI_ADD_COMPONENTS = [
+  "field",
+  "input-group",
+  "number-input",
+  "tags-input",
+
   "accordion",
   "activity-feed",
   "alert",

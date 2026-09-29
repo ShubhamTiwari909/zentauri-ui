@@ -1,3 +1,7 @@
+import tagsinput from "@/content/seo/preview/components/tags-input.json";
+import numberinput from "@/content/seo/preview/components/number-input.json";
+import inputgroup from "@/content/seo/preview/components/input-group.json";
+import field from "@/content/seo/preview/components/field.json";
 import glassCard from "@/content/seo/preview/components/glass-card.json";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import accordion from "@/content/seo/preview/components/accordion.json";
@@ -93,6 +97,10 @@ import permission from "@/content/seo/preview/components/permission.json";
 import slideToComplete from "@/content/seo/preview/components/slide-to-complete.json";
 
 const previewSeoRegistry = {
+  "tags-input": tagsinput as PreviewSeoDocument,
+  "number-input": numberinput as PreviewSeoDocument,
+  "input-group": inputgroup as PreviewSeoDocument,
+  field: field as PreviewSeoDocument,
   index: index as PreviewSeoDocument,
   installation: installation as PreviewSeoDocument,
   accordion: accordion as PreviewSeoDocument,

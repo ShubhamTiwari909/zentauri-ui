@@ -1,0 +1,65 @@
+{
+  "category": "Form",
+  "title": "Input Group component for React & Next.js \u00b7 Zentauri UI",
+  "description": "Place text addons and action buttons beside a shared input.",
+  "keywords": [
+    "input-group",
+    "Input Group",
+    "React",
+    "Next.js",
+    "form control"
+  ],
+  "og": {
+    "title": "Input Group component for React & Next.js \u00b7 Zentauri UI",
+    "description": "Place text addons and action buttons beside a shared input.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Input Group component for React & Next.js \u00b7 Zentauri UI",
+    "description": "Place text addons and action buttons beside a shared input.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/input-group",
+  "headings": {
+    "h1": "Input Group",
+    "h2": [
+      "What it does",
+      "API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "An input shell for prefixes, suffixes, and adjacent actions.",
+  "useCases": ["Place text addons and action buttons beside a shared input."],
+  "faqs": [
+    {
+      "question": "Does Input Group support theming?",
+      "answer": "Yes. Choose an appearance and override the paired --zui-input-group-* light and dark CSS variables."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "An input shell for prefixes, suffixes, and adjacent actions."
+    },
+    {
+      "heading": "API",
+      "body": "Place text addons and action buttons beside a shared input."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Add a visible label or aria-label to the input. Addons remain text, and actions are native buttons."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import the static subpath in a Client Component when interactive state is needed."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

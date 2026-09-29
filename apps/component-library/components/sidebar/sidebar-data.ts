@@ -286,6 +286,7 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "Empty state",
         href: "/preview/components/empty-state",
       },
+      { title: "Field", href: "/preview/components/field" },
       {
         title: "File upload",
         href: "/preview/components/file-upload",
@@ -314,6 +315,7 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "Image compare",
         href: "/preview/components/image-compare",
       },
+      { title: "Input Group", href: "/preview/components/input-group" },
       {
         title: "Inputs",
         href: "/preview/components/inputs",
@@ -338,6 +340,7 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "Modal",
         href: "/preview/components/modal",
       },
+      { title: "Number Input", href: "/preview/components/number-input" },
       {
         title: "Network Status",
         href: "/preview/components/network-status",
@@ -458,6 +461,7 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "Tabs",
         href: "/preview/components/tabs",
       },
+      { title: "Tags Input", href: "/preview/components/tags-input" },
       {
         title: "Terminal Emulator",
         href: "/preview/components/terminal-emulator",

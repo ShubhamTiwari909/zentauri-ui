@@ -1,0 +1,59 @@
+{
+  "category": "Form",
+  "title": "Tags Input component for React & Next.js \u00b7 Zentauri UI",
+  "description": "Enter, validate, remove, and submit multiple freeform tags.",
+  "keywords": ["tags-input", "Tags Input", "React", "Next.js", "form control"],
+  "og": {
+    "title": "Tags Input component for React & Next.js \u00b7 Zentauri UI",
+    "description": "Enter, validate, remove, and submit multiple freeform tags.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Tags Input component for React & Next.js \u00b7 Zentauri UI",
+    "description": "Enter, validate, remove, and submit multiple freeform tags.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/tags-input",
+  "headings": {
+    "h1": "Tags Input",
+    "h2": [
+      "What it does",
+      "API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "A token editor with keyboard removal, duplicate prevention, limits, and form values.",
+  "useCases": ["Enter, validate, remove, and submit multiple freeform tags."],
+  "faqs": [
+    {
+      "question": "Does Tags Input support theming?",
+      "answer": "Yes. Choose an appearance and override the paired --zui-tags-input-* light and dark CSS variables."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "A token editor with keyboard removal, duplicate prevention, limits, and form values."
+    },
+    {
+      "heading": "API",
+      "body": "Enter, validate, remove, and submit multiple freeform tags."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The input supports Enter, Backspace, and Escape, with labeled remove buttons and polite status announcements."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import the static subpath in a Client Component when interactive state is needed."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

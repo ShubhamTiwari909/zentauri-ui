@@ -1,0 +1,67 @@
+{
+  "category": "Form",
+  "title": "Number Input component for React & Next.js \u00b7 Zentauri UI",
+  "description": "Edit decimal numbers with bounded step controls and keyboard support.",
+  "keywords": [
+    "number-input",
+    "Number Input",
+    "React",
+    "Next.js",
+    "form control"
+  ],
+  "og": {
+    "title": "Number Input component for React & Next.js \u00b7 Zentauri UI",
+    "description": "Edit decimal numbers with bounded step controls and keyboard support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Number Input component for React & Next.js \u00b7 Zentauri UI",
+    "description": "Edit decimal numbers with bounded step controls and keyboard support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/number-input",
+  "headings": {
+    "h1": "Number Input",
+    "h2": [
+      "What it does",
+      "API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "A numeric spinbutton with controlled state, bounds, stepping, and partial decimal editing.",
+  "useCases": [
+    "Edit decimal numbers with bounded step controls and keyboard support."
+  ],
+  "faqs": [
+    {
+      "question": "Does Number Input support theming?",
+      "answer": "Yes. Choose an appearance and override the paired --zui-number-input-* light and dark CSS variables."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "A numeric spinbutton with controlled state, bounds, stepping, and partial decimal editing."
+    },
+    {
+      "heading": "API",
+      "body": "Edit decimal numbers with bounded step controls and keyboard support."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The input exposes spinbutton semantics and supports arrow keys, Home, End, and labeled increment and decrement buttons."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import the static subpath in a Client Component when interactive state is needed."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

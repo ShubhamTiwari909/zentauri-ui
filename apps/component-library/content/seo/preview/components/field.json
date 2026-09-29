@@ -1,0 +1,61 @@
+{
+  "category": "Form",
+  "title": "Field component for React & Next.js \u00b7 Zentauri UI",
+  "description": "Compose labels, descriptions, errors, and required state around any form control.",
+  "keywords": ["field", "Field", "React", "Next.js", "form control"],
+  "og": {
+    "title": "Field component for React & Next.js \u00b7 Zentauri UI",
+    "description": "Compose labels, descriptions, errors, and required state around any form control.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Field component for React & Next.js \u00b7 Zentauri UI",
+    "description": "Compose labels, descriptions, errors, and required state around any form control.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/field",
+  "headings": {
+    "h1": "Field",
+    "h2": [
+      "What it does",
+      "API",
+      "Common use cases",
+      "Accessibility",
+      "Next.js integration notes",
+      "FAQ"
+    ]
+  },
+  "intro": "A field wrapper that associates a label, description, and error with a native or custom control.",
+  "useCases": [
+    "Compose labels, descriptions, errors, and required state around any form control."
+  ],
+  "faqs": [
+    {
+      "question": "Does Field support theming?",
+      "answer": "Yes. Choose an appearance and override the paired --zui-field-* light and dark CSS variables."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "A field wrapper that associates a label, description, and error with a native or custom control."
+    },
+    {
+      "heading": "API",
+      "body": "Compose labels, descriptions, errors, and required state around any form control."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The render callback supplies the control ID and ARIA description and error references; Fieldset uses a native legend."
+    },
+    {
+      "heading": "Next.js integration notes",
+      "body": "Import the static subpath in a Client Component when interactive state is needed."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

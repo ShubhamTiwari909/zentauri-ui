@@ -1,3 +1,7 @@
+import { tagsinputCssVariables } from "./data/tags-input";
+import { numberinputCssVariables } from "./data/number-input";
+import { inputgroupCssVariables } from "./data/input-group";
+import { fieldCssVariables } from "./data/field";
 import { glassCardCssVariables } from "./data/glass-card";
 import { accordionCssVariables } from "./data/accordion";
 import { activityFeedCssVariables } from "./data/activity-feed";
@@ -80,6 +84,10 @@ import { typographyCssVariables } from "./data/typography";
 import type { CssVariableReference } from "./reference-types";
 
 export const cssVariableReferences = {
+  "tags-input": tagsinputCssVariables,
+  "number-input": numberinputCssVariables,
+  "input-group": inputgroupCssVariables,
+  field: fieldCssVariables,
   accordion: accordionCssVariables,
   "activity-feed": activityFeedCssVariables,
   alert: alertCssVariables,

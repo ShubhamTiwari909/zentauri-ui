@@ -19,6 +19,11 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("orbit-system");
     expect(slugs).toContain("buttons");
     expect(slugs).toContain("inputs");
+    expect(slugs).toContain("field");
+    expect(slugs).toContain("input-group");
+    expect(slugs).toContain("number-input");
+    expect(slugs).toContain("tags-input");
+
     expect(slugs.length).toBe(DesignSystem.listComponents().length);
   });
 

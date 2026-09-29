@@ -258,6 +258,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Layout",
   },
   {
+    id: "field",
+    name: "Field",
+    description:
+      "Compose labels, descriptions, errors, and required state around any form control.",
+    href: "/preview/components/field",
+    badge: "Form",
+  },
+  {
     id: "file-upload",
     name: "File upload",
     description:
@@ -322,6 +330,13 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Media",
   },
   {
+    id: "input-group",
+    name: "Input Group",
+    description: "Combine an input with prefixes, suffixes, and actions.",
+    href: "/preview/components/input-group",
+    badge: "Form",
+  },
+  {
     id: "inputs",
     name: "Inputs",
     description:
@@ -368,6 +383,14 @@ export const componentsData: ComponentHighlight[] = [
       "Dialog overlays with configurable size, position, and entrance motion.",
     href: "/preview/components/modal",
     badge: "Overlay",
+  },
+  {
+    id: "number-input",
+    name: "Number Input",
+    description:
+      "Edit bounded decimal values with buttons and keyboard stepping.",
+    href: "/preview/components/number-input",
+    badge: "Form",
   },
   {
     id: "network-status",
@@ -584,6 +607,13 @@ export const componentsData: ComponentHighlight[] = [
       "Structured data tables with striped, bordered, and sticky header treatments.",
     href: "/preview/components/table",
     badge: "Data",
+  },
+  {
+    id: "tags-input",
+    name: "Tags Input",
+    description: "Add, validate, and remove multiple freeform tags.",
+    href: "/preview/components/tags-input",
+    badge: "Form",
   },
   {
     id: "tabs",
