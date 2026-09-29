@@ -53,7 +53,7 @@ export function InputGroupInputBase({
       data-slot="input-group-input"
       disabled={disabled || groupDisabled}
       className={cn(
-        "min-w-0 flex-1 bg-transparent outline-none placeholder:opacity-60 disabled:cursor-not-allowed",
+        "min-w-0 flex-1 bg-transparent text-inherit outline-none placeholder:text-[color:var(--zui-input-group-placeholder,currentColor)] dark:placeholder:text-[color:var(--zui-input-group-placeholder-dark,currentColor)] placeholder:opacity-60 disabled:cursor-not-allowed",
         className,
       )}
       {...rest}
