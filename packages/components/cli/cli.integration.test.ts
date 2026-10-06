@@ -39,6 +39,36 @@ function runCliError(cwd: string, args: string[]): string {
 }
 
 describe("zentauri-ui CLI", () => {
+  it("vendors Grid with its responsive helpers, context, and token dependencies", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-grid-"));
+    try {
+      runCli(dir, ["init"]);
+      runCli(dir, ["add", "grid"]);
+      const uiRoot = join(dir, "src", "components", "ui", "grid");
+      for (const file of [
+        "index.ts",
+        "grid-base.tsx",
+        "grid-context.ts",
+        "grid-layout.ts",
+        "types.ts",
+        "variants.ts",
+      ]) {
+        expect(existsSync(join(uiRoot, file))).toBe(true);
+      }
+      expect(readdirSync(uiRoot).some((file) => file.includes(".test."))).toBe(
+        false,
+      );
+      expect(
+        existsSync(join(dir, "src", "components", "design-system", "grid.ts")),
+      ).toBe(true);
+      const source = readFileSync(join(uiRoot, "grid-layout.ts"), "utf8");
+      expect(source).toContain("design-system/grid");
+      expect(source).not.toContain("@zentauri-ui/");
+      expect(source).not.toContain("framer-motion");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
   it("should init with framework-aware Tailwind source guidance", () => {
     const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-init-next-"));
     try {

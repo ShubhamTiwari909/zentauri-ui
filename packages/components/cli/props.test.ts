@@ -30,6 +30,36 @@ function readManifest() {
 }
 
 describe("props manifest", () => {
+  it("documents Grid responsive configuration and item appearances", () => {
+    const grid = readManifest().components.grid;
+    const root = grid?.subcomponents.find(
+      (component) => component.propsType === "GridProps",
+    );
+    const item = grid?.subcomponents.find(
+      (component) => component.propsType === "GridItemProps",
+    );
+    expect(root?.props.map((prop) => prop.name)).toEqual(
+      expect.arrayContaining(["layout", "gap", "rowGap", "columnGap", "as"]),
+    );
+    expect(root?.props).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: "stackOnMobile", default: "true" }),
+      ]),
+    );
+    expect(item?.props).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: "colSpan", default: "1" }),
+        expect.objectContaining({
+          name: "appearance",
+          options: expect.arrayContaining([
+            "default",
+            "glass",
+            "gradient-blue",
+          ]),
+        }),
+      ]),
+    );
+  });
   it("classifies Orbit System center content correctly", () => {
     const orbit = readManifest().components["orbit-system"];
     const root = orbit?.subcomponents.find(

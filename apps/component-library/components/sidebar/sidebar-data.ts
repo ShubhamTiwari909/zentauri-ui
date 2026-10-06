@@ -202,6 +202,7 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "Bento Grid",
         href: "/preview/components/bento-grid",
       },
+      { title: "Grid", href: "/preview/components/grid" },
       {
         title: "Breadcrumb",
         href: "/preview/components/breadcrumb",

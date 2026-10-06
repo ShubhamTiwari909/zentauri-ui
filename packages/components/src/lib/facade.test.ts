@@ -14,6 +14,7 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("accordion");
     expect(slugs).toContain("activity-feed");
     expect(slugs).toContain("glass-card");
+    expect(slugs).toContain("grid");
     expect(slugs).toContain("product-3d");
     expect(slugs).toContain("neural-graph");
     expect(slugs).toContain("orbit-system");
@@ -36,6 +37,25 @@ describe("DesignSystem facade", () => {
     );
     expect(accordion?.groups()).toEqual(
       expect.arrayContaining(["appearance", "size"]),
+    );
+  });
+
+  it("discovers Grid slots, appearance variants, and paired spacing tokens", () => {
+    const grid = DesignSystem.getComponent("grid");
+    expect(grid?.title).toBe("Grid");
+    expect(grid?.slots()).toEqual(expect.arrayContaining(["root", "item"]));
+    expect(grid?.appearances("item")).toEqual(
+      expect.arrayContaining([
+        "default",
+        "subtle",
+        "contrast",
+        "glass",
+        "gradient-blue",
+      ]),
+    );
+    expect(JSON.stringify(grid?.variables())).toContain("--zui-grid-gap-md");
+    expect(JSON.stringify(grid?.variables())).toContain(
+      "--zui-grid-gap-md-dark",
     );
   });
 

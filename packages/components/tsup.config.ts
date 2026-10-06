@@ -37,6 +37,7 @@ const uiComponentNames = [
   "empty-state",
   "file-upload",
   "gauge",
+  "grid",
   "hash-generator",
   "http-request-viewer",
   "http-status-badge",

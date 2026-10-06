@@ -14053,6 +14053,354 @@
         }
       ]
     },
+    "grid": {
+      "slug": "grid",
+      "subcomponents": [
+        {
+          "name": "static:Grid",
+          "displayName": "Grid",
+          "propsType": "GridProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "alignItems",
+              "type": "enum",
+              "required": false,
+              "default": "stretch",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "center",
+                "end",
+                "start",
+                "stretch"
+              ],
+              "variantGroup": "alignItems",
+              "deprecated": false
+            },
+            {
+              "name": "autoFlow",
+              "type": "enum",
+              "required": false,
+              "default": "row",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "row",
+                "row-dense"
+              ],
+              "variantGroup": "autoFlow",
+              "deprecated": false
+            },
+            {
+              "name": "justifyItems",
+              "type": "enum",
+              "required": false,
+              "default": "stretch",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "center",
+                "end",
+                "start",
+                "stretch"
+              ],
+              "variantGroup": "justifyItems",
+              "deprecated": false
+            },
+            {
+              "name": "as",
+              "type": "'div' | 'ol' | 'section' | 'ul' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "autoRows",
+              "type": "Property.GridAutoRows<string | number> | undefined",
+              "required": false,
+              "default": "\"auto\"",
+              "group": "behavior",
+              "description": "Implicit row sizing.",
+              "deprecated": false
+            },
+            {
+              "name": "columnGap",
+              "type": "GridResponsiveValue<GridGap> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Overrides gap on the column axis at every resolved breakpoint.",
+              "deprecated": false
+            },
+            {
+              "name": "gap",
+              "type": "GridResponsiveValue<GridGap> | undefined",
+              "required": false,
+              "default": "\"md\"",
+              "group": "behavior",
+              "description": "Token spacing on both axes.",
+              "deprecated": false
+            },
+            {
+              "name": "layout",
+              "type": "GridResponsiveValue<GridLayout> | undefined",
+              "required": false,
+              "default": "{ mode: \"fixed\", columns: 1 }",
+              "group": "behavior",
+              "description": "Complete descriptors replace earlier layouts; omitted breakpoints inherit.",
+              "deprecated": false
+            },
+            {
+              "name": "rowGap",
+              "type": "GridResponsiveValue<GridGap> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Overrides gap on the row axis at every resolved breakpoint.",
+              "deprecated": false
+            },
+            {
+              "name": "stackOnMobile",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "true",
+              "group": "behavior",
+              "description": "Stack one item per row below the consumer's sm breakpoint, ignoring item placement. Set false to retain the configured mobile layout.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | MouseEventHandler<HTMLElement> | MouseEventHandler<HTMLOListElement> | MouseEventHandler<HTMLUListElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:GridItem",
+          "displayName": "GridItem",
+          "propsType": "GridItemProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "alignSelf",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "auto",
+                "center",
+                "end",
+                "start",
+                "stretch"
+              ],
+              "variantGroup": "alignSelf",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "blue",
+                "contrast",
+                "cyan",
+                "default",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-orange",
+                "gradient-pink",
+                "gradient-purple",
+                "gray",
+                "green",
+                "indigo",
+                "lime",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "rose",
+                "sky",
+                "slate",
+                "subtle",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "justifySelf",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "auto",
+                "center",
+                "end",
+                "start",
+                "stretch"
+              ],
+              "variantGroup": "justifySelf",
+              "deprecated": false
+            },
+            {
+              "name": "padding",
+              "type": "enum",
+              "required": false,
+              "default": "none",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "none",
+                "sm"
+              ],
+              "variantGroup": "padding",
+              "deprecated": false
+            },
+            {
+              "name": "area",
+              "type": "GridResponsiveValue<string> | undefined",
+              "required": false,
+              "default": "\"auto\"",
+              "group": "behavior",
+              "description": "Named custom-layout area; auto clears an inherited area.",
+              "deprecated": false
+            },
+            {
+              "name": "as",
+              "type": "'div' | 'article' | 'li' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "colSpan",
+              "type": "GridResponsiveValue<GridSpan> | undefined",
+              "required": false,
+              "default": "1",
+              "group": "behavior",
+              "description": "Fixed-layout spans clamp to available columns. Auto layouts support 1 or full.",
+              "deprecated": false
+            },
+            {
+              "name": "columnStart",
+              "type": "GridResponsiveValue<number | 'auto'> | undefined",
+              "required": false,
+              "default": "\"auto\"",
+              "group": "behavior",
+              "description": "Positive line number; auto layouts use automatic placement.",
+              "deprecated": false
+            },
+            {
+              "name": "rowSpan",
+              "type": "GridResponsiveValue<number> | undefined",
+              "required": false,
+              "default": "1",
+              "group": "behavior",
+              "description": "Positive integer span of implicit or explicit rows.",
+              "deprecated": false
+            },
+            {
+              "name": "rowStart",
+              "type": "GridResponsiveValue<number | 'auto'> | undefined",
+              "required": false,
+              "default": "\"auto\"",
+              "group": "behavior",
+              "description": "Positive line number or automatic placement.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | MouseEventHandler<HTMLElement> | MouseEventHandler<HTMLLIElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "hash-generator": {
       "slug": "hash-generator",
       "subcomponents": [

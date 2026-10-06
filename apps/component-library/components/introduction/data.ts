@@ -82,6 +82,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Layout",
   },
   {
+    id: "grid",
+    name: "Grid",
+    description:
+      "Responsive CSS Grid layouts with typed columns, auto sizing, spans, and named areas.",
+    href: "/preview/components/grid",
+    badge: "Layout",
+  },
+  {
     id: "breadcrumb",
     name: "Breadcrumb",
     description:

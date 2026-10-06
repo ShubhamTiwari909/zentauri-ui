@@ -10,6 +10,7 @@ import animatedNumber from "@/content/seo/preview/components/animated-number.jso
 import avatar from "@/content/seo/preview/components/avatar.json";
 import badge from "@/content/seo/preview/components/badge.json";
 import bentoGrid from "@/content/seo/preview/components/bento-grid.json";
+import grid from "@/content/seo/preview/components/grid.json";
 import breadcrumb from "@/content/seo/preview/components/breadcrumb.json";
 import buttons from "@/content/seo/preview/components/buttons.json";
 import calendar from "@/content/seo/preview/components/calendar.json";
@@ -104,6 +105,7 @@ const previewSeoRegistry = {
   avatar: avatar as PreviewSeoDocument,
   badge: badge as PreviewSeoDocument,
   "bento-grid": bentoGrid as PreviewSeoDocument,
+  grid: grid as PreviewSeoDocument,
   breadcrumb: breadcrumb as PreviewSeoDocument,
   buttons: buttons as PreviewSeoDocument,
   calendar: calendar as PreviewSeoDocument,

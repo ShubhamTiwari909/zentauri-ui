@@ -82,6 +82,7 @@ export const CLI_ADD_COMPONENTS = [
   "file-upload",
   "gauge",
   "glass-card",
+  "grid",
   "hash-generator",
   "http-request-viewer",
   "http-status-badge",
