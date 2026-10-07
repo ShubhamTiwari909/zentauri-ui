@@ -80,6 +80,7 @@ export * from "./toast";
 export * from "./timezone-select";
 export * from "./tokens";
 export * from "./toggle";
+export * from "./toolbar";
 export * from "./tooltip";
 export * from "./tree-view";
 export * from "./typing-indicator";

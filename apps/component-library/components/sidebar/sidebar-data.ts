@@ -481,6 +481,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/toggle",
       },
       {
+        title: "Toolbar",
+        href: "/preview/components/toolbar",
+      },
+      {
         title: "Tooltip",
         href: "/preview/components/tooltip",
       },

@@ -29332,6 +29332,503 @@
         }
       ]
     },
+    "toolbar": {
+      "slug": "toolbar",
+      "subcomponents": [
+        {
+          "name": "static:Toolbar",
+          "displayName": "Toolbar",
+          "propsType": "ToolbarProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "blue",
+                "contrast",
+                "cyan",
+                "default",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-orange",
+                "gradient-pink",
+                "gradient-purple",
+                "gray",
+                "green",
+                "indigo",
+                "lime",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "rose",
+                "sky",
+                "slate",
+                "subtle",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "orientation",
+              "type": "enum",
+              "required": false,
+              "default": "horizontal",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "horizontal",
+                "vertical"
+              ],
+              "variantGroup": "orientation",
+              "deprecated": false
+            },
+            {
+              "name": "wrap",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "false",
+                "true"
+              ],
+              "variantGroup": "wrap",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Disable all managed items. Native disabled items are skipped.",
+              "deprecated": false
+            },
+            {
+              "name": "loop",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Wrap arrow navigation at the first and last items. Defaults to true.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ToolbarButton",
+          "displayName": "ToolbarButton",
+          "propsType": "ToolbarButtonProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ToolbarGroup",
+          "displayName": "ToolbarGroup",
+          "propsType": "ToolbarGroupProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ToolbarItem",
+          "displayName": "ToolbarItem",
+          "propsType": "ToolbarItemProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "native",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Forward native disabled to button-like controls. Set false for links/custom widgets.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactElement<unknown, string | JSXElementConstructor<any>>",
+              "required": true,
+              "group": "content",
+              "description": "One focusable element that forwards props and ref to its DOM control.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ToolbarLink",
+          "displayName": "ToolbarLink",
+          "propsType": "ToolbarLinkProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "href",
+              "type": "string",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLAnchorElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ToolbarSeparator",
+          "displayName": "ToolbarSeparator",
+          "propsType": "ToolbarSeparatorProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "decorative",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Decorative by default; false exposes separator semantics and orientation.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ToolbarToggle",
+          "displayName": "ToolbarToggle",
+          "propsType": "ToolbarToggleProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "defaultPressed",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Initial uncontrolled pressed state. Defaults to false.",
+              "deprecated": false
+            },
+            {
+              "name": "onPressedChange",
+              "type": "((pressed: boolean) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "pressed",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled pressed state. Arrow navigation never changes it.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "tooltip": {
       "slug": "tooltip",
       "subcomponents": [

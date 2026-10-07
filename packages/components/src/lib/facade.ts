@@ -122,6 +122,7 @@ const componentSlugs = [
   "toast",
   "toggle",
   "world-clock",
+  "toolbar",
   "tooltip",
   "tree-view",
   "typography",

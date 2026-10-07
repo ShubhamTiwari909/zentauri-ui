@@ -75,6 +75,7 @@ import { tabsCssVariables } from "./data/tabs";
 import { timelineCssVariables } from "./data/timeline";
 import { toastCssVariables } from "./data/toast";
 import { toggleCssVariables } from "./data/toggle";
+import { toolbarCssVariables } from "./data/toolbar";
 import { tooltipCssVariables } from "./data/tooltip";
 import { treeViewCssVariables } from "./data/tree-view";
 import { typingIndicatorCssVariables } from "./data/typing-indicator";
@@ -160,6 +161,7 @@ export const cssVariableReferences = {
   timeline: timelineCssVariables,
   toast: toastCssVariables,
   toggle: toggleCssVariables,
+  toolbar: toolbarCssVariables,
   tooltip: tooltipCssVariables,
   "tree-view": treeViewCssVariables,
   "typing-indicator": typingIndicatorCssVariables,
