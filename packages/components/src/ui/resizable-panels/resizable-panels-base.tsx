@@ -398,7 +398,13 @@ export function ResizableHandleBase({
         else if (event.key === "Enter" && primary.collapsible)
           desired =
             context.sizes[index]! <= primary.collapsed
-              ? (context.remembered.current.get(primary.id) ?? primary.min)
+              ? Math.max(
+                  primary.min,
+                  Math.min(
+                    primary.max,
+                    context.remembered.current.get(primary.id) ?? primary.min,
+                  ),
+                )
               : primary.collapsed;
         else return;
         event.preventDefault();

@@ -296,12 +296,21 @@ describe("ResizablePanels", () => {
   });
   it("remembers accepted controlled sizes when a consumer collapses externally", () => {
     const change = vi.fn();
-    const { rerender } = render(
-      <Example collapsible sizes={[37, 63]} onSizesChange={change} />,
+    const controlled = (sizes: number[], minSize = 20) => (
+      <ResizablePanels sizes={sizes} onSizesChange={change}>
+        <ResizablePanel id="a" minSize={minSize} collapsible />
+        <ResizableHandle />
+        <ResizablePanel id="b" minSize={20} />
+      </ResizablePanels>
     );
-    rerender(<Example collapsible sizes={[0, 100]} onSizesChange={change} />);
+    const { rerender } = render(controlled([37, 63]));
+    rerender(controlled([0, 100]));
     fireEvent.keyDown(handle(), { key: "Enter" });
     expect(change).toHaveBeenLastCalledWith([37, 63]);
+    expect(size()).toBe(0);
+    rerender(controlled([0, 100], 45));
+    fireEvent.keyDown(handle(), { key: "Enter" });
+    expect(change).toHaveBeenLastCalledWith([45, 55]);
     expect(size()).toBe(0);
   });
   it.each(["root", "handle"])("disables %s resize input", (target) => {
