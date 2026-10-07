@@ -31,6 +31,36 @@ function readManifest() {
 }
 
 describe("props manifest", () => {
+  it("documents Toolbar boolean defaults and sizes inherited from item variants", () => {
+    const root = readManifest().components.toolbar!.subcomponents.find(
+      (entry) => entry.propsType === "ToolbarProps",
+    )!;
+    expect(root.props).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "wrap",
+          group: "variant",
+          isVariant: true,
+          default: "true",
+          options: ["false", "true"],
+        }),
+        expect.objectContaining({
+          name: "size",
+          group: "variant",
+          isVariant: true,
+          default: "md",
+          options: ["lg", "md", "sm"],
+        }),
+      ]),
+    );
+    // Plain HTML props on child controls must not acquire root variant metadata.
+    const button = readManifest().components.toolbar!.subcomponents.find(
+      (entry) => entry.propsType === "ToolbarButtonProps",
+    )!;
+    expect(
+      button.props.find((prop) => prop.name === "size")?.isVariant,
+    ).not.toBe(true);
+  });
   it("documents every Field primitive and its variant defaults", () => {
     const entries = readManifest().components.field!.subcomponents;
     expect(entries.map((p) => p.propsType).sort()).toEqual(

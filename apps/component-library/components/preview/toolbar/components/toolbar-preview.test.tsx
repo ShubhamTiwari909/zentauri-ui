@@ -48,6 +48,41 @@ function loadRecipe(snippet: string): React.ComponentType {
 }
 
 describe("Toolbar preview", () => {
+  it("keeps gallery samples out of Tab navigation while selectors and the playground remain usable", async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <>
+        <ToolbarPlayground />
+        <button>After gallery</button>
+      </>,
+    );
+    const samples = container.querySelectorAll<HTMLElement>(
+      "[data-toolbar-gallery] [data-slot=toolbar]",
+    );
+    expect(samples).toHaveLength(TOOLBAR_APPEARANCES.length);
+    for (const sample of samples) {
+      expect(sample).toHaveAttribute("inert");
+      expect(
+        [...sample.querySelectorAll<HTMLElement>("[data-toolbar-item]")].every(
+          (item) => item.tabIndex === -1,
+        ),
+      ).toBe(true);
+    }
+    const selectors = screen.getAllByRole("button", {
+      name: /^Select .* appearance$/,
+    });
+    selectors[0]!.focus();
+    await user.tab();
+    expect(selectors[1]).toHaveFocus();
+    selectors.at(-1)!.focus();
+    await user.tab();
+    expect(screen.getByRole("button", { name: "After gallery" })).toHaveFocus();
+    const main = screen.getByRole("toolbar", { name: "Playground commands" });
+    expect(main).not.toHaveAttribute("inert");
+    const bold = within(main).getByRole("button", { name: "Bold" });
+    await user.click(bold);
+    expect(bold).toHaveAttribute("aria-pressed", "true");
+  });
   it("changes orientation and direction through the library Select UI", async () => {
     render(<ToolbarPlayground />);
     fireEvent.click(screen.getByRole("combobox", { name: "Orientation" }));
@@ -134,7 +169,7 @@ describe("Toolbar preview", () => {
     );
     expect(documented).toEqual(names);
     expect(toolbarCssVariables.darkVariableCount).toBe(
-      toolbarCssVariables.darkExamples.length,
+      toolbarCssVariables.lightVariables.length,
     );
     expect(TOOLBAR_APPEARANCES).toEqual(
       Object.keys(readToolbarAppearances(source)),
@@ -146,6 +181,13 @@ describe("Toolbar preview", () => {
     ["vertical", snippets.toolbarVerticalDemoSnippet],
     ["composition", snippets.toolbarCompositionDemoSnippet],
     ["playground", snippets.toolbarPlaygroundSnippet(TOOLBAR_DEFAULT_OPTIONS)],
+    [
+      "vertical playground",
+      snippets.toolbarPlaygroundSnippet({
+        ...TOOLBAR_DEFAULT_OPTIONS,
+        orientation: "vertical",
+      }),
+    ],
   ])(
     "renders the copied %s recipe and moves focus through its managed items",
     async (_name, code) => {
@@ -161,6 +203,7 @@ describe("Toolbar preview", () => {
       expect(new Set(ids).size).toBe(ids.length);
       const roots = screen.getAllByRole("toolbar");
       for (const root of roots) {
+        if (_name === "vertical playground") expect(root).toHaveClass("w-fit");
         const items = [
           ...root.querySelectorAll<HTMLElement>("[data-toolbar-item]"),
         ].filter(

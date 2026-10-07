@@ -10499,6 +10499,7 @@
               "name": "iconOnly",
               "type": "enum",
               "required": false,
+              "default": "true",
               "group": "variant",
               "isVariant": true,
               "options": [
@@ -15540,6 +15541,7 @@
               "name": "disabled",
               "type": "enum",
               "required": false,
+              "default": "false",
               "group": "variant",
               "isVariant": true,
               "options": [
@@ -15793,6 +15795,7 @@
               "name": "ring",
               "type": "enum",
               "required": false,
+              "default": "true",
               "group": "variant",
               "isVariant": true,
               "options": [
@@ -16953,6 +16956,7 @@
               "name": "fade",
               "type": "enum",
               "required": false,
+              "default": "true",
               "group": "variant",
               "isVariant": true,
               "options": [
@@ -20125,6 +20129,7 @@
               "name": "animated",
               "type": "enum",
               "required": false,
+              "default": "false",
               "group": "variant",
               "isVariant": true,
               "options": [
@@ -20227,6 +20232,7 @@
               "name": "striped",
               "type": "enum",
               "required": false,
+              "default": "false",
               "group": "variant",
               "isVariant": true,
               "options": [
@@ -22798,6 +22804,7 @@
               "name": "shadow",
               "type": "enum",
               "required": false,
+              "default": "false",
               "group": "variant",
               "isVariant": true,
               "options": [
@@ -27294,6 +27301,7 @@
               "name": "stickyHeader",
               "type": "enum",
               "required": false,
+              "default": "false",
               "group": "variant",
               "isVariant": true,
               "options": [
@@ -29394,9 +29402,25 @@
               "deprecated": false
             },
             {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
               "name": "wrap",
               "type": "enum",
               "required": false,
+              "default": "true",
               "group": "variant",
               "isVariant": true,
               "options": [
@@ -29420,13 +29444,6 @@
               "required": false,
               "group": "behavior",
               "description": "Wrap arrow navigation at the first and last items. Defaults to true.",
-              "deprecated": false
-            },
-            {
-              "name": "size",
-              "type": "'md' | 'sm' | 'lg' | null | undefined",
-              "required": false,
-              "group": "behavior",
               "deprecated": false
             },
             {

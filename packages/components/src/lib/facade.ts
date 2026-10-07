@@ -193,6 +193,7 @@ const groupSuffixes: Array<[suffix: string, group: string]> = [
   ["Rounded", "rounded"],
   ["Spacing", "spacing"],
   ["Visibility", "visibility"],
+  ["Wrap", "wrap"],
   ["Markers", "marker"],
 ];
 

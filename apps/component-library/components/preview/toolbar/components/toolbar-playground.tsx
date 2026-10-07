@@ -170,6 +170,7 @@ export function ToolbarPlayground() {
               </span>
             </button>
             <Toolbar
+              inert
               aria-label={`${appearance} formatting sample`}
               appearance={appearance}
               size="sm"

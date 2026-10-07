@@ -75,6 +75,9 @@ describe("DesignSystem facade", () => {
     expect(toolbar?.appearances()).toEqual(
       expect.arrayContaining(["subtle", "contrast", "glass", "gradient-blue"]),
     );
+    expect(toolbar?.groups()).toContain("wrap");
+    expect(toolbar?.getVariant("wrap", "true")?.className).toBe("flex-wrap");
+    expect(toolbar?.getVariant("wrap", "false")?.className).toBe("flex-nowrap");
     expect(toolbar?.variables()).toEqual(
       expect.arrayContaining([
         expect.objectContaining({

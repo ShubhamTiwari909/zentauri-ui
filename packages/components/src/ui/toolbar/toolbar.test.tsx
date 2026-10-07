@@ -374,6 +374,37 @@ describe("Toolbar", () => {
     expect(fireEvent.keyDown(menuItem, { key: "ArrowRight" })).toBe(true);
     expect(menuItem).toHaveFocus();
   });
+  it.each(["", "true", "plaintext-only"])(
+    'preserves caret navigation within a contenteditable="%s" host',
+    (contentEditable) => {
+      render(
+        <Toolbar aria-label="Editor tools">
+          <ToolbarItem native={false}>
+            <div contentEditable suppressContentEditableWarning>
+              <span>Editable text</span>
+            </div>
+          </ToolbarItem>
+          <ToolbarButton>Save</ToolbarButton>
+        </Toolbar>,
+      );
+      const text = screen.getByText("Editable text");
+      const editor = text.parentElement!;
+      // HTML also permits the empty value, which React's prop type omits.
+      editor.setAttribute("contenteditable", contentEditable);
+      editor.focus();
+      for (const key of [
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+        "Home",
+        "End",
+      ]) {
+        expect(fireEvent.keyDown(text, { key })).toBe(true);
+        expect(editor).toHaveFocus();
+      }
+    },
+  );
   it("toggles uncontrolled state with click, Enter and Space", async () => {
     const user = userEvent.setup();
     const change = vi.fn();

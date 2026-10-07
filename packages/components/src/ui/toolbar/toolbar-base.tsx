@@ -162,7 +162,7 @@ export function ToolbarBase({
     // Native editing and popup widgets keep keys consumed by their own handlers.
     if (
       target.closest(
-        'input, textarea, select, [contenteditable=""], [contenteditable="true"]',
+        'input, textarea, select, [contenteditable=""], [contenteditable="true"], [contenteditable="plaintext-only"]',
       )
     )
       return;

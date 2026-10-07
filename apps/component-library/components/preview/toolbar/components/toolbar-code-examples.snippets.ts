@@ -88,7 +88,7 @@ export function Commands() {
   const [bold, setBold] = useState(false);
   const [action, setAction] = useState("No action yet.");
   return <div>
-    <Toolbar aria-label="Commands" {...toolbarOptions}>
+    <Toolbar aria-label="Commands" {...toolbarOptions} className={options.orientation === "vertical" ? "w-fit" : undefined}>
       <ToolbarToggle pressed={bold} onPressedChange={setBold}>Bold</ToolbarToggle>
       <ToolbarButton onClick={() => setAction("Saved.")}>Save</ToolbarButton>
       <ToolbarSeparator />
