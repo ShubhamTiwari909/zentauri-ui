@@ -1,8 +1,9 @@
-import { createRef, useState } from "react";
+import { createRef, useContext, useEffect, useState } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { renderToString } from "react-dom/server";
 import { ResizablePanels, ResizablePanel, ResizableHandle } from "./index";
+import { ResizableContext } from "./resizable-context";
 import { zuiResizablePanelsPanelAppearances } from "../../design-system/resizable-panels";
 import { assertNoAxeViolations } from "../../test-utils/axe";
 import type { ResizablePanelsAppearance, ResizablePanelsProps } from "./types";
@@ -312,6 +313,40 @@ describe("ResizablePanels", () => {
     fireEvent.keyDown(handle(), { key: "Enter" });
     expect(change).toHaveBeenLastCalledWith([45, 55]);
     expect(size()).toBe(0);
+  });
+  it("tracks accepted pane changes without rewriting memory on unrelated or equal-value renders", () => {
+    let memory: Map<string, number> | undefined;
+    function MemoryProbe() {
+      const { remembered } = useContext(ResizableContext)!;
+      useEffect(() => {
+        memory = remembered.current;
+      }, [remembered]);
+      return null;
+    }
+    const layout = (stamp: number, sizes = [37, 63]) => (
+      <ResizablePanels sizes={sizes} data-stamp={stamp} data-testid="root">
+        <ResizablePanel id="a" minSize={20} collapsible>
+          <MemoryProbe />
+        </ResizablePanel>
+        <ResizableHandle />
+        <ResizablePanel id="b" minSize={20} />
+      </ResizablePanels>
+    );
+    const { rerender } = render(layout(0));
+    expect(memory!.get("a")).toBe(37);
+    const write = vi.spyOn(memory!, "set");
+    rerender(layout(1));
+    geometry();
+    pointer("pointerdown");
+    pointer("pointerup");
+    expect(write).not.toHaveBeenCalled();
+    rerender(layout(2, [42, 58]));
+    expect(write).toHaveBeenCalledExactlyOnceWith("a", 42);
+    rerender(layout(3, [42, 58]));
+    expect(write).toHaveBeenCalledTimes(1);
+    rerender(layout(4, [0, 100]));
+    expect(write).toHaveBeenCalledTimes(1);
+    expect(memory!.get("a")).toBe(42);
   });
   it.each(["root", "handle"])("disables %s resize input", (target) => {
     render(

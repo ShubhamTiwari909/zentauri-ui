@@ -99,13 +99,6 @@ export function ResizablePanelsBase({
   const [resizing, setResizing] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const remembered = useRef(new Map<string, number>());
-  // Accepted controlled updates can collapse a pane without going through apply.
-  useEffect(() => {
-    panels.forEach((p, i) => {
-      if (p.collapsible && layout[i]! > p.collapsed)
-        remembered.current.set(p.id, layout[i]!);
-    });
-  }, [panels, layout]);
   const apply = (next: number[]) => {
     if (sameSizes(layout, next)) return false;
     panels.forEach((p, i) => {
@@ -180,6 +173,11 @@ export function ResizablePanelBase({
   const { context, index } = useResizableSlot();
   const size = context.sizes[index]!;
   const collapsed = collapsible && size <= collapsedSize;
+  const remembered = context.remembered;
+  // Track accepted sizes, including consumer-controlled changes, for this pane.
+  useEffect(() => {
+    if (collapsible && size > collapsedSize) remembered.current.set(id, size);
+  }, [id, size, collapsible, collapsedSize, remembered]);
   return (
     <div
       {...rest}
