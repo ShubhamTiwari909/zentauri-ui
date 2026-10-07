@@ -32,6 +32,7 @@ export * from "./empty-state";
 export * from "./file-upload";
 export * from "./gauge";
 export * from "./glass-card";
+export * from "./field";
 export * from "./grid";
 export * from "./resizable-panels";
 export * from "./hash-generator";

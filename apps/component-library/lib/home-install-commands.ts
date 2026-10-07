@@ -79,6 +79,7 @@ export const CLI_ADD_COMPONENTS = [
   "dropdown",
   "dynamic-stepper",
   "empty-state",
+  "field",
   "file-upload",
   "gauge",
   "glass-card",

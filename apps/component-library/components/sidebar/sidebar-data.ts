@@ -298,6 +298,7 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "Glass Card",
         href: "/preview/components/glass-card",
       },
+      { title: "Form / Field", href: "/preview/components/field" },
       { title: "Grid", href: "/preview/components/grid" },
       {
         title: "Hash generator",

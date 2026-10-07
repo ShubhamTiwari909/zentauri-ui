@@ -15,6 +15,7 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("activity-feed");
     expect(slugs).toContain("glass-card");
     expect(slugs).toContain("grid");
+    expect(slugs).toContain("field");
     expect(slugs).toContain("resizable-panels");
     expect(slugs).toContain("product-3d");
     expect(slugs).toContain("neural-graph");
@@ -59,6 +60,43 @@ describe("DesignSystem facade", () => {
         expect.objectContaining({
           name: "--zui-resizable-panels-focus-ring-dark",
           pairName: "--zui-resizable-panels-focus-ring",
+        }),
+      ]),
+    );
+  });
+
+  it("discovers Field appearances, slots, and paired form tokens", () => {
+    const field = DesignSystem.getComponent("field");
+    expect(field?.title).toBe("Field");
+    expect(field?.slots()).toEqual(
+      expect.arrayContaining([
+        "root",
+        "label",
+        "description",
+        "error",
+        "group",
+        "legend",
+        "form",
+      ]),
+    );
+    expect(field?.appearances()).toEqual(
+      expect.arrayContaining([
+        "default",
+        "subtle",
+        "contrast",
+        "glass",
+        "gradient-blue",
+      ]),
+    );
+    expect(field?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-field-form-gap",
+          pairName: "--zui-field-form-gap-dark",
+        }),
+        expect.objectContaining({
+          name: "--zui-field-form-gap-dark",
+          pairName: "--zui-field-form-gap",
         }),
       ]),
     );

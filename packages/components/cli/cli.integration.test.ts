@@ -39,6 +39,35 @@ function runCliError(cwd: string, args: string[]): string {
 }
 
 describe("zentauri-ui CLI", () => {
+  it("vendors Field with semantic helpers and its own token dependencies", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-field-"));
+    try {
+      runCli(dir, ["init"]);
+      runCli(dir, ["add", "field"]);
+      const uiRoot = join(dir, "src", "components", "ui", "field");
+      for (const file of [
+        "index.ts",
+        "field.tsx",
+        "field-base.tsx",
+        "types.ts",
+        "variants.ts",
+      ])
+        expect(existsSync(join(uiRoot, file))).toBe(true);
+      expect(readdirSync(uiRoot).some((file) => file.includes(".test."))).toBe(
+        false,
+      );
+      expect(
+        existsSync(join(dir, "src", "components", "design-system", "field.ts")),
+      ).toBe(true);
+      const source = readFileSync(join(uiRoot, "field-base.tsx"), "utf8");
+      expect(source).toContain("useFieldControl");
+      expect(source).not.toContain("@zentauri-ui/");
+      expect(source).not.toContain("framer-motion");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("vendors Resizable Panels with its sizing helpers and compound context", () => {
     const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-resizable-"));
     try {

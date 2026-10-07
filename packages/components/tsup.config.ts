@@ -35,6 +35,7 @@ const uiComponentNames = [
   "dropdown",
   "dynamic-stepper",
   "empty-state",
+  "field",
   "file-upload",
   "gauge",
   "grid",

@@ -274,6 +274,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "field",
+    name: "Form / Field",
+    description:
+      "Connected labels, descriptions, validation errors, native field groups, and responsive input layouts.",
+    href: "/preview/components/field",
+    badge: "Forms",
+  },
+  {
     id: "neural-graph",
     name: "Neural Graph",
     description:
