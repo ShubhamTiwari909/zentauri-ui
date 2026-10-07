@@ -15,6 +15,7 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("activity-feed");
     expect(slugs).toContain("glass-card");
     expect(slugs).toContain("grid");
+    expect(slugs).toContain("resizable-panels");
     expect(slugs).toContain("product-3d");
     expect(slugs).toContain("neural-graph");
     expect(slugs).toContain("orbit-system");
@@ -37,6 +38,29 @@ describe("DesignSystem facade", () => {
     );
     expect(accordion?.groups()).toEqual(
       expect.arrayContaining(["appearance", "size"]),
+    );
+  });
+
+  it("discovers Resizable Panels surfaces and reciprocal handle tokens", () => {
+    const panels = DesignSystem.getComponent("resizable-panels");
+    expect(panels?.title).toBe("Resizable Panels");
+    expect(panels?.slots()).toEqual(
+      expect.arrayContaining(["root", "panel", "handle"]),
+    );
+    expect(panels?.appearances("panel")).toEqual(
+      expect.arrayContaining(["subtle", "contrast", "glass", "gradient-blue"]),
+    );
+    expect(panels?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-resizable-panels-focus-ring",
+          pairName: "--zui-resizable-panels-focus-ring-dark",
+        }),
+        expect.objectContaining({
+          name: "--zui-resizable-panels-focus-ring-dark",
+          pairName: "--zui-resizable-panels-focus-ring",
+        }),
+      ]),
     );
   });
 

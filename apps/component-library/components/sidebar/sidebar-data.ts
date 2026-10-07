@@ -404,6 +404,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/request-timeline-viewer",
       },
       {
+        title: "Resizable Panels",
+        href: "/preview/components/resizable-panels",
+      },
+      {
         title: "Scroll area",
         href: "/preview/components/scroll-area",
       },

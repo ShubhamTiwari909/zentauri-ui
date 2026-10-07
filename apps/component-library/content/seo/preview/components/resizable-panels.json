@@ -1,0 +1,81 @@
+{
+  "category": "Layout",
+  "title": "Resizable Panels component for React and Next.js",
+  "description": "Build adjustable workspaces with horizontal and vertical panels, keyboard and pointer resizing, collapse/restore, constraints, and theme tokens.",
+  "keywords": [
+    "React resizable panels",
+    "split pane",
+    "window splitter",
+    "dashboard layout",
+    "keyboard resizing",
+    "Next.js",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Resizable Panels \u00b7 Zentauri UI",
+    "description": "Accessible adjustable workspaces with themeable panels and handles.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Resizable Panels \u00b7 Zentauri UI",
+    "description": "Nested panels with constrained pointer and keyboard resizing.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/resizable-panels",
+  "headings": {
+    "h1": "Resizable Panels for adjustable workspaces",
+    "h2": ["What it does", "Common use cases", "Accessibility", "FAQ"]
+  },
+  "intro": "Compose adjustable workspaces with ResizablePanels, ResizablePanel, and ResizableHandle. Configure percentage limits and collapse behavior while keeping pane content and persistence in your application.",
+  "useCases": [
+    "Navigation and detail layouts.",
+    "Code editors with preview and console panes.",
+    "Nested dashboard and analytics workspaces.",
+    "Vertical tool panels on narrow screens."
+  ],
+  "faqs": [
+    {
+      "question": "How are panel sizes measured?",
+      "answer": "Sizes are percentage shares of pane space, excluding resize handles. They total 100; dragging adjusts only the adjacent pair. Every panel has a stable DOM id."
+    },
+    {
+      "question": "What keyboard controls are available?",
+      "answer": "Use Left/Right for horizontal layouts or Up/Down for vertical layouts. Shift increases the step by ten. Home/End move to the available limits; Enter collapses or restores the preceding collapsible pane."
+    },
+    {
+      "question": "Does a vertical layout require a height?",
+      "answer": "Yes. Set a height on the group or place it inside a parent that establishes one. Panes scroll independently when their content exceeds the available space."
+    },
+    {
+      "question": "Can I save panel sizes?",
+      "answer": "Use controlled sizes and onSizesChange in your own state. Save onResizeEnd to avoid writing on every pointer movement. The component does not access localStorage during server rendering."
+    },
+    {
+      "question": "What happens to collapsed content?",
+      "answer": "Content remains mounted. A zero-sized pane is inert and hidden from assistive technology; a nonzero collapsed rail remains accessible."
+    },
+    {
+      "question": "What are the composition rules?",
+      "answer": "Use direct alternating Panel, Handle, Panel children. Arrays and fragments are supported. Each nested group owns independent state. Expanded minima must total at most 100 and maxima at least 100; invalid composition or constraints throw an actionable error."
+    },
+    {
+      "question": "Does it need an animation dependency?",
+      "answer": "No. The static entry uses React and native pointer capture. It respects horizontal RTL direction and supports mouse, pen, and touch."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Horizontal and vertical split layouts with controlled or uncontrolled percentages, per-panel bounds, collapse/restore, and independently themed panel and handle surfaces."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Handles expose focusable separator semantics, accessible labels, value bounds, and controls relationships. Keep panel IDs unique in the document and label each handle for its primary pane."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

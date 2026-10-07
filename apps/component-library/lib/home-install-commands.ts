@@ -109,6 +109,7 @@ export const CLI_ADD_COMPONENTS = [
   "rating",
   "relative-time",
   "request-timeline-viewer",
+  "resizable-panels",
   "scroll-area",
   "search",
   "secret-reveal",

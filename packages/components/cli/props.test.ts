@@ -14,6 +14,7 @@ type PropsManifest = {
         propsType: string;
         props: Array<{
           name: string;
+          required?: boolean;
           options?: string[];
           default?: string;
           description?: string;
@@ -30,6 +31,75 @@ function readManifest() {
 }
 
 describe("props manifest", () => {
+  it("documents all Resizable Panels compound props and defaults", () => {
+    const component = readManifest().components["resizable-panels"];
+    const root = component?.subcomponents.find(
+      (p) => p.propsType === "ResizablePanelsProps",
+    );
+    const panel = component?.subcomponents.find(
+      (p) => p.propsType === "ResizablePanelProps",
+    );
+    const handle = component?.subcomponents.find(
+      (p) => p.propsType === "ResizableHandleProps",
+    );
+    const native = ["children", "className", "id", "onClick", "style", "title"];
+    for (const [entry, names, defaults] of [
+      [
+        root,
+        [
+          "orientation",
+          "defaultSizes",
+          "disabled",
+          "keyboardStep",
+          "onResizeEnd",
+          "onSizesChange",
+          "sizes",
+        ],
+        { orientation: "horizontal", disabled: "false", keyboardStep: "2" },
+      ],
+      [
+        panel,
+        [
+          "appearance",
+          "padding",
+          "collapsedSize",
+          "collapsible",
+          "maxSize",
+          "minSize",
+        ],
+        {
+          appearance: "default",
+          padding: "none",
+          collapsedSize: "0",
+          collapsible: "false",
+          maxSize: "100",
+          minSize: "10",
+        },
+      ],
+      [
+        handle,
+        ["appearance", "size", "disabled", "withGrip"],
+        {
+          appearance: "default",
+          size: "md",
+          disabled: "false",
+          withGrip: "true",
+        },
+      ],
+    ] as const) {
+      expect(entry?.props.map((p) => p.name).sort()).toEqual(
+        [...native, ...names].sort(),
+      );
+      expect(
+        Object.fromEntries(
+          entry!.props
+            .filter((p) => p.default !== undefined)
+            .map((p) => [p.name, p.default]),
+        ),
+      ).toEqual(defaults);
+    }
+    expect(panel?.props.find((p) => p.name === "id")?.required).toBe(true);
+  });
   it("documents Grid responsive configuration and item appearances", () => {
     const grid = readManifest().components.grid;
     const root = grid?.subcomponents.find(
