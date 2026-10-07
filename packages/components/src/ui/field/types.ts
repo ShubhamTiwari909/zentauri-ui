@@ -31,7 +31,7 @@ export type FieldProps = Omit<ComponentPropsWithRef<"div">, "children"> &
     label?: ReactNode;
     /** Instructions automatically connected through aria-describedby. */
     description?: ReactNode;
-    /** Visible announced error; implies invalid unless invalid is explicitly false. */
+    /** Visible error connected through aria-describedby; implies invalid unless invalid is explicitly false. */
     error?: ReactNode;
     /** Override the state inferred from error. Does not run validation. */
     invalid?: boolean;

@@ -97,7 +97,10 @@ describe("Field", () => {
       "External help Instructions Invalid email",
     );
     expect(input).toHaveAttribute("aria-invalid", "true");
-    expect(screen.getByRole("alert")).toHaveTextContent("Invalid email");
+    expect(screen.getByText("Invalid email").closest("p")).not.toHaveAttribute(
+      "role",
+    );
+    expect(screen.queryByRole("alert")).toBeNull();
   });
   it("updates relationships when descriptions and errors appear and disappear", () => {
     const { rerender } = render(
@@ -147,7 +150,7 @@ describe("Field", () => {
       </Field>,
     );
     expect(screen.getByRole("textbox")).not.toHaveAttribute("aria-invalid");
-    expect(screen.getByRole("alert")).toBeVisible();
+    expect(screen.getByText("Server message")).toBeVisible();
   });
   it("preserves a control's explicit accessible name and invalid reason", () => {
     render(
@@ -310,6 +313,10 @@ describe("Field", () => {
     );
     expect(container.firstChild).toHaveClass("grid-cols-1");
     expect(container.querySelector("label")).toBeNull();
+    expect(container.firstChild).toHaveAttribute(
+      "data-orientation",
+      "vertical",
+    );
   });
   it("preserves zero in every optional text slot", () => {
     const { container } = render(
@@ -613,6 +620,42 @@ describe("Form and field primitives", () => {
     expect(screen.getByRole("status")).toBeVisible();
     expect(screen.queryByRole("alert")).toBeNull();
   });
+  it("keeps default inline errors passive and connected when updated", () => {
+    const { rerender, container } = render(
+      <Field label="Name" error="Required">
+        <FieldControl>
+          <input />
+        </FieldControl>
+      </Field>,
+    );
+    const input = screen.getByRole("textbox", { name: "Name" });
+    const errorId = input.getAttribute("aria-describedby")!;
+    expect(input).toHaveAccessibleDescription("Required");
+    expect(
+      container.querySelector('[data-slot="field-error"]'),
+    ).not.toHaveAttribute("role");
+    expect(container.querySelector("[aria-live]")).toBeNull();
+    rerender(
+      <Field label="Name" error="Try a longer name">
+        <FieldControl>
+          <input />
+        </FieldControl>
+      </Field>,
+    );
+    expect(input).toHaveAccessibleDescription("Try a longer name");
+    expect(input).toHaveAttribute("aria-describedby", errorId);
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+  it("allows explicit live announcements on a standalone error", () => {
+    const { rerender } = render(
+      <FieldError role="alert">Failed to save</FieldError>,
+    );
+    expect(screen.getByRole("alert")).toHaveTextContent("Failed to save");
+    rerender(<FieldError>Failed to save</FieldError>);
+    expect(screen.queryByRole("alert")).toBeNull();
+    expect(screen.getByText("Failed to save")).toBeVisible();
+  });
+
   it("keeps nested fields independent", () => {
     render(
       <FieldGroup legend="Address">

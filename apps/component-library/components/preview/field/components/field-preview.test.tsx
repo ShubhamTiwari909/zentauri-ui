@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import * as React from "react";
 import * as jsxRuntime from "react/jsx-runtime";
+import * as reactDom from "react-dom";
 import { render, screen, fireEvent, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
@@ -12,7 +13,7 @@ import * as checkbox from "@zentauri-ui/zentauri-components/ui/checkbox";
 import * as grid from "@zentauri-ui/zentauri-components/ui/grid";
 import * as select from "@zentauri-ui/zentauri-components/ui/select";
 import { FieldPlayground } from "./field-playground";
-import { FieldFormDemo } from "./field-code-examples-demo";
+import { FieldFormDemo, FieldSelectDemo } from "./field-code-examples-demo";
 import {
   FIELD_APPEARANCES,
   FIELD_DEFAULT_OPTIONS,
@@ -26,22 +27,61 @@ vi.mock("@/components/code-showcase/PreviewCodeShowcase", () => ({
   ),
 }));
 
+function loadRecipe(snippet: string): React.ComponentType {
+  const result = ts.transpileModule(snippet, {
+    fileName: "recipe.tsx",
+    reportDiagnostics: true,
+    compilerOptions: {
+      module: ts.ModuleKind.CommonJS,
+      jsx: ts.JsxEmit.ReactJSX,
+    },
+  });
+  expect(result.diagnostics).toEqual([]);
+  const exports: Record<string, React.ComponentType> = {};
+  const dependencies: Record<string, unknown> = {
+    react: React,
+    "react/jsx-runtime": jsxRuntime,
+    "react-dom": reactDom,
+    "@zentauri-ui/zentauri-components/ui/field": fields,
+    "@zentauri-ui/zentauri-components/ui/inputs": inputs,
+    "@zentauri-ui/zentauri-components/ui/checkbox": checkbox,
+    "@zentauri-ui/zentauri-components/ui/grid": grid,
+    "@zentauri-ui/zentauri-components/ui/select": select,
+  };
+  new Function("require", "exports", result.outputText)((name: string) => {
+    if (!(name in dependencies))
+      throw new Error(`Unexpected dependency ${name}`);
+    return dependencies[name];
+  }, exports);
+  return Object.values(exports)[0]!;
+}
+
 describe("Field preview", () => {
   it("submits only valid email and focuses the failed control", async () => {
     const user = userEvent.setup();
     render(<FieldFormDemo />);
-    await user.click(screen.getByRole("button", { name: "Save contact" }));
     const input = screen.getByRole("textbox", { name: "Contact email" });
+    const focusDescriptions: string[] = [];
+    input.addEventListener("focus", () => {
+      focusDescriptions.push(
+        (input.getAttribute("aria-describedby") ?? "")
+          .split(" ")
+          .map((id) => document.getElementById(id)?.textContent ?? "")
+          .join(" "),
+      );
+    });
+    await user.click(screen.getByRole("button", { name: "Save contact" }));
+    expect(focusDescriptions[0]).toContain("Enter your email address.");
     expect(input).toHaveFocus();
     expect(input).toHaveAttribute("aria-invalid", "true");
-    expect(screen.getByRole("alert")).toHaveTextContent(
-      "Enter your email address.",
+    expect(screen.getByText("Enter your email address.")).toBeVisible();
+    expect(screen.queryByRole("alert")).toBeNull();
+    expect(input).toHaveAccessibleDescription(
+      "Try submitting an empty or invalid address. Enter your email address.",
     );
     await user.type(input, "invalid");
     await user.click(screen.getByRole("button", { name: "Save contact" }));
-    expect(screen.getByRole("alert")).toHaveTextContent(
-      "Enter a valid email address.",
-    );
+    expect(screen.getByText("Enter a valid email address.")).toBeVisible();
     await user.clear(input);
     await user.type(input, "ada@example.com");
     await user.click(screen.getByRole("button", { name: "Save contact" }));
@@ -50,6 +90,37 @@ describe("Field preview", () => {
       "Saved contact for ada@example.com.",
     );
   });
+  it.each(["live", "copied"] as const)(
+    "submits only the selected team in the %s recipe",
+    async (kind) => {
+      const Recipe =
+        kind === "live"
+          ? FieldSelectDemo
+          : loadRecipe(snippets.fieldSelectDemoSnippet);
+      const user = userEvent.setup();
+      render(
+        <form aria-label="Team selection">
+          <Recipe />
+        </form>,
+      );
+      const trigger = screen.getByRole("combobox", { name: "Team" });
+      await user.click(trigger);
+      expect(screen.getByRole("listbox")).toHaveAttribute(
+        "aria-multiselectable",
+        "false",
+      );
+      await user.click(screen.getByRole("option", { name: "Design" }));
+      await user.click(trigger);
+      await user.click(screen.getByRole("option", { name: "Engineering" }));
+      const form = screen.getByRole("form", {
+        name: "Team selection",
+      }) as HTMLFormElement;
+      expect(new FormData(form).getAll("team")).toEqual(["engineering"]);
+      expect(trigger).toHaveTextContent("Engineering");
+      expect(trigger).not.toHaveTextContent("Design");
+    },
+  );
+
   it("changes states, selects appearances and resets the live field", async () => {
     const user = userEvent.setup();
     const { container } = render(<FieldPlayground />);
@@ -181,33 +252,7 @@ describe("Field preview", () => {
         disabled: true,
       }),
     ];
-    const components = recipes.map((snippet) => {
-      const result = ts.transpileModule(snippet, {
-        fileName: "recipe.tsx",
-        reportDiagnostics: true,
-        compilerOptions: {
-          module: ts.ModuleKind.CommonJS,
-          jsx: ts.JsxEmit.ReactJSX,
-        },
-      });
-      expect(result.diagnostics).toEqual([]);
-      const exports: Record<string, React.ComponentType> = {};
-      const dependencies: Record<string, unknown> = {
-        react: React,
-        "react/jsx-runtime": jsxRuntime,
-        "@zentauri-ui/zentauri-components/ui/field": fields,
-        "@zentauri-ui/zentauri-components/ui/inputs": inputs,
-        "@zentauri-ui/zentauri-components/ui/checkbox": checkbox,
-        "@zentauri-ui/zentauri-components/ui/grid": grid,
-        "@zentauri-ui/zentauri-components/ui/select": select,
-      };
-      new Function("require", "exports", result.outputText)((name: string) => {
-        if (!(name in dependencies))
-          throw new Error(`Unexpected dependency ${name}`);
-        return dependencies[name];
-      }, exports);
-      return Object.values(exports)[0]!;
-    });
+    const components = recipes.map(loadRecipe);
     const { container } = render(
       <>
         {components.map((Recipe, index) => (

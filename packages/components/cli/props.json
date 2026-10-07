@@ -13527,7 +13527,7 @@
               "type": "ReactNode",
               "required": false,
               "group": "behavior",
-              "description": "Visible announced error; implies invalid unless invalid is explicitly false.",
+              "description": "Visible error connected through aria-describedby; implies invalid unless invalid is explicitly false.",
               "deprecated": false
             },
             {

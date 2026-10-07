@@ -94,6 +94,9 @@ export function FieldBase({
     : undefined;
   const errorId = hasContent(error) ? `${id}-error` : undefined;
   const isInvalid = invalid ?? hasContent(error);
+  const effectiveOrientation = labelId
+    ? (orientation ?? "vertical")
+    : "vertical";
   const control: FieldControlAttributes = {
     id,
     disabled,
@@ -110,12 +113,12 @@ export function FieldBase({
         data-invalid={isInvalid ? "true" : undefined}
         data-disabled={disabled ? "true" : undefined}
         data-required={required ? "true" : undefined}
-        data-orientation={orientation ?? "vertical"}
+        data-orientation={effectiveOrientation}
         className={cn(
           fieldVariants({
             appearance,
             size,
-            orientation: hasContent(label) ? orientation : "vertical",
+            orientation: effectiveOrientation,
           }),
           className,
         )}
@@ -208,7 +211,7 @@ export function FieldDescriptionBase({
 export function FieldErrorBase({
   className,
   children,
-  role = "alert",
+  role,
   ...props
 }: FieldErrorProps) {
   if (!hasContent(children)) return null;

@@ -62,8 +62,10 @@ export default function FieldPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
           automatically. The validation recipe uses noValidate intentionally,
           reads native validity, and focuses the failed control. Keep visible
           error messages clear and connect them to their controls. Render errors
-          after validation; FieldError announces newly inserted content through
-          role=alert.
+          after validation. Inline Field errors are passive descriptions, read
+          with the control when focused. Standalone FieldError supports an
+          explicit role=alert for consumer-owned notifications; avoid announcing
+          the same message through both a live region and a focused description.
         </p>
         <p>
           FieldGroup renders a native fieldset with an optional legend and

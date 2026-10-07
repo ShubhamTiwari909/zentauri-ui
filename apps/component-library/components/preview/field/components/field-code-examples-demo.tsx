@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import {
   Form,
   Field,
@@ -45,12 +46,15 @@ export function FieldFormDemo() {
         event.preventDefault();
         const input = emailRef.current!;
         if (!input.checkValidity()) {
-          setError(
-            input.validity.valueMissing
-              ? "Enter your email address."
-              : "Enter a valid email address.",
-          );
-          setSaved("");
+          // Connect the error before focusing so its description is available immediately.
+          flushSync(() => {
+            setError(
+              input.validity.valueMissing
+                ? "Enter your email address."
+                : "Enter a valid email address.",
+            );
+            setSaved("");
+          });
           input.focus();
           return;
         }
@@ -174,7 +178,7 @@ export function FieldSelectDemo() {
       description="A custom Select uses the Field control ID on its root."
     >
       {({ id }) => (
-        <Select triggerId={id} value={team} onChange={setTeam}>
+        <Select multiple={false} triggerId={id} value={team} onChange={setTeam}>
           <FieldControl native={false}>
             <SelectTrigger role="combobox" variant="outline" className="w-full">
               <SelectValue placeholder="Choose a team" />
