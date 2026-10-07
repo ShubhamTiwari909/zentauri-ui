@@ -1,0 +1,82 @@
+{
+  "category": "Layout",
+  "title": "Responsive Grid component for React and Next.js",
+  "description": "Compose typed CSS Grid layouts with responsive columns, auto-fit and auto-fill sizing, item spans, named areas, and themeable surfaces.",
+  "keywords": [
+    "React grid component",
+    "responsive grid",
+    "CSS Grid",
+    "Next.js",
+    "auto-fit",
+    "dashboard layout",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Grid · Zentauri UI",
+    "description": "Flexible CSS Grid layouts with responsive configuration and themeable item surfaces.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Grid · Zentauri UI",
+    "description": "Responsive columns, auto sizing, spans, and named areas for React.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/grid",
+  "headings": {
+    "h1": "Flexible Grid for responsive layouts",
+    "h2": ["What it does", "Common use cases", "Accessibility", "FAQ"]
+  },
+  "intro": "Build dashboards, forms, and card collections with a CSS-driven Grid. Configure responsive layouts and item placement without measuring the viewport in JavaScript. Keep arbitrary React content and native controls inside neutral or styled items.",
+  "useCases": [
+    "Responsive dashboards with mobile-safe spans.",
+    "Card collections that fit their available container width.",
+    "Forms and account sections with named areas.",
+    "Nested layouts with shared spacing and appearance tokens."
+  ],
+  "faqs": [
+    {
+      "question": "What makes Grid dynamic?",
+      "answer": "CSS responds to available space and viewport breakpoint variants. Consumers filter, sort, insert, or remove keyed children with normal React state; Grid does not maintain a separate data model."
+    },
+    {
+      "question": "How does Grid differ from Bento Grid or DataTable?",
+      "answer": "Grid provides neutral responsive layout and placement. Bento Grid adds styled feature tiles, expansion, and detail interactions. DataTable provides tabular record behavior such as sorting and selection."
+    },
+    {
+      "question": "Does Grid require Framer Motion?",
+      "answer": "No. The static grid entry has no animation dependency. Reflow animation, drag, resize, and persistence are not part of this initial release."
+    },
+    {
+      "question": "Are breakpoints based on the viewport or the container?",
+      "answer": "Responsive maps use the consumer's Tailwind viewport breakpoints. Auto-fit and auto-fill layouts size columns to the available parent width without breakpoint maps or JavaScript observers."
+    },
+    {
+      "question": "How do auto-fit and auto-fill differ?",
+      "answer": "Auto-fit collapses empty repeated tracks, letting occupied tracks grow. Auto-fill retains empty tracks. Auto layouts support ordinary span-1 items and full-width items; wider numeric spans and explicit column starts normalize to ordinary placement."
+    },
+    {
+      "question": "How do item spans behave on mobile?",
+      "answer": "By default, items stack one per row below the consumer's sm breakpoint, resetting spans, starts, and named areas. Set stackOnMobile={false} to retain the configured mobile layout. From sm upward, the declared layout and placement resume. Consumer style overrides take precedence."
+    },
+    {
+      "question": "Does CSS Grid require role=grid?",
+      "answer": "No. This is a layout component, not an interactive ARIA grid widget. Native list or section semantics and child controls remain available. Explicit placement, dense flow, and named areas can change visual order; keep a meaningful DOM reading sequence."
+    },
+    {
+      "question": "How do I configure Tailwind scanning?",
+      "answer": "Add an @source path to the installed component package relative to your stylesheet. If you vendor Grid through the CLI, include the resulting source folder in Tailwind's scan scope."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Grid supports fixed columns, auto-fit/auto-fill layouts, and custom templates with named areas. GridItem supports responsive spans and starts, optional surfaces, padding, and self-alignment. Native props and refs are retained."
+    },
+    { "heading": "Common use cases", "body": "" },
+    {
+      "heading": "Accessibility",
+      "body": "Use Grid as a list with li items or a labeled section when appropriate. Grid does not add focus stops or intercept child keyboard events. Dense flow and explicit placement are opt-in; keep DOM order meaningful for keyboard and screen-reader users."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

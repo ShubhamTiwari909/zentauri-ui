@@ -82,6 +82,7 @@ const componentSlugs = [
   "buttons",
   "card",
   "glass-card",
+  "grid",
   "checkbox",
   "command",
   "context-menu",
