@@ -21,6 +21,7 @@ import {
   panelConstraint,
   resizeIntervals,
   resizePair,
+  stepResizePair,
   sameSizes,
 } from "./resize-layout";
 import {
@@ -98,6 +99,13 @@ export function ResizablePanelsBase({
   const [resizing, setResizing] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const remembered = useRef(new Map<string, number>());
+  // Accepted controlled updates can collapse a pane without going through apply.
+  useEffect(() => {
+    panels.forEach((p, i) => {
+      if (p.collapsible && layout[i]! > p.collapsed)
+        remembered.current.set(p.id, layout[i]!);
+    });
+  }, [panels, layout]);
   const apply = (next: number[]) => {
     if (sameSizes(layout, next)) return false;
     panels.forEach((p, i) => {
@@ -306,10 +314,20 @@ export function ResizableHandleBase({
             const r = el.getBoundingClientRect();
             return sum + (horizontal ? r.width : r.height);
           }, 0);
+        const computed = getComputedStyle(root);
+        const pixels = (value: string) => parseFloat(value) || 0;
         const length =
           (horizontal
-            ? rect.width - root.clientLeft * 2
-            : rect.height - root.clientTop * 2) - handleLength;
+            ? rect.width -
+              pixels(computed.borderLeftWidth) -
+              pixels(computed.borderRightWidth) -
+              pixels(computed.paddingLeft) -
+              pixels(computed.paddingRight)
+            : rect.height -
+              pixels(computed.borderTopWidth) -
+              pixels(computed.borderBottomWidth) -
+              pixels(computed.paddingTop) -
+              pixels(computed.paddingBottom)) - handleLength;
         if (length <= 0) return;
         event.preventDefault();
         event.currentTarget.focus();
@@ -318,8 +336,7 @@ export function ResizableHandleBase({
           id: event.pointerId,
           coordinate: horizontal ? event.clientX : event.clientY,
           length,
-          sign:
-            horizontal && getComputedStyle(root).direction === "rtl" ? -1 : 1,
+          sign: horizontal && computed.direction === "rtl" ? -1 : 1,
           start: [...context.sizes],
           last: [...context.sizes],
           element: event.currentTarget,
@@ -370,11 +387,12 @@ export function ResizableHandleBase({
           context.root.current &&
           getComputedStyle(context.root.current).direction === "rtl";
         const step = context.keyboardStep * (event.shiftKey ? 10 : 1);
-        let desired: number;
+        let delta = 0;
+        let desired = context.sizes[index]!;
         if (event.key === (horizontal ? "ArrowRight" : "ArrowDown"))
-          desired = context.sizes[index]! + step * (rtl ? -1 : 1);
+          delta = step * (rtl ? -1 : 1);
         else if (event.key === (horizontal ? "ArrowLeft" : "ArrowUp"))
-          desired = context.sizes[index]! - step * (rtl ? -1 : 1);
+          delta = -step * (rtl ? -1 : 1);
         else if (event.key === "Home") desired = min;
         else if (event.key === "End") desired = max;
         else if (event.key === "Enter" && primary.collapsible)
@@ -384,7 +402,9 @@ export function ResizableHandleBase({
               : primary.collapsed;
         else return;
         event.preventDefault();
-        const next = resizePair(context.panels, context.sizes, index, desired);
+        const next = delta
+          ? stepResizePair(context.panels, context.sizes, index, delta)
+          : resizePair(context.panels, context.sizes, index, desired);
         // A toggle must not resize an expanded pane if collapse is infeasible.
         if (
           event.key === "Enter" &&

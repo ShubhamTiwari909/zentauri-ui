@@ -14,6 +14,7 @@ type PropsManifest = {
         propsType: string;
         props: Array<{
           name: string;
+          required?: boolean;
           options?: string[];
           default?: string;
           description?: string;
@@ -41,23 +42,63 @@ describe("props manifest", () => {
     const handle = component?.subcomponents.find(
       (p) => p.propsType === "ResizableHandleProps",
     );
-    expect(root?.props).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ name: "orientation", default: "horizontal" }),
-        expect.objectContaining({ name: "sizes" }),
-        expect.objectContaining({ name: "onResizeEnd" }),
-      ]),
-    );
-    expect(panel?.props).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ name: "id", required: true }),
-        expect.objectContaining({ name: "minSize", default: "10" }),
-        expect.objectContaining({ name: "collapsible", default: "false" }),
-      ]),
-    );
-    expect(handle?.props.map((p) => p.name)).toEqual(
-      expect.arrayContaining(["size", "appearance", "withGrip", "disabled"]),
-    );
+    const native = ["children", "className", "id", "onClick", "style", "title"];
+    for (const [entry, names, defaults] of [
+      [
+        root,
+        [
+          "orientation",
+          "defaultSizes",
+          "disabled",
+          "keyboardStep",
+          "onResizeEnd",
+          "onSizesChange",
+          "sizes",
+        ],
+        { orientation: "horizontal", disabled: "false", keyboardStep: "2" },
+      ],
+      [
+        panel,
+        [
+          "appearance",
+          "padding",
+          "collapsedSize",
+          "collapsible",
+          "maxSize",
+          "minSize",
+        ],
+        {
+          appearance: "default",
+          padding: "none",
+          collapsedSize: "0",
+          collapsible: "false",
+          maxSize: "100",
+          minSize: "10",
+        },
+      ],
+      [
+        handle,
+        ["appearance", "size", "disabled", "withGrip"],
+        {
+          appearance: "default",
+          size: "md",
+          disabled: "false",
+          withGrip: "true",
+        },
+      ],
+    ] as const) {
+      expect(entry?.props.map((p) => p.name).sort()).toEqual(
+        [...native, ...names].sort(),
+      );
+      expect(
+        Object.fromEntries(
+          entry!.props
+            .filter((p) => p.default !== undefined)
+            .map((p) => [p.name, p.default]),
+        ),
+      ).toEqual(defaults);
+    }
+    expect(panel?.props.find((p) => p.name === "id")?.required).toBe(true);
   });
   it("documents Grid responsive configuration and item appearances", () => {
     const grid = readManifest().components.grid;

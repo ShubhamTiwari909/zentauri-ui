@@ -141,3 +141,27 @@ export function resizePair(
   result[index + 1] = sizes[index]! + sizes[index + 1]! - nearest;
   return result;
 }
+
+/** Step across collapsed gaps in the requested keyboard direction. */
+export function stepResizePair(
+  panels: readonly PanelConstraint[],
+  sizes: readonly number[],
+  index: number,
+  delta: number,
+): number[] {
+  const ranges = resizeIntervals(panels, sizes, index);
+  if (!ranges.length || !Number.isFinite(delta) || delta === 0)
+    return [...sizes];
+  const desired = sizes[index]! + delta;
+  const targets = ranges
+    .filter(([min, max]) => (delta > 0 ? max >= desired : min <= desired))
+    .map(([min, max]) => Math.max(min, Math.min(max, desired)));
+  const target = targets.length
+    ? delta > 0
+      ? Math.min(...targets)
+      : Math.max(...targets)
+    : delta > 0
+      ? Math.max(...ranges.map(([, max]) => max))
+      : Math.min(...ranges.map(([min]) => min));
+  return resizePair(panels, sizes, index, target);
+}

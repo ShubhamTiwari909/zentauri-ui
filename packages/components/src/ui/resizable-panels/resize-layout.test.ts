@@ -5,6 +5,7 @@ import {
   resizeIntervals,
   resizePair,
   sameSizes,
+  stepResizePair,
 } from "./resize-layout";
 const panel = (id: string, extra = {}) => panelConstraint({ id, ...extra });
 describe("ResizablePanels sizing", () => {
@@ -94,6 +95,22 @@ describe("ResizablePanels sizing", () => {
     expect(
       resizePair([panels[0]!, panel("b", { maxSize: 80 })], [30, 70], 0, 5),
     ).toEqual([20, 80]);
+  });
+  it("steps across either collapsed gap without changing pointer snapping", () => {
+    const panels = [
+      panel("a", { collapsible: true, minSize: 20, collapsedSize: 5 }),
+      panel("b", { collapsible: true, minSize: 20, collapsedSize: 5 }),
+    ];
+    expect(stepResizePair(panels, [5, 95], 0, 2)).toEqual([20, 80]);
+    expect(stepResizePair(panels, [20, 80], 0, -2)).toEqual([5, 95]);
+    expect(stepResizePair(panels, [80, 20], 0, 2)).toEqual([95, 5]);
+    expect(stepResizePair(panels, [95, 5], 0, -2)).toEqual([80, 20]);
+    expect(stepResizePair(panels, [50, 50], 0, 2)).toEqual([52, 48]);
+    expect(stepResizePair(panels, [50, 50], 0, 100)).toEqual([95, 5]);
+    expect(stepResizePair(panels, [50, 50], 0, -100)).toEqual([5, 95]);
+    expect(resizePair(panels, [5, 95], 0, 7)).toEqual([5, 95]);
+    expect(stepResizePair(panels, [5, 95], 0, NaN)).toEqual([5, 95]);
+    expect(stepResizePair(panels, [5, 95], 1, 2)).toEqual([5, 95]);
   });
   it("ignores invalid targets, missing pairs, and tiny floating-point drift", () => {
     const panels = [panel("a"), panel("b")];

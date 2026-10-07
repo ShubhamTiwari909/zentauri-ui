@@ -124,7 +124,19 @@ function AppearanceCard({
 export function ResizablePanelsPlayground() {
   const [options, setOptions] = useState<PanelsOptions>(PANELS_DEFAULT_OPTIONS);
   const [sizes, setSizes] = useState([35, 65]);
+  const [expandedSize, setExpandedSize] = useState(35);
+  const [minDraft, setMinDraft] = useState(
+    String(PANELS_DEFAULT_OPTIONS.minSize),
+  );
+  const [maxDraft, setMaxDraft] = useState(
+    String(PANELS_DEFAULT_OPTIONS.maxSize),
+  );
   const [completed, setCompleted] = useState<number[] | null>(null);
+  const changeSizes = (next: number[]) => {
+    if (sizes[0]! > 0) setExpandedSize(sizes[0]!);
+    if (next[0]! > 0) setExpandedSize(next[0]!);
+    setSizes(next);
+  };
   const patch = <K extends keyof PanelsOptions>(
     key: K,
     value: PanelsOptions[K],
@@ -138,6 +150,18 @@ export function ResizablePanelsPlayground() {
           : Math.max(next.minSize, Math.min(next.maxSize, current[0] ?? 35));
       return [first, 100 - first];
     });
+  };
+  const commitLimit = (key: "minSize" | "maxSize", draft: string) => {
+    const parsed = draft.trim() === "" ? NaN : Number(draft);
+    const value = Number.isFinite(parsed)
+      ? Math.max(
+          key === "minSize" ? 5 : 50,
+          Math.min(key === "minSize" ? 45 : 90, parsed),
+        )
+      : options[key];
+    if (key === "minSize") setMinDraft(String(value));
+    else setMaxDraft(String(value));
+    patch(key, value);
   };
   return (
     <div className="mt-6 space-y-6">
@@ -185,13 +209,12 @@ export function ResizablePanelsPlayground() {
             type="number"
             min={5}
             max={45}
-            value={options.minSize}
-            onChange={(e) =>
-              patch(
-                "minSize",
-                Math.max(5, Math.min(45, Number(e.target.value) || 5)),
-              )
-            }
+            value={minDraft}
+            onChange={(e) => setMinDraft(e.target.value)}
+            onBlur={() => commitLimit("minSize", minDraft)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") e.currentTarget.blur();
+            }}
           />
         </label>
         <label className="flex flex-col gap-1.5 text-xs font-semibold">
@@ -201,13 +224,12 @@ export function ResizablePanelsPlayground() {
             type="number"
             min={50}
             max={90}
-            value={options.maxSize}
-            onChange={(e) =>
-              patch(
-                "maxSize",
-                Math.max(50, Math.min(90, Number(e.target.value) || 50)),
-              )
-            }
+            value={maxDraft}
+            onChange={(e) => setMaxDraft(e.target.value)}
+            onBlur={() => commitLimit("maxSize", maxDraft)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") e.currentTarget.blur();
+            }}
           />
         </label>
         <OptionSelect
@@ -244,12 +266,18 @@ export function ResizablePanelsPlayground() {
           type="button"
           disabled={!options.collapsible || options.disabled}
           onClick={() =>
-            setSizes(
+            changeSizes(
               sizes[0] === 0
                 ? [
-                    Math.max(options.minSize, Math.min(options.maxSize, 35)),
+                    Math.max(
+                      options.minSize,
+                      Math.min(options.maxSize, expandedSize),
+                    ),
                     100 -
-                      Math.max(options.minSize, Math.min(options.maxSize, 35)),
+                      Math.max(
+                        options.minSize,
+                        Math.min(options.maxSize, expandedSize),
+                      ),
                   ]
                 : [0, 100],
             )
@@ -263,6 +291,9 @@ export function ResizablePanelsPlayground() {
           onClick={() => {
             setOptions(PANELS_DEFAULT_OPTIONS);
             setSizes([35, 65]);
+            setExpandedSize(35);
+            setMinDraft(String(PANELS_DEFAULT_OPTIONS.minSize));
+            setMaxDraft(String(PANELS_DEFAULT_OPTIONS.maxSize));
             setCompleted(null);
           }}
         >
@@ -283,7 +314,7 @@ export function ResizablePanelsPlayground() {
           <PanelsPlaygroundDemo
             options={options}
             sizes={sizes}
-            onSizesChange={setSizes}
+            onSizesChange={changeSizes}
             onResizeEnd={setCompleted}
           />
         </div>

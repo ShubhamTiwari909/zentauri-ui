@@ -233,6 +233,77 @@ describe("ResizablePanels", () => {
     expect(size()).toBe(50);
     expect(change).not.toHaveBeenCalled();
   });
+  it.each([
+    {
+      orientation: "horizontal",
+      dir: "ltr",
+      collapsedSize: 0,
+      expand: "ArrowRight",
+      shrink: "ArrowLeft",
+    },
+    {
+      orientation: "horizontal",
+      dir: "rtl",
+      collapsedSize: 0,
+      expand: "ArrowLeft",
+      shrink: "ArrowRight",
+    },
+    {
+      orientation: "vertical",
+      dir: "ltr",
+      collapsedSize: 5,
+      expand: "ArrowDown",
+      shrink: "ArrowUp",
+    },
+  ] as const)(
+    "crosses collapsed gaps on the first keypress in $orientation/$dir",
+    ({ orientation, dir, collapsedSize, expand, shrink }) => {
+      render(
+        <ResizablePanels
+          orientation={orientation}
+          dir={dir}
+          style={{ direction: dir }}
+          defaultSizes={[collapsedSize, 100 - collapsedSize]}
+        >
+          <ResizablePanel
+            id="a"
+            collapsible
+            minSize={20}
+            collapsedSize={collapsedSize}
+          />
+          <ResizableHandle />
+          <ResizablePanel id="b" minSize={0} />
+        </ResizablePanels>,
+      );
+      fireEvent.keyDown(handle(), { key: expand });
+      expect(size()).toBe(20);
+      fireEvent.keyDown(handle(), { key: shrink });
+      expect(size()).toBe(collapsedSize);
+    },
+  );
+  it("opens and collapses the trailing pane with directional arrow steps", () => {
+    render(
+      <ResizablePanels defaultSizes={[80, 20]}>
+        <ResizablePanel id="a" minSize={0} />
+        <ResizableHandle />
+        <ResizablePanel id="b" collapsible minSize={20} collapsedSize={5} />
+      </ResizablePanels>,
+    );
+    fireEvent.keyDown(handle(), { key: "ArrowRight" });
+    expect(size()).toBe(95);
+    fireEvent.keyDown(handle(), { key: "ArrowLeft" });
+    expect(size()).toBe(80);
+  });
+  it("remembers accepted controlled sizes when a consumer collapses externally", () => {
+    const change = vi.fn();
+    const { rerender } = render(
+      <Example collapsible sizes={[37, 63]} onSizesChange={change} />,
+    );
+    rerender(<Example collapsible sizes={[0, 100]} onSizesChange={change} />);
+    fireEvent.keyDown(handle(), { key: "Enter" });
+    expect(change).toHaveBeenLastCalledWith([37, 63]);
+    expect(size()).toBe(0);
+  });
   it.each(["root", "handle"])("disables %s resize input", (target) => {
     render(
       <Example
@@ -288,6 +359,39 @@ describe("ResizablePanels", () => {
     expect(size()).toBe(60);
     pointer("pointerup");
   });
+  it.each(["horizontal", "vertical"] as const)(
+    "excludes %s root padding and asymmetric borders from drag geometry",
+    (orientation) => {
+      const horizontal = orientation === "horizontal";
+      render(
+        <Example
+          orientation={orientation}
+          style={
+            horizontal
+              ? {
+                  paddingLeft: 50,
+                  paddingRight: 50,
+                  borderLeftWidth: 10,
+                  borderRightWidth: 20,
+                  borderStyle: "solid",
+                }
+              : {
+                  paddingTop: 10,
+                  paddingBottom: 30,
+                  borderTopWidth: 3,
+                  borderBottomWidth: 7,
+                  borderStyle: "solid",
+                }
+          }
+        />,
+      );
+      geometry();
+      pointer("pointerdown");
+      pointer("pointermove", horizontal ? { clientX: 587 } : { clientY: 595 });
+      expect(size()).toBe(60);
+      pointer("pointerup");
+    },
+  );
   it.each(["pointercancel", "lostpointercapture"])(
     "rolls back on %s without a completion callback",
     (type) => {
@@ -320,17 +424,34 @@ describe("ResizablePanels", () => {
     pointer("pointerup");
   });
   it("lets native event handlers prevent resizing", () => {
+    const down = vi.fn((e: React.PointerEvent<HTMLDivElement>) =>
+      e.preventDefault(),
+    );
+    const change = vi.fn(),
+      end = vi.fn();
     render(
-      <ResizablePanels>
+      <ResizablePanels
+        data-testid="root"
+        onSizesChange={change}
+        onResizeEnd={end}
+      >
         <ResizablePanel id="a" />
         <ResizableHandle
           onKeyDown={(e) => e.preventDefault()}
-          onPointerDown={(e) => e.preventDefault()}
+          onPointerDown={down}
         />
         <ResizablePanel id="b" />
       </ResizablePanels>,
     );
     fireEvent.keyDown(handle(), { key: "ArrowRight" });
+    geometry();
+    pointer("pointerdown");
+    pointer("pointermove", { clientX: 600 });
+    pointer("pointerup");
+    expect(down).toHaveBeenCalledOnce();
+    expect(handle().setPointerCapture).not.toHaveBeenCalled();
+    expect(change).not.toHaveBeenCalled();
+    expect(end).not.toHaveBeenCalled();
     expect(size()).toBe(50);
   });
   it("keeps nested groups independent and preserves panel identities on reorder", () => {

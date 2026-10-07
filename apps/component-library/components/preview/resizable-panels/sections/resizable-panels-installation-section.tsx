@@ -23,6 +23,11 @@ export function ResizablePanelsInstallationSection() {
         }
       />
       <p className="text-sm text-slate-600 dark:text-slate-400">
+        Apply these overrides by adding{" "}
+        <code>{'className="my-workspace"'}</code> to your{" "}
+        <code>ResizablePanels</code> root, alongside any layout classes.
+      </p>
+      <p className="text-sm text-slate-600 dark:text-slate-400">
         Persistence belongs in consumer state: update controlled sizes with
         onSizesChange and save them with onResizeEnd. Read saved values after
         hydration or provide server-known values to keep the initial markup
