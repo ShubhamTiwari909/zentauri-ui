@@ -7,7 +7,7 @@ export function GridHeroSection({ seo }: { seo: PreviewSeoDocument }) {
   return (
     <Section variant="hero">
       <PreviewHeroSeoBlock seo={seo} />
-      <div className="rounded-2xl border border-slate-700 p-5">
+      <div className="rounded-2xl border border-slate-900/10 p-5 dark:border-white/10">
         <GridDashboardDemo />
       </div>
     </Section>

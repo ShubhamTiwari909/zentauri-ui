@@ -14,7 +14,7 @@ export default function GridPreviewPage({ seo }: { seo: PreviewSeoDocument }) {
       <GridHeroSection seo={seo} />
       <Section>
         <h2 className="text-2xl font-semibold">Grid layout playground</h2>
-        <p className="mt-2 text-sm text-slate-400">
+        <p className="mt-2 text-sm text-slate-700 dark:text-slate-400">
           Configure responsive columns, spacing, placement, and surfaces. Add or
           filter content while keeping React keys stable.
         </p>

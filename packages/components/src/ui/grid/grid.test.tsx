@@ -237,20 +237,26 @@ describe("Grid", () => {
   });
   it("ignores out-of-root placement and warns only in development", () => {
     const warning = vi.spyOn(console, "warn").mockImplementation(() => {});
-    const { rerender } = render(<GridItem colSpan={2}>Outside</GridItem>);
-    expect(
-      screen
-        .getByText("Outside")
-        .style.getPropertyValue("--_zui-grid-item-column-end-base"),
-    ).toBe("");
-    expect(warning).toHaveBeenCalledOnce();
-    rerender(<GridItem colSpan={3}>Outside</GridItem>);
-    expect(warning).toHaveBeenCalledOnce();
-    vi.stubEnv("NODE_ENV", "production");
-    rerender(<GridItem>Outside</GridItem>);
-    expect(warning).toHaveBeenCalledOnce();
-    vi.unstubAllEnvs();
-    warning.mockRestore();
+    try {
+      // Check production before development can memoize this warning.
+      vi.stubEnv("NODE_ENV", "production");
+      const { rerender } = render(<GridItem colSpan={2}>Outside</GridItem>);
+      expect(
+        screen
+          .getByText("Outside")
+          .style.getPropertyValue("--_zui-grid-item-column-end-base"),
+      ).toBe("");
+      expect(warning).not.toHaveBeenCalled();
+
+      vi.stubEnv("NODE_ENV", "development");
+      rerender(<GridItem colSpan={3}>Outside</GridItem>);
+      expect(warning).toHaveBeenCalledOnce();
+      rerender(<GridItem>Outside</GridItem>);
+      expect(warning).toHaveBeenCalledOnce();
+    } finally {
+      vi.unstubAllEnvs();
+      warning.mockRestore();
+    }
   });
   it("generates the same deterministic responsive contract during server rendering", () => {
     const element = (

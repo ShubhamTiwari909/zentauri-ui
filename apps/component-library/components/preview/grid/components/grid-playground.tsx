@@ -241,7 +241,7 @@ export function GridPlayground() {
           />
         </label>
       </div>
-      <p className="text-sm text-slate-400">
+      <p className="text-sm text-slate-600 dark:text-slate-400">
         The width slider demonstrates intrinsic fit/fill behavior. Responsive
         presets follow the viewport. Below sm, items stack one per row by
         default; turn off Stack on mobile to use the configured layout at every

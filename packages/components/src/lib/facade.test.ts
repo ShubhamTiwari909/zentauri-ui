@@ -53,9 +53,17 @@ describe("DesignSystem facade", () => {
         "gradient-blue",
       ]),
     );
-    expect(JSON.stringify(grid?.variables())).toContain("--zui-grid-gap-md");
-    expect(JSON.stringify(grid?.variables())).toContain(
-      "--zui-grid-gap-md-dark",
+    expect(grid?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-grid-gap-md",
+          pairName: "--zui-grid-gap-md-dark",
+        }),
+        expect.objectContaining({
+          name: "--zui-grid-gap-md-dark",
+          pairName: "--zui-grid-gap-md",
+        }),
+      ]),
     );
   });
 

@@ -202,7 +202,6 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "Bento Grid",
         href: "/preview/components/bento-grid",
       },
-      { title: "Grid", href: "/preview/components/grid" },
       {
         title: "Breadcrumb",
         href: "/preview/components/breadcrumb",
@@ -299,6 +298,7 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "Glass Card",
         href: "/preview/components/glass-card",
       },
+      { title: "Grid", href: "/preview/components/grid" },
       {
         title: "Hash generator",
         href: "/preview/components/hash-generator",

@@ -15,21 +15,21 @@ import {
 
 export function GridCodeExamplesSection() {
   return (
-    <Section className="space-y-6">
+    <Section className="space-y-6 text-slate-900 dark:text-slate-50">
       <h2 className="text-2xl font-semibold">Grid recipes</h2>
-      <p>Auto-fitting semantic collection</p>
+      <h3>Auto-fitting semantic collection</h3>
       <PreviewCodeShowcase code={gridAutoSnippet}>
         <GridAutoDemo />
       </PreviewCodeShowcase>
-      <p>Responsive dashboard spans</p>
+      <h3>Responsive dashboard spans</h3>
       <PreviewCodeShowcase code={gridDashboardSnippet}>
         <GridDashboardDemo />
       </PreviewCodeShowcase>
-      <p>Named-area section</p>
+      <h3>Named-area section</h3>
       <PreviewCodeShowcase code={gridAreasSnippet}>
         <GridAreasDemo />
       </PreviewCodeShowcase>
-      <p>Nested layouts, axis gaps, and native controls</p>
+      <h3>Nested layouts, axis gaps, and native controls</h3>
       <PreviewCodeShowcase code={gridNestedSnippet}>
         <GridNestedDemo />
       </PreviewCodeShowcase>
