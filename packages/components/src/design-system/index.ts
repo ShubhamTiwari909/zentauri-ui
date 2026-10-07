@@ -33,6 +33,7 @@ export * from "./file-upload";
 export * from "./gauge";
 export * from "./glass-card";
 export * from "./grid";
+export * from "./resizable-panels";
 export * from "./hash-generator";
 export * from "./http-request-viewer";
 export * from "./http-status-badge";

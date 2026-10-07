@@ -482,6 +482,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "resizable-panels",
+    name: "Resizable Panels",
+    description:
+      "Compose nested workspaces with pointer and keyboard resizing, percentage constraints, collapsible panes, and themeable handles.",
+    href: "/preview/components/resizable-panels",
+    badge: "Layout",
+  },
+  {
     id: "relative-time",
     name: "Relative Time",
     description:

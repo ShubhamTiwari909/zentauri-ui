@@ -39,6 +39,42 @@ function runCliError(cwd: string, args: string[]): string {
 }
 
 describe("zentauri-ui CLI", () => {
+  it("vendors Resizable Panels with its sizing helpers and compound context", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-resizable-"));
+    try {
+      runCli(dir, ["init"]);
+      runCli(dir, ["add", "resizable-panels"]);
+      const uiRoot = join(dir, "src", "components", "ui", "resizable-panels");
+      for (const file of [
+        "index.ts",
+        "resizable-panels-base.tsx",
+        "resize-layout.ts",
+        "resizable-context.ts",
+        "types.ts",
+        "variants.ts",
+      ])
+        expect(existsSync(join(uiRoot, file))).toBe(true);
+      expect(readdirSync(uiRoot).some((file) => file.includes(".test."))).toBe(
+        false,
+      );
+      expect(
+        existsSync(
+          join(
+            dir,
+            "src",
+            "components",
+            "design-system",
+            "resizable-panels.ts",
+          ),
+        ),
+      ).toBe(true);
+      expect(
+        readFileSync(join(uiRoot, "resizable-panels-base.tsx"), "utf8"),
+      ).not.toContain("framer-motion");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
   it("vendors Grid with its responsive helpers, context, and token dependencies", () => {
     const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-grid-"));
     try {

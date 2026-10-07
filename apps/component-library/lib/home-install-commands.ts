@@ -108,6 +108,7 @@ export const CLI_ADD_COMPONENTS = [
   "radio-group",
   "rating",
   "relative-time",
+  "resizable-panels",
   "request-timeline-viewer",
   "scroll-area",
   "search",

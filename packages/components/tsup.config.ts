@@ -63,6 +63,7 @@ const uiComponentNames = [
   "rating",
   "radio-group",
   "relative-time",
+  "resizable-panels",
   "request-timeline-viewer",
   "scroll-area",
   "search",

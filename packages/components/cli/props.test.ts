@@ -30,6 +30,35 @@ function readManifest() {
 }
 
 describe("props manifest", () => {
+  it("documents all Resizable Panels compound props and defaults", () => {
+    const component = readManifest().components["resizable-panels"];
+    const root = component?.subcomponents.find(
+      (p) => p.propsType === "ResizablePanelsProps",
+    );
+    const panel = component?.subcomponents.find(
+      (p) => p.propsType === "ResizablePanelProps",
+    );
+    const handle = component?.subcomponents.find(
+      (p) => p.propsType === "ResizableHandleProps",
+    );
+    expect(root?.props).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: "orientation", default: "horizontal" }),
+        expect.objectContaining({ name: "sizes" }),
+        expect.objectContaining({ name: "onResizeEnd" }),
+      ]),
+    );
+    expect(panel?.props).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: "id", required: true }),
+        expect.objectContaining({ name: "minSize", default: "10" }),
+        expect.objectContaining({ name: "collapsible", default: "false" }),
+      ]),
+    );
+    expect(handle?.props.map((p) => p.name)).toEqual(
+      expect.arrayContaining(["size", "appearance", "withGrip", "disabled"]),
+    );
+  });
   it("documents Grid responsive configuration and item appearances", () => {
     const grid = readManifest().components.grid;
     const root = grid?.subcomponents.find(

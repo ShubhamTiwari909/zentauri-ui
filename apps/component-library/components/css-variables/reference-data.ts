@@ -7,6 +7,7 @@ import { animatedNumberCssVariables } from "./data/animated-number";
 import { avatarCssVariables } from "./data/avatar";
 import { badgeCssVariables } from "./data/badge";
 import { bentoGridCssVariables } from "./data/bento-grid";
+import { resizablePanelsCssVariables } from "./data/resizable-panels";
 import { gridCssVariables } from "./data/grid";
 import { breadcrumbCssVariables } from "./data/breadcrumb";
 import { buttonsCssVariables } from "./data/buttons";
@@ -89,6 +90,7 @@ export const cssVariableReferences = {
   badge: badgeCssVariables,
   "bento-grid": bentoGridCssVariables,
   grid: gridCssVariables,
+  "resizable-panels": resizablePanelsCssVariables,
   breadcrumb: breadcrumbCssVariables,
   buttons: buttonsCssVariables,
   calendar: calendarCssVariables,

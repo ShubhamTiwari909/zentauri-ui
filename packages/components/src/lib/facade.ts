@@ -106,6 +106,7 @@ const componentSlugs = [
   "product-3d",
   "radio-group",
   "relative-time",
+  "resizable-panels",
   "rating",
   "scroll-area",
   "search",

@@ -21800,6 +21800,388 @@
         }
       ]
     },
+    "resizable-panels": {
+      "slug": "resizable-panels",
+      "subcomponents": [
+        {
+          "name": "static:ResizableHandle",
+          "displayName": "ResizableHandle",
+          "propsType": "ResizableHandleProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "blue",
+                "contrast",
+                "cyan",
+                "default",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-orange",
+                "gradient-pink",
+                "gradient-purple",
+                "gray",
+                "green",
+                "indigo",
+                "lime",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "rose",
+                "sky",
+                "slate",
+                "subtle",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "description": "Disable this handle independently.",
+              "deprecated": false
+            },
+            {
+              "name": "withGrip",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "true",
+              "group": "behavior",
+              "description": "Render the default visual grip when children are absent.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ResizablePanel",
+          "displayName": "ResizablePanel",
+          "propsType": "ResizablePanelProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "blue",
+                "contrast",
+                "cyan",
+                "default",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-orange",
+                "gradient-pink",
+                "gradient-purple",
+                "gray",
+                "green",
+                "indigo",
+                "lime",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "rose",
+                "sky",
+                "slate",
+                "subtle",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "padding",
+              "type": "enum",
+              "required": false,
+              "default": "none",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "none",
+                "sm"
+              ],
+              "variantGroup": "padding",
+              "deprecated": false
+            },
+            {
+              "name": "collapsedSize",
+              "type": "number | undefined",
+              "required": false,
+              "default": "0",
+              "group": "behavior",
+              "description": "Collapsed percentage, between zero and minSize. Zero makes content inert and hidden.",
+              "deprecated": false
+            },
+            {
+              "name": "collapsible",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "description": "Allow the pane to snap below its expanded minimum; Enter on the following handle toggles it.",
+              "deprecated": false
+            },
+            {
+              "name": "maxSize",
+              "type": "number | undefined",
+              "required": false,
+              "default": "100",
+              "group": "behavior",
+              "description": "Maximum percentage. All maxima must total at least 100.",
+              "deprecated": false
+            },
+            {
+              "name": "minSize",
+              "type": "number | undefined",
+              "required": false,
+              "default": "10",
+              "group": "behavior",
+              "description": "Minimum expanded percentage. All expanded minima must total at most 100.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string",
+              "required": true,
+              "group": "dom",
+              "description": "Stable native DOM id, unique in the document; connects the preceding pane to its handle.",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:ResizablePanels",
+          "displayName": "ResizablePanels",
+          "propsType": "ResizablePanelsProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "orientation",
+              "type": "enum",
+              "required": false,
+              "default": "horizontal",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "horizontal",
+                "vertical"
+              ],
+              "variantGroup": "orientation",
+              "description": "Layout axis; vertical groups need an explicit height.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultSizes",
+              "type": "readonly number[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Initial percentages in panel order; defaults to equal shares.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "description": "Disable all resize handles.",
+              "deprecated": false
+            },
+            {
+              "name": "keyboardStep",
+              "type": "number | undefined",
+              "required": false,
+              "default": "2",
+              "group": "behavior",
+              "description": "Arrow-key step in percentage points; Shift multiplies it by ten.",
+              "deprecated": false
+            },
+            {
+              "name": "onResizeEnd",
+              "type": "((sizes: number[]) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Last requested percentages at pointer-up or after a keyboard resize. Not called on cancellation.",
+              "deprecated": false
+            },
+            {
+              "name": "onSizesChange",
+              "type": "((sizes: number[]) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Called with requested percentages when the user resizes.",
+              "deprecated": false
+            },
+            {
+              "name": "sizes",
+              "type": "readonly number[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled percentages in panel order. Invalid values are normalized within constraints.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "scroll-area": {
       "slug": "scroll-area",
       "subcomponents": [
