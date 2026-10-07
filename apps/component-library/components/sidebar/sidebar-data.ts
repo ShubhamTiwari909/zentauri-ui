@@ -290,6 +290,7 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "File upload",
         href: "/preview/components/file-upload",
       },
+      { title: "Form / Field", href: "/preview/components/field" },
       {
         title: "Gauge",
         href: "/preview/components/gauge",

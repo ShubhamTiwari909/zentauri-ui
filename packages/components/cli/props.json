@@ -13420,6 +13420,536 @@
         }
       ]
     },
+    "field": {
+      "slug": "field",
+      "subcomponents": [
+        {
+          "name": "static:Field",
+          "displayName": "Field",
+          "propsType": "FieldProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "blue",
+                "contrast",
+                "cyan",
+                "default",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-orange",
+                "gradient-pink",
+                "gradient-purple",
+                "gray",
+                "green",
+                "indigo",
+                "lime",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "rose",
+                "sky",
+                "slate",
+                "subtle",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "orientation",
+              "type": "enum",
+              "required": false,
+              "default": "vertical",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "horizontal",
+                "responsive",
+                "vertical"
+              ],
+              "variantGroup": "orientation",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "controlId",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "ID for the focusable control. Overrides the child's id through FieldControl; wrapper id stays independent.",
+              "deprecated": false
+            },
+            {
+              "name": "description",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "description": "Instructions automatically connected through aria-describedby.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "description": "Apply native disabled to FieldControl.",
+              "deprecated": false
+            },
+            {
+              "name": "error",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "description": "Visible error connected through aria-describedby; implies invalid unless invalid is explicitly false.",
+              "deprecated": false
+            },
+            {
+              "name": "invalid",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Override the state inferred from error. Does not run validation.",
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "description": "Visible label connected to the control. Provide aria-label on the control if omitted.",
+              "deprecated": false
+            },
+            {
+              "name": "required",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "description": "Apply native required to FieldControl and show a decorative marker.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode | ((control: FieldControlAttributes) => ReactNode)",
+              "required": false,
+              "group": "content",
+              "description": "A FieldControl child, or a render function receiving attributes for your own control.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:FieldControl",
+          "displayName": "FieldControl",
+          "propsType": "FieldControlProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "native",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "true",
+              "group": "behavior",
+              "description": "False uses aria-required instead of native required for a custom widget. Widget behavior is owned by the consumer.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactElement<unknown, string | JSXElementConstructor<any>>",
+              "required": true,
+              "group": "content",
+              "description": "Exactly one element that forwards id, aria attributes, disabled and required to its focusable control.",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:FieldDescription",
+          "displayName": "FieldDescription",
+          "propsType": "FieldDescriptionProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLParagraphElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:FieldError",
+          "displayName": "FieldError",
+          "propsType": "FieldErrorProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLParagraphElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:FieldGroup",
+          "displayName": "FieldGroup",
+          "propsType": "FieldGroupProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "description",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "description": "Instructions describing the group, connected to the fieldset.",
+              "deprecated": false
+            },
+            {
+              "name": "legend",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "description": "Native legend naming this group. Omit when composing FieldLegend manually.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLFieldSetElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:FieldLabel",
+          "displayName": "FieldLabel",
+          "propsType": "FieldLabelProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "required",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLLabelElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:FieldLegend",
+          "displayName": "FieldLegend",
+          "propsType": "FieldLegendProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLLegendElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:Form",
+          "displayName": "Form",
+          "propsType": "FormProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLFormElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "file-upload": {
       "slug": "file-upload",
       "subcomponents": [

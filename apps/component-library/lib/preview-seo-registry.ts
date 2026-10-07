@@ -11,6 +11,7 @@ import avatar from "@/content/seo/preview/components/avatar.json";
 import badge from "@/content/seo/preview/components/badge.json";
 import bentoGrid from "@/content/seo/preview/components/bento-grid.json";
 import resizablePanels from "@/content/seo/preview/components/resizable-panels.json";
+import field from "@/content/seo/preview/components/field.json";
 import grid from "@/content/seo/preview/components/grid.json";
 import breadcrumb from "@/content/seo/preview/components/breadcrumb.json";
 import buttons from "@/content/seo/preview/components/buttons.json";
@@ -106,6 +107,7 @@ const previewSeoRegistry = {
   avatar: avatar as PreviewSeoDocument,
   badge: badge as PreviewSeoDocument,
   "bento-grid": bentoGrid as PreviewSeoDocument,
+  field: field as PreviewSeoDocument,
   grid: grid as PreviewSeoDocument,
   "resizable-panels": resizablePanels as PreviewSeoDocument,
   breadcrumb: breadcrumb as PreviewSeoDocument,

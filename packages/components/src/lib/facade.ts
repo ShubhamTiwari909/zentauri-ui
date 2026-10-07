@@ -92,6 +92,7 @@ const componentSlugs = [
   "dropdown",
   "dynamic-stepper",
   "empty-state",
+  "field",
   "file-upload",
   "inputs",
   "kbd",

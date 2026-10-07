@@ -1,0 +1,77 @@
+{
+  "category": "Forms",
+  "title": "Form and Field components for React and Next.js",
+  "description": "Build accessible forms with connected labels, descriptions, validation errors, native fieldsets, responsive field layouts, and light/dark theme tokens.",
+  "keywords": [
+    "React form field",
+    "accessible forms",
+    "field label",
+    "validation errors",
+    "fieldset legend",
+    "Next.js",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Form / Field \u00b7 Zentauri UI",
+    "description": "Connected form controls, error messages, and responsive layouts.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Form / Field \u00b7 Zentauri UI",
+    "description": "Accessible form layouts with native semantics and theme tokens.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/field",
+  "headings": {
+    "h1": "Form / Field for accessible input layouts",
+    "h2": ["What it does", "Common use cases", "Accessibility", "FAQ"]
+  },
+  "intro": "Compose existing inputs, textareas, checkboxes, and selects with connected labels, descriptions, and error messages. Keep validation and submission in your application while Field handles consistent layout and accessibility attributes.",
+  "useCases": [
+    "Account and profile forms.",
+    "Settings with grouped checkbox choices.",
+    "Responsive multi-column forms using Grid.",
+    "Custom controls with explicit accessibility connections."
+  ],
+  "faqs": [
+    {
+      "question": "Does Field manage form state or validation?",
+      "answer": "No. Form is a native form wrapper. Field presents labels, instructions, and errors; you own values, validation, submission, and focus. It requires no form-state library."
+    },
+    {
+      "question": "How do labels and errors connect to the control?",
+      "answer": "Pass label, description, and error to Field, then wrap one control in FieldControl. IDs and aria-describedby are created during rendering, including on the server. Use controlId to provide a unique explicit ID."
+    },
+    {
+      "question": "Can I use custom controls?",
+      "answer": "Yes. FieldControl needs a child that forwards ID and ARIA props to its focusable element. Alternatively use the Field render function or useFieldControl. For Select, set triggerId to the Field ID and wrap SelectTrigger with native=false and role=combobox."
+    },
+    {
+      "question": "How do required and disabled work?",
+      "answer": "FieldControl applies native required and disabled by default. Custom mode uses aria-required; the custom widget must implement validation itself. FieldGroup uses native disabled fieldset semantics."
+    },
+    {
+      "question": "How do fields respond to mobile widths?",
+      "answer": "Fields stack vertically by default. Responsive orientation adds label/control columns at 640px. Horizontal forces columns at every width. Grid arranges multiple fields and stacks them on mobile by default."
+    },
+    {
+      "question": "Can I use the individual primitives?",
+      "answer": "Yes. Use FieldLabel, FieldDescription, FieldError, FieldGroup, and FieldLegend independently. Supply and connect IDs yourself; automatic descriptions and errors come from the Field props."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Consistent form and field layouts with native semantics, stable accessibility connections, 26 appearances, and paired light/dark theme tokens."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Labels identify controls, description/error IDs are connected with aria-describedby, and native fieldset/legend semantics name groups. Required markers are decorative; native required and aria-required convey the state. Apps own validation and focus management."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

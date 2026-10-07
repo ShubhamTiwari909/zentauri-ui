@@ -31,6 +31,65 @@ function readManifest() {
 }
 
 describe("props manifest", () => {
+  it("documents every Field primitive and its variant defaults", () => {
+    const entries = readManifest().components.field!.subcomponents;
+    expect(entries.map((p) => p.propsType).sort()).toEqual(
+      [
+        "FormProps",
+        "FieldProps",
+        "FieldControlProps",
+        "FieldLabelProps",
+        "FieldDescriptionProps",
+        "FieldErrorProps",
+        "FieldGroupProps",
+        "FieldLegendProps",
+      ].sort(),
+    );
+    const root = entries.find((p) => p.propsType === "FieldProps")!;
+    expect(root.props.map((p) => p.name).sort()).toEqual(
+      [
+        "appearance",
+        "orientation",
+        "size",
+        "controlId",
+        "label",
+        "description",
+        "error",
+        "invalid",
+        "disabled",
+        "required",
+        "children",
+        "className",
+        "id",
+        "onClick",
+        "style",
+        "title",
+      ].sort(),
+    );
+    for (const [name, value] of Object.entries({
+      appearance: "default",
+      orientation: "vertical",
+      size: "md",
+      disabled: "false",
+      required: "false",
+    }))
+      expect(root.props.find((p) => p.name === name)?.default).toBe(value);
+    expect(
+      root.props.find((p) => p.name === "appearance")?.options,
+    ).toHaveLength(26);
+    const control = entries.find((p) => p.propsType === "FieldControlProps")!;
+    expect(control.props.find((p) => p.name === "children")?.required).toBe(
+      true,
+    );
+    expect(control.props.find((p) => p.name === "native")?.default).toBe(
+      "true",
+    );
+    const group = entries.find((p) => p.propsType === "FieldGroupProps")!;
+    expect(group.props.map((p) => p.name)).toEqual(
+      expect.arrayContaining(["legend", "description"]),
+    );
+  });
+
   it("documents all Resizable Panels compound props and defaults", () => {
     const component = readManifest().components["resizable-panels"];
     const root = component?.subcomponents.find(
