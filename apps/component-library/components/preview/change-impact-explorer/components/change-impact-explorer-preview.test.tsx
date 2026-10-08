@@ -7,6 +7,8 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import ts from "typescript";
 import * as impact from "@zentauri-ui/zentauri-components/ui/change-impact-explorer";
+import { ImpactCodeExamplesSection } from "../sections/change-impact-explorer-code-examples-section";
+import { ImpactPlaygroundDemo } from "./change-impact-explorer-code-examples-demo";
 import { ImpactPlayground } from "./change-impact-explorer-playground";
 import {
   IMPACT_APPEARANCES,
@@ -42,6 +44,38 @@ function loadRecipe(source: string) {
   return Object.values(exports)[0]!;
 }
 describe("Change Impact Explorer preview", () => {
+  it("exposes each recipe label as a level-three heading", () => {
+    render(<ImpactCodeExamplesSection />);
+    for (const name of [
+      "Public contract change",
+      "Controlled review selection",
+      "Upstream dependencies and custom details",
+      "10,000 consumers with bounded rendering",
+    ]) {
+      expect(
+        screen.getByRole("heading", { name, level: 3 }),
+      ).toBeInTheDocument();
+    }
+  });
+  it.each(["example", "10000"] as const)(
+    "disables proposal selection in the empty %s playground",
+    (dataset) => {
+      render(
+        <ImpactPlaygroundDemo
+          options={{ ...IMPACT_DEFAULT_OPTIONS, dataset, state: "empty" }}
+        />,
+      );
+      expect(
+        screen.getByRole("combobox", { name: "Proposed change" }),
+      ).toBeDisabled();
+      expect(
+        screen.getByRole("combobox", { name: "Proposed change" }),
+      ).toHaveValue("");
+      expect(screen.getAllByRole("option", { hidden: true })).toHaveLength(1);
+      expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
+    },
+  );
+  // This workflow renders the appearance gallery and swaps in a 10,000-node graph.
   it("updates appearance, dataset, direction, states, and resets the playground", async () => {
     render(<ImpactPlayground />);
     const user = userEvent.setup();
@@ -65,6 +99,13 @@ describe("Change Impact Explorer preview", () => {
     fireEvent.click(screen.getByRole("combobox", { name: "Dataset" }));
     fireEvent.click(screen.getByRole("option", { name: "10000" }));
     expect(main.getByText("10000 results")).toBeInTheDocument();
+    expect(
+      main
+        .getAllByRole("button")
+        .filter(
+          (item) => item.dataset.slot === "change-impact-explorer-map-node",
+        ),
+    ).toHaveLength(12);
     expect(main.getByRole("listbox")).toHaveAttribute(
       "data-virtualized",
       "true",
@@ -81,7 +122,7 @@ describe("Change Impact Explorer preview", () => {
         screen.getAllByRole("region", { name: "Change impact explorer" })[0]!,
       ).queryByRole("alert"),
     ).not.toBeInTheDocument();
-  });
+  }, 20_000);
   it("keeps all gallery samples inert and every appearance selector keyboard accessible", () => {
     const { container } = render(<ImpactPlayground />);
     const selectors = screen.getAllByRole("button", {
@@ -123,6 +164,13 @@ describe("Change Impact Explorer preview", () => {
     ["large", snippets.impactLargeSnippet],
     ["playground", snippets.impactPlaygroundSnippet(IMPACT_DEFAULT_OPTIONS)],
     [
+      "large playground",
+      snippets.impactPlaygroundSnippet({
+        ...IMPACT_DEFAULT_OPTIONS,
+        dataset: "10000",
+      }),
+    ],
+    [
       "empty playground",
       snippets.impactPlaygroundSnippet({
         ...IMPACT_DEFAULT_OPTIONS,
@@ -146,7 +194,14 @@ describe("Change Impact Explorer preview", () => {
       expect(new Set(ids).size).toBe(ids.length);
       if (_name !== "empty playground")
         expect(screen.getAllByRole("listbox")).toHaveLength(2);
-      else expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
+      else {
+        expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
+        for (const proposal of screen.getAllByRole("combobox", {
+          name: "Proposed change",
+        }))
+          expect(proposal).toBeDisabled();
+        expect(screen.getAllByRole("option", { hidden: true })).toHaveLength(2);
+      }
       if (_name === "basic" || _name === "controlled" || _name === "playground")
         expect(
           within(screen.getAllByRole("listbox")[0]!).getAllByRole("option"),
@@ -162,12 +217,18 @@ describe("Change Impact Explorer preview", () => {
           ).getByRole("heading", { name: "Integration guide" }),
         ).toBeInTheDocument();
       }
-      if (_name === "large")
+      if (_name === "large" || _name === "large playground") {
+        expect(
+          container.querySelectorAll(
+            '[data-slot="change-impact-explorer-map-node"]',
+          ),
+        ).toHaveLength(24);
         expect(
           container.querySelectorAll(
             '[data-slot="change-impact-explorer-item"]',
           ).length,
         ).toBeLessThan(60);
+      }
     },
   );
 });

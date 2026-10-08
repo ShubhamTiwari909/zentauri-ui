@@ -302,6 +302,8 @@ export default defineConfig({
     "design-system/facade": "src/lib/facade.ts",
     "ui/time-travel-inspector/history":
       "src/ui/time-travel-inspector/history.ts",
+    // Keep pure graph helpers outside the directories marked as client entries.
+    "graphs/change-impact-explorer": "src/ui/change-impact-explorer/graph.ts",
     ...uiEntries,
     ...chartEntries,
     ...animationEntries,

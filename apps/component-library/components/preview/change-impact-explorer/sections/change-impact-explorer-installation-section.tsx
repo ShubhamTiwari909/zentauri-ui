@@ -6,7 +6,7 @@ export function ImpactInstallationSection() {
       <h2 className="text-2xl font-semibold">Installation and theming</h2>
       <CodeHighlight
         codeString={
-          "pnpm add @zentauri-ui/zentauri-components\n# Or vendor the source:\npnpm dlx @zentauri-ui/zentauri-components add change-impact-explorer"
+          "pnpm add @zentauri-ui/zentauri-components\n# Or vendor the source (initialize once per app):\npnpm dlx @zentauri-ui/zentauri-components init\npnpm dlx @zentauri-ui/zentauri-components add change-impact-explorer"
         }
         language="bash"
       />

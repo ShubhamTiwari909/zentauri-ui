@@ -63,13 +63,18 @@ export default function ChangeImpactExplorerPreviewPage({
         </p>
         <p>
           The static entry also exports{" "}
-          <code>buildChangeImpactGraph(nodes, edges)</code>,
+          <code>buildChangeImpactGraph(nodes, edges)</code>,{" "}
           <code>
             analyzeChangeImpact(graph, nodeIds, &#123; direction, maxDepth
             &#125;)
           </code>
           , and <code>getChangeImpactPath(analysis, nodeId)</code> for headless
-          indexing, traversal, and explanation paths.
+          indexing, traversal, and explanation paths. In Server Components,
+          import these helpers from the server-safe entry{" "}
+          <code>
+            @zentauri-ui/zentauri-components/ui/change-impact-explorer/graph
+          </code>
+          .
         </p>
         <h3 className="text-lg font-semibold">Keyboard and composition</h3>
         <p>

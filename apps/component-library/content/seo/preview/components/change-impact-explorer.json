@@ -45,7 +45,7 @@
     },
     {
       "question": "What does a depth limit mean?",
-      "answer": "The analysis is partial. Nodes outside the limit can still be affected; they are labeled outside analysis."
+      "answer": "The analysis is partial. Nodes outside the limit can still be affected; they are hidden by default and labeled outside analysis only when showOutsideAnalysis is enabled."
     }
   ],
   "sections": [

@@ -148,6 +148,7 @@ const ImpactResults = memo(function ImpactResults({
   height,
   renderNode,
   id,
+  hasSearch,
 }: {
   items: readonly ChangeImpactEntry[];
   selected?: string;
@@ -157,6 +158,7 @@ const ImpactResults = memo(function ImpactResults({
   height: number;
   renderNode: NonNullable<ChangeImpactExplorerProps["renderNode"]>;
   id: string;
+  hasSearch: boolean;
 }) {
   const virtual = useVirtualList({
     itemCount: items.length,
@@ -174,7 +176,9 @@ const ImpactResults = memo(function ImpactResults({
   const activeId =
     activeState?.selection === selected ? activeState?.id : selected;
   const index =
-    indices.get(activeId ?? selected ?? "") ?? indices.get(selected ?? "") ?? 0;
+    indices.get(activeId ?? selected ?? "") ??
+    indices.get(selected ?? "") ??
+    -1;
   const windowed = virtualize && items.length > 100;
   const root = useRef<HTMLDivElement | null>(null);
   const virtualContainerRef = virtual.setContainerRef;
@@ -229,13 +233,16 @@ const ImpactResults = memo(function ImpactResults({
     else if (event.key === "ArrowUp") next = Math.max(0, index - 1);
     else if (event.key === "Home") next = 0;
     else if (event.key === "End") next = items.length - 1;
-    else if (event.key === "Enter" || event.key === " ") next = index;
+    else if (event.key === "Enter" || event.key === " ")
+      next = Math.max(0, index);
     else if (event.key.length === 1) {
       const now = Date.now();
+      const key = event.key.toLocaleLowerCase();
+      const previous = typeahead.current.text;
       typeahead.current.text =
-        now - typeahead.current.time > 600
-          ? event.key
-          : typeahead.current.text + event.key;
+        now - typeahead.current.time > 600 || previous === key
+          ? key
+          : previous + key;
       typeahead.current.time = now;
       const text = typeahead.current.text.toLocaleLowerCase();
       for (let offset = 1; offset <= items.length; offset++) {
@@ -254,7 +261,9 @@ const ImpactResults = memo(function ImpactResults({
   if (!items.length)
     return (
       <p className={tokens.zuiChangeImpactExplorerEmpty}>
-        No items match your search.
+        {hasSearch
+          ? "No items match your search."
+          : "No items in this analysis."}
       </p>
     );
   return (
@@ -743,6 +752,7 @@ export function ChangeImpactExplorerBase({
               <ImpactResults
                 key={change.id}
                 items={items}
+                hasSearch={Boolean(search)}
                 selected={selected}
                 choose={choose}
                 virtualize={virtualize}

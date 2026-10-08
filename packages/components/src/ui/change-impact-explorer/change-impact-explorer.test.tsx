@@ -105,6 +105,11 @@ describe("Change Impact graph", () => {
       "b",
       "c",
     ]);
+    expect(
+      analyzeChangeImpact(buildChangeImpactGraph(nodes, edges), ["a", "d"], {
+        maxDepth: 1,
+      }).truncated,
+    ).toBe(false);
     expect(result.byId.get("d")?.kind).toBe("changed");
     expect(getChangeImpactPath(result, "d")).toHaveLength(1);
   });
@@ -231,6 +236,82 @@ describe("Change Impact Explorer", () => {
     expect(
       document.getElementById(list.getAttribute("aria-activedescendant")!),
     ).toBeInTheDocument();
+  });
+  it("cycles repeated initials while preserving multi-character typeahead", () => {
+    render(
+      <Example
+        nodes={[...nodes, { id: "extra", label: "Beta consumer" }]}
+        edges={[...edges, { id: "extra", source: "a", target: "extra" }]}
+      />,
+    );
+    const list = screen.getByRole("listbox");
+    fireEvent.keyDown(list, { key: "b" });
+    expect(
+      details().getByRole("heading", { name: "Billing service" }),
+    ).toBeInTheDocument();
+    fireEvent.keyDown(list, { key: "B" });
+    expect(
+      details().getByRole("heading", { name: "Beta consumer" }),
+    ).toBeInTheDocument();
+    fireEvent.keyDown(list, { key: "b" });
+    expect(
+      details().getByRole("heading", { name: "Billing service" }),
+    ).toBeInTheDocument();
+    fireEvent.keyDown(list, { key: "e" });
+    expect(
+      details().getByRole("heading", { name: "Beta consumer" }),
+    ).toBeInTheDocument();
+  });
+  it.each(["ArrowDown", "b", "Enter"])(
+    "selects the first filtered row on %s when the selection is hidden",
+    (key) => {
+      render(
+        <Example
+          nodes={[
+            ...nodes.map((node) => ({
+              ...node,
+              category: node.id === "b" ? "Consumer" : node.category,
+            })),
+            { id: "extra", label: "Beta consumer", category: "Consumer" },
+          ]}
+          edges={[...edges, { id: "extra", source: "a", target: "extra" }]}
+        />,
+      );
+      fireEvent.change(screen.getByRole("searchbox"), {
+        target: { value: "Consumer" },
+      });
+      const list = screen.getByRole("listbox");
+      expect(within(list).getAllByRole("option")).toHaveLength(2);
+      expect(list).not.toHaveAttribute("aria-activedescendant");
+      fireEvent.keyDown(list, { key });
+      expect(
+        details().getByRole("heading", { name: "Billing service" }),
+      ).toBeInTheDocument();
+      expect(within(list).getAllByRole("option")[0]).toHaveAttribute(
+        "aria-selected",
+        "true",
+      );
+      expect(
+        document.getElementById(list.getAttribute("aria-activedescendant")!),
+      ).toBe(within(list).getAllByRole("option")[0]);
+    },
+  );
+  it("distinguishes an empty analysis from an unmatched search", () => {
+    render(
+      <Example
+        changes={[
+          { id: "missing", label: "Missing roots", nodeIds: ["missing"] },
+        ]}
+      />,
+    );
+    expect(screen.getByText("No items in this analysis.")).toBeInTheDocument();
+    expect(
+      screen.queryByText("No items match your search."),
+    ).not.toBeInTheDocument();
+    fireEvent.change(screen.getByRole("searchbox"), {
+      target: { value: "missing" },
+    });
+    expect(screen.getByText("No items match your search.")).toBeInTheDocument();
   });
   it("resynchronizes keyboard navigation when controlled selection changes externally", () => {
     const select = vi.fn();

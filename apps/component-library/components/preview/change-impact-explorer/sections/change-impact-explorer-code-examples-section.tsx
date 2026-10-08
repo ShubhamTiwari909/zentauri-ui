@@ -39,7 +39,13 @@ export function ImpactCodeExamplesSection() {
         ],
       ].map(([label, code, demo]) => (
         <div key={String(label)}>
-          <p className="mb-3 text-lg font-semibold">{label}</p>
+          <p
+            role="heading"
+            aria-level={3}
+            className="mb-3 text-lg font-semibold"
+          >
+            {label}
+          </p>
           <PreviewCodeShowcase code={String(code)}>{demo}</PreviewCodeShowcase>
         </div>
       ))}

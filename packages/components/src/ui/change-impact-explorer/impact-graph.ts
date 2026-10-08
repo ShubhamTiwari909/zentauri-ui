@@ -92,18 +92,6 @@ export function analyzeChangeImpact(
       entries.push(next);
     }
   }
-  // A later source can reach a boundary neighbor without exceeding the limit.
-  if (truncated)
-    truncated = entries.some(
-      (entry) =>
-        entry.depth === limit &&
-        (adjacency.get(entry.node.id) ?? []).some(
-          (edge) =>
-            !byId.has(
-              options.direction === "upstream" ? edge.source : edge.target,
-            ),
-        ),
-    );
   return { graph, entries, byId, parents, ignoredNodeIds, truncated };
 }
 /** Materialize a path only for the selected node, avoiding a path array per graph node. */

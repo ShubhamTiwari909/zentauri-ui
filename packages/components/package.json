@@ -66,6 +66,11 @@
       "import": "./dist/ui/time-travel-inspector/history.mjs",
       "require": "./dist/ui/time-travel-inspector/history.js"
     },
+    "./ui/change-impact-explorer/graph": {
+      "types": "./dist/ui/change-impact-explorer/graph.d.ts",
+      "import": "./dist/graphs/change-impact-explorer.mjs",
+      "require": "./dist/graphs/change-impact-explorer.js"
+    },
     "./ui/*": {
       "types": "./dist/ui/*/index.d.ts",
       "import": "./dist/ui/*.mjs",

@@ -87,13 +87,13 @@ export function ImpactLargeDemo() {
 }
 export function ImpactPlaygroundDemo({ options }: { options: ImpactOptions }) {
   const large = options.dataset === "10000";
+  const empty = options.state === "empty";
   return (
     <ChangeImpactExplorer
-      nodes={
-        options.state === "empty" ? [] : large ? LARGE_NODES : IMPACT_NODES
-      }
-      edges={large ? LARGE_EDGES : IMPACT_EDGES}
-      changes={large ? LARGE_CHANGES : IMPACT_CHANGES}
+      nodes={empty ? [] : large ? LARGE_NODES : IMPACT_NODES}
+      edges={empty ? [] : large ? LARGE_EDGES : IMPACT_EDGES}
+      changes={empty ? [] : large ? LARGE_CHANGES : IMPACT_CHANGES}
+      mapNodeLimit={large ? 12 : undefined}
       appearance={options.appearance}
       size={options.size}
       direction={options.direction}
