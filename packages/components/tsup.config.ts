@@ -81,6 +81,7 @@ const uiComponentNames = [
   "tabs",
   "terminal-emulator",
   "timezone-select",
+  "time-travel-inspector",
   "timeline",
   "toast",
   "wizard",

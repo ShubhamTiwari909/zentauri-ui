@@ -117,6 +117,7 @@ const componentSlugs = [
   "spinner",
   "table",
   "tabs",
+  "time-travel-inspector",
   "timeline",
   "timezone-select",
   "toast",

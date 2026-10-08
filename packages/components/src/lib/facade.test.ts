@@ -13,6 +13,7 @@ describe("DesignSystem facade", () => {
     const slugs = DesignSystem.components();
     expect(slugs).toContain("accordion");
     expect(slugs).toContain("activity-feed");
+    expect(slugs).toContain("time-travel-inspector");
     expect(slugs).toContain("glass-card");
     expect(slugs).toContain("grid");
     expect(slugs).toContain("field");
@@ -24,6 +25,28 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("buttons");
     expect(slugs).toContain("inputs");
     expect(slugs.length).toBe(DesignSystem.listComponents().length);
+  });
+
+  it("discovers Time Travel Inspector appearances and reciprocal focus tokens", () => {
+    const inspector = DesignSystem.getComponent("time-travel-inspector");
+    expect(inspector?.title).toBe("Time Travel Inspector");
+    expect(inspector?.appearances()).toEqual(
+      expect.arrayContaining([
+        "default",
+        "subtle",
+        "contrast",
+        "glass",
+        "gradient-blue",
+      ]),
+    );
+    expect(inspector?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-time-travel-inspector-focus-ring",
+          pairName: "--zui-time-travel-inspector-focus-ring-dark",
+        }),
+      ]),
+    );
   });
 
   it("resolves a component handle", () => {

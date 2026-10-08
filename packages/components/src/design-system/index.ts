@@ -87,3 +87,5 @@ export * from "./typing-indicator";
 export * from "./typography";
 export * from "./wizard";
 export * from "./world-clock";
+
+export * from "./time-travel-inspector";

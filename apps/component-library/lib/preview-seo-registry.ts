@@ -81,6 +81,7 @@ import spinner from "@/content/seo/preview/components/spinner.json";
 import table from "@/content/seo/preview/components/table.json";
 import tabs from "@/content/seo/preview/components/tabs.json";
 import timezoneSelect from "@/content/seo/preview/components/timezone-select.json";
+import timeTravelInspector from "@/content/seo/preview/components/time-travel-inspector.json";
 import timeline from "@/content/seo/preview/components/timeline.json";
 import toast from "@/content/seo/preview/components/toast.json";
 import toggle from "@/content/seo/preview/components/toggle.json";
@@ -179,6 +180,7 @@ const previewSeoRegistry = {
   spinner: spinner as PreviewSeoDocument,
   table: table as PreviewSeoDocument,
   tabs: tabs as PreviewSeoDocument,
+  "time-travel-inspector": timeTravelInspector as PreviewSeoDocument,
   timeline: timeline as PreviewSeoDocument,
   toast: toast as PreviewSeoDocument,
   toggle: toggle as PreviewSeoDocument,

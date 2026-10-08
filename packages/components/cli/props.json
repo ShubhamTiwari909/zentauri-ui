@@ -28152,6 +28152,202 @@
         }
       ]
     },
+    "time-travel-inspector": {
+      "slug": "time-travel-inspector",
+      "subcomponents": [
+        {
+          "name": "static:TimeTravelInspector",
+          "displayName": "TimeTravelInspector",
+          "propsType": "TimeTravelInspectorProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "amber",
+                "blue",
+                "contrast",
+                "cyan",
+                "default",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "lime",
+                "orange",
+                "pink",
+                "purple",
+                "rose",
+                "subtle",
+                "teal",
+                "violet"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenState",
+              "type": "((context: TimeTravelRenderContext) => void) | undefined",
+              "required": false,
+              "group": "controlled",
+              "description": "Optional action for opening the selected historical state.",
+              "deprecated": false
+            },
+            {
+              "name": "bookmarks",
+              "type": "readonly string[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled bookmark IDs. IDs absent from history are ignored.",
+              "deprecated": false
+            },
+            {
+              "name": "comparisonId",
+              "type": "string | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Comparison baseline. Null automatically compares with the preceding event.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultBookmarks",
+              "type": "readonly string[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "defaultComparisonId",
+              "type": "string | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "defaultSelectedId",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Initially selected event; defaults to the latest.",
+              "deprecated": false
+            },
+            {
+              "name": "emptyState",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "formatTimestamp",
+              "type": "((timestamp: number) => string) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onBookmarksChange",
+              "type": "((ids: string[]) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onComparisonIdChange",
+              "type": "((id: string | null) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onSelectedIdChange",
+              "type": "((id: string) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "renderPreview",
+              "type": "((context: TimeTravelRenderContext) => ReactNode) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Render a historical application view. Treat state and context as immutable.",
+              "deprecated": false
+            },
+            {
+              "name": "selectedId",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Controlled selected event. Missing IDs fall back to the latest event.",
+              "deprecated": false
+            },
+            {
+              "name": "snapshots",
+              "type": "readonly TimeTravelSnapshot[]",
+              "required": true,
+              "group": "behavior",
+              "description": "Immutable history beginning with a checkpoint. Use createTimeTravelHistory to compact captures.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "timeline": {
       "slug": "timeline",
       "subcomponents": [
