@@ -76,6 +76,7 @@ import { timeTravelInspectorCssVariables } from "./data/time-travel-inspector";
 import { timelineCssVariables } from "./data/timeline";
 import { toastCssVariables } from "./data/toast";
 import { toggleCssVariables } from "./data/toggle";
+import { changeImpactExplorerCssVariables } from "./data/change-impact-explorer";
 import { toolbarCssVariables } from "./data/toolbar";
 import { tooltipCssVariables } from "./data/tooltip";
 import { treeViewCssVariables } from "./data/tree-view";
@@ -163,6 +164,7 @@ export const cssVariableReferences = {
   timeline: timelineCssVariables,
   toast: toastCssVariables,
   toggle: toggleCssVariables,
+  "change-impact-explorer": changeImpactExplorerCssVariables,
   toolbar: toolbarCssVariables,
   tooltip: tooltipCssVariables,
   "tree-view": treeViewCssVariables,

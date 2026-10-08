@@ -6288,6 +6288,299 @@
         }
       ]
     },
+    "change-impact-explorer": {
+      "slug": "change-impact-explorer",
+      "subcomponents": [
+        {
+          "name": "static:ChangeImpactExplorer",
+          "displayName": "ChangeImpactExplorer",
+          "propsType": "ChangeImpactExplorerProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "blue",
+                "contrast",
+                "cyan",
+                "default",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-green",
+                "gradient-orange",
+                "gradient-pink",
+                "gradient-purple",
+                "gray",
+                "green",
+                "indigo",
+                "lime",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "rose",
+                "sky",
+                "slate",
+                "subtle",
+                "teal",
+                "yellow",
+                "zinc"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "md",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "changeId",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "changes",
+              "type": "readonly ChangeImpactChange[]",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "defaultChangeId",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "defaultQuery",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "defaultSelectedNodeId",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "direction",
+              "type": "ChangeImpactDirection | undefined",
+              "required": false,
+              "default": "downstream",
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "edges",
+              "type": "readonly ChangeImpactEdge[]",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "emptyContent",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "error",
+              "type": "ReactNode",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "listHeight",
+              "type": "number | undefined",
+              "required": false,
+              "default": "384",
+              "group": "behavior",
+              "description": "Result viewport height in pixels.",
+              "deprecated": false
+            },
+            {
+              "name": "loading",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "mapNodeLimit",
+              "type": "number | undefined",
+              "required": false,
+              "default": "24",
+              "group": "behavior",
+              "description": "Maximum nodes mounted in the map.",
+              "deprecated": false
+            },
+            {
+              "name": "maxDepth",
+              "type": "number | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Maximum traversal hops; omitted means unlimited. Zero shows changed nodes only.",
+              "deprecated": false
+            },
+            {
+              "name": "nodes",
+              "type": "readonly ChangeImpactNode[]",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onChangeIdChange",
+              "type": "((id: string) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onQueryChange",
+              "type": "((query: string) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "onSelectedNodeIdChange",
+              "type": "((id: string, node: ChangeImpactNode) => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "query",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "renderDetails",
+              "type": "((context: ChangeImpactDetailsContext) => ReactNode) | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "renderNode",
+              "type": "((entry: ChangeImpactEntry) => ReactNode) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Noninteractive node content for map cards and listbox options.",
+              "deprecated": false
+            },
+            {
+              "name": "rowHeight",
+              "type": "number | undefined",
+              "required": false,
+              "default": "64",
+              "group": "behavior",
+              "description": "Fixed row height in pixels; custom node content must fit this height.",
+              "deprecated": false
+            },
+            {
+              "name": "selectedNodeId",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "showMap",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "true",
+              "group": "behavior",
+              "description": "Render the bounded dependency map above the results.",
+              "deprecated": false
+            },
+            {
+              "name": "showOutsideAnalysis",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "description": "Include nodes outside this traversal in the results.",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "ReactNode",
+              "required": false,
+              "default": "Change impact explorer",
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "virtualize",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "true",
+              "group": "behavior",
+              "description": "Window result rows when the list has more than 100 items.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "checkbox": {
       "slug": "checkbox",
       "subcomponents": [

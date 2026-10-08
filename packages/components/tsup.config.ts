@@ -16,6 +16,7 @@ const uiComponentNames = [
   "breadcrumb",
   "buttons",
   "calendar",
+  "change-impact-explorer",
   "card",
   "glass-card",
   "carousel",

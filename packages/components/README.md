@@ -53,6 +53,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/toolbar/toolbar.test.tsx`                                       |    70 |
 | `src/ui/field/field.test.tsx`                                           |    68 |
 | `src/ui/resizable-panels/resizable-panels.test.tsx`                     |    60 |
+| `src/ui/change-impact-explorer/change-impact-explorer.test.tsx`         |    56 |
 | `src/ui/peer-isolation.test.ts`                                         |    54 |
 | `src/ui/time-travel-inspector/time-travel-inspector.test.tsx`           |    49 |
 | `src/permission/permission.test.tsx`                                    |    47 |
@@ -62,14 +63,14 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/carousel/carousel.test.tsx`                                     |    40 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
 | `src/ui/circular-menu/circular-menu.test.tsx`                           |    35 |
+| `src/accessibility/axe-core.test.tsx`                                   |    34 |
 | `src/ui/audio-player/audio-player.test.tsx`                             |    34 |
 | `src/ui/grid/grid-layout.test.ts`                                       |    34 |
-| `src/accessibility/axe-core.test.tsx`                                   |    33 |
 | `src/ui/glass-card/glass-card.test.tsx`                                 |    31 |
 | `src/ui/orbit-system/orbit-system.test.tsx`                             |    29 |
 | `src/ui/calendar/date-utils.test.ts`                                    |    28 |
+| `cli/cli.integration.test.ts`                                           |    26 |
 | `src/ui/bento-grid/bento-grid.test.tsx`                                 |    26 |
-| `cli/cli.integration.test.ts`                                           |    25 |
 | `src/ui/combobox/combobox.test.tsx`                                     |    24 |
 | `src/ui/wizard/wizard.test.tsx`                                         |    22 |
 | `src/lib/facade.test.ts`                                                |    21 |

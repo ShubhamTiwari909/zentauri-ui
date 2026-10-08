@@ -32,12 +32,12 @@ export const PACKAGE_TEST_HEALTH = {
     {
       area: "CLI and import rewriting",
       files: 4,
-      tests: 42,
+      tests: 43,
     },
     {
       area: "Accessibility (axe + keyboard)",
       files: 2,
-      tests: 51,
+      tests: 52,
     },
     {
       area: "Permission system",

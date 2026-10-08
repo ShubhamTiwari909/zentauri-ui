@@ -1,0 +1,66 @@
+{
+  "category": "Data exploration",
+  "title": "Change Impact Explorer for React and Next.js",
+  "description": "Trace proposed changes through dependency graphs with shortest explanation paths, before/after comparisons, search, and bounded rendering.",
+  "keywords": [
+    "change impact explorer",
+    "dependency graph",
+    "React",
+    "Next.js",
+    "impact analysis"
+  ],
+  "og": {
+    "title": "Change Impact Explorer \u00b7 Zentauri UI",
+    "description": "Trace proposed changes through dependency graphs with shortest explanation paths, before/after comparisons, search, and bounded rendering.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Change Impact Explorer \u00b7 Zentauri UI",
+    "description": "Trace proposed changes through dependency graphs with shortest explanation paths, before/after comparisons, search, and bounded rendering.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/change-impact-explorer",
+  "headings": {
+    "h1": "Understand the reach of a proposed change",
+    "h2": ["What it does", "Common use cases", "Accessibility", "FAQ"]
+  },
+  "intro": "Review a proposed change through its supplied dependency graph. Explore affected consumers, shortest explanation paths, and application-provided before/after comparisons.",
+  "useCases": [
+    "API and schema migration reviews.",
+    "Configuration and integration change planning.",
+    "Release dependency inspection."
+  ],
+  "faqs": [
+    {
+      "question": "Does it predict business impact?",
+      "answer": "It traces supplied relationships. Reasons, priorities, and comparisons are provided by the application."
+    },
+    {
+      "question": "Can it handle cycles and multiple changed items?",
+      "answer": "Yes. Multi-source breadth-first traversal visits each reachable node once and retains one shortest explanation path."
+    },
+    {
+      "question": "How does it handle large graphs?",
+      "answer": "The graph index is memoized, map nodes are bounded, and result collections over 100 items are windowed by default."
+    },
+    {
+      "question": "What does a depth limit mean?",
+      "answer": "The analysis is partial. Nodes outside the limit can still be affected; they are labeled outside analysis."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Trace proposed changes through dependency graphs with shortest explanation paths, before/after comparisons, search, and bounded rendering."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Named controls, keyboard listbox navigation, mounted active descendants, and noninteractive gallery samples support accessible reviews."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

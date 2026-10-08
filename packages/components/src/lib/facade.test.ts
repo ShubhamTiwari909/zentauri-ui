@@ -18,6 +18,7 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("grid");
     expect(slugs).toContain("field");
     expect(slugs).toContain("toolbar");
+    expect(slugs).toContain("change-impact-explorer");
     expect(slugs).toContain("resizable-panels");
     expect(slugs).toContain("product-3d");
     expect(slugs).toContain("neural-graph");
@@ -93,6 +94,24 @@ describe("DesignSystem facade", () => {
     );
   });
 
+  it("discovers Change Impact Explorer palettes, sizes, and paired focus tokens", () => {
+    const component = DesignSystem.getComponent("change-impact-explorer");
+    expect(component?.title).toBe("Change Impact Explorer");
+    expect(component?.appearances()).toEqual(
+      expect.arrayContaining(["subtle", "contrast", "glass", "gradient-blue"]),
+    );
+    expect(component?.sizes()).toEqual(
+      expect.arrayContaining(["sm", "md", "lg"]),
+    );
+    expect(component?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-change-impact-explorer-focus-ring",
+          pairName: "--zui-change-impact-explorer-focus-ring-dark",
+        }),
+      ]),
+    );
+  });
   it("discovers Toolbar slots, appearances, and reciprocal focus tokens", () => {
     const toolbar = DesignSystem.getComponent("toolbar");
     expect(toolbar?.title).toBe("Toolbar");

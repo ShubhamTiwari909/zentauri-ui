@@ -39,6 +39,54 @@ function runCliError(cwd: string, args: string[]): string {
 }
 
 describe("zentauri-ui CLI", () => {
+  it("vendors Change Impact Explorer with graph helpers, virtualization, and token dependencies", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-impact-"));
+    try {
+      runCli(dir, ["init"]);
+      runCli(dir, ["add", "change-impact-explorer"]);
+      const uiRoot = join(
+        dir,
+        "src",
+        "components",
+        "ui",
+        "change-impact-explorer",
+      );
+      for (const file of [
+        "index.ts",
+        "change-impact-explorer-base.tsx",
+        "impact-graph.ts",
+        "types.ts",
+        "variants.ts",
+      ])
+        expect(existsSync(join(uiRoot, file))).toBe(true);
+      expect(
+        existsSync(join(dir, "src", "hooks", "useVirtualList", "index.ts")),
+      ).toBe(true);
+      expect(
+        existsSync(
+          join(
+            dir,
+            "src",
+            "components",
+            "design-system",
+            "change-impact-explorer.ts",
+          ),
+        ),
+      ).toBe(true);
+      expect(readdirSync(uiRoot).some((file) => file.includes(".test."))).toBe(
+        false,
+      );
+      const source = readFileSync(
+        join(uiRoot, "change-impact-explorer-base.tsx"),
+        "utf8",
+      );
+      expect(source).toContain("@/hooks/useVirtualList");
+      expect(source).not.toContain("@zentauri-ui/");
+      expect(source).not.toContain("framer-motion");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
   it("vendors Field with semantic helpers and its own token dependencies", () => {
     const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-field-"));
     try {

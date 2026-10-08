@@ -61,6 +61,7 @@ export const CLI_ADD_COMPONENTS = [
   "breadcrumb",
   "buttons",
   "calendar",
+  "change-impact-explorer",
   "card",
   "carousel",
   "checkbox",

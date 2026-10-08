@@ -223,6 +223,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/carousel",
       },
       {
+        title: "Change Impact Explorer",
+        href: "/preview/components/change-impact-explorer",
+      },
+      {
         title: "Checkbox",
         href: "/preview/components/checkbox",
       },
