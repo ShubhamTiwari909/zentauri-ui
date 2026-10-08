@@ -122,6 +122,7 @@ const componentSlugs = [
   "toast",
   "toggle",
   "world-clock",
+  "toolbar",
   "tooltip",
   "tree-view",
   "typography",
@@ -192,6 +193,7 @@ const groupSuffixes: Array<[suffix: string, group: string]> = [
   ["Rounded", "rounded"],
   ["Spacing", "spacing"],
   ["Visibility", "visibility"],
+  ["Wrap", "wrap"],
   ["Markers", "marker"],
 ];
 

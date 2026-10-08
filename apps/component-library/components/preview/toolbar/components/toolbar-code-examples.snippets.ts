@@ -1,0 +1,101 @@
+import type { ToolbarOptions } from "./toolbar-code-examples.data";
+
+export const toolbarActionsDemoSnippet = `"use client";
+import { useState } from "react";
+import { Toolbar, ToolbarButton } from "@zentauri-ui/zentauri-components/ui/toolbar";
+
+export function ToolbarActionsDemo() {
+  const [message, setMessage] = useState("Ready to work.");
+  return <div className="space-y-3">
+    <Toolbar aria-label="Document actions" appearance="subtle">
+      <ToolbarButton onClick={() => setMessage("Document saved.")}>Save</ToolbarButton>
+      <ToolbarButton onClick={() => setMessage("Export prepared.")}>Export</ToolbarButton>
+      <ToolbarButton onClick={() => setMessage("Print preview prepared.")}>Print</ToolbarButton>
+    </Toolbar>
+    <p role="status" className="text-sm">{message}</p>
+  </div>;
+}`;
+
+export const toolbarFormattingDemoSnippet = `"use client";
+import { useId, useState } from "react";
+import { Toolbar, ToolbarButton, ToolbarToggle, ToolbarGroup, ToolbarSeparator } from "@zentauri-ui/zentauri-components/ui/toolbar";
+
+export function ToolbarFormattingDemo() {
+  const id = useId();
+  const [bold, setBold] = useState(false);
+  const [italic, setItalic] = useState(false);
+  const [underline, setUnderline] = useState(false);
+  const [saved, setSaved] = useState("");
+  return <div className="space-y-3">
+    <Toolbar aria-label="Text formatting" aria-controls={id} appearance="blue">
+      <ToolbarGroup aria-label="Text style">
+        <ToolbarToggle pressed={bold} onPressedChange={setBold}>Bold</ToolbarToggle>
+        <ToolbarToggle pressed={italic} onPressedChange={setItalic}>Italic</ToolbarToggle>
+        <ToolbarToggle pressed={underline} onPressedChange={setUnderline}>Underline</ToolbarToggle>
+      </ToolbarGroup>
+      <ToolbarSeparator />
+      <ToolbarButton onClick={() => setSaved("Formatting saved.")}>Save</ToolbarButton>
+    </Toolbar>
+    <p id={id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700" style={{ fontWeight: bold ? 700 : 400, fontStyle: italic ? "italic" : "normal", textDecoration: underline ? "underline" : "none" }}>A small change can make an idea clearer.</p>
+    <p role="status" className="text-sm">{saved}</p>
+  </div>;
+}`;
+
+export const toolbarVerticalDemoSnippet = `"use client";
+import { useState } from "react";
+import { Toolbar, ToolbarButton } from "@zentauri-ui/zentauri-components/ui/toolbar";
+
+export function ToolbarVerticalDemo() {
+  const [message, setMessage] = useState("Select a canvas tool.");
+  return <div className="space-y-3">
+    <Toolbar aria-label="Canvas tools" orientation="vertical" appearance="contrast" className="w-fit">
+      <ToolbarButton onClick={() => setMessage("Move tool selected.")}>Move</ToolbarButton>
+      <ToolbarButton onClick={() => setMessage("Draw tool selected.")}>Draw</ToolbarButton>
+      <ToolbarButton onClick={() => setMessage("Erase tool selected.")}>Erase</ToolbarButton>
+    </Toolbar>
+    <p role="status" className="text-sm">{message}</p>
+  </div>;
+}`;
+
+export const toolbarCompositionDemoSnippet = `"use client";
+import { useId, useState } from "react";
+import { Toolbar, ToolbarButton, ToolbarLink, ToolbarItem, ToolbarSeparator } from "@zentauri-ui/zentauri-components/ui/toolbar";
+import { Button } from "@zentauri-ui/zentauri-components/ui/buttons";
+
+export function ToolbarCompositionDemo() {
+  const id = useId();
+  const [message, setMessage] = useState("Nothing selected yet.");
+  return <div className="space-y-3">
+    <Toolbar aria-label="Workspace shortcuts" appearance="glass">
+      <ToolbarItem><Button appearance="outline" onClick={() => setMessage("Changes saved.")}>Save changes</Button></ToolbarItem>
+      <ToolbarButton disabled>Undo</ToolbarButton>
+      <ToolbarSeparator decorative={false} />
+      <ToolbarLink href={\`#\${id}\`}>Keyboard help</ToolbarLink>
+      <ToolbarButton onClick={() => setMessage("Share link prepared.")}>Share</ToolbarButton>
+    </Toolbar>
+    <p role="status" className="text-sm">{message}</p>
+    <p id={id} className="text-sm">Tab enters once. Arrows move between available controls; Home and End jump to the edges.</p>
+  </div>;
+}`;
+
+export function toolbarPlaygroundSnippet(options: ToolbarOptions) {
+  return `"use client";
+import { useState } from "react";
+import { Toolbar, ToolbarToggle, ToolbarButton, ToolbarSeparator } from "@zentauri-ui/zentauri-components/ui/toolbar";
+const options = ${JSON.stringify(options, null, 2)} as const;
+const { disableExport, ...toolbarOptions } = options;
+export function Commands() {
+  const [bold, setBold] = useState(false);
+  const [action, setAction] = useState("No action yet.");
+  return <div>
+    <Toolbar aria-label="Commands" {...toolbarOptions} className={options.orientation === "vertical" ? "w-fit" : undefined}>
+      <ToolbarToggle pressed={bold} onPressedChange={setBold}>Bold</ToolbarToggle>
+      <ToolbarButton onClick={() => setAction("Saved.")}>Save</ToolbarButton>
+      <ToolbarSeparator />
+      <ToolbarButton disabled={disableExport} onClick={() => setAction("Export prepared.")}>Export</ToolbarButton>
+      <ToolbarButton onClick={() => setAction("Share link prepared.")}>Share</ToolbarButton>
+    </Toolbar>
+    <p role="status">{action} Bold is {bold ? "on" : "off"}.</p>
+  </div>;
+}`;
+}

@@ -85,6 +85,7 @@ const uiComponentNames = [
   "toast",
   "wizard",
   "toggle",
+  "toolbar",
   "tooltip",
   "tree-view",
   "typing-indicator",

@@ -1,0 +1,71 @@
+{
+  "category": "Navigation",
+  "title": "Toolbar component for React and Next.js",
+  "description": "Group actions, toggles, and links in an accessible toolbar with arrow navigation, horizontal and vertical layouts, RTL, and paired light/dark theme tokens.",
+  "keywords": [
+    "React toolbar",
+    "accessible toolbar",
+    "roving tabindex",
+    "formatting toolbar",
+    "Next.js",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Toolbar \u00b7 Zentauri UI",
+    "description": "Related actions with keyboard navigation and themeable surfaces.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Toolbar \u00b7 Zentauri UI",
+    "description": "Accessible action and formatting toolbars for React.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/toolbar",
+  "headings": {
+    "h1": "Toolbar for related actions and formatting",
+    "h2": ["What it does", "Common use cases", "Accessibility", "FAQ"]
+  },
+  "intro": "Compose action buttons, formatting toggles, links, and groups in a toolbar with one keyboard entry point. Explore horizontal and vertical layouts, RTL navigation, wrapping, and 26 themeable appearances.",
+  "useCases": [
+    "Editor formatting and document actions.",
+    "Canvas tools and dashboard commands.",
+    "Related links and actions in workspaces."
+  ],
+  "faqs": [
+    {
+      "question": "How does keyboard navigation work?",
+      "answer": "After hydration, Tab enters at the first available item, then returns to the most recently focused item. Horizontal arrows follow the reading direction; vertical toolbars use Up/Down. Home and End jump to the edges, and loop defaults to true."
+    },
+    {
+      "question": "Can I compose an existing Button?",
+      "answer": "Yes. Wrap a single focusable control in ToolbarItem. It must forward props and ref to its DOM element. For links or non-native widgets, set native=false and implement their disabled semantics."
+    },
+    {
+      "question": "Do arrows activate toggle buttons?",
+      "answer": "No. Arrows only move focus. Click, Enter, or Space activate ToolbarToggle. Use pressed and onPressedChange for controlled state, or defaultPressed for local state."
+    },
+    {
+      "question": "How does Toolbar handle disabled and hidden items?",
+      "answer": "Disabled, aria-disabled, hidden, and inert managed items are skipped. Root disabled disables all managed actions and blocks link activation. Changes to items update the keyboard entry point."
+    },
+    {
+      "question": "What happens on mobile?",
+      "answer": "Controls wrap by default. Set wrap=false and provide a scrolling container when you want a single row. Navigation follows DOM order across rows."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What it does",
+      "body": "Groups related commands with button, toggle, link, item, group, and separator primitives. Supports 26 appearances, three sizes, and paired theme tokens."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Name each toolbar, label icon-only controls, and group at least three related actions. Native buttons and links preserve activation semantics, while roving tabindex reduces repeated Tab stops. Prevented events and nested widget navigation are respected."
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

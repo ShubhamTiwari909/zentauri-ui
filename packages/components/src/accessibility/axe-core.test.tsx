@@ -1,3 +1,11 @@
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarToggle,
+  ToolbarLink,
+  ToolbarGroup,
+  ToolbarSeparator,
+} from "../ui/toolbar";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it } from "vitest";
@@ -100,6 +108,20 @@ import { TreeView } from "../ui/tree-view";
 import type { TreeNode } from "../ui/tree-view";
 
 describe("axe-core accessibility coverage", () => {
+  it("Toolbar actions, toggles, groups, and links have accessible semantics", async () => {
+    const { container } = render(
+      <Toolbar aria-label="Document tools">
+        <ToolbarGroup aria-label="Formatting">
+          <ToolbarToggle>Bold</ToolbarToggle>
+          <ToolbarToggle defaultPressed>Italic</ToolbarToggle>
+        </ToolbarGroup>
+        <ToolbarSeparator decorative={false} />
+        <ToolbarButton>Save</ToolbarButton>
+        <ToolbarLink href="#help">Help</ToolbarLink>
+      </Toolbar>,
+    );
+    await assertNoAxeViolations(container);
+  });
   describe("form controls and actions", () => {
     it("passes axe checks for labeled form controls and actions", async () => {
       const { container } = render(

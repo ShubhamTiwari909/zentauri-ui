@@ -161,25 +161,26 @@ function getPropertyName(name) {
 }
 
 /**
- * Read a string literal initializer from an AST node.
+ * Read a string or boolean literal initializer from an AST node.
  *
  * @param {ts.Node} node Candidate initializer node.
- * @returns {string | undefined} Literal text for string-like nodes.
+ * @returns {string | undefined} Display-friendly literal text.
  */
-function readStringValue(node) {
+function readDefaultLiteral(node) {
   if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) {
     return node.text;
   }
+  if (node.kind === ts.SyntaxKind.TrueKeyword) return "true";
+  if (node.kind === ts.SyntaxKind.FalseKeyword) return "false";
   return undefined;
 }
 
 /**
  * Convert a simple object literal into a string map.
  *
- * This is used for `defaultVariants` where values are expected to be string
- * literals such as `{ appearance: "default", size: "md" }`. Non-string values
- * are skipped deliberately so the manifest only records defaults it can display
- * safely.
+ * This reads `defaultVariants` string and boolean literals such as
+ * `{ appearance: "default", size: "md", wrap: true }`. Other expressions
+ * are skipped so the manifest only records statically known defaults.
  *
  * @param {ts.Node | undefined} node Candidate object literal node.
  * @returns {Record<string, string>} Property name to string literal value map.
@@ -193,7 +194,7 @@ function readObjectLiteral(node) {
   for (const prop of node.properties) {
     if (!ts.isPropertyAssignment(prop)) continue;
     const name = getPropertyName(prop.name);
-    const value = readStringValue(prop.initializer);
+    const value = readDefaultLiteral(prop.initializer);
     if (name && value) {
       values[name] = value;
     }
@@ -516,7 +517,7 @@ function cleanType(typeString) {
 }
 
 /**
- * Match a props type to the closest cva variant definition.
+ * Merge directly referenced cva definitions with the closest stem match.
  *
  * Root props usually map exactly (`AccordionProps` ->
  * `accordionVariants`). Compound components use stems such as
@@ -524,21 +525,54 @@ function cleanType(typeString) {
  * handles cases where the cva export stem is slightly longer than the prop
  * type stem.
  *
- * @param {string} propsType Exported props type name.
- * @param {Array<{ subcomponentName: string }>} variantDefinitions Parsed variant definitions.
+ * A root can combine several `VariantProps` types, such as Toolbar inheriting
+ * item sizes. Read those references instead of documenting only its root cva.
+ * The stem fallback retains support for props that inherit through type aliases.
+ *
+ * @param {ts.TypeAliasDeclaration | ts.InterfaceDeclaration} node Props declaration.
+ * @param {ts.TypeChecker} checker Active compiler type checker.
+ * @param {Array<{ name: string, subcomponentName: string, variants: Record<string, string[]>, defaults: Record<string, string> }>} variantDefinitions Parsed variant definitions.
  * @returns {{ variants: Record<string, string[]>, defaults: Record<string, string> } | undefined} Matching variant metadata.
  */
-function findVariantDefinition(propsType, variantDefinitions) {
-  const stem = propsType.replace(/Props$/, "");
+function findVariantDefinition(node, checker, variantDefinitions) {
+  const stem = node.name.text.replace(/Props$/, "");
   const exact = variantDefinitions.find(
     (definition) => definition.subcomponentName === stem,
   );
-  if (exact) return exact;
-
   const lowerStem = stem.toLowerCase();
-  return variantDefinitions.find((definition) =>
-    definition.subcomponentName.toLowerCase().startsWith(lowerStem),
-  );
+  const fallback =
+    exact ??
+    variantDefinitions.find((definition) =>
+      definition.subcomponentName.toLowerCase().startsWith(lowerStem),
+    );
+  // Preserve the existing component matching boundary; exported helper aliases
+  // without a component stem should not acquire their own variant tables.
+  if (!fallback) return undefined;
+  const matches = new Set([fallback]);
+  function visit(child) {
+    if (
+      ts.isTypeReferenceNode(child) &&
+      ts.isIdentifier(child.typeName) &&
+      child.typeName.text === "VariantProps"
+    ) {
+      const argument = child.typeArguments?.[0];
+      if (argument && ts.isTypeQueryNode(argument)) {
+        let symbol = checker.getSymbolAtLocation(argument.exprName);
+        if (symbol && symbol.flags & ts.SymbolFlags.Alias)
+          symbol = checker.getAliasedSymbol(symbol);
+        const definition = variantDefinitions.find(
+          (entry) => entry.name === symbol?.name,
+        );
+        if (definition) matches.add(definition);
+      }
+    }
+    ts.forEachChild(child, visit);
+  }
+  visit(node);
+  return {
+    variants: Object.assign({}, ...[...matches].map((entry) => entry.variants)),
+    defaults: Object.assign({}, ...[...matches].map((entry) => entry.defaults)),
+  };
 }
 
 /**
@@ -670,7 +704,7 @@ function readPropsFile({ program, checker, componentName, sourceKind }) {
     const props = readPropsForNode(
       statement,
       checker,
-      findVariantDefinition(propsType, variantDefinitions),
+      findVariantDefinition(statement, checker, variantDefinitions),
       componentName,
     );
 

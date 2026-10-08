@@ -129,6 +129,7 @@ export const CLI_ADD_COMPONENTS = [
   "timezone-select",
   "toast",
   "toggle",
+  "toolbar",
   "tooltip",
   "tree-view",
   "typing-indicator",

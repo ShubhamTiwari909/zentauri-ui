@@ -16,6 +16,7 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("glass-card");
     expect(slugs).toContain("grid");
     expect(slugs).toContain("field");
+    expect(slugs).toContain("toolbar");
     expect(slugs).toContain("resizable-panels");
     expect(slugs).toContain("product-3d");
     expect(slugs).toContain("neural-graph");
@@ -60,6 +61,32 @@ describe("DesignSystem facade", () => {
         expect.objectContaining({
           name: "--zui-resizable-panels-focus-ring-dark",
           pairName: "--zui-resizable-panels-focus-ring",
+        }),
+      ]),
+    );
+  });
+
+  it("discovers Toolbar slots, appearances, and reciprocal focus tokens", () => {
+    const toolbar = DesignSystem.getComponent("toolbar");
+    expect(toolbar?.title).toBe("Toolbar");
+    expect(toolbar?.slots()).toEqual(
+      expect.arrayContaining(["root", "item", "group", "separator"]),
+    );
+    expect(toolbar?.appearances()).toEqual(
+      expect.arrayContaining(["subtle", "contrast", "glass", "gradient-blue"]),
+    );
+    expect(toolbar?.groups()).toContain("wrap");
+    expect(toolbar?.getVariant("wrap", "true")?.className).toBe("flex-wrap");
+    expect(toolbar?.getVariant("wrap", "false")?.className).toBe("flex-nowrap");
+    expect(toolbar?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-toolbar-focus-ring",
+          pairName: "--zui-toolbar-focus-ring-dark",
+        }),
+        expect.objectContaining({
+          name: "--zui-toolbar-focus-ring-dark",
+          pairName: "--zui-toolbar-focus-ring",
         }),
       ]),
     );

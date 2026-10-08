@@ -85,6 +85,7 @@ import timeline from "@/content/seo/preview/components/timeline.json";
 import toast from "@/content/seo/preview/components/toast.json";
 import toggle from "@/content/seo/preview/components/toggle.json";
 import tokens from "@/content/seo/preview/components/tokens.json";
+import toolbar from "@/content/seo/preview/components/toolbar.json";
 import tooltip from "@/content/seo/preview/components/tooltip.json";
 import treeView from "@/content/seo/preview/components/tree-view.json";
 import typingIndicator from "@/content/seo/preview/components/typing-indicator.json";
@@ -182,6 +183,7 @@ const previewSeoRegistry = {
   toast: toast as PreviewSeoDocument,
   toggle: toggle as PreviewSeoDocument,
   tokens: tokens as PreviewSeoDocument,
+  toolbar: toolbar as PreviewSeoDocument,
   tooltip: tooltip as PreviewSeoDocument,
   "tree-view": treeView as PreviewSeoDocument,
   "typing-indicator": typingIndicator as PreviewSeoDocument,

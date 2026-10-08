@@ -658,6 +658,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Form",
   },
   {
+    id: "toolbar",
+    name: "Toolbar",
+    description:
+      "Related actions, formatting toggles, and links with one Tab stop, arrow navigation, vertical layouts, and RTL support.",
+    href: "/preview/components/toolbar",
+    badge: "Navigation",
+  },
+  {
     id: "tooltip",
     name: "Tooltip",
     description:
