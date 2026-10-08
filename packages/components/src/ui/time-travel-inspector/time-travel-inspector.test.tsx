@@ -9,7 +9,11 @@ import {
   diffTimeTravelStates,
   resolveTimeTravelState,
 } from "./index";
-import type { TimeTravelSnapshot, TimeTravelValue } from "./types";
+import type {
+  TimeTravelCapture,
+  TimeTravelSnapshot,
+  TimeTravelValue,
+} from "./types";
 
 const captures = [
   {
@@ -36,7 +40,7 @@ const captures = [
     label: "Payment received",
     state: { total: 60, items: ["Bag"], paid: true },
   },
-];
+] as const satisfies readonly TimeTravelCapture[];
 const history = createTimeTravelHistory(captures, 2);
 const statePanel = (container: HTMLElement) =>
   container.querySelector('[data-slot="time-travel-inspector-state"]')!;
@@ -71,7 +75,7 @@ describe("Time travel history", () => {
       timestamp: 1,
       label: "Unused",
       kind: "delta",
-      get changes() {
+      get changes(): never {
         throw new Error("Should not replay old delta");
       },
     };
