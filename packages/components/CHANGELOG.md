@@ -1,5 +1,14 @@
 # @zentauri-ui/zentauri-components Changelog
 
+## 2.16.0
+
+### Minor Changes
+
+- cbff7f0: Add accessible Form and Field primitives with connected labels, descriptions, errors, native field groups, responsive layouts, and paired theme tokens.
+- dfe95a4: Add ResizablePanels, ResizablePanel, and ResizableHandle for nested horizontal and vertical workspaces, with controlled percentages, constraints, collapse and restore, pointer and keyboard resizing, RTL support, paired theme tokens, and source vendoring.
+- f5fb240: Add Grid and GridItem for responsive fixed, auto-fit/auto-fill, and named-area CSS layouts. Includes one-item-per-row mobile stacking by default with a stackOnMobile opt-out, mobile-safe spans, independent spacing, semantic wrappers, themeable item surfaces, and source-vendoring support without an animation dependency.
+- 2df603f: Add accessible Toolbar primitives with roving keyboard navigation, horizontal and vertical layouts, RTL support, formatting toggles, composable controls, and paired light/dark theme tokens.
+
 ## 2.15.0
 
 ### Minor Changes
