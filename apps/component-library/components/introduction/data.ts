@@ -2,6 +2,14 @@ import { ComponentHighlight } from "./types";
 
 export const componentsData: ComponentHighlight[] = [
   {
+    id: "change-impact-explorer",
+    name: "Change Impact Explorer",
+    description:
+      "Trace proposals through dependency graphs with explanation paths, comparisons, and windowed results.",
+    href: "/preview/components/change-impact-explorer",
+    badge: "Data",
+  },
+  {
     id: "accordion",
     name: "Accordion",
     description:

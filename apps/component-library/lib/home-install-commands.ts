@@ -63,6 +63,7 @@ export const CLI_ADD_COMPONENTS = [
   "calendar",
   "card",
   "carousel",
+  "change-impact-explorer",
   "checkbox",
   "circular-menu",
   "code-block",

@@ -83,6 +83,7 @@ const componentSlugs = [
   "card",
   "glass-card",
   "grid",
+  "change-impact-explorer",
   "checkbox",
   "command",
   "context-menu",

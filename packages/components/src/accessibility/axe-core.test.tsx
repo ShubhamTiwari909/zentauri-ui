@@ -1,3 +1,4 @@
+import { ChangeImpactExplorer } from "../ui/change-impact-explorer";
 import {
   Toolbar,
   ToolbarButton,
@@ -108,6 +109,19 @@ import { TreeView } from "../ui/tree-view";
 import type { TreeNode } from "../ui/tree-view";
 
 describe("axe-core accessibility coverage", () => {
+  it("Change Impact Explorer controls, map, results, and details are accessible", async () => {
+    const { container } = render(
+      <ChangeImpactExplorer
+        nodes={[
+          { id: "a", label: "Schema" },
+          { id: "b", label: "SDK" },
+        ]}
+        edges={[{ id: "ab", source: "a", target: "b" }]}
+        changes={[{ id: "rename", label: "Rename field", nodeIds: ["a"] }]}
+      />,
+    );
+    await assertNoAxeViolations(container);
+  });
   it("Toolbar actions, toggles, groups, and links have accessible semantics", async () => {
     const { container } = render(
       <Toolbar aria-label="Document tools">

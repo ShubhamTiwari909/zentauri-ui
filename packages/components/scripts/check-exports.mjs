@@ -6,9 +6,9 @@
  *
  * Exits 1 (and lists every missing file) if anything is absent.
  */
-import { existsSync, readFileSync } from "node:fs";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -60,6 +60,11 @@ for (const name of hooks) {
   add(`hooks/${name}.mjs`, `hooks/${name}.js`, `hooks/${name}/index.d.ts`);
 }
 // Special-cased entries from package.json exports.
+add(
+  "graphs/change-impact-explorer.mjs",
+  "graphs/change-impact-explorer.js",
+  "ui/change-impact-explorer/graph.d.ts",
+);
 add("hooks/utils.mjs", "hooks/utils.js", "lib/utils.d.ts");
 add(
   "design-system/tokens.mjs",

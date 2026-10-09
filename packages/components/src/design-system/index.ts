@@ -13,6 +13,7 @@ export * from "./button";
 export * from "./calendar";
 export * from "./card";
 export * from "./carousel";
+export * from "./change-impact-explorer";
 export * from "./checkbox";
 export * from "./circular-menu";
 export * from "./code-block";
