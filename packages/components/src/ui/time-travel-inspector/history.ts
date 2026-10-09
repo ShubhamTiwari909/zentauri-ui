@@ -6,6 +6,15 @@ import type {
   TimeTravelValue,
 } from "./types";
 
+export type {
+  TimeTravelCapture,
+  TimeTravelChange,
+  TimeTravelEvent,
+  TimeTravelPatch,
+  TimeTravelSnapshot,
+  TimeTravelValue,
+} from "./types";
+
 const isObject = (
   value: TimeTravelValue,
 ): value is { readonly [key: string]: TimeTravelValue } =>
@@ -23,6 +32,27 @@ function clone(value: TimeTravelValue): TimeTravelValue {
   return value;
 }
 
+/** Equality-only walk: stop at the first difference without building change lists. */
+function hasDiff(a: TimeTravelValue, b: TimeTravelValue): boolean {
+  if (Object.is(a, b)) return false;
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length !== b.length) return true;
+    for (let index = 0; index < a.length; index++) {
+      if (hasDiff(a[index]!, b[index]!)) return true;
+    }
+    return false;
+  }
+  if (isObject(a) && isObject(b)) {
+    const keys = Object.keys(a);
+    if (keys.length !== Object.keys(b).length) return true;
+    for (const key of keys) {
+      if (!owns(b, key) || hasDiff(a[key]!, b[key]!)) return true;
+    }
+    return false;
+  }
+  return true;
+}
+
 /** Compare two JSON states. Paths preserve literal keys; arrays are a single change. */
 export function diffTimeTravelStates(
   before: TimeTravelValue,
@@ -35,26 +65,20 @@ export function diffTimeTravelStates(
       for (const key of Object.keys(a)) {
         if (!owns(b, key))
           changes.push({
-            path: [...path, key],
+            path:
+              path[0] === undefined ? [key] : [path[0], ...path.slice(1), key],
             type: "removed",
-            before: a[key],
+            before: a[key]!,
           });
       }
       for (const key of Object.keys(b)) {
         if (!owns(a, key))
-          changes.push({ path: [...path, key], type: "added", after: b[key] });
+          changes.push({ path: [...path, key], type: "added", after: b[key]! });
         else visit(a[key]!, b[key]!, [...path, key]);
       }
-    } else if (Array.isArray(a) && Array.isArray(b)) {
-      if (
-        a.length !== b.length ||
-        a.some(
-          (value, index) => diffTimeTravelStates(value, b[index]!).length > 0,
-        )
-      ) {
-        changes.push({ path, type: "changed", before: a, after: b });
-      }
-    } else changes.push({ path, type: "changed", before: a, after: b });
+    } else if (hasDiff(a, b)) {
+      changes.push({ path, type: "changed", before: a, after: b });
+    }
   }
   visit(before, after, []);
   return changes;
@@ -98,7 +122,7 @@ export function createTimeTravelHistory(
     ).map((change) =>
       change.type === "removed"
         ? { op: "remove", path: change.path }
-        : { op: "set", path: change.path, value: clone(change.after!) },
+        : { op: "set", path: change.path, value: clone(change.after) },
     );
     return { id, timestamp, label, kind: "delta", changes };
   });

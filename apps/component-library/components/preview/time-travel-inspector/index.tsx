@@ -50,12 +50,24 @@ export default function TimeTravelInspectorPreviewPage({
           limited to seven.
         </p>
         <p>
+          In Server Components or server code, import the pure helpers from
+          <code>
+            {" "}
+            @zentauri-ui/zentauri-components/ui/time-travel-inspector/history
+          </code>
+          to compact or resolve history before passing snapshots to the client
+          inspector. The UI entry also re-exports these helpers for client use.
+          Replace snapshots and patches immutably when updating history.
+        </p>
+        <p>
           State must be finite JSON data: objects, arrays, strings, numbers,
           booleans, and null. Dates, undefined, class instances, and cyclic
           objects are unsupported. Changes use object-key path arrays; arrays
           are replaced atomically. A set with an empty path replaces the root.
-          Remove deletes an object key, and nested patch parents must already
-          exist.
+          Remove requires a nonempty path to an object key, and nested patch
+          parents must already exist. Diff results are discriminated by type:
+          added includes after, removed includes before, and changed includes
+          both.
         </p>
         <p>
           The state viewer, diff, and renderPreview receive the same moment. A

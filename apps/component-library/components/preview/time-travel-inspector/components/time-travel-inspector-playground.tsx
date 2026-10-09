@@ -47,7 +47,9 @@ export function TimeTravelInspectorPlayground() {
         </label>
       </div>
       <div>
-        <p className="mb-3 text-sm font-semibold">Replay a checkout session</p>
+        <p role="heading" aria-level={3} className="mb-3 text-sm font-semibold">
+          Replay a checkout session
+        </p>
         <PreviewCodeShowcase
           code={timeTravelInspectorSnippet(appearance, size)}
         >
@@ -55,7 +57,9 @@ export function TimeTravelInspectorPlayground() {
         </PreviewCodeShowcase>
       </div>
       <div>
-        <p className="mb-3 text-sm font-semibold">All appearances</p>
+        <p role="heading" aria-level={3} className="mb-3 text-sm font-semibold">
+          All appearances
+        </p>
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           {TIME_TRAVEL_APPEARANCES.map((value) => (
             <button

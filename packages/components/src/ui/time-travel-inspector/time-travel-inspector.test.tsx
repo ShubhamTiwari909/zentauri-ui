@@ -11,6 +11,7 @@ import {
 } from "./index";
 import type {
   TimeTravelCapture,
+  TimeTravelPatch,
   TimeTravelSnapshot,
   TimeTravelValue,
 } from "./types";
@@ -135,6 +136,58 @@ describe("Time travel history", () => {
     expect(diffTimeTravelStates([{ a: 1, b: 2 }], [{ b: 2, a: 1 }])).toEqual(
       [],
     );
+  });
+  it("stops comparing an array element after its first nested difference", () => {
+    const readLaterValue = vi.fn(() => 99);
+    const before = [
+      {
+        first: 1,
+        get later() {
+          return readLaterValue();
+        },
+      },
+    ];
+    const after = [{ first: 2, later: 99 }];
+    const changes = diffTimeTravelStates(before, after);
+    expect(changes).toHaveLength(1);
+    expect(changes[0]?.path).toEqual([]);
+    expect(readLaterValue).not.toHaveBeenCalled();
+  });
+  it("compares nested arrays without losing atomic array changes", () => {
+    expect(
+      diffTimeTravelStates(
+        [[null, false, { key: [0] }]],
+        [[null, false, { key: [0] }]],
+      ),
+    ).toEqual([]);
+    const before = { values: [[1, 2]] };
+    const after = { values: [[1, 3]] };
+    expect(diffTimeTravelStates(before, after)).toEqual([
+      {
+        type: "changed",
+        path: ["values"],
+        before: before.values,
+        after: after.values,
+      },
+    ]);
+  });
+  it("rejects root removal from untyped input at runtime", () => {
+    const invalid = { op: "remove", path: [] } as unknown as TimeTravelPatch;
+    expect(() =>
+      resolveTimeTravelState(
+        [
+          history[0]!,
+          {
+            id: "invalid",
+            timestamp: 1,
+            label: "Invalid",
+            kind: "delta",
+            changes: [invalid],
+          },
+        ],
+        1,
+      ),
+    ).toThrow(/Cannot remove the root state/);
   });
   it("reports additions, removals and root replacements unambiguously", () => {
     expect(diffTimeTravelStates({ a: null }, { b: 0 })).toEqual([

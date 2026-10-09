@@ -45,6 +45,10 @@ describe("DesignSystem facade", () => {
           name: "--zui-time-travel-inspector-focus-ring",
           pairName: "--zui-time-travel-inspector-focus-ring-dark",
         }),
+        expect.objectContaining({
+          name: "--zui-time-travel-inspector-focus-ring-dark",
+          pairName: "--zui-time-travel-inspector-focus-ring",
+        }),
       ]),
     );
   });

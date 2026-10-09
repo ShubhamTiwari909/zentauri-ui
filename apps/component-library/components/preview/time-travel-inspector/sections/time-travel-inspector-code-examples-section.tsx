@@ -33,7 +33,7 @@ export function TimeTravelInspectorCodeExamplesSection() {
   return (
     <Section className="text-slate-900 dark:text-slate-50">
       <h2 className="mb-4 text-2xl font-semibold">Incremental history</h2>
-      <p className="mb-3 text-sm font-semibold">
+      <p role="heading" aria-level={3} className="mb-3 text-sm font-semibold">
         Supply checkpoints and deltas directly
       </p>
       <PreviewCodeShowcase code={incrementalHistorySnippet}>

@@ -11,39 +11,56 @@ export type TimeTravelValue =
   | readonly TimeTravelValue[]
   | { readonly [key: string]: TimeTravelValue };
 
-/** Object-key segments, not dot notation. An empty path replaces the root. */
+/** Object-key segments, not dot notation. Only set accepts an empty root path. */
 export type TimeTravelPatch =
-  | { op: "set"; path: readonly string[]; value: TimeTravelValue }
-  | { op: "remove"; path: readonly string[] };
+  | {
+      readonly op: "set";
+      readonly path: readonly string[];
+      readonly value: TimeTravelValue;
+    }
+  | { readonly op: "remove"; readonly path: readonly [string, ...string[]] };
 
 export type TimeTravelEvent = {
   /** Unique, stable event identifier. */
-  id: string;
+  readonly id: string;
   /** Finite timestamp in milliseconds, in nondecreasing order. Zero is valid. */
-  timestamp: number;
-  label: string;
+  readonly timestamp: number;
+  readonly label: string;
 };
 
 export type TimeTravelSnapshot = TimeTravelEvent &
   (
-    | { kind: "checkpoint"; state: TimeTravelValue }
-    | { kind: "delta"; changes: readonly TimeTravelPatch[] }
+    | { readonly kind: "checkpoint"; readonly state: TimeTravelValue }
+    | { readonly kind: "delta"; readonly changes: readonly TimeTravelPatch[] }
   );
 
-export type TimeTravelCapture = TimeTravelEvent & { state: TimeTravelValue };
-export type TimeTravelChange = {
-  path: readonly string[];
-  type: "added" | "removed" | "changed";
-  before?: TimeTravelValue;
-  after?: TimeTravelValue;
+export type TimeTravelCapture = TimeTravelEvent & {
+  readonly state: TimeTravelValue;
 };
+export type TimeTravelChange =
+  | {
+      readonly path: readonly string[];
+      readonly type: "added";
+      readonly after: TimeTravelValue;
+    }
+  | {
+      readonly path: readonly [string, ...string[]];
+      readonly type: "removed";
+      readonly before: TimeTravelValue;
+    }
+  | {
+      readonly path: readonly string[];
+      readonly type: "changed";
+      readonly before: TimeTravelValue;
+      readonly after: TimeTravelValue;
+    };
 export type TimeTravelRenderContext = {
-  snapshot: TimeTravelSnapshot;
-  index: number;
-  state: TimeTravelValue;
-  comparisonSnapshot: TimeTravelSnapshot;
-  comparisonState: TimeTravelValue;
-  changes: readonly TimeTravelChange[];
+  readonly snapshot: TimeTravelSnapshot;
+  readonly index: number;
+  readonly state: TimeTravelValue;
+  readonly comparisonSnapshot: TimeTravelSnapshot;
+  readonly comparisonState: TimeTravelValue;
+  readonly changes: readonly TimeTravelChange[];
 };
 
 export type TimeTravelInspectorProps = VariantProps<

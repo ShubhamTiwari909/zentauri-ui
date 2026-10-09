@@ -4,8 +4,13 @@ import { fileURLToPath } from "node:url";
 
 const packageRoot = join(fileURLToPath(new URL(".", import.meta.url)), "..");
 const directive = '"use client";\n';
+const serverEntries = new Set([
+  join(packageRoot, "dist", "ui", "time-travel-inspector", "history.mjs"),
+  join(packageRoot, "dist", "ui", "time-travel-inspector", "history.js"),
+]);
 
 async function maybePrependDirective(filePath, baseName) {
+  if (serverEntries.has(filePath)) return;
   if (baseName.startsWith("chunk-")) return;
   if (!baseName.endsWith(".mjs") && !baseName.endsWith(".js")) return;
   if (baseName.endsWith(".map")) return;

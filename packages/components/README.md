@@ -33,12 +33,12 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 157 passed (157)   |
-| Tests      | 1886 passed (1886) |
+| Test files | 158 passed (158)   |
+| Tests      | 1890 passed (1890) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 100        | 1438  |
+| Components and UI utilities    | 101        | 1442  |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 48         | 242   |
 | Design system facade           | 1          | 21    |
@@ -54,8 +54,8 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/field/field.test.tsx`                                           |    68 |
 | `src/ui/resizable-panels/resizable-panels.test.tsx`                     |    60 |
 | `src/ui/peer-isolation.test.ts`                                         |    54 |
+| `src/ui/time-travel-inspector/time-travel-inspector.test.tsx`           |    49 |
 | `src/permission/permission.test.tsx`                                    |    47 |
-| `src/ui/time-travel-inspector/time-travel-inspector.test.tsx`           |    46 |
 | `src/animations/animations.test.tsx`                                    |    45 |
 | `src/ui/buttons/button.test.tsx`                                        |    44 |
 | `src/ui/grid/grid.test.tsx`                                             |    41 |
@@ -207,6 +207,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useWindowSize/useWindowSize.test.ts`                         |     1 |
 | `src/ui/glass-card/glass-card.ssr.test.tsx`                             |     1 |
 | `src/ui/search/search-suggestion-utils.test.ts`                         |     1 |
+| `src/ui/time-travel-inspector/time-travel-inspector.types.test.ts`      |     1 |
 
 ## Package exports
 
@@ -921,7 +922,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1886 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1890 test cases in total
 - `pnpm test:a11y` — focused accessibility coverage for package-level UI primitives and compound components: **axe-core** audits for every interactive component plus **keyboard-interaction** tests (focus order, arrow-key nav, Home/End, Escape/Enter) for the compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).
