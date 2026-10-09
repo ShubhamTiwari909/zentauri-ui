@@ -36,6 +36,8 @@ function verifyContract(
     // @ts-expect-error Patch values are immutable.
     patch.value = null;
   }
+  // Root replacement is valid for set operations.
+  const rootSet: TimeTravelPatch = { op: "set", path: [], value: null };
   // @ts-expect-error A remove operation must identify an object key.
   const rootRemove: TimeTravelPatch = { op: "remove", path: [] };
   // @ts-expect-error Added changes require their new value.
@@ -55,7 +57,14 @@ function verifyContract(
     value = change.before;
     value = change.after;
   }
-  return { rootRemove, missingAfter, missingBefore, incompleteChange, value };
+  return {
+    rootSet,
+    rootRemove,
+    missingAfter,
+    missingBefore,
+    incompleteChange,
+    value,
+  };
 }
 
 it("compile-time only (check-types): immutable history, nonempty removals, and narrowed change values", () => {

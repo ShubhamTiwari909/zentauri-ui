@@ -15,7 +15,7 @@ export type TimeTravelValue =
 export type TimeTravelPatch =
   | {
       readonly op: "set";
-      readonly path: readonly [string, ...string[]];
+      readonly path: readonly string[];
       readonly value: TimeTravelValue;
     }
   | { readonly op: "remove"; readonly path: readonly [string, ...string[]] };
