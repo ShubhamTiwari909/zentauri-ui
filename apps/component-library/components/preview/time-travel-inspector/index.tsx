@@ -54,7 +54,7 @@ export default function TimeTravelInspectorPreviewPage({
           <code>
             {" "}
             @zentauri-ui/zentauri-components/ui/time-travel-inspector/history
-          </code>
+          </code>{" "}
           to compact or resolve history before passing snapshots to the client
           inspector. The UI entry also re-exports these helpers for client use.
           Replace snapshots and patches immutably when updating history.
