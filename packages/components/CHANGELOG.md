@@ -1,5 +1,15 @@
 # @zentauri-ui/zentauri-components Changelog
 
+## 2.17.0
+
+### Minor Changes
+
+- 0308a38: Add Time Travel Inspector with checkpoint-based history, synchronized state and visual previews, snapshot comparison, bookmarks, and historical-state callbacks.
+
+  Expose the pure history helpers through the server-safe `ui/time-travel-inspector/history` entry, with immutable snapshot types, typed change variants, and nonempty removal paths.
+
+- 9b039a2: Add Change Impact Explorer with cycle-safe dependency traversal, explanation paths, before/after comparisons, accessible selection, bounded rendering, and a server-safe graph helper entry.
+
 ## 2.16.0
 
 ### Minor Changes
