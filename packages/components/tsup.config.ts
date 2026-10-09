@@ -81,6 +81,7 @@ const uiComponentNames = [
   "tabs",
   "terminal-emulator",
   "timezone-select",
+  "time-travel-inspector",
   "timeline",
   "toast",
   "wizard",
@@ -298,6 +299,8 @@ export default defineConfig({
   entry: {
     "design-system/tokens": "src/design-system/tokens.ts",
     "design-system/facade": "src/lib/facade.ts",
+    "ui/time-travel-inspector/history":
+      "src/ui/time-travel-inspector/history.ts",
     ...uiEntries,
     ...chartEntries,
     ...animationEntries,

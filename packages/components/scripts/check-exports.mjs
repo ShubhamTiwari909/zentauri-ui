@@ -7,6 +7,8 @@
  * Exits 1 (and lists every missing file) if anything is absent.
  */
 import { existsSync, readFileSync } from "node:fs";
+import assert from "node:assert/strict";
+import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -65,6 +67,11 @@ add(
   "design-system/tokens.d.ts",
 );
 add("permission.mjs", "permission.js", "permission/index.d.ts");
+add(
+  "ui/time-travel-inspector/history.mjs",
+  "ui/time-travel-inspector/history.js",
+  "ui/time-travel-inspector/history.d.ts",
+);
 
 if (!existsSync(dist)) {
   console.error(
@@ -88,6 +95,50 @@ if (missing.length > 0) {
     console.error(`  - dist/${rel}`);
   }
   process.exit(1);
+}
+
+// Check the shipped server entry and its shared chunks, not just the source barrel.
+function checkServerGraph(filePath, visited = new Set()) {
+  if (visited.has(filePath)) return;
+  visited.add(filePath);
+  const source = readFileSync(filePath, "utf8");
+  assert(
+    !/^\s*["']use client["']/m.test(source),
+    `Client boundary in ${filePath}`,
+  );
+  const imports = source.matchAll(
+    /\b(?:from\s+|require\(\s*|import(?:\(\s*|\s+))["']([^"']+)["']/g,
+  );
+  for (const [, specifier] of imports) {
+    assert(
+      !/^(react|react-dom|framer-motion)(\/|$)/.test(specifier),
+      `Client dependency in ${filePath}`,
+    );
+    if (specifier.startsWith("."))
+      checkServerGraph(join(dirname(filePath), specifier), visited);
+  }
+}
+
+for (const extension of ["mjs", "js"]) {
+  checkServerGraph(
+    join(dist, "ui", "time-travel-inspector", `history.${extension}`),
+  );
+}
+const historySpecifier =
+  "@zentauri-ui/zentauri-components/ui/time-travel-inspector/history";
+for (const helpers of [
+  await import(historySpecifier),
+  createRequire(import.meta.url)(historySpecifier),
+]) {
+  const history = helpers.createTimeTravelHistory([
+    { id: "a", label: "Opened", timestamp: 0, state: { total: 80 } },
+    { id: "b", label: "Discount", timestamp: 1, state: { total: 64 } },
+  ]);
+  const state = helpers.resolveTimeTravelState(history, 1);
+  assert.deepEqual(state, { total: 64 });
+  assert.deepEqual(helpers.diffTimeTravelStates({ total: 80 }, state), [
+    { path: ["total"], type: "changed", before: 80, after: 64 },
+  ]);
 }
 
 console.log(

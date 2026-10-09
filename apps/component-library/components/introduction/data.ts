@@ -626,6 +626,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Data",
   },
   {
+    id: "time-travel-inspector",
+    name: "Time Travel Inspector",
+    description:
+      "Scrub application snapshots with synchronized state, diffs, bookmarks, and custom historical previews.",
+    href: "/preview/components/time-travel-inspector",
+    badge: "Data",
+  },
+  {
     id: "timeline",
     name: "Timeline",
     description:

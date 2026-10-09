@@ -72,6 +72,7 @@ import { speechSynthesizerCssVariables } from "./data/speech-synthesizer";
 import { spinnerCssVariables } from "./data/spinner";
 import { tableCssVariables } from "./data/table";
 import { tabsCssVariables } from "./data/tabs";
+import { timeTravelInspectorCssVariables } from "./data/time-travel-inspector";
 import { timelineCssVariables } from "./data/timeline";
 import { toastCssVariables } from "./data/toast";
 import { toggleCssVariables } from "./data/toggle";
@@ -158,6 +159,7 @@ export const cssVariableReferences = {
   spinner: spinnerCssVariables,
   table: tableCssVariables,
   tabs: tabsCssVariables,
+  "time-travel-inspector": timeTravelInspectorCssVariables,
   timeline: timelineCssVariables,
   toast: toastCssVariables,
   toggle: toggleCssVariables,

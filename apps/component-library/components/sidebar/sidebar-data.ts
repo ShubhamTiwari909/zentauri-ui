@@ -469,6 +469,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/terminal-emulator",
       },
       {
+        title: "Time Travel Inspector",
+        href: "/preview/components/time-travel-inspector",
+      },
+      {
         title: "Timeline",
         href: "/preview/components/timeline",
       },

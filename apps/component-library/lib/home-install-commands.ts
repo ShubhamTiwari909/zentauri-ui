@@ -125,6 +125,7 @@ export const CLI_ADD_COMPONENTS = [
   "table",
   "tabs",
   "terminal-emulator",
+  "time-travel-inspector",
   "timeline",
   "timezone-select",
   "toast",

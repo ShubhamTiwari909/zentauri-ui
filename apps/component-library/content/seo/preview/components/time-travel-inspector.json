@@ -1,0 +1,60 @@
+{
+  "category": "Data display",
+  "title": "Time Travel Inspector for application snapshots",
+  "description": "Replay application state with a synchronized timeline, JSON diffs, bookmarks, and custom visual previews backed by checkpoints and incremental changes.",
+  "keywords": [
+    "time travel inspector",
+    "session replay",
+    "state snapshots",
+    "checkout debugging",
+    "React",
+    "Next.js",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Time Travel Inspector \u00b7 Zentauri UI",
+    "description": "Inspect historical application state with synchronized snapshots and visual previews.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Time Travel Inspector \u00b7 Zentauri UI",
+    "description": "Scrub, compare, bookmark, and render historical application state.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/time-travel-inspector",
+  "headings": {
+    "h1": "Time Travel Inspector",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "Move through application snapshots and see exactly what changed. A synchronized scrubber, state viewer, and custom renderer keep each historical moment in context.",
+  "useCases": [
+    "Replay a checkout session to inspect when a cart total changed.",
+    "Compare editor or workflow state before and after an action.",
+    "Bookmark important events during a debugging session."
+  ],
+  "faqs": [
+    {
+      "question": "How are snapshots stored?",
+      "answer": "Use createTimeTravelHistory to compact JSON captures into periodic checkpoints and incremental key changes, or supply checkpoints and deltas directly. Each seek starts at the nearest checkpoint."
+    },
+    {
+      "question": "Can I render my own historical UI?",
+      "answer": "Yes. renderPreview receives the selected state, event, comparison state, and changes. onOpenState lets your application open a historical view."
+    },
+    {
+      "question": "Does this record my application automatically?",
+      "answer": "No. Your application owns capture, persistence, and restoration. The inspector displays the immutable history you supply."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "TimeTravelInspector combines a keyboard-accessible timeline, bookmarks, timestamp comparison, state differences, and an optional custom preview."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
