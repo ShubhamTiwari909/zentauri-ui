@@ -58,6 +58,6 @@ function verifyContract(
   return { rootRemove, missingAfter, missingBefore, incompleteChange, value };
 }
 
-it("enforces immutable history, nonempty removals, and narrowed change values", () => {
+it("compile-time only (check-types): immutable history, nonempty removals, and narrowed change values", () => {
   expectTypeOf(verifyContract).toBeFunction();
 });
