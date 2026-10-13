@@ -1,5 +1,6 @@
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
+import editorial from "@/content/seo/preview/components/typography/editorial.json";
 import numberFormatting from "@/content/seo/preview/components/typography/number-formatting.json";
 import highlighting from "@/content/seo/preview/components/typography/highlighting.json";
 import truncation from "@/content/seo/preview/components/typography/truncation.json";
@@ -16,6 +17,7 @@ import lists from "@/content/seo/preview/components/typography/lists.json";
 import paragraph from "@/content/seo/preview/components/typography/paragraph.json";
 
 export const TYPOGRAPHY_SECTION_SLUGS = [
+  "editorial",
   "number-formatting",
   "highlighting",
   "truncation",
@@ -35,6 +37,7 @@ export const TYPOGRAPHY_SECTION_SLUGS = [
 export type TypographySectionSlug = (typeof TYPOGRAPHY_SECTION_SLUGS)[number];
 
 export const typographySectionLabels: Record<TypographySectionSlug, string> = {
+  editorial: "Editorial recipes",
   "number-formatting": "Number formatting",
   highlighting: "Highlighting and relevance",
   truncation: "Truncation and expansion",
@@ -55,6 +58,7 @@ const typographySectionSeoRecord: Record<
   TypographySectionSlug,
   PreviewSeoDocument
 > = {
+  editorial: editorial as PreviewSeoDocument,
   "number-formatting": numberFormatting as PreviewSeoDocument,
   highlighting: highlighting as PreviewSeoDocument,
   truncation: truncation as PreviewSeoDocument,

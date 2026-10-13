@@ -215,3 +215,20 @@ export type NumberTextProps = (
     /** Styles native parts without replacing their text or order. */
     partClassNames?: Partial<Record<Intl.NumberFormatPart["type"], string>>;
   };
+
+export type FootnotesProps = ComponentPropsWithRef<"div"> & {
+  scopeId?: string;
+};
+export type FootnotesListProps = ComponentPropsWithRef<"ol">;
+export type FootnoteItemProps = Omit<
+  ComponentPropsWithRef<"li">,
+  "id" | "value"
+> & { noteId: string; number: number };
+export type FootnoteReferenceProps = Omit<
+  ComponentPropsWithRef<"a">,
+  "id" | "href" | "children" | "dangerouslySetInnerHTML"
+> & { noteId: string; referenceId: string; number: number };
+export type FootnoteBacklinkProps = Omit<
+  ComponentPropsWithRef<"a">,
+  "href" | "aria-label"
+> & { noteId: string; referenceId: string; label: string };

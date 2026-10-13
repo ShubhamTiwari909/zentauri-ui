@@ -21,6 +21,17 @@ export type SiteSearchEntryRecord = {
 const HOOK_SLUG_PREFIX = "/preview/hooks/";
 
 const navKeywords: Record<string, readonly string[]> = {
+  "/preview/typography/editorial": [
+    "Footnotes",
+    "backlink",
+    "citation",
+    "reading time",
+    "estimateReadingTime",
+    "drop cap",
+    "permalink",
+    "article",
+    "editorial",
+  ],
   "/preview/typography/number-formatting": [
     "NumberText",
     "useNumberFormat",

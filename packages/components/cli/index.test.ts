@@ -177,6 +177,10 @@ describe("CLI module commands", () => {
         "TruncateText",
         "ExpandableText",
         "NumberText",
+        "Footnotes",
+        "FootnoteReference",
+        "estimateReadingTime",
+        "typographyDropCapRecipe",
       ]) {
         expect(entry).toMatch(new RegExp(`\\b${name}\\b`));
       }
@@ -206,6 +210,21 @@ describe("CLI module commands", () => {
       );
       expect(numberText).toContain('from "@/hooks/useNumberFormat"');
       expect(numberText).not.toContain("framer-motion");
+      const reading = readFileSync(
+        join(dir, "src/components/ui/typography/reading-time.ts"),
+        "utf8",
+      );
+      expect(reading).toContain("export function estimateReadingTime");
+      const notes = readFileSync(
+        join(dir, "src/components/ui/typography/footnotes-base.tsx"),
+        "utf8",
+      );
+      expect(notes).toContain('from "@/lib/utils"');
+      expect(notes).toContain('from "../../design-system/typography"');
+      expect(
+        existsSync(join(dir, "src/components/design-system/typography.ts")),
+      ).toBe(true);
+      expect(notes).not.toContain("framer-motion");
       expect(
         existsSync(join(dir, "src/hooks/useControllableState/index.ts")),
       ).toBe(true);

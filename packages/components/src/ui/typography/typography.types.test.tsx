@@ -1,6 +1,11 @@
 import { createRef } from "react";
 import { expectTypeOf, it } from "vitest";
 import type {
+  FootnotesProps,
+  FootnotesListProps,
+  FootnoteReferenceProps,
+  FootnoteItemProps,
+  FootnoteBacklinkProps,
   NumberTextProps,
   MarkProps,
   HighlightTextProps,
@@ -142,4 +147,58 @@ it("keeps numeric values, formatting options and native style/ref props separate
   void string;
   void children;
   void gradient;
+});
+
+it("preserves editorial native refs and owns its navigation identifiers", () => {
+  const root = {
+    scopeId: "article",
+    ref: createRef<HTMLDivElement>(),
+  } satisfies FootnotesProps;
+  const list = {
+    ref: createRef<HTMLOListElement>(),
+    "aria-label": "Notas",
+  } satisfies FootnotesListProps;
+  const reference = {
+    noteId: "one",
+    referenceId: "opening",
+    number: 1,
+    ref: createRef<HTMLAnchorElement>(),
+  } satisfies FootnoteReferenceProps;
+  const item = {
+    noteId: "one",
+    number: 1,
+    ref: createRef<HTMLLIElement>(),
+  } satisfies FootnoteItemProps;
+  const backlink = {
+    noteId: "one",
+    referenceId: "opening",
+    label: "Back to opening",
+    ref: createRef<HTMLAnchorElement>(),
+  } satisfies FootnoteBacklinkProps;
+  expectTypeOf(root).toExtend<FootnotesProps>();
+  expectTypeOf(list).toExtend<FootnotesListProps>();
+  expectTypeOf(reference).toExtend<FootnoteReferenceProps>();
+  expectTypeOf(item).toExtend<FootnoteItemProps>();
+  expectTypeOf(backlink).toExtend<FootnoteBacklinkProps>();
+  const href: FootnoteReferenceProps = {
+    noteId: "one",
+    referenceId: "opening",
+    number: 1,
+    // @ts-expect-error The target is derived from the note's scoped identifier.
+    href: "#other",
+  };
+  const id: FootnoteItemProps = {
+    noteId: "one",
+    number: 1,
+    // @ts-expect-error FootnoteItem owns its target ID.
+    id: "other",
+  };
+  // @ts-expect-error Backlinks need a meaningful accessible label.
+  const unlabeled: FootnoteBacklinkProps = {
+    noteId: "one",
+    referenceId: "opening",
+  };
+  void href;
+  void id;
+  void unlabeled;
 });
