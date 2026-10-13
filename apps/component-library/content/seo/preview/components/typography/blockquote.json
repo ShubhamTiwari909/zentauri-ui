@@ -1,19 +1,19 @@
 {
   "category": "Typography",
-  "title": "Blockquote component — quotations with attribution",
+  "title": "Blockquote component \u2014 quotations with attribution",
   "description": "Blockquote typography primitive with optional attribution footer for citations in React content.",
   "keywords": ["blockquote", "typography", "React", "quote", "Tailwind CSS"],
   "og": {
-    "title": "Typography · Blockquote · Zentauri UI",
+    "title": "Typography \u00b7 Blockquote \u00b7 Zentauri UI",
     "description": "Blockquote typography primitive with optional attribution footer for citations in React content.",
     "type": "website"
   },
   "twitter": {
-    "title": "Typography · Blockquote · Zentauri UI",
+    "title": "Typography \u00b7 Blockquote \u00b7 Zentauri UI",
     "description": "Blockquote typography primitive with optional attribution footer for citations in React content.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/components/typography/blockquote",
+  "canonicalPath": "/preview/typography/blockquote",
   "headings": {
     "h1": "Quotations and citations",
     "h2": [

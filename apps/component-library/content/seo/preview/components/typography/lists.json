@@ -1,19 +1,19 @@
 {
   "category": "Typography",
-  "title": "List component — ordered and unordered",
+  "title": "List component \u2014 ordered and unordered",
   "description": "Typography lists with bullets, circles, decimals, and nested composition for React docs and forms.",
   "keywords": ["list", "typography", "React", "ul", "ol", "Tailwind CSS"],
   "og": {
-    "title": "Typography · Lists · Zentauri UI",
+    "title": "Typography \u00b7 Lists \u00b7 Zentauri UI",
     "description": "Typography lists with bullets, circles, decimals, and nested composition for React docs and forms.",
     "type": "website"
   },
   "twitter": {
-    "title": "Typography · Lists · Zentauri UI",
+    "title": "Typography \u00b7 Lists \u00b7 Zentauri UI",
     "description": "Typography lists with bullets, circles, decimals, and nested composition for React docs and forms.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/components/typography/lists",
+  "canonicalPath": "/preview/typography/lists",
   "headings": {
     "h1": "Lists for steps and bullets",
     "h2": [

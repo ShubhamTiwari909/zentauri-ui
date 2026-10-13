@@ -1,7 +1,18 @@
 import { cn } from "../../lib/utils";
-
+import {
+  zuiTypographyItalic,
+  zuiTypographyHeadingUnderline,
+  zuiTypographyStrikethrough,
+} from "../../design-system/typography";
 import type { HeadingProps } from "./types";
-import { headingLevelVariants, typographyToneVariants } from "./variants";
+import {
+  headingLevelVariants,
+  headingFluidVariants,
+  headingDisplayVariants,
+  headingFluidDisplayVariants,
+  typographyToneVariants,
+  typographyStyleVariants,
+} from "./variants";
 
 const HEADING_TAGS = {
   1: "h1",
@@ -11,25 +22,30 @@ const HEADING_TAGS = {
   5: "h5",
   6: "h6",
 } as const;
-
 export const HeadingBase = (props: HeadingProps) => {
   const {
     level,
     displayLevel,
+    displaySize,
+    scale = "default",
     tone,
     bold,
     italic,
     underline,
     strikethrough,
+    align,
+    weight,
+    leading,
+    tracking,
+    wrap,
+    measure,
     ref,
     className,
     children,
     ...rest
   } = props;
-
   const Tag = HEADING_TAGS[level];
-  const scale = displayLevel ?? level;
-
+  const visualLevel = displayLevel ?? level;
   return (
     <Tag
       ref={ref}
@@ -37,11 +53,23 @@ export const HeadingBase = (props: HeadingProps) => {
       data-level={level}
       className={cn(
         typographyToneVariants({ tone }),
-        headingLevelVariants({ level: scale }),
-        bold && "font-bold",
-        italic && "italic",
-        underline && "underline underline-offset-4",
-        strikethrough && "line-through",
+        headingLevelVariants({ level: visualLevel }),
+        scale === "fluid" && headingFluidVariants({ level: visualLevel }),
+        displaySize && headingDisplayVariants({ size: displaySize }),
+        displaySize &&
+          scale === "fluid" &&
+          headingFluidDisplayVariants({ size: displaySize }),
+        typographyStyleVariants({
+          align,
+          weight: weight ?? (bold ? "bold" : undefined),
+          leading,
+          tracking,
+          wrap,
+          measure,
+        }),
+        italic && zuiTypographyItalic,
+        underline && zuiTypographyHeadingUnderline,
+        strikethrough && zuiTypographyStrikethrough,
         className,
       )}
       {...rest}
@@ -50,5 +78,4 @@ export const HeadingBase = (props: HeadingProps) => {
     </Tag>
   );
 };
-
 HeadingBase.displayName = "Heading";

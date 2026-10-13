@@ -1,6 +1,6 @@
 {
   "category": "Typography",
-  "title": "Inline text — emphasis and code spans",
+  "title": "Inline text \u2014 emphasis and code spans",
   "description": "Bold, italic, underline, strikethrough, highlight, and InlineCode spans inside React typography.",
   "keywords": [
     "inline code",
@@ -10,16 +10,16 @@
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Typography · Inline · Zentauri UI",
+    "title": "Typography \u00b7 Inline \u00b7 Zentauri UI",
     "description": "Bold, italic, underline, strikethrough, highlight, and InlineCode spans inside React typography.",
     "type": "website"
   },
   "twitter": {
-    "title": "Typography · Inline · Zentauri UI",
+    "title": "Typography \u00b7 Inline \u00b7 Zentauri UI",
     "description": "Bold, italic, underline, strikethrough, highlight, and InlineCode spans inside React typography.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/components/typography/inline",
+  "canonicalPath": "/preview/typography/inline",
   "headings": {
     "h1": "Inline emphasis and tokens",
     "h2": [
@@ -49,7 +49,7 @@
     },
     {
       "question": "Does destructive tone imply errors?",
-      "answer": "It applies rose text styling—reserve for risky actions or validation messaging."
+      "answer": "It applies rose text styling\u2014reserve for risky actions or validation messaging."
     }
   ],
   "sections": [
@@ -67,7 +67,7 @@
     },
     {
       "heading": "Accessibility",
-      "body": "Underline complements links elsewhere—avoid conflicting patterns.\n\nHighlight should not be the only cue."
+      "body": "Underline complements links elsewhere\u2014avoid conflicting patterns.\n\nHighlight should not be the only cue."
     },
     {
       "heading": "Next.js integration notes",

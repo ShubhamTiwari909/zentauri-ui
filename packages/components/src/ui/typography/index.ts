@@ -1,3 +1,5 @@
+"use client";
+
 export { Heading } from "./heading";
 export { Text } from "./text";
 export { List, ListItem } from "./list";
@@ -25,4 +27,24 @@ export {
   textSizeVariants,
   typographyToneVariants,
   unorderedListMarkerVariants,
+} from "./variants";
+
+export { Strong } from "./strong";
+export { Emphasis } from "./emphasis";
+export { Small } from "./small";
+export { VisuallyHidden } from "./visually-hidden";
+export type {
+  StrongProps,
+  EmphasisProps,
+  SmallProps,
+  VisuallyHiddenProps,
+  TypographyControls,
+} from "./types";
+export {
+  headingFluidVariants,
+  headingDisplayVariants,
+  headingFluidDisplayVariants,
+  textPresetVariants,
+  typographyStyleVariants,
+  typographyFontVariants,
 } from "./variants";

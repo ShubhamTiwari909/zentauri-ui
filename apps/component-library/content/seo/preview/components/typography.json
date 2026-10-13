@@ -1,7 +1,7 @@
 {
   "category": "Typography",
   "title": "Typography primitives for React content",
-  "description": "Heading, Text, List, Blockquote, and code typography primitives for React and Next.js — semantic HTML, Tailwind-backed tones, and copy-ready previews.",
+  "description": "Heading, Text, List, Blockquote, and code typography primitives for React and Next.js \u2014 semantic HTML, Tailwind-backed tones, and copy-ready previews.",
   "keywords": [
     "typography component",
     "React",
@@ -11,16 +11,16 @@
     "headings"
   ],
   "og": {
-    "title": "Typography · Zentauri UI",
-    "description": "Heading, Text, List, Blockquote, and code typography primitives for React and Next.js — semantic HTML, Tailwind-backed tones, and copy-ready previews.",
+    "title": "Typography \u00b7 Zentauri UI",
+    "description": "Heading, Text, List, Blockquote, and code typography primitives for React and Next.js \u2014 semantic HTML, Tailwind-backed tones, and copy-ready previews.",
     "type": "website"
   },
   "twitter": {
-    "title": "Typography · Zentauri UI",
-    "description": "Heading, Text, List, Blockquote, and code typography primitives for React and Next.js — semantic HTML, Tailwind-backed tones, and copy-ready previews.",
+    "title": "Typography \u00b7 Zentauri UI",
+    "description": "Heading, Text, List, Blockquote, and code typography primitives for React and Next.js \u2014 semantic HTML, Tailwind-backed tones, and copy-ready previews.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/components/typography",
+  "canonicalPath": "/preview/typography",
   "headings": {
     "h1": "Typography system overview",
     "h2": [
@@ -32,7 +32,7 @@
       "FAQ"
     ]
   },
-  "intro": "Browse headings, body copy, lists, quotations, inline emphasis, and code blocks from one hub. Each section demonstrates variants, formatting combinations, and snippets you can paste into App Router pages.",
+  "intro": "Browse headings, body copy, lists, quotations, inline emphasis, and code blocks from one hub. Each section demonstrates variants, formatting combinations, and snippets you can paste into App Router pages. Explore scale tokens, presets, semantic inline emphasis and accessible labels.",
   "useCases": [
     "Marketing pages with consistent heading scale.",
     "Documentation sites with lists and block quotes.",
@@ -56,7 +56,7 @@
   "sections": [
     {
       "heading": "What it does",
-      "body": "Provides Heading, Text, List, Blockquote, InlineCode, and CodeBlock with shared tone and emphasis props.\n\nUse semantic HTML by default and tune visuals with display overrides only when necessary."
+      "body": "Provides Heading, Text, List, Blockquote, InlineCode, CodeBlock, Strong, Emphasis, Small and VisuallyHidden. Fonts, type scale, leading and tracking use paired CSS variable tokens."
     },
     {
       "heading": "Sections",

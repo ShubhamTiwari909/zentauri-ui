@@ -1,0 +1,47 @@
+{
+  "category": "Typography",
+  "title": "Accessible typography and inline semantics",
+  "description": "Use Strong, Emphasis, Small and VisuallyHidden for semantic emphasis, accessible button labels and keyboard-visible skip links.",
+  "keywords": ["typography", "React", "accessibility", "Zentauri UI"],
+  "canonicalPath": "/preview/typography/accessibility",
+  "og": {
+    "title": "Accessible typography and inline semantics \u00b7 Zentauri UI",
+    "description": "Use Strong, Emphasis, Small and VisuallyHidden for semantic emphasis, accessible button labels and keyboard-visible skip links.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Accessible typography and inline semantics \u00b7 Zentauri UI",
+    "description": "Use Strong, Emphasis, Small and VisuallyHidden for semantic emphasis, accessible button labels and keyboard-visible skip links.",
+    "card": "summary_large_image"
+  },
+  "headings": {
+    "h1": "Accessible typography and inline semantics",
+    "h2": [
+      "Typography foundations",
+      "Composition and API",
+      "Accessibility",
+      "FAQ"
+    ]
+  },
+  "intro": "Choose native emphasis semantics and keep visual presentation separate from accessible names. VisuallyHidden keeps content available to screen readers and can reveal a contained skip link on focus.",
+  "useCases": [
+    "Icon-only controls with meaningful accessible names.",
+    "Skip links that reveal themselves during keyboard focus."
+  ],
+  "faqs": [
+    {
+      "question": "Do these additions change existing defaults?",
+      "answer": "No. Existing heading levels, text sizes and boolean formatting remain available. New explicit variants take precedence when supplied."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "Import all primitives from @zentauri-ui/zentauri-components/ui/typography. Semantic inline elements inherit their surrounding tone unless an explicit tone is supplied."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keep heading levels aligned with the document outline. VisuallyHidden is not aria-hidden and does not make a wrapper focusable automatically. Supply a real link and a target for skip navigation."
+    }
+  ]
+}

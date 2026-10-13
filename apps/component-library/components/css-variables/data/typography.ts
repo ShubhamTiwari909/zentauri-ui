@@ -3,8 +3,143 @@ import { defineCssVariableReference } from "../reference-types";
 export const typographyCssVariables = defineCssVariableReference({
   title: "Typography CSS variables",
   description:
-    "Override these typography variables on :root, a theme selector, or a component wrapper.",
+    "Override colors, fonts, scale, leading, tracking, measures and rhythm on :root, a theme selector, or a typography wrapper. Dark metric tokens inherit their light overrides when omitted. An initial font, weight or tracking variable leaves the computed property inherited. Private --_zui-type-* properties are implementation details.",
   lightVariables: [
+    ["typography-font-display", "initial"],
+    ["typography-display-sm-size", "3rem"],
+    ["typography-display-sm-leading", "1.1"],
+    ["typography-display-md-size", "3.75rem"],
+    ["typography-display-md-leading", "1.1"],
+    ["typography-display-lg-size", "4.5rem"],
+    ["typography-display-lg-leading", "1.1"],
+    ["typography-display-sm-fluid-size", "clamp(2.25rem,1.5rem + 3vw,3rem)"],
+    [
+      "typography-display-md-fluid-size",
+      "clamp(2.75rem,1.75rem + 4vw,3.75rem)",
+    ],
+    ["typography-display-lg-fluid-size", "clamp(3rem,1.5rem + 6vw,4.5rem)"],
+    ["typography-heading-1-fluid-size", "clamp(2.25rem,1.75rem + 2vw,3rem)"],
+    ["typography-heading-1-fluid-leading", "1.2"],
+    [
+      "typography-heading-2-fluid-size",
+      "clamp(1.875rem,1.625rem + 1vw,2.25rem)",
+    ],
+    ["typography-heading-2-fluid-leading", "1.2"],
+    ["typography-heading-3-fluid-size", "clamp(1.5rem,1.25rem + 1vw,1.875rem)"],
+    ["typography-heading-3-fluid-leading", "1.2"],
+    [
+      "typography-heading-4-fluid-size",
+      "clamp(1.25rem,1.125rem + 0.5vw,1.5rem)",
+    ],
+    ["typography-heading-4-fluid-leading", "1.2"],
+    ["typography-heading-5-fluid-size", "clamp(1.125rem,1rem + 0.5vw,1.25rem)"],
+    ["typography-heading-5-fluid-leading", "1.2"],
+    [
+      "typography-heading-6-fluid-size",
+      "clamp(1rem,0.875rem + 0.5vw,1.125rem)",
+    ],
+    ["typography-heading-6-fluid-leading", "1.2"],
+    ["typography-heading-1-size", "2.25rem"],
+    ["typography-heading-1-leading", "calc(2.5/2.25)"],
+    ["typography-heading-1-weight", "700"],
+    ["typography-heading-1-tracking", "-0.025em"],
+    ["typography-heading-1-size-md", "3rem"],
+    ["typography-heading-1-leading-md", "1"],
+    ["typography-heading-2-size", "1.875rem"],
+    ["typography-heading-2-leading", "calc(2.25/1.875)"],
+    ["typography-heading-2-weight", "600"],
+    ["typography-heading-2-tracking", "-0.025em"],
+    ["typography-heading-3-size", "1.5rem"],
+    ["typography-heading-3-leading", "calc(2/1.5)"],
+    ["typography-heading-3-weight", "600"],
+    ["typography-heading-3-tracking", "-0.025em"],
+    ["typography-heading-4-size", "1.25rem"],
+    ["typography-heading-4-leading", "calc(1.75/1.25)"],
+    ["typography-heading-4-weight", "600"],
+    ["typography-heading-4-tracking", "-0.025em"],
+    ["typography-heading-5-size", "1.125rem"],
+    ["typography-heading-5-leading", "calc(1.75/1.125)"],
+    ["typography-heading-5-weight", "500"],
+    ["typography-heading-5-tracking", "initial"],
+    ["typography-heading-6-size", "1rem"],
+    ["typography-heading-6-leading", "1.5"],
+    ["typography-heading-6-weight", "500"],
+    ["typography-heading-6-tracking", "initial"],
+    ["typography-list-gap", "0.5rem"],
+    ["typography-list-indent", "1.25rem"],
+    ["typography-font-body", "initial"],
+    ["typography-text-xs-size", "0.75rem"],
+    ["typography-text-xs-leading", "1.625"],
+    ["typography-text-xs-weight", "initial"],
+    ["typography-text-xs-tracking", "initial"],
+    ["typography-text-sm-size", "0.875rem"],
+    ["typography-text-sm-leading", "1.625"],
+    ["typography-text-sm-weight", "initial"],
+    ["typography-text-sm-tracking", "initial"],
+    ["typography-text-base-size", "1rem"],
+    ["typography-text-base-leading", "1.625"],
+    ["typography-text-base-weight", "initial"],
+    ["typography-text-base-tracking", "initial"],
+    ["typography-text-lg-size", "1.125rem"],
+    ["typography-text-lg-leading", "1.625"],
+    ["typography-text-lg-weight", "initial"],
+    ["typography-text-lg-tracking", "initial"],
+    ["typography-text-xl-size", "1.25rem"],
+    ["typography-text-xl-leading", "1.625"],
+    ["typography-text-xl-weight", "initial"],
+    ["typography-text-xl-tracking", "initial"],
+    ["typography-quote-attribution-gap", "0.75rem"],
+    ["typography-quote-attribution-size", "0.875rem"],
+    ["typography-quote-attribution-leading", "calc(1.25/0.875)"],
+    ["typography-quote-border-width", "4px"],
+    ["typography-quote-padding-y", "0.25rem"],
+    ["typography-quote-padding-start", "1rem"],
+    ["typography-quote-gap", "0.5rem"],
+    ["typography-quote-leading", "1.625"],
+    ["typography-code-padding", "1rem"],
+    ["typography-code-size", "0.875rem"],
+    ["typography-code-leading", "1.625"],
+    [
+      "typography-code-bg",
+      "color-mix(in oklab,var(--color-white,#fff) 90%,transparent)",
+    ],
+    [
+      "typography-code-border",
+      "color-mix(in oklab,var(--color-white,#fff) 10%,transparent)",
+    ],
+    ["typography-code-shadow", "oklch(12.9% 0.042 264.695 / 0.4)"],
+    [
+      "typography-font-mono",
+      'var(--font-mono,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace)',
+    ],
+    ["typography-code-content-size", "0.95em"],
+    [
+      "typography-highlight-bg",
+      "color-mix(in oklab,var(--color-amber-400,oklch(82.8% 0.189 84.429)) 15%,transparent)",
+    ],
+    ["typography-inline-code-padding-x", "0.375rem"],
+    ["typography-inline-code-padding-y", "0.125rem"],
+    ["typography-inline-code-size", "0.925em"],
+    ["typography-inline-code-weight", "400"],
+    [
+      "typography-inline-code-bg",
+      "color-mix(in oklab,var(--color-white,#fff) 6%,transparent)",
+    ],
+    [
+      "typography-inline-code-border",
+      "color-mix(in oklab,var(--color-white,#fff) 10%,transparent)",
+    ],
+    ["typography-leading-tight", "1.25"],
+    ["typography-leading-normal", "1.5"],
+    ["typography-leading-relaxed", "1.625"],
+    ["typography-list-leading", "1.625"],
+    ["typography-measure", "65ch"],
+    ["typography-measure-wide", "80ch"],
+    ["typography-small-size", "0.875em"],
+    ["typography-strong-weight", "700"],
+    ["typography-overline-tracking", "0.1em"],
+    ["typography-overline-leading", "1.5"],
+    ["typography-overline-weight", "500"],
     ["typography-default-fg", "oklch(20.8% 0.042 265.755)"],
     ["typography-default-border", "#00000026"],
     ["typography-muted-fg", "oklch(55.4% 0.046 257.417)"],
@@ -75,8 +210,411 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-gradient-cyan-pink-to", "oklch(59.2% 0.249 0.584)"],
     ["typography-gradient-cyan-pink-fg", "transparent"],
     ["typography-gradient-cyan-pink-border", "oklch(82.3% 0.12 346.018 / 0.4)"],
+    ["typography-tracking-tight", "-0.025em"],
+    ["typography-tracking-normal", "0em"],
+    ["typography-tracking-wide", "0.025em"],
+    ["typography-weight-normal", "400"],
+    ["typography-weight-medium", "500"],
+    ["typography-weight-semibold", "600"],
+    ["typography-weight-bold", "700"],
   ],
   darkExamples: [
+    [
+      "typography-font-display-dark",
+      "var(--zui-typography-font-display,initial)",
+    ],
+    [
+      "typography-display-sm-size-dark",
+      "var(--zui-typography-display-sm-size,3rem)",
+    ],
+    [
+      "typography-display-sm-leading-dark",
+      "var(--zui-typography-display-sm-leading,1.1)",
+    ],
+    [
+      "typography-display-md-size-dark",
+      "var(--zui-typography-display-md-size,3.75rem)",
+    ],
+    [
+      "typography-display-md-leading-dark",
+      "var(--zui-typography-display-md-leading,1.1)",
+    ],
+    [
+      "typography-display-lg-size-dark",
+      "var(--zui-typography-display-lg-size,4.5rem)",
+    ],
+    [
+      "typography-display-lg-leading-dark",
+      "var(--zui-typography-display-lg-leading,1.1)",
+    ],
+    [
+      "typography-display-sm-fluid-size-dark",
+      "var(--zui-typography-display-sm-fluid-size,clamp(2.25rem,1.5rem + 3vw,3rem))",
+    ],
+    [
+      "typography-display-md-fluid-size-dark",
+      "var(--zui-typography-display-md-fluid-size,clamp(2.75rem,1.75rem + 4vw,3.75rem))",
+    ],
+    [
+      "typography-display-lg-fluid-size-dark",
+      "var(--zui-typography-display-lg-fluid-size,clamp(3rem,1.5rem + 6vw,4.5rem))",
+    ],
+    [
+      "typography-heading-1-fluid-size-dark",
+      "var(--zui-typography-heading-1-fluid-size,clamp(2.25rem,1.75rem + 2vw,3rem))",
+    ],
+    [
+      "typography-heading-1-fluid-leading-dark",
+      "var(--zui-typography-heading-1-fluid-leading,1.2)",
+    ],
+    [
+      "typography-heading-2-fluid-size-dark",
+      "var(--zui-typography-heading-2-fluid-size,clamp(1.875rem,1.625rem + 1vw,2.25rem))",
+    ],
+    [
+      "typography-heading-2-fluid-leading-dark",
+      "var(--zui-typography-heading-2-fluid-leading,1.2)",
+    ],
+    [
+      "typography-heading-3-fluid-size-dark",
+      "var(--zui-typography-heading-3-fluid-size,clamp(1.5rem,1.25rem + 1vw,1.875rem))",
+    ],
+    [
+      "typography-heading-3-fluid-leading-dark",
+      "var(--zui-typography-heading-3-fluid-leading,1.2)",
+    ],
+    [
+      "typography-heading-4-fluid-size-dark",
+      "var(--zui-typography-heading-4-fluid-size,clamp(1.25rem,1.125rem + 0.5vw,1.5rem))",
+    ],
+    [
+      "typography-heading-4-fluid-leading-dark",
+      "var(--zui-typography-heading-4-fluid-leading,1.2)",
+    ],
+    [
+      "typography-heading-5-fluid-size-dark",
+      "var(--zui-typography-heading-5-fluid-size,clamp(1.125rem,1rem + 0.5vw,1.25rem))",
+    ],
+    [
+      "typography-heading-5-fluid-leading-dark",
+      "var(--zui-typography-heading-5-fluid-leading,1.2)",
+    ],
+    [
+      "typography-heading-6-fluid-size-dark",
+      "var(--zui-typography-heading-6-fluid-size,clamp(1rem,0.875rem + 0.5vw,1.125rem))",
+    ],
+    [
+      "typography-heading-6-fluid-leading-dark",
+      "var(--zui-typography-heading-6-fluid-leading,1.2)",
+    ],
+    [
+      "typography-heading-1-size-dark",
+      "var(--zui-typography-heading-1-size,2.25rem)",
+    ],
+    [
+      "typography-heading-1-leading-dark",
+      "var(--zui-typography-heading-1-leading,calc(2.5/2.25))",
+    ],
+    [
+      "typography-heading-1-weight-dark",
+      "var(--zui-typography-heading-1-weight,700)",
+    ],
+    [
+      "typography-heading-1-tracking-dark",
+      "var(--zui-typography-heading-1-tracking,-0.025em)",
+    ],
+    [
+      "typography-heading-1-size-md-dark",
+      "var(--zui-typography-heading-1-size-md,3rem)",
+    ],
+    [
+      "typography-heading-1-leading-md-dark",
+      "var(--zui-typography-heading-1-leading-md,1)",
+    ],
+    [
+      "typography-heading-2-size-dark",
+      "var(--zui-typography-heading-2-size,1.875rem)",
+    ],
+    [
+      "typography-heading-2-leading-dark",
+      "var(--zui-typography-heading-2-leading,calc(2.25/1.875))",
+    ],
+    [
+      "typography-heading-2-weight-dark",
+      "var(--zui-typography-heading-2-weight,600)",
+    ],
+    [
+      "typography-heading-2-tracking-dark",
+      "var(--zui-typography-heading-2-tracking,-0.025em)",
+    ],
+    [
+      "typography-heading-3-size-dark",
+      "var(--zui-typography-heading-3-size,1.5rem)",
+    ],
+    [
+      "typography-heading-3-leading-dark",
+      "var(--zui-typography-heading-3-leading,calc(2/1.5))",
+    ],
+    [
+      "typography-heading-3-weight-dark",
+      "var(--zui-typography-heading-3-weight,600)",
+    ],
+    [
+      "typography-heading-3-tracking-dark",
+      "var(--zui-typography-heading-3-tracking,-0.025em)",
+    ],
+    [
+      "typography-heading-4-size-dark",
+      "var(--zui-typography-heading-4-size,1.25rem)",
+    ],
+    [
+      "typography-heading-4-leading-dark",
+      "var(--zui-typography-heading-4-leading,calc(1.75/1.25))",
+    ],
+    [
+      "typography-heading-4-weight-dark",
+      "var(--zui-typography-heading-4-weight,600)",
+    ],
+    [
+      "typography-heading-4-tracking-dark",
+      "var(--zui-typography-heading-4-tracking,-0.025em)",
+    ],
+    [
+      "typography-heading-5-size-dark",
+      "var(--zui-typography-heading-5-size,1.125rem)",
+    ],
+    [
+      "typography-heading-5-leading-dark",
+      "var(--zui-typography-heading-5-leading,calc(1.75/1.125))",
+    ],
+    [
+      "typography-heading-5-weight-dark",
+      "var(--zui-typography-heading-5-weight,500)",
+    ],
+    [
+      "typography-heading-5-tracking-dark",
+      "var(--zui-typography-heading-5-tracking,initial)",
+    ],
+    [
+      "typography-heading-6-size-dark",
+      "var(--zui-typography-heading-6-size,1rem)",
+    ],
+    [
+      "typography-heading-6-leading-dark",
+      "var(--zui-typography-heading-6-leading,1.5)",
+    ],
+    [
+      "typography-heading-6-weight-dark",
+      "var(--zui-typography-heading-6-weight,500)",
+    ],
+    [
+      "typography-heading-6-tracking-dark",
+      "var(--zui-typography-heading-6-tracking,initial)",
+    ],
+    ["typography-list-gap-dark", "var(--zui-typography-list-gap,0.5rem)"],
+    [
+      "typography-list-indent-dark",
+      "var(--zui-typography-list-indent,1.25rem)",
+    ],
+    ["typography-font-body-dark", "var(--zui-typography-font-body,initial)"],
+    [
+      "typography-text-xs-size-dark",
+      "var(--zui-typography-text-xs-size,0.75rem)",
+    ],
+    [
+      "typography-text-xs-leading-dark",
+      "var(--zui-typography-text-xs-leading,1.625)",
+    ],
+    [
+      "typography-text-xs-weight-dark",
+      "var(--zui-typography-text-xs-weight,initial)",
+    ],
+    [
+      "typography-text-xs-tracking-dark",
+      "var(--zui-typography-text-xs-tracking,initial)",
+    ],
+    [
+      "typography-text-sm-size-dark",
+      "var(--zui-typography-text-sm-size,0.875rem)",
+    ],
+    [
+      "typography-text-sm-leading-dark",
+      "var(--zui-typography-text-sm-leading,1.625)",
+    ],
+    [
+      "typography-text-sm-weight-dark",
+      "var(--zui-typography-text-sm-weight,initial)",
+    ],
+    [
+      "typography-text-sm-tracking-dark",
+      "var(--zui-typography-text-sm-tracking,initial)",
+    ],
+    [
+      "typography-text-base-size-dark",
+      "var(--zui-typography-text-base-size,1rem)",
+    ],
+    [
+      "typography-text-base-leading-dark",
+      "var(--zui-typography-text-base-leading,1.625)",
+    ],
+    [
+      "typography-text-base-weight-dark",
+      "var(--zui-typography-text-base-weight,initial)",
+    ],
+    [
+      "typography-text-base-tracking-dark",
+      "var(--zui-typography-text-base-tracking,initial)",
+    ],
+    [
+      "typography-text-lg-size-dark",
+      "var(--zui-typography-text-lg-size,1.125rem)",
+    ],
+    [
+      "typography-text-lg-leading-dark",
+      "var(--zui-typography-text-lg-leading,1.625)",
+    ],
+    [
+      "typography-text-lg-weight-dark",
+      "var(--zui-typography-text-lg-weight,initial)",
+    ],
+    [
+      "typography-text-lg-tracking-dark",
+      "var(--zui-typography-text-lg-tracking,initial)",
+    ],
+    [
+      "typography-text-xl-size-dark",
+      "var(--zui-typography-text-xl-size,1.25rem)",
+    ],
+    [
+      "typography-text-xl-leading-dark",
+      "var(--zui-typography-text-xl-leading,1.625)",
+    ],
+    [
+      "typography-text-xl-weight-dark",
+      "var(--zui-typography-text-xl-weight,initial)",
+    ],
+    [
+      "typography-text-xl-tracking-dark",
+      "var(--zui-typography-text-xl-tracking,initial)",
+    ],
+    [
+      "typography-quote-attribution-gap-dark",
+      "var(--zui-typography-quote-attribution-gap,0.75rem)",
+    ],
+    [
+      "typography-quote-attribution-size-dark",
+      "var(--zui-typography-quote-attribution-size,0.875rem)",
+    ],
+    [
+      "typography-quote-attribution-leading-dark",
+      "var(--zui-typography-quote-attribution-leading,calc(1.25/0.875))",
+    ],
+    [
+      "typography-quote-border-width-dark",
+      "var(--zui-typography-quote-border-width,4px)",
+    ],
+    [
+      "typography-quote-padding-y-dark",
+      "var(--zui-typography-quote-padding-y,0.25rem)",
+    ],
+    [
+      "typography-quote-padding-start-dark",
+      "var(--zui-typography-quote-padding-start,1rem)",
+    ],
+    ["typography-quote-gap-dark", "var(--zui-typography-quote-gap,0.5rem)"],
+    [
+      "typography-quote-leading-dark",
+      "var(--zui-typography-quote-leading,1.625)",
+    ],
+    ["typography-code-padding-dark", "var(--zui-typography-code-padding,1rem)"],
+    ["typography-code-size-dark", "var(--zui-typography-code-size,0.875rem)"],
+    [
+      "typography-code-leading-dark",
+      "var(--zui-typography-code-leading,1.625)",
+    ],
+    [
+      "typography-code-bg-dark",
+      "color-mix(in oklab,var(--color-slate-950,oklch(12.9% 0.042 264.695)) 80%,transparent)",
+    ],
+    [
+      "typography-code-border-dark",
+      "var(--zui-typography-code-border,var(-- zui-type-tone-border,#ffffff26))",
+    ],
+    [
+      "typography-code-shadow-dark",
+      "var(--zui-typography-code-shadow,oklch(12.9% 0.042 264.695 / 0.4))",
+    ],
+    [
+      "typography-font-mono-dark",
+      'var(--zui-typography-font-mono,var(--font-mono,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace))',
+    ],
+    [
+      "typography-code-content-size-dark",
+      "var(--zui-typography-code-content-size,0.95em)",
+    ],
+    [
+      "typography-highlight-bg-dark",
+      "var(--zui-typography-highlight-bg,color-mix(in oklab,var(--color-amber-400,oklch(82.8% 0.189 84.429)) 15%,transparent))",
+    ],
+    [
+      "typography-inline-code-padding-x-dark",
+      "var(--zui-typography-inline-code-padding-x,0.375rem)",
+    ],
+    [
+      "typography-inline-code-padding-y-dark",
+      "var(--zui-typography-inline-code-padding-y,0.125rem)",
+    ],
+    [
+      "typography-inline-code-size-dark",
+      "var(--zui-typography-inline-code-size,0.925em)",
+    ],
+    [
+      "typography-inline-code-weight-dark",
+      "var(--zui-typography-inline-code-weight,400)",
+    ],
+    [
+      "typography-inline-code-bg-dark",
+      "var(--zui-typography-inline-code-bg,color-mix(in oklab,var(--color-white,#fff) 6%,transparent))",
+    ],
+    [
+      "typography-inline-code-border-dark",
+      "var(--zui-typography-inline-code-border,var(-- zui-type-tone-border,#ffffff26))",
+    ],
+    [
+      "typography-leading-tight-dark",
+      "var(--zui-typography-leading-tight,1.25)",
+    ],
+    [
+      "typography-leading-normal-dark",
+      "var(--zui-typography-leading-normal,1.5)",
+    ],
+    [
+      "typography-leading-relaxed-dark",
+      "var(--zui-typography-leading-relaxed,1.625)",
+    ],
+    [
+      "typography-list-leading-dark",
+      "var(--zui-typography-list-leading,1.625)",
+    ],
+    ["typography-measure-dark", "var(--zui-typography-measure,65ch)"],
+    ["typography-measure-wide-dark", "var(--zui-typography-measure-wide,80ch)"],
+    ["typography-small-size-dark", "var(--zui-typography-small-size,0.875em)"],
+    [
+      "typography-strong-weight-dark",
+      "var(--zui-typography-strong-weight,700)",
+    ],
+    [
+      "typography-overline-tracking-dark",
+      "var(--zui-typography-overline-tracking,0.1em)",
+    ],
+    [
+      "typography-overline-leading-dark",
+      "var(--zui-typography-overline-leading,1.5)",
+    ],
+    [
+      "typography-overline-weight-dark",
+      "var(--zui-typography-overline-weight,500)",
+    ],
     ["typography-default-fg-dark", "oklch(98.4% 0.003 247.858)"],
     ["typography-default-border-dark", "#ffffff26"],
     ["typography-muted-fg-dark", "oklch(70.4% 0.04 256.788)"],
@@ -153,6 +691,31 @@ export const typographyCssVariables = defineCssVariableReference({
       "typography-gradient-cyan-pink-border-dark",
       "oklch(82.3% 0.12 346.018 / 0.4)",
     ],
+    [
+      "typography-tracking-tight-dark",
+      "var(--zui-typography-tracking-tight,-0.025em)",
+    ],
+    [
+      "typography-tracking-normal-dark",
+      "var(--zui-typography-tracking-normal,0em)",
+    ],
+    [
+      "typography-tracking-wide-dark",
+      "var(--zui-typography-tracking-wide,0.025em)",
+    ],
+    [
+      "typography-weight-normal-dark",
+      "var(--zui-typography-weight-normal,400)",
+    ],
+    [
+      "typography-weight-medium-dark",
+      "var(--zui-typography-weight-medium,500)",
+    ],
+    [
+      "typography-weight-semibold-dark",
+      "var(--zui-typography-weight-semibold,600)",
+    ],
+    ["typography-weight-bold-dark", "var(--zui-typography-weight-bold,700)"],
   ],
-  darkVariableCount: 52,
+  darkVariableCount: 164,
 });

@@ -31055,15 +31055,7 @@
               "type": "string | undefined",
               "required": false,
               "group": "behavior",
-              "description": "Attribution label shown in a footer (distinct from the HTML `cite` URL attribute).",
-              "deprecated": false
-            },
-            {
-              "name": "ref",
-              "type": "(Ref<HTMLQuoteElement> & RefObject<HTMLQuoteElement>) | undefined",
-              "required": false,
-              "group": "behavior",
-              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "description": "Attribution label; distinct from the native cite URL attribute.",
               "deprecated": false
             },
             {
@@ -31128,15 +31120,6 @@
               "type": "string | undefined",
               "required": false,
               "group": "behavior",
-              "description": "Hint for stacked highlighting stacks / aria-labels.",
-              "deprecated": false
-            },
-            {
-              "name": "ref",
-              "type": "(Ref<HTMLPreElement> & RefObject<HTMLPreElement>) | undefined",
-              "required": false,
-              "group": "behavior",
-              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
               "deprecated": false
             },
             {
@@ -31191,26 +31174,73 @@
           ]
         },
         {
+          "name": "static:Emphasis",
+          "displayName": "Emphasis",
+          "propsType": "EmphasisProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "tone",
+              "type": "TypographyTone | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
           "name": "static:Heading",
           "displayName": "Heading",
           "propsType": "HeadingProps",
           "source": "static",
           "props": [
             {
-              "name": "level",
-              "type": "enum",
-              "required": true,
-              "group": "variant",
-              "isVariant": true,
-              "options": [
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6"
-              ],
-              "variantGroup": "level",
+              "name": "align",
+              "type": "NonNullable<'center' | 'end' | 'start' | 'justify' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
               "deprecated": false
             },
             {
@@ -31218,6 +31248,7 @@
               "type": "boolean | undefined",
               "required": false,
               "group": "behavior",
+              "description": "Explicit weight takes precedence over bold.",
               "deprecated": false
             },
             {
@@ -31225,7 +31256,15 @@
               "type": "HeadingLevel | undefined",
               "required": false,
               "group": "behavior",
-              "description": "Visual scale; defaults to `level`.",
+              "description": "Visual scale; defaults to level. Does not change the semantic heading tag.",
+              "deprecated": false
+            },
+            {
+              "name": "displaySize",
+              "type": "NonNullable<'md' | 'sm' | 'lg' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Marketing display size. Takes precedence over displayLevel.",
               "deprecated": false
             },
             {
@@ -31236,11 +31275,32 @@
               "deprecated": false
             },
             {
-              "name": "ref",
-              "type": "(Ref<HTMLHeadingElement> & RefObject<HTMLHeadingElement>) | undefined",
+              "name": "leading",
+              "type": "NonNullable<'normal' | 'tight' | 'relaxed' | null | undefined> | undefined",
               "required": false,
               "group": "behavior",
-              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "level",
+              "type": "HeadingLevel",
+              "required": true,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "measure",
+              "type": "NonNullable<'none' | 'wide' | 'readable' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "scale",
+              "type": "'default' | 'fluid' | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Fluid sizing is opt-in; default retains the existing responsive scale.",
               "deprecated": false
             },
             {
@@ -31258,8 +31318,29 @@
               "deprecated": false
             },
             {
+              "name": "tracking",
+              "type": "NonNullable<'normal' | 'tight' | 'wide' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
               "name": "underline",
               "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "weight",
+              "type": "NonNullable<'bold' | 'medium' | 'normal' | 'semibold' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "wrap",
+              "type": "NonNullable<'normal' | 'balance' | 'pretty' | 'nowrap' | null | undefined> | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -31443,14 +31524,6 @@
           "source": "static",
           "props": [
             {
-              "name": "ref",
-              "type": "(Ref<HTMLLIElement> & RefObject<HTMLLIElement>) | undefined",
-              "required": false,
-              "group": "behavior",
-              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
-              "deprecated": false
-            },
-            {
               "name": "children",
               "type": "ReactNode",
               "required": false,
@@ -31495,71 +31568,14 @@
           ]
         },
         {
-          "name": "static:Text",
-          "displayName": "Text",
-          "propsType": "TextProps",
+          "name": "static:Small",
+          "displayName": "Small",
+          "propsType": "SmallProps",
           "source": "static",
           "props": [
             {
-              "name": "size",
-              "type": "enum",
-              "required": false,
-              "default": "base",
-              "group": "variant",
-              "isVariant": true,
-              "options": [
-                "base",
-                "lg",
-                "sm"
-              ],
-              "variantGroup": "size",
-              "deprecated": false
-            },
-            {
-              "name": "as",
-              "type": "TextElement | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "bold",
-              "type": "boolean | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "highlight",
-              "type": "boolean | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "italic",
-              "type": "boolean | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "strikethrough",
-              "type": "boolean | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
               "name": "tone",
               "type": "TypographyTone | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "underline",
-              "type": "boolean | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -31588,6 +31604,330 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:Strong",
+          "displayName": "Strong",
+          "propsType": "StrongProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "tone",
+              "type": "TypographyTone | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:Text",
+          "displayName": "Text",
+          "propsType": "TextProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "font",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "body",
+                "mono"
+              ],
+              "variantGroup": "font",
+              "deprecated": false
+            },
+            {
+              "name": "numeric",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "normal",
+                "tabular"
+              ],
+              "variantGroup": "numeric",
+              "deprecated": false
+            },
+            {
+              "name": "preset",
+              "type": "enum",
+              "required": false,
+              "default": "body",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "body",
+                "caption",
+                "lead",
+                "overline"
+              ],
+              "variantGroup": "preset",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "base",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "base",
+                "lg",
+                "sm",
+                "xl",
+                "xs"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "align",
+              "type": "NonNullable<'center' | 'end' | 'start' | 'justify' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "as",
+              "type": "'div' | 'label' | 'p' | 'span' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "bold",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Explicit weight, then a preset's weight, take precedence over bold.",
+              "deprecated": false
+            },
+            {
+              "name": "highlight",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Visual highlighting only; use semantic emphasis for importance.",
+              "deprecated": false
+            },
+            {
+              "name": "italic",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "leading",
+              "type": "NonNullable<'normal' | 'tight' | 'relaxed' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "measure",
+              "type": "NonNullable<'none' | 'wide' | 'readable' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "strikethrough",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "tone",
+              "type": "TypographyTone | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "tracking",
+              "type": "NonNullable<'normal' | 'tight' | 'wide' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "underline",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "weight",
+              "type": "NonNullable<'bold' | 'medium' | 'normal' | 'semibold' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "wrap",
+              "type": "NonNullable<'normal' | 'balance' | 'pretty' | 'nowrap' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | MouseEventHandler<HTMLSpanElement> | MouseEventHandler<HTMLParagraphElement> | MouseEventHandler<HTMLLabelElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:VisuallyHidden",
+          "displayName": "VisuallyHidden",
+          "propsType": "VisuallyHiddenProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "as",
+              "type": "'div' | 'span' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "focusable",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Reveal on focus-within, for example when containing a skip-link anchor.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | MouseEventHandler<HTMLSpanElement> | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false

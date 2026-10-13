@@ -1,3 +1,5 @@
+import { TypographyScaleDemo } from "./foundations";
+
 import {
   Blockquote,
   CodeBlock,
@@ -19,6 +21,22 @@ export function TypographyHeroDemo({
     "rounded-3xl border border-white/10 bg-white/90 dark:bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl w-full overflow-auto";
 
   switch (section) {
+    case "scale":
+      return (
+        <div className={shell}>
+          <TypographyScaleDemo />
+        </div>
+      );
+    case "accessibility":
+      return (
+        <div className={shell}>
+          <p className="mb-4">Use Tab to reveal the skip link.</p>
+          <p>
+            VisuallyHidden gives icon buttons an accessible name and reveals
+            skip links on keyboard focus.
+          </p>
+        </div>
+      );
     case "heading":
       return (
         <div className={shell}>

@@ -1,3 +1,4 @@
+import { zuiTypographyListItem } from "../../design-system/typography";
 import { cn } from "../../lib/utils";
 
 import type { ListProps, ListItemProps } from "./types";
@@ -69,7 +70,7 @@ export function ListItemBase(props: ListItemProps) {
     <li
       ref={ref}
       data-slot="typography-list-item"
-      className={cn("leading-relaxed", className)}
+      className={cn(zuiTypographyListItem, className)}
       {...rest}
     >
       {children}
