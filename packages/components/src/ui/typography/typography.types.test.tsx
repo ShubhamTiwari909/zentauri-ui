@@ -98,10 +98,10 @@ it("supports text utility native refs and rejects arbitrary child traversal", ()
   expectTypeOf(disclosure).toExtend<ExpandableTextProps>();
   // @ts-expect-error Truncation accepts strings, not arbitrary React children.
   const invalid: TruncateTextProps = { children: <span>Text</span> };
-  // @ts-expect-error Highlighting does not render HTML input.
   const html: HighlightTextProps = {
     text: "Text",
     query: "T",
+    // @ts-expect-error Highlighting does not render HTML input.
     dangerouslySetInnerHTML: { __html: "Text" },
   };
   void invalid;
