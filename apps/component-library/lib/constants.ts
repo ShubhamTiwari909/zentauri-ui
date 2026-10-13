@@ -1,5 +1,14 @@
 export const HOOK_PREVIEW_REGISTRY = [
   {
+    slug: "use-number-format",
+    module: "useNumberFormat",
+    name: "useNumberFormat",
+    description:
+      "Formats numbers and bigint values with native Intl, explicit locale defaults and a bounded formatter cache.",
+    intro:
+      "Compose format and formatToParts with counts, currencies, percentages and measurement units.",
+  },
+  {
     slug: "use-text-overflow",
     module: "useTextOverflow",
     name: "useTextOverflow",

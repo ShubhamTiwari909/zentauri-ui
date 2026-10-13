@@ -11,6 +11,7 @@ import type {
   proseVariants,
   textLinkVariants,
   descriptionListVariants,
+  numberTextVariants,
 } from "./variants";
 
 export type TypographyTone = NonNullable<
@@ -187,3 +188,30 @@ export type ExpandableTextProps = Omit<
   contentClassName?: string;
   buttonClassName?: string;
 };
+
+export type NumberTextProps = (
+  | (Omit<
+      ComponentPropsWithRef<"span">,
+      "children" | "dangerouslySetInnerHTML" | "color"
+    > & { as?: "span" })
+  | (Omit<
+      ComponentPropsWithRef<"p">,
+      "children" | "dangerouslySetInnerHTML" | "color"
+    > & { as: "p" })
+  | (Omit<
+      ComponentPropsWithRef<"div">,
+      "children" | "dangerouslySetInnerHTML" | "color"
+    > & { as: "div" })
+) &
+  TypographyControls & {
+    value: number | bigint;
+    locale?: string | string[];
+    /** Intl's style is separate from the native React CSS style prop. */
+    formatOptions?: Intl.NumberFormatOptions;
+    tone?: ReadableTypographyTone;
+    size?: NonNullable<VariantProps<typeof numberTextVariants>["size"]>;
+    numeric?: NonNullable<VariantProps<typeof numberTextVariants>["numeric"]>;
+    font?: NonNullable<VariantProps<typeof typographyFontVariants>["font"]>;
+    /** Styles native parts without replacing their text or order. */
+    partClassNames?: Partial<Record<Intl.NumberFormatPart["type"], string>>;
+  };

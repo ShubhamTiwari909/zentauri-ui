@@ -237,6 +237,7 @@ const hooksEntryNames = [
   "useLongPress",
   "useMediaQuery",
   "useNetworkStatus",
+  "useNumberFormat",
   "usePageVisibility",
   "usePagination",
   "usePrefersColorScheme",

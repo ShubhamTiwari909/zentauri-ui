@@ -1,3 +1,4 @@
+import { TypographyNumberHero } from "./number-examples";
 import { TypographyTextUtilitiesHero } from "./text-utilities-examples";
 import { TypographyContentHero } from "./content-examples";
 import { TypographyScaleDemo } from "./foundations";
@@ -23,6 +24,12 @@ export function TypographyHeroDemo({
     "rounded-3xl border border-white/10 bg-white/90 dark:bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl w-full overflow-auto";
 
   switch (section) {
+    case "number-formatting":
+      return (
+        <div className={shell}>
+          <TypographyNumberHero />
+        </div>
+      );
     case "highlighting":
     case "truncation":
       return (

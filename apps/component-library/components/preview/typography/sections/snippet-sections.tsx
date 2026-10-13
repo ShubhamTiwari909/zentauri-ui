@@ -232,6 +232,7 @@ export function TypographyCodeExamplesSection({
       "description-list",
       "highlighting",
       "truncation",
+      "number-formatting",
     ].includes(section)
   )
     return null;

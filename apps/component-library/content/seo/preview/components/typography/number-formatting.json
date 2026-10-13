@@ -1,0 +1,58 @@
+{
+  "category": "Typography",
+  "title": "NumberText and locale-aware number formatting",
+  "description": "Native Intl number formatting with explicit locales, tabular digits and optional part styling.",
+  "keywords": [
+    "typography",
+    "React",
+    "Zentauri UI",
+    "Intl",
+    "currency",
+    "locale",
+    "NumberText"
+  ],
+  "canonicalPath": "/preview/typography/number-formatting",
+  "og": {
+    "title": "NumberText and locale-aware number formatting \u00b7 Zentauri UI",
+    "description": "Native Intl number formatting with explicit locales, tabular digits and optional part styling.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "NumberText and locale-aware number formatting \u00b7 Zentauri UI",
+    "description": "Native Intl number formatting with explicit locales, tabular digits and optional part styling.",
+    "card": "summary_large_image"
+  },
+  "headings": {
+    "h1": "NumberText and locale-aware number formatting",
+    "h2": [
+      "Numeric presentation",
+      "Composition and API",
+      "Accessibility",
+      "FAQ"
+    ]
+  },
+  "intro": "Preserve native locale grouping, currency placement, spacing, rounding and units when displaying numbers and bigint values.",
+  "useCases": [
+    "Product prices, metrics, counts, measurements and numeric tables."
+  ],
+  "faqs": [
+    {
+      "question": "Does NumberText animate a localized value?",
+      "answer": "No. NumberText is static and has no Motion dependency. The separate integer motion example uses a localized accessible count alongside decorative digit animation."
+    },
+    {
+      "question": "What happens without a locale?",
+      "answer": "The deterministic default and final preference fallback is en-US. Invalid locale syntax and invalid Intl options still throw native errors. Matching Intl locale data is required for exact output across environments."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "NumberText accepts value, locale and formatOptions, separately from native CSS style. Optional partClassNames styles native parts without replacing characters or rearranging them. Tabular digits are the default. useNumberFormat returns format, formatToParts, resolvedLocale and formatter, backed by a cache of at most 50 instances."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Keep the formatted text readable and preserve every native part, including spacing and signs. Numeric strings are not parsed. NaN, infinity and negative zero use Intl output; an application can validate inputs or supply its own empty/error state. Display precision is presentation rather than arithmetic."
+    }
+  ]
+}

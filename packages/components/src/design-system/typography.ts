@@ -310,3 +310,8 @@ export const zuiTypographyExpandableContent =
   "min-w-0 wrap-break-word whitespace-pre-line";
 export const zuiTypographyExpandableButton =
   "block cursor-pointer rounded-sm underline underline-offset-4 mt-[var(--zui-typography-expandable-gap,0.5rem)] dark:mt-[var(--zui-typography-expandable-gap-dark,var(--zui-typography-expandable-gap,0.5rem))] text-[color:var(--zui-typography-expandable-fg,#0369a1)] dark:text-[color:var(--zui-typography-expandable-fg-dark,#7dd3fc)] focus-visible:outline-solid focus-visible:outline-[length:var(--zui-typography-expandable-focus-width,2px)] dark:focus-visible:outline-[length:var(--zui-typography-expandable-focus-width-dark,var(--zui-typography-expandable-focus-width,2px))] focus-visible:outline-offset-[var(--zui-typography-expandable-focus-offset,2px)] dark:focus-visible:outline-offset-[var(--zui-typography-expandable-focus-offset-dark,var(--zui-typography-expandable-focus-offset,2px))] focus-visible:outline-[color:var(--zui-typography-expandable-focus-color,#0284c7)] dark:focus-visible:outline-[color:var(--zui-typography-expandable-focus-color-dark,#38bdf8)]";
+
+export const zuiTypographyNumberBase = zuiTextBase;
+export const zuiTypographyNumberSizes = zuiTextSizes;
+export const zuiTypographyNumberNumerics = zuiTypographyNumerics;
+export const zuiTypographyNumberTones = zuiTypographyReadableTones;

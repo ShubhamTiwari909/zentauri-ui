@@ -83,3 +83,7 @@ export type {
   ExpandableTextProps,
 } from "./types";
 export { truncateTextVariants } from "./variants";
+
+export { NumberText } from "./number-text";
+export type { NumberTextProps } from "./types";
+export { numberTextVariants } from "./variants";
