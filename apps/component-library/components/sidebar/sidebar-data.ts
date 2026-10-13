@@ -50,6 +50,11 @@ const sidebarRouteDataShared = [
 ];
 
 const typographySidebarItems = [
+  {
+    title: "Highlighting and relevance",
+    href: "/preview/typography/highlighting",
+  },
+  { title: "Truncation and expansion", href: "/preview/typography/truncation" },
   { title: "Prose and rich content", href: "/preview/typography/prose" },
   { title: "Text links", href: "/preview/typography/links" },
   { title: "Description lists", href: "/preview/typography/description-list" },

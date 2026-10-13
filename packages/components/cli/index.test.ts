@@ -172,6 +172,10 @@ describe("CLI module commands", () => {
         "Prose",
         "TextLink",
         "DescriptionList",
+        "Mark",
+        "HighlightText",
+        "TruncateText",
+        "ExpandableText",
       ]) {
         expect(entry).toMatch(new RegExp(`\\b${name}\\b`));
       }
@@ -185,6 +189,20 @@ describe("CLI module commands", () => {
         join(dir, "src/components/design-system/typography.ts"),
         "utf8",
       );
+      const overflow = readFileSync(
+        join(dir, "src/hooks/useTextOverflow/useTextOverflow.ts"),
+        "utf8",
+      );
+      expect(overflow).toContain("export function useTextOverflow");
+      expect(
+        existsSync(join(dir, "src/hooks/useControllableState/index.ts")),
+      ).toBe(true);
+      const disclosure = readFileSync(
+        join(dir, "src/components/ui/typography/expandable-text-base.tsx"),
+        "utf8",
+      );
+      expect(disclosure).toContain('from "@/hooks/useTextOverflow"');
+      expect(disclosure).not.toContain("../../hooks/");
       expect(tokens).toContain("--zui-typography-font-body");
       expect(tokens).toContain("--zui-typography-font-body-dark");
       expect(

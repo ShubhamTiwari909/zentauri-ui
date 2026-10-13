@@ -1,6 +1,10 @@
 import { createRef } from "react";
 import { expectTypeOf, it } from "vitest";
 import type {
+  MarkProps,
+  HighlightTextProps,
+  TruncateTextProps,
+  ExpandableTextProps,
   ProseProps,
   TextLinkProps,
   DescriptionListProps,
@@ -62,4 +66,44 @@ it("accepts native attributes and correctly typed refs on the public typography 
   void gradientLink;
   void invalidParagraph;
   void invalidHeading;
+});
+
+it("supports text utility native refs and rejects arbitrary child traversal", () => {
+  const mark = {
+    ref: createRef<HTMLElement>(),
+    children: "match",
+  } satisfies MarkProps;
+  const highlight = {
+    ref: createRef<HTMLSpanElement>(),
+    text: "Text",
+    query: ["text"] as const,
+  } satisfies HighlightTextProps;
+  const truncate = {
+    as: "p",
+    ref: createRef<HTMLParagraphElement>(),
+    children: "Full text",
+    lines: 2,
+  } satisfies TruncateTextProps;
+  const disclosure = {
+    ref: createRef<HTMLDivElement>(),
+    text: "Full text",
+    expanded: false,
+    onExpandedChange: (value: boolean) => {
+      void value;
+    },
+  } satisfies ExpandableTextProps;
+  expectTypeOf(mark).toExtend<MarkProps>();
+  expectTypeOf(highlight).toExtend<HighlightTextProps>();
+  expectTypeOf(truncate).toExtend<TruncateTextProps>();
+  expectTypeOf(disclosure).toExtend<ExpandableTextProps>();
+  // @ts-expect-error Truncation accepts strings, not arbitrary React children.
+  const invalid: TruncateTextProps = { children: <span>Text</span> };
+  // @ts-expect-error Highlighting does not render HTML input.
+  const html: HighlightTextProps = {
+    text: "Text",
+    query: "T",
+    dangerouslySetInnerHTML: { __html: "Text" },
+  };
+  void invalid;
+  void html;
 });

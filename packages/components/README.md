@@ -25,7 +25,7 @@ Counted from the entry lists in `tsup.config.ts`. Refresh with `pnpm --filter @z
 | Animated UI entries |    52 | `@zentauri-ui/zentauri-components/ui/<name>/animated` |
 | Animation entries   |    41 | `@zentauri-ui/zentauri-components/animations/<name>`  |
 | Chart entries       |     9 | `@zentauri-ui/zentauri-components/charts/<type>`      |
-| Hook entries        |    48 | `@zentauri-ui/zentauri-components/hooks/<entry>`      |
+| Hook entries        |    49 | `@zentauri-ui/zentauri-components/hooks/<entry>`      |
 
 `spinner` is the only animated-only UI area. Import it from `@zentauri-ui/zentauri-components/ui/spinner/animated`; there is no `@zentauri-ui/zentauri-components/ui/spinner` static entry.
 
@@ -35,14 +35,14 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 162 passed (162)   |
-| Tests      | 1988 passed (1988) |
+| Test files | 164 passed (164)   |
+| Tests      | 2009 passed (2009) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 105        | 1532  |
+| Components and UI utilities    | 106        | 1547  |
 | Standalone animations          | 1          | 45    |
-| React hooks                    | 48         | 242   |
+| React hooks                    | 49         | 250   |
 | Design system facade           | 1          | 24    |
 | CLI and import rewriting       | 4          | 46    |
 | Accessibility (axe + keyboard) | 2          | 52    |
@@ -81,7 +81,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/json-viewer/json-viewer.test.tsx`                               |    16 |
 | `src/ui/network-status/network-status.test.tsx`                         |    16 |
 | `src/ui/resizable-panels/resize-layout.test.ts`                         |    16 |
-| `src/ui/typography/content.test.tsx`                                    |    16 |
+| `src/ui/typography/text-utilities.test.tsx`                             |    16 |
 | `src/hooks/useUndoRedo/useUndoRedo.test.ts`                             |    15 |
 | `src/ui/package-install-command/package-install-command.test.tsx`       |    15 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
@@ -128,7 +128,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/slider/slider.test.tsx`                                         |     9 |
 | `src/ui/speech-synthesizer/speech-synthesizer.test.tsx`                 |     9 |
 | `src/ui/typing-indicator/typing-indicator.test.tsx`                     |     9 |
-| `cli/props.test.ts`                                                     |     8 |
+| `src/hooks/useTextOverflow/useTextOverflow.test.tsx`                    |     8 |
 | `src/ui/activity-feed/activity-feed.test.tsx`                           |     8 |
 | `src/ui/command/command.test.tsx`                                       |     8 |
 | `src/ui/copy-button/copy-button.test.tsx`                               |     8 |
@@ -204,6 +204,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useResizeObserver/useResizeObserver.test.ts`                 |     2 |
 | `src/ui/bento-grid/bento-grid.reduced-motion.test.tsx`                  |     2 |
 | `src/ui/circular-menu/circular-menu.reduced-motion.test.tsx`            |     2 |
+| `src/ui/typography/typography.types.test.tsx`                           |     2 |
 | `src/hooks/useInView/useInView.test.ts`                                 |     1 |
 | `src/hooks/useIsomorphicLayoutEffect/useIsomorphicLayoutEffect.test.ts` |     1 |
 | `src/hooks/usePageVisibility/usePageVisibility.test.ts`                 |     1 |
@@ -213,7 +214,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/glass-card/glass-card.ssr.test.tsx`                             |     1 |
 | `src/ui/search/search-suggestion-utils.test.ts`                         |     1 |
 | `src/ui/time-travel-inspector/time-travel-inspector.types.test.ts`      |     1 |
-| `src/ui/typography/typography.types.test.tsx`                           |     1 |
 
 ## Package exports
 
@@ -996,7 +996,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1988 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 2009 test cases in total
 - `pnpm test:a11y` — focused accessibility coverage for package-level UI primitives and compound components: **axe-core** audits for every interactive component plus **keyboard-interaction** tests (focus order, arrow-key nav, Home/End, Escape/Enter) for the compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).
@@ -1020,3 +1020,38 @@ Useful links:
 ## License
 
 MIT. See [`LICENSE`](LICENSE).
+
+## Typography text utilities
+
+Import `Mark`, `HighlightText`, `TruncateText` and `ExpandableText` from the existing `ui/typography` entry, or vendor the family with `zentauri-ui add typography`. Vendoring also includes the disclosure's `useTextOverflow` and `useControllableState` dependencies.
+
+```tsx
+import { HighlightText, TruncateText, ExpandableText } from "@zentauri-ui/zentauri-components/ui/typography";
+
+<HighlightText text="A literal [match] in the result" query={["[match]", "result"]} />;
+<TruncateText as="p" lines={2}>The complete string remains in the DOM.</TruncateText>;
+<ExpandableText text={description} lines={3} moreLabel="Read more" lessLabel="Read less" />;
+```
+
+- `Mark` renders semantic relevance markup with paired `--zui-typography-mark-*` colors, padding and radius. It does not automatically announce mark boundaries.
+- `HighlightText` accepts a string and literal query/query array. It ignores empty queries, uses leftmost nonoverlapping matches and prefers the longest match at the same start. Case-insensitive matching uses Unicode simple case folding, without accent normalization or locale-specific equivalence; `caseSensitive` opts out. Original text, casing, whitespace and emoji are retained. `markClassName` styles matches. No HTML parsing or arbitrary child traversal occurs.
+- `TruncateText` renders span/p/div with string children; `lines` must be a positive integer (default 1). One line uses ellipsis, multiple lines use CSS clamping. The inline line count is explicit API state, not a theme token. It does not add a title or tooltip. The full string remains copyable and accessible. Its span uses block layout to permit width-constrained clipping.
+- `ExpandableText` is a div with a text area and native button. It supports `expanded`, `defaultExpanded`, `onExpandedChange`, localized `moreLabel`/`lessLabel`, `contentId`, `contentClassName` and `buttonClassName`. The button appears only when the collapsed layout overflows and remains available after expansion. A stable content node/ID preserves focus and connects `aria-controls`/`aria-expanded`. Expansion changes visual presentation; clipped text remains in the accessibility tree. `showToggle="always"` provides an explicit fallback when layout measurement is unavailable. Initial measured-mode rendering contains full clamped text without a button, and the button may appear after mount.
+
+### useTextOverflow
+
+```tsx
+import { useTextOverflow } from "@zentauri-ui/zentauri-components/hooks/useTextOverflow";
+
+const { ref, isOverflowing, hasMeasured, remeasure } = useTextOverflow<HTMLDivElement>({
+  measurementKey: description,
+  lines: 3,
+  tolerance: 1,
+});
+```
+
+Attach the callback `ref` to the text container. `enabled` defaults to true; `axis` accepts horizontal/vertical/both (default both). Without `lines`, the hook compares the actual scroll/client dimensions. With `lines`, it measures a temporary text-only copy at the source computed width/styles, constrained to the requested collapsed line count. The copy has no source IDs, attributes, markup or event handlers; it is hidden/inert and removed immediately. This mode is for plain text, not rich interactive markup.
+
+Measurements run after mount and batch into an animation frame (timer fallback). ResizeObserver, window resize, text/style/ancestor theme mutations, a changed measurement key and font loading schedule new measurements; cleanup disconnects them. No browser layout is read during server render. The initial result is unmeasured; hidden/zero-width containers remain unmeasured until available. `remeasure()` handles changes outside the observed inputs. The default tolerance ignores differences up to 1 CSS pixel to accommodate rounded client/scroll metrics; use a smaller explicit tolerance when needed.
+
+Preview pages: `/preview/typography/highlighting`, `/preview/typography/truncation`, and `/preview/hooks/use-text-overflow`. Static typography imports no Motion dependency.

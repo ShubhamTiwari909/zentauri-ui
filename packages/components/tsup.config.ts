@@ -248,6 +248,7 @@ const hooksEntryNames = [
   "useSessionStorage",
   "useTableFilter",
   "useTableSort",
+  "useTextOverflow",
   "useThrottledCallback",
   "useTimeout",
   "useTimezone",

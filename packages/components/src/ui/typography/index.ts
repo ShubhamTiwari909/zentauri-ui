@@ -71,3 +71,15 @@ export {
   textLinkVariants,
   descriptionListVariants,
 } from "./variants";
+
+export { Mark } from "./mark";
+export { HighlightText } from "./highlight-text";
+export { TruncateText } from "./truncate-text";
+export { ExpandableText } from "./expandable-text";
+export type {
+  MarkProps,
+  HighlightTextProps,
+  TruncateTextProps,
+  ExpandableTextProps,
+} from "./types";
+export { truncateTextVariants } from "./variants";

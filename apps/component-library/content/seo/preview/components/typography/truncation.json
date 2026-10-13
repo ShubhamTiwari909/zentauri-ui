@@ -1,0 +1,41 @@
+{
+  "category": "Typography",
+  "title": "TruncateText and ExpandableText",
+  "description": "CSS line clamping and native disclosure backed by collapsed-layout overflow measurement.",
+  "keywords": ["typography", "React", "Zentauri UI", "truncation"],
+  "canonicalPath": "/preview/typography/truncation",
+  "og": {
+    "title": "TruncateText and ExpandableText \u00b7 Zentauri UI",
+    "description": "CSS line clamping and native disclosure backed by collapsed-layout overflow measurement.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "TruncateText and ExpandableText \u00b7 Zentauri UI",
+    "description": "CSS line clamping and native disclosure backed by collapsed-layout overflow measurement.",
+    "card": "summary_large_image"
+  },
+  "headings": {
+    "h1": "TruncateText and ExpandableText",
+    "h2": ["Text utilities", "Composition and API", "Accessibility", "FAQ"]
+  },
+  "intro": "Keep long descriptions compact while retaining complete text and native keyboard disclosure.",
+  "useCases": [
+    "Search results, article excerpts and compact product descriptions."
+  ],
+  "faqs": [
+    {
+      "question": "Is an animation package required?",
+      "answer": "No. These primitives use native HTML, CSS and an optional client measurement hook. They do not import Motion."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "TruncateText accepts string children and positive integer lines. ExpandableText supports controlled state, localized labels and showToggle=\"always\" as a measurement fallback. useTextOverflow observes resize, text and font changes and can measure a collapsed text-only copy."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "The full text remains in the accessibility tree. Expansion changes visual presentation. A native button exposes aria-expanded and aria-controls; a hidden measurement copy is inaccessible and immediately removed."
+    }
+  ]
+}

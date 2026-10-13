@@ -121,6 +121,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-description-rule-width", "1px"],
     ["typography-description-separator-padding", "1rem"],
     ["typography-description-term-weight", "500"],
+    ["typography-expandable-gap", "0.5rem"],
+    ["typography-expandable-fg", "#0369a1"],
+    ["typography-expandable-focus-width", "2px"],
+    ["typography-expandable-focus-offset", "2px"],
+    ["typography-expandable-focus-color", "#0284c7"],
     [
       "typography-highlight-bg",
       "color-mix(in oklab,var(--color-amber-400,oklch(82.8% 0.189 84.429)) 15%,transparent)",
@@ -276,6 +281,10 @@ export const typographyCssVariables = defineCssVariableReference({
       "var(--zui-typography-link-error-fg,var(--zui-typography-error-fg,oklch(50.5% 0.213 27.518)))",
     ],
     ["typography-list-leading", "1.625"],
+    ["typography-mark-bg", "#fef08a"],
+    ["typography-mark-fg", "#422006"],
+    ["typography-mark-padding-x", "0.125em"],
+    ["typography-mark-radius", "0.125em"],
     ["typography-measure", "65ch"],
     ["typography-measure-wide", "80ch"],
     ["typography-prose-paragraph-gap", "1.25em"],
@@ -762,6 +771,20 @@ export const typographyCssVariables = defineCssVariableReference({
       "var(--zui-typography-description-term-weight,500)",
     ],
     [
+      "typography-expandable-gap-dark",
+      "var(--zui-typography-expandable-gap,0.5rem)",
+    ],
+    ["typography-expandable-fg-dark", "#7dd3fc"],
+    [
+      "typography-expandable-focus-width-dark",
+      "var(--zui-typography-expandable-focus-width,2px)",
+    ],
+    [
+      "typography-expandable-focus-offset-dark",
+      "var(--zui-typography-expandable-focus-offset,2px)",
+    ],
+    ["typography-expandable-focus-color-dark", "#38bdf8"],
+    [
       "typography-highlight-bg-dark",
       "var(--zui-typography-highlight-bg,color-mix(in oklab,var(--color-amber-400,oklch(82.8% 0.189 84.429)) 15%,transparent))",
     ],
@@ -951,6 +974,16 @@ export const typographyCssVariables = defineCssVariableReference({
     [
       "typography-list-leading-dark",
       "var(--zui-typography-list-leading,1.625)",
+    ],
+    ["typography-mark-bg-dark", "#854d0e"],
+    ["typography-mark-fg-dark", "#fef9c3"],
+    [
+      "typography-mark-padding-x-dark",
+      "var(--zui-typography-mark-padding-x,0.125em)",
+    ],
+    [
+      "typography-mark-radius-dark",
+      "var(--zui-typography-mark-radius,0.125em)",
     ],
     ["typography-measure-dark", "var(--zui-typography-measure,65ch)"],
     ["typography-measure-wide-dark", "var(--zui-typography-measure-wide,80ch)"],
@@ -1218,5 +1251,5 @@ export const typographyCssVariables = defineCssVariableReference({
     ],
     ["typography-weight-bold-dark", "var(--zui-typography-weight-bold,700)"],
   ],
-  darkVariableCount: 251,
+  darkVariableCount: 260,
 });

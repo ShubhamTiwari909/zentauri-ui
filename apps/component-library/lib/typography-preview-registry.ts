@@ -1,5 +1,7 @@
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
+import highlighting from "@/content/seo/preview/components/typography/highlighting.json";
+import truncation from "@/content/seo/preview/components/typography/truncation.json";
 import blockquote from "@/content/seo/preview/components/typography/blockquote.json";
 import codeBlock from "@/content/seo/preview/components/typography/code-block.json";
 import prose from "@/content/seo/preview/components/typography/prose.json";
@@ -13,6 +15,8 @@ import lists from "@/content/seo/preview/components/typography/lists.json";
 import paragraph from "@/content/seo/preview/components/typography/paragraph.json";
 
 export const TYPOGRAPHY_SECTION_SLUGS = [
+  "highlighting",
+  "truncation",
   "prose",
   "links",
   "description-list",
@@ -29,6 +33,8 @@ export const TYPOGRAPHY_SECTION_SLUGS = [
 export type TypographySectionSlug = (typeof TYPOGRAPHY_SECTION_SLUGS)[number];
 
 export const typographySectionLabels: Record<TypographySectionSlug, string> = {
+  highlighting: "Highlighting and relevance",
+  truncation: "Truncation and expansion",
   prose: "Prose and rich content",
   links: "Text links",
   "description-list": "Description lists",
@@ -46,6 +52,8 @@ const typographySectionSeoRecord: Record<
   TypographySectionSlug,
   PreviewSeoDocument
 > = {
+  highlighting: highlighting as PreviewSeoDocument,
+  truncation: truncation as PreviewSeoDocument,
   prose: prose as PreviewSeoDocument,
   links: links as PreviewSeoDocument,
   "description-list": descriptionList as PreviewSeoDocument,

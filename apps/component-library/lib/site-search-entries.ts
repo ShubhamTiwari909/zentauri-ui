@@ -21,6 +21,22 @@ export type SiteSearchEntryRecord = {
 const HOOK_SLUG_PREFIX = "/preview/hooks/";
 
 const navKeywords: Record<string, readonly string[]> = {
+  "/preview/typography/highlighting": [
+    "Mark",
+    "HighlightText",
+    "literal",
+    "match",
+    "search",
+    "relevance",
+  ],
+  "/preview/typography/truncation": [
+    "TruncateText",
+    "ExpandableText",
+    "clamp",
+    "ellipsis",
+    "overflow",
+    "disclosure",
+  ],
   "/visualguard": [
     "visualguard",
     "visual guard",
@@ -195,7 +211,10 @@ function buildSiteSearchEntries(): SiteSearchEntryRecord[] {
         href: item.href,
         group: group.title,
         external: item.external,
-        keywords: pathKeywordTokens(item.href),
+        keywords: [
+          ...pathKeywordTokens(item.href),
+          ...(navKeywords[item.href] ?? []),
+        ],
       });
     }
   }
@@ -210,7 +229,10 @@ function buildSiteSearchEntries(): SiteSearchEntryRecord[] {
         href: item.href,
         group: group.title,
         external: item.external,
-        keywords: pathKeywordTokens(item.href),
+        keywords: [
+          ...pathKeywordTokens(item.href),
+          ...(navKeywords[item.href] ?? []),
+        ],
       });
     }
   }
