@@ -48,3 +48,26 @@ export {
   typographyStyleVariants,
   typographyFontVariants,
 } from "./variants";
+
+export { Prose } from "./prose";
+export { TextLink } from "./text-link";
+export {
+  DescriptionList,
+  DescriptionListItem,
+  DescriptionListTerm,
+  DescriptionListDetails,
+} from "./description-list";
+export type {
+  ProseProps,
+  TextLinkProps,
+  ReadableTypographyTone,
+  DescriptionListProps,
+  DescriptionListItemProps,
+  DescriptionListTermProps,
+  DescriptionListDetailsProps,
+} from "./types";
+export {
+  proseVariants,
+  textLinkVariants,
+  descriptionListVariants,
+} from "./variants";

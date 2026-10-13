@@ -164,7 +164,15 @@ describe("CLI module commands", () => {
         join(dir, "src/components/ui/typography/index.ts"),
         "utf8",
       );
-      for (const name of ["Strong", "Emphasis", "Small", "VisuallyHidden"]) {
+      for (const name of [
+        "Strong",
+        "Emphasis",
+        "Small",
+        "VisuallyHidden",
+        "Prose",
+        "TextLink",
+        "DescriptionList",
+      ]) {
         expect(entry).toContain(name);
       }
       expect(

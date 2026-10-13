@@ -50,6 +50,9 @@ const sidebarRouteDataShared = [
 ];
 
 const typographySidebarItems = [
+  { title: "Prose and rich content", href: "/preview/typography/prose" },
+  { title: "Text links", href: "/preview/typography/links" },
+  { title: "Description lists", href: "/preview/typography/description-list" },
   { title: "Scale and presets", href: "/preview/typography/scale" },
   { title: "Accessible text", href: "/preview/typography/accessibility" },
   {

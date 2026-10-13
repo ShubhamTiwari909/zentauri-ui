@@ -18,7 +18,7 @@ import { SiteNavLink } from "./site-link";
 const sectionLabels: Record<"build" | "catalog" | "more", readonly string[]> = {
   build: ["Installation", "Components", "Hooks"],
   catalog: ["Animations", "Typography", "Charts", "Design tokens"],
-  more: ["Contact", "Demos", "GitHub"],
+  more: ["VisualGuard", "Contact", "Demos", "GitHub"],
 };
 
 const drawerNavLinkClassName =
@@ -66,7 +66,7 @@ export function SiteHeaderMobile({
       return;
     }
 
-    const media = window.matchMedia("(min-width: 640px)");
+    const media = window.matchMedia("(min-width: 1280px)");
     const closeIfWide = () => {
       if (media.matches) {
         setMobileNavOpen(false);

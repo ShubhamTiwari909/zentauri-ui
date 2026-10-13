@@ -20,6 +20,16 @@ import {
   zuiTypographyMeasures,
   zuiTypographyFonts,
   zuiTypographyNumerics,
+  zuiTypographyProseBase,
+  zuiTypographyProseSizes,
+  zuiTypographyReadableTones,
+  zuiTypographyLinkBase,
+  zuiTypographyLinkTones,
+  zuiTypographyLinkUnderlines,
+  zuiTypographyDescriptionBase,
+  zuiTypographyDescriptionLayouts,
+  zuiTypographyDescriptionSizes,
+  zuiTypographyDescriptionSeparators,
 } from "../../design-system/typography";
 
 export const typographyToneVariants = cva("", {
@@ -64,3 +74,33 @@ export const unorderedListMarkerVariants = cva(zuiUnorderedListBase, {
   defaultVariants: { marker: "disc" },
 });
 export const orderedListVariants = cva(zuiOrderedListBase);
+
+export const proseVariants = cva(zuiTypographyProseBase, {
+  variants: {
+    size: zuiTypographyProseSizes,
+    measure: zuiTypographyMeasures,
+    tone: zuiTypographyReadableTones,
+  },
+  defaultVariants: { size: "base", measure: "readable", tone: "default" },
+});
+export const textLinkVariants = cva(zuiTypographyLinkBase, {
+  variants: {
+    tone: zuiTypographyLinkTones,
+    underline: zuiTypographyLinkUnderlines,
+  },
+  defaultVariants: { tone: "primary", underline: "always" },
+});
+export const descriptionListVariants = cva(zuiTypographyDescriptionBase, {
+  variants: {
+    layout: zuiTypographyDescriptionLayouts,
+    size: zuiTypographyDescriptionSizes,
+    tone: zuiTypographyReadableTones,
+    separators: zuiTypographyDescriptionSeparators,
+  },
+  defaultVariants: {
+    layout: "responsive",
+    size: "base",
+    tone: "default",
+    separators: false,
+  },
+});

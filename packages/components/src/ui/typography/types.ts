@@ -8,6 +8,9 @@ import type {
   typographyStyleVariants,
   typographyFontVariants,
   unorderedListMarkerVariants,
+  proseVariants,
+  textLinkVariants,
+  descriptionListVariants,
 } from "./variants";
 
 export type TypographyTone = NonNullable<
@@ -107,3 +110,37 @@ export type VisuallyHiddenProps = (
   /** Reveal on focus-within, for example when containing a skip-link anchor. */
   focusable?: boolean;
 };
+
+/** Plain foreground tones; gradient text remains a heading-level treatment. */
+export type ReadableTypographyTone = Exclude<
+  TypographyTone,
+  `gradient-${string}`
+>;
+export type ProseProps = (
+  | (Omit<ComponentPropsWithRef<"div">, "color"> & { as?: "div" })
+  | (Omit<ComponentPropsWithRef<"article">, "color"> & { as: "article" })
+) & {
+  size?: NonNullable<VariantProps<typeof proseVariants>["size"]>;
+  measure?: NonNullable<VariantProps<typeof proseVariants>["measure"]>;
+  tone?: ReadableTypographyTone;
+};
+export type TextLinkProps = Omit<ComponentPropsWithRef<"a">, "color"> &
+  TypographyControls & {
+    tone?: ReadableTypographyTone;
+    underline?: NonNullable<VariantProps<typeof textLinkVariants>["underline"]>;
+    size?: NonNullable<VariantProps<typeof textSizeVariants>["size"]>;
+    /** Decorative external-link marker; does not change target or accessible name. */
+    externalIndicator?: boolean;
+  };
+export type DescriptionListProps = Omit<
+  ComponentPropsWithRef<"dl">,
+  "color"
+> & {
+  layout?: NonNullable<VariantProps<typeof descriptionListVariants>["layout"]>;
+  size?: NonNullable<VariantProps<typeof descriptionListVariants>["size"]>;
+  tone?: ReadableTypographyTone;
+  separators?: boolean;
+};
+export type DescriptionListItemProps = ComponentPropsWithRef<"div">;
+export type DescriptionListTermProps = ComponentPropsWithRef<"dt">;
+export type DescriptionListDetailsProps = ComponentPropsWithRef<"dd">;

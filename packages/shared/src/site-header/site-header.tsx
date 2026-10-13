@@ -110,7 +110,7 @@ export function SiteHeader({
 
         <nav
           aria-label="Main"
-          className="hidden min-w-0 flex-1 items-center justify-center gap-1 sm:flex"
+          className="hidden min-w-0 flex-1 items-center justify-center gap-1 xl:flex"
         >
           {primaryNavItems.map((item) => {
             if (item.label === "Hooks" && catalogNavItems.length > 0) {
@@ -136,11 +136,11 @@ export function SiteHeader({
           ) : null}
         </nav>
 
-        <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:ml-0">
+        <div className="ml-auto flex shrink-0 items-center gap-1.5 xl:ml-0">
           {SearchOpenButton ? (
             <SearchOpenButton className={iconButtonClassName} />
           ) : null}
-          <div className="sm:hidden">
+          <div className="xl:hidden">
             <SiteHeaderMobile navItems={navItems} />
           </div>
           {showMenuToggle ? (

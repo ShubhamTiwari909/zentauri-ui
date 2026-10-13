@@ -24,7 +24,13 @@ const footerLinkGroups: FooterLinkGroup[] = [
   {
     title: "Explore",
     links: siteChromeNavItems.filter((item) =>
-      ["Typography", "Charts", "Design tokens", "Demos"].includes(item.label),
+      [
+        "Typography",
+        "Charts",
+        "Design tokens",
+        "Demos",
+        "VisualGuard",
+      ].includes(item.label),
     ),
   },
   {

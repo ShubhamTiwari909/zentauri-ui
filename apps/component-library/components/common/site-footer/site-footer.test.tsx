@@ -39,6 +39,9 @@ describe("SiteFooter", () => {
     expect(
       within(nav).getByRole("link", { name: "Components" }),
     ).toHaveAttribute("href", "/preview/components");
+    expect(
+      within(nav).getByRole("link", { name: "VisualGuard" }),
+    ).toHaveAttribute("href", "/visualguard");
     const github = within(nav).getByRole("link", { name: "GitHub" });
     expect(github).toHaveAttribute(
       "href",

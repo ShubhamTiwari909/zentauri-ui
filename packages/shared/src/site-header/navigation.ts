@@ -20,6 +20,7 @@ const libraryRouteItems = [
   { href: "/preview/typography", label: "Typography" },
   { href: "/preview/charts", label: "Charts" },
   { href: "/preview/tokens", label: "Design tokens" },
+  { href: "/visualguard", label: "VisualGuard" },
   { href: "/contact-us", label: "Contact" },
 ] as const;
 

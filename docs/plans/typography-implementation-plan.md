@@ -1,14 +1,18 @@
 # Typography implementation plan
 
-Date: 13 October 2026  
-Status: foundations implemented and verified on `codex/typography-foundations`; later phases remain planned  
+Date: 13 October 2026
+
+Status: foundations published in PR #153; content implemented on `codex/typography-content`; remaining phases planned
+
+Visual verification tooling: [VisualGuard](https://github.com/ShubhamTiwari909/visualguard-ai-testing), Shubham Tiwari's open-source visual testing package. Package overview and navigation are included in the current docs changes; installing the runner, recording baselines and adding CI coverage remain planned.
+
 Scope: every typography recommendation in [the broader roadmap](./hooks-typography-animations-roadmap.md), including optional editorial additions
 
 ## 1. Outcome and branch recommendation
 
 Build a typography system that supports branded interfaces, long-form content, accessible inline text, compact data displays and editorial layouts while preserving the existing API and default presentation.
 
-**Recommendation: do not implement the entire scope in one long-lived branch.** Use four sequential implementation branches for the committed scope, followed by an optional fifth branch for editorial enhancements. Each branch should include its own source, examples, tests, generated metadata and release notes. Merge each completed branch before starting its dependent branch from the updated default branch.
+**Recommendation: do not implement the entire scope in one long-lived branch.** Use four sequential implementation branches for the committed scope, followed by an optional fifth branch for editorial enhancements. Each branch should include its own source, examples, tests, generated metadata and release notes. The preferred sequence merges each completed branch before starting its dependency from the default branch. When continuing before review finishes, stack the next branch on the previous branch and target that dependency in its PR; rebase and retarget to main after the dependency merges.
 
 The foundations change shared tokens and existing components, so they belong in one coherent review. Rich-content components, measured text behavior and numeric formatting have different testing needs and can ship independently after those foundations. A single branch covering all of them would make regressions harder to isolate and keep completed additions waiting for the most complex feature.
 
@@ -24,7 +28,9 @@ Four core PRs are the target, not an absolute rule. Split a branch further if a 
 
 If one branch is strongly preferred, limit it to **foundations plus the three content additions**. Merge that core first; text measurement, number formatting and editorial work should still follow separately. An integration branch is unnecessary for the sequential approach. If an unreleased demo is needed, a temporary integration branch can combine reviewed work, but it should not replace the individual merge reviews.
 
-Suggested commit prefixes follow repository guidance: `feature: add typography scale tokens`, `fix: preserve typography default styling`, and `feature: add prose content styles`. Create each implementation branch when its phase begins; the foundations branch is now active. The foundations implementation is ready for its first PR.
+Suggested commit prefixes follow repository guidance: `feature: add typography scale tokens`, `fix: preserve typography default styling`, and `feature: add prose content styles`. Create each implementation branch when its phase begins; the content branch is now active. The foundations implementation is committed and published in PR #153. The content branch is stacked on foundations while that PR awaits review.
+
+Use a separate follow-up branch, `codex/visualguard-coverage`, for the shared VisualGuard dependency, capture configuration, reviewed baselines and CI workflow. It can follow the content merge and supply the visual gate for later typography branches. The package's dedicated `/visualguard` page, header/footer links and this planning update belong to the current docs work; they do not require installing VisualGuard or broadening the public component package's dependencies.
 
 ## 2. Current baseline and constraints
 
@@ -309,12 +315,52 @@ Do not add per-component package export mappings: the current wildcard package e
 - Keep homepage installation under typography; do not pretend every named export is a separately addable CLI component.
 - For new hooks, add the hook registry, demo, SEO and search surfaces using the established hook workflow.
 - Generated props should include each exported component; verify multi-component metadata and the typography API table before accepting it.
+- Maintain a separate `/visualguard` package overview rather than treating VisualGuard as a vendorable UI component. Link it from the shared header (desktop and mobile), the docs footer and site search. Include its GitHub repository, version-aware setup information, capabilities and relationship to typography verification.
 
-Before modifying any Next code, read the relevant installed guide in `node_modules/next/dist/docs/`. There is no Next implementation in this planning task.
+Before modifying any Next code, read the relevant installed guide in `node_modules/next/dist/docs/`.
 
 ## 15. Verification plan
 
 Use targeted tests while implementing. DOM render tests alone cannot verify computed CSS or physical overflow in jsdom; those need a small browser fixture or manual browser validation against the docs examples.
+
+### VisualGuard coverage
+
+[VisualGuard's source README](https://github.com/ShubhamTiwari909/visualguard-ai-testing#readme) describes Playwright capture, pixel/DOM comparison, saved references and optional Gemini/Ollama analysis. Use it to retain before/after evidence for typography changes and to catch unintended layout changes between reviews. The existing unit, API, token and accessibility checks remain part of the merge gate.
+
+**Version selection comes first.** The upstream README includes source changes intended for a future major release and does not claim that release is published. Confirm the published package's capabilities against the chosen version, or use a built source artifact pinned to a reviewed commit. Record that version/commit in the configuration notes. Follow the upstream [installation guide](https://github.com/ShubhamTiwari909/visualguard-ai-testing/blob/main/PUBLISHING-AND-USING.md) and [reliability/migration guide](https://github.com/ShubhamTiwari909/visualguard-ai-testing/blob/main/docs/RELIABILITY-CHANGES.md) for the selected artifact. The current source requires Node.js 22.12 or newer; check compatibility with the repository's runtime before adding the dependency.
+
+#### Planned implementation sequence
+
+1. Add VisualGuard and its required Playwright runtime as development tooling in the docs workspace; pin the validated version and document the command location. Keep them out of the publishable component package's runtime dependencies.
+2. Create an explicit route manifest and baseline configuration. Start with Chromium, fixed viewport dimensions and the same build/runtime/platform for the reference and candidate. Validate the package environment with `visualguard doctor`.
+3. Capture the existing main-branch examples before typography changes where possible. Newly added pages receive their first reviewed baseline after their design is approved. The current manual browser checks do not count as VisualGuard baselines.
+4. Add repeatable light and dark capture setups. The docs use `body[data-theme]`, so browser color scheme alone is insufficient: prepare the actual docs theme before capture. Wait for fonts, set repeatable example content, and stabilize transitions/media. Avoid masking the text, focus indicators or code/table containers being verified.
+5. Explicitly create references using `visualguard test --update-baselines`, inspect them, and commit PNGs with their rendering metadata, DOM and health sidecars as required by the selected version. Keep missing-baseline failures enabled in CI.
+6. Run candidate comparisons with AI disabled initially and require review of differences (`--no-ai --fail-on review` for the current source CLI). Choose tolerances against observed rendering noise; do not raise them merely to make changed typography pass. Retain the report and its complete screenshot directory as PR evidence.
+7. Add a focused CI job once a baseline comparison works locally. Start the docs server, wait for readiness, execute the explicit route manifest, and upload reports on both success and failure. Any optional performance comparison must use equivalent production builds.
+8. Add Firefox/WebKit coverage and optional advisory AI analysis after the deterministic suite is stable. AI annotations can help explain a change; maintainers still review expected differences and independent failures.
+
+#### Coverage by typography phase
+
+| Phase              | Proposed pages/states                                                                            | Review evidence                                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| Foundations        | Existing headings/paragraphs/inline/lists/quotes/code; scale and accessibility pages             | Existing defaults, utility overrides, fluid scales, scoped fonts and visible keyboard focus                    |
+| Content            | `/preview/typography/prose`, `/preview/typography/links`, `/preview/typography/description-list` | Article rhythm, raw/embedded/ignored markup, code/table containment, link focus, responsive terms/details      |
+| Text utilities     | Future highlighting/truncation pages after their routes ship                                     | Literal highlighting, one/multiple-line clipping, collapsed and expanded text, focus retained after disclosure |
+| Number formatting  | Future number-formatting page after its route ships                                              | Explicit en-US/en-IN examples, currency/unit placement, compact values and tabular alignment                   |
+| Optional editorial | Editorial examples when implemented                                                              | Footnote references/backlinks, heading anchors and drop caps at narrow widths                                  |
+
+Start with **390 × 844** and **1440 × 900** captures in both themes. Add **320px** width for long-word/overflow examples and a targeted text-enlargement/RTL fixture where those states can be prepared deterministically. Interactive focus/disclosure states belong in the VisualGuard Playwright fixture with a matching reference setup. Still inspect actual overflow dimensions, focus behavior and semantics; a screenshot alone does not prove those properties.
+
+#### Acceptance and baseline policy
+
+- The reference and candidate must use matching browser, platform, viewport, theme, fonts and example data. Record the reference revision and VisualGuard version with the run evidence.
+- Separate expected additive typography changes from unexpected changes to existing defaults. Approve each intentional difference with its reason before updating a baseline; never refresh all references to hide unexplained failures.
+- Missing references, capture errors and incomplete route coverage block the visual gate. Report generation without successful captures does not count as verification.
+- Preserve run screenshots, diffs, DOM findings and the report together. Baseline regeneration after a rendering-environment change requires a fresh review.
+- VisualGuard coverage is complete only when a local comparison and its CI equivalent have actually passed. Until then, list this gate as pending in the PR description alongside the already completed manual browser checks.
+
+The initial coverage branch should contain tooling/configuration, reviewed baseline artifacts, a docs testing guide and the CI job. Later typography branches extend its route/state matrix as their pages ship. Automated repair is outside this integration scope.
 
 | Area                   | Required evidence                                                                                                             |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -362,11 +408,21 @@ Do not claim a browser visual check, accessibility audit or test passed unless i
 
 ### PR 2 — content
 
-- [ ] Implement TextLink and DescriptionList.
-- [ ] Implement Prose selectors, component/escape boundaries and article examples.
-- [ ] Integrate existing list/quote/code primitives and show richer CodeBlock/Kbd composition.
-- [ ] Add content SEO/routes/sidebar/search coverage and generated API docs.
-- [ ] Verify reflow, RTL, both themes and nested component styling.
+- [x] Implement TextLink and DescriptionList.
+- [x] Implement Prose selectors, component/escape boundaries and article examples.
+- [x] Integrate existing list/quote/code primitives and show richer CodeBlock/Kbd composition.
+- [x] Add content SEO/routes/sidebar/search coverage and generated API docs.
+- [x] Verify reflow, RTL, both themes and nested component styling.
+- [x] Add the separate VisualGuard package page, header/footer/search links and visual verification plan.
+
+### VisualGuard verification follow-up — `codex/visualguard-coverage`
+
+- [ ] Select and pin a compatible published version or reviewed source artifact.
+- [ ] Add development tooling and explicit route/theme/viewport capture configuration.
+- [ ] Review and commit complete baseline artifacts for shipped typography pages.
+- [ ] Verify deterministic comparisons and interactive focus/disclosure fixtures locally.
+- [ ] Add a CI job with readiness checks, result policy and complete report artifacts.
+- [ ] Document intentional-change approval and baseline migration procedures.
 
 ### PR 3 — text utilities
 
@@ -411,3 +467,24 @@ Implemented on `codex/typography-foundations`. Later branch scopes remain unchan
 - Registry/props/surface metadata and generated package-health figures were refreshed. A minor changeset documents the additions; package publication was not performed.
 
 Remaining validation for a release pipeline: production docs build/deployment and any broader cross-browser/accessibility audit required by maintainers. The docs were verified with type checks and the local Next.js development server here.
+
+## Content implementation verification — 13 October 2026
+
+Implemented on `codex/typography-content`, stacked on the foundations commit while [PR #153](https://github.com/ShubhamTiwari909/zentauri-ui/pull/153) awaits review. The branch includes the content additions and VisualGuard documentation. Its PR targets foundations while that dependency remains open.
+
+- Added Prose, TextLink, and DescriptionList with named/compound definition-list exports in the existing typography entry.
+- Full package suite: **162 files, 1,984 tests passed**, including native markup, new-tab rel handling, external indicator names, nested definitions, source installation and token-facade discovery.
+- Package build, export checks, token contract, generated props and docs type checks passed.
+- Browser checks verified zero-specificity prose overrides, embedded/ignored subtree boundaries, readable heading scale, contained table/code scrolling, theme colors, multiple descriptions, responsive/RTL layouts, and enlarged text at narrow widths.
+- Link focus outlines remained visible in forced-colors mode. Keyboard activation of the Next.js composition navigated to the expected typography route.
+- Prose, links and description-list documentation routes returned 200 with their expected canonical paths. Examples, token references, API metadata, sidebar/search, changeset and test-health surfaces were updated.
+
+A production docs build and a comprehensive cross-browser/accessibility audit were not run. When the foundations PR merges, rebase the content branch onto the updated main branch before opening its main-targeted PR; if publishing it sooner, target the foundations branch instead.
+
+## VisualGuard documentation update — 13 October 2026
+
+Added `/visualguard` as a dedicated overview for the open-source package with repository, installation and contribution links. It is discoverable in the shared desktop/mobile header, docs footer and site search. The setup information distinguishes current source documentation from published-version behavior.
+
+Focused verification: all 12 existing header/footer tests passed with additional VisualGuard assertions; docs and shared-package type checks and targeted docs lint passed. The local page rendered with the expected title/canonical and footer link. Browser checks at 320, 390, 640, 1024, 1280 and 1440px found no document overflow, and the mobile drawer link navigated correctly and closed the drawer.
+
+VisualGuard installation, baseline capture and CI execution are not completed by this documentation update. Their pending tasks and acceptance criteria are recorded above; the earlier browser checks remain manual verification evidence.

@@ -21,6 +21,17 @@ export type SiteSearchEntryRecord = {
 const HOOK_SLUG_PREFIX = "/preview/hooks/";
 
 const navKeywords: Record<string, readonly string[]> = {
+  "/visualguard": [
+    "visualguard",
+    "visual guard",
+    "visual testing",
+    "regression",
+    "playwright",
+    "screenshots",
+    "open source",
+    "gemini",
+    "ollama",
+  ],
   "/": ["home", "landing", "zentauri"],
   "/demo": ["demo", "landing", "templates", "showcase"],
   "/preview/installation": [
@@ -42,6 +53,24 @@ const navKeywords: Record<string, readonly string[]> = {
   "/preview/hooks": ["hooks", "react hooks", "catalog"],
   "/preview/animations": ["animations", "motion", "framer motion", "catalog"],
   "/preview/typography": ["typography", "text", "styles", "catalog"],
+  "/preview/typography/prose": [
+    "Prose",
+    "article",
+    "MDX",
+    "rich text",
+    "content",
+    "paragraph",
+  ],
+  "/preview/typography/links": ["TextLink", "anchor", "external", "navigation"],
+  "/preview/typography/description-list": [
+    "DescriptionList",
+    "definition",
+    "dl",
+    "dt",
+    "dd",
+    "settings",
+    "metadata",
+  ],
   "/preview/typography/scale": [
     "typography",
     "font",
