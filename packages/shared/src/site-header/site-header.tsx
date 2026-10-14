@@ -88,7 +88,7 @@ export function SiteHeader({
         className,
       )}
     >
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3.5 sm:gap-6 sm:px-8 sm:py-4 lg:px-10">
+      <div className="mx-auto flex max-w-6xl max-xl:flex-wrap items-center gap-4 px-5 py-3.5 sm:gap-6 sm:px-8 sm:py-4 lg:px-10">
         <Link
           href={brand.href}
           aria-label="Zentauri UI"

@@ -1,0 +1,43 @@
+name: Typography visual coverage
+
+on:
+  pull_request:
+    paths:
+      - "apps/component-library/**"
+      - "packages/components/**"
+      - "packages/shared/**"
+      - "packages/eslint-config/**"
+      - "packages/typescript-config/**"
+      - "scripts/visualguard/**"
+      - "pnpm-lock.yaml"
+      - "package.json"
+      - "pnpm-workspace.yaml"
+      - "turbo.json"
+      - ".github/workflows/visualguard.yml"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: typography-visual-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typography:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare typography against reviewed references
+        run: bash scripts/visualguard/run-container.sh compare
+      - name: Upload report and complete capture evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: typography-visual-${{ github.run_id }}
+          path: apps/component-library/visualguard-results/
+          if-no-files-found: warn
+          retention-days: 14

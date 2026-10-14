@@ -1,0 +1,4 @@
+
+# Review generated visual references through the attached report.
+apps/component-library/visualguard/baselines/** linguist-generated=true
+apps/component-library/visualguard/baselines/**/*.dom.json -diff

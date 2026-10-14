@@ -1,0 +1,16 @@
+{
+  "sourceRevision": "e35026f22499433979848942c314bca0b3b87530",
+  "sourceDescription": "Approved editorial typography stack (PRs 153\u2013157), with uncommitted coverage harness and docs reflow fixes for the content column, showcase/mobile controls, hero/section headings and long API names. Component primitives and example content are unchanged.",
+  "visualguard": "2.0.0",
+  "playwright": "1.58.2",
+  "image": "mcr.microsoft.com/playwright:v1.58.2-jammy@sha256:4698a73749c5848d3f5fcd42a2174d172fcad2b2283e087843b115424303a565",
+  "platform": "linux/arm64",
+  "node": "24.13.0",
+  "locale": "en-US",
+  "timezone": "UTC",
+  "reviewStatus": "Reference images inspected locally; full canonical comparison passed. Publication authorized on 14 October 2026; final approval remains part of PR review.",
+  "verifiedOn": "2026-10-14",
+  "casesPassed": 76,
+  "checkpoints": 88,
+  "githubWorkflow": "Prepared; hosted execution pending publication."
+}

@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "fingerprint": "fa3caa882d42539192c5d9e45331cf2521faeb18025f313635b48938c50a35fc",
+  "identity": {
+    "platform": "linux",
+    "project": "dark-desktop",
+    "policy": {
+      "browser": {
+        "name": "chromium",
+        "locale": "en-US",
+        "timezoneId": "UTC",
+        "colorScheme": "dark",
+        "deviceScaleFactor": 1,
+        "navigationTimeoutMs": 30000,
+        "actionTimeoutMs": 15000,
+        "headless": true,
+        "ignoreHTTPSErrors": false
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "deviceScaleFactor": 1,
+        "isMobile": false,
+        "hasTouch": false
+      },
+      "stabilize": {
+        "disableAnimations": true,
+        "freezeTime": "2026-10-13T00:00:00Z",
+        "pauseClock": true,
+        "pauseMedia": true,
+        "waitForFonts": true,
+        "networkQuietMs": 500,
+        "networkQuietTimeoutMs": 10000,
+        "scrollToLoad": false,
+        "hideDefaults": false,
+        "hide": [],
+        "mask": [],
+        "blockRequests": [],
+        "retries": 2,
+        "stabilityAttempts": 3,
+        "stabilityIntervalMs": 150
+      },
+      "screenshot": {
+        "fullPage": true,
+        "maxHeight": 60000
+      },
+      "checks": {
+        "accessibility": {
+          "enabled": false,
+          "minImpact": "serious",
+          "tags": [
+            "wcag2a",
+            "wcag2aa",
+            "wcag21a",
+            "wcag21aa"
+          ],
+          "severity": "review"
+        },
+        "performance": {
+          "enabled": false,
+          "lcpIncreaseMs": 1000,
+          "clsIncrease": 0.1,
+          "weightIncreasePercent": 20,
+          "weightIncreaseKB": 100,
+          "severity": "review"
+        }
+      },
+      "mask": [],
+      "hide": []
+    }
+  },
+  "createdAt": "2026-10-14T03:48:28.047Z"
+}

@@ -243,7 +243,7 @@ export function TypographyEditorialExamples({
   ];
   return (
     <Section>
-      <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
+      <h2 className="wrap-anywhere text-2xl font-semibold text-slate-900 dark:text-white">
         Editorial composition
       </h2>
       <p className="mt-3 text-sm leading-7 text-slate-900 dark:text-slate-400">

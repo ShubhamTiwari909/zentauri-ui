@@ -38,3 +38,6 @@ yarn-error.log*
 *.pem
 .playwright-mcp
 .nvmrc
+# VisualGuard run evidence (reviewed baselines remain tracked)
+.visualguard/
+visualguard-results/

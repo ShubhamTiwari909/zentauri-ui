@@ -159,7 +159,7 @@ function SubcomponentTable({
       className="overflow-hidden rounded-lg border border-slate-300 bg-slate-100 text-slate-900 shadow-sm dark:border-white/10 dark:bg-slate-950/70 dark:text-slate-50"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-300 bg-white px-4 py-3 dark:border-white/10 dark:bg-slate-900/80">
-        <div>
+        <div className="min-w-0 wrap-anywhere">
           <h3 className="font-mono text-sm font-semibold">
             {subcomponent.displayName}
           </h3>
@@ -198,7 +198,7 @@ function PropsTableContent({ doc }: { doc: ComponentPropsDoc }) {
   return (
     <section id={`${doc.slug}-api`} className="space-y-5">
       <div className="space-y-2">
-        <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
+        <h2 className="wrap-anywhere text-2xl font-semibold text-slate-900 dark:text-white">
           {titleCase(doc.slug)} API
         </h2>
         <p className="max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
