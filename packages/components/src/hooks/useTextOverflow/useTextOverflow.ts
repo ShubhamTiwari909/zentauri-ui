@@ -103,13 +103,15 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
       }
       // Snapshot computed styles conservatively: exclude only paint-only properties
       // and custom variables, whose resolved layout values are already included.
+      // Animations and transitions are excluded so the clone keeps the captured
+      // static layout values instead of restarting them.
       const measurementStyles =
         lines === undefined
           ? []
           : Array.from(computed)
               .filter(
                 (property) =>
-                  !/^(?:--|(?:.*-)?color$|background(?:-|$)|opacity$|(?:box|text)-shadow$|fill(?:-|$)|stroke(?:-|$)|caret(?:-|$)|outline(?:-|$)|cursor$|pointer-events$)/.test(
+                  !/^(?:--|(?:.*-)?color$|background(?:-|$)|opacity$|(?:box|text)-shadow$|fill(?:-|$)|stroke(?:-|$)|caret(?:-|$)|outline(?:-|$)|cursor$|pointer-events$|animation(?:-|$)|transition(?:-|$))/.test(
                     property,
                   ),
               )
@@ -143,6 +145,8 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
             inset: "0 auto auto 0",
             visibility: "hidden",
             pointerEvents: "none",
+            animation: "none",
+            transition: "none",
             transform: "none",
             margin: "0",
             width: computed.width,
