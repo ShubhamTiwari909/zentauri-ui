@@ -12,6 +12,7 @@ const DARK_VARIABLE_EXAMPLE_LIMIT = 2;
 
 type CssVariableReferenceSectionProps = {
   canonicalPath: string;
+  referenceSlug?: string;
 };
 
 function getCssVariableReferenceSlug(canonicalPath: string) {
@@ -81,8 +82,13 @@ function getCssVariableCode(reference: CssVariableReference) {
 
 export function CssVariableReferenceSection({
   canonicalPath,
+  referenceSlug,
 }: CssVariableReferenceSectionProps) {
-  const slug = getCssVariableReferenceSlug(canonicalPath);
+  const slug = referenceSlug
+    ? Object.hasOwn(cssVariableReferences, referenceSlug)
+      ? (referenceSlug as CssVariableReferenceSlug)
+      : null
+    : getCssVariableReferenceSlug(canonicalPath);
 
   if (!slug) {
     return null;

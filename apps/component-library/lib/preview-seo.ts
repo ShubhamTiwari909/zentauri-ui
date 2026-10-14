@@ -45,6 +45,8 @@ export type PreviewSeoDocument = {
   twitter: PreviewSeoTwitter;
   /** Path only, e.g. `/preview/components/alert` (joined with `metadataBase`). */
   canonicalPath: string;
+  /** CSS variable inventory identity, independent of the canonical route. */
+  cssVariableReference?: string;
   headings: {
     h1: string;
     h2: string[];

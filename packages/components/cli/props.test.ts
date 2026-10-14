@@ -279,3 +279,34 @@ describe("props manifest", () => {
     expect(item?.props.map((prop) => prop.name)).not.toContain("aria-label");
   });
 });
+
+it("documents typography refs, semantic levels and shared control choices", () => {
+  const entries = readManifest().components.typography!.subcomponents;
+  for (const name of [
+    "HeadingProps",
+    "CodeBlockProps",
+    "BlockquoteProps",
+    "ListItemProps",
+  ]) {
+    expect(
+      entries
+        .find((entry) => entry.propsType === name)!
+        .props.some((prop) => prop.name === "ref"),
+    ).toBe(true);
+  }
+  const heading = entries.find((entry) => entry.propsType === "HeadingProps")!;
+  expect(heading.props.find((prop) => prop.name === "level")?.options).toEqual([
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+  ]);
+  expect(heading.props.find((prop) => prop.name === "align")?.options).toEqual([
+    "center",
+    "end",
+    "justify",
+    "start",
+  ]);
+});

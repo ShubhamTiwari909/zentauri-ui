@@ -1,3 +1,4 @@
+import * as typographyTokens from "../../design-system/typography";
 import { createRef } from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
@@ -213,4 +214,27 @@ describe("Typography foundations", () => {
       screen.getByRole("link", { name: "Skip to content" }),
     ).toHaveAttribute("href", "#content");
   });
+});
+
+it("keeps every typography arbitrary value balanced and code tone fallbacks present", () => {
+  function check(value: unknown) {
+    if (typeof value === "string") {
+      for (const match of value.matchAll(/\[[^\]]+\]/g)) {
+        expect(match[0].split("(").length, match[0]).toBe(
+          match[0].split(")").length,
+        );
+      }
+    } else if (value && typeof value === "object") {
+      Object.values(value).forEach(check);
+    }
+  }
+  check(typographyTokens);
+  for (const token of [
+    typographyTokens.zuiTypographyCodeBlockBase,
+    typographyTokens.zuiTypographyInlineCodeBase,
+  ]) {
+    expect(token).toMatch(
+      /border-\[color:var\(--zui-typography-[^,]+,var\(--_zui-type-tone-border,/,
+    );
+  }
 });

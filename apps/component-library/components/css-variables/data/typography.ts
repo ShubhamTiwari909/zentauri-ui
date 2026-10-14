@@ -538,7 +538,7 @@ export const typographyCssVariables = defineCssVariableReference({
     ],
     [
       "typography-code-border-dark",
-      "var(--zui-typography-code-border,var(-- zui-type-tone-border,#ffffff26))",
+      "var(--zui-typography-code-border,var(--_zui-type-tone-border,#ffffff26))",
     ],
     [
       "typography-code-shadow-dark",
@@ -578,7 +578,7 @@ export const typographyCssVariables = defineCssVariableReference({
     ],
     [
       "typography-inline-code-border-dark",
-      "var(--zui-typography-inline-code-border,var(-- zui-type-tone-border,#ffffff26))",
+      "var(--zui-typography-inline-code-border,var(--_zui-type-tone-border,#ffffff26))",
     ],
     [
       "typography-leading-tight-dark",

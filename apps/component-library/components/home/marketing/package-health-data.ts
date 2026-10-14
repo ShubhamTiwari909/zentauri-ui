@@ -5,14 +5,14 @@ export const PACKAGE_TEST_HEALTH = {
     passed: 161,
   },
   tests: {
-    total: 1968,
-    passed: 1968,
+    total: 1970,
+    passed: 1970,
   },
   areas: [
     {
       area: "Components and UI utilities",
       files: 104,
-      tests: 1515,
+      tests: 1516,
     },
     {
       area: "Standalone animations",
@@ -32,7 +32,7 @@ export const PACKAGE_TEST_HEALTH = {
     {
       area: "CLI and import rewriting",
       files: 4,
-      tests: 44,
+      tests: 45,
     },
     {
       area: "Accessibility (axe + keyboard)",
