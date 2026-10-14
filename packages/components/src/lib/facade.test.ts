@@ -490,9 +490,12 @@ it("discovers typography scale tokens, reciprocal theme pairs and new control gr
   ).toBe(false);
 });
 
-it("discovers prose, link and definition-list variants and reciprocal content tokens", () => {
+it("discovers content and text utility variants and reciprocal tokens", () => {
   const typography = DesignSystem.getComponent("typography");
   expect(typography?.getVariant("size", "lg", { slot: "prose" })).toBeDefined();
+  expect(
+    typography?.getVariant("mode", "multiple", { slot: "truncate" }),
+  ).toBeDefined();
   expect(
     typography?.getVariant("tone", "primary", { slot: "link" }),
   ).toBeDefined();
@@ -504,6 +507,10 @@ it("discovers prose, link and definition-list variants and reciprocal content to
   ).toBeDefined();
   expect(typography?.variables()).toEqual(
     expect.arrayContaining([
+      expect.objectContaining({
+        name: "--zui-typography-mark-bg",
+        pairName: "--zui-typography-mark-bg-dark",
+      }),
       expect.objectContaining({
         name: "--zui-typography-prose-h2-size",
         pairName: "--zui-typography-prose-h2-size-dark",

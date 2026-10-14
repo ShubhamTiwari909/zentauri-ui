@@ -297,3 +297,16 @@ export const zuiTypographyDescriptionTermBase =
 
 export const zuiTypographyDescriptionDetailsBase =
   "min-w-0 wrap-anywhere col-start-[var(--_zui-description-value-column,1)]";
+
+export const zuiTypographyMarkBase =
+  "bg-[color:var(--zui-typography-mark-bg,#fef08a)] dark:bg-[color:var(--zui-typography-mark-bg-dark,#854d0e)] text-[color:var(--zui-typography-mark-fg,#422006)] dark:text-[color:var(--zui-typography-mark-fg-dark,#fef9c3)] px-[var(--zui-typography-mark-padding-x,0.125em)] dark:px-[var(--zui-typography-mark-padding-x-dark,var(--zui-typography-mark-padding-x,0.125em))] rounded-[var(--zui-typography-mark-radius,0.125em)] dark:rounded-[var(--zui-typography-mark-radius-dark,var(--zui-typography-mark-radius,0.125em))]";
+export const zuiTypographyTruncateModes = {
+  single: "block min-w-0 max-w-full truncate",
+  multiple:
+    "min-w-0 max-w-full overflow-hidden wrap-break-word [display:-webkit-box] [-webkit-box-orient:vertical]",
+};
+export const zuiTypographyExpandableBase = "min-w-0";
+export const zuiTypographyExpandableContent =
+  "min-w-0 wrap-break-word whitespace-pre-line";
+export const zuiTypographyExpandableButton =
+  "block cursor-pointer rounded-sm underline underline-offset-4 mt-[var(--zui-typography-expandable-gap,0.5rem)] dark:mt-[var(--zui-typography-expandable-gap-dark,var(--zui-typography-expandable-gap,0.5rem))] text-[color:var(--zui-typography-expandable-fg,#0369a1)] dark:text-[color:var(--zui-typography-expandable-fg-dark,#7dd3fc)] focus-visible:outline-solid focus-visible:outline-[length:var(--zui-typography-expandable-focus-width,2px)] dark:focus-visible:outline-[length:var(--zui-typography-expandable-focus-width-dark,var(--zui-typography-expandable-focus-width,2px))] focus-visible:outline-offset-[var(--zui-typography-expandable-focus-offset,2px)] dark:focus-visible:outline-offset-[var(--zui-typography-expandable-focus-offset-dark,var(--zui-typography-expandable-focus-offset,2px))] focus-visible:outline-[color:var(--zui-typography-expandable-focus-color,#0284c7)] dark:focus-visible:outline-[color:var(--zui-typography-expandable-focus-color-dark,#38bdf8)]";

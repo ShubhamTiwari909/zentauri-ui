@@ -144,3 +144,46 @@ export type DescriptionListProps = Omit<
 export type DescriptionListItemProps = ComponentPropsWithRef<"div">;
 export type DescriptionListTermProps = ComponentPropsWithRef<"dt">;
 export type DescriptionListDetailsProps = ComponentPropsWithRef<"dd">;
+
+export type MarkProps = ComponentPropsWithRef<"mark">;
+export type HighlightTextProps = Omit<
+  ComponentPropsWithRef<"span">,
+  "children" | "dangerouslySetInnerHTML"
+> & {
+  text: string;
+  query: string | readonly string[];
+  /** Unicode simple case folding, without locale or accent normalization. */
+  caseSensitive?: boolean;
+  markClassName?: string;
+};
+export type TruncateTextProps = (
+  | (Omit<
+      ComponentPropsWithRef<"span">,
+      "children" | "dangerouslySetInnerHTML"
+    > & { as?: "span" })
+  | (Omit<
+      ComponentPropsWithRef<"p">,
+      "children" | "dangerouslySetInnerHTML"
+    > & { as: "p" })
+  | (Omit<
+      ComponentPropsWithRef<"div">,
+      "children" | "dangerouslySetInnerHTML"
+    > & { as: "div" })
+) & { children: string; lines?: number };
+export type ExpandableTextProps = Omit<
+  ComponentPropsWithRef<"div">,
+  "children" | "dangerouslySetInnerHTML"
+> & {
+  text: string;
+  lines?: number;
+  expanded?: boolean;
+  defaultExpanded?: boolean;
+  onExpandedChange?: (expanded: boolean) => void;
+  moreLabel?: string;
+  lessLabel?: string;
+  /** Always exposes the control when layout measurement is unavailable. */
+  showToggle?: "overflow" | "always";
+  contentId?: string;
+  contentClassName?: string;
+  buttonClassName?: string;
+};

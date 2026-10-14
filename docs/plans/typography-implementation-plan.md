@@ -2,7 +2,7 @@
 
 Date: 13 October 2026
 
-Status: foundations published in PR #153; content implemented on `codex/typography-content`; remaining phases planned
+Status: foundations published in PR #153; content and VisualGuard docs published in PR #154; text utilities implemented on `codex/typography-text-utilities`; remaining phases planned
 
 Visual verification tooling: [VisualGuard](https://github.com/ShubhamTiwari909/visualguard-ai-testing), Shubham Tiwari's open-source visual testing package. Package overview and navigation are included in the current docs changes; installing the runner, recording baselines and adding CI coverage remain planned.
 
@@ -28,7 +28,7 @@ Four core PRs are the target, not an absolute rule. Split a branch further if a 
 
 If one branch is strongly preferred, limit it to **foundations plus the three content additions**. Merge that core first; text measurement, number formatting and editorial work should still follow separately. An integration branch is unnecessary for the sequential approach. If an unreleased demo is needed, a temporary integration branch can combine reviewed work, but it should not replace the individual merge reviews.
 
-Suggested commit prefixes follow repository guidance: `feature: add typography scale tokens`, `fix: preserve typography default styling`, and `feature: add prose content styles`. Create each implementation branch when its phase begins; the content branch is now active. The foundations implementation is committed and published in PR #153. The content branch is stacked on foundations while that PR awaits review.
+Suggested commit prefixes follow repository guidance: `feature: add typography scale tokens`, `fix: preserve typography default styling`, and `feature: add prose content styles`. Create each implementation branch when its phase begins; the text-utilities branch is now active. The foundations implementation is committed and published in PR #153. The content branch is published in [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154), targeting foundations while PR #153 awaits review. The text-utilities branch is stacked on the content commit.
 
 Use a separate follow-up branch, `codex/visualguard-coverage`, for the shared VisualGuard dependency, capture configuration, reviewed baselines and CI workflow. It can follow the content merge and supply the visual gate for later typography branches. The package's dedicated `/visualguard` page, header/footer links and this planning update belong to the current docs work; they do not require installing VisualGuard or broadening the public component package's dependencies.
 
@@ -210,7 +210,7 @@ Matching contract:
 2. Ignore empty queries; return the original text when no match exists.
 3. Determine deterministic nonoverlapping ranges; resolve competing matches by the longest match at the same start offset.
 4. Preserve the original text, whitespace and casing exactly.
-5. Test non-ASCII text and emoji. Document case-insensitive behavior precisely; accent-insensitive matching and locale-specific search equivalence are outside the first version.
+5. Preserve offsets with escaped literal alternatives and Unicode regular-expression matching. Case-insensitive matching uses Unicode simple case folding (`iu`), preserving non-ASCII text and emoji without lowercasing the source. Accent normalization and locale-specific equivalence are outside the first version.
 6. A query update cannot leave stale marks behind.
 
 Reuse in Search/Command/log-viewer demos without automatically modifying their rendering behavior in the same PR. A separate adoption change can replace local highlighting after the primitive has shipped.
@@ -225,7 +225,7 @@ Handle long unbroken values and flex/grid shrink constraints. Prefer CSS custom 
 
 ### useTextOverflow
 
-Separate registered hook with a callback ref, enabled state, content/measurement key and `isOverflowing` result. API details should accommodate the collapsed constraints without binding it to one typography component.
+Registered hook with a callback ref and object result `{ ref, isOverflowing, hasMeasured, remeasure }`. Options are `enabled`, `measurementKey`, optional positive integer `lines`, `axis` (horizontal/vertical/both) and nonnegative `tolerance` (default 1 CSS pixel). With `lines`, measure a temporary text-only copy with the source computed styles/width and collapsed constraints; without it, inspect the actual node. The temporary copy has no IDs, attributes or interactive descendants, is hidden/inert, and is removed immediately after measurement.
 
 - Reuse existing resize-observer behavior where practical.
 - Compare actual scroll/client dimensions for the applicable clamp and axis; handle fractional measurements and a small documented tolerance.
@@ -346,7 +346,7 @@ Use targeted tests while implementing. DOM render tests alone cannot verify comp
 | ------------------ | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
 | Foundations        | Existing headings/paragraphs/inline/lists/quotes/code; scale and accessibility pages             | Existing defaults, utility overrides, fluid scales, scoped fonts and visible keyboard focus                    |
 | Content            | `/preview/typography/prose`, `/preview/typography/links`, `/preview/typography/description-list` | Article rhythm, raw/embedded/ignored markup, code/table containment, link focus, responsive terms/details      |
-| Text utilities     | Future highlighting/truncation pages after their routes ship                                     | Literal highlighting, one/multiple-line clipping, collapsed and expanded text, focus retained after disclosure |
+| Text utilities     | `/preview/typography/highlighting` and `/preview/typography/truncation`                          | Literal highlighting, one/multiple-line clipping, collapsed and expanded text, focus retained after disclosure |
 | Number formatting  | Future number-formatting page after its route ships                                              | Explicit en-US/en-IN examples, currency/unit placement, compact values and tabular alignment                   |
 | Optional editorial | Editorial examples when implemented                                                              | Footnote references/backlinks, heading anchors and drop caps at narrow widths                                  |
 
@@ -426,12 +426,12 @@ Do not claim a browser visual check, accessibility audit or test passed unless i
 
 ### PR 3 — text utilities
 
-- [ ] Implement Mark and deterministic literal HighlightText matching.
-- [ ] Implement CSS-only TruncateText.
-- [ ] Add/register/document useTextOverflow.
-- [ ] Implement ExpandableText with collapsed-state measurement and accessible disclosure.
-- [ ] Verify actual overflow/fonts/resizing in a browser, plus unit interaction/cleanup tests.
-- [ ] Verify vendored typography pulls the new hook and all needed tokens.
+- [x] Implement Mark and deterministic literal HighlightText matching.
+- [x] Implement CSS-only TruncateText.
+- [x] Add/register/document useTextOverflow.
+- [x] Implement ExpandableText with collapsed-state measurement and accessible disclosure.
+- [x] Verify actual overflow/fonts/resizing in a browser, plus unit interaction/cleanup tests.
+- [x] Verify vendored typography pulls the new hook and all needed tokens.
 
 ### PR 4 — numbers
 
@@ -479,7 +479,7 @@ Implemented on `codex/typography-content`, stacked on the foundations commit whi
 - Link focus outlines remained visible in forced-colors mode. Keyboard activation of the Next.js composition navigated to the expected typography route.
 - Prose, links and description-list documentation routes returned 200 with their expected canonical paths. Examples, token references, API metadata, sidebar/search, changeset and test-health surfaces were updated.
 
-A production docs build and a comprehensive cross-browser/accessibility audit were not run. When the foundations PR merges, rebase the content branch onto the updated main branch before opening its main-targeted PR; if publishing it sooner, target the foundations branch instead.
+A production docs build and a comprehensive cross-browser/accessibility audit were not run. Content is published in [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154), targeting foundations. After the foundations PR merges, rebase content onto main and retarget its existing PR.
 
 ## VisualGuard documentation update — 13 October 2026
 
@@ -488,3 +488,17 @@ Added `/visualguard` as a dedicated overview for the open-source package with re
 Focused verification: all 12 existing header/footer tests passed with additional VisualGuard assertions; docs and shared-package type checks and targeted docs lint passed. The local page rendered with the expected title/canonical and footer link. Browser checks at 320, 390, 640, 1024, 1280 and 1440px found no document overflow, and the mobile drawer link navigated correctly and closed the drawer.
 
 VisualGuard installation, baseline capture and CI execution are not completed by this documentation update. Their pending tasks and acceptance criteria are recorded above; the earlier browser checks remain manual verification evidence.
+
+## Text-utilities implementation verification — 13 October 2026
+
+Implemented on `codex/typography-text-utilities`, stacked on content commit `203f0603` while [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154) targets foundations. The branch contains the completed text-utilities implementation.
+
+- Added semantic Mark, literal Unicode-aware HighlightText, CSS-only TruncateText, native ExpandableText and the registered useTextOverflow hook.
+- Full package suite: **164 files, 2,009 tests passed**. Focused suites verify literal/overlapping/Unicode matches, native refs, deterministic server output, controlled/uncontrolled disclosure, stable IDs/focus, observer/font/mutation cleanup and transitive source vendoring. Updated facade assertions also passed.
+- Scoped package build, package/docs type checks, targeted package/docs lint, token/props checks and export smoke checks passed. **246 entries across three export conditions** resolved after the final build.
+- Browser checks verified two-line clipping (48px visible versus 120–240px scroll height), complete expansion, retained button focus, correct short-content disclosure removal, narrow widths, enlarged text and RTL. Font-size changes triggered new collapsed measurements without losing the full string.
+- Highlighting retained literal `[text]`, removed stale marks after clearing a query, and used distinct light/dark mark colors. Keyboard focus in forced colors retained a solid 2px outline.
+- Highlighting, truncation and the standalone hook routes returned 200. The hook demo changed from overflow to fits when its content changed; its canonical uses the existing configured site base.
+- Generated registry/props/surface metadata, token reference, sidebar/search, examples, minor changeset and package-health tables were updated. CLI installation verified both useTextOverflow and useControllableState source dependencies.
+
+Verification used the existing local docs server at port 3002. No production docs build, VisualGuard baseline/CI run or comprehensive cross-browser/accessibility audit was performed. Publish this branch against content while PR #154 remains open, then rebase/retarget after the dependency merges. Number formatting remains the next typography phase.

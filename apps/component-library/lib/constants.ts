@@ -1,5 +1,14 @@
 export const HOOK_PREVIEW_REGISTRY = [
   {
+    slug: "use-text-overflow",
+    module: "useTextOverflow",
+    name: "useTextOverflow",
+    description:
+      "Measures text overflow after mount, including collapsed constraints, resize and font changes.",
+    intro:
+      "Use the callback ref to observe a text container and conditionally expose compact-content controls.",
+  },
+  {
     slug: "use-body-scroll-lock",
     module: "useBodyScrollLock",
     name: "useBodyScrollLock",

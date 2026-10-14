@@ -34,14 +34,14 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 162 passed (162)   |
-| Tests      | 1988 passed (1988) |
+| Test files | 164 passed (164)   |
+| Tests      | 2015 passed (2015) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 105        | 1532  |
+| Components and UI utilities    | 106        | 1549  |
 | Standalone animations          | 1          | 45    |
-| React hooks                    | 48         | 242   |
+| React hooks                    | 49         | 252   |
 | Design system facade           | 1          | 24    |
 | CLI and import rewriting       | 4          | 46    |
 | Accessibility (axe + keyboard) | 2          | 52    |
@@ -127,3 +127,7 @@ If neither is set locally, preview metadata falls back to `http://localhost:3000
 - **Consuming the library in your own app** — [`packages/components/README.md`](../../packages/components/README.md) (install, Tailwind `@source`, barrel vs subpath imports such as `@zentauri-ui/zentauri-components/ui` and `@zentauri-ui/zentauri-components/ui/<name>`).
 - **Source repository** — [github.com/ShubhamTiwari909/zentauri-ui](https://github.com/ShubhamTiwari909/zentauri-ui) (same link as the in-app GitHub nav).
 - **Next.js** — [nextjs.org/docs](https://nextjs.org/docs) for App Router, `metadata`, and deployment patterns.
+
+### Typography text utilities
+
+The typography hub includes **Highlighting and relevance** (`/preview/typography/highlighting`) and **Truncation and expansion** (`/preview/typography/truncation`). Their live examples support literal query changes, adjustable widths, short/long content, native disclosure and controlled labels. The matching hook page at `/preview/hooks/use-text-overflow` shows the callback ref and overflow status. Theme tokens and public props remain available in the existing typography reference/API surfaces.

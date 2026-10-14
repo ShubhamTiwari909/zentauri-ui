@@ -224,9 +224,15 @@ export function TypographyCodeExamplesSection({
   section: TypographySectionSlug;
 }) {
   if (
-    ["scale", "accessibility", "prose", "links", "description-list"].includes(
-      section,
-    )
+    [
+      "scale",
+      "accessibility",
+      "prose",
+      "links",
+      "description-list",
+      "highlighting",
+      "truncation",
+    ].includes(section)
   )
     return null;
   return (

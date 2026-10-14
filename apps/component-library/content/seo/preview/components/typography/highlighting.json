@@ -1,0 +1,46 @@
+{
+  "category": "Typography",
+  "title": "Mark and HighlightText for literal relevance",
+  "description": "Semantic relevance marks and literal Unicode-aware string highlighting.",
+  "keywords": ["typography", "React", "Zentauri UI", "highlighting"],
+  "canonicalPath": "/preview/typography/highlighting",
+  "og": {
+    "title": "Mark and HighlightText for literal relevance \u00b7 Zentauri UI",
+    "description": "Semantic relevance marks and literal Unicode-aware string highlighting.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Mark and HighlightText for literal relevance \u00b7 Zentauri UI",
+    "description": "Semantic relevance marks and literal Unicode-aware string highlighting.",
+    "card": "summary_large_image"
+  },
+  "headings": {
+    "h1": "Mark and HighlightText for literal relevance",
+    "h2": ["Text utilities", "Composition and API", "Accessibility", "FAQ"]
+  },
+  "intro": "Highlight matching text while preserving its original characters, casing and whitespace.",
+  "useCases": [
+    "Search results, filtered lists and command palettes that show matched text."
+  ],
+  "faqs": [
+    {
+      "question": "Is an animation package required?",
+      "answer": "No. Mark and HighlightText do not require an animation package or a measurement hook."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Text utilities",
+      "body": ""
+    },
+    {
+      "heading": "Composition and API",
+      "body": "HighlightText accepts one or multiple literal queries. Empty queries are ignored; longest matches at the same start win. Case-insensitive matching uses Unicode simple case folding, without accent normalization or locale-specific equivalence."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Mark indicates relevance; screen readers do not necessarily announce its boundaries. Do not use color alone to explain a result."
+    }
+  ],
+  "useCasesSectionHeading": "Text utilities"
+}

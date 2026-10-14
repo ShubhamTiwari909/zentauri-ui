@@ -166,6 +166,7 @@ const groupSuffixes: Array<[suffix: string, group: string]> = [
   ["Orientations", "orientation"],
   ["Orientation", "orientation"],
   ["Layouts", "layout"],
+  ["Modes", "mode"],
   ["Underlines", "underline"],
   ["Separators", "separators"],
   ["Weights", "weight"],
