@@ -47,6 +47,10 @@
   ],
   "sections": [
     {
+      "heading": "Numeric presentation",
+      "body": ""
+    },
+    {
       "heading": "Composition and API",
       "body": "NumberText accepts value, locale and formatOptions, separately from native CSS style. Optional partClassNames styles native parts without replacing characters or rearranging them. Tabular digits are the default. useNumberFormat returns format, formatToParts, resolvedLocale and formatter, backed by a cache of at most 50 instances."
     },
@@ -54,5 +58,6 @@
       "heading": "Accessibility",
       "body": "Keep the formatted text readable and preserve every native part, including spacing and signs. Numeric strings are not parsed. NaN, infinity and negative zero use Intl output; an application can validate inputs or supply its own empty/error state. Display precision is presentation rather than arithmetic."
     }
-  ]
+  ],
+  "useCasesSectionHeading": "Numeric presentation"
 }

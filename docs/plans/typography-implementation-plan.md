@@ -501,7 +501,7 @@ Implemented on `codex/typography-text-utilities`, stacked on content commit `203
 - Highlighting, truncation and the standalone hook routes returned 200. The hook demo changed from overflow to fits when its content changed; its canonical uses the existing configured site base.
 - Generated registry/props/surface metadata, token reference, sidebar/search, examples, minor changeset and package-health tables were updated. CLI installation verified both useTextOverflow and useControllableState source dependencies.
 
-Verification used the existing local docs server at port 3002. No production docs build, VisualGuard baseline/CI run or comprehensive cross-browser/accessibility audit was performed. Publish this branch against content while PR #154 remains open, then rebase/retarget after the dependency merges. Number formatting is the active typography phase.
+Verification used the existing local docs server at port 3002. No production docs build, VisualGuard baseline/CI run or comprehensive cross-browser/accessibility audit was performed. This branch was published in PR #155 against content; rebase and retarget after PR #154 merges. Number formatting is the active typography phase.
 
 ## Number-formatting implementation verification — 13 October 2026
 
