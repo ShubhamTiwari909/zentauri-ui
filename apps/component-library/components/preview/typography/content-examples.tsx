@@ -254,7 +254,7 @@ export function TypographyContentExamples({
         Content composition
       </h2>
       <p className="mt-2 text-sm leading-6 text-slate-900 dark:text-slate-400">
-        Prose styles already-rendered markup. Embedded component slots and
+        Prose styles already-rendered markup. Embedded component slots and{" "}
         <code>{'data-prose="ignore"'}</code> subtrees skip descendant styles.
         Put wide tables in a scrolling wrapper; use the existing CodeBlock and
         Kbd entries for richer content.

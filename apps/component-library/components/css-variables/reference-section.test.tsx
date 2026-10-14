@@ -21,3 +21,15 @@ it("reports omitted dark overrides even when the inventory includes every token"
   expect(code).toContain("...same variables with -dark at the end");
   expect(screen.getByText("44 variables")).toBeInTheDocument();
 });
+
+it("renders an explicit typography reference independently of the canonical route", () => {
+  render(
+    <CssVariableReferenceSection
+      canonicalPath="/preview/typography"
+      referenceSlug="typography"
+    />,
+  );
+  expect(screen.getByTestId("css-code")).toHaveTextContent(
+    "--zui-typography-font-body",
+  );
+});

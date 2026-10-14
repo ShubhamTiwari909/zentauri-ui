@@ -19,14 +19,18 @@
     "h2": ["Content composition", "Composition and API", "Accessibility", "FAQ"]
   },
   "intro": "Give rendered content a consistent rhythm while allowing embedded components to keep their own styles. Prose styles markup; it does not parse Markdown or inject HTML.",
-  "useCases": ["Documentation, article content and product details."],
+  "useCases": ["Articles, documentation and rendered MDX with embedded UI."],
   "faqs": [
     {
       "question": "Does this require another package?",
-      "answer": "No. Import from the existing ui/typography entry or vendor the typography family. No animation dependency is required."
+      "answer": "No parser is required. Prose styles already-rendered markup through scoped selectors and typography tokens; supply React or MDX children."
     }
   ],
   "sections": [
+    {
+      "heading": "Content composition",
+      "body": ""
+    },
     {
       "heading": "Composition and API",
       "body": "Selectors have zero specificity so utility classes can override them. data-prose=\"ignore\" opts out of descendant styling; inherited container fonts/colors still apply. Wrap wide tables in an overflow-x-auto container."
@@ -35,5 +39,6 @@
       "heading": "Accessibility",
       "body": "Preserve native HTML semantics and meaningful link names. Keep headings aligned with the document outline, and provide alternate text for images."
     }
-  ]
+  ],
+  "useCasesSectionHeading": "Content composition"
 }

@@ -21,6 +21,7 @@
     "card": "summary_large_image"
   },
   "canonicalPath": "/preview/typography",
+  "cssVariableReference": "typography",
   "headings": {
     "h1": "Typography system overview",
     "h2": [

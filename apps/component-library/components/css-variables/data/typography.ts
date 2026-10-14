@@ -152,11 +152,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-default-fg", "oklch(20.8% 0.042 265.755)"],
     [
       "typography-link-default-hover-fg",
-      "var(--zui-typography-default-fg,oklch(20.8% 0.042 265.755))",
+      "var(--zui-typography-link-default-fg,var(--zui-typography-default-fg,oklch(20.8% 0.042 265.755)))",
     ],
     [
       "typography-link-default-visited-fg",
-      "var(--zui-typography-default-fg,oklch(20.8% 0.042 265.755))",
+      "var(--zui-typography-link-default-fg,var(--zui-typography-default-fg,oklch(20.8% 0.042 265.755)))",
     ],
     [
       "typography-link-muted-fg",
@@ -165,11 +165,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-muted-fg", "oklch(55.4% 0.046 257.417)"],
     [
       "typography-link-muted-hover-fg",
-      "var(--zui-typography-muted-fg,oklch(55.4% 0.046 257.417))",
+      "var(--zui-typography-link-muted-fg,var(--zui-typography-muted-fg,oklch(55.4% 0.046 257.417)))",
     ],
     [
       "typography-link-muted-visited-fg",
-      "var(--zui-typography-muted-fg,oklch(55.4% 0.046 257.417))",
+      "var(--zui-typography-link-muted-fg,var(--zui-typography-muted-fg,oklch(55.4% 0.046 257.417)))",
     ],
     [
       "typography-link-primary-fg",
@@ -178,11 +178,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-primary-fg", "oklch(52% 0.105 223.128)"],
     [
       "typography-link-primary-hover-fg",
-      "var(--zui-typography-primary-fg,oklch(52% 0.105 223.128))",
+      "var(--zui-typography-link-primary-fg,var(--zui-typography-primary-fg,oklch(52% 0.105 223.128)))",
     ],
     [
       "typography-link-primary-visited-fg",
-      "var(--zui-typography-primary-fg,oklch(52% 0.105 223.128))",
+      "var(--zui-typography-link-primary-fg,var(--zui-typography-primary-fg,oklch(52% 0.105 223.128)))",
     ],
     [
       "typography-link-secondary-fg",
@@ -191,11 +191,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-secondary-fg", "oklch(44.6% 0.043 257.281)"],
     [
       "typography-link-secondary-hover-fg",
-      "var(--zui-typography-secondary-fg,oklch(44.6% 0.043 257.281))",
+      "var(--zui-typography-link-secondary-fg,var(--zui-typography-secondary-fg,oklch(44.6% 0.043 257.281)))",
     ],
     [
       "typography-link-secondary-visited-fg",
-      "var(--zui-typography-secondary-fg,oklch(44.6% 0.043 257.281))",
+      "var(--zui-typography-link-secondary-fg,var(--zui-typography-secondary-fg,oklch(44.6% 0.043 257.281)))",
     ],
     [
       "typography-link-accent-fg",
@@ -204,11 +204,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-accent-fg", "oklch(49.1% 0.27 292.581)"],
     [
       "typography-link-accent-hover-fg",
-      "var(--zui-typography-accent-fg,oklch(49.1% 0.27 292.581))",
+      "var(--zui-typography-link-accent-fg,var(--zui-typography-accent-fg,oklch(49.1% 0.27 292.581)))",
     ],
     [
       "typography-link-accent-visited-fg",
-      "var(--zui-typography-accent-fg,oklch(49.1% 0.27 292.581))",
+      "var(--zui-typography-link-accent-fg,var(--zui-typography-accent-fg,oklch(49.1% 0.27 292.581)))",
     ],
     [
       "typography-link-destructive-fg",
@@ -217,11 +217,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-destructive-fg", "oklch(58.6% 0.253 17.585)"],
     [
       "typography-link-destructive-hover-fg",
-      "var(--zui-typography-destructive-fg,oklch(58.6% 0.253 17.585))",
+      "var(--zui-typography-link-destructive-fg,var(--zui-typography-destructive-fg,oklch(58.6% 0.253 17.585)))",
     ],
     [
       "typography-link-destructive-visited-fg",
-      "var(--zui-typography-destructive-fg,oklch(58.6% 0.253 17.585))",
+      "var(--zui-typography-link-destructive-fg,var(--zui-typography-destructive-fg,oklch(58.6% 0.253 17.585)))",
     ],
     [
       "typography-link-info-fg",
@@ -230,11 +230,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-info-fg", "oklch(50% 0.134 242.749)"],
     [
       "typography-link-info-hover-fg",
-      "var(--zui-typography-info-fg,oklch(50% 0.134 242.749))",
+      "var(--zui-typography-link-info-fg,var(--zui-typography-info-fg,oklch(50% 0.134 242.749)))",
     ],
     [
       "typography-link-info-visited-fg",
-      "var(--zui-typography-info-fg,oklch(50% 0.134 242.749))",
+      "var(--zui-typography-link-info-fg,var(--zui-typography-info-fg,oklch(50% 0.134 242.749)))",
     ],
     [
       "typography-link-success-fg",
@@ -243,11 +243,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-success-fg", "oklch(50.8% 0.118 165.612)"],
     [
       "typography-link-success-hover-fg",
-      "var(--zui-typography-success-fg,oklch(50.8% 0.118 165.612))",
+      "var(--zui-typography-link-success-fg,var(--zui-typography-success-fg,oklch(50.8% 0.118 165.612)))",
     ],
     [
       "typography-link-success-visited-fg",
-      "var(--zui-typography-success-fg,oklch(50.8% 0.118 165.612))",
+      "var(--zui-typography-link-success-fg,var(--zui-typography-success-fg,oklch(50.8% 0.118 165.612)))",
     ],
     [
       "typography-link-warning-fg",
@@ -256,11 +256,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-warning-fg", "oklch(55.5% 0.163 48.998)"],
     [
       "typography-link-warning-hover-fg",
-      "var(--zui-typography-warning-fg,oklch(55.5% 0.163 48.998))",
+      "var(--zui-typography-link-warning-fg,var(--zui-typography-warning-fg,oklch(55.5% 0.163 48.998)))",
     ],
     [
       "typography-link-warning-visited-fg",
-      "var(--zui-typography-warning-fg,oklch(55.5% 0.163 48.998))",
+      "var(--zui-typography-link-warning-fg,var(--zui-typography-warning-fg,oklch(55.5% 0.163 48.998)))",
     ],
     [
       "typography-link-error-fg",
@@ -269,11 +269,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-error-fg", "oklch(50.5% 0.213 27.518)"],
     [
       "typography-link-error-hover-fg",
-      "var(--zui-typography-error-fg,oklch(50.5% 0.213 27.518))",
+      "var(--zui-typography-link-error-fg,var(--zui-typography-error-fg,oklch(50.5% 0.213 27.518)))",
     ],
     [
       "typography-link-error-visited-fg",
-      "var(--zui-typography-error-fg,oklch(50.5% 0.213 27.518))",
+      "var(--zui-typography-link-error-fg,var(--zui-typography-error-fg,oklch(50.5% 0.213 27.518)))",
     ],
     ["typography-list-leading", "1.625"],
     ["typography-measure", "65ch"],
@@ -718,7 +718,7 @@ export const typographyCssVariables = defineCssVariableReference({
     ],
     [
       "typography-code-border-dark",
-      "var(--zui-typography-code-border,var(-- zui-type-tone-border,#ffffff26))",
+      "var(--zui-typography-code-border,var(--_zui-type-tone-border,#ffffff26))",
     ],
     [
       "typography-code-shadow-dark",
@@ -787,7 +787,7 @@ export const typographyCssVariables = defineCssVariableReference({
     ],
     [
       "typography-inline-code-border-dark",
-      "var(--zui-typography-inline-code-border,var(-- zui-type-tone-border,#ffffff26))",
+      "var(--zui-typography-inline-code-border,var(--_zui-type-tone-border,#ffffff26))",
     ],
     [
       "typography-leading-tight-dark",
@@ -825,11 +825,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-default-fg-dark", "oklch(98.4% 0.003 247.858)"],
     [
       "typography-link-default-hover-fg-dark",
-      "var(--zui-typography-default-fg-dark,oklch(98.4% 0.003 247.858))",
+      "var(--zui-typography-link-default-fg-dark,var(--zui-typography-default-fg-dark,oklch(98.4% 0.003 247.858)))",
     ],
     [
       "typography-link-default-visited-fg-dark",
-      "var(--zui-typography-default-fg-dark,oklch(98.4% 0.003 247.858))",
+      "var(--zui-typography-link-default-fg-dark,var(--zui-typography-default-fg-dark,oklch(98.4% 0.003 247.858)))",
     ],
     [
       "typography-link-muted-fg-dark",
@@ -838,11 +838,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-muted-fg-dark", "oklch(70.4% 0.04 256.788)"],
     [
       "typography-link-muted-hover-fg-dark",
-      "var(--zui-typography-muted-fg-dark,oklch(70.4% 0.04 256.788))",
+      "var(--zui-typography-link-muted-fg-dark,var(--zui-typography-muted-fg-dark,oklch(70.4% 0.04 256.788)))",
     ],
     [
       "typography-link-muted-visited-fg-dark",
-      "var(--zui-typography-muted-fg-dark,oklch(70.4% 0.04 256.788))",
+      "var(--zui-typography-link-muted-fg-dark,var(--zui-typography-muted-fg-dark,oklch(70.4% 0.04 256.788)))",
     ],
     [
       "typography-link-primary-fg-dark",
@@ -851,11 +851,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-primary-fg-dark", "oklch(86.5% 0.127 207.078)"],
     [
       "typography-link-primary-hover-fg-dark",
-      "var(--zui-typography-primary-fg-dark,oklch(86.5% 0.127 207.078))",
+      "var(--zui-typography-link-primary-fg-dark,var(--zui-typography-primary-fg-dark,oklch(86.5% 0.127 207.078)))",
     ],
     [
       "typography-link-primary-visited-fg-dark",
-      "var(--zui-typography-primary-fg-dark,oklch(86.5% 0.127 207.078))",
+      "var(--zui-typography-link-primary-fg-dark,var(--zui-typography-primary-fg-dark,oklch(86.5% 0.127 207.078)))",
     ],
     [
       "typography-link-secondary-fg-dark",
@@ -864,11 +864,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-secondary-fg-dark", "oklch(86.9% 0.022 252.894)"],
     [
       "typography-link-secondary-hover-fg-dark",
-      "var(--zui-typography-secondary-fg-dark,oklch(86.9% 0.022 252.894))",
+      "var(--zui-typography-link-secondary-fg-dark,var(--zui-typography-secondary-fg-dark,oklch(86.9% 0.022 252.894)))",
     ],
     [
       "typography-link-secondary-visited-fg-dark",
-      "var(--zui-typography-secondary-fg-dark,oklch(86.9% 0.022 252.894))",
+      "var(--zui-typography-link-secondary-fg-dark,var(--zui-typography-secondary-fg-dark,oklch(86.9% 0.022 252.894)))",
     ],
     [
       "typography-link-accent-fg-dark",
@@ -877,11 +877,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-accent-fg-dark", "oklch(81.1% 0.111 293.571)"],
     [
       "typography-link-accent-hover-fg-dark",
-      "var(--zui-typography-accent-fg-dark,oklch(81.1% 0.111 293.571))",
+      "var(--zui-typography-link-accent-fg-dark,var(--zui-typography-accent-fg-dark,oklch(81.1% 0.111 293.571)))",
     ],
     [
       "typography-link-accent-visited-fg-dark",
-      "var(--zui-typography-accent-fg-dark,oklch(81.1% 0.111 293.571))",
+      "var(--zui-typography-link-accent-fg-dark,var(--zui-typography-accent-fg-dark,oklch(81.1% 0.111 293.571)))",
     ],
     [
       "typography-link-destructive-fg-dark",
@@ -890,11 +890,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-destructive-fg-dark", "oklch(71.2% 0.194 13.428)"],
     [
       "typography-link-destructive-hover-fg-dark",
-      "var(--zui-typography-destructive-fg-dark,oklch(71.2% 0.194 13.428))",
+      "var(--zui-typography-link-destructive-fg-dark,var(--zui-typography-destructive-fg-dark,oklch(71.2% 0.194 13.428)))",
     ],
     [
       "typography-link-destructive-visited-fg-dark",
-      "var(--zui-typography-destructive-fg-dark,oklch(71.2% 0.194 13.428))",
+      "var(--zui-typography-link-destructive-fg-dark,var(--zui-typography-destructive-fg-dark,oklch(71.2% 0.194 13.428)))",
     ],
     [
       "typography-link-info-fg-dark",
@@ -903,11 +903,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-info-fg-dark", "oklch(82.8% 0.111 230.318)"],
     [
       "typography-link-info-hover-fg-dark",
-      "var(--zui-typography-info-fg-dark,oklch(82.8% 0.111 230.318))",
+      "var(--zui-typography-link-info-fg-dark,var(--zui-typography-info-fg-dark,oklch(82.8% 0.111 230.318)))",
     ],
     [
       "typography-link-info-visited-fg-dark",
-      "var(--zui-typography-info-fg-dark,oklch(82.8% 0.111 230.318))",
+      "var(--zui-typography-link-info-fg-dark,var(--zui-typography-info-fg-dark,oklch(82.8% 0.111 230.318)))",
     ],
     [
       "typography-link-success-fg-dark",
@@ -916,11 +916,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-success-fg-dark", "oklch(84.5% 0.143 164.978)"],
     [
       "typography-link-success-hover-fg-dark",
-      "var(--zui-typography-success-fg-dark,oklch(84.5% 0.143 164.978))",
+      "var(--zui-typography-link-success-fg-dark,var(--zui-typography-success-fg-dark,oklch(84.5% 0.143 164.978)))",
     ],
     [
       "typography-link-success-visited-fg-dark",
-      "var(--zui-typography-success-fg-dark,oklch(84.5% 0.143 164.978))",
+      "var(--zui-typography-link-success-fg-dark,var(--zui-typography-success-fg-dark,oklch(84.5% 0.143 164.978)))",
     ],
     [
       "typography-link-warning-fg-dark",
@@ -929,11 +929,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-warning-fg-dark", "oklch(87.9% 0.169 91.605)"],
     [
       "typography-link-warning-hover-fg-dark",
-      "var(--zui-typography-warning-fg-dark,oklch(87.9% 0.169 91.605))",
+      "var(--zui-typography-link-warning-fg-dark,var(--zui-typography-warning-fg-dark,oklch(87.9% 0.169 91.605)))",
     ],
     [
       "typography-link-warning-visited-fg-dark",
-      "var(--zui-typography-warning-fg-dark,oklch(87.9% 0.169 91.605))",
+      "var(--zui-typography-link-warning-fg-dark,var(--zui-typography-warning-fg-dark,oklch(87.9% 0.169 91.605)))",
     ],
     [
       "typography-link-error-fg-dark",
@@ -942,11 +942,11 @@ export const typographyCssVariables = defineCssVariableReference({
     ["typography-error-fg-dark", "oklch(80.8% 0.114 19.571)"],
     [
       "typography-link-error-hover-fg-dark",
-      "var(--zui-typography-error-fg-dark,oklch(80.8% 0.114 19.571))",
+      "var(--zui-typography-link-error-fg-dark,var(--zui-typography-error-fg-dark,oklch(80.8% 0.114 19.571)))",
     ],
     [
       "typography-link-error-visited-fg-dark",
-      "var(--zui-typography-error-fg-dark,oklch(80.8% 0.114 19.571))",
+      "var(--zui-typography-link-error-fg-dark,var(--zui-typography-error-fg-dark,oklch(80.8% 0.114 19.571)))",
     ],
     [
       "typography-list-leading-dark",

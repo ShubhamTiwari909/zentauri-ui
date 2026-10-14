@@ -288,3 +288,20 @@ describe("DescriptionList", () => {
     expect(inner?.className).toContain("[--_zui-description-value-column:1]");
   });
 });
+
+it("applies the documented default TextLink scale and state token fallbacks", () => {
+  const { getByRole } = render(
+    <TextLink href="/docs" tone="primary">
+      Docs
+    </TextLink>,
+  );
+  expect(getByRole("link").className).toContain(
+    "--zui-typography-text-base-size",
+  );
+  expect(getByRole("link").className).toContain(
+    "--zui-typography-link-primary-hover-fg,var(--zui-typography-link-primary-fg,",
+  );
+  expect(getByRole("link").className).toContain(
+    "--zui-typography-link-primary-visited-fg-dark,var(--zui-typography-link-primary-fg-dark,",
+  );
+});

@@ -38,7 +38,7 @@ export const TextLinkBase = ({
       rel={relTokens.length > 0 ? relTokens.join(" ") : undefined}
       className={cn(
         textLinkVariants({ tone, underline }),
-        size !== undefined && textSizeVariants({ size }),
+        textSizeVariants({ size }),
         typographyStyleVariants({
           align,
           weight,

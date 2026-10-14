@@ -31051,18 +31051,41 @@
           "source": "static",
           "props": [
             {
+              "name": "tone",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "accent",
+                "default",
+                "destructive",
+                "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
+                "info",
+                "muted",
+                "primary",
+                "secondary",
+                "success",
+                "warning"
+              ],
+              "variantGroup": "tone",
+              "deprecated": false
+            },
+            {
               "name": "attribution",
               "type": "string | undefined",
               "required": false,
               "group": "behavior",
               "description": "Attribution label; distinct from the native cite URL attribute.",
-              "deprecated": false
-            },
-            {
-              "name": "tone",
-              "type": "TypographyTone | undefined",
-              "required": false,
-              "group": "behavior",
               "deprecated": false
             },
             {
@@ -31094,6 +31117,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLQuoteElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31116,15 +31154,38 @@
           "source": "static",
           "props": [
             {
-              "name": "language",
-              "type": "string | undefined",
+              "name": "tone",
+              "type": "enum",
               "required": false,
-              "group": "behavior",
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "accent",
+                "default",
+                "destructive",
+                "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
+                "info",
+                "muted",
+                "primary",
+                "secondary",
+                "success",
+                "warning"
+              ],
+              "variantGroup": "tone",
               "deprecated": false
             },
             {
-              "name": "tone",
-              "type": "TypographyTone | undefined",
+              "name": "language",
+              "type": "string | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -31153,6 +31214,21 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLPreElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLPreElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -31235,6 +31311,14 @@
                 "default",
                 "destructive",
                 "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
                 "info",
                 "muted",
                 "primary",
@@ -31269,6 +31353,21 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLDListElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDListElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -31324,6 +31423,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31369,6 +31483,21 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -31424,6 +31553,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31447,9 +31591,32 @@
           "props": [
             {
               "name": "tone",
-              "type": "TypographyTone | undefined",
+              "type": "enum",
               "required": false,
-              "group": "behavior",
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "accent",
+                "default",
+                "destructive",
+                "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
+                "info",
+                "muted",
+                "primary",
+                "secondary",
+                "success",
+                "warning"
+              ],
+              "variantGroup": "tone",
               "deprecated": false
             },
             {
@@ -31481,6 +31648,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31504,9 +31686,136 @@
           "props": [
             {
               "name": "align",
-              "type": "NonNullable<'center' | 'end' | 'start' | 'justify' | null | undefined> | undefined",
+              "type": "enum",
               "required": false,
-              "group": "behavior",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "center",
+                "end",
+                "justify",
+                "start"
+              ],
+              "variantGroup": "align",
+              "deprecated": false
+            },
+            {
+              "name": "leading",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "normal",
+                "relaxed",
+                "tight"
+              ],
+              "variantGroup": "leading",
+              "deprecated": false
+            },
+            {
+              "name": "level",
+              "type": "enum",
+              "required": true,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "variantGroup": "level",
+              "deprecated": false
+            },
+            {
+              "name": "measure",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "none",
+                "readable",
+                "wide"
+              ],
+              "variantGroup": "measure",
+              "deprecated": false
+            },
+            {
+              "name": "tone",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "accent",
+                "default",
+                "destructive",
+                "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
+                "info",
+                "muted",
+                "primary",
+                "secondary",
+                "success",
+                "warning"
+              ],
+              "variantGroup": "tone",
+              "deprecated": false
+            },
+            {
+              "name": "tracking",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "normal",
+                "tight",
+                "wide"
+              ],
+              "variantGroup": "tracking",
+              "deprecated": false
+            },
+            {
+              "name": "weight",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "bold",
+                "medium",
+                "normal",
+                "semibold"
+              ],
+              "variantGroup": "weight",
+              "deprecated": false
+            },
+            {
+              "name": "wrap",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "balance",
+                "normal",
+                "nowrap",
+                "pretty"
+              ],
+              "variantGroup": "wrap",
               "deprecated": false
             },
             {
@@ -31541,27 +31850,6 @@
               "deprecated": false
             },
             {
-              "name": "leading",
-              "type": "NonNullable<'normal' | 'tight' | 'relaxed' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "level",
-              "type": "HeadingLevel",
-              "required": true,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "measure",
-              "type": "NonNullable<'none' | 'wide' | 'readable' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
               "name": "scale",
               "type": "'default' | 'fluid' | undefined",
               "required": false,
@@ -31577,36 +31865,8 @@
               "deprecated": false
             },
             {
-              "name": "tone",
-              "type": "TypographyTone | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "tracking",
-              "type": "NonNullable<'normal' | 'tight' | 'wide' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
               "name": "underline",
               "type": "boolean | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "weight",
-              "type": "NonNullable<'bold' | 'medium' | 'normal' | 'semibold' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "wrap",
-              "type": "NonNullable<'normal' | 'balance' | 'pretty' | 'nowrap' | null | undefined> | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -31640,6 +31900,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLHeadingElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31663,9 +31938,32 @@
           "props": [
             {
               "name": "tone",
-              "type": "TypographyTone | undefined",
+              "type": "enum",
               "required": false,
-              "group": "behavior",
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "accent",
+                "default",
+                "destructive",
+                "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
+                "info",
+                "muted",
+                "primary",
+                "secondary",
+                "success",
+                "warning"
+              ],
+              "variantGroup": "tone",
               "deprecated": false
             },
             {
@@ -31697,6 +31995,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31720,21 +32033,52 @@
           "props": [
             {
               "name": "marker",
-              "type": "UnorderedMarker | undefined",
+              "type": "enum",
               "required": false,
-              "group": "behavior",
+              "default": "disc",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "circle",
+                "disc",
+                "none"
+              ],
+              "variantGroup": "marker",
+              "deprecated": false
+            },
+            {
+              "name": "tone",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "accent",
+                "default",
+                "destructive",
+                "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
+                "info",
+                "muted",
+                "primary",
+                "secondary",
+                "success",
+                "warning"
+              ],
+              "variantGroup": "tone",
               "deprecated": false
             },
             {
               "name": "ordered",
               "type": "boolean | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "tone",
-              "type": "TypographyTone | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -31763,6 +32107,21 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLOListElement> | MouseEventHandler<HTMLUListElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "((instance: HTMLUListElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLUListElement | null> | ((instance: HTMLOListElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLOListElement | null> | null | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -31813,6 +32172,21 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLLIElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLLIElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -31881,6 +32255,14 @@
                 "default",
                 "destructive",
                 "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
                 "info",
                 "muted",
                 "primary",
@@ -31927,6 +32309,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "((instance: HTMLDivElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLDivElement | null> | ((instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLElement | null> | null | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31950,9 +32347,32 @@
           "props": [
             {
               "name": "tone",
-              "type": "TypographyTone | undefined",
+              "type": "enum",
               "required": false,
-              "group": "behavior",
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "accent",
+                "default",
+                "destructive",
+                "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
+                "info",
+                "muted",
+                "primary",
+                "secondary",
+                "success",
+                "warning"
+              ],
+              "variantGroup": "tone",
               "deprecated": false
             },
             {
@@ -31979,6 +32399,21 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -32007,9 +32442,32 @@
           "props": [
             {
               "name": "tone",
-              "type": "TypographyTone | undefined",
+              "type": "enum",
               "required": false,
-              "group": "behavior",
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "accent",
+                "default",
+                "destructive",
+                "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
+                "info",
+                "muted",
+                "primary",
+                "secondary",
+                "success",
+                "warning"
+              ],
+              "variantGroup": "tone",
               "deprecated": false
             },
             {
@@ -32041,6 +32499,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -32063,6 +32536,21 @@
           "source": "static",
           "props": [
             {
+              "name": "align",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "center",
+                "end",
+                "justify",
+                "start"
+              ],
+              "variantGroup": "align",
+              "deprecated": false
+            },
+            {
               "name": "font",
               "type": "enum",
               "required": false,
@@ -32073,6 +32561,34 @@
                 "mono"
               ],
               "variantGroup": "font",
+              "deprecated": false
+            },
+            {
+              "name": "leading",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "normal",
+                "relaxed",
+                "tight"
+              ],
+              "variantGroup": "leading",
+              "deprecated": false
+            },
+            {
+              "name": "measure",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "none",
+                "readable",
+                "wide"
+              ],
+              "variantGroup": "measure",
               "deprecated": false
             },
             {
@@ -32125,7 +32641,7 @@
               "name": "tone",
               "type": "enum",
               "required": false,
-              "default": "primary",
+              "default": "default",
               "group": "variant",
               "isVariant": true,
               "options": [
@@ -32133,6 +32649,14 @@
                 "default",
                 "destructive",
                 "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
                 "info",
                 "muted",
                 "primary",
@@ -32141,6 +32665,20 @@
                 "warning"
               ],
               "variantGroup": "tone",
+              "deprecated": false
+            },
+            {
+              "name": "tracking",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "normal",
+                "tight",
+                "wide"
+              ],
+              "variantGroup": "tracking",
               "deprecated": false
             },
             {
@@ -32159,10 +32697,33 @@
               "deprecated": false
             },
             {
-              "name": "align",
-              "type": "NonNullable<'center' | 'end' | 'start' | 'justify' | null | undefined> | undefined",
+              "name": "weight",
+              "type": "enum",
               "required": false,
-              "group": "behavior",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "bold",
+                "medium",
+                "normal",
+                "semibold"
+              ],
+              "variantGroup": "weight",
+              "deprecated": false
+            },
+            {
+              "name": "wrap",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "balance",
+                "normal",
+                "nowrap",
+                "pretty"
+              ],
+              "variantGroup": "wrap",
               "deprecated": false
             },
             {
@@ -32196,43 +32757,8 @@
               "deprecated": false
             },
             {
-              "name": "leading",
-              "type": "NonNullable<'normal' | 'tight' | 'relaxed' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "measure",
-              "type": "NonNullable<'none' | 'wide' | 'readable' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
               "name": "strikethrough",
               "type": "boolean | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "tracking",
-              "type": "NonNullable<'normal' | 'tight' | 'wide' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "weight",
-              "type": "NonNullable<'bold' | 'medium' | 'normal' | 'semibold' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "wrap",
-              "type": "NonNullable<'normal' | 'balance' | 'pretty' | 'nowrap' | null | undefined> | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -32266,6 +32792,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "((instance: HTMLDivElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLDivElement | null> | ((instance: HTMLSpanElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLSpanElement | null> | ((instance: HTMLParagraphElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLParagraphElement | null> | ((instance: HTMLLabelElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLLabelElement | null> | null | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -32288,6 +32829,49 @@
           "source": "static",
           "props": [
             {
+              "name": "align",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "center",
+                "end",
+                "justify",
+                "start"
+              ],
+              "variantGroup": "align",
+              "deprecated": false
+            },
+            {
+              "name": "leading",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "normal",
+                "relaxed",
+                "tight"
+              ],
+              "variantGroup": "leading",
+              "deprecated": false
+            },
+            {
+              "name": "measure",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "none",
+                "readable",
+                "wide"
+              ],
+              "variantGroup": "measure",
+              "deprecated": false
+            },
+            {
               "name": "size",
               "type": "enum",
               "required": false,
@@ -32308,7 +32892,7 @@
               "name": "tone",
               "type": "enum",
               "required": false,
-              "default": "primary",
+              "default": "default",
               "group": "variant",
               "isVariant": true,
               "options": [
@@ -32316,6 +32900,14 @@
                 "default",
                 "destructive",
                 "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
                 "info",
                 "muted",
                 "primary",
@@ -32324,6 +32916,20 @@
                 "warning"
               ],
               "variantGroup": "tone",
+              "deprecated": false
+            },
+            {
+              "name": "tracking",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "normal",
+                "tight",
+                "wide"
+              ],
+              "variantGroup": "tracking",
               "deprecated": false
             },
             {
@@ -32342,10 +32948,33 @@
               "deprecated": false
             },
             {
-              "name": "align",
-              "type": "NonNullable<'center' | 'end' | 'start' | 'justify' | null | undefined> | undefined",
+              "name": "weight",
+              "type": "enum",
               "required": false,
-              "group": "behavior",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "bold",
+                "medium",
+                "normal",
+                "semibold"
+              ],
+              "variantGroup": "weight",
+              "deprecated": false
+            },
+            {
+              "name": "wrap",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "balance",
+                "normal",
+                "nowrap",
+                "pretty"
+              ],
+              "variantGroup": "wrap",
               "deprecated": false
             },
             {
@@ -32357,41 +32986,6 @@
               "deprecated": false
             },
             {
-              "name": "leading",
-              "type": "NonNullable<'normal' | 'tight' | 'relaxed' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "measure",
-              "type": "NonNullable<'none' | 'wide' | 'readable' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "tracking",
-              "type": "NonNullable<'normal' | 'tight' | 'wide' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "weight",
-              "type": "NonNullable<'bold' | 'medium' | 'normal' | 'semibold' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "wrap",
-              "type": "NonNullable<'normal' | 'balance' | 'pretty' | 'nowrap' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
               "name": "children",
               "type": "ReactNode",
               "required": false,
@@ -32400,6 +32994,20 @@
             },
             {
               "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "download",
+              "type": "any",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "href",
               "type": "string | undefined",
               "required": false,
               "group": "dom",
@@ -32420,8 +33028,37 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLAnchorElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "referrerPolicy",
+              "type": "HTMLAttributeReferrerPolicy | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "target",
+              "type": "HTMLAttributeAnchorTarget | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -32480,6 +33117,21 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLDivElement> | MouseEventHandler<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "((instance: HTMLDivElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLDivElement | null> | ((instance: HTMLSpanElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLSpanElement | null> | null | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false

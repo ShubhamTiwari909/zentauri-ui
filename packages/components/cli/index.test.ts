@@ -173,7 +173,7 @@ describe("CLI module commands", () => {
         "TextLink",
         "DescriptionList",
       ]) {
-        expect(entry).toContain(name);
+        expect(entry).toMatch(new RegExp(`\\b${name}\\b`));
       }
       expect(
         readFileSync(

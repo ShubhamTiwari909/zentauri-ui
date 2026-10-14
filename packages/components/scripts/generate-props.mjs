@@ -469,7 +469,14 @@ function getDeclarationScope(declarations) {
  * @param {string} description Resolved JSDoc description, if any.
  * @returns {boolean} True when the prop should be included in `props.json`.
  */
-function shouldIncludeProp(name, declarations, description) {
+function shouldIncludeProp(name, declarations, description, componentName) {
+  if (
+    componentName === "typography" &&
+    ["ref", "href", "target", "rel", "download", "referrerPolicy"].includes(
+      name,
+    )
+  )
+    return true;
   if (name === "ref" && !description) return false;
   if (name.startsWith("aria-") || name.startsWith("data-")) return false;
 
@@ -534,22 +541,37 @@ function cleanType(typeString) {
  * @param {Array<{ name: string, subcomponentName: string, variants: Record<string, string[]>, defaults: Record<string, string> }>} variantDefinitions Parsed variant definitions.
  * @returns {{ variants: Record<string, string[]>, defaults: Record<string, string> } | undefined} Matching variant metadata.
  */
-function findVariantDefinition(node, checker, variantDefinitions) {
+function findVariantDefinition(
+  node,
+  checker,
+  variantDefinitions,
+  componentName,
+) {
   const stem = node.name.text.replace(/Props$/, "");
   const exact = variantDefinitions.find(
     (definition) => definition.subcomponentName === stem,
   );
   const lowerStem = stem.toLowerCase();
-  const fallback =
-    exact ??
-    variantDefinitions.find((definition) =>
-      definition.subcomponentName.toLowerCase().startsWith(lowerStem),
-    );
   // Preserve the existing component matching boundary; exported helper aliases
   // without a component stem should not acquire their own variant tables.
-  if (!fallback) return undefined;
-  const matches = new Set([fallback]);
+  const matches = new Set(
+    exact
+      ? [exact]
+      : componentName === "typography"
+        ? variantDefinitions.filter((definition) =>
+            definition.subcomponentName.toLowerCase().startsWith(lowerStem),
+          )
+        : variantDefinitions
+            .filter((definition) =>
+              definition.subcomponentName.toLowerCase().startsWith(lowerStem),
+            )
+            .slice(0, 1),
+  );
+  if (componentName !== "typography" && !matches.size) return undefined;
+  const visited = new Set();
   function visit(child) {
+    if (visited.has(child)) return;
+    visited.add(child);
     if (
       ts.isTypeReferenceNode(child) &&
       ts.isIdentifier(child.typeName) &&
@@ -566,9 +588,28 @@ function findVariantDefinition(node, checker, variantDefinitions) {
         if (definition) matches.add(definition);
       }
     }
+    if (
+      componentName === "typography" &&
+      ts.isTypeReferenceNode(child) &&
+      ts.isIdentifier(child.typeName)
+    ) {
+      let symbol = checker.getSymbolAtLocation(child.typeName);
+      if (symbol && symbol.flags & ts.SymbolFlags.Alias)
+        symbol = checker.getAliasedSymbol(symbol);
+      for (const declaration of symbol?.declarations ?? []) {
+        if (
+          isInside(srcDir, declaration.getSourceFile().fileName) &&
+          (ts.isTypeAliasDeclaration(declaration) ||
+            ts.isInterfaceDeclaration(declaration))
+        ) {
+          visit(declaration);
+        }
+      }
+    }
     ts.forEachChild(child, visit);
   }
   visit(node);
+  if (!matches.size) return undefined;
   return {
     variants: Object.assign({}, ...[...matches].map((entry) => entry.variants)),
     defaults: Object.assign({}, ...[...matches].map((entry) => entry.defaults)),
@@ -613,7 +654,7 @@ function readPropsForNode(node, checker, variantDefinition, componentName) {
     const declarations = symbol.getDeclarations() ?? [];
     const { description, tags } = getPropDocs(checker, symbol);
 
-    if (!shouldIncludeProp(name, declarations, description)) {
+    if (!shouldIncludeProp(name, declarations, description, componentName)) {
       continue;
     }
 
@@ -704,7 +745,12 @@ function readPropsFile({ program, checker, componentName, sourceKind }) {
     const props = readPropsForNode(
       statement,
       checker,
-      findVariantDefinition(statement, checker, variantDefinitions),
+      findVariantDefinition(
+        statement,
+        checker,
+        variantDefinitions,
+        componentName,
+      ),
       componentName,
     );
 

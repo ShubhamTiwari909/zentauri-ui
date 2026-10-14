@@ -27,7 +27,10 @@ export function PreviewSeoDoc({ doc }: PreviewSeoDocProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <CssVariableReferenceSection canonicalPath={doc.canonicalPath} />
+      <CssVariableReferenceSection
+        canonicalPath={doc.canonicalPath}
+        referenceSlug={doc.cssVariableReference}
+      />
 
       <article className="space-y-12 border-t border-white/10 pt-12">
         {doc.sections.map((section, index) => {
