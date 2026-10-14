@@ -2,7 +2,7 @@
 
 Date: 13 October 2026
 
-Status: foundations published in PR #153; content and VisualGuard docs published in PR #154; text utilities implemented on `codex/typography-text-utilities`; remaining phases planned
+Status: foundations published in PR #153; content and VisualGuard docs published in PR #154; text utilities published in PR #155; number formatting implemented on `codex/typography-number-formatting`; optional editorial and VisualGuard coverage remain planned
 
 Visual verification tooling: [VisualGuard](https://github.com/ShubhamTiwari909/visualguard-ai-testing), Shubham Tiwari's open-source visual testing package. Package overview and navigation are included in the current docs changes; installing the runner, recording baselines and adding CI coverage remain planned.
 
@@ -28,7 +28,7 @@ Four core PRs are the target, not an absolute rule. Split a branch further if a 
 
 If one branch is strongly preferred, limit it to **foundations plus the three content additions**. Merge that core first; text measurement, number formatting and editorial work should still follow separately. An integration branch is unnecessary for the sequential approach. If an unreleased demo is needed, a temporary integration branch can combine reviewed work, but it should not replace the individual merge reviews.
 
-Suggested commit prefixes follow repository guidance: `feature: add typography scale tokens`, `fix: preserve typography default styling`, and `feature: add prose content styles`. Create each implementation branch when its phase begins; the text-utilities branch is now active. The foundations implementation is committed and published in PR #153. The content branch is published in [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154), targeting foundations while PR #153 awaits review. The text-utilities branch is stacked on the content commit.
+Suggested commit prefixes follow repository guidance: `feature: add typography scale tokens`, `fix: preserve typography default styling`, and `feature: add prose content styles`. Create each implementation branch when its phase begins; the number-formatting branch is now active. The foundations implementation is committed and published in PR #153. The content branch is published in [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154), targeting foundations while PR #153 awaits review. Text utilities are published in [PR #155](https://github.com/ShubhamTiwari909/zentauri-ui/pull/155), targeting content. Number formatting is stacked on the published text-utilities commit.
 
 Use a separate follow-up branch, `codex/visualguard-coverage`, for the shared VisualGuard dependency, capture configuration, reviewed baselines and CI workflow. It can follow the content merge and supply the visual gate for later typography branches. The package's dedicated `/visualguard` page, header/footer links and this planning update belong to the current docs work; they do not require installing VisualGuard or broadening the public component package's dependencies.
 
@@ -253,9 +253,9 @@ This is the only typography addition that depends on a new locale-formatting hoo
 
 Follow the current date-format hook's per-folder organization and bounded formatter cache, but use a deterministic locale default rather than navigator.language during render.
 
-Proposed input: Intl.NumberFormatOptions plus `locale: string | string[]` optional with documented en-US fallback. Return format, formatToParts, resolvedLocale and the formatter. A pure cached formatter helper can be exported where the package boundary permits; do not claim it is server-callable merely because it avoids a hook.
+Implemented input: Intl.NumberFormatOptions plus optional `locale: string | string[]`, with an en-US default and final locale-preference fallback. Empty preferences also use en-US; invalid locale syntax retains native errors. Return format, formatToParts, resolvedLocale and the formatter. A pure cached formatter helper can be exported where the package boundary permits; do not claim it is server-callable merely because it avoids a hook.
 
-Cache keys should normalize supported option keys so property ordering does not create duplicate entries. Bound cache growth and keep invalid options/locale handling consistent with native Intl behavior. Do not silently choose a currency or locale from geolocation. Explicit locale is recommended for server-rendered consumer examples.
+Cache keys normalize canonical locale preferences and a fixed ordering of standard option keys; undefined options are omitted. A FIFO cache retains at most 50 formatter instances. Unknown or nonprimitive option inputs bypass caching and remain under native Intl behavior. Construct before eviction so invalid options cannot evict valid cached instances. Do not silently choose a currency or locale from geolocation. Explicit locale is recommended for server-rendered consumer examples.
 
 Use the native [Intl.NumberFormat API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat). Determine the supported value and option types from the installed TypeScript/browser targets, and document optional APIs rather than assuming formatRange is universally available.
 
@@ -347,7 +347,7 @@ Use targeted tests while implementing. DOM render tests alone cannot verify comp
 | Foundations        | Existing headings/paragraphs/inline/lists/quotes/code; scale and accessibility pages             | Existing defaults, utility overrides, fluid scales, scoped fonts and visible keyboard focus                    |
 | Content            | `/preview/typography/prose`, `/preview/typography/links`, `/preview/typography/description-list` | Article rhythm, raw/embedded/ignored markup, code/table containment, link focus, responsive terms/details      |
 | Text utilities     | `/preview/typography/highlighting` and `/preview/typography/truncation`                          | Literal highlighting, one/multiple-line clipping, collapsed and expanded text, focus retained after disclosure |
-| Number formatting  | Future number-formatting page after its route ships                                              | Explicit en-US/en-IN examples, currency/unit placement, compact values and tabular alignment                   |
+| Number formatting  | `/preview/typography/number-formatting`                                                          | Explicit en-US/en-IN examples, currency/unit placement, compact values and tabular alignment                   |
 | Optional editorial | Editorial examples when implemented                                                              | Footnote references/backlinks, heading anchors and drop caps at narrow widths                                  |
 
 Start with **390 × 844** and **1440 × 900** captures in both themes. Add **320px** width for long-word/overflow examples and a targeted text-enlargement/RTL fixture where those states can be prepared deterministically. Interactive focus/disclosure states belong in the VisualGuard Playwright fixture with a matching reference setup. Still inspect actual overflow dimensions, focus behavior and semantics; a screenshot alone does not prove those properties.
@@ -435,10 +435,10 @@ Do not claim a browser visual check, accessibility audit or test passed unless i
 
 ### PR 4 — numbers
 
-- [ ] Add/register/document useNumberFormat with explicit-locale examples.
-- [ ] Implement static NumberText and optional formatter-part styling.
-- [ ] Add numeric grouping/currency/unit examples and honest AnimatedNumber composition.
-- [ ] Verify formatting, cache bounds, hydration and generated hooks/props metadata.
+- [x] Add/register/document useNumberFormat with explicit-locale examples.
+- [x] Implement static NumberText and optional formatter-part styling.
+- [x] Add numeric grouping/currency/unit examples and honest AnimatedNumber composition.
+- [x] Verify formatting, cache bounds, hydration and generated hooks/props metadata.
 
 ### Optional PR 5 — editorial
 
@@ -491,7 +491,7 @@ VisualGuard installation, baseline capture and CI execution are not completed by
 
 ## Text-utilities implementation verification — 13 October 2026
 
-Implemented on `codex/typography-text-utilities`, stacked on content commit `203f0603` while [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154) targets foundations. The branch contains the completed text-utilities implementation.
+Implemented on `codex/typography-text-utilities`, stacked on content commit `203f0603` while [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154) targets foundations. The completed text utilities are published in [PR #155](https://github.com/ShubhamTiwari909/zentauri-ui/pull/155), targeting content.
 
 - Added semantic Mark, literal Unicode-aware HighlightText, CSS-only TruncateText, native ExpandableText and the registered useTextOverflow hook.
 - Full package suite: **164 files, 2,009 tests passed**. Focused suites verify literal/overlapping/Unicode matches, native refs, deterministic server output, controlled/uncontrolled disclosure, stable IDs/focus, observer/font/mutation cleanup and transitive source vendoring. Updated facade assertions also passed.
@@ -501,4 +501,18 @@ Implemented on `codex/typography-text-utilities`, stacked on content commit `203
 - Highlighting, truncation and the standalone hook routes returned 200. The hook demo changed from overflow to fits when its content changed; its canonical uses the existing configured site base.
 - Generated registry/props/surface metadata, token reference, sidebar/search, examples, minor changeset and package-health tables were updated. CLI installation verified both useTextOverflow and useControllableState source dependencies.
 
-Verification used the existing local docs server at port 3002. No production docs build, VisualGuard baseline/CI run or comprehensive cross-browser/accessibility audit was performed. Publish this branch against content while PR #154 remains open, then rebase/retarget after the dependency merges. Number formatting remains the next typography phase.
+Verification used the existing local docs server at port 3002. No production docs build, VisualGuard baseline/CI run or comprehensive cross-browser/accessibility audit was performed. This branch was published in PR #155 against content; rebase and retarget after PR #154 merges. Number formatting is the active typography phase.
+
+## Number-formatting implementation verification — 13 October 2026
+
+Implemented on `codex/typography-number-formatting`, stacked on published text-utilities commit `a8b528cc` while [PR #155](https://github.com/ShubhamTiwari909/zentauri-ui/pull/155) targets content. The branch contains the completed number-formatting implementation.
+
+- Added useNumberFormat and getCachedNumberFormat with explicit/default/fallback locale preferences, stable format/parts callbacks and a bounded 50-instance FIFO cache. Invalid locale syntax/options retain native errors; unknown or unusual option values bypass caching. Number/bigint convenience inputs are checked without numeric-string coercion.
+- Added static NumberText in the existing typography entry, with span/p/div native attributes/refs, separate formatOptions and CSS style, readable tones, shared typography controls, default tabular digits and optional partClassNames. It borrows existing paired typography recipes and introduces no new token names or Motion imports.
+- Full package suite: **166 test files, 2,032 tests passed**. Tests cover en-US/en-IN grouping, currencies/units/percent/compact values, exact bigint digits, native nonfinite/negative-zero/rounding output, key normalization/cache eviction, option updates, part ordering/text and explicit-locale server/client hydration. Focused facade and CLI installation assertions also passed.
+- Scoped package build, package and docs type checks after formatting, targeted package/docs lint, token/props/surface checks and **247 export entries across three conditions** passed. The docs use the BigInt constructor for compatibility with their existing TypeScript target.
+- Browser controls produced the exact native French currency output and spacing. Styled parts preserved the full formatted string. Bigint output retained `9,007,199,254,740,993,123`, and computed tabular numeric styling was present in both themes.
+- Numeric layouts fitted 320/390/1000/1440px viewports without document overflow. The bigint example remained contained with enlarged text and RTL layout. The hook preview returned 200 and its JPY output matched the browser's native formatter; expected canonical paths were present. No hydration errors appeared in the observed browser console.
+- Documentation includes locale/currency controls, grouping/precision/edge-value examples, styled native parts and a separate decorative integer AnimatedNumber composition with localized accessible text. Snippets match the live examples. Registry/API metadata, sidebar/search, changeset, package-surface and test-health tables were refreshed; CLI source installation includes useNumberFormat transitively.
+
+All four core typography phases are now implemented. Their merge/release reviews remain outstanding; optional editorial additions and the separate VisualGuard coverage branch remain planned. No production docs build, VisualGuard baseline/CI run or comprehensive cross-browser/accessibility audit was performed for this phase. Publish number formatting against text utilities while PR #155 remains open, then rebase/retarget after its dependency merges.

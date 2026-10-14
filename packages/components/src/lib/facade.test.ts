@@ -492,6 +492,9 @@ it("discovers typography scale tokens, reciprocal theme pairs and new control gr
 
 it("discovers content and text utility variants and reciprocal tokens", () => {
   const typography = DesignSystem.getComponent("typography");
+  expect(
+    typography?.getVariant("numeric", "tabular", { slot: "number" }),
+  ).toBeDefined();
   expect(typography?.getVariant("size", "lg", { slot: "prose" })).toBeDefined();
   expect(
     typography?.getVariant("mode", "multiple", { slot: "truncate" }),

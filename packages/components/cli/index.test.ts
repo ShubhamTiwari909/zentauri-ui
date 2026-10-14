@@ -176,6 +176,7 @@ describe("CLI module commands", () => {
         "HighlightText",
         "TruncateText",
         "ExpandableText",
+        "NumberText",
       ]) {
         expect(entry).toMatch(new RegExp(`\\b${name}\\b`));
       }
@@ -194,6 +195,17 @@ describe("CLI module commands", () => {
         "utf8",
       );
       expect(overflow).toContain("export function useTextOverflow");
+      const numbers = readFileSync(
+        join(dir, "src/hooks/useNumberFormat/useNumberFormat.ts"),
+        "utf8",
+      );
+      expect(numbers).toContain("export function useNumberFormat");
+      const numberText = readFileSync(
+        join(dir, "src/components/ui/typography/number-text-base.tsx"),
+        "utf8",
+      );
+      expect(numberText).toContain('from "@/hooks/useNumberFormat"');
+      expect(numberText).not.toContain("framer-motion");
       expect(
         existsSync(join(dir, "src/hooks/useControllableState/index.ts")),
       ).toBe(true);

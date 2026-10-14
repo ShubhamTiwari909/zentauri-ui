@@ -34,14 +34,14 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 164 passed (164)   |
-| Tests      | 2015 passed (2015) |
+| Test files | 166 passed (166)   |
+| Tests      | 2040 passed (2040) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 106        | 1549  |
+| Components and UI utilities    | 107        | 1558  |
 | Standalone animations          | 1          | 45    |
-| React hooks                    | 49         | 252   |
+| React hooks                    | 50         | 268   |
 | Design system facade           | 1          | 24    |
 | CLI and import rewriting       | 4          | 46    |
 | Accessibility (axe + keyboard) | 2          | 52    |
@@ -131,3 +131,7 @@ If neither is set locally, preview metadata falls back to `http://localhost:3000
 ### Typography text utilities
 
 The typography hub includes **Highlighting and relevance** (`/preview/typography/highlighting`) and **Truncation and expansion** (`/preview/typography/truncation`). Their live examples support literal query changes, adjustable widths, short/long content, native disclosure and controlled labels. The matching hook page at `/preview/hooks/use-text-overflow` shows the callback ref and overflow status. Theme tokens and public props remain available in the existing typography reference/API surfaces.
+
+### Number formatting previews
+
+`/preview/typography/number-formatting` demonstrates explicit locale/currency changes, en-US/en-IN grouping, USD/INR/JPY, percentages, compact notation, units, bigint and native edge values. It includes native part styling and a separate decorative integer motion composition. `/preview/hooks/use-number-format` demonstrates the hook's format/parts output and resolved locale. Numeric strings are outside the API; Intl display precision remains separate from calculations.

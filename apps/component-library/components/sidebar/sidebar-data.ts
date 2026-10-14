@@ -50,6 +50,7 @@ const sidebarRouteDataShared = [
 ];
 
 const typographySidebarItems = [
+  { title: "Number formatting", href: "/preview/typography/number-formatting" },
   {
     title: "Highlighting and relevance",
     href: "/preview/typography/highlighting",

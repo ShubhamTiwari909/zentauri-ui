@@ -32451,6 +32451,194 @@
           ]
         },
         {
+          "name": "static:NumberText",
+          "displayName": "NumberText",
+          "propsType": "NumberTextProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "font",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "body",
+                "mono"
+              ],
+              "variantGroup": "font",
+              "deprecated": false
+            },
+            {
+              "name": "numeric",
+              "type": "enum",
+              "required": false,
+              "default": "tabular",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "normal",
+                "tabular"
+              ],
+              "variantGroup": "numeric",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "base",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "base",
+                "lg",
+                "sm",
+                "xl",
+                "xs"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "tone",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "accent",
+                "default",
+                "destructive",
+                "error",
+                "info",
+                "muted",
+                "primary",
+                "secondary",
+                "success",
+                "warning"
+              ],
+              "variantGroup": "tone",
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "number | bigint",
+              "required": true,
+              "group": "controlled",
+              "deprecated": false
+            },
+            {
+              "name": "align",
+              "type": "NonNullable<'center' | 'end' | 'start' | 'justify' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "as",
+              "type": "'div' | 'p' | 'span' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "formatOptions",
+              "type": "Intl.NumberFormatOptions | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Intl's style is separate from the native React CSS style prop.",
+              "deprecated": false
+            },
+            {
+              "name": "leading",
+              "type": "NonNullable<'normal' | 'tight' | 'relaxed' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "string | string[] | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "measure",
+              "type": "NonNullable<'none' | 'wide' | 'readable' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "partClassNames",
+              "type": "Partial<Record<keyof Intl.NumberFormatPartTypeRegistry, string>> | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Styles native parts without replacing their text or order.",
+              "deprecated": false
+            },
+            {
+              "name": "tracking",
+              "type": "NonNullable<'normal' | 'tight' | 'wide' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "weight",
+              "type": "NonNullable<'bold' | 'medium' | 'normal' | 'semibold' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "wrap",
+              "type": "NonNullable<'normal' | 'balance' | 'pretty' | 'nowrap' | null | undefined> | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | MouseEventHandler<HTMLSpanElement> | MouseEventHandler<HTMLParagraphElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
           "name": "static:Prose",
           "displayName": "Prose",
           "propsType": "ProseProps",

@@ -1,6 +1,10 @@
 import { cva } from "class-variance-authority";
 
 import {
+  zuiTypographyNumberBase,
+  zuiTypographyNumberSizes,
+  zuiTypographyNumberNumerics,
+  zuiTypographyNumberTones,
   zuiTypographyTruncateModes,
   zuiHeadingBase,
   zuiHeadingLevels,
@@ -109,4 +113,13 @@ export const descriptionListVariants = cva(zuiTypographyDescriptionBase, {
 export const truncateTextVariants = cva("", {
   variants: { mode: zuiTypographyTruncateModes },
   defaultVariants: { mode: "single" },
+});
+
+export const numberTextVariants = cva(zuiTypographyNumberBase, {
+  variants: {
+    size: zuiTypographyNumberSizes,
+    numeric: zuiTypographyNumberNumerics,
+    tone: zuiTypographyNumberTones,
+  },
+  defaultVariants: { size: "base", numeric: "tabular", tone: "default" },
 });

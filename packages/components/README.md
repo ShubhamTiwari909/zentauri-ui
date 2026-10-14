@@ -25,7 +25,7 @@ Counted from the entry lists in `tsup.config.ts`. Refresh with `pnpm --filter @z
 | Animated UI entries |    52 | `@zentauri-ui/zentauri-components/ui/<name>/animated` |
 | Animation entries   |    41 | `@zentauri-ui/zentauri-components/animations/<name>`  |
 | Chart entries       |     9 | `@zentauri-ui/zentauri-components/charts/<type>`      |
-| Hook entries        |    49 | `@zentauri-ui/zentauri-components/hooks/<entry>`      |
+| Hook entries        |    50 | `@zentauri-ui/zentauri-components/hooks/<entry>`      |
 
 `spinner` is the only animated-only UI area. Import it from `@zentauri-ui/zentauri-components/ui/spinner/animated`; there is no `@zentauri-ui/zentauri-components/ui/spinner` static entry.
 
@@ -35,14 +35,14 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 164 passed (164)   |
-| Tests      | 2015 passed (2015) |
+| Test files | 166 passed (166)   |
+| Tests      | 2040 passed (2040) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 106        | 1549  |
+| Components and UI utilities    | 107        | 1558  |
 | Standalone animations          | 1          | 45    |
-| React hooks                    | 49         | 252   |
+| React hooks                    | 50         | 268   |
 | Design system facade           | 1          | 24    |
 | CLI and import rewriting       | 4          | 46    |
 | Accessibility (axe + keyboard) | 2          | 52    |
@@ -77,6 +77,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/combobox/combobox.test.tsx`                                     |    24 |
 | `src/ui/wizard/wizard.test.tsx`                                         |    22 |
 | `src/accessibility/keyboard-interaction.test.tsx`                       |    18 |
+| `src/hooks/useNumberFormat/useNumberFormat.test.tsx`                    |    16 |
 | `src/ui/calendar/calendar.test.tsx`                                     |    16 |
 | `src/ui/json-viewer/json-viewer.test.tsx`                               |    16 |
 | `src/ui/network-status/network-status.test.tsx`                         |    16 |
@@ -140,6 +141,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/sortable-list/sortable-list.test.tsx`                           |     8 |
 | `src/ui/speech-recognition/speech-recognition.test.tsx`                 |     8 |
 | `src/ui/spinner/animated/spinner.test.tsx`                              |     8 |
+| `src/ui/typography/number-text.test.tsx`                                |     8 |
 | `cli/rewrite-imports.test.ts`                                           |     7 |
 | `src/hooks/useDynamicStepper/useDynamicStepper.test.ts`                 |     7 |
 | `src/hooks/useHotkeys/useHotkeys.test.ts`                               |     7 |
@@ -199,6 +201,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useIsMounted/useIsMounted.test.ts`                           |     3 |
 | `src/hooks/usePrevious/usePrevious.test.ts`                             |     3 |
 | `src/hooks/useSessionStorage/useSessionStorage.test.ts`                 |     3 |
+| `src/ui/typography/typography.types.test.tsx`                           |     3 |
 | `src/hooks/useHover/useHover.test.ts`                                   |     2 |
 | `src/hooks/useIntersectionObserver/useIntersectionObserver.test.ts`     |     2 |
 | `src/hooks/useMediaQuery/useMediaQuery.test.ts`                         |     2 |
@@ -206,7 +209,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/useResizeObserver/useResizeObserver.test.ts`                 |     2 |
 | `src/ui/bento-grid/bento-grid.reduced-motion.test.tsx`                  |     2 |
 | `src/ui/circular-menu/circular-menu.reduced-motion.test.tsx`            |     2 |
-| `src/ui/typography/typography.types.test.tsx`                           |     2 |
 | `src/hooks/useInView/useInView.test.ts`                                 |     1 |
 | `src/hooks/useIsomorphicLayoutEffect/useIsomorphicLayoutEffect.test.ts` |     1 |
 | `src/hooks/usePageVisibility/usePageVisibility.test.ts`                 |     1 |
@@ -998,7 +1000,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 2015 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 2040 test cases in total
 - `pnpm test:a11y` — focused accessibility coverage for package-level UI primitives and compound components: **axe-core** audits for every interactive component plus **keyboard-interaction** tests (focus order, arrow-key nav, Home/End, Escape/Enter) for the compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).
@@ -1057,3 +1059,39 @@ Attach the callback `ref` to the text container. `enabled` defaults to true; `ax
 Measurements run after mount and batch into an animation frame (timer fallback). ResizeObserver, window resize, text/style/ancestor theme mutations, a changed measurement key and font loading schedule new measurements; cleanup disconnects them. No browser layout is read during server render. The initial result is unmeasured; hidden/zero-width containers remain unmeasured until available. `remeasure()` handles changes outside the observed inputs. The default tolerance ignores differences up to 1 CSS pixel to accommodate rounded client/scroll metrics; use a smaller explicit tolerance when needed.
 
 Preview pages: `/preview/typography/highlighting`, `/preview/typography/truncation`, and `/preview/hooks/use-text-overflow`. Static typography imports no Motion dependency.
+
+## Locale-aware numeric typography
+
+`NumberText` lives in the existing `ui/typography` family and reuses its paired font, size, tone, leading, tracking and numeric recipes. Its default is a span with base sizing and tabular digits; native p/div props and refs are supported through `as`. `numeric="normal"` opts out of tabular digits. Native CSS `style` is separate from `formatOptions.style`.
+
+```tsx
+import { NumberText } from "@zentauri-ui/zentauri-components/ui/typography";
+
+<NumberText value={1234567.89} locale="en-IN" />;
+<NumberText value={1234.5} locale="en-US" formatOptions={{ style: "currency", currency: "USD" }} />;
+<NumberText value={1234.56} locale="fr-FR" formatOptions={{ style: "currency", currency: "EUR" }} partClassNames={{ fraction: "text-sm", currency: "font-semibold" }} />;
+```
+
+Optional `partClassNames` styles native formatter parts. Every part's original text/order is retained, including grouping, signs, decimal separators, literals and currency spacing. Without part styles, NumberText renders the formatted string directly. Values must be numbers or bigint; numeric strings are rejected rather than parsed. Bigint stays exact without a number conversion. NaN, infinities and negative zero use native localized output; applications can validate inputs or supply a separate empty/error state.
+
+### useNumberFormat
+
+```tsx
+import { useNumberFormat } from "@zentauri-ui/zentauri-components/hooks/useNumberFormat";
+
+const { format, formatToParts, resolvedLocale, formatter } = useNumberFormat({
+  locale: "en-IN",
+  style: "currency",
+  currency: "INR",
+});
+```
+
+The default and final locale-preference fallback is **en-US**, including an empty locale array. No browser language or geolocation is read. Pass an explicit locale for server-rendered examples; exact output also depends on matching Intl locale data across environments. Invalid locale syntax and invalid Intl options retain native errors.
+
+`getCachedNumberFormat(locale?, options?)` is also exported. It canonicalizes locale preferences and snapshots standard option keys in a fixed order, omitting undefined options. A FIFO cache holds at most **50 formatter instances**. Unknown keys and nonprimitive/nonfinite option values bypass caching and stay under native construction. Failed construction does not evict a valid cached formatter. Hook callbacks remain stable when the cached formatter is unchanged and update when locale/options change.
+
+The convenience `format`/`formatToParts` functions accept number or bigint values. `formatter` is the native Intl object; other native capabilities depend on runtime/type-library support. No formatRange convenience API is promised. The helper is pure JavaScript, but the existing hook entry remains a client boundary in Next.js; this change does not add a server-only package entry.
+
+[Native Intl.NumberFormat](https://tc39.es/ecma402/#numberformat-objects) controls display rounding, currency precision, notation, percentages and units. Formatting never changes the source value and is not a calculation or money-storage API. Static NumberText imports no Motion dependency. The docs show a separate decorative integer AnimatedNumber composition with localized accessible text; they do not claim that digit animation supports localized currency or units.
+
+Preview pages: `/preview/typography/number-formatting` and `/preview/hooks/use-number-format`. `zentauri-ui add typography` vendors the number-formatting hook transitively; `zentauri-ui add hook useNumberFormat` adds it on its own.

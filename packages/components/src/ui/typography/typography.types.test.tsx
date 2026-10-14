@@ -1,6 +1,7 @@
 import { createRef } from "react";
 import { expectTypeOf, it } from "vitest";
 import type {
+  NumberTextProps,
   MarkProps,
   HighlightTextProps,
   TruncateTextProps,
@@ -106,4 +107,39 @@ it("supports text utility native refs and rejects arbitrary child traversal", ()
   };
   void invalid;
   void html;
+});
+
+it("keeps numeric values, formatting options and native style/ref props separate", () => {
+  const amount = {
+    value: 1234.5,
+    locale: "en-IN",
+    formatOptions: { style: "currency", currency: "INR" },
+    style: { color: "red" },
+    ref: createRef<HTMLSpanElement>(),
+    partClassNames: { currency: "currency" },
+  } satisfies NumberTextProps;
+  const paragraph = {
+    as: "p",
+    value: 1234n,
+    ref: createRef<HTMLParagraphElement>(),
+  } satisfies NumberTextProps;
+  expectTypeOf(amount).toExtend<NumberTextProps>();
+  expectTypeOf(paragraph).toExtend<NumberTextProps>();
+  const string: NumberTextProps = {
+    // @ts-expect-error Numeric strings are deliberately outside the public API.
+    value: "12",
+  };
+  const children: NumberTextProps = {
+    value: 12,
+    // @ts-expect-error Formatted content is derived from value.
+    children: "12",
+  };
+  const gradient: NumberTextProps = {
+    value: 12,
+    // @ts-expect-error Numeric text uses readable foreground tones.
+    tone: "gradient-cyan-blue",
+  };
+  void string;
+  void children;
+  void gradient;
 });
