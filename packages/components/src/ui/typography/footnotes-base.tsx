@@ -19,9 +19,15 @@ import type {
 
 const FootnotesContext = createContext<string | null>(null);
 function identifier(value: string, name: string) {
-  if (typeof value !== "string" || !value.length || /\s/u.test(value))
+  // Lone surrogates would make encodeURIComponent throw while building fragments.
+  if (
+    typeof value !== "string" ||
+    !value.length ||
+    /\s/u.test(value) ||
+    /\p{Cs}/u.test(value)
+  )
     throw new TypeError(
-      `${name} must be a nonempty identifier without whitespace`,
+      `${name} must be a nonempty, well-formed identifier without whitespace`,
     );
   return value;
 }

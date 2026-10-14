@@ -230,5 +230,5 @@ export type FootnoteReferenceProps = Omit<
 > & { noteId: string; referenceId: string; number: number };
 export type FootnoteBacklinkProps = Omit<
   ComponentPropsWithRef<"a">,
-  "href" | "aria-label"
+  "href" | "aria-label" | "dangerouslySetInnerHTML"
 > & { noteId: string; referenceId: string; label: string };

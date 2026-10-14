@@ -179,6 +179,17 @@ describe("Footnotes", () => {
         </Footnotes>,
       ),
     ).toThrow(TypeError);
+    expect(() =>
+      renderToString(
+        <Footnotes>
+          <Footnotes.Reference
+            noteId={"note\uD800"}
+            referenceId="intro"
+            number={1}
+          />
+        </Footnotes>,
+      ),
+    ).toThrow(TypeError);
     for (const number of [0, -1, 1.5, Infinity, 2147483648])
       expect(() =>
         renderToString(

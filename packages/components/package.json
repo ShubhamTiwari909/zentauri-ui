@@ -71,6 +71,11 @@
       "import": "./dist/graphs/change-impact-explorer.mjs",
       "require": "./dist/graphs/change-impact-explorer.js"
     },
+    "./ui/typography/reading-time": {
+      "types": "./dist/ui/typography/reading-time.d.ts",
+      "import": "./dist/typography/reading-time.mjs",
+      "require": "./dist/typography/reading-time.js"
+    },
     "./ui/*": {
       "types": "./dist/ui/*/index.d.ts",
       "import": "./dist/ui/*.mjs",

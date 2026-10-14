@@ -306,6 +306,7 @@ export default defineConfig({
       "src/ui/time-travel-inspector/history.ts",
     // Keep pure graph helpers outside the directories marked as client entries.
     "graphs/change-impact-explorer": "src/ui/change-impact-explorer/graph.ts",
+    "typography/reading-time": "src/ui/typography/reading-time.ts",
     ...uiEntries,
     ...chartEntries,
     ...animationEntries,

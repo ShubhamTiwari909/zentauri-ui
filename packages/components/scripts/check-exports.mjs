@@ -65,6 +65,11 @@ add(
   "graphs/change-impact-explorer.js",
   "ui/change-impact-explorer/graph.d.ts",
 );
+add(
+  "typography/reading-time.mjs",
+  "typography/reading-time.js",
+  "ui/typography/reading-time.d.ts",
+);
 add("hooks/utils.mjs", "hooks/utils.js", "lib/utils.d.ts");
 add(
   "design-system/tokens.mjs",
