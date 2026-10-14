@@ -180,3 +180,79 @@ describe("useTextOverflow", () => {
     );
   });
 });
+
+it("invalidates a changed measurement key before its next frame", () => {
+  const frames: FrameRequestCallback[] = [];
+  vi.stubGlobal("requestAnimationFrame", (callback: FrameRequestCallback) => {
+    frames.push(callback);
+    return frames.length;
+  });
+  vi.stubGlobal("cancelAnimationFrame", vi.fn());
+  const { result, rerender } = renderHook(
+    ({ key }) => useTextOverflow({ measurementKey: key }),
+    { initialProps: { key: "long" } },
+  );
+  act(() => result.current.ref(attach()));
+  act(() => frames.splice(0).forEach((callback) => callback(0)));
+  expect(result.current.isOverflowing).toBe(true);
+  scrollWidth = 100;
+  rerender({ key: "short" });
+  expect(result.current.hasMeasured).toBe(false);
+  expect(result.current.isOverflowing).toBe(false);
+  act(() => frames.splice(0).forEach((callback) => callback(1)));
+  expect(result.current.hasMeasured).toBe(true);
+  expect(result.current.isOverflowing).toBe(false);
+});
+
+it("reuses collapsed results for unchanged styling but measures again after fonts load", async () => {
+  const fonts = new EventTarget();
+  Object.defineProperty(fonts, "ready", { value: new Promise(() => {}) });
+  const original = Object.getOwnPropertyDescriptor(document, "fonts");
+  Object.defineProperty(document, "fonts", {
+    configurable: true,
+    value: fonts,
+  });
+  const frames: FrameRequestCallback[] = [];
+  vi.stubGlobal("requestAnimationFrame", (callback: FrameRequestCallback) => {
+    frames.push(callback);
+    return frames.length;
+  });
+  vi.stubGlobal("cancelAnimationFrame", vi.fn());
+  const append = vi.spyOn(document.body, "append");
+  try {
+    const { result } = renderHook(() => useTextOverflow({ lines: 2 }));
+    act(() => result.current.ref(attach()));
+    act(() => frames.splice(0).forEach((callback) => callback(0)));
+    const captures = () =>
+      append.mock.calls.filter(
+        ([element]) =>
+          element instanceof HTMLElement &&
+          element.getAttribute("aria-hidden") === "true",
+      ).length;
+    const first = captures();
+    expect(first).toBe(1);
+    act(() => {
+      window.dispatchEvent(new Event("resize"));
+      frames.splice(0).forEach((callback) => callback(1));
+    });
+    expect(captures()).toBe(first);
+    act(() => {
+      node.style.color = "red";
+    });
+    await act(async () => {});
+    act(() => frames.splice(0).forEach((callback) => callback(1)));
+    expect(captures()).toBe(first);
+    act(() => {
+      fonts.dispatchEvent(new Event("loadingdone"));
+      frames.splice(0).forEach((callback) => callback(2));
+    });
+    expect(captures()).toBe(first + 1);
+    act(() => (node.style.writingMode = "vertical-rl"));
+    await act(async () => {});
+    act(() => frames.splice(0).forEach((callback) => callback(3)));
+    expect(captures()).toBe(first + 2);
+  } finally {
+    if (original) Object.defineProperty(document, "fonts", original);
+    else Reflect.deleteProperty(document, "fonts");
+  }
+});

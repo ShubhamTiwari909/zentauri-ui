@@ -72,7 +72,14 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
   }, []);
 
   useEffect(() => {
-    if (!enabled || !element) return;
+    if (!enabled || !element) {
+      setResult((previous) =>
+        previous.hasMeasured || previous.isOverflowing
+          ? { ...previous, hasMeasured: false, isOverflowing: false }
+          : previous,
+      );
+      return;
+    }
     const doc = element.ownerDocument;
     const view = doc.defaultView;
     if (!view) return;
@@ -94,29 +101,28 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
         setResult({ ...inputs, isOverflowing: false, hasMeasured: false });
         return;
       }
+      // Only text-layout styles matter; theme color changes need no copy/layout.
+      const measurementStyles =
+        lines === undefined
+          ? []
+          : Array.from(computed)
+              .filter((property) =>
+                /^(?:-webkit-)?(?:font(?:-|$)|line-height$|letter-spacing$|word-spacing$|text-(?:align|indent|transform|rendering|orientation|size-adjust)$|white-space$|word-break$|overflow-wrap$|hyphens$|tab-size$|direction$|writing-mode$|box-sizing$|width$|padding(?:-|$)|border-(?:.+-)?width$)/.test(
+                  property,
+                ),
+              )
+              .map(
+                (property) =>
+                  [property, computed.getPropertyValue(property)] as const,
+              );
+      const signatureBefore = lastSignature;
+      let nextSignature: string | undefined;
       if (lines !== undefined) {
-        const signature = [
+        nextSignature = JSON.stringify([
           element.textContent,
-          computed.width,
-          computed.font,
-          computed.fontFeatureSettings,
-          computed.fontVariationSettings,
-          computed.letterSpacing,
-          computed.wordSpacing,
-          computed.textTransform,
-          computed.textIndent,
-          computed.whiteSpace,
-          computed.wordBreak,
-          computed.overflowWrap,
-          computed.hyphens,
-          computed.tabSize,
-          computed.direction,
-          computed.boxSizing,
-          computed.padding,
-          computed.borderWidth,
-        ].join("|");
-        if (signature === lastSignature) return;
-        lastSignature = signature;
+          ...measurementStyles,
+        ]);
+        if (nextSignature === signatureBefore) return;
       }
       let target: HTMLElement = element;
       let copy: HTMLDivElement | undefined;
@@ -127,12 +133,8 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
           copy.setAttribute("aria-hidden", "true");
           copy.inert = true;
           copy.textContent = element.textContent;
-          for (let index = 0; index < computed.length; index++) {
-            const property = computed.item(index);
-            copy.style.setProperty(
-              property,
-              computed.getPropertyValue(property),
-            );
+          for (const [property, value] of measurementStyles) {
+            copy.style.setProperty(property, value);
           }
           Object.assign(copy.style, {
             position: "fixed",
@@ -165,6 +167,7 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
             : axis === "vertical"
               ? vertical
               : horizontal || vertical;
+        lastSignature = nextSignature;
         setResult((previous) =>
           matchesInputs(previous, inputs) &&
           previous.hasMeasured &&
@@ -208,9 +211,13 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
         attributeFilter: ["class", "style", "data-theme", "dir"],
       });
     view.addEventListener("resize", schedule);
-    doc.fonts?.addEventListener("loadingdone", schedule);
-    doc.fonts?.addEventListener("loadingerror", schedule);
-    void doc.fonts?.ready.then(schedule);
+    const fontsChanged = () => {
+      lastSignature = undefined;
+      schedule();
+    };
+    doc.fonts?.addEventListener("loadingdone", fontsChanged);
+    doc.fonts?.addEventListener("loadingerror", fontsChanged);
+    void doc.fonts?.ready.then(fontsChanged);
     schedule();
     return () => {
       active = false;
@@ -221,8 +228,8 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
       observer?.disconnect();
       mutations?.disconnect();
       view.removeEventListener("resize", schedule);
-      doc.fonts?.removeEventListener("loadingdone", schedule);
-      doc.fonts?.removeEventListener("loadingerror", schedule);
+      doc.fonts?.removeEventListener("loadingdone", fontsChanged);
+      doc.fonts?.removeEventListener("loadingerror", fontsChanged);
     };
   }, [element, enabled, measurementKey, lines, axis, tolerance, revision]);
 
