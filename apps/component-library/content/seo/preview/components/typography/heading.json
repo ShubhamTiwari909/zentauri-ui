@@ -1,7 +1,7 @@
 {
   "category": "Typography",
-  "title": "Heading component — semantic h1–h6 scale",
-  "description": "Heading primitive for React pages — levels map to h1–h6 with optional display scaling and tone variants.",
+  "title": "Heading component \u2014 semantic h1\u2013h6 scale",
+  "description": "Heading primitive for React pages \u2014 levels map to h1\u2013h6 with optional display scaling and tone variants.",
   "keywords": [
     "heading",
     "typography",
@@ -11,16 +11,16 @@
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Typography · Headings · Zentauri UI",
-    "description": "Heading primitive for React pages — levels map to h1–h6 with optional display scaling and tone variants.",
+    "title": "Typography \u00b7 Headings \u00b7 Zentauri UI",
+    "description": "Heading primitive for React pages \u2014 levels map to h1\u2013h6 with optional display scaling and tone variants.",
     "type": "website"
   },
   "twitter": {
-    "title": "Typography · Headings · Zentauri UI",
-    "description": "Heading primitive for React pages — levels map to h1–h6 with optional display scaling and tone variants.",
+    "title": "Typography \u00b7 Headings \u00b7 Zentauri UI",
+    "description": "Heading primitive for React pages \u2014 levels map to h1\u2013h6 with optional display scaling and tone variants.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/components/typography/heading",
+  "canonicalPath": "/preview/typography/heading",
   "headings": {
     "h1": "Headings for page structure",
     "h2": [
@@ -56,7 +56,7 @@
   "sections": [
     {
       "heading": "What it does",
-      "body": "Maps level 1–6 to native heading tags with shared tone and emphasis toggles.\n\nscroll-m-20 aids anchor navigation without extra wrappers."
+      "body": "Maps level 1\u20136 to native heading tags with shared tone and emphasis toggles.\n\nscroll-m-20 aids anchor navigation without extra wrappers."
     },
     {
       "heading": "Composition and API",
@@ -68,7 +68,7 @@
     },
     {
       "heading": "Accessibility",
-      "body": "Expose the correct level for screen reader outlines.\n\nDo not style plain divs as headings—use the semantic tag."
+      "body": "Expose the correct level for screen reader outlines.\n\nDo not style plain divs as headings\u2014use the semantic tag."
     },
     {
       "heading": "Next.js integration notes",

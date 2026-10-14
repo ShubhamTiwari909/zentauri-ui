@@ -1,3 +1,8 @@
+import {
+  zuiTypographyBlockquoteBase,
+  zuiTypographyBlockquoteContent,
+  zuiTypographyBlockquoteAttribution,
+} from "../../design-system/typography";
 import { cn } from "../../lib/utils";
 
 import type { BlockquoteProps } from "./types";
@@ -12,14 +17,14 @@ export const BlockquoteBase = (props: BlockquoteProps) => {
       data-slot="typography-blockquote"
       className={cn(
         typographyToneVariants({ tone }),
-        "border-l-4 py-1 pl-4 italic",
+        zuiTypographyBlockquoteBase,
         className,
       )}
       {...rest}
     >
-      <div className="space-y-2 leading-relaxed">{children}</div>
+      <div className={zuiTypographyBlockquoteContent}>{children}</div>
       {attribution ? (
-        <footer className="mt-3 text-sm not-italic">
+        <footer className={zuiTypographyBlockquoteAttribution}>
           <cite>{attribution}</cite>
         </footer>
       ) : null}

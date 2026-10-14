@@ -452,3 +452,40 @@ describe("DesignSystem facade", () => {
     ).toBeUndefined();
   });
 });
+
+it("discovers typography scale tokens, reciprocal theme pairs and new control groups", () => {
+  const typography = DesignSystem.getComponent("typography");
+  expect(typography?.variables()).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        name: "--zui-typography-font-body",
+        pairName: "--zui-typography-font-body-dark",
+      }),
+      expect.objectContaining({
+        name: "--zui-typography-heading-1-size",
+        pairName: "--zui-typography-heading-1-size-dark",
+      }),
+      expect.objectContaining({ name: "--zui-typography-heading-1-size-md" }),
+      expect.objectContaining({ name: "--zui-typography-code-bg-dark" }),
+    ]),
+  );
+  expect(typography?.groups()).toEqual(
+    expect.arrayContaining([
+      "weight",
+      "leading",
+      "tracking",
+      "wrap",
+      "measure",
+      "font",
+      "numeric",
+    ]),
+  );
+  expect(
+    typography?.getVariant("preset", "overline", { slot: "text" }),
+  ).toBeDefined();
+  expect(
+    typography
+      ?.variables()
+      .some((variable) => variable.name.startsWith("--_zui")),
+  ).toBe(false);
+});

@@ -42,6 +42,25 @@ const navKeywords: Record<string, readonly string[]> = {
   "/preview/hooks": ["hooks", "react hooks", "catalog"],
   "/preview/animations": ["animations", "motion", "framer motion", "catalog"],
   "/preview/typography": ["typography", "text", "styles", "catalog"],
+  "/preview/typography/scale": [
+    "typography",
+    "font",
+    "fluid",
+    "scale",
+    "tokens",
+    "presets",
+    "caption",
+    "overline",
+  ],
+  "/preview/typography/accessibility": [
+    "typography",
+    "VisuallyHidden",
+    "screen reader",
+    "skip link",
+    "Strong",
+    "Emphasis",
+    "Small",
+  ],
   "/preview/charts": ["charts", "data visualization", "recharts", "catalog"],
   "https://github.com/ShubhamTiwari909/zentauri-ui": [
     "github",
@@ -129,7 +148,10 @@ function buildSiteSearchEntries(): SiteSearchEntryRecord[] {
         href: item.href,
         group: group.title,
         external: item.external,
-        keywords: pathKeywordTokens(item.href),
+        keywords: [
+          ...pathKeywordTokens(item.href),
+          ...(navKeywords[item.href] ?? []),
+        ],
       });
     }
   }

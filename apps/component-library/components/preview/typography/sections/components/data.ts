@@ -30,7 +30,7 @@ export const HEADING_LEVEL_SHOWCASE = [1, 2, 3, 4, 5, 6] as const;
 
 export type HeadingLevelShowcase = (typeof HEADING_LEVEL_SHOWCASE)[number];
 
-export const TEXT_SIZE_VARIANTS = ["sm", "base", "lg"] as const;
+export const TEXT_SIZE_VARIANTS = ["xs", "sm", "base", "lg", "xl"] as const;
 
 export type TextSizeVariant = (typeof TEXT_SIZE_VARIANTS)[number];
 

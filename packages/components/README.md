@@ -21,7 +21,7 @@ Counted from the entry lists in `tsup.config.ts`. Refresh with `pnpm --filter @z
 
 | Surface             | Count | Import shape                                          |
 | ------------------- | ----: | ----------------------------------------------------- |
-| Static UI entries   |    89 | `@zentauri-ui/zentauri-components/ui/<name>`          |
+| Static UI entries   |    90 | `@zentauri-ui/zentauri-components/ui/<name>`          |
 | Animated UI entries |    52 | `@zentauri-ui/zentauri-components/ui/<name>/animated` |
 | Animation entries   |    41 | `@zentauri-ui/zentauri-components/animations/<name>`  |
 | Chart entries       |     9 | `@zentauri-ui/zentauri-components/charts/<type>`      |
@@ -35,16 +35,16 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 159 passed (159)   |
-| Tests      | 1954 passed (1954) |
+| Test files | 161 passed (161)   |
+| Tests      | 1970 passed (1970) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 102        | 1503  |
+| Components and UI utilities    | 104        | 1516  |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 48         | 242   |
-| Design system facade           | 1          | 22    |
-| CLI and import rewriting       | 4          | 43    |
+| Design system facade           | 1          | 23    |
+| CLI and import rewriting       | 4          | 45    |
 | Accessibility (axe + keyboard) | 2          | 52    |
 | Permission system              | 1          | 47    |
 
@@ -74,7 +74,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `cli/cli.integration.test.ts`                                           |    26 |
 | `src/ui/bento-grid/bento-grid.test.tsx`                                 |    26 |
 | `src/ui/combobox/combobox.test.tsx`                                     |    24 |
-| `src/lib/facade.test.ts`                                                |    22 |
+| `src/lib/facade.test.ts`                                                |    23 |
 | `src/ui/wizard/wizard.test.tsx`                                         |    22 |
 | `src/accessibility/keyboard-interaction.test.tsx`                       |    18 |
 | `src/ui/calendar/calendar.test.tsx`                                     |    16 |
@@ -93,6 +93,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/context-menu/context-menu.test.tsx`                             |    12 |
 | `src/ui/http-request-viewer/http-request-viewer.test.tsx`               |    12 |
 | `src/ui/image-compare/image-compare.test.tsx`                           |    12 |
+| `src/ui/typography/foundations.test.tsx`                                |    12 |
 | `src/hooks/useFullscreen/useFullscreen.test.ts`                         |    11 |
 | `src/hooks/useRelativeTime/useRelativeTime.test.ts`                     |    11 |
 | `src/ui/alert/alert.test.tsx`                                           |    11 |
@@ -135,6 +136,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/sortable-list/sortable-list.test.tsx`                           |     8 |
 | `src/ui/speech-recognition/speech-recognition.test.tsx`                 |     8 |
 | `src/ui/spinner/animated/spinner.test.tsx`                              |     8 |
+| `cli/props.test.ts`                                                     |     7 |
 | `cli/rewrite-imports.test.ts`                                           |     7 |
 | `src/hooks/useDynamicStepper/useDynamicStepper.test.ts`                 |     7 |
 | `src/hooks/useHotkeys/useHotkeys.test.ts`                               |     7 |
@@ -147,7 +149,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/neural-graph/neural-graph.test.tsx`                             |     7 |
 | `src/ui/typography/typography.test.tsx`                                 |     7 |
 | `src/ui/world-clock/world-clock.test.tsx`                               |     7 |
-| `cli/props.test.ts`                                                     |     6 |
 | `src/charts/charts.test.tsx`                                            |     6 |
 | `src/hooks/useClipboard/useClipboard.test.ts`                           |     6 |
 | `src/hooks/useCountdown/useCountdown.test.ts`                           |     6 |
@@ -168,6 +169,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/search/filter-search-suggestions.test.ts`                       |     6 |
 | `src/ui/timezone-select/timezone-select.test.tsx`                       |     6 |
 | `src/ui/toast/toast.test.tsx`                                           |     6 |
+| `cli/index.test.ts`                                                     |     5 |
 | `src/hooks/useControllableState/useControllableState.test.ts`           |     5 |
 | `src/hooks/useCookie/useCookie.test.ts`                                 |     5 |
 | `src/hooks/useDisclosure/useDisclosure.test.ts`                         |     5 |
@@ -178,7 +180,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/qr-scanner/qr-scanner.test.tsx`                                 |     5 |
 | `src/ui/radio-group/radio-group.test.tsx`                               |     5 |
 | `src/ui/toggle/toggle.test.tsx`                                         |     5 |
-| `cli/index.test.ts`                                                     |     4 |
 | `src/hooks/useBodyScrollLock/useBodyScrollLock.test.ts`                 |     4 |
 | `src/hooks/useDebouncedValue/useDebouncedValue.test.ts`                 |     4 |
 | `src/hooks/useInterval/useInterval.test.ts`                             |     4 |
@@ -211,6 +212,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/glass-card/glass-card.ssr.test.tsx`                             |     1 |
 | `src/ui/search/search-suggestion-utils.test.ts`                         |     1 |
 | `src/ui/time-travel-inspector/time-travel-inspector.types.test.ts`      |     1 |
+| `src/ui/typography/typography.types.test.tsx`                           |     1 |
 
 ## Package exports
 
@@ -331,15 +333,15 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 
 Import from `@zentauri-ui/zentauri-components/ui/typography`. This entry is **static only** (no `/animated` subpath).
 
-**Components:** `Heading`, `Text`, `List` (with `List.Item`, also exported as `ListItem`), `Blockquote`, `InlineCode`, `CodeBlock`.
+**Components:** `Heading`, `Text`, `List` (with `List.Item`, also exported as `ListItem`), `Blockquote`, `InlineCode`, `CodeBlock`, `Strong`, `Emphasis`, `Small`, and `VisuallyHidden`.
 
-**Types:** `HeadingProps`, `TextProps`, `ListProps`, `ListItemProps`, `BlockquoteProps`, `InlineCodeProps`, `CodeBlockProps`, `HeadingLevel`, `TextElement`, `TypographyTone`, `UnorderedMarker`.
+**Types:** `HeadingProps`, `TextProps`, `ListProps`, `ListItemProps`, `BlockquoteProps`, `InlineCodeProps`, `CodeBlockProps`, `StrongProps`, `EmphasisProps`, `SmallProps`, `VisuallyHiddenProps`, `TypographyControls`, `HeadingLevel`, `TextElement`, `TypographyTone`, `UnorderedMarker`.
 
 **Tone (`tone` prop):** `default`, `muted`, `primary`, `secondary`, `accent`, `destructive`, `info`, `success`, `warning`, `error`, and gradient presets: `gradient-pink-violet`, `gradient-cyan-violet`, `gradient-cyan-blue`, `gradient-cyan-green`, `gradient-cyan-orange`, `gradient-cyan-red`, `gradient-cyan-purple`, `gradient-cyan-pink`. Tones align with kit accent colors (slate / cyan / violet baseline).
 
 **Heading:** `level` is required (`1`–`6`) and picks the semantic tag (`h1`–`h6`). Optional `displayLevel` overrides only the visual scale (still the same tag). Optional `bold`, `italic`, `underline`, `strikethrough`.
 
-**Text:** Optional `as` (`p`, `span`, `div`, `label`; default `p`). `size` is `sm`, `base`, or `lg` (default `base`). Optional `highlight` plus the same emphasis flags as headings where applicable.
+**Text:** Optional `as` (`p`, `span`, `div`, `label`; default `p`). `size` is `xs`, `sm`, `base`, `lg`, or `xl` (default `base`). Optional `highlight` plus the same emphasis flags as headings where applicable.
 
 **List:** `ordered` renders an `<ol>` (decimal markers); omit or `false` for `<ul>`. Unordered lists accept `marker`: `disc`, `circle`, or `none`.
 
@@ -347,7 +349,7 @@ Import from `@zentauri-ui/zentauri-components/ui/typography`. This entry is **st
 
 **Code samples:** `InlineCode` styles inline `code`; `CodeBlock` renders a `pre` with an inner `code` (pass string or fragment children, not another `code` element) and optional `language` for `aria-label`.
 
-**CVA helpers (composition):** `headingLevelVariants`, `textSizeVariants`, `typographyToneVariants`, `unorderedListMarkerVariants`, `orderedListVariants`.
+**CVA helpers (composition):** `headingLevelVariants`, `headingFluidVariants`, `headingDisplayVariants`, `headingFluidDisplayVariants`, `textSizeVariants`, `textPresetVariants`, `typographyStyleVariants`, `typographyFontVariants`, `typographyToneVariants`, `unorderedListMarkerVariants`, `orderedListVariants`.
 
 ```tsx
 import {
@@ -386,6 +388,45 @@ export function ArticleIntro() {
   );
 }
 ```
+
+### Scale, presets and accessible inline text
+
+Heading and Text support logical `align` (`start`, `center`, `end`, `justify`), `weight` (`normal`, `medium`, `semibold`, `bold`), `leading` (`tight`, `normal`, `relaxed`), `tracking` (`tight`, `normal`, `wide`), `wrap` (`normal`, `balance`, `pretty`, `nowrap`) and `measure` (`none`, `readable`, `wide`). Explicit normal/balance/pretty wrapping also breaks oversized words when necessary. Omitted controls retain current defaults. Text also supports `font` (`body`, `mono`) and `numeric` (`normal`, `tabular`).
+
+Heading `level` always chooses the semantic tag. `displaySize` (`sm`, `md`, `lg`) overrides `displayLevel` for visual sizing. `scale="fluid"` is opt-in; the default preserves existing heading sizes, including h1's md breakpoint.
+
+Text `preset` is `body`, `lead`, `caption`, or `overline`. Explicit size, weight, leading and tracking override presets; explicit weight overrides the legacy `bold` flag. Overline supplies its own weight; `bold` still applies to presets that do not specify one. Uppercase styling does not change the text string. `className` remains the final utility override, with responsive variants following normal Tailwind rules.
+
+```tsx
+<Heading level={2} displaySize="sm" scale="fluid" wrap="balance">A semantic section heading</Heading>
+<Text preset="lead" measure="readable">Introductory copy.</Text>
+<Text preset="caption" tone="muted">Supporting detail.</Text>
+<Text preset="overline">Product update</Text>
+<Text font="mono" numeric="tabular">12,345.67</Text>
+<Text as="label" htmlFor="email">Email</Text>
+<Text tone="muted"><Strong>Important</Strong> <Emphasis>stress</Emphasis> <Small>fine print</Small></Text>
+<button><span aria-hidden="true">×</span><VisuallyHidden>Close</VisuallyHidden></button>
+<VisuallyHidden focusable><a href="#content">Skip to content</a></VisuallyHidden>
+<div id="content" tabIndex={-1}>Content target</div>
+```
+
+Strong, Emphasis and Small use native strong/em/small elements and inherit surrounding text color unless a tone is supplied. Existing Text bold/italic/highlight flags remain visual conveniences. VisuallyHidden keeps content available to assistive technology; focusable reveals the wrapper on focus-within and does not create a tab stop. A skip link needs a real target. These additions retain the typography client entry and support prerendering; they do not introduce a dedicated server-only export.
+
+### Scoped typography tokens
+
+Scope fonts and scale with `--zui-typography-font-body`, `--zui-typography-font-display`, `--zui-typography-font-mono`, `--zui-typography-text-base-size`, `--zui-typography-text-base-leading`, `--zui-typography-heading-1-size`, and `--zui-typography-measure`, for example. Matching dark metric tokens inherit configured light values when omitted. Color surface defaults may differ between themes. Existing tone variables remain valid.
+
+```css
+.article-theme {
+  --zui-typography-font-body: Georgia, serif;
+  --zui-typography-font-display: Georgia, serif;
+  --zui-typography-text-base-size: 1.125rem;
+  --zui-typography-text-base-leading: 1.8;
+  --zui-typography-measure: 45ch;
+}
+```
+
+Private `--_zui-type-*` properties resolve these values without competing with utility overrides; they are implementation details. The docs token reference and design-system facade list all public variables. Vendor the complete family with `zentauri-ui add typography`; no Motion peer is needed.
 
 ## Charts
 
@@ -925,7 +966,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1954 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1970 test cases in total
 - `pnpm test:a11y` — focused accessibility coverage for package-level UI primitives and compound components: **axe-core** audits for every interactive component plus **keyboard-interaction** tests (focus order, arrow-key nav, Home/End, Escape/Enter) for the compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).

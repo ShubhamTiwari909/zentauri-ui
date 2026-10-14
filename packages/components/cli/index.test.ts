@@ -154,6 +154,41 @@ describe("CLI module commands", () => {
     }
   });
 
+  it("vendors the complete typography foundation with its public exports and token source", async () => {
+    const dir = makeTempDir("zentauri-cli-typography-");
+    silenceConsole();
+    try {
+      await cmdInit(dir);
+      await cmdAdd(["typography"], dir);
+      const entry = readFileSync(
+        join(dir, "src/components/ui/typography/index.ts"),
+        "utf8",
+      );
+      for (const name of ["Strong", "Emphasis", "Small", "VisuallyHidden"]) {
+        expect(entry).toContain(name);
+      }
+      expect(
+        readFileSync(
+          join(dir, "src/components/ui/typography/text-base.tsx"),
+          "utf8",
+        ),
+      ).toContain('from "@/lib/utils"');
+      const tokens = readFileSync(
+        join(dir, "src/components/design-system/typography.ts"),
+        "utf8",
+      );
+      expect(tokens).toContain("--zui-typography-font-body");
+      expect(tokens).toContain("--zui-typography-font-body-dark");
+      expect(
+        existsSync(
+          join(dir, "src/components/ui/typography/visually-hidden-base.tsx"),
+        ),
+      ).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("generates theme CSS to stdout or a requested file", async () => {
     const dir = makeTempDir("zentauri-cli-module-theme-");
     const { errors, logs } = silenceConsole();

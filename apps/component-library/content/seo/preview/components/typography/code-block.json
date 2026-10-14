@@ -1,6 +1,6 @@
 {
   "category": "Typography",
-  "title": "CodeBlock component — fenced samples",
+  "title": "CodeBlock component \u2014 fenced samples",
   "description": "Pre/code CodeBlock primitive for multi-line samples with monospace styling and optional language hints.",
   "keywords": [
     "code block",
@@ -11,16 +11,16 @@
     "Tailwind CSS"
   ],
   "og": {
-    "title": "Typography · Code blocks · Zentauri UI",
+    "title": "Typography \u00b7 Code blocks \u00b7 Zentauri UI",
     "description": "Pre/code CodeBlock primitive for multi-line samples with monospace styling and optional language hints.",
     "type": "website"
   },
   "twitter": {
-    "title": "Typography · Code blocks · Zentauri UI",
+    "title": "Typography \u00b7 Code blocks \u00b7 Zentauri UI",
     "description": "Pre/code CodeBlock primitive for multi-line samples with monospace styling and optional language hints.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/components/typography/code-block",
+  "canonicalPath": "/preview/typography/code-block",
   "headings": {
     "h1": "Multi-line code samples",
     "h2": [
@@ -42,7 +42,7 @@
   "faqs": [
     {
       "question": "Does CodeBlock highlight syntax?",
-      "answer": "Not by default—pipe highlighted nodes as children or integrate a highlighter in your app shell."
+      "answer": "Not by default\u2014pipe highlighted nodes as children or integrate a highlighter in your app shell."
     },
     {
       "question": "How does language prop help?",

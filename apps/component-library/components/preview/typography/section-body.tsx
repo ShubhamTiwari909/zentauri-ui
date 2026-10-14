@@ -287,6 +287,7 @@ export function TypographySectionBody({
 }: {
   section: TypographySectionSlug;
 }) {
+  if (section === "scale" || section === "accessibility") return null;
   return (
     <>
       <Section>

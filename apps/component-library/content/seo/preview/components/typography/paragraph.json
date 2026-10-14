@@ -1,19 +1,19 @@
 {
   "category": "Typography",
-  "title": "Text component — body copy with tones",
+  "title": "Text component \u2014 body copy with tones",
   "description": "Paragraph and inline-oriented Text primitive with sizes, tones, and emphasis flags for React interfaces.",
   "keywords": ["paragraph", "typography", "React", "body text", "Tailwind CSS"],
   "og": {
-    "title": "Typography · Paragraph · Zentauri UI",
+    "title": "Typography \u00b7 Paragraph \u00b7 Zentauri UI",
     "description": "Paragraph and inline-oriented Text primitive with sizes, tones, and emphasis flags for React interfaces.",
     "type": "website"
   },
   "twitter": {
-    "title": "Typography · Paragraph · Zentauri UI",
+    "title": "Typography \u00b7 Paragraph \u00b7 Zentauri UI",
     "description": "Paragraph and inline-oriented Text primitive with sizes, tones, and emphasis flags for React interfaces.",
     "card": "summary_large_image"
   },
-  "canonicalPath": "/preview/components/typography/paragraph",
+  "canonicalPath": "/preview/typography/paragraph",
   "headings": {
     "h1": "Paragraph text for interfaces",
     "h2": [
