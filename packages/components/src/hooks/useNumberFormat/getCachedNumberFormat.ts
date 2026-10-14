@@ -28,7 +28,8 @@ const optionKeys = [
 /**
  * Pure cache helper with no client directive. Imported through the
  * `hooks/useNumberFormat` entry it is still a client reference in Next.js, so
- * Server Components should vendor or import this module directly.
+ * Server Components can import this file from locally vendored source; the
+ * published hooks/useNumberFormat entry remains client-bound.
  */
 export function getCachedNumberFormat(
   locale: string | string[] = "en-US",
@@ -55,7 +56,7 @@ export function getCachedNumberFormat(
   const key = JSON.stringify([locales, snapshot]);
   const cached = formatterCache.get(key);
   if (cached) return cached;
-  const formatter = new Intl.NumberFormat(locales, snapshot);
+  const formatter = Object.freeze(new Intl.NumberFormat(locales, snapshot));
   if (formatterCache.size >= MAX_CACHE_SIZE) {
     const first = formatterCache.keys().next().value;
     if (first !== undefined) formatterCache.delete(first);

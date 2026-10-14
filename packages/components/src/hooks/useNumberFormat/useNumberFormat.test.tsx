@@ -209,3 +209,33 @@ describe("useNumberFormat", () => {
     ).toThrow(TypeError);
   });
 });
+
+it("keeps a stable hook result for inline options outside the shared cache", () => {
+  const { result, rerender } = renderHook(
+    ({ digits }) =>
+      useNumberFormat({
+        locale: "en-US",
+        maximumFractionDigits: digits,
+        ignoredFutureOption: "unused",
+      } as Intl.NumberFormatOptions),
+    { initialProps: { digits: 2 } },
+  );
+  const first = result.current;
+  rerender({ digits: 2 });
+  expect(result.current).toBe(first);
+  rerender({ digits: 1 });
+  expect(result.current).not.toBe(first);
+  expect(result.current.format(1.234)).toBe("1.2");
+});
+
+it("prevents one consumer from mutating a shared formatter", () => {
+  const first = getCachedNumberFormat("en-US", { maximumFractionDigits: 4 });
+  expect(Object.isFrozen(first)).toBe(true);
+  expect(() =>
+    Object.defineProperty(first, "formatToParts", { value: () => [] }),
+  ).toThrow(TypeError);
+  expect(getCachedNumberFormat("en-US", { maximumFractionDigits: 4 })).toBe(
+    first,
+  );
+  expect(first.formatToParts(12.5)).not.toEqual([]);
+});
