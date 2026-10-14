@@ -563,3 +563,7 @@ The pinned container keeps dependencies/build outputs in ephemeral Linux volumes
 ## Coverage publication — 14 October 2026
 
 The reviewed coverage implementation and all 88 baseline sets are being published on `codex/visualguard-coverage`, targeting `codex/typography-editorial` while PR #157 remains open. The local production comparison passed all 76 cases; GitHub-hosted execution remains unverified until its workflow finishes. This completes the implementation branch sequence in this plan. Merge/release reviews and any CMS adoption remain separate follow-ups. The next implementation branch follows the broader roadmap with the P1 `useDebouncedCallback` hook.
+
+## Hosted coverage verification — 14 October 2026
+
+The initial [GitHub run](https://github.com/ShubhamTiwari909/zentauri-ui/actions/runs/38515241958) passed all 76 visual cases in 4.0 minutes and verified the 88 complete reference artifact sets. Its job nevertheless failed during host cleanup because container installs/builds left root-owned files in the snapshot. The wrapper now passes the caller's user/group IDs and the suite returns workspace/report ownership on exit, preserving its original success/failure status. A complete hosted rerun remains pending for this cleanup correction; screenshot acceptance thresholds and baselines are unchanged.

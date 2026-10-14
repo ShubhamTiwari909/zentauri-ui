@@ -36,6 +36,7 @@ docker run --rm --platform linux/arm64 --ipc=host \
   --mount type=volume,target=/workspace/packages/components/dist \
   --workdir /workspace \
   --env CI=1 --env HUSKY=0 --env NEXT_TELEMETRY_DISABLED=1 \
+  --env "VISUALGUARD_HOST_UID=$(id -u)" --env "VISUALGUARD_HOST_GID=$(id -g)" \
   --env "VISUALGUARD_RUN_MODE=$mode" \
   "$image" bash scripts/visualguard/run-suite.sh
 result=$?

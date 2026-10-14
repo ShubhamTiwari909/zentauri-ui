@@ -12,5 +12,5 @@
   "verifiedOn": "2026-10-14",
   "casesPassed": 76,
   "checkpoints": 88,
-  "githubWorkflow": "Prepared; hosted execution pending publication."
+  "githubWorkflow": "Initial hosted run 38515241958 passed all 76 cases and all 88 evidence checks, then failed host cleanup due to root-owned bind-mount files. Ownership cleanup fixed; complete rerun pending."
 }
