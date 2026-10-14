@@ -220,9 +220,15 @@ it("keeps every typography arbitrary value balanced and code tone fallbacks pres
   function check(value: unknown) {
     if (typeof value === "string") {
       for (const match of value.matchAll(/\[[^\]]+\]/g)) {
-        expect(match[0].split("(").length, match[0]).toBe(
-          match[0].split(")").length,
-        );
+        let depth = 0;
+        for (const character of match[0]) {
+          if (character === "(") depth++;
+          if (character === ")") {
+            depth--;
+            expect(depth, match[0]).toBeGreaterThanOrEqual(0);
+          }
+        }
+        expect(depth, match[0]).toBe(0);
       }
     } else if (value && typeof value === "object") {
       Object.values(value).forEach(check);
