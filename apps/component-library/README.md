@@ -34,22 +34,18 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 168 passed (168)   |
-| Tests      | 2059 passed (2059) |
+| Test files | 169 passed (169)   |
+| Tests      | 2085 passed (2085) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
 | Components and UI utilities    | 109        | 1577  |
 | Standalone animations          | 1          | 45    |
-| React hooks                    | 50         | 268   |
+| React hooks                    | 51         | 292   |
 | Design system facade           | 1          | 24    |
-| CLI and import rewriting       | 4          | 46    |
+| CLI and import rewriting       | 4          | 48    |
 | Accessibility (axe + keyboard) | 2          | 52    |
 | Permission system              | 1          | 47    |
-
-## Typography visual verification
-
-The typography previews use pinned VisualGuard and Playwright development tooling. Run `bash scripts/visualguard/run-container.sh compare` from the repository root with Docker running. The [visual testing guide](./visualguard/README.md) describes the route/state matrix, Linux rendering environment, reports and baseline approval process. Browser checks run separately from the Vitest unit suite and the component-package health totals.
 
 ## Tech stack
 

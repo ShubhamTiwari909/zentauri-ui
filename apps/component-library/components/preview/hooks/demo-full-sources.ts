@@ -1,4 +1,5 @@
 import type { HookPreviewSlug } from "@/lib/hook-preview-registry";
+import { DEBOUNCED_CALLBACK_DEMO_SOURCE } from "./debounced-callback-demo-source";
 
 const PANEL_IMPORT =
   'import { HookDemoPanel } from "@/components/preview/hooks/demo-panel";';
@@ -1655,6 +1656,7 @@ const fullscreenFullSource = [
 ].join("\n");
 
 const HOOK_DEMO_FULL_SOURCES: Record<HookPreviewSlug, string> = {
+  "use-debounced-callback": DEBOUNCED_CALLBACK_DEMO_SOURCE,
   "use-body-scroll-lock": bodyScrollLockFullSource,
   "use-click-outside": clickOutsideFullSource,
   "use-clipboard": clipboardFullSource,

@@ -352,6 +352,7 @@
     "useCookie",
     "useCountdown",
     "useDateTimeFormat",
+    "useDebouncedCallback",
     "useDebouncedValue",
     "useDisclosure",
     "useDocumentTitle",

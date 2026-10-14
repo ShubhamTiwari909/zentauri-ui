@@ -2,7 +2,7 @@
  * Rewrites internal package-relative imports to app aliases.
  *
  * @param {string} source
- * @param {{ utilsAlias: string; hooksAlias: string; uiAlias?: string; uiComponents?: string[] }} options
+ * @param {{ utilsAlias: string; hooksAlias: string; uiAlias?: string; uiComponents?: string[]; siblingHooks?: boolean }} options
  * @returns {{ code: string; usedHooks: string[]; usedUiComponents: string[] }}
  */
 export function rewriteImports(source, options) {
@@ -25,6 +25,17 @@ export function rewriteImports(source, options) {
   collectHooks(source);
 
   let code = source;
+
+  // In a hook folder, ../useX targets another hook rather than a UI component.
+  if (options.siblingHooks) {
+    code = code.replace(
+      /from\s+(["'])\.\.\/(use[^'"]+)\1/g,
+      (_, quote, rest) => {
+        usedHooks.add(rest.split("/")[0]);
+        return `from ${quote}${hooksAlias}/${rest}${quote}`;
+      },
+    );
+  }
 
   if (uiAlias) {
     // Single-parent imports (`../<name>`) point at a sibling UI component.

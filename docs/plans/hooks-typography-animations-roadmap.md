@@ -1,6 +1,6 @@
 # Hooks, typography, and animations: proposed roadmap
 
-Reviewed on 13 October 2026. This is a planning document, based on source inspection of the component package and docs registries. It does not add implementations. No builds or tests were run, so existing test files and documented counts are evidence of coverage structure, not newly verified passing results.
+Reviewed on 13 October 2026. The original analysis is based on source inspection of the component package and docs registries; counts in the current-state section describe that initial snapshot. The delivery status below records subsequent implementation. Validation belongs to each implementation branch, not the original analysis.
 
 ## Recommendation
 
@@ -127,3 +127,31 @@ Avoid spending early releases on a full form engine, generic fetching/cache fram
 - Check installed framework documentation before implementing any Next.js-specific adapter. None was implemented for this analysis.
 
 Key inspected files: `packages/components/tsup.config.ts`, `src/hooks/`, `src/ui/typography/`, `src/design-system/typography.ts`, `src/animations/shared/create-motion-animation.tsx`, individual animation presets, and the docs hook/typography/animation registries and demos.
+
+## Delivery status — 14 October 2026
+
+Typography foundations, content, text utilities, number formatting and editorial additions are published in stacked PRs #153–#157. The VisualGuard coverage gate is published in [PR #158](https://github.com/ShubhamTiwari909/zentauri-ui/pull/158), stacked on editorial. Local canonical verification passed 76 cases with 88 complete reference sets; the initial hosted run passed the same visual/evidence checks but failed cleanup due to root ownership. Cleanup was corrected in `b0720296`; the [fresh hosted rerun](https://github.com/ShubhamTiwari909/zentauri-ui/actions/runs/38516363498) passed comparison, evidence verification, cleanup and report upload in 6m48s. These changes await merge/release review.
+
+The implemented P1 action hook is on `codex/hooks-debounced-callback`, stacked on VisualGuard coverage while PR #158 remains open. It adds the P1 trailing-edge action hook, stable scheduling/cancel/flush controls, reactive timer state, lifecycle tests, source-vendoring support and an autosave docs preview. Callback changes retain the deadline; delay changes affect future calls; unmount cancels without flushing. Leading/max-wait options, async request management, storage changes and animation policy are outside this branch.
+
+After this hook, take `useComposedRefs` and its existing-component integrations in a separate branch. Storage hydration and reduced-motion fixes should each retain their own focused review and behavior tests before expanding interaction or motion APIs.
+
+### Debounced callback verification
+
+The hook has 24 lifecycle/timing/API tests, including child layout-effect scheduling and StrictMode replay. Its CLI installation fixture and sibling-hook import rewrite check also pass, including the transitive lifecycle dependency. Full package validation passed 169 files / 2,076 tests; generated README and homepage health totals match that report. Docs validation passed 21 files / 94 tests, including autosave timing, explicit flush and cancellation through the live demo component. Package build/types, docs production build/types and all 248 export entries (ESM, CJS, declarations) passed. Focused lint passed with existing CLI warnings. The new preview responds at `/preview/hooks/use-debounced-callback`; in-app browser automation timed out, so visual/browser interaction review remains unverified. Publication of the verified hook branch was authorized on 14 October 2026; merge/release review remains outstanding.
+
+## Remaining roadmap work — 14 October 2026
+
+The typography implementation plan has no remaining feature implementation tasks: foundations, content, measured text utilities, numeric typography, editorial additions, and the VisualGuard coverage gate are complete on the published stack. Merge/release review is still required. CMS/editor adoption, wider component adoption, Firefox/WebKit coverage and advisory AI are separate follow-ups, not unfinished typography branch tasks. The debounced-callback browser visual review remains unverified after automation timeouts; its live component interactions, production build and unit tests have passed.
+
+The broader hooks/animations roadmap still contains these proposed additions and fixes:
+
+- **P1 hook additions:** `useComposedRefs` (recommended next branch), `useRovingFocus`, `useTypeahead`, and `useSelection`. The number-formatting and debounced-callback hooks are implemented.
+- **P2 hook additions:** `useQueryState`, `useScrollProgress`, `useScrollSpy`, `useSwipe`, and `useAsyncAction`. The text-overflow hook is implemented.
+- **Foundation fixes:** storage hydration and same-document synchronization; a complete reduced-motion/decorative-loop policy; clear naming and compatibility guidance for the existing motion presets. Typography tokens and generated package surface metadata were completed by the typography work.
+- **P1 motion additions:** motion tokens/`MotionProvider`, `StaggerGroup`/`StaggerItem`, `PresenceTransition`, and `AutoHeight`.
+- **P2 motion additions:** scroll-driven parallax/reveal, `PointerTilt`/`PointerMagnetic`, `SplitTextReveal`, and a shared-layout recipe.
+- **P3 optional motion:** `TypewriterText`/`RotatingText` and `DrawPath`/`MorphIcon`, following consumer demand.
+- **Composition examples:** article reading progress/scrollspy, table URL filters/selection/formatted amounts, and wizard presence/dynamic-height validation, as their supporting APIs arrive.
+
+The additional focus-visible, live-announcement, floating-position and text-selection ideas remain exploratory candidates requiring concrete use cases. They are not committed delivery requirements.

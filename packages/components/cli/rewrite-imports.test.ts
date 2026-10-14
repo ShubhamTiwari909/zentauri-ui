@@ -6,6 +6,20 @@ import {
 } from "./rewrite-imports.mjs";
 
 describe("rewriteImports", () => {
+  it("rewrites sibling hook imports before UI imports when copying a hook", () => {
+    const input = `import { useEffect } from '../useIsomorphicLayoutEffect';\nexport { value } from "../usePrevious/types";\nimport { Button } from "../../ui/buttons";\n`;
+    const { code, usedHooks, usedUiComponents } = rewriteImports(input, {
+      utilsAlias: "~/lib/utils",
+      hooksAlias: "~/behaviors",
+      uiAlias: "~/components/ui",
+      siblingHooks: true,
+    });
+    expect(code).toContain("from '~/behaviors/useIsomorphicLayoutEffect'");
+    expect(code).toContain('from "~/behaviors/usePrevious/types"');
+    expect(code).toContain('from "~/components/ui/buttons"');
+    expect(usedHooks).toEqual(["useIsomorphicLayoutEffect", "usePrevious"]);
+    expect(usedUiComponents).toEqual([]);
+  });
   it("should rewrite lib/utils and hooks with two or three parent segments", () => {
     const input = `
 import { cn } from "../../lib/utils";
