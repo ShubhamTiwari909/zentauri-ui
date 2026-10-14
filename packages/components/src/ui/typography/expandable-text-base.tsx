@@ -35,6 +35,7 @@ export const ExpandableTextBase = ({
     onChange: onExpandedChange,
   });
   const { ref, isOverflowing } = useTextOverflow<HTMLDivElement>({
+    enabled: showToggle === "overflow",
     lines,
     measurementKey: text,
   });

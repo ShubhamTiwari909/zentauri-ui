@@ -30,6 +30,10 @@
   ],
   "sections": [
     {
+      "heading": "Text utilities",
+      "body": ""
+    },
+    {
       "heading": "Composition and API",
       "body": "TruncateText accepts string children and positive integer lines. ExpandableText supports controlled state, localized labels and showToggle=\"always\" as a measurement fallback. useTextOverflow observes resize, text and font changes and can measure a collapsed text-only copy."
     },
@@ -37,5 +41,6 @@
       "heading": "Accessibility",
       "body": "The full text remains in the accessibility tree. Expansion changes visual presentation. A native button exposes aria-expanded and aria-controls; a hidden measurement copy is inaccessible and immediately removed."
     }
-  ]
+  ],
+  "useCasesSectionHeading": "Text utilities"
 }

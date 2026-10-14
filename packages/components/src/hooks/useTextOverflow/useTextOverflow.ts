@@ -19,6 +19,31 @@ export type TextOverflowResult<T extends HTMLElement> = {
   remeasure: () => void;
 };
 
+type MeasurementInputs<T extends HTMLElement> = {
+  element: T | null;
+  measurementKey?: unknown;
+  lines?: number;
+  axis?: UseTextOverflowOptions["axis"];
+  tolerance?: number;
+};
+type MeasurementResult<T extends HTMLElement> = MeasurementInputs<T> & {
+  isOverflowing: boolean;
+  hasMeasured: boolean;
+};
+
+function matchesInputs<T extends HTMLElement>(
+  value: MeasurementInputs<T>,
+  inputs: MeasurementInputs<T>,
+) {
+  return (
+    value.element === inputs.element &&
+    Object.is(value.measurementKey, inputs.measurementKey) &&
+    value.lines === inputs.lines &&
+    value.axis === inputs.axis &&
+    value.tolerance === inputs.tolerance
+  );
+}
+
 /** Measures after mount; initial output is always unmeasured and does not read layout. */
 export function useTextOverflow<T extends HTMLElement = HTMLElement>({
   enabled = true,
@@ -33,11 +58,12 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
     throw new RangeError("tolerance must be a nonnegative finite number");
   const [element, setElement] = useState<T | null>(null);
   const [revision, setRevision] = useState(0);
-  const [result, setResult] = useState<{
-    element: T | null;
-    isOverflowing: boolean;
-    hasMeasured: boolean;
-  }>({ element: null, isOverflowing: false, hasMeasured: false });
+  // Results remember their inputs so a stale measurement is never reported.
+  const [result, setResult] = useState<MeasurementResult<T>>({
+    element: null,
+    isOverflowing: false,
+    hasMeasured: false,
+  });
   const ref = useCallback((node: T | null) => {
     setElement(node);
   }, []);
@@ -52,6 +78,9 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
     if (!view) return;
     let active = true;
     let frame: number | undefined;
+    // Skip rebuilding the measurement copy when its inputs are unchanged.
+    let lastSignature: string | undefined;
+    const inputs = { element, measurementKey, lines, axis, tolerance };
     const useAnimationFrame = typeof view.requestAnimationFrame === "function";
     const measure = () => {
       frame = undefined;
@@ -61,8 +90,33 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
         computed.display === "none" ||
         element.getBoundingClientRect().width <= 0
       ) {
-        setResult({ element, isOverflowing: false, hasMeasured: false });
+        lastSignature = undefined;
+        setResult({ ...inputs, isOverflowing: false, hasMeasured: false });
         return;
+      }
+      if (lines !== undefined) {
+        const signature = [
+          element.textContent,
+          computed.width,
+          computed.font,
+          computed.fontFeatureSettings,
+          computed.fontVariationSettings,
+          computed.letterSpacing,
+          computed.wordSpacing,
+          computed.textTransform,
+          computed.textIndent,
+          computed.whiteSpace,
+          computed.wordBreak,
+          computed.overflowWrap,
+          computed.hyphens,
+          computed.tabSize,
+          computed.direction,
+          computed.boxSizing,
+          computed.padding,
+          computed.borderWidth,
+        ].join("|");
+        if (signature === lastSignature) return;
+        lastSignature = signature;
       }
       let target: HTMLElement = element;
       let copy: HTMLDivElement | undefined;
@@ -112,11 +166,11 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
               ? vertical
               : horizontal || vertical;
         setResult((previous) =>
-          previous.element === element &&
+          matchesInputs(previous, inputs) &&
           previous.hasMeasured &&
           previous.isOverflowing === isOverflowing
             ? previous
-            : { element, isOverflowing, hasMeasured: true },
+            : { ...inputs, isOverflowing, hasMeasured: true },
         );
       } finally {
         copy?.remove();
@@ -172,11 +226,13 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
     };
   }, [element, enabled, measurementKey, lines, axis, tolerance, revision]);
 
+  const current =
+    enabled &&
+    matchesInputs(result, { element, measurementKey, lines, axis, tolerance });
   return {
     ref,
     remeasure,
-    isOverflowing:
-      enabled && result.element === element && result.isOverflowing,
-    hasMeasured: enabled && result.element === element && result.hasMeasured,
+    isOverflowing: current && result.isOverflowing,
+    hasMeasured: current && result.hasMeasured,
   };
 }

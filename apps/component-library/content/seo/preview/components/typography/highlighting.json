@@ -20,15 +20,19 @@
   },
   "intro": "Highlight matching text while preserving its original characters, casing and whitespace.",
   "useCases": [
-    "Search results, article excerpts and compact product descriptions."
+    "Search results, filtered lists and command palettes that show matched text."
   ],
   "faqs": [
     {
       "question": "Is an animation package required?",
-      "answer": "No. These primitives use native HTML, CSS and an optional client measurement hook. They do not import Motion."
+      "answer": "No. Mark and HighlightText do not require an animation package or a measurement hook."
     }
   ],
   "sections": [
+    {
+      "heading": "Text utilities",
+      "body": ""
+    },
     {
       "heading": "Composition and API",
       "body": "HighlightText accepts one or multiple literal queries. Empty queries are ignored; longest matches at the same start win. Case-insensitive matching uses Unicode simple case folding, without accent normalization or locale-specific equivalence."
@@ -37,5 +41,6 @@
       "heading": "Accessibility",
       "body": "Mark indicates relevance; screen readers do not necessarily announce its boundaries. Do not use color alone to explain a result."
     }
-  ]
+  ],
+  "useCasesSectionHeading": "Text utilities"
 }

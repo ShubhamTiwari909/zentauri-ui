@@ -162,7 +162,11 @@ export function TypographyTextUtilitiesExamples({
       <div className="mt-6 space-y-8">
         {rows.map((row) => (
           <div key={row.label}>
-            <p className="mb-3 text-sm font-semibold text-slate-900 dark:text-white">
+            <p
+              role="heading"
+              aria-level={3}
+              className="mb-3 text-sm font-semibold text-slate-900 dark:text-white"
+            >
               {row.label}
             </p>
             <PreviewCodeShowcase code={row.code}>
