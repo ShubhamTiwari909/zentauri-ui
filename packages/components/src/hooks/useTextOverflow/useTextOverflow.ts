@@ -101,15 +101,17 @@ export function useTextOverflow<T extends HTMLElement = HTMLElement>({
         setResult({ ...inputs, isOverflowing: false, hasMeasured: false });
         return;
       }
-      // Only text-layout styles matter; theme color changes need no copy/layout.
+      // Snapshot computed styles conservatively: exclude only paint-only properties
+      // and custom variables, whose resolved layout values are already included.
       const measurementStyles =
         lines === undefined
           ? []
           : Array.from(computed)
-              .filter((property) =>
-                /^(?:-webkit-)?(?:font(?:-|$)|line-height$|letter-spacing$|word-spacing$|text-(?:align|indent|transform|rendering|orientation|size-adjust)$|white-space$|word-break$|overflow-wrap$|hyphens$|tab-size$|direction$|writing-mode$|box-sizing$|width$|padding(?:-|$)|border-(?:.+-)?width$)/.test(
-                  property,
-                ),
+              .filter(
+                (property) =>
+                  !/^(?:--|(?:.*-)?color$|background(?:-|$)|opacity$|(?:box|text)-shadow$|fill(?:-|$)|stroke(?:-|$)|caret(?:-|$)|outline(?:-|$)|cursor$|pointer-events$)/.test(
+                    property,
+                  ),
               )
               .map(
                 (property) =>
