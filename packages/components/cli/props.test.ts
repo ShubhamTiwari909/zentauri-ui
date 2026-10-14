@@ -310,3 +310,19 @@ it("documents typography refs, semantic levels and shared control choices", () =
     "start",
   ]);
 });
+
+it("retains native anchor navigation props in TextLink metadata", () => {
+  const link = readManifest().components.typography!.subcomponents.find(
+    (entry) => entry.propsType === "TextLinkProps",
+  )!;
+  expect(link.props.map((prop) => prop.name)).toEqual(
+    expect.arrayContaining([
+      "href",
+      "target",
+      "rel",
+      "download",
+      "referrerPolicy",
+      "ref",
+    ]),
+  );
+});

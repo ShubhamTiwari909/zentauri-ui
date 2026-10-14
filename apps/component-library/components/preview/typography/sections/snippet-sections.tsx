@@ -223,7 +223,12 @@ export function TypographyCodeExamplesSection({
 }: {
   section: TypographySectionSlug;
 }) {
-  if (section === "scale" || section === "accessibility") return null;
+  if (
+    ["scale", "accessibility", "prose", "links", "description-list"].includes(
+      section,
+    )
+  )
+    return null;
   return (
     <Section>
       <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">

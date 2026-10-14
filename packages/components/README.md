@@ -35,16 +35,16 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 161 passed (161)   |
-| Tests      | 1970 passed (1970) |
+| Test files | 162 passed (162)   |
+| Tests      | 1988 passed (1988) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 104        | 1516  |
+| Components and UI utilities    | 105        | 1532  |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 48         | 242   |
-| Design system facade           | 1          | 23    |
-| CLI and import rewriting       | 4          | 45    |
+| Design system facade           | 1          | 24    |
+| CLI and import rewriting       | 4          | 46    |
 | Accessibility (axe + keyboard) | 2          | 52    |
 | Permission system              | 1          | 47    |
 
@@ -73,14 +73,15 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/calendar/date-utils.test.ts`                                    |    28 |
 | `cli/cli.integration.test.ts`                                           |    26 |
 | `src/ui/bento-grid/bento-grid.test.tsx`                                 |    26 |
+| `src/lib/facade.test.ts`                                                |    24 |
 | `src/ui/combobox/combobox.test.tsx`                                     |    24 |
-| `src/lib/facade.test.ts`                                                |    23 |
 | `src/ui/wizard/wizard.test.tsx`                                         |    22 |
 | `src/accessibility/keyboard-interaction.test.tsx`                       |    18 |
 | `src/ui/calendar/calendar.test.tsx`                                     |    16 |
 | `src/ui/json-viewer/json-viewer.test.tsx`                               |    16 |
 | `src/ui/network-status/network-status.test.tsx`                         |    16 |
 | `src/ui/resizable-panels/resize-layout.test.ts`                         |    16 |
+| `src/ui/typography/content.test.tsx`                                    |    16 |
 | `src/hooks/useUndoRedo/useUndoRedo.test.ts`                             |    15 |
 | `src/ui/package-install-command/package-install-command.test.tsx`       |    15 |
 | `src/ui/pagination/pagination.test.tsx`                                 |    15 |
@@ -127,6 +128,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/slider/slider.test.tsx`                                         |     9 |
 | `src/ui/speech-synthesizer/speech-synthesizer.test.tsx`                 |     9 |
 | `src/ui/typing-indicator/typing-indicator.test.tsx`                     |     9 |
+| `cli/props.test.ts`                                                     |     8 |
 | `src/ui/activity-feed/activity-feed.test.tsx`                           |     8 |
 | `src/ui/command/command.test.tsx`                                       |     8 |
 | `src/ui/copy-button/copy-button.test.tsx`                               |     8 |
@@ -136,7 +138,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/sortable-list/sortable-list.test.tsx`                           |     8 |
 | `src/ui/speech-recognition/speech-recognition.test.tsx`                 |     8 |
 | `src/ui/spinner/animated/spinner.test.tsx`                              |     8 |
-| `cli/props.test.ts`                                                     |     7 |
 | `cli/rewrite-imports.test.ts`                                           |     7 |
 | `src/hooks/useDynamicStepper/useDynamicStepper.test.ts`                 |     7 |
 | `src/hooks/useHotkeys/useHotkeys.test.ts`                               |     7 |
@@ -333,7 +334,7 @@ Import static primitives from `@zentauri-ui/zentauri-components/ui/<subpath>` wh
 
 Import from `@zentauri-ui/zentauri-components/ui/typography`. This entry is **static only** (no `/animated` subpath).
 
-**Components:** `Heading`, `Text`, `List` (with `List.Item`, also exported as `ListItem`), `Blockquote`, `InlineCode`, `CodeBlock`, `Strong`, `Emphasis`, `Small`, and `VisuallyHidden`.
+**Components:** `Heading`, `Text`, `List` (with `List.Item`, also exported as `ListItem`), `Blockquote`, `InlineCode`, `CodeBlock`, `Strong`, `Emphasis`, `Small`, `VisuallyHidden`, `Prose`, `TextLink`, and the `DescriptionList` compound family.
 
 **Types:** `HeadingProps`, `TextProps`, `ListProps`, `ListItemProps`, `BlockquoteProps`, `InlineCodeProps`, `CodeBlockProps`, `StrongProps`, `EmphasisProps`, `SmallProps`, `VisuallyHiddenProps`, `TypographyControls`, `HeadingLevel`, `TextElement`, `TypographyTone`, `UnorderedMarker`.
 
@@ -427,6 +428,35 @@ Scope fonts and scale with `--zui-typography-font-body`, `--zui-typography-font-
 ```
 
 Private `--_zui-type-*` properties resolve these values without competing with utility overrides; they are implementation details. The docs token reference and design-system facade list all public variables. Vendor the complete family with `zentauri-ui add typography`; no Motion peer is needed.
+
+### Rich content, links and definition lists
+
+`Prose` styles already-rendered HTML or MDX children; it is not a Markdown parser. It accepts `as="div" | "article"`, `size="sm" | "base" | "lg"`, `measure="readable" | "wide" | "none"`, and non-gradient text tones. The default is a div with base sizing and readable width. Zero-specificity descendant selectors let native elements keep explicit utility overrides. Elements with component data-slots and `data-prose="ignore"` subtrees skip those selectors; container fonts/colors still inherit. Nest wide tables in an `overflow-x-auto` wrapper to preserve table semantics. Existing CodeBlock and Kbd entries can be embedded without adopting raw prose styles.
+
+`TextLink` uses a native anchor and preserves href, download, ref and other native props. Underline is always visible by default, with hover/focus or none alternatives. Its decorative `externalIndicator` does not change target or accessible name. Set `target="_blank"` explicitly; the component merges noopener into rel while retaining supplied tokens. Add explicit accessible text for a new-tab announcement when desired. Only non-gradient tones are available.
+
+`DescriptionList` renders dl/dt/dd with `Item`, `Term` and `Details` compound members and equivalent named exports. Layout is responsive by default (stacked below md, two columns from md); stacked/inline layouts and optional separators are available. Multiple Details members can follow one Term. Column proportions, gaps, separator colors and weights are themeable. Nested definition lists configure their own layout.
+
+```tsx
+<>
+<Prose as="article">
+  <h2>Release notes</h2>
+  <p>Already-rendered content receives a consistent rhythm.</p>
+  <div data-prose="ignore"><p className="text-sm">Embedded panel</p></div>
+</Prose>
+<TextLink href="/docs">Read docs</TextLink>
+<DescriptionList separators>
+  <DescriptionList.Item>
+    <DescriptionList.Term>Documentation</DescriptionList.Term>
+    <DescriptionList.Details><TextLink href="/docs">Read docs</TextLink></DescriptionList.Details>
+  </DescriptionList.Item>
+</DescriptionList>
+</>
+```
+
+Additional exports include `ProseProps`, `TextLinkProps`, `ReadableTypographyTone`, `DescriptionListProps`, `DescriptionListItemProps`, `DescriptionListTermProps`, `DescriptionListDetailsProps`, and `proseVariants`, `textLinkVariants`, `descriptionListVariants`.
+
+For framework navigation, apply `textLinkVariants()` to the consumer's Link rather than nesting anchors. With Next.js, call that helper inside a client component because the typography entry retains its client boundary. No Next.js or Motion dependency is introduced into the library. All additions remain available through `zentauri-ui add typography`.
 
 ## Charts
 
@@ -966,7 +996,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1970 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 1988 test cases in total
 - `pnpm test:a11y` — focused accessibility coverage for package-level UI primitives and compound components: **axe-core** audits for every interactive component plus **keyboard-interaction** tests (focus order, arrow-key nav, Home/End, Escape/Enter) for the compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).

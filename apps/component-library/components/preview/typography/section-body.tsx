@@ -287,7 +287,12 @@ export function TypographySectionBody({
 }: {
   section: TypographySectionSlug;
 }) {
-  if (section === "scale" || section === "accessibility") return null;
+  if (
+    ["scale", "accessibility", "prose", "links", "description-list"].includes(
+      section,
+    )
+  )
+    return null;
   return (
     <>
       <Section>

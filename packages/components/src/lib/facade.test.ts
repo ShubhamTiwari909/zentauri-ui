@@ -489,3 +489,33 @@ it("discovers typography scale tokens, reciprocal theme pairs and new control gr
       .some((variable) => variable.name.startsWith("--_zui")),
   ).toBe(false);
 });
+
+it("discovers prose, link and definition-list variants and reciprocal content tokens", () => {
+  const typography = DesignSystem.getComponent("typography");
+  expect(typography?.getVariant("size", "lg", { slot: "prose" })).toBeDefined();
+  expect(
+    typography?.getVariant("tone", "primary", { slot: "link" }),
+  ).toBeDefined();
+  expect(
+    typography?.getVariant("underline", "hover", { slot: "link" }),
+  ).toBeDefined();
+  expect(
+    typography?.getVariant("layout", "responsive", { slot: "description" }),
+  ).toBeDefined();
+  expect(typography?.variables()).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        name: "--zui-typography-prose-h2-size",
+        pairName: "--zui-typography-prose-h2-size-dark",
+      }),
+      expect.objectContaining({
+        name: "--zui-typography-link-primary-fg",
+        pairName: "--zui-typography-link-primary-fg-dark",
+      }),
+      expect.objectContaining({
+        name: "--zui-typography-description-columns",
+        pairName: "--zui-typography-description-columns-dark",
+      }),
+    ]),
+  );
+});

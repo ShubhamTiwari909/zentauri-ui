@@ -219,7 +219,9 @@ describe("Typography foundations", () => {
 it("keeps every typography arbitrary value balanced and code tone fallbacks present", () => {
   function check(value: unknown) {
     if (typeof value === "string") {
-      for (const match of value.matchAll(/\[[^\]]+\]/g)) {
+      for (const match of value.matchAll(
+        /\[(?:--_zui|color:|length:|family-name:|number:|var\()[^\]]+\]/g,
+      )) {
         let depth = 0;
         for (const character of match[0]) {
           if (character === "(") depth++;

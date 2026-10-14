@@ -31125,6 +31125,13 @@
               "deprecated": false
             },
             {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31220,6 +31227,347 @@
               "deprecated": false
             },
             {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:DescriptionList",
+          "displayName": "DescriptionList",
+          "propsType": "DescriptionListProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "layout",
+              "type": "enum",
+              "required": false,
+              "default": "responsive",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "inline",
+                "responsive",
+                "stacked"
+              ],
+              "variantGroup": "layout",
+              "deprecated": false
+            },
+            {
+              "name": "separators",
+              "type": "enum",
+              "required": false,
+              "default": "false",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "false",
+                "true"
+              ],
+              "variantGroup": "separators",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "base",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "base",
+                "lg",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "tone",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "accent",
+                "default",
+                "destructive",
+                "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
+                "info",
+                "muted",
+                "primary",
+                "secondary",
+                "success",
+                "warning"
+              ],
+              "variantGroup": "tone",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDListElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDListElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:DescriptionListDetails",
+          "displayName": "DescriptionListDetails",
+          "propsType": "DescriptionListDetailsProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:DescriptionListItem",
+          "displayName": "DescriptionListItem",
+          "propsType": "DescriptionListItemProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:DescriptionListTerm",
+          "displayName": "DescriptionListTerm",
+          "propsType": "DescriptionListTermProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31305,6 +31653,13 @@
               "required": false,
               "group": "dom",
               "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
               "deprecated": false
             },
             {
@@ -31553,6 +31908,13 @@
               "deprecated": false
             },
             {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31638,6 +32000,13 @@
               "required": false,
               "group": "dom",
               "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
               "deprecated": false
             },
             {
@@ -31751,6 +32120,13 @@
               "deprecated": false
             },
             {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31806,6 +32182,145 @@
               "required": false,
               "group": "dom",
               "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:Prose",
+          "displayName": "Prose",
+          "propsType": "ProseProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "measure",
+              "type": "enum",
+              "required": false,
+              "default": "readable",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "none",
+                "readable",
+                "wide"
+              ],
+              "variantGroup": "measure",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "base",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "base",
+                "lg",
+                "sm"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "tone",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "accent",
+                "default",
+                "destructive",
+                "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
+                "info",
+                "muted",
+                "primary",
+                "secondary",
+                "success",
+                "warning"
+              ],
+              "variantGroup": "tone",
+              "deprecated": false
+            },
+            {
+              "name": "as",
+              "type": "'div' | 'article' | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | MouseEventHandler<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "((instance: HTMLDivElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLDivElement | null> | ((instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLElement | null> | null | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
               "deprecated": false
             },
             {
@@ -31897,6 +32412,13 @@
               "deprecated": false
             },
             {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31982,6 +32504,13 @@
               "required": false,
               "group": "dom",
               "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
               "deprecated": false
             },
             {
@@ -32153,6 +32682,21 @@
               "deprecated": false
             },
             {
+              "name": "underline",
+              "type": "enum",
+              "required": false,
+              "default": "always",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "always",
+                "hover",
+                "none"
+              ],
+              "variantGroup": "underline",
+              "deprecated": false
+            },
+            {
               "name": "weight",
               "type": "enum",
               "required": false,
@@ -32220,13 +32764,6 @@
               "deprecated": false
             },
             {
-              "name": "underline",
-              "type": "boolean | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
               "name": "children",
               "type": "ReactNode",
               "required": false,
@@ -32263,8 +32800,265 @@
               "deprecated": false
             },
             {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:TextLink",
+          "displayName": "TextLink",
+          "propsType": "TextLinkProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "align",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "center",
+                "end",
+                "justify",
+                "start"
+              ],
+              "variantGroup": "align",
+              "deprecated": false
+            },
+            {
+              "name": "leading",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "normal",
+                "relaxed",
+                "tight"
+              ],
+              "variantGroup": "leading",
+              "deprecated": false
+            },
+            {
+              "name": "measure",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "none",
+                "readable",
+                "wide"
+              ],
+              "variantGroup": "measure",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "base",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "base",
+                "lg",
+                "sm",
+                "xl",
+                "xs"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "tone",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "accent",
+                "default",
+                "destructive",
+                "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
+                "info",
+                "muted",
+                "primary",
+                "secondary",
+                "success",
+                "warning"
+              ],
+              "variantGroup": "tone",
+              "deprecated": false
+            },
+            {
+              "name": "tracking",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "normal",
+                "tight",
+                "wide"
+              ],
+              "variantGroup": "tracking",
+              "deprecated": false
+            },
+            {
+              "name": "underline",
+              "type": "enum",
+              "required": false,
+              "default": "always",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "always",
+                "hover",
+                "none"
+              ],
+              "variantGroup": "underline",
+              "deprecated": false
+            },
+            {
+              "name": "weight",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "bold",
+                "medium",
+                "normal",
+                "semibold"
+              ],
+              "variantGroup": "weight",
+              "deprecated": false
+            },
+            {
+              "name": "wrap",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "balance",
+                "normal",
+                "nowrap",
+                "pretty"
+              ],
+              "variantGroup": "wrap",
+              "deprecated": false
+            },
+            {
+              "name": "externalIndicator",
+              "type": "boolean | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Decorative external-link marker; does not change target or accessible name.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "download",
+              "type": "any",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "href",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLAnchorElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLAnchorElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "referrerPolicy",
+              "type": "HTMLAttributeReferrerPolicy | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "target",
+              "type": "HTMLAttributeAnchorTarget | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -32333,6 +33127,13 @@
               "required": false,
               "group": "dom",
               "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
               "deprecated": false
             },
             {

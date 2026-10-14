@@ -2,6 +2,9 @@ import type { PreviewSeoDocument } from "@/lib/preview-seo";
 
 import blockquote from "@/content/seo/preview/components/typography/blockquote.json";
 import codeBlock from "@/content/seo/preview/components/typography/code-block.json";
+import prose from "@/content/seo/preview/components/typography/prose.json";
+import links from "@/content/seo/preview/components/typography/links.json";
+import descriptionList from "@/content/seo/preview/components/typography/description-list.json";
 import scale from "@/content/seo/preview/components/typography/scale.json";
 import accessibility from "@/content/seo/preview/components/typography/accessibility.json";
 import heading from "@/content/seo/preview/components/typography/heading.json";
@@ -10,6 +13,9 @@ import lists from "@/content/seo/preview/components/typography/lists.json";
 import paragraph from "@/content/seo/preview/components/typography/paragraph.json";
 
 export const TYPOGRAPHY_SECTION_SLUGS = [
+  "prose",
+  "links",
+  "description-list",
   "scale",
   "accessibility",
   "heading",
@@ -23,6 +29,9 @@ export const TYPOGRAPHY_SECTION_SLUGS = [
 export type TypographySectionSlug = (typeof TYPOGRAPHY_SECTION_SLUGS)[number];
 
 export const typographySectionLabels: Record<TypographySectionSlug, string> = {
+  prose: "Prose and rich content",
+  links: "Text links",
+  "description-list": "Description lists",
   scale: "Scale and presets",
   accessibility: "Accessible text",
   heading: "Headings",
@@ -37,6 +46,9 @@ const typographySectionSeoRecord: Record<
   TypographySectionSlug,
   PreviewSeoDocument
 > = {
+  prose: prose as PreviewSeoDocument,
+  links: links as PreviewSeoDocument,
+  "description-list": descriptionList as PreviewSeoDocument,
   scale: scale as PreviewSeoDocument,
   accessibility: accessibility as PreviewSeoDocument,
   heading: heading as PreviewSeoDocument,

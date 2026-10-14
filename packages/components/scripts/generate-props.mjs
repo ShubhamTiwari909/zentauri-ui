@@ -470,7 +470,13 @@ function getDeclarationScope(declarations) {
  * @returns {boolean} True when the prop should be included in `props.json`.
  */
 function shouldIncludeProp(name, declarations, description, componentName) {
-  if (name === "ref" && componentName === "typography") return true;
+  if (
+    componentName === "typography" &&
+    ["ref", "href", "target", "rel", "download", "referrerPolicy"].includes(
+      name,
+    )
+  )
+    return true;
   if (name === "ref" && !description) return false;
   if (name.startsWith("aria-") || name.startsWith("data-")) return false;
 

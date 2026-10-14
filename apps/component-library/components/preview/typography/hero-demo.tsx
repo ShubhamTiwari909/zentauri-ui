@@ -1,3 +1,4 @@
+import { TypographyContentHero } from "./content-examples";
 import { TypographyScaleDemo } from "./foundations";
 
 import {
@@ -21,6 +22,14 @@ export function TypographyHeroDemo({
     "rounded-3xl border border-white/10 bg-white/90 dark:bg-white/5 p-5 shadow-2xl shadow-slate-950/40 backdrop-blur-xl w-full overflow-auto";
 
   switch (section) {
+    case "prose":
+    case "links":
+    case "description-list":
+      return (
+        <div className={shell}>
+          <TypographyContentHero section={section} />
+        </div>
+      );
     case "scale":
       return (
         <div className={shell}>

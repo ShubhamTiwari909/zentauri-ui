@@ -57,6 +57,10 @@ describe("SiteHeader", () => {
       "href",
       "https://zentauri-ui-demo.vercel.app/demo",
     );
+    expect(screen.getByRole("link", { name: "VisualGuard" })).toHaveAttribute(
+      "href",
+      "/visualguard",
+    );
   });
 
   it("should group catalog links into the UI dropdown", async () => {
@@ -138,5 +142,14 @@ describe("SiteHeader", () => {
     expect(
       screen.getByRole("navigation", { name: "Mobile main" }),
     ).toBeInTheDocument();
+    expect(
+      screen
+        .getAllByRole("link", { name: "VisualGuard" })
+        .some(
+          (link) =>
+            link.closest('[aria-label="Mobile main"]') &&
+            link.getAttribute("href") === "/visualguard",
+        ),
+    ).toBe(true);
   });
 });
