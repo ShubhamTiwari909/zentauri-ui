@@ -202,3 +202,12 @@ it("preserves editorial native refs and owns its navigation identifiers", () => 
   void id;
   void unlabeled;
 });
+
+const rejectedBacklinkHtml: FootnoteBacklinkProps = {
+  noteId: "note",
+  referenceId: "opening",
+  label: "Back to opening",
+  // @ts-expect-error Backlinks supply their own children and cannot also inject HTML.
+  dangerouslySetInnerHTML: { __html: "Back" },
+};
+void rejectedBacklinkHtml;

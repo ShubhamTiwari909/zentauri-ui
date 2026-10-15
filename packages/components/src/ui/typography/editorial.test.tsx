@@ -229,3 +229,20 @@ describe("Footnotes", () => {
     }
   });
 });
+
+it("preserves well-formed emoji identifiers in encoded footnote fragments", () => {
+  render(
+    <Footnotes scopeId="scope😀">
+      <Footnotes.Reference noteId="note😀" referenceId="opening😀" number={1} />
+      <Footnotes.List>
+        <Footnotes.Item noteId="note😀" number={1}>
+          Note
+        </Footnotes.Item>
+      </Footnotes.List>
+    </Footnotes>,
+  );
+  const reference = screen.getByRole("link", { name: "Footnote 1" });
+  expect(decodeURIComponent(reference.getAttribute("href")!.slice(1))).toBe(
+    screen.getByRole("listitem").id,
+  );
+});
