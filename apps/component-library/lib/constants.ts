@@ -1,5 +1,14 @@
 export const HOOK_PREVIEW_REGISTRY = [
   {
+    slug: "use-debounced-callback",
+    module: "useDebouncedCallback",
+    name: "useDebouncedCallback",
+    description:
+      "Schedules trailing-edge actions with stable functions, cancel/flush controls and reactive pending state.",
+    intro:
+      "Debounce search or autosave actions using the latest callback and arguments; cancel pending work or run it immediately.",
+  },
+  {
     slug: "use-number-format",
     module: "useNumberFormat",
     name: "useNumberFormat",

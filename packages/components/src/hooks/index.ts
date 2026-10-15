@@ -56,6 +56,10 @@ export {
 } from "./useDateTimeFormat";
 export { useDebouncedValue } from "./useDebouncedValue";
 export {
+  useDebouncedCallback,
+  type UseDebouncedCallbackResult,
+} from "./useDebouncedCallback";
+export {
   useDurationFormat,
   type DurationPart,
   type UseDurationFormatOptions,

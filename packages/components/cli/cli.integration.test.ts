@@ -39,6 +39,32 @@ function runCliError(cwd: string, args: string[]): string {
 }
 
 describe("zentauri-ui CLI", () => {
+  it("vendors debounced callbacks with their lifecycle hook dependency", () => {
+    const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-debounce-"));
+    try {
+      runCli(dir, ["init"]);
+      runCli(dir, ["add", "hook", "useDebouncedCallback"]);
+      const hookRoot = join(dir, "src", "hooks", "useDebouncedCallback");
+      const source = readFileSync(
+        join(hookRoot, "useDebouncedCallback.ts"),
+        "utf8",
+      );
+      expect(existsSync(join(hookRoot, "index.ts"))).toBe(true);
+      expect(
+        existsSync(
+          join(dir, "src", "hooks", "useIsomorphicLayoutEffect", "index.ts"),
+        ),
+      ).toBe(true);
+      expect(source).toContain("@/hooks/useIsomorphicLayoutEffect");
+      expect(source).not.toContain("@zentauri-ui/");
+      expect(source).not.toContain("framer-motion");
+      expect(
+        readdirSync(hookRoot).some((file) => file.includes(".test.")),
+      ).toBe(false);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
   it("vendors Change Impact Explorer with graph helpers, virtualization, and token dependencies", () => {
     const dir = mkdtempSync(join(tmpdir(), "zentauri-cli-impact-"));
     try {

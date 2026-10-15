@@ -1052,6 +1052,7 @@ async function copyHookFolder(hookName, config, configDir, packageRoot) {
         utilsAlias: config.aliases.utils,
         hooksAlias: config.aliases.hooks,
         uiAlias: config.aliases.ui,
+        siblingHooks: true,
       });
       await writeFile(absDest, code, "utf8");
     } else {

@@ -2,9 +2,9 @@
 
 Date: 13 October 2026
 
-Status: typography phases published in PRs #153–#157; VisualGuard coverage implemented and locally verified on `codex/visualguard-coverage`
+Status (15 October 2026): all planned typography implementation branches and VisualGuard coverage have reached `main`, including the recovery merge in PR #160. Earlier local and hosted coverage results are historical; checks for the recovered stack remain pending. Package release and any CMS adoption remain separate follow-ups.
 
-Visual verification tooling: [VisualGuard](https://github.com/ShubhamTiwari909/visualguard-ai-testing), Shubham Tiwari's open-source visual testing package. Package overview and navigation are published in PR #154. Runner configuration and CI are implemented on the coverage branch; local verification and reference review are recorded below.
+Visual verification tooling: [VisualGuard](https://github.com/ShubhamTiwari909/visualguard-ai-testing), Shubham Tiwari's open-source visual testing package. Package overview and navigation are published in PR #154. Runner configuration and CI are published in PR #158; local and hosted verification and reference review are recorded below.
 
 Scope: every typography recommendation in [the broader roadmap](./hooks-typography-animations-roadmap.md), including optional editorial additions
 
@@ -28,7 +28,7 @@ Four core PRs are the target, not an absolute rule. Split a branch further if a 
 
 If one branch is strongly preferred, limit it to **foundations plus the three content additions**. Merge that core first; text measurement, number formatting and editorial work should still follow separately. An integration branch is unnecessary for the sequential approach. If an unreleased demo is needed, a temporary integration branch can combine reviewed work, but it should not replace the individual merge reviews.
 
-Suggested commit prefixes follow repository guidance: `feature: add typography scale tokens`, `fix: preserve typography default styling`, and `feature: add prose content styles`. Create each implementation branch when its phase begins; the VisualGuard coverage branch is now active. The foundations implementation is committed and published in PR #153. The content branch is published in [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154), targeting foundations while PR #153 awaits review. Text utilities are published in [PR #155](https://github.com/ShubhamTiwari909/zentauri-ui/pull/155), targeting content. Number formatting is published in [PR #156](https://github.com/ShubhamTiwari909/zentauri-ui/pull/156), targeting text utilities. Editorial is published in [PR #157](https://github.com/ShubhamTiwari909/zentauri-ui/pull/157), targeting number formatting. VisualGuard coverage is stacked on editorial commit `e35026f2`.
+Suggested commit prefixes follow repository guidance: `feature: add typography scale tokens`, `fix: preserve typography default styling`, and `feature: add prose content styles`. Create each implementation branch when its phase begins; all typography implementation and coverage branches are now published. The foundations implementation is committed and published in PR #153. The content branch is published in [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154), targeting foundations while PR #153 awaits review. Text utilities are published in [PR #155](https://github.com/ShubhamTiwari909/zentauri-ui/pull/155), targeting content. Number formatting is published in [PR #156](https://github.com/ShubhamTiwari909/zentauri-ui/pull/156), targeting text utilities. Editorial is published in [PR #157](https://github.com/ShubhamTiwari909/zentauri-ui/pull/157), targeting number formatting. VisualGuard coverage is published in [PR #158](https://github.com/ShubhamTiwari909/zentauri-ui/pull/158), stacked on editorial commit `e35026f2`.
 
 Use a separate follow-up branch, `codex/visualguard-coverage`, for the shared VisualGuard dependency, capture configuration, reviewed baselines and CI workflow. It can follow the content merge and supply the visual gate for later typography branches. The package's dedicated `/visualguard` page, header/footer links and this planning update belong to the current docs work; they do not require installing VisualGuard or broadening the public component package's dependencies.
 
@@ -432,7 +432,7 @@ Do not claim a browser visual check, accessibility audit or test passed unless i
 - [x] Add development tooling and explicit route/theme/viewport capture configuration.
 - [x] Commit the 88 complete baseline sets after branch review (images inspected locally; publication authorized on 14 October 2026).
 - [x] Verify deterministic comparisons and interactive focus/disclosure fixtures locally.
-- [x] Add a CI job with readiness checks, result policy and complete report artifacts (hosted execution pending).
+- [x] Add a CI job with readiness checks, result policy and complete report artifacts (hosted execution passed in run 38516363498).
 - [x] Document intentional-change approval and baseline migration procedures.
 
 ### PR 3 — text utilities
@@ -567,3 +567,9 @@ The reviewed coverage implementation and all 88 baseline sets are being publishe
 ## Hosted coverage verification — 14 October 2026
 
 The initial [GitHub run](https://github.com/ShubhamTiwari909/zentauri-ui/actions/runs/38515241958) passed all 76 visual cases in 4.0 minutes and verified the 88 complete reference artifact sets. Its job nevertheless failed during host cleanup because container installs/builds left root-owned files in the snapshot. The wrapper now passes the caller's user/group IDs and the suite returns workspace/report ownership on exit, preserving its original success/failure status. A complete hosted rerun remains pending for this cleanup correction; screenshot acceptance thresholds and baselines are unchanged.
+
+The [complete hosted rerun](https://github.com/ShubhamTiwari909/zentauri-ui/actions/runs/38516363498) for `b0720296` subsequently passed comparison, evidence validation, ownership cleanup and report upload in 6m48s. VisualGuard coverage is published in [PR #158](https://github.com/ShubhamTiwari909/zentauri-ui/pull/158). All typography implementation/coverage branches are now published; merge/release reviews remain outstanding.
+
+## Main-branch recovery — 15 October 2026
+
+PR #158 merged into the editorial branch after its earlier parent PR had merged. Recovery PR #160 brings the remaining editorial and coverage changes into `main`. The debounced-callback follow-up in PR #159 is rebased directly onto that updated `main`; it no longer depends on an open typography or coverage branch. Existing baseline references are preserved, and current hosted visual results must be checked separately from the historical passing runs above.

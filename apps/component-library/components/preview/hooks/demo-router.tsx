@@ -1,6 +1,7 @@
 "use client";
 
 import { NumberFormatDemo } from "./number-format-demo";
+import { DebouncedCallbackDemo } from "./debounced-callback-demo";
 import { TextOverflowDemo } from "./text-overflow-demo";
 
 import { useBodyScrollLock } from "@zentauri-ui/zentauri-components/hooks/useBodyScrollLock";
@@ -75,6 +76,8 @@ type HookDemoRouterProps = {
 
 export function HookDemoRouter({ slug }: HookDemoRouterProps) {
   switch (slug) {
+    case "use-debounced-callback":
+      return <DebouncedCallbackDemo />;
     case "use-number-format":
       return <NumberFormatDemo />;
     case "use-text-overflow":

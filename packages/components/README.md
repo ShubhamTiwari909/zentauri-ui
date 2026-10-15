@@ -25,7 +25,7 @@ Counted from the entry lists in `tsup.config.ts`. Refresh with `pnpm --filter @z
 | Animated UI entries |    52 | `@zentauri-ui/zentauri-components/ui/<name>/animated` |
 | Animation entries   |    41 | `@zentauri-ui/zentauri-components/animations/<name>`  |
 | Chart entries       |     9 | `@zentauri-ui/zentauri-components/charts/<type>`      |
-| Hook entries        |    50 | `@zentauri-ui/zentauri-components/hooks/<entry>`      |
+| Hook entries        |    51 | `@zentauri-ui/zentauri-components/hooks/<entry>`      |
 
 `spinner` is the only animated-only UI area. Import it from `@zentauri-ui/zentauri-components/ui/spinner/animated`; there is no `@zentauri-ui/zentauri-components/ui/spinner` static entry.
 
@@ -35,16 +35,16 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 168 passed (168)   |
-| Tests      | 2059 passed (2059) |
+| Test files | 169 passed (169)   |
+| Tests      | 2085 passed (2085) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
 | Components and UI utilities    | 109        | 1577  |
 | Standalone animations          | 1          | 45    |
-| React hooks                    | 50         | 268   |
+| React hooks                    | 51         | 292   |
 | Design system facade           | 1          | 24    |
-| CLI and import rewriting       | 4          | 46    |
+| CLI and import rewriting       | 4          | 48    |
 | Accessibility (axe + keyboard) | 2          | 52    |
 | Permission system              | 1          | 47    |
 
@@ -71,8 +71,9 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/glass-card/glass-card.test.tsx`                                 |    31 |
 | `src/ui/orbit-system/orbit-system.test.tsx`                             |    29 |
 | `src/ui/calendar/date-utils.test.ts`                                    |    28 |
-| `cli/cli.integration.test.ts`                                           |    26 |
+| `cli/cli.integration.test.ts`                                           |    27 |
 | `src/ui/bento-grid/bento-grid.test.tsx`                                 |    26 |
+| `src/hooks/useDebouncedCallback/useDebouncedCallback.test.tsx`          |    24 |
 | `src/lib/facade.test.ts`                                                |    24 |
 | `src/ui/combobox/combobox.test.tsx`                                     |    24 |
 | `src/ui/wizard/wizard.test.tsx`                                         |    22 |
@@ -133,6 +134,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/speech-synthesizer/speech-synthesizer.test.tsx`                 |     9 |
 | `src/ui/typing-indicator/typing-indicator.test.tsx`                     |     9 |
 | `cli/props.test.ts`                                                     |     8 |
+| `cli/rewrite-imports.test.ts`                                           |     8 |
 | `src/ui/activity-feed/activity-feed.test.tsx`                           |     8 |
 | `src/ui/command/command.test.tsx`                                       |     8 |
 | `src/ui/copy-button/copy-button.test.tsx`                               |     8 |
@@ -144,7 +146,6 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/spinner/animated/spinner.test.tsx`                              |     8 |
 | `src/ui/typography/number-text.test.tsx`                                |     8 |
 | `src/ui/typography/reading-time.test.ts`                                |     8 |
-| `cli/rewrite-imports.test.ts`                                           |     7 |
 | `src/hooks/useDynamicStepper/useDynamicStepper.test.ts`                 |     7 |
 | `src/hooks/useHotkeys/useHotkeys.test.ts`                               |     7 |
 | `src/hooks/useTableSort/useTableSort.test.ts`                           |     7 |
@@ -572,6 +573,7 @@ Hooks live in `src/hooks/`. Each hook is a separate published entry under `@zent
 | `useControllableState`      | `useControllableState`      | `UseControllableStateParams`                                                              |
 | `useCookie`                 | `useCookie`                 | `CookieOptions`, `UseCookieResult`                                                        |
 | `useCountdown`              | `useCountdown`              | `UseCountdownParams`, `UseCountdownResult`                                                |
+| `useDebouncedCallback`      | `useDebouncedCallback`      | `UseDebouncedCallbackResult` — stable schedule/cancel/flush and pending state |
 | `useDebouncedValue`         | `useDebouncedValue`         | Debounced state from a value                                                              |
 | `useDisclosure`             | `useDisclosure`             | `UseDisclosureParams`, `UseDisclosureResult`                                              |
 | `useDocumentTitle`          | `useDocumentTitle`          | `UseDocumentTitleParams`                                                                  |
@@ -625,6 +627,27 @@ import { cn } from "@zentauri-ui/zentauri-components/hooks/utils";
 ```
 
 Some UI packages re-export the hook that belongs to that component (for example `usePagination` from `@zentauri-ui/zentauri-components/ui/pagination`). **`dynamic-stepper`** exports hook-related **types** only; import **`useDynamicStepper`** from `hooks/useDynamicStepper`. Prefer `hooks/<name>` when you only need the hook without the UI primitives.
+
+### useDebouncedCallback
+
+```tsx
+import { useDebouncedCallback } from "@zentauri-ui/zentauri-components/hooks/useDebouncedCallback";
+
+const { debouncedCallback, cancel, flush, isPending } = useDebouncedCallback(
+  (draft: string) => saveDraft(draft),
+  600,
+);
+// Call with plain values in an event/effect, never during render.
+debouncedCallback("Latest draft");
+cancel(); // Discard scheduled work.
+const result = flush(); // Run scheduled work now, or undefined if idle.
+```
+
+Trailing-only debounce: every call restarts the timer with the latest arguments. The three control functions keep stable identities and invoke the latest committed callback. `isPending` is reactive scheduled-timer state, not async request status. Handle async errors inside the callback; `flush` exposes its result/Promise, while a scheduled call has no synchronous result. Cancel does not abort an in-flight request.
+
+`delayMs` must be finite and between 0 and 2,147,483,647 inclusive. Zero defers work to a timer. Changing the delay affects future calls without moving an existing deadline. Unmount discards pending work without flushing. Leading calls and max-wait are outside this API. Use `useDebouncedValue` when you need derived state rather than a delayed action.
+
+Preview: `/preview/hooks/use-debounced-callback`. Vendor with `zentauri-ui add hook useDebouncedCallback`; the CLI includes its `useIsomorphicLayoutEffect` dependency.
 
 ## Installation
 
@@ -1002,7 +1025,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 2059 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 2085 test cases in total
 - `pnpm test:a11y` — focused accessibility coverage for package-level UI primitives and compound components: **axe-core** audits for every interactive component plus **keyboard-interaction** tests (focus order, arrow-key nav, Home/End, Escape/Enter) for the compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).
