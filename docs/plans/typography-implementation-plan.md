@@ -2,9 +2,9 @@
 
 Date: 13 October 2026
 
-Status: foundations published in PR #153; content and VisualGuard docs published in PR #154; text utilities published in PR #155; number formatting implemented on `codex/typography-number-formatting`; optional editorial and VisualGuard coverage remain planned
+Status: typography phases published in PRs #153–#157; VisualGuard coverage implemented and locally verified on `codex/visualguard-coverage`
 
-Visual verification tooling: [VisualGuard](https://github.com/ShubhamTiwari909/visualguard-ai-testing), Shubham Tiwari's open-source visual testing package. Package overview and navigation are included in the current docs changes; installing the runner, recording baselines and adding CI coverage remain planned.
+Visual verification tooling: [VisualGuard](https://github.com/ShubhamTiwari909/visualguard-ai-testing), Shubham Tiwari's open-source visual testing package. Package overview and navigation are published in PR #154. Runner configuration and CI are implemented on the coverage branch; local verification and reference review are recorded below.
 
 Scope: every typography recommendation in [the broader roadmap](./hooks-typography-animations-roadmap.md), including optional editorial additions
 
@@ -28,7 +28,7 @@ Four core PRs are the target, not an absolute rule. Split a branch further if a 
 
 If one branch is strongly preferred, limit it to **foundations plus the three content additions**. Merge that core first; text measurement, number formatting and editorial work should still follow separately. An integration branch is unnecessary for the sequential approach. If an unreleased demo is needed, a temporary integration branch can combine reviewed work, but it should not replace the individual merge reviews.
 
-Suggested commit prefixes follow repository guidance: `feature: add typography scale tokens`, `fix: preserve typography default styling`, and `feature: add prose content styles`. Create each implementation branch when its phase begins; the number-formatting branch is now active. The foundations implementation is committed and published in PR #153. The content branch is published in [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154), targeting foundations while PR #153 awaits review. Text utilities are published in [PR #155](https://github.com/ShubhamTiwari909/zentauri-ui/pull/155), targeting content. Number formatting is stacked on the published text-utilities commit.
+Suggested commit prefixes follow repository guidance: `feature: add typography scale tokens`, `fix: preserve typography default styling`, and `feature: add prose content styles`. Create each implementation branch when its phase begins; the VisualGuard coverage branch is now active. The foundations implementation is committed and published in PR #153. The content branch is published in [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154), targeting foundations while PR #153 awaits review. Text utilities are published in [PR #155](https://github.com/ShubhamTiwari909/zentauri-ui/pull/155), targeting content. Number formatting is published in [PR #156](https://github.com/ShubhamTiwari909/zentauri-ui/pull/156), targeting text utilities. Editorial is published in [PR #157](https://github.com/ShubhamTiwari909/zentauri-ui/pull/157), targeting number formatting. VisualGuard coverage is stacked on editorial commit `e35026f2`.
 
 Use a separate follow-up branch, `codex/visualguard-coverage`, for the shared VisualGuard dependency, capture configuration, reviewed baselines and CI workflow. It can follow the content merge and supply the visual gate for later typography branches. The package's dedicated `/visualguard` page, header/footer links and this planning update belong to the current docs work; they do not require installing VisualGuard or broadening the public component package's dependencies.
 
@@ -286,6 +286,17 @@ Reading-time output should compose existing duration formatting or native unit f
 
 Adopt footnotes as a component only if the docs/blog use case requires it. Ship heading anchors and drop caps as recipes first, then add public components only when those recipes cannot reasonably satisfy consumers.
 
+### Confirmed editorial use cases and implementation boundaries
+
+The existing Prose documentation provides a rendered article use case. The blog's [block/schema roadmap](../../apps/zentauri-blogs/BLOCKS_SCHEMA_PLAN.md) identifies reading-time metadata and a future footnote inline feature, while its [rich-text editor](../../apps/zentauri-blogs/src/blocks/richText.ts) currently supports headings, links, lists and quotations. Those are reuse targets, not claims that the CMS already has a footnote renderer. The editor feature remains a separate integration task, as its roadmap specifies.
+
+- **Heading permalinks:** link to a real section ID in the docs article. Keep Heading and TextLink siblings so the heading name remains unchanged. The exported `typographyPermalinkRecipe` class string reveals the link on hover/keyboard focus for hover-capable pointers and keeps it visible on touch-style surfaces. Authors provide the ID and accessible link name; no slug extraction occurs.
+- **Drop caps:** an opt-in article presentation example, including initial punctuation and RTL. `typographyDropCapRecipe` styles the native first-letter pseudo-element with paired size/leading/gap and existing display-font tokens. It leaves all text intact. Review the treatment with the intended script/font; it is not a global typography default or a new paragraph component.
+- **Footnotes:** the article cites one source from two passages and needs separate return links. `Footnotes` supplies Reference/List/Item/Backlink primitives and named exports. Authors provide note IDs, unique reference IDs and matching positive 32-bit ordinals. A unique stable scopeId is recommended for published links; default React IDs provide hydration-stable scopes inside one React root. Supply unique scopes/React identifier prefixes across independent rendering roots. Length-delimited IDs and encoded fragments avoid ambiguous/special-character targets. Root ID automation does not allocate note numbers or repair duplicate authored IDs inside a scope. Notes use native ol/li/anchor markup and focusable hash targets; each backlink requires a meaningful localized label.
+- **Reading time:** estimate the article excerpt or future post metadata from an explicit plain-text string. `estimateReadingTime` returns wordCount, rounded-up minutes/seconds and the counting method. The configurable default of 200 words/minute is a product estimate. Auto uses Intl.Segmenter when available and otherwise counts Unicode letter/number runs (including combining marks and internal apostrophes). Approximate mode can undercount scripts without spaces; explicit segmenter mode reports missing support. Pin approximate mode to avoid feature-availability differences or reuse a precomputed result when matching server/client output is required. Locale/Unicode data versions can still affect classification. No HTML, Markdown, Lexical or React-child extraction is added.
+
+Reading-time examples use NumberText with native minute units and explicit locale. The estimator also has a dedicated server-safe ui/typography/reading-time entry. Its existing client export is retained for compatibility; recipe constants remain in the typography client entry. Package source, examples and source vendoring are delivered together. CMS schema/converter/editor adoption is deferred to its own focused change.
+
 ## 14. Documentation and repository integration
 
 ### Library files
@@ -348,7 +359,7 @@ Use targeted tests while implementing. DOM render tests alone cannot verify comp
 | Content            | `/preview/typography/prose`, `/preview/typography/links`, `/preview/typography/description-list` | Article rhythm, raw/embedded/ignored markup, code/table containment, link focus, responsive terms/details      |
 | Text utilities     | `/preview/typography/highlighting` and `/preview/typography/truncation`                          | Literal highlighting, one/multiple-line clipping, collapsed and expanded text, focus retained after disclosure |
 | Number formatting  | `/preview/typography/number-formatting`                                                          | Explicit en-US/en-IN examples, currency/unit placement, compact values and tabular alignment                   |
-| Optional editorial | Editorial examples when implemented                                                              | Footnote references/backlinks, heading anchors and drop caps at narrow widths                                  |
+| Optional editorial | `/preview/typography/editorial`                                                                  | Footnote references/backlinks, heading anchors and drop caps at narrow widths                                  |
 
 Start with **390 × 844** and **1440 × 900** captures in both themes. Add **320px** width for long-word/overflow examples and a targeted text-enlargement/RTL fixture where those states can be prepared deterministically. Interactive focus/disclosure states belong in the VisualGuard Playwright fixture with a matching reference setup. Still inspect actual overflow dimensions, focus behavior and semantics; a screenshot alone does not prove those properties.
 
@@ -417,12 +428,12 @@ Do not claim a browser visual check, accessibility audit or test passed unless i
 
 ### VisualGuard verification follow-up — `codex/visualguard-coverage`
 
-- [ ] Select and pin a compatible published version or reviewed source artifact.
-- [ ] Add development tooling and explicit route/theme/viewport capture configuration.
-- [ ] Review and commit complete baseline artifacts for shipped typography pages.
-- [ ] Verify deterministic comparisons and interactive focus/disclosure fixtures locally.
-- [ ] Add a CI job with readiness checks, result policy and complete report artifacts.
-- [ ] Document intentional-change approval and baseline migration procedures.
+- [x] Select and pin a compatible published version or reviewed source artifact.
+- [x] Add development tooling and explicit route/theme/viewport capture configuration.
+- [x] Commit the 88 complete baseline sets after branch review (images inspected locally; publication authorized on 14 October 2026).
+- [x] Verify deterministic comparisons and interactive focus/disclosure fixtures locally.
+- [x] Add a CI job with readiness checks, result policy and complete report artifacts (hosted execution pending).
+- [x] Document intentional-change approval and baseline migration procedures.
 
 ### PR 3 — text utilities
 
@@ -442,10 +453,10 @@ Do not claim a browser visual check, accessibility audit or test passed unless i
 
 ### Optional PR 5 — editorial
 
-- [ ] Confirm a docs/blog use case for each feature before implementation.
-- [ ] Add heading anchors and drop caps as recipes.
-- [ ] Implement footnotes and reading-time helper only where the recipe/use case warrants them.
-- [ ] Verify stable IDs, backlinks, reading-time fallbacks and narrow/RTL layouts.
+- [x] Confirm a docs/blog use case for each feature before implementation.
+- [x] Add heading anchors and drop caps as recipes.
+- [x] Implement footnotes and reading-time helper only where the recipe/use case warrants them.
+- [x] Verify stable IDs, backlinks, reading-time fallbacks and narrow/RTL layouts.
 
 Each core PR should be backward-compatible and can be released as an additive minor version once verified. Token renames, changed defaults or altered semantic markup for existing props require either a compatibility path or an explicitly planned major release; they must not be hidden in a minor release. Preserve existing data-slot values and docs URLs.
 
@@ -505,7 +516,7 @@ Verification used the existing local docs server at port 3002. No production doc
 
 ## Number-formatting implementation verification — 13 October 2026
 
-Implemented on `codex/typography-number-formatting`, stacked on published text-utilities commit `a8b528cc` while [PR #155](https://github.com/ShubhamTiwari909/zentauri-ui/pull/155) targets content. The branch contains the completed number-formatting implementation.
+Implemented on `codex/typography-number-formatting`, stacked on published text-utilities commit `a8b528cc` while [PR #155](https://github.com/ShubhamTiwari909/zentauri-ui/pull/155) targets content. The completed number-formatting implementation is published in [PR #156](https://github.com/ShubhamTiwari909/zentauri-ui/pull/156), targeting text utilities.
 
 - Added useNumberFormat and getCachedNumberFormat with explicit/default/fallback locale preferences, stable format/parts callbacks and a bounded 50-instance FIFO cache. Invalid locale syntax/options retain native errors; unknown or unusual option values bypass caching. Number/bigint convenience inputs are checked without numeric-string coercion.
 - Added static NumberText in the existing typography entry, with span/p/div native attributes/refs, separate formatOptions and CSS style, readable tones, shared typography controls, default tabular digits and optional partClassNames. It borrows existing paired typography recipes and introduces no new token names or Motion imports.
@@ -515,4 +526,44 @@ Implemented on `codex/typography-number-formatting`, stacked on published text-u
 - Numeric layouts fitted 320/390/1000/1440px viewports without document overflow. The bigint example remained contained with enlarged text and RTL layout. The hook preview returned 200 and its JPY output matched the browser's native formatter; expected canonical paths were present. No hydration errors appeared in the observed browser console.
 - Documentation includes locale/currency controls, grouping/precision/edge-value examples, styled native parts and a separate decorative integer AnimatedNumber composition with localized accessible text. Snippets match the live examples. Registry/API metadata, sidebar/search, changeset, package-surface and test-health tables were refreshed; CLI source installation includes useNumberFormat transitively.
 
-All four core typography phases are now implemented. Their merge/release reviews remain outstanding; optional editorial additions and the separate VisualGuard coverage branch remain planned. No production docs build, VisualGuard baseline/CI run or comprehensive cross-browser/accessibility audit was performed for this phase. Publish number formatting against text utilities while PR #155 remains open, then rebase/retarget after its dependency merges.
+All four core typography phases are now implemented. Their merge/release reviews remain outstanding. Editorial implementation follows below; the separate VisualGuard coverage branch remains planned. No production docs build, VisualGuard baseline/CI run or comprehensive cross-browser/accessibility audit was performed for this phase. Number formatting was published in PR #156 against text utilities; rebase and retarget after PR #155 merges.
+
+## Editorial implementation verification — 13 October 2026
+
+Implemented on `codex/typography-editorial`, stacked on number-formatting commit `c32145a4` while [PR #156](https://github.com/ShubhamTiwari909/zentauri-ui/pull/156) targets text utilities. The editorial implementation is published in [PR #157](https://github.com/ShubhamTiwari909/zentauri-ui/pull/157), targeting number formatting while that dependency remains open.
+
+- Added scoped Footnotes with native Reference/List/Item/Backlink primitives, explicit IDs/numbers and separate return links for repeated citations. Defaults use React hydration-stable scopes; published examples provide unique explicit scopes. Length-delimited/encoded identifiers preserve special-character targets without tuple collisions.
+- Added estimateReadingTime with configurable rate, locale and auto/segmenter/approximate counting. Tests cover native word-like segmentation, Unicode runs/contractions/combining marks, empty/punctuation/emoji content, missing Segmenter, deterministic approximate output and invalid/overflowing inputs.
+- Added exported class-string heading-permalink and first-letter recipes, paired footnote/drop-cap tokens and an editorial route with complete article, reading-time and punctuation/RTL examples. The use-case decision is recorded above; the CMS editor/schema/converters were not changed.
+- Full package suite: **168 files, 2,050 tests passed**. Native semantics/ref/label/fragment tests, generated-ID hydration, tuple/root isolation, facade discovery, TypeScript API fixtures and actual CLI source installation passed.
+- Scoped package build, package/docs type checks after formatting, targeted lint, token/props/surface checks and **247 export entries across three conditions** passed. The token reference now includes **276 light and 276 dark variables**; no new component/hook build entry was required.
+- Browser keyboard navigation focused the correct note with a solid 2px outline, and backlinks restored the original reference focus. The article instances had eight distinct authored/generated target IDs. Permalink focus revealed the link without changing the heading name; a touch context retained visible links without hover. Forced colors preserved a solid 2px note outline.
+- Drop-cap paragraphs retained their complete original text and initial punctuation. Native first-letter size was 56px, with logical inline-start floating/8.4px end gap. Paragraphs fitted 320/390/1000/1440px without document overflow; the enlarged-text case used a 112px initial letter without paragraph overflow. RTL text retained its direction and logical spacing.
+- The reading playground handled empty input and changed Chinese text from one approximate run to two native word-like segments, matching the browser's Segmenter. Light/dark note colors differed correctly; an 18px scoped note size carried into dark mode until a 22px dark override was supplied.
+- The editorial route returned 200 with its expected canonical path. Examples, API metadata, sidebar/search, source-vendoring checks, minor changeset, token reference and package-health tables were updated. No observed hydration errors appeared in the browser console.
+
+The optional editorial scope is implemented and ready for review. A production docs build, VisualGuard baseline/CI run and comprehensive cross-browser/accessibility audit were not performed. Publish this branch against number formatting while PR #156 is open, then rebase/retarget after that dependency merges. The `codex/visualguard-coverage` follow-up is implemented below; its publication/hosted run and any CMS adoption remain outstanding.
+
+## VisualGuard coverage implementation — 13 October 2026
+
+Started `codex/visualguard-coverage` from the approved editorial commit `e35026f2` and [PR #157](https://github.com/ShubhamTiwari909/zentauri-ui/pull/157). Verified the published npm artifact: `visualguard@2.0.0` exposes the strict saved-reference policy and Playwright fixture used here; the older source README release warning does not determine current npm availability. Pinned VisualGuard 2.0.0 and Playwright / @playwright/test 1.58.2 in docs development dependencies.
+
+The [testing guide](../../apps/component-library/visualguard/README.md) records the complete 15-page manifest, both actual docs themes, mobile/desktop coverage, targeted narrow cases and native interaction assertions. The fixture runner uses `--update-snapshots` for page and interactive references; standalone CLI `--update-baselines` references are not mixed into it. A pinned Linux ARM64 container supplies identical browser, fonts and Node for local runs and the new CI workflow. Reference images and rendering metadata/DOM/health sidecars are retained together; the wrapper stages candidate updates for inspection instead of overwriting tracked references. Missing or legacy baselines fail, AI is disabled and review-level differences block the suite.
+
+Production builds and reference capture have passed. The 15-page matrix has 76 cases and 88 checkpoints; the fresh canonical comparison passed below. GitHub-hosted workflow execution remains pending until the branch is published. CMS adoption, Firefox/WebKit and optional advisory AI remain separate follow-ups.
+
+### Coverage verification progress — 14 October 2026
+
+The initial browser suite exposed docs overflow at 200% root text. The coverage branch fixes the shrinking content column, wrapping showcase/mobile controls, long hero and section headings, and long API identifiers in prose/cards. Component primitives and example copy remain unchanged. Independent development-browser checks reflowed at 320, 390 and 1440px with 200% text; focused sidebar/header tests passed (13 cases). The docs Vitest suite passed all 91 cases and excludes the browser specs. Docs types and focused lint passed; existing PropsTable prop-validation warnings remain.
+
+The canonical Linux production build and doctor check passed. The prepared reference set contains 88 PNGs plus complete metadata, DOM and health sidecars: 64 full-page default views, eight disclosure states, eight footnote/permalink focus states and eight enlarged article/RTL viewport views. Capture review rejected the initial clipped/blank very tall zoomed screenshots; the zoom fixture now uses explicit viewports below the sticky header and requires their dimensions to match the project. Normal-size pages retain full-page coverage. Every checkpoint rejects unstable/clipped captures, and comparison mode additionally requires zero changed pixels above the configured sensitivity, regardless of heuristic labels.
+
+The pinned container keeps dependencies/build outputs in ephemeral Linux volumes and uses a download-cache volume. Capture updates explicitly request Playwright's `all` mode and stage complete candidate sets for inspection. Case timeouts allow three minutes for large image/DOM comparisons; retries remain disabled and the workflow is bounded at 35 minutes. Generated references are excluded from formatting and Tailwind source scanning. A full comparison through the same container entry used by CI passed: 76 cases, 88 checkpoints, zero unexpected failures and zero flaky cases, with all reference sidecars verified. Its 32 skipped cases are the explicitly excluded narrow-project combinations. The comparison took 19.6 minutes in the local container; the production build, doctor and complete evidence checks also passed. Hosted GitHub execution and publication of this branch remain pending.
+
+## Coverage publication — 14 October 2026
+
+The reviewed coverage implementation and all 88 baseline sets are being published on `codex/visualguard-coverage`, targeting `codex/typography-editorial` while PR #157 remains open. The local production comparison passed all 76 cases; GitHub-hosted execution remains unverified until its workflow finishes. This completes the implementation branch sequence in this plan. Merge/release reviews and any CMS adoption remain separate follow-ups. The next implementation branch follows the broader roadmap with the P1 `useDebouncedCallback` hook.
+
+## Hosted coverage verification — 14 October 2026
+
+The initial [GitHub run](https://github.com/ShubhamTiwari909/zentauri-ui/actions/runs/38515241958) passed all 76 visual cases in 4.0 minutes and verified the 88 complete reference artifact sets. Its job nevertheless failed during host cleanup because container installs/builds left root-owned files in the snapshot. The wrapper now passes the caller's user/group IDs and the suite returns workspace/report ownership on exit, preserving its original success/failure status. A complete hosted rerun remains pending for this cleanup correction; screenshot acceptance thresholds and baselines are unchanged.

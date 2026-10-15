@@ -6,6 +6,7 @@ import { PreviewApiSection } from "@/components/preview/api-section";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import type { TypographySectionSlug } from "@/lib/typography-preview-registry";
 
+import { TypographyEditorialExamples } from "./editorial-examples";
 import { TypographyNumberExamples } from "./number-examples";
 import { TypographyTextUtilitiesExamples } from "./text-utilities-examples";
 import { TypographyContentExamples } from "./content-examples";
@@ -29,6 +30,7 @@ export default function TypographySectionPage({
       </Section>
 
       <div className="flex flex-col gap-12">
+        <TypographyEditorialExamples section={section} />
         <TypographyNumberExamples section={section} />
         <TypographyTextUtilitiesExamples section={section} />
         <TypographyContentExamples section={section} />

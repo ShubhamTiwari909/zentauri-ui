@@ -10,3 +10,6 @@ packages/components/cli/registry.json
 packages/components/cli/props.json
 packages/components/README.md
 apps/component-library/README.md
+
+# Generated VisualGuard capture protocol artifacts
+apps/component-library/visualguard/baselines/

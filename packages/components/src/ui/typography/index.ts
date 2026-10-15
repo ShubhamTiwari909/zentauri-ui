@@ -87,3 +87,28 @@ export { truncateTextVariants } from "./variants";
 export { NumberText } from "./number-text";
 export type { NumberTextProps } from "./types";
 export { numberTextVariants } from "./variants";
+
+export {
+  Footnotes,
+  FootnotesList,
+  FootnoteItem,
+  FootnoteReference,
+  FootnoteBacklink,
+} from "./footnotes";
+export type {
+  FootnotesProps,
+  FootnotesListProps,
+  FootnoteItemProps,
+  FootnoteReferenceProps,
+  FootnoteBacklinkProps,
+} from "./types";
+export {
+  estimateReadingTime,
+  type ReadingTimeOptions,
+  type ReadingTimeEstimate,
+} from "./reading-time";
+
+export {
+  zuiTypographyPermalinkRecipe as typographyPermalinkRecipe,
+  zuiTypographyDropCapRecipe as typographyDropCapRecipe,
+} from "../../design-system/typography";

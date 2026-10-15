@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @source "../../../packages/shared";
 @source "../node_modules/@zentauri-ui/zentauri-components";
+/* Capture metadata and test reports are not application class sources. */
+@source not "../visualguard";
+@source not "../visualguard-results";
 
 :root {
   color-scheme: dark;

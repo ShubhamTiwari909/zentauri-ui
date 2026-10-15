@@ -11,7 +11,7 @@ export function PreviewHeroSeoBlock({
   headingId,
 }: PreviewHeroSeoBlockProps) {
   return (
-    <div className="max-w-2xl space-y-6">
+    <div className="min-w-0 max-w-2xl space-y-6 wrap-anywhere">
       {seo.category ? (
         <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-cyan-200">
           {seo.category}

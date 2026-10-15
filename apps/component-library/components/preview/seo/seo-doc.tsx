@@ -32,7 +32,7 @@ export function PreviewSeoDoc({ doc }: PreviewSeoDocProps) {
         referenceSlug={doc.cssVariableReference}
       />
 
-      <article className="space-y-12 border-t border-white/10 pt-12">
+      <article className="space-y-12 wrap-anywhere border-t border-white/10 pt-12">
         {doc.sections.map((section, index) => {
           const renderUseCasesList =
             section.body.trim() === "" && section.heading === useCasesHeading;

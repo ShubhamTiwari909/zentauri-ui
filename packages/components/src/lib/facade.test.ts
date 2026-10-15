@@ -511,6 +511,14 @@ it("discovers content and text utility variants and reciprocal tokens", () => {
   expect(typography?.variables()).toEqual(
     expect.arrayContaining([
       expect.objectContaining({
+        name: "--zui-typography-drop-cap-size",
+        pairName: "--zui-typography-drop-cap-size-dark",
+      }),
+      expect.objectContaining({
+        name: "--zui-typography-footnotes-indent",
+        pairName: "--zui-typography-footnotes-indent-dark",
+      }),
+      expect.objectContaining({
         name: "--zui-typography-mark-bg",
         pairName: "--zui-typography-mark-bg-dark",
       }),

@@ -297,6 +297,7 @@ export function TypographySectionBody({
       "highlighting",
       "truncation",
       "number-formatting",
+      "editorial",
     ].includes(section)
   )
     return null;
