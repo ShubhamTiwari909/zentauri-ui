@@ -1,0 +1,58 @@
+{
+  "category": "Typography",
+  "title": "Editorial typography: footnotes, reading time and recipes",
+  "description": "Scoped native footnotes, approximate reading time, heading permalinks and opt-in drop-cap styling.",
+  "keywords": [
+    "typography",
+    "React",
+    "Zentauri UI",
+    "footnotes",
+    "reading time",
+    "drop cap",
+    "permalink"
+  ],
+  "canonicalPath": "/preview/typography/editorial",
+  "og": {
+    "title": "Editorial typography: footnotes, reading time and recipes \u00b7 Zentauri UI",
+    "description": "Scoped native footnotes, approximate reading time, heading permalinks and opt-in drop-cap styling.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Editorial typography: footnotes, reading time and recipes \u00b7 Zentauri UI",
+    "description": "Scoped native footnotes, approximate reading time, heading permalinks and opt-in drop-cap styling.",
+    "card": "summary_large_image"
+  },
+  "headings": {
+    "h1": "Editorial typography: footnotes, reading time and recipes",
+    "h2": [
+      "Editorial composition",
+      "Composition and API",
+      "Accessibility",
+      "FAQ"
+    ]
+  },
+  "intro": "Compose long-form content with explicit heading IDs, source notes and a clearly labeled estimate of reading time.",
+  "useCases": [
+    "Documentation articles, research notes and editorial previews."
+  ],
+  "faqs": [
+    {
+      "question": "Does this automatically convert Markdown or a CMS article?",
+      "answer": "No. Render the article normally and supply plain text for the reading-time estimate. CMS extraction, editor controls and automatic numbering are separate integration work."
+    },
+    {
+      "question": "Are reading estimates identical in every runtime?",
+      "answer": "Automatic counting can vary with Intl.Segmenter availability or locale data. Use approximate mode or reuse a precomputed result for matching server/client behavior; the estimate is not a universal reading-speed measurement."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Composition and API",
+      "body": "Footnotes provides Reference, List, Item and Backlink primitives with named exports. Supply unique scope IDs for persistent published links and explicit note/reference IDs and matching numbers. Each backlink needs a meaningful label. estimateReadingTime accepts a configurable rate, locale and auto/segmenter/approximate mode. Recipes are exported class strings in the existing typography entry."
+    },
+    {
+      "heading": "Accessibility",
+      "body": "Native hash links navigate to focusable note items and return to each citation. Heading links remain adjacent to the heading so its text/name is preserved; keyboard focus reveals the link. Drop caps style the native first-letter pseudo-element without splitting text or adding duplicate accessible content."
+    }
+  ]
+}

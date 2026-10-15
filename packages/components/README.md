@@ -35,12 +35,12 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 166 passed (166)   |
-| Tests      | 2040 passed (2040) |
+| Test files | 168 passed (168)   |
+| Tests      | 2059 passed (2059) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 107        | 1558  |
+| Components and UI utilities    | 109        | 1577  |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 50         | 268   |
 | Design system facade           | 1          | 24    |
@@ -120,6 +120,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/otp-input/otp-input.test.tsx`                                   |    10 |
 | `src/ui/product-3d/product-3d.test.tsx`                                 |    10 |
 | `src/ui/tree-view/tree-view.test.tsx`                                   |    10 |
+| `src/ui/typography/editorial.test.tsx`                                  |    10 |
 | `src/hooks/useDateTimeFormat/useDateTimeFormat.test.ts`                 |     9 |
 | `src/hooks/useDurationFormat/useDurationFormat.test.ts`                 |     9 |
 | `src/hooks/useLongPress/useLongPress.test.ts`                           |     9 |
@@ -142,6 +143,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/speech-recognition/speech-recognition.test.tsx`                 |     8 |
 | `src/ui/spinner/animated/spinner.test.tsx`                              |     8 |
 | `src/ui/typography/number-text.test.tsx`                                |     8 |
+| `src/ui/typography/reading-time.test.ts`                                |     8 |
 | `cli/rewrite-imports.test.ts`                                           |     7 |
 | `src/hooks/useDynamicStepper/useDynamicStepper.test.ts`                 |     7 |
 | `src/hooks/useHotkeys/useHotkeys.test.ts`                               |     7 |
@@ -195,13 +197,13 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/file-upload/file-upload.test.tsx`                               |     4 |
 | `src/ui/tabs/tabs.test.tsx`                                             |     4 |
 | `src/ui/tooltip/tooltip.test.tsx`                                       |     4 |
+| `src/ui/typography/typography.types.test.tsx`                           |     4 |
 | `src/hooks/useClickOutside/useClickOutside.test.tsx`                    |     3 |
 | `src/hooks/useDocumentTitle/useDocumentTitle.test.ts`                   |     3 |
 | `src/hooks/useFocusManagement/useFocusManagement.test.tsx`              |     3 |
 | `src/hooks/useIsMounted/useIsMounted.test.ts`                           |     3 |
 | `src/hooks/usePrevious/usePrevious.test.ts`                             |     3 |
 | `src/hooks/useSessionStorage/useSessionStorage.test.ts`                 |     3 |
-| `src/ui/typography/typography.types.test.tsx`                           |     3 |
 | `src/hooks/useHover/useHover.test.ts`                                   |     2 |
 | `src/hooks/useIntersectionObserver/useIntersectionObserver.test.ts`     |     2 |
 | `src/hooks/useMediaQuery/useMediaQuery.test.ts`                         |     2 |
@@ -1000,7 +1002,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 2040 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 2059 test cases in total
 - `pnpm test:a11y` — focused accessibility coverage for package-level UI primitives and compound components: **axe-core** audits for every interactive component plus **keyboard-interaction** tests (focus order, arrow-key nav, Home/End, Escape/Enter) for the compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).
@@ -1095,3 +1097,56 @@ The convenience `format`/`formatToParts` functions accept number or bigint value
 [Native Intl.NumberFormat](https://tc39.es/ecma402/#numberformat-objects) controls display rounding, currency precision, notation, percentages and units. Formatting never changes the source value and is not a calculation or money-storage API. Static NumberText imports no Motion dependency. The docs show a separate decorative integer AnimatedNumber composition with localized accessible text; they do not claim that digit animation supports localized currency or units.
 
 Preview pages: `/preview/typography/number-formatting` and `/preview/hooks/use-number-format`. `zentauri-ui add typography` vendors the number-formatting hook transitively; `zentauri-ui add hook useNumberFormat` adds it on its own.
+
+## Editorial typography
+
+The existing `ui/typography` entry exports `Footnotes`, its named subcomponents, `estimateReadingTime` and two class-string recipes: `typographyPermalinkRecipe` and `typographyDropCapRecipe`. No Motion or content-parser dependency is added.
+
+```tsx
+import { Footnotes } from "@zentauri-ui/zentauri-components/ui/typography";
+
+<Footnotes scopeId="published-article">
+  <p>Opening claim<Footnotes.Reference noteId="source" referenceId="opening" number={1} /></p>
+  <p>Repeated citation<Footnotes.Reference noteId="source" referenceId="closing" number={1} /></p>
+  <Footnotes.List aria-label="Article notes">
+    <Footnotes.Item noteId="source" number={1}>
+      Source explanation.
+      <Footnotes.Backlink noteId="source" referenceId="opening" label="Back to opening reference" />
+      <Footnotes.Backlink noteId="source" referenceId="closing" label="Back to closing reference" />
+    </Footnotes.Item>
+  </Footnotes.List>
+</Footnotes>;
+```
+
+Named exports are `FootnotesList`, `FootnoteItem`, `FootnoteReference` and `FootnoteBacklink`. Native div/ol/li/anchor attributes and refs are preserved. References/items/backlinks require a Footnotes root; the list is an ordinary styled ol. Items are native hash focus targets with default `tabIndex={-1}`. Backlinks use native anchors and require meaningful accessible labels. Reference labels default to “Footnote N” and can be localized with `aria-label`; list names use native `aria-label` as well.
+
+Authors own note IDs, reference IDs and matching positive 32-bit note numbers. IDs must be nonempty and whitespace-free. Repeated references to a note use distinct reference IDs, and the note includes one backlink for each. Length-delimited generated IDs and encoded fragments support special/Unicode characters without ambiguous tuples. Footnotes does not allocate numbers, generate a note list or correct missing/duplicate authored targets. Default React IDs separate roots within a React rendering root and stay stable during hydration. For persistent article links, supply a stable unique scopeId. Across independent React roots, supply unique scopes or React identifier prefixes.
+
+### Heading links and drop caps
+
+Compose Heading with an explicit ID and an adjacent TextLink carrying an accessible name. Apply `typographyPermalinkRecipe` to the link inside a `group` container: hover-capable devices reveal it on hover/keyboard focus; touch-style surfaces retain its visibility. Keeping the link outside the heading preserves the heading's text/name. IDs and link labels are authored explicitly; no child-to-slug conversion occurs.
+
+Apply `typographyDropCapRecipe` to an opt-in raw paragraph inside Prose. It styles the native first-letter pseudo-element with paired `--zui-typography-drop-cap-size`, `-leading`, `-gap` and existing display-font variables. Logical floating/spacing follows direction. Punctuation selection follows native CSS; the original text remains selectable and accessible. Review the treatment with the intended script/font and narrow layout rather than applying it globally. These are class-string recipes, not additional paragraph/heading components.
+
+### Plain-text reading-time estimate
+
+Server Components should import the estimator from the pure `ui/typography/reading-time` entry, which has no client boundary. The `ui/typography` client entry also re-exports it for client components.
+
+```tsx
+import { estimateReadingTime } from "@zentauri-ui/zentauri-components/ui/typography/reading-time";
+
+const estimate = estimateReadingTime(articleBodyText, {
+  wordsPerMinute: 200,
+  locale: "en-US",
+  mode: "approximate",
+});
+// { wordCount, minutes, seconds, method }
+```
+
+The helper accepts only plain text. It does not parse HTML/Markdown/Lexical data or traverse React children. `minutes` and `seconds` are rounded up independently; empty/punctuation/emoji-only input returns zero. Reading speed defaults to a configurable 200 words/minute product estimate, not a universal reading-rate claim; invalid/nonfinite rates and unsupported duration overflow throw.
+
+`mode="auto"` uses native [Intl.Segmenter](https://tc39.es/ecma402/#segmenter-objects) word-like segments where available and falls back to approximate Unicode letter/number runs, combining marks and internal apostrophes. `mode="segmenter"` requires that feature; `mode="approximate"` pins the fallback strategy. Approximate counting can undercount text in languages without spaces. Locale syntax is validated and en-US is the default/final locale preference. Automatic results can vary with runtime support/locale data; pin approximate mode to remove feature-availability differences, or reuse precomputed results for server/client agreement. Exact Unicode classification still depends on runtime Unicode data.
+
+The estimate composes NumberText with native minute units in the docs. Import estimateReadingTime from ui/typography/reading-time in Server Components or other server code; this dedicated entry has no client directive or React dependency. The existing ui/typography export remains available for client consumers, and the permalink/drop-cap recipes remain in that client entry. Vendored consumers can import the plain reading-time utility source directly. CMS text extraction, editor/schema features and published article adoption remain separate integration work.
+
+Preview: `/preview/typography/editorial`. `zentauri-ui add typography` vendors the full editorial source and its theme strings with the existing family.

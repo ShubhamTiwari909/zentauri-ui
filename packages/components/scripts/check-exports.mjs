@@ -65,6 +65,11 @@ add(
   "graphs/change-impact-explorer.js",
   "ui/change-impact-explorer/graph.d.ts",
 );
+add(
+  "typography/reading-time.mjs",
+  "typography/reading-time.js",
+  "ui/typography/reading-time.d.ts",
+);
 add("hooks/utils.mjs", "hooks/utils.js", "lib/utils.d.ts");
 add(
   "design-system/tokens.mjs",
@@ -149,3 +154,20 @@ for (const helpers of [
 console.log(
   `Export smoke test passed: ${expected.length} entries × 3 conditions resolved under dist/.`,
 );
+
+for (const extension of ["mjs", "js"]) {
+  checkServerGraph(join(dist, "typography", `reading-time.${extension}`));
+}
+const readingSpecifier =
+  "@zentauri-ui/zentauri-components/ui/typography/reading-time";
+for (const helpers of [
+  await import(readingSpecifier),
+  createRequire(import.meta.url)(readingSpecifier),
+]) {
+  const estimate = helpers.estimateReadingTime("One two", {
+    mode: "approximate",
+    locale: "en-US",
+  });
+  assert.equal(estimate.wordCount, 2);
+  assert.equal(estimate.minutes, 1);
+}

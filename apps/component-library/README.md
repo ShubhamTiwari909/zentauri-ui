@@ -34,12 +34,12 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 166 passed (166)   |
-| Tests      | 2040 passed (2040) |
+| Test files | 168 passed (168)   |
+| Tests      | 2059 passed (2059) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 107        | 1558  |
+| Components and UI utilities    | 109        | 1577  |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 50         | 268   |
 | Design system facade           | 1          | 24    |
@@ -135,3 +135,7 @@ The typography hub includes **Highlighting and relevance** (`/preview/typography
 ### Number formatting previews
 
 `/preview/typography/number-formatting` demonstrates explicit locale/currency changes, en-US/en-IN grouping, USD/INR/JPY, percentages, compact notation, units, bigint and native edge values. It includes native part styling and a separate decorative integer motion composition. `/preview/hooks/use-number-format` demonstrates the hook's format/parts output and resolved locale. Numeric strings are outside the API; Intl display precision remains separate from calculations.
+
+### Editorial typography previews
+
+`/preview/typography/editorial` combines authored heading permalinks, a tokenized first-letter recipe, repeated scoped footnote references with separate backlinks, and a reading-time playground. It demonstrates plain-text estimation, configurable rate and optional locale-aware counting. The CMS blog integration remains separate; these examples do not introduce a Markdown/Lexical parser or automatically generate note numbers/heading IDs.
