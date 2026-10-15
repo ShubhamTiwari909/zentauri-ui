@@ -1,5 +1,21 @@
 # @zentauri-ui/zentauri-components Changelog
 
+## 2.17.0
+
+### Minor Changes
+
+- e043423: Add useDebouncedCallback with stable trailing-edge scheduling, cancel/flush controls, reactive pending state and automatic unmount cleanup. Includes typed argument/result inference, an autosave preview and source vendoring through the hooks entry.
+- b5bd94a: Add typography scale, font, rhythm and code-surface tokens while preserving default styles. Extend Heading and Text with display/fluid sizing, alignment, weight, leading, tracking, wrapping, readable widths, text presets, mono fonts and tabular numerals. Add Strong, Emphasis, Small and VisuallyHidden with native semantics and ref support.
+- 5dd8867: Add Mark and literal Unicode-aware HighlightText, CSS-only TruncateText, and native ExpandableText disclosure. Introduce useTextOverflow with callback refs, collapsed-state measurement, resize/font observation and deterministic initial output. Includes paired theme tokens, typography/hook previews and transitive source-vendoring support.
+- ffaa8b3: Add useNumberFormat with deterministic locale defaults, native Intl format/parts output and a bounded formatter cache. Add static NumberText with native refs/attributes, tabular typography, separate Intl formatting options and optional part styling. Includes numeric/hook previews and transitive source-vendoring support without a Motion dependency.
+- 0308a38: Add Time Travel Inspector with checkpoint-based history, synchronized state and visual previews, snapshot comparison, bookmarks, and historical-state callbacks.
+
+  Expose the pure history helpers through the server-safe `ui/time-travel-inspector/history` entry, with immutable snapshot types, typed change variants, and nonempty removal paths.
+
+- 9b039a2: Add Change Impact Explorer with cycle-safe dependency traversal, explanation paths, before/after comparisons, accessible selection, bounded rendering, and a server-safe graph helper entry.
+- 1710882: Add Prose for scoped rendered HTML/MDX styling, TextLink for native navigation with underline/focus styles and external indicators, and responsive DescriptionList compound primitives. Includes paired theme tokens, content previews and source-vendoring support in the existing typography entry.
+- 1f6b562: Add scoped native Footnotes with explicit references and backlinks, a plain-text reading-time estimator with configurable speed and locale-aware/approximate counting, and exported heading-permalink/drop-cap class recipes. Includes paired theme tokens, article examples and source-vendoring coverage in the existing typography entry. CMS extraction/editor integration remains separate.
+
 ## 2.16.0
 
 ### Minor Changes
