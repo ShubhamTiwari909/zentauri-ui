@@ -13,6 +13,7 @@ export default defineConfig({
     globals: true,
     setupFiles: ["./vitest.setup.ts"],
     include: ["**/*.{test,spec}.{ts,tsx}"],
+    exclude: ["**/node_modules/**", "visualguard/**", "visualguard-results/**"],
     css: true,
   },
   resolve: {

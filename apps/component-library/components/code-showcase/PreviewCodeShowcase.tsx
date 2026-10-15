@@ -26,10 +26,11 @@ export default function PreviewCodeShowcase({
 
   return (
     <div className="relative">
-      <div className="mb-5 flex items-center gap-4">
+      <div className="mb-5 flex flex-wrap items-center gap-4">
         <Button
           appearance="outline"
           size="sm"
+          className="h-auto min-h-7 max-w-full wrap-anywhere whitespace-normal py-1.5 md:h-auto md:min-h-9"
           type="button"
           onClick={() => setShowCode(false)}
         >
@@ -38,6 +39,7 @@ export default function PreviewCodeShowcase({
         <Button
           appearance="outline"
           size="sm"
+          className="h-auto min-h-7 max-w-full wrap-anywhere whitespace-normal py-1.5 md:h-auto md:min-h-9"
           type="button"
           onClick={() => setShowCode(true)}
         >

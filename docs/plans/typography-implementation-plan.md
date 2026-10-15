@@ -2,9 +2,9 @@
 
 Date: 13 October 2026
 
-Status: core phases published in PRs #153–#156; editorial implemented on `codex/typography-editorial`; VisualGuard coverage remains planned
+Status: typography phases published in PRs #153–#157; VisualGuard coverage implemented and locally verified on `codex/visualguard-coverage`
 
-Visual verification tooling: [VisualGuard](https://github.com/ShubhamTiwari909/visualguard-ai-testing), Shubham Tiwari's open-source visual testing package. Package overview and navigation are included in the current docs changes; installing the runner, recording baselines and adding CI coverage remain planned.
+Visual verification tooling: [VisualGuard](https://github.com/ShubhamTiwari909/visualguard-ai-testing), Shubham Tiwari's open-source visual testing package. Package overview and navigation are published in PR #154. Runner configuration and CI are implemented on the coverage branch; local verification and reference review are recorded below.
 
 Scope: every typography recommendation in [the broader roadmap](./hooks-typography-animations-roadmap.md), including optional editorial additions
 
@@ -28,7 +28,7 @@ Four core PRs are the target, not an absolute rule. Split a branch further if a 
 
 If one branch is strongly preferred, limit it to **foundations plus the three content additions**. Merge that core first; text measurement, number formatting and editorial work should still follow separately. An integration branch is unnecessary for the sequential approach. If an unreleased demo is needed, a temporary integration branch can combine reviewed work, but it should not replace the individual merge reviews.
 
-Suggested commit prefixes follow repository guidance: `feature: add typography scale tokens`, `fix: preserve typography default styling`, and `feature: add prose content styles`. Create each implementation branch when its phase begins; the editorial branch is now active. The foundations implementation is committed and published in PR #153. The content branch is published in [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154), targeting foundations while PR #153 awaits review. Text utilities are published in [PR #155](https://github.com/ShubhamTiwari909/zentauri-ui/pull/155), targeting content. Number formatting is published in [PR #156](https://github.com/ShubhamTiwari909/zentauri-ui/pull/156), targeting text utilities. Editorial is stacked on number-formatting commit `c32145a4`.
+Suggested commit prefixes follow repository guidance: `feature: add typography scale tokens`, `fix: preserve typography default styling`, and `feature: add prose content styles`. Create each implementation branch when its phase begins; the VisualGuard coverage branch is now active. The foundations implementation is committed and published in PR #153. The content branch is published in [PR #154](https://github.com/ShubhamTiwari909/zentauri-ui/pull/154), targeting foundations while PR #153 awaits review. Text utilities are published in [PR #155](https://github.com/ShubhamTiwari909/zentauri-ui/pull/155), targeting content. Number formatting is published in [PR #156](https://github.com/ShubhamTiwari909/zentauri-ui/pull/156), targeting text utilities. Editorial is published in [PR #157](https://github.com/ShubhamTiwari909/zentauri-ui/pull/157), targeting number formatting. VisualGuard coverage is stacked on editorial commit `e35026f2`.
 
 Use a separate follow-up branch, `codex/visualguard-coverage`, for the shared VisualGuard dependency, capture configuration, reviewed baselines and CI workflow. It can follow the content merge and supply the visual gate for later typography branches. The package's dedicated `/visualguard` page, header/footer links and this planning update belong to the current docs work; they do not require installing VisualGuard or broadening the public component package's dependencies.
 
@@ -428,12 +428,12 @@ Do not claim a browser visual check, accessibility audit or test passed unless i
 
 ### VisualGuard verification follow-up — `codex/visualguard-coverage`
 
-- [ ] Select and pin a compatible published version or reviewed source artifact.
-- [ ] Add development tooling and explicit route/theme/viewport capture configuration.
-- [ ] Review and commit complete baseline artifacts for shipped typography pages.
-- [ ] Verify deterministic comparisons and interactive focus/disclosure fixtures locally.
-- [ ] Add a CI job with readiness checks, result policy and complete report artifacts.
-- [ ] Document intentional-change approval and baseline migration procedures.
+- [x] Select and pin a compatible published version or reviewed source artifact.
+- [x] Add development tooling and explicit route/theme/viewport capture configuration.
+- [x] Commit the 88 complete baseline sets after branch review (images inspected locally; publication authorized on 14 October 2026).
+- [x] Verify deterministic comparisons and interactive focus/disclosure fixtures locally.
+- [x] Add a CI job with readiness checks, result policy and complete report artifacts (hosted execution pending).
+- [x] Document intentional-change approval and baseline migration procedures.
 
 ### PR 3 — text utilities
 
@@ -530,7 +530,7 @@ All four core typography phases are now implemented. Their merge/release reviews
 
 ## Editorial implementation verification — 13 October 2026
 
-Implemented on `codex/typography-editorial`, stacked on number-formatting commit `c32145a4` while [PR #156](https://github.com/ShubhamTiwari909/zentauri-ui/pull/156) targets text utilities. The editorial implementation is approved for publication; its PR targets number formatting while that dependency remains open.
+Implemented on `codex/typography-editorial`, stacked on number-formatting commit `c32145a4` while [PR #156](https://github.com/ShubhamTiwari909/zentauri-ui/pull/156) targets text utilities. The editorial implementation is published in [PR #157](https://github.com/ShubhamTiwari909/zentauri-ui/pull/157), targeting number formatting while that dependency remains open.
 
 - Added scoped Footnotes with native Reference/List/Item/Backlink primitives, explicit IDs/numbers and separate return links for repeated citations. Defaults use React hydration-stable scopes; published examples provide unique explicit scopes. Length-delimited/encoded identifiers preserve special-character targets without tuple collisions.
 - Added estimateReadingTime with configurable rate, locale and auto/segmenter/approximate counting. Tests cover native word-like segmentation, Unicode runs/contractions/combining marks, empty/punctuation/emoji content, missing Segmenter, deterministic approximate output and invalid/overflowing inputs.
@@ -542,4 +542,28 @@ Implemented on `codex/typography-editorial`, stacked on number-formatting commit
 - The reading playground handled empty input and changed Chinese text from one approximate run to two native word-like segments, matching the browser's Segmenter. Light/dark note colors differed correctly; an 18px scoped note size carried into dark mode until a 22px dark override was supplied.
 - The editorial route returned 200 with its expected canonical path. Examples, API metadata, sidebar/search, source-vendoring checks, minor changeset, token reference and package-health tables were updated. No observed hydration errors appeared in the browser console.
 
-The optional editorial scope is implemented and ready for review. A production docs build, VisualGuard baseline/CI run and comprehensive cross-browser/accessibility audit were not performed. Publish this branch against number formatting while PR #156 is open, then rebase/retarget after that dependency merges. The planned `codex/visualguard-coverage` follow-up and any CMS adoption remain outstanding.
+The optional editorial scope is implemented and ready for review. A production docs build, VisualGuard baseline/CI run and comprehensive cross-browser/accessibility audit were not performed. Publish this branch against number formatting while PR #156 is open, then rebase/retarget after that dependency merges. The `codex/visualguard-coverage` follow-up is implemented below; its publication/hosted run and any CMS adoption remain outstanding.
+
+## VisualGuard coverage implementation — 13 October 2026
+
+Started `codex/visualguard-coverage` from the approved editorial commit `e35026f2` and [PR #157](https://github.com/ShubhamTiwari909/zentauri-ui/pull/157). Verified the published npm artifact: `visualguard@2.0.0` exposes the strict saved-reference policy and Playwright fixture used here; the older source README release warning does not determine current npm availability. Pinned VisualGuard 2.0.0 and Playwright / @playwright/test 1.58.2 in docs development dependencies.
+
+The [testing guide](../../apps/component-library/visualguard/README.md) records the complete 15-page manifest, both actual docs themes, mobile/desktop coverage, targeted narrow cases and native interaction assertions. The fixture runner uses `--update-snapshots` for page and interactive references; standalone CLI `--update-baselines` references are not mixed into it. A pinned Linux ARM64 container supplies identical browser, fonts and Node for local runs and the new CI workflow. Reference images and rendering metadata/DOM/health sidecars are retained together; the wrapper stages candidate updates for inspection instead of overwriting tracked references. Missing or legacy baselines fail, AI is disabled and review-level differences block the suite.
+
+Production builds and reference capture have passed. The 15-page matrix has 76 cases and 88 checkpoints; the fresh canonical comparison passed below. GitHub-hosted workflow execution remains pending until the branch is published. CMS adoption, Firefox/WebKit and optional advisory AI remain separate follow-ups.
+
+### Coverage verification progress — 14 October 2026
+
+The initial browser suite exposed docs overflow at 200% root text. The coverage branch fixes the shrinking content column, wrapping showcase/mobile controls, long hero and section headings, and long API identifiers in prose/cards. Component primitives and example copy remain unchanged. Independent development-browser checks reflowed at 320, 390 and 1440px with 200% text; focused sidebar/header tests passed (13 cases). The docs Vitest suite passed all 91 cases and excludes the browser specs. Docs types and focused lint passed; existing PropsTable prop-validation warnings remain.
+
+The canonical Linux production build and doctor check passed. The prepared reference set contains 88 PNGs plus complete metadata, DOM and health sidecars: 64 full-page default views, eight disclosure states, eight footnote/permalink focus states and eight enlarged article/RTL viewport views. Capture review rejected the initial clipped/blank very tall zoomed screenshots; the zoom fixture now uses explicit viewports below the sticky header and requires their dimensions to match the project. Normal-size pages retain full-page coverage. Every checkpoint rejects unstable/clipped captures, and comparison mode additionally requires zero changed pixels above the configured sensitivity, regardless of heuristic labels.
+
+The pinned container keeps dependencies/build outputs in ephemeral Linux volumes and uses a download-cache volume. Capture updates explicitly request Playwright's `all` mode and stage complete candidate sets for inspection. Case timeouts allow three minutes for large image/DOM comparisons; retries remain disabled and the workflow is bounded at 35 minutes. Generated references are excluded from formatting and Tailwind source scanning. A full comparison through the same container entry used by CI passed: 76 cases, 88 checkpoints, zero unexpected failures and zero flaky cases, with all reference sidecars verified. Its 32 skipped cases are the explicitly excluded narrow-project combinations. The comparison took 19.6 minutes in the local container; the production build, doctor and complete evidence checks also passed. Hosted GitHub execution and publication of this branch remain pending.
+
+## Coverage publication — 14 October 2026
+
+The reviewed coverage implementation and all 88 baseline sets are being published on `codex/visualguard-coverage`, targeting `codex/typography-editorial` while PR #157 remains open. The local production comparison passed all 76 cases; GitHub-hosted execution remains unverified until its workflow finishes. This completes the implementation branch sequence in this plan. Merge/release reviews and any CMS adoption remain separate follow-ups. The next implementation branch follows the broader roadmap with the P1 `useDebouncedCallback` hook.
+
+## Hosted coverage verification — 14 October 2026
+
+The initial [GitHub run](https://github.com/ShubhamTiwari909/zentauri-ui/actions/runs/38515241958) passed all 76 visual cases in 4.0 minutes and verified the 88 complete reference artifact sets. Its job nevertheless failed during host cleanup because container installs/builds left root-owned files in the snapshot. The wrapper now passes the caller's user/group IDs and the suite returns workspace/report ownership on exit, preserving its original success/failure status. A complete hosted rerun remains pending for this cleanup correction; screenshot acceptance thresholds and baselines are unchanged.

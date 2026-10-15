@@ -47,6 +47,10 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | Accessibility (axe + keyboard) | 2          | 52    |
 | Permission system              | 1          | 47    |
 
+## Typography visual verification
+
+The typography previews use pinned VisualGuard and Playwright development tooling. Run `bash scripts/visualguard/run-container.sh compare` from the repository root with Docker running. The [visual testing guide](./visualguard/README.md) describes the route/state matrix, Linux rendering environment, reports and baseline approval process. Browser checks run separately from the Vitest unit suite and the component-package health totals.
+
 ## Tech stack
 
 | Area              | Choice                                                                                                                          |

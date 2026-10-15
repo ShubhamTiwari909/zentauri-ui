@@ -74,7 +74,7 @@ export function SidebarLayout({
       </aside>
 
       {/* Main Content Area */}
-      <main className="w-full">
+      <main className="min-w-0 w-full">
         {/* Overlay for mobile when sidebar is open */}
         {isMobileMenuOpen && (
           <div
