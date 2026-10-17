@@ -1,16 +1,18 @@
 {
-  "sourceRevision": "e35026f22499433979848942c314bca0b3b87530",
-  "sourceDescription": "Approved editorial typography stack (PRs 153\u2013157), with uncommitted coverage harness and docs reflow fixes for the content column, showcase/mobile controls, hero/section headings and long API names. Component primitives and example content are unchanged.",
-  "visualguard": "2.0.0",
+  "sourceRevision": "17f84a6c66bbb2e75341f736aae3b4d24b7058fc",
+  "sourceDescription": "PR #162 typography documentation with the regenerated props manifest, including resolved variant option lists and inherited HTML props. Existing typography primitives and example content are unchanged. MaskedHeading fixes do not affect the typography routes.",
+  "visualguard": "3.1.0",
   "playwright": "1.58.2",
   "image": "mcr.microsoft.com/playwright:v1.58.2-jammy@sha256:4698a73749c5848d3f5fcd42a2174d172fcad2b2283e087843b115424303a565",
   "platform": "linux/arm64",
   "node": "24.13.0",
   "locale": "en-US",
   "timezone": "UTC",
-  "reviewStatus": "Reference images inspected locally; full canonical comparison passed. Publication authorized on 14 October 2026; final approval remains part of PR review.",
-  "verifiedOn": "2026-10-14",
+  "reviewStatus": "Candidate screenshots inspected locally across both themes and all three viewports, including API table changes, focus states, enlarged text and RTL. Canonical capture and complete evidence checks must pass before publishing a new reference revision; CI independently compares the pinned sets.",
+  "verifiedOn": "2026-10-17",
   "casesPassed": 76,
   "checkpoints": 88,
-  "githubWorkflow": "Initial hosted run 38515241958 passed all 76 cases and all 88 evidence checks, then failed host cleanup due to root-owned bind-mount files. Ownership cleanup fixed; complete rerun pending."
+  "githubWorkflow": "Typography visual coverage fetches the pinned reference revision and runs the complete comparison matrix on pull requests.",
+  "baselineRevision": "7b73d81b2819ffdae139911aa01c2ab874fc6f85",
+  "previousBaselineRevision": "cd2f8a692850beb45799c42b7628a36781bc938d"
 }
