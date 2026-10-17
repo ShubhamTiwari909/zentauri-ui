@@ -87,7 +87,7 @@ export const MaskedHeadingBase = forwardRef<
   const clipTexts = useRef<(SVGTextElement | null)[]>([]);
   const bands = useRef<(SVGRectElement | null)[]>([]);
   const onComplete = useRef(onRevealComplete);
-  useImperativeHandle(forwardedRef, () => root.current!, []);
+  const remeasure = useRef<(() => void) | null>(null);
 
   const id = `zui-mh-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const words = useMemo(
@@ -99,6 +99,7 @@ export const MaskedHeadingBase = forwardRef<
     [children],
   );
   const Tag = `h${levels.includes(level) ? level : 2}` as const;
+  useImperativeHandle(forwardedRef, () => root.current!, [Tag]);
 
   useIsomorphicLayoutEffect(() => {
     onComplete.current = onRevealComplete;
@@ -368,6 +369,7 @@ export const MaskedHeadingBase = forwardRef<
     };
 
     host.setAttribute("data-state", phase);
+    remeasure.current = measure;
     measure();
     if (phase === "revealed") finish();
 
@@ -417,6 +419,7 @@ export const MaskedHeadingBase = forwardRef<
 
     return () => {
       alive = false;
+      remeasure.current = null;
       cancelAnimationFrame(frame);
       frame = 0;
       observer?.disconnect();
@@ -438,6 +441,7 @@ export const MaskedHeadingBase = forwardRef<
       video.current?.pause();
     };
   }, [
+    Tag,
     words,
     reveal,
     trigger,
@@ -449,6 +453,12 @@ export const MaskedHeadingBase = forwardRef<
     src,
     mediaType,
   ]);
+
+  // Layout props can move words without changing the host's dimensions. Update
+  // their clip geometry without replaying the entrance or its completion callback.
+  useIsomorphicLayoutEffect(() => {
+    remeasure.current?.();
+  }, [Tag, size, align, className, rest.style, rest.dir]);
 
   return (
     <Tag

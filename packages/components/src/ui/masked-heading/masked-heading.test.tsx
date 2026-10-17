@@ -148,14 +148,22 @@ describe("MaskedHeading", () => {
   });
 
   it("renders the requested level and falls back to h2 for invalid levels", () => {
+    const ref = createRef<HTMLHeadingElement>();
     const { rerender } = render(
-      <MaskedHeading level={1}>Hello world</MaskedHeading>,
+      <MaskedHeading ref={ref} level={1}>
+        Hello world
+      </MaskedHeading>,
     );
     expect(heading().tagName).toBe("H1");
     rerender(
-      <MaskedHeading level={9 as unknown as 1}>Hello world</MaskedHeading>,
+      <MaskedHeading ref={ref} level={9 as unknown as 1}>
+        Hello world
+      </MaskedHeading>,
     );
     expect(heading().tagName).toBe("H2");
+    expect(ref.current).toBe(heading());
+    expect(heading()).toHaveAttribute("data-measured");
+    expect(clipTexts()[0]).toHaveTextContent("Hello");
   });
 
   it("forwards refs and merges className and HTML attributes", () => {
@@ -222,8 +230,14 @@ describe("MaskedHeading", () => {
   });
 
   it("applies alignment and the optional outline", () => {
-    render(
-      <MaskedHeading align="center" outline>
+    const onRevealComplete = vi.fn();
+    const { rerender } = render(
+      <MaskedHeading
+        align="center"
+        outline
+        reveal="none"
+        onRevealComplete={onRevealComplete}
+      >
         Outlined
       </MaskedHeading>,
     );
@@ -231,6 +245,30 @@ describe("MaskedHeading", () => {
     expect(slot("masked-heading-text")?.className).toContain(
       "--zui-masked-heading-outline",
     );
+    // Alignment can move the words without resizing the heading itself.
+    // No ResizeObserver notification occurs in that case.
+    vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(
+      function (this: HTMLElement) {
+        return {
+          left: this.dataset.slot === "masked-heading-word" ? 40 : 0,
+          top: 0,
+          width: 0,
+          height: 0,
+        } as DOMRect;
+      },
+    );
+    rerender(
+      <MaskedHeading
+        align="end"
+        outline
+        reveal="none"
+        onRevealComplete={onRevealComplete}
+      >
+        Outlined
+      </MaskedHeading>,
+    );
+    expect(clipTexts()[0]).toHaveAttribute("x", "40.00");
+    expect(onRevealComplete).toHaveBeenCalledTimes(1);
   });
 
   it("keeps every decorative layer hidden from assistive tech", () => {
