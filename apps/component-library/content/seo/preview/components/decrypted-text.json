@@ -1,0 +1,59 @@
+{
+  "category": "Typography & motion",
+  "title": "Decrypted Text component for React",
+  "description": "A React text effect that cycles random glyphs and resolves into the real string on mount, in view, or on hover, with stable layout, accessible text, and reduced-motion support.",
+  "keywords": [
+    "decrypted text",
+    "scramble text",
+    "text decode animation",
+    "hacker text effect",
+    "React",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Decrypted Text · Zentauri UI",
+    "description": "A React text effect that cycles random glyphs and resolves into the real string on mount, in view, or on hover, with stable layout, accessible text, and reduced-motion support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Decrypted Text · Zentauri UI",
+    "description": "A React text effect that cycles random glyphs and resolves into the real string on mount, in view, or on hover, with stable layout, accessible text, and reduced-motion support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/decrypted-text",
+  "headings": {
+    "h1": "From noise to words.",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "Text that cycles through random glyphs and settles into the real string, letter by letter. The line never shifts, and assistive tech always reads the real words.",
+  "useCases": [
+    "Hero headlines and section labels with a technical or security theme.",
+    "Link and button labels that decode on hover or keyboard focus.",
+    "Status lines such as \"Connection established\" in dashboards and terminals."
+  ],
+  "faqs": [
+    {
+      "question": "Do screen readers hear the random characters?",
+      "answer": "No. The real text is kept in a visually hidden copy and the animated letters are aria-hidden, so assistive tech reads the final words from the start."
+    },
+    {
+      "question": "Does the text jump around while it decodes?",
+      "answer": "No. Each scrambled glyph floats over its hidden real letter and is squeezed to that letter's width, so the line keeps its width throughout."
+    },
+    {
+      "question": "Does it need Framer Motion?",
+      "answer": "No. It runs on one requestAnimationFrame loop and writes to the letters directly. The flip effect uses the browser's Web Animations API."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Import DecryptedText from the decrypted-text entry and pass the text as a string child. It renders a span by default; set as to render a p, div, or heading. The defaults are trigger view, order start, effect scramble, speed 50 ms, iterations 10, delay 0, and appearance default, which keeps the surrounding text colour for scrambled glyphs.\n\nThe view and mount triggers start scrambled, and the first glyphs are deterministic so server and client HTML match. The hover trigger starts as plain text and also responds to keyboard focus. onComplete fires each time decoding finishes. Style letters that are still scrambled with the [data-scrambled] attribute.\n\nConsumers using Tailwind v4 must include the package in their @source scan so both light and dark token classes are generated."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

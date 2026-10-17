@@ -28,6 +28,7 @@ import contextMenu from "@/content/seo/preview/components/context-menu.json";
 import copyButton from "@/content/seo/preview/components/copy-button.json";
 import dataTable from "@/content/seo/preview/components/data-table.json";
 import datePicker from "@/content/seo/preview/components/date-picker.json";
+import decryptedText from "@/content/seo/preview/components/decrypted-text.json";
 import charts from "@/content/seo/preview/charts.json";
 import divider from "@/content/seo/preview/components/divider.json";
 import drawer from "@/content/seo/preview/components/drawer.json";
@@ -69,6 +70,7 @@ import rating from "@/content/seo/preview/components/rating.json";
 import radioGroup from "@/content/seo/preview/components/radio-group.json";
 import relativeTime from "@/content/seo/preview/components/relative-time.json";
 import scrollArea from "@/content/seo/preview/components/scroll-area.json";
+import scrollExpand from "@/content/seo/preview/components/scroll-expand.json";
 import secretReveal from "@/content/seo/preview/components/secret-reveal.json";
 import select from "@/content/seo/preview/components/select.json";
 import search from "@/content/seo/preview/components/search.json";
@@ -129,6 +131,7 @@ const previewSeoRegistry = {
   "copy-button": copyButton as PreviewSeoDocument,
   "data-table": dataTable as PreviewSeoDocument,
   "date-picker": datePicker as PreviewSeoDocument,
+  "decrypted-text": decryptedText as PreviewSeoDocument,
   charts: charts as PreviewSeoDocument,
   divider: divider as PreviewSeoDocument,
   drawer: drawer as PreviewSeoDocument,
@@ -170,6 +173,7 @@ const previewSeoRegistry = {
   "radio-group": radioGroup as PreviewSeoDocument,
   "relative-time": relativeTime as PreviewSeoDocument,
   "scroll-area": scrollArea as PreviewSeoDocument,
+  "scroll-expand": scrollExpand as PreviewSeoDocument,
   "secret-reveal": secretReveal as PreviewSeoDocument,
   select: select as PreviewSeoDocument,
   search: search as PreviewSeoDocument,

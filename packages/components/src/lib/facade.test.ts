@@ -15,6 +15,8 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("activity-feed");
     expect(slugs).toContain("time-travel-inspector");
     expect(slugs).toContain("glass-card");
+    expect(slugs).toContain("decrypted-text");
+    expect(slugs).toContain("scroll-expand");
     expect(slugs).toContain("grid");
     expect(slugs).toContain("field");
     expect(slugs).toContain("toolbar");
@@ -280,6 +282,49 @@ describe("DesignSystem facade", () => {
         expect.objectContaining({
           name: "--zui-glass-card-crystal-blur",
           pairName: "--zui-glass-card-crystal-blur-dark",
+        }),
+      ]),
+    );
+  });
+
+  it("discovers Decrypted Text glyph colours with dark pairs", () => {
+    const text = DesignSystem.getComponent("decrypted-text");
+    expect(text?.title).toBe("Decrypted Text");
+    expect(text?.appearances()).toEqual(
+      expect.arrayContaining(["default", "matrix", "rose"]),
+    );
+    expect(text?.getVariant("appearance", "matrix")?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-decrypted-text-matrix-glyph",
+          fallback: "#15803d",
+        }),
+        expect.objectContaining({
+          name: "--zui-decrypted-text-matrix-glyph-dark",
+          fallback: "#4ade80",
+        }),
+      ]),
+    );
+  });
+
+  it("discovers Scroll Expand appearances and shared frame tokens", () => {
+    const expand = DesignSystem.getComponent("scroll-expand");
+    expect(expand?.title).toBe("Scroll Expand");
+    expect(expand?.appearances()).toEqual([
+      "default",
+      "light",
+      "contrast",
+      "tint",
+    ]);
+    expect(expand?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-scroll-expand-radius",
+          pairName: "--zui-scroll-expand-radius-dark",
+        }),
+        expect.objectContaining({
+          name: "--zui-scroll-expand-tint-scrim",
+          pairName: "--zui-scroll-expand-tint-scrim-dark",
         }),
       ]),
     );
