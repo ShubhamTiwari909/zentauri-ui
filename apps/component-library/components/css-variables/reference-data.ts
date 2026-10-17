@@ -1,3 +1,5 @@
+import { decryptedTextCssVariables } from "./data/decrypted-text";
+import { scrollExpandCssVariables } from "./data/scroll-expand";
 import { glassCardCssVariables } from "./data/glass-card";
 import { accordionCssVariables } from "./data/accordion";
 import { activityFeedCssVariables } from "./data/activity-feed";
@@ -112,6 +114,7 @@ export const cssVariableReferences = {
   "context-menu": contextMenuCssVariables,
   "copy-button": copyButtonCssVariables,
   "date-picker": datePickerCssVariables,
+  "decrypted-text": decryptedTextCssVariables,
   divider: dividerCssVariables,
   drawer: drawerCssVariables,
   dropdown: dropdownCssVariables,
@@ -148,6 +151,7 @@ export const cssVariableReferences = {
   "radio-group": radioGroupCssVariables,
   rating: ratingCssVariables,
   "scroll-area": scrollAreaCssVariables,
+  "scroll-expand": scrollExpandCssVariables,
   "secret-reveal": secretRevealCssVariables,
   search: searchCssVariables,
   select: selectCssVariables,

@@ -1,0 +1,60 @@
+{
+  "category": "Media & motion",
+  "title": "Scroll Expand component for React",
+  "description": "A sticky React section whose rounded image or video frame grows to full bleed as you scroll, with a lifting headline, inert-until-visible overlay content, and a reduced-motion fallback.",
+  "keywords": [
+    "scroll expand",
+    "scroll animation",
+    "sticky section",
+    "full bleed media",
+    "scroll-linked animation",
+    "React",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Scroll Expand · Zentauri UI",
+    "description": "A sticky React section whose rounded image or video frame grows to full bleed as you scroll, with a lifting headline, inert-until-visible overlay content, and a reduced-motion fallback.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Scroll Expand · Zentauri UI",
+    "description": "A sticky React section whose rounded image or video frame grows to full bleed as you scroll, with a lifting headline, inert-until-visible overlay content, and a reduced-motion fallback.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/scroll-expand",
+  "headings": {
+    "h1": "Room to grow.",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "A rounded media frame that opens to full bleed as you scroll. The headline lifts away, your content fades in over the media, and the section holds before it releases.",
+  "useCases": [
+    "Product and campaign heroes that open onto a photo or film.",
+    "Chapter breaks in long-form and editorial pages.",
+    "Portfolio and case-study showcases inside a fixed-height frame."
+  ],
+  "faqs": [
+    {
+      "question": "Does it hijack scrolling?",
+      "answer": "No. It never intercepts wheel or touch input. A tall track and a sticky stage pin the section while the page, or the component itself, scrolls normally."
+    },
+    {
+      "question": "Can keyboard users reach the overlay content?",
+      "answer": "Yes, once it is visible. Overlay content stays inert until it is mostly revealed, so focus never lands on invisible links. A self-scrolling section is focusable and scrolls with the arrow and Page Down keys."
+    },
+    {
+      "question": "What happens with reduced motion?",
+      "answer": "The section shows its expanded composition at its normal height, without pinning or scroll-linked movement, and video never plays."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Import ScrollExpand from the scroll-expand entry and pass an image or video src. title renders as a real heading (level 2 by default) that labels the section, hint is a small aria-hidden cue, and children are the overlay revealed at full bleed. The defaults are scroller window, startWidth 42, startHeight 58, zoom 1.35, distance 1.2, hold 0.35, smoothing 100 ms, and appearance default.\n\nWith scroller window, the section follows the page or any scrolling ancestor, and its stage is one small-viewport height tall. Pinning uses position: sticky, so no ancestor between the section and its scroller may set overflow hidden, auto, or scroll; use overflow-clip to round or clip a wrapper. With scroller self, the component is its own focusable scroll container; give it a height with className. The current phase is exposed as data-state (resting, expanding, expanded) for styling.\n\nConsumers using Tailwind v4 must include the package in their @source scan so both light and dark token classes are generated."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}
