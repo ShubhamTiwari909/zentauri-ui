@@ -94,6 +94,7 @@ export const CLI_ADD_COMPONENTS = [
   "kbd",
   "log-viewer",
   "marquee",
+  "masked-heading",
   "modal",
   "network-status",
   "neural-graph",

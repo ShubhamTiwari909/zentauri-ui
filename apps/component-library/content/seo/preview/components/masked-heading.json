@@ -1,0 +1,60 @@
+{
+  "category": "Typography & motion",
+  "title": "Masked Heading component for React",
+  "description": "A semantic React heading whose letters reveal an image, video, or gradient mesh, with line-masked word reveals, wipe and fade entrances, pointer parallax, and reduced-motion support.",
+  "keywords": [
+    "masked heading",
+    "image text",
+    "text mask",
+    "clip-path text",
+    "text reveal animation",
+    "React",
+    "Tailwind CSS"
+  ],
+  "og": {
+    "title": "Masked Heading · Zentauri UI",
+    "description": "A semantic React heading whose letters reveal an image, video, or gradient mesh, with line-masked word reveals, wipe and fade entrances, pointer parallax, and reduced-motion support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Masked Heading · Zentauri UI",
+    "description": "A semantic React heading whose letters reveal an image, video, or gradient mesh, with line-masked word reveals, wipe and fade entrances, pointer parallax, and reduced-motion support.",
+    "card": "summary_large_image"
+  },
+  "canonicalPath": "/preview/components/masked-heading",
+  "headings": {
+    "h1": "Letters as windows.",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "A real heading whose words open onto an image, a looping video, or a drifting gradient mesh. Each word rises out of its own line, then the media drifts slowly and follows the pointer.",
+  "useCases": [
+    "Landing page and campaign hero headlines.",
+    "Section openers in editorial and portfolio layouts.",
+    "Product launch pages that pair a headline with brand imagery."
+  ],
+  "faqs": [
+    {
+      "question": "Is the heading still readable by screen readers and search engines?",
+      "answer": "Yes. The copy is ordinary text inside a real h1–h6 element. The media and the SVG mask are aria-hidden, and the mask's letters are written in the browser, so server HTML contains the heading text once."
+    },
+    {
+      "question": "Does it need GSAP, Framer Motion, canvas or WebGL?",
+      "answer": "No. It uses an SVG clipPath, CSS transforms, and one requestAnimationFrame loop that pauses off-screen and stops once the media is still."
+    },
+    {
+      "question": "What happens with reduced motion, touch, or no JavaScript?",
+      "answer": "Reduced motion shows the final heading at once, keeps the media still, and never plays video. Touch input does not move the media. Without scripts, or with forced colors, the heading renders as plain text."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Import MaskedHeading from the masked-heading entry and pass the copy as a string child. It renders an h2 by default; set level for h1–h6. Without src, the selected appearance shows a tokenized gradient mesh. Pass an image URL, or set mediaType=\"video\" for a muted looping clip with an optional poster.\n\nThe defaults are reveal rise, trigger view, duration 1100 ms, stagger 90 ms, delay 0, parallax 24 px, drift 16 px, size lg, align start, and appearance aurora. The view trigger starts once a quarter of the heading is visible, and onRevealComplete fires when the entrance ends.\n\nThe letters are measured after layout and re-measured when the heading resizes or web fonts load. Consumers using Tailwind v4 must include the package in their @source scan so both light and dark token classes are generated."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases"
+}

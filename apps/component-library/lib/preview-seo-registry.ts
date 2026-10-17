@@ -52,6 +52,7 @@ import requestTimelineViewer from "@/content/seo/preview/components/request-time
 import logViewer from "@/content/seo/preview/components/log-viewer.json";
 import kbd from "@/content/seo/preview/components/kbd.json";
 import marquee from "@/content/seo/preview/components/marquee.json";
+import maskedHeading from "@/content/seo/preview/components/masked-heading.json";
 import modal from "@/content/seo/preview/components/modal.json";
 import networkStatus from "@/content/seo/preview/components/network-status.json";
 import neuralGraph from "@/content/seo/preview/components/neural-graph.json";
@@ -153,6 +154,7 @@ const previewSeoRegistry = {
   "log-viewer": logViewer as PreviewSeoDocument,
   kbd: kbd as PreviewSeoDocument,
   marquee: marquee as PreviewSeoDocument,
+  "masked-heading": maskedHeading as PreviewSeoDocument,
   modal: modal as PreviewSeoDocument,
   "network-status": networkStatus as PreviewSeoDocument,
   "neural-graph": neuralGraph as PreviewSeoDocument,
