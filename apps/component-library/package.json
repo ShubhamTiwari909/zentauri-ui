@@ -54,7 +54,7 @@
     "playwright": "1.58.2",
     "prettier": "^3.7.4",
     "typescript": "^5",
-    "visualguard": "2.0.0",
+    "visualguard": "3.1.0",
     "vitest": "^4.1.4"
   }
 }
