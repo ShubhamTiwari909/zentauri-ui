@@ -234,6 +234,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Forms",
   },
   {
+    id: "decrypted-text",
+    name: "Decrypted Text",
+    description:
+      "Text that cycles random glyphs and resolves into the real string on mount, in view, or on hover, without shifting the line.",
+    href: "/preview/components/decrypted-text",
+    badge: "Display",
+  },
+  {
     id: "divider",
     name: "Divider",
     description:
@@ -536,6 +544,14 @@ export const componentsData: ComponentHighlight[] = [
       "Themeable overflow containers with vertical, horizontal, hover, hidden, and always-visible scrollbar variants.",
     href: "/preview/components/scroll-area",
     badge: "Layout",
+  },
+  {
+    id: "scroll-expand",
+    name: "Scroll Expand",
+    description:
+      "A sticky section whose rounded image or video frame grows to full bleed as you scroll, then hands over to overlay content.",
+    href: "/preview/components/scroll-expand",
+    badge: "Display",
   },
   {
     id: "secret-reveal",

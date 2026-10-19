@@ -283,6 +283,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/date-picker",
       },
       {
+        title: "Decrypted Text",
+        href: "/preview/components/decrypted-text",
+      },
+      {
         title: "Divider",
         href: "/preview/components/divider",
       },
@@ -431,6 +435,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
       {
         title: "Scroll area",
         href: "/preview/components/scroll-area",
+      },
+      {
+        title: "Scroll Expand",
+        href: "/preview/components/scroll-expand",
       },
       {
         title: "Search",
