@@ -19,9 +19,27 @@ git ls-files --cached --others --exclude-standard -z |
   while IFS= read -r -d '' file; do
     if [[ -e "$file" || -L "$file" ]]; then printf '%s\0' "$file"; fi
   done | tar --null -T - -cf - | tar -xf - -C "$snapshot"
+# Baselines were removed from the current tree to keep generated images out of
+# the checkout. Restore the reviewed sets from immutable Git history, never from
+# the candidate under test. Shallow CI checkouts need this one historical commit.
+baseline_revision="$(node -p 'require("./apps/component-library/visualguard/baseline-provenance.json").baselineRevision')"
+if [[ ! "$baseline_revision" =~ ^[0-9a-f]{40}$ ]]; then
+  echo 'baselineRevision must pin a full Git commit SHA.' >&2
+  exit 2
+fi
+if ! git cat-file -e "$baseline_revision^{commit}" 2>/dev/null; then
+  git fetch --no-tags --depth=1 origin "$baseline_revision"
+fi
+baseline_path='apps/component-library/visualguard/baselines'
+# Discard any untracked host references copied by older checkouts as well.
+rm -rf -- "$snapshot/$baseline_path"
+git archive "$baseline_revision" "$baseline_path" | tar -xf - -C "$snapshot"
+echo "Reviewed typography references: $baseline_revision"
+
 results="$repo_root/apps/component-library/visualguard-results"
 mkdir -p "$results"
 git rev-parse HEAD > "$results/source-revision.txt"
+printf '%s\n' "$baseline_revision" > "$results/baseline-revision.txt"
 
 set +e
 docker run --rm --platform linux/arm64 --ipc=host \
@@ -43,12 +61,8 @@ result=$?
 set -e
 
 if [[ "$mode" == update && "$result" == 0 ]]; then
-  # Successful capture is necessary; reviewers still approve the image changes.
-  rm -rf -- "$results/candidate-baselines"
-  mkdir -p "$results/candidate-baselines"
-  cp -R "$snapshot/apps/component-library/visualguard/baselines/." \
-    "$results/candidate-baselines/"
+  # The suite exports complete references before its ownership cleanup.
   echo "Candidate references: $results/candidate-baselines"
-  echo 'Inspect these before copying them into visualguard/baselines.'
+  echo 'Inspect these before publishing a new pinned reference revision.'
 fi
 exit "$result"

@@ -12,7 +12,10 @@ fi
 restore_workspace_ownership() {
   local suite_status=$?
   trap - EXIT
-  if ! chown -R "$VISUALGUARD_HOST_UID:$VISUALGUARD_HOST_GID" /workspace; then
+  # Symlinks can point at host-only virtualenvs or dependencies outside the
+  # filtered install. Skip them: their parent directories control deletion.
+  # Some shared host filesystems dereference links even with chown -h.
+  if ! find /workspace ! -type l -exec chown "$VISUALGUARD_HOST_UID:$VISUALGUARD_HOST_GID" {} +; then
     echo 'Could not return workspace ownership to the host.' >&2
     exit 1
   fi
@@ -33,3 +36,12 @@ else
 fi
 
 node scripts/visualguard/verify-evidence.mjs
+
+if [[ "${VISUALGUARD_RUN_MODE:-compare}" == update ]]; then
+  # Export only complete, verified captures, before ownership cleanup. Preserve
+  # the evidence even if host cleanup later fails; callers still get that error.
+  candidates=/workspace/apps/component-library/visualguard-results/candidate-baselines
+  rm -rf -- "$candidates"
+  mkdir -p "$candidates"
+  cp -R apps/component-library/visualguard/baselines/. "$candidates/"
+fi

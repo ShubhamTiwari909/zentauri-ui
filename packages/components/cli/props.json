@@ -17412,6 +17412,256 @@
         }
       ]
     },
+    "masked-heading": {
+      "slug": "masked-heading",
+      "subcomponents": [
+        {
+          "name": "static:MaskedHeading",
+          "displayName": "MaskedHeading",
+          "propsType": "MaskedHeadingProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "align",
+              "type": "enum",
+              "required": false,
+              "default": "start",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "center",
+                "end",
+                "start"
+              ],
+              "variantGroup": "align",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "aurora",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "aurora",
+                "candy",
+                "ember",
+                "forest",
+                "midnight",
+                "mono",
+                "ocean",
+                "sunset"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "enum",
+              "required": false,
+              "default": "lg",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "lg",
+                "md",
+                "sm",
+                "xl"
+              ],
+              "variantGroup": "size",
+              "deprecated": false
+            },
+            {
+              "name": "delay",
+              "type": "number | undefined",
+              "required": false,
+              "default": "0",
+              "group": "behavior",
+              "description": "Delay before the entrance starts, in milliseconds. Clamped to 0–10000.",
+              "deprecated": false
+            },
+            {
+              "name": "drift",
+              "type": "number | undefined",
+              "required": false,
+              "default": "16",
+              "group": "behavior",
+              "description": "Amplitude of the slow idle drift of the media, in px. 0 holds it still. Clamped to 0–120.",
+              "deprecated": false
+            },
+            {
+              "name": "duration",
+              "type": "number | undefined",
+              "required": false,
+              "default": "1100",
+              "group": "behavior",
+              "description": "Entrance duration in milliseconds. Clamped to 0–10000.",
+              "deprecated": false
+            },
+            {
+              "name": "level",
+              "type": "MaskedHeadingLevel | undefined",
+              "required": false,
+              "default": "2",
+              "group": "behavior",
+              "description": "Heading level, rendered as `h1`–`h6`.",
+              "deprecated": false
+            },
+            {
+              "name": "mediaType",
+              "type": "MaskedHeadingMediaType | undefined",
+              "required": false,
+              "default": "\"image\"",
+              "group": "behavior",
+              "description": "Kind of media `src` points to. Videos are muted, looped and paused for reduced motion.",
+              "deprecated": false
+            },
+            {
+              "name": "onRevealComplete",
+              "type": "(() => void) | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Called once when the entrance finishes, or immediately when it is skipped.",
+              "deprecated": false
+            },
+            {
+              "name": "outline",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "description": "Stroke every letter so its shape is visible before the media arrives.",
+              "deprecated": false
+            },
+            {
+              "name": "parallax",
+              "type": "number | undefined",
+              "required": false,
+              "default": "24",
+              "group": "behavior",
+              "description": "How far the media slides under the letters as a mouse or pen moves, in px. 0 disables it. Clamped to 0–120.",
+              "deprecated": false
+            },
+            {
+              "name": "poster",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Poster frame shown while a video loads.",
+              "deprecated": false
+            },
+            {
+              "name": "reveal",
+              "type": "MaskedHeadingReveal | undefined",
+              "required": false,
+              "default": "\"rise\"",
+              "group": "behavior",
+              "description": "Entrance style.",
+              "deprecated": false
+            },
+            {
+              "name": "src",
+              "type": "string | undefined",
+              "required": false,
+              "group": "behavior",
+              "description": "Image or video shown through the letters. Without it, the appearance's gradient mesh shows.",
+              "deprecated": false
+            },
+            {
+              "name": "stagger",
+              "type": "number | undefined",
+              "required": false,
+              "default": "90",
+              "group": "behavior",
+              "description": "Delay between words in milliseconds for `rise`. Clamped to 0–1000.",
+              "deprecated": false
+            },
+            {
+              "name": "trigger",
+              "type": "MaskedHeadingTrigger | undefined",
+              "required": false,
+              "default": "\"view\"",
+              "group": "behavior",
+              "description": "When the entrance runs.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "string",
+              "required": true,
+              "group": "content",
+              "description": "Heading copy. Split into words for the reveal; stays readable to assistive tech.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLHeadingElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        },
+        {
+          "name": "static:MaskedHeadingVariant",
+          "displayName": "MaskedHeadingVariant",
+          "propsType": "MaskedHeadingVariantProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "align",
+              "type": "'center' | 'end' | 'start' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "appearance",
+              "type": "'ocean' | 'forest' | 'sunset' | 'aurora' | 'ember' | 'candy' | 'midnight' | 'mono' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "'md' | 'sm' | 'lg' | 'xl' | null | undefined",
+              "required": false,
+              "group": "behavior",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "modal": {
       "slug": "modal",
       "subcomponents": [
@@ -31784,6 +32034,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31841,6 +32106,13 @@
               "deprecated": false
             },
             {
+              "name": "download",
+              "type": "any",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "id",
               "type": "string | undefined",
               "required": false,
@@ -31855,8 +32127,37 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLAnchorElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "referrerPolicy",
+              "type": "HTMLAttributeReferrerPolicy | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "target",
+              "type": "HTMLAttributeAnchorTarget | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -31912,6 +32213,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLLIElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -31962,6 +32278,13 @@
               "deprecated": false
             },
             {
+              "name": "download",
+              "type": "any",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLAnchorElement> | undefined",
               "required": false,
@@ -31969,8 +32292,37 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLAnchorElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "referrerPolicy",
+              "type": "HTMLAttributeReferrerPolicy | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "target",
+              "type": "HTMLAttributeAnchorTarget | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -32026,6 +32378,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -32071,6 +32438,21 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLOListElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLOListElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -32395,6 +32777,21 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "Ref<HTMLSpanElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -32727,6 +33124,21 @@
               "deprecated": false
             },
             {
+              "name": "ref",
+              "type": "Ref<HTMLElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
               "name": "style",
               "type": "CSSProperties | undefined",
               "required": false,
@@ -32749,6 +33161,21 @@
           "source": "static",
           "props": [
             {
+              "name": "align",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "center",
+                "end",
+                "justify",
+                "start"
+              ],
+              "variantGroup": "align",
+              "deprecated": false
+            },
+            {
               "name": "font",
               "type": "enum",
               "required": false,
@@ -32759,6 +33186,34 @@
                 "mono"
               ],
               "variantGroup": "font",
+              "deprecated": false
+            },
+            {
+              "name": "leading",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "normal",
+                "relaxed",
+                "tight"
+              ],
+              "variantGroup": "leading",
+              "deprecated": false
+            },
+            {
+              "name": "measure",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "none",
+                "readable",
+                "wide"
+              ],
+              "variantGroup": "measure",
               "deprecated": false
             },
             {
@@ -32804,6 +33259,14 @@
                 "default",
                 "destructive",
                 "error",
+                "gradient-cyan-blue",
+                "gradient-cyan-green",
+                "gradient-cyan-orange",
+                "gradient-cyan-pink",
+                "gradient-cyan-purple",
+                "gradient-cyan-red",
+                "gradient-cyan-violet",
+                "gradient-pink-violet",
                 "info",
                 "muted",
                 "primary",
@@ -32815,17 +33278,54 @@
               "deprecated": false
             },
             {
+              "name": "tracking",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "normal",
+                "tight",
+                "wide"
+              ],
+              "variantGroup": "tracking",
+              "deprecated": false
+            },
+            {
+              "name": "weight",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "bold",
+                "medium",
+                "normal",
+                "semibold"
+              ],
+              "variantGroup": "weight",
+              "deprecated": false
+            },
+            {
+              "name": "wrap",
+              "type": "enum",
+              "required": false,
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "balance",
+                "normal",
+                "nowrap",
+                "pretty"
+              ],
+              "variantGroup": "wrap",
+              "deprecated": false
+            },
+            {
               "name": "value",
               "type": "number | bigint",
               "required": true,
               "group": "controlled",
-              "deprecated": false
-            },
-            {
-              "name": "align",
-              "type": "NonNullable<'center' | 'end' | 'start' | 'justify' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
               "deprecated": false
             },
             {
@@ -32844,22 +33344,8 @@
               "deprecated": false
             },
             {
-              "name": "leading",
-              "type": "NonNullable<'normal' | 'tight' | 'relaxed' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
               "name": "locale",
               "type": "string | string[] | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "measure",
-              "type": "NonNullable<'none' | 'wide' | 'readable' | null | undefined> | undefined",
               "required": false,
               "group": "behavior",
               "deprecated": false
@@ -32870,27 +33356,6 @@
               "required": false,
               "group": "behavior",
               "description": "Styles native parts without replacing their text or order.",
-              "deprecated": false
-            },
-            {
-              "name": "tracking",
-              "type": "NonNullable<'normal' | 'tight' | 'wide' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "weight",
-              "type": "NonNullable<'bold' | 'medium' | 'normal' | 'semibold' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
-              "deprecated": false
-            },
-            {
-              "name": "wrap",
-              "type": "NonNullable<'normal' | 'balance' | 'pretty' | 'nowrap' | null | undefined> | undefined",
-              "required": false,
-              "group": "behavior",
               "deprecated": false
             },
             {
@@ -32910,6 +33375,21 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLDivElement> | MouseEventHandler<HTMLSpanElement> | MouseEventHandler<HTMLParagraphElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "((instance: HTMLDivElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLDivElement | null> | ((instance: HTMLSpanElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLSpanElement | null> | ((instance: HTMLParagraphElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLParagraphElement | null> | null | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false
@@ -33839,6 +34319,21 @@
             {
               "name": "onClick",
               "type": "MouseEventHandler<HTMLDivElement> | MouseEventHandler<HTMLSpanElement> | MouseEventHandler<HTMLParagraphElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "ref",
+              "type": "((instance: HTMLDivElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLDivElement | null> | ((instance: HTMLSpanElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLSpanElement | null> | ((instance: HTMLParagraphElement | null) => void | (() => VoidOrUndefinedOnly) | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | RefObject<HTMLParagraphElement | null> | null | undefined",
+              "required": false,
+              "group": "dom",
+              "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref).",
+              "deprecated": false
+            },
+            {
+              "name": "rel",
+              "type": "string | undefined",
               "required": false,
               "group": "dom",
               "deprecated": false

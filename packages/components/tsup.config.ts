@@ -49,6 +49,7 @@ const uiComponentNames = [
   "kbd",
   "log-viewer",
   "marquee",
+  "masked-heading",
   "modal",
   "network-status",
   "neural-graph",

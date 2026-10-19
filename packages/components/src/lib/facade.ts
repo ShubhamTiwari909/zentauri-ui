@@ -98,6 +98,7 @@ const componentSlugs = [
   "inputs",
   "kbd",
   "marquee",
+  "masked-heading",
   "modal",
   "neural-graph",
   "orbit-system",
