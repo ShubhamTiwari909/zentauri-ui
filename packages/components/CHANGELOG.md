@@ -1,5 +1,13 @@
 # @zentauri-ui/zentauri-components Changelog
 
+## 2.18.0
+
+### Minor Changes
+
+- 97b0e7d: Add `DecryptedText` (`@zentauri-ui/zentauri-components/ui/decrypted-text`): text that cycles random glyphs and resolves into the real string without shifting the line. It decodes on mount, in view, or on hover and keyboard focus. Letters resolve from the start, end, centre or at random, or all together after a set number of steps, and land with a scramble, fade or flip effect. The real text stays in a visually hidden copy for assistive tech, and the server HTML is deterministic. Reduced motion and no-script environments show the final text. No animation dependency is required.
+- 1f99485: Add `MaskedHeading` (`@zentauri-ui/zentauri-components/ui/masked-heading`): a semantic `h1`–`h6` whose words act as windows onto an image, a muted looping video, or a token-driven gradient mesh. Words rise out of their own line masks, or the media wipes or fades in, on mount or once the heading scrolls into view. Afterwards the media drifts slowly and slides under the letters with a mouse or pen. The entrance runs on one dependency-free animation loop that pauses off-screen. Reduced-motion preferences, forced colors and no-script environments all fall back to the final, readable heading.
+- 97b0e7d: Add `ScrollExpand` (`@zentauri-ui/zentauri-components/ui/scroll-expand`): a sticky section whose rounded image or video frame grows to full bleed as the page, or the component itself, scrolls. Its headline lifts away and overlay content fades in, then holds before the section releases. The layout is pure CSS, so there is no shift after hydration. One time-smoothed animation loop writes only clip-path, transforms and opacity, and stops once settled. Hidden overlay content stays inert, video plays only on screen, and reduced motion shows the expanded composition without pinning or scroll-linked movement.
+
 ## 2.17.0
 
 ### Minor Changes
