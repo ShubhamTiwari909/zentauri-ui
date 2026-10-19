@@ -357,6 +357,10 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         href: "/preview/components/marquee",
       },
       {
+        title: "Masked Heading",
+        href: "/preview/components/masked-heading",
+      },
+      {
         title: "Modal",
         href: "/preview/components/modal",
       },

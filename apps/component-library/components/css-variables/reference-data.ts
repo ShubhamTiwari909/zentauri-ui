@@ -1,6 +1,7 @@
 import { decryptedTextCssVariables } from "./data/decrypted-text";
 import { scrollExpandCssVariables } from "./data/scroll-expand";
 import { glassCardCssVariables } from "./data/glass-card";
+import { maskedHeadingCssVariables } from "./data/masked-heading";
 import { accordionCssVariables } from "./data/accordion";
 import { activityFeedCssVariables } from "./data/activity-feed";
 import { apiEndpointCardCssVariables } from "./data/api-endpoint-card";
@@ -135,6 +136,7 @@ export const cssVariableReferences = {
   kbd: kbdCssVariables,
   "log-viewer": logViewerCssVariables,
   marquee: marqueeCssVariables,
+  "masked-heading": maskedHeadingCssVariables,
   modal: modalCssVariables,
   "network-status": networkStatusCssVariables,
   "neural-graph": neuralGraphCssVariables,

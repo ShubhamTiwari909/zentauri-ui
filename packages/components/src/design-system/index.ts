@@ -46,6 +46,7 @@ export * from "./json-viewer";
 export * from "./kbd";
 export * from "./log-viewer";
 export * from "./marquee";
+export * from "./masked-heading";
 export * from "./modal";
 export * from "./network-status";
 export * from "./neural-graph";

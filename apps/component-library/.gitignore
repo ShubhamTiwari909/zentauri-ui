@@ -44,3 +44,4 @@ next-env.d.ts
 # VisualGuard run evidence
 .visualguard/
 visualguard-results/
+visualguard/baselines

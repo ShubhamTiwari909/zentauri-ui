@@ -394,6 +394,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Display",
   },
   {
+    id: "masked-heading",
+    name: "Masked Heading",
+    description:
+      "Semantic headings whose letters reveal an image, video, or gradient mesh, with line-masked entrances and pointer parallax.",
+    href: "/preview/components/masked-heading",
+    badge: "Display",
+  },
+  {
     id: "modal",
     name: "Modal",
     description:

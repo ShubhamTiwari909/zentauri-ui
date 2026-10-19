@@ -34,15 +34,15 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 171 passed (171)   |
-| Tests      | 2133 passed (2133) |
+| Test files | 172 passed (172)   |
+| Tests      | 2165 passed (2165) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 111        | 1623  |
+| Components and UI utilities    | 112        | 1654  |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 51         | 292   |
-| Design system facade           | 1          | 26    |
+| Design system facade           | 1          | 27    |
 | CLI and import rewriting       | 4          | 48    |
 | Accessibility (axe + keyboard) | 2          | 52    |
 | Permission system              | 1          | 47    |

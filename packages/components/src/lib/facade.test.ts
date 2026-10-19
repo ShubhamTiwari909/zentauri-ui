@@ -17,6 +17,7 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("glass-card");
     expect(slugs).toContain("decrypted-text");
     expect(slugs).toContain("scroll-expand");
+    expect(slugs).toContain("masked-heading");
     expect(slugs).toContain("grid");
     expect(slugs).toContain("field");
     expect(slugs).toContain("toolbar");
@@ -282,6 +283,30 @@ describe("DesignSystem facade", () => {
         expect.objectContaining({
           name: "--zui-glass-card-crystal-blur",
           pairName: "--zui-glass-card-crystal-blur-dark",
+        }),
+      ]),
+    );
+  });
+
+  it("discovers Masked Heading mesh appearances with dark pairs", () => {
+    const heading = DesignSystem.getComponent("masked-heading");
+    expect(heading?.title).toBe("Masked Heading");
+    expect(heading?.appearances()).toEqual(
+      expect.arrayContaining(["aurora", "sunset", "mono"]),
+    );
+    expect(heading?.getVariant("appearance", "aurora")?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: "--zui-masked-heading-aurora-mesh" }),
+        expect.objectContaining({
+          name: "--zui-masked-heading-aurora-mesh-dark",
+        }),
+      ]),
+    );
+    expect(heading?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-masked-heading-fg",
+          pairName: "--zui-masked-heading-fg-dark",
         }),
       ]),
     );
