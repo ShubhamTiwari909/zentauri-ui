@@ -18,6 +18,7 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("decrypted-text");
     expect(slugs).toContain("scroll-expand");
     expect(slugs).toContain("masked-heading");
+    expect(slugs).toContain("electric-border");
     expect(slugs).toContain("grid");
     expect(slugs).toContain("field");
     expect(slugs).toContain("toolbar");
@@ -29,6 +30,28 @@ describe("DesignSystem facade", () => {
     expect(slugs).toContain("buttons");
     expect(slugs).toContain("inputs");
     expect(slugs.length).toBe(DesignSystem.listComponents().length);
+  });
+
+  it("discovers Electric Border palettes and paired gradient tokens", () => {
+    const component = DesignSystem.getComponent("electric-border");
+    expect(component?.title).toBe("Electric Border");
+    expect(component?.appearances()).toEqual(
+      expect.arrayContaining([
+        "default",
+        "subtle",
+        "contrast",
+        "glass",
+        "gradient-blue",
+      ]),
+    );
+    expect(component?.variables()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "--zui-electric-border-gradient-blue-color-end",
+          pairName: "--zui-electric-border-gradient-blue-color-end-dark",
+        }),
+      ]),
+    );
   });
 
   it("discovers Time Travel Inspector appearances and reciprocal focus tokens", () => {

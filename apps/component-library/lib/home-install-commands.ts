@@ -79,6 +79,7 @@ export const CLI_ADD_COMPONENTS = [
   "drawer",
   "dropdown",
   "dynamic-stepper",
+  "electric-border",
   "empty-state",
   "field",
   "file-upload",

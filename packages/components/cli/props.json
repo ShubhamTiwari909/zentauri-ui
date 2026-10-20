@@ -13636,6 +13636,183 @@
         }
       ]
     },
+    "electric-border": {
+      "slug": "electric-border",
+      "subcomponents": [
+        {
+          "name": "static:ElectricBorder",
+          "displayName": "ElectricBorder",
+          "propsType": "ElectricBorderProps",
+          "source": "static",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "enum",
+              "required": false,
+              "default": "default",
+              "group": "variant",
+              "isVariant": true,
+              "options": [
+                "amber",
+                "blue",
+                "contrast",
+                "cyan",
+                "default",
+                "destructive",
+                "emerald",
+                "glass",
+                "gradient-blue",
+                "gradient-emerald",
+                "gradient-rose",
+                "info",
+                "primary",
+                "rose",
+                "secondary",
+                "slate",
+                "subtle",
+                "success",
+                "violet",
+                "warning"
+              ],
+              "variantGroup": "appearance",
+              "deprecated": false
+            },
+            {
+              "name": "active",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "true",
+              "group": "behavior",
+              "description": "Enable animation. False retains a static rim and usable content.",
+              "deprecated": false
+            },
+            {
+              "name": "glow",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "true",
+              "group": "behavior",
+              "description": "Show the soft glow around the current and static rim.",
+              "deprecated": false
+            },
+            {
+              "name": "intensity",
+              "type": "number | undefined",
+              "required": false,
+              "default": "1",
+              "group": "behavior",
+              "description": "Strand displacement, clamped to 0–2. Zero keeps a smooth perimeter.",
+              "deprecated": false
+            },
+            {
+              "name": "interactive",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "true",
+              "group": "behavior",
+              "description": "Enable fine-pointer surges and click/keyboard activation pulses.",
+              "deprecated": false
+            },
+            {
+              "name": "intro",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "true",
+              "group": "behavior",
+              "description": "Reveal the current around the perimeter on activation.",
+              "deprecated": false
+            },
+            {
+              "name": "radius",
+              "type": "number | undefined",
+              "required": false,
+              "default": "24",
+              "group": "behavior",
+              "description": "Uniform corner radius in CSS pixels, clamped to 0–9999 and fitted to the box.",
+              "deprecated": false
+            },
+            {
+              "name": "reducedMotion",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "false",
+              "group": "behavior",
+              "description": "Force a static rim. System reduced-motion preferences always take precedence.",
+              "deprecated": false
+            },
+            {
+              "name": "sparks",
+              "type": "boolean | undefined",
+              "required": false,
+              "default": "true",
+              "group": "behavior",
+              "description": "Show up to two short-lived arcs outside the perimeter.",
+              "deprecated": false
+            },
+            {
+              "name": "speed",
+              "type": "number | undefined",
+              "required": false,
+              "default": "1",
+              "group": "behavior",
+              "description": "Animation rate, clamped to 0–3. Zero renders a static rim.",
+              "deprecated": false
+            },
+            {
+              "name": "thickness",
+              "type": "number | undefined",
+              "required": false,
+              "default": "1.5",
+              "group": "behavior",
+              "description": "Stroke thickness in CSS pixels, clamped to 0.5–4.",
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLDivElement> | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            },
+            {
+              "name": "title",
+              "type": "string | undefined",
+              "required": false,
+              "group": "dom",
+              "deprecated": false
+            }
+          ]
+        }
+      ]
+    },
     "empty-state": {
       "slug": "empty-state",
       "subcomponents": [

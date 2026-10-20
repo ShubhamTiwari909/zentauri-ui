@@ -1,0 +1,63 @@
+{
+  "category": "Surfaces & interaction",
+  "title": "Electric Border component for React",
+  "description": "An original SVG electric border for React with continuous current, cursor surges, click pulses, theme tokens, and reduced-motion support.",
+  "keywords": [
+    "electric border",
+    "React",
+    "SVG animation",
+    "glowing border",
+    "Tailwind CSS",
+    "reduced motion"
+  ],
+  "canonicalPath": "/preview/components/electric-border",
+  "headings": {
+    "h1": "Give your content a little current.",
+    "h2": ["Overview", "Common use cases", "FAQ"]
+  },
+  "intro": "A living perimeter for the things worth noticing. Quiet current, a local surge, and a little spark when you interact.",
+  "useCases": [
+    "Feature cards, pricing highlights, and product announcements.",
+    "Composers and panels with native interactive content.",
+    "Status surfaces where text and semantics carry the meaning."
+  ],
+  "faqs": [
+    {
+      "question": "Does this require Framer Motion, canvas, or WebGL?",
+      "answer": "No. Electric Border uses independently written SVG geometry and a bounded animation loop. It adds no dependency beyond the standard Zentauri React/CVA/class utility peers."
+    },
+    {
+      "question": "What happens with reduced motion or touch input?",
+      "answer": "System reduced-motion preferences, reducedMotion=true, active=false, and speed=0 produce a static rim. Touch and coarse pointers keep ambient animation without cursor tracking. Native child buttons and links remain usable; their activation can trigger a pulse when interactive=true."
+    },
+    {
+      "question": "How can I change colors and size?",
+      "answer": "Choose an appearance or override its paired --zui-electric-border-* CSS tokens. Use className and style for width, height, and content styling. Radius is a uniform corner radius in CSS pixels; it is fitted to the element dimensions."
+    },
+    {
+      "question": "Is this the React Bits implementation?",
+      "answer": "No. The interaction principles were studied in the React Bits demo. Zentauri uses an original SVG renderer, a smaller API, theme-aware colors, and a static fallback. It does not redistribute React Bits code or assets."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "Import ZuiElectricBorder from the electric-border entry and wrap your own content. The root is a ref-forwarding div with no extra focus stop or button semantics. Provide your own padding, background, accessible labels, and visible child focus styles. The border does not clip content.\n\nDefaults: appearance=default, active=true, interactive=true, speed=1, intensity=1, thickness=1.5px, radius=24px, glow=true, sparks=true, intro=true, and reducedMotion=false. Speed is clamped to 0\u20133, intensity to 0\u20132, thickness to 0.5\u20134, and radius to 0\u20139999. Nonfinite values use defaults. Intensity zero keeps a smooth outline and suppresses sparks.\n\nThe introduction takes about 600ms and a click pulse about 400ms at speed=1. Speed scales animation time. Toggling active back on replays the introduction; changing configuration preserves the running phase. These are Zentauri timings, not claimed reference constants.\n\nConsumers using Tailwind v4 must include the package in their @source scan. The component server-renders its content and static rim; browser work starts after mounting. A missing matchMedia API keeps the static fallback.\n\nUp to three strands, 320 perimeter samples, and two short-lived arcs are rendered at a maximum of 30 updates per second. Hidden tabs and offscreen instances suspend animation. On older browsers without ResizeObserver, mount, window resize, and child load events remeasure the frame.\n\nThe glow and arcs extend up to roughly 50px outside the frame at maximum intensity. Reserve surrounding space and avoid overflow:hidden on ancestors when you want the full effect. Use this on a few highlights rather than every item in a large list. Custom asymmetric or percentage corner radii are outside the uniform-radius API."
+    },
+    {
+      "heading": "Common use cases",
+      "body": ""
+    }
+  ],
+  "useCasesSectionHeading": "Common use cases",
+  "og": {
+    "title": "Electric Border \u00b7 Zentauri UI",
+    "description": "An original SVG electric border for React with continuous current, cursor surges, click pulses, theme tokens, and reduced-motion support.",
+    "type": "website"
+  },
+  "twitter": {
+    "title": "Electric Border \u00b7 Zentauri UI",
+    "description": "An original SVG electric border for React with continuous current, cursor surges, click pulses, theme tokens, and reduced-motion support.",
+    "card": "summary_large_image"
+  }
+}

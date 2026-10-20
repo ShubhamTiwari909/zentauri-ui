@@ -21,7 +21,7 @@ Counted from the entry lists in `tsup.config.ts`. Refresh with `pnpm --filter @z
 
 | Surface             | Count | Import shape                                          |
 | ------------------- | ----: | ----------------------------------------------------- |
-| Static UI entries   |    93 | `@zentauri-ui/zentauri-components/ui/<name>`          |
+| Static UI entries   |    94 | `@zentauri-ui/zentauri-components/ui/<name>`          |
 | Animated UI entries |    52 | `@zentauri-ui/zentauri-components/ui/<name>/animated` |
 | Animation entries   |    41 | `@zentauri-ui/zentauri-components/animations/<name>`  |
 | Chart entries       |     9 | `@zentauri-ui/zentauri-components/charts/<type>`      |
@@ -35,15 +35,15 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 
 | Metric     | Result           |
 | ---------- | ---------------- |
-| Test files | 172 passed (172)   |
-| Tests      | 2165 passed (2165) |
+| Test files | 175 passed (175)   |
+| Tests      | 2215 passed (2215) |
 
 | Area                           | Test files | Tests |
 | ------------------------------ | ---------- | ----- |
-| Components and UI utilities    | 112        | 1654  |
+| Components and UI utilities    | 115        | 1703  |
 | Standalone animations          | 1          | 45    |
 | React hooks                    | 51         | 292   |
-| Design system facade           | 1          | 27    |
+| Design system facade           | 1          | 28    |
 | CLI and import rewriting       | 4          | 48    |
 | Accessibility (axe + keyboard) | 2          | 52    |
 | Permission system              | 1          | 47    |
@@ -61,6 +61,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/permission/permission.test.tsx`                                    |    47 |
 | `src/animations/animations.test.tsx`                                    |    45 |
 | `src/ui/buttons/button.test.tsx`                                        |    44 |
+| `src/ui/electric-border/electric-border.test.tsx`                       |    41 |
 | `src/ui/grid/grid.test.tsx`                                             |    41 |
 | `src/ui/carousel/carousel.test.tsx`                                     |    40 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
@@ -71,10 +72,10 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/glass-card/glass-card.test.tsx`                                 |    31 |
 | `src/ui/masked-heading/masked-heading.test.tsx`                         |    31 |
 | `src/ui/orbit-system/orbit-system.test.tsx`                             |    29 |
+| `src/lib/facade.test.ts`                                                |    28 |
 | `src/ui/calendar/date-utils.test.ts`                                    |    28 |
 | `src/ui/decrypted-text/decrypted-text.test.tsx`                         |    28 |
 | `cli/cli.integration.test.ts`                                           |    27 |
-| `src/lib/facade.test.ts`                                                |    27 |
 | `src/ui/bento-grid/bento-grid.test.tsx`                                 |    26 |
 | `src/hooks/useDebouncedCallback/useDebouncedCallback.test.tsx`          |    24 |
 | `src/ui/combobox/combobox.test.tsx`                                     |    24 |
@@ -156,6 +157,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/card/card.test.tsx`                                             |     7 |
 | `src/ui/code-diff/code-diff.test.tsx`                                   |     7 |
 | `src/ui/drawer/drawer.test.tsx`                                         |     7 |
+| `src/ui/electric-border/geometry.test.ts`                               |     7 |
 | `src/ui/kbd/kbd.test.tsx`                                               |     7 |
 | `src/ui/neural-graph/neural-graph.test.tsx`                             |     7 |
 | `src/ui/typography/typography.test.tsx`                                 |     7 |
@@ -221,6 +223,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/usePrefersColorScheme/usePrefersColorScheme.test.ts`         |     1 |
 | `src/hooks/usePrefersReducedMotion/usePrefersReducedMotion.test.ts`     |     1 |
 | `src/hooks/useWindowSize/useWindowSize.test.ts`                         |     1 |
+| `src/ui/electric-border/electric-border.ssr.test.tsx`                   |     1 |
 | `src/ui/glass-card/glass-card.ssr.test.tsx`                             |     1 |
 | `src/ui/search/search-suggestion-utils.test.ts`                         |     1 |
 | `src/ui/time-travel-inspector/time-travel-inspector.types.test.ts`      |     1 |
@@ -1028,7 +1031,7 @@ From this package directory in the monorepo:
 
 - `pnpm build` (or `npm run build`) — production bundle via `tsup` (Rollup treeshake + `scripts/prepend-use-client.mjs` via `onSuccess` so each UI entry under `dist/ui/`, animation entry under `dist/animations/`, chart entry under `dist/charts/`, and `dist/ui/<name>/animated.*` starts with `"use client"` where needed)
 - `pnpm dev` — `tsup` watch mode (same `onSuccess` hook after each rebuild)
-- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 2165 test cases in total
+- `pnpm test` / `pnpm test:watch` — **Vitest** and **Testing Library** unit tests // currently covered 2215 test cases in total
 - `pnpm test:a11y` — focused accessibility coverage for package-level UI primitives and compound components: **axe-core** audits for every interactive component plus **keyboard-interaction** tests (focus order, arrow-key nav, Home/End, Escape/Enter) for the compound components
 - `pnpm check:tokens` — enforce the `--zui-*` token contract across design-system, variant, and local custom-property usage without generating a large checked-in token catalog
 - **`pnpm run generate:registry`** — runs `scripts/generate-registry.mjs`, which reads **`uiComponentNames`**, **`uiAnimatedComponentNames`**, **`animationEntryNames`**, **`chartEntryNames`**, and **`hooksEntryNames`** from `tsup.config.ts`, applies fixed **`nameAliases`**, scans each component/chart source to build **`peerHints`**, and writes **`cli/registry.json`** (`components` + `animations` + `hooks` + `peerHints`). Run this after adding or renaming UI, animation, chart, or hook entries so the CLI stays in sync (the script prints counts).

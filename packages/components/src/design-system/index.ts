@@ -30,6 +30,7 @@ export * from "./divider";
 export * from "./drawer";
 export * from "./dropdown";
 export * from "./dynamic-stepper";
+export * from "./electric-border";
 export * from "./empty-state";
 export * from "./file-upload";
 export * from "./gauge";

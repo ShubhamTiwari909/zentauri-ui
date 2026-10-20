@@ -93,6 +93,7 @@ const componentSlugs = [
   "drawer",
   "dropdown",
   "dynamic-stepper",
+  "electric-border",
   "empty-state",
   "field",
   "file-upload",

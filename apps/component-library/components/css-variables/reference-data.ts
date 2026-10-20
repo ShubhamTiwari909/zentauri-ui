@@ -1,5 +1,6 @@
 import { decryptedTextCssVariables } from "./data/decrypted-text";
 import { scrollExpandCssVariables } from "./data/scroll-expand";
+import { electricBorderCssVariables } from "./data/electric-border";
 import { glassCardCssVariables } from "./data/glass-card";
 import { maskedHeadingCssVariables } from "./data/masked-heading";
 import { accordionCssVariables } from "./data/accordion";
@@ -103,6 +104,7 @@ export const cssVariableReferences = {
   buttons: buttonsCssVariables,
   calendar: calendarCssVariables,
   card: cardCssVariables,
+  "electric-border": electricBorderCssVariables,
   "glass-card": glassCardCssVariables,
   carousel: carouselCssVariables,
   checkbox: checkboxCssVariables,
