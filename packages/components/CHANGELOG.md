@@ -1,5 +1,11 @@
 # @zentauri-ui/zentauri-components Changelog
 
+## 2.19.0
+
+### Minor Changes
+
+- 653a3e1: Add ZuiElectricBorder, an original SVG electric frame with theme-aware appearances, cursor surges, activation pulses, bounded sparks, and a static reduced-motion fallback. Include CLI installation, public types and tokens, and the interactive documentation preview.
+
 ## 2.18.0
 
 ### Minor Changes
