@@ -302,6 +302,7 @@ export const sidebarComponentsData: SidebarNavGroup[] = [
         title: "Dynamic stepper",
         href: "/preview/components/dynamic-stepper",
       },
+      { title: "Electric Border", href: "/preview/components/electric-border" },
       {
         title: "Empty state",
         href: "/preview/components/empty-state",

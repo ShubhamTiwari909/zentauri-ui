@@ -130,6 +130,14 @@ export const componentsData: ComponentHighlight[] = [
     badge: "Layout",
   },
   {
+    id: "electric-border",
+    name: "Electric Border",
+    description:
+      "Original SVG current, cursor surges, and click pulses with theme tokens and a static reduced-motion fallback.",
+    href: "/preview/components/electric-border",
+    badge: "Display",
+  },
+  {
     id: "glass-card",
     name: "Glass Card",
     description:

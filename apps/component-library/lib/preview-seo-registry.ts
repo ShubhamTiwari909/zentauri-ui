@@ -1,3 +1,4 @@
+import electricBorder from "@/content/seo/preview/components/electric-border.json";
 import glassCard from "@/content/seo/preview/components/glass-card.json";
 import type { PreviewSeoDocument } from "@/lib/preview-seo";
 import accordion from "@/content/seo/preview/components/accordion.json";
@@ -120,6 +121,7 @@ const previewSeoRegistry = {
   buttons: buttons as PreviewSeoDocument,
   calendar: calendar as PreviewSeoDocument,
   card: card as PreviewSeoDocument,
+  "electric-border": electricBorder as PreviewSeoDocument,
   "glass-card": glassCard as PreviewSeoDocument,
   checkbox: checkbox as PreviewSeoDocument,
   carousel: carousel as PreviewSeoDocument,

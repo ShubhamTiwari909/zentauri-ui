@@ -61,6 +61,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/permission/permission.test.tsx`                                    |    47 |
 | `src/animations/animations.test.tsx`                                    |    45 |
 | `src/ui/buttons/button.test.tsx`                                        |    44 |
+| `src/ui/electric-border/electric-border.test.tsx`                       |    41 |
 | `src/ui/grid/grid.test.tsx`                                             |    41 |
 | `src/ui/carousel/carousel.test.tsx`                                     |    40 |
 | `src/ui/inputs/input.test.tsx`                                          |    40 |
@@ -76,6 +77,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `cli/cli.integration.test.ts`                                           |    27 |
 | `src/lib/facade.test.ts`                                                |    27 |
 | `src/ui/bento-grid/bento-grid.test.tsx`                                 |    26 |
+| `src/lib/facade.test.ts`                                                |    25 |
 | `src/hooks/useDebouncedCallback/useDebouncedCallback.test.tsx`          |    24 |
 | `src/ui/combobox/combobox.test.tsx`                                     |    24 |
 | `src/ui/wizard/wizard.test.tsx`                                         |    22 |
@@ -156,6 +158,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/ui/card/card.test.tsx`                                             |     7 |
 | `src/ui/code-diff/code-diff.test.tsx`                                   |     7 |
 | `src/ui/drawer/drawer.test.tsx`                                         |     7 |
+| `src/ui/electric-border/geometry.test.ts`                               |     7 |
 | `src/ui/kbd/kbd.test.tsx`                                               |     7 |
 | `src/ui/neural-graph/neural-graph.test.tsx`                             |     7 |
 | `src/ui/typography/typography.test.tsx`                                 |     7 |
@@ -221,6 +224,7 @@ Generated from the component package Vitest JSON report via `pnpm --filter @zent
 | `src/hooks/usePrefersColorScheme/usePrefersColorScheme.test.ts`         |     1 |
 | `src/hooks/usePrefersReducedMotion/usePrefersReducedMotion.test.ts`     |     1 |
 | `src/hooks/useWindowSize/useWindowSize.test.ts`                         |     1 |
+| `src/ui/electric-border/electric-border.ssr.test.tsx`                   |     1 |
 | `src/ui/glass-card/glass-card.ssr.test.tsx`                             |     1 |
 | `src/ui/search/search-suggestion-utils.test.ts`                         |     1 |
 | `src/ui/time-travel-inspector/time-travel-inspector.types.test.ts`      |     1 |
